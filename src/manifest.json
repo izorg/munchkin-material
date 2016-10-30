@@ -1,0 +1,16 @@
+{
+  "background_color": "#FFFFFF",
+  "display": "standalone",
+  "icons": [
+    {
+      "sizes": "192x192",
+      "src": "/favicon.png",
+      "type": "image/png"
+    }
+  ],
+  "name": "All munchkins",
+  "short_name": "All munchkins",
+  "start_url": "/",
+  "orientation": "portrait",
+  "theme_color": "#795548"
+}

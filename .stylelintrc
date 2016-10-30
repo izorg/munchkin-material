@@ -1,0 +1,11 @@
+{
+  "extends": [
+    "stylelint-config-standard",
+    "stylelint-config-css-modules"
+  ],
+  "rules": {
+    "color-hex-case": "upper",
+    "color-hex-length": "long",
+    "max-empty-lines": 2
+  }
+}

@@ -1,0 +1,26 @@
+.counter {
+  text-align: center;
+}
+
+.title {
+  font-family: 'Munchkin', 'Roboto', sans-serif;
+  font-size: 24px;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.actionIcon {
+  transform: scale(2);
+}
+
+.value {
+  font-family: 'Munchkin', 'Roboto', sans-serif;
+  font-size: 36px;
+}
+
+.valueReadOnly {
+  font-size: 72px; /* 36px * 2 */
+  line-height: 0.575; /* 1.15 / 2 */
+}

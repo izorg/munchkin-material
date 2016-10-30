@@ -1,0 +1,8 @@
+{
+  "destination": "./doc",
+  "source": "./src",
+  "includes": ["\\.(js|jsx)$"],
+  "experimentalProposal": {
+    "objectRestSpread": true
+  }
+}

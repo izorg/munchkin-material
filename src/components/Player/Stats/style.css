@@ -1,0 +1,25 @@
+.stats {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.row {
+  align-items: center;
+  display: flex;
+  flex: 1 1 50%;
+}
+
+.row > * {
+  flex: 1 1 50%;
+}
+
+@media all and (orientation: landscape) {
+  .stats {
+    flex-direction: row-reverse;
+  }
+
+  .row {
+    height: auto;
+  }
+}

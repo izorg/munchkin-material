@@ -1,0 +1,43 @@
+{
+  "presets": [
+    [
+      "env",
+      {
+        "modules": false,
+        "targets": {
+          "browsers": [
+            "last 2 versions",
+            "not ie <= 10"
+          ]
+        },
+        "useBuiltIns": true
+      }
+    ],
+    [
+      "es2015",
+      {
+        "modules": false
+      }
+    ],
+    "stage-1",
+    "react"
+  ],
+  "env": {
+    "development": {
+      "plugins": [
+        "react-hot-loader/babel",
+        [
+          "react-intl",
+          {
+            "messagesDir": "./messages/"
+          }
+        ]
+      ]
+    },
+    "production": {
+      "presets": [
+        "react-optimize"
+      ]
+    }
+  }
+}

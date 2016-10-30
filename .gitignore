@@ -1,0 +1,12 @@
+/.idea/
+/.vscode/
+/build/
+/config.json
+/dist/
+/doc/
+/messages/
+/node_modules/
+/site/
+
+.DS_Store
+npm-debug.log

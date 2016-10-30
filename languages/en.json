@@ -1,0 +1,11 @@
+{
+  "player.form.namePlaceholder": "Name",
+  "player.list.title": "Munchkins",
+  "player.list.item.secondaryTextLevel": "Level {level}",
+  "player.list.item.secondaryTextStrength": "Strength {strength}",
+  "player.stats.strength": "Strength",
+  "player.stats.level": "Level",
+  "player.stats.gear": "Gear",
+  "player.form.titleEdit": "Edit munchkin",
+  "player.form.title": "New munchkin"
+}

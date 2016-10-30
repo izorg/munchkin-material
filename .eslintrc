@@ -1,0 +1,13 @@
+{
+  "extends": [
+    "airbnb",
+    "plugin:css-modules/recommended"
+  ],
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "plugins": [
+    "css-modules"
+  ]
+}
