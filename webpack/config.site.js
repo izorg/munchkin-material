@@ -70,7 +70,11 @@ module.exports = merge({
     new ExtractTextPlugin({
       filename: 'app.[contenthash].css',
     }),
-    new OfflinePlugin(),
+    new OfflinePlugin({
+      ServiceWorker: {
+        events: true,
+      },
+    }),
     new CnameWebpackPlugin({
       domain: 'web.allmunchkins.com',
     }),
