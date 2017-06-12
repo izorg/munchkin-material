@@ -71,6 +71,16 @@ module.exports = merge({
       filename: 'app.[contenthash].css',
     }),
     new OfflinePlugin({
+      caches: {
+        main: [
+          '*.css',
+          '*.html',
+          '*.js',
+        ],
+        additional: [
+          ':rest:',
+        ],
+      },
       ServiceWorker: {
         events: true,
       },
