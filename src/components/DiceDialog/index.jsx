@@ -34,6 +34,7 @@ const DiceDialog = ({ dice, onDiceTouchTap, onRequestClose }) => (
       }}
       onTouchTap={onDiceTouchTap}
       style={{
+        display: 'block',
         height: iconSize,
         padding: 0,
         width: iconSize,
