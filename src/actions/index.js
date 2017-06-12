@@ -7,6 +7,10 @@ export const hideBanner = () => ({
   bannerVisible: false,
 });
 
+const resetDice = () => ({
+  type: types.RESET_DICE,
+});
+
 const setActivePlayer = id => ({
   type: types.SET_ACTIVE_PLAYER,
   id,
@@ -22,6 +26,11 @@ export const showBanner = () => ({
   bannerVisible: true,
 });
 
+const throwDice = () => ({
+  type: types.THROW_DICE,
+  dice: Math.floor(Math.random() * 6) + 1,
+});
+
 const toggleEditMode = force => ({
   type: types.TOGGLE_EDIT_MODE,
   editMode: force,
@@ -35,9 +44,11 @@ const togglePlayer = id => ({
 export default {
   ...actions,
   hideBanner,
+  resetDice,
   setActivePlayer,
   setMultiMode,
   showBanner,
+  throwDice,
   toggleEditMode,
   togglePlayer,
 };

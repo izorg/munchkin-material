@@ -3,6 +3,7 @@ import * as types from '../constants/actionTypes';
 const initialState = {
   activePlayerId: null,
   bannerVisible: false,
+  dice: null,
   editMode: false,
   multiMode: false,
   selectedPlayerIds: [],
@@ -16,6 +17,15 @@ const app = (state = initialState, action) => {
       return {
         ...state,
         bannerVisible,
+      };
+    }
+
+    case types.RESET_DICE: {
+      const { dice } = initialState;
+
+      return {
+        ...state,
+        dice,
       };
     }
 
@@ -44,6 +54,15 @@ const app = (state = initialState, action) => {
         ...state,
         multiMode,
         selectedPlayerIds: [],
+      };
+    }
+
+    case types.THROW_DICE: {
+      const { dice } = action;
+
+      return {
+        ...state,
+        dice,
       };
     }
 

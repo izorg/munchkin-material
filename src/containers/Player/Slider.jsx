@@ -12,10 +12,8 @@ const mapStateToProps = ({ app: { activePlayerId, bannerVisible }, players }) =>
 
 const mapDispatchToProps = dispatch => ({
   onBack: () => dispatch(goBack()),
-  onDelete: (player) => {
-    dispatch(goBack());
-    dispatch(actions.setActivePlayer());
-    dispatch(actions.removePlayer(player.id));
+  onDiceTouchTap: () => {
+    dispatch(actions.throwDice());
   },
   onPlayerChange: (player) => {
     dispatch(actions.setActivePlayer(player.id));

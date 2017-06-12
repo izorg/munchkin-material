@@ -13,10 +13,20 @@
     "lint:js": "eslint --ext .js,.jsx .",
     "site": "cross-env NODE_ENV=production webpack --config=webpack/config.site.js",
     "start": "cross-env NODE_ENV=production webpack-dev-server --config=webpack/config.site.js",
-    "stats": "cross-env NODE_ENV=production webpack --config=webpack/config.stats.js"
+    "stats": "cross-env NODE_ENV=production webpack --config=webpack/config.stats.js",
+    "test": "jest",
+    "test:watch": "npm test -- --watch"
   },
   "engines": {
     "node": ">=6"
+  },
+  "jest": {
+    "coveragePathIgnorePatterns": [
+      "./src/constants/",
+      "/node_modules/"
+    ],
+    "notify": true,
+    "setupTestFrameworkScriptFile": "./node_modules/jest-enzyme/lib/index.js"
   },
   "dependencies": {
     "babel-cli": "6.24.1",
@@ -66,7 +76,9 @@
   "devDependencies": {
     "axios": "0.16.2",
     "babel-jest": "20.0.3",
+    "babel-plugin-transform-es2015-modules-commonjs": "6.24.1",
     "babel-register": "6.24.1",
+    "enzyme": "2.8.2",
     "esdoc": "0.5.2",
     "eslint": "3.19.0",
     "eslint-config-airbnb": "15.0.1",
@@ -76,6 +88,7 @@
     "eslint-plugin-jsx-a11y": "5.0.3",
     "eslint-plugin-react": "7.0.1",
     "jest": "20.0.4",
+    "jest-enzyme": "3.2.0",
     "react-test-renderer": "15.5.4",
     "stylelint": "7.11.0",
     "stylelint-config-css-modules": "1.0.0",

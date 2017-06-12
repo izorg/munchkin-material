@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Slider from 'react-slick';
 import PropTypes from 'prop-types';
 import IconButton from 'material-ui/IconButton';
-import ActionDelete from 'material-ui/svg-icons/action/delete';
 import NavigationArrowBack from 'material-ui/svg-icons/navigation/arrow-back';
 import cns from 'classnames';
 import { Player } from 'munchkin';
@@ -10,9 +9,11 @@ import { Player } from 'munchkin';
 import cn from './style.css';
 
 import banner from './banner';
+import DiceMultipleIcon from '../../icons/dice/multiple';
 import { Layout, LayoutContent, LayoutHeader } from '../../Layout';
 import AppBar from '../../material-ui/AppBar';
 import { noop } from '../../../constants';
+import DiceDialog from '../../../containers/DiceDialog';
 import PlayerStats from '../../../containers/Player/Stats';
 
 
@@ -31,7 +32,7 @@ class PlayerSlider extends Component {
     const {
       bannerVisible,
       onBack,
-      onDelete,
+      onDiceTouchTap,
       players,
       selectedPlayer,
     } = this.props;
@@ -46,9 +47,9 @@ class PlayerSlider extends Component {
       </IconButton>
     );
 
-    const deleteButton = (
-      <IconButton onTouchTap={() => onDelete(selectedPlayer)}>
-        <ActionDelete />
+    const diceButton = (
+      <IconButton onTouchTap={() => onDiceTouchTap()}>
+        <DiceMultipleIcon />
       </IconButton>
     );
 
@@ -57,7 +58,7 @@ class PlayerSlider extends Component {
         <LayoutHeader>
           <AppBar
             iconElementLeft={backButton}
-            iconElementRight={deleteButton}
+            iconElementRight={diceButton}
             title={selectedPlayer.name}
           />
         </LayoutHeader>
@@ -75,6 +76,8 @@ class PlayerSlider extends Component {
               </div>
             ))}
           </Slider>
+
+          <DiceDialog />
         </LayoutContent>
       </Layout>
     );
@@ -84,7 +87,7 @@ class PlayerSlider extends Component {
 PlayerSlider.propTypes = {
   bannerVisible: PropTypes.bool,
   onBack: PropTypes.func,
-  onDelete: PropTypes.func,
+  onDiceTouchTap: PropTypes.func,
   onPlayerChange: PropTypes.func,
   players: PropTypes.arrayOf(PropTypes.instanceOf(Player)).isRequired,
   selectedPlayer: PropTypes.instanceOf(Player),
@@ -93,7 +96,7 @@ PlayerSlider.propTypes = {
 PlayerSlider.defaultProps = {
   bannerVisible: false,
   onBack: noop,
-  onDelete: noop,
+  onDiceTouchTap: noop,
   onPlayerChange: noop,
   selectedPlayer: null,
 };

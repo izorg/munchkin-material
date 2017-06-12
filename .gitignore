@@ -2,6 +2,7 @@
 /.vscode/
 /build/
 /config.json
+/coverage/
 /dist/
 /doc/
 /messages/
