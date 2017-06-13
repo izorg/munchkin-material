@@ -25,6 +25,9 @@
       "./src/constants/",
       "/node_modules/"
     ],
+    "moduleNameMapper": {
+      "\\.css$": "identity-obj-proxy"
+    },
     "notify": true,
     "setupTestFrameworkScriptFile": "./node_modules/jest-enzyme/lib/index.js"
   },
@@ -87,6 +90,7 @@
     "eslint-plugin-import": "2.3.0",
     "eslint-plugin-jsx-a11y": "5.0.3",
     "eslint-plugin-react": "7.0.1",
+    "identity-obj-proxy": "3.0.0",
     "jest": "20.0.4",
     "jest-enzyme": "3.2.0",
     "react-test-renderer": "15.5.4",
