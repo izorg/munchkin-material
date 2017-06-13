@@ -1,0 +1,36 @@
+:root {
+  --dice-animation-duration: 0.15s;
+}
+
+.content {
+  position: relative;
+  width: 120px;
+  height: 120px;
+}
+
+.itemEnter,
+.itemLeave {
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.itemEnter {
+  transform: scale(0);
+}
+
+.itemEnterActive {
+  transform: scale(1);
+  transition: transform var(--dice-animation-duration) ease-out var(--dice-animation-duration);
+}
+
+.itemLeave {
+  transform: scale(1);
+}
+
+.itemLeaveActive {
+  transform: scale(0);
+  transition: transform var(--dice-animation-duration) ease-in;
+}
