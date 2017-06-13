@@ -36,7 +36,7 @@ function onBannerVisibilityChange(bannerVisible) {
     container.innerHTML = `
       <ins 
         class="adsbygoogle"
-        style="display:inline-block;width:320px;height:50px"
+        style="display:block;width:320px;height:50px;margin:0 auto;"
         data-ad-client="ca-pub-8911738675751781"
         data-ad-slot="4838760545"
       />`;
