@@ -89,6 +89,7 @@ module.exports = merge({
       domain: 'web.allmunchkins.com',
     }),
     new CopyWebpackPlugin([
+      { from: './src/images', to: 'images', ignore: 'favicon.png' },
       { from: './src/manifest.json' },
     ]),
   ],

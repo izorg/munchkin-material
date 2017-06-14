@@ -93,7 +93,7 @@ module.exports = {
       filename: 'css/app.css',
     }),
     new HtmlWebpackPlugin({
-      favicon: './src/img/favicon.png',
+      favicon: './src/images/favicon.png',
       template: './src/index.ejs',
       title: 'All munchkins',
     }),
