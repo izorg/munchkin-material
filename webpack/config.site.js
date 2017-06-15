@@ -81,6 +81,7 @@ module.exports = merge({
           ':rest:',
         ],
       },
+      safeToUseOptionalCaches: true,
       ServiceWorker: {
         events: true,
       },

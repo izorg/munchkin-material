@@ -1,4 +1,5 @@
 import React, { Children } from 'react';
+import Helmet from 'react-helmet';
 import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
 import PropTypes from 'prop-types';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
@@ -18,6 +19,9 @@ const animationClassNames = {
 const App = props => (
   <MuiThemeProvider muiTheme={getMuiTheme(munchkinTheme)}>
     <div className={cn.app}>
+      <Helmet>
+        <html lang={navigator.language} />
+      </Helmet>
       <CSSTransitionGroup
         className={cn.content}
         component="div"

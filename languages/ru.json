@@ -1,1 +1,12 @@
-﻿{  "player.form.namePlaceholder": "Имя",  "player.list.title": "Манчкины",  "player.list.item.secondaryTextLevel": "Уровень {level}",  "player.list.item.secondaryTextStrength": "Сила {strength}",  "player.stats.strength": "Сила",  "player.stats.level": "Уровень",  "player.stats.gear": "Бонус",  "player.form.titleEdit": "Редактировать манчкина",  "player.form.title": "Новый манчкин"}
+﻿{
+  "mainButton.label": "Добавить нового манчкина",
+  "player.form.namePlaceholder": "Имя",
+  "player.list.title": "Манчкины",
+  "player.list.item.secondaryTextLevel": "Уровень {level}",
+  "player.list.item.secondaryTextStrength": "Сила {strength}",
+  "player.stats.strength": "Сила",
+  "player.stats.level": "Уровень",
+  "player.stats.gear": "Бонус",
+  "player.form.titleEdit": "Редактировать манчкина",
+  "player.form.title": "Новый манчкин"
+}

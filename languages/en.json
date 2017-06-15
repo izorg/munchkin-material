@@ -1,4 +1,5 @@
 {
+  "mainButton.label": "Add a new munchkin",
   "player.form.namePlaceholder": "Name",
   "player.list.title": "Munchkins",
   "player.list.item.secondaryTextLevel": "Level {level}",
