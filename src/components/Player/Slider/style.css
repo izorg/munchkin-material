@@ -1,24 +1,25 @@
+.sliderContent {
+  display: flex;
+}
+
 .sliderContent.bannerVisible {
   padding-bottom: 50px;
 }
 
-.slider,
-.slider :global(.slick-list),
-.slider :global(.slick-track),
-.item {
-  height: 100%;
+.slider {
+  display: flex;
+  width: 100%;
 }
 
 .slider :global(.slick-list) {
+  display: flex;
   overflow: hidden;
 }
 
 .slider :global(.slick-track) {
   display: flex;
-  width: 100% !important;
 }
 
-.slider :global(.slick-slide) {
-  flex-shrink: 0;
-  width: 100%;
+.item {
+  display: flex;
 }
