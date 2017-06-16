@@ -4,22 +4,28 @@
   width: 100%;
 }
 
-.row {
-  align-items: center;
+.mainWrapper {
   display: flex;
+  flex-direction: column;
   flex: 1 1 50%;
+  justify-content: center;
 }
 
-.row > * {
+.counters {
   flex: 1 1 50%;
+  display: flex;
+}
+
+.counterWrapper {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 50%;
+  justify-content: center;
 }
 
 @media all and (orientation: landscape) {
   .stats {
-    flex-direction: row-reverse;
-  }
-
-  .row {
-    height: auto;
+    flex-direction: row;
   }
 }
+

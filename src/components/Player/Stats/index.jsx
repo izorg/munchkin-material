@@ -46,26 +46,30 @@ class PlayerStats extends Component {
 
     return (
       <div className={cn.stats}>
-        <div className={cn.row}>
+        <div className={cn.mainWrapper}>
           <Counter
             readOnly
             title={<FormattedMessage id="player.stats.strength" defaultMessage="Strength" />}
             value={player.strength}
           />
         </div>
-        <div className={cn.row}>
-          <Counter
-            onDecrement={this.handleLevelDecrement}
-            onIncrement={this.handleLevelIncrement}
-            title={<FormattedMessage id="player.stats.level" defaultMessage="Level" />}
-            value={player.level}
-          />
-          <Counter
-            onDecrement={this.handleGearDecrement}
-            onIncrement={this.handleGearIncrement}
-            title={<FormattedMessage id="player.stats.gear" defaultMessage="Gear" />}
-            value={player.gear}
-          />
+        <div className={cn.counters}>
+          <div className={cn.counterWrapper}>
+            <Counter
+              onDecrement={this.handleLevelDecrement}
+              onIncrement={this.handleLevelIncrement}
+              title={<FormattedMessage id="player.stats.level" defaultMessage="Level" />}
+              value={player.level}
+            />
+          </div>
+          <div className={cn.counterWrapper}>
+            <Counter
+              onDecrement={this.handleGearDecrement}
+              onIncrement={this.handleGearIncrement}
+              title={<FormattedMessage id="player.stats.gear" defaultMessage="Gear" />}
+              value={player.gear}
+            />
+          </div>
         </div>
       </div>
     );
