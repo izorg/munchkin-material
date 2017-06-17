@@ -1,0 +1,15 @@
+.counter {
+  text-align: center;
+}
+
+.title {
+  font-family: 'Munchkin', 'Roboto', sans-serif;
+  font-size: 24px;
+}
+
+.value {
+  font-family: 'Munchkin', 'Roboto', sans-serif;
+  font-size: 72px; /* 36px * 2 */
+  line-height: 0.575; /* 1.15 / 2 */
+  margin-top: 64px;
+}

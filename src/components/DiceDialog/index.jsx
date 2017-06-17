@@ -7,12 +7,12 @@ import IconButton from 'material-ui/IconButton';
 import cn from './style.css';
 
 import { noop } from '../../constants';
-import DiceOneIcon from '../icons/dice/one';
-import DiceTwoIcon from '../icons/dice/two';
-import DiceThreeIcon from '../icons/dice/three';
-import DiceFourIcon from '../icons/dice/four';
-import DiceFiveIcon from '../icons/dice/five';
-import DiceSixIcon from '../icons/dice/six';
+import DiceOne from '../icons/dice/one';
+import DiceTwo from '../icons/dice/two';
+import DiceThree from '../icons/dice/three';
+import DiceFour from '../icons/dice/four';
+import DiceFive from '../icons/dice/five';
+import DiceSix from '../icons/dice/six';
 
 const iconSize = 120;
 
@@ -79,22 +79,22 @@ class DiceDialog extends Component {
               }}
             >
               {
-                dice === 1 ? <DiceOneIcon /> : null
+                dice === 1 ? <DiceOne /> : null
               }
               {
-                dice === 2 ? <DiceTwoIcon /> : null
+                dice === 2 ? <DiceTwo /> : null
               }
               {
-                dice === 3 ? <DiceThreeIcon /> : null
+                dice === 3 ? <DiceThree /> : null
               }
               {
-                dice === 4 ? <DiceFourIcon /> : null
+                dice === 4 ? <DiceFour /> : null
               }
               {
-                dice === 5 ? <DiceFiveIcon /> : null
+                dice === 5 ? <DiceFive /> : null
               }
               {
-                dice === 6 ? <DiceSixIcon /> : null
+                dice === 6 ? <DiceSix /> : null
               }
             </IconButton>
           </div>

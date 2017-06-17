@@ -3,20 +3,20 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import DiceDialog from '../DiceDialog';
-import DiceOneIcon from '../icons/dice/one';
-import DiceTwoIcon from '../icons/dice/two';
-import DiceThreeIcon from '../icons/dice/three';
-import DiceFourIcon from '../icons/dice/four';
-import DiceFiveIcon from '../icons/dice/five';
-import DiceSixIcon from '../icons/dice/six';
+import DiceOne from '../icons/dice/one';
+import DiceTwo from '../icons/dice/two';
+import DiceThree from '../icons/dice/three';
+import DiceFour from '../icons/dice/four';
+import DiceFive from '../icons/dice/five';
+import DiceSix from '../icons/dice/six';
 
 const icons = [
-  DiceOneIcon,
-  DiceTwoIcon,
-  DiceThreeIcon,
-  DiceFourIcon,
-  DiceFiveIcon,
-  DiceSixIcon,
+  DiceOne,
+  DiceTwo,
+  DiceThree,
+  DiceFour,
+  DiceFive,
+  DiceSix,
 ];
 
 /* global describe, expect, test */

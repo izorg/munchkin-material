@@ -14,8 +14,8 @@ import cn from './style.css';
 import { Layout, LayoutContent, LayoutHeader } from '../../Layout';
 import AppBar from '../../material-ui/AppBar';
 import { noop } from '../../../constants';
-import GenderFemaleIcon from '../../icons/gender/Female';
-import GenderMaleIcon from '../../icons/gender/Male';
+import GenderFemale from '../../icons/gender/Female';
+import GenderMale from '../../icons/gender/Male';
 
 class PlayerForm extends Component {
   static renderNameField({ input }) {
@@ -36,11 +36,11 @@ class PlayerForm extends Component {
         onChange={(e, value) => input.onChange(value)}
       >
         <RadioButton
-          label={<GenderMaleIcon />}
+          label={<GenderMale />}
           value={GENDER.MALE}
         />
         <RadioButton
-          label={<GenderFemaleIcon />}
+          label={<GenderFemale />}
           value={GENDER.FEMALE}
         />
       </RadioButtonGroup>

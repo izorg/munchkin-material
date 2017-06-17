@@ -35,7 +35,7 @@ module.exports = merge.strategy({
           {
             loader: 'eslint-loader',
             options: {
-              emitError: true,
+              emitError: false,
               emitWarning: true,
             },
           },

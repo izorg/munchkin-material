@@ -5,6 +5,7 @@ import { Player } from 'munchkin';
 
 import cn from './style.css';
 
+import Main from './Main';
 import Counter from '../../Counter';
 import { noop } from '../../../constants';
 
@@ -12,6 +13,8 @@ class PlayerStats extends Component {
   componentWillMount() {
     this.handleGearDecrement = this.handleGearDecrement.bind(this);
     this.handleGearIncrement = this.handleGearIncrement.bind(this);
+
+    this.handleGenderToggle = this.handleGenderToggle.bind(this);
 
     this.handleLevelDecrement = this.handleLevelDecrement.bind(this);
     this.handleLevelIncrement = this.handleLevelIncrement.bind(this);
@@ -27,6 +30,12 @@ class PlayerStats extends Component {
     const { onGearIncrement, player } = this.props;
 
     onGearIncrement(player);
+  }
+
+  handleGenderToggle() {
+    const { onGenderToggle, player } = this.props;
+
+    onGenderToggle(player);
   }
 
   handleLevelDecrement() {
@@ -47,10 +56,9 @@ class PlayerStats extends Component {
     return (
       <div className={cn.stats}>
         <div className={cn.mainWrapper}>
-          <Counter
-            readOnly
-            title={<FormattedMessage id="player.stats.strength" defaultMessage="Strength" />}
-            value={player.strength}
+          <Main
+            onGenderToggle={this.handleGenderToggle}
+            player={player}
           />
         </div>
         <div className={cn.counters}>
@@ -79,6 +87,7 @@ class PlayerStats extends Component {
 PlayerStats.propTypes = {
   onGearDecrement: PropTypes.func,
   onGearIncrement: PropTypes.func,
+  onGenderToggle: PropTypes.func,
   onLevelDecrement: PropTypes.func,
   onLevelIncrement: PropTypes.func,
   player: PropTypes.instanceOf(Player).isRequired,
@@ -87,6 +96,7 @@ PlayerStats.propTypes = {
 PlayerStats.defaultProps = {
   onGearDecrement: noop,
   onGearIncrement: noop,
+  onGenderToggle: noop,
   onLevelDecrement: noop,
   onLevelIncrement: noop,
 };
