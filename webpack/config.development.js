@@ -18,6 +18,7 @@ module.exports = merge.strategy({
     'webpack-dev-server/client?http://localhost:3000',
     'webpack/hot/only-dev-server',
     './src/site.js',
+    './src/setTestData.js',
   ],
 
   output: {

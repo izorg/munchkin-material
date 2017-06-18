@@ -50,5 +50,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const el = document.getElementById('app');
   const munchkinApp = munchkin.init(el);
 
+  if (process.env.NODE_ENV === 'development') {
+    window.store = munchkinApp.store;
+  }
+
   observeStore(munchkinApp.store, selectBannerVisible, onBannerVisibilityChange);
 });
