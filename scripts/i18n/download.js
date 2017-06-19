@@ -7,7 +7,10 @@ api.getDocuments().then(function (documents) {
     api.exportDocument(document).then(function (task) {
       api.getTranslation(task.id, document.targetLanguage).then(function (translation) {
         console.log('translation', translation);
-        fs.writeFileSync('./languages/' + document.targetLanguage + '.json', translation);
+        fs.writeFileSync(
+          `./languages/${document.targetLanguage}.json`,
+          JSON.stringify(translation, null, '  ')
+        );
       });
     });
   });
