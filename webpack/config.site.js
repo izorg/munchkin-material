@@ -1,6 +1,7 @@
 const CnameWebpackPlugin = require('cname-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const _ = require('lodash');
 const OfflinePlugin = require('offline-plugin');
 const path = require('path');
@@ -92,6 +93,14 @@ module.exports = merge({
     new CopyWebpackPlugin([
       { from: './src/images', to: 'images', ignore: 'favicon.png' },
       { from: './src/manifest.json' },
+      { from: './src/manifest-ru.json' },
     ]),
+    new HtmlWebpackPlugin({
+      favicon: './src/images/favicon.png',
+      filename: 'ru.html',
+      manifest: 'manifest-ru.json',
+      template: './src/index.ejs',
+      title: 'Все манчкины',
+    }),
   ],
 });

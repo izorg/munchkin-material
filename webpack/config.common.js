@@ -94,6 +94,7 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       favicon: './src/images/favicon.png',
+      manifest: 'manifest.json',
       template: './src/index.ejs',
       title: 'All munchkins',
     }),
