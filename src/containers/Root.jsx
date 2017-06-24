@@ -2,11 +2,11 @@ import React from 'react';
 import { IntlProvider } from 'react-intl';
 import { Provider } from 'react-redux';
 import { storeShape } from 'react-redux/lib/utils/PropTypes';
-import { Router } from 'react-router';
-import { history as historyShape } from 'react-router/lib/InternalPropTypes';
+import { ConnectedRouter } from 'react-router-redux';
+import PropTypes from 'prop-types';
 
 import { getLocale, getMessages } from '../i18n';
-import routes from '../routes';
+import App from '../containers/App';
 
 const locale = getLocale();
 const messages = getMessages();
@@ -14,13 +14,15 @@ const messages = getMessages();
 const Root = ({ history, store }) => (
   <Provider store={store}>
     <IntlProvider locale={locale} messages={messages}>
-      <Router key={Math.random()} history={history} routes={routes} />
+      <ConnectedRouter history={history}>
+        <App />
+      </ConnectedRouter>
     </IntlProvider>
   </Provider>
 );
 
 Root.propTypes = {
-  history: historyShape.isRequired,
+  history: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
   store: storeShape.isRequired,
 };
 

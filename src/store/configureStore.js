@@ -9,7 +9,7 @@ export default function (history) {
     {
       ...reducers,
       form: formReducer,
-      routing: routerReducer,
+      router: routerReducer,
     },
     [routerMiddleware(history)],
   );

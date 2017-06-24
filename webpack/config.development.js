@@ -1,8 +1,10 @@
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const path = require('path');
 const webpack = require('webpack');
+// eslint-disable-next-line import/no-extraneous-dependencies
 const WebpackNotifierPlugin = require('webpack-notifier');
 const merge = require('webpack-merge');
+// eslint-disable-next-line import/no-extraneous-dependencies
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 
 const srcPath = path.resolve(__dirname, '../src');

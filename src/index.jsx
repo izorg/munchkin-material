@@ -3,9 +3,8 @@ import 'babel-polyfill';
 import React from 'react';
 import { render } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
-import { hashHistory } from 'react-router';
-import { syncHistoryWithStore } from 'react-router-redux';
 import injectTapEventPlugin from 'react-tap-event-plugin';
+import createHistory from 'history/createHashHistory';
 
 import 'normalize.css';
 
@@ -17,8 +16,9 @@ import './index.css';
 
 injectTapEventPlugin();
 
-const store = configureStore(hashHistory);
-const history = syncHistoryWithStore(hashHistory, store);
+const history = createHistory();
+
+const store = configureStore(history);
 
 store.dispatch(hideBanner());
 
