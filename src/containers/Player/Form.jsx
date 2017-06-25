@@ -37,15 +37,11 @@ const mapDispatchToProps = dispatch => ({
     const { id, name } = values;
 
     if (name && name.trim()) {
-      let player;
+      const player = new Player(values);
 
       if (id) {
-        player = new Player({
-          ...values,
-        });
         dispatch(actions.updatePlayer(player));
       } else {
-        player = new Player(values);
         dispatch(actions.addPlayer(player));
       }
 
