@@ -8,18 +8,16 @@ import actions from '../../actions';
 import PlayerForm from '../../components/Player/Form';
 
 const getInitialValues = ({ app: { activePlayerId }, players }) => {
-  const initialValues = {};
+  const initialValues = {
+    gender: GENDER.MALE,
+  };
 
-  if (activePlayerId !== null) {
+  if (activePlayerId) {
     const selectedPlayer = players.find(player => player.id === activePlayerId);
 
     if (selectedPlayer) {
       Object.assign(initialValues, selectedPlayer);
     }
-  } else {
-    Object.assign(initialValues, {
-      gender: GENDER.MALE,
-    });
   }
 
   return initialValues;
@@ -35,19 +33,19 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   onCancel: () => dispatch(goBack()),
-  onSubmit: ({ name, gender }, reduxDispatch, { params: { id } }) => {
+  onSubmit: (values) => {
+    const { id, name } = values;
+
     if (name && name.trim()) {
       let player;
 
       if (id) {
         player = new Player({
-          id: parseInt(id, 10),
-          name,
-          gender,
+          ...values,
         });
         dispatch(actions.updatePlayer(player));
       } else {
-        player = new Player({ name, gender });
+        player = new Player(values);
         dispatch(actions.addPlayer(player));
       }
 
