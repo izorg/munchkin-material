@@ -4,9 +4,12 @@ import { Provider } from 'react-redux';
 import { storeShape } from 'react-redux/lib/utils/PropTypes';
 import { ConnectedRouter } from 'react-router-redux';
 import PropTypes from 'prop-types';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import { getLocale, getMessages } from '../i18n';
 import App from '../containers/App';
+import munchkinTheme from '../styles/munchkinTheme';
 
 const locale = getLocale();
 const messages = getMessages();
@@ -15,7 +18,9 @@ const Root = ({ history, store }) => (
   <Provider store={store}>
     <IntlProvider locale={locale} messages={messages}>
       <ConnectedRouter history={history}>
-        <App />
+        <MuiThemeProvider muiTheme={getMuiTheme(munchkinTheme)}>
+          <App />
+        </MuiThemeProvider>
       </ConnectedRouter>
     </IntlProvider>
   </Provider>
