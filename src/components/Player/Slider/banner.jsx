@@ -21,10 +21,12 @@ export default (WrappedComponent) => {
     }
 
     handleResize() {
-      if (window.innerWidth > window.innerHeight) {
-        this.props.hideBanner();
-      } else {
+      const { innerHeight, innerWidth } = window;
+
+      if (innerWidth < innerHeight && innerHeight > 460) {
         this.props.showBanner();
+      } else {
+        this.props.hideBanner();
       }
     }
 
