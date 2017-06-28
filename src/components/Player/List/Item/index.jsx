@@ -80,6 +80,7 @@ class PlayerListItem extends Component {
         leftAvatar={leftAvatar}
         leftCheckbox={leftCheckbox}
         leftIcon={leftIcon}
+        onTouchTap={showCheckbox ? undefined : this.handleTouchTap}
         primaryText={<div className={cn.name}>{player.name}</div>}
         ref={(listItem) => {
           this.listItem = listItem;
