@@ -17,11 +17,11 @@ const messages = getMessages();
 const Root = ({ history, store }) => (
   <Provider store={store}>
     <IntlProvider locale={locale} messages={messages}>
-      <ConnectedRouter history={history}>
-        <MuiThemeProvider muiTheme={getMuiTheme(munchkinTheme)}>
+      <MuiThemeProvider muiTheme={getMuiTheme(munchkinTheme)}>
+        <ConnectedRouter history={history}>
           <App />
-        </MuiThemeProvider>
-      </ConnectedRouter>
+        </ConnectedRouter>
+      </MuiThemeProvider>
     </IntlProvider>
   </Provider>
 );
