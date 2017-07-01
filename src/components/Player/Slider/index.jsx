@@ -18,6 +18,16 @@ import PlayerStats from '../../../containers/Player/Stats';
 
 
 class PlayerSlider extends Component {
+  constructor(props) {
+    super(props);
+
+    const { players, selectedPlayer } = props;
+
+    this.state = {
+      initialSlide: players.indexOf(selectedPlayer),
+    };
+  }
+
   componentWillMount() {
     this.handleChangeIndex = this.handleChangeIndex.bind(this);
   }
@@ -37,9 +47,7 @@ class PlayerSlider extends Component {
       selectedPlayer,
     } = this.props;
 
-    if (!selectedPlayer) {
-      return null;
-    }
+    const { initialSlide } = this.state;
 
     const backButton = (
       <IconButton onTouchTap={onBack}>
@@ -67,14 +75,16 @@ class PlayerSlider extends Component {
             afterChange={this.handleChangeIndex}
             arrows={false}
             className={cn.slider}
-            initialSlide={players.indexOf(selectedPlayer)}
+            initialSlide={initialSlide}
             speed={300}
           >
-            {players.map(player => (
-              <div className={cn.item} key={player.id}>
-                <PlayerStats player={player} />
-              </div>
-            ))}
+            {
+              players.map(player => (
+                <div className={cn.item} key={player.id}>
+                  <PlayerStats player={player} />
+                </div>
+              ))
+            }
           </Slider>
 
           <DiceDialog />
@@ -90,7 +100,7 @@ PlayerSlider.propTypes = {
   onDiceTouchTap: PropTypes.func,
   onPlayerChange: PropTypes.func,
   players: PropTypes.arrayOf(PropTypes.instanceOf(Player)).isRequired,
-  selectedPlayer: PropTypes.instanceOf(Player),
+  selectedPlayer: PropTypes.instanceOf(Player).isRequired,
 };
 
 PlayerSlider.defaultProps = {
@@ -98,7 +108,6 @@ PlayerSlider.defaultProps = {
   onBack: noop,
   onDiceTouchTap: noop,
   onPlayerChange: noop,
-  selectedPlayer: null,
 };
 
 export default banner(PlayerSlider);

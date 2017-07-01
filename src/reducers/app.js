@@ -12,11 +12,9 @@ const initialState = {
 const app = (state = initialState, action) => {
   switch (action.type) {
     case types.HIDE_BANNER: {
-      const { bannerVisible } = action;
-
       return {
         ...state,
-        bannerVisible,
+        bannerVisible: false,
       };
     }
 
@@ -30,11 +28,9 @@ const app = (state = initialState, action) => {
     }
 
     case types.SHOW_BANNER: {
-      const { bannerVisible } = action;
-
       return {
         ...state,
-        bannerVisible,
+        bannerVisible: true,
       };
     }
 

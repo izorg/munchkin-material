@@ -24,23 +24,29 @@ function observeStore(store, select, onChange) {
   return unsubscribe;
 }
 
+let bannerTimeoutId;
+
 function onBannerVisibilityChange(bannerVisible) {
   let container = document.getElementById('banner-container');
 
+  clearTimeout(bannerTimeoutId);
+
   if (bannerVisible && !container) {
-    container = document.createElement('div');
-    container.id = 'banner-container';
+    bannerTimeoutId = setTimeout(() => {
+      container = document.createElement('div');
+      container.id = 'banner-container';
 
-    document.body.appendChild(container);
+      document.body.appendChild(container);
 
-    container.innerHTML = `
-      <ins 
+      container.innerHTML = `
+      <ins
         class="adsbygoogle"
         style="display:block;width:320px;height:50px;margin:0 auto;"
         data-ad-client="ca-pub-8911738675751781"
         data-ad-slot="4838760545"
       />`;
-    (adsbygoogle = window.adsbygoogle || []).push({}); // eslint-disable-line no-undef
+      (adsbygoogle = window.adsbygoogle || []).push({}); // eslint-disable-line no-undef
+    }, 400);
   } else if (!bannerVisible && container) {
     container.remove();
   }

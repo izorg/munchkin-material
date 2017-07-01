@@ -4,7 +4,6 @@ import * as types from '../constants/actionTypes';
 
 export const hideBanner = () => ({
   type: types.HIDE_BANNER,
-  bannerVisible: false,
 });
 
 const resetDice = () => ({
@@ -23,7 +22,6 @@ const setMultiMode = multiMode => ({
 
 export const showBanner = () => ({
   type: types.SHOW_BANNER,
-  bannerVisible: true,
 });
 
 const throwDice = () => ({
