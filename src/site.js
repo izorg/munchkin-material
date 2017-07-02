@@ -29,7 +29,11 @@ let bannerTimeoutId;
 function onBannerVisibilityChange(bannerVisible) {
   let container = document.getElementById('banner-container');
 
-  clearTimeout(bannerTimeoutId);
+  if (bannerTimeoutId) {
+    clearTimeout(bannerTimeoutId);
+
+    bannerTimeoutId = undefined;
+  }
 
   if (bannerVisible && !container) {
     bannerTimeoutId = setTimeout(() => {
