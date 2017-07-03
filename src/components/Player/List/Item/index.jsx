@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import Avatar from 'material-ui/Avatar';
 import Checkbox from 'material-ui/Checkbox';
 import { ListItem } from 'material-ui/List';
-import EditorDragHandle from 'material-ui/svg-icons/editor/drag-handle';
+import ActionReorder from 'material-ui/svg-icons/action/reorder';
 import { Player } from 'munchkin';
 
 import cn from './style.css';
@@ -14,7 +14,7 @@ import cn from './style.css';
 import { noop } from '../../../../constants';
 import getGenderIconClass from '../../../../helpers/getGenderIconClass';
 
-const ItemHandle = SortableHandle(EditorDragHandle);
+const ItemHandle = SortableHandle(ActionReorder);
 
 class PlayerListItem extends Component {
   componentWillMount() {

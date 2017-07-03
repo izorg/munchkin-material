@@ -4,6 +4,7 @@ import { matchPath, Route } from 'react-router-dom';
 import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
 import cns from 'classnames';
 
+import { ios } from '../../helpers/platforms';
 import routes from '../../routes';
 
 import cn from './style.css';
@@ -18,6 +19,9 @@ const App = () => (
   <div className={cn.app}>
     <Helmet>
       <html lang={navigator.language} />
+      {
+        ios ? <body className="ios" /> : null
+      }
     </Helmet>
 
     <Route

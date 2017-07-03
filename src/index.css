@@ -31,6 +31,10 @@ body {
   user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
 }
 
+body:global(.ios) {
+  font-family: 'San Francisco', sans-serif;
+}
+
 span[type="button"] {
   appearance: none;
   -webkit-appearance: none;

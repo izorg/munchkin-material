@@ -14,12 +14,22 @@ if (ios) {
 }
 
 // eslint-disable-next-line react/prop-types
-export default ({ titleStyle = {}, ...props }) => (
-  <AppBar
-    {...props}
-    titleStyle={{
-      ...platformTitleStyle,
-      ...titleStyle,
-    }}
-  />
-);
+export default ({ titleStyle = {}, ...rest }) => {
+  const props = Object.assign({}, rest);
+
+  if (ios) {
+    Object.assign(props, {
+      zDepth: 0,
+    });
+  }
+
+  return (
+    <AppBar
+      {...props}
+      titleStyle={{
+        ...platformTitleStyle,
+        ...titleStyle,
+      }}
+    />
+  );
+};

@@ -7,7 +7,9 @@ import {
 import { fade } from 'material-ui/utils/colorManipulator';
 import spacing from 'material-ui/styles/spacing';
 
-export default {
+import { ios } from '../helpers/platforms';
+
+const theme = {
   palette: {
     primary1Color: brown500,
     primary2Color: brown700,
@@ -35,3 +37,11 @@ export default {
     backgroundColor: brown500,
   },
 };
+
+if (ios) {
+  Object.assign(theme, {
+    fontFamily: '"San Francisco", sans-serif',
+  });
+}
+
+export default theme;
