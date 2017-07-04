@@ -13,6 +13,7 @@ import cn from './style.css';
 
 import { noop } from '../../../../constants';
 import getGenderIconClass from '../../../../helpers/getGenderIconClass';
+import { ios } from '../../../../helpers/platforms';
 
 const ItemHandle = SortableHandle(ActionReorder);
 
@@ -27,7 +28,11 @@ class PlayerListItem extends Component {
   handleCheck() {
     const { onCheck, player } = this.props;
 
-    onCheck(player);
+    if (this.preventCheck) {
+      delete this.preventCheck;
+    } else {
+      onCheck(player);
+    }
   }
 
   handleItemHandleStart(e) {
@@ -47,6 +52,10 @@ class PlayerListItem extends Component {
       }
 
       onPress(player);
+
+      if (ios) {
+        this.preventCheck = true;
+      }
     }
   }
 
@@ -96,6 +105,7 @@ class PlayerListItem extends Component {
         {...additionalProps}
         containerElement={
           <Tappable
+            className="tappable"
             component="div"
             onTap={this.handleTap}
             onPress={this.handlePress}
