@@ -18,12 +18,21 @@ const ItemHandle = SortableHandle(ActionReorder);
 
 class PlayerListItem extends Component {
   componentWillMount() {
+    this.handleCheck = this.handleCheck.bind(this);
     this.handleItemHandleStart = this.handleItemHandleStart.bind(this);
     this.handlePress = this.handlePress.bind(this);
-    this.handleTouchTap = this.handleTouchTap.bind(this);
+    this.handleTap = this.handleTap.bind(this);
   }
 
-  handleItemHandleStart() {
+  handleCheck() {
+    const { onCheck, player } = this.props;
+
+    onCheck(player);
+  }
+
+  handleItemHandleStart(e) {
+    e.stopPropagation();
+
     this.listItem.setState({ hovered: false });
   }
 
@@ -41,16 +50,20 @@ class PlayerListItem extends Component {
     }
   }
 
-  handleTouchTap() {
-    const { onTouchTap, player } = this.props;
+  handleTap() {
+    const { onTouchTap, player, showCheckbox } = this.props;
 
-    onTouchTap(player);
+    if (!showCheckbox) {
+      onTouchTap(player);
+    }
   }
 
   render() {
     const { player, selected, showCheckbox, showDragHandle } = this.props;
     const GenderIcon = getGenderIconClass(player.gender);
     const noTransition = showDragHandle ? { transition: undefined } : null;
+
+    const additionalProps = {};
 
     let leftAvatar;
     let leftCheckbox;
@@ -61,7 +74,11 @@ class PlayerListItem extends Component {
     }
 
     if (showCheckbox) {
-      leftCheckbox = <Checkbox checked={selected} onCheck={this.handleTouchTap} />;
+      leftCheckbox = <Checkbox checked={selected} onCheck={this.handleCheck} />;
+    } else {
+      Object.assign(additionalProps, {
+        disableTouchRipple: true,
+      });
     }
 
     if (showDragHandle) {
@@ -76,11 +93,18 @@ class PlayerListItem extends Component {
 
     return (
       <ListItem
-        containerElement="div"
+        {...additionalProps}
+        containerElement={
+          <Tappable
+            component="div"
+            onTap={this.handleTap}
+            onPress={this.handlePress}
+            pressDelay={500}
+          />
+        }
         leftAvatar={leftAvatar}
         leftCheckbox={leftCheckbox}
         leftIcon={leftIcon}
-        onTouchTap={showCheckbox ? undefined : this.handleTouchTap}
         primaryText={<div className={cn.name}>{player.name}</div>}
         ref={(listItem) => {
           this.listItem = listItem;
@@ -107,19 +131,13 @@ class PlayerListItem extends Component {
         }
         secondaryTextLines={2}
         style={noTransition}
-      >
-        <Tappable
-          className={cn.tappable}
-          component="div"
-          onPress={this.handlePress}
-          pressDelay={500}
-        />
-      </ListItem>
+      />
     );
   }
 }
 
 PlayerListItem.propTypes = {
+  onCheck: PropTypes.func,
   onPress: PropTypes.func,
   onTouchTap: PropTypes.func,
   player: PropTypes.instanceOf(Player).isRequired,
@@ -129,6 +147,7 @@ PlayerListItem.propTypes = {
 };
 
 PlayerListItem.defaultProps = {
+  onCheck: noop,
   onPress: noop,
   onTouchTap: noop,
   selected: false,

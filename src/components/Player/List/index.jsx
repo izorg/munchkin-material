@@ -25,10 +25,11 @@ const SortableListItem = SortableElement(Item);
 
 class PlayerList extends Component {
   componentWillMount() {
-    this.handleLeftIconButtonTouchTap = this.handleLeftIconButtonTouchTap.bind(this);
-    this.handleRightIconButtonTouchTap = this.handleRightIconButtonTouchTap.bind(this);
+    this.handleItemCheck = this.handleItemCheck.bind(this);
     this.handleItemPress = this.handleItemPress.bind(this);
     this.handleItemTap = this.handleItemTap.bind(this);
+    this.handleLeftIconButtonTouchTap = this.handleLeftIconButtonTouchTap.bind(this);
+    this.handleRightIconButtonTouchTap = this.handleRightIconButtonTouchTap.bind(this);
     this.handleSortEnd = this.handleSortEnd.bind(this);
   }
 
@@ -48,6 +49,12 @@ class PlayerList extends Component {
     } else {
       onToggleEditClick();
     }
+  }
+
+  handleItemCheck(player) {
+    const { multiMode, onPlayerSelect, selectedPlayerIds } = this.props;
+
+    onPlayerSelect(player, multiMode, selectedPlayerIds);
   }
 
   handleItemTap(player) {
@@ -138,6 +145,7 @@ class PlayerList extends Component {
               <SortableListItem
                 index={index}
                 key={player.id}
+                onCheck={this.handleItemCheck}
                 onPress={this.handleItemPress}
                 onTouchTap={this.handleItemTap}
                 player={player}
