@@ -39,12 +39,16 @@
 }
 
 .fade.itemLeave {
+  opacity: 1;
   transform: scale(1);
 }
 
 .fade.itemLeaveActive {
+  opacity: 0.8; /* IE/Edge blink fix */
   transform: scale(0.8);
-  transition: transform var(--app-animation-duration) ease-in;
+  transition:
+    opacity var(--app-animation-duration) ease-in,
+    transform var(--app-animation-duration) ease-in;
 }
 
 

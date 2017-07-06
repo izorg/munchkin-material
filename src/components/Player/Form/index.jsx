@@ -51,7 +51,21 @@ class PlayerForm extends Component {
     const { autoFocus } = this.props;
 
     if (autoFocus) {
-      document.querySelector('input[name="name"]').focus();
+      this.autoFocusTimeoutid = setTimeout(() => {
+        delete this.autoFocusTimeoutid;
+
+        const node = document.querySelector('input[name="name"]');
+
+        if (node) {
+          node.focus();
+        }
+      }, 400);
+    }
+  }
+
+  componentWillUnmount() {
+    if (this.autoFocusTimeoutid) {
+      clearTimeout(this.autoFocusTimeoutid);
     }
   }
 

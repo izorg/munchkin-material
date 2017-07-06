@@ -1,4 +1,6 @@
-const { platform } = navigator;
+const { platform, userAgent } = navigator;
 
-// eslint-disable-next-line import/prefer-default-export
 export const ios = platform === 'iPhone' || platform === 'iPad';
+
+export const edge = userAgent.indexOf('Edge') > -1;
+export const ie = userAgent.indexOf('Trident') > -1;
