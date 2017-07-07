@@ -23,6 +23,11 @@
     "stage-3",
     "react"
   ],
+
+  "plugins": [
+    "version-inline"
+  ],
+
   "env": {
     "development": {
       "plugins": [

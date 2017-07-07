@@ -1,11 +1,12 @@
-import { createStore } from 'munchkin';
+/* global __VERSION__ */
 import { routerMiddleware, routerReducer } from 'react-router-redux';
 import { reducer as formReducer } from 'redux-form';
+import { actions, createStore } from 'munchkin';
 
 import reducers from '../reducers';
 
 export default function (history) {
-  return createStore(
+  const store = createStore(
     {
       ...reducers,
       form: formReducer,
@@ -13,4 +14,8 @@ export default function (history) {
     },
     [routerMiddleware(history)],
   );
+
+  store.dispatch(actions.setVersion('app', __VERSION__));
+
+  return store;
 }
