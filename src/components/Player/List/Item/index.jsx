@@ -53,6 +53,7 @@ class PlayerListItem extends Component {
 
       onPress(player);
 
+      // Safari fire onCheck event while changing mode to multi select
       if (ios) {
         this.preventCheck = true;
       }
