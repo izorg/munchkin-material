@@ -6,16 +6,21 @@ export const hideBanner = () => ({
   type: types.HIDE_BANNER,
 });
 
-const resetDice = () => ({
+export const resetDice = () => ({
   type: types.RESET_DICE,
 });
 
-const setActivePlayer = id => ({
+export const setActivePlayer = id => ({
   type: types.SET_ACTIVE_PLAYER,
   id,
 });
 
-const setMultiMode = multiMode => ({
+export const setLocale = locale => ({
+  type: types.SET_LOCALE,
+  locale,
+});
+
+export const setMultiMode = multiMode => ({
   type: types.SET_MULTI_MODE,
   multiMode,
 });
@@ -24,17 +29,17 @@ export const showBanner = () => ({
   type: types.SHOW_BANNER,
 });
 
-const throwDice = () => ({
+export const throwDice = () => ({
   type: types.THROW_DICE,
   dice: Math.floor(Math.random() * 6) + 1,
 });
 
-const toggleEditMode = force => ({
+export const toggleEditMode = force => ({
   type: types.TOGGLE_EDIT_MODE,
   editMode: force,
 });
 
-const togglePlayer = id => ({
+export const togglePlayer = id => ({
   type: types.TOGGLE_PLAYER,
   id,
 });
@@ -44,6 +49,7 @@ export default {
   hideBanner,
   resetDice,
   setActivePlayer,
+  setLocale,
   setMultiMode,
   showBanner,
   throwDice,

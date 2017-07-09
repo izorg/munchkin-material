@@ -5,6 +5,7 @@ const initialState = {
   bannerVisible: false,
   dice: null,
   editMode: false,
+  locale: null,
   multiMode: false,
   selectedPlayerIds: [],
 };
@@ -40,6 +41,13 @@ const app = (state = initialState, action) => {
       return {
         ...state,
         activePlayerId: id || null,
+      };
+    }
+
+    case types.SET_LOCALE: {
+      return {
+        ...state,
+        locale: action.locale,
       };
     }
 

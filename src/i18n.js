@@ -6,21 +6,33 @@ import ruLocaleData from 'react-intl/locale-data/ru';
 import en from '../languages/en.json';
 import ru from '../languages/ru.json';
 
-addLocaleData([...enLocaleData, ...ruLocaleData]);
+const avaliableLocales = [
+  'en',
+  'ru',
+];
+
+const defaultLocale = 'en';
 
 const LANGUAGE_LENGTH = 2;
+
+addLocaleData([
+  ...enLocaleData,
+  ...ruLocaleData,
+]);
 
 export const getLocale = () => {
   const language = navigator.language || navigator.userLanguage;
 
-  return language.substr(0, LANGUAGE_LENGTH);
+  const locale = language.substr(0, LANGUAGE_LENGTH);
+
+  return avaliableLocales.includes(locale) ? locale : defaultLocale;
 };
 
-export const getMessages = () => {
+export const getMessages = (locale) => {
   const allMessages = {
     en,
     ru,
   };
 
-  return allMessages[getLocale()];
+  return allMessages[locale] || allMessages[defaultLocale];
 };

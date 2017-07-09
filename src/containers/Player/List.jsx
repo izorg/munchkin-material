@@ -1,7 +1,8 @@
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
+import { movePlayer, removePlayer } from 'munchkin/lib/actions';
 
-import actions from '../../actions';
+import { setActivePlayer, setMultiMode, toggleEditMode, togglePlayer } from '../../actions';
 import PlayerList from '../../components/Player/List';
 
 const mapStateToProps = state => ({
@@ -14,37 +15,37 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   onDeletePlayers: (playerIds) => {
     playerIds.forEach((id) => {
-      dispatch(actions.removePlayer(id));
+      dispatch(removePlayer(id));
     });
-    dispatch(actions.setMultiMode(false));
+    dispatch(setMultiMode(false));
   },
   onMultiSelectActivate: (id) => {
-    dispatch(actions.setMultiMode(true));
-    dispatch(actions.togglePlayer(id));
+    dispatch(setMultiMode(true));
+    dispatch(togglePlayer(id));
   },
   onMultiSelectDeactivate: () => {
-    dispatch(actions.setMultiMode(false));
+    dispatch(setMultiMode(false));
   },
   onPlayerEdit: (player) => {
-    dispatch(actions.setActivePlayer(player.id));
+    dispatch(setActivePlayer(player.id));
     dispatch(push(`/player/${player.id}/edit`));
   },
-  onPlayerMove: (oldIndex, newIndex) => dispatch(actions.movePlayer(oldIndex, newIndex)),
+  onPlayerMove: (oldIndex, newIndex) => dispatch(movePlayer(oldIndex, newIndex)),
   onPlayerSelect: (player, multiMode, selectedPlayerIds) => {
     if (multiMode) {
       if (selectedPlayerIds.length === 1 && selectedPlayerIds[0] === player.id) {
-        dispatch(actions.togglePlayer(player.id));
-        dispatch(actions.setMultiMode(false));
+        dispatch(togglePlayer(player.id));
+        dispatch(setMultiMode(false));
       } else {
-        dispatch(actions.togglePlayer(player.id));
+        dispatch(togglePlayer(player.id));
       }
     } else {
-      dispatch(actions.toggleEditMode(false));
-      dispatch(actions.setActivePlayer(player.id));
+      dispatch(toggleEditMode(false));
+      dispatch(setActivePlayer(player.id));
       dispatch(push(`/player/${player.id}`));
     }
   },
-  onToggleEditClick: () => dispatch(actions.toggleEditMode()),
+  onToggleEditClick: () => dispatch(toggleEditMode()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PlayerList);

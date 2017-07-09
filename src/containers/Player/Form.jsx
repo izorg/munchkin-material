@@ -3,8 +3,9 @@ import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import { goBack } from 'react-router-redux';
 import { GENDER, Player } from 'munchkin';
+import { addPlayer, updatePlayer } from 'munchkin/lib/actions';
 
-import actions from '../../actions';
+import { setActivePlayer } from '../../actions';
 import PlayerForm from '../../components/Player/Form';
 
 const getInitialValues = ({ app: { activePlayerId }, players }) => {
@@ -40,12 +41,12 @@ const mapDispatchToProps = dispatch => ({
       const player = new Player(values);
 
       if (id) {
-        dispatch(actions.updatePlayer(player));
+        dispatch(updatePlayer(player));
       } else {
-        dispatch(actions.addPlayer(player));
+        dispatch(addPlayer(player));
       }
 
-      dispatch(actions.setActivePlayer(player.id));
+      dispatch(setActivePlayer(player.id));
     }
 
     dispatch(goBack());

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import actions from '../actions';
+import { resetDice, throwDice } from '../actions';
 import DiceDialog from '../components/DiceDialog';
 
 const mapStateToProps = state => ({
@@ -8,8 +8,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-  onDiceTouchTap: actions.throwDice,
-  onRequestClose: actions.resetDice,
+  onDiceTouchTap: throwDice,
+  onRequestClose: resetDice,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(DiceDialog);

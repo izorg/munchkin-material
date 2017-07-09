@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { goBack, replace } from 'react-router-redux';
 
-import actions from '../../actions';
+import { setActivePlayer, throwDice } from '../../actions';
 import PlayerSlider from '../../components/Player/Slider';
 
 const mapStateToProps = ({ app: { activePlayerId, bannerVisible }, players }) => ({
@@ -13,10 +13,10 @@ const mapStateToProps = ({ app: { activePlayerId, bannerVisible }, players }) =>
 const mapDispatchToProps = dispatch => ({
   onBack: () => dispatch(goBack()),
   onDiceTouchTap: () => {
-    dispatch(actions.throwDice());
+    dispatch(throwDice());
   },
   onPlayerChange: (player) => {
-    dispatch(actions.setActivePlayer(player.id));
+    dispatch(setActivePlayer(player.id));
     dispatch(replace(`/player/${player.id}`));
   },
 });

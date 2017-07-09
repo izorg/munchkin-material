@@ -5,11 +5,11 @@ import { getLocale } from './i18n';
 
 window.setTestData = () => {
   const { dispatch } = window.store;
-  const { players } = window.store.getState();
+  const { app, players } = window.store.getState();
 
   players.forEach(({ id }) => dispatch(actions.removePlayer(id)));
 
-  switch (getLocale()) {
+  switch (app.locale || getLocale()) {
     case 'en': {
       [
         new Player({
