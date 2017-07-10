@@ -1,0 +1,12 @@
+{
+  "mainButton.label": "Додати новий манчкіна",
+  "player.form.namePlaceholder": "Ім'я",
+  "player.list.title": "Манчкіни",
+  "player.list.item.secondaryTextLevel": "Рівень {level}",
+  "player.list.item.secondaryTextStrength": "Сила {strength}",
+  "player.stats.strength": "Сила",
+  "player.stats.level": "Рівень",
+  "player.stats.gear": "Бонус",
+  "player.form.titleEdit": "Редагувати манчкіна",
+  "player.form.title": "Новий манчкін"
+}
