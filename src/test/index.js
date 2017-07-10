@@ -1,13 +1,14 @@
 import { GENDER, Player } from 'munchkin';
+import { addPlayer, removePlayer } from 'munchkin/lib/actions';
 
-import actions from './actions';
-import { getLocale } from './i18n';
+import { setLocale } from '../actions';
+import { getLocale } from '../i18n';
 
-window.setTestData = () => {
+const setTestData = () => {
   const { dispatch } = window.store;
   const { app, players } = window.store.getState();
 
-  players.forEach(({ id }) => dispatch(actions.removePlayer(id)));
+  players.forEach(({ id }) => dispatch(removePlayer(id)));
 
   switch (app.locale || getLocale()) {
     case 'en': {
@@ -22,7 +23,7 @@ window.setTestData = () => {
           level: 5,
           name: 'Donald Trump',
         }),
-      ].forEach(player => dispatch(actions.addPlayer(player)));
+      ].forEach(player => dispatch(addPlayer(player)));
       break;
     }
 
@@ -44,11 +45,20 @@ window.setTestData = () => {
           level: 8,
           name: 'Василиса Премудрая',
         }),
-      ].forEach(player => dispatch(actions.addPlayer(player)));
+      ].forEach(player => dispatch(addPlayer(player)));
       break;
     }
 
     default:
       break;
   }
+};
+
+window.munchkinTest = {
+  setLocale: (locale) => {
+    const { dispatch } = window.store;
+
+    dispatch(setLocale(locale));
+  },
+  setTestData,
 };

@@ -20,7 +20,7 @@ module.exports = merge.strategy({
     'webpack-dev-server/client?http://0.0.0.0:3000',
     'webpack/hot/only-dev-server',
     './src/site.js',
-    './src/setTestData.js',
+    './src/test/index.js',
   ],
 
   output: {
