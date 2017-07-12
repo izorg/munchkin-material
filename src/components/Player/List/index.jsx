@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { SortableContainer, SortableElement } from 'react-sortable-hoc';
-import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
+import TransitionGroup from 'react-transition-group/TransitionGroup';
 import PropTypes from 'prop-types';
 import IconButton from 'material-ui/IconButton';
 import { List } from 'material-ui/List';
@@ -14,6 +14,7 @@ import { Player } from 'munchkin';
 
 import cn from './style.css';
 
+import FabTransition from './FabTransition';
 import Item from './Item';
 import AppBar from '../../material-ui/AppBar';
 import { Layout, LayoutContent, LayoutHeader } from '../../Layout';
@@ -156,22 +157,13 @@ class PlayerList extends Component {
             ))}
           </SortableList>
 
-          <CSSTransitionGroup
-            className={cn.fabContainer}
-            component="div"
-            transitionAppear
-            transitionAppearTimeout={0}
-            transitionEnter={false}
-            transitionLeave={false}
-            transitionName={{
-              appear: cn.fabAppear,
-              appearActive: cn.fabAppearActive, // eslint-disable-line css-modules/no-undef-class
-            }}
-          >
-            <div className={cn.fab}>
-              <MainButton />
-            </div>
-          </CSSTransitionGroup>
+          <TransitionGroup className={cn.fabContainer}>
+            <FabTransition>
+              <div className={cn.fab}>
+                <MainButton />
+              </div>
+            </FabTransition>
+          </TransitionGroup>
         </LayoutContent>
       </Layout>
     );

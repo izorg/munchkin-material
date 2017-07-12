@@ -18,12 +18,3 @@
   height: 56px;
   width: 56px;
 }
-
-.fabAppear {
-  transform: scale(0);
-}
-
-.fabAppearActive {
-  transform: scale(1);
-  transition: transform 0.15s ease-out var(--app-animation-duration);
-}

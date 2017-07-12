@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
+import TransitionGroup from 'react-transition-group/TransitionGroup';
 import PropTypes from 'prop-types';
 import Dialog from 'material-ui/Dialog';
 import IconButton from 'material-ui/IconButton';
 
-import cn from './style.css';
+import DiceTransition from './DiceTransition';
 
 import { noop } from '../../constants';
 import DiceOne from '../icons/dice/one';
@@ -13,6 +13,8 @@ import DiceThree from '../icons/dice/three';
 import DiceFour from '../icons/dice/four';
 import DiceFive from '../icons/dice/five';
 import DiceSix from '../icons/dice/six';
+
+import cn from './style.css';
 
 const iconSize = 120;
 
@@ -51,54 +53,45 @@ class DiceDialog extends Component {
         onRequestClose={onRequestClose}
         open={!!dice}
       >
-        <CSSTransitionGroup
-          className={cn.content}
-          component="div"
-          transitionEnterTimeout={0}
-          transitionLeaveTimeout={0}
-          transitionName={{
-            enter: cn.itemEnter,
-            enterActive: cn.itemEnterActive,
-            leave: cn.itemLeave,
-            leaveActive: cn.itemLeaveActive,
-          }}
-        >
-          <div key={attempt}>
-            <IconButton
-              disableTouchRipple
-              iconStyle={{
-                height: iconSize,
-                width: iconSize,
-              }}
-              onTouchTap={this.handleDiceTouchTap}
-              style={{
-                display: 'block',
-                height: iconSize,
-                padding: 0,
-                width: iconSize,
-              }}
-            >
-              {
-                dice === 1 ? <DiceOne /> : null
-              }
-              {
-                dice === 2 ? <DiceTwo /> : null
-              }
-              {
-                dice === 3 ? <DiceThree /> : null
-              }
-              {
-                dice === 4 ? <DiceFour /> : null
-              }
-              {
-                dice === 5 ? <DiceFive /> : null
-              }
-              {
-                dice === 6 ? <DiceSix /> : null
-              }
-            </IconButton>
-          </div>
-        </CSSTransitionGroup>
+        <TransitionGroup className={cn.content}>
+          <DiceTransition key={attempt}>
+            <div>
+              <IconButton
+                disableTouchRipple
+                iconStyle={{
+                  height: iconSize,
+                  width: iconSize,
+                }}
+                onTouchTap={this.handleDiceTouchTap}
+                style={{
+                  display: 'block',
+                  height: iconSize,
+                  padding: 0,
+                  width: iconSize,
+                }}
+              >
+                {
+                  dice === 1 ? <DiceOne /> : null
+                }
+                {
+                  dice === 2 ? <DiceTwo /> : null
+                }
+                {
+                  dice === 3 ? <DiceThree /> : null
+                }
+                {
+                  dice === 4 ? <DiceFour /> : null
+                }
+                {
+                  dice === 5 ? <DiceFive /> : null
+                }
+                {
+                  dice === 6 ? <DiceSix /> : null
+                }
+              </IconButton>
+            </div>
+          </DiceTransition>
+        </TransitionGroup>
       </Dialog>
     );
   }

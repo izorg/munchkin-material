@@ -1,19 +1,12 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import { matchPath, Route } from 'react-router-dom';
-import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
-import cns from 'classnames';
+import TransitionGroup from 'react-transition-group/TransitionGroup';
 
 import { ios } from '../../helpers/platforms';
 import routes from '../../routes';
 
 import cn from './style.css';
-
-const animationClassNames = {
-  'slide-horizontal': cn.slideHorizontal,
-  'slide-vertical': cn.slideVertical,
-  fade: cn.fade,
-};
 
 const App = () => (
   <div className={cn.app}>
@@ -26,34 +19,25 @@ const App = () => (
 
     <Route
       render={({ location }) => (
-        <CSSTransitionGroup
-          className={cn.content}
-          component="div"
-          transitionEnterTimeout={0}
-          transitionLeaveTimeout={0}
-          transitionName={{
-            enter: cn.itemEnter,
-            enterActive: cn.itemEnterActive,
-            leave: cn.itemLeave,
-            leaveActive: cn.itemLeaveActive,
-          }}
-        >
+        <TransitionGroup className={cn.content}>
           {
-            routes.map(({ component, animation, ...route }) => {
+            routes.map(({ component: Component, transition: Transition, ...route }) => {
               const match = matchPath(location.pathname, route);
 
               if (match) {
                 return (
-                  <div className={cns(cn.item, animationClassNames[animation])} key={route.path}>
-                    {React.createElement(component)}
-                  </div>
+                  <Transition key={route.path}>
+                    <div className={cn.item}>
+                      <Component />
+                    </div>
+                  </Transition>
                 );
               }
 
               return null;
             })
           }
-        </CSSTransitionGroup>
+        </TransitionGroup>
       )}
     />
   </div>
