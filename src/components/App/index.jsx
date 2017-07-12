@@ -3,8 +3,9 @@ import Helmet from 'react-helmet';
 import { matchPath, Route } from 'react-router-dom';
 import TransitionGroup from 'react-transition-group/TransitionGroup';
 
+import routes from './routes';
+
 import { ios } from '../../helpers/platforms';
-import routes from '../../routes';
 
 import cn from './style.css';
 
