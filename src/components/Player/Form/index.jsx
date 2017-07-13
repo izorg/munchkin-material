@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
+import injectSheet from 'react-jss';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 import IconButton from 'material-ui/IconButton';
@@ -9,13 +10,26 @@ import NavigationArrowBack from 'material-ui/svg-icons/navigation/arrow-back';
 import NavigationCheck from 'material-ui/svg-icons/navigation/check';
 import { GENDER } from 'munchkin';
 
-import cn from './style.css';
-
 import { Layout, LayoutContent, LayoutHeader } from '../../Layout';
 import AppBar from '../../material-ui/AppBar';
 import { noop } from '../../../constants';
 import GenderFemale from '../../icons/gender/Female';
 import GenderMale from '../../icons/gender/Male';
+import { classesShape } from '../../../helpers/PropTypes';
+
+const styles = {
+  content: {
+    padding: '16px',
+  },
+
+  fieldContainer: {
+    marginBottom: '16px',
+
+    '&:last-child': {
+      marginBottom: 0,
+    },
+  },
+};
 
 class PlayerForm extends Component {
   static renderNameField({ input }) {
@@ -70,7 +84,7 @@ class PlayerForm extends Component {
   }
 
   render() {
-    const { handleSubmit, onCancel, title } = this.props;
+    const { classes, handleSubmit, onCancel, title } = this.props;
 
     const backButton = (
       <IconButton onTouchTap={onCancel}>
@@ -96,14 +110,14 @@ class PlayerForm extends Component {
         <LayoutContent>
           <form
             autoComplete="off"
-            className={cn.content}
+            className={classes.content}
             noValidate
             onSubmit={handleSubmit}
           >
-            <div className={cn.fieldContainer}>
+            <div className={classes.fieldContainer}>
               <Field component={this.constructor.renderNameField} name="name" />
             </div>
-            <div className={cn.fieldContainer}>
+            <div className={classes.fieldContainer}>
               <Field component={this.constructor.renderGenderField} name="gender" />
             </div>
           </form>
@@ -115,6 +129,7 @@ class PlayerForm extends Component {
 
 PlayerForm.propTypes = {
   autoFocus: PropTypes.bool,
+  classes: classesShape.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   onCancel: PropTypes.func,
   title: PropTypes.node,
@@ -126,4 +141,4 @@ PlayerForm.defaultProps = {
   title: null,
 };
 
-export default reduxForm({ form: 'player' })(PlayerForm);
+export default reduxForm({ form: 'player' })(injectSheet(styles)(PlayerForm));
