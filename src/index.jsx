@@ -9,7 +9,7 @@ import createHistory from 'history/createHashHistory';
 import 'normalize.css';
 
 import { hideBanner } from './actions';
-import Root from './containers/Root';
+import Root from './components/Root';
 import configureStore from './store/configureStore';
 
 import './index.css';
@@ -35,7 +35,7 @@ function init(appEl) {
   renderAppContainer(Root, appEl);
 
   if (module.hot) {
-    module.hot.accept('./containers/Root', () => {
+    module.hot.accept('./components/Root', () => {
       renderAppContainer(Root, appEl);
     });
   }
