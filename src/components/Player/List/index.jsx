@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { SortableContainer, SortableElement } from 'react-sortable-hoc';
-import TransitionGroup from 'react-transition-group/TransitionGroup';
 import PropTypes from 'prop-types';
 import IconButton from 'material-ui/IconButton';
 import { List } from 'material-ui/List';
@@ -14,7 +13,6 @@ import { Player } from 'munchkin';
 
 import cn from './style.css';
 
-import FabTransition from './FabTransition';
 import Item from './Item';
 import AppBar from '../../material-ui/AppBar';
 import { Layout, LayoutContent, LayoutHeader } from '../../Layout';
@@ -157,13 +155,7 @@ class PlayerList extends Component {
             ))}
           </SortableList>
 
-          <TransitionGroup className={cn.fabContainer}>
-            <FabTransition>
-              <div className={cn.fab}>
-                <MainButton />
-              </div>
-            </FabTransition>
-          </TransitionGroup>
+          <MainButton className={cn.fab} />
         </LayoutContent>
       </Layout>
     );
