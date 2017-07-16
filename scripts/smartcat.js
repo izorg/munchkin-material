@@ -1,6 +1,6 @@
+/* eslint-disable no-console,import/no-extraneous-dependencies */
 const axios = require('axios');
 const exec = require('child_process').exec;
-const fs = require('fs');
 
 const config = require('../config.json').smartcat;
 
@@ -17,24 +17,22 @@ function exportDocument(document) {
   return axios.post('/document/export', undefined, {
     params: {
       documentIds: [document.id],
-    }
-  }).then(function ({ data }) {
-    return data;
-  });
+    },
+  }).then(({ data }) => data);
 }
 
-const deleteDocuments = (documentIds) => axios.delete('/document', { params: { documentIds } });
+const deleteDocuments = documentIds => axios.delete('/document', { params: { documentIds } });
 
 const getDocuments = () => axios.get(`/project/${projectId}`).then(({ data: { documents } }) => documents);
 
 function getTaskResult(taskId, language, resolve) {
   console.log('getTaskResult');
-  axios.get(`/document/export/${taskId}`).then(function ({ data, status }) {
+  axios.get(`/document/export/${taskId}`).then(({ data, status }) => {
     console.log('status', status);
     if (status === 200 && data) {
       resolve(data);
     } else if (status === 204) {
-      setTimeout(function () {
+      setTimeout(() => {
         getTaskResult(taskId, language, resolve);
       }, 1000);
     }
@@ -42,7 +40,7 @@ function getTaskResult(taskId, language, resolve) {
 }
 
 function getTranslation(taskId, language) {
-  return new Promise(function (resolve) {
+  return new Promise((resolve) => {
     getTaskResult(taskId, language, resolve);
   });
 }
