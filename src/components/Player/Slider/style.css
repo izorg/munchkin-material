@@ -1,0 +1,26 @@
+.sliderContent {
+  display: flex;
+}
+
+.bannerVisible {
+  padding-bottom: 50px;
+}
+
+.slider {
+  display: flex;
+  width: 100%;
+}
+
+.slider :global(.slick-list) {
+  display: flex;
+  overflow: hidden;
+}
+
+.slider :global(.slick-track) {
+  display: flex;
+  flex-shrink: 0;
+}
+
+.item {
+  display: flex;
+}

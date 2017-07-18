@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
-import injectSheet from 'react-jss';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 import IconButton from 'material-ui/IconButton';
@@ -15,21 +14,8 @@ import AppBar from '../../material-ui/AppBar';
 import { noop } from '../../../constants';
 import GenderFemale from '../../icons/gender/Female';
 import GenderMale from '../../icons/gender/Male';
-import { classesShape } from '../../../helpers/PropTypes';
 
-const styles = {
-  content: {
-    padding: '16px',
-  },
-
-  fieldContainer: {
-    marginBottom: '16px',
-
-    '&:last-child': {
-      marginBottom: 0,
-    },
-  },
-};
+import cn from './style.css';
 
 class PlayerForm extends Component {
   static renderNameField({ input }) {
@@ -84,7 +70,7 @@ class PlayerForm extends Component {
   }
 
   render() {
-    const { classes, handleSubmit, onCancel, title } = this.props;
+    const { handleSubmit, onCancel, title } = this.props;
 
     const backButton = (
       <IconButton onTouchTap={onCancel}>
@@ -110,14 +96,14 @@ class PlayerForm extends Component {
         <LayoutContent>
           <form
             autoComplete="off"
-            className={classes.content}
+            className={cn.content}
             noValidate
             onSubmit={handleSubmit}
           >
-            <div className={classes.fieldContainer}>
+            <div className={cn.fieldContainer}>
               <Field component={this.constructor.renderNameField} name="name" />
             </div>
-            <div className={classes.fieldContainer}>
+            <div className={cn.fieldContainer}>
               <Field component={this.constructor.renderGenderField} name="gender" />
             </div>
           </form>
@@ -129,7 +115,6 @@ class PlayerForm extends Component {
 
 PlayerForm.propTypes = {
   autoFocus: PropTypes.bool,
-  classes: classesShape.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   onCancel: PropTypes.func,
   title: PropTypes.node,
@@ -141,4 +126,4 @@ PlayerForm.defaultProps = {
   title: null,
 };
 
-export default reduxForm({ form: 'player' })(injectSheet(styles)(PlayerForm));
+export default reduxForm({ form: 'player' })(PlayerForm);

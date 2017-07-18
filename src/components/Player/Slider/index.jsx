@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import injectSheet from 'react-jss';
 import Slider from 'react-slick';
 import PropTypes from 'prop-types';
 import IconButton from 'material-ui/IconButton';
@@ -15,36 +14,8 @@ import AppBar from '../../material-ui/AppBar';
 import { noop } from '../../../constants';
 import DiceDialog from '../../../containers/DiceDialog';
 import PlayerStats from '../../../containers/Player/Stats';
-import { classesShape } from '../../../helpers/PropTypes';
 
-const styles = {
-  sliderContent: {
-    display: 'flex',
-  },
-
-  bannerVisible: {
-    paddingBottom: '50px',
-  },
-
-  slider: {
-    display: 'flex',
-    width: '100%',
-
-    '& .slick-list': {
-      display: 'flex',
-      overflow: 'hidden',
-    },
-
-    '& .slick-track': {
-      display: 'flex',
-      flexShrink: '0',
-    },
-  },
-
-  item: {
-    display: 'flex',
-  },
-};
+import cn from './style.css';
 
 class PlayerSlider extends Component {
   constructor(props) {
@@ -70,7 +41,6 @@ class PlayerSlider extends Component {
   render() {
     const {
       bannerVisible,
-      classes,
       onBack,
       onDiceTouchTap,
       players,
@@ -101,18 +71,18 @@ class PlayerSlider extends Component {
           />
         </LayoutHeader>
         <LayoutContent
-          className={cns(classes.sliderContent, { [classes.bannerVisible]: bannerVisible })}
+          className={cns(cn.sliderContent, { [cn.bannerVisible]: bannerVisible })}
         >
           <Slider
             afterChange={this.handleChangeIndex}
             arrows={false}
-            className={classes.slider}
+            className={cn.slider}
             initialSlide={initialSlide}
             speed={300}
           >
             {
               players.map(player => (
-                <div className={classes.item} key={player.id}>
+                <div className={cn.item} key={player.id}>
                   <PlayerStats player={player} />
                 </div>
               ))
@@ -128,7 +98,6 @@ class PlayerSlider extends Component {
 
 PlayerSlider.propTypes = {
   bannerVisible: PropTypes.bool,
-  classes: classesShape.isRequired,
   onBack: PropTypes.func,
   onDiceTouchTap: PropTypes.func,
   onPlayerChange: PropTypes.func,
@@ -143,4 +112,4 @@ PlayerSlider.defaultProps = {
   onPlayerChange: noop,
 };
 
-export default banner(injectSheet(styles)(PlayerSlider));
+export default banner(PlayerSlider);
