@@ -22,29 +22,25 @@ const store = configureStore(history);
 
 store.dispatch(hideBanner());
 
-function renderAppContainer(Component, appEl) {
-  render(
-    <AppContainer>
-      <Component history={history} store={store} />
-    </AppContainer>,
-    appEl,
-  );
-}
+const renderAppContainer = (Component, appEl) => render(
+  <AppContainer>
+    <Component history={history} store={store} />
+  </AppContainer>,
+  appEl,
+);
 
-function init(appEl) {
+const init = (appEl) => {
   renderAppContainer(Root, appEl);
 
   if (module.hot) {
-    module.hot.accept('./components/Root', () => {
-      renderAppContainer(Root, appEl);
-    });
+    module.hot.accept('./components/Root', () => renderAppContainer(Root, appEl));
   }
 
   return {
     history,
     store,
   };
-}
+};
 
 export {
   init, // eslint-disable-line import/prefer-default-export
