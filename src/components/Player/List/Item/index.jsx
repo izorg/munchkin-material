@@ -80,7 +80,11 @@ class PlayerListItem extends Component {
     let leftIcon;
 
     if (!showCheckbox && !showDragHandle) {
-      leftAvatar = <Avatar>{player.name.charAt(0).toUpperCase()}</Avatar>;
+      leftAvatar = (
+        <Avatar src={player.avatar}>
+          {player.avatar ? null : player.name.charAt(0).toUpperCase()}
+        </Avatar>
+      );
     }
 
     if (showCheckbox) {

@@ -12,7 +12,7 @@ import { GENDER } from 'munchkin';
 
 import { Layout, LayoutContent, LayoutHeader } from '../../Layout';
 import AppBar from '../../material-ui/AppBar';
-import { noop } from '../../../constants';
+import { noop, PLAYER_FORM } from '../../../constants';
 import GenderFemale from '../../icons/gender/Female';
 import GenderMale from '../../icons/gender/Male';
 
@@ -101,6 +101,8 @@ class PlayerForm extends Component {
             noValidate
             onSubmit={handleSubmit}
           >
+            <Field component="input" name="avatar" type="hidden" />
+
             <div className={cn.fieldContainer}>
               <Field component={this.constructor.renderNameField} name="name" />
               {
@@ -113,7 +115,7 @@ class PlayerForm extends Component {
                       padding: 0,
                       position: 'absolute',
                       right: 0,
-                      top: 8,
+                      top: 12,
                       width: 24,
                     }}
                   >
@@ -122,6 +124,7 @@ class PlayerForm extends Component {
                 ) : null
               }
             </div>
+
             <div className={cn.fieldContainer}>
               <Field component={this.constructor.renderGenderField} name="gender" />
             </div>
@@ -149,4 +152,4 @@ PlayerForm.defaultProps = {
   title: null,
 };
 
-export default reduxForm({ form: 'player' })(PlayerForm);
+export default reduxForm({ form: PLAYER_FORM })(PlayerForm);

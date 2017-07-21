@@ -1,6 +1,7 @@
 import { change } from 'redux-form';
 import { actions } from 'munchkin';
 
+import { PLAYER_FORM } from '../constants';
 import * as types from '../constants/actionTypes';
 
 export const hideBanner = () => ({
@@ -8,8 +9,14 @@ export const hideBanner = () => ({
 });
 
 export const importContact = () => (dispatch) => {
-  navigator.contacts.pickContact(({ displayName }) => {
-    dispatch(change('player', 'name', displayName));
+  navigator.contacts.pickContact(({ displayName, photos }) => {
+    const form = PLAYER_FORM;
+
+    dispatch(change(form, 'name', displayName));
+
+    if (photos) {
+      dispatch(change(form, 'avatar', photos[0].value));
+    }
   });
 };
 
