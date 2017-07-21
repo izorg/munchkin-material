@@ -7,6 +7,7 @@ import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton';
 import TextField from 'material-ui/TextField';
 import NavigationArrowBack from 'material-ui/svg-icons/navigation/arrow-back';
 import NavigationCheck from 'material-ui/svg-icons/navigation/check';
+import SocialPersonAdd from 'material-ui/svg-icons/social/person-add';
 import { GENDER } from 'munchkin';
 
 import { Layout, LayoutContent, LayoutHeader } from '../../Layout';
@@ -70,7 +71,7 @@ class PlayerForm extends Component {
   }
 
   render() {
-    const { handleSubmit, onCancel, title } = this.props;
+    const { handleSubmit, newPlayer, onCancel, onImport, title } = this.props;
 
     const backButton = (
       <IconButton onTouchTap={onCancel}>
@@ -102,6 +103,24 @@ class PlayerForm extends Component {
           >
             <div className={cn.fieldContainer}>
               <Field component={this.constructor.renderNameField} name="name" />
+              {
+                newPlayer && navigator.contacts ? (
+                  <IconButton
+                    disableTouchRipple
+                    onTouchTap={onImport}
+                    style={{
+                      height: 24,
+                      padding: 0,
+                      position: 'absolute',
+                      right: 0,
+                      top: 8,
+                      width: 24,
+                    }}
+                  >
+                    <SocialPersonAdd />
+                  </IconButton>
+                ) : null
+              }
             </div>
             <div className={cn.fieldContainer}>
               <Field component={this.constructor.renderGenderField} name="gender" />
@@ -116,12 +135,16 @@ class PlayerForm extends Component {
 PlayerForm.propTypes = {
   autoFocus: PropTypes.bool,
   handleSubmit: PropTypes.func.isRequired,
+  newPlayer: PropTypes.bool,
+  onImport: PropTypes.func,
   onCancel: PropTypes.func,
   title: PropTypes.node,
 };
 
 PlayerForm.defaultProps = {
   autoFocus: false,
+  newPlayer: true,
+  onImport: noop,
   onCancel: noop,
   title: null,
 };

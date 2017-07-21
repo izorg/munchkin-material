@@ -1,4 +1,5 @@
 export const HIDE_BANNER = 'app/HIDE_BANNER';
+export const IMPORT_CONTACT = 'app/IMPORT_CONTACT';
 export const RESET_DICE = 'app/RESET_DICE';
 export const SET_ACTIVE_PLAYER = 'app/SET_ACTIVE_PLAYER';
 export const SET_LOCALE = 'app/SET_LOCALE';

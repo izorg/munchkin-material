@@ -76,6 +76,7 @@
     "react-tappable": "1.0.0",
     "react-transition-group": "2.1.0",
     "redux-form": "7.0.1",
+    "redux-thunk": "2.2.0",
     "style-loader": "0.18.2",
     "webpack": "3.3.0",
     "webpack-merge": "4.1.0"

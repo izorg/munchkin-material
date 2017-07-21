@@ -4,6 +4,7 @@
 
 .fieldContainer {
   margin-bottom: 16px;
+  position: relative;
 }
 
 .fieldContainer:last-child {

@@ -1,3 +1,4 @@
+import { change } from 'redux-form';
 import { actions } from 'munchkin';
 
 import * as types from '../constants/actionTypes';
@@ -5,6 +6,12 @@ import * as types from '../constants/actionTypes';
 export const hideBanner = () => ({
   type: types.HIDE_BANNER,
 });
+
+export const importContact = () => (dispatch) => {
+  navigator.contacts.pickContact(({ displayName }) => {
+    dispatch(change('player', 'name', displayName));
+  });
+};
 
 export const resetDice = () => ({
   type: types.RESET_DICE,

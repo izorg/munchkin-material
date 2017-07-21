@@ -5,7 +5,7 @@ import { goBack } from 'react-router-redux';
 import { GENDER, Player } from 'munchkin';
 import { addPlayer, updatePlayer } from 'munchkin/lib/actions';
 
-import { setActivePlayer } from '../../actions';
+import { importContact, setActivePlayer } from '../../actions';
 import PlayerForm from '../../components/Player/Form';
 
 const getInitialValues = ({ app: { activePlayerId }, players }) => {
@@ -27,6 +27,7 @@ const getInitialValues = ({ app: { activePlayerId }, players }) => {
 const mapStateToProps = state => ({
   autoFocus: !state.app.activePlayerId,
   initialValues: getInitialValues(state),
+  newPlayer: !state.app.activePlayerId,
   title: state.app.activePlayerId ?
     <FormattedMessage id="player.form.titleEdit" defaultMessage="Edit munchkin" /> :
     <FormattedMessage id="player.form.title" defaultMessage="New munchkin" />,
@@ -34,6 +35,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   onCancel: () => dispatch(goBack()),
+  onImport: () => dispatch(importContact()),
   onSubmit: (values) => {
     const { id, name } = values;
 
