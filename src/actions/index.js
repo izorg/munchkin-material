@@ -1,5 +1,6 @@
 import { change } from 'redux-form';
-import { actions } from 'munchkin';
+import { goBack } from 'react-router-redux';
+import { actions, Player } from 'munchkin';
 
 import { PLAYER_FORM } from '../constants';
 import * as types from '../constants/actionTypes';
@@ -42,6 +43,24 @@ export const setMultiMode = multiMode => ({
 export const showBanner = () => ({
   type: types.SHOW_BANNER,
 });
+
+export const submitPlayer = values => (dispatch) => {
+  const { id, name = '' } = values;
+
+  if (name.trim()) {
+    const player = new Player(values);
+
+    if (id) {
+      dispatch(actions.updatePlayer(player));
+    } else {
+      dispatch(actions.addPlayer(player));
+    }
+
+    dispatch(setActivePlayer(player.id));
+  }
+
+  dispatch(goBack());
+};
 
 export const throwDice = () => ({
   type: types.THROW_DICE,

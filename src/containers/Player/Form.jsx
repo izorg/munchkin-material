@@ -2,10 +2,9 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import { goBack } from 'react-router-redux';
-import { GENDER, Player } from 'munchkin';
-import { addPlayer, updatePlayer } from 'munchkin/lib/actions';
+import { GENDER } from 'munchkin';
 
-import { importContact, setActivePlayer } from '../../actions';
+import { importContact, submitPlayer } from '../../actions';
 import PlayerForm from '../../components/Player/Form';
 
 const getInitialValues = ({ app: { activePlayerId }, players }) => {
@@ -33,26 +32,10 @@ const mapStateToProps = state => ({
     <FormattedMessage id="player.form.title" defaultMessage="New munchkin" />,
 });
 
-const mapDispatchToProps = dispatch => ({
-  onCancel: () => dispatch(goBack()),
-  onImport: () => dispatch(importContact()),
-  onSubmit: (values) => {
-    const { id, name } = values;
-
-    if (name && name.trim()) {
-      const player = new Player(values);
-
-      if (id) {
-        dispatch(updatePlayer(player));
-      } else {
-        dispatch(addPlayer(player));
-      }
-
-      dispatch(setActivePlayer(player.id));
-    }
-
-    dispatch(goBack());
-  },
-});
+const mapDispatchToProps = {
+  onCancel: goBack,
+  onImport: importContact,
+  onSubmit: submitPlayer,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(PlayerForm);
