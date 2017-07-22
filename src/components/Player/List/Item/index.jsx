@@ -3,17 +3,18 @@ import { FormattedMessage } from 'react-intl';
 import { SortableHandle } from 'react-sortable-hoc';
 import Tappable from 'react-tappable/lib/Tappable';
 import PropTypes from 'prop-types';
-import Avatar from 'material-ui/Avatar';
 import Checkbox from 'material-ui/Checkbox';
 import { ListItem } from 'material-ui/List';
 import ActionReorder from 'material-ui/svg-icons/action/reorder';
 import { Player } from 'munchkin';
 
-import cn from './style.css';
-
 import { noop } from '../../../../constants';
 import getGenderIconClass from '../../../../helpers/getGenderIconClass';
 import { ios } from '../../../../helpers/platforms';
+
+import PlayerListItemAvatar from './Avatar';
+
+import cn from './style.css';
 
 const ItemHandle = SortableHandle(ActionReorder);
 
@@ -81,9 +82,7 @@ class PlayerListItem extends Component {
 
     if (!showCheckbox && !showDragHandle) {
       leftAvatar = (
-        <Avatar src={player.avatar}>
-          {player.avatar ? null : player.name.charAt(0).toUpperCase()}
-        </Avatar>
+        <PlayerListItemAvatar avatar={player.avatar} name={player.name} />
       );
     }
 
