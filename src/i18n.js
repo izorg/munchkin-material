@@ -8,7 +8,7 @@ import en from '../languages/en.json';
 import ru from '../languages/ru.json';
 import uk from '../languages/uk.json';
 
-const avaliableLocales = [
+const availableLocales = [
   'en',
   'ru',
   'uk',
@@ -29,7 +29,7 @@ export const getLocale = () => {
 
   const locale = language.substr(0, LANGUAGE_LENGTH);
 
-  return avaliableLocales.includes(locale) ? locale : defaultLocale;
+  return availableLocales.includes(locale) ? locale : defaultLocale;
 };
 
 export const getMessages = (locale) => {
