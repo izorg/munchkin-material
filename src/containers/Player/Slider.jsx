@@ -4,10 +4,10 @@ import { goBack, replace } from 'react-router-redux';
 import { setActivePlayer, throwDice } from '../../actions';
 import PlayerSlider from '../../components/Player/Slider';
 
-const mapStateToProps = ({ app: { activePlayerId, bannerVisible }, players }) => ({
+const mapStateToProps = ({ app: { activePlayerId, bannerVisible }, playerList, players }) => ({
   bannerVisible,
-  players,
-  selectedPlayer: players.find(({ id }) => id === activePlayerId),
+  players: playerList.map(id => players[id]),
+  selectedPlayer: players[activePlayerId],
 });
 
 const mapDispatchToProps = dispatch => ({

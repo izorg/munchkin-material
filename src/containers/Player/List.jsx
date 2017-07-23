@@ -1,14 +1,14 @@
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
-import { movePlayer, removePlayer } from 'munchkin/lib/actions';
+import { removePlayer } from 'munchkin/lib/actions';
 
-import { setActivePlayer, setMultiMode, toggleEditMode, togglePlayer } from '../../actions';
+import { movePlayer, setActivePlayer, setMultiMode, toggleEditMode, togglePlayer } from '../../actions';
 import PlayerList from '../../components/Player/List';
 
 const mapStateToProps = state => ({
   editMode: state.app.editMode,
   multiMode: state.app.multiMode,
-  players: state.players,
+  players: state.playerList.map(id => state.players[id]),
   selectedPlayerIds: state.app.selectedPlayerIds,
 });
 

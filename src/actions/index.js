@@ -21,6 +21,12 @@ export const importContact = () => (dispatch) => {
   });
 };
 
+export const movePlayer = (oldPosition, newPosition) => ({
+  type: types.MOVE_PLAYER,
+  oldPosition,
+  newPosition,
+});
+
 export const resetDice = () => ({
   type: types.RESET_DICE,
 });
@@ -80,6 +86,7 @@ export const togglePlayer = id => ({
 export default {
   ...actions,
   hideBanner,
+  movePlayer,
   resetDice,
   setActivePlayer,
   setLocale,

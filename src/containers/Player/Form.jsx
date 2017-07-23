@@ -13,7 +13,7 @@ const getInitialValues = ({ app: { activePlayerId }, players }) => {
   };
 
   if (activePlayerId) {
-    const selectedPlayer = players.find(player => player.id === activePlayerId);
+    const selectedPlayer = players[activePlayerId];
 
     if (selectedPlayer) {
       Object.assign(initialValues, selectedPlayer);

@@ -1,6 +1,6 @@
 {
   "name": "munchkin-material",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --config=webpack/config.development.js",
     "dist": "cross-env NODE_ENV=production webpack --config=webpack/config.production.js",
@@ -29,7 +29,10 @@
       "\\.css$": "identity-obj-proxy"
     },
     "notify": true,
-    "setupTestFrameworkScriptFile": "./node_modules/jest-enzyme/lib/index.js"
+    "setupTestFrameworkScriptFile": "./node_modules/jest-enzyme/lib/index.js",
+    "transformIgnorePatterns": [
+      "node_modules/(?!(munchkin)/)"
+    ]
   },
   "dependencies": {
     "autoprefixer": "7.1.2",

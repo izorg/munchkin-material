@@ -40,11 +40,13 @@
         ]
       ]
     },
+
     "production": {
       "presets": [
         "react-optimize"
       ]
     },
+
     "test": {
       "plugins": [
         "transform-es2015-modules-commonjs"
