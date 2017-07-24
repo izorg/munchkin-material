@@ -13,6 +13,7 @@ import { GENDER } from 'munchkin';
 import { Layout, LayoutContent, LayoutHeader } from '../../Layout';
 import AppBar from '../../material-ui/AppBar';
 import { noop, PLAYER_FORM } from '../../../constants';
+import { ios } from '../../../helpers/platforms';
 import GenderFemale from '../../icons/gender/Female';
 import GenderMale from '../../icons/gender/Male';
 
@@ -80,7 +81,7 @@ class PlayerForm extends Component {
     );
 
     const submitButton = (
-      <IconButton onTouchTap={handleSubmit}>
+      <IconButton onTouchTap={handleSubmit} style={{ marginLeft: ios ? 8 : undefined }}>
         <NavigationCheck />
       </IconButton>
     );

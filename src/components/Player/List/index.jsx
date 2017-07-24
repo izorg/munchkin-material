@@ -18,6 +18,7 @@ import AppBar from '../../material-ui/AppBar';
 import { Layout, LayoutContent, LayoutHeader } from '../../Layout';
 import MainButton from '../../../containers/MainButton';
 import { noop } from '../../../constants';
+import { ios } from '../../../helpers/platforms';
 
 const SortableList = SortableContainer(List);
 const SortableListItem = SortableElement(Item);
@@ -128,6 +129,9 @@ class PlayerList extends Component {
             showMenuIconButton={showMenuIconButton}
             style={appBarStyle}
             title={title}
+            titleStyle={{
+              paddingLeft: ios ? 24 : undefined,
+            }}
           />
         </LayoutHeader>
         <LayoutContent>

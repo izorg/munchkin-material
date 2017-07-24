@@ -14,6 +14,7 @@ import AppBar from '../../material-ui/AppBar';
 import { noop } from '../../../constants';
 import DiceDialog from '../../../containers/DiceDialog';
 import PlayerStats from '../../../containers/Player/Stats';
+import { ios } from '../../../helpers/platforms';
 
 import cn from './style.css';
 
@@ -56,7 +57,7 @@ class PlayerSlider extends Component {
     );
 
     const diceButton = (
-      <IconButton onTouchTap={() => onDiceTouchTap()}>
+      <IconButton onTouchTap={() => onDiceTouchTap()} style={{ marginLeft: ios ? 8 : undefined }}>
         <DiceMultipleIcon />
       </IconButton>
     );
