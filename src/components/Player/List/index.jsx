@@ -16,7 +16,6 @@ import cn from './style.css';
 import Item from './Item';
 import AppBar from '../../material-ui/AppBar';
 import { Layout, LayoutContent, LayoutHeader } from '../../Layout';
-import MainButton from '../../../containers/MainButton';
 import { noop } from '../../../constants';
 import { ios } from '../../../helpers/platforms';
 
@@ -158,8 +157,6 @@ class PlayerList extends Component {
               />
             ))}
           </SortableList>
-
-          <MainButton className={cn.fab} />
         </LayoutContent>
       </Layout>
     );

@@ -1,15 +1,10 @@
 import React from 'react';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
-import TransitionGroup from 'react-transition-group/TransitionGroup';
 import PropTypes from 'prop-types';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 
-import FabTransition from './FabTransition';
-
 import { noop } from '../../constants';
-
-import cn from './style.css';
 
 const messages = defineMessages({
   label: {
@@ -18,30 +13,22 @@ const messages = defineMessages({
   },
 });
 
-const AddButton = ({ className, intl, onClick }) => (
-  <TransitionGroup className={className}>
-    <FabTransition>
-      <div className={cn.fab}>
-        <FloatingActionButton
-          aria-label={intl.formatMessage(messages.label)}
-          onClick={onClick}
-        >
-          <ContentAdd />
-        </FloatingActionButton>
-      </div>
-    </FabTransition>
-  </TransitionGroup>
+const AddButton = ({ intl, onTouchTap }) => (
+  <FloatingActionButton
+    aria-label={intl.formatMessage(messages.label)}
+    onTouchTap={onTouchTap}
+  >
+    <ContentAdd />
+  </FloatingActionButton>
 );
 
 AddButton.propTypes = {
-  className: PropTypes.string,
   intl: intlShape.isRequired,
-  onClick: PropTypes.func,
+  onTouchTap: PropTypes.func,
 };
 
 AddButton.defaultProps = {
-  className: '',
-  onClick: noop,
+  onTouchTap: noop,
 };
 
 export default injectIntl(AddButton);

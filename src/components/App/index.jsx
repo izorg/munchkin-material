@@ -3,7 +3,11 @@ import Helmet from 'react-helmet';
 import { matchPath, Route } from 'react-router-dom';
 import TransitionGroup from 'react-transition-group/TransitionGroup';
 
+import fabs from './fabs';
 import routes from './routes';
+
+import FabTransition from './transitions/Fab';
+import MainButton from '../../containers/MainButton';
 
 import { ios } from '../../helpers/platforms';
 
@@ -27,7 +31,7 @@ const App = () => (
 
               if (match) {
                 return (
-                  <Transition key={route.path}>
+                  <Transition key={`page-${route.path}`}>
                     <div className={cn.item}>
                       <Component />
                     </div>
@@ -37,6 +41,26 @@ const App = () => (
 
               return null;
             })
+          }
+
+          {
+            fabs.some(route => matchPath(location.pathname, route)) ? (
+              <FabTransition>
+                <div className={cn.fab}>
+                  <MainButton>
+                    {
+                      fabs.map(({ icon: Icon, ...route }) => {
+                        const match = matchPath(location.pathname, route);
+
+                        return match ? (
+                          <Icon key={`fab-${route.path}`} />
+                        ) : null;
+                      })
+                    }
+                  </MainButton>
+                </div>
+              </FabTransition>
+            ) : null
           }
         </TransitionGroup>
       )}

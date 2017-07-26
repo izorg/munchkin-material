@@ -6,12 +6,16 @@ import cn from './style.css';
 const FabTransition = props => (
   <CSSTransition
     {...props}
-    appear
     classNames={{
-      appear: cn.appear,
-      appearActive: cn.appearActive,
+      enter: cn.enter,
+      enterActive: cn.enterActive,
+      exit: cn.exit,
+      exitActive: cn.exitActive,
     }}
-    timeout={550}
+    timeout={{
+      enter: 550,
+      exit: 150,
+    }}
   />
 );
 

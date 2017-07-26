@@ -2,11 +2,20 @@
   --app-animation-duration: 0.4s;
 }
 
-.appear {
+.enter {
   transform: scale(0);
 }
 
-.appearActive {
+.enterActive {
   transform: scale(1);
   transition: transform 0.15s ease-out var(--app-animation-duration);
+}
+
+.exit {
+  transform: scale(1);
+}
+
+.exitActive {
+  transform: scale(0);
+  transition: transform 0.15s ease-in;
 }

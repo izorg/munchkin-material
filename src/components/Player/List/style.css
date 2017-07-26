@@ -7,9 +7,3 @@
   box-shadow: rgba(0, 0, 0, 0.156863) 0 3px 10px, rgba(0, 0, 0, 0.227451) 0 3px 10px;
   pointer-events: auto !important;
 }
-
-.fab {
-  bottom: 24px;
-  position: absolute;
-  right: 24px;
-}
