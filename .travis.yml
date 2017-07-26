@@ -1,5 +1,4 @@
 language: node_js
-install: npm update
 script: npm run site
 deploy:
   local_dir: site

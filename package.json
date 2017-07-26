@@ -1,6 +1,10 @@
 {
-  "name": "munchkin-material",
-  "version": "2.0.0",
+  "name": "munchkin-web",
+  "version": "2.0.1",
+  "main": "./dist/js/app.js",
+  "files": [
+    "dist/"
+  ],
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --config=webpack/config.development.js",
     "dist": "cross-env NODE_ENV=production webpack --config=webpack/config.production.js",
@@ -8,7 +12,6 @@
     "i18n:download": "node scripts/i18n/download.js",
     "i18n:translate": "node scripts/i18n/translate.js",
     "i18n:upload": "node scripts/i18n/upload.js",
-    "install": "npm run-script dist",
     "lint:css": "stylelint ./src/**/*.css",
     "lint:js": "eslint --ext .js,.jsx .",
     "site": "cross-env NODE_ENV=production webpack --config=webpack/config.site.js",
@@ -58,7 +61,7 @@
     "html-webpack-plugin": "2.29.0",
     "lodash": "4.17.4",
     "material-ui": "0.18.7",
-    "munchkin-core": "2.0.3",
+    "munchkin-core": "2.0.4",
     "normalize.css": "7.0.0",
     "offline-plugin": "4.8.3",
     "postcss-cssnext": "3.0.2",
