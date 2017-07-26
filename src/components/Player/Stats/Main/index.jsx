@@ -2,7 +2,7 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 import IconButton from 'material-ui/IconButton';
-import { Player } from 'munchkin';
+import { Player } from 'munchkin-core';
 
 import cn from './style.css';
 

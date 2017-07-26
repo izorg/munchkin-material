@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { actions, GENDER } from 'munchkin';
+import { actions, GENDER } from 'munchkin-core';
 
 import PlayerStats from '../../components/Player/Stats';
 

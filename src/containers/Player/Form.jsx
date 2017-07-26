@@ -2,7 +2,7 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import { goBack } from 'react-router-redux';
-import { GENDER } from 'munchkin';
+import { GENDER } from 'munchkin-core';
 
 import { importContact, submitPlayer } from '../../actions';
 import PlayerForm from '../../components/Player/Form';

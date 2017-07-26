@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { GENDER } from 'munchkin';
+import { GENDER } from 'munchkin-core';
 
 import GenderFemale from './icons/gender/Female';
 import GenderMale from './icons/gender/Male';

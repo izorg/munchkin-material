@@ -1,6 +1,6 @@
 import { change } from 'redux-form';
 import { goBack } from 'react-router-redux';
-import { actions, Player } from 'munchkin';
+import { actions, Player } from 'munchkin-core';
 
 import { PLAYER_FORM } from '../constants';
 import * as types from '../constants/actionTypes';

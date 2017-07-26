@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import Checkbox from 'material-ui/Checkbox';
 import { ListItem } from 'material-ui/List';
 import ActionReorder from 'material-ui/svg-icons/action/reorder';
-import { Player } from 'munchkin';
+import { Player } from 'munchkin-core';
 
 import { noop } from '../../../../constants';
 import getGenderIconClass from '../../../../helpers/getGenderIconClass';

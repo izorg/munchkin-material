@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import IconButton from 'material-ui/IconButton';
 import NavigationArrowBack from 'material-ui/svg-icons/navigation/arrow-back';
 import cns from 'classnames';
-import { Player } from 'munchkin';
+import { Player } from 'munchkin-core';
 
 import banner from './banner';
 

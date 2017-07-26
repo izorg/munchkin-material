@@ -9,7 +9,7 @@ import EditorModeEdit from 'material-ui/svg-icons/editor/mode-edit';
 import NavigationCheck from 'material-ui/svg-icons/navigation/check';
 import NavigationClose from 'material-ui/svg-icons/navigation/close';
 import { grey600 } from 'material-ui/styles/colors';
-import { Player } from 'munchkin';
+import { Player } from 'munchkin-core';
 
 import cn from './style.css';
 

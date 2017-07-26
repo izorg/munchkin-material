@@ -8,7 +8,7 @@ import TextField from 'material-ui/TextField';
 import NavigationArrowBack from 'material-ui/svg-icons/navigation/arrow-back';
 import NavigationCheck from 'material-ui/svg-icons/navigation/check';
 import SocialPersonAdd from 'material-ui/svg-icons/social/person-add';
-import { GENDER } from 'munchkin';
+import { GENDER } from 'munchkin-core';
 
 import { Layout, LayoutContent, LayoutHeader } from '../../Layout';
 import AppBar from '../../material-ui/AppBar';

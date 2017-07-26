@@ -1,4 +1,4 @@
-import { GENDER } from 'munchkin';
+import { GENDER } from 'munchkin-core';
 
 import GenderFemale from '../components/icons/gender/Female';
 import GenderMale from '../components/icons/gender/Male';
