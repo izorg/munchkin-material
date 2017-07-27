@@ -9,5 +9,13 @@
   },
   "plugins": [
     "css-modules"
-  ]
+  ],
+  "rules": {
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": true
+      }
+    ]
+  }
 }
