@@ -1,5 +1,4 @@
 const merge = require('webpack-merge');
-// eslint-disable-next-line import/no-extraneous-dependencies
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const config = require('./config.production.js');

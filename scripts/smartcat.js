@@ -1,4 +1,4 @@
-/* eslint-disable no-console,import/no-extraneous-dependencies */
+/* eslint-disable no-console */
 const axios = require('axios');
 const exec = require('child_process').exec;
 

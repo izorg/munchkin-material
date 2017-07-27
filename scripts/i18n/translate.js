@@ -1,7 +1,6 @@
-/* eslint-disable import/no-extraneous-dependencies */
 const fs = require('fs');
-const globSync = require('glob').sync;
-const mkdirpSync = require('mkdirp').sync;
+const globSync = require('glob').sync; // eslint-disable-line import/no-extraneous-dependencies
+const mkdirpSync = require('mkdirp').sync; // eslint-disable-line import/no-extraneous-dependencies
 
 const MESSAGES_PATTERN = './messages/**/*.json';
 const LANG_DIR = './languages/';
