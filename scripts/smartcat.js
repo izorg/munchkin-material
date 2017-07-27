@@ -2,7 +2,7 @@
 const axios = require('axios');
 const exec = require('child_process').exec;
 
-const config = require('../config.json').smartcat;
+const config = require('../config.json').smartcat; // eslint-disable-line import/no-unresolved
 
 const projectId = config.projectId;
 const documentId = config.documentId;
