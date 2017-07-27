@@ -5,9 +5,15 @@ script:
   - npm run test
   - npm run site
 deploy:
-  provider: pages
-  github_token: $GITHUB_TOKEN
-  local_dir: site
-  skip_cleanup: true
-  on:
-    branch: master
+  - provider: npm
+    email: $NPM_EMAIL
+    api_key: $NPM_TOKEN
+    skip_cleanup: true
+    on:
+      branch: master
+  - provider: pages
+    github_token: $GITHUB_TOKEN
+    local_dir: site
+    skip_cleanup: true
+    on:
+      branch: master
