@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Slider from 'react-slick';
+import SwipeableViews from 'react-swipeable-views';
+import { virtualize } from 'react-swipeable-views-utils';
 import PropTypes from 'prop-types';
 import IconButton from 'material-ui/IconButton';
 import NavigationArrowBack from 'material-ui/svg-icons/navigation/arrow-back';
@@ -18,6 +19,8 @@ import { ios } from '../../../helpers/platforms';
 
 import cn from './style.css';
 
+const VirtualizeSwipeableViews = virtualize(SwipeableViews);
+
 class PlayerSlider extends Component {
   constructor(props) {
     super(props);
@@ -31,12 +34,39 @@ class PlayerSlider extends Component {
 
   componentWillMount() {
     this.handleChangeIndex = this.handleChangeIndex.bind(this);
+    this.slideRenderer = this.slideRenderer.bind(this);
+  }
+
+  getPlayerIndex(index) {
+    const { players } = this.props;
+    let playerIndex = index % players.length;
+
+    if (playerIndex < 0) {
+      playerIndex = players.length + playerIndex;
+    }
+
+    return playerIndex;
   }
 
   handleChangeIndex(index) {
     const { onPlayerChange, players } = this.props;
+    const playerIndex = this.getPlayerIndex(index);
 
-    onPlayerChange(players[index]);
+    onPlayerChange(players[playerIndex]);
+
+    this.setState({
+      initialSlide: index,
+    });
+  }
+
+  slideRenderer({ key, index }) {
+    const { players } = this.props;
+    const playerIndex = this.getPlayerIndex(index);
+    const player = players[playerIndex];
+
+    return (
+      <PlayerStats className={cn.item} key={key} player={player} />
+    );
   }
 
   render() {
@@ -44,7 +74,6 @@ class PlayerSlider extends Component {
       bannerVisible,
       onBack,
       onDiceTouchTap,
-      players,
       selectedPlayer,
     } = this.props;
 
@@ -74,21 +103,22 @@ class PlayerSlider extends Component {
         <LayoutContent
           className={cns(cn.sliderContent, { [cn.bannerVisible]: bannerVisible })}
         >
-          <Slider
-            afterChange={this.handleChangeIndex}
-            arrows={false}
-            className={cn.slider}
-            initialSlide={initialSlide}
-            speed={300}
-          >
-            {
-              players.map(player => (
-                <div className={cn.item} key={player.id}>
-                  <PlayerStats player={player} />
-                </div>
-              ))
-            }
-          </Slider>
+          <VirtualizeSwipeableViews
+            onChangeIndex={this.handleChangeIndex}
+            containerStyle={{
+              flexGrow: 1,
+            }}
+            enableMouseEvents
+            index={initialSlide}
+            slideRenderer={this.slideRenderer}
+            slideStyle={{
+              display: 'flex',
+            }}
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+            }}
+          />
 
           <DiceDialog />
         </LayoutContent>

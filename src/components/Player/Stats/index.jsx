@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 import { Player } from 'munchkin-core';
+import cns from 'classnames';
 
 import cn from './style.css';
 
@@ -51,10 +52,10 @@ class PlayerStats extends Component {
   }
 
   render() {
-    const { player } = this.props;
+    const { className, player } = this.props;
 
     return (
-      <div className={cn.stats}>
+      <div className={cns(className, cn.stats)}>
         <div className={cn.mainWrapper}>
           <Main
             onGenderToggle={this.handleGenderToggle}
@@ -85,6 +86,7 @@ class PlayerStats extends Component {
 }
 
 PlayerStats.propTypes = {
+  className: PropTypes.string,
   onGearDecrement: PropTypes.func,
   onGearIncrement: PropTypes.func,
   onGenderToggle: PropTypes.func,
@@ -94,6 +96,7 @@ PlayerStats.propTypes = {
 };
 
 PlayerStats.defaultProps = {
+  className: '',
   onGearDecrement: noop,
   onGearIncrement: noop,
   onGenderToggle: noop,
