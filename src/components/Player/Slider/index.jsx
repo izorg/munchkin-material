@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import SwipeableViews from 'react-swipeable-views';
-import { virtualize } from 'react-swipeable-views-utils';
+import { bindKeyboard, virtualize } from 'react-swipeable-views-utils';
 import PropTypes from 'prop-types';
 import IconButton from 'material-ui/IconButton';
 import NavigationArrowBack from 'material-ui/svg-icons/navigation/arrow-back';
 import cns from 'classnames';
 import { Player } from 'munchkin-core';
-
-import banner from './banner';
 
 import DiceMultipleIcon from '../../icons/dice/multiple';
 import { Layout, LayoutContent, LayoutHeader } from '../../Layout';
@@ -17,9 +15,10 @@ import DiceDialog from '../../../containers/DiceDialog';
 import PlayerStats from '../../../containers/Player/Stats';
 import { ios } from '../../../helpers/platforms';
 
+import banner from './banner';
 import cn from './style.css';
 
-const VirtualizeSwipeableViews = virtualize(SwipeableViews);
+const PlayerSwipeableViews = bindKeyboard(virtualize(SwipeableViews));
 
 class PlayerSlider extends Component {
   constructor(props) {
@@ -103,7 +102,7 @@ class PlayerSlider extends Component {
         <LayoutContent
           className={cns(cn.sliderContent, { [cn.bannerVisible]: bannerVisible })}
         >
-          <VirtualizeSwipeableViews
+          <PlayerSwipeableViews
             onChangeIndex={this.handleChangeIndex}
             containerStyle={{
               flexGrow: 1,
