@@ -5,6 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const _ = require('lodash');
 const OfflinePlugin = require('offline-plugin');
 const path = require('path');
+const webpack = require('webpack');
 const merge = require('webpack-merge');
 
 const config = require('./config.production.js');
@@ -49,7 +50,7 @@ module.exports = merge({
   ],
 
   output: {
-    filename: 'app.[chunkhash].js',
+    filename: '[name].[chunkhash].js',
     path: path.resolve(__dirname, '../site'),
   },
 
@@ -69,7 +70,7 @@ module.exports = merge({
 
   plugins: [
     new ExtractTextPlugin({
-      filename: 'app.[contenthash].css',
+      filename: '[name].[contenthash].css',
     }),
     new OfflinePlugin({
       caches: {
@@ -101,6 +102,19 @@ module.exports = merge({
       manifest: 'manifest-ru.json',
       template: './src/index.ejs',
       title: 'Все манчкины',
+    }),
+    new webpack.HashedModuleIdsPlugin(),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor',
+      minChunks: (module) => {
+        // This prevents stylesheet resources with the .css extension
+        // from being moved from their original chunk to the vendor chunk
+        if (module.resource && (/^.*\.css$/).test(module.resource)) {
+          return false;
+        }
+
+        return module.context && module.context.indexOf('node_modules') !== -1;
+      },
     }),
   ],
 });
