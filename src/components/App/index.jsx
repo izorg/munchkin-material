@@ -6,7 +6,7 @@ import TransitionGroup from 'react-transition-group/TransitionGroup';
 import fabs from './fabs';
 import routes from './routes';
 
-import FabTransition from './transitions/Fab';
+import Zoom from './transitions/Zoom';
 import MainButton from '../../containers/MainButton';
 
 import { ios } from '../../helpers/platforms';
@@ -45,7 +45,7 @@ const App = () => (
 
           {
             fabs.some(route => matchPath(location.pathname, route)) ? (
-              <FabTransition>
+              <Zoom>
                 <div className={cn.fab}>
                   <MainButton>
                     {
@@ -59,7 +59,7 @@ const App = () => (
                     }
                   </MainButton>
                 </div>
-              </FabTransition>
+              </Zoom>
             ) : null
           }
         </TransitionGroup>

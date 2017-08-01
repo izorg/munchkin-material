@@ -3,7 +3,7 @@ import CSSTransition from 'react-transition-group/CSSTransition';
 
 import cn from './style.css';
 
-const FabTransition = props => (
+const Zoom = props => (
   <CSSTransition
     {...props}
     classNames={{
@@ -19,4 +19,4 @@ const FabTransition = props => (
   />
 );
 
-export default FabTransition;
+export default Zoom;
