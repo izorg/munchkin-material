@@ -129,7 +129,7 @@ class PlayerList extends Component {
             style={appBarStyle}
             title={title}
             titleStyle={{
-              paddingLeft: ios ? 24 : undefined,
+              paddingLeft: ios && players.length ? 24 : undefined,
             }}
           />
         </LayoutHeader>
