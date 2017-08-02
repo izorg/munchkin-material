@@ -1,10 +1,16 @@
-import ContentAdd from 'material-ui/svg-icons/content/add';
+// import BattleButton from '../../components/BattleButton';
+import NewPlayerButton from '../../containers/NewPlayerButton';
 
 export default [
   {
+    button: NewPlayerButton,
     exact: true,
-    icon: ContentAdd,
     path: '/',
   },
+  // {
+  //   button: BattleButton,
+  //   exact: true,
+  //   path: '/player/:id',
+  // },
 ];
 

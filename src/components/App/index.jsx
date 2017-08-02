@@ -7,7 +7,6 @@ import fabs from './fabs';
 import routes from './routes';
 
 import Zoom from './transitions/Zoom';
-import MainButton from '../../containers/MainButton';
 
 import { ios } from '../../helpers/platforms';
 
@@ -47,17 +46,15 @@ const App = () => (
             fabs.some(route => matchPath(location.pathname, route)) ? (
               <Zoom>
                 <div className={cn.fab}>
-                  <MainButton>
-                    {
-                      fabs.map(({ icon: Icon, ...route }) => {
-                        const match = matchPath(location.pathname, route);
+                  {
+                    fabs.map(({ button: Button, ...route }) => {
+                      const match = matchPath(location.pathname, route);
 
-                        return match ? (
-                          <Icon key={`fab-${route.path}`} />
-                        ) : null;
-                      })
-                    }
-                  </MainButton>
+                      return match ? (
+                        <Button key={`fab-${route.path}`} />
+                      ) : null;
+                    })
+                  }
                 </div>
               </Zoom>
             ) : null

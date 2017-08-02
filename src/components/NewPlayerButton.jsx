@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 
-import { noop } from '../../constants';
+import { noop } from '../constants';
 
 const messages = defineMessages({
   label: {
@@ -13,7 +13,7 @@ const messages = defineMessages({
   },
 });
 
-const AddButton = ({ intl, onTouchTap }) => (
+const NewPlayerButton = ({ intl, onTouchTap }) => (
   <FloatingActionButton
     aria-label={intl.formatMessage(messages.label)}
     onTouchTap={onTouchTap}
@@ -22,13 +22,13 @@ const AddButton = ({ intl, onTouchTap }) => (
   </FloatingActionButton>
 );
 
-AddButton.propTypes = {
+NewPlayerButton.propTypes = {
   intl: intlShape.isRequired,
   onTouchTap: PropTypes.func,
 };
 
-AddButton.defaultProps = {
+NewPlayerButton.defaultProps = {
   onTouchTap: noop,
 };
 
-export default injectIntl(AddButton);
+export default injectIntl(NewPlayerButton);

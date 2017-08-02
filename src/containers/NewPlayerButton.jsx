@@ -2,7 +2,8 @@ import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 
 import { setActivePlayer, toggleEditMode } from '../actions';
-import MainButton from '../components/MainButton';
+
+import NewPlayerButton from '../components/NewPlayerButton';
 
 const mapDispatchToProps = dispatch => ({
   onTouchTap: () => {
@@ -12,4 +13,4 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-export default connect(undefined, mapDispatchToProps)(MainButton);
+export default connect(undefined, mapDispatchToProps)(NewPlayerButton);
