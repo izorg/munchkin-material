@@ -9,3 +9,9 @@
 .item {
   flex-grow: 1;
 }
+
+@media all and (orientation: portrait) and (min-height: 543px) {
+  .sliderContent {
+    padding-bottom: 80px;
+  }
+}

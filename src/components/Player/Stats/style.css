@@ -28,21 +28,49 @@
 }
 
 .strengthTitle {
+  display: none;
   font-family: 'Munchkin', 'Roboto', sans-serif;
   font-size: 24px;
 }
 
 .strengthValue {
+  display: none;
   font-family: 'Munchkin', 'Roboto', sans-serif;
   font-size: 72px; /* 36px * 2 */
   line-height: 0.575; /* 1.15 / 2 */
-  margin-top: 64px;
+  margin-top: 32px;
 }
 
+@media all and (orientation: portrait) and (min-height: 383px) {
+  .strengthValue {
+    display: block;
+  }
+}
+
+@media all and (orientation: portrait) and (min-height: 447px) {
+  .strengthTitle {
+    display: block;
+  }
+}
+
+@media all and (orientation: portrait) and (min-height: 543px) {
+  .stats {
+    flex-direction: column-reverse;
+  }
+}
 
 @media all and (orientation: landscape) {
   .stats {
     flex-direction: row;
+  }
+
+  .strengthTitle {
+    display: block;
+  }
+
+  .strengthValue {
+    display: block;
+    margin-top: 64px;
   }
 }
 
