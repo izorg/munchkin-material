@@ -5,9 +5,9 @@ import NavigationArrowDropDown from 'material-ui/svg-icons/navigation/arrow-drop
 import NavigationArrowDropUp from 'material-ui/svg-icons/navigation/arrow-drop-up';
 import cns from 'classnames';
 
-import cn from './style.css';
-
 import { noop } from '../../constants';
+
+import cn from './style.css';
 
 const styles = {
   small: {
@@ -21,12 +21,11 @@ const styles = {
   },
 };
 
-const Counter = ({ className, onDecrement, onIncrement, readOnly, title, value }) => (
+const Counter = ({ className, onDecrement, onIncrement, title, value }) => (
   <div className={cns(className, cn.counter)}>
     {title ? <div className={cn.title}>{title}</div> : null}
 
     <IconButton
-      className={cns({ [cn.hidden]: readOnly })}
       iconStyle={styles.smallIcon}
       onTouchTap={onIncrement}
       style={styles.small}
@@ -34,12 +33,11 @@ const Counter = ({ className, onDecrement, onIncrement, readOnly, title, value }
       <NavigationArrowDropUp className={cn.actionIcon} />
     </IconButton>
 
-    <div className={cns(cn.value, { [cn.valueReadOnly]: readOnly })}>
+    <div className={cn.value}>
       {value}
     </div>
 
     <IconButton
-      className={cns({ [cn.hidden]: readOnly })}
       iconStyle={styles.smallIcon}
       onTouchTap={onDecrement}
       style={styles.small}
@@ -53,7 +51,6 @@ Counter.propTypes = {
   className: PropTypes.string,
   onDecrement: PropTypes.func,
   onIncrement: PropTypes.func,
-  readOnly: PropTypes.bool,
   title: PropTypes.node,
   value: PropTypes.number.isRequired,
 };
@@ -62,7 +59,6 @@ Counter.defaultProps = {
   className: '',
   onDecrement: noop,
   onIncrement: noop,
-  readOnly: false,
   title: '',
 };
 
