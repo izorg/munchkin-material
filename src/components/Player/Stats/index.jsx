@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
+import IconButton from 'material-ui/IconButton';
 import { Player } from 'munchkin-core';
 import cns from 'classnames';
 
 import cn from './style.css';
 
-import Main from './Main';
 import Counter from '../../Counter';
+import Gender from '../../Gender';
 import { noop } from '../../../constants';
 
 class PlayerStats extends Component {
@@ -56,14 +57,8 @@ class PlayerStats extends Component {
 
     return (
       <div className={cns(className, cn.stats)}>
-        <div className={cn.mainWrapper}>
-          <Main
-            onGenderToggle={this.handleGenderToggle}
-            player={player}
-          />
-        </div>
         <div className={cn.counters}>
-          <div className={cn.counterWrapper}>
+          <div className={cn.counterContainer}>
             <Counter
               onDecrement={this.handleLevelDecrement}
               onIncrement={this.handleLevelIncrement}
@@ -71,13 +66,39 @@ class PlayerStats extends Component {
               value={player.level}
             />
           </div>
-          <div className={cn.counterWrapper}>
+          <div className={cn.counterContainer}>
             <Counter
               onDecrement={this.handleGearDecrement}
               onIncrement={this.handleGearIncrement}
               title={<FormattedMessage id="player.stats.gear" defaultMessage="Gear" />}
               value={player.gear}
             />
+          </div>
+        </div>
+        <div className={cn.mainContainer}>
+          <div className={cn.strengthCounter}>
+            <div className={cn.strengthTitle}>
+              <FormattedMessage id="player.stats.strength" defaultMessage="Strength" />
+            </div>
+
+            <div className={cn.strengthValue}>
+              {player.strength}
+            </div>
+
+            <IconButton
+              iconStyle={{
+                width: 36,
+                height: 36,
+              }}
+              onTouchTap={this.handleGenderToggle}
+              style={{
+                width: 64,
+                height: 64,
+                padding: 12,
+              }}
+            >
+              <Gender gender={player.gender} />
+            </IconButton>
           </div>
         </div>
       </div>

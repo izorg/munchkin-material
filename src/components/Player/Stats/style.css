@@ -4,7 +4,7 @@
   width: 100%;
 }
 
-.mainWrapper {
+.mainContainer {
   display: flex;
   flex-direction: column;
   flex: 1 1 50%;
@@ -16,12 +16,29 @@
   display: flex;
 }
 
-.counterWrapper {
+.counterContainer {
   display: flex;
   flex-direction: column;
   flex: 1 1 50%;
   justify-content: center;
 }
+
+.strengthCounter {
+  text-align: center;
+}
+
+.strengthTitle {
+  font-family: 'Munchkin', 'Roboto', sans-serif;
+  font-size: 24px;
+}
+
+.strengthValue {
+  font-family: 'Munchkin', 'Roboto', sans-serif;
+  font-size: 72px; /* 36px * 2 */
+  line-height: 0.575; /* 1.15 / 2 */
+  margin-top: 64px;
+}
+
 
 @media all and (orientation: landscape) {
   .stats {
