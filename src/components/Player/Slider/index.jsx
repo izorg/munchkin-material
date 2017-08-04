@@ -15,7 +15,7 @@ import DiceDialog from '../../../containers/DiceDialog';
 import PlayerStats from '../../../containers/Player/Stats';
 import { ios } from '../../../helpers/platforms';
 
-import banner from './banner';
+// import banner from './banner';
 import cn from './style.css';
 
 const PlayerSwipeableViews = bindKeyboard(virtualize(SwipeableViews));
@@ -142,4 +142,4 @@ PlayerSlider.defaultProps = {
   onPlayerChange: noop,
 };
 
-export default banner(PlayerSlider);
+export default PlayerSlider;

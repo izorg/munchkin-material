@@ -1,4 +1,4 @@
-// import BattleButton from '../../components/BattleButton';
+import CombatButton from '../CombatButton';
 import NewPlayerButton from '../../containers/NewPlayerButton';
 
 export default [
@@ -7,10 +7,10 @@ export default [
     exact: true,
     path: '/',
   },
-  // {
-  //   button: BattleButton,
-  //   exact: true,
-  //   path: '/player/:id',
-  // },
+  {
+    button: CombatButton,
+    exact: true,
+    path: '/player/:id',
+  },
 ];
 

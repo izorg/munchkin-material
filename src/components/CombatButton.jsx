@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import PropTypes from 'prop-types';
@@ -13,22 +14,22 @@ const messages = defineMessages({
   },
 });
 
-const BattleButton = ({ intl, onTouchTap }) => (
+const CombatButton = ({ intl, onTouchTap }) => (
   <FloatingActionButton
-    aria-label={intl.formatMessage(messages.label)}
+    // aria-label={intl.formatMessage(messages.label)}
     onTouchTap={onTouchTap}
   >
     <SwordCross />
   </FloatingActionButton>
 );
 
-BattleButton.propTypes = {
+CombatButton.propTypes = {
   intl: intlShape.isRequired,
   onTouchTap: PropTypes.func,
 };
 
-BattleButton.defaultProps = {
+CombatButton.defaultProps = {
   onTouchTap: noop,
 };
 
-export default injectIntl(BattleButton);
+export default injectIntl(CombatButton);
