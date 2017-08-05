@@ -1,11 +1,11 @@
 /* eslint-disable */
 import React from 'react';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 
 import SwordCross from './icons/SwordCross';
-import { noop } from '../constants';
 
 const messages = defineMessages({
   label: {
@@ -14,10 +14,10 @@ const messages = defineMessages({
   },
 });
 
-const CombatButton = ({ intl, onTouchTap }) => (
+const CombatButton = ({ intl, playerId }) => (
   <FloatingActionButton
     // aria-label={intl.formatMessage(messages.label)}
-    onTouchTap={onTouchTap}
+    containerElement={<Link to={`/player/${playerId}/combat`} />}
   >
     <SwordCross />
   </FloatingActionButton>
@@ -25,11 +25,7 @@ const CombatButton = ({ intl, onTouchTap }) => (
 
 CombatButton.propTypes = {
   intl: intlShape.isRequired,
-  onTouchTap: PropTypes.func,
-};
-
-CombatButton.defaultProps = {
-  onTouchTap: noop,
+  playerId: PropTypes.number.isRequired,
 };
 
 export default injectIntl(CombatButton);

@@ -3,12 +3,12 @@ import Helmet from 'react-helmet';
 import { matchPath, Route } from 'react-router-dom';
 import TransitionGroup from 'react-transition-group/TransitionGroup';
 
+import { ios } from '../../helpers/platforms';
+
 import fabs from './fabs';
 import routes from './routes';
 
 import Zoom from './transitions/Zoom';
-
-import { ios } from '../../helpers/platforms';
 
 import cn from './style.css';
 
@@ -28,17 +28,13 @@ const App = () => (
             routes.map(({ component: Component, transition: Transition, ...route }) => {
               const match = matchPath(location.pathname, route);
 
-              if (match) {
-                return (
-                  <Transition key={`page-${route.path}`}>
-                    <div className={cn.item}>
-                      <Component />
-                    </div>
-                  </Transition>
-                );
-              }
-
-              return null;
+              return match ? (
+                <Transition key={`page-${route.path}`}>
+                  <div className={cn.item}>
+                    <Component />
+                  </div>
+                </Transition>
+              ) : null;
             })
           }
 
