@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { hideBanner, showBanner } from '../../../actions/index';
+import { hideBanner, showBanner } from '../../../actions';
 
 export default (WrappedComponent) => {
   class Banner extends Component {

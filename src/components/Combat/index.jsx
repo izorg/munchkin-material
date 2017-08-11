@@ -6,8 +6,11 @@ import { Player } from 'munchkin-core';
 
 import { noop } from '../../constants';
 
+import Counter from '../Counter';
 import { Layout, LayoutContent, LayoutHeader } from '../Layout';
 import AppBar from '../material-ui/AppBar';
+
+import cn from './style.css';
 
 const Combat = ({ onBack, player }) => (
   <Layout>
@@ -22,8 +25,13 @@ const Combat = ({ onBack, player }) => (
       />
     </LayoutHeader>
     <LayoutContent>
-      {player.name}<br />
-      {player.strength}
+      <div>
+        <p>{player.name}</p>
+        <div className={cn.stats}>
+          <Counter value={player.level} title="Level" />
+          <Counter value={player.gear} title="Gear" />
+        </div>
+      </div>
     </LayoutContent>
   </Layout>
 );
