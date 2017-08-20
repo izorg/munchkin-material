@@ -34,7 +34,6 @@ export default [
   },
   {
     component: Combat,
-    exact: true,
     path: '/player/:id/combat',
     transition: SlideHorizontal,
   },

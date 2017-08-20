@@ -1,9 +1,10 @@
 /* eslint-disable */
 import React from 'react';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
+
+import { noop } from '../constants';
 
 import SwordCross from './icons/SwordCross';
 
@@ -14,10 +15,10 @@ const messages = defineMessages({
   },
 });
 
-const CombatButton = ({ intl, playerId }) => (
+const CombatButton = ({ intl, onCombatStart, playerId }) => (
   <FloatingActionButton
     // aria-label={intl.formatMessage(messages.label)}
-    containerElement={<Link to={`/player/${playerId}/combat`} />}
+    onTouchTap={() => onCombatStart(playerId)}
   >
     <SwordCross />
   </FloatingActionButton>
@@ -25,7 +26,12 @@ const CombatButton = ({ intl, playerId }) => (
 
 CombatButton.propTypes = {
   intl: intlShape.isRequired,
+  onCombatStart: PropTypes.func,
   playerId: PropTypes.number.isRequired,
+};
+
+CombatButton.defaultProps = {
+  onCombatStart: noop,
 };
 
 export default injectIntl(CombatButton);
