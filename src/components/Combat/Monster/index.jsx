@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { noop } from '../../constants';
+import { noop } from '../../../constants/index';
 
 const CombatMonster = ({ onRemove }) => (
   <div>

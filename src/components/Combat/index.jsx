@@ -9,7 +9,7 @@ import { Player } from 'munchkin-core';
 
 import { noop } from '../../constants';
 
-import CombatMonster from '../CombatMonster';
+import CombatMonster from './Monster';
 import Counter from '../Counter';
 import { Layout, LayoutContent, LayoutHeader } from '../Layout';
 import AppBar from '../material-ui/AppBar';
