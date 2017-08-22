@@ -5,12 +5,18 @@ import Dialog from 'material-ui/Dialog';
 import { List, ListItem } from 'material-ui/List';
 import { Player } from 'munchkin-core';
 
-const HelperSelector = ({ helpers, ...props }) => (
-  <Dialog {...props}>
+import { noop } from '../../constants';
+
+const HelperSelector = ({ helpers, onSelect, ...props }) => (
+  <Dialog
+    bodyStyle={{ padding: 0 }}
+    {...props}
+  >
     <List>
       {helpers.map(helper => (
         <ListItem
           key={helper.id.toString()}
+          onTouchTap={() => onSelect(helper.id)}
           primaryText={helper.name}
           secondaryText={
             <p>
@@ -40,10 +46,12 @@ const HelperSelector = ({ helpers, ...props }) => (
 
 HelperSelector.propTypes = {
   helpers: PropTypes.arrayOf(PropTypes.instanceOf(Player)),
+  onSelect: PropTypes.func,
 };
 
 HelperSelector.defaultProps = {
   helpers: [],
+  onSelect: noop,
 };
 
 export default HelperSelector;

@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import { Link, Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import IconButton from 'material-ui/IconButton';
@@ -18,34 +19,10 @@ import HelperSelector from '../../containers/HelperSelector';
 import cn from './style.css';
 
 class Combat extends PureComponent {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      helperSelectorOpen: false,
-    };
-  }
-
-  componentWillMount() {
-    this.handleHelperAdd = this.handleHelperAdd.bind(this);
-    this.handleHelperSelectorClose = this.handleHelperSelectorClose.bind(this);
-  }
-
-  handleHelperAdd() {
-    this.setState({
-      helperSelectorOpen: true,
-    });
-  }
-
-  handleHelperSelectorClose() {
-    this.setState({
-      helperSelectorOpen: false,
-    });
-  }
-
   render() {
     const {
       helper,
+      helperBonus,
       monsters,
       onBack,
       onMonsterAdd,
@@ -53,8 +30,6 @@ class Combat extends PureComponent {
       playerBonus,
       onMonsterRemove,
     } = this.props;
-
-    const { helperSelectorOpen } = this.state;
 
     return (
       <Layout>
@@ -76,9 +51,19 @@ class Combat extends PureComponent {
               <Counter value={player.gear} title="Gear" />
               <Counter value={playerBonus} title="Bonus" />
             </div>
+            {helper && (
+              <div className={cn.stats}>
+                <Counter value={helper.level} title="Level" />
+                <Counter value={helper.gear} title="Gear" />
+                <Counter value={helperBonus} title="Bonus" />
+              </div>
+            )}
             {!helper && (
-              <FloatingActionButton mini>
-                <ContentAdd onTouchTap={this.handleHelperAdd} />
+              <FloatingActionButton
+                containerElement={<Link to={`/player/${player.id}/combat/helpers`} />}
+                mini
+              >
+                <ContentAdd />
               </FloatingActionButton>
             )}
           </div>
@@ -100,10 +85,11 @@ class Combat extends PureComponent {
             </div>
           </div>
 
-          <HelperSelector
-            onRequestClose={this.handleHelperSelectorClose}
-            open={helperSelectorOpen}
-          />
+          <Route exact path="/player/:id/combat/helpers">
+            {({ match }) => (
+              <HelperSelector open={!!match} />
+            )}
+          </Route>
         </LayoutContent>
       </Layout>
     );
@@ -112,6 +98,7 @@ class Combat extends PureComponent {
 
 Combat.propTypes = {
   helper: PropTypes.instanceOf(Player),
+  helperBonus: PropTypes.number,
   monsters: PropTypes.arrayOf(PropTypes.instanceOf(Monster)),
   onBack: PropTypes.func,
   onMonsterAdd: PropTypes.func,
@@ -122,6 +109,7 @@ Combat.propTypes = {
 
 Combat.defaultProps = {
   helper: null,
+  helperBonus: 0,
   monsters: [],
   onBack: noop,
   onMonsterAdd: noop,

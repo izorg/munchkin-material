@@ -1,4 +1,6 @@
 import { connect } from 'react-redux';
+import { goBack } from 'react-router-redux';
+import { setCombatHelper } from 'munchkin-core/lib/actions';
 
 import HelperSelector from '../components/HelperSelector';
 
@@ -8,4 +10,12 @@ const mapStateToProps = state => ({
     .map(id => state.players[id]),
 });
 
-export default connect(mapStateToProps)(HelperSelector);
+const mapDispatchToProps = dispatch => ({
+  onRequestClose: () => dispatch(goBack()),
+  onSelect: (id) => {
+    dispatch(setCombatHelper(id));
+    dispatch(goBack());
+  },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(HelperSelector);

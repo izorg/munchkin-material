@@ -7,6 +7,7 @@ import Combat from '../components/Combat';
 
 const mapStateToProps = ({ app, combat, monsters, players }) => ({
   helper: players[combat.helperId],
+  helperBonus: combat.helperBonus,
   monsters: Object.values(monsters),
   player: players[app.activePlayerId],
   playerBonus: combat.playerBonus,
