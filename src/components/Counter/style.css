@@ -7,8 +7,8 @@
   font-size: 24px;
 }
 
-.actionIcon {
-  transform: scale(2);
+.compact .title {
+  font-size: 16px;
 }
 
 .value {

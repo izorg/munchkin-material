@@ -13,24 +13,36 @@ const styles = {
   small: {
     width: 64,
     height: 64,
-    padding: 12,
+    padding: 0,
   },
   smallIcon: {
-    width: 36,
-    height: 36,
+    width: 64,
+    height: 64,
   },
 };
 
-const Counter = ({ className, onDecrement, onIncrement, title, value }) => (
-  <div className={cns(className, cn.counter)}>
+const compactStyles = {
+  small: {
+    width: 48,
+    height: 48,
+    padding: 0,
+  },
+  smallIcon: {
+    width: 48,
+    height: 48,
+  },
+};
+
+const Counter = ({ className, compact, onDecrement, onIncrement, title, value }) => (
+  <div className={cns(className, cn.counter, { [cn.compact]: compact })}>
     {title ? <div className={cn.title}>{title}</div> : null}
 
     <IconButton
-      iconStyle={styles.smallIcon}
+      iconStyle={compact ? compactStyles.smallIcon : styles.smallIcon}
       onTouchTap={onIncrement}
-      style={styles.small}
+      style={compact ? compactStyles.small : styles.small}
     >
-      <NavigationArrowDropUp className={cn.actionIcon} />
+      <NavigationArrowDropUp />
     </IconButton>
 
     <div className={cn.value}>
@@ -38,17 +50,18 @@ const Counter = ({ className, onDecrement, onIncrement, title, value }) => (
     </div>
 
     <IconButton
-      iconStyle={styles.smallIcon}
+      iconStyle={compact ? compactStyles.smallIcon : styles.smallIcon}
       onTouchTap={onDecrement}
-      style={styles.small}
+      style={compact ? compactStyles.small : styles.small}
     >
-      <NavigationArrowDropDown className={cn.actionIcon} />
+      <NavigationArrowDropDown />
     </IconButton>
   </div>
 );
 
 Counter.propTypes = {
   className: PropTypes.string,
+  compact: PropTypes.bool,
   onDecrement: PropTypes.func,
   onIncrement: PropTypes.func,
   title: PropTypes.node,
@@ -57,6 +70,7 @@ Counter.propTypes = {
 
 Counter.defaultProps = {
   className: '',
+  compact: false,
   onDecrement: noop,
   onIncrement: noop,
   title: '',

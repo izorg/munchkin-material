@@ -14,6 +14,7 @@ import { noop } from '../../../constants';
 import DiceDialog from '../../../containers/DiceDialog';
 import PlayerStats from '../../../containers/Player/Stats';
 import { ios } from '../../../helpers/platforms';
+import { playerInstance } from '../../../utils/propTypes';
 
 // import banner from './banner';
 import cn from './style.css';
@@ -131,7 +132,7 @@ PlayerSlider.propTypes = {
   onBack: PropTypes.func,
   onDiceTouchTap: PropTypes.func,
   onPlayerChange: PropTypes.func,
-  players: PropTypes.arrayOf(PropTypes.instanceOf(Player)).isRequired,
+  players: PropTypes.arrayOf(playerInstance).isRequired,
   selectedPlayer: PropTypes.instanceOf(Player).isRequired,
 };
 

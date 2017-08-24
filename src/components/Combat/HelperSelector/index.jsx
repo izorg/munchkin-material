@@ -5,10 +5,11 @@ import Dialog from 'material-ui/Dialog';
 import { List, ListItem } from 'material-ui/List';
 import { Player } from 'munchkin-core';
 
-import { noop } from '../../constants';
+import { noop } from '../../../constants';
 
 const HelperSelector = ({ helpers, onSelect, ...props }) => (
   <Dialog
+    autoScrollBodyContent
     bodyStyle={{ padding: 0 }}
     {...props}
   >

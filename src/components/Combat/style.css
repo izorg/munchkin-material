@@ -1,3 +1,65 @@
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
+.players {
+  align-items: flex-start;
+  display: flex;
+  flex-grow: 1;
+  position: relative;
+}
+
+.player,
+.helper {
+  text-align: center;
+}
+
+.name {
+  margin: 0 8px 8px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .stats {
   display: flex;
+}
+
+.item {
+  flex: 1;
+}
+
+.addHelper {
+  position: absolute;
+  right: 8px;
+  top: 8px;
+}
+
+.remove {
+  position: absolute !important;
+  right: 16px;
+  bottom: 16px;
+}
+
+.monsters {
+  align-items: flex-end;
+  display: flex;
+  flex-grow: 1;
+}
+
+.total {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.value {
+  font-family: 'Munchkin', 'Roboto', sans-serif;
+  font-size: 2em;
+}
+
+.versus {
+  margin: 0 0.5em;
 }

@@ -6,7 +6,7 @@ import TransitionGroup from 'react-transition-group/TransitionGroup';
 import PropTypes from 'prop-types';
 
 import Combat from '../../containers/Combat';
-import CombatButton from '../../containers/CombatButton';
+import CombatButton from '../../containers/Combat/Button';
 import NewPlayerButton from '../../containers/NewPlayerButton';
 import PlayerForm from '../../containers/Player/Form';
 import PlayerList from '../../containers/Player/List';

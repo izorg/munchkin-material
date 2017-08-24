@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 import { startCombat } from 'munchkin-core/lib/actions';
 
-import CombatButton from '../components/CombatButton';
+import CombatButton from '../../components/CombatButton';
 
 const mapStateToProps = state => ({
   playerId: state.app.activePlayerId,

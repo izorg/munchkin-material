@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { goBack } from 'react-router-redux';
 import { setCombatHelper } from 'munchkin-core/lib/actions';
 
-import HelperSelector from '../components/HelperSelector';
+import HelperSelector from '../../components/Combat/HelperSelector';
 
 const mapStateToProps = state => ({
   helpers: state.playerList

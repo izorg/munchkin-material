@@ -1,0 +1,15 @@
+.monsters {
+  position: relative;
+}
+
+.add {
+  bottom: 8px;
+  position: absolute;
+  right: 8px;
+}
+
+.remove {
+  position: absolute !important;
+  right: 16px;
+  top: 16px;
+}
