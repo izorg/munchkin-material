@@ -76,7 +76,7 @@ class CombatMonsterSlider extends PureComponent {
           }}
           style={{
             flexGrow: 1,
-            padding: '0 32px',
+            padding: '0 48px',
           }}
         >
           {monsters.map((monster, monsterIndex) => (

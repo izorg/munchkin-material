@@ -6,7 +6,7 @@
 .players {
   align-items: flex-start;
   display: flex;
-  flex-grow: 1;
+  flex: 1;
   position: relative;
 }
 
@@ -32,8 +32,8 @@
 
 .addHelper {
   position: absolute;
-  right: 8px;
-  top: 8px;
+  right: 16px;
+  top: 16px;
 }
 
 .remove {
@@ -45,7 +45,7 @@
 .monsters {
   align-items: flex-end;
   display: flex;
-  flex-grow: 1;
+  flex: 1;
 }
 
 .total {
