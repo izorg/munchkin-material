@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import IconButton from 'material-ui/IconButton';
 import NavigationArrowBack from 'material-ui/svg-icons/navigation/arrow-back';
 import cns from 'classnames';
-import { Player } from 'munchkin-core';
 
 import DiceMultipleIcon from '../../icons/dice/multiple';
 import { Layout, LayoutContent, LayoutHeader } from '../../Layout';
@@ -133,7 +132,7 @@ PlayerSlider.propTypes = {
   onDiceTouchTap: PropTypes.func,
   onPlayerChange: PropTypes.func,
   players: PropTypes.arrayOf(playerInstance).isRequired,
-  selectedPlayer: PropTypes.instanceOf(Player).isRequired,
+  selectedPlayer: playerInstance.isRequired,
 };
 
 PlayerSlider.defaultProps = {

@@ -1,0 +1,18 @@
+.player {
+  text-align: center;
+}
+
+.name {
+  margin: 0 8px 8px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.stats {
+  display: flex;
+}
+
+.item {
+  flex: 1;
+}

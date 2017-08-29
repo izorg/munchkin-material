@@ -6,11 +6,11 @@ import PropTypes from 'prop-types';
 import Checkbox from 'material-ui/Checkbox';
 import { ListItem } from 'material-ui/List';
 import ActionReorder from 'material-ui/svg-icons/action/reorder';
-import { Player } from 'munchkin-core';
 
 import { noop } from '../../../../constants';
 import getGenderIconClass from '../../../../helpers/getGenderIconClass';
 import { ios } from '../../../../helpers/platforms';
+import { playerInstance } from '../../../../utils/propTypes';
 
 import PlayerListItemAvatar from './Avatar';
 
@@ -154,7 +154,7 @@ PlayerListItem.propTypes = {
   onCheck: PropTypes.func,
   onPress: PropTypes.func,
   onTouchTap: PropTypes.func,
-  player: PropTypes.instanceOf(Player).isRequired,
+  player: playerInstance.isRequired,
   selected: PropTypes.bool,
   showCheckbox: PropTypes.bool,
   showDragHandle: PropTypes.bool,

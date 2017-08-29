@@ -9,7 +9,6 @@ import EditorModeEdit from 'material-ui/svg-icons/editor/mode-edit';
 import NavigationCheck from 'material-ui/svg-icons/navigation/check';
 import NavigationClose from 'material-ui/svg-icons/navigation/close';
 import { grey600 } from 'material-ui/styles/colors';
-import { Player } from 'munchkin-core';
 
 import cn from './style.css';
 
@@ -18,6 +17,7 @@ import AppBar from '../../material-ui/AppBar';
 import { Layout, LayoutContent, LayoutHeader } from '../../Layout';
 import { noop } from '../../../constants';
 import { ios } from '../../../helpers/platforms';
+import { playerInstance } from '../../../utils/propTypes';
 
 const SortableList = SortableContainer(List);
 const SortableListItem = SortableElement(Item);
@@ -173,7 +173,7 @@ PlayerList.propTypes = {
   onPlayerMove: PropTypes.func,
   onPlayerSelect: PropTypes.func,
   onToggleEditClick: PropTypes.func,
-  players: PropTypes.arrayOf(PropTypes.instanceOf(Player)),
+  players: PropTypes.arrayOf(playerInstance),
   selectedPlayerIds: PropTypes.arrayOf(PropTypes.number),
 };
 

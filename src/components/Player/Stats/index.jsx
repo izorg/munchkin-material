@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 import IconButton from 'material-ui/IconButton';
-import { Player } from 'munchkin-core';
 import cns from 'classnames';
 
 import cn from './style.css';
@@ -10,6 +9,7 @@ import cn from './style.css';
 import Counter from '../../Counter';
 import Gender from '../../Gender';
 import { noop } from '../../../constants';
+import { playerInstance } from '../../../utils/propTypes';
 
 class PlayerStats extends Component {
   componentWillMount() {
@@ -113,7 +113,7 @@ PlayerStats.propTypes = {
   onGenderToggle: PropTypes.func,
   onLevelDecrement: PropTypes.func,
   onLevelIncrement: PropTypes.func,
-  player: PropTypes.instanceOf(Player).isRequired,
+  player: playerInstance.isRequired,
 };
 
 PlayerStats.defaultProps = {

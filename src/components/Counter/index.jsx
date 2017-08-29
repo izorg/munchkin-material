@@ -35,7 +35,7 @@ const compactStyles = {
 
 const Counter = ({ className, compact, onDecrement, onIncrement, title, value }) => {
   const buttonStyle = compact ? compactStyles.small : styles.small;
-  const iconStyle = compact ? compactStyles.smallIcon : styles.smallIcon
+  const iconStyle = compact ? compactStyles.smallIcon : styles.smallIcon;
 
   return (
     <div className={cns(className, cn.counter, { [cn.compact]: compact })}>
@@ -61,7 +61,7 @@ const Counter = ({ className, compact, onDecrement, onIncrement, title, value })
         <NavigationArrowDropDown />
       </IconButton>
     </div>
-  )
+  );
 };
 
 Counter.propTypes = {

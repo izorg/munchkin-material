@@ -4,42 +4,7 @@
 }
 
 .players {
-  align-items: flex-start;
-  display: flex;
   flex: 1;
-  position: relative;
-}
-
-.player,
-.helper {
-  text-align: center;
-}
-
-.name {
-  margin: 0 8px 8px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.stats {
-  display: flex;
-}
-
-.item {
-  flex: 1;
-}
-
-.addHelper {
-  position: absolute;
-  right: 16px;
-  top: 16px;
-}
-
-.remove {
-  position: absolute !important;
-  right: 16px;
-  bottom: 16px;
 }
 
 .monsters {

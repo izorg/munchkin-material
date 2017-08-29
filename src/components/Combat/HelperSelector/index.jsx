@@ -3,9 +3,9 @@ import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 import Dialog from 'material-ui/Dialog';
 import { List, ListItem } from 'material-ui/List';
-import { Player } from 'munchkin-core';
 
 import { noop } from '../../../constants';
+import { playerInstance } from '../../../utils/propTypes';
 
 const HelperSelector = ({ helpers, onSelect, ...props }) => (
   <Dialog
@@ -46,7 +46,7 @@ const HelperSelector = ({ helpers, onSelect, ...props }) => (
 );
 
 HelperSelector.propTypes = {
-  helpers: PropTypes.arrayOf(PropTypes.instanceOf(Player)),
+  helpers: PropTypes.arrayOf(playerInstance),
   onSelect: PropTypes.func,
 };
 

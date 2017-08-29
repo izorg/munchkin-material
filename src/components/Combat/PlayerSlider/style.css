@@ -1,0 +1,17 @@
+.players {
+  align-items: flex-start;
+  display: flex;
+  position: relative;
+}
+
+.addHelper {
+  position: absolute;
+  right: 16px;
+  top: 16px;
+}
+
+.remove {
+  position: absolute !important;
+  right: 16px;
+  bottom: 16px;
+}

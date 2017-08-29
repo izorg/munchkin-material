@@ -27,6 +27,11 @@ export const movePlayer = (oldPosition, newPosition) => ({
   newPosition,
 });
 
+export const removeHelper = () => (dispatch) => {
+  dispatch(actions.setCombatHelper(null));
+  dispatch(actions.setCombatHelperBonus(0));
+};
+
 export const resetDice = () => ({
   type: types.RESET_DICE,
 });
@@ -88,6 +93,7 @@ export default {
   hideBanner,
   movePlayer,
   resetDice,
+  removeHelper,
   setActivePlayer,
   setLocale,
   setMultiMode,
