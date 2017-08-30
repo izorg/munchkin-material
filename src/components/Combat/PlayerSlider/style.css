@@ -4,6 +4,10 @@
   position: relative;
 }
 
+.playerContainer {
+  padding: 8px;
+}
+
 .addHelper {
   position: absolute;
   right: 16px;
@@ -14,4 +18,27 @@
   position: absolute !important;
   right: 16px;
   bottom: 16px;
+}
+
+@media all and (orientation: landscape) {
+  .players {
+    align-items: stretch;
+    overflow: hidden;
+  }
+
+  .playerContainer {
+    padding-left: 36px;
+  }
+
+  .addHelper {
+    bottom: 16px;
+    left: 16px;
+    right: auto;
+    top: auto;
+  }
+
+  .remove {
+    right: 8px;
+    bottom: 8px;
+  }
 }

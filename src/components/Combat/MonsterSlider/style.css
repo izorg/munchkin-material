@@ -1,5 +1,11 @@
 .monsters {
+  align-items: flex-end;
+  display: flex;
   position: relative;
+}
+
+.monsterContainer {
+  padding: 8px;
 }
 
 .add {
@@ -12,4 +18,22 @@
   position: absolute !important;
   right: 16px;
   top: 16px;
+}
+
+@media all and (orientation: landscape) {
+  .monsters {
+    align-items: stretch;
+    overflow: hidden;
+  }
+
+  .monsterContainer {
+    padding-right: 16px;
+  }
+
+  .remove {
+    bottom: 8px;
+    left: 8px;
+    right: auto;
+    top: auto;
+  }
 }

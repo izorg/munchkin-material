@@ -7,6 +7,8 @@ import { List, ListItem } from 'material-ui/List';
 import { noop } from '../../../constants';
 import { playerInstance } from '../../../utils/propTypes';
 
+import cn from './style.css';
+
 const HelperSelector = ({ helpers, onSelect, ...props }) => (
   <Dialog
     autoScrollBodyContent
@@ -18,7 +20,7 @@ const HelperSelector = ({ helpers, onSelect, ...props }) => (
         <ListItem
           key={helper.id.toString()}
           onTouchTap={() => onSelect(helper.id)}
-          primaryText={helper.name}
+          primaryText={<div className={cn.name}>{helper.name}</div>}
           secondaryText={
             <p>
               <FormattedMessage

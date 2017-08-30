@@ -8,8 +8,6 @@
 }
 
 .monsters {
-  align-items: flex-end;
-  display: flex;
   flex: 1;
 }
 
@@ -27,4 +25,15 @@
 
 .versus {
   margin: 0 0.5em;
+}
+
+@media all and (orientation: landscape) {
+  .content {
+    flex-direction: row;
+  }
+
+  .total {
+    flex-direction: column;
+    width: 50px;
+  }
 }

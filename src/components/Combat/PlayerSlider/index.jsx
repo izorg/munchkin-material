@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import SwipeableViews from 'react-swipeable-views';
+import MediaQuery from 'react-responsive';
 import { Link, Route } from 'react-router-dom';
+import SwipeableViews from 'react-swipeable-views';
 import PropTypes from 'prop-types';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import IconButton from 'material-ui/IconButton';
@@ -80,50 +81,79 @@ class CombatPlayerSlider extends Component {
       });
     }
 
+    const players = playersProps.map(props => (
+      <Paper
+        className={cn.playerContainer}
+        key={props.player.id.toString()}
+      >
+        <Player
+          player={props.player}
+          onBonusChange={props.onBonusChange}
+        />
+
+        {helper && props.player.id === helper.id && (
+          <IconButton
+            className={cn.remove}
+            onTouchTap={this.handleHelperRemove}
+            style={{
+              width: 36,
+              height: 36,
+              padding: 6,
+            }}
+          >
+            <CloseCircle />
+          </IconButton>
+        )}
+      </Paper>
+    ));
+
     return (
       <div className={cns(cn.players, className)}>
-        <SwipeableViews
-          index={index}
-          onChangeIndex={this.handleChangeIndex}
-          slideStyle={{
-            boxSizing: 'border-box',
-            padding: '0 16px 16px',
-            position: 'relative',
-          }}
-          style={{
-            flexGrow: 1,
-            padding: '0 32px',
-          }}
-          enableMouseEvents
-        >
-          {playersProps.map(props => (
-            <Paper
-              key={props.player.id.toString()}
-              style={{
-                padding: 8,
-              }}
-            >
-              <Player
-                player={props.player}
-                onBonusChange={props.onBonusChange}
-              />
+        <MediaQuery orientation="portrait">
+          <SwipeableViews
+            enableMouseEvents
+            index={index}
+            onChangeIndex={this.handleChangeIndex}
+            slideStyle={{
+              boxSizing: 'border-box',
+              padding: '0 16px 16px',
+              position: 'relative',
+            }}
+            style={{
+              flex: 1,
+              padding: '0 32px',
+            }}
+          >
+            {players}
+          </SwipeableViews>
+        </MediaQuery>
 
-              {helper && props.player.id === helper.id && (
-                <IconButton
-                  className={cn.remove}
-                  onTouchTap={this.handleHelperRemove}
-                  style={{
-                    width: 36,
-                    height: 36,
-                    padding: 6,
-                  }}
-                >
-                  <CloseCircle />
-                </IconButton>
-              )}
-            </Paper>
-          ))}
-        </SwipeableViews>
+        <MediaQuery orientation="landscape">
+          <SwipeableViews
+            axis="y"
+            containerStyle={{
+              height: 221,
+              width: '100%',
+            }}
+            enableMouseEvents
+            index={index}
+            onChangeIndex={this.handleChangeIndex}
+            slideStyle={{
+              boxSizing: 'border-box',
+              padding: '8px 8px 8px 0',
+              position: 'relative',
+            }}
+            style={{
+              alignItems: 'center',
+              boxSizing: 'border-box',
+              display: 'flex',
+              padding: '16px 0',
+              width: '100%',
+            }}
+          >
+            {players}
+          </SwipeableViews>
+        </MediaQuery>
 
         {!helper && (
           <FloatingActionButton

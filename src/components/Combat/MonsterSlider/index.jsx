@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import MediaQuery from 'react-responsive';
 import SwipeableViews from 'react-swipeable-views';
 import PropTypes from 'prop-types';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
@@ -63,50 +64,79 @@ class CombatMonsterSlider extends PureComponent {
     const { className, monsters } = this.props;
     const { index } = this.state;
 
+    const views = monsters.map((monster, monsterIndex) => (
+      <Paper
+        className={cn.monsterContainer}
+        key={monster.id.toString()}
+      >
+        <Monster
+          key={monster.id.toString()}
+          monster={monster}
+          title={`Monster ${monsterIndex + 1}`}
+        />
+
+        {monsters.length > 1 && monsterIndex === index && (
+          <IconButton
+            className={cn.remove}
+            onTouchTap={() => this.handleRemove(monster.id)}
+            style={{
+              width: 36,
+              height: 36,
+              padding: 6,
+            }}
+          >
+            <CloseCircle />
+          </IconButton>)}
+      </Paper>
+    ));
+
     return (
       <div className={cns(cn.monsters, className)}>
-        <SwipeableViews
-          enableMouseEvents
-          index={index}
-          onChangeIndex={this.handleChangeIndex}
-          slideStyle={{
-            boxSizing: 'border-box',
-            padding: '16px 16px 0',
-            position: 'relative',
-          }}
-          style={{
-            flexGrow: 1,
-            padding: '0 48px',
-          }}
-        >
-          {monsters.map((monster, monsterIndex) => (
-            <Paper
-              key={monster.id.toString()}
-              style={{
-                padding: 8,
-              }}
-            >
-              <Monster
-                key={monster.id.toString()}
-                monster={monster}
-                title={`Monster ${monsterIndex + 1}`}
-              />
+        <MediaQuery orientation="portrait">
+          <SwipeableViews
+            enableMouseEvents
+            index={index}
+            onChangeIndex={this.handleChangeIndex}
+            slideStyle={{
+              boxSizing: 'border-box',
+              padding: '16px 16px 0',
+              position: 'relative',
+            }}
+            style={{
+              flex: 1,
+              padding: '0 48px',
+            }}
+          >
+            {views}
+          </SwipeableViews>
+        </MediaQuery>
 
-              {monsters.length > 1 && monsterIndex === index && (
-                <IconButton
-                  className={cn.remove}
-                  onTouchTap={() => this.handleRemove(monster.id)}
-                  style={{
-                    width: 36,
-                    height: 36,
-                    padding: 6,
-                  }}
-                >
-                  <CloseCircle />
-                </IconButton>)}
-            </Paper>
-          ))}
-        </SwipeableViews>
+        <MediaQuery orientation="landscape">
+          <SwipeableViews
+            axis="y"
+            containerStyle={{
+              height: 221,
+              width: '100%',
+            }}
+            enableMouseEvents
+            index={index}
+            onChangeIndex={this.handleChangeIndex}
+            slideStyle={{
+              boxSizing: 'border-box',
+              padding: '8px 0 8px 8px',
+              position: 'relative',
+            }}
+            style={{
+              alignItems: 'center',
+              boxSizing: 'border-box',
+              display: 'flex',
+              padding: '16px 0',
+              width: '100%',
+            }}
+          >
+            {views}
+          </SwipeableViews>
+        </MediaQuery>
 
         <FloatingActionButton
           className={cn.add}
