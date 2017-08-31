@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 import IconButton from 'material-ui/IconButton';
 import NavigationArrowBack from 'material-ui/svg-icons/navigation/arrow-back';
@@ -38,7 +39,7 @@ class Combat extends PureComponent {
                 <NavigationArrowBack />
               </IconButton>
             )}
-            title="Combat"
+            title={<FormattedMessage id="combat" defaultMessage="Combat" />}
           />
         </LayoutHeader>
         <LayoutContent className={cn.content}>

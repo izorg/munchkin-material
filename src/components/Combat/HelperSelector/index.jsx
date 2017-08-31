@@ -24,7 +24,7 @@ const HelperSelector = ({ helpers, onSelect, ...props }) => (
           secondaryText={
             <p>
               <FormattedMessage
-                id="player.list.item.secondaryTextLevel"
+                id="combat.helperSelector.level"
                 defaultMessage="Level {level}"
                 values={{
                   level: <b>{helper.level}</b>,
@@ -32,7 +32,7 @@ const HelperSelector = ({ helpers, onSelect, ...props }) => (
               />
               <br />
               <FormattedMessage
-                id="player.list.item.secondaryTextStrength"
+                id="combat.helperSelector.strength"
                 defaultMessage="Strength {strength}"
                 values={{
                   strength: <b>{helper.strength}</b>,

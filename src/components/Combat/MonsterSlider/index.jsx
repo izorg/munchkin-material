@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import { FormattedMessage } from 'react-intl';
 import MediaQuery from 'react-responsive';
 import SwipeableViews from 'react-swipeable-views';
 import PropTypes from 'prop-types';
@@ -72,7 +73,13 @@ class CombatMonsterSlider extends PureComponent {
         <Monster
           key={monster.id.toString()}
           monster={monster}
-          title={`Monster ${monsterIndex + 1}`}
+          title={<FormattedMessage
+            id="combat.monster"
+            defaultMessage="Monster {number}"
+            values={{
+              number: monsterIndex + 1,
+            }}
+          />}
         />
 
         {monsters.length > 1 && monsterIndex === index && (

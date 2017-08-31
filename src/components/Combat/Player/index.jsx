@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 
 import Counter from '../../Counter';
@@ -59,7 +60,7 @@ class CombatPlayer extends PureComponent {
             compact
             onDecrement={this.handleLevelDecrement}
             onIncrement={this.handleLevelIncrement}
-            title="Level"
+            title={<FormattedMessage id="combat.player.level" defaultMessage="Level" />}
             value={player.level}
           />
           <Counter
@@ -67,7 +68,7 @@ class CombatPlayer extends PureComponent {
             compact
             onDecrement={this.handleGearDecrement}
             onIncrement={this.handleGearIncrement}
-            title="Gear"
+            title={<FormattedMessage id="combat.player.gear" defaultMessage="Gear" />}
             value={player.gear}
           />
           <Counter
@@ -75,7 +76,7 @@ class CombatPlayer extends PureComponent {
             compact
             onDecrement={() => this.handleBonusChange(-1)}
             onIncrement={() => this.handleBonusChange(+1)}
-            title="Bonus"
+            title={<FormattedMessage id="combat.player.modifier" defaultMessage="Modifier" />}
             value={bonus}
           />
         </div>

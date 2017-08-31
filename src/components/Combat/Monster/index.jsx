@@ -1,4 +1,5 @@
 import React from 'react';
+import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 
 import Counter from '../../Counter';
@@ -26,7 +27,7 @@ const CombatMonster = ({
         compact
         onDecrement={() => onLevelDecrement(monster)}
         onIncrement={() => onLevelIncrement(monster)}
-        title="Level"
+        title={<FormattedMessage id="combat.monster.level" defaultMessage="Level" />}
         value={monster.level}
       />
       <Counter
@@ -34,7 +35,7 @@ const CombatMonster = ({
         compact
         onDecrement={() => onBonusDecrement(monster)}
         onIncrement={() => onBonusIncrement(monster)}
-        title="Bonus"
+        title={<FormattedMessage id="combat.monster.modifier" defaultMessage="Modifier" />}
         value={monster.bonus}
       />
     </div>

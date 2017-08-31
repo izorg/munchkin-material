@@ -1,12 +1,22 @@
 {
+  "combat.helperSelector.level": "Рівень {level}",
+  "combat.helperSelector.strength": "Сила {strength}",
+  "combat": "Бій",
+  "combat.monster.level": "Рівень",
+  "combat.monster.modifier": "Модиф-р",
+  "combat.monster": "Монстр {number}",
+  "combat.player.level": "Рівень",
+  "combat.player.gear": "Бонус",
+  "combat.player.modifier": "Модиф-р",
+  "combatButton.label": "Почати нові бій",
   "mainButton.label": "Додати новий манчкіна",
   "player.form.namePlaceholder": "Ім'я",
   "player.list.title": "Манчкіни",
   "player.list.item.secondaryTextLevel": "Рівень {level}",
   "player.list.item.secondaryTextStrength": "Сила {strength}",
-  "player.stats.strength": "Сила",
   "player.stats.level": "Рівень",
   "player.stats.gear": "Бонус",
+  "player.stats.strength": "Сила",
   "player.form.titleEdit": "Редагувати манчкіна",
   "player.form.title": "Новий манчкін"
 }

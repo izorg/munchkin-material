@@ -1,12 +1,22 @@
 {
+  "combat.helperSelector.level": "Level {level}",
+  "combat.helperSelector.strength": "Strength {strength}",
+  "combat": "Combat",
+  "combat.monster.level": "Level",
+  "combat.monster.modifier": "Modifier",
+  "combat.monster": "Monster {number}",
+  "combat.player.level": "Level",
+  "combat.player.gear": "Gear",
+  "combat.player.modifier": "Modifier",
+  "combatButton.label": "Start a new battle",
   "mainButton.label": "Add a new munchkin",
   "player.form.namePlaceholder": "Name",
   "player.list.title": "Munchkins",
   "player.list.item.secondaryTextLevel": "Level {level}",
   "player.list.item.secondaryTextStrength": "Strength {strength}",
-  "player.stats.strength": "Strength",
   "player.stats.level": "Level",
   "player.stats.gear": "Gear",
+  "player.stats.strength": "Strength",
   "player.form.titleEdit": "Edit munchkin",
   "player.form.title": "New munchkin"
 }

@@ -10,7 +10,7 @@ import SwordCross from './icons/SwordCross';
 
 const messages = defineMessages({
   label: {
-    id: 'battleButton.label',
+    id: 'combatButton.label',
     defaultMessage: 'Start a new battle',
   },
 });
