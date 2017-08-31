@@ -16,6 +16,5 @@
   "name": "Все манчкины",
   "short_name": "Все манчкины",
   "start_url": "/",
-  "orientation": "portrait",
   "theme_color": "#795548"
 }

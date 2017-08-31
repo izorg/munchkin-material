@@ -48,7 +48,7 @@ CombatMonster.propTypes = {
   onBonusIncrement: PropTypes.func,
   onLevelDecrement: PropTypes.func,
   onLevelIncrement: PropTypes.func,
-  title: PropTypes.string,
+  title: PropTypes.node,
 };
 
 CombatMonster.defaultProps = {
