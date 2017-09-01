@@ -22,7 +22,7 @@
 
 @media all and (orientation: landscape) {
   .monsters {
-    align-items: stretch;
+    align-items: center;
     overflow: hidden;
   }
 

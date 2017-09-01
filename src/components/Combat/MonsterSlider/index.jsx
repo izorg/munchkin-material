@@ -126,6 +126,7 @@ class CombatMonsterSlider extends PureComponent {
               width: '100%',
             }}
             enableMouseEvents
+            ignoreNativeScroll
             index={index}
             onChangeIndex={this.handleChangeIndex}
             slideStyle={{
@@ -135,9 +136,9 @@ class CombatMonsterSlider extends PureComponent {
             }}
             style={{
               alignItems: 'center',
-              boxSizing: 'border-box',
               display: 'flex',
-              padding: '16px 0',
+              height: 221,
+              overflowY: 'visible',
               width: '100%',
             }}
           >

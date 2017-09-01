@@ -22,7 +22,7 @@
 
 @media all and (orientation: landscape) {
   .players {
-    align-items: stretch;
+    align-items: center;
     overflow: hidden;
   }
 
