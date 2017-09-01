@@ -8,7 +8,7 @@ import {
   setCombatPlayerBonus,
 } from 'munchkin-core/lib/actions';
 
-import { removeHelper } from '../../actions';
+import { removeHelper, throwDice } from '../../actions';
 import Combat from '../../components/Combat';
 
 const mapStateToProps = ({ app, combat, monsters, players }) => ({
@@ -21,6 +21,7 @@ const mapStateToProps = ({ app, combat, monsters, players }) => ({
 
 const mapDispatchToProps = {
   onBack: goBack,
+  onDiceTouchTap: throwDice,
   onHelperBonusChange: setCombatHelperBonus,
   onHelperRemove: removeHelper,
   onMonsterAdd: () => addMonster(new Monster()),

@@ -85,7 +85,7 @@ class PlayerSlider extends Component {
     );
 
     const diceButton = (
-      <IconButton onTouchTap={() => onDiceTouchTap()} style={{ marginLeft: ios ? 8 : undefined }}>
+      <IconButton onTouchTap={onDiceTouchTap} style={{ marginLeft: ios ? 8 : undefined }}>
         <DiceMultipleIcon />
       </IconButton>
     );

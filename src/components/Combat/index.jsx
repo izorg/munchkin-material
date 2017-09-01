@@ -4,7 +4,10 @@ import PropTypes from 'prop-types';
 import IconButton from 'material-ui/IconButton';
 import NavigationArrowBack from 'material-ui/svg-icons/navigation/arrow-back';
 
+import DiceMultipleIcon from '../icons/dice/multiple';
 import { noop } from '../../constants';
+import DiceDialog from '../../containers/DiceDialog';
+import { ios } from '../../helpers/platforms';
 import { monsterInstance, playerInstance } from '../../utils/propTypes';
 
 import MonsterSlider from './MonsterSlider';
@@ -21,6 +24,7 @@ class Combat extends PureComponent {
       helperBonus,
       monsters,
       onBack,
+      onDiceTouchTap,
       onHelperBonusChange,
       onHelperRemove,
       onMonsterAdd,
@@ -29,6 +33,12 @@ class Combat extends PureComponent {
       player,
       playerBonus,
     } = this.props;
+
+    const diceButton = (
+      <IconButton onTouchTap={onDiceTouchTap} style={{ marginLeft: ios ? 8 : undefined }}>
+        <DiceMultipleIcon />
+      </IconButton>
+    );
 
     return (
       <Layout>
@@ -39,6 +49,7 @@ class Combat extends PureComponent {
                 <NavigationArrowBack />
               </IconButton>
             )}
+            iconElementRight={diceButton}
             title={<FormattedMessage id="combat" defaultMessage="Combat" />}
           />
         </LayoutHeader>
@@ -71,6 +82,8 @@ class Combat extends PureComponent {
             onMonsterAdd={onMonsterAdd}
             onMonsterRemove={onMonsterRemove}
           />
+
+          <DiceDialog />
         </LayoutContent>
       </Layout>
     );
@@ -82,6 +95,7 @@ Combat.propTypes = {
   helperBonus: PropTypes.number,
   monsters: PropTypes.arrayOf(monsterInstance),
   onBack: PropTypes.func,
+  onDiceTouchTap: PropTypes.func,
   onHelperBonusChange: PropTypes.func,
   onHelperRemove: PropTypes.func,
   onMonsterAdd: PropTypes.func,
@@ -96,6 +110,7 @@ Combat.defaultProps = {
   helperBonus: 0,
   monsters: [],
   onBack: noop,
+  onDiceTouchTap: noop,
   onHelperBonusChange: noop,
   onHelperRemove: noop,
   onMonsterAdd: noop,
