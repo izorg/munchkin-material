@@ -8,7 +8,7 @@ import createHistory from 'history/createHashHistory';
 
 import 'normalize.css';
 
-import { hideBanner } from './actions';
+import { hideBanner, setFullVersion } from './actions';
 import Root from './components/Root';
 import configureStore from './store/configureStore';
 
@@ -19,8 +19,9 @@ injectTapEventPlugin();
 const history = createHistory();
 
 const store = configureStore(history);
+const { dispatch } = store;
 
-store.dispatch(hideBanner());
+dispatch(hideBanner());
 
 const renderAppContainer = (Component, appEl) => render(
   <AppContainer>
@@ -38,6 +39,7 @@ const init = (appEl) => {
 
   return {
     history,
+    setFullVersion: fullVersion => dispatch(setFullVersion(fullVersion)),
     store,
   };
 };

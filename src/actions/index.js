@@ -6,11 +6,15 @@ import { PLAYER_FORM } from '../constants';
 import * as types from '../constants/actionTypes';
 
 export const goToCombat = playerId => (dispatch, getState) => {
-  if (playerId !== getState().combat.playerId) {
-    dispatch(actions.startCombat(playerId));
-  }
+  const { app: { fullVersion } } = getState();
 
-  dispatch(push(`/player/${playerId}/combat`));
+  if (fullVersion) {
+    if (playerId !== getState().combat.playerId) {
+      dispatch(actions.startCombat(playerId));
+    }
+
+    dispatch(push(`/player/${playerId}/combat`));
+  }
 };
 
 export const hideBanner = () => ({

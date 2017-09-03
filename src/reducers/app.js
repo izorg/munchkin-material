@@ -5,7 +5,7 @@ const initialState = {
   bannerVisible: false,
   dice: null,
   editMode: false,
-  fullVersion: true,
+  fullVersion: false,
   locale: null,
   multiMode: false,
   selectedPlayerIds: [],
