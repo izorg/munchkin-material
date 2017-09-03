@@ -5,6 +5,7 @@ const initialState = {
   bannerVisible: false,
   dice: null,
   editMode: false,
+  fullVersion: true,
   locale: null,
   multiMode: false,
   selectedPlayerIds: [],
@@ -28,13 +29,6 @@ const app = (state = initialState, action) => {
       };
     }
 
-    case types.SHOW_BANNER: {
-      return {
-        ...state,
-        bannerVisible: true,
-      };
-    }
-
     case types.SET_ACTIVE_PLAYER: {
       const id = action.id;
 
@@ -43,6 +37,12 @@ const app = (state = initialState, action) => {
         activePlayerId: id || null,
       };
     }
+
+    case types.SET_FULL_VERSION:
+      return {
+        ...state,
+        fullVersion: action.fullVersion,
+      };
 
     case types.SET_LOCALE: {
       return {
@@ -58,6 +58,13 @@ const app = (state = initialState, action) => {
         ...state,
         multiMode,
         selectedPlayerIds: [],
+      };
+    }
+
+    case types.SHOW_BANNER: {
+      return {
+        ...state,
+        bannerVisible: true,
       };
     }
 

@@ -49,6 +49,11 @@ export const setActivePlayer = id => ({
   id,
 });
 
+export const setFullVersion = (fullVersion = true) => ({
+  type: types.SET_FULL_VERSION,
+  fullVersion,
+});
+
 export const setLocale = locale => ({
   type: types.SET_LOCALE,
   locale,
@@ -104,6 +109,7 @@ export default {
   resetDice,
   removeHelper,
   setActivePlayer,
+  setFullVersion,
   setLocale,
   setMultiMode,
   showBanner,
