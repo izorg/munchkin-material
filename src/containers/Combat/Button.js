@@ -4,6 +4,7 @@ import { goToCombat } from '../../actions';
 import CombatButton from '../../components/CombatButton';
 
 const mapStateToProps = state => ({
+  fullVersion: state.app.fullVersion,
   playerId: state.app.activePlayerId,
 });
 
