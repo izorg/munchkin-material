@@ -23,18 +23,18 @@ const { dispatch } = store;
 
 dispatch(hideBanner());
 
-const renderAppContainer = (Component, appEl) => render(
+const renderAppContainer = (Component, appEl, options) => render(
   <AppContainer>
-    <Component history={history} store={store} />
+    <Component {...options} history={history} store={store} />
   </AppContainer>,
   appEl,
 );
 
-const init = (appEl) => {
-  renderAppContainer(Root, appEl);
+const init = (appEl, options) => {
+  renderAppContainer(Root, appEl, options);
 
   if (module.hot) {
-    module.hot.accept('./components/Root', () => renderAppContainer(Root, appEl));
+    module.hot.accept('./components/Root', () => renderAppContainer(Root, appEl, options));
   }
 
   return {

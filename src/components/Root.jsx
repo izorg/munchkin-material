@@ -10,12 +10,12 @@ import App from '../containers/App';
 import Locale from '../containers/ConnectedIntlProvider';
 import munchkinTheme from '../styles/munchkinTheme';
 
-const Root = ({ history, store }) => (
+const Root = ({ history, store, ...props }) => (
   <Provider store={store}>
     <Locale>
       <MuiThemeProvider muiTheme={getMuiTheme(munchkinTheme)}>
         <ConnectedRouter history={history}>
-          <App />
+          <App {...props} />
         </ConnectedRouter>
       </MuiThemeProvider>
     </Locale>
