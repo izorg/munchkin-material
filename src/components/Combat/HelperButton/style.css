@@ -1,0 +1,26 @@
+.container {
+  position: relative;
+}
+
+.button {
+  position: relative;
+  z-index: 2;
+}
+
+.expanded {
+  transform: rotate(45deg);
+}
+
+.monster {
+  left: 8px;
+  position: absolute;
+  top: -64px;
+  z-index: 1;
+}
+
+.helper {
+  left: 8px;
+  position: absolute;
+  top: -128px;
+  z-index: 1;
+}

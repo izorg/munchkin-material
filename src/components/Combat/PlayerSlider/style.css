@@ -8,12 +8,6 @@
   padding: 8px;
 }
 
-.addHelper {
-  position: absolute;
-  right: 16px;
-  top: 16px;
-}
-
 .remove {
   position: absolute !important;
   right: 16px;
@@ -28,13 +22,6 @@
 
   .playerContainer {
     padding-left: 36px;
-  }
-
-  .addHelper {
-    bottom: 16px;
-    left: 16px;
-    right: auto;
-    top: auto;
   }
 
   .remove {

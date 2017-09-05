@@ -8,12 +8,6 @@
   padding: 8px;
 }
 
-.add {
-  bottom: 16px;
-  position: absolute;
-  right: 16px;
-}
-
 .remove {
   position: absolute !important;
   right: 16px;
@@ -27,7 +21,7 @@
   }
 
   .monsterContainer {
-    padding-right: 16px;
+    padding-right: 64px;
   }
 
   .remove {

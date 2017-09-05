@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
 import MediaQuery from 'react-responsive';
-import { Link, Route } from 'react-router-dom';
 import SwipeableViews from 'react-swipeable-views';
 import PropTypes from 'prop-types';
-import FloatingActionButton from 'material-ui/FloatingActionButton';
 import IconButton from 'material-ui/IconButton';
 import Paper from 'material-ui/Paper';
-import ContentAdd from 'material-ui/svg-icons/content/add';
 import cns from 'classnames';
 
 import { noop } from '../../../constants';
@@ -14,7 +11,6 @@ import { playerInstance } from '../../../utils/propTypes';
 
 import CloseCircle from '../../icons/CloseCircle';
 
-import HelperSelector from '../../../containers/Combat/HelperSelector';
 import Player from '../../../containers/Combat/Player';
 
 import cn from './style.css';
@@ -155,22 +151,6 @@ class CombatPlayerSlider extends Component {
             {players}
           </SwipeableViews>
         </MediaQuery>
-
-        {!helper && (
-          <FloatingActionButton
-            containerElement={<Link to={`/player/${player.id}/combat/helpers`} />}
-            className={cn.addHelper}
-            mini
-          >
-            <ContentAdd />
-          </FloatingActionButton>
-        )}
-
-        <Route exact path="/player/:id/combat/helpers">
-          {({ match }) => (
-            <HelperSelector open={!!match} />
-          )}
-        </Route>
       </div>
     );
   }

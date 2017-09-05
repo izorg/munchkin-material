@@ -1,19 +1,10 @@
-/* eslint-disable */
 import React, { Component } from 'react';
-import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import PropTypes from 'prop-types';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 
-import { noop } from '../constants';
+import { noop } from '../../constants/index';
 
-import SwordCross from './icons/SwordCross';
-
-const messages = defineMessages({
-  label: {
-    id: 'combatButton.label',
-    defaultMessage: 'Start a new battle',
-  },
-});
+import SwordCross from '../icons/SwordCross';
 
 class CombatButton extends Component {
   componentWillMount() {
@@ -42,7 +33,6 @@ class CombatButton extends Component {
   render() {
     return (
       <FloatingActionButton
-        // aria-label={intl.formatMessage(messages.label)}
         onTouchTap={this.handleCombatStart}
       >
         <SwordCross />
@@ -57,7 +47,6 @@ CombatButton.contextTypes = {
 
 CombatButton.propTypes = {
   fullVersion: PropTypes.bool,
-  intl: intlShape.isRequired,
   onCombatStart: PropTypes.func,
   playerId: PropTypes.number.isRequired,
 };
@@ -67,4 +56,4 @@ CombatButton.defaultProps = {
   onCombatStart: noop,
 };
 
-export default injectIntl(CombatButton);
+export default CombatButton;

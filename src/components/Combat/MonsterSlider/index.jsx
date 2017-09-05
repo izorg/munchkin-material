@@ -3,10 +3,8 @@ import { FormattedMessage } from 'react-intl';
 import MediaQuery from 'react-responsive';
 import SwipeableViews from 'react-swipeable-views';
 import PropTypes from 'prop-types';
-import FloatingActionButton from 'material-ui/FloatingActionButton';
 import IconButton from 'material-ui/IconButton';
 import Paper from 'material-ui/Paper';
-import ContentAdd from 'material-ui/svg-icons/content/add';
 import cns from 'classnames';
 
 import { noop } from '../../../constants';
@@ -25,19 +23,13 @@ class CombatMonsterSlider extends PureComponent {
       index: 0,
     };
 
-    this.handleAdd = this.handleAdd.bind(this);
     this.handleChangeIndex = this.handleChangeIndex.bind(this);
   }
 
-  handleAdd() {
-    const { monsters, onMonsterAdd } = this.props;
-    const monsterCount = monsters.length;
-
-    onMonsterAdd();
-
-    if (monsterCount) {
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.monsters.length > this.props.monsters.length) {
       this.setState({
-        index: monsters.length,
+        index: nextProps.monsters.length - 1,
       });
     }
   }
@@ -145,14 +137,6 @@ class CombatMonsterSlider extends PureComponent {
             {views}
           </SwipeableViews>
         </MediaQuery>
-
-        <FloatingActionButton
-          className={cn.add}
-          mini
-          onTouchTap={this.handleAdd}
-        >
-          <ContentAdd />
-        </FloatingActionButton>
       </div>
     );
   }
@@ -161,14 +145,12 @@ class CombatMonsterSlider extends PureComponent {
 CombatMonsterSlider.propTypes = {
   className: PropTypes.string,
   monsters: PropTypes.arrayOf(monsterInstance),
-  onMonsterAdd: PropTypes.func,
   onMonsterRemove: PropTypes.func,
 };
 
 CombatMonsterSlider.defaultProps = {
   className: '',
   monsters: [],
-  onMonsterAdd: noop,
   onMonsterRemove: noop,
 };
 

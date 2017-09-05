@@ -8,6 +8,7 @@ import PropTypes from 'prop-types';
 import { noop } from '../../constants';
 import Combat from '../../containers/Combat';
 import CombatButton from '../../containers/Combat/Button';
+import CombatHelperButton from '../../containers/Combat/HelperButton';
 import NewPlayerButton from '../../containers/NewPlayerButton';
 import PlayerForm from '../../containers/Player/Form';
 import PlayerList from '../../containers/Player/List';
@@ -57,6 +58,7 @@ class App extends Component {
               <Switch>
                 <Route component={NewPlayerButton} exact path="/" />
                 <Route component={CombatButton} exact path="/player/:playerId" />
+                <Route component={CombatHelperButton} path="/player/:playerId/combat" />
               </Switch>
             </div>
           </Zoom>

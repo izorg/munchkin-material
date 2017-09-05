@@ -5,8 +5,8 @@ import { setLocale } from '../actions';
 import { getLocale } from '../i18n';
 
 const setTestData = () => {
-  const { dispatch } = window.store;
-  const { app, playerList } = window.store.getState();
+  const { dispatch } = window.app.store;
+  const { app, playerList } = window.app.store.getState();
 
   playerList.forEach(id => dispatch(removePlayer(id)));
 

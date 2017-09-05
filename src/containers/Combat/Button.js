@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import { goToCombat } from '../../actions';
-import CombatButton from '../../components/CombatButton';
+import CombatButton from '../../components/Combat/Button';
 
 const mapStateToProps = state => ({
   fullVersion: state.app.fullVersion,
