@@ -56,7 +56,7 @@ const setTestData = () => {
 
 window.munchkinTest = {
   setLocale: (locale) => {
-    const { dispatch } = window.store;
+    const { dispatch } = window.app.store;
 
     dispatch(setLocale(locale));
   },
