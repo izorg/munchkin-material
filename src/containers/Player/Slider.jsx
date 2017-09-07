@@ -12,7 +12,7 @@ const mapStateToProps = ({ app: { activePlayerId, bannerVisible }, playerList, p
 
 const mapDispatchToProps = dispatch => ({
   onBack: () => dispatch(goBack()),
-  onDiceTouchTap: () => {
+  onDiceClick: () => {
     dispatch(throwDice());
   },
   onPlayerChange: (player) => {

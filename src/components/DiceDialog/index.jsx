@@ -24,16 +24,16 @@ class DiceDialog extends Component {
       attempt: 0,
     });
 
-    this.handleDiceTouchTap = this.handleDiceTouchTap.bind(this);
+    this.handleDiceClick = this.handleDiceClick.bind(this);
   }
 
-  handleDiceTouchTap() {
-    const { onDiceTouchTap } = this.props;
+  handleDiceClick() {
+    const { onDiceClick } = this.props;
     const { attempt } = this.state;
 
     this.setState({
       attempt: attempt + 1,
-    }, onDiceTouchTap);
+    }, onDiceClick);
   }
 
   render() {
@@ -62,7 +62,7 @@ class DiceDialog extends Component {
                   height: iconSize,
                   width: iconSize,
                 }}
-                onClick={this.handleDiceTouchTap}
+                onClick={this.handleDiceClick}
                 style={{
                   display: 'block',
                   height: iconSize,
@@ -99,13 +99,13 @@ class DiceDialog extends Component {
 
 DiceDialog.propTypes = {
   dice: PropTypes.number,
-  onDiceTouchTap: PropTypes.func,
+  onDiceClick: PropTypes.func,
   onRequestClose: PropTypes.func,
 };
 
 DiceDialog.defaultProps = {
   dice: 0,
-  onDiceTouchTap: noop,
+  onDiceClick: noop,
   onRequestClose: noop,
 };
 

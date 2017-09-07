@@ -72,7 +72,7 @@ class PlayerSlider extends Component {
     const {
       bannerVisible,
       onBack,
-      onDiceTouchTap,
+      onDiceClick,
       selectedPlayer,
     } = this.props;
 
@@ -85,7 +85,7 @@ class PlayerSlider extends Component {
     );
 
     const diceButton = (
-      <IconButton onClick={onDiceTouchTap} style={{ marginLeft: ios ? 8 : undefined }}>
+      <IconButton onClick={onDiceClick} style={{ marginLeft: ios ? 8 : undefined }}>
         <DiceMultipleIcon />
       </IconButton>
     );
@@ -129,7 +129,7 @@ class PlayerSlider extends Component {
 PlayerSlider.propTypes = {
   bannerVisible: PropTypes.bool,
   onBack: PropTypes.func,
-  onDiceTouchTap: PropTypes.func,
+  onDiceClick: PropTypes.func,
   onPlayerChange: PropTypes.func,
   players: PropTypes.arrayOf(playerInstance).isRequired,
   selectedPlayer: playerInstance.isRequired,
@@ -138,7 +138,7 @@ PlayerSlider.propTypes = {
 PlayerSlider.defaultProps = {
   bannerVisible: false,
   onBack: noop,
-  onDiceTouchTap: noop,
+  onDiceClick: noop,
   onPlayerChange: noop,
 };
 

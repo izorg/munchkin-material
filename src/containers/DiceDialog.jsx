@@ -8,7 +8,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-  onDiceTouchTap: throwDice,
+  onDiceClick: throwDice,
   onRequestClose: resetDice,
 };
 

@@ -24,7 +24,7 @@ class CombatHelperButton extends PureComponent {
 
     this.handleClickOutside = this.handleClickOutside.bind(this);
     this.handleMonsterAdd = this.handleMonsterAdd.bind(this);
-    this.handleTouchTap = this.handleTouchTap.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {
@@ -64,7 +64,7 @@ class CombatHelperButton extends PureComponent {
     });
   }
 
-  handleTouchTap() {
+  handleClick() {
     const { helper } = this.props;
     const { expanded } = this.state;
 
@@ -88,7 +88,7 @@ class CombatHelperButton extends PureComponent {
           this.node = node;
         }}
       >
-        <FloatingActionButton className={cn.button} onClick={this.handleTouchTap}>
+        <FloatingActionButton className={cn.button} onClick={this.handleClick}>
           {helper ? <ContentAdd className={expanded && cn.expanded} /> : <EmoticonDevil />}
         </FloatingActionButton>
 

@@ -21,7 +21,7 @@ const mapStateToProps = ({ app, combat, monsters, players }) => ({
 
 const mapDispatchToProps = {
   onBack: goBack,
-  onDiceTouchTap: throwDice,
+  onDiceClick: throwDice,
   onHelperBonusChange: setCombatHelperBonus,
   onHelperRemove: removeHelper,
   onMonsterAdd: () => addMonster(new Monster()),

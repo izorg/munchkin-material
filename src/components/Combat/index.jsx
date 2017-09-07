@@ -24,7 +24,7 @@ class Combat extends PureComponent {
       helperBonus,
       monsters,
       onBack,
-      onDiceTouchTap,
+      onDiceClick,
       onHelperBonusChange,
       onHelperRemove,
       onMonsterAdd,
@@ -35,7 +35,7 @@ class Combat extends PureComponent {
     } = this.props;
 
     const diceButton = (
-      <IconButton onClick={onDiceTouchTap} style={{ marginLeft: ios ? 8 : undefined }}>
+      <IconButton onClick={onDiceClick} style={{ marginLeft: ios ? 8 : undefined }}>
         <DiceMultipleIcon />
       </IconButton>
     );
@@ -95,7 +95,7 @@ Combat.propTypes = {
   helperBonus: PropTypes.number,
   monsters: PropTypes.arrayOf(monsterInstance),
   onBack: PropTypes.func,
-  onDiceTouchTap: PropTypes.func,
+  onDiceClick: PropTypes.func,
   onHelperBonusChange: PropTypes.func,
   onHelperRemove: PropTypes.func,
   onMonsterAdd: PropTypes.func,
@@ -110,7 +110,7 @@ Combat.defaultProps = {
   helperBonus: 0,
   monsters: [],
   onBack: noop,
-  onDiceTouchTap: noop,
+  onDiceClick: noop,
   onHelperBonusChange: noop,
   onHelperRemove: noop,
   onMonsterAdd: noop,
