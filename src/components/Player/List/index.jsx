@@ -27,27 +27,8 @@ class PlayerList extends Component {
     this.handleItemCheck = this.handleItemCheck.bind(this);
     this.handleItemPress = this.handleItemPress.bind(this);
     this.handleItemTap = this.handleItemTap.bind(this);
-    this.handleLeftIconButtonTouchTap = this.handleLeftIconButtonTouchTap.bind(this);
-    this.handleRightIconButtonTouchTap = this.handleRightIconButtonTouchTap.bind(this);
+    this.handlePlayersDelete = this.handlePlayersDelete.bind(this);
     this.handleSortEnd = this.handleSortEnd.bind(this);
-  }
-
-  handleLeftIconButtonTouchTap() {
-    const { multiMode, onMultiSelectDeactivate } = this.props;
-
-    if (multiMode) {
-      onMultiSelectDeactivate();
-    }
-  }
-
-  handleRightIconButtonTouchTap() {
-    const { multiMode, onDeletePlayers, onToggleEditClick, selectedPlayerIds } = this.props;
-
-    if (multiMode) {
-      onDeletePlayers(selectedPlayerIds);
-    } else {
-      onToggleEditClick();
-    }
   }
 
   handleItemCheck(player) {
@@ -74,12 +55,25 @@ class PlayerList extends Component {
     }
   }
 
+  handlePlayersDelete() {
+    const { onDeletePlayers, selectedPlayerIds } = this.props;
+
+    onDeletePlayers(selectedPlayerIds);
+  }
+
   handleSortEnd({ oldIndex, newIndex }) {
     this.props.onPlayerMove(oldIndex, newIndex);
   }
 
   render() {
-    const { editMode, multiMode, players, selectedPlayerIds } = this.props;
+    const {
+      editMode,
+      multiMode,
+      onMultiSelectDeactivate,
+      onToggleEditClick,
+      players,
+      selectedPlayerIds,
+    } = this.props;
 
     let showMenuIconButton = false;
     let iconElementLeft = null;
@@ -91,19 +85,19 @@ class PlayerList extends Component {
         showMenuIconButton = true;
 
         iconElementLeft = (
-          <IconButton>
+          <IconButton onClick={onMultiSelectDeactivate}>
             <NavigationClose />
           </IconButton>
         );
 
         iconElementRight = (
-          <IconButton>
+          <IconButton onClick={this.handlePlayersDelete}>
             <ActionDelete />
           </IconButton>
         );
       } else {
         iconElementRight = (
-          <IconButton>
+          <IconButton onClick={onToggleEditClick}>
             {editMode ? <NavigationCheck /> : <EditorModeEdit />}
           </IconButton>
         );
@@ -123,8 +117,6 @@ class PlayerList extends Component {
           <AppBar
             iconElementLeft={iconElementLeft}
             iconElementRight={iconElementRight}
-            onLeftIconButtonTouchTap={this.handleLeftIconButtonTouchTap}
-            onRightIconButtonTouchTap={this.handleRightIconButtonTouchTap}
             showMenuIconButton={showMenuIconButton}
             style={appBarStyle}
             title={title}
