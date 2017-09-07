@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 import IconButton from 'material-ui/IconButton';
-import NavigationArrowBack from 'material-ui/svg-icons/navigation/arrow-back';
+import NavigationArrowBack from 'material-ui-icons/ArrowBack';
 
 import DiceMultipleIcon from '../icons/dice/multiple';
 import { noop } from '../../constants';

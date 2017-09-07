@@ -5,9 +5,9 @@ import PropTypes from 'prop-types';
 import IconButton from 'material-ui/IconButton';
 import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton';
 import TextField from 'material-ui/TextField';
-import NavigationArrowBack from 'material-ui/svg-icons/navigation/arrow-back';
-import NavigationCheck from 'material-ui/svg-icons/navigation/check';
-import SocialPersonAdd from 'material-ui/svg-icons/social/person-add';
+import NavigationArrowBack from 'material-ui-icons/ArrowBack';
+import NavigationCheck from 'material-ui-icons/Check';
+import SocialPersonAdd from 'material-ui-icons/PersonAdd';
 import { GENDER } from 'munchkin-core';
 
 import { Layout, LayoutContent, LayoutHeader } from '../../Layout';

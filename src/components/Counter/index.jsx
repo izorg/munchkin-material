@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import IconButton from 'material-ui/IconButton';
-import NavigationArrowDropDown from 'material-ui/svg-icons/navigation/arrow-drop-down';
-import NavigationArrowDropUp from 'material-ui/svg-icons/navigation/arrow-drop-up';
+import NavigationArrowDropDown from 'material-ui-icons/ArrowDropDown';
+import NavigationArrowDropUp from 'material-ui-icons/ArrowDropUp';
 import cns from 'classnames';
 
 import { noop } from '../../constants';

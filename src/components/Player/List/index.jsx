@@ -4,11 +4,11 @@ import { SortableContainer, SortableElement } from 'react-sortable-hoc';
 import PropTypes from 'prop-types';
 import IconButton from 'material-ui/IconButton';
 import { List } from 'material-ui/List';
-import ActionDelete from 'material-ui/svg-icons/action/delete';
-import EditorModeEdit from 'material-ui/svg-icons/editor/mode-edit';
-import NavigationCheck from 'material-ui/svg-icons/navigation/check';
-import NavigationClose from 'material-ui/svg-icons/navigation/close';
 import { grey600 } from 'material-ui/styles/colors';
+import ActionDelete from 'material-ui-icons/Delete';
+import EditorModeEdit from 'material-ui-icons/ModeEdit';
+import NavigationCheck from 'material-ui-icons/Check';
+import NavigationClose from 'material-ui-icons/Close';
 
 import cn from './style.css';
 

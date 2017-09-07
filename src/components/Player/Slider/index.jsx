@@ -3,7 +3,7 @@ import SwipeableViews from 'react-swipeable-views';
 import { bindKeyboard, virtualize } from 'react-swipeable-views-utils';
 import PropTypes from 'prop-types';
 import IconButton from 'material-ui/IconButton';
-import NavigationArrowBack from 'material-ui/svg-icons/navigation/arrow-back';
+import NavigationArrowBack from 'material-ui-icons/ArrowBack';
 import cns from 'classnames';
 
 import DiceMultipleIcon from '../../icons/dice/multiple';

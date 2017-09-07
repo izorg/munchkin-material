@@ -3,8 +3,8 @@ import { Link, Route } from 'react-router-dom';
 import TransitionGroup from 'react-transition-group/TransitionGroup';
 import PropTypes from 'prop-types';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
-import ContentAdd from 'material-ui/svg-icons/content/add';
-import SocialPersonAdd from 'material-ui/svg-icons/social/person-add';
+import ContentAdd from 'material-ui-icons/Add';
+import SocialPersonAdd from 'material-ui-icons/PersonAdd';
 
 import EmoticonDevil from '../../icons/EmoticonDevil';
 import { noop } from '../../../constants';
