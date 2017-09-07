@@ -13,10 +13,10 @@ const messages = defineMessages({
   },
 });
 
-const NewPlayerButton = ({ intl, onTouchTap }) => (
+const NewPlayerButton = ({ intl, onClick }) => (
   <FloatingActionButton
     aria-label={intl.formatMessage(messages.label)}
-    onTouchTap={onTouchTap}
+    onClick={onClick}
   >
     <ContentAdd />
   </FloatingActionButton>
@@ -24,11 +24,11 @@ const NewPlayerButton = ({ intl, onTouchTap }) => (
 
 NewPlayerButton.propTypes = {
   intl: intlShape.isRequired,
-  onTouchTap: PropTypes.func,
+  onClick: PropTypes.func,
 };
 
 NewPlayerButton.defaultProps = {
-  onTouchTap: noop,
+  onClick: noop,
 };
 
 export default injectIntl(NewPlayerButton);

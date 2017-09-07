@@ -3,7 +3,6 @@ import 'babel-polyfill';
 import React from 'react';
 import { render } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
-import injectTapEventPlugin from 'react-tap-event-plugin';
 import createHistory from 'history/createHashHistory';
 
 import 'normalize.css';
@@ -13,8 +12,6 @@ import Root from './components/Root';
 import configureStore from './store/configureStore';
 
 import './index.css';
-
-injectTapEventPlugin();
 
 const history = createHistory();
 

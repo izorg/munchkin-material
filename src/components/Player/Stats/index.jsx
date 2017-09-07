@@ -90,7 +90,7 @@ class PlayerStats extends Component {
                 width: 36,
                 height: 36,
               }}
-              onTouchTap={this.handleGenderToggle}
+              onClick={this.handleGenderToggle}
               style={{
                 width: 64,
                 height: 64,

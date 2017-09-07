@@ -88,14 +88,14 @@ class CombatHelperButton extends PureComponent {
           this.node = node;
         }}
       >
-        <FloatingActionButton className={cn.button} onTouchTap={this.handleTouchTap}>
+        <FloatingActionButton className={cn.button} onClick={this.handleTouchTap}>
           {helper ? <ContentAdd className={expanded && cn.expanded} /> : <EmoticonDevil />}
         </FloatingActionButton>
 
         <TransitionGroup>
           {helper && expanded && (
             <Fade>
-              <FloatingActionButton className={cn.monster} mini onTouchTap={this.handleMonsterAdd}>
+              <FloatingActionButton className={cn.monster} mini onClick={this.handleMonsterAdd}>
                 <EmoticonDevil />
               </FloatingActionButton>
             </Fade>

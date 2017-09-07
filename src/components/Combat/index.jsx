@@ -35,7 +35,7 @@ class Combat extends PureComponent {
     } = this.props;
 
     const diceButton = (
-      <IconButton onTouchTap={onDiceTouchTap} style={{ marginLeft: ios ? 8 : undefined }}>
+      <IconButton onClick={onDiceTouchTap} style={{ marginLeft: ios ? 8 : undefined }}>
         <DiceMultipleIcon />
       </IconButton>
     );
@@ -45,7 +45,7 @@ class Combat extends PureComponent {
         <LayoutHeader>
           <AppBar
             iconElementLeft={(
-              <IconButton onTouchTap={onBack}>
+              <IconButton onClick={onBack}>
                 <NavigationArrowBack />
               </IconButton>
             )}

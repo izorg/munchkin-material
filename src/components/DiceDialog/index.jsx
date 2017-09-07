@@ -62,7 +62,7 @@ class DiceDialog extends Component {
                   height: iconSize,
                   width: iconSize,
                 }}
-                onTouchTap={this.handleDiceTouchTap}
+                onClick={this.handleDiceTouchTap}
                 style={{
                   display: 'block',
                   height: iconSize,

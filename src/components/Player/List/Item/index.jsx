@@ -62,10 +62,10 @@ class PlayerListItem extends Component {
   }
 
   handleTap() {
-    const { onTouchTap, player, showCheckbox } = this.props;
+    const { onClick, player, showCheckbox } = this.props;
 
     if (!showCheckbox) {
-      onTouchTap(player);
+      onClick(player);
     }
   }
 
@@ -153,7 +153,7 @@ class PlayerListItem extends Component {
 PlayerListItem.propTypes = {
   onCheck: PropTypes.func,
   onPress: PropTypes.func,
-  onTouchTap: PropTypes.func,
+  onClick: PropTypes.func,
   player: playerInstance.isRequired,
   selected: PropTypes.bool,
   showCheckbox: PropTypes.bool,
@@ -163,7 +163,7 @@ PlayerListItem.propTypes = {
 PlayerListItem.defaultProps = {
   onCheck: noop,
   onPress: noop,
-  onTouchTap: noop,
+  onClick: noop,
   selected: false,
   showCheckbox: false,
   showDragHandle: false,

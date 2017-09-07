@@ -79,13 +79,13 @@ class PlayerSlider extends Component {
     const { initialSlide } = this.state;
 
     const backButton = (
-      <IconButton onTouchTap={onBack}>
+      <IconButton onClick={onBack}>
         <NavigationArrowBack />
       </IconButton>
     );
 
     const diceButton = (
-      <IconButton onTouchTap={onDiceTouchTap} style={{ marginLeft: ios ? 8 : undefined }}>
+      <IconButton onClick={onDiceTouchTap} style={{ marginLeft: ios ? 8 : undefined }}>
         <DiceMultipleIcon />
       </IconButton>
     );

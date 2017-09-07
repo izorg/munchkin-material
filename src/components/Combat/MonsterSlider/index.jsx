@@ -77,7 +77,7 @@ class CombatMonsterSlider extends PureComponent {
         {monsters.length > 1 && monsterIndex === index && (
           <IconButton
             className={cn.remove}
-            onTouchTap={() => this.handleRemove(monster.id)}
+            onClick={() => this.handleRemove(monster.id)}
             style={{
               width: 36,
               height: 36,

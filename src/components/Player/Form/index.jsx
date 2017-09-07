@@ -75,13 +75,13 @@ class PlayerForm extends Component {
     const { handleSubmit, newPlayer, onCancel, onImport, title } = this.props;
 
     const backButton = (
-      <IconButton onTouchTap={onCancel}>
+      <IconButton onClick={onCancel}>
         <NavigationArrowBack />
       </IconButton>
     );
 
     const submitButton = (
-      <IconButton onTouchTap={handleSubmit} style={{ marginLeft: ios ? 8 : undefined }}>
+      <IconButton onClick={handleSubmit} style={{ marginLeft: ios ? 8 : undefined }}>
         <NavigationCheck />
       </IconButton>
     );
@@ -110,7 +110,7 @@ class PlayerForm extends Component {
                 newPlayer && navigator.contacts ? (
                   <IconButton
                     disableTouchRipple
-                    onTouchTap={onImport}
+                    onClick={onImport}
                     style={{
                       height: 24,
                       padding: 0,

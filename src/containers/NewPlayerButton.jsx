@@ -6,7 +6,7 @@ import { setActivePlayer, toggleEditMode } from '../actions';
 import NewPlayerButton from '../components/NewPlayerButton';
 
 const mapDispatchToProps = dispatch => ({
-  onTouchTap: () => {
+  onClick: () => {
     dispatch(toggleEditMode(false));
     dispatch(setActivePlayer());
     dispatch(push('/player'));

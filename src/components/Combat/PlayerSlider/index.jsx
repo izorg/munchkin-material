@@ -90,7 +90,7 @@ class CombatPlayerSlider extends Component {
         {helper && props.player.id === helper.id && (
           <IconButton
             className={cn.remove}
-            onTouchTap={this.handleHelperRemove}
+            onClick={this.handleHelperRemove}
             style={{
               width: 36,
               height: 36,

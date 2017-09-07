@@ -19,7 +19,7 @@ const HelperSelector = ({ helpers, onSelect, ...props }) => (
       {helpers.map(helper => (
         <ListItem
           key={helper.id.toString()}
-          onTouchTap={() => onSelect(helper.id)}
+          onClick={() => onSelect(helper.id)}
           primaryText={<div className={cn.name}>{helper.name}</div>}
           secondaryText={
             <p>

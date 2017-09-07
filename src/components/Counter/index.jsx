@@ -43,7 +43,7 @@ const Counter = ({ className, compact, onDecrement, onIncrement, title, value })
 
       <IconButton
         iconStyle={iconStyle}
-        onTouchTap={onIncrement}
+        onClick={onIncrement}
         style={buttonStyle}
       >
         <NavigationArrowDropUp />
@@ -55,7 +55,7 @@ const Counter = ({ className, compact, onDecrement, onIncrement, title, value })
 
       <IconButton
         iconStyle={iconStyle}
-        onTouchTap={onDecrement}
+        onClick={onDecrement}
         style={buttonStyle}
       >
         <NavigationArrowDropDown />

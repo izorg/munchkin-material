@@ -149,7 +149,7 @@ class PlayerList extends Component {
                 key={player.id}
                 onCheck={this.handleItemCheck}
                 onPress={this.handleItemPress}
-                onTouchTap={this.handleItemTap}
+                onClick={this.handleItemTap}
                 player={player}
                 selected={selectedPlayerIds.includes(player.id)}
                 showCheckbox={multiMode}

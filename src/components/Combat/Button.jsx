@@ -33,7 +33,7 @@ class CombatButton extends Component {
   render() {
     return (
       <FloatingActionButton
-        onTouchTap={this.handleCombatStart}
+        onClick={this.handleCombatStart}
       >
         <SwordCross />
       </FloatingActionButton>
