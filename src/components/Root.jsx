@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
-import App from '../containers/App';
+import App from './App';
 import Locale from '../containers/ConnectedIntlProvider';
 import munchkinTheme from '../styles/munchkinTheme';
 

@@ -4,7 +4,6 @@ import { bindKeyboard, virtualize } from 'react-swipeable-views-utils';
 import PropTypes from 'prop-types';
 import IconButton from 'material-ui/IconButton';
 import NavigationArrowBack from 'material-ui-icons/ArrowBack';
-import cns from 'classnames';
 
 import DiceMultipleIcon from '../../icons/dice/multiple';
 import { Layout, LayoutContent, LayoutHeader } from '../../Layout';
@@ -15,7 +14,6 @@ import PlayerStats from '../../../containers/Player/Stats';
 import { ios } from '../../../helpers/platforms';
 import { playerInstance } from '../../../utils/propTypes';
 
-// import banner from './banner';
 import cn from './style.css';
 
 const PlayerSwipeableViews = bindKeyboard(virtualize(SwipeableViews));
@@ -70,7 +68,6 @@ class PlayerSlider extends Component {
 
   render() {
     const {
-      bannerVisible,
       onBack,
       onDiceClick,
       selectedPlayer,
@@ -100,7 +97,7 @@ class PlayerSlider extends Component {
           />
         </LayoutHeader>
         <LayoutContent
-          className={cns(cn.sliderContent, { [cn.bannerVisible]: bannerVisible })}
+          className={cn.sliderContent}
         >
           <PlayerSwipeableViews
             onChangeIndex={this.handleChangeIndex}
@@ -127,7 +124,6 @@ class PlayerSlider extends Component {
 }
 
 PlayerSlider.propTypes = {
-  bannerVisible: PropTypes.bool,
   onBack: PropTypes.func,
   onDiceClick: PropTypes.func,
   onPlayerChange: PropTypes.func,
@@ -136,7 +132,6 @@ PlayerSlider.propTypes = {
 };
 
 PlayerSlider.defaultProps = {
-  bannerVisible: false,
   onBack: noop,
   onDiceClick: noop,
   onPlayerChange: noop,

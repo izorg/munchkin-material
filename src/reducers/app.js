@@ -2,7 +2,6 @@ import * as types from '../constants/actionTypes';
 
 const initialState = {
   activePlayerId: null,
-  bannerVisible: false,
   dice: null,
   editMode: false,
   fullVersion: false,
@@ -13,13 +12,6 @@ const initialState = {
 
 const app = (state = initialState, action) => {
   switch (action.type) {
-    case types.HIDE_BANNER: {
-      return {
-        ...state,
-        bannerVisible: false,
-      };
-    }
-
     case types.RESET_DICE: {
       const { dice } = initialState;
 
@@ -58,13 +50,6 @@ const app = (state = initialState, action) => {
         ...state,
         multiMode,
         selectedPlayerIds: [],
-      };
-    }
-
-    case types.SHOW_BANNER: {
-      return {
-        ...state,
-        bannerVisible: true,
       };
     }
 
