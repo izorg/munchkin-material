@@ -3,7 +3,6 @@ import { Provider } from 'react-redux';
 import { storeShape } from 'react-redux/lib/utils/PropTypes';
 import { ConnectedRouter } from 'react-router-redux';
 import PropTypes from 'prop-types';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import App from './App';
@@ -13,7 +12,7 @@ import munchkinTheme from '../styles/munchkinTheme';
 const Root = ({ history, store, ...props }) => (
   <Provider store={store}>
     <Locale>
-      <MuiThemeProvider muiTheme={getMuiTheme(munchkinTheme)}>
+      <MuiThemeProvider theme={munchkinTheme}>
         <ConnectedRouter history={history}>
           <App {...props} />
         </ConnectedRouter>

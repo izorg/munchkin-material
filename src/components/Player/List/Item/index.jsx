@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { SortableHandle } from 'react-sortable-hoc';
-import Tappable from 'react-tappable/lib/Tappable';
 import PropTypes from 'prop-types';
 import Checkbox from 'material-ui/Checkbox';
-import { ListItem } from 'material-ui/List';
+import { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
 import ActionReorder from 'material-ui-icons/Reorder';
 
 import { noop } from '../../../../constants';
@@ -13,6 +12,7 @@ import { ios } from '../../../../helpers/platforms';
 import { playerInstance } from '../../../../utils/propTypes';
 
 import PlayerListItemAvatar from './Avatar';
+import Container from './Container';
 
 import cn from './style.css';
 
@@ -20,51 +20,34 @@ const ItemHandle = SortableHandle(ActionReorder);
 
 class PlayerListItem extends Component {
   componentWillMount() {
-    this.handleCheck = this.handleCheck.bind(this);
-    this.handleItemHandleStart = this.handleItemHandleStart.bind(this);
     this.handlePress = this.handlePress.bind(this);
-    this.handleTap = this.handleTap.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
-  handleCheck() {
-    const { onCheck, player } = this.props;
+  handlePress(e) {
+    const { onPress, player } = this.props;
 
-    if (this.preventCheck) {
-      delete this.preventCheck;
+    if (navigator.vibrate) {
+      navigator.vibrate(20);
+    }
+
+    onPress(player);
+
+    if (ios || e.type === 'mousedown') {
+      this.preventClick = true;
+    }
+  }
+
+  handleClick() {
+    const { onCheck, onClick, player, showCheckbox } = this.props;
+
+    if (showCheckbox) {
+      if (this.preventClick) {
+        delete this.preventClick;
+      } else {
+        onCheck(player);
+      }
     } else {
-      onCheck(player);
-    }
-  }
-
-  handleItemHandleStart(e) {
-    e.stopPropagation();
-
-    this.listItem.setState({ hovered: false });
-  }
-
-  handlePress() {
-    const { onPress, player, showCheckbox, showDragHandle } = this.props;
-
-    if (!showCheckbox && !showDragHandle) {
-      this.listItem.setState({ hovered: false });
-
-      if (navigator.vibrate) {
-        navigator.vibrate(20);
-      }
-
-      onPress(player);
-
-      // Safari fire onCheck event while changing mode to multi select
-      if (ios) {
-        this.preventCheck = true;
-      }
-    }
-  }
-
-  handleTap() {
-    const { onClick, player, showCheckbox } = this.props;
-
-    if (!showCheckbox) {
       onClick(player);
     }
   }
@@ -72,9 +55,6 @@ class PlayerListItem extends Component {
   render() {
     const { player, selected, showCheckbox, showDragHandle } = this.props;
     const GenderIcon = getGenderIconClass(player.gender);
-    const noTransition = showDragHandle ? { transition: undefined } : null;
-
-    const additionalProps = {};
 
     let leftAvatar;
     let leftCheckbox;
@@ -82,70 +62,72 @@ class PlayerListItem extends Component {
 
     if (!showCheckbox && !showDragHandle) {
       leftAvatar = (
-        <PlayerListItemAvatar avatar={player.avatar} name={player.name} />
+        <PlayerListItemAvatar
+          avatar={player.avatar}
+          name={player.name}
+          style={{ marginRight: 8 }}
+        />
       );
     }
 
     if (showCheckbox) {
-      leftCheckbox = <Checkbox checked={selected} onCheck={this.handleCheck} />;
-    } else {
-      Object.assign(additionalProps, {
-        disableTouchRipple: true,
-      });
+      leftCheckbox = (
+        <Checkbox
+          checked={selected}
+          disableRipple
+          tabIndex="-1"
+        />
+      );
     }
 
     if (showDragHandle) {
       leftIcon = (
-        <ItemHandle
-          onMouseDown={this.handleItemHandleStart}
-          onTouchStart={this.handleItemHandleStart}
-          style={noTransition}
-        />
+        <ListItemIcon>
+          <ItemHandle
+            style={{ marginRight: 24 }}
+          />
+        </ListItemIcon>
       );
     }
 
     return (
       <ListItem
-        {...additionalProps}
-        containerElement={
-          <Tappable
-            className="tappable"
-            component="div"
-            onTap={this.handleTap}
-            onPress={this.handlePress}
-            pressDelay={500}
-          />
-        }
-        leftAvatar={leftAvatar}
-        leftCheckbox={leftCheckbox}
-        leftIcon={leftIcon}
-        primaryText={<div className={cn.name}>{player.name}</div>}
-        ref={(listItem) => {
-          this.listItem = listItem;
-        }}
-        rightIcon={<GenderIcon style={noTransition} />}
-        secondaryText={
-          <p>
-            <FormattedMessage
-              id="player.list.item.secondaryTextLevel"
-              defaultMessage="Level {level}"
-              values={{
-                level: <b>{player.level}</b>,
-              }}
-            />
-            <br />
-            <FormattedMessage
-              id="player.list.item.secondaryTextStrength"
-              defaultMessage="Strength {strength}"
-              values={{
-                strength: <b>{player.strength}</b>,
-              }}
-            />
-          </p>
-        }
-        secondaryTextLines={2}
-        style={noTransition}
-      />
+        button
+        component={Container}
+        disableRipple={showDragHandle}
+        onClick={this.handleClick}
+        onPress={!showCheckbox && !showDragHandle ? this.handlePress : undefined}
+      >
+        {leftAvatar}
+        {leftIcon}
+        {leftCheckbox}
+        <ListItemText
+          primary={<div className={cn.name}>{player.name}</div>}
+          secondary={
+            <span>
+              <FormattedMessage
+                id="player.list.item.secondaryTextLevel"
+                defaultMessage="Level {level}"
+                values={{
+                  level: <b>{player.level}</b>,
+                }}
+              />
+              <br />
+              <FormattedMessage
+                id="player.list.item.secondaryTextStrength"
+                defaultMessage="Strength {strength}"
+                values={{
+                  strength: <b>{player.strength}</b>,
+                }}
+              />
+            </span>
+          }
+          style={{ overflow: 'hidden' }}
+        />
+        <ListItemIcon style={{ marginRight: 0 }}>
+          <GenderIcon />
+        </ListItemIcon>
+      </ListItem>
     );
   }
 }

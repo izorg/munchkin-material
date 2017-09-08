@@ -2,9 +2,12 @@ import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { SortableContainer, SortableElement } from 'react-sortable-hoc';
 import PropTypes from 'prop-types';
+import AppBar from 'material-ui/AppBar';
 import IconButton from 'material-ui/IconButton';
-import { List } from 'material-ui/List';
-import { grey600 } from 'material-ui/styles/colors';
+import List from 'material-ui/List';
+import { withStyles } from 'material-ui/styles';
+import Toolbar from 'material-ui/Toolbar';
+import Typography from 'material-ui/Typography';
 import ActionDelete from 'material-ui-icons/Delete';
 import EditorModeEdit from 'material-ui-icons/ModeEdit';
 import NavigationCheck from 'material-ui-icons/Check';
@@ -13,14 +16,21 @@ import NavigationClose from 'material-ui-icons/Close';
 import cn from './style.css';
 
 import Item from './Item';
-import AppBar from '../../material-ui/AppBar';
 import { Layout, LayoutContent, LayoutHeader } from '../../Layout';
 import { noop } from '../../../constants';
 import { ios } from '../../../helpers/platforms';
-import { playerInstance } from '../../../utils/propTypes';
+import { classesObject, playerInstance } from '../../../utils/propTypes';
 
 const SortableList = SortableContainer(List);
 const SortableListItem = SortableElement(Item);
+
+const styles = {
+  flex: {
+    flex: 1,
+    marginLeft: 16,
+    marginRight: 16,
+  },
+};
 
 class PlayerList extends Component {
   componentWillMount() {
@@ -67,6 +77,7 @@ class PlayerList extends Component {
 
   render() {
     const {
+      classes,
       editMode,
       multiMode,
       onMultiSelectDeactivate,
@@ -75,55 +86,61 @@ class PlayerList extends Component {
       selectedPlayerIds,
     } = this.props;
 
-    let showMenuIconButton = false;
     let iconElementLeft = null;
     let iconElementRight = null;
     let title = <FormattedMessage id="player.list.title" defaultMessage="Munchkins" />;
+    let titleStyle = {};
 
     if (players.length) {
       if (multiMode) {
-        showMenuIconButton = true;
-
         iconElementLeft = (
-          <IconButton onClick={onMultiSelectDeactivate}>
+          <IconButton color="default" onClick={onMultiSelectDeactivate}>
             <NavigationClose />
           </IconButton>
         );
 
         iconElementRight = (
-          <IconButton onClick={this.handlePlayersDelete}>
+          <IconButton color="default" onClick={this.handlePlayersDelete}>
             <ActionDelete />
           </IconButton>
         );
       } else {
+        if (ios) {
+          titleStyle = {
+            marginLeft: 64,
+          };
+        }
+
         iconElementRight = (
-          <IconButton onClick={onToggleEditClick}>
+          <IconButton color="contrast" onClick={onToggleEditClick}>
             {editMode ? <NavigationCheck /> : <EditorModeEdit />}
           </IconButton>
         );
       }
     }
 
-    const appBarStyle = {};
-
     if (multiMode) {
-      appBarStyle.backgroundColor = grey600;
       title = selectedPlayerIds.length;
     }
 
     return (
       <Layout>
         <LayoutHeader>
-          <AppBar
-            iconElementLeft={iconElementLeft}
-            iconElementRight={iconElementRight}
-            showMenuIconButton={showMenuIconButton}
-            style={appBarStyle}
-            title={title}
-            titleStyle={{
-              paddingLeft: ios && players.length ? 24 : undefined,
-            }}
-          />
+          <AppBar color={multiMode ? 'default' : 'primary'} position="static">
+            <Toolbar disableGutters>
+              {iconElementLeft}
+              <Typography
+                className={classes.flex}
+                color={multiMode ? 'secondary' : 'inherit'}
+                noWrap
+                style={titleStyle}
+                type="title"
+              >
+                {title}
+              </Typography>
+              {iconElementRight}
+            </Toolbar>
+          </AppBar>
         </LayoutHeader>
         <LayoutContent>
           <SortableList
@@ -132,7 +149,6 @@ class PlayerList extends Component {
             lockOffset={0}
             lockToContainerEdges
             onSortEnd={this.handleSortEnd}
-            pressDelay={1} // to disable hover state in item component
             useDragHandle
           >
             {players.map((player, index) => (
@@ -156,6 +172,7 @@ class PlayerList extends Component {
 }
 
 PlayerList.propTypes = {
+  classes: classesObject.isRequired,
   editMode: PropTypes.bool,
   multiMode: PropTypes.bool,
   onDeletePlayers: PropTypes.func,
@@ -183,4 +200,4 @@ PlayerList.defaultProps = {
   selectedPlayerIds: [],
 };
 
-export default PlayerList;
+export default withStyles(styles)(PlayerList);

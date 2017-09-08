@@ -1,14 +1,23 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
+import withStyles from 'material-ui/styles/withStyles';
+import Typography from 'material-ui/Typography';
 
 import Counter from '../../Counter';
 import { noop } from '../../../constants';
-import { monsterInstance } from '../../../utils/propTypes';
+import { classesObject, monsterInstance } from '../../../utils/propTypes';
 
 import cn from './style.css';
 
+const styles = {
+  name: {
+    margin: '0 0 8px',
+  },
+};
+
 const CombatMonster = ({
+  classes,
   monster,
   onBonusDecrement,
   onBonusIncrement,
@@ -17,9 +26,14 @@ const CombatMonster = ({
   title,
 }) => (
   <div className={cn.monster}>
-    <div className={cn.name}>
+    <Typography
+      align="center"
+      className={classes.name}
+      component="div"
+      noWrap
+    >
       {title}
-    </div>
+    </Typography>
 
     <div className={cn.stats}>
       <Counter
@@ -43,6 +57,7 @@ const CombatMonster = ({
 );
 
 CombatMonster.propTypes = {
+  classes: classesObject.isRequired,
   monster: monsterInstance.isRequired,
   onBonusDecrement: PropTypes.func,
   onBonusIncrement: PropTypes.func,
@@ -59,4 +74,4 @@ CombatMonster.defaultProps = {
   title: '',
 };
 
-export default CombatMonster;
+export default withStyles(styles)(CombatMonster);

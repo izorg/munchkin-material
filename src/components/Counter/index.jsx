@@ -42,11 +42,11 @@ const Counter = ({ className, compact, onDecrement, onIncrement, title, value })
       {title ? <div className={cn.title}>{title}</div> : null}
 
       <IconButton
-        iconStyle={iconStyle}
+        color="inherit"
         onClick={onIncrement}
         style={buttonStyle}
       >
-        <NavigationArrowDropUp />
+        <NavigationArrowDropUp style={iconStyle} />
       </IconButton>
 
       <div className={cn.value}>
@@ -54,11 +54,11 @@ const Counter = ({ className, compact, onDecrement, onIncrement, title, value })
       </div>
 
       <IconButton
-        iconStyle={iconStyle}
+        color="inherit"
         onClick={onDecrement}
         style={buttonStyle}
       >
-        <NavigationArrowDropDown />
+        <NavigationArrowDropDown style={iconStyle} />
       </IconButton>
     </div>
   );

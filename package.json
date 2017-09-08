@@ -76,7 +76,7 @@
     "jest": "21.0.1",
     "jest-enzyme": "3.8.2",
     "lodash": "4.17.4",
-    "material-ui": "0.19.1",
+    "material-ui": "1.0.0-beta.8",
     "material-ui-icons": "1.0.0-beta.5",
     "munchkin-core": "2.1.10",
     "normalize.css": "7.0.0",

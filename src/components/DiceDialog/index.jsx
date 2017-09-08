@@ -18,6 +18,13 @@ import cn from './style.css';
 
 const iconSize = 120;
 
+const diceProps = {
+  style: {
+    height: iconSize,
+    width: iconSize,
+  },
+};
+
 class DiceDialog extends Component {
   componentWillMount() {
     this.setState({
@@ -42,14 +49,6 @@ class DiceDialog extends Component {
 
     return (
       <Dialog
-        bodyStyle={{
-          padding: 0,
-        }}
-        contentStyle={{
-          height: iconSize,
-          width: iconSize,
-        }}
-        modal={false}
         onRequestClose={onRequestClose}
         open={!!dice}
       >
@@ -57,11 +56,8 @@ class DiceDialog extends Component {
           <DiceTransition key={attempt}>
             <div>
               <IconButton
-                disableTouchRipple
-                iconStyle={{
-                  height: iconSize,
-                  width: iconSize,
-                }}
+                color="inherit"
+                disableRipple
                 onClick={this.handleDiceClick}
                 style={{
                   display: 'block',
@@ -71,22 +67,22 @@ class DiceDialog extends Component {
                 }}
               >
                 {
-                  dice === 1 ? <DiceOne /> : null
+                  dice === 1 ? <DiceOne {...diceProps} /> : null
                 }
                 {
-                  dice === 2 ? <DiceTwo /> : null
+                  dice === 2 ? <DiceTwo {...diceProps} /> : null
                 }
                 {
-                  dice === 3 ? <DiceThree /> : null
+                  dice === 3 ? <DiceThree {...diceProps} /> : null
                 }
                 {
-                  dice === 4 ? <DiceFour /> : null
+                  dice === 4 ? <DiceFour {...diceProps} /> : null
                 }
                 {
-                  dice === 5 ? <DiceFive /> : null
+                  dice === 5 ? <DiceFive {...diceProps} /> : null
                 }
                 {
-                  dice === 6 ? <DiceSix /> : null
+                  dice === 6 ? <DiceSix {...diceProps} /> : null
                 }
               </IconButton>
             </div>

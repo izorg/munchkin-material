@@ -1,12 +1,20 @@
 import React, { PureComponent } from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
+import withStyles from 'material-ui/styles/withStyles';
+import Typography from 'material-ui/Typography';
 
 import Counter from '../../Counter';
 import { noop } from '../../../constants';
-import { playerInstance } from '../../../utils/propTypes';
+import { classesObject, playerInstance } from '../../../utils/propTypes';
 
 import cn from './style.css';
+
+const styles = {
+  name: {
+    margin: '0 0 8px',
+  },
+};
 
 class CombatPlayer extends PureComponent {
   constructor(props) {
@@ -49,11 +57,19 @@ class CombatPlayer extends PureComponent {
   }
 
   render() {
-    const { bonus, player } = this.props;
+    const { bonus, classes, player } = this.props;
 
     return (
       <div className={cn.player} key={player.id.toString()}>
-        <div className={cn.name}>{player.name}</div>
+        <Typography
+          align="center"
+          className={classes.name}
+          component="div"
+          noWrap
+        >
+          {player.name}
+        </Typography>
+
         <div className={cn.stats}>
           <Counter
             className={cn.item}
@@ -87,6 +103,7 @@ class CombatPlayer extends PureComponent {
 
 CombatPlayer.propTypes = {
   bonus: PropTypes.number.isRequired,
+  classes: classesObject.isRequired,
   onBonusChange: PropTypes.func,
   onGearDecrement: PropTypes.func,
   onGearIncrement: PropTypes.func,
@@ -103,4 +120,4 @@ CombatPlayer.defaultProps = {
   onLevelIncrement: noop,
 };
 
-export default CombatPlayer;
+export default withStyles(styles)(CombatPlayer);

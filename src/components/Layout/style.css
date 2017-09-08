@@ -6,6 +6,8 @@
 
 .layoutHeader {
   flex: 0 0 auto;
+  position: relative;
+  z-index: 1;
 }
 
 .layoutContent {

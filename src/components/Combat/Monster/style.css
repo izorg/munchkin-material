@@ -2,14 +2,6 @@
   text-align: center;
 }
 
-.name {
-  margin: 0 32px 8px;
-  overflow: hidden;
-  position: relative;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
 .stats {
   display: flex;
 }

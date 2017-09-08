@@ -2,6 +2,12 @@
   position: relative;
 }
 
+.miniContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
 .button {
   position: relative;
   z-index: 2;

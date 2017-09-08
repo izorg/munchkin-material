@@ -2,17 +2,26 @@ import React, { PureComponent } from 'react';
 import { Link, Route } from 'react-router-dom';
 import TransitionGroup from 'react-transition-group/TransitionGroup';
 import PropTypes from 'prop-types';
-import FloatingActionButton from 'material-ui/FloatingActionButton';
+import FloatingActionButton from 'material-ui/Button';
 import ContentAdd from 'material-ui-icons/Add';
+import { withStyles } from 'material-ui/styles';
 import SocialPersonAdd from 'material-ui-icons/PersonAdd';
 
 import EmoticonDevil from '../../icons/EmoticonDevil';
 import { noop } from '../../../constants';
 import HelperSelector from '../../../containers/Combat/HelperSelector';
+import { classesObject } from '../../../utils/propTypes';
 
 import Fade from './Fade';
 
 import cn from './style.css';
+
+const styles = {
+  mini: {
+    height: 40,
+    width: 40,
+  },
+};
 
 class CombatHelperButton extends PureComponent {
   constructor(props) {
@@ -78,7 +87,7 @@ class CombatHelperButton extends PureComponent {
   }
 
   render() {
-    const { helper, playerId } = this.props;
+    const { classes, helper, playerId } = this.props;
     const { expanded } = this.state;
 
     return (
@@ -88,34 +97,50 @@ class CombatHelperButton extends PureComponent {
           this.node = node;
         }}
       >
-        <FloatingActionButton className={cn.button} onClick={this.handleClick}>
-          {helper ? <ContentAdd className={expanded && cn.expanded} /> : <EmoticonDevil />}
+        <FloatingActionButton
+          className={cn.button}
+          color="primary"
+          fab
+          onClick={this.handleClick}
+        >
+          {helper ? <ContentAdd className={expanded ? cn.expanded : ''} /> : <EmoticonDevil />}
         </FloatingActionButton>
 
-        <TransitionGroup>
+        <TransitionGroup className={cn.miniContainer}>
           {helper && expanded && (
             <Fade>
-              <FloatingActionButton className={cn.monster} mini onClick={this.handleMonsterAdd}>
-                <EmoticonDevil />
-              </FloatingActionButton>
+              <div className={cn.monster}>
+                <FloatingActionButton
+                  className={classes.mini}
+                  color="primary"
+                  fab
+                  onClick={this.handleMonsterAdd}
+                >
+                  <EmoticonDevil />
+                </FloatingActionButton>
+              </div>
             </Fade>
           )}
 
           {helper && expanded && (
             <Fade enterDelay={50}>
-              <FloatingActionButton
-                className={cn.helper}
-                containerElement={<Link to={`/player/${playerId}/combat/helpers`} />}
-                mini
-              >
-                <SocialPersonAdd />
+              <div className={cn.helper}>
+                <FloatingActionButton
+                  className={classes.mini}
+                  color="primary"
+                  component={Link}
+                  fab
+                  to={`/player/${playerId}/combat/helpers`}
+                >
+                  <SocialPersonAdd />
 
-                <Route exact path="/player/:id/combat/helpers">
-                  {({ match }) => (
-                    <HelperSelector open={!!match} />
-                  )}
-                </Route>
-              </FloatingActionButton>
+                  <Route exact path="/player/:id/combat/helpers">
+                    {({ match }) => (
+                      <HelperSelector open={!!match} />
+                    )}
+                  </Route>
+                </FloatingActionButton>
+              </div>
             </Fade>
           )}
         </TransitionGroup>
@@ -125,6 +150,7 @@ class CombatHelperButton extends PureComponent {
 }
 
 CombatHelperButton.propTypes = {
+  classes: classesObject.isRequired,
   helper: PropTypes.bool,
   onMonsterAdd: PropTypes.func,
   playerId: PropTypes.number.isRequired,
@@ -135,4 +161,4 @@ CombatHelperButton.defaultProps = {
   onMonsterAdd: noop,
 };
 
-export default CombatHelperButton;
+export default withStyles(styles)(CombatHelperButton);

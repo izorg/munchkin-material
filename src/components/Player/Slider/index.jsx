@@ -2,16 +2,17 @@ import React, { Component } from 'react';
 import SwipeableViews from 'react-swipeable-views';
 import { bindKeyboard, virtualize } from 'react-swipeable-views-utils';
 import PropTypes from 'prop-types';
+import AppBar from 'material-ui/AppBar';
 import IconButton from 'material-ui/IconButton';
+import Toolbar from 'material-ui/Toolbar';
+import Typography from 'material-ui/Typography';
 import NavigationArrowBack from 'material-ui-icons/ArrowBack';
 
 import DiceMultipleIcon from '../../icons/dice/multiple';
 import { Layout, LayoutContent, LayoutHeader } from '../../Layout';
-import AppBar from '../../material-ui/AppBar';
 import { noop } from '../../../constants';
 import DiceDialog from '../../../containers/DiceDialog';
 import PlayerStats from '../../../containers/Player/Stats';
-import { ios } from '../../../helpers/platforms';
 import { playerInstance } from '../../../utils/propTypes';
 
 import cn from './style.css';
@@ -76,13 +77,13 @@ class PlayerSlider extends Component {
     const { initialSlide } = this.state;
 
     const backButton = (
-      <IconButton onClick={onBack}>
+      <IconButton color="contrast" onClick={onBack}>
         <NavigationArrowBack />
       </IconButton>
     );
 
     const diceButton = (
-      <IconButton onClick={onDiceClick} style={{ marginLeft: ios ? 8 : undefined }}>
+      <IconButton color="contrast" onClick={onDiceClick}>
         <DiceMultipleIcon />
       </IconButton>
     );
@@ -90,15 +91,22 @@ class PlayerSlider extends Component {
     return (
       <Layout>
         <LayoutHeader>
-          <AppBar
-            iconElementLeft={backButton}
-            iconElementRight={diceButton}
-            title={selectedPlayer.name}
-          />
+          <AppBar color="primary" position="static">
+            <Toolbar disableGutters>
+              {backButton}
+              <Typography
+                color="inherit"
+                noWrap
+                style={{ flex: 1 }}
+                type="title"
+              >
+                {selectedPlayer.name}
+              </Typography>
+              {diceButton}
+            </Toolbar>
+          </AppBar>
         </LayoutHeader>
-        <LayoutContent
-          className={cn.sliderContent}
-        >
+        <LayoutContent className={cn.sliderContent}>
           <PlayerSwipeableViews
             onChangeIndex={this.handleChangeIndex}
             containerStyle={{

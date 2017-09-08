@@ -86,10 +86,7 @@ class PlayerStats extends Component {
             </div>
 
             <IconButton
-              iconStyle={{
-                width: 36,
-                height: 36,
-              }}
+              color="inherit"
               onClick={this.handleGenderToggle}
               style={{
                 width: 64,
@@ -97,7 +94,13 @@ class PlayerStats extends Component {
                 padding: 12,
               }}
             >
-              <Gender gender={player.gender} />
+              <Gender
+                gender={player.gender}
+                style={{
+                  width: 36,
+                  height: 36,
+                }}
+              />
             </IconButton>
           </div>
         </div>
