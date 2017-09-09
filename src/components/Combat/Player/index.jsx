@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
-import withStyles from 'material-ui/styles/withStyles';
+import { withStyles } from 'material-ui/styles';
 import Typography from 'material-ui/Typography';
 
 import Counter from '../../Counter';

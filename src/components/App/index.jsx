@@ -4,6 +4,7 @@ import { Redirect, Route, Switch, withRouter } from 'react-router-dom';
 import CSSTransition from 'react-transition-group/CSSTransition';
 import TransitionGroup from 'react-transition-group/TransitionGroup';
 import PropTypes from 'prop-types';
+import { withStyles } from 'material-ui/styles';
 
 import { noop } from '../../constants';
 import Combat from '../../containers/Combat';
@@ -13,12 +14,34 @@ import NewPlayerButton from '../../containers/NewPlayerButton';
 import PlayerForm from '../../containers/Player/Form';
 import PlayerList from '../../containers/Player/List';
 import PlayerSlider from '../../containers/Player/Slider';
-import { ios } from '../../helpers/platforms';
+import { classesObject } from '../../utils/propTypes';
 
 import pages, { getKey, getTransition } from './pages';
 import Zoom from './transitions/Zoom';
 
-import cn from './style.css';
+const styles = {
+  app: {
+    backgroundColor: '#000000',
+    height: '100%',
+    position: 'relative',
+  },
+
+  content: {
+    height: '100%',
+  },
+
+  item: {
+    backgroundColor: '#FFFFFF',
+    height: '100%',
+  },
+
+  fab: {
+    bottom: 24,
+    position: 'absolute',
+    right: 24,
+    zIndex: 3,
+  },
+};
 
 class App extends Component {
   getChildContext() {
@@ -28,20 +51,17 @@ class App extends Component {
   }
 
   render() {
-    const { location } = this.props;
+    const { classes, location } = this.props;
 
     return (
-      <div className={cn.app}>
+      <div className={classes.app}>
         <Helmet>
           <html lang={navigator.language} />
-          {
-            ios ? <body className="ios" /> : null
-          }
         </Helmet>
 
-        <TransitionGroup className={cn.content}>
+        <TransitionGroup className={classes.content}>
           <CSSTransition {...getTransition(location.pathname)} key={getKey(location.pathname)}>
-            <div className={cn.item}>
+            <div className={classes.item}>
               <Switch location={location}>
                 <Route component={PlayerList} {...pages.home.route} />
                 <Route component={PlayerForm} {...pages.form.route} />
@@ -54,7 +74,7 @@ class App extends Component {
           </CSSTransition>
 
           <Zoom>
-            <div className={cn.fab}>
+            <div className={classes.fab}>
               <Switch>
                 <Route component={NewPlayerButton} exact path="/" />
                 <Route component={CombatButton} exact path="/player/:playerId" />
@@ -74,6 +94,7 @@ App.childContextTypes = {
 
 App.propTypes = {
   buyFullVersion: PropTypes.func,
+  classes: classesObject.isRequired,
   location: PropTypes.shape({
     pathname: PropTypes.string.isRequired,
   }).isRequired,
@@ -83,4 +104,4 @@ App.defaultProps = {
   buyFullVersion: noop,
 };
 
-export default withRouter(App);
+export default withRouter(withStyles(styles)(App));

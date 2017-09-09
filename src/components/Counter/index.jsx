@@ -1,15 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import IconButton from 'material-ui/IconButton';
+import { withStyles } from 'material-ui/styles';
 import NavigationArrowDropDown from 'material-ui-icons/ArrowDropDown';
 import NavigationArrowDropUp from 'material-ui-icons/ArrowDropUp';
 import cns from 'classnames';
 
 import { noop } from '../../constants';
+import { classesObject } from '../../utils/propTypes';
 
-import cn from './style.css';
-
-const styles = {
+const baseStyles = {
   small: {
     width: 64,
     height: 64,
@@ -33,13 +33,35 @@ const compactStyles = {
   },
 };
 
-const Counter = ({ className, compact, onDecrement, onIncrement, title, value }) => {
-  const buttonStyle = compact ? compactStyles.small : styles.small;
-  const iconStyle = compact ? compactStyles.smallIcon : styles.smallIcon;
+const styles = theme => ({
+  counter: {
+    textAlign: 'center',
+  },
+
+  title: {
+    fontFamily: `"Munchkin", ${theme.typography.fontFamily}`,
+    fontSize: 24,
+  },
+
+  compactTitle: {
+    fontSize: 16,
+  },
+
+  value: {
+    fontFamily: `"Munchkin", ${theme.typography.fontFamily}`,
+    fontSize: 36,
+  },
+});
+
+const Counter = ({ classes, className, compact, onDecrement, onIncrement, title, value }) => {
+  const buttonStyle = compact ? compactStyles.small : baseStyles.small;
+  const iconStyle = compact ? compactStyles.smallIcon : baseStyles.smallIcon;
 
   return (
-    <div className={cns(className, cn.counter, { [cn.compact]: compact })}>
-      {title ? <div className={cn.title}>{title}</div> : null}
+    <div className={cns(className, classes.counter)}>
+      {title ? (
+        <div className={cns(classes.title, { [classes.compactTitle]: compact })}>{title}</div>
+      ) : null}
 
       <IconButton
         color="inherit"
@@ -49,7 +71,7 @@ const Counter = ({ className, compact, onDecrement, onIncrement, title, value })
         <NavigationArrowDropUp style={iconStyle} />
       </IconButton>
 
-      <div className={cn.value}>
+      <div className={classes.value}>
         {value}
       </div>
 
@@ -65,6 +87,7 @@ const Counter = ({ className, compact, onDecrement, onIncrement, title, value })
 };
 
 Counter.propTypes = {
+  classes: classesObject.isRequired,
   className: PropTypes.string,
   compact: PropTypes.bool,
   onDecrement: PropTypes.func,
@@ -81,4 +104,4 @@ Counter.defaultProps = {
   title: '',
 };
 
-export default Counter;
+export default withStyles(styles)(Counter);

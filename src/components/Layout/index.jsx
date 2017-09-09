@@ -1,30 +1,35 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { withStyles } from 'material-ui/styles';
 import cns from 'classnames';
 
-import cn from './style.css';
+import { classesObject } from '../../utils/propTypes';
 
-const propTypes = {
-  children: PropTypes.node,
+export { default as LayoutContent } from './Content';
+export { default as LayoutHeader } from './Header';
+
+const styles = {
+  layout: {
+    display: 'flex',
+    flexDirection: 'column',
+    height: '100%',
+  },
+};
+
+const Layout = ({ classes, className, ...props }) => (
+  <div
+    {...props}
+    className={cns(classes.layout, className)}
+  />
+);
+
+Layout.propTypes = {
+  classes: classesObject.isRequired,
   className: PropTypes.string,
 };
 
-const defaultProps = {
-  children: null,
+Layout.defaultProps = {
   className: '',
 };
 
-export const Layout = ({ children, className }) =>
-  <div className={cns(cn.layout, className)}>{children}</div>;
-Layout.propTypes = propTypes;
-Layout.defaultProps = defaultProps;
-
-export const LayoutContent = ({ children, className }) =>
-  <div className={cns(cn.layoutContent, className)}>{children}</div>;
-LayoutContent.propTypes = propTypes;
-LayoutContent.defaultProps = defaultProps;
-
-export const LayoutHeader = ({ children, className }) =>
-  <div className={cns(cn.layoutHeader, className)}>{children}</div>;
-LayoutHeader.propTypes = propTypes;
-LayoutHeader.defaultProps = defaultProps;
+export default withStyles(styles)(Layout);

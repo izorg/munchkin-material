@@ -5,15 +5,50 @@ import SwipeableViews from 'react-swipeable-views';
 import PropTypes from 'prop-types';
 import IconButton from 'material-ui/IconButton';
 import Paper from 'material-ui/Paper';
+import { withStyles } from 'material-ui/styles';
 import cns from 'classnames';
 
 import { noop } from '../../../constants';
-import { monsterInstance } from '../../../utils/propTypes';
+import { classesObject, monsterInstance } from '../../../utils/propTypes';
 
 import CloseCircle from '../../icons/CloseCircle';
 import Monster from '../../../containers/Combat/Monster';
 
-import cn from './style.css';
+const styles = {
+  monsters: {
+    alignItems: 'flex-end',
+    display: 'flex',
+    position: 'relative',
+  },
+
+  monsterContainer: {
+    padding: 8,
+  },
+
+  remove: {
+    position: 'absolute !important',
+    right: 16,
+    top: 16,
+  },
+
+  '@media (orientation: landscape)': {
+    monsters: {
+      alignItems: 'center',
+      overflow: 'hidden',
+    },
+
+    monsterContainer: {
+      paddingRight: 64,
+    },
+
+    remove: {
+      bottom: 8,
+      left: 8,
+      right: 'auto',
+      top: 'auto',
+    },
+  },
+};
 
 class CombatMonsterSlider extends PureComponent {
   constructor(props) {
@@ -54,12 +89,12 @@ class CombatMonsterSlider extends PureComponent {
   }
 
   render() {
-    const { className, monsters } = this.props;
+    const { classes, className, monsters } = this.props;
     const { index } = this.state;
 
     const views = monsters.map((monster, monsterIndex) => (
       <Paper
-        className={cn.monsterContainer}
+        className={classes.monsterContainer}
         key={monster.id.toString()}
       >
         <Monster
@@ -76,7 +111,7 @@ class CombatMonsterSlider extends PureComponent {
 
         {monsters.length > 1 && monsterIndex === index && (
           <IconButton
-            className={cn.remove}
+            className={classes.remove}
             onClick={() => this.handleRemove(monster.id)}
             style={{
               width: 36,
@@ -90,7 +125,7 @@ class CombatMonsterSlider extends PureComponent {
     ));
 
     return (
-      <div className={cns(cn.monsters, className)}>
+      <div className={cns(classes.monsters, className)}>
         <MediaQuery orientation="portrait">
           <SwipeableViews
             enableMouseEvents
@@ -114,7 +149,7 @@ class CombatMonsterSlider extends PureComponent {
           <SwipeableViews
             axis="y"
             containerStyle={{
-              height: 221,
+              height: 225,
               width: '100%',
             }}
             enableMouseEvents
@@ -123,13 +158,13 @@ class CombatMonsterSlider extends PureComponent {
             onChangeIndex={this.handleChangeIndex}
             slideStyle={{
               boxSizing: 'border-box',
+              height: 225,
               padding: '8px 0 8px 8px',
               position: 'relative',
             }}
             style={{
               alignItems: 'center',
               display: 'flex',
-              height: 221,
               overflowY: 'visible',
               width: '100%',
             }}
@@ -143,6 +178,7 @@ class CombatMonsterSlider extends PureComponent {
 }
 
 CombatMonsterSlider.propTypes = {
+  classes: classesObject.isRequired,
   className: PropTypes.string,
   monsters: PropTypes.arrayOf(monsterInstance),
   onMonsterRemove: PropTypes.func,
@@ -154,4 +190,4 @@ CombatMonsterSlider.defaultProps = {
   onMonsterRemove: noop,
 };
 
-export default CombatMonsterSlider;
+export default withStyles(styles)(CombatMonsterSlider);

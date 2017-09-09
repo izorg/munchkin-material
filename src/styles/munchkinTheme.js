@@ -21,14 +21,10 @@ const theme = {
   palette: {
     primary: brown,
   },
-};
 
-if (ios) {
-  Object.assign(theme, {
-    typography: {
-      fontFamily: '"San Francisco", sans-serif',
-    },
-  });
-}
+  typography: {
+    fontFamily: '"Roboto", "San Francisco", "Helvetica", "Arial", sans-serif',
+  },
+};
 
 export default createMuiTheme(theme);

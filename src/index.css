@@ -16,7 +16,6 @@ html {
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
   height: 100%;
   overflow: hidden;
   width: 100%;
@@ -25,10 +24,6 @@ body {
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* Internet Explorer/Edge */
   user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
-}
-
-body:global(.ios) {
-  font-family: 'San Francisco', sans-serif;
 }
 
 span[type="button"] {

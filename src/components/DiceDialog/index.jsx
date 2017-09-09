@@ -3,6 +3,7 @@ import TransitionGroup from 'react-transition-group/TransitionGroup';
 import PropTypes from 'prop-types';
 import Dialog from 'material-ui/Dialog';
 import IconButton from 'material-ui/IconButton';
+import { withStyles } from 'material-ui/styles';
 
 import DiceTransition from './DiceTransition';
 
@@ -13,8 +14,7 @@ import DiceThree from '../icons/dice/three';
 import DiceFour from '../icons/dice/four';
 import DiceFive from '../icons/dice/five';
 import DiceSix from '../icons/dice/six';
-
-import cn from './style.css';
+import { classesObject } from '../../utils/propTypes';
 
 const iconSize = 120;
 
@@ -22,6 +22,14 @@ const diceProps = {
   style: {
     height: iconSize,
     width: iconSize,
+  },
+};
+
+const styles = {
+  content: {
+    height: 120,
+    position: 'relative',
+    width: 120,
   },
 };
 
@@ -44,7 +52,7 @@ class DiceDialog extends Component {
   }
 
   render() {
-    const { dice, onRequestClose } = this.props;
+    const { classes, dice, onRequestClose } = this.props;
     const { attempt } = this.state;
 
     return (
@@ -52,7 +60,7 @@ class DiceDialog extends Component {
         onRequestClose={onRequestClose}
         open={!!dice}
       >
-        <TransitionGroup className={cn.content}>
+        <TransitionGroup className={classes.content}>
           <DiceTransition key={attempt}>
             <div>
               <IconButton
@@ -94,6 +102,7 @@ class DiceDialog extends Component {
 }
 
 DiceDialog.propTypes = {
+  classes: classesObject.isRequired,
   dice: PropTypes.number,
   onDiceClick: PropTypes.func,
   onRequestClose: PropTypes.func,
@@ -105,4 +114,4 @@ DiceDialog.defaultProps = {
   onRequestClose: noop,
 };
 
-export default DiceDialog;
+export default withStyles(styles)(DiceDialog);

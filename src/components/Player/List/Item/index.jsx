@@ -4,6 +4,7 @@ import { SortableHandle } from 'react-sortable-hoc';
 import PropTypes from 'prop-types';
 import Checkbox from 'material-ui/Checkbox';
 import { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
+import Typography from 'material-ui/Typography';
 import ActionReorder from 'material-ui-icons/Reorder';
 
 import { noop } from '../../../../constants';
@@ -14,14 +15,12 @@ import { playerInstance } from '../../../../utils/propTypes';
 import PlayerListItemAvatar from './Avatar';
 import Container from './Container';
 
-import cn from './style.css';
-
 const ItemHandle = SortableHandle(ActionReorder);
 
 class PlayerListItem extends Component {
   componentWillMount() {
-    this.handlePress = this.handlePress.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.handlePress = this.handlePress.bind(this);
   }
 
   handlePress(e) {
@@ -102,7 +101,7 @@ class PlayerListItem extends Component {
         {leftIcon}
         {leftCheckbox}
         <ListItemText
-          primary={<div className={cn.name}>{player.name}</div>}
+          primary={<Typography component="div" noWrap>{player.name}</Typography>}
           secondary={
             <span>
               <FormattedMessage

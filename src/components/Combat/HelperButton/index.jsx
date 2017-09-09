@@ -3,9 +3,11 @@ import { Link, Route } from 'react-router-dom';
 import TransitionGroup from 'react-transition-group/TransitionGroup';
 import PropTypes from 'prop-types';
 import FloatingActionButton from 'material-ui/Button';
-import ContentAdd from 'material-ui-icons/Add';
+import { styles as iconStyles } from 'material-ui/SvgIcon/SvgIcon';
 import { withStyles } from 'material-ui/styles';
+import ContentAdd from 'material-ui-icons/Add';
 import SocialPersonAdd from 'material-ui-icons/PersonAdd';
+import cns from 'classnames';
 
 import EmoticonDevil from '../../icons/EmoticonDevil';
 import { noop } from '../../../constants';
@@ -14,13 +16,51 @@ import { classesObject } from '../../../utils/propTypes';
 
 import Fade from './Fade';
 
-import cn from './style.css';
+const styles = (theme) => {
+  const transition = theme.transitions.create('transform', {
+    duration: theme.transitions.duration.shorter,
+  });
 
-const styles = {
-  mini: {
-    height: 40,
-    width: 40,
-  },
+  return {
+    container: {
+      position: 'relative',
+    },
+
+    miniContainer: {
+      position: 'absolute',
+      top: 0,
+      left: 0,
+    },
+
+    button: {
+      position: 'relative',
+    },
+
+    icon: {
+      transition: `${transition}, ${iconStyles(theme).root.transition}`,
+    },
+
+    expanded: {
+      transform: 'rotate(45deg)',
+    },
+
+    monster: {
+      left: 8,
+      position: 'absolute',
+      top: -64,
+    },
+
+    helper: {
+      left: 8,
+      position: 'absolute',
+      top: -128,
+    },
+
+    mini: {
+      height: 40,
+      width: 40,
+    },
+  };
 };
 
 class CombatHelperButton extends PureComponent {
@@ -92,24 +132,15 @@ class CombatHelperButton extends PureComponent {
 
     return (
       <div
-        className={cn.container}
+        className={classes.container}
         ref={(node) => {
           this.node = node;
         }}
       >
-        <FloatingActionButton
-          className={cn.button}
-          color="primary"
-          fab
-          onClick={this.handleClick}
-        >
-          {helper ? <ContentAdd className={expanded ? cn.expanded : ''} /> : <EmoticonDevil />}
-        </FloatingActionButton>
-
-        <TransitionGroup className={cn.miniContainer}>
+        <TransitionGroup className={classes.miniContainer}>
           {helper && expanded && (
             <Fade>
-              <div className={cn.monster}>
+              <div className={classes.monster}>
                 <FloatingActionButton
                   className={classes.mini}
                   color="primary"
@@ -124,7 +155,7 @@ class CombatHelperButton extends PureComponent {
 
           {helper && expanded && (
             <Fade enterDelay={50}>
-              <div className={cn.helper}>
+              <div className={classes.helper}>
                 <FloatingActionButton
                   className={classes.mini}
                   color="primary"
@@ -144,6 +175,17 @@ class CombatHelperButton extends PureComponent {
             </Fade>
           )}
         </TransitionGroup>
+
+        <FloatingActionButton
+          className={classes.button}
+          color="primary"
+          fab
+          onClick={this.handleClick}
+        >
+          {helper ? (
+            <ContentAdd className={cns(classes.icon, { [classes.expanded]: expanded })} />
+          ) : <EmoticonDevil />}
+        </FloatingActionButton>
       </div>
     );
   }

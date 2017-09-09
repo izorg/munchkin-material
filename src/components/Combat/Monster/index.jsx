@@ -1,16 +1,26 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
-import withStyles from 'material-ui/styles/withStyles';
 import Typography from 'material-ui/Typography';
+import { withStyles } from 'material-ui/styles';
 
 import Counter from '../../Counter';
 import { noop } from '../../../constants';
 import { classesObject, monsterInstance } from '../../../utils/propTypes';
 
-import cn from './style.css';
-
 const styles = {
+  monster: {
+    textAlign: 'center',
+  },
+
+  stats: {
+    display: 'flex',
+  },
+
+  item: {
+    flex: 1,
+  },
+
   name: {
     margin: '0 0 8px',
   },
@@ -25,7 +35,7 @@ const CombatMonster = ({
   onLevelIncrement,
   title,
 }) => (
-  <div className={cn.monster}>
+  <div className={classes.monster}>
     <Typography
       align="center"
       className={classes.name}
@@ -35,9 +45,9 @@ const CombatMonster = ({
       {title}
     </Typography>
 
-    <div className={cn.stats}>
+    <div className={classes.stats}>
       <Counter
-        className={cn.item}
+        className={classes.item}
         compact
         onDecrement={() => onLevelDecrement(monster)}
         onIncrement={() => onLevelIncrement(monster)}
@@ -45,7 +55,7 @@ const CombatMonster = ({
         value={monster.level}
       />
       <Counter
-        className={cn.item}
+        className={classes.item}
         compact
         onDecrement={() => onBonusDecrement(monster)}
         onIncrement={() => onBonusIncrement(monster)}

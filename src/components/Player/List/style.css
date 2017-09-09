@@ -1,9 +1,0 @@
-:root {
-  --app-animation-duration: 0.4s;
-}
-
-.sortableHelper {
-  background-color: #FFFFFF !important;
-  box-shadow: rgba(0, 0, 0, 0.156863) 0 3px 10px, rgba(0, 0, 0, 0.227451) 0 3px 10px;
-  pointer-events: auto !important;
-}

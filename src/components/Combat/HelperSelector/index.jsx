@@ -3,15 +3,29 @@ import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 import Dialog from 'material-ui/Dialog';
 import List, { ListItem, ListItemText } from 'material-ui/List';
+import Typography from 'material-ui/Typography';
+import { withStyles } from 'material-ui/styles';
 
 import { noop } from '../../../constants';
-import { playerInstance } from '../../../utils/propTypes';
+import { classesObject, playerInstance } from '../../../utils/propTypes';
 
-import cn from './style.css';
+const styles = {
+  dialogPaper: {
+    width: '75%',
+  },
 
-const HelperSelector = ({ helpers, onSelect, ...props }) => (
+  textRoot: {
+    overflow: 'hidden',
+    paddingRight: 0,
+  },
+};
+
+const HelperSelector = ({ classes, helpers, onSelect, ...props }) => (
   <Dialog
     {...props}
+    classes={{
+      paper: classes.dialogPaper,
+    }}
   >
     <List>
       {helpers.map(helper => (
@@ -20,7 +34,10 @@ const HelperSelector = ({ helpers, onSelect, ...props }) => (
           onClick={() => onSelect(helper.id)}
         >
           <ListItemText
-            primary={<div className={cn.name}>{helper.name}</div>}
+            classes={{
+              root: classes.textRoot,
+            }}
+            primary={<Typography component="div" noWrap>{helper.name}</Typography>}
             secondary={
               <span>
                 <FormattedMessage
@@ -48,6 +65,7 @@ const HelperSelector = ({ helpers, onSelect, ...props }) => (
 );
 
 HelperSelector.propTypes = {
+  classes: classesObject.isRequired,
   helpers: PropTypes.arrayOf(playerInstance),
   onSelect: PropTypes.func,
 };
@@ -57,4 +75,4 @@ HelperSelector.defaultProps = {
   onSelect: noop,
 };
 
-export default HelperSelector;
+export default withStyles(styles)(HelperSelector);

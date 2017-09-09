@@ -5,21 +5,21 @@ import PropTypes from 'prop-types';
 import AppBar from 'material-ui/AppBar';
 import { FormControlLabel } from 'material-ui/Form';
 import IconButton from 'material-ui/IconButton';
-import TextField from 'material-ui/Input/Input';
+import TextField from 'material-ui/TextField';
 import Radio, { RadioGroup } from 'material-ui/Radio';
 import Toolbar from 'material-ui/Toolbar';
 import Typography from 'material-ui/Typography';
+import { withStyles } from 'material-ui/styles';
 import NavigationArrowBack from 'material-ui-icons/ArrowBack';
 import NavigationCheck from 'material-ui-icons/Check';
 import SocialPersonAdd from 'material-ui-icons/PersonAdd';
 import { GENDER } from 'munchkin-core';
 
-import { Layout, LayoutContent, LayoutHeader } from '../../Layout';
+import Layout, { LayoutContent, LayoutHeader } from '../../Layout';
 import { noop, PLAYER_FORM } from '../../../constants';
 import GenderFemale from '../../icons/gender/Female';
 import GenderMale from '../../icons/gender/Male';
-
-import cn from './style.css';
+import { classesObject } from '../../../utils/propTypes';
 
 const messages = defineMessages({
   label: {
@@ -27,6 +27,21 @@ const messages = defineMessages({
     defaultMessage: 'Name',
   },
 });
+
+const styles = {
+  content: {
+    padding: 16,
+  },
+
+  fieldContainer: {
+    marginBottom: 16,
+    position: 'relative',
+
+    '&:last-child': {
+      marginBottom: 0,
+    },
+  },
+};
 
 class PlayerForm extends Component {
   static renderGenderField({ input }) {
@@ -81,7 +96,7 @@ class PlayerForm extends Component {
   }
 
   render() {
-    const { handleSubmit, newPlayer, onCancel, onImport, title } = this.props;
+    const { classes, handleSubmit, newPlayer, onCancel, onImport, title } = this.props;
 
     const backButton = (
       <IconButton color="contrast" onClick={onCancel}>
@@ -116,13 +131,13 @@ class PlayerForm extends Component {
         <LayoutContent>
           <form
             autoComplete="off"
-            className={cn.content}
+            className={classes.content}
             noValidate
             onSubmit={handleSubmit}
           >
             <Field component="input" name="avatar" type="hidden" />
 
-            <div className={cn.fieldContainer}>
+            <div className={classes.fieldContainer}>
               <Field component={this.renderNameField} name="name" />
               {
                 newPlayer && navigator.contacts ? (
@@ -144,7 +159,7 @@ class PlayerForm extends Component {
               }
             </div>
 
-            <div className={cn.fieldContainer}>
+            <div className={classes.fieldContainer}>
               <Field component={this.constructor.renderGenderField} name="gender" />
             </div>
           </form>
@@ -156,6 +171,7 @@ class PlayerForm extends Component {
 
 PlayerForm.propTypes = {
   autoFocus: PropTypes.bool,
+  classes: classesObject.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   intl: intlShape.isRequired,
   newPlayer: PropTypes.bool,
@@ -172,4 +188,4 @@ PlayerForm.defaultProps = {
   title: null,
 };
 
-export default injectIntl(reduxForm({ form: PLAYER_FORM })(PlayerForm));
+export default injectIntl(reduxForm({ form: PLAYER_FORM })(withStyles(styles)(PlayerForm)));

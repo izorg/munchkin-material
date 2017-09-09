@@ -13,10 +13,8 @@ import EditorModeEdit from 'material-ui-icons/ModeEdit';
 import NavigationCheck from 'material-ui-icons/Check';
 import NavigationClose from 'material-ui-icons/Close';
 
-import cn from './style.css';
-
 import Item from './Item';
-import { Layout, LayoutContent, LayoutHeader } from '../../Layout';
+import Layout, { LayoutContent, LayoutHeader } from '../../Layout';
 import { noop } from '../../../constants';
 import { ios } from '../../../helpers/platforms';
 import { classesObject, playerInstance } from '../../../utils/propTypes';
@@ -29,6 +27,12 @@ const styles = {
     flex: 1,
     marginLeft: 16,
     marginRight: 16,
+  },
+
+  sortableHelper: {
+    backgroundColor: '#FFFFFF !important',
+    boxShadow: 'rgba(0, 0, 0, 0.156863) 0 3px 10px, rgba(0, 0, 0, 0.227451) 0 3px 10px',
+    pointerEvents: 'auto !important',
   },
 };
 
@@ -144,7 +148,7 @@ class PlayerList extends Component {
         </LayoutHeader>
         <LayoutContent>
           <SortableList
-            helperClass={cn.sortableHelper}
+            helperClass={classes.sortableHelper}
             lockAxis="y"
             lockOffset={0}
             lockToContainerEdges

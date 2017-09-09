@@ -2,14 +2,91 @@ import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 import IconButton from 'material-ui/IconButton';
+import { withStyles } from 'material-ui/styles';
 import cns from 'classnames';
-
-import cn from './style.css';
 
 import Counter from '../../Counter';
 import Gender from '../../Gender';
 import { noop } from '../../../constants';
-import { playerInstance } from '../../../utils/propTypes';
+import { classesObject, playerInstance } from '../../../utils/propTypes';
+
+const styles = theme => ({
+  stats: {
+    display: 'flex',
+    flexDirection: 'column',
+    width: '100%',
+  },
+
+  mainContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    flex: '1 1 50%',
+    justifyContent: 'center',
+  },
+
+  counters: {
+    flex: '1 1 50%',
+    display: 'flex',
+  },
+
+  counterContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    flex: '1 1 50%',
+    justifyContent: 'center',
+  },
+
+  strengthCounter: {
+    textAlign: 'center',
+  },
+
+  strengthTitle: {
+    display: 'none',
+    fontFamily: `"Munchkin", ${theme.typography.fontFamily}`,
+    fontSize: 24,
+  },
+
+  strengthValue: {
+    display: 'none',
+    fontFamily: `"Munchkin", ${theme.typography.fontFamily}`,
+    fontSize: 72, /* 36px * 2 */
+    lineHeight: 0.575, /* 1.15 / 2 */
+    marginTop: 32,
+  },
+
+  '@media (orientation: portrait) and (min-height: 383px)': {
+    strengthValue: {
+      display: 'block',
+    },
+  },
+
+  '@media (orientation: portrait) and (min-height: 447px)': {
+    strengthTitle: {
+      display: 'block',
+    },
+  },
+
+  '@media (orientation: portrait) and (min-height: 543px)': {
+    stats: {
+      flexDirection: 'column-reverse',
+    },
+  },
+
+  '@media (orientation: landscape)': {
+    stats: {
+      flexDirection: 'row',
+    },
+
+    strengthTitle: {
+      display: 'block',
+    },
+
+    strengthValue: {
+      display: 'block',
+      marginTop: 64,
+    },
+  },
+});
 
 class PlayerStats extends Component {
   componentWillMount() {
@@ -53,12 +130,12 @@ class PlayerStats extends Component {
   }
 
   render() {
-    const { className, player } = this.props;
+    const { classes, className, player } = this.props;
 
     return (
-      <div className={cns(className, cn.stats)}>
-        <div className={cn.counters}>
-          <div className={cn.counterContainer}>
+      <div className={cns(className, classes.stats)}>
+        <div className={classes.counters}>
+          <div className={classes.counterContainer}>
             <Counter
               onDecrement={this.handleLevelDecrement}
               onIncrement={this.handleLevelIncrement}
@@ -66,7 +143,7 @@ class PlayerStats extends Component {
               value={player.level}
             />
           </div>
-          <div className={cn.counterContainer}>
+          <div className={classes.counterContainer}>
             <Counter
               onDecrement={this.handleGearDecrement}
               onIncrement={this.handleGearIncrement}
@@ -75,13 +152,13 @@ class PlayerStats extends Component {
             />
           </div>
         </div>
-        <div className={cn.mainContainer}>
-          <div className={cn.strengthCounter}>
-            <div className={cn.strengthTitle}>
+        <div className={classes.mainContainer}>
+          <div className={classes.strengthCounter}>
+            <div className={classes.strengthTitle}>
               <FormattedMessage id="player.stats.strength" defaultMessage="Strength" />
             </div>
 
-            <div className={cn.strengthValue}>
+            <div className={classes.strengthValue}>
               {player.strength}
             </div>
 
@@ -110,6 +187,7 @@ class PlayerStats extends Component {
 }
 
 PlayerStats.propTypes = {
+  classes: classesObject.isRequired,
   className: PropTypes.string,
   onGearDecrement: PropTypes.func,
   onGearIncrement: PropTypes.func,
@@ -128,4 +206,4 @@ PlayerStats.defaultProps = {
   onLevelIncrement: noop,
 };
 
-export default PlayerStats;
+export default withStyles(styles)(PlayerStats);

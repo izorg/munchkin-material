@@ -6,18 +6,33 @@ import AppBar from 'material-ui/AppBar';
 import IconButton from 'material-ui/IconButton';
 import Toolbar from 'material-ui/Toolbar';
 import Typography from 'material-ui/Typography';
+import { withStyles } from 'material-ui/styles';
 import NavigationArrowBack from 'material-ui-icons/ArrowBack';
 
 import DiceMultipleIcon from '../../icons/dice/multiple';
-import { Layout, LayoutContent, LayoutHeader } from '../../Layout';
+import Layout, { LayoutContent, LayoutHeader } from '../../Layout';
 import { noop } from '../../../constants';
 import DiceDialog from '../../../containers/DiceDialog';
 import PlayerStats from '../../../containers/Player/Stats';
-import { playerInstance } from '../../../utils/propTypes';
-
-import cn from './style.css';
+import { classesObject, playerInstance } from '../../../utils/propTypes';
 
 const PlayerSwipeableViews = bindKeyboard(virtualize(SwipeableViews));
+
+const styles = {
+  sliderContent: {
+    display: 'flex',
+  },
+
+  item: {
+    flexGrow: 1,
+  },
+
+  '@media (orientation: portrait) and (min-height: 543px)': {
+    sliderContent: {
+      paddingBottom: 80,
+    },
+  },
+};
 
 class PlayerSlider extends Component {
   constructor(props) {
@@ -58,17 +73,18 @@ class PlayerSlider extends Component {
   }
 
   slideRenderer({ key, index }) {
-    const { players } = this.props;
+    const { classes, players } = this.props;
     const playerIndex = this.getPlayerIndex(index);
     const player = players[playerIndex];
 
     return (
-      <PlayerStats className={cn.item} key={key} player={player} />
+      <PlayerStats className={classes.item} key={key} player={player} />
     );
   }
 
   render() {
     const {
+      classes,
       onBack,
       onDiceClick,
       selectedPlayer,
@@ -106,7 +122,7 @@ class PlayerSlider extends Component {
             </Toolbar>
           </AppBar>
         </LayoutHeader>
-        <LayoutContent className={cn.sliderContent}>
+        <LayoutContent className={classes.sliderContent}>
           <PlayerSwipeableViews
             onChangeIndex={this.handleChangeIndex}
             containerStyle={{
@@ -132,6 +148,7 @@ class PlayerSlider extends Component {
 }
 
 PlayerSlider.propTypes = {
+  classes: classesObject.isRequired,
   onBack: PropTypes.func,
   onDiceClick: PropTypes.func,
   onPlayerChange: PropTypes.func,
@@ -145,4 +162,4 @@ PlayerSlider.defaultProps = {
   onPlayerChange: noop,
 };
 
-export default PlayerSlider;
+export default withStyles(styles)(PlayerSlider);
