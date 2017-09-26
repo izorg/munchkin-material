@@ -1,23 +1,19 @@
 import React, { Component } from 'react';
 import Helmet from 'react-helmet';
-import { Redirect, Route, Switch, withRouter } from 'react-router-dom';
+import { matchPath, Redirect, Route, Switch, withRouter } from 'react-router-dom';
 import CSSTransition from 'react-transition-group/CSSTransition';
-import TransitionGroup from 'react-transition-group/TransitionGroup';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 
 import { noop } from '../../constants';
-import Combat from '../../containers/Combat';
 import CombatButton from '../../containers/Combat/Button';
 import CombatHelperButton from '../../containers/Combat/HelperButton';
 import NewPlayerButton from '../../containers/NewPlayerButton';
-import PlayerForm from '../../containers/Player/Form';
-import PlayerList from '../../containers/Player/List';
-import PlayerSlider from '../../containers/Player/Slider';
 import { classesObject } from '../../utils/propTypes';
 
-import pages, { getKey, getTransition } from './pages';
-import Zoom from './transitions/Zoom';
+import pages from './pages';
+
+const ANIMATION_DURATION = 400;
 
 const styles = {
   app: {
@@ -26,14 +22,96 @@ const styles = {
     position: 'relative',
   },
 
-  content: {
-    height: '100%',
-  },
-
   item: {
     backgroundColor: '#FFFFFF',
     height: '100%',
+    left: 0,
+    position: 'absolute',
+    width: '100%',
+    top: 0,
   },
+
+
+  enter: {
+    zIndex: 1,
+  },
+
+  exit: {
+    zIndex: 0,
+  },
+
+
+  fadeInUp: {
+    opacity: 0,
+    transform: 'translateY(100%)',
+  },
+
+  fadeInUpActive: {
+    opacity: 1,
+    transform: 'translateY(0)',
+    transition: `
+      opacity ${ANIMATION_DURATION}ms ease-out,
+      transform ${ANIMATION_DURATION}ms ease-out`,
+  },
+
+
+  fadeOutDown: {
+    opacity: 1,
+    transform: 'translateY(0)',
+  },
+
+  fadeOutDownActive: {
+    opacity: 0,
+    transform: 'translateY(100%)',
+    transition: `
+      opacity ${ANIMATION_DURATION}ms ease-in,
+      transform ${ANIMATION_DURATION}ms ease-in`,
+  },
+
+
+  slideInRight: {
+    transform: 'translateX(100%)',
+  },
+
+  slideInRightActive: {
+    transform: 'translateX(0)',
+    transition: `transform ${ANIMATION_DURATION}ms ease-out`,
+  },
+
+
+  slideOutRight: {
+    transform: 'translateX(0)',
+  },
+
+  slideOutRightActive: {
+    transform: 'translateX(100%)',
+    transition: `transform ${ANIMATION_DURATION}ms ease-in`,
+  },
+
+
+  zoomIn: {
+    transform: 'scale(0.8)',
+  },
+
+  zoomInActive: {
+    transform: 'scale(1)',
+    transition: `transform ${ANIMATION_DURATION}ms ease-out`,
+  },
+
+
+  zoomOut: {
+    opacity: 1,
+    transform: 'scale(1)',
+  },
+
+  zoomOutActive: {
+    opacity: 0.8, // IE/Edge blink fix
+    transform: 'scale(0.8)',
+    transition: `
+      opacity ${ANIMATION_DURATION}ms ease-in,
+      transform ${ANIMATION_DURATION}ms ease-in`,
+  },
+
 
   fab: {
     bottom: 24,
@@ -50,8 +128,82 @@ class App extends Component {
     return { buyFullVersion };
   }
 
+  componentWillUpdate() {
+    this.prevPathname = this.props.location.pathname;
+  }
+
+  getTransitionClassNames(key) {
+    const { classes, location } = this.props;
+
+    switch (key) {
+      case 'combat':
+        return {
+          enter: classes.slideInRight,
+          enterActive: classes.slideInRightActive,
+          exit: classes.slideOutRight,
+          exitActive: classes.slideOutRightActive,
+        };
+
+      case 'edit':
+      case 'form':
+        return {
+          enter: classes.fadeInUp,
+          enterActive: classes.fadeInUpActive,
+          exit: classes.fadeOutDown,
+          exitActive: classes.fadeOutDownActive,
+        };
+
+      case 'home':
+        return {
+          enter: classes.zoomIn,
+          enterActive: classes.zoomInActive,
+          exit: classes.zoomOut,
+          exitActive: classes.zoomOutActive,
+        };
+
+      case 'slider': {
+        const classNames = {
+          enter: classes.slideInRight,
+          enterActive: classes.slideInRightActive,
+          exit: classes.slideOutRight,
+          exitActive: classes.slideOutRightActive,
+        };
+
+        if (matchPath(this.prevPathname, pages.combat.route)) {
+          return {
+            ...classNames,
+            enter: classes.zoomIn,
+            enterActive: classes.zoomInActive,
+          };
+        }
+
+        if (matchPath(location.pathname, pages.combat.route)) {
+          return {
+            ...classNames,
+            exit: classes.zoomOut,
+            exitActive: classes.zoomOutActive,
+          };
+        }
+
+        return classNames;
+      }
+
+      default:
+        return {
+          enter: classes.enter,
+          enterActive: classes.enter,
+          exit: classes.exit,
+          exitActive: classes.exit,
+        };
+    }
+  }
+
   render() {
     const { classes, location } = this.props;
+
+    if (!Object.keys(pages).some(key => matchPath(location.pathname, pages[key].route))) {
+      return <Redirect to="/" />;
+    }
 
     return (
       <div className={classes.app}>
@@ -59,30 +211,35 @@ class App extends Component {
           <html lang={navigator.language} />
         </Helmet>
 
-        <TransitionGroup className={classes.content}>
-          <CSSTransition {...getTransition(location.pathname)} key={getKey(location.pathname)}>
-            <div className={classes.item}>
-              <Switch location={location}>
-                <Route component={PlayerList} {...pages.home.route} />
-                <Route component={PlayerForm} {...pages.form.route} />
-                <Route component={PlayerSlider} {...pages.slider.route} />
-                <Route component={PlayerForm} {...pages.editForm.route} />
-                <Route component={Combat} {...pages.combat.route} />
-                <Redirect to="/" />
-              </Switch>
-            </div>
-          </CSSTransition>
+        {Object.keys(pages).map((key) => {
+          const { component: PageComponent, route } = pages[key];
 
-          <Zoom>
-            <div className={classes.fab}>
-              <Switch>
-                <Route component={NewPlayerButton} exact path="/" />
-                <Route component={CombatButton} exact path="/player/:playerId" />
-                <Route component={CombatHelperButton} path="/player/:playerId/combat" />
-              </Switch>
-            </div>
-          </Zoom>
-        </TransitionGroup>
+          return (
+            <Route key={key} {...route}>
+              {({ match }) => (
+                <CSSTransition
+                  classNames={this.getTransitionClassNames(key)}
+                  in={Boolean(match)}
+                  mountOnEnter
+                  timeout={ANIMATION_DURATION}
+                  unmountOnExit
+                >
+                  <div className={classes.item}>
+                    <PageComponent />
+                  </div>
+                </CSSTransition>
+              )}
+            </Route>
+          );
+        })}
+
+        <div className={classes.fab}>
+          <Switch>
+            <Route component={NewPlayerButton} exact path="/" />
+            <Route component={CombatButton} exact path="/player/:id" />
+            <Route component={CombatHelperButton} path="/player/:id/combat" />
+          </Switch>
+        </div>
       </div>
     );
   }
