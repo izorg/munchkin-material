@@ -1,6 +1,5 @@
 const CnameWebpackPlugin = require('cname-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const _ = require('lodash');
 const OfflinePlugin = require('offline-plugin');
@@ -69,13 +68,9 @@ module.exports = merge({
   },
 
   plugins: [
-    new ExtractTextPlugin({
-      filename: '[name].[contenthash].css',
-    }),
     new OfflinePlugin({
       caches: {
         main: [
-          '*.css',
           '*.html',
           '*.js',
         ],

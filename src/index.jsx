@@ -5,13 +5,9 @@ import { render } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 import createHistory from 'history/createHashHistory';
 
-import 'normalize.css';
-
 import { hideBanner, setFullVersion } from './actions';
 import Root from './components/Root';
 import configureStore from './store/configureStore';
-
-import './index.css';
 
 const history = createHistory();
 

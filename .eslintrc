@@ -1,15 +1,9 @@
 {
-  "extends": [
-    "airbnb",
-    "plugin:css-modules/recommended"
-  ],
+  "extends": "airbnb",
   "env": {
     "browser": true,
     "node": true
   },
-  "plugins": [
-    "css-modules"
-  ],
   "rules": {
     "import/no-extraneous-dependencies": [
       "error",

@@ -8,11 +8,21 @@ import Counter from '../../Counter';
 import { noop } from '../../../constants';
 import { classesObject, playerInstance } from '../../../utils/propTypes';
 
-import cn from './style.css';
-
 const styles = {
+  player: {
+    textAlign: 'center',
+  },
+
   name: {
     margin: '0 0 8px',
+  },
+
+  stats: {
+    display: 'flex',
+  },
+
+  item: {
+    flex: 1,
   },
 };
 
@@ -60,7 +70,7 @@ class CombatPlayer extends PureComponent {
     const { bonus, classes, player } = this.props;
 
     return (
-      <div className={cn.player} key={player.id.toString()}>
+      <div className={classes.player} key={player.id.toString()}>
         <Typography
           align="center"
           className={classes.name}
@@ -70,9 +80,9 @@ class CombatPlayer extends PureComponent {
           {player.name}
         </Typography>
 
-        <div className={cn.stats}>
+        <div className={classes.stats}>
           <Counter
-            className={cn.item}
+            className={classes.item}
             compact
             onDecrement={this.handleLevelDecrement}
             onIncrement={this.handleLevelIncrement}
@@ -80,7 +90,7 @@ class CombatPlayer extends PureComponent {
             value={player.level}
           />
           <Counter
-            className={cn.item}
+            className={classes.item}
             compact
             onDecrement={this.handleGearDecrement}
             onIncrement={this.handleGearIncrement}
@@ -88,7 +98,7 @@ class CombatPlayer extends PureComponent {
             value={player.gear}
           />
           <Counter
-            className={cn.item}
+            className={classes.item}
             compact
             onDecrement={() => this.handleBonusChange(-1)}
             onIncrement={() => this.handleBonusChange(+1)}

@@ -1,21 +1,52 @@
 import React, { cloneElement } from 'react';
 import CSSTransition from 'react-transition-group/CSSTransition';
 import PropTypes from 'prop-types';
+import { withStyles } from 'material-ui/styles';
 
-import cn from './style.css';
+import { classesObject } from '../../../../utils/propTypes';
 
-const CombatHelperButtonFade = ({ children, enterDelay, ...props }) => (
+const DURATION = 150;
+
+const styles = {
+  enter: {
+    opacity: 0,
+    transform: 'scale(0.5) translate3d(0, 50%, 0)',
+  },
+
+  enterActive: {
+    opacity: 1,
+    transform: 'none',
+    transitionDuration: `${DURATION}ms`,
+    transitionProperty: 'all',
+    transitionTimingFunction: 'ease-in',
+  },
+
+  exit: {
+    opacity: 1,
+    transform: 'none',
+  },
+
+  exitActive: {
+    opacity: 0,
+    transform: 'scale(0.8)',
+    transitionDuration: `${DURATION}ms`,
+    transitionProperty: 'all',
+    transitionTimingFunction: 'ease-out',
+  },
+};
+
+const CombatHelperButtonFade = ({ children, classes, enterDelay, ...props }) => (
   <CSSTransition
     {...props}
     classNames={{
-      enter: cn.enter,
-      enterActive: cn.enterActive,
-      exit: cn.exit,
-      exitActive: cn.exitActive,
+      enter: classes.enter,
+      enterActive: classes.enterActive,
+      exit: classes.exit,
+      exitActive: classes.exitActive,
     }}
     timeout={{
-      enter: 150 + enterDelay,
-      exit: 150,
+      enter: DURATION + enterDelay,
+      exit: DURATION,
     }}
   >
     {state => cloneElement(children, {
@@ -28,6 +59,7 @@ const CombatHelperButtonFade = ({ children, enterDelay, ...props }) => (
 
 CombatHelperButtonFade.propTypes = {
   children: PropTypes.node,
+  classes: classesObject.isRequired,
   enterDelay: PropTypes.number,
 };
 
@@ -36,4 +68,4 @@ CombatHelperButtonFade.defaultProps = {
   enterDelay: 0,
 };
 
-export default CombatHelperButtonFade;
+export default withStyles(styles)(CombatHelperButtonFade);

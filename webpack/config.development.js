@@ -3,7 +3,6 @@ const path = require('path');
 const webpack = require('webpack');
 const WebpackNotifierPlugin = require('webpack-notifier');
 const merge = require('webpack-merge');
-const StyleLintPlugin = require('stylelint-webpack-plugin');
 
 const srcPath = path.resolve(__dirname, '../src');
 const config = require('./config.common.js');
@@ -50,9 +49,6 @@ module.exports = merge.strategy({
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
     new WebpackNotifierPlugin(),
-    new StyleLintPlugin({
-      files: ['./src/**/*.css'],
-    }),
     new CopyWebpackPlugin([
       { from: './src/manifest.json' },
     ]),

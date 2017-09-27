@@ -4,16 +4,49 @@ import SwipeableViews from 'react-swipeable-views';
 import PropTypes from 'prop-types';
 import IconButton from 'material-ui/IconButton';
 import Paper from 'material-ui/Paper';
+import { withStyles } from 'material-ui/styles';
 import cns from 'classnames';
 
 import { noop } from '../../../constants';
-import { playerInstance } from '../../../utils/propTypes';
+import { classesObject, playerInstance } from '../../../utils/propTypes';
 
 import CloseCircle from '../../icons/CloseCircle';
 
 import Player from '../../../containers/Combat/Player';
 
-import cn from './style.css';
+const styles = {
+  players: {
+    alignItems: 'flex-start',
+    display: 'flex',
+    position: 'relative',
+  },
+
+  playerContainer: {
+    padding: 8,
+  },
+
+  remove: {
+    position: 'absolute !important',
+    right: 16,
+    bottom: 16,
+  },
+
+  '@media (orientation: landscape)': {
+    players: {
+      alignItems: 'center',
+      overflow: 'hidden',
+    },
+
+    playerContainer: {
+      paddingLeft: 36,
+    },
+
+    remove: {
+      right: 8,
+      bottom: 8,
+    },
+  },
+};
 
 class CombatPlayerSlider extends Component {
   constructor(props) {
@@ -54,6 +87,7 @@ class CombatPlayerSlider extends Component {
 
   render() {
     const {
+      classes,
       className,
       helper,
       onHelperBonusChange,
@@ -79,7 +113,7 @@ class CombatPlayerSlider extends Component {
 
     const players = playersProps.map(props => (
       <Paper
-        className={cn.playerContainer}
+        className={classes.playerContainer}
         key={props.player.id.toString()}
       >
         <Player
@@ -89,7 +123,7 @@ class CombatPlayerSlider extends Component {
 
         {helper && props.player.id === helper.id && (
           <IconButton
-            className={cn.remove}
+            className={classes.remove}
             onClick={this.handleHelperRemove}
             style={{
               width: 36,
@@ -104,7 +138,7 @@ class CombatPlayerSlider extends Component {
     ));
 
     return (
-      <div className={cns(cn.players, className)}>
+      <div className={cns(classes.players, className)}>
         <MediaQuery orientation="portrait">
           <SwipeableViews
             enableMouseEvents
@@ -157,6 +191,7 @@ class CombatPlayerSlider extends Component {
 }
 
 CombatPlayerSlider.propTypes = {
+  classes: classesObject.isRequired,
   className: PropTypes.string,
   helper: playerInstance,
   onHelperBonusChange: PropTypes.func,
@@ -173,4 +208,4 @@ CombatPlayerSlider.defaultProps = {
   onPlayerBonusChange: noop,
 };
 
-export default CombatPlayerSlider;
+export default withStyles(styles)(CombatPlayerSlider);
