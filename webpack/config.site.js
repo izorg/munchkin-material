@@ -101,15 +101,7 @@ module.exports = merge({
     new webpack.HashedModuleIdsPlugin(),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
-      minChunks: (module) => {
-        // This prevents stylesheet resources with the .css extension
-        // from being moved from their original chunk to the vendor chunk
-        if (module.resource && (/^.*\.css$/).test(module.resource)) {
-          return false;
-        }
-
-        return module.context && module.context.indexOf('node_modules') !== -1;
-      },
+      minChunks: module => module.context && module.context.indexOf('node_modules') !== -1,
     }),
   ],
 });
