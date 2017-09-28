@@ -5,7 +5,6 @@ import PlayerSlider from '../../containers/Player/Slider';
 
 const pages = {
   home: {
-    key: 'home',
     component: PlayerList,
     route: {
       exact: true,
@@ -14,7 +13,6 @@ const pages = {
   },
 
   form: {
-    key: 'form',
     component: PlayerForm,
     route: {
       exact: true,
@@ -23,7 +21,6 @@ const pages = {
   },
 
   slider: {
-    key: 'slider',
     component: PlayerSlider,
     route: {
       exact: true,
@@ -32,7 +29,6 @@ const pages = {
   },
 
   edit: {
-    key: 'edit',
     component: PlayerForm,
     route: {
       exact: true,
@@ -41,7 +37,6 @@ const pages = {
   },
 
   combat: {
-    key: 'combat',
     component: Combat,
     route: {
       path: '/player/:id/combat',

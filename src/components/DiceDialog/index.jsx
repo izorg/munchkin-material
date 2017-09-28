@@ -5,7 +5,7 @@ import Dialog from 'material-ui/Dialog';
 import IconButton from 'material-ui/IconButton';
 import { withStyles } from 'material-ui/styles';
 
-import DiceTransition from './DiceTransition';
+import DiceTransition from './Transition';
 
 import { noop } from '../../constants';
 import DiceOne from '../icons/dice/one';

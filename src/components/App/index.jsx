@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Helmet from 'react-helmet';
-import { matchPath, Redirect, Route, Switch, withRouter } from 'react-router-dom';
+import { matchPath, Redirect, Route, withRouter } from 'react-router-dom';
 import CSSTransition from 'react-transition-group/CSSTransition';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
@@ -8,10 +8,8 @@ import { withStyles } from 'material-ui/styles';
 import munchkinWoff from '../../fonts/munchkin.woff';
 import munchkinWoff2 from '../../fonts/munchkin.woff2';
 
+import MainButton from '../MainButton';
 import { noop } from '../../constants';
-import CombatButton from '../../containers/Combat/Button';
-import CombatHelperButton from '../../containers/Combat/HelperButton';
-import NewPlayerButton from '../../containers/NewPlayerButton';
 import { classesObject } from '../../utils/propTypes';
 
 import pages from './pages';
@@ -149,14 +147,6 @@ const styles = {
       opacity ${ANIMATION_DURATION}ms ease-in,
       transform ${ANIMATION_DURATION}ms ease-in`,
   },
-
-
-  fab: {
-    bottom: 24,
-    position: 'absolute',
-    right: 24,
-    zIndex: 3,
-  },
 };
 
 class App extends Component {
@@ -271,13 +261,7 @@ class App extends Component {
           );
         })}
 
-        <div className={classes.fab}>
-          <Switch>
-            <Route component={NewPlayerButton} exact path="/" />
-            <Route component={CombatButton} exact path="/player/:id" />
-            <Route component={CombatHelperButton} path="/player/:id/combat" />
-          </Switch>
-        </div>
+        <MainButton />
       </div>
     );
   }

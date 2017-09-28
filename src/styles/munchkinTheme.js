@@ -16,6 +16,12 @@ const theme = {
         backgroundColor: brown[500],
       },
     },
+
+    MuiButtonBase: {
+      root: {
+        color: 'rgba(0, 0, 0, 0.12)',
+      },
+    },
   },
 
   palette: {
