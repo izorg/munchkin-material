@@ -19,7 +19,7 @@ const theme = {
 
     MuiButtonBase: {
       root: {
-        color: 'rgba(0, 0, 0, 0.12)',
+        color: 'rgba(0, 0, 0, 0.38)',
       },
     },
   },
