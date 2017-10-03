@@ -9,8 +9,6 @@ const merge = require('webpack-merge');
 
 const config = require('./config.production.js');
 
-const srcPath = path.resolve(__dirname, '../src');
-
 module.exports = merge({
   customizeArray(a, b, key) {
     if (key === 'entry') {
