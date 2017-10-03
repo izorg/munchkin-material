@@ -59,9 +59,8 @@ module.exports = merge({
         test: /\.(woff|woff2)$/,
         loader: 'file-loader',
         options: {
-          context: srcPath,
-          name: '[path][name].[hash].[ext]',
-          publicPath: '',
+          name: '[name].[hash].[ext]',
+          outputPath: 'fonts/',
         },
       },
     ],

@@ -35,9 +35,8 @@ module.exports = {
         test: /\.(woff|woff2)$/,
         loader: 'file-loader',
         options: {
-          context: srcPath,
-          name: '[path][name].[ext]',
-          publicPath: '../',
+          name: '[name].[ext]',
+          outputPath: 'fonts/',
         },
       },
     ],
