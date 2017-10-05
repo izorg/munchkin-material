@@ -29,7 +29,7 @@ class PlayerListItemAvatar extends Component {
       <Avatar {...props} onError={this.handleError} src={avatar} />
     ) : (
       <Avatar {...props}>
-        {name.charAt(0).toUpperCase()}
+        {String.fromCodePoint(name.codePointAt(0)).toUpperCase()}
       </Avatar>
     );
   }

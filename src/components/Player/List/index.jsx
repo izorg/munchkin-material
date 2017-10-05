@@ -8,6 +8,7 @@ import List from 'material-ui/List';
 import { withStyles } from 'material-ui/styles';
 import Toolbar from 'material-ui/Toolbar';
 import Typography from 'material-ui/Typography';
+import AccountCircle from 'material-ui-icons/AccountCircle';
 import ActionDelete from 'material-ui-icons/Delete';
 import EditorModeEdit from 'material-ui-icons/ModeEdit';
 import NavigationCheck from 'material-ui-icons/Check';
@@ -22,11 +23,30 @@ import { classesObject, playerInstance } from '../../../utils/propTypes';
 const SortableList = SortableContainer(List);
 const SortableListItem = SortableElement(Item);
 
-const styles = {
+const styles = theme => ({
+  empty: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+  },
+
   flex: {
     flex: 1,
     marginLeft: 16,
     marginRight: 16,
+  },
+
+  nobody: {
+    color: theme.palette.text.hint,
+    fontSize: '1em',
+    textAlign: 'center',
+  },
+
+  nobodyIcon: {
+    height: 96,
+    marginBottom: 16,
+    opacity: 0.2,
+    width: 96,
   },
 
   sortableHelper: {
@@ -34,7 +54,7 @@ const styles = {
     boxShadow: 'rgba(0, 0, 0, 0.156863) 0 3px 10px, rgba(0, 0, 0, 0.227451) 0 3px 10px',
     pointerEvents: 'auto !important',
   },
-};
+});
 
 class PlayerList extends Component {
   componentWillMount() {
@@ -146,29 +166,41 @@ class PlayerList extends Component {
             </Toolbar>
           </AppBar>
         </LayoutHeader>
-        <LayoutContent>
-          <SortableList
-            helperClass={classes.sortableHelper}
-            lockAxis="y"
-            lockOffset={0}
-            lockToContainerEdges
-            onSortEnd={this.handleSortEnd}
-            useDragHandle
-          >
-            {players.map((player, index) => (
-              <SortableListItem
-                index={index}
-                key={player.id}
-                onCheck={this.handleItemCheck}
-                onPress={this.handleItemPress}
-                onClick={this.handleItemTap}
-                player={player}
-                selected={selectedPlayerIds.includes(player.id)}
-                showCheckbox={multiMode}
-                showDragHandle={editMode}
-              />
-            ))}
-          </SortableList>
+        <LayoutContent className={!players.length ? classes.empty : ''}>
+          {players.length ? (
+            <SortableList
+              helperClass={classes.sortableHelper}
+              lockAxis="y"
+              lockOffset={0}
+              lockToContainerEdges
+              onSortEnd={this.handleSortEnd}
+              useDragHandle
+            >
+              {players.map((player, index) => (
+                <SortableListItem
+                  index={index}
+                  key={player.id}
+                  onCheck={this.handleItemCheck}
+                  onPress={this.handleItemPress}
+                  onClick={this.handleItemTap}
+                  player={player}
+                  selected={selectedPlayerIds.includes(player.id)}
+                  showCheckbox={multiMode}
+                  showDragHandle={editMode}
+                />
+              ))}
+            </SortableList>
+          ) : (
+            <div className={classes.nobody}>
+              <AccountCircle className={classes.nobodyIcon} />
+              <Typography align="center" className={classes.nobody} component="div">
+                <FormattedMessage
+                  id="player.list.empty"
+                  defaultMessage="No players in the list"
+                />
+              </Typography>
+            </div>
+          )}
         </LayoutContent>
       </Layout>
     );
