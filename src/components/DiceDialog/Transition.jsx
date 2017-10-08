@@ -1,12 +1,11 @@
 import React from 'react';
 import CSSTransition from 'react-transition-group/CSSTransition';
 import { withStyles } from 'material-ui/styles';
+import transitions, { duration, easing } from 'material-ui/styles/transitions';
 
 import { classesObject } from '../../utils/propTypes';
 
-const DURATION = 150;
-
-const styles = theme => ({
+const styles = {
   enter: {
     height: '100%',
     left: 0,
@@ -19,10 +18,10 @@ const styles = theme => ({
 
   enterActive: {
     transform: 'scale(1)',
-    transition: theme.transitions.create('transform', {
-      delay: DURATION,
-      duration: DURATION,
-      easing: theme.transitions.easing.easeOut,
+    transition: transitions.create('transform', {
+      delay: duration.shortest,
+      duration: duration.shortest,
+      easing: easing.easeOut,
     }),
   },
 
@@ -38,12 +37,12 @@ const styles = theme => ({
 
   leaveActive: {
     transform: 'scale(0)',
-    transition: theme.transitions.create('transform', {
-      duration: DURATION,
-      easing: theme.transitions.easing.easeIn,
+    transition: transitions.create('transform', {
+      duration: duration.shortest,
+      easing: easing.easeIn,
     }),
   },
-});
+};
 
 const DiceTransition = ({ classes, ...props }) => (
   <CSSTransition
@@ -55,8 +54,8 @@ const DiceTransition = ({ classes, ...props }) => (
       exitActive: classes.leaveActive,
     }}
     timeout={{
-      enter: DURATION * 2,
-      exit: DURATION,
+      enter: duration.shortest * 2,
+      exit: duration.shortest,
     }}
   />
 );

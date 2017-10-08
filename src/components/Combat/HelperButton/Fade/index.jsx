@@ -2,10 +2,9 @@ import React, { cloneElement } from 'react';
 import CSSTransition from 'react-transition-group/CSSTransition';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
+import transitions, { duration, easing } from 'material-ui/styles/transitions';
 
 import { classesObject } from '../../../../utils/propTypes';
-
-const DURATION = 150;
 
 const styles = {
   enter: {
@@ -16,9 +15,10 @@ const styles = {
   enterActive: {
     opacity: 1,
     transform: 'none',
-    transitionDuration: `${DURATION}ms`,
-    transitionProperty: 'all',
-    transitionTimingFunction: 'ease-in',
+    transition: transitions.create(['opacity', 'transform'], {
+      duration: duration.shortest,
+      easing: easing.easeIn,
+    }),
   },
 
   exit: {
@@ -29,9 +29,10 @@ const styles = {
   exitActive: {
     opacity: 0,
     transform: 'scale(0.8)',
-    transitionDuration: `${DURATION}ms`,
-    transitionProperty: 'all',
-    transitionTimingFunction: 'ease-out',
+    transition: transitions.create(['opacity', 'transform'], {
+      duration: duration.shortest,
+      easing: easing.easeOut,
+    }),
   },
 };
 
@@ -45,8 +46,8 @@ const CombatHelperButtonFade = ({ children, classes, enterDelay, ...props }) => 
       exitActive: classes.exitActive,
     }}
     timeout={{
-      enter: DURATION + enterDelay,
-      exit: DURATION,
+      enter: duration.shortest + enterDelay,
+      exit: duration.shortest,
     }}
   >
     {state => cloneElement(children, {

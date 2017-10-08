@@ -2,8 +2,9 @@ import React, { PureComponent } from 'react';
 import { Link, Route } from 'react-router-dom';
 import TransitionGroup from 'react-transition-group/TransitionGroup';
 import PropTypes from 'prop-types';
-import FloatingActionButton from 'material-ui/Button';
+import Button from 'material-ui/Button';
 import { styles as iconStyles } from 'material-ui/SvgIcon/SvgIcon';
+import Backdrop from 'material-ui/internal/Backdrop';
 import { withStyles } from 'material-ui/styles';
 import ContentAdd from 'material-ui-icons/Add';
 import SocialPersonAdd from 'material-ui-icons/PersonAdd';
@@ -67,68 +68,23 @@ class CombatHelperButton extends PureComponent {
   constructor(props) {
     super(props);
 
-    this.state = {
-      expanded: false,
-    };
-
-    this.handleClickOutside = this.handleClickOutside.bind(this);
-    this.handleMonsterAdd = this.handleMonsterAdd.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
 
-  componentDidMount() {
-    document.addEventListener('click', this.handleClickOutside);
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (!nextProps.helper) {
-      this.setState({
-        expanded: false,
-      });
-    }
-  }
-
-  componentWillUnmount() {
-    document.removeEventListener('click', this.handleClickOutside);
-  }
-
-  handleClickOutside(e) {
-    const { node } = this;
-    const { target } = e;
-
-    if (node === target || !node.contains(target)) {
-      this.setState({
-        expanded: false,
-      });
-    }
-  }
-
-  handleMonsterAdd() {
-    const { onMonsterAdd } = this.props;
-
-    onMonsterAdd();
-
-    this.setState({
-      expanded: false,
-    });
-  }
-
   handleClick() {
-    const { helper } = this.props;
-    const { expanded } = this.state;
+    const { expanded, helper, onAdd, onBackdropClick, onMonsterAdd, playerId } = this.props;
 
-    if (helper) {
-      this.setState({
-        expanded: !expanded,
-      });
+    if (expanded) {
+      onBackdropClick();
+    } else if (helper) {
+      onAdd(playerId);
     } else {
-      this.handleMonsterAdd();
+      onMonsterAdd();
     }
   }
 
   render() {
-    const { classes, helper, playerId } = this.props;
-    const { expanded } = this.state;
+    const { classes, expanded, helper, onBackdropClick, onMonsterAdd, playerId } = this.props;
 
     return (
       <div
@@ -137,18 +93,20 @@ class CombatHelperButton extends PureComponent {
           this.node = node;
         }}
       >
+        {expanded && <Backdrop invisible onClick={onBackdropClick} />}
+
         <TransitionGroup className={classes.miniContainer}>
           {helper && expanded && (
             <Fade>
               <div className={classes.monster}>
-                <FloatingActionButton
+                <Button
                   className={classes.mini}
                   color="primary"
                   fab
-                  onClick={this.handleMonsterAdd}
+                  onClick={() => onMonsterAdd(true)}
                 >
                   <EmoticonDevil />
-                </FloatingActionButton>
+                </Button>
               </div>
             </Fade>
           )}
@@ -156,27 +114,21 @@ class CombatHelperButton extends PureComponent {
           {helper && expanded && (
             <Fade enterDelay={50}>
               <div className={classes.helper}>
-                <FloatingActionButton
+                <Button
                   className={classes.mini}
                   color="primary"
                   component={Link}
                   fab
-                  to={`/player/${playerId}/combat/helpers`}
+                  to={`/player/${playerId}/combat/add/helper`}
                 >
                   <SocialPersonAdd />
-
-                  <Route exact path="/player/:id/combat/helpers">
-                    {({ match }) => (
-                      <HelperSelector open={!!match} />
-                    )}
-                  </Route>
-                </FloatingActionButton>
+                </Button>
               </div>
             </Fade>
           )}
         </TransitionGroup>
 
-        <FloatingActionButton
+        <Button
           className={classes.button}
           color="primary"
           fab
@@ -185,7 +137,13 @@ class CombatHelperButton extends PureComponent {
           {helper ? (
             <ContentAdd className={cns(classes.icon, { [classes.expanded]: expanded })} />
           ) : <EmoticonDevil />}
-        </FloatingActionButton>
+        </Button>
+
+        <Route exact path="/player/:id/combat/add/helper">
+          {({ match }) => (
+            <HelperSelector open={!!match} />
+          )}
+        </Route>
       </div>
     );
   }
@@ -193,13 +151,19 @@ class CombatHelperButton extends PureComponent {
 
 CombatHelperButton.propTypes = {
   classes: classesObject.isRequired,
+  expanded: PropTypes.bool,
   helper: PropTypes.bool,
+  onAdd: PropTypes.func,
+  onBackdropClick: PropTypes.func,
   onMonsterAdd: PropTypes.func,
   playerId: PropTypes.number.isRequired,
 };
 
 CombatHelperButton.defaultProps = {
+  expanded: false,
   helper: false,
+  onAdd: noop,
+  onBackdropClick: noop,
   onMonsterAdd: noop,
 };
 

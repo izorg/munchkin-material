@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { goBack } from 'react-router-redux';
+import { go, goBack } from 'react-router-redux';
 import { setCombatHelper } from 'munchkin-core/lib/actions';
 
 import HelperSelector from '../../components/Combat/HelperSelector';
@@ -14,7 +14,7 @@ const mapDispatchToProps = dispatch => ({
   onRequestClose: () => dispatch(goBack()),
   onSelect: (id) => {
     dispatch(setCombatHelper(id));
-    dispatch(goBack());
+    dispatch(go(-2));
   },
 });
 

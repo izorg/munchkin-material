@@ -9,7 +9,7 @@ const mapDispatchToProps = dispatch => ({
   onClick: () => {
     dispatch(toggleEditMode(false));
     dispatch(setActivePlayer());
-    dispatch(push('/player'));
+    dispatch(push('/new'));
   },
 });
 

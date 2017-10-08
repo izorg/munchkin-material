@@ -28,7 +28,7 @@ const mapDispatchToProps = dispatch => ({
   },
   onPlayerEdit: (player) => {
     dispatch(setActivePlayer(player.id));
-    dispatch(push(`/player/${player.id}/edit`));
+    dispatch(push(`/edit/${player.id}`));
   },
   onPlayerMove: (oldIndex, newIndex) => dispatch(movePlayer(oldIndex, newIndex)),
   onPlayerSelect: (player, multiMode, selectedPlayerIds) => {

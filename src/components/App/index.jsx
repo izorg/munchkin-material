@@ -1,20 +1,22 @@
 import React, { Component } from 'react';
 import Helmet from 'react-helmet';
-import { matchPath, Redirect, Route, withRouter } from 'react-router-dom';
-import CSSTransition from 'react-transition-group/CSSTransition';
+import { Route, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
+import transitions, { duration, easing } from 'material-ui/styles/transitions';
 
 import munchkinWoff from '../../fonts/munchkin.woff';
 import munchkinWoff2 from '../../fonts/munchkin.woff2';
 
 import MainButton from '../MainButton';
 import { noop } from '../../constants';
+import Combat from '../../containers/Combat';
+import PlayerForm from '../../containers/Player/Form';
+import PlayerList from '../../containers/Player/List';
+import PlayerSlider from '../../containers/Player/Slider';
 import { classesObject } from '../../utils/propTypes';
 
-import pages from './pages';
-
-const ANIMATION_DURATION = 400;
+import ScreenTransition from './ScreenTransition';
 
 const styles = {
   '@global': {
@@ -58,23 +60,20 @@ const styles = {
     position: 'relative',
   },
 
-  item: {
+  screen: {
     backgroundColor: '#FFFFFF',
     height: '100%',
     left: 0,
     position: 'absolute',
     width: '100%',
     top: 0,
-  },
-
-
-  enter: {
-    zIndex: 1,
-  },
-
-  exit: {
     zIndex: 0,
   },
+
+
+  enter: {},
+
+  exit: {},
 
 
   fadeInUp: {
@@ -85,9 +84,10 @@ const styles = {
   fadeInUpActive: {
     opacity: 1,
     transform: 'translateY(0)',
-    transition: `
-      opacity ${ANIMATION_DURATION}ms ease-out,
-      transform ${ANIMATION_DURATION}ms ease-out`,
+    transition: transitions.create(['opacity', 'transform'], {
+      duration: duration.standard,
+      easing: easing.easeOut,
+    }),
   },
 
 
@@ -99,9 +99,10 @@ const styles = {
   fadeOutDownActive: {
     opacity: 0,
     transform: 'translateY(100%)',
-    transition: `
-      opacity ${ANIMATION_DURATION}ms ease-in,
-      transform ${ANIMATION_DURATION}ms ease-in`,
+    transition: transitions.create(['opacity', 'transform'], {
+      duration: duration.standard,
+      easing: easing.easeIn,
+    }),
   },
 
 
@@ -111,7 +112,10 @@ const styles = {
 
   slideInRightActive: {
     transform: 'translateX(0)',
-    transition: `transform ${ANIMATION_DURATION}ms ease-out`,
+    transition: transitions.create('transform', {
+      duration: duration.standard,
+      easing: easing.easeOut,
+    }),
   },
 
 
@@ -121,31 +125,10 @@ const styles = {
 
   slideOutRightActive: {
     transform: 'translateX(100%)',
-    transition: `transform ${ANIMATION_DURATION}ms ease-in`,
-  },
-
-
-  zoomIn: {
-    transform: 'scale(0.8)',
-  },
-
-  zoomInActive: {
-    transform: 'scale(1)',
-    transition: `transform ${ANIMATION_DURATION}ms ease-out`,
-  },
-
-
-  zoomOut: {
-    opacity: 1,
-    transform: 'scale(1)',
-  },
-
-  zoomOutActive: {
-    opacity: 0.8, // IE/Edge blink fix
-    transform: 'scale(0.8)',
-    transition: `
-      opacity ${ANIMATION_DURATION}ms ease-in,
-      transform ${ANIMATION_DURATION}ms ease-in`,
+    transition: transitions.create('transform', {
+      duration: duration.standard,
+      easing: easing.easeIn,
+    }),
   },
 };
 
@@ -156,82 +139,8 @@ class App extends Component {
     return { buyFullVersion };
   }
 
-  componentWillUpdate() {
-    this.prevPathname = this.props.location.pathname;
-  }
-
-  getTransitionClassNames(key) {
-    const { classes, location } = this.props;
-
-    switch (key) {
-      case 'combat':
-        return {
-          enter: classes.slideInRight,
-          enterActive: classes.slideInRightActive,
-          exit: classes.slideOutRight,
-          exitActive: classes.slideOutRightActive,
-        };
-
-      case 'edit':
-      case 'form':
-        return {
-          enter: classes.fadeInUp,
-          enterActive: classes.fadeInUpActive,
-          exit: classes.fadeOutDown,
-          exitActive: classes.fadeOutDownActive,
-        };
-
-      case 'home':
-        return {
-          enter: classes.zoomIn,
-          enterActive: classes.zoomInActive,
-          exit: classes.zoomOut,
-          exitActive: classes.zoomOutActive,
-        };
-
-      case 'slider': {
-        const classNames = {
-          enter: classes.slideInRight,
-          enterActive: classes.slideInRightActive,
-          exit: classes.slideOutRight,
-          exitActive: classes.slideOutRightActive,
-        };
-
-        if (matchPath(this.prevPathname, pages.combat.route)) {
-          return {
-            ...classNames,
-            enter: classes.zoomIn,
-            enterActive: classes.zoomInActive,
-          };
-        }
-
-        if (matchPath(location.pathname, pages.combat.route)) {
-          return {
-            ...classNames,
-            exit: classes.zoomOut,
-            exitActive: classes.zoomOutActive,
-          };
-        }
-
-        return classNames;
-      }
-
-      default:
-        return {
-          enter: classes.enter,
-          enterActive: classes.enter,
-          exit: classes.exit,
-          exitActive: classes.exit,
-        };
-    }
-  }
-
   render() {
-    const { classes, location } = this.props;
-
-    if (!Object.keys(pages).some(key => matchPath(location.pathname, pages[key].route))) {
-      return <Redirect to="/" />;
-    }
+    const { classes } = this.props;
 
     return (
       <div className={classes.app}>
@@ -239,27 +148,93 @@ class App extends Component {
           <html lang={navigator.language} />
         </Helmet>
 
-        {Object.keys(pages).map((key) => {
-          const { component: PageComponent, route } = pages[key];
+        <Route path="/">
+          {({ match }) => match && (
+            <div className={classes.screen}>
+              <PlayerList />
+            </div>
+          )}
+        </Route>
 
-          return (
-            <Route key={key} {...route}>
-              {({ match }) => (
-                <CSSTransition
-                  classNames={this.getTransitionClassNames(key)}
-                  in={Boolean(match)}
-                  mountOnEnter
-                  timeout={ANIMATION_DURATION}
-                  unmountOnExit
-                >
-                  <div className={classes.item}>
-                    <PageComponent />
-                  </div>
-                </CSSTransition>
-              )}
-            </Route>
-          );
-        })}
+        <Route path="/new">
+          {({ match }) => (
+            <ScreenTransition
+              classNames={{
+                enter: classes.fadeInUp,
+                enterActive: classes.fadeInUpActive,
+                exit: classes.fadeOutDown,
+                exitActive: classes.fadeOutDownActive,
+              }}
+              in={Boolean(match)}
+              timeout={{
+                enter: duration.standard,
+                exit: duration.standard,
+              }}
+            >
+              <PlayerForm />
+            </ScreenTransition>
+          )}
+        </Route>
+
+        <Route path="/player/:id">
+          {({ match }) => (
+            <ScreenTransition
+              classNames={{
+                enter: classes.slideInRight,
+                enterActive: classes.slideInRightActive,
+                exit: classes.slideOutRight,
+                exitActive: classes.slideOutRightActive,
+              }}
+              in={Boolean(match)}
+              timeout={{
+                enter: duration.standard,
+                exit: duration.standard,
+              }}
+            >
+              <PlayerSlider />
+            </ScreenTransition>
+          )}
+        </Route>
+
+        <Route path="/edit/:id">
+          {({ match }) => (
+            <ScreenTransition
+              classNames={{
+                enter: classes.fadeInUp,
+                enterActive: classes.fadeInUpActive,
+                exit: classes.fadeOutDown,
+                exitActive: classes.fadeOutDownActive,
+              }}
+              in={Boolean(match)}
+              timeout={{
+                enter: duration.standard,
+                exit: duration.standard,
+              }}
+            >
+              <PlayerForm />
+            </ScreenTransition>
+          )}
+        </Route>
+
+        <Route path="/player/:id/combat">
+          {({ match }) => (
+            <ScreenTransition
+              classNames={{
+                enter: classes.slideInRight,
+                enterActive: classes.slideInRightActive,
+                exit: classes.slideOutRight,
+                exitActive: classes.slideOutRightActive,
+              }}
+              in={Boolean(match)}
+              timeout={{
+                enter: duration.standard,
+                exit: duration.standard,
+              }}
+            >
+              <Combat />
+            </ScreenTransition>
+          )}
+        </Route>
 
         <MainButton />
       </div>
@@ -274,9 +249,6 @@ App.childContextTypes = {
 App.propTypes = {
   buyFullVersion: PropTypes.func,
   classes: classesObject.isRequired,
-  location: PropTypes.shape({
-    pathname: PropTypes.string.isRequired,
-  }).isRequired,
 };
 
 App.defaultProps = {

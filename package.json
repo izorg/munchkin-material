@@ -33,7 +33,6 @@
     ]
   },
   "devDependencies": {
-    "autoprefixer": "7.1.4",
     "axios": "0.16.2",
     "babel-cli": "6.26.0",
     "babel-core": "6.26.0",
