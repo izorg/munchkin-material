@@ -11,6 +11,7 @@ import { classesObject, playerInstance } from '../../../utils/propTypes';
 
 const styles = {
   dialogPaper: {
+    overflowY: 'auto',
     width: '75%',
   },
 
@@ -30,6 +31,7 @@ const HelperSelector = ({ classes, helpers, onSelect, ...props }) => (
     <List>
       {helpers.map(helper => (
         <ListItem
+          button
           key={helper.id.toString()}
           onClick={() => onSelect(helper.id)}
         >
