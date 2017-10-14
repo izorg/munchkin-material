@@ -13,6 +13,7 @@ import ActionDelete from 'material-ui-icons/Delete';
 import EditorModeEdit from 'material-ui-icons/ModeEdit';
 import NavigationCheck from 'material-ui-icons/Check';
 import NavigationClose from 'material-ui-icons/Close';
+import cns from 'classnames';
 
 import Item from './Item';
 import Layout, { LayoutContent, LayoutHeader } from '../../Layout';
@@ -34,6 +35,10 @@ const styles = theme => ({
     flex: 1,
     marginLeft: 16,
     marginRight: 16,
+  },
+
+  layoutContent: {
+    borderRadius: 1, // enable scrollbar in cordova
   },
 
   nobody: {
@@ -166,7 +171,9 @@ class PlayerList extends Component {
             </Toolbar>
           </AppBar>
         </LayoutHeader>
-        <LayoutContent className={!players.length ? classes.empty : ''}>
+        <LayoutContent
+          className={cns(classes.layoutContent, { [classes.empty]: players.length === 0 })}
+        >
           {players.length ? (
             <SortableList
               helperClass={classes.sortableHelper}
