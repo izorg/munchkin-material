@@ -78,7 +78,7 @@ const styles = {
 
   fadeInUp: {
     opacity: 0,
-    transform: 'translateY(100%)',
+    transform: 'translateY(100vw)',
   },
 
   fadeInUpActive: {
@@ -98,7 +98,7 @@ const styles = {
 
   fadeOutDownActive: {
     opacity: 0,
-    transform: 'translateY(100%)',
+    transform: 'translateY(100vh)',
     transition: transitions.create(['opacity', 'transform'], {
       duration: duration.standard,
       easing: easing.easeIn,
@@ -107,7 +107,7 @@ const styles = {
 
 
   slideInRight: {
-    transform: 'translateX(100%)',
+    transform: 'translateX(100vw)',
   },
 
   slideInRightActive: {
@@ -124,7 +124,7 @@ const styles = {
   },
 
   slideOutRightActive: {
-    transform: 'translateX(100%)',
+    transform: 'translateX(100vw)',
     transition: transitions.create('transform', {
       duration: duration.standard,
       easing: easing.easeIn,
