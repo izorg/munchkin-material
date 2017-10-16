@@ -1,11 +1,10 @@
 /* eslint-disable no-console */
 const axios = require('axios');
-const exec = require('child_process').exec;
+const { exec } = require('child_process');
 
 const config = require('../config.json').smartcat; // eslint-disable-line import/no-unresolved
 
-const projectId = config.projectId;
-const documentId = config.documentId;
+const { documentId, projectId } = config;
 
 axios.defaults.baseURL = 'https://smartcat.ai/api/integration/v1';
 axios.defaults.auth = {
@@ -54,7 +53,8 @@ const updateDocument = (filePath) => {
       } else {
         console.log(stdout);
       }
-    });
+    },
+  );
 };
 
 module.exports = {

@@ -25,7 +25,7 @@ const NewPlayerButton = ({ intl, onClick }) => (
 );
 
 NewPlayerButton.propTypes = {
-  intl: intlShape.isRequired,
+  intl: intlShape.isRequired, // eslint-disable-line react/no-typos
   onClick: PropTypes.func,
 };
 

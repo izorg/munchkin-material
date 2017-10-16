@@ -178,7 +178,7 @@ class CombatMonsterSlider extends PureComponent {
 }
 
 CombatMonsterSlider.propTypes = {
-  classes: classesObject.isRequired,
+  classes: classesObject.isRequired, // eslint-disable-line react/no-typos
   className: PropTypes.string,
   monsters: PropTypes.arrayOf(monsterInstance),
   onMonsterRemove: PropTypes.func,

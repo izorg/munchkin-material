@@ -191,13 +191,13 @@ class CombatPlayerSlider extends Component {
 }
 
 CombatPlayerSlider.propTypes = {
-  classes: classesObject.isRequired,
+  classes: classesObject.isRequired, // eslint-disable-line react/no-typos
   className: PropTypes.string,
   helper: playerInstance,
   onHelperBonusChange: PropTypes.func,
   onHelperRemove: PropTypes.func,
   onPlayerBonusChange: PropTypes.func,
-  player: playerInstance.isRequired,
+  player: playerInstance.isRequired, // eslint-disable-line react/no-typos
 };
 
 CombatPlayerSlider.defaultProps = {

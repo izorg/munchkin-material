@@ -148,12 +148,12 @@ class PlayerSlider extends Component {
 }
 
 PlayerSlider.propTypes = {
-  classes: classesObject.isRequired,
+  classes: classesObject.isRequired, // eslint-disable-line react/no-typos
   onBack: PropTypes.func,
   onDiceClick: PropTypes.func,
   onPlayerChange: PropTypes.func,
   players: PropTypes.arrayOf(playerInstance).isRequired,
-  selectedPlayer: playerInstance.isRequired,
+  selectedPlayer: playerInstance.isRequired, // eslint-disable-line react/no-typos
 };
 
 PlayerSlider.defaultProps = {

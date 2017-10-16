@@ -31,7 +31,7 @@ const AppScreenTransition = ({ children, classes, ...props }) => (
 
 AppScreenTransition.propTypes = {
   children: PropTypes.node.isRequired,
-  classes: classesObject.isRequired,
+  classes: classesObject.isRequired, // eslint-disable-line react/no-typos
 };
 
 export default withStyles(styles)(AppScreenTransition);

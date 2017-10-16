@@ -248,7 +248,7 @@ App.childContextTypes = {
 
 App.propTypes = {
   buyFullVersion: PropTypes.func,
-  classes: classesObject.isRequired,
+  classes: classesObject.isRequired, // eslint-disable-line react/no-typos
 };
 
 App.defaultProps = {

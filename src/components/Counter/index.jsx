@@ -53,7 +53,9 @@ const styles = theme => ({
   },
 });
 
-const Counter = ({ classes, className, compact, onDecrement, onIncrement, title, value }) => {
+const Counter = ({
+  classes, className, compact, onDecrement, onIncrement, title, value,
+}) => {
   const buttonStyle = compact ? compactStyles.small : baseStyles.small;
   const iconStyle = compact ? compactStyles.smallIcon : baseStyles.smallIcon;
 
@@ -87,7 +89,7 @@ const Counter = ({ classes, className, compact, onDecrement, onIncrement, title,
 };
 
 Counter.propTypes = {
-  classes: classesObject.isRequired,
+  classes: classesObject.isRequired, // eslint-disable-line react/no-typos
   className: PropTypes.string,
   compact: PropTypes.bool,
   onDecrement: PropTypes.func,

@@ -72,7 +72,9 @@ class PlayerList extends Component {
   }
 
   handleItemTap(player) {
-    const { editMode, multiMode, onPlayerEdit, onPlayerSelect, selectedPlayerIds } = this.props;
+    const {
+      editMode, multiMode, onPlayerEdit, onPlayerSelect, selectedPlayerIds,
+    } = this.props;
 
     if (editMode) {
       onPlayerEdit(player);
@@ -208,7 +210,7 @@ class PlayerList extends Component {
 }
 
 PlayerList.propTypes = {
-  classes: classesObject.isRequired,
+  classes: classesObject.isRequired, // eslint-disable-line react/no-typos
   editMode: PropTypes.bool,
   multiMode: PropTypes.bool,
   onDeletePlayers: PropTypes.func,

@@ -24,7 +24,7 @@ const Layout = ({ classes, className, ...props }) => (
 );
 
 Layout.propTypes = {
-  classes: classesObject.isRequired,
+  classes: classesObject.isRequired, // eslint-disable-line react/no-typos
   className: PropTypes.string,
 };
 

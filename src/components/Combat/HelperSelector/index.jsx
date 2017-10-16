@@ -21,7 +21,9 @@ const styles = {
   },
 };
 
-const HelperSelector = ({ classes, helpers, onSelect, ...props }) => (
+const HelperSelector = ({
+  classes, helpers, onSelect, ...props
+}) => (
   <Dialog
     {...props}
     classes={{
@@ -67,7 +69,7 @@ const HelperSelector = ({ classes, helpers, onSelect, ...props }) => (
 );
 
 HelperSelector.propTypes = {
-  classes: classesObject.isRequired,
+  classes: classesObject.isRequired, // eslint-disable-line react/no-typos
   helpers: PropTypes.arrayOf(playerInstance),
   onSelect: PropTypes.func,
 };

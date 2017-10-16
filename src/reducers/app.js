@@ -22,7 +22,7 @@ const app = (state = initialState, action) => {
     }
 
     case types.SET_ACTIVE_PLAYER: {
-      const id = action.id;
+      const { id } = action;
 
       return {
         ...state,

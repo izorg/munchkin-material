@@ -36,7 +36,9 @@ const styles = {
   },
 };
 
-const CombatHelperButtonFade = ({ children, classes, enterDelay, ...props }) => (
+const CombatHelperButtonFade = ({
+  children, classes, enterDelay, ...props
+}) => (
   <CSSTransition
     {...props}
     classNames={{
@@ -60,7 +62,7 @@ const CombatHelperButtonFade = ({ children, classes, enterDelay, ...props }) => 
 
 CombatHelperButtonFade.propTypes = {
   children: PropTypes.node,
-  classes: classesObject.isRequired,
+  classes: classesObject.isRequired, // eslint-disable-line react/no-typos
   enterDelay: PropTypes.number,
 };
 

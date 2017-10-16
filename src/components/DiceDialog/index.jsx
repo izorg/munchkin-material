@@ -102,7 +102,7 @@ class DiceDialog extends Component {
 }
 
 DiceDialog.propTypes = {
-  classes: classesObject.isRequired,
+  classes: classesObject.isRequired, // eslint-disable-line react/no-typos
   dice: PropTypes.number,
   onDiceClick: PropTypes.func,
   onRequestClose: PropTypes.func,

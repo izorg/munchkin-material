@@ -113,13 +113,13 @@ class CombatPlayer extends PureComponent {
 
 CombatPlayer.propTypes = {
   bonus: PropTypes.number.isRequired,
-  classes: classesObject.isRequired,
+  classes: classesObject.isRequired, // eslint-disable-line react/no-typos
   onBonusChange: PropTypes.func,
   onGearDecrement: PropTypes.func,
   onGearIncrement: PropTypes.func,
   onLevelDecrement: PropTypes.func,
   onLevelIncrement: PropTypes.func,
-  player: playerInstance.isRequired,
+  player: playerInstance.isRequired, // eslint-disable-line react/no-typos
 };
 
 CombatPlayer.defaultProps = {

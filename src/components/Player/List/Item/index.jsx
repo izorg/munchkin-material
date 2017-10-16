@@ -38,7 +38,9 @@ class PlayerListItem extends Component {
   }
 
   handleClick() {
-    const { onCheck, onClick, player, showCheckbox } = this.props;
+    const {
+      onCheck, onClick, player, showCheckbox,
+    } = this.props;
 
     if (showCheckbox) {
       if (this.preventClick) {
@@ -52,7 +54,9 @@ class PlayerListItem extends Component {
   }
 
   render() {
-    const { player, selected, showCheckbox, showDragHandle } = this.props;
+    const {
+      player, selected, showCheckbox, showDragHandle,
+    } = this.props;
     const GenderIcon = getGenderIconClass(player.gender);
 
     let leftAvatar;
@@ -135,7 +139,7 @@ PlayerListItem.propTypes = {
   onCheck: PropTypes.func,
   onPress: PropTypes.func,
   onClick: PropTypes.func,
-  player: playerInstance.isRequired,
+  player: playerInstance.isRequired, // eslint-disable-line react/no-typos
   selected: PropTypes.bool,
   showCheckbox: PropTypes.bool,
   showDragHandle: PropTypes.bool,

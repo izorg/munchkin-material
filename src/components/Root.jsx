@@ -23,7 +23,7 @@ const Root = ({ history, store, ...props }) => (
 
 Root.propTypes = {
   history: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
-  store: storeShape.isRequired,
+  store: storeShape.isRequired, // eslint-disable-line react/no-typos
 };
 
 export default Root;

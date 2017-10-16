@@ -187,14 +187,14 @@ class PlayerStats extends Component {
 }
 
 PlayerStats.propTypes = {
-  classes: classesObject.isRequired,
+  classes: classesObject.isRequired, // eslint-disable-line react/no-typos
   className: PropTypes.string,
   onGearDecrement: PropTypes.func,
   onGearIncrement: PropTypes.func,
   onGenderToggle: PropTypes.func,
   onLevelDecrement: PropTypes.func,
   onLevelIncrement: PropTypes.func,
-  player: playerInstance.isRequired,
+  player: playerInstance.isRequired, // eslint-disable-line react/no-typos
 };
 
 PlayerStats.defaultProps = {

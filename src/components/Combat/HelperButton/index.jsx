@@ -72,7 +72,9 @@ class CombatHelperButton extends PureComponent {
   }
 
   handleClick() {
-    const { expanded, helper, onAdd, onBackdropClick, onMonsterAdd, playerId } = this.props;
+    const {
+      expanded, helper, onAdd, onBackdropClick, onMonsterAdd, playerId,
+    } = this.props;
 
     if (expanded) {
       onBackdropClick();
@@ -84,7 +86,9 @@ class CombatHelperButton extends PureComponent {
   }
 
   render() {
-    const { classes, expanded, helper, onBackdropClick, onMonsterAdd, playerId } = this.props;
+    const {
+      classes, expanded, helper, onBackdropClick, onMonsterAdd, playerId,
+    } = this.props;
 
     return (
       <div
@@ -150,7 +154,7 @@ class CombatHelperButton extends PureComponent {
 }
 
 CombatHelperButton.propTypes = {
-  classes: classesObject.isRequired,
+  classes: classesObject.isRequired, // eslint-disable-line react/no-typos
   expanded: PropTypes.bool,
   helper: PropTypes.bool,
   onAdd: PropTypes.func,

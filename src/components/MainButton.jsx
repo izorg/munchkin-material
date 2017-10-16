@@ -88,7 +88,7 @@ const MainButton = ({ classes, location }) => (
 );
 
 MainButton.propTypes = {
-  classes: classesObject.isRequired,
+  classes: classesObject.isRequired, // eslint-disable-line react/no-typos
   location: PropTypes.shape({
     pathname: PropTypes.string.isRequired,
   }).isRequired,

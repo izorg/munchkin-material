@@ -11,7 +11,9 @@ import {
 import { removeHelper, throwDice } from '../../actions';
 import Combat from '../../components/Combat';
 
-const mapStateToProps = ({ app, combat, monsters, players }) => ({
+const mapStateToProps = ({
+  app, combat, monsters, players,
+}) => ({
   helper: players[combat.helperId],
   helperBonus: combat.helperBonus,
   monsters: Object.values(monsters),

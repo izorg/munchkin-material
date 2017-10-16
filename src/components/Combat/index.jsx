@@ -143,7 +143,7 @@ class Combat extends PureComponent {
 }
 
 Combat.propTypes = {
-  classes: classesObject.isRequired,
+  classes: classesObject.isRequired, // eslint-disable-line react/no-typos
   helper: playerInstance,
   helperBonus: PropTypes.number,
   monsters: PropTypes.arrayOf(monsterInstance),
@@ -154,7 +154,7 @@ Combat.propTypes = {
   onMonsterAdd: PropTypes.func,
   onMonsterRemove: PropTypes.func,
   onPlayerBonusChange: PropTypes.func,
-  player: playerInstance.isRequired,
+  player: playerInstance.isRequired, // eslint-disable-line react/no-typos
   playerBonus: PropTypes.number,
 };
 

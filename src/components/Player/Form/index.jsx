@@ -96,7 +96,9 @@ class PlayerForm extends Component {
   }
 
   render() {
-    const { classes, handleSubmit, newPlayer, onCancel, onImport, title } = this.props;
+    const {
+      classes, handleSubmit, newPlayer, onCancel, onImport, title,
+    } = this.props;
 
     const backButton = (
       <IconButton color="contrast" onClick={onCancel}>
@@ -171,9 +173,9 @@ class PlayerForm extends Component {
 
 PlayerForm.propTypes = {
   autoFocus: PropTypes.bool,
-  classes: classesObject.isRequired,
+  classes: classesObject.isRequired, // eslint-disable-line react/no-typos
   handleSubmit: PropTypes.func.isRequired,
-  intl: intlShape.isRequired,
+  intl: intlShape.isRequired, // eslint-disable-line react/no-typos
   newPlayer: PropTypes.bool,
   onImport: PropTypes.func,
   onCancel: PropTypes.func,

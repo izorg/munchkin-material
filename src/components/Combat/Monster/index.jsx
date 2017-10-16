@@ -67,8 +67,8 @@ const CombatMonster = ({
 );
 
 CombatMonster.propTypes = {
-  classes: classesObject.isRequired,
-  monster: monsterInstance.isRequired,
+  classes: classesObject.isRequired, // eslint-disable-line react/no-typos
+  monster: monsterInstance.isRequired, // eslint-disable-line react/no-typos
   onBonusDecrement: PropTypes.func,
   onBonusIncrement: PropTypes.func,
   onLevelDecrement: PropTypes.func,

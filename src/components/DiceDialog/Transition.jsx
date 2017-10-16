@@ -61,7 +61,7 @@ const DiceTransition = ({ classes, ...props }) => (
 );
 
 DiceTransition.propTypes = {
-  classes: classesObject.isRequired,
+  classes: classesObject.isRequired, // eslint-disable-line react/no-typos
 };
 
 export default withStyles(styles)(DiceTransition);
