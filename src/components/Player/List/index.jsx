@@ -103,6 +103,7 @@ class PlayerList extends Component {
 
   render() {
     const {
+      className,
       classes,
       editMode,
       multiMode,
@@ -150,7 +151,7 @@ class PlayerList extends Component {
     }
 
     return (
-      <Layout>
+      <Layout className={className}>
         <LayoutHeader>
           <AppBar color={multiMode ? 'default' : 'primary'} position="static">
             <Toolbar disableGutters>
@@ -210,6 +211,7 @@ class PlayerList extends Component {
 }
 
 PlayerList.propTypes = {
+  className: PropTypes.string,
   classes: classesObject.isRequired, // eslint-disable-line react/no-typos
   editMode: PropTypes.bool,
   multiMode: PropTypes.bool,
@@ -225,6 +227,7 @@ PlayerList.propTypes = {
 };
 
 PlayerList.defaultProps = {
+  className: '',
   editMode: false,
   multiMode: false,
   onDeletePlayers: noop,

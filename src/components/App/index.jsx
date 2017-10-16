@@ -62,10 +62,10 @@ const styles = {
 
   screen: {
     backgroundColor: '#FFFFFF',
-    height: '100%',
+    height: '100vh',
     left: 0,
     position: 'absolute',
-    width: '100%',
+    width: '100vw',
     top: 0,
     zIndex: 0,
   },
@@ -150,9 +150,7 @@ class App extends Component {
 
         <Route path="/">
           {({ match }) => match && (
-            <div className={classes.screen}>
-              <PlayerList />
-            </div>
+            <PlayerList className={classes.screen} />
           )}
         </Route>
 
