@@ -2,6 +2,7 @@ import React from 'react';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import PropTypes from 'prop-types';
 import FloatingActionButton from 'material-ui/Button';
+import Tooltip from 'material-ui/Tooltip';
 import ContentAdd from 'material-ui-icons/Add';
 
 import { noop } from '../constants';
@@ -9,19 +10,21 @@ import { noop } from '../constants';
 const messages = defineMessages({
   label: {
     id: 'mainButton.label',
-    defaultMessage: 'Add a new munchkin',
+    defaultMessage: 'Add',
   },
 });
 
 const NewPlayerButton = ({ intl, onClick }) => (
-  <FloatingActionButton
-    aria-label={intl.formatMessage(messages.label)}
-    color="primary"
-    fab
-    onClick={onClick}
-  >
-    <ContentAdd />
-  </FloatingActionButton>
+  <Tooltip title={intl.formatMessage(messages.label)}>
+    <FloatingActionButton
+      aria-label={intl.formatMessage(messages.label)}
+      color="primary"
+      fab
+      onClick={onClick}
+    >
+      <ContentAdd />
+    </FloatingActionButton>
+  </Tooltip>
 );
 
 NewPlayerButton.propTypes = {

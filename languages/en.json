@@ -8,7 +8,7 @@
   "combat.player.level": "Level",
   "combat.player.gear": "Gear",
   "combat.player.modifier": "Modifier",
-  "mainButton.label": "Add a new munchkin",
+  "mainButton.label": "Add",
   "player.form.namePlaceholder": "Name",
   "player.list.title": "Munchkins",
   "player.list.empty": "No players in the list",
