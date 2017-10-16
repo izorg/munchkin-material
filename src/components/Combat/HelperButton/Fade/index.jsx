@@ -9,12 +9,12 @@ import { classesObject } from '../../../../utils/propTypes';
 const styles = {
   enter: {
     opacity: 0,
-    transform: 'scale(0.5) translate3d(0, 50%, 0)',
+    transform: 'scale(0.5) translateY(20px)',
   },
 
   enterActive: {
     opacity: 1,
-    transform: 'none',
+    transform: 'scale(1) translateY(0)',
     transition: transitions.create(['opacity', 'transform'], {
       duration: duration.shortest,
       easing: easing.easeIn,
@@ -23,7 +23,7 @@ const styles = {
 
   exit: {
     opacity: 1,
-    transform: 'none',
+    transform: 'scale(1)',
   },
 
   exitActive: {
