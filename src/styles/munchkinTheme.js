@@ -1,13 +1,20 @@
 import createMuiTheme from 'material-ui/styles/createMuiTheme';
 import brown from 'material-ui/colors/brown';
+import createBreakpoints from 'material-ui/styles/createBreakpoints';
 
 import { ios } from '../helpers/platforms';
+
+const breakpoints = createBreakpoints({});
 
 const theme = {
   overrides: {
     MuiAppBar: {
       root: {
         textAlign: ios ? 'center' : 'left',
+
+        [`${breakpoints.up('xs')} and (orientation: landscape)`]: {
+          minHeight: 56,
+        },
       },
     },
 
