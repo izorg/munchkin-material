@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Helmet from 'react-helmet';
-import { Route, withRouter } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import transitions, { duration, easing } from 'material-ui/styles/transitions';
@@ -255,4 +255,4 @@ App.defaultProps = {
   buyFullVersion: noop,
 };
 
-export default withRouter(withStyles(styles)(App));
+export default withStyles(styles)(App);

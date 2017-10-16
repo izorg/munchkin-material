@@ -4,6 +4,7 @@ import CSSTransition from 'react-transition-group/CSSTransition';
 import TransitionGroup from 'react-transition-group/TransitionGroup';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
+import transitions, { duration, easing } from 'material-ui/styles/transitions';
 
 import { classesObject } from '../utils/propTypes';
 
@@ -30,9 +31,6 @@ const buttons = {
   },
 };
 
-const ANIMATION_DURATION = 150;
-const ANIMATION_DELAY = 400;
-
 const styles = {
   fabContainer: {
     bottom: 24,
@@ -47,7 +45,11 @@ const styles = {
 
   enterActive: {
     transform: 'scale(1)',
-    transition: `transform ${ANIMATION_DURATION}ms ease-out ${ANIMATION_DELAY}ms`,
+    transition: transitions.create('transform', {
+      delay: duration.enteringScreen,
+      duration: duration.shortest,
+      easing: easing.easeOut,
+    }),
   },
 
   exit: {
@@ -56,7 +58,10 @@ const styles = {
 
   exitActive: {
     transform: 'scale(0)',
-    transition: `transform ${ANIMATION_DURATION}ms ease-in`,
+    transition: transitions.create('transform', {
+      duration: duration.shortest,
+      easing: easing.easeIn,
+    }),
   },
 };
 
@@ -71,8 +76,8 @@ const MainButton = ({ classes, location }) => (
           exitActive: classes.exitActive,
         }}
         timeout={{
-          enter: ANIMATION_DURATION + ANIMATION_DELAY,
-          exit: ANIMATION_DURATION,
+          enter: duration.shortest + duration.enteringScreen,
+          exit: duration.shortest,
         }}
       >
         <div>
