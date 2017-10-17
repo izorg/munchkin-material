@@ -21,7 +21,7 @@ const styles = theme => ({
   },
 });
 
-const Empty = ({ classes }) => (
+const PlayerListEmpty = ({ classes }) => (
   <div className={classes.nobody}>
     <AccountCircle className={classes.nobodyIcon} />
     <Typography align="center" className={classes.nobody} component="div">
@@ -33,8 +33,8 @@ const Empty = ({ classes }) => (
   </div>
 );
 
-Empty.propTypes = {
+PlayerListEmpty.propTypes = {
   classes: classesObject.isRequired, // eslint-disable-line react/no-typos
 };
 
-export default withStyles(styles)(Empty);
+export default withStyles(styles)(PlayerListEmpty);
