@@ -8,12 +8,12 @@ import List from 'material-ui/List';
 import { withStyles } from 'material-ui/styles';
 import Toolbar from 'material-ui/Toolbar';
 import Typography from 'material-ui/Typography';
-import AccountCircle from 'material-ui-icons/AccountCircle';
 import ActionDelete from 'material-ui-icons/Delete';
 import EditorModeEdit from 'material-ui-icons/ModeEdit';
 import NavigationCheck from 'material-ui-icons/Check';
 import NavigationClose from 'material-ui-icons/Close';
 
+import Empty from './Empty';
 import Item from './Item';
 import Layout, { LayoutContent, LayoutHeader } from '../../Layout';
 import { noop } from '../../../constants';
@@ -23,7 +23,7 @@ import { classesObject, playerInstance } from '../../../utils/propTypes';
 const SortableList = SortableContainer(List);
 const SortableListItem = SortableElement(Item);
 
-const styles = theme => ({
+const styles = {
   empty: {
     display: 'flex',
     flexDirection: 'column',
@@ -36,25 +36,12 @@ const styles = theme => ({
     marginRight: 16,
   },
 
-  nobody: {
-    color: theme.palette.text.hint,
-    fontSize: '1em',
-    textAlign: 'center',
-  },
-
-  nobodyIcon: {
-    height: 96,
-    marginBottom: 16,
-    opacity: 0.2,
-    width: 96,
-  },
-
   sortableHelper: {
     backgroundColor: '#FFFFFF !important',
     boxShadow: 'rgba(0, 0, 0, 0.156863) 0 3px 10px, rgba(0, 0, 0, 0.227451) 0 3px 10px',
     pointerEvents: 'auto !important',
   },
-});
+};
 
 class PlayerList extends Component {
   componentWillMount() {
@@ -194,15 +181,7 @@ class PlayerList extends Component {
               ))}
             </SortableList>
           ) : (
-            <div className={classes.nobody}>
-              <AccountCircle className={classes.nobodyIcon} />
-              <Typography align="center" className={classes.nobody} component="div">
-                <FormattedMessage
-                  id="player.list.empty"
-                  defaultMessage="No players in the list"
-                />
-              </Typography>
-            </div>
+            <Empty />
           )}
         </LayoutContent>
       </Layout>
