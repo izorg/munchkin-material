@@ -11,10 +11,6 @@ const theme = {
     MuiAppBar: {
       root: {
         textAlign: ios ? 'center' : 'left',
-
-        [`${breakpoints.up('xs')} and (orientation: landscape)`]: {
-          minHeight: 56,
-        },
       },
     },
 
@@ -27,6 +23,14 @@ const theme = {
     MuiButtonBase: {
       root: {
         color: 'rgba(0, 0, 0, 0.38)',
+      },
+    },
+
+    MuiToolbar: {
+      root: {
+        [`${breakpoints.up('xs')} and (orientation: landscape)`]: {
+          minHeight: 56,
+        },
       },
     },
   },
