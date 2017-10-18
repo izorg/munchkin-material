@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { matchPath } from 'react-router-dom';
+import { matchPath, withRouter } from 'react-router-dom';
 import { goBack, push } from 'react-router-redux';
 import { addMonster } from 'munchkin-core/lib/actions';
 import Monster from 'munchkin-core/lib/classes/Monster';
@@ -24,4 +24,4 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(CombatHelperButton);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CombatHelperButton));
