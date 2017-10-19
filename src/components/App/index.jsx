@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import transitions, { duration, easing } from 'material-ui/styles/transitions';
 
-import MainButton from '../Fab';
+import Fab from '../Fab';
 import { noop } from '../../constants';
 import Combat from '../../containers/Combat';
 import PlayerForm from '../../containers/Player/Form';
@@ -196,7 +196,7 @@ class App extends Component {
           )}
         </Route>
 
-        <MainButton />
+        <Fab />
       </div>
     );
   }
