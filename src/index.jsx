@@ -6,6 +6,7 @@ import { AppContainer } from 'react-hot-loader';
 import createHistory from 'history/createHashHistory';
 
 import { hideBanner, setFullVersion } from './actions';
+import { noop } from './constants';
 import Root from './components/Root';
 import configureStore from './store/configureStore';
 
@@ -23,7 +24,11 @@ const renderAppContainer = (Component, appEl, options) => render(
   appEl,
 );
 
-const init = (appEl, options) => {
+const defaultOptions = {
+  buyFullVersion: noop,
+};
+
+const init = (appEl, options = defaultOptions) => {
   renderAppContainer(Root, appEl, options);
 
   if (module.hot) {

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 import { storeShape } from 'react-redux/lib/utils/PropTypes';
 import { ConnectedRouter } from 'react-router-redux';
@@ -7,6 +7,7 @@ import { withStyles } from 'material-ui/styles';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import App from './App';
+import { noop } from '../constants';
 import Locale from '../containers/ConnectedIntlProvider';
 import munchkinWoff from '../fonts/munchkin.woff';
 import munchkinWoff2 from '../fonts/munchkin.woff2';
@@ -49,21 +50,45 @@ const styles = {
   },
 };
 
-const Root = ({ history, store }) => (
-  <Provider store={store}>
-    <Locale>
-      <MuiThemeProvider theme={munchkinTheme}>
-        <ConnectedRouter history={history}>
-          <App />
-        </ConnectedRouter>
-      </MuiThemeProvider>
-    </Locale>
-  </Provider>
-);
+class Root extends Component {
+  getChildContext() {
+    const { buyFullVersion } = this.props;
+
+    return { buyFullVersion };
+  }
+
+  render() {
+    const { history, store, ...props } = this.props;
+
+    delete props.buyFullVersion;
+    delete props.classes;
+
+    return (
+      <Provider store={store}>
+        <Locale>
+          <MuiThemeProvider theme={munchkinTheme}>
+            <ConnectedRouter history={history}>
+              <App {...props} />
+            </ConnectedRouter>
+          </MuiThemeProvider>
+        </Locale>
+      </Provider>
+    );
+  }
+}
+
+Root.childContextTypes = {
+  buyFullVersion: PropTypes.func,
+};
 
 Root.propTypes = {
+  buyFullVersion: PropTypes.func,
   history: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
   store: storeShape.isRequired, // eslint-disable-line react/no-typos
+};
+
+Root.defaultProps = {
+  buyFullVersion: noop,
 };
 
 export default withStyles(styles)(Root);
