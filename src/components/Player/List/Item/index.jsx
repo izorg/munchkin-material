@@ -5,17 +5,24 @@ import PropTypes from 'prop-types';
 import Checkbox from 'material-ui/Checkbox';
 import { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
 import Typography from 'material-ui/Typography';
+import { withStyles } from 'material-ui/styles';
 import ActionReorder from 'material-ui-icons/Reorder';
 
 import { noop } from '../../../../constants';
 import getGenderIconClass from '../../../../helpers/getGenderIconClass';
 import { ios } from '../../../../helpers/platforms';
-import { playerInstance } from '../../../../utils/propTypes';
+import { classesObject, playerInstance } from '../../../../utils/propTypes';
 
 import PlayerListItemAvatar from './Avatar';
 import Container from './Container';
 
 const ItemHandle = SortableHandle(ActionReorder);
+
+const styles = {
+  item: {
+    paddingRight: 0,
+  },
+};
 
 class PlayerListItem extends Component {
   componentWillMount() {
@@ -55,7 +62,7 @@ class PlayerListItem extends Component {
 
   render() {
     const {
-      player, selected, showCheckbox, showDragHandle,
+      classes, player, selected, showCheckbox, showDragHandle,
     } = this.props;
     const GenderIcon = getGenderIconClass(player.gender);
 
@@ -96,8 +103,8 @@ class PlayerListItem extends Component {
     return (
       <ListItem
         button
+        className={classes.item}
         component={Container}
-        disableRipple={showDragHandle}
         onClick={this.handleClick}
         onPress={!showCheckbox && !showDragHandle ? this.handlePress : undefined}
       >
@@ -127,7 +134,7 @@ class PlayerListItem extends Component {
           }
           style={{ overflow: 'hidden' }}
         />
-        <ListItemIcon style={{ marginRight: 0 }}>
+        <ListItemIcon>
           <GenderIcon />
         </ListItemIcon>
       </ListItem>
@@ -136,6 +143,7 @@ class PlayerListItem extends Component {
 }
 
 PlayerListItem.propTypes = {
+  classes: classesObject.isRequired, // eslint-disable-line react/no-typos
   onCheck: PropTypes.func,
   onPress: PropTypes.func,
   onClick: PropTypes.func,
@@ -154,4 +162,4 @@ PlayerListItem.defaultProps = {
   showDragHandle: false,
 };
 
-export default PlayerListItem;
+export default withStyles(styles)(PlayerListItem);

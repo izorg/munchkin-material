@@ -9,7 +9,7 @@ import Typography from 'material-ui/Typography';
 import { withStyles } from 'material-ui/styles';
 import NavigationArrowBack from 'material-ui-icons/ArrowBack';
 
-import DiceMultipleIcon from '../../icons/dice/multiple';
+import DiceIconButton from '../../dice/IconButton';
 import Layout, { LayoutContent, LayoutHeader } from '../../Layout';
 import { noop } from '../../../constants';
 import DiceDialog from '../../../containers/DiceDialog';
@@ -99,9 +99,7 @@ class PlayerSlider extends Component {
     );
 
     const diceButton = (
-      <IconButton color="contrast" onClick={onDiceClick}>
-        <DiceMultipleIcon />
-      </IconButton>
+      <DiceIconButton color="contrast" onClick={onDiceClick} />
     );
 
     return (

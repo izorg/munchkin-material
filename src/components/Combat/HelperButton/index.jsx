@@ -1,8 +1,10 @@
 import React, { PureComponent } from 'react';
+import { FormattedMessage } from 'react-intl';
 import { Link, Route } from 'react-router-dom';
 import TransitionGroup from 'react-transition-group/TransitionGroup';
 import PropTypes from 'prop-types';
 import Button from 'material-ui/Button';
+import Tooltip from 'material-ui/Tooltip';
 import { styles as iconStyles } from 'material-ui/SvgIcon/SvgIcon';
 import Backdrop from 'material-ui/internal/Backdrop';
 import { withStyles } from 'material-ui/styles';
@@ -103,30 +105,42 @@ class CombatHelperButton extends PureComponent {
           {helper && expanded && (
             <Fade>
               <div className={classes.monster}>
-                <Button
-                  className={classes.mini}
-                  color="primary"
-                  fab
-                  onClick={() => onMonsterAdd(true)}
+                <Tooltip
+                  open
+                  placement="left"
+                  title={<FormattedMessage id="combat.add.monster" defaultMessage="Monster" />}
                 >
-                  <EmoticonDevil />
-                </Button>
+                  <Button
+                    className={classes.mini}
+                    color="primary"
+                    fab
+                    onClick={() => onMonsterAdd(true)}
+                  >
+                    <EmoticonDevil />
+                  </Button>
+                </Tooltip>
               </div>
             </Fade>
           )}
 
           {helper && expanded && (
-            <Fade enterDelay={50}>
+            <Fade>
               <div className={classes.helper}>
-                <Button
-                  className={classes.mini}
-                  color="primary"
-                  component={Link}
-                  fab
-                  to={`/player/${playerId}/combat/add/helper`}
+                <Tooltip
+                  open
+                  placement="left"
+                  title={<FormattedMessage id="combat.add.helper" defaultMessage="Helper" />}
                 >
-                  <SocialPersonAdd />
-                </Button>
+                  <Button
+                    className={classes.mini}
+                    color="primary"
+                    component={Link}
+                    fab
+                    to={`/player/${playerId}/combat/add/helper`}
+                  >
+                    <SocialPersonAdd />
+                  </Button>
+                </Tooltip>
               </div>
             </Fade>
           )}

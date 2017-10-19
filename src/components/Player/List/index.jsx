@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { FormattedMessage } from 'react-intl';
+import React, { PureComponent } from 'react';
+import { defineMessages, FormattedMessage, injectIntl, intlShape } from 'react-intl';
 import { SortableContainer, SortableElement } from 'react-sortable-hoc';
 import PropTypes from 'prop-types';
 import AppBar from 'material-ui/AppBar';
@@ -7,6 +7,7 @@ import IconButton from 'material-ui/IconButton';
 import List from 'material-ui/List';
 import { withStyles } from 'material-ui/styles';
 import Toolbar from 'material-ui/Toolbar';
+import Tooltip from 'material-ui/Tooltip';
 import Typography from 'material-ui/Typography';
 import ActionDelete from 'material-ui-icons/Delete';
 import EditorModeEdit from 'material-ui-icons/ModeEdit';
@@ -23,7 +24,14 @@ import { classesObject, playerInstance } from '../../../utils/propTypes';
 const SortableList = SortableContainer(List);
 const SortableListItem = SortableElement(Item);
 
-const styles = {
+const messages = defineMessages({
+  edit: {
+    id: 'player.list.edit',
+    defaultMessage: 'Edit',
+  },
+});
+
+const styles = theme => ({
   empty: {
     display: 'flex',
     flexDirection: 'column',
@@ -32,18 +40,17 @@ const styles = {
 
   flex: {
     flex: 1,
-    marginLeft: 16,
-    marginRight: 16,
+    marginLeft: theme.spacing.unit * 2,
+    marginRight: theme.spacing.unit * 2,
   },
 
   sortableHelper: {
     backgroundColor: '#FFFFFF !important',
-    boxShadow: 'rgba(0, 0, 0, 0.156863) 0 3px 10px, rgba(0, 0, 0, 0.227451) 0 3px 10px',
-    pointerEvents: 'auto !important',
+    boxShadow: theme.shadows[3],
   },
-};
+});
 
-class PlayerList extends Component {
+class PlayerList extends PureComponent {
   componentWillMount() {
     this.handleItemCheck = this.handleItemCheck.bind(this);
     this.handleItemPress = this.handleItemPress.bind(this);
@@ -93,6 +100,7 @@ class PlayerList extends Component {
       className,
       classes,
       editMode,
+      intl,
       multiMode,
       onMultiSelectDeactivate,
       onToggleEditClick,
@@ -125,11 +133,27 @@ class PlayerList extends Component {
           };
         }
 
-        iconElementRight = (
-          <IconButton color="contrast" onClick={onToggleEditClick}>
-            {editMode ? <NavigationCheck /> : <EditorModeEdit />}
-          </IconButton>
-        );
+        if (editMode) {
+          iconElementRight = (
+            <IconButton color="contrast" onClick={onToggleEditClick}>
+              <NavigationCheck />
+            </IconButton>
+          );
+        } else {
+          const editTitle = intl.formatMessage(messages.edit);
+
+          iconElementRight = (
+            <Tooltip title={editTitle}>
+              <IconButton
+                aria-label={editTitle}
+                color="contrast"
+                onClick={onToggleEditClick}
+              >
+                <EditorModeEdit />
+              </IconButton>
+            </Tooltip>
+          );
+        }
       }
     }
 
@@ -193,6 +217,7 @@ PlayerList.propTypes = {
   className: PropTypes.string,
   classes: classesObject.isRequired, // eslint-disable-line react/no-typos
   editMode: PropTypes.bool,
+  intl: intlShape.isRequired, // eslint-disable-line react/no-typos
   multiMode: PropTypes.bool,
   onDeletePlayers: PropTypes.func,
   onMultiSelectActivate: PropTypes.func,
@@ -220,4 +245,4 @@ PlayerList.defaultProps = {
   selectedPlayerIds: [],
 };
 
-export default withStyles(styles)(PlayerList);
+export default injectIntl(withStyles(styles)(PlayerList));
