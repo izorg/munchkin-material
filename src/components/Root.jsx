@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { Provider } from 'react-redux';
 import { storeShape } from 'react-redux/lib/utils/PropTypes';
 import { ConnectedRouter } from 'react-router-redux';
@@ -25,23 +25,23 @@ const styles = {
     },
 
     '*': {
-      '-webkit-tap-highlight-color': 'rgba(0, 0, 0, 0)', /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+      tapHighlightColor: 'rgba(0, 0, 0, 0)', /* make transparent link selection, adjust last value opacity 0 to 1.0 */
     },
 
     html: {
-      height: '100%',
+      height: '100vh',
       lineHeight: 1.15,
-      '-ms-text-size-adjust': '100%',
-      '-webkit-text-size-adjust': '100%',
+      overflow: 'hidden',
+      textSizeAdjust: '100%',
     },
 
     body: {
-      height: '100%',
+      height: '100vh',
       margin: 0,
       overflow: 'hidden',
-      width: '100%',
+      userSelect: 'none',
+      width: '100vw',
       '-webkit-touch-callout': 'none', /* iOS Safari */
-      userSelect: 'none', /* Non-prefixed version, currently supported by Chrome and Opera */
     },
 
     '#app': {
@@ -50,7 +50,7 @@ const styles = {
   },
 };
 
-class Root extends Component {
+class Root extends PureComponent {
   getChildContext() {
     const { buyFullVersion } = this.props;
 
