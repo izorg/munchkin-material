@@ -2,7 +2,21 @@
   "destination": "./doc",
   "source": "./src",
   "includes": ["\\.(js|jsx)$"],
-  "experimentalProposal": {
-    "objectRestSpread": true
-  }
+  "excludes": [
+    "__tests__"
+  ],
+  "plugins": [
+    {
+      "name": "esdoc-ecmascript-proposal-plugin",
+      "option": {
+        "objectRestSpread": true
+      }
+    },
+    {
+      "name": "esdoc-jsx-plugin"
+    },
+    {
+      "name": "esdoc-standard-plugin"
+    }
+  ]
 }
