@@ -6,25 +6,25 @@ import { noop } from '../../constants/index';
 
 import SwordCross from '../icons/SwordCross';
 
-class CombatButton extends Component {
+class FabCombat extends Component {
   componentWillMount() {
     this.handleCombatStart = this.handleCombatStart.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
-    const { fullVersion, onCombatStart, playerId } = nextProps;
+    const { fullVersion, onClick, playerId } = nextProps;
 
     if (!this.props.fullVersion && fullVersion) {
-      onCombatStart(playerId);
+      onClick(playerId);
     }
   }
 
   handleCombatStart() {
-    const { fullVersion, onCombatStart, playerId } = this.props;
+    const { fullVersion, onClick, playerId } = this.props;
     const { buyFullVersion } = this.context;
 
     if (fullVersion) {
-      onCombatStart(playerId);
+      onClick(playerId);
     } else {
       buyFullVersion();
     }
@@ -43,19 +43,19 @@ class CombatButton extends Component {
   }
 }
 
-CombatButton.contextTypes = {
+FabCombat.contextTypes = {
   buyFullVersion: PropTypes.func,
 };
 
-CombatButton.propTypes = {
+FabCombat.propTypes = {
   fullVersion: PropTypes.bool,
-  onCombatStart: PropTypes.func,
+  onClick: PropTypes.func,
   playerId: PropTypes.number.isRequired,
 };
 
-CombatButton.defaultProps = {
+FabCombat.defaultProps = {
   fullVersion: false,
-  onCombatStart: noop,
+  onClick: noop,
 };
 
-export default CombatButton;
+export default FabCombat;

@@ -13,11 +13,11 @@ import SocialPersonAdd from 'material-ui-icons/PersonAdd';
 import cns from 'classnames';
 
 import EmoticonDevil from '../../icons/EmoticonDevil';
-import { noop } from '../../../constants';
+import { noop } from '../../../constants/index';
 import HelperSelector from '../../../containers/Combat/HelperSelector';
 import { classesObject } from '../../../utils/propTypes';
 
-import Fade from './Fade';
+import Fade from './Fade/index';
 
 const styles = (theme) => {
   const transition = theme.transitions.create('transform', {
@@ -66,7 +66,7 @@ const styles = (theme) => {
   };
 };
 
-class CombatHelperButton extends PureComponent {
+class FabHelperButton extends PureComponent {
   constructor(props) {
     super(props);
 
@@ -167,7 +167,7 @@ class CombatHelperButton extends PureComponent {
   }
 }
 
-CombatHelperButton.propTypes = {
+FabHelperButton.propTypes = {
   classes: classesObject.isRequired, // eslint-disable-line react/no-typos
   expanded: PropTypes.bool,
   helper: PropTypes.bool,
@@ -177,7 +177,7 @@ CombatHelperButton.propTypes = {
   playerId: PropTypes.number.isRequired,
 };
 
-CombatHelperButton.defaultProps = {
+FabHelperButton.defaultProps = {
   expanded: false,
   helper: false,
   onAdd: noop,
@@ -185,4 +185,4 @@ CombatHelperButton.defaultProps = {
   onMonsterAdd: noop,
 };
 
-export default withStyles(styles)(CombatHelperButton);
+export default withStyles(styles)(FabHelperButton);

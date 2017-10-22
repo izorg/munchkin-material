@@ -36,7 +36,7 @@ const styles = {
   },
 };
 
-const CombatHelperButtonFade = ({
+const FabHelperButtonFade = ({
   children, classes, enterDelay, ...props
 }) => (
   <CSSTransition
@@ -60,15 +60,15 @@ const CombatHelperButtonFade = ({
   </CSSTransition>
 );
 
-CombatHelperButtonFade.propTypes = {
+FabHelperButtonFade.propTypes = {
   children: PropTypes.node,
   classes: classesObject.isRequired, // eslint-disable-line react/no-typos
   enterDelay: PropTypes.number,
 };
 
-CombatHelperButtonFade.defaultProps = {
+FabHelperButtonFade.defaultProps = {
   children: null,
   enterDelay: 0,
 };
 
-export default withStyles(styles)(CombatHelperButtonFade);
+export default withStyles(styles)(FabHelperButtonFade);

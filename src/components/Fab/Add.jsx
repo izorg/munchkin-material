@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Button from 'material-ui/Button';
 import ContentAdd from 'material-ui-icons/Add';
 
-import { noop } from '../constants';
+import { noop } from '../../constants';
 
 const messages = defineMessages({
   label: {
@@ -13,7 +13,7 @@ const messages = defineMessages({
   },
 });
 
-const NewPlayerButton = ({ intl, onClick }) => (
+const FabAdd = ({ intl, onClick }) => (
   <Button
     aria-label={intl.formatMessage(messages.label)}
     color="primary"
@@ -24,13 +24,13 @@ const NewPlayerButton = ({ intl, onClick }) => (
   </Button>
 );
 
-NewPlayerButton.propTypes = {
+FabAdd.propTypes = {
   intl: intlShape.isRequired, // eslint-disable-line react/no-typos
   onClick: PropTypes.func,
 };
 
-NewPlayerButton.defaultProps = {
+FabAdd.defaultProps = {
   onClick: noop,
 };
 
-export default injectIntl(NewPlayerButton);
+export default injectIntl(FabAdd);

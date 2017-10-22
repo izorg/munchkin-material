@@ -8,6 +8,7 @@ import PlayerList from '../../components/Player/List';
 const mapStateToProps = state => ({
   editMode: state.app.editMode,
   multiMode: state.app.multiMode,
+  playerColors: state.playerColors,
   players: state.playerList.map(id => state.players[id]),
   selectedPlayerIds: state.app.selectedPlayerIds,
 });

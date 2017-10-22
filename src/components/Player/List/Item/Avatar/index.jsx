@@ -1,48 +1,59 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Avatar from 'material-ui/Avatar';
+import { withStyles } from 'material-ui/styles';
+import NavigationCheck from 'material-ui-icons/Check';
 
-class PlayerListItemAvatar extends Component {
-  constructor(props) {
-    super(props);
+import { classesObject } from '../../../../../utils/propTypes';
 
-    this.state = {
-      error: false,
-    };
-  }
+const styles = theme => ({
+  avatar: {
+    backgroundColor: theme.palette.primary[500],
+  },
+});
 
-  componentWillMount() {
-    this.handleError = this.handleError.bind(this);
-  }
-
-  handleError() {
-    this.setState({
-      error: true,
-    });
-  }
-
-  render() {
-    const { avatar, name, ...props } = this.props;
-    const { error } = this.state;
-
-    return avatar && !error ? (
-      <Avatar {...props} onError={this.handleError} src={avatar} />
-    ) : (
-      <Avatar {...props}>
-        {String.fromCodePoint(name.codePointAt(0)).toUpperCase()}
+const PlayerListItemAvatar = ({
+  classes, color, name, selected, ...props
+}) => {
+  if (selected) {
+    return (
+      <Avatar
+        className={classes.avatar}
+        {...props}
+      >
+        <NavigationCheck />
       </Avatar>
     );
   }
-}
+
+  const style = {};
+
+  if (color) {
+    style.backgroundColor = color;
+  }
+
+  return (
+    <Avatar
+      className={classes.avatar}
+      style={style}
+      {...props}
+    >
+      {String.fromCodePoint(name.codePointAt(0)).toUpperCase()}
+    </Avatar>
+  );
+};
 
 PlayerListItemAvatar.propTypes = {
-  avatar: PropTypes.string,
+  classes: classesObject.isRequired, // eslint-disable-line react/no-typos
+  color: PropTypes.string,
   name: PropTypes.string,
+  selected: PropTypes.bool,
 };
 
 PlayerListItemAvatar.defaultProps = {
-  avatar: '',
+  color: '',
   name: '',
+  selected: false,
 };
 
-export default PlayerListItemAvatar;
+export default withStyles(styles)(PlayerListItemAvatar);

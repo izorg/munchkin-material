@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { SortableHandle } from 'react-sortable-hoc';
+import Tappable from 'react-tappable/lib/Tappable';
 import PropTypes from 'prop-types';
-import Checkbox from 'material-ui/Checkbox';
-import { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
+import IconButton from 'material-ui/IconButton';
+import { ListItem, ListItemSecondaryAction, ListItemText } from 'material-ui/List';
 import Typography from 'material-ui/Typography';
 import { withStyles } from 'material-ui/styles';
 import ActionReorder from 'material-ui-icons/Reorder';
@@ -14,13 +15,17 @@ import { ios } from '../../../../helpers/platforms';
 import { classesObject, playerInstance } from '../../../../utils/propTypes';
 
 import PlayerListItemAvatar from './Avatar';
-import Container from './Container';
 
+const Container = props => <Tappable component="li" pressDelay={500} {...props} />;
 const ItemHandle = SortableHandle(ActionReorder);
 
 const styles = {
-  item: {
-    paddingRight: 0,
+  text: {
+    overflow: 'hidden',
+  },
+
+  rightIcon: {
+    marginRight: 0,
   },
 };
 
@@ -46,10 +51,10 @@ class PlayerListItem extends Component {
 
   handleClick() {
     const {
-      onCheck, onClick, player, showCheckbox,
+      onCheck, onClick, player, multiMode,
     } = this.props;
 
-    if (showCheckbox) {
+    if (multiMode) {
       if (this.preventClick) {
         delete this.preventClick;
       } else {
@@ -62,56 +67,25 @@ class PlayerListItem extends Component {
 
   render() {
     const {
-      classes, player, selected, showCheckbox, showDragHandle,
+      classes, color, player, selected, multiMode, editMode,
     } = this.props;
     const GenderIcon = getGenderIconClass(player.gender);
-
-    let leftAvatar;
-    let leftCheckbox;
-    let leftIcon;
-
-    if (!showCheckbox && !showDragHandle) {
-      leftAvatar = (
-        <PlayerListItemAvatar
-          avatar={player.avatar}
-          name={player.name}
-          style={{ marginRight: 8 }}
-        />
-      );
-    }
-
-    if (showCheckbox) {
-      leftCheckbox = (
-        <Checkbox
-          checked={selected}
-          disableRipple
-          tabIndex="-1"
-        />
-      );
-    }
-
-    if (showDragHandle) {
-      leftIcon = (
-        <ListItemIcon>
-          <ItemHandle
-            style={{ marginRight: 24 }}
-          />
-        </ListItemIcon>
-      );
-    }
 
     return (
       <ListItem
         button
-        className={classes.item}
         component={Container}
         onClick={this.handleClick}
-        onPress={!showCheckbox && !showDragHandle ? this.handlePress : undefined}
+        onPress={!multiMode && !editMode ? this.handlePress : undefined}
       >
-        {leftAvatar}
-        {leftIcon}
-        {leftCheckbox}
+        <PlayerListItemAvatar
+          color={color}
+          name={player.name}
+          selected={selected}
+        />
+
         <ListItemText
+          className={classes.text}
           primary={<Typography component="div" noWrap>{player.name}</Typography>}
           secondary={
             <span>
@@ -132,11 +106,17 @@ class PlayerListItem extends Component {
               />
             </span>
           }
-          style={{ overflow: 'hidden' }}
         />
-        <ListItemIcon>
-          <GenderIcon />
-        </ListItemIcon>
+
+        <ListItemSecondaryAction>
+          <IconButton>
+            {editMode ? (
+              <ItemHandle />
+            ) : (
+              <GenderIcon />
+            )}
+          </IconButton>
+        </ListItemSecondaryAction>
       </ListItem>
     );
   }
@@ -144,22 +124,24 @@ class PlayerListItem extends Component {
 
 PlayerListItem.propTypes = {
   classes: classesObject.isRequired, // eslint-disable-line react/no-typos
+  color: PropTypes.string,
+  editMode: PropTypes.bool,
+  multiMode: PropTypes.bool,
   onCheck: PropTypes.func,
-  onPress: PropTypes.func,
   onClick: PropTypes.func,
+  onPress: PropTypes.func,
   player: playerInstance.isRequired, // eslint-disable-line react/no-typos
   selected: PropTypes.bool,
-  showCheckbox: PropTypes.bool,
-  showDragHandle: PropTypes.bool,
 };
 
 PlayerListItem.defaultProps = {
+  color: '',
+  editMode: false,
+  multiMode: false,
   onCheck: noop,
-  onPress: noop,
   onClick: noop,
+  onPress: noop,
   selected: false,
-  showCheckbox: false,
-  showDragHandle: false,
 };
 
 export default withStyles(styles)(PlayerListItem);

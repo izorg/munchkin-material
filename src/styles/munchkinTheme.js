@@ -14,12 +14,6 @@ const theme = {
       },
     },
 
-    MuiAvatar: {
-      colorDefault: {
-        backgroundColor: brown[500],
-      },
-    },
-
     MuiButtonBase: {
       root: {
         color: 'rgba(0, 0, 0, 0.38)',

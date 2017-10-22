@@ -104,6 +104,7 @@ class PlayerList extends PureComponent {
       multiMode,
       onMultiSelectDeactivate,
       onToggleEditClick,
+      playerColors,
       players,
       selectedPlayerIds,
     } = this.props;
@@ -169,7 +170,7 @@ class PlayerList extends PureComponent {
               {iconElementLeft}
               <Typography
                 className={classes.flex}
-                color={multiMode ? 'secondary' : 'inherit'}
+                color={multiMode ? 'default' : 'inherit'}
                 noWrap
                 style={titleStyle}
                 type="title"
@@ -192,15 +193,16 @@ class PlayerList extends PureComponent {
             >
               {players.map((player, index) => (
                 <SortableListItem
+                  color={playerColors[player.id]}
+                  editMode={editMode}
                   index={index}
                   key={player.id}
+                  multiMode={multiMode}
                   onCheck={this.handleItemCheck}
-                  onPress={this.handleItemPress}
                   onClick={this.handleItemTap}
+                  onPress={this.handleItemPress}
                   player={player}
                   selected={selectedPlayerIds.includes(player.id)}
-                  showCheckbox={multiMode}
-                  showDragHandle={editMode}
                 />
               ))}
             </SortableList>
@@ -226,6 +228,7 @@ PlayerList.propTypes = {
   onPlayerMove: PropTypes.func,
   onPlayerSelect: PropTypes.func,
   onToggleEditClick: PropTypes.func,
+  playerColors: PropTypes.objectOf(PropTypes.string),
   players: PropTypes.arrayOf(playerInstance),
   selectedPlayerIds: PropTypes.arrayOf(PropTypes.number),
 };
@@ -241,6 +244,7 @@ PlayerList.defaultProps = {
   onPlayerMove: noop,
   onPlayerSelect: noop,
   onToggleEditClick: noop,
+  playerColors: {},
   players: [],
   selectedPlayerIds: [],
 };
