@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Route, matchPath } from 'react-router-dom';
 import { goBack, push } from 'react-router-redux';
-import PropTypes from 'prop-types';
 import { addMonster } from 'munchkin-core/lib/actions';
 import Monster from 'munchkin-core/lib/classes/Monster';
 
@@ -26,32 +25,18 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-const CombatHelperButton = ({
-  helper, onAdd, onBackdropClick, onMonsterAdd, playerId,
-}) => (
+const CombatHelperButton = props => (
   <Route path="/player/:id/combat">
     {({ location, match }) => (
       <Transition in={Boolean(match)}>
         <HelperButton
           expanded={Boolean(matchPath(location.pathname, { path: '/player/:id/combat/add' }))}
-          helper={helper}
-          onAdd={onAdd}
-          onBackdropClick={onBackdropClick}
-          onMonsterAdd={onMonsterAdd}
-          playerId={playerId}
+          {...props}
         />
       </Transition>
     )}
   </Route>
 );
-
-CombatHelperButton.propTypes = {
-  helper: PropTypes.bool.isRequired,
-  onAdd: PropTypes.func.isRequired,
-  onBackdropClick: PropTypes.func.isRequired,
-  onMonsterAdd: PropTypes.func.isRequired,
-  playerId: PropTypes.number.isRequired,
-};
 
 export default connect(
   mapStateToProps,

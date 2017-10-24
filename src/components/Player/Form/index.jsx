@@ -10,6 +10,7 @@ import Radio, { RadioGroup } from 'material-ui/Radio';
 import Toolbar from 'material-ui/Toolbar';
 import Typography from 'material-ui/Typography';
 import { withStyles } from 'material-ui/styles';
+import { duration } from 'material-ui/styles/transitions';
 import NavigationArrowBack from 'material-ui-icons/ArrowBack';
 import NavigationCheck from 'material-ui-icons/Check';
 import SocialPersonAdd from 'material-ui-icons/PersonAdd';
@@ -73,7 +74,7 @@ class PlayerForm extends Component {
         if (node) {
           node.focus();
         }
-      }, 400);
+      }, duration.enteringScreen);
     }
   }
 
@@ -100,24 +101,15 @@ class PlayerForm extends Component {
       classes, handleSubmit, newPlayer, onCancel, onImport, title,
     } = this.props;
 
-    const backButton = (
-      <IconButton color="contrast" onClick={onCancel}>
-        <NavigationArrowBack />
-      </IconButton>
-    );
-
-    const submitButton = (
-      <IconButton color="contrast" onClick={handleSubmit}>
-        <NavigationCheck />
-      </IconButton>
-    );
-
     return (
       <Layout>
         <LayoutHeader>
           <AppBar color="primary" position="static">
             <Toolbar disableGutters>
-              {backButton}
+              <IconButton color="contrast" onClick={onCancel}>
+                <NavigationArrowBack />
+              </IconButton>
+
               <Typography
                 color="inherit"
                 noWrap
@@ -126,7 +118,10 @@ class PlayerForm extends Component {
               >
                 {title}
               </Typography>
-              {submitButton}
+
+              <IconButton color="contrast" onClick={handleSubmit}>
+                <NavigationCheck />
+              </IconButton>
             </Toolbar>
           </AppBar>
         </LayoutHeader>

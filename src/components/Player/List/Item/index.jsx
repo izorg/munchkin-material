@@ -23,10 +23,6 @@ const styles = {
   text: {
     overflow: 'hidden',
   },
-
-  rightIcon: {
-    marginRight: 0,
-  },
 };
 
 class PlayerListItem extends Component {
@@ -109,11 +105,11 @@ class PlayerListItem extends Component {
         />
 
         <ListItemSecondaryAction>
-          <IconButton>
+          <IconButton disableRipple>
             {editMode ? (
               <ItemHandle />
             ) : (
-              <GenderIcon />
+              <GenderIcon onClick={this.handleClick} />
             )}
           </IconButton>
         </ListItemSecondaryAction>
