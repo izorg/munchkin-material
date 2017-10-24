@@ -6,6 +6,7 @@ import AppBar from 'material-ui/AppBar';
 import IconButton from 'material-ui/IconButton';
 import List from 'material-ui/List';
 import { withStyles } from 'material-ui/styles';
+import transitions, { duration, easing } from 'material-ui/styles/transitions';
 import Toolbar from 'material-ui/Toolbar';
 import Tooltip from 'material-ui/Tooltip';
 import Typography from 'material-ui/Typography';
@@ -32,6 +33,13 @@ const messages = defineMessages({
 });
 
 const styles = theme => ({
+  appBar: {
+    transition: transitions.create(['background-color'], {
+      duration: duration.short,
+      easing: easing.sharp,
+    }),
+  },
+
   empty: {
     display: 'flex',
     flexDirection: 'column',
@@ -165,7 +173,7 @@ class PlayerList extends PureComponent {
     return (
       <Layout className={className}>
         <LayoutHeader>
-          <AppBar color={multiMode ? 'default' : 'primary'} position="static">
+          <AppBar className={classes.appBar} color={multiMode ? 'default' : 'primary'} position="static">
             <Toolbar disableGutters>
               {iconElementLeft}
               <Typography

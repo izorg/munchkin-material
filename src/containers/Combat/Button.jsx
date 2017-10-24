@@ -1,26 +1,22 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { Route, withRouter } from 'react-router-dom';
+import { connectAdvanced } from 'react-redux';
+import { Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import { goToCombat } from '../../actions';
 import Combat from '../../components/Fab/Combat';
 import Transition from '../../components/Fab/Transition';
 
-const mapStateToProps = state => ({
+const selectorFactory = dispatch => state => ({
   fullVersion: state.app.fullVersion,
-  playerId: state.app.activePlayerId,
+  onClick: () => dispatch(goToCombat(state.app.activePlayerId)),
 });
 
-const mapDispatchToProps = {
-  onClick: goToCombat,
-};
-
-const CombatButton = ({ fullVersion, onClick, playerId }) => (
+const CombatButton = ({ fullVersion, onClick }) => (
   <Route exact path="/player/:id">
     {({ match }) => (
       <Transition in={Boolean(match)}>
-        <Combat fullVersion={fullVersion} onClick={onClick} playerId={playerId} />
+        <Combat fullVersion={fullVersion} onClick={onClick} />
       </Transition>
     )}
   </Route>
@@ -29,7 +25,6 @@ const CombatButton = ({ fullVersion, onClick, playerId }) => (
 CombatButton.propTypes = {
   fullVersion: PropTypes.bool.isRequired,
   onClick: PropTypes.func.isRequired,
-  playerId: PropTypes.number.isRequired,
 };
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CombatButton));
+export default connectAdvanced(selectorFactory)(CombatButton);

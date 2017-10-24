@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Route, withRouter } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import { push } from 'react-router-redux';
 import PropTypes from 'prop-types';
 
@@ -36,4 +36,9 @@ NewPlayerButton.propTypes = {
   visible: PropTypes.bool.isRequired,
 };
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(NewPlayerButton));
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+  undefined,
+  { pure: false },
+)(NewPlayerButton);

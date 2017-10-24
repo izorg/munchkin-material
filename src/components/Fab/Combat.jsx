@@ -12,19 +12,19 @@ class FabCombat extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const { fullVersion, onClick, playerId } = nextProps;
+    const { fullVersion, onClick } = nextProps;
 
     if (!this.props.fullVersion && fullVersion) {
-      onClick(playerId);
+      onClick();
     }
   }
 
   handleCombatStart() {
-    const { fullVersion, onClick, playerId } = this.props;
+    const { fullVersion, onClick } = this.props;
     const { buyFullVersion } = this.context;
 
     if (fullVersion) {
-      onClick(playerId);
+      onClick();
     } else {
       buyFullVersion();
     }
@@ -50,7 +50,6 @@ FabCombat.contextTypes = {
 FabCombat.propTypes = {
   fullVersion: PropTypes.bool,
   onClick: PropTypes.func,
-  playerId: PropTypes.number.isRequired,
 };
 
 FabCombat.defaultProps = {
