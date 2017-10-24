@@ -8,9 +8,8 @@ import Typography from 'material-ui/Typography';
 import { withStyles } from 'material-ui/styles';
 import NavigationArrowBack from 'material-ui-icons/ArrowBack';
 
-import DiceIconButton from '../dice/IconButton';
+import DiceIconButton from '../../containers/DiceButton';
 import { noop } from '../../constants';
-import DiceDialog from '../../containers/DiceDialog';
 import { classesObject, monsterInstance, playerInstance } from '../../utils/propTypes';
 
 import MonsterSlider from './MonsterSlider';
@@ -60,6 +59,14 @@ const styles = theme => ({
 });
 
 class Combat extends PureComponent {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      disableDiceTooltip: false,
+    };
+  }
+
   render() {
     const {
       classes,
@@ -76,10 +83,6 @@ class Combat extends PureComponent {
       player,
       playerBonus,
     } = this.props;
-
-    const diceButton = (
-      <DiceIconButton color="contrast" onClick={onDiceClick} />
-    );
 
     return (
       <Layout>
@@ -99,7 +102,11 @@ class Combat extends PureComponent {
                 <FormattedMessage id="combat" defaultMessage="Combat" />
               </Typography>
 
-              {diceButton}
+              <DiceIconButton
+                color="contrast"
+                disableTriggerFocus={this.state.disableDiceTooltip}
+                onClick={onDiceClick}
+              />
             </Toolbar>
           </AppBar>
         </LayoutHeader>
@@ -132,8 +139,6 @@ class Combat extends PureComponent {
             onMonsterAdd={onMonsterAdd}
             onMonsterRemove={onMonsterRemove}
           />
-
-          <DiceDialog />
         </LayoutContent>
       </Layout>
     );

@@ -1,16 +1,28 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
+import PropTypes from 'prop-types';
 import IconButton from 'material-ui/IconButton';
 import Tooltip from 'material-ui/Tooltip';
 
 import DiceMultipleIcon from '../icons/dice/multiple';
 
-const DiceIconButton = props => (
-  <Tooltip title={<FormattedMessage id="dice" defaultMessage="Dice" />}>
+const DiceIconButton = ({ disableTriggerFocus, ...props }) => (
+  <Tooltip
+    disableTriggerFocus={disableTriggerFocus}
+    title={<FormattedMessage id="dice" defaultMessage="Dice" />}
+  >
     <IconButton {...props}>
       <DiceMultipleIcon />
     </IconButton>
   </Tooltip>
 );
+
+DiceIconButton.propTypes = {
+  disableTriggerFocus: PropTypes.bool,
+};
+
+DiceIconButton.defaultProps = {
+  disableTriggerFocus: false,
+};
 
 export default DiceIconButton;

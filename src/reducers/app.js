@@ -3,6 +3,7 @@ import * as types from '../constants/actionTypes';
 const initialState = {
   activePlayerId: null,
   dice: null,
+  disableDiceButtonTooltipTriggerFocus: false,
   editMode: false,
   fullVersion: false,
   locale: null,
@@ -12,6 +13,20 @@ const initialState = {
 
 const app = (state = initialState, action) => {
   switch (action.type) {
+    case types.DISABLE_DICE_BUTTON_TOOLTIP_TRIGGER_FOCUS: {
+      return {
+        ...state,
+        disableDiceButtonTooltipTriggerFocus: true,
+      };
+    }
+
+    case types.ENABLE_DICE_BUTTON_TOOLTIP_TRIGGER_FOCUS: {
+      return {
+        ...state,
+        disableDiceButtonTooltipTriggerFocus: false,
+      };
+    }
+
     case types.RESET_DICE: {
       const { dice } = initialState;
 

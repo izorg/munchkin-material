@@ -5,6 +5,14 @@ import { actions, Player } from 'munchkin-core';
 import { PLAYER_FORM } from '../constants';
 import * as types from '../constants/actionTypes';
 
+export const disableDiceButtonTooltipTriggerFocus = () => ({
+  type: types.DISABLE_DICE_BUTTON_TOOLTIP_TRIGGER_FOCUS,
+});
+
+export const enableDiceButtonTooltipTriggerFocus = () => ({
+  type: types.ENABLE_DICE_BUTTON_TOOLTIP_TRIGGER_FOCUS,
+});
+
 export const goToCombat = playerId => (dispatch, getState) => {
   const { app: { fullVersion } } = getState();
 

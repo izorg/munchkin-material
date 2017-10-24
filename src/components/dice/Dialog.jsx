@@ -52,11 +52,16 @@ class DiceDialog extends Component {
   }
 
   render() {
-    const { classes, dice, onRequestClose } = this.props;
+    const {
+      classes, dice, onRequestClose, ...props
+    } = this.props;
     const { attempt } = this.state;
+
+    delete props.onDiceClick;
 
     return (
       <Dialog
+        {...props}
         onRequestClose={onRequestClose}
         open={!!dice}
       >

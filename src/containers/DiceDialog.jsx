@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { resetDice, throwDice } from '../actions';
+import { disableDiceButtonTooltipTriggerFocus, enableDiceButtonTooltipTriggerFocus, resetDice, throwDice } from '../actions';
 import DiceDialog from '../components/dice/Dialog';
 
 const mapStateToProps = state => ({
@@ -8,6 +8,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
+  onEntered: disableDiceButtonTooltipTriggerFocus,
+  onExited: enableDiceButtonTooltipTriggerFocus,
   onDiceClick: throwDice,
   onRequestClose: resetDice,
 };

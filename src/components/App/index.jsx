@@ -6,6 +6,7 @@ import transitions, { duration, easing } from 'material-ui/styles/transitions';
 
 import Fab from '../Fab';
 import Combat from '../../containers/Combat';
+import DiceDialog from '../../containers/DiceDialog';
 import PlayerForm from '../../containers/Player/Form';
 import PlayerList from '../../containers/Player/List';
 import PlayerSlider from '../../containers/Player/Slider';
@@ -185,6 +186,8 @@ const App = ({ classes }) => (
     </Route>
 
     <Fab />
+
+    <DiceDialog />
   </div>
 );
 

@@ -9,10 +9,9 @@ import Typography from 'material-ui/Typography';
 import { withStyles } from 'material-ui/styles';
 import NavigationArrowBack from 'material-ui-icons/ArrowBack';
 
-import DiceIconButton from '../../dice/IconButton';
+import DiceIconButton from '../../../containers/DiceButton';
 import Layout, { LayoutContent, LayoutHeader } from '../../Layout';
 import { noop } from '../../../constants';
-import DiceDialog from '../../../containers/DiceDialog';
 import PlayerStats from '../../../containers/Player/Stats';
 import { classesObject, playerInstance } from '../../../utils/propTypes';
 
@@ -41,6 +40,7 @@ class PlayerSlider extends Component {
     const { players, selectedPlayer } = props;
 
     this.state = {
+      disableDiceTooltip: false,
       initialSlide: players.indexOf(selectedPlayer),
     };
   }
@@ -92,22 +92,15 @@ class PlayerSlider extends Component {
 
     const { initialSlide } = this.state;
 
-    const backButton = (
-      <IconButton color="contrast" onClick={onBack}>
-        <NavigationArrowBack />
-      </IconButton>
-    );
-
-    const diceButton = (
-      <DiceIconButton color="contrast" onClick={onDiceClick} />
-    );
-
     return (
       <Layout>
         <LayoutHeader>
           <AppBar color="primary" position="static">
             <Toolbar disableGutters>
-              {backButton}
+              <IconButton color="contrast" onClick={onBack}>
+                <NavigationArrowBack />
+              </IconButton>
+
               <Typography
                 color="inherit"
                 noWrap
@@ -116,7 +109,12 @@ class PlayerSlider extends Component {
               >
                 {selectedPlayer.name}
               </Typography>
-              {diceButton}
+
+              <DiceIconButton
+                color="contrast"
+                disableTriggerFocus={this.state.disableDiceTooltip}
+                onClick={onDiceClick}
+              />
             </Toolbar>
           </AppBar>
         </LayoutHeader>
@@ -137,8 +135,6 @@ class PlayerSlider extends Component {
               flexDirection: 'column',
             }}
           />
-
-          <DiceDialog />
         </LayoutContent>
       </Layout>
     );
