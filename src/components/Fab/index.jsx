@@ -16,7 +16,7 @@ const styles = {
   },
 };
 
-const MainButton = ({ classes }) => (
+const Fab = ({ classes }) => (
   <div className={classes.fabContainer}>
     <NewPlayerButton />
     <CombatButton />
@@ -24,8 +24,8 @@ const MainButton = ({ classes }) => (
   </div>
 );
 
-MainButton.propTypes = {
+Fab.propTypes = {
   classes: classesObject.isRequired, // eslint-disable-line react/no-typos
 };
 
-export default withStyles(styles)(MainButton);
+export default withStyles(styles)(Fab);

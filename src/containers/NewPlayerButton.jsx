@@ -21,18 +21,17 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-const NewPlayerButton = ({ onClick, visible }) => (
+const NewPlayerButton = ({ visible, ...props }) => (
   <Route exact path="/">
     {({ match }) => (
-      <Transition in={Boolean(match && visible)}>
-        <Add onClick={onClick} />
+      <Transition in={!!match && visible}>
+        <Add {...props} />
       </Transition>
     )}
   </Route>
 );
 
 NewPlayerButton.propTypes = {
-  onClick: PropTypes.func.isRequired,
   visible: PropTypes.bool.isRequired,
 };
 
