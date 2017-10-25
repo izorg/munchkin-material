@@ -33,6 +33,8 @@ const styles = {
       lineHeight: 1.15,
       overflow: 'hidden',
       textSizeAdjust: '100%',
+      '-moz-osx-font-smoothing': 'grayscale',
+      '-webkit-font-smoothing': 'antialiased',
     },
 
     body: {
