@@ -5,7 +5,7 @@ import { render } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 import createHistory from 'history/createHashHistory';
 
-import { hideBanner, setFullVersion } from './actions';
+import { setFullVersion } from './actions';
 import { noop } from './constants';
 import Root from './components/Root';
 import configureStore from './store/configureStore';
@@ -14,8 +14,6 @@ const history = createHistory();
 
 const store = configureStore(history);
 const { dispatch } = store;
-
-dispatch(hideBanner());
 
 const renderAppContainer = (Component, appEl, options) => render(
   <AppContainer>

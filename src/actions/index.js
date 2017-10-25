@@ -25,10 +25,6 @@ export const goToCombat = playerId => (dispatch, getState) => {
   }
 };
 
-export const hideBanner = () => ({
-  type: types.HIDE_BANNER,
-});
-
 export const importContact = () => (dispatch) => {
   navigator.contacts.pickContact(({ displayName, photos }) => {
     const form = PLAYER_FORM;
@@ -76,12 +72,14 @@ export const setMultiMode = multiMode => ({
   multiMode,
 });
 
-export const showBanner = () => ({
-  type: types.SHOW_BANNER,
+const setPlayerColor = ({ color, id }) => ({
+  type: types.SET_PLAYER_COLOR,
+  color,
+  id,
 });
 
 export const submitPlayer = values => (dispatch) => {
-  const { id, name = '' } = values;
+  const { color, id, name = '' } = values;
 
   if (name.trim()) {
     const player = new Player(values);
@@ -91,6 +89,11 @@ export const submitPlayer = values => (dispatch) => {
     } else {
       dispatch(actions.addPlayer(player));
     }
+
+    dispatch(setPlayerColor({
+      id: player.id,
+      color,
+    }));
 
     dispatch(setActivePlayer(player.id));
   }
@@ -116,7 +119,6 @@ export const togglePlayer = id => ({
 export default {
   ...actions,
   goToCombat,
-  hideBanner,
   movePlayer,
   resetDice,
   removeHelper,
@@ -124,7 +126,6 @@ export default {
   setFullVersion,
   setLocale,
   setMultiMode,
-  showBanner,
   throwDice,
   toggleEditMode,
   togglePlayer,

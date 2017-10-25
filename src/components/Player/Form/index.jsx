@@ -18,6 +18,7 @@ import { GENDER } from 'munchkin-core';
 
 import Layout, { LayoutContent, LayoutHeader } from '../../Layout';
 import { noop, PLAYER_FORM } from '../../../constants';
+import ColorPickerField from '../../../containers/ColorPickerField';
 import GenderFemale from '../../icons/gender/Female';
 import GenderMale from '../../icons/gender/Male';
 import { classesObject } from '../../../utils/propTypes';
@@ -159,6 +160,8 @@ class PlayerForm extends Component {
             <div className={classes.fieldContainer}>
               <Field component={this.constructor.renderGenderField} name="gender" />
             </div>
+
+            <ColorPickerField name="color" />
           </form>
         </LayoutContent>
       </Layout>

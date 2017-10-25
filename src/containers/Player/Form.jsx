@@ -6,9 +6,10 @@ import { GENDER } from 'munchkin-core';
 
 import { importContact, submitPlayer } from '../../actions';
 import PlayerForm from '../../components/Player/Form';
+import getRandomMaterialColor from '../../helpers/getRandomMaterialColor';
 
-const getInitialValues = ({ app: { activePlayerId }, players }) => {
-  const initialValues = {
+const getInitialValues = ({ app: { activePlayerId }, playerColors, players }) => {
+  let initialValues = {
     gender: GENDER.MALE,
   };
 
@@ -16,8 +17,17 @@ const getInitialValues = ({ app: { activePlayerId }, players }) => {
     const selectedPlayer = players[activePlayerId];
 
     if (selectedPlayer) {
-      Object.assign(initialValues, selectedPlayer);
+      initialValues = {
+        ...initialValues,
+        ...selectedPlayer,
+        color: playerColors[activePlayerId],
+      };
     }
+  } else {
+    initialValues = {
+      ...initialValues,
+      color: getRandomMaterialColor(),
+    };
   }
 
   return initialValues;
