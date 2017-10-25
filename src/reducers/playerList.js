@@ -37,6 +37,7 @@ const playerList = (state = initialState, action) => {
       ];
     }
 
+    /* istanbul ignore next  */
     default:
       return state;
   }
