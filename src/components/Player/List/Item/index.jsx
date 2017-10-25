@@ -105,7 +105,7 @@ class PlayerListItem extends Component {
         />
 
         <ListItemSecondaryAction>
-          <IconButton disableRipple>
+          <IconButton component="span" disableRipple>
             {editMode ? (
               <ItemHandle />
             ) : (
