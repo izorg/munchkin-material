@@ -29,7 +29,7 @@ const styles = {
     },
 
     html: {
-      height: '100vh',
+      height: '100%',
       lineHeight: 1.15,
       overflow: 'hidden',
       textSizeAdjust: '100%',
@@ -38,11 +38,11 @@ const styles = {
     },
 
     body: {
-      height: '100vh',
+      height: '100%',
       margin: 0,
       overflow: 'hidden',
       userSelect: 'none',
-      width: '100vw',
+      width: '100%',
       '-webkit-touch-callout': 'none', /* iOS Safari */
     },
 
