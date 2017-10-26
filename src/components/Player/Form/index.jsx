@@ -188,4 +188,7 @@ PlayerForm.defaultProps = {
   title: null,
 };
 
-export default injectIntl(reduxForm({ form: PLAYER_FORM })(withStyles(styles)(PlayerForm)));
+export default reduxForm({
+  form: PLAYER_FORM,
+  pure: false,
+})(injectIntl(withStyles(styles)(PlayerForm)));
