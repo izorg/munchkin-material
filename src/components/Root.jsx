@@ -3,8 +3,7 @@ import { Provider } from 'react-redux';
 import { storeShape } from 'react-redux/lib/utils/PropTypes';
 import { ConnectedRouter } from 'react-router-redux';
 import PropTypes from 'prop-types';
-import { withStyles } from 'material-ui/styles';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import { MuiThemeProvider, withStyles } from 'material-ui/styles';
 
 import App from './App';
 import { noop } from '../constants';
@@ -22,10 +21,6 @@ const styles = {
         url(${munchkinWoff}) format('woff')`,
       fontWeight: 'normal',
       fontStyle: 'normal',
-    },
-
-    '*': {
-      tapHighlightColor: 'rgba(0, 0, 0, 0)', /* make transparent link selection, adjust last value opacity 0 to 1.0 */
     },
 
     html: {

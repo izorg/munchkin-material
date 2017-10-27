@@ -1,5 +1,5 @@
-import createMuiTheme from 'material-ui/styles/createMuiTheme';
 import brown from 'material-ui/colors/brown';
+import { createMuiTheme } from 'material-ui/styles';
 import createBreakpoints from 'material-ui/styles/createBreakpoints';
 
 import { ios } from '../helpers/platforms';

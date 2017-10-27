@@ -1,12 +1,10 @@
-import React, { cloneElement } from 'react';
+import React from 'react';
 import CSSTransition from 'react-transition-group/CSSTransition';
-import PropTypes from 'prop-types';
-import { withStyles } from 'material-ui/styles';
-import transitions, { duration, easing } from 'material-ui/styles/transitions';
+import { withStyles, withTheme } from 'material-ui/styles';
 
-import { classesObject } from '../../../../utils/propTypes';
+import { classesObject, themeObject } from '../../../../utils/propTypes';
 
-const styles = {
+const styles = theme => ({
   enter: {
     opacity: 0,
     transform: 'scale(0.5) translateY(20px)',
@@ -15,9 +13,9 @@ const styles = {
   enterActive: {
     opacity: 1,
     transform: 'scale(1) translateY(0)',
-    transition: transitions.create(['opacity', 'transform'], {
-      duration: duration.shortest,
-      easing: easing.easeIn,
+    transition: theme.transitions.create(['opacity', 'transform'], {
+      duration: theme.transitions.duration.shortest,
+      easing: theme.transitions.easing.easeIn,
     }),
   },
 
@@ -29,18 +27,15 @@ const styles = {
   exitActive: {
     opacity: 0,
     transform: 'scale(0.8)',
-    transition: transitions.create(['opacity', 'transform'], {
-      duration: duration.shortest,
-      easing: easing.easeOut,
+    transition: theme.transitions.create(['opacity', 'transform'], {
+      duration: theme.transitions.duration.shortest,
+      easing: theme.transitions.easing.easeOut,
     }),
   },
-};
+});
 
-const FabHelperButtonFade = ({
-  children, classes, enterDelay, ...props
-}) => (
+const FabHelperButtonFade = ({ classes, theme, ...props }) => (
   <CSSTransition
-    {...props}
     classNames={{
       enter: classes.enter,
       enterActive: classes.enterActive,
@@ -48,27 +43,16 @@ const FabHelperButtonFade = ({
       exitActive: classes.exitActive,
     }}
     timeout={{
-      enter: duration.shortest + enterDelay,
-      exit: duration.shortest,
+      enter: theme.transitions.duration.shortest,
+      exit: theme.transitions.duration.shortest,
     }}
-  >
-    {state => cloneElement(children, {
-      style: {
-        transitionDelay: (state === 'entering') ? `${enterDelay}ms` : '0s',
-      },
-    })}
-  </CSSTransition>
+    {...props}
+  />
 );
 
 FabHelperButtonFade.propTypes = {
-  children: PropTypes.node,
   classes: classesObject.isRequired, // eslint-disable-line react/no-typos
-  enterDelay: PropTypes.number,
+  theme: themeObject.isRequired, // eslint-disable-line react/no-typos
 };
 
-FabHelperButtonFade.defaultProps = {
-  children: null,
-  enterDelay: 0,
-};
-
-export default withStyles(styles)(FabHelperButtonFade);
+export default withStyles(styles)(withTheme()(FabHelperButtonFade));

@@ -5,3 +5,4 @@ import Player from 'munchkin-core/lib/classes/Player';
 export const classesObject = PropTypes.object;
 export const monsterInstance = PropTypes.instanceOf(Monster);
 export const playerInstance = PropTypes.instanceOf(Player);
+export const themeObject = PropTypes.object;

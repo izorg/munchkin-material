@@ -56,7 +56,7 @@ module.exports = {
     compress: true,
     disableHostCheck: true,
     historyApiFallback: true,
-    host: 'localhost',
+    host: '0.0.0.0',
     inline: true,
     port: 3000,
     publicPath: '/',
