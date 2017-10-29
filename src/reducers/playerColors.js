@@ -1,4 +1,4 @@
-import { REMOVE_PLAYER } from 'munchkin-core/lib/constants/actionTypes';
+import { REMOVE_PLAYER } from 'munchkin-core/es/constants/actionTypes';
 
 import { SET_PLAYER_COLOR } from '../constants/actionTypes';
 

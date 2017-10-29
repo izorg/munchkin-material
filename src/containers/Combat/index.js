@@ -1,12 +1,12 @@
 import { connect } from 'react-redux';
 import { goBack } from 'react-router-redux';
-import Monster from 'munchkin-core/lib/classes/Monster';
+import Monster from 'munchkin-core/es/classes/Monster';
 import {
   addMonster,
   removeMonster,
   setCombatHelperBonus,
   setCombatPlayerBonus,
-} from 'munchkin-core/lib/actions';
+} from 'munchkin-core/es/actions';
 
 import { removeHelper, throwDice } from '../../actions';
 import Combat from '../../components/Combat';

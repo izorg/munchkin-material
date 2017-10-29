@@ -25,6 +25,7 @@ module.exports = {
       {
         test: /\.jsx?$/,
         include: [
+          path.resolve(__dirname, '../node_modules/munchkin-core'),
           srcPath,
         ],
         use: [

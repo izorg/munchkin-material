@@ -4,7 +4,7 @@ import {
   decrementMonsterLevel,
   incrementMonsterBonus,
   incrementMonsterLevel,
-} from 'munchkin-core/lib/actions';
+} from 'munchkin-core/es/actions';
 
 import Monster from '../../components/Combat/Monster';
 

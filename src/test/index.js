@@ -1,5 +1,5 @@
 import { GENDER, Player } from 'munchkin-core';
-import { addPlayer, removePlayer } from 'munchkin-core/lib/actions';
+import { addPlayer, removePlayer } from 'munchkin-core/es/actions';
 
 import { setLocale } from '../actions';
 import { getLocale } from '../i18n';

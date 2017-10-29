@@ -4,7 +4,7 @@ import {
   decrementPlayerLevel,
   incrementPlayerGear,
   incrementPlayerLevel,
-} from 'munchkin-core/lib/actions';
+} from 'munchkin-core/es/actions';
 
 import Player from '../../components/Combat/Player';
 

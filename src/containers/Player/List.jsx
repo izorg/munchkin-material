@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
-import { removePlayer } from 'munchkin-core/lib/actions';
+import { removePlayer } from 'munchkin-core/es/actions';
 
 import { movePlayer, setActivePlayer, setMultiMode, toggleEditMode, togglePlayer } from '../../actions';
 import PlayerList from '../../components/Player/List';
