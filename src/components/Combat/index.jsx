@@ -70,6 +70,7 @@ class Combat extends PureComponent {
   render() {
     const {
       classes,
+      className,
       helper,
       helperBonus,
       monsters,
@@ -85,7 +86,7 @@ class Combat extends PureComponent {
     } = this.props;
 
     return (
-      <Layout>
+      <Layout className={className}>
         <LayoutHeader>
           <AppBar color="primary" position="static">
             <Toolbar disableGutters>
@@ -147,6 +148,7 @@ class Combat extends PureComponent {
 
 Combat.propTypes = {
   classes: classesObject.isRequired, // eslint-disable-line react/no-typos
+  className: PropTypes.string,
   helper: playerInstance,
   helperBonus: PropTypes.number,
   monsters: PropTypes.arrayOf(monsterInstance),
@@ -162,6 +164,7 @@ Combat.propTypes = {
 };
 
 Combat.defaultProps = {
+  className: '',
   helper: null,
   helperBonus: 0,
   monsters: [],

@@ -1,9 +1,14 @@
+import React from 'react';
 import { connect } from 'react-redux';
+import { Route } from 'react-router-dom';
 import { push } from 'react-router-redux';
 import { removePlayer } from 'munchkin-core/es/actions';
 
-import { movePlayer, setActivePlayer, setMultiMode, toggleEditMode, togglePlayer } from '../../actions';
-import PlayerList from '../../components/Player/List';
+import { movePlayer, setActivePlayer, setMultiMode, toggleEditMode, togglePlayer } from '../actions';
+
+import NewPlayerButton from './NewPlayerButton';
+import PlayerList from '../components/Player/List';
+
 
 const mapStateToProps = state => ({
   editMode: state.app.editMode,
@@ -49,4 +54,13 @@ const mapDispatchToProps = dispatch => ({
   onToggleEditClick: () => dispatch(toggleEditMode()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(PlayerList);
+const Home = props => (
+  <Route path="/">
+    {({ match }) => match && [
+      <PlayerList key="screen" {...props} />,
+      <NewPlayerButton key="fab" />,
+    ]}
+  </Route>
+);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

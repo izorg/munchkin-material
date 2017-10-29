@@ -3,8 +3,9 @@ import { connectAdvanced } from 'react-redux';
 import { Route } from 'react-router-dom';
 
 import { goToCombat } from '../../actions';
-import Combat from '../../components/Fab/Combat';
-import Transition from '../../components/Fab/Transition';
+import Fab from '../../components/fab/Container';
+import Combat from '../../components/fab/Combat';
+import Transition from '../../components/fab/Transition';
 
 const selectorFactory = dispatch => state => ({
   fullVersion: state.app.fullVersion,
@@ -15,7 +16,9 @@ const CombatButton = props => (
   <Route exact path="/player/:id">
     {({ match }) => (
       <Transition in={Boolean(match)}>
-        <Combat {...props} />
+        <Fab>
+          <Combat {...props} />
+        </Fab>
       </Transition>
     )}
   </Route>

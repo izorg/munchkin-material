@@ -8,7 +8,6 @@ import { classesObject } from '../../utils/propTypes';
 const styles = {
   layoutHeader: {
     flex: '0 0 auto',
-    position: 'relative',
     zIndex: 1,
   },
 };

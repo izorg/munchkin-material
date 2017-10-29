@@ -5,8 +5,9 @@ import { goBack, push } from 'react-router-redux';
 import { addMonster } from 'munchkin-core/es/actions';
 import Monster from 'munchkin-core/es/classes/Monster';
 
-import HelperButton from '../../components/Fab/HelperButton';
-import Transition from '../../components/Fab/Transition';
+import Fab from '../../components/fab/Container';
+import HelperButton from '../../components/fab/HelperButton';
+import Transition from '../../components/fab/Transition';
 
 const mapStateToProps = state => ({
   helper: !state.combat.helperId && state.playerList.length > 1,
@@ -29,10 +30,12 @@ const CombatHelperButton = props => (
   <Route path="/player/:id/combat">
     {({ location, match }) => (
       <Transition in={Boolean(match)}>
-        <HelperButton
-          expanded={Boolean(matchPath(location.pathname, { path: '/player/:id/combat/add' }))}
-          {...props}
-        />
+        <Fab>
+          <HelperButton
+            expanded={Boolean(matchPath(location.pathname, { path: '/player/:id/combat/add' }))}
+            {...props}
+          />
+        </Fab>
       </Transition>
     )}
   </Route>

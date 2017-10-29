@@ -6,8 +6,9 @@ import PropTypes from 'prop-types';
 
 import { setActivePlayer, toggleEditMode } from '../actions';
 
-import Add from '../components/Fab/Add';
-import Transition from '../components/Fab/Transition';
+import Fab from '../components/fab/Container';
+import Add from '../components/fab/Add';
+import Transition from '../components/fab/Transition';
 
 const mapStateToProps = state => ({
   visible: !state.app.editMode && !state.app.multiMode,
@@ -25,7 +26,9 @@ const NewPlayerButton = ({ visible, ...props }) => (
   <Route exact path="/">
     {({ match }) => (
       <Transition in={!!match && visible}>
-        <Add {...props} />
+        <Fab>
+          <Add {...props} />
+        </Fab>
       </Transition>
     )}
   </Route>

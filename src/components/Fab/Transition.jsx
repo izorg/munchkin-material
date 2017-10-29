@@ -1,12 +1,10 @@
 import React from 'react';
 import CSSTransition from 'react-transition-group/CSSTransition';
-import PropTypes from 'prop-types';
-import { withStyles } from 'material-ui/styles';
-import transitions, { duration, easing } from 'material-ui/styles/transitions';
+import { withStyles, withTheme } from 'material-ui/styles';
 
-import { classesObject } from '../../utils/propTypes';
+import { classesObject, themeObject } from '../../utils/propTypes';
 
-const styles = {
+const styles = theme => ({
   item: {
     bottom: 0,
     position: 'absolute',
@@ -19,10 +17,10 @@ const styles = {
 
   enterActive: {
     transform: 'scale(1)',
-    transition: transitions.create('transform', {
-      delay: duration.enteringScreen,
-      duration: duration.shortest,
-      easing: easing.easeOut,
+    transition: theme.transitions.create('transform', {
+      delay: theme.transitions.duration.enteringScreen,
+      duration: theme.transitions.duration.shortest,
+      easing: theme.transitions.easing.easeOut,
     }),
   },
 
@@ -32,16 +30,15 @@ const styles = {
 
   exitActive: {
     transform: 'scale(0)',
-    transition: transitions.create('transform', {
-      duration: duration.shortest,
-      easing: easing.easeIn,
+    transition: theme.transitions.create('transform', {
+      duration: theme.transitions.duration.shortest,
+      easing: theme.transitions.easing.easeIn,
     }),
   },
-};
+});
 
-const FabTransition = ({ children, classes, ...props }) => (
+const FabTransition = ({ classes, theme, ...props }) => (
   <CSSTransition
-    {...props}
     classNames={{
       enter: classes.enter,
       enterActive: classes.enterActive,
@@ -50,20 +47,17 @@ const FabTransition = ({ children, classes, ...props }) => (
     }}
     mountOnEnter
     timeout={{
-      enter: duration.shortest + duration.enteringScreen,
-      exit: duration.shortest,
+      enter: theme.transitions.duration.shortest + theme.transitions.duration.enteringScreen,
+      exit: theme.transitions.duration.shortest,
     }}
     unmountOnExit
-  >
-    <div className={classes.item}>
-      {children}
-    </div>
-  </CSSTransition>
+    {...props}
+  />
 );
 
 FabTransition.propTypes = {
-  children: PropTypes.node.isRequired,
   classes: classesObject.isRequired, // eslint-disable-line react/no-typos
+  theme: themeObject.isRequired, // eslint-disable-line react/no-typos
 };
 
-export default withStyles(styles)(FabTransition);
+export default withStyles(styles)(withTheme()(FabTransition));

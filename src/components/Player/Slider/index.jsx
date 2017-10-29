@@ -28,7 +28,7 @@ const styles = {
 
   '@media (orientation: portrait) and (min-height: 543px)': {
     sliderContent: {
-      paddingBottom: 80,
+      paddingBottom: 72,
     },
   },
 };
@@ -85,6 +85,7 @@ class PlayerSlider extends Component {
   render() {
     const {
       classes,
+      className,
       onBack,
       onDiceClick,
       selectedPlayer,
@@ -93,7 +94,7 @@ class PlayerSlider extends Component {
     const { initialSlide } = this.state;
 
     return (
-      <Layout>
+      <Layout className={className}>
         <LayoutHeader>
           <AppBar color="primary" position="static">
             <Toolbar disableGutters>
@@ -133,6 +134,7 @@ class PlayerSlider extends Component {
             style={{
               display: 'flex',
               flexDirection: 'column',
+              width: '100%',
             }}
           />
         </LayoutContent>
@@ -143,6 +145,7 @@ class PlayerSlider extends Component {
 
 PlayerSlider.propTypes = {
   classes: classesObject.isRequired, // eslint-disable-line react/no-typos
+  className: PropTypes.string,
   onBack: PropTypes.func,
   onDiceClick: PropTypes.func,
   onPlayerChange: PropTypes.func,
@@ -151,6 +154,7 @@ PlayerSlider.propTypes = {
 };
 
 PlayerSlider.defaultProps = {
+  className: '',
   onBack: noop,
   onDiceClick: noop,
   onPlayerChange: noop,

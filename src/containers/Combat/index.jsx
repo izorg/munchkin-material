@@ -1,4 +1,6 @@
+import React from 'react';
 import { connect } from 'react-redux';
+import { Route } from 'react-router-dom';
 import { goBack } from 'react-router-redux';
 import Monster from 'munchkin-core/es/classes/Monster';
 import {
@@ -9,6 +11,8 @@ import {
 } from 'munchkin-core/es/actions';
 
 import { removeHelper, throwDice } from '../../actions';
+import HelperButton from './HelperButton';
+import SlideRight from '../../components/transitions/Screen/SlideRight';
 import Combat from '../../components/Combat';
 
 const mapStateToProps = ({
@@ -31,4 +35,15 @@ const mapDispatchToProps = {
   onPlayerBonusChange: setCombatPlayerBonus,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Combat);
+const PlayerCombat = props => (
+  <Route path="/player/:id/combat">
+    {({ match }) => [
+      <SlideRight key="screen" in={Boolean(match)}>
+        <Combat {...props} />
+      </SlideRight>,
+      <HelperButton key="fab" />,
+    ]}
+  </Route>
+);
+
+export default connect(mapStateToProps, mapDispatchToProps)(PlayerCombat);

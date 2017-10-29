@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import FloatingActionButton from 'material-ui/Button';
 
-import { noop } from '../../constants/index';
+import { noop } from '../../constants';
 
 import SwordCross from '../icons/SwordCross';
 

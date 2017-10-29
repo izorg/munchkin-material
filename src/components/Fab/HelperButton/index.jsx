@@ -12,12 +12,12 @@ import ContentAdd from 'material-ui-icons/Add';
 import SocialPersonAdd from 'material-ui-icons/PersonAdd';
 import cns from 'classnames';
 
-import EmoticonDevil from '../../icons/EmoticonDevil';
-import { noop } from '../../../constants/index';
-import HelperSelector from '../../../containers/Combat/HelperSelector';
+import { noop } from '../../../constants';
 import { classesObject } from '../../../utils/propTypes';
 
 import Fade from './Fade';
+import EmoticonDevil from '../../icons/EmoticonDevil';
+import HelperSelector from '../../../containers/Combat/HelperSelector';
 
 const styles = {
   container: {
@@ -89,12 +89,7 @@ class FabHelperButton extends PureComponent {
     } = this.props;
 
     return (
-      <div
-        className={classes.container}
-        ref={(node) => {
-          this.node = node;
-        }}
-      >
+      <div className={classes.container}>
         {expanded && <Backdrop invisible onClick={onBackdropClick} />}
 
         <TransitionGroup className={classes.miniContainer}>
