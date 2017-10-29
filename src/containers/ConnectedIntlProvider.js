@@ -8,7 +8,6 @@ const mapStateToProps = (state) => {
   const messages = getMessages(locale);
 
   return {
-    key: locale, // https://github.com/yahoo/react-intl/issues/234#issuecomment-163366518
     locale,
     messages,
   };
