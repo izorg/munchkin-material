@@ -4,10 +4,10 @@ import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';
 import { goBack } from 'react-router-redux';
 import PropTypes from 'prop-types';
+import Slide from 'material-ui/transitions/Slide';
 import { GENDER } from 'munchkin-core';
 
 import { importContact, submitPlayer } from '../actions';
-import FadeInUpOutDown from '../components/transitions/Screen/Fade';
 import Form from '../components/Player/Form';
 import getRandomMaterialColor from '../helpers/getRandomMaterialColor';
 
@@ -55,9 +55,15 @@ const mapDispatchToProps = {
 const PlayerForm = ({ path, ...props }) => (
   <Route path={path}>
     {({ match }) => (
-      <FadeInUpOutDown in={Boolean(match)}>
+      <Slide
+        appear={false}
+        direction="up"
+        in={Boolean(match)}
+        mountOnEnter
+        unmountOnExit
+      >
         <Form {...props} />
-      </FadeInUpOutDown>
+      </Slide>
     )}
   </Route>
 );

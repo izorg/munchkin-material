@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';
 import { goBack } from 'react-router-redux';
+import Slide from 'material-ui/transitions/Slide';
 import Monster from 'munchkin-core/es/classes/Monster';
 import {
   addMonster,
@@ -12,7 +13,6 @@ import {
 
 import { removeHelper, throwDice } from '../../actions';
 import HelperButton from './HelperButton';
-import SlideRight from '../../components/transitions/Screen/SlideRight';
 import Combat from '../../components/Combat';
 
 const mapStateToProps = ({
@@ -38,9 +38,16 @@ const mapDispatchToProps = {
 const PlayerCombat = props => (
   <Route path="/player/:id/combat">
     {({ match }) => [
-      <SlideRight key="screen" in={Boolean(match)}>
+      <Slide
+        appear={false}
+        direction="left"
+        key="screen"
+        in={Boolean(match)}
+        mountOnEnter
+        unmountOnExit
+      >
         <Combat {...props} />
-      </SlideRight>,
+      </Slide>,
       <HelperButton key="fab" />,
     ]}
   </Route>

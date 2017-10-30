@@ -2,11 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';
 import { goBack, replace } from 'react-router-redux';
+import Slide from 'material-ui/transitions/Slide';
 
 import { setActivePlayer, throwDice } from '../../actions';
 import CombatButton from '../Combat/Button';
 import Slider from '../../components/Player/Slider';
-import SlideRight from '../../components/transitions/Screen/SlideRight';
 
 const mapStateToProps = ({ app: { activePlayerId }, playerList, players }) => ({
   players: playerList.map(id => players[id]),
@@ -27,9 +27,16 @@ const mapDispatchToProps = dispatch => ({
 const PlayerSlider = props => (
   <Route path="/player/:id">
     {({ match }) => [
-      <SlideRight key="screen" in={Boolean(match)}>
+      <Slide
+        appear={false}
+        direction="left"
+        in={Boolean(match)}
+        key="screen"
+        mountOnEnter
+        unmountOnExit
+      >
         <Slider {...props} />
-      </SlideRight>,
+      </Slide>,
       <CombatButton key="fab" />,
     ]}
   </Route>
