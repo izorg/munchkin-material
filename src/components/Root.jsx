@@ -12,6 +12,8 @@ import munchkinWoff from '../fonts/munchkin.woff';
 import munchkinWoff2 from '../fonts/munchkin.woff2';
 import munchkinTheme from '../styles/munchkinTheme';
 
+const Fragment = ({ children }) => children;
+
 const styles = {
   '@global': {
     '@font-face': {
@@ -55,17 +57,14 @@ class Root extends PureComponent {
   }
 
   render() {
-    const { history, store, ...props } = this.props;
-
-    delete props.buyFullVersion;
-    delete props.classes;
+    const { history, store } = this.props;
 
     return (
       <Provider store={store}>
-        <Locale>
+        <Locale textComponent={Fragment}>
           <MuiThemeProvider theme={munchkinTheme}>
             <ConnectedRouter history={history}>
-              <App {...props} />
+              <App />
             </ConnectedRouter>
           </MuiThemeProvider>
         </Locale>

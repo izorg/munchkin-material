@@ -16,7 +16,7 @@ const store = configureStore(history);
 const { dispatch } = store;
 
 const renderAppContainer = (Component, appEl, options) => render(
-  <AppContainer>
+  <AppContainer warnings={false}>
     <Component {...options} history={history} store={store} />
   </AppContainer>,
   appEl,

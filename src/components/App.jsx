@@ -18,11 +18,10 @@ const styles = {
   },
 
   screen: {
-    backgroundColor: '#FFFFFF',
-    height: '100vh',
+    height: '100%',
     left: 0,
     position: 'absolute',
-    width: '100vw',
+    width: '100%',
     top: 0,
     zIndex: 1,
   },

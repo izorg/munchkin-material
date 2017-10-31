@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Paper from 'material-ui/Paper';
 import { withStyles } from 'material-ui/styles';
 import cns from 'classnames';
 
@@ -12,12 +13,13 @@ const styles = {
   layout: {
     display: 'flex',
     flexDirection: 'column',
-    height: '100%',
   },
 };
 
 const Layout = ({ classes, className, ...props }) => (
-  <div
+  <Paper
+    elevation={0}
+    square
     {...props}
     className={cns(classes.layout, className)}
   />

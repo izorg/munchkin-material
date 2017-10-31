@@ -193,6 +193,7 @@ class PlayerList extends PureComponent {
         <LayoutContent className={!players.length ? classes.empty : ''}>
           {players.length ? (
             <SortableList
+              component="div"
               helperClass={classes.sortableHelper}
               lockAxis="y"
               lockOffset={0}
