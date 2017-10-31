@@ -5,9 +5,9 @@ import { goBack, push } from 'react-router-redux';
 import { addMonster } from 'munchkin-core/es/actions';
 import Monster from 'munchkin-core/es/classes/Monster';
 
-import Fab from '../../components/fab/Container';
-import HelperButton from '../../components/fab/HelperButton';
-import Transition from '../../components/fab/Transition';
+import Fab from '../../components/fab2/Container';
+import HelperButton from '../../components/fab2/HelperButton';
+import Transition from '../../components/fab2/Transition';
 
 const mapStateToProps = state => ({
   helper: !state.combat.helperId && state.playerList.length > 1,
