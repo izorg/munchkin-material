@@ -3,9 +3,9 @@ import { connectAdvanced } from 'react-redux';
 import { Route } from 'react-router-dom';
 
 import { goToCombat } from '../../actions';
-import Fab from '../../components/fab2/Container';
-import Combat from '../../components/fab2/Combat';
-import Transition from '../../components/fab2/Transition';
+import Fab from '../../components/fab/Container';
+import Combat from '../../components/fab/Combat';
+import Transition from '../../components/fab/Transition';
 
 const selectorFactory = dispatch => state => ({
   fullVersion: state.app.fullVersion,
