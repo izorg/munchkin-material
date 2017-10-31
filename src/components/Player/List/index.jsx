@@ -55,6 +55,7 @@ const styles = theme => ({
   sortableHelper: {
     backgroundColor: '#FFFFFF !important',
     boxShadow: theme.shadows[3],
+    zIndex: 2,
   },
 });
 
