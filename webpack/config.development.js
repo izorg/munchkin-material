@@ -8,7 +8,7 @@ const srcPath = path.resolve(__dirname, '../src');
 const config = require('./config.common.js');
 
 module.exports = merge.strategy({
-  entry: 'prepend',
+  entry: 'replace',
 })(config, {
   devtool: 'eval-source-map',
 
@@ -19,6 +19,7 @@ module.exports = merge.strategy({
     'webpack/hot/only-dev-server',
     './src/site.js',
     './src/test/index.js',
+    './src/index.jsx',
   ],
 
   output: {
@@ -56,5 +57,6 @@ module.exports = merge.strategy({
 
   devServer: {
     hot: true,
+    overlay: true,
   },
 });

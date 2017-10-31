@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
-import { defineMessages, injectIntl, intlShape } from 'react-intl';
+import { defineMessages, FormattedMessage, injectIntl, intlShape } from 'react-intl';
+import { RadioGroup } from 'redux-form-material-ui';
 import PropTypes from 'prop-types';
 import AppBar from 'material-ui/AppBar';
-import { FormControlLabel } from 'material-ui/Form';
+import { FormControl, FormLabel, FormControlLabel } from 'material-ui/Form';
+import Grid from 'material-ui/Grid';
 import IconButton from 'material-ui/IconButton';
+import Radio from 'material-ui/Radio';
 import TextField from 'material-ui/TextField';
-import Radio, { RadioGroup } from 'material-ui/Radio';
 import Toolbar from 'material-ui/Toolbar';
 import Typography from 'material-ui/Typography';
 import { withStyles } from 'material-ui/styles';
@@ -18,7 +20,7 @@ import { GENDER } from 'munchkin-core';
 
 import Layout, { LayoutContent, LayoutHeader } from '../../Layout';
 import { noop, PLAYER_FORM } from '../../../constants';
-import ColorPickerField from '../../../containers/ColorPickerField';
+import PlayerColorPickerField from '../../../containers/PlayerColorPickerField';
 import GenderFemale from '../../icons/gender/Female';
 import GenderMale from '../../icons/gender/Male';
 import { classesObject } from '../../../utils/propTypes';
@@ -31,36 +33,18 @@ const messages = defineMessages({
 });
 
 const styles = {
-  content: {
-    padding: 16,
+  title: {
+    flex: 1,
   },
 
-  fieldContainer: {
-    marginBottom: 16,
-    position: 'relative',
-
-    '&:last-child': {
-      marginBottom: 0,
-    },
+  content: {
+    padding: [0, 16],
   },
 };
 
 class PlayerForm extends Component {
-  static renderGenderField({ input }) {
-    return (
-      <RadioGroup
-        name={input.name}
-        onChange={(e, value) => input.onChange(value)}
-        value={input.value}
-      >
-        <FormControlLabel control={<Radio />} label={<GenderMale />} value={GENDER.MALE} />
-        <FormControlLabel control={<Radio />} label={<GenderFemale />} value={GENDER.FEMALE} />
-      </RadioGroup>
-    );
-  }
-
-  componentWillMount() {
-    this.renderNameField = this.renderNameField.bind(this);
+  static renderTextField({ input, ...props }) {
+    return <TextField {...input} {...props} />;
   }
 
   componentDidMount() {
@@ -85,21 +69,9 @@ class PlayerForm extends Component {
     }
   }
 
-  renderNameField({ input }) {
-    const { intl } = this.props;
-
-    return (
-      <TextField
-        {...input}
-        fullWidth
-        placeholder={intl.formatMessage(messages.label)}
-      />
-    );
-  }
-
   render() {
     const {
-      className, classes, handleSubmit, newPlayer, onCancel, onImport, title,
+      className, classes, handleSubmit, intl, newPlayer, onCancel, onImport, title,
     } = this.props;
 
     return (
@@ -112,9 +84,9 @@ class PlayerForm extends Component {
               </IconButton>
 
               <Typography
+                className={classes.title}
                 color="inherit"
                 noWrap
-                style={{ flex: 1 }}
                 type="title"
               >
                 {title}
@@ -135,33 +107,63 @@ class PlayerForm extends Component {
           >
             <Field component="input" name="avatar" type="hidden" />
 
-            <div className={classes.fieldContainer}>
-              <Field component={this.renderNameField} name="name" />
-              {
-                newPlayer && navigator.contacts ? (
-                  <IconButton
-                    disableTouchRipple
-                    onClick={onImport}
-                    style={{
-                      height: 24,
-                      padding: 0,
-                      position: 'absolute',
-                      right: 0,
-                      top: 12,
-                      width: 24,
-                    }}
-                  >
-                    <SocialPersonAdd />
-                  </IconButton>
-                ) : null
-              }
-            </div>
+            <Field
+              component={this.constructor.renderTextField}
+              fullWidth
+              margin="normal"
+              name="name"
+              placeholder={intl.formatMessage(messages.label)}
+            />
 
-            <div className={classes.fieldContainer}>
-              <Field component={this.constructor.renderGenderField} name="gender" />
-            </div>
+            {
+              newPlayer && navigator.contacts ? (
+                <IconButton
+                  disableTouchRipple
+                  onClick={onImport}
+                  style={{
+                    height: 24,
+                    padding: 0,
+                    position: 'absolute',
+                    right: 0,
+                    top: 12,
+                    width: 24,
+                  }}
+                >
+                  <SocialPersonAdd />
+                </IconButton>
+              ) : null
+            }
 
-            <ColorPickerField name="color" />
+            <Grid container>
+              <Grid item xs={6}>
+                <FormControl component="fieldset" margin="normal">
+                  <FormLabel component="legend">
+                    <FormattedMessage id="player.form.gender" defaultMessage="Gender" />
+                  </FormLabel>
+                  <Field component={RadioGroup} name="gender">
+                    <FormControlLabel
+                      control={<Radio />}
+                      label={<GenderMale />}
+                      value={GENDER.MALE}
+                    />
+                    <FormControlLabel
+                      control={<Radio />}
+                      label={<GenderFemale />}
+                      value={GENDER.FEMALE}
+                    />
+                  </Field>
+                </FormControl>
+              </Grid>
+
+              <Grid item xs={6}>
+                <FormControl margin="normal">
+                  <FormLabel>
+                    <FormattedMessage id="player.form.color" defaultMessage="Color" />
+                  </FormLabel>
+                  <Field component={PlayerColorPickerField} name="color" />
+                </FormControl>
+              </Grid>
+            </Grid>
           </form>
         </LayoutContent>
       </Layout>

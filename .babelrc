@@ -11,7 +11,7 @@
           "ie": 11,
           "safari": 10
         },
-        "useBuiltIns": true
+        "useBuiltIns": "entry"
       }
     ],
     "stage-3",

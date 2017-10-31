@@ -13,6 +13,12 @@ const styles = {
   layout: {
     display: 'flex',
     flexDirection: 'column',
+    height: '100%',
+    left: 0,
+    position: 'absolute',
+    top: 0,
+    width: '100%',
+    zIndex: 1,
   },
 };
 

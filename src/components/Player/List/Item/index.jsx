@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { SortableHandle } from 'react-sortable-hoc';
 import Tappable from 'react-tappable/lib/Tappable';
@@ -25,7 +25,7 @@ const styles = {
   },
 };
 
-class PlayerListItem extends Component {
+class PlayerListItem extends PureComponent {
   componentWillMount() {
     this.handleClick = this.handleClick.bind(this);
     this.handlePress = this.handlePress.bind(this);

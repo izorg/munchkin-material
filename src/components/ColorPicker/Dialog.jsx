@@ -15,33 +15,32 @@ const { common, yellow, ...availableColors } = colors;
 const styles = ({ spacing: { unit } }) => ({
   button: {
     borderRadius: '50%',
-    padding: unit,
+    height: 48,
+    padding: 0,
+    width: 48,
   },
 
   content: {
-    display: 'flex',
-    flexWrap: 'wrap',
     padding: [0, unit, unit * 2],
+    textAlign: 'center',
   },
 
-  dialog: {
-    maxWidth: 240,
+  color: {
+    height: 36,
+    width: 36,
   },
 });
 
 const ColorPickerDialog = ({ classes, onSelect, ...props }) => (
-  <Dialog
-    classes={{ paper: classes.dialog }}
-    key="dialog"
-    {...props}
-  >
+  <Dialog key="dialog" {...props}>
     <DialogTitle>
       <FormattedMessage id="colorPicker.dialog.title" defaultMessage="Choose color" />
     </DialogTitle>
     <DialogContent className={classes.content}>
       {Object.keys(availableColors).map(key => (
-        <ButtonBase className={classes.button} key={key}>
+        <ButtonBase className={classes.button} focusRipple key={key}>
           <Avatar
+            className={classes.color}
             onClick={() => onSelect(availableColors[key][500])}
             style={{ backgroundColor: availableColors[key][500] }}
           />

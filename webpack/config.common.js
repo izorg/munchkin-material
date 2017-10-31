@@ -6,7 +6,8 @@ const srcPath = path.resolve(__dirname, '../src');
 
 module.exports = {
   entry: [
-    './src/index',
+    'babel-polyfill',
+    './src/index.jsx',
   ],
 
   output: {

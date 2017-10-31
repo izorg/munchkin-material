@@ -7,7 +7,7 @@ import { classesObject } from '../../utils/propTypes';
 
 const styles = {
   layoutContent: {
-    flex: '1 1 auto',
+    flexGrow: 1,
     overflowY: 'auto',
   },
 };

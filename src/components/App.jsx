@@ -16,15 +16,6 @@ const styles = {
     height: '100%',
     position: 'relative',
   },
-
-  screen: {
-    height: '100%',
-    left: 0,
-    position: 'absolute',
-    width: '100%',
-    top: 0,
-    zIndex: 1,
-  },
 };
 
 const App = ({ classes }) => (
@@ -33,10 +24,10 @@ const App = ({ classes }) => (
       <html lang={navigator.language} />
     </Helmet>
 
-    <Home className={classes.screen} />
-    <PlayerForm className={classes.screen} />
-    <PlayerSlider className={classes.screen} />
-    <Combat className={classes.screen} />
+    <Home />
+    <PlayerForm />
+    <PlayerSlider />
+    <Combat />
 
     <DiceDialog />
   </div>
