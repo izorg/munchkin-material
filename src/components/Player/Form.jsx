@@ -18,12 +18,12 @@ import NavigationCheck from 'material-ui-icons/Check';
 import SocialPersonAdd from 'material-ui-icons/PersonAdd';
 import { GENDER } from 'munchkin-core';
 
-import Layout, { LayoutContent, LayoutHeader } from '../../Layout';
-import { noop, PLAYER_FORM } from '../../../constants';
-import PlayerColorPickerField from '../../../containers/PlayerColorPickerField';
-import GenderFemale from '../../icons/gender/Female';
-import GenderMale from '../../icons/gender/Male';
-import { classesObject } from '../../../utils/propTypes';
+import Layout, { LayoutContent, LayoutHeader } from '../Layout/index';
+import { noop, PLAYER_FORM } from '../../constants/index';
+import PlayerColorPickerField from '../../containers/PlayerColorPickerField';
+import GenderFemale from '../icons/gender/Female';
+import GenderMale from '../icons/gender/Male';
+import { classesObject } from '../../utils/propTypes';
 
 const messages = defineMessages({
   label: {
@@ -135,7 +135,7 @@ class PlayerForm extends Component {
             }
 
             <Grid container>
-              <Grid item xs={6}>
+              <Grid item xs={6} sm={3} md={2} lg={1}>
                 <FormControl component="fieldset" margin="normal">
                   <FormLabel component="legend">
                     <FormattedMessage id="player.form.gender" defaultMessage="Gender" />
@@ -155,7 +155,7 @@ class PlayerForm extends Component {
                 </FormControl>
               </Grid>
 
-              <Grid item xs={6}>
+              <Grid item xs={6} sm={3} md={2} lg={1}>
                 <FormControl margin="normal">
                   <FormLabel>
                     <FormattedMessage id="player.form.color" defaultMessage="Color" />

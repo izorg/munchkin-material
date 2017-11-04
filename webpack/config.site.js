@@ -8,7 +8,7 @@ const merge = require('webpack-merge');
 
 const config = require('./config.production.js');
 
-module.exports = merge.strategy({
+module.exports = merge.smartStrategy({
   entry: 'prepend',
 })(config, {
   entry: [
