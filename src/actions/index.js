@@ -72,7 +72,7 @@ export const setMultiMode = multiMode => ({
   multiMode,
 });
 
-const setPlayerColor = ({ color, id }) => ({
+export const setPlayerColor = ({ color, id }) => ({
   type: types.SET_PLAYER_COLOR,
   color,
   id,
