@@ -9,30 +9,6 @@ import cns from 'classnames';
 import { noop } from '../../constants';
 import { classesObject } from '../../utils/propTypes';
 
-const baseStyles = {
-  small: {
-    width: 64,
-    height: 64,
-    padding: 0,
-  },
-  smallIcon: {
-    width: 64,
-    height: 64,
-  },
-};
-
-const compactStyles = {
-  small: {
-    width: 48,
-    height: 48,
-    padding: 0,
-  },
-  smallIcon: {
-    width: 48,
-    height: 48,
-  },
-};
-
 const styles = theme => ({
   counter: {
     textAlign: 'center',
@@ -47,6 +23,18 @@ const styles = theme => ({
     fontSize: 16,
   },
 
+  button: {
+    fontSize: 64,
+    height: 64,
+    width: 64,
+  },
+
+  compactButton: {
+    fontSize: 48,
+    height: 48,
+    width: 48,
+  },
+
   value: {
     fontFamily: `"Munchkin", ${theme.typography.fontFamily}`,
     fontSize: 36,
@@ -55,38 +43,33 @@ const styles = theme => ({
 
 const Counter = ({
   classes, className, compact, onDecrement, onIncrement, title, value,
-}) => {
-  const buttonStyle = compact ? compactStyles.small : baseStyles.small;
-  const iconStyle = compact ? compactStyles.smallIcon : baseStyles.smallIcon;
-
-  return (
-    <div className={cns(className, classes.counter)}>
-      {title ? (
-        <div className={cns(classes.title, { [classes.compactTitle]: compact })}>{title}</div>
-      ) : null}
-
-      <IconButton
-        color="inherit"
-        onClick={onIncrement}
-        style={buttonStyle}
-      >
-        <NavigationArrowDropUp style={iconStyle} />
-      </IconButton>
-
-      <div className={classes.value}>
-        {value}
-      </div>
-
-      <IconButton
-        color="inherit"
-        onClick={onDecrement}
-        style={buttonStyle}
-      >
-        <NavigationArrowDropDown style={iconStyle} />
-      </IconButton>
+}) => (
+  <div className={cns(className, classes.counter)}>
+    <div className={cns(classes.title, { [classes.compactTitle]: compact })}>
+      {title}
     </div>
-  );
-};
+
+    <IconButton
+      className={cns(classes.button, { [classes.compactButton]: compact })}
+      color="inherit"
+      onClick={onIncrement}
+    >
+      <NavigationArrowDropUp />
+    </IconButton>
+
+    <div className={classes.value}>
+      {value}
+    </div>
+
+    <IconButton
+      className={cns(classes.button, { [classes.compactButton]: compact })}
+      color="inherit"
+      onClick={onDecrement}
+    >
+      <NavigationArrowDropDown />
+    </IconButton>
+  </div>
+);
 
 Counter.propTypes = {
   classes: classesObject.isRequired, // eslint-disable-line react/no-typos
@@ -94,7 +77,7 @@ Counter.propTypes = {
   compact: PropTypes.bool,
   onDecrement: PropTypes.func,
   onIncrement: PropTypes.func,
-  title: PropTypes.node,
+  title: PropTypes.node.isRequired,
   value: PropTypes.number.isRequired,
 };
 
@@ -103,7 +86,6 @@ Counter.defaultProps = {
   compact: false,
   onDecrement: noop,
   onIncrement: noop,
-  title: '',
 };
 
 export default withStyles(styles)(Counter);

@@ -1,16 +1,12 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import FloatingActionButton from 'material-ui/Button';
+import Button from 'material-ui/Button';
 
 import { noop } from '../../constants';
 
 import SwordCross from '../icons/SwordCross';
 
-class FabCombat extends Component {
-  componentWillMount() {
-    this.handleCombatStart = this.handleCombatStart.bind(this);
-  }
-
+class CombatFab extends PureComponent {
   componentWillReceiveProps(nextProps) {
     const { fullVersion, onClick } = nextProps;
 
@@ -19,42 +15,29 @@ class FabCombat extends Component {
     }
   }
 
-  handleCombatStart() {
-    const { fullVersion, onClick } = this.props;
-    const { buyFullVersion } = this.context;
-
-    if (fullVersion) {
-      onClick();
-    } else {
-      buyFullVersion();
-    }
-  }
-
   render() {
+    const { onClick } = this.props;
+
     return (
-      <FloatingActionButton
+      <Button
         color="primary"
         fab
-        onClick={this.handleCombatStart}
+        onClick={onClick}
       >
         <SwordCross />
-      </FloatingActionButton>
+      </Button>
     );
   }
 }
 
-FabCombat.contextTypes = {
-  buyFullVersion: PropTypes.func,
-};
-
-FabCombat.propTypes = {
+CombatFab.propTypes = {
   fullVersion: PropTypes.bool,
   onClick: PropTypes.func,
 };
 
-FabCombat.defaultProps = {
+CombatFab.defaultProps = {
   fullVersion: false,
   onClick: noop,
 };
 
-export default FabCombat;
+export default CombatFab;

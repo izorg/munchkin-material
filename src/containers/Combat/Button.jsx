@@ -1,15 +1,23 @@
 import React from 'react';
 import { connectAdvanced } from 'react-redux';
 import { Route } from 'react-router-dom';
+import getContext from 'recompose/getContext';
+import PropTypes from 'prop-types';
 
 import { goToCombat } from '../../actions';
 import Fab from '../../components/fab/Container';
 import Combat from '../../components/fab/Combat';
 import Transition from '../../components/fab/Transition';
 
-const selectorFactory = dispatch => state => ({
+const selectorFactory = dispatch => (state, ownProps) => ({
   fullVersion: state.app.fullVersion,
-  onClick: () => dispatch(goToCombat(state.app.activePlayerId)),
+  onClick: () => {
+    if (state.app.fullVersion) {
+      dispatch(goToCombat(state.app.activePlayerId));
+    } else {
+      ownProps.buyFullVersion();
+    }
+  },
 });
 
 const CombatButton = props => (
@@ -24,4 +32,8 @@ const CombatButton = props => (
   </Route>
 );
 
-export default connectAdvanced(selectorFactory)(CombatButton);
+const contextTypes = {
+  buyFullVersion: PropTypes.func,
+};
+
+export default getContext(contextTypes)(connectAdvanced(selectorFactory)(CombatButton));

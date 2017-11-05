@@ -9,4 +9,6 @@ const CloseCircle = props => (
 );
 /* eslint-enable */
 
+CloseCircle.muiName = 'SvgIcon';
+
 export default CloseCircle;

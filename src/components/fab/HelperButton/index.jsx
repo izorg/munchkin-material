@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { FormattedMessage } from 'react-intl';
-import { Link, Route } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import TransitionGroup from 'react-transition-group/TransitionGroup';
 import PropTypes from 'prop-types';
 import Button from 'material-ui/Button';
@@ -148,11 +148,7 @@ class FabHelperButton extends PureComponent {
           ) : <EmoticonDevil />}
         </Button>
 
-        <Route exact path="/player/:id/combat/add/helper">
-          {({ match }) => (
-            <HelperSelector open={!!match} />
-          )}
-        </Route>
+        <HelperSelector />
       </div>
     );
   }

@@ -10,4 +10,6 @@ const SwordCross = props => (
 );
 /* eslint-enable */
 
+SwordCross.muiName = 'SvgIcon';
+
 export default SwordCross;

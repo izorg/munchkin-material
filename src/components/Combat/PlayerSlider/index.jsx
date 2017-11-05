@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import MediaQuery from 'react-responsive';
 import SwipeableViews from 'react-swipeable-views';
 import PropTypes from 'prop-types';
@@ -26,9 +26,12 @@ const styles = {
   },
 
   remove: {
-    position: 'absolute !important',
-    right: 16,
     bottom: 16,
+    height: 36,
+    padding: 6,
+    position: 'absolute',
+    right: 16,
+    width: 36,
   },
 
   '@media (orientation: landscape)': {
@@ -48,7 +51,7 @@ const styles = {
   },
 };
 
-class CombatPlayerSlider extends Component {
+class CombatPlayerSlider extends PureComponent {
   constructor(props) {
     super(props);
 
@@ -117,19 +120,14 @@ class CombatPlayerSlider extends Component {
         key={props.player.id.toString()}
       >
         <Player
-          player={props.player}
           onBonusChange={props.onBonusChange}
+          player={props.player}
         />
 
         {helper && props.player.id === helper.id && (
           <IconButton
             className={classes.remove}
             onClick={this.handleHelperRemove}
-            style={{
-              width: 36,
-              height: 36,
-              padding: 6,
-            }}
           >
             <CloseCircle />
           </IconButton>

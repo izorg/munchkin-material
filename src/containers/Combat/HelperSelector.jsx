@@ -1,4 +1,6 @@
+import React from 'react';
 import { connect } from 'react-redux';
+import { Route } from 'react-router-dom';
 import { go, goBack } from 'react-router-redux';
 import { setCombatHelper } from 'munchkin-core/es/actions';
 
@@ -18,4 +20,17 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(HelperSelector);
+const CombatHelperSelector = props => (
+  <Route exact path="/player/:id/combat/add/helper">
+    {({ match }) => (
+      <HelperSelector {...props} open={!!match} />
+    )}
+  </Route>
+);
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+  undefined,
+  { pure: false },
+)(CombatHelperSelector);

@@ -9,4 +9,6 @@ const DiceMultipleIcon = props => (
 );
 /* eslint-enable */
 
+DiceMultipleIcon.muiName = 'SvgIcon';
+
 export default DiceMultipleIcon;

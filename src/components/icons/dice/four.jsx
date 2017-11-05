@@ -10,4 +10,6 @@ const DiceFour = props => (
 );
 /* eslint-enable */
 
+DiceFour.muiName = 'SvgIcon';
+
 export default DiceFour;

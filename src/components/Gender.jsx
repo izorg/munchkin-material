@@ -22,4 +22,6 @@ Gender.propTypes = {
   gender: PropTypes.oneOf(Object.values(GENDER)).isRequired,
 };
 
+Gender.muiName = 'SvgIcon';
+
 export default Gender;

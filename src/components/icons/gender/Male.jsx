@@ -9,4 +9,6 @@ const GenderMale = props => (
 );
 /* eslint-enable */
 
+GenderMale.muiName = 'SvgIcon';
+
 export default GenderMale;

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { defineMessages, FormattedMessage, injectIntl, intlShape } from 'react-intl';
 import { RadioGroup } from 'redux-form-material-ui';
@@ -12,7 +12,6 @@ import TextField from 'material-ui/TextField';
 import Toolbar from 'material-ui/Toolbar';
 import Typography from 'material-ui/Typography';
 import { withStyles } from 'material-ui/styles';
-import { duration } from 'material-ui/styles/transitions';
 import NavigationArrowBack from 'material-ui-icons/ArrowBack';
 import NavigationCheck from 'material-ui-icons/Check';
 import SocialPersonAdd from 'material-ui-icons/PersonAdd';
@@ -42,31 +41,9 @@ const styles = {
   },
 };
 
-class PlayerForm extends Component {
+class PlayerForm extends PureComponent {
   static renderTextField({ input, ...props }) {
     return <TextField {...input} {...props} />;
-  }
-
-  componentDidMount() {
-    const { autoFocus } = this.props;
-
-    if (autoFocus) {
-      this.autoFocusTimeoutid = setTimeout(() => {
-        delete this.autoFocusTimeoutid;
-
-        const node = document.querySelector('input[name="name"]');
-
-        if (node) {
-          node.focus();
-        }
-      }, duration.enteringScreen);
-    }
-  }
-
-  componentWillUnmount() {
-    if (this.autoFocusTimeoutid) {
-      clearTimeout(this.autoFocusTimeoutid);
-    }
   }
 
   render() {
@@ -108,6 +85,7 @@ class PlayerForm extends Component {
             <Field component="input" name="avatar" type="hidden" />
 
             <Field
+              autoFocus={newPlayer}
               component={this.constructor.renderTextField}
               fullWidth
               margin="normal"
@@ -172,7 +150,6 @@ class PlayerForm extends Component {
 }
 
 PlayerForm.propTypes = {
-  autoFocus: PropTypes.bool,
   classes: classesObject.isRequired, // eslint-disable-line react/no-typos
   className: PropTypes.string,
   handleSubmit: PropTypes.func.isRequired,
@@ -184,7 +161,6 @@ PlayerForm.propTypes = {
 };
 
 PlayerForm.defaultProps = {
-  autoFocus: false,
   className: '',
   newPlayer: true,
   onImport: noop,
@@ -194,5 +170,4 @@ PlayerForm.defaultProps = {
 
 export default reduxForm({
   form: PLAYER_FORM,
-  pure: false,
 })(injectIntl(withStyles(styles)(PlayerForm)));

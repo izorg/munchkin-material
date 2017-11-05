@@ -1,57 +1,30 @@
-// import React, { Component } from 'react';
+import React from 'react';
 import { connectAdvanced } from 'react-redux';
-import { matchPath, withRouter } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import { goBack, push } from 'react-router-redux';
-// import { Field } from 'redux-form';
+import PropTypes from 'prop-types';
 
 import ColorPickerField from '../components/ColorPicker/Field';
-// import Dialog from '../components/ColorPicker/Dialog';
 
-const selectorFactory = dispatch => ({ app: { activePlayerId } }, { location, ...ownProps }) => {
-  const colorPath = activePlayerId ? `/edit/${activePlayerId}/color` : '/new/color';
-
-  const match = matchPath(location.pathname, {
-    path: colorPath,
-  });
+const selectorFactory = dispatch => ({ app: { activePlayerId } }, ownProps) => {
+  const path = activePlayerId ? `/edit/${activePlayerId}/color` : '/new/color';
 
   return {
     ...ownProps,
-    onClick: () => dispatch(push(colorPath)),
+    onClick: () => dispatch(push(path)),
     onRequestClose: () => dispatch(goBack()),
-    open: Boolean(match),
+    path,
   };
 };
 
-// class ColorPickerField extends Component {
-//   static renderComponent({
-//     input: { onChange, value }, onClick, onRequestClose, open,
-//   }) {
-//     return [
-//       <ColorPickerField
-//         key="picker"
-//         onClick={onClick}
-//         value={value}
-//       />,
-//       <Dialog
-//         key="dialog"
-//         onRequestClose={onRequestClose}
-//         open={open}
-//         onSelect={(color) => {
-//           onChange(color);
-//           onRequestClose();
-//         }}
-//       />,
-//     ];
-//   }
-//
-//   render() {
-//     return (
-//       <Field
-//         component={this.constructor.renderComponent}
-//         {...this.props}
-//       />
-//     );
-//   }
-// }
+const PlayerColorPickerField = ({ path, ...props }) => (
+  <Route path={path}>
+    {({ match }) => <ColorPickerField {...props} open={Boolean(match)} />}
+  </Route>
+);
 
-export default withRouter(connectAdvanced(selectorFactory)(ColorPickerField));
+PlayerColorPickerField.propTypes = {
+  path: PropTypes.string.isRequired,
+};
+
+export default connectAdvanced(selectorFactory)(PlayerColorPickerField);

@@ -9,4 +9,6 @@ const EmoticonDevil = props => (
 );
 /* eslint-enable */
 
+EmoticonDevil.muiName = 'SvgIcon';
+
 export default EmoticonDevil;

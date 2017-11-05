@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 import IconButton from 'material-ui/IconButton';
@@ -54,6 +54,13 @@ const styles = theme => ({
     marginTop: 32,
   },
 
+  gender: {
+    fontSize: 36,
+    height: 64,
+    padding: 12,
+    width: 64,
+  },
+
   '@media (orientation: portrait) and (min-height: 383px)': {
     strengthValue: {
       display: 'block',
@@ -88,103 +95,56 @@ const styles = theme => ({
   },
 });
 
-class PlayerStats extends Component {
-  componentWillMount() {
-    this.handleGearDecrement = this.handleGearDecrement.bind(this);
-    this.handleGearIncrement = this.handleGearIncrement.bind(this);
-
-    this.handleGenderToggle = this.handleGenderToggle.bind(this);
-
-    this.handleLevelDecrement = this.handleLevelDecrement.bind(this);
-    this.handleLevelIncrement = this.handleLevelIncrement.bind(this);
-  }
-
-  handleGearDecrement() {
-    const { onGearDecrement, player } = this.props;
-
-    onGearDecrement(player);
-  }
-
-  handleGearIncrement() {
-    const { onGearIncrement, player } = this.props;
-
-    onGearIncrement(player);
-  }
-
-  handleGenderToggle() {
-    const { onGenderToggle, player } = this.props;
-
-    onGenderToggle(player);
-  }
-
-  handleLevelDecrement() {
-    const { onLevelDecrement, player } = this.props;
-
-    onLevelDecrement(player);
-  }
-
-  handleLevelIncrement() {
-    const { onLevelIncrement, player } = this.props;
-
-    onLevelIncrement(player);
-  }
-
-  render() {
-    const { classes, className, player } = this.props;
-
-    return (
-      <div className={cns(className, classes.stats)}>
-        <div className={classes.counters}>
-          <div className={classes.counterContainer}>
-            <Counter
-              onDecrement={this.handleLevelDecrement}
-              onIncrement={this.handleLevelIncrement}
-              title={<FormattedMessage id="player.stats.level" defaultMessage="Level" />}
-              value={player.level}
-            />
-          </div>
-          <div className={classes.counterContainer}>
-            <Counter
-              onDecrement={this.handleGearDecrement}
-              onIncrement={this.handleGearIncrement}
-              title={<FormattedMessage id="player.stats.gear" defaultMessage="Gear" />}
-              value={player.gear}
-            />
-          </div>
-        </div>
-        <div className={classes.mainContainer}>
-          <div className={classes.strengthCounter}>
-            <div className={classes.strengthTitle}>
-              <FormattedMessage id="player.stats.strength" defaultMessage="Strength" />
-            </div>
-
-            <div className={classes.strengthValue}>
-              {player.strength}
-            </div>
-
-            <IconButton
-              color="inherit"
-              onClick={this.handleGenderToggle}
-              style={{
-                width: 64,
-                height: 64,
-                padding: 12,
-              }}
-            >
-              <Gender
-                gender={player.gender}
-                style={{
-                  width: 36,
-                  height: 36,
-                }}
-              />
-            </IconButton>
-          </div>
-        </div>
+const PlayerStats = ({
+  classes,
+  className,
+  onGearDecrement,
+  onGearIncrement,
+  player,
+  onGenderToggle,
+  onLevelDecrement,
+  onLevelIncrement,
+}) => (
+  <div className={cns(className, classes.stats)}>
+    <div className={classes.counters}>
+      <div className={classes.counterContainer}>
+        <Counter
+          onDecrement={onLevelDecrement}
+          onIncrement={onLevelIncrement}
+          title={<FormattedMessage id="player.stats.level" defaultMessage="Level" />}
+          value={player.level}
+        />
       </div>
-    );
-  }
-}
+      <div className={classes.counterContainer}>
+        <Counter
+          onDecrement={onGearDecrement}
+          onIncrement={onGearIncrement}
+          title={<FormattedMessage id="player.stats.gear" defaultMessage="Gear" />}
+          value={player.gear}
+        />
+      </div>
+    </div>
+    <div className={classes.mainContainer}>
+      <div className={classes.strengthCounter}>
+        <div className={classes.strengthTitle}>
+          <FormattedMessage id="player.stats.strength" defaultMessage="Strength" />
+        </div>
+
+        <div className={classes.strengthValue}>
+          {player.strength}
+        </div>
+
+        <IconButton
+          className={classes.gender}
+          color="inherit"
+          onClick={onGenderToggle}
+        >
+          <Gender gender={player.gender} />
+        </IconButton>
+      </div>
+    </div>
+  </div>
+);
 
 PlayerStats.propTypes = {
   classes: classesObject.isRequired, // eslint-disable-line react/no-typos
