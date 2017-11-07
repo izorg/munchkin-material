@@ -58,25 +58,17 @@ class DiceDialog extends PureComponent {
     const { onDiceClick } = this.props;
     const { attempt } = this.state;
 
-    this.setState({
-      attempt: attempt + 1,
-    }, onDiceClick);
+    this.setState({ attempt: attempt + 1 }, onDiceClick);
   }
 
   render() {
-    const {
-      classes, dice, onRequestClose, ...props
-    } = this.props;
+    const { classes, dice, ...props } = this.props;
     const { attempt } = this.state;
 
     delete props.onDiceClick;
 
     return (
-      <Dialog
-        onRequestClose={onRequestClose}
-        open={!!dice}
-        {...props}
-      >
+      <Dialog open={!!dice} {...props}>
         <TransitionGroup className={classes.content}>
           <DiceTransition key={attempt}>
             <IconButton
@@ -98,13 +90,11 @@ DiceDialog.propTypes = {
   classes: classesObject.isRequired, // eslint-disable-line react/no-typos
   dice: PropTypes.number,
   onDiceClick: PropTypes.func,
-  onRequestClose: PropTypes.func,
 };
 
 DiceDialog.defaultProps = {
   dice: null,
   onDiceClick: noop,
-  onRequestClose: noop,
 };
 
 export default withStyles(styles)(DiceDialog);

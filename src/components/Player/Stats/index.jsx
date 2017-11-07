@@ -13,7 +13,7 @@ import { classesObject, playerInstance } from '../../../utils/propTypes';
 const styles = theme => ({
   stats: {
     display: 'flex',
-    flexDirection: 'column',
+    flexDirection: 'column-reverse',
     width: '100%',
   },
 
@@ -41,13 +41,11 @@ const styles = theme => ({
   },
 
   strengthTitle: {
-    display: 'none',
     fontFamily: `"Munchkin", ${theme.typography.fontFamily}`,
     fontSize: 24,
   },
 
   strengthValue: {
-    display: 'none',
     fontFamily: `"Munchkin", ${theme.typography.fontFamily}`,
     fontSize: 72, /* 36px * 2 */
     lineHeight: 0.575, /* 1.15 / 2 */
@@ -61,36 +59,13 @@ const styles = theme => ({
     width: 64,
   },
 
-  '@media (orientation: portrait) and (min-height: 383px)': {
-    strengthValue: {
-      display: 'block',
-    },
-  },
-
-  '@media (orientation: portrait) and (min-height: 447px)': {
-    strengthTitle: {
-      display: 'block',
-    },
-  },
-
-  '@media (orientation: portrait) and (min-height: 543px)': {
-    stats: {
-      flexDirection: 'column-reverse',
-    },
-  },
-
   '@media (orientation: landscape)': {
     stats: {
       flexDirection: 'row',
     },
 
-    strengthTitle: {
-      display: 'block',
-    },
-
     strengthValue: {
-      display: 'block',
-      marginTop: 64,
+      marginTop: 72,
     },
   },
 });

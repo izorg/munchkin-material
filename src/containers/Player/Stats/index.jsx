@@ -1,6 +1,5 @@
 import { connectAdvanced } from 'react-redux';
 import { createSelector } from 'reselect';
-import { GENDER } from 'munchkin-core';
 import {
   decrementPlayerGear,
   decrementPlayerLevel,
@@ -8,9 +7,10 @@ import {
   incrementPlayerLevel,
   setPlayerGender,
 } from 'munchkin-core/es/actions';
+import GENDER from 'munchkin-core/es/constants/gender';
 
-import Stats from '../../components/Player/Stats';
-import { playerInstance } from '../../utils/propTypes';
+import Stats from '../../../components/Player/Stats';
+import { playerInstance } from '../../../utils/propTypes';
 
 const selector = createSelector(
   ownProps => ownProps.player,

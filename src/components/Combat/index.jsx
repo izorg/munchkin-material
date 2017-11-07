@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 import AppBar from 'material-ui/AppBar';
@@ -15,6 +15,7 @@ import { classesObject, monsterInstance, playerInstance } from '../../utils/prop
 import MonsterSlider from './MonsterSlider';
 import PlayerSlider from './PlayerSlider';
 import Layout, { LayoutContent, LayoutHeader } from '../Layout';
+import Title from '../Title';
 
 const styles = theme => ({
   content: {
@@ -58,93 +59,73 @@ const styles = theme => ({
   },
 });
 
-class Combat extends PureComponent {
-  constructor(props) {
-    super(props);
+const Combat = ({
+  classes,
+  className,
+  helper,
+  helperBonus,
+  monsters,
+  onBack,
+  onDiceClick,
+  onHelperBonusChange,
+  onHelperRemove,
+  onMonsterAdd,
+  onMonsterRemove,
+  onPlayerBonusChange,
+  player,
+  playerBonus,
+}) => (
+  <Layout className={className}>
+    <LayoutHeader>
+      <AppBar color="primary" position="static">
+        <Toolbar disableGutters>
+          <IconButton color="contrast" onClick={onBack}>
+            <NavigationArrowBack />
+          </IconButton>
 
-    this.state = {
-      disableDiceTooltip: false,
-    };
-  }
+          <Title>
+            <FormattedMessage id="combat" defaultMessage="Combat" />
+          </Title>
 
-  render() {
-    const {
-      classes,
-      className,
-      helper,
-      helperBonus,
-      monsters,
-      onBack,
-      onDiceClick,
-      onHelperBonusChange,
-      onHelperRemove,
-      onMonsterAdd,
-      onMonsterRemove,
-      onPlayerBonusChange,
-      player,
-      playerBonus,
-    } = this.props;
-
-    return (
-      <Layout className={className}>
-        <LayoutHeader>
-          <AppBar color="primary" position="static">
-            <Toolbar disableGutters>
-              <IconButton color="contrast" onClick={onBack}>
-                <NavigationArrowBack />
-              </IconButton>
-
-              <Typography
-                color="inherit"
-                noWrap
-                style={{ flex: 1 }}
-                type="title"
-              >
-                <FormattedMessage id="combat" defaultMessage="Combat" />
-              </Typography>
-
-              <DiceIconButton
-                color="contrast"
-                disableTriggerFocus={this.state.disableDiceTooltip}
-                onClick={onDiceClick}
-              />
-            </Toolbar>
-          </AppBar>
-        </LayoutHeader>
-        <LayoutContent className={classes.content}>
-          <PlayerSlider
-            className={classes.players}
-            helper={helper}
-            onHelperBonusChange={onHelperBonusChange}
-            onHelperRemove={onHelperRemove}
-            onPlayerBonusChange={onPlayerBonusChange}
-            player={player}
+          <DiceIconButton
+            color="contrast"
+            onClick={onDiceClick}
           />
+        </Toolbar>
+      </AppBar>
+    </LayoutHeader>
+    <LayoutContent className={classes.content}>
+      <PlayerSlider
+        className={classes.players}
+        helper={helper}
+        onHelperBonusChange={onHelperBonusChange}
+        onHelperRemove={onHelperRemove}
+        onPlayerBonusChange={onPlayerBonusChange}
+        player={player}
+      />
 
-          <div className={classes.total}>
-            <span className={classes.value}>
-              {
-                player.level + player.gear + playerBonus +
-                (helper ? (helper.level + helper.gear + helperBonus) : 0)
-              }
-            </span>
-            <Typography className={classes.versus} component="span">vs</Typography>
-            <span className={classes.value}>
-              {monsters.reduce((strength, monster) => strength + monster.level + monster.bonus, 0)}
-            </span>
-          </div>
+      <div className={classes.total}>
+        <span className={classes.value}>
+          {
+            player.level + player.gear + playerBonus +
+            (helper ? (helper.level + helper.gear + helperBonus) : 0)
+          }
+        </span>
+        <Typography className={classes.versus} component="span">vs</Typography>
+        <span className={classes.value}>
+          {monsters.reduce((strength, monster) => strength + monster.level + monster.bonus, 0)}
+        </span>
+      </div>
 
-          <MonsterSlider
-            className={classes.monsters}
-            monsters={monsters}
-            onMonsterAdd={onMonsterAdd}
-            onMonsterRemove={onMonsterRemove}
-          />
-        </LayoutContent>
-      </Layout>
-    );
-  }
-}
+      <MonsterSlider
+        className={classes.monsters}
+        monsters={monsters}
+        onMonsterAdd={onMonsterAdd}
+        onMonsterRemove={onMonsterRemove}
+      />
+    </LayoutContent>
+  </Layout>
+);
 
 Combat.propTypes = {
   classes: classesObject.isRequired, // eslint-disable-line react/no-typos

@@ -5,14 +5,12 @@ import { ConnectedRouter } from 'react-router-redux';
 import PropTypes from 'prop-types';
 import { MuiThemeProvider, withStyles } from 'material-ui/styles';
 
-import App from './App';
-import { noop } from '../constants';
-import Locale from '../containers/ConnectedIntlProvider';
-import munchkinWoff from '../fonts/munchkin.woff';
-import munchkinWoff2 from '../fonts/munchkin.woff2';
-import munchkinTheme from '../styles/munchkinTheme';
-
-const Fragment = ({ children }) => children;
+import App from '../App';
+import { noop } from '../../constants';
+import LocaleProvider from '../../containers/LocaleProvider';
+import munchkinWoff from '../../fonts/munchkin.woff';
+import munchkinWoff2 from '../../fonts/munchkin.woff2';
+import munchkinTheme from '../../styles/munchkinTheme';
 
 const styles = {
   '@global': {
@@ -61,13 +59,13 @@ class Root extends PureComponent {
 
     return (
       <Provider store={store}>
-        <Locale textComponent={Fragment}>
+        <LocaleProvider>
           <MuiThemeProvider theme={munchkinTheme}>
             <ConnectedRouter history={history}>
               <App />
             </ConnectedRouter>
           </MuiThemeProvider>
-        </Locale>
+        </LocaleProvider>
       </Provider>
     );
   }

@@ -2,7 +2,8 @@
 import { routerMiddleware, routerReducer } from 'react-router-redux';
 import { reducer as formReducer } from 'redux-form';
 import thunk from 'redux-thunk';
-import { actions, createStore } from 'munchkin-core';
+import actions from 'munchkin-core/es/actions';
+import createStore from 'munchkin-core/es/store/createStore';
 
 import reducers from '../reducers';
 

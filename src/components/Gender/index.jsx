@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { GENDER } from 'munchkin-core';
+import GENDER from 'munchkin-core/es/constants/gender';
 
-import GenderFemale from './icons/gender/Female';
-import GenderMale from './icons/gender/Male';
+import GenderFemale from '../icons/gender/Female';
+import GenderMale from '../icons/gender/Male';
 
 const Gender = ({ gender, ...props }) => {
   switch (gender) {

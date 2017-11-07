@@ -2,13 +2,13 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import { withStyles } from 'material-ui/styles';
 
-import { classesObject } from '../utils/propTypes';
+import { classesObject } from '../../utils/propTypes';
 
-import Combat from '../containers/Combat';
-import DiceDialog from '../containers/DiceDialog';
-import Home from '../containers/Home';
-import PlayerForm from '../containers/PlayerForm';
-import PlayerSlider from '../containers/Player/Slider';
+import Combat from '../../containers/Combat';
+import DiceDialog from '../../containers/DiceDialog';
+import Home from '../../containers/Home';
+import PlayerForm from '../../containers/PlayerForm';
+import Player from '../../containers/Player';
 
 const styles = {
   app: {
@@ -26,7 +26,7 @@ const App = ({ classes }) => (
 
     <Home />
     <PlayerForm />
-    <PlayerSlider />
+    <Player />
     <Combat />
 
     <DiceDialog />

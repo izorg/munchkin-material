@@ -1,4 +1,5 @@
-import { GENDER, Player } from 'munchkin-core';
+import Player from 'munchkin-core/es/classes/Player';
+import GENDER from 'munchkin-core/es/constants/gender';
 
 export default {
   en: [

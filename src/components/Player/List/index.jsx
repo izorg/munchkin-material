@@ -9,7 +9,6 @@ import { withStyles } from 'material-ui/styles';
 import transitions, { duration, easing } from 'material-ui/styles/transitions';
 import Toolbar from 'material-ui/Toolbar';
 import Tooltip from 'material-ui/Tooltip';
-import Typography from 'material-ui/Typography';
 import ActionDelete from 'material-ui-icons/Delete';
 import EditorModeEdit from 'material-ui-icons/ModeEdit';
 import NavigationCheck from 'material-ui-icons/Check';
@@ -18,6 +17,7 @@ import NavigationClose from 'material-ui-icons/Close';
 import Empty from './Empty';
 import Item from './Item';
 import Layout, { LayoutContent, LayoutHeader } from '../../Layout';
+import Title from '../../Title';
 import { noop } from '../../../constants';
 import { ios } from '../../../helpers/platforms';
 import { classesObject, playerInstance } from '../../../utils/propTypes';
@@ -46,7 +46,7 @@ const styles = theme => ({
     justifyContent: 'center',
   },
 
-  flex: {
+  title: {
     flex: 1,
     marginLeft: theme.spacing.unit * 2,
     marginRight: theme.spacing.unit * 2,
@@ -177,15 +177,13 @@ class PlayerList extends PureComponent {
           <AppBar className={classes.appBar} color={multiMode ? 'default' : 'primary'} position="static">
             <Toolbar disableGutters>
               {iconElementLeft}
-              <Typography
-                className={classes.flex}
+              <Title
+                className={classes.title}
                 color={multiMode ? 'default' : 'inherit'}
-                noWrap
                 style={titleStyle}
-                type="title"
               >
                 {title}
-              </Typography>
+              </Title>
               {iconElementRight}
             </Toolbar>
           </AppBar>

@@ -10,16 +10,16 @@ import IconButton from 'material-ui/IconButton';
 import Radio from 'material-ui/Radio';
 import TextField from 'material-ui/TextField';
 import Toolbar from 'material-ui/Toolbar';
-import Typography from 'material-ui/Typography';
 import { withStyles } from 'material-ui/styles';
 import NavigationArrowBack from 'material-ui-icons/ArrowBack';
 import NavigationCheck from 'material-ui-icons/Check';
 import SocialPersonAdd from 'material-ui-icons/PersonAdd';
-import { GENDER } from 'munchkin-core';
+import GENDER from 'munchkin-core/es/constants/gender';
 
-import Layout, { LayoutContent, LayoutHeader } from '../Layout/index';
-import { noop, PLAYER_FORM } from '../../constants/index';
-import PlayerColorPickerField from '../../containers/PlayerColorPickerField';
+import Layout, { LayoutContent, LayoutHeader } from '../Layout';
+import Title from '../Title';
+import { noop, PLAYER_FORM } from '../../constants';
+import PlayerColorPickerField from '../../containers/PlayerForm/PlayerColorPickerField';
 import GenderFemale from '../icons/gender/Female';
 import GenderMale from '../icons/gender/Male';
 import { classesObject } from '../../utils/propTypes';
@@ -32,10 +32,6 @@ const messages = defineMessages({
 });
 
 const styles = {
-  title: {
-    flex: 1,
-  },
-
   content: {
     padding: [0, 16],
   },
@@ -60,14 +56,9 @@ class PlayerForm extends PureComponent {
                 <NavigationArrowBack />
               </IconButton>
 
-              <Typography
-                className={classes.title}
-                color="inherit"
-                noWrap
-                type="title"
-              >
+              <Title>
                 {title}
-              </Typography>
+              </Title>
 
               <IconButton color="contrast" onClick={handleSubmit}>
                 <NavigationCheck />

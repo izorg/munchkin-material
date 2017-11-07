@@ -5,10 +5,10 @@ import { push } from 'react-router-redux';
 import { createSelector } from 'reselect';
 import { removePlayer } from 'munchkin-core/es/actions';
 
-import { movePlayer, setActivePlayer, setMultiMode, toggleEditMode, togglePlayer } from '../actions';
+import { movePlayer, setActivePlayer, setMultiMode, toggleEditMode, togglePlayer } from '../../actions';
 
 import NewPlayerButton from './NewPlayerButton';
-import PlayerList from '../components/Player/List';
+import PlayerList from '../../components/Player/List';
 
 const selector = createSelector(
   state => state.app.editMode,

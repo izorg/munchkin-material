@@ -4,7 +4,7 @@ import { Route } from 'react-router-dom';
 import { goBack, push } from 'react-router-redux';
 import PropTypes from 'prop-types';
 
-import ColorPickerField from '../components/ColorPicker/Field';
+import ColorPickerField from '../../../components/ColorPicker/Field';
 
 const selectorFactory = dispatch => ({ app: { activePlayerId } }, ownProps) => {
   const path = activePlayerId ? `/edit/${activePlayerId}/color` : '/new/color';

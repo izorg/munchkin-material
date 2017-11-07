@@ -13,4 +13,10 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(IntlProvider);
+const LocaleProvider = connect(mapStateToProps)(IntlProvider);
+
+LocaleProvider.defaultProps = {
+  textComponent: ({ children }) => children,
+};
+
+export default LocaleProvider;

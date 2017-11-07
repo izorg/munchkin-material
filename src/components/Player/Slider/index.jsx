@@ -5,33 +5,34 @@ import PropTypes from 'prop-types';
 import AppBar from 'material-ui/AppBar';
 import IconButton from 'material-ui/IconButton';
 import Toolbar from 'material-ui/Toolbar';
-import Typography from 'material-ui/Typography';
 import { withStyles } from 'material-ui/styles';
 import NavigationArrowBack from 'material-ui-icons/ArrowBack';
 
 import DiceIconButton from '../../../containers/DiceButton';
 import Layout, { LayoutContent, LayoutHeader } from '../../Layout';
+import Title from '../../Title';
 import { noop } from '../../../constants';
 import PlayerStats from '../../../containers/Player/Stats';
 import { classesObject, playerInstance } from '../../../utils/propTypes';
 
 const PlayerSwipeableViews = bindKeyboard(virtualize(SwipeableViews));
 
-const styles = {
+const styles = theme => ({
   sliderContent: {
     display: 'flex',
   },
 
   item: {
     flexGrow: 1,
+    padding: theme.spacing.unit * 2,
   },
 
-  '@media (orientation: portrait) and (min-height: 543px)': {
+  '@media (orientation: portrait)': {
     sliderContent: {
-      paddingBottom: 72,
+      paddingBottom: 56,
     },
   },
-};
+});
 
 class PlayerSlider extends PureComponent {
   constructor(props) {
@@ -102,14 +103,9 @@ class PlayerSlider extends PureComponent {
                 <NavigationArrowBack />
               </IconButton>
 
-              <Typography
-                color="inherit"
-                noWrap
-                style={{ flex: 1 }}
-                type="title"
-              >
+              <Title>
                 {selectedPlayer.name}
-              </Typography>
+              </Title>
 
               <DiceIconButton
                 color="contrast"
@@ -130,6 +126,7 @@ class PlayerSlider extends PureComponent {
             slideRenderer={this.slideRenderer}
             slideStyle={{
               display: 'flex',
+              overflow: 'hidden',
             }}
             style={{
               display: 'flex',

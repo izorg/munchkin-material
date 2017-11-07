@@ -24,22 +24,26 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-const PlayerSlider = props => (
+const PlayerSlider = ({ in: inProps }) => [
+  <Slide
+    appear={false}
+    direction="left"
+    in={inProps}
+    key="screen"
+    mountOnEnter
+    unmountOnExit
+  >
+    <Slider />
+  </Slide>,
+  <CombatButton key="fab" />,
+];
+
+const ConnectedPlayerSlider = connect(mapStateToProps, mapDispatchToProps)(PlayerSlider);
+
+const PlayerSliderRoute = () => (
   <Route path="/player/:id">
-    {({ match }) => [
-      <Slide
-        appear={false}
-        direction="left"
-        in={Boolean(match)}
-        key="screen"
-        mountOnEnter
-        unmountOnExit
-      >
-        <Slider {...props} />
-      </Slide>,
-      <CombatButton key="fab" />,
-    ]}
+    {({ match }) => <ConnectedPlayerSlider in={Boolean(match)} />}
   </Route>
 );
 
-export default connect(mapStateToProps, mapDispatchToProps)(PlayerSlider);
+export default PlayerSliderRoute;
