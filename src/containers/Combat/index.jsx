@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';
 import { goBack } from 'react-router-redux';
-import Slide from 'material-ui/transitions/Slide';
 import Monster from 'munchkin-core/es/classes/Monster';
 import {
   addMonster,
@@ -12,8 +11,8 @@ import {
 } from 'munchkin-core/es/actions';
 
 import { removeHelper, throwDice } from '../../actions';
-import HelperButton from './HelperButton';
-import Combat from '../../components/Combat';
+
+import ScreenLoader from '../ScreenLoader';
 
 const mapStateToProps = ({
   app, combat, monsters, players,
@@ -35,21 +34,17 @@ const mapDispatchToProps = {
   onPlayerBonusChange: setCombatPlayerBonus,
 };
 
+const loader = () => import(/* webpackChunkName: "combat", webpackMode: "lazy" */ './Screen');
+
 const PlayerCombat = props => (
   <Route path="/player/:id/combat">
-    {({ match }) => [
-      <Slide
-        appear={false}
-        direction="left"
-        key="screen"
+    {({ match }) => (
+      <ScreenLoader
         in={Boolean(match)}
-        mountOnEnter
-        unmountOnExit
-      >
-        <Combat {...props} />
-      </Slide>,
-      <HelperButton key="fab" />,
-    ]}
+        loader={loader}
+        {...props}
+      />
+    )}
   </Route>
 );
 

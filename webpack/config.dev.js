@@ -23,7 +23,8 @@ module.exports = merge.strategy({
   ],
 
   output: {
-    filename: 'app.[hash].js',
+    chunkFilename: '[name].js',
+    filename: '[name].js',
   },
 
   module: {
@@ -48,8 +49,11 @@ module.exports = merge.strategy({
 
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
+
     new webpack.NamedModulesPlugin(),
+
     new WebpackNotifierPlugin(),
+
     new CopyWebpackPlugin([
       { from: './src/manifest.json' },
     ]),

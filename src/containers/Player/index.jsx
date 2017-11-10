@@ -2,11 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';
 import { goBack, replace } from 'react-router-redux';
-import Slide from 'material-ui/transitions/Slide';
 
 import { setActivePlayer, throwDice } from '../../actions';
-import CombatButton from '../Combat/Button';
-import Slider from '../../components/Player/Slider';
+
+import ScreenLoader from '../ScreenLoader';
 
 const mapStateToProps = ({ app: { activePlayerId }, playerList, players }) => ({
   players: playerList.map(id => players[id]),
@@ -24,26 +23,18 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-const PlayerSlider = ({ in: inProps }) => [
-  <Slide
-    appear={false}
-    direction="left"
-    in={inProps}
-    key="screen"
-    mountOnEnter
-    unmountOnExit
-  >
-    <Slider />
-  </Slide>,
-  <CombatButton key="fab" />,
-];
+const loader = () => import(/* webpackChunkName: "player", webpackMode: "lazy" */ './Screen');
 
-const ConnectedPlayerSlider = connect(mapStateToProps, mapDispatchToProps)(PlayerSlider);
-
-const PlayerSliderRoute = () => (
+const Player = props => (
   <Route path="/player/:id">
-    {({ match }) => <ConnectedPlayerSlider in={Boolean(match)} />}
+    {({ match }) => (
+      <ScreenLoader
+        in={Boolean(match)}
+        loader={loader}
+        {...props}
+      />
+    )}
   </Route>
 );
 
-export default PlayerSliderRoute;
+export default connect(mapStateToProps, mapDispatchToProps)(Player);

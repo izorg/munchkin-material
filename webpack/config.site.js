@@ -6,7 +6,7 @@ const path = require('path');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 
-const config = require('./config.production.js');
+const config = require('./config.common.js');
 
 module.exports = merge.smartStrategy({
   entry: 'prepend',
@@ -17,7 +17,8 @@ module.exports = merge.smartStrategy({
   ],
 
   output: {
-    filename: '[name].[chunkhash].js',
+    chunkFilename: 'js/[name].[chunkhash].js',
+    filename: 'js/[name].[chunkhash].js',
     path: path.resolve(__dirname, '../site'),
   },
 
@@ -35,29 +36,22 @@ module.exports = merge.smartStrategy({
   },
 
   plugins: [
-    new OfflinePlugin({
-      caches: {
-        main: [
-          '*.html',
-          '*.js',
-        ],
-        additional: [
-          ':rest:',
-        ],
-      },
-      safeToUseOptionalCaches: true,
-      ServiceWorker: {
-        events: true,
-      },
+    new webpack.LoaderOptionsPlugin({
+      minimize: true,
+      debug: false,
     }),
+    new webpack.optimize.UglifyJsPlugin(),
+
     new CnameWebpackPlugin({
       domain: 'web.allmunchkins.com',
     }),
+
     new CopyWebpackPlugin([
       { from: './src/images', to: 'images', ignore: 'favicon.png' },
       { from: './src/manifest.json' },
       { from: './src/manifest-ru.json' },
     ]),
+
     new HtmlWebpackPlugin({
       favicon: './src/images/favicon.png',
       filename: 'ru.html',
@@ -65,10 +59,31 @@ module.exports = merge.smartStrategy({
       template: './src/index.ejs',
       title: 'Все манчкины',
     }),
+
     new webpack.HashedModuleIdsPlugin(),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
-      minChunks: module => module.context && module.context.indexOf('node_modules') !== -1,
+
+    new OfflinePlugin({
+      caches: {
+        main: [
+          '*.html',
+          'js/main.*.js',
+        ],
+        additional: [
+          'js/*.js',
+          'fonts/**',
+        ],
+        optional: [
+          ':rest:',
+        ],
+      },
+      excludes: [
+        'CNAME',
+      ],
+      safeToUseOptionalCaches: true,
+      ServiceWorker: {
+        events: true,
+        output: 'js/sw.js',
+      },
     }),
   ],
 });
