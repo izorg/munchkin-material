@@ -1,2 +1,9 @@
+/.idea/
 /.vscode/
+/build/
+/coverage/
 /dist/
+/doc/
+/messages/
+/node_modules/
+/site/

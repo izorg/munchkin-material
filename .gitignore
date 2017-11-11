@@ -9,6 +9,3 @@
 /messages/
 /node_modules/
 /site/
-
-.DS_Store
-npm-debug.log
