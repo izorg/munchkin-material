@@ -161,4 +161,5 @@ PlayerForm.defaultProps = {
 
 export default reduxForm({
   form: PLAYER_FORM,
+  pure: false,
 })(injectIntl(withStyles(styles)(PlayerForm)));

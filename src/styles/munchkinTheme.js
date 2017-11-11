@@ -1,10 +1,7 @@
 import brown from 'material-ui/colors/brown';
 import { createMuiTheme } from 'material-ui/styles';
-import createBreakpoints from 'material-ui/styles/createBreakpoints';
 
 import { ios } from '../helpers/platforms';
-
-const breakpoints = createBreakpoints({});
 
 const theme = {
   overrides: {
@@ -17,14 +14,6 @@ const theme = {
     MuiButtonBase: {
       root: {
         color: 'rgba(0, 0, 0, 0.38)',
-      },
-    },
-
-    MuiToolbar: {
-      root: {
-        [`${breakpoints.up('xs')} and (orientation: landscape)`]: {
-          minHeight: 56,
-        },
       },
     },
   },

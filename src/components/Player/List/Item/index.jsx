@@ -16,7 +16,7 @@ import { classesObject, playerInstance } from '../../../../utils/propTypes';
 
 import PlayerListItemAvatar from './Avatar';
 
-const Container = props => <Tappable pressDelay={500} {...props} />;
+const Container = props => <Tappable component="div" pressDelay={500} {...props} />;
 const ItemHandle = SortableHandle(ActionReorder);
 
 const styles = {
