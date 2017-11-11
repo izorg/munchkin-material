@@ -82,7 +82,6 @@ module.exports = merge.smartStrategy({
       safeToUseOptionalCaches: true,
       ServiceWorker: {
         events: true,
-        output: 'js/sw.js',
       },
     }),
   ],
