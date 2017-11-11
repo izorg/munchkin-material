@@ -19,11 +19,23 @@ import PlayerListItemAvatar from './Avatar';
 const Container = props => <Tappable component="div" pressDelay={500} {...props} />;
 const ItemHandle = SortableHandle(ActionReorder);
 
-const styles = {
+const styles = theme => ({
+  listItemGutters: {
+    [theme.breakpoints.up('sm')]: {
+      paddingLeft: 24,
+    },
+  },
+
+  listItemSecondaryActionRoot: {
+    [theme.breakpoints.up('sm')]: {
+      right: 12,
+    },
+  },
+
   text: {
     overflow: 'hidden',
   },
-};
+});
 
 class PlayerListItem extends PureComponent {
   componentWillMount() {
@@ -70,6 +82,9 @@ class PlayerListItem extends PureComponent {
     return (
       <ListItem
         button
+        classes={{
+          gutters: classes.listItemGutters,
+        }}
         component={Container}
         onClick={this.handleClick}
         onPress={!multiMode && !editMode ? this.handlePress : undefined}
@@ -104,7 +119,11 @@ class PlayerListItem extends PureComponent {
           }
         />
 
-        <ListItemSecondaryAction>
+        <ListItemSecondaryAction
+          classes={{
+            root: classes.listItemSecondaryActionRoot,
+          }}
+        >
           <IconButton component="span" disableRipple>
             {editMode ? (
               <ItemHandle />

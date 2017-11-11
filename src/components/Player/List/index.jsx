@@ -40,16 +40,18 @@ const styles = theme => ({
     }),
   },
 
+  leftButton: {
+    marginLeft: -12,
+  },
+
+  rightButton: {
+    marginRight: -12,
+  },
+
   empty: {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
-  },
-
-  title: {
-    flex: 1,
-    marginLeft: theme.spacing.unit * 2,
-    marginRight: theme.spacing.unit * 2,
   },
 
   sortableHelper: {
@@ -63,26 +65,26 @@ class PlayerList extends PureComponent {
   componentWillMount() {
     this.handleItemCheck = this.handleItemCheck.bind(this);
     this.handleItemPress = this.handleItemPress.bind(this);
-    this.handleItemTap = this.handleItemTap.bind(this);
+    this.handleItemClick = this.handleItemClick.bind(this);
     this.handlePlayersDelete = this.handlePlayersDelete.bind(this);
     this.handleSortEnd = this.handleSortEnd.bind(this);
   }
 
   handleItemCheck(player) {
-    const { multiMode, onPlayerSelect, selectedPlayerIds } = this.props;
+    const { onPlayerSelect } = this.props;
 
-    onPlayerSelect(player, multiMode, selectedPlayerIds);
+    onPlayerSelect(player);
   }
 
-  handleItemTap(player) {
+  handleItemClick(player) {
     const {
-      editMode, multiMode, onPlayerEdit, onPlayerSelect, selectedPlayerIds,
+      editMode, onPlayerEdit, onPlayerSelect,
     } = this.props;
 
     if (editMode) {
       onPlayerEdit(player);
     } else {
-      onPlayerSelect(player, multiMode, selectedPlayerIds);
+      onPlayerSelect(player);
     }
   }
 
@@ -106,8 +108,8 @@ class PlayerList extends PureComponent {
 
   render() {
     const {
-      className,
       classes,
+      className,
       editMode,
       intl,
       multiMode,
@@ -126,26 +128,38 @@ class PlayerList extends PureComponent {
     if (players.length) {
       if (multiMode) {
         iconElementLeft = (
-          <IconButton color="default" onClick={onMultiSelectDeactivate}>
+          <IconButton className={classes.leftButton} color="default" onClick={onMultiSelectDeactivate}>
             <NavigationClose />
           </IconButton>
         );
 
         iconElementRight = (
-          <IconButton color="default" onClick={this.handlePlayersDelete}>
+          <IconButton
+            className={classes.rightButton}
+            color="default"
+            onClick={this.handlePlayersDelete}
+          >
             <ActionDelete />
           </IconButton>
         );
+
+        if (!ios) {
+          titleStyle = {
+            ...titleStyle,
+            marginLeft: 20,
+          };
+        }
       } else {
         if (ios) {
           titleStyle = {
-            marginLeft: 64,
+            ...titleStyle,
+            marginLeft: 48,
           };
         }
 
         if (editMode) {
           iconElementRight = (
-            <IconButton color="contrast" onClick={onToggleEditClick}>
+            <IconButton className={classes.rightButton} color="contrast" onClick={onToggleEditClick}>
               <NavigationCheck />
             </IconButton>
           );
@@ -156,6 +170,7 @@ class PlayerList extends PureComponent {
             <Tooltip title={editTitle}>
               <IconButton
                 aria-label={editTitle}
+                className={classes.rightButton}
                 color="contrast"
                 onClick={onToggleEditClick}
               >
@@ -175,10 +190,9 @@ class PlayerList extends PureComponent {
       <Layout className={className}>
         <LayoutHeader>
           <AppBar className={classes.appBar} color={multiMode ? 'default' : 'primary'} position="static">
-            <Toolbar disableGutters>
+            <Toolbar>
               {iconElementLeft}
               <Title
-                className={classes.title}
                 color={multiMode ? 'default' : 'inherit'}
                 style={titleStyle}
               >
@@ -207,7 +221,7 @@ class PlayerList extends PureComponent {
                   key={player.id}
                   multiMode={multiMode}
                   onCheck={this.handleItemCheck}
-                  onClick={this.handleItemTap}
+                  onClick={this.handleItemClick}
                   onPress={this.handleItemPress}
                   player={player}
                   selected={selectedPlayerIds.includes(player.id)}
