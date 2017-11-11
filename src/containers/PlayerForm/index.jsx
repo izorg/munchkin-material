@@ -4,11 +4,10 @@ import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';
 import { goBack } from 'react-router-redux';
 import PropTypes from 'prop-types';
-import Slide from 'material-ui/transitions/Slide';
 import GENDER from 'munchkin-core/es/constants/gender';
 
+import ScreenLoader from '../ScreenLoader';
 import { importContact, submitPlayer } from '../../actions';
-import Form from '../../components/Player/Form';
 import getRandomMaterialColor from '../../helpers/getRandomMaterialColor';
 
 const getInitialValues = ({ app: { activePlayerId }, playerColors, players }) => {
@@ -52,18 +51,16 @@ const mapDispatchToProps = {
   onSubmit: submitPlayer,
 };
 
+const loader = () => import(/* webpackChunkName: "player-form", webpackMode: "lazy" */ './Screen');
+
 const PlayerForm = ({ path, ...props }) => (
   <Route path={path}>
     {({ match }) => (
-      <Slide
-        appear={false}
-        direction="up"
+      <ScreenLoader
         in={Boolean(match)}
-        mountOnEnter
-        unmountOnExit
-      >
-        <Form {...props} />
-      </Slide>
+        loader={loader}
+        {...props}
+      />
     )}
   </Route>
 );
