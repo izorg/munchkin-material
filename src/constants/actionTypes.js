@@ -11,3 +11,4 @@ export const SET_PLAYER_COLOR = 'app/SET_PLAYER_COLOR';
 export const THROW_DICE = 'app/THROW_DICE';
 export const TOGGLE_EDIT_MODE = 'app/TOGGLE_EDIT_MODE';
 export const TOGGLE_PLAYER = 'app/TOGGLE_PLAYER';
+export const UNSELECT_ALL_PLAYERS = 'app/UNSELECT_ALL_PLAYERS';

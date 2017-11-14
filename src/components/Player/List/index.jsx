@@ -22,6 +22,11 @@ import { noop } from '../../../constants';
 import { ios } from '../../../helpers/platforms';
 import { classesObject, playerInstance } from '../../../utils/propTypes';
 
+export const modes = {
+  EDIT: 'edit',
+  MULTI: 'multi',
+};
+
 const SortableList = SortableContainer(List);
 const SortableListItem = SortableElement(Item);
 
@@ -78,10 +83,10 @@ class PlayerList extends PureComponent {
 
   handleItemClick(player) {
     const {
-      editMode, onPlayerEdit, onPlayerSelect,
+      mode, onPlayerEdit, onPlayerSelect,
     } = this.props;
 
-    if (editMode) {
+    if (mode === modes.EDIT) {
       onPlayerEdit(player);
     } else {
       onPlayerSelect(player);
@@ -89,9 +94,9 @@ class PlayerList extends PureComponent {
   }
 
   handleItemPress(player) {
-    const { editMode, onMultiSelectActivate } = this.props;
+    const { mode, onMultiSelectActivate } = this.props;
 
-    if (!editMode) {
+    if (mode !== modes.EDIT) {
       onMultiSelectActivate(player.id);
     }
   }
@@ -110,15 +115,16 @@ class PlayerList extends PureComponent {
     const {
       classes,
       className,
-      editMode,
       intl,
-      multiMode,
+      mode,
       onMultiSelectDeactivate,
       onToggleEditClick,
       playerColors,
       players,
       selectedPlayerIds,
     } = this.props;
+
+    const multiMode = mode === modes.MULTI;
 
     let iconElementLeft = null;
     let iconElementRight = null;
@@ -157,7 +163,7 @@ class PlayerList extends PureComponent {
           };
         }
 
-        if (editMode) {
+        if (mode === modes.EDIT) {
           iconElementRight = (
             <IconButton className={classes.rightButton} color="contrast" onClick={onToggleEditClick}>
               <NavigationCheck />
@@ -216,7 +222,7 @@ class PlayerList extends PureComponent {
               {players.map((player, index) => (
                 <SortableListItem
                   color={playerColors[player.id]}
-                  editMode={editMode}
+                  editMode={mode === modes.EDIT}
                   index={index}
                   key={player.id}
                   multiMode={multiMode}
@@ -240,9 +246,8 @@ class PlayerList extends PureComponent {
 PlayerList.propTypes = {
   className: PropTypes.string,
   classes: classesObject.isRequired, // eslint-disable-line react/no-typos
-  editMode: PropTypes.bool,
   intl: intlShape.isRequired, // eslint-disable-line react/no-typos
-  multiMode: PropTypes.bool,
+  mode: PropTypes.oneOf(Object.values(modes)),
   onDeletePlayers: PropTypes.func,
   onMultiSelectActivate: PropTypes.func,
   onMultiSelectDeactivate: PropTypes.func,
@@ -257,8 +262,7 @@ PlayerList.propTypes = {
 
 PlayerList.defaultProps = {
   className: '',
-  editMode: false,
-  multiMode: false,
+  mode: null,
   onDeletePlayers: noop,
   onMultiSelectActivate: noop,
   onMultiSelectDeactivate: noop,

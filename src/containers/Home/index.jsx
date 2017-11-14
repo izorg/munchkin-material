@@ -1,14 +1,14 @@
 import React from 'react';
 import { connectAdvanced } from 'react-redux';
 import { Route } from 'react-router-dom';
-import { push } from 'react-router-redux';
+import { goBack, push } from 'react-router-redux';
 import { createSelector } from 'reselect';
 import { removePlayer } from 'munchkin-core/es/actions';
 
-import { movePlayer, setActivePlayer, setMultiMode, toggleEditMode, togglePlayer } from '../../actions';
+import { movePlayer, setActivePlayer, togglePlayer, unselectAllPlayers } from '../../actions';
 
 import NewPlayerButton from './NewPlayerButton';
-import PlayerList from '../../components/Player/List';
+import PlayerList, { modes } from '../../components/Player/List';
 
 const selector = createSelector(
   state => state.app.editMode,
@@ -17,10 +17,9 @@ const selector = createSelector(
   state => state.playerList,
   state => state.players,
   state => state.app.selectedPlayerIds,
-  (state, dispatch) => dispatch,
-  (editMode, multiMode, playerColors, playerList, players, selectedPlayerIds, dispatch) => ({
-    editMode,
-    multiMode,
+  (state, ownProps) => ownProps.mode,
+  (state, ownProps, dispatch) => dispatch,
+  (editMode, multiMode, playerColors, playerList, players, selectedPlayerIds, mode, dispatch) => ({
     playerColors,
     players: playerList.map(id => players[id]),
     selectedPlayerIds,
@@ -29,50 +28,59 @@ const selector = createSelector(
       playerIds.forEach((id) => {
         dispatch(removePlayer(id));
       });
-      dispatch(setMultiMode(false));
+      dispatch(goBack());
     },
     onMultiSelectActivate: (id) => {
-      dispatch(setMultiMode(true));
+      dispatch(unselectAllPlayers());
       dispatch(togglePlayer(id));
+      dispatch(push(`/${modes.MULTI}`));
     },
     onMultiSelectDeactivate: () => {
-      dispatch(setMultiMode(false));
+      dispatch(unselectAllPlayers());
+      dispatch(goBack());
     },
     onPlayerEdit: (player) => {
       dispatch(setActivePlayer(player.id));
-      dispatch(push(`/edit/${player.id}`));
+      dispatch(push(`/${modes.EDIT}/${player.id}`));
     },
     onPlayerMove: (oldIndex, newIndex) => dispatch(movePlayer(oldIndex, newIndex)),
     onPlayerSelect: (player) => {
-      if (multiMode) {
+      if (mode === modes.MULTI) {
         if (selectedPlayerIds.length === 1 && selectedPlayerIds[0] === player.id) {
           dispatch(togglePlayer(player.id));
-          dispatch(setMultiMode(false));
+          dispatch(goBack());
         } else {
           dispatch(togglePlayer(player.id));
         }
       } else {
-        dispatch(toggleEditMode(false));
         dispatch(setActivePlayer(player.id));
         dispatch(push(`/player/${player.id}`));
       }
     },
-    onToggleEditClick: () => dispatch(toggleEditMode()),
+    onToggleEditClick: () => {
+      if (mode === modes.EDIT) {
+        dispatch(goBack());
+      } else {
+        dispatch(push(`/${modes.EDIT}`));
+      }
+    },
   }),
 );
 
 const selectorFactory = dispatch => (state, ownProps) => ({
   ...ownProps,
-  ...selector(state, dispatch),
+  ...selector(state, ownProps, dispatch),
 });
 
-const Home = props => (
-  <Route path="/">
+const ConnectedPlayerList = connectAdvanced(selectorFactory)(PlayerList);
+
+const HomeRoute = props => (
+  <Route path="/:mode(edit|multi)?">
     {({ match }) => match && [
-      <PlayerList key="screen" {...props} />,
-      <NewPlayerButton key="fab" />,
+      <ConnectedPlayerList key="screen" mode={match.params.mode} {...props} />,
+      <NewPlayerButton key="fab" in={match.isExact && !match.params.mode} />,
     ]}
   </Route>
 );
 
-export default connectAdvanced(selectorFactory)(Home);
+export default HomeRoute;

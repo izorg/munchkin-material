@@ -117,6 +117,10 @@ export const togglePlayer = id => ({
   id,
 });
 
+export const unselectAllPlayers = () => ({
+  type: types.UNSELECT_ALL_PLAYERS,
+});
+
 export default {
   ...actions,
   goToCombat,
@@ -130,4 +134,5 @@ export default {
   throwDice,
   toggleEditMode,
   togglePlayer,
+  unselectAllPlayers,
 };

@@ -105,6 +105,15 @@ const app = (state = initialState, action) => {
       };
     }
 
+    case types.UNSELECT_ALL_PLAYERS: {
+      const { selectedPlayerIds } = initialState;
+
+      return {
+        ...state,
+        selectedPlayerIds,
+      };
+    }
+
     default:
       return state;
   }
