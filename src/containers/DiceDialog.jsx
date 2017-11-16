@@ -1,12 +1,16 @@
-import Loadable from 'react-loadable';
+import React from 'react';
 import { connect } from 'react-redux';
+import { Route } from 'react-router-dom';
+import { goBack } from 'react-router-redux';
+import PropTypes from 'prop-types';
 
 import {
   disableDiceButtonTooltipTriggerFocus,
   enableDiceButtonTooltipTriggerFocus,
-  resetDice,
   throwDice,
 } from '../actions';
+
+import DiceDialog from '../components/dice/Dialog';
 
 const mapStateToProps = state => ({
   dice: state.app.dice,
@@ -16,12 +20,19 @@ const mapDispatchToProps = {
   onEntered: disableDiceButtonTooltipTriggerFocus,
   onExited: enableDiceButtonTooltipTriggerFocus,
   onDiceClick: throwDice,
-  onRequestClose: resetDice,
+  onRequestClose: goBack,
 };
 
-const LoadableDiceDialog = Loadable({
-  loader: () => import(/* webpackChunkName: "dice-dialog", webpackMode: "lazy" */ '../components/dice/Dialog'),
-  loading: () => null,
-});
+const ConnectedDiceDialog = connect(mapStateToProps, mapDispatchToProps)(DiceDialog);
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoadableDiceDialog);
+const DiceDialogRoute = ({ path }) => (
+  <Route path={`${path}/dice`}>
+    {({ match }) => <ConnectedDiceDialog open={Boolean(match)} />}
+  </Route>
+);
+
+DiceDialogRoute.propTypes = {
+  path: PropTypes.string.isRequired,
+};
+
+export default DiceDialogRoute;

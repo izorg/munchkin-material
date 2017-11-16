@@ -118,7 +118,7 @@ class PlayerSlider extends PureComponent {
                 className={classes.rightButton}
                 color="contrast"
                 disableTriggerFocus={this.state.disableDiceTooltip}
-                onClick={onDiceClick}
+                onClick={() => onDiceClick(selectedPlayer)}
               />
             </Toolbar>
           </AppBar>

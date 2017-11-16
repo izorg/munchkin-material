@@ -3,9 +3,12 @@ import PropTypes from 'prop-types';
 import Slide from 'material-ui/transitions/Slide';
 
 import CombatButton from '../../Combat/Button';
+import DiceDialog from '../../DiceDialog';
 import Slider from '../../../components/Player/Slider';
 
-const PlayerScreen = ({ appear, in: inProp, ...props }) => [
+const PlayerScreen = ({
+  appear, in: inProp, path, ...props
+}) => [
   <Slide
     appear={appear}
     direction="left"
@@ -17,11 +20,13 @@ const PlayerScreen = ({ appear, in: inProp, ...props }) => [
     <Slider {...props} />
   </Slide>,
   <CombatButton key="fab" />,
+  <DiceDialog key="dice-dialog" path={path} />,
 ];
 
 PlayerScreen.propTypes = {
   appear: PropTypes.bool.isRequired,
   in: PropTypes.bool.isRequired,
+  path: PropTypes.string.isRequired,
 };
 
 export default PlayerScreen;

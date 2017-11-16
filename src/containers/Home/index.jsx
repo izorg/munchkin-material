@@ -11,15 +11,13 @@ import NewPlayerButton from './NewPlayerButton';
 import PlayerList, { modes } from '../../components/Player/List';
 
 const selector = createSelector(
-  state => state.app.editMode,
-  state => state.app.multiMode,
   state => state.playerColors,
   state => state.playerList,
   state => state.players,
   state => state.app.selectedPlayerIds,
   (state, ownProps) => ownProps.mode,
   (state, ownProps, dispatch) => dispatch,
-  (editMode, multiMode, playerColors, playerList, players, selectedPlayerIds, mode, dispatch) => ({
+  (playerColors, playerList, players, selectedPlayerIds, mode, dispatch) => ({
     playerColors,
     players: playerList.map(id => players[id]),
     selectedPlayerIds,

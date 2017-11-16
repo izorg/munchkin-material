@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';
-import { goBack } from 'react-router-redux';
+import { goBack, push } from 'react-router-redux';
 import Monster from 'munchkin-core/es/classes/Monster';
 import {
   addMonster,
@@ -24,15 +24,18 @@ const mapStateToProps = ({
   playerBonus: combat.playerBonus,
 });
 
-const mapDispatchToProps = {
-  onBack: goBack,
-  onDiceClick: throwDice,
-  onHelperBonusChange: setCombatHelperBonus,
-  onHelperRemove: removeHelper,
+const mapDispatchToProps = dispatch => ({
+  onBack: () => dispatch(goBack()),
+  onDiceClick: (player) => {
+    dispatch(throwDice());
+    dispatch(push(`/player/${player.id}/combat/dice`));
+  },
+  onHelperBonusChange: bonus => dispatch(setCombatHelperBonus(bonus)),
+  onHelperRemove: () => dispatch(removeHelper()),
   onMonsterAdd: () => addMonster(new Monster()),
-  onMonsterRemove: removeMonster,
-  onPlayerBonusChange: setCombatPlayerBonus,
-};
+  onMonsterRemove: id => dispatch(removeMonster(id)),
+  onPlayerBonusChange: bonus => dispatch(setCombatPlayerBonus(bonus)),
+});
 
 const loader = () => import(/* webpackChunkName: "combat", webpackMode: "lazy" */ './Screen');
 
@@ -42,6 +45,7 @@ const PlayerCombat = props => (
       <ScreenLoader
         in={Boolean(match)}
         loader={loader}
+        path="/player/:id/combat"
         {...props}
       />
     )}

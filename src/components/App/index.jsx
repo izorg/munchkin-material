@@ -5,7 +5,6 @@ import { withStyles } from 'material-ui/styles';
 import { classesObject } from '../../utils/propTypes';
 
 import Combat from '../../containers/Combat';
-import DiceDialog from '../../containers/DiceDialog';
 import Home from '../../containers/Home';
 import PlayerForm from '../../containers/PlayerForm';
 import Player from '../../containers/Player';
@@ -28,8 +27,6 @@ const App = ({ classes }) => (
     <PlayerForm />
     <Player />
     <Combat />
-
-    <DiceDialog />
   </div>
 );
 

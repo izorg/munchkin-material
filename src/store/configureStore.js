@@ -2,7 +2,7 @@
 import { routerMiddleware, routerReducer } from 'react-router-redux';
 import { reducer as formReducer } from 'redux-form';
 import thunk from 'redux-thunk';
-import actions from 'munchkin-core/es/actions';
+import { setVersion } from 'munchkin-core/es/actions';
 import createStore from 'munchkin-core/es/store/createStore';
 
 import reducers from '../reducers';
@@ -20,7 +20,7 @@ export default function (history) {
     ],
   );
 
-  store.dispatch(actions.setVersion('app', __VERSION__));
+  store.dispatch(setVersion('app', __VERSION__));
 
   return store;
 }

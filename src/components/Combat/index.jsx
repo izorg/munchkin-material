@@ -99,7 +99,7 @@ const Combat = ({
           <DiceIconButton
             className={classes.rightButton}
             color="contrast"
-            onClick={onDiceClick}
+            onClick={() => onDiceClick(player)}
           />
         </Toolbar>
       </AppBar>

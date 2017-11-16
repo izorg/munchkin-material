@@ -21,7 +21,7 @@ const selectorFactory = dispatch => (state, ownProps) => ({
 });
 
 const CombatButton = props => (
-  <Route exact path="/player/:id">
+  <Route exact path="/player/:id/(dice)?">
     {({ match }) => (
       <Transition in={Boolean(match)}>
         <Fab>

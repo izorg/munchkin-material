@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';
-import { goBack, replace } from 'react-router-redux';
+import { goBack, push, replace } from 'react-router-redux';
 
 import { setActivePlayer, throwDice } from '../../actions';
 
@@ -14,8 +14,9 @@ const mapStateToProps = ({ app: { activePlayerId }, playerList, players }) => ({
 
 const mapDispatchToProps = dispatch => ({
   onBack: () => dispatch(goBack()),
-  onDiceClick: () => {
+  onDiceClick: (player) => {
     dispatch(throwDice());
+    dispatch(push(`/player/${player.id}/dice`));
   },
   onPlayerChange: (player) => {
     dispatch(setActivePlayer(player.id));
@@ -31,6 +32,7 @@ const Player = props => (
       <ScreenLoader
         in={Boolean(match)}
         loader={loader}
+        path="/player/:id"
         {...props}
       />
     )}

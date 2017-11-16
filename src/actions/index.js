@@ -1,6 +1,6 @@
 import { change } from 'redux-form';
 import { goBack, push } from 'react-router-redux';
-import actions from 'munchkin-core/es/actions';
+import { addPlayer, setCombatHelper, setCombatHelperBonus, startCombat, updatePlayer } from 'munchkin-core/es/actions';
 import Player from 'munchkin-core/es/classes/Player';
 
 import { PLAYER_FORM } from '../constants';
@@ -19,7 +19,7 @@ export const goToCombat = playerId => (dispatch, getState) => {
 
   if (fullVersion) {
     if (playerId !== getState().combat.playerId) {
-      dispatch(actions.startCombat(playerId));
+      dispatch(startCombat(playerId));
     }
 
     dispatch(push(`/player/${playerId}/combat`));
@@ -45,13 +45,9 @@ export const movePlayer = (oldPosition, newPosition) => ({
 });
 
 export const removeHelper = () => (dispatch) => {
-  dispatch(actions.setCombatHelper(null));
-  dispatch(actions.setCombatHelperBonus(0));
+  dispatch(setCombatHelper(null));
+  dispatch(setCombatHelperBonus(0));
 };
-
-export const resetDice = () => ({
-  type: types.RESET_DICE,
-});
 
 export const setActivePlayer = id => ({
   type: types.SET_ACTIVE_PLAYER,
@@ -68,11 +64,6 @@ export const setLocale = locale => ({
   locale,
 });
 
-export const setMultiMode = multiMode => ({
-  type: types.SET_MULTI_MODE,
-  multiMode,
-});
-
 export const setPlayerColor = ({ color, id }) => ({
   type: types.SET_PLAYER_COLOR,
   color,
@@ -86,9 +77,9 @@ export const submitPlayer = values => (dispatch) => {
     const player = new Player(values);
 
     if (id) {
-      dispatch(actions.updatePlayer(player));
+      dispatch(updatePlayer(player));
     } else {
-      dispatch(actions.addPlayer(player));
+      dispatch(addPlayer(player));
     }
 
     dispatch(setPlayerColor({
@@ -120,19 +111,3 @@ export const togglePlayer = id => ({
 export const unselectAllPlayers = () => ({
   type: types.UNSELECT_ALL_PLAYERS,
 });
-
-export default {
-  ...actions,
-  goToCombat,
-  movePlayer,
-  resetDice,
-  removeHelper,
-  setActivePlayer,
-  setFullVersion,
-  setLocale,
-  setMultiMode,
-  throwDice,
-  toggleEditMode,
-  togglePlayer,
-  unselectAllPlayers,
-};

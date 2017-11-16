@@ -4,10 +4,8 @@ const initialState = {
   activePlayerId: null,
   dice: null,
   disableDiceButtonTooltipTriggerFocus: false,
-  editMode: false,
   fullVersion: false,
   locale: null,
-  multiMode: false,
   selectedPlayerIds: [],
 };
 
@@ -24,15 +22,6 @@ const app = (state = initialState, action) => {
       return {
         ...state,
         disableDiceButtonTooltipTriggerFocus: false,
-      };
-    }
-
-    case types.RESET_DICE: {
-      const { dice } = initialState;
-
-      return {
-        ...state,
-        dice,
       };
     }
 
@@ -55,16 +44,6 @@ const app = (state = initialState, action) => {
       return {
         ...state,
         locale: action.locale,
-      };
-    }
-
-    case types.SET_MULTI_MODE: {
-      const { multiMode } = action;
-
-      return {
-        ...state,
-        multiMode,
-        selectedPlayerIds: [],
       };
     }
 
