@@ -128,6 +128,7 @@ class PlayerList extends PureComponent {
       selectedPlayerIds,
     } = this.props;
 
+    const editMode = mode === modes.EDIT;
     const multiMode = mode === modes.MULTI;
 
     let iconElementLeft = null;
@@ -167,7 +168,7 @@ class PlayerList extends PureComponent {
           };
         }
 
-        if (mode === modes.EDIT) {
+        if (editMode) {
           iconElementRight = (
             <IconButton className={classes.rightButton} color="contrast" onClick={onToggleEditClick}>
               <NavigationCheck />
@@ -226,7 +227,7 @@ class PlayerList extends PureComponent {
               {players.map((player, index) => (
                 <SortableListItem
                   color={playerColors[player.id]}
-                  editMode={mode === modes.EDIT}
+                  editMode={editMode}
                   index={index}
                   key={player.id}
                   multiMode={multiMode}
@@ -234,7 +235,7 @@ class PlayerList extends PureComponent {
                   onClick={this.handleItemClick}
                   onPress={this.handleItemPress}
                   player={player}
-                  selected={selectedPlayerIds.includes(player.id)}
+                  selected={multiMode && selectedPlayerIds.includes(player.id)}
                 />
               ))}
             </SortableList>
