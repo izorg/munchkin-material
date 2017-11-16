@@ -18,9 +18,18 @@ import Layout, { LayoutContent, LayoutHeader } from '../Layout';
 import Title from '../Title';
 
 const styles = theme => ({
+  leftButton: {
+    marginLeft: -12,
+  },
+
+  rightButton: {
+    marginRight: -12,
+  },
+
   content: {
     display: 'flex',
     flexDirection: 'column',
+    padding: 0,
   },
 
   players: {
@@ -78,8 +87,8 @@ const Combat = ({
   <Layout className={className}>
     <LayoutHeader>
       <AppBar color="primary" position="static">
-        <Toolbar disableGutters>
-          <IconButton color="contrast" onClick={onBack}>
+        <Toolbar>
+          <IconButton className={classes.leftButton} color="contrast" onClick={onBack}>
             <NavigationArrowBack />
           </IconButton>
 
@@ -88,6 +97,7 @@ const Combat = ({
           </Title>
 
           <DiceIconButton
+            className={classes.rightButton}
             color="contrast"
             onClick={onDiceClick}
           />

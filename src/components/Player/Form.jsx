@@ -32,8 +32,12 @@ const messages = defineMessages({
 });
 
 const styles = {
-  content: {
-    padding: [0, 16],
+  leftButton: {
+    marginLeft: -12,
+  },
+
+  rightButton: {
+    marginRight: -12,
   },
 };
 
@@ -51,8 +55,8 @@ class PlayerForm extends PureComponent {
       <Layout className={className}>
         <LayoutHeader>
           <AppBar color="primary" position="static">
-            <Toolbar disableGutters>
-              <IconButton color="contrast" onClick={onCancel}>
+            <Toolbar>
+              <IconButton className={classes.leftButton} color="contrast" onClick={onCancel}>
                 <NavigationArrowBack />
               </IconButton>
 
@@ -60,7 +64,7 @@ class PlayerForm extends PureComponent {
                 {title}
               </Title>
 
-              <IconButton color="contrast" onClick={handleSubmit}>
+              <IconButton className={classes.rightButton} color="contrast" onClick={handleSubmit}>
                 <NavigationCheck />
               </IconButton>
             </Toolbar>
@@ -69,7 +73,6 @@ class PlayerForm extends PureComponent {
         <LayoutContent>
           <form
             autoComplete="off"
-            className={classes.content}
             noValidate
             onSubmit={handleSubmit}
           >

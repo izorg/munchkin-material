@@ -24,13 +24,20 @@ const styles = theme => ({
 
   item: {
     flexGrow: 1,
-    padding: theme.spacing.unit * 2,
   },
 
   '@media (orientation: portrait)': {
     sliderContent: {
       paddingBottom: 56,
     },
+  },
+
+  leftButton: {
+    marginLeft: -12,
+  },
+
+  rightButton: {
+    marginRight: -12,
   },
 });
 
@@ -98,8 +105,8 @@ class PlayerSlider extends PureComponent {
       <Layout className={className}>
         <LayoutHeader>
           <AppBar color="primary" position="static">
-            <Toolbar disableGutters>
-              <IconButton color="contrast" onClick={onBack}>
+            <Toolbar>
+              <IconButton className={classes.leftButton} color="contrast" onClick={onBack}>
                 <NavigationArrowBack />
               </IconButton>
 
@@ -108,6 +115,7 @@ class PlayerSlider extends PureComponent {
               </Title>
 
               <DiceIconButton
+                className={classes.rightButton}
                 color="contrast"
                 disableTriggerFocus={this.state.disableDiceTooltip}
                 onClick={onDiceClick}

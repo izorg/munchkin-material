@@ -5,12 +5,19 @@ import cns from 'classnames';
 
 import { classesObject } from '../../utils/propTypes';
 
-const styles = {
+const styles = theme => ({
   layoutContent: {
     flexGrow: 1,
     overflowY: 'auto',
+    paddingLeft: theme.spacing.unit * 2,
+    paddingRight: theme.spacing.unit * 2,
+
+    [theme.breakpoints.up('sm')]: {
+      paddingLeft: theme.spacing.unit * 3,
+      paddingRight: theme.spacing.unit * 3,
+    },
   },
-};
+});
 
 const LayoutContent = ({ classes, className, ...props }) => (
   <div

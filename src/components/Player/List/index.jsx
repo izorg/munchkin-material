@@ -13,6 +13,7 @@ import ActionDelete from 'material-ui-icons/Delete';
 import EditorModeEdit from 'material-ui-icons/ModeEdit';
 import NavigationCheck from 'material-ui-icons/Check';
 import NavigationClose from 'material-ui-icons/Close';
+import cns from 'classnames';
 
 import Empty from './Empty';
 import Item from './Item';
@@ -51,6 +52,10 @@ const styles = theme => ({
 
   rightButton: {
     marginRight: -12,
+  },
+
+  content: {
+    padding: 0,
   },
 
   empty: {
@@ -114,7 +119,6 @@ class PlayerList extends PureComponent {
   render() {
     const {
       classes,
-      className,
       intl,
       mode,
       onMultiSelectDeactivate,
@@ -193,7 +197,7 @@ class PlayerList extends PureComponent {
     }
 
     return (
-      <Layout className={className}>
+      <Layout>
         <LayoutHeader>
           <AppBar className={classes.appBar} color={multiMode ? 'default' : 'primary'} position="static">
             <Toolbar>
@@ -208,7 +212,7 @@ class PlayerList extends PureComponent {
             </Toolbar>
           </AppBar>
         </LayoutHeader>
-        <LayoutContent className={!players.length ? classes.empty : ''}>
+        <LayoutContent className={cns(classes.content, { [classes.empty]: !players.length })}>
           {players.length ? (
             <SortableList
               component="div"
@@ -244,7 +248,6 @@ class PlayerList extends PureComponent {
 }
 
 PlayerList.propTypes = {
-  className: PropTypes.string,
   classes: classesObject.isRequired, // eslint-disable-line react/no-typos
   intl: intlShape.isRequired, // eslint-disable-line react/no-typos
   mode: PropTypes.oneOf(Object.values(modes)),
@@ -261,7 +264,6 @@ PlayerList.propTypes = {
 };
 
 PlayerList.defaultProps = {
-  className: '',
   mode: null,
   onDeletePlayers: noop,
   onMultiSelectActivate: noop,
