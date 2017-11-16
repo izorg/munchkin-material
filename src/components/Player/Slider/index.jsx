@@ -17,7 +17,7 @@ import { classesObject, playerInstance } from '../../../utils/propTypes';
 
 const PlayerSwipeableViews = bindKeyboard(virtualize(SwipeableViews));
 
-const styles = theme => ({
+const styles = {
   sliderContent: {
     display: 'flex',
   },
@@ -39,7 +39,7 @@ const styles = theme => ({
   rightButton: {
     marginRight: -12,
   },
-});
+};
 
 class PlayerSlider extends PureComponent {
   constructor(props) {

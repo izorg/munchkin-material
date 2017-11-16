@@ -5,7 +5,7 @@ import TransitionGroup from 'react-transition-group/TransitionGroup';
 import PropTypes from 'prop-types';
 import Button from 'material-ui/Button';
 import Tooltip from 'material-ui/Tooltip';
-import Backdrop from 'material-ui/internal/Backdrop';
+import Backdrop from 'material-ui/Modal/Backdrop';
 import { withStyles } from 'material-ui/styles';
 import transitions, { duration } from 'material-ui/styles/transitions';
 import ContentAdd from 'material-ui-icons/Add';
