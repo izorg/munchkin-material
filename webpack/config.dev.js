@@ -13,6 +13,7 @@ module.exports = merge.strategy({
   devtool: 'eval-source-map',
 
   entry: [
+    'babel-polyfill',
     'react-hot-loader/patch',
     `webpack-dev-server/client?http://${config.devServer.host}:${config.devServer.port}`,
     'webpack/hot/only-dev-server',

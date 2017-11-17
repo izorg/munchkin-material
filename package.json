@@ -53,6 +53,7 @@
     "classnames": "2.2.5",
     "cname-webpack-plugin": "1.0.1",
     "copy-webpack-plugin": "4.2.0",
+    "core-js": "2.5.1",
     "create-react-class": "15.6.2",
     "cross-env": "5.1.1",
     "esdoc": "1.0.4",

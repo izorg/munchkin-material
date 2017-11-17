@@ -6,6 +6,8 @@ const srcPath = path.resolve(__dirname, '../src');
 
 module.exports = {
   entry: [
+    'core-js/es6/map',
+    'core-js/es6/set',
     './src/index.jsx',
   ],
 
