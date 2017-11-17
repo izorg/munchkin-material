@@ -3,7 +3,6 @@
     [
       "env",
       {
-        "debug": true,
         "modules": false,
         "targets": {
           "android": "4.4.2",
