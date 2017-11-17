@@ -1,7 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 
 const srcPath = path.resolve(__dirname, '../src');
 
@@ -46,8 +45,6 @@ module.exports = {
 
   plugins: [
     new webpack.EnvironmentPlugin(['NODE_ENV']),
-
-    new LodashModuleReplacementPlugin(),
 
     new HtmlWebpackPlugin({
       favicon: './src/images/favicon.png',
