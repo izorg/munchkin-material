@@ -1,6 +1,6 @@
 import React from 'react';
 import CSSTransition from 'react-transition-group/CSSTransition';
-import { withStyles, withTheme } from 'material-ui/styles';
+import { withStyles, withTheme } from 'material-ui/es/styles';
 
 import { classesObject, themeObject } from '../../utils/propTypes';
 

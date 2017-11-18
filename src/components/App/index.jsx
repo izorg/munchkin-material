@@ -1,6 +1,6 @@
 import React from 'react';
-import Helmet from 'react-helmet';
-import { withStyles } from 'material-ui/styles';
+import Helmet from 'react-helmet/es/Helmet';
+import { withStyles } from 'material-ui/es/styles';
 
 import { classesObject } from '../../utils/propTypes';
 

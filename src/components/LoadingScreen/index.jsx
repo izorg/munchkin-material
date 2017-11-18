@@ -1,6 +1,6 @@
 import React from 'react';
-import Paper from 'material-ui/Paper';
-import { withStyles } from 'material-ui/styles';
+import Paper from 'material-ui/es/Paper';
+import { withStyles } from 'material-ui/es/styles';
 
 import { classesObject } from '../../utils/propTypes';
 

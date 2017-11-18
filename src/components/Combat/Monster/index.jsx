@@ -1,8 +1,8 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
-import Typography from 'material-ui/Typography';
-import { withStyles } from 'material-ui/styles';
+import Typography from 'material-ui/es/Typography';
+import { withStyles } from 'material-ui/es/styles';
 
 import Counter from '../../Counter';
 import { noop } from '../../../constants';

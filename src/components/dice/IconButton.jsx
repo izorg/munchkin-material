@@ -1,8 +1,8 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
-import IconButton from 'material-ui/IconButton';
-import Tooltip from 'material-ui/Tooltip';
+import IconButton from 'material-ui/es/IconButton';
+import Tooltip from 'material-ui/es/Tooltip';
 
 import DiceMultipleIcon from '../icons/dice/multiple';
 

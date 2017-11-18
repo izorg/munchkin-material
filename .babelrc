@@ -20,6 +20,7 @@
   ],
 
   "plugins": [
+    "lodash",
     "syntax-dynamic-import",
     "version-inline"
   ],

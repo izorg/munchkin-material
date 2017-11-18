@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Avatar from 'material-ui/Avatar';
-import ButtonBase from 'material-ui/ButtonBase';
-import { withStyles } from 'material-ui/styles';
+import Avatar from 'material-ui/es/Avatar';
+import ButtonBase from 'material-ui/es/ButtonBase';
+import { withStyles } from 'material-ui/es/styles';
 
 import { noop } from '../../constants';
 import { classesObject } from '../../utils/propTypes';

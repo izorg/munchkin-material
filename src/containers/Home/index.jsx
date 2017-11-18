@@ -1,7 +1,7 @@
 import React from 'react';
-import { connectAdvanced } from 'react-redux';
-import { Route } from 'react-router-dom';
-import { goBack, push } from 'react-router-redux';
+import { connectAdvanced } from 'react-redux/es';
+import { Route } from 'react-router-dom/es';
+import { goBack, push } from 'react-router-redux/es';
 import { createSelector } from 'reselect';
 import { removePlayer } from 'munchkin-core/es/actions';
 

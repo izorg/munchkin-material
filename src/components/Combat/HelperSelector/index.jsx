@@ -1,10 +1,10 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
-import Dialog, { DialogContent, DialogTitle } from 'material-ui/Dialog';
-import List, { ListItem, ListItemText } from 'material-ui/List';
-import Typography from 'material-ui/Typography';
-import { withStyles } from 'material-ui/styles';
+import Dialog, { DialogContent, DialogTitle } from 'material-ui/es/Dialog';
+import List, { ListItem, ListItemText } from 'material-ui/es/List';
+import Typography from 'material-ui/es/Typography';
+import { withStyles } from 'material-ui/es/styles';
 
 import { noop } from '../../../constants';
 import { classesObject, playerInstance } from '../../../utils/propTypes';

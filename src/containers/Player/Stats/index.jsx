@@ -1,4 +1,4 @@
-import { connectAdvanced } from 'react-redux';
+import { connectAdvanced } from 'react-redux/es';
 import { createSelector } from 'reselect';
 import {
   decrementPlayerGear,

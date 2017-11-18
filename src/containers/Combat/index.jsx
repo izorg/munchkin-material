@@ -1,7 +1,7 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { Route } from 'react-router-dom';
-import { goBack, push } from 'react-router-redux';
+import { connect } from 'react-redux/es';
+import { Route } from 'react-router-dom/es';
+import { goBack, push } from 'react-router-redux/es';
 import Monster from 'munchkin-core/es/classes/Monster';
 import {
   addMonster,

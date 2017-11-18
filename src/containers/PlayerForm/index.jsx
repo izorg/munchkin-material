@@ -1,8 +1,8 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
-import { connect } from 'react-redux';
-import { Route } from 'react-router-dom';
-import { goBack } from 'react-router-redux';
+import { connect } from 'react-redux/es';
+import { Route } from 'react-router-dom/es';
+import { goBack } from 'react-router-redux/es';
 import PropTypes from 'prop-types';
 import { MALE } from 'munchkin-core/es/constants/gender';
 

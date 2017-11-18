@@ -3,7 +3,7 @@ import 'babel-polyfill';
 import React from 'react';
 import { render } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
-import createHistory from 'history/createHashHistory';
+import createHistory from 'history/es/createHashHistory';
 
 import { setFullVersion } from './actions';
 import { noop } from './constants';

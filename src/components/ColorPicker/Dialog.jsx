@@ -1,11 +1,11 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
-import Avatar from 'material-ui/Avatar';
-import ButtonBase from 'material-ui/ButtonBase';
-import Dialog, { DialogContent, DialogTitle } from 'material-ui/Dialog';
-import * as colors from 'material-ui/colors';
-import { withStyles } from 'material-ui/styles';
+import Avatar from 'material-ui/es/Avatar';
+import ButtonBase from 'material-ui/es/ButtonBase';
+import Dialog, { DialogContent, DialogTitle } from 'material-ui/es/Dialog';
+import * as colors from 'material-ui/es/colors';
+import { withStyles } from 'material-ui/es/styles';
 
 import { noop } from '../../constants';
 import { classesObject } from '../../utils/propTypes';

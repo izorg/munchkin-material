@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Paper from 'material-ui/Paper';
-import { withStyles } from 'material-ui/styles';
+import Paper from 'material-ui/es/Paper';
+import { withStyles } from 'material-ui/es/styles';
 import cns from 'classnames';
 
 import { classesObject } from '../../utils/propTypes';

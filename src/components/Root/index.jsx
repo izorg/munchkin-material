@@ -1,9 +1,9 @@
 import React, { PureComponent } from 'react';
-import { Provider } from 'react-redux';
-import { storeShape } from 'react-redux/lib/utils/PropTypes';
-import { ConnectedRouter } from 'react-router-redux';
+import { Provider } from 'react-redux/es';
+import { storeShape } from 'react-redux/es/utils/PropTypes';
+import { ConnectedRouter } from 'react-router-redux/es';
 import PropTypes from 'prop-types';
-import { MuiThemeProvider, withStyles } from 'material-ui/styles';
+import { MuiThemeProvider, withStyles } from 'material-ui/es/styles';
 
 import App from '../App';
 import { noop } from '../../constants';

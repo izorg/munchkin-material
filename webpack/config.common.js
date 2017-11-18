@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 
 const srcPath = path.resolve(__dirname, '../src');
 
@@ -27,8 +28,16 @@ module.exports = {
       {
         test: /\.jsx?$/,
         include: [
-          path.resolve(__dirname, '../node_modules/munchkin-core'),
           srcPath,
+        ],
+        use: [
+          'babel-loader',
+        ],
+      },
+      {
+        test: /\/es\/(.*)\.jsx?$/,
+        include: [
+          path.resolve(__dirname, '../node_modules'),
         ],
         use: [
           'babel-loader',
@@ -47,6 +56,8 @@ module.exports = {
 
   plugins: [
     new webpack.EnvironmentPlugin(['NODE_ENV']),
+
+    new LodashModuleReplacementPlugin(),
 
     new HtmlWebpackPlugin({
       favicon: './src/images/favicon.png',

@@ -1,6 +1,6 @@
 import React from 'react';
-import { connectAdvanced } from 'react-redux';
-import { Route } from 'react-router-dom';
+import { connectAdvanced } from 'react-redux/es';
+import { Route } from 'react-router-dom/es';
 import getContext from 'recompose/getContext';
 import PropTypes from 'prop-types';
 

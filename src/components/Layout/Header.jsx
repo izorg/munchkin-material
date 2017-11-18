@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from 'material-ui/styles';
+import { withStyles } from 'material-ui/es/styles';
 import cns from 'classnames';
 
 import { classesObject } from '../../utils/propTypes';
