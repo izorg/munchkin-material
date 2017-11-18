@@ -1,16 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import GENDER from 'munchkin-core/es/constants/gender';
+import { FEMALE, MALE } from 'munchkin-core/es/constants/gender';
 
 import GenderFemale from '../icons/gender/Female';
 import GenderMale from '../icons/gender/Male';
 
 const Gender = ({ gender, ...props }) => {
   switch (gender) {
-    case GENDER.FEMALE:
+    case FEMALE:
       return <GenderFemale {...props} />;
 
-    case GENDER.MALE:
+    case MALE:
       return <GenderMale {...props} />;
 
     default:
@@ -19,7 +19,7 @@ const Gender = ({ gender, ...props }) => {
 };
 
 Gender.propTypes = {
-  gender: PropTypes.oneOf(Object.values(GENDER)).isRequired,
+  gender: PropTypes.oneOf([FEMALE, MALE]).isRequired,
 };
 
 Gender.muiName = 'SvgIcon';

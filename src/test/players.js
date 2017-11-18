@@ -1,5 +1,5 @@
 import Player from 'munchkin-core/es/classes/Player';
-import GENDER from 'munchkin-core/es/constants/gender';
+import { FEMALE } from 'munchkin-core/es/constants/gender';
 
 export default {
   en: [
@@ -42,7 +42,7 @@ export default {
       color: '#E91E63',
       player: new Player({
         gear: 7,
-        gender: GENDER.FEMALE,
+        gender: FEMALE,
         level: 8,
         name: 'Василиса Премудрая',
       }),

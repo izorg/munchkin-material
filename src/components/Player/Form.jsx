@@ -14,7 +14,7 @@ import { withStyles } from 'material-ui/styles';
 import NavigationArrowBack from 'material-ui-icons/ArrowBack';
 import NavigationCheck from 'material-ui-icons/Check';
 import SocialPersonAdd from 'material-ui-icons/PersonAdd';
-import GENDER from 'munchkin-core/es/constants/gender';
+import { FEMALE, MALE } from 'munchkin-core/es/constants/gender';
 
 import Layout, { LayoutContent, LayoutHeader } from '../Layout';
 import Title from '../Title';
@@ -116,12 +116,12 @@ class PlayerForm extends PureComponent {
                     <FormControlLabel
                       control={<Radio />}
                       label={<GenderMale />}
-                      value={GENDER.MALE}
+                      value={MALE}
                     />
                     <FormControlLabel
                       control={<Radio />}
                       label={<GenderFemale />}
-                      value={GENDER.FEMALE}
+                      value={FEMALE}
                     />
                   </Field>
                 </FormControl>

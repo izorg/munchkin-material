@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';
 import { goBack } from 'react-router-redux';
 import PropTypes from 'prop-types';
-import GENDER from 'munchkin-core/es/constants/gender';
+import { MALE } from 'munchkin-core/es/constants/gender';
 
 import { importContact, submitPlayer } from '../../actions';
 import ScreenLoader from '../ScreenLoader';
@@ -12,7 +12,7 @@ import getRandomMaterialColor from '../../helpers/getRandomMaterialColor';
 
 const getInitialValues = ({ app: { activePlayerId }, playerColors, players }) => {
   let initialValues = {
-    gender: GENDER.MALE,
+    gender: MALE,
   };
 
   if (activePlayerId) {

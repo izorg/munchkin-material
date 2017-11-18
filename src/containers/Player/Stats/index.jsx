@@ -7,7 +7,7 @@ import {
   incrementPlayerLevel,
   setPlayerGender,
 } from 'munchkin-core/es/actions';
-import GENDER from 'munchkin-core/es/constants/gender';
+import { FEMALE, MALE } from 'munchkin-core/es/constants/gender';
 
 import Stats from '../../../components/Player/Stats';
 import { playerInstance } from '../../../utils/propTypes';
@@ -21,10 +21,10 @@ const selector = createSelector(
     onGenderToggle: () => {
       const { gender } = player;
 
-      if (gender === GENDER.MALE) {
-        dispatch(setPlayerGender(player, GENDER.FEMALE));
-      } else if (gender === GENDER.FEMALE) {
-        dispatch(setPlayerGender(player, GENDER.MALE));
+      if (gender === MALE) {
+        dispatch(setPlayerGender(player, FEMALE));
+      } else if (gender === FEMALE) {
+        dispatch(setPlayerGender(player, MALE));
       }
     },
     onLevelDecrement: () => dispatch(decrementPlayerLevel(player)),
