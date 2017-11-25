@@ -1,6 +1,7 @@
 /* global __VERSION__ */
-import { routerMiddleware, routerReducer } from 'react-router-redux/es';
-import { reducer as formReducer } from 'redux-form';
+import routerMiddleware from 'react-router-redux/es/middleware';
+import { routerReducer } from 'react-router-redux/es/reducer';
+import formReducer from 'redux-form/es/reducer';
 import thunk from 'redux-thunk';
 import { setVersion } from 'munchkin-core/es/actions';
 import createStore from 'munchkin-core/es/store/createStore';

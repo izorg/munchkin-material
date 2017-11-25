@@ -1,5 +1,5 @@
-import { change } from 'redux-form/es';
-import { goBack, push } from 'react-router-redux/es';
+import formActions from 'redux-form/es/actions';
+import { goBack, push } from 'react-router-redux/es/actions';
 import { addPlayer, setCombatHelper, setCombatHelperBonus, startCombat, updatePlayer } from 'munchkin-core/es/actions';
 import Player from 'munchkin-core/es/classes/Player';
 
@@ -30,10 +30,10 @@ export const importContact = () => (dispatch) => {
   navigator.contacts.pickContact(({ displayName, photos }) => {
     const form = PLAYER_FORM;
 
-    dispatch(change(form, 'name', displayName));
+    dispatch(formActions.change(form, 'name', displayName));
 
     if (photos) {
-      dispatch(change(form, 'avatar', photos[0].value));
+      dispatch(formActions.change(form, 'avatar', photos[0].value));
     }
   });
 };

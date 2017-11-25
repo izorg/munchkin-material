@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux/es';
-import { Route } from 'react-router-dom/es';
-import { goBack } from 'react-router-redux/es';
+import Route from 'react-router-dom/es/Route';
+import { goBack } from 'react-router-redux/es/actions';
 import PropTypes from 'prop-types';
 
 import {

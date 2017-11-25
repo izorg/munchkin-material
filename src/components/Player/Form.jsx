@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
-import { Field, reduxForm } from 'redux-form';
+import Field from 'redux-form/es/Field';
+import reduxForm from 'redux-form/es/reduxForm';
 import { defineMessages, FormattedMessage, injectIntl, intlShape } from 'react-intl';
 import RadioGroup from 'redux-form-material-ui/es/RadioGroup';
 import PropTypes from 'prop-types';

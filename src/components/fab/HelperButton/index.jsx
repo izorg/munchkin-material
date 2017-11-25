@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { FormattedMessage } from 'react-intl';
-import { Link } from 'react-router-dom/es';
+import Link from 'react-router-dom/es/Link';
 import TransitionGroup from 'react-transition-group/TransitionGroup';
 import PropTypes from 'prop-types';
 import Button from 'material-ui/es/Button';
