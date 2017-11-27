@@ -45,7 +45,6 @@ const selector = createSelector(
     onPlayerSelect: (player) => {
       if (mode === modes.MULTI) {
         if (selectedPlayerIds.length === 1 && selectedPlayerIds[0] === player.id) {
-          dispatch(togglePlayer(player.id));
           dispatch(goBack());
         } else {
           dispatch(togglePlayer(player.id));

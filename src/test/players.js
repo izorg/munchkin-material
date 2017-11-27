@@ -19,6 +19,15 @@ export default {
         name: 'Donald Trump',
       }),
     },
+    {
+      color: '#03A9F4',
+      player: new Player({
+        gear: 10,
+        gender: FEMALE,
+        level: 7,
+        name: 'Hillary Clinton',
+      }),
+    },
   ],
 
   ru: [

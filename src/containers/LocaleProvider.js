@@ -8,6 +8,7 @@ const mapStateToProps = (state) => {
   const messages = getMessages(locale);
 
   return {
+    key: locale,
     locale,
     messages,
   };

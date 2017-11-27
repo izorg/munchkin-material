@@ -24,10 +24,10 @@ const styles = {
 
 const Layout = ({ classes, className, ...props }) => (
   <Paper
+    className={cns(classes.layout, className)}
     elevation={0}
     square
     {...props}
-    className={cns(classes.layout, className)}
   />
 );
 

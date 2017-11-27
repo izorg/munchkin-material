@@ -140,6 +140,8 @@ class PlayerSlider extends PureComponent {
             }}
             enableMouseEvents
             index={initialSlide}
+            overscanSlideAfter={1}
+            overscanSlideBefore={1}
             slideRenderer={this.slideRenderer}
             slideStyle={{
               display: 'flex',
