@@ -17,7 +17,7 @@ import { classesObject } from '../../../utils/propTypes';
 
 import Fade from './Fade';
 import EmoticonDevil from '../../icons/EmoticonDevil';
-import HelperSelector from '../../../containers/Combat/HelperSelector';
+import HelperSelector from '../../../routes/Combat/HelperSelector';
 
 const styles = {
   container: {

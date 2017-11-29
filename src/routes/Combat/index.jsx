@@ -12,7 +12,7 @@ import {
 
 import { removeHelper, throwDice } from '../../actions';
 
-import ScreenLoader from '../ScreenLoader';
+import ScreenLoader from '../../containers/ScreenLoader';
 
 const mapStateToProps = ({
   app, combat, monsters, players,

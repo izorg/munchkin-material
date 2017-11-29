@@ -76,7 +76,6 @@ class PlayerList extends PureComponent {
     this.handleItemCheck = this.handleItemCheck.bind(this);
     this.handleItemPress = this.handleItemPress.bind(this);
     this.handleItemClick = this.handleItemClick.bind(this);
-    this.handlePlayersDelete = this.handlePlayersDelete.bind(this);
     this.handleSortEnd = this.handleSortEnd.bind(this);
   }
 
@@ -106,12 +105,6 @@ class PlayerList extends PureComponent {
     }
   }
 
-  handlePlayersDelete() {
-    const { onDeletePlayers, selectedPlayerIds } = this.props;
-
-    onDeletePlayers(selectedPlayerIds);
-  }
-
   handleSortEnd({ oldIndex, newIndex }) {
     this.props.onPlayerMove(oldIndex, newIndex);
   }
@@ -122,6 +115,7 @@ class PlayerList extends PureComponent {
       intl,
       mode,
       onMultiSelectDeactivate,
+      onPlayersDelete,
       onToggleEditClick,
       playerColors,
       players,
@@ -148,7 +142,7 @@ class PlayerList extends PureComponent {
           <IconButton
             className={classes.rightButton}
             color="default"
-            onClick={this.handlePlayersDelete}
+            onClick={onPlayersDelete}
           >
             <ActionDelete />
           </IconButton>
@@ -252,7 +246,7 @@ PlayerList.propTypes = {
   classes: classesObject.isRequired, // eslint-disable-line react/no-typos
   intl: intlShape.isRequired, // eslint-disable-line react/no-typos
   mode: PropTypes.oneOf(Object.values(modes)),
-  onDeletePlayers: PropTypes.func,
+  onPlayersDelete: PropTypes.func,
   onMultiSelectActivate: PropTypes.func,
   onMultiSelectDeactivate: PropTypes.func,
   onPlayerEdit: PropTypes.func,
@@ -266,7 +260,7 @@ PlayerList.propTypes = {
 
 PlayerList.defaultProps = {
   mode: null,
-  onDeletePlayers: noop,
+  onPlayersDelete: noop,
   onMultiSelectActivate: noop,
   onMultiSelectDeactivate: noop,
   onPlayerEdit: noop,

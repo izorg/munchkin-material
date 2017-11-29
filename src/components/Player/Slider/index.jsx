@@ -12,7 +12,7 @@ import DiceIconButton from '../../../containers/DiceButton';
 import Layout, { LayoutContent, LayoutHeader } from '../../Layout';
 import Title from '../../Title';
 import { noop } from '../../../constants';
-import PlayerStats from '../../../containers/Player/Stats';
+import PlayerStats from '../../../routes/Player/Stats';
 import { classesObject, playerInstance } from '../../../utils/propTypes';
 
 const PlayerSwipeableViews = bindKeyboard(virtualize(SwipeableViews));

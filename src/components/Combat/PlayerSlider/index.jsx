@@ -12,7 +12,7 @@ import { classesObject, playerInstance } from '../../../utils/propTypes';
 
 import CloseCircle from '../../icons/CloseCircle';
 
-import Player from '../../../containers/Combat/Player';
+import Player from '../../../routes/Combat/Player';
 
 const styles = {
   players: {

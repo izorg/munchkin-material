@@ -9,6 +9,7 @@
     {
       "name": "esdoc-ecmascript-proposal-plugin",
       "option": {
+        "dynamicImport": true,
         "objectRestSpread": true
       }
     },

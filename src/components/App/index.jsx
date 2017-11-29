@@ -1,37 +1,88 @@
-import React from 'react';
-import Helmet from 'react-helmet/es/Helmet';
-import { withStyles } from 'material-ui/es/styles';
+import React, { PureComponent } from 'react';
+import { Provider } from 'react-redux/es';
+import { storeShape } from 'react-redux/es/utils/PropTypes';
+import ConnectedRouter from 'react-router-redux/es/ConnectedRouter';
+import PropTypes from 'prop-types';
+import { MuiThemeProvider, withStyles } from 'material-ui/es/styles';
 
-import { classesObject } from '../../utils/propTypes';
-
-import Combat from '../../containers/Combat';
-import Home from '../../containers/Home';
-import PlayerForm from '../../containers/PlayerForm';
-import Player from '../../containers/Player';
+import Root from '../../routes/Root';
+import { noop } from '../../constants';
+import LocaleProvider from '../../containers/LocaleProvider';
+import munchkinWoff from '../../fonts/munchkin.woff';
+import munchkinWoff2 from '../../fonts/munchkin.woff2';
+import munchkinTheme from '../../styles/munchkinTheme';
 
 const styles = {
-  app: {
-    backgroundColor: '#000000',
-    height: '100%',
-    position: 'relative',
+  '@global': {
+    '@font-face': {
+      fontFamily: 'Munchkin',
+      src: `
+        url(${munchkinWoff2}) format('woff2'),
+        url(${munchkinWoff}) format('woff')`,
+      fontWeight: 'normal',
+      fontStyle: 'normal',
+    },
+
+    html: {
+      height: '100%',
+      lineHeight: 1.15,
+      overflow: 'hidden',
+      textSizeAdjust: '100%',
+      '-moz-osx-font-smoothing': 'grayscale',
+      '-webkit-font-smoothing': 'antialiased',
+    },
+
+    body: {
+      height: '100%',
+      margin: 0,
+      overflow: 'hidden',
+      userSelect: 'none',
+      width: '100%',
+      '-webkit-touch-callout': 'none', /* iOS Safari */
+    },
+
+    '#app': {
+      height: '100%',
+    },
   },
 };
 
-const App = ({ classes }) => (
-  <div className={classes.app}>
-    <Helmet>
-      <html lang={navigator.language} />
-    </Helmet>
+class App extends PureComponent {
+  getChildContext() {
+    const { buyFullVersion } = this.props;
 
-    <Home />
-    <PlayerForm />
-    <Player />
-    <Combat />
-  </div>
-);
+    return { buyFullVersion };
+  }
+
+  render() {
+    const { history, store } = this.props;
+
+    return (
+      <Provider store={store}>
+        <LocaleProvider>
+          <MuiThemeProvider theme={munchkinTheme}>
+            <ConnectedRouter history={history}>
+              <Root />
+            </ConnectedRouter>
+          </MuiThemeProvider>
+        </LocaleProvider>
+      </Provider>
+    );
+  }
+}
+
+App.childContextTypes = {
+  buyFullVersion: PropTypes.func,
+};
 
 App.propTypes = {
-  classes: classesObject.isRequired, // eslint-disable-line react/no-typos
+  buyFullVersion: PropTypes.func,
+  history: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
+  store: storeShape.isRequired, // eslint-disable-line react/no-typos
+};
+
+App.defaultProps = {
+  buyFullVersion: noop,
 };
 
 export default withStyles(styles)(App);

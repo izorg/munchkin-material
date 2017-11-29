@@ -5,7 +5,7 @@ import { goBack, push, replace } from 'react-router-redux/es/actions';
 
 import { setActivePlayer, throwDice } from '../../actions';
 
-import ScreenLoader from '../ScreenLoader';
+import ScreenLoader from '../../containers/ScreenLoader';
 
 const mapStateToProps = ({ app: { activePlayerId }, playerList, players }) => ({
   players: playerList.map(id => players[id]),

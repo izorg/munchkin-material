@@ -12,7 +12,7 @@ import { noop } from '../../../constants';
 import { classesObject, monsterInstance } from '../../../utils/propTypes';
 
 import CloseCircle from '../../icons/CloseCircle';
-import Monster from '../../../containers/Combat/Monster';
+import Monster from '../../../routes/Combat/Monster';
 
 const styles = {
   monsters: {

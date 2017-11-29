@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import { MALE } from 'munchkin-core/es/constants/gender';
 
 import { importContact, submitPlayer } from '../../actions';
-import ScreenLoader from '../ScreenLoader';
+import ScreenLoader from '../../containers/ScreenLoader';
 import getRandomMaterialColor from '../../helpers/getRandomMaterialColor';
 
 const getInitialValues = ({ app: { activePlayerId }, playerColors, players }) => {

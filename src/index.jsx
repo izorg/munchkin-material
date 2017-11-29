@@ -7,7 +7,7 @@ import createHistory from 'history/es/createHashHistory';
 
 import { setFullVersion } from './actions';
 import { noop } from './constants';
-import Root from './components/Root';
+import App from './components/App';
 import configureStore from './store/configureStore';
 
 const history = createHistory();
@@ -27,10 +27,10 @@ const defaultOptions = {
 };
 
 const init = (appEl, options = defaultOptions) => {
-  renderAppContainer(Root, appEl, options);
+  renderAppContainer(App, appEl, options);
 
   if (module.hot) {
-    module.hot.accept('./components/Root', () => renderAppContainer(Root, appEl, options));
+    module.hot.accept('./components/App', () => renderAppContainer(App, appEl, options));
   }
 
   return {

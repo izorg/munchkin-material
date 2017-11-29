@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Slide from 'material-ui/es/transitions/Slide';
 
-import CombatButton from '../../Combat/Button';
-import DiceDialog from '../../DiceDialog';
-import Slider from '../../../components/Player/Slider';
+import HelperButton from '../HelperButton';
+import Combat from '../../../components/Combat';
+import DiceDialog from '../../../containers/DiceDialog';
 
-const PlayerScreen = ({
+const CombatScreen = ({
   appear, in: inProp, path, ...props
 }) => [
   <Slide
@@ -17,16 +17,16 @@ const PlayerScreen = ({
     mountOnEnter
     unmountOnExit
   >
-    <Slider {...props} />
+    <Combat {...props} />
   </Slide>,
-  <CombatButton key="fab" />,
+  <HelperButton key="fab" />,
   <DiceDialog key="dice-dialog" path={path} />,
 ];
 
-PlayerScreen.propTypes = {
+CombatScreen.propTypes = {
   appear: PropTypes.bool.isRequired,
   in: PropTypes.bool.isRequired,
   path: PropTypes.string.isRequired,
 };
 
-export default PlayerScreen;
+export default CombatScreen;

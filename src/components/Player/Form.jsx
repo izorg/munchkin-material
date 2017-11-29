@@ -20,7 +20,7 @@ import { FEMALE, MALE } from 'munchkin-core/es/constants/gender';
 import Layout, { LayoutContent, LayoutHeader } from '../Layout';
 import Title from '../Title';
 import { noop, PLAYER_FORM } from '../../constants';
-import PlayerColorPickerField from '../../containers/PlayerForm/PlayerColorPickerField';
+import PlayerColorPickerField from '../../routes/PlayerForm/PlayerColorPickerField';
 import GenderFemale from '../icons/gender/Female';
 import GenderMale from '../icons/gender/Male';
 import { classesObject } from '../../utils/propTypes';

@@ -22,8 +22,8 @@ const selector = createSelector(
     players: playerList.map(id => players[id]),
     selectedPlayerIds,
 
-    onDeletePlayers: (playerIds) => {
-      playerIds.forEach((id) => {
+    onPlayersDelete: () => {
+      selectedPlayerIds.forEach((id) => {
         dispatch(removePlayer(id));
       });
       dispatch(goBack());
