@@ -2,7 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 
-const config = require('./config.common.js');
+const config = require('./common.js');
 
 const srcPath = path.resolve(__dirname, '../src');
 

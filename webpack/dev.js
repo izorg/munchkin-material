@@ -5,7 +5,7 @@ const WebpackNotifierPlugin = require('webpack-notifier');
 const merge = require('webpack-merge');
 
 const srcPath = path.resolve(__dirname, '../src');
-const config = require('./config.common.js');
+const config = require('./common.js');
 
 module.exports = merge.strategy({
   entry: 'replace',

@@ -6,7 +6,7 @@ const path = require('path');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 
-const config = require('./config.common.js');
+const config = require('./common.js');
 
 module.exports = merge.smartStrategy({
   entry: 'prepend',

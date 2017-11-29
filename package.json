@@ -6,16 +6,16 @@
     "dist/"
   ],
   "scripts": {
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --config=webpack/config.dev.js",
-    "dist": "cross-env NODE_ENV=production webpack --config=webpack/config.dist.js",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --config=webpack/dev.js",
+    "dist": "cross-env NODE_ENV=production webpack --config=webpack/dist.js",
     "doc": "esdoc",
     "i18n:download": "node scripts/i18n/download.js",
     "i18n:translate": "node scripts/i18n/translate.js",
     "i18n:upload": "node scripts/i18n/upload.js",
     "lint": "eslint . --ext .js,.jsx",
-    "site": "cross-env NODE_ENV=production webpack --config=webpack/config.site.js",
-    "start": "cross-env NODE_ENV=production webpack-dev-server --config=webpack/config.site.js",
-    "stats": "cross-env NODE_ENV=production webpack --config=webpack/config.stats.js",
+    "site": "cross-env NODE_ENV=production webpack --config=webpack/site.js",
+    "start": "cross-env NODE_ENV=production webpack-dev-server --config=webpack/site.js",
+    "stats": "cross-env NODE_ENV=production webpack --config=webpack/stats.js",
     "test": "jest",
     "test:coverage": "npm test -- --coverage",
     "test:watch": "npm test -- --watch"
