@@ -35,15 +35,6 @@ module.exports = {
         ],
       },
       {
-        test: /\/es\/(.*)\.jsx?$/,
-        include: [
-          path.resolve(__dirname, '../node_modules'),
-        ],
-        use: [
-          'babel-loader',
-        ],
-      },
-      {
         test: /\.(woff|woff2)$/,
         loader: 'file-loader',
         options: {
