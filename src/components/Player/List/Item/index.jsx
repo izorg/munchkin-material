@@ -3,10 +3,10 @@ import { FormattedMessage } from 'react-intl';
 import { SortableHandle } from 'react-sortable-hoc';
 import Tappable from 'react-tappable/lib/Tappable';
 import PropTypes from 'prop-types';
-import IconButton from 'material-ui/es/IconButton';
-import { ListItem, ListItemSecondaryAction, ListItemText } from 'material-ui/es/List';
-import Typography from 'material-ui/es/Typography';
-import { withStyles } from 'material-ui/es/styles';
+import IconButton from 'material-ui/IconButton';
+import { ListItem, ListItemSecondaryAction, ListItemText } from 'material-ui/List';
+import Typography from 'material-ui/Typography';
+import { withStyles } from 'material-ui/styles';
 import ActionReorder from 'material-ui-icons/Reorder';
 
 import { noop } from '../../../../constants';

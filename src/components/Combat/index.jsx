@@ -1,11 +1,11 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
-import AppBar from 'material-ui/es/AppBar';
-import IconButton from 'material-ui/es/IconButton';
-import Toolbar from 'material-ui/es/Toolbar';
-import Typography from 'material-ui/es/Typography';
-import { withStyles } from 'material-ui/es/styles';
+import AppBar from 'material-ui/AppBar';
+import IconButton from 'material-ui/IconButton';
+import Toolbar from 'material-ui/Toolbar';
+import Typography from 'material-ui/Typography';
+import { withStyles } from 'material-ui/styles';
 import NavigationArrowBack from 'material-ui-icons/ArrowBack';
 
 import DiceIconButton from '../../containers/DiceButton';

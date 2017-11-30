@@ -3,9 +3,9 @@ import { FormattedMessage } from 'react-intl';
 import MediaQuery from 'react-responsive';
 import SwipeableViews from 'react-swipeable-views';
 import PropTypes from 'prop-types';
-import IconButton from 'material-ui/es/IconButton';
-import Paper from 'material-ui/es/Paper';
-import { withStyles } from 'material-ui/es/styles';
+import IconButton from 'material-ui/IconButton';
+import Paper from 'material-ui/Paper';
+import { withStyles } from 'material-ui/styles';
 import cns from 'classnames';
 
 import { noop } from '../../../constants';

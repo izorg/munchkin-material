@@ -1,5 +1,5 @@
 import React from 'react';
-import SvgIcon from 'material-ui/es/SvgIcon';
+import SvgIcon from 'material-ui/SvgIcon';
 
 /* eslint-disable max-len */
 const GenderFemale = props => (

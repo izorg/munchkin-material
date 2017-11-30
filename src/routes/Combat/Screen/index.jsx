@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Slide from 'material-ui/es/transitions/Slide';
+import Slide from 'material-ui/transitions/Slide';
 
 import HelperButton from '../HelperButton';
 import Combat from '../../../components/Combat';

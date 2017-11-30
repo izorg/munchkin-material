@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Avatar from 'material-ui/es/Avatar';
-import { withStyles } from 'material-ui/es/styles';
+import Avatar from 'material-ui/Avatar';
+import { withStyles } from 'material-ui/styles';
 import NavigationCheck from 'material-ui-icons/Check';
 
 import { classesObject } from '../../../../../utils/propTypes';

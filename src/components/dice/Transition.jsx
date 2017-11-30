@@ -1,7 +1,7 @@
 import React from 'react';
 import CSSTransition from 'react-transition-group/CSSTransition';
-import { withStyles } from 'material-ui/es/styles';
-import transitions, { duration, easing } from 'material-ui/es/styles/transitions';
+import { withStyles } from 'material-ui/styles';
+import transitions, { duration, easing } from 'material-ui/styles/transitions';
 
 import { classesObject } from '../../utils/propTypes';
 
