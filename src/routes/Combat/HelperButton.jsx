@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux/es';
+import connect from 'react-redux/es/connect/connect';
 import matchPath from 'react-router-dom/es/matchPath';
 import Route from 'react-router-dom/es/Route';
 import { goBack, push } from 'react-router-redux/es/actions';

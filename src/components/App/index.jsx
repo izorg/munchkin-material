@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { Provider } from 'react-redux/es';
+import Provider from 'react-redux/es/components/Provider';
 import { storeShape } from 'react-redux/es/utils/PropTypes';
 import ConnectedRouter from 'react-router-redux/es/ConnectedRouter';
 import PropTypes from 'prop-types';

@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux/es';
+import connect from 'react-redux/es/connect/connect';
 import { push } from 'react-router-redux/es/actions';
 import PropTypes from 'prop-types';
 

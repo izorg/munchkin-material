@@ -1,5 +1,5 @@
 import React from 'react';
-import { connectAdvanced } from 'react-redux/es';
+import connectAdvanced from 'react-redux/es/components/connectAdvanced';
 import Route from 'react-router-dom/es/Route';
 import getContext from 'recompose/getContext';
 import PropTypes from 'prop-types';

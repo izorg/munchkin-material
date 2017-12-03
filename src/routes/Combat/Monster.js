@@ -1,4 +1,4 @@
-import { connect } from 'react-redux/es';
+import connect from 'react-redux/es/connect/connect';
 import {
   decrementMonsterBonus,
   decrementMonsterLevel,
