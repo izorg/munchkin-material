@@ -18,8 +18,8 @@ const getBonus = (playerId, combat) => {
   return 0;
 };
 
-const mapStateToProps = (state, props) => ({
-  bonus: getBonus(props.player.id, state.combat),
+const mapStateToProps = (state, ownProps) => ({
+  bonus: getBonus(ownProps.player.id, state.combat),
 });
 
 const mapDispatchToProps = {

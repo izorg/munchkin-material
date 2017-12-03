@@ -14,6 +14,8 @@ import getGenderIconClass from '../../../../helpers/getGenderIconClass';
 import { ios } from '../../../../helpers/platforms';
 import { classesObject, playerInstance } from '../../../../utils/propTypes';
 
+import modes from '../../modes';
+
 import PlayerListItemAvatar from './Avatar';
 
 const Container = props => <Tappable component="div" pressDelay={500} {...props} />;
@@ -37,20 +39,20 @@ const styles = theme => ({
   },
 });
 
-class PlayerListItem extends PureComponent {
+class HomeScreenItemComponent extends PureComponent {
   componentWillMount() {
     this.handleClick = this.handleClick.bind(this);
     this.handlePress = this.handlePress.bind(this);
   }
 
   handlePress(e) {
-    const { onPress, player } = this.props;
+    const { mode, onPress, player } = this.props;
 
     if (navigator.vibrate) {
       navigator.vibrate(20);
     }
 
-    onPress(player);
+    onPress(player.id, mode);
 
     if (ios || e.type === 'mousedown') {
       this.preventClick = true;
@@ -59,23 +61,23 @@ class PlayerListItem extends PureComponent {
 
   handleClick() {
     const {
-      onCheck, onClick, player, multiMode,
+      mode, onCheck, onClick, player,
     } = this.props;
 
-    if (multiMode) {
+    if (mode === modes.MULTI) {
       if (this.preventClick) {
         delete this.preventClick;
       } else {
-        onCheck(player);
+        onCheck(player.id, mode);
       }
     } else {
-      onClick(player);
+      onClick(player.id, mode);
     }
   }
 
   render() {
     const {
-      classes, color, player, selected, multiMode, editMode,
+      classes, color, player, selected, mode,
     } = this.props;
     const GenderIcon = getGenderIconClass(player.gender);
 
@@ -87,7 +89,7 @@ class PlayerListItem extends PureComponent {
         }}
         component={Container}
         onClick={this.handleClick}
-        onPress={!multiMode && !editMode ? this.handlePress : undefined}
+        onPress={!mode ? this.handlePress : undefined}
       >
         <PlayerListItemAvatar
           color={color}
@@ -125,7 +127,7 @@ class PlayerListItem extends PureComponent {
           }}
         >
           <IconButton component="span" disableRipple>
-            {editMode ? (
+            {mode === modes.EDIT ? (
               <ItemHandle />
             ) : (
               <GenderIcon onClick={this.handleClick} />
@@ -137,11 +139,10 @@ class PlayerListItem extends PureComponent {
   }
 }
 
-PlayerListItem.propTypes = {
+HomeScreenItemComponent.propTypes = {
   classes: classesObject.isRequired, // eslint-disable-line react/no-typos
   color: PropTypes.string,
-  editMode: PropTypes.bool,
-  multiMode: PropTypes.bool,
+  mode: PropTypes.oneOf(Object.values(modes)),
   onCheck: PropTypes.func,
   onClick: PropTypes.func,
   onPress: PropTypes.func,
@@ -149,14 +150,13 @@ PlayerListItem.propTypes = {
   selected: PropTypes.bool,
 };
 
-PlayerListItem.defaultProps = {
+HomeScreenItemComponent.defaultProps = {
   color: '',
-  editMode: false,
-  multiMode: false,
+  mode: null,
   onCheck: noop,
   onClick: noop,
   onPress: noop,
   selected: false,
 };
 
-export default withStyles(styles)(PlayerListItem);
+export default withStyles(styles)(HomeScreenItemComponent);

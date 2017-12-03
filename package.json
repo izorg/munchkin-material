@@ -100,6 +100,7 @@
     "recompose": "0.26.0",
     "redux-form": "7.2.0",
     "redux-form-material-ui": "5.0.0-beta.2",
+    "redux-logger": "3.0.6",
     "redux-thunk": "2.2.0",
     "reselect": "3.0.1",
     "rimraf": "2.6.2",
