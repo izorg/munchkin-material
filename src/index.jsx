@@ -8,7 +8,7 @@ import createHistory from 'history/es/createHashHistory';
 import { setFullVersion } from './actions';
 import { noop } from './constants';
 import App from './components/App';
-import configureStore from './store/configureStore';
+import configureStore from './store/createStore';
 
 const history = createHistory();
 

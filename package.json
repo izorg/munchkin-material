@@ -30,7 +30,7 @@
     ],
     "notify": true,
     "transformIgnorePatterns": [
-      "node_modules/(?!(munchkin-core)/)"
+      "node_modules/(?!(munchkin-core|react-router-redux/es|redux-form/es|lodash-es)/)"
     ]
   },
   "devDependencies": {
@@ -78,7 +78,7 @@
     "lodash-webpack-plugin": "0.11.4",
     "material-ui": "1.0.0-beta.22",
     "material-ui-icons": "1.0.0-beta.17",
-    "munchkin-core": "3.0.3",
+    "munchkin-core": "4.0.0",
     "offline-plugin": "4.8.4",
     "prop-types": "15.6.0",
     "react": "16.2.0",
@@ -98,8 +98,11 @@
     "react-test-renderer": "16.2.0",
     "react-transition-group": "2.2.1",
     "recompose": "0.26.0",
+    "redux": "3.7.2",
+    "redux-devtools-extension": "2.13.2",
     "redux-form": "7.2.0",
     "redux-form-material-ui": "5.0.0-beta.2",
+    "redux-localstorage": "0.4.1",
     "redux-logger": "3.0.6",
     "redux-thunk": "2.2.0",
     "reselect": "3.0.1",
