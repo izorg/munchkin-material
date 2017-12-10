@@ -22,11 +22,11 @@ const mapDispatchToProps = {
 
 const ConnectedScreen = connect(mapStateToProps, mapDispatchToProps)(Component);
 
-const ScreenTransition = ({ in: inProp, theme }) => (
+const ScreenTransition = ({ in: inProp, theme: { transitions: { duration } } }) => (
   <Transition
     in={inProp}
     timeout={{
-      exit: theme.transitions.duration.leavingScreen,
+      exit: duration.enteringScreen + duration.leavingScreen,
     }}
     unmountOnExit
   >
