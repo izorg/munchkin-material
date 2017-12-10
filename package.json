@@ -30,7 +30,7 @@
     ],
     "notify": true,
     "transformIgnorePatterns": [
-      "node_modules/(?!(munchkin-core|react-router-redux/es|redux-form/es|lodash-es)/)"
+      "node_modules/(?!(munchkin-core|react-router-redux/es|redux-form/es|lodash-es|history/es)/)"
     ]
   },
   "devDependencies": {
@@ -53,6 +53,7 @@
     "babel-register": "6.26.0",
     "classnames": "2.2.5",
     "cname-webpack-plugin": "1.0.1",
+    "connected-react-router": "4.3.0",
     "copy-webpack-plugin": "4.2.3",
     "create-react-class": "15.6.2",
     "cross-env": "5.1.1",
@@ -88,6 +89,7 @@
     "react-loadable": "5.3.1",
     "react-redux": "5.0.6",
     "react-responsive": "4.0.3",
+    "react-router": "4.2.0",
     "react-router-dom": "4.2.2",
     "react-router-redux": "5.0.0-alpha.8",
     "react-sortable-hoc": "0.6.8",

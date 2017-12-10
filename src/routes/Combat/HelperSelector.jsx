@@ -1,7 +1,7 @@
 import React from 'react';
 import connect from 'react-redux/es/connect/connect';
 import Route from 'react-router-dom/es/Route';
-import { go, goBack } from 'react-router-redux/es/actions';
+import { go, goBack } from 'connected-react-router/lib/actions';
 import { setCombatHelper } from 'munchkin-core/es/actions';
 
 import HelperSelector from '../../components/Combat/HelperSelector';

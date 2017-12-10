@@ -1,6 +1,6 @@
 import React from 'react';
 import connect from 'react-redux/es/connect/connect';
-import { push } from 'react-router-redux/es/actions';
+import { push } from 'connected-react-router/lib/actions';
 import PropTypes from 'prop-types';
 
 import { setActivePlayer, toggleEditMode } from '../../../actions';

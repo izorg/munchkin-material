@@ -1,5 +1,5 @@
 import formActions from 'redux-form/es/actions';
-import { goBack, push } from 'react-router-redux/es/actions';
+import { goBack, push } from 'connected-react-router/lib/actions';
 import { addPlayer, setCombatHelper, setCombatHelperBonus, startCombat, updatePlayer } from 'munchkin-core/es/actions';
 import Player from 'munchkin-core/es/classes/Player';
 

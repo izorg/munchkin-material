@@ -1,7 +1,7 @@
 import React from 'react';
 import connectAdvanced from 'react-redux/es/components/connectAdvanced';
 import Route from 'react-router-dom/es/Route';
-import { goBack, push } from 'react-router-redux/es/actions';
+import { goBack, push } from 'connected-react-router/lib/actions';
 import PropTypes from 'prop-types';
 
 import ColorPickerField from '../../../components/ColorPicker/Field';

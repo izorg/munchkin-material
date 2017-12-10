@@ -1,7 +1,7 @@
 import React from 'react';
 import connect from 'react-redux/es/connect/connect';
 import Route from 'react-router-dom/es/Route';
-import { goBack, push, replace } from 'react-router-redux/es/actions';
+import { goBack, push, replace } from 'connected-react-router/lib/actions';
 
 import { setActivePlayer, throwDice } from '../../actions';
 

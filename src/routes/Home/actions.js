@@ -1,4 +1,4 @@
-import { goBack, push } from 'react-router-redux/es/actions';
+import { goBack, push } from 'connected-react-router/lib/actions';
 
 import { setActivePlayer, togglePlayer, unselectAllPlayers } from '../../actions';
 import modes from './modes';

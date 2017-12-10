@@ -2,7 +2,7 @@ import React from 'react';
 import { defineMessages, FormattedMessage, injectIntl, intlShape } from 'react-intl';
 import connect from 'react-redux/es/connect/connect';
 import withRouter from 'react-router-dom/es/withRouter';
-import { goBack, push } from 'react-router-redux/es/actions';
+import { goBack, push } from 'connected-react-router/lib/actions';
 import PropTypes from 'prop-types';
 import compose from 'recompose/compose';
 import AppBar from 'material-ui/AppBar';

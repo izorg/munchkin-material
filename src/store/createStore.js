@@ -6,21 +6,19 @@ import { setVersion } from 'munchkin-core/es/actions';
 import * as coreReducers from 'munchkin-core/es/reducers';
 import deserialize from 'munchkin-core/es/store/deserialize';
 import version from 'munchkin-core/es/version';
-import routerMiddleware from 'react-router-redux/es/middleware';
-import { routerReducer } from 'react-router-redux/es/reducer';
+import { connectRouter, routerMiddleware } from 'connected-react-router';
 import formReducer from 'redux-form/es/reducer';
 import thunk from 'redux-thunk';
 
 import reducers from '../reducers';
 
-const rootReducer = combineReducers({
-  ...coreReducers,
-  ...reducers,
-  form: formReducer,
-  router: routerReducer,
-});
-
 export default (history) => {
+  const rootReducer = connectRouter(history)(combineReducers({
+    ...coreReducers,
+    ...reducers,
+    form: formReducer,
+  }));
+
   const enhancer = composeWithDevTools(
     applyMiddleware(
       thunk,
