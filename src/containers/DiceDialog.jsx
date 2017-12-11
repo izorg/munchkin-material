@@ -9,6 +9,7 @@ import {
   enableDiceButtonTooltipTriggerFocus,
   throwDice,
 } from '../actions';
+import { locationShape } from '../utils/propTypes';
 
 import DiceDialog from '../components/dice/Dialog';
 
@@ -25,14 +26,15 @@ const mapDispatchToProps = {
 
 const ConnectedDiceDialog = connect(mapStateToProps, mapDispatchToProps)(DiceDialog);
 
-const DiceDialogRoute = ({ path }) => (
-  <Route path={`${path}/dice`}>
+const DiceDialogRoute = ({ location, path }) => (
+  <Route location={location} path={`${path}/dice`}>
     {({ match }) => <ConnectedDiceDialog open={Boolean(match)} />}
   </Route>
 );
 
 DiceDialogRoute.propTypes = {
+  location: locationShape.isRequired, // eslint-disable-line react/no-typos
   path: PropTypes.string.isRequired,
 };
 
-export default DiceDialogRoute;
+export default connect(({ router: { location } }) => ({ location }))(DiceDialogRoute);

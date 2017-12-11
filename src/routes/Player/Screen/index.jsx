@@ -1,27 +1,29 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Slide from 'material-ui/transitions/Slide';
 
 import CombatButton from '../../Combat/Button';
 import DiceDialog from '../../../containers/DiceDialog';
-import Slider from '../../../components/Player/Slider';
+
+import Slider from './Slider';
 
 const PlayerScreen = ({
-  appear, in: inProp, path, ...props
-}) => [
-  <Slide
-    appear={appear}
-    direction="left"
-    in={inProp}
-    key="screen"
-    mountOnEnter
-    unmountOnExit
-  >
-    <Slider {...props} />
-  </Slide>,
-  <CombatButton key="fab" />,
-  <DiceDialog key="dice-dialog" path={path} />,
-];
+  appear, in: inProp, path,
+}) => (
+  <Fragment>
+    <Slide
+      appear={appear}
+      direction="left"
+      in={inProp}
+      mountOnEnter
+      unmountOnExit
+    >
+      <Slider />
+    </Slide>
+    <CombatButton />
+    <DiceDialog path={path} />
+  </Fragment>
+);
 
 PlayerScreen.propTypes = {
   appear: PropTypes.bool.isRequired,
