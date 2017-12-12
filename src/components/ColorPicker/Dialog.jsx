@@ -32,7 +32,7 @@ const styles = ({ spacing: { unit } }) => ({
 });
 
 const ColorPickerDialog = ({ classes, onSelect, ...props }) => (
-  <Dialog key="dialog" {...props}>
+  <Dialog {...props}>
     <DialogTitle>
       <FormattedMessage id="colorPicker.dialog.title" defaultMessage="Choose color" />
     </DialogTitle>

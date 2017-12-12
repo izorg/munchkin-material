@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Slide from 'material-ui/transitions/Slide';
 
@@ -8,20 +8,21 @@ import DiceDialog from '../../../containers/DiceDialog';
 
 const CombatScreen = ({
   appear, in: inProp, path, ...props
-}) => [
-  <Slide
-    appear={appear}
-    direction="left"
-    in={inProp}
-    key="screen"
-    mountOnEnter
-    unmountOnExit
-  >
-    <Combat {...props} />
-  </Slide>,
-  <HelperButton key="fab" />,
-  <DiceDialog key="dice-dialog" path={path} />,
-];
+}) => (
+  <Fragment>
+    <Slide
+      appear={appear}
+      direction="left"
+      in={inProp}
+      mountOnEnter
+      unmountOnExit
+    >
+      <Combat {...props} />
+    </Slide>
+    <HelperButton />
+    <DiceDialog path={path} />
+  </Fragment>
+);
 
 CombatScreen.propTypes = {
   appear: PropTypes.bool.isRequired,
