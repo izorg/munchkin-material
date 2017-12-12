@@ -4,13 +4,15 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import persistState from 'redux-localstorage';
 import { setVersion } from 'munchkin-core/es/actions';
 import * as coreReducers from 'munchkin-core/es/reducers';
-import deserialize from 'munchkin-core/es/store/deserialize';
 import version from 'munchkin-core/es/version';
 import { connectRouter, routerMiddleware } from 'connected-react-router';
 import formReducer from 'redux-form/es/reducer';
 import thunk from 'redux-thunk';
 
 import reducers from '../reducers';
+
+import serialize from './serialize';
+import deserialize from './deserialize';
 
 export default (history) => {
   const rootReducer = connectRouter(history)(combineReducers({
@@ -25,6 +27,7 @@ export default (history) => {
       routerMiddleware(history),
     ),
     persistState(undefined, {
+      serialize,
       deserialize,
     }),
   );

@@ -1,6 +1,6 @@
 import createHistory from 'history/es/createMemoryHistory';
 
-import createStore from '../createStore';
+import configureStore from '../configureStore';
 
 const localStorageMock = (() => {
   let store = {};
@@ -22,7 +22,7 @@ Object.defineProperty(window, 'localStorage', { value: localStorageMock });
 
 /* global test, expect */
 test('should be created', () => {
-  const store = createStore(createHistory());
+  const store = configureStore(createHistory());
 
   expect(store).toBeTruthy();
 });
