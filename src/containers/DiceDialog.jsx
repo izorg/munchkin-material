@@ -37,4 +37,11 @@ DiceDialogRoute.propTypes = {
   path: PropTypes.string.isRequired,
 };
 
-export default connect(({ router: { location } }) => ({ location }))(DiceDialogRoute);
+// eslint-disable-next-line max-len
+const ConnectedDiceDialogRoute = connect(state => ({ location: state.router.location }))(DiceDialogRoute);
+
+ConnectedDiceDialogRoute.propTypes = {
+  path: PropTypes.string.isRequired,
+};
+
+export default ConnectedDiceDialogRoute;
