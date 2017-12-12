@@ -1,11 +1,11 @@
 import React from 'react';
 import CSSTransition from 'react-transition-group/CSSTransition';
-import { withStyles } from 'material-ui/styles';
-import transitions, { duration, easing } from 'material-ui/styles/transitions';
+import { withStyles, withTheme } from 'material-ui/styles';
+import compose from 'recompose/compose';
 
-import { classesObject } from '../../utils/propTypes';
+import { classesObject, themeObject } from '../../utils/propTypes';
 
-const styles = {
+const styles = theme => ({
   enter: {
     height: '100%',
     left: 0,
@@ -18,10 +18,10 @@ const styles = {
 
   enterActive: {
     transform: 'scale(1)',
-    transition: transitions.create('transform', {
-      delay: duration.shortest,
-      duration: duration.shortest,
-      easing: easing.easeOut,
+    transition: theme.transitions.create('transform', {
+      delay: theme.transitions.duration.shortest,
+      duration: theme.transitions.duration.shortest,
+      easing: theme.transitions.easing.easeOut,
     }),
   },
 
@@ -37,14 +37,14 @@ const styles = {
 
   leaveActive: {
     transform: 'scale(0)',
-    transition: transitions.create('transform', {
-      duration: duration.shortest,
-      easing: easing.easeIn,
+    transition: theme.transitions.create('transform', {
+      duration: theme.transitions.duration.shortest,
+      easing: theme.transitions.easing.easeIn,
     }),
   },
-};
+});
 
-const DiceTransition = ({ classes, ...props }) => (
+const DiceTransition = ({ classes, theme, ...props }) => (
   <CSSTransition
     {...props}
     classNames={{
@@ -54,14 +54,18 @@ const DiceTransition = ({ classes, ...props }) => (
       exitActive: classes.leaveActive,
     }}
     timeout={{
-      enter: duration.shortest * 2,
-      exit: duration.shortest,
+      enter: theme.transitions.duration.shortest * 2,
+      exit: theme.transitions.duration.shortest,
     }}
   />
 );
 
 DiceTransition.propTypes = {
   classes: classesObject.isRequired, // eslint-disable-line react/no-typos
+  theme: themeObject.isRequired, // eslint-disable-line react/no-typos
 };
 
-export default withStyles(styles)(DiceTransition);
+export default compose(
+  withStyles(styles),
+  withTheme(),
+)(DiceTransition);
