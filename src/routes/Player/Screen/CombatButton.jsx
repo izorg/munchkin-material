@@ -4,10 +4,11 @@ import Route from 'react-router-dom/es/Route';
 import getContext from 'recompose/getContext';
 import PropTypes from 'prop-types';
 
-import { goToCombat } from '../../actions';
-import Fab from '../../components/fab/Container';
-import Combat from '../../components/fab/Combat';
-import Transition from '../../components/fab/Transition';
+import { goToCombat } from '../../../actions';
+
+import Fab from '../../../components/fab/Container';
+import Combat from '../../../components/fab/Combat';
+import Transition from '../../../components/fab/Transition';
 
 const selectorFactory = dispatch => (state, ownProps) => ({
   fullVersion: state.app.fullVersion,

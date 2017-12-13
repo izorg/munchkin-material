@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Slide from 'material-ui/transitions/Slide';
 
-import CombatButton from '../../Combat/Button';
+import CombatButton from './CombatButton';
 import DiceDialog from '../../../containers/DiceDialog';
 
 import Slider from './Slider';

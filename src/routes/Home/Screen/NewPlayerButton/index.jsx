@@ -5,7 +5,7 @@ import { push } from 'connected-react-router/lib/actions';
 import compose from 'recompose/compose';
 import PropTypes from 'prop-types';
 
-import { setActivePlayer, toggleEditMode } from '../../../../actions/index';
+import { setActivePlayer, toggleEditMode } from '../../../../actions';
 
 import Fab from '../../../../components/fab/Container';
 import Add from '../../../../components/fab/Add';
