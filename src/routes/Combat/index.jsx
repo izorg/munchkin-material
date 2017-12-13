@@ -1,7 +1,7 @@
 import React from 'react';
 import connect from 'react-redux/es/connect/connect';
 import Route from 'react-router-dom/es/Route';
-import { goBack, push } from 'connected-react-router/lib/actions';
+import { goBack } from 'connected-react-router/lib/actions';
 import Monster from 'munchkin-core/es/classes/Monster';
 import {
   addMonster,
@@ -10,7 +10,7 @@ import {
   setCombatPlayerBonus,
 } from 'munchkin-core/es/actions';
 
-import { removeHelper, throwDice } from '../../actions';
+import { removeHelper } from '../../actions';
 
 import ScreenLoader from '../../containers/ScreenLoader';
 
@@ -26,10 +26,6 @@ const mapStateToProps = ({
 
 const mapDispatchToProps = dispatch => ({
   onBack: () => dispatch(goBack()),
-  onDiceClick: (player) => {
-    dispatch(throwDice());
-    dispatch(push(`/player/${player.id}/combat/dice`));
-  },
   onHelperBonusChange: bonus => dispatch(setCombatHelperBonus(bonus)),
   onHelperRemove: () => dispatch(removeHelper()),
   onMonsterAdd: () => addMonster(new Monster()),

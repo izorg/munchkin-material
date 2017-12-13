@@ -1,7 +1,8 @@
-import { goBack, push, replace } from 'connected-react-router/lib/actions';
+import { goBack, replace } from 'connected-react-router/lib/actions';
 import connect from 'react-redux/es/connect/connect';
 
-import { setActivePlayer, throwDice } from '../../../../actions';
+import { setActivePlayer } from '../../../../actions';
+
 import Slider from '../../../../components/Player/Slider';
 
 const mapStateToProps = state => ({
@@ -11,10 +12,6 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   onBack: () => dispatch(goBack()),
-  onDiceClick: (player) => {
-    dispatch(throwDice());
-    dispatch(push(`/player/${player.id}/dice`));
-  },
   onPlayerChange: (player) => {
     dispatch(setActivePlayer(player.id));
     dispatch(replace(`/player/${player.id}`));

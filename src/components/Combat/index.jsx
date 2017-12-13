@@ -75,7 +75,6 @@ const Combat = ({
   helperBonus,
   monsters,
   onBack,
-  onDiceClick,
   onHelperBonusChange,
   onHelperRemove,
   onMonsterAdd,
@@ -99,7 +98,6 @@ const Combat = ({
           <DiceIconButton
             className={classes.rightButton}
             color="contrast"
-            onClick={() => onDiceClick(player)}
           />
         </Toolbar>
       </AppBar>
@@ -144,7 +142,6 @@ Combat.propTypes = {
   helperBonus: PropTypes.number,
   monsters: PropTypes.arrayOf(monsterInstance),
   onBack: PropTypes.func,
-  onDiceClick: PropTypes.func,
   onHelperBonusChange: PropTypes.func,
   onHelperRemove: PropTypes.func,
   onMonsterAdd: PropTypes.func,
@@ -160,7 +157,6 @@ Combat.defaultProps = {
   helperBonus: 0,
   monsters: [],
   onBack: noop,
-  onDiceClick: noop,
   onHelperBonusChange: noop,
   onHelperRemove: noop,
   onMonsterAdd: noop,

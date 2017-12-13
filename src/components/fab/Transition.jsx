@@ -40,6 +40,8 @@ const styles = theme => ({
 const FabTransition = ({ classes, theme, ...props }) => (
   <CSSTransition
     classNames={{
+      appear: classes.enter,
+      appearActive: classes.enterActive,
       enter: classes.enter,
       enterActive: classes.enterActive,
       exit: classes.exit,
@@ -47,6 +49,7 @@ const FabTransition = ({ classes, theme, ...props }) => (
     }}
     mountOnEnter
     timeout={{
+      appear: theme.transitions.duration.shortest + theme.transitions.duration.enteringScreen,
       enter: theme.transitions.duration.shortest + theme.transitions.duration.enteringScreen,
       exit: theme.transitions.duration.shortest,
     }}

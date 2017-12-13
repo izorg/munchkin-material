@@ -104,7 +104,6 @@ class PlayerSlider extends PureComponent {
       classes,
       className,
       onBack,
-      onDiceClick,
       selectedPlayer,
     } = this.props;
 
@@ -127,7 +126,6 @@ class PlayerSlider extends PureComponent {
                 className={classes.rightButton}
                 color="contrast"
                 disableTriggerFocus={this.state.disableDiceTooltip}
-                onClick={() => onDiceClick(selectedPlayer)}
               />
             </Toolbar>
           </AppBar>
@@ -163,7 +161,6 @@ PlayerSlider.propTypes = {
   classes: classesObject.isRequired, // eslint-disable-line react/no-typos
   className: PropTypes.string,
   onBack: PropTypes.func,
-  onDiceClick: PropTypes.func,
   onPlayerChange: PropTypes.func,
   players: PropTypes.arrayOf(playerInstance).isRequired,
   selectedPlayer: playerInstance.isRequired, // eslint-disable-line react/no-typos
@@ -172,7 +169,6 @@ PlayerSlider.propTypes = {
 PlayerSlider.defaultProps = {
   className: '',
   onBack: noop,
-  onDiceClick: noop,
   onPlayerChange: noop,
 };
 

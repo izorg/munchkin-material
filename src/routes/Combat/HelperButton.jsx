@@ -3,6 +3,7 @@ import connect from 'react-redux/es/connect/connect';
 import matchPath from 'react-router-dom/es/matchPath';
 import Route from 'react-router-dom/es/Route';
 import { goBack, push } from 'connected-react-router/lib/actions';
+import PropTypes from 'prop-types';
 import { addMonster } from 'munchkin-core/es/actions';
 import Monster from 'munchkin-core/es/classes/Monster';
 
@@ -27,10 +28,10 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-const CombatHelperButton = props => (
+const CombatHelperButton = ({ appear, ...props }) => (
   <Route path="/player/:id/combat">
     {({ location, match }) => (
-      <Transition in={Boolean(match)}>
+      <Transition appear={appear} in={Boolean(match)}>
         <Fab>
           <HelperButton
             expanded={Boolean(matchPath(location.pathname, { path: '/player/:id/combat/add' }))}
@@ -41,6 +42,10 @@ const CombatHelperButton = props => (
     )}
   </Route>
 );
+
+CombatHelperButton.propTypes = {
+  appear: PropTypes.bool.isRequired,
+};
 
 export default connect(
   mapStateToProps,

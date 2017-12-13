@@ -11,7 +11,6 @@ const Player = () => (
       <ScreenLoader
         in={Boolean(match)}
         loader={loader}
-        path="/player/:id"
       />
     )}
   </Route>

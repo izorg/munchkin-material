@@ -4,10 +4,9 @@ import Slide from 'material-ui/transitions/Slide';
 
 import HelperButton from '../HelperButton';
 import Combat from '../../../components/Combat';
-import DiceDialog from '../../../containers/DiceDialog';
 
 const CombatScreen = ({
-  appear, in: inProp, path, ...props
+  appear, in: inProp, ...props
 }) => (
   <Fragment>
     <Slide
@@ -19,15 +18,13 @@ const CombatScreen = ({
     >
       <Combat {...props} />
     </Slide>
-    <HelperButton />
-    <DiceDialog path={path} />
+    <HelperButton appear={appear} />
   </Fragment>
 );
 
 CombatScreen.propTypes = {
   appear: PropTypes.bool.isRequired,
   in: PropTypes.bool.isRequired,
-  path: PropTypes.string.isRequired,
 };
 
 export default CombatScreen;
