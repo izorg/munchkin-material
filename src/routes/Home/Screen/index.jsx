@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import connect from 'react-redux/es/connect/connect';
 import Transition from 'react-transition-group/Transition';
 import PropTypes from 'prop-types';
@@ -10,6 +10,7 @@ import { themeObject } from '../../../utils/propTypes';
 import { activateMultiSelect } from '../actions';
 
 import Component from './Component';
+import NewPlayerButton from './NewPlayerButton';
 
 const mapStateToProps = state => ({
   playerList: state.playerList,
@@ -23,15 +24,18 @@ const mapDispatchToProps = {
 const ConnectedScreen = connect(mapStateToProps, mapDispatchToProps)(Component);
 
 const ScreenTransition = ({ in: inProp, theme: { transitions: { duration } } }) => (
-  <Transition
-    in={inProp}
-    timeout={{
-      exit: duration.enteringScreen + duration.leavingScreen,
-    }}
-    unmountOnExit
-  >
-    <ConnectedScreen />
-  </Transition>
+  <Fragment>
+    <Transition
+      in={inProp}
+      timeout={{
+        exit: duration.enteringScreen + duration.leavingScreen,
+      }}
+      unmountOnExit
+    >
+      <ConnectedScreen />
+    </Transition>
+    <NewPlayerButton />
+  </Fragment>
 );
 
 ScreenTransition.propTypes = {

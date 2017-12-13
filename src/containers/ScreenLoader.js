@@ -10,11 +10,14 @@ class ScreenLoader extends PureComponent {
 
     this.loadableScreen = Loadable({
       loader: props.loader,
+      // page loading with current screen - show loading screen until ready
       loading: props.in ? LoadingScreen : () => null,
     });
 
     this.state = {
+      // no animation if it's a page load, otherwise - show enter animation
       appear: !props.in,
+      // show loading until file loaded on page load
       ready: props.in,
     };
   }
