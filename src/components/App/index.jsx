@@ -42,7 +42,9 @@ const styles = {
     },
 
     '#app': {
+      backgroundColor: '#000000',
       height: '100%',
+      position: 'relative',
     },
   },
 };

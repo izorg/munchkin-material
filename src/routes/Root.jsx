@@ -1,26 +1,15 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import Helmet from 'react-helmet/es/Helmet';
-import { withStyles } from 'material-ui/styles';
-
-import { classesObject } from '../utils/propTypes';
 
 import DiceDialog from '../containers/DiceDialog';
 
 import Combat from './Combat';
 import Home from './Home';
-import PlayerForm from './PlayerForm';
 import Player from './Player';
+import PlayerForm from './PlayerForm';
 
-const styles = {
-  root: {
-    backgroundColor: '#000000',
-    height: '100%',
-    position: 'relative',
-  },
-};
-
-const Root = ({ classes }) => (
-  <div className={classes.root}>
+const Root = () => (
+  <Fragment>
     <Helmet>
       <html lang={navigator.language} />
     </Helmet>
@@ -31,11 +20,7 @@ const Root = ({ classes }) => (
     <Combat />
 
     <DiceDialog />
-  </div>
+  </Fragment>
 );
 
-Root.propTypes = {
-  classes: classesObject.isRequired, // eslint-disable-line react/no-typos
-};
-
-export default withStyles(styles)(Root);
+export default Root;
