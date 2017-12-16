@@ -9,7 +9,7 @@ import {
 } from 'munchkin-core/es/actions';
 import { FEMALE, MALE } from 'munchkin-core/es/constants/gender';
 
-import Stats from '../../../components/Player/Stats';
+import Stats from './Component';
 import { playerInstance } from '../../../utils/propTypes';
 
 const selector = createSelector(

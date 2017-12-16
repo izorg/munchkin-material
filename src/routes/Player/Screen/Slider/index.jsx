@@ -3,7 +3,7 @@ import connect from 'react-redux/es/connect/connect';
 
 import { setActivePlayer } from '../../../../actions';
 
-import Slider from '../../../../components/Player/Slider';
+import Slider from './Component';
 
 const mapStateToProps = state => ({
   players: state.playerList.map(id => state.players[id]),

@@ -8,12 +8,12 @@ import Toolbar from 'material-ui/Toolbar';
 import { withStyles } from 'material-ui/styles';
 import NavigationArrowBack from 'material-ui-icons/ArrowBack';
 
-import DiceIconButton from '../../../containers/DiceButton';
-import Layout, { LayoutContent, LayoutHeader } from '../../Layout';
-import Title from '../../Title';
-import { noop } from '../../../constants';
-import PlayerStats from '../../../routes/Player/Stats';
-import { classesObject, playerInstance } from '../../../utils/propTypes';
+import DiceIconButton from '../../../../containers/DiceButton';
+import Layout, { LayoutContent, LayoutHeader } from '../../../../components/Layout/index';
+import Title from '../../../../components/Title/index';
+import { noop } from '../../../../constants/index';
+import PlayerStats from '../../Stats/index';
+import { classesObject, playerInstance } from '../../../../utils/propTypes';
 
 const PlayerSwipeableViews = bindKeyboard(virtualize(SwipeableViews));
 
