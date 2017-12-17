@@ -2,18 +2,14 @@ import React, { PureComponent } from 'react';
 import SwipeableViews from 'react-swipeable-views';
 import { bindKeyboard, virtualize } from 'react-swipeable-views-utils';
 import PropTypes from 'prop-types';
-import AppBar from 'material-ui/AppBar';
-import IconButton from 'material-ui/IconButton';
-import Toolbar from 'material-ui/Toolbar';
 import { withStyles } from 'material-ui/styles';
-import NavigationArrowBack from 'material-ui-icons/ArrowBack';
 
-import DiceIconButton from '../../../../containers/DiceButton';
-import Layout, { LayoutContent, LayoutHeader } from '../../../../components/Layout/index';
-import Title from '../../../../components/Title/index';
-import { noop } from '../../../../constants/index';
-import PlayerStats from '../../Stats/index';
+import Layout, { LayoutContent, LayoutHeader } from '../../../../components/Layout';
+import { noop } from '../../../../constants';
+import PlayerStats from '../Stats';
 import { classesObject, playerInstance } from '../../../../utils/propTypes';
+
+import AppBar from '../AppBar';
 
 const PlayerSwipeableViews = bindKeyboard(virtualize(SwipeableViews));
 
@@ -57,7 +53,6 @@ class PlayerSlider extends PureComponent {
     const { players, selectedPlayer } = props;
 
     this.state = {
-      disableDiceTooltip: false,
       initialSlide: players.indexOf(selectedPlayer),
     };
   }
@@ -100,35 +95,14 @@ class PlayerSlider extends PureComponent {
   }
 
   render() {
-    const {
-      classes,
-      className,
-      onBack,
-      selectedPlayer,
-    } = this.props;
+    const { classes } = this.props;
 
     const { initialSlide } = this.state;
 
     return (
-      <Layout className={className}>
+      <Layout>
         <LayoutHeader>
-          <AppBar color="primary" position="static">
-            <Toolbar>
-              <IconButton className={classes.leftButton} color="contrast" onClick={onBack}>
-                <NavigationArrowBack />
-              </IconButton>
-
-              <Title>
-                {selectedPlayer.name}
-              </Title>
-
-              <DiceIconButton
-                className={classes.rightButton}
-                color="contrast"
-                disableTriggerFocus={this.state.disableDiceTooltip}
-              />
-            </Toolbar>
-          </AppBar>
+          <AppBar />
         </LayoutHeader>
         <LayoutContent className={classes.sliderContent}>
           <PlayerSwipeableViews
@@ -159,16 +133,12 @@ class PlayerSlider extends PureComponent {
 
 PlayerSlider.propTypes = {
   classes: classesObject.isRequired, // eslint-disable-line react/no-typos
-  className: PropTypes.string,
-  onBack: PropTypes.func,
   onPlayerChange: PropTypes.func,
   players: PropTypes.arrayOf(playerInstance).isRequired,
   selectedPlayer: playerInstance.isRequired, // eslint-disable-line react/no-typos
 };
 
 PlayerSlider.defaultProps = {
-  className: '',
-  onBack: noop,
   onPlayerChange: noop,
 };
 

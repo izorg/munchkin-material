@@ -5,10 +5,10 @@ import IconButton from 'material-ui/IconButton';
 import { withStyles } from 'material-ui/styles';
 import cns from 'classnames';
 
-import Counter from '../../../components/Counter/index';
-import Gender from '../../../components/Gender/index';
-import { noop } from '../../../constants/index';
-import { classesObject, playerInstance } from '../../../utils/propTypes';
+import Counter from '../../../../components/Counter';
+import Gender from '../../../../components/Gender';
+import { noop } from '../../../../constants';
+import { classesObject, playerInstance } from '../../../../utils/propTypes';
 
 const styles = theme => ({
   stats: {
