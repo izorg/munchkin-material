@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 
 import { noop } from '../../../../constants';
-import { classesObject, playerInstance } from '../../../../utils/propTypes';
+import { classesObject } from '../../../../utils/propTypes';
 
 import PlayerStats from '../Stats';
 
@@ -28,11 +28,9 @@ class PlayerSlider extends PureComponent {
   constructor(props) {
     super(props);
 
-    const { players, selectedPlayer } = props;
+    const { initialSlide } = props;
 
-    this.state = {
-      initialSlide: players.indexOf(selectedPlayer),
-    };
+    this.state = { initialSlide };
   }
 
   componentWillMount() {
@@ -41,21 +39,21 @@ class PlayerSlider extends PureComponent {
   }
 
   getPlayerIndex(index) {
-    const { players } = this.props;
-    let playerIndex = index % players.length;
+    const { playerList } = this.props;
+    let playerIndex = index % playerList.length;
 
     if (playerIndex < 0) {
-      playerIndex = players.length + playerIndex;
+      playerIndex = playerList.length + playerIndex;
     }
 
     return playerIndex;
   }
 
   handleChangeIndex(index) {
-    const { onPlayerChange, players } = this.props;
+    const { onPlayerChange, playerList } = this.props;
     const playerIndex = this.getPlayerIndex(index);
 
-    onPlayerChange(players[playerIndex]);
+    onPlayerChange(playerList[playerIndex]);
 
     this.setState({
       initialSlide: index,
@@ -63,12 +61,12 @@ class PlayerSlider extends PureComponent {
   }
 
   slideRenderer({ key, index }) {
-    const { classes, players } = this.props;
+    const { classes, playerList } = this.props;
     const playerIndex = this.getPlayerIndex(index);
-    const player = players[playerIndex];
+    const playerId = playerList[playerIndex];
 
     return (
-      <PlayerStats className={classes.item} key={key} player={player} />
+      <PlayerStats className={classes.item} key={key} playerId={playerId} />
     );
   }
 
@@ -102,9 +100,9 @@ class PlayerSlider extends PureComponent {
 
 PlayerSlider.propTypes = {
   classes: classesObject.isRequired, // eslint-disable-line react/no-typos
+  initialSlide: PropTypes.number.isRequired, // eslint-disable-line react/no-typos
   onPlayerChange: PropTypes.func,
-  players: PropTypes.arrayOf(playerInstance).isRequired,
-  selectedPlayer: playerInstance.isRequired, // eslint-disable-line react/no-typos
+  playerList: PropTypes.arrayOf(PropTypes.number).isRequired,
 };
 
 PlayerSlider.defaultProps = {

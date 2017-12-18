@@ -6,14 +6,14 @@ import { setActivePlayer } from '../../../../actions';
 import Slider from './Component';
 
 const mapStateToProps = state => ({
-  players: state.playerList.map(id => state.players[id]),
-  selectedPlayer: state.players[state.app.activePlayerId],
+  initialSlide: state.playerList.indexOf(state.app.activePlayerId),
+  playerList: state.playerList,
 });
 
 const mapDispatchToProps = dispatch => ({
-  onPlayerChange: (player) => {
-    dispatch(setActivePlayer(player.id));
-    dispatch(replace(`/player/${player.id}`));
+  onPlayerChange: (playerId) => {
+    dispatch(setActivePlayer(playerId));
+    dispatch(replace(`/player/${playerId}`));
   },
 });
 

@@ -84,16 +84,16 @@ const PlayerStats = ({
     <div className={classes.counters}>
       <div className={classes.counterContainer}>
         <Counter
-          onDecrement={onLevelDecrement}
-          onIncrement={onLevelIncrement}
+          onDecrement={() => onLevelDecrement(player)}
+          onIncrement={() => onLevelIncrement(player)}
           title={<FormattedMessage id="player.stats.level" defaultMessage="Level" />}
           value={player.level}
         />
       </div>
       <div className={classes.counterContainer}>
         <Counter
-          onDecrement={onGearDecrement}
-          onIncrement={onGearIncrement}
+          onDecrement={() => onGearDecrement(player)}
+          onIncrement={() => onGearIncrement(player)}
           title={<FormattedMessage id="player.stats.gear" defaultMessage="Gear" />}
           value={player.gear}
         />
@@ -112,7 +112,7 @@ const PlayerStats = ({
         <IconButton
           className={classes.gender}
           color="inherit"
-          onClick={onGenderToggle}
+          onClick={() => onGenderToggle(player)}
         >
           <Gender gender={player.gender} />
         </IconButton>
