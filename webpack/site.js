@@ -36,10 +36,6 @@ module.exports = merge.smartStrategy({
   },
 
   plugins: [
-    new webpack.LoaderOptionsPlugin({
-      minimize: true,
-      debug: false,
-    }),
     new webpack.optimize.UglifyJsPlugin(),
 
     new CnameWebpackPlugin({
