@@ -7,7 +7,7 @@ import Color from './Color';
 import Dialog from './Dialog';
 
 const ColorPicker = ({
-  onChange, onClick, onRequestClose, open, value,
+  onChange, onClick, onClose, open, value,
 }) => (
   <Fragment>
     <Color
@@ -15,11 +15,11 @@ const ColorPicker = ({
       value={value}
     />
     <Dialog
-      onRequestClose={onRequestClose}
+      onClose={onClose}
       open={open}
       onSelect={(color) => {
         onChange(color);
-        onRequestClose();
+        onClose();
       }}
     />
   </Fragment>
@@ -28,7 +28,7 @@ const ColorPicker = ({
 ColorPicker.propTypes = {
   onChange: PropTypes.func,
   onClick: PropTypes.func,
-  onRequestClose: PropTypes.func,
+  onClose: PropTypes.func,
   open: PropTypes.bool,
   value: PropTypes.string,
 };
@@ -36,7 +36,7 @@ ColorPicker.propTypes = {
 ColorPicker.defaultProps = {
   onChange: noop,
   onClick: noop,
-  onRequestClose: noop,
+  onClose: noop,
   open: false,
   value: '',
 };

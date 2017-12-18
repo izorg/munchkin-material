@@ -18,7 +18,7 @@ const mapDispatchToProps = {
   onEntered: disableDiceButtonTooltipTriggerFocus,
   onExited: enableDiceButtonTooltipTriggerFocus,
   onDiceClick: throwDice,
-  onRequestClose: goBack,
+  onClose: goBack,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(DiceDialog);

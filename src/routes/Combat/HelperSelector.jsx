@@ -13,7 +13,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  onRequestClose: () => dispatch(goBack()),
+  onClose: () => dispatch(goBack()),
   onSelect: (id) => {
     dispatch(setCombatHelper(id));
     dispatch(go(-2));

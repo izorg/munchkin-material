@@ -12,7 +12,7 @@ const selectorFactory = dispatch => ({ app: { activePlayerId } }, ownProps) => {
   return {
     ...ownProps,
     onClick: () => dispatch(push(path)),
-    onRequestClose: () => dispatch(goBack()),
+    onClose: () => dispatch(goBack()),
     path,
   };
 };
