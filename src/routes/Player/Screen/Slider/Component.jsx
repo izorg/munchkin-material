@@ -4,22 +4,14 @@ import { bindKeyboard, virtualize } from 'react-swipeable-views-utils';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 
-import Layout, { LayoutContent, LayoutHeader } from '../../../../components/Layout';
 import { noop } from '../../../../constants';
-import PlayerStats from '../Stats';
 import { classesObject, playerInstance } from '../../../../utils/propTypes';
 
-import AppBar from '../AppBar';
+import PlayerStats from '../Stats';
 
 const PlayerSwipeableViews = bindKeyboard(virtualize(SwipeableViews));
 
 const styles = theme => ({
-  sliderContent: {
-    display: 'flex',
-    paddingLeft: 0,
-    paddingRight: 0,
-  },
-
   item: {
     flexGrow: 1,
     paddingLeft: theme.spacing.unit * 2,
@@ -29,20 +21,6 @@ const styles = theme => ({
       paddingLeft: theme.spacing.unit * 3,
       paddingRight: theme.spacing.unit * 3,
     },
-  },
-
-  '@media (orientation: portrait)': {
-    sliderContent: {
-      paddingBottom: 56,
-    },
-  },
-
-  leftButton: {
-    marginLeft: -12,
-  },
-
-  rightButton: {
-    marginRight: -12,
   },
 });
 
@@ -95,38 +73,29 @@ class PlayerSlider extends PureComponent {
   }
 
   render() {
-    const { classes } = this.props;
-
     const { initialSlide } = this.state;
 
     return (
-      <Layout>
-        <LayoutHeader>
-          <AppBar />
-        </LayoutHeader>
-        <LayoutContent className={classes.sliderContent}>
-          <PlayerSwipeableViews
-            onChangeIndex={this.handleChangeIndex}
-            containerStyle={{
-              flexGrow: 1,
-            }}
-            enableMouseEvents
-            index={initialSlide}
-            overscanSlideAfter={1}
-            overscanSlideBefore={1}
-            slideRenderer={this.slideRenderer}
-            slideStyle={{
-              display: 'flex',
-              overflow: 'hidden',
-            }}
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              width: '100%',
-            }}
-          />
-        </LayoutContent>
-      </Layout>
+      <PlayerSwipeableViews
+        onChangeIndex={this.handleChangeIndex}
+        containerStyle={{
+          flexGrow: 1,
+        }}
+        enableMouseEvents
+        index={initialSlide}
+        overscanSlideAfter={1}
+        overscanSlideBefore={1}
+        slideRenderer={this.slideRenderer}
+        slideStyle={{
+          display: 'flex',
+          overflow: 'hidden',
+        }}
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          width: '100%',
+        }}
+      />
     );
   }
 }

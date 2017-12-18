@@ -1,5 +1,4 @@
-import connectAdvanced from 'react-redux/es/components/connectAdvanced';
-import { createSelector } from 'reselect';
+import connect from 'react-redux/es/connect/connect';
 import {
   decrementPlayerGear,
   decrementPlayerLevel,
@@ -9,38 +8,22 @@ import {
 } from 'munchkin-core/es/actions';
 import { FEMALE, MALE } from 'munchkin-core/es/constants/gender';
 
-import Stats from './Component';
-import { playerInstance } from '../../../../utils/propTypes';
+import Component from './Component';
 
-const selector = createSelector(
-  ownProps => ownProps.player,
-  (ownProps, dispatch) => dispatch,
-  (player, dispatch) => ({
-    onGearDecrement: () => dispatch(decrementPlayerGear(player)),
-    onGearIncrement: () => dispatch(incrementPlayerGear(player)),
-    onGenderToggle: () => {
-      const { gender } = player;
+const mapDispatchToProps = (dispatch, { player }) => ({
+  onGearDecrement: () => dispatch(decrementPlayerGear(player)),
+  onGearIncrement: () => dispatch(incrementPlayerGear(player)),
+  onGenderToggle: () => {
+    const { gender } = player;
 
-      if (gender === MALE) {
-        dispatch(setPlayerGender(player, FEMALE));
-      } else if (gender === FEMALE) {
-        dispatch(setPlayerGender(player, MALE));
-      }
-    },
-    onLevelDecrement: () => dispatch(decrementPlayerLevel(player)),
-    onLevelIncrement: () => dispatch(incrementPlayerLevel(player)),
-  }),
-);
-
-const selectorFactory = dispatch => (state, ownProps) => ({
-  ...ownProps,
-  ...selector(ownProps, dispatch),
+    if (gender === MALE) {
+      dispatch(setPlayerGender(player, FEMALE));
+    } else if (gender === FEMALE) {
+      dispatch(setPlayerGender(player, MALE));
+    }
+  },
+  onLevelDecrement: () => dispatch(decrementPlayerLevel(player)),
+  onLevelIncrement: () => dispatch(incrementPlayerLevel(player)),
 });
 
-const PlayerStats = connectAdvanced(selectorFactory)(Stats);
-
-PlayerStats.propTypes = {
-  player: playerInstance.isRequired, // eslint-disable-line react/no-typos
-};
-
-export default PlayerStats;
+export default connect(undefined, mapDispatchToProps)(Component);
