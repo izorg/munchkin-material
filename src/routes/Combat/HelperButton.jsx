@@ -7,7 +7,6 @@ import PropTypes from 'prop-types';
 import { addMonster } from 'munchkin-core/es/actions';
 import Monster from 'munchkin-core/es/classes/Monster';
 
-import Fab from '../../components/fab/Container';
 import HelperButton from '../../components/fab/HelperButton';
 import Transition from '../../components/fab/Transition';
 
@@ -32,12 +31,10 @@ const CombatHelperButton = ({ appear, ...props }) => (
   <Route path="/player/:id/combat">
     {({ location, match }) => (
       <Transition appear={appear} in={Boolean(match)}>
-        <Fab>
-          <HelperButton
-            expanded={Boolean(matchPath(location.pathname, { path: '/player/:id/combat/add' }))}
-            {...props}
-          />
-        </Fab>
+        <HelperButton
+          expanded={Boolean(matchPath(location.pathname, { path: '/player/:id/combat/add' }))}
+          {...props}
+        />
       </Transition>
     )}
   </Route>

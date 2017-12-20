@@ -4,7 +4,7 @@ import Avatar from 'material-ui/Avatar';
 import { withStyles } from 'material-ui/styles';
 import NavigationCheck from 'material-ui-icons/Check';
 
-import { classesObject } from '../../../../../utils/propTypes';
+import { classesObject } from '../../../../../../../utils/propTypes';
 
 const styles = theme => ({
   avatar: {
@@ -12,7 +12,7 @@ const styles = theme => ({
   },
 });
 
-const PlayerListItemAvatar = ({
+const HomeScreenPagePlayerListItemAvatar = ({
   classes, color, name, selected, ...props
 }) => {
   if (selected) {
@@ -43,17 +43,17 @@ const PlayerListItemAvatar = ({
   );
 };
 
-PlayerListItemAvatar.propTypes = {
+HomeScreenPagePlayerListItemAvatar.propTypes = {
   classes: classesObject.isRequired, // eslint-disable-line react/no-typos
   color: PropTypes.string,
   name: PropTypes.string,
   selected: PropTypes.bool,
 };
 
-PlayerListItemAvatar.defaultProps = {
+HomeScreenPagePlayerListItemAvatar.defaultProps = {
   color: '',
   name: '',
   selected: false,
 };
 
-export default withStyles(styles)(PlayerListItemAvatar);
+export default withStyles(styles)(HomeScreenPagePlayerListItemAvatar);

@@ -7,7 +7,6 @@ import PropTypes from 'prop-types';
 
 import { setActivePlayer, toggleEditMode } from '../../../../actions';
 
-import Fab from '../../../../components/fab/Container';
 import Add from '../../../../components/fab/Add';
 import Transition from '../../../../components/fab/Transition';
 
@@ -25,9 +24,7 @@ const mapDispatchToProps = dispatch => ({
 
 const NewPlayerButton = ({ in: inProp, onClick }) => (
   <Transition in={inProp}>
-    <Fab>
-      <Add onClick={onClick} />
-    </Fab>
+    <Add onClick={onClick} />
   </Transition>
 );
 

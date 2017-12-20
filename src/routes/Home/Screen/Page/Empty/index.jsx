@@ -4,7 +4,7 @@ import Typography from 'material-ui/Typography';
 import { withStyles } from 'material-ui/styles';
 import AccountCircle from 'material-ui-icons/AccountCircle';
 
-import { classesObject } from '../../../utils/propTypes';
+import { classesObject } from '../../../../../utils/propTypes';
 
 const styles = theme => ({
   nobody: {
@@ -21,7 +21,7 @@ const styles = theme => ({
   },
 });
 
-const PlayerListEmpty = ({ classes }) => (
+const HomeScreenPageEmpty = ({ classes }) => (
   <div className={classes.nobody}>
     <AccountCircle className={classes.nobodyIcon} />
     <Typography align="center" className={classes.nobody} component="div">
@@ -33,8 +33,8 @@ const PlayerListEmpty = ({ classes }) => (
   </div>
 );
 
-PlayerListEmpty.propTypes = {
+HomeScreenPageEmpty.propTypes = {
   classes: classesObject.isRequired, // eslint-disable-line react/no-typos
 };
 
-export default withStyles(styles)(PlayerListEmpty);
+export default withStyles(styles)(HomeScreenPageEmpty);

@@ -7,7 +7,6 @@ import PropTypes from 'prop-types';
 
 import { goToCombat } from '../../../actions';
 
-import Container from '../../../components/fab/Container';
 import Combat from '../../../components/fab/Combat';
 import Transition from '../../../components/fab/Transition';
 
@@ -24,12 +23,10 @@ const selectorFactory = dispatch => (state, ownProps) => ({
 });
 
 const CombatButton = ({ appear, ...props }) => (
-  <Route exact path="/player/:id/(dice)?">
+  <Route exact path="/player/:id">
     {({ match }) => (
       <Transition appear={appear} in={Boolean(match)}>
-        <Container>
-          <Combat {...props} />
-        </Container>
+        <Combat {...props} />
       </Transition>
     )}
   </Route>

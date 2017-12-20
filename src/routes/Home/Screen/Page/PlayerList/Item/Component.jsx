@@ -9,12 +9,12 @@ import Typography from 'material-ui/Typography';
 import { withStyles } from 'material-ui/styles';
 import ActionReorder from 'material-ui-icons/Reorder';
 
-import { noop } from '../../../../constants';
-import getGenderIconClass from '../../../../helpers/getGenderIconClass';
-import { ios } from '../../../../helpers/platforms';
-import { classesObject, playerInstance } from '../../../../utils/propTypes';
+import { noop } from '../../../../../../constants';
+import getGenderIconClass from '../../../../../../helpers/getGenderIconClass';
+import { ios } from '../../../../../../helpers/platforms';
+import { classesObject, playerInstance } from '../../../../../../utils/propTypes';
 
-import modes from '../../modes';
+import modes from '../../../../modes';
 
 import PlayerListItemAvatar from './Avatar';
 
@@ -39,7 +39,7 @@ const styles = theme => ({
   },
 });
 
-class HomeScreenItemComponent extends PureComponent {
+class HomeScreenPagePlayerListItemComponent extends PureComponent {
   componentWillMount() {
     this.handleClick = this.handleClick.bind(this);
     this.handlePress = this.handlePress.bind(this);
@@ -139,7 +139,7 @@ class HomeScreenItemComponent extends PureComponent {
   }
 }
 
-HomeScreenItemComponent.propTypes = {
+HomeScreenPagePlayerListItemComponent.propTypes = {
   classes: classesObject.isRequired, // eslint-disable-line react/no-typos
   color: PropTypes.string,
   mode: PropTypes.oneOf(Object.values(modes)),
@@ -150,7 +150,7 @@ HomeScreenItemComponent.propTypes = {
   selected: PropTypes.bool,
 };
 
-HomeScreenItemComponent.defaultProps = {
+HomeScreenPagePlayerListItemComponent.defaultProps = {
   color: '',
   mode: null,
   onCheck: noop,
@@ -159,4 +159,4 @@ HomeScreenItemComponent.defaultProps = {
   selected: false,
 };
 
-export default withStyles(styles)(HomeScreenItemComponent);
+export default withStyles(styles)(HomeScreenPagePlayerListItemComponent);

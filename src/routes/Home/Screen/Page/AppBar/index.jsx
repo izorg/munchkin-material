@@ -16,18 +16,18 @@ import ActionDelete from 'material-ui-icons/Delete';
 import EditorModeEdit from 'material-ui-icons/ModeEdit';
 import { removePlayer } from 'munchkin-core/es/actions';
 
-import { unselectAllPlayers } from '../../../../actions';
-import Title from '../../../../components/Title';
-import { noop } from '../../../../constants';
-import { ios } from '../../../../helpers/platforms';
-import { classesObject } from '../../../../utils/propTypes';
+import { unselectAllPlayers } from '../../../../../actions';
+import Title from '../../../../../components/Title';
+import { noop } from '../../../../../constants';
+import { ios } from '../../../../../helpers/platforms';
+import { classesObject } from '../../../../../utils/propTypes';
 
-import modes from '../../modes';
-import { getModeFromLocation } from '../../path';
+import modes from '../../../modes';
+import { getModeFromPathname } from '../../../path';
 
 const mapStateToProps = state => ({
   empty: state.playerList.length === 0,
-  mode: getModeFromLocation(state.router.location.pathname),
+  mode: getModeFromPathname(state.router.location.pathname),
   selectedPlayerIds: state.app.selectedPlayerIds,
 });
 
@@ -75,7 +75,7 @@ const styles = theme => ({
   },
 });
 
-const HomeScreenAppBar = ({
+const HomeScreenPageAppBar = ({
   classes,
   empty,
   intl,
@@ -178,7 +178,7 @@ const HomeScreenAppBar = ({
   );
 };
 
-HomeScreenAppBar.propTypes = {
+HomeScreenPageAppBar.propTypes = {
   classes: classesObject.isRequired, // eslint-disable-line react/no-typos
   empty: PropTypes.bool,
   intl: intlShape.isRequired, // eslint-disable-line react/no-typos
@@ -189,7 +189,7 @@ HomeScreenAppBar.propTypes = {
   selectedPlayerIds: PropTypes.arrayOf(PropTypes.number),
 };
 
-HomeScreenAppBar.defaultProps = {
+HomeScreenPageAppBar.defaultProps = {
   empty: false,
   mode: null,
   onMultiSelectDeactivate: noop,
@@ -203,4 +203,4 @@ export default compose(
   connect(mapStateToProps, mapDispatchToProps),
   injectIntl,
   withStyles(styles),
-)(HomeScreenAppBar);
+)(HomeScreenPageAppBar);

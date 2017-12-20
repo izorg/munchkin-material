@@ -1,14 +1,17 @@
 import React from 'react';
 import CSSTransition from 'react-transition-group/CSSTransition';
+import compose from 'recompose/compose';
+import PropTypes from 'prop-types';
 import { withStyles, withTheme } from 'material-ui/styles';
 
 import { classesObject, themeObject } from '../../utils/propTypes';
 
 const styles = theme => ({
-  item: {
-    bottom: 0,
-    position: 'absolute',
-    right: 0,
+  container: {
+    bottom: theme.spacing.unit * 2,
+    position: 'fixed',
+    right: theme.spacing.unit * 2,
+    zIndex: 2,
   },
 
   enter: {
@@ -37,7 +40,9 @@ const styles = theme => ({
   },
 });
 
-const FabTransition = ({ classes, theme, ...props }) => (
+const Transition = ({
+  classes, children, theme, ...props
+}) => (
   <CSSTransition
     classNames={{
       appear: classes.enter,
@@ -55,12 +60,24 @@ const FabTransition = ({ classes, theme, ...props }) => (
     }}
     unmountOnExit
     {...props}
-  />
+  >
+    <div className={classes.container}>
+      {children}
+    </div>
+  </CSSTransition>
 );
 
-FabTransition.propTypes = {
+Transition.propTypes = {
+  children: PropTypes.node,
   classes: classesObject.isRequired, // eslint-disable-line react/no-typos
   theme: themeObject.isRequired, // eslint-disable-line react/no-typos
 };
 
-export default withStyles(styles)(withTheme()(FabTransition));
+Transition.defaultProps = {
+  children: null,
+};
+
+export default compose(
+  withStyles(styles),
+  withTheme(),
+)(Transition);
