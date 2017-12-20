@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Slide from 'material-ui/transitions/Slide';
 
-import Form from '../../../components/Player/Form';
+import Component from './Component';
 
-const PlayerFormScreen = ({ appear, in: inProp, ...props }) => (
+const PlayerFormScreen = ({ appear, in: inProp }) => (
   <Slide
     appear={appear}
     direction="up"
@@ -12,7 +12,7 @@ const PlayerFormScreen = ({ appear, in: inProp, ...props }) => (
     mountOnEnter
     unmountOnExit
   >
-    <Form {...props} />
+    <Component />
   </Slide>
 );
 
