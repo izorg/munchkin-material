@@ -114,7 +114,7 @@ class HomeScreenPagePlayerListItemComponent extends PureComponent {
                 id="player.list.item.secondaryTextStrength"
                 defaultMessage="Strength {strength}"
                 values={{
-                  strength: <b>{player.strength}</b>,
+                  strength: <b>{player.level + player.gear}</b>,
                 }}
               />
             </span>

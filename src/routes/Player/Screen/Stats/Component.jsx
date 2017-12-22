@@ -106,7 +106,7 @@ const PlayerStats = ({
         </div>
 
         <div className={classes.strengthValue}>
-          {player.strength}
+          {player.level + player.gear}
         </div>
 
         <IconButton

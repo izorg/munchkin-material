@@ -64,7 +64,7 @@ const HelperSelector = ({
                     id="combat.helperSelector.strength"
                     defaultMessage="Strength {strength}"
                     values={{
-                    strength: <b>{helper.strength}</b>,
+                    strength: <b>{helper.level + helper.gear}</b>,
                   }}
                   />
                 </span>
