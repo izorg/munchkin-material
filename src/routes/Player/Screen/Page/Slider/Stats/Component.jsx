@@ -5,10 +5,10 @@ import IconButton from 'material-ui/IconButton';
 import { withStyles } from 'material-ui/styles';
 import cns from 'classnames';
 
-import Counter from '../../../../components/Counter';
-import Gender from '../../../../components/Gender';
-import { noop } from '../../../../constants';
-import { classesObject, playerInstance } from '../../../../utils/propTypes';
+import Counter from '../../../../../../components/Counter';
+import Gender from '../../../../../../components/Gender';
+import { noop } from '../../../../../../constants';
+import { classesObject, playerInstance } from '../../../../../../utils/propTypes';
 
 const styles = theme => ({
   stats: {
@@ -84,16 +84,16 @@ const PlayerStats = ({
     <div className={classes.counters}>
       <div className={classes.counterContainer}>
         <Counter
-          onDecrement={() => onLevelDecrement(player)}
-          onIncrement={() => onLevelIncrement(player)}
+          onDecrement={() => onLevelDecrement(player.id)}
+          onIncrement={() => onLevelIncrement(player.id)}
           title={<FormattedMessage id="player.stats.level" defaultMessage="Level" />}
           value={player.level}
         />
       </div>
       <div className={classes.counterContainer}>
         <Counter
-          onDecrement={() => onGearDecrement(player)}
-          onIncrement={() => onGearIncrement(player)}
+          onDecrement={() => onGearDecrement(player.id)}
+          onIncrement={() => onGearIncrement(player.id)}
           title={<FormattedMessage id="player.stats.gear" defaultMessage="Gear" />}
           value={player.gear}
         />
@@ -112,7 +112,7 @@ const PlayerStats = ({
         <IconButton
           className={classes.gender}
           color="inherit"
-          onClick={() => onGenderToggle(player)}
+          onClick={() => onGenderToggle(player.id)}
         >
           <Gender gender={player.gender} />
         </IconButton>

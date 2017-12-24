@@ -4,7 +4,7 @@ import Route from 'react-router-dom/es/Route';
 import { go, goBack } from 'connected-react-router/lib/actions';
 import { setCombatHelper } from 'munchkin-core/es/actions';
 
-import HelperSelector from '../../components/Combat/HelperSelector';
+import HelperSelector from './Component';
 
 const mapStateToProps = state => ({
   helpers: state.playerList

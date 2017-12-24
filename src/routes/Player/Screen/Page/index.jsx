@@ -1,9 +1,9 @@
 import React from 'react';
 import { withStyles } from 'material-ui/styles';
 
-import { classesObject } from '../../../utils/propTypes';
+import { classesObject } from '../../../../utils/propTypes';
 
-import Layout, { LayoutContent, LayoutHeader } from '../../../components/Layout';
+import Layout, { LayoutContent, LayoutHeader } from '../../../../components/Layout';
 
 import AppBar from './AppBar';
 import Slider from './Slider';

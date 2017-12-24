@@ -1,4 +1,4 @@
-import { ADD_PLAYER, REMOVE_PLAYER } from 'munchkin-core/es/constants/actionTypes';
+import { ADD_PLAYER, REMOVE_PLAYER } from 'munchkin-core/es/utils/actionTypes';
 
 import { MOVE_PLAYER } from '../../constants/actionTypes';
 

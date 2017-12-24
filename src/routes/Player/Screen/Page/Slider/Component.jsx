@@ -4,10 +4,10 @@ import { bindKeyboard, virtualize } from 'react-swipeable-views-utils';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 
-import { noop } from '../../../../constants';
-import { classesObject } from '../../../../utils/propTypes';
+import { noop } from '../../../../../constants';
+import { classesObject } from '../../../../../utils/propTypes';
 
-import PlayerStats from '../Stats';
+import PlayerStats from './Stats';
 
 const PlayerSwipeableViews = bindKeyboard(virtualize(SwipeableViews));
 
@@ -102,7 +102,7 @@ PlayerSlider.propTypes = {
   classes: classesObject.isRequired, // eslint-disable-line react/no-typos
   initialSlide: PropTypes.number.isRequired, // eslint-disable-line react/no-typos
   onPlayerChange: PropTypes.func,
-  playerList: PropTypes.arrayOf(PropTypes.number).isRequired,
+  playerList: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 PlayerSlider.defaultProps = {

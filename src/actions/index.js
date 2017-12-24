@@ -1,7 +1,8 @@
 import formActions from 'redux-form/es/actions';
 import { goBack, push } from 'connected-react-router/lib/actions';
-import { addPlayer, setCombatHelper, setCombatHelperBonus, startCombat, updatePlayer } from 'munchkin-core/es/actions';
-import Player from 'munchkin-core/es/classes/Player';
+import { addMonster, addPlayer, setCombatHelper, setCombatHelperBonus, startCombat, updatePlayer } from 'munchkin-core/es/actions';
+import createMonster from 'munchkin-core/es/utils/createMonster';
+import createPlayer from 'munchkin-core/es/utils/createPlayer';
 
 import { PLAYER_FORM } from '../constants';
 import * as types from '../constants/actionTypes';
@@ -20,6 +21,7 @@ export const goToCombat = playerId => (dispatch, getState) => {
   if (fullVersion) {
     if (playerId !== getState().combat.playerId) {
       dispatch(startCombat(playerId));
+      dispatch(addMonster(createMonster()));
     }
 
     dispatch(push(`/player/${playerId}/combat`));
@@ -74,7 +76,7 @@ export const submitPlayer = values => (dispatch) => {
   const { color, id, name = '' } = values;
 
   if (name.trim()) {
-    const player = new Player(values);
+    const player = createPlayer(values);
 
     if (id) {
       dispatch(updatePlayer(player));

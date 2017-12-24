@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 import Typography from 'material-ui/Typography';
 import { withStyles } from 'material-ui/styles';
 
-import Counter from '../../Counter';
-import { noop } from '../../../constants';
-import { classesObject, monsterInstance } from '../../../utils/propTypes';
+import Counter from '../../../../../components/Counter';
+import { noop } from '../../../../../constants';
+import { classesObject, monsterInstance } from '../../../../../utils/propTypes';
 
 const styles = {
   monster: {
@@ -49,16 +49,16 @@ const CombatMonster = ({
       <Counter
         className={classes.item}
         compact
-        onDecrement={() => onLevelDecrement(monster)}
-        onIncrement={() => onLevelIncrement(monster)}
+        onDecrement={() => onLevelDecrement(monster.id)}
+        onIncrement={() => onLevelIncrement(monster.id)}
         title={<FormattedMessage id="combat.monster.level" defaultMessage="Level" />}
         value={monster.level}
       />
       <Counter
         className={classes.item}
         compact
-        onDecrement={() => onBonusDecrement(monster)}
-        onIncrement={() => onBonusIncrement(monster)}
+        onDecrement={() => onBonusDecrement(monster.id)}
+        onIncrement={() => onBonusIncrement(monster.id)}
         title={<FormattedMessage id="combat.monster.modifier" defaultMessage="Modifier" />}
         value={monster.bonus}
       />

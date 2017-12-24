@@ -1,11 +1,11 @@
-import Player from 'munchkin-core/es/classes/Player';
-import { FEMALE } from 'munchkin-core/es/constants/gender';
+import createPlayer from 'munchkin-core/es/utils/createPlayer';
+import { FEMALE } from 'munchkin-core/es/utils/gender';
 
 export default {
   en: [
     {
       color: '#607D8B',
-      player: new Player({
+      player: createPlayer({
         gear: 13,
         level: 3,
         name: 'Barack Obama',
@@ -13,7 +13,7 @@ export default {
     },
     {
       color: '#FFC107',
-      player: new Player({
+      player: createPlayer({
         gear: 20,
         level: 5,
         name: 'Donald Trump',
@@ -21,7 +21,7 @@ export default {
     },
     {
       color: '#03A9F4',
-      player: new Player({
+      player: createPlayer({
         gear: 10,
         gender: FEMALE,
         level: 7,
@@ -33,7 +33,7 @@ export default {
   ru: [
     {
       color: '#F44336',
-      player: new Player({
+      player: createPlayer({
         gear: 30,
         level: 3,
         name: 'Илья Муромец',
@@ -41,7 +41,7 @@ export default {
     },
     {
       color: '#009688',
-      player: new Player({
+      player: createPlayer({
         gear: 13,
         level: 6,
         name: 'Соловей Разбойник',
@@ -49,7 +49,7 @@ export default {
     },
     {
       color: '#E91E63',
-      player: new Player({
+      player: createPlayer({
         gear: 7,
         gender: FEMALE,
         level: 8,

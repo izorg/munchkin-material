@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 import Slide from 'material-ui/transitions/Slide';
 
 import CombatButton from './CombatButton';
-
-import Component from './Component';
+import Page from './Page';
 
 const PlayerScreen = ({ appear, in: inProp }) => (
   <Fragment>
@@ -15,7 +14,7 @@ const PlayerScreen = ({ appear, in: inProp }) => (
       mountOnEnter
       unmountOnExit
     >
-      <Component />
+      <Page />
     </Slide>
     <CombatButton appear={appear} />
   </Fragment>

@@ -6,8 +6,8 @@ import List, { ListItem, ListItemText } from 'material-ui/List';
 import Typography from 'material-ui/Typography';
 import { withStyles } from 'material-ui/styles';
 
-import { noop } from '../../../constants';
-import { classesObject, playerInstance } from '../../../utils/propTypes';
+import { noop } from '../../../../../constants';
+import { classesObject } from '../../../../../utils/propTypes';
 
 const styles = {
   dialogPaper: {
@@ -79,7 +79,7 @@ const HelperSelector = ({
 
 HelperSelector.propTypes = {
   classes: classesObject.isRequired, // eslint-disable-line react/no-typos
-  helpers: PropTypes.arrayOf(playerInstance),
+  helpers: PropTypes.arrayOf(PropTypes.object),
   onSelect: PropTypes.func,
 };
 

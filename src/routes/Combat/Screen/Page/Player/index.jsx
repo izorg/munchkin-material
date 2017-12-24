@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import Typography from 'material-ui/Typography';
 
-import Counter from '../../Counter';
-import { noop } from '../../../constants';
-import { classesObject, playerInstance } from '../../../utils/propTypes';
+import Counter from '../../../../../components/Counter';
+import { noop } from '../../../../../constants';
+import { classesObject, playerInstance } from '../../../../../utils/propTypes';
 
 const styles = {
   player: {
@@ -45,25 +45,25 @@ class CombatPlayer extends PureComponent {
   handleGearDecrement() {
     const { player, onGearDecrement } = this.props;
 
-    onGearDecrement(player);
+    onGearDecrement(player.id);
   }
 
   handleGearIncrement() {
     const { player, onGearIncrement } = this.props;
 
-    onGearIncrement(player);
+    onGearIncrement(player.id);
   }
 
   handleLevelDecrement() {
     const { player, onLevelDecrement } = this.props;
 
-    onLevelDecrement(player);
+    onLevelDecrement(player.id);
   }
 
   handleLevelIncrement() {
     const { player, onLevelIncrement } = this.props;
 
-    onLevelIncrement(player);
+    onLevelIncrement(player.id);
   }
 
   render() {

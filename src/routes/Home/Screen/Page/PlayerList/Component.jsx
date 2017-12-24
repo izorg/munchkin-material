@@ -43,7 +43,7 @@ const HomeScreenPagePlayerList = ({ classes, onPlayerMove, playerList }) => (
 HomeScreenPagePlayerList.propTypes = {
   classes: classesObject.isRequired, // eslint-disable-line react/no-typos
   onPlayerMove: PropTypes.func,
-  playerList: PropTypes.arrayOf(PropTypes.number),
+  playerList: PropTypes.arrayOf(PropTypes.string),
 };
 
 HomeScreenPagePlayerList.defaultProps = {

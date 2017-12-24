@@ -6,7 +6,7 @@ import {
   incrementPlayerLevel,
   setPlayerGender,
 } from 'munchkin-core/es/actions';
-import { FEMALE, MALE } from 'munchkin-core/es/constants/gender';
+import { FEMALE, MALE } from 'munchkin-core/es/utils/gender';
 
 import Component from './Component';
 
@@ -14,20 +14,22 @@ const mapStateToProps = (state, ownProps) => ({
   player: state.players[ownProps.playerId],
 });
 
-const mapDispatchToProps = dispatch => ({
-  onGearDecrement: player => dispatch(decrementPlayerGear(player)),
-  onGearIncrement: player => dispatch(incrementPlayerGear(player)),
-  onGenderToggle: (player) => {
+const mapDispatchToProps = {
+  onGearDecrement: decrementPlayerGear,
+  onGearIncrement: incrementPlayerGear,
+  onGenderToggle: id => (dispatch, getState) => {
+    const player = getState().players[id];
     const { gender } = player;
 
+
     if (gender === MALE) {
-      dispatch(setPlayerGender(player, FEMALE));
+      dispatch(setPlayerGender(id, FEMALE));
     } else if (gender === FEMALE) {
-      dispatch(setPlayerGender(player, MALE));
+      dispatch(setPlayerGender(id, MALE));
     }
   },
-  onLevelDecrement: player => dispatch(decrementPlayerLevel(player)),
-  onLevelIncrement: player => dispatch(incrementPlayerLevel(player)),
-});
+  onLevelDecrement: decrementPlayerLevel,
+  onLevelIncrement: incrementPlayerLevel,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Component);

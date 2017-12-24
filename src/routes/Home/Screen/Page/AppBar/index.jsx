@@ -186,7 +186,7 @@ HomeScreenPageAppBar.propTypes = {
   onMultiSelectDeactivate: PropTypes.func,
   onPlayersDelete: PropTypes.func,
   onToggleEditClick: PropTypes.func,
-  selectedPlayerIds: PropTypes.arrayOf(PropTypes.number),
+  selectedPlayerIds: PropTypes.arrayOf(PropTypes.string),
 };
 
 HomeScreenPageAppBar.defaultProps = {

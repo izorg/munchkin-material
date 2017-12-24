@@ -8,11 +8,11 @@ import Paper from 'material-ui/Paper';
 import { withStyles } from 'material-ui/styles';
 import cns from 'classnames';
 
-import { noop } from '../../../constants';
-import { classesObject, monsterInstance } from '../../../utils/propTypes';
+import { noop } from '../../../../../constants';
+import { classesObject } from '../../../../../utils/propTypes';
 
-import CloseCircle from '../../icons/CloseCircle';
-import Monster from '../../../routes/Combat/Monster';
+import CloseCircle from '../../../../../components/icons/CloseCircle';
+import Monster from '../../../Monster';
 
 const styles = {
   monsters: {
@@ -180,7 +180,7 @@ class CombatMonsterSlider extends PureComponent {
 CombatMonsterSlider.propTypes = {
   classes: classesObject.isRequired, // eslint-disable-line react/no-typos
   className: PropTypes.string,
-  monsters: PropTypes.arrayOf(monsterInstance),
+  monsters: PropTypes.arrayOf(PropTypes.object),
   onMonsterRemove: PropTypes.func,
 };
 

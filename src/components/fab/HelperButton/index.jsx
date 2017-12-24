@@ -17,7 +17,7 @@ import { classesObject } from '../../../utils/propTypes';
 
 import Fade from './Fade';
 import EmoticonDevil from '../../icons/EmoticonDevil';
-import HelperSelector from '../../../routes/Combat/HelperSelector';
+import HelperSelector from '../../../routes/Combat/Screen/Page/HelperSelector/index';
 
 const styles = {
   container: {
@@ -161,7 +161,7 @@ FabHelperButton.propTypes = {
   onAdd: PropTypes.func,
   onBackdropClick: PropTypes.func,
   onMonsterAdd: PropTypes.func,
-  playerId: PropTypes.number.isRequired,
+  playerId: PropTypes.string.isRequired,
 };
 
 FabHelperButton.defaultProps = {

@@ -1,7 +1,7 @@
 import { replace } from 'connected-react-router/lib/actions';
 import connect from 'react-redux/es/connect/connect';
 
-import { setActivePlayer } from '../../../../actions';
+import { setActivePlayer } from '../../../../../actions';
 
 import Slider from './Component';
 
@@ -10,11 +10,11 @@ const mapStateToProps = state => ({
   playerList: state.playerList,
 });
 
-const mapDispatchToProps = dispatch => ({
-  onPlayerChange: (playerId) => {
+const mapDispatchToProps = {
+  onPlayerChange: playerId => (dispatch) => {
     dispatch(setActivePlayer(playerId));
     dispatch(replace(`/player/${playerId}`));
   },
-});
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Slider);

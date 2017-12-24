@@ -6,7 +6,7 @@ import {
   incrementMonsterLevel,
 } from 'munchkin-core/es/actions';
 
-import Monster from '../../components/Combat/Monster';
+import Monster from './Screen/Page/Monster';
 
 const mapDispatchToProps = {
   onBonusDecrement: decrementMonsterBonus,

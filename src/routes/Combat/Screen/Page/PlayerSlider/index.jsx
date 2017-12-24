@@ -7,12 +7,12 @@ import Paper from 'material-ui/Paper';
 import { withStyles } from 'material-ui/styles';
 import cns from 'classnames';
 
-import { noop } from '../../../constants';
-import { classesObject, playerInstance } from '../../../utils/propTypes';
+import { noop } from '../../../../../constants';
+import { classesObject, playerInstance } from '../../../../../utils/propTypes';
 
-import CloseCircle from '../../icons/CloseCircle';
+import CloseCircle from '../../../../../components/icons/CloseCircle';
 
-import Player from '../../../routes/Combat/Player';
+import Player from '../../../Player';
 
 const styles = {
   players: {

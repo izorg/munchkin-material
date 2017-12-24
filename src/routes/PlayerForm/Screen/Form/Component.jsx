@@ -11,7 +11,7 @@ import IconButton from 'material-ui/IconButton';
 import Radio from 'material-ui/Radio';
 import TextField from 'material-ui/TextField';
 import SocialPersonAdd from 'material-ui-icons/PersonAdd';
-import { FEMALE, MALE } from 'munchkin-core/es/constants/gender';
+import { FEMALE, MALE } from 'munchkin-core/es/utils/gender';
 
 import { noop, PLAYER_FORM } from '../../../../constants';
 

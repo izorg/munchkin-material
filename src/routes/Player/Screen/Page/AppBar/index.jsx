@@ -9,11 +9,11 @@ import Toolbar from 'material-ui/Toolbar';
 import { withStyles } from 'material-ui/styles';
 import NavigationArrowBack from 'material-ui-icons/ArrowBack';
 
-import { noop } from '../../../../constants';
-import { classesObject } from '../../../../utils/propTypes';
+import { noop } from '../../../../../constants';
+import { classesObject } from '../../../../../utils/propTypes';
 
-import Title from '../../../../components/Title';
-import DiceIconButton from '../../../../containers/DiceButton';
+import Title from '../../../../../components/Title';
+import DiceIconButton from '../../../../../containers/DiceButton';
 
 const mapStateToProps = state => ({
   title: state.players[state.app.activePlayerId].name,

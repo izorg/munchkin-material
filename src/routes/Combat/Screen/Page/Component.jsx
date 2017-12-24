@@ -1,31 +1,18 @@
 import React from 'react';
-import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
-import AppBar from 'material-ui/AppBar';
-import IconButton from 'material-ui/IconButton';
-import Toolbar from 'material-ui/Toolbar';
 import Typography from 'material-ui/Typography';
 import { withStyles } from 'material-ui/styles';
-import NavigationArrowBack from 'material-ui-icons/ArrowBack';
 
-import DiceIconButton from '../../containers/DiceButton';
-import { noop } from '../../constants';
-import { classesObject, monsterInstance, playerInstance } from '../../utils/propTypes';
+import { noop } from '../../../../constants';
+import { classesObject, playerInstance } from '../../../../utils/propTypes';
 
+import Layout, { LayoutContent, LayoutHeader } from '../../../../components/Layout';
+
+import AppBar from './AppBar';
 import MonsterSlider from './MonsterSlider';
 import PlayerSlider from './PlayerSlider';
-import Layout, { LayoutContent, LayoutHeader } from '../Layout';
-import Title from '../Title';
 
 const styles = theme => ({
-  leftButton: {
-    marginLeft: -12,
-  },
-
-  rightButton: {
-    marginRight: -12,
-  },
-
   content: {
     display: 'flex',
     flexDirection: 'column',
@@ -68,13 +55,11 @@ const styles = theme => ({
   },
 });
 
-const Combat = ({
+const CombatScreenPage = ({
   classes,
-  className,
   helper,
   helperBonus,
   monsters,
-  onBack,
   onHelperBonusChange,
   onHelperRemove,
   onMonsterAdd,
@@ -83,24 +68,9 @@ const Combat = ({
   player,
   playerBonus,
 }) => (
-  <Layout className={className}>
+  <Layout>
     <LayoutHeader>
-      <AppBar color="primary" position="static">
-        <Toolbar>
-          <IconButton className={classes.leftButton} color="contrast" onClick={onBack}>
-            <NavigationArrowBack />
-          </IconButton>
-
-          <Title>
-            <FormattedMessage id="combat" defaultMessage="Combat" />
-          </Title>
-
-          <DiceIconButton
-            className={classes.rightButton}
-            color="contrast"
-          />
-        </Toolbar>
-      </AppBar>
+      <AppBar />
     </LayoutHeader>
     <LayoutContent className={classes.content}>
       <PlayerSlider
@@ -135,13 +105,11 @@ const Combat = ({
   </Layout>
 );
 
-Combat.propTypes = {
+CombatScreenPage.propTypes = {
   classes: classesObject.isRequired, // eslint-disable-line react/no-typos
-  className: PropTypes.string,
   helper: playerInstance,
   helperBonus: PropTypes.number,
-  monsters: PropTypes.arrayOf(monsterInstance),
-  onBack: PropTypes.func,
+  monsters: PropTypes.arrayOf(PropTypes.object),
   onHelperBonusChange: PropTypes.func,
   onHelperRemove: PropTypes.func,
   onMonsterAdd: PropTypes.func,
@@ -151,12 +119,10 @@ Combat.propTypes = {
   playerBonus: PropTypes.number,
 };
 
-Combat.defaultProps = {
-  className: '',
+CombatScreenPage.defaultProps = {
   helper: null,
   helperBonus: 0,
   monsters: [],
-  onBack: noop,
   onHelperBonusChange: noop,
   onHelperRemove: noop,
   onMonsterAdd: noop,
@@ -165,4 +131,4 @@ Combat.defaultProps = {
   playerBonus: 0,
 };
 
-export default withStyles(styles)(Combat);
+export default withStyles(styles)(CombatScreenPage);

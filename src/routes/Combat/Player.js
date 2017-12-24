@@ -6,7 +6,7 @@ import {
   incrementPlayerLevel,
 } from 'munchkin-core/es/actions';
 
-import Player from '../../components/Combat/Player';
+import Player from './Screen/Page/Player';
 
 const getBonus = (playerId, combat) => {
   if (playerId === combat.playerId) {

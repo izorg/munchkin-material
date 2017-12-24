@@ -5,10 +5,10 @@ import Route from 'react-router-dom/es/Route';
 import { goBack, push } from 'connected-react-router/lib/actions';
 import PropTypes from 'prop-types';
 import { addMonster } from 'munchkin-core/es/actions';
-import Monster from 'munchkin-core/es/classes/Monster';
+import createMonster from 'munchkin-core/es/utils/createMonster';
 
-import HelperButton from '../../components/fab/HelperButton';
-import Transition from '../../components/fab/Transition';
+import HelperButton from '../../../../components/fab/HelperButton';
+import Transition from '../../../../components/fab/Transition';
 
 const mapStateToProps = state => ({
   helper: !state.combat.helperId && state.playerList.length > 1,
@@ -19,7 +19,7 @@ const mapDispatchToProps = dispatch => ({
   onAdd: playerId => dispatch(push(`/player/${playerId}/combat/add`)),
   onBackdropClick: () => dispatch(goBack()),
   onMonsterAdd: (back) => {
-    dispatch(addMonster(new Monster()));
+    dispatch(addMonster(createMonster()));
 
     if (back) {
       dispatch(goBack());

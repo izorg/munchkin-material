@@ -2,12 +2,10 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Slide from 'material-ui/transitions/Slide';
 
-import HelperButton from '../HelperButton';
-import Combat from '../../../components/Combat';
+import HelperButton from './HelperButton';
+import Page from './Page';
 
-const CombatScreen = ({
-  appear, in: inProp, ...props
-}) => (
+const CombatScreen = ({ appear, in: inProp }) => (
   <Fragment>
     <Slide
       appear={appear}
@@ -16,7 +14,7 @@ const CombatScreen = ({
       mountOnEnter
       unmountOnExit
     >
-      <Combat {...props} />
+      <Page />
     </Slide>
     <HelperButton appear={appear} />
   </Fragment>
