@@ -2,11 +2,11 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import Button from 'material-ui/Button';
 
-import { noop } from '../../constants';
+import { noop } from '../../../../constants/index';
 
-import SwordCross from '../icons/SwordCross';
+import SwordCross from '../../../../components/icons/SwordCross';
 
-class CombatFab extends PureComponent {
+class PlayerScreenCombatButtonComponent extends PureComponent {
   componentWillReceiveProps(nextProps) {
     const { fullVersion, onClick } = nextProps;
 
@@ -30,14 +30,14 @@ class CombatFab extends PureComponent {
   }
 }
 
-CombatFab.propTypes = {
+PlayerScreenCombatButtonComponent.propTypes = {
   fullVersion: PropTypes.bool,
   onClick: PropTypes.func,
 };
 
-CombatFab.defaultProps = {
+PlayerScreenCombatButtonComponent.defaultProps = {
   fullVersion: false,
   onClick: noop,
 };
 
-export default CombatFab;
+export default PlayerScreenCombatButtonComponent;

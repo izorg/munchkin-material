@@ -9,8 +9,8 @@ const Player = () => (
   <Route path="/player/:id">
     {({ match }) => (
       <ScreenLoader
-        in={Boolean(match)}
         loader={loader}
+        match={match}
       />
     )}
   </Route>

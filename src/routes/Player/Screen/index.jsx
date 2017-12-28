@@ -2,27 +2,38 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Slide from 'material-ui/transitions/Slide';
 
+import Transition from '../../../components/fab/Transition';
+
 import CombatButton from './CombatButton';
 import Page from './Page';
 
-const PlayerScreen = ({ appear, in: inProp }) => (
+const PlayerScreen = ({ appear, match }) => (
   <Fragment>
     <Slide
       appear={appear}
       direction="left"
-      in={inProp}
+      in={Boolean(match)}
       mountOnEnter
       unmountOnExit
     >
       <Page />
     </Slide>
-    <CombatButton appear={appear} />
+    <Transition
+      appear={appear}
+      in={Boolean(match) && match.isExact}
+    >
+      <CombatButton appear={appear} />
+    </Transition>
   </Fragment>
 );
 
 PlayerScreen.propTypes = {
   appear: PropTypes.bool.isRequired,
-  in: PropTypes.bool.isRequired,
+  match: PropTypes.object,
+};
+
+PlayerScreen.defaultProps = {
+  match: null,
 };
 
 export default PlayerScreen;

@@ -8,22 +8,24 @@ class ScreenLoader extends PureComponent {
   constructor(props) {
     super(props);
 
+    const isMatch = Boolean(props.match);
+
     this.loadableScreen = Loadable({
       loader: props.loader,
       // page loading with current screen - show loading screen until ready
-      loading: props.in ? LoadingScreen : () => null,
+      loading: isMatch ? LoadingScreen : () => null,
     });
 
     this.state = {
       // no animation if it's a page load, otherwise - show enter animation
-      appear: !props.in,
+      appear: !isMatch,
       // show loading until file loaded on page load
-      ready: props.in,
+      ready: isMatch,
     };
   }
 
   componentWillReceiveProps(nextProps) {
-    if (!this.state.ready && nextProps.in) {
+    if (!this.state.ready && Boolean(nextProps.match)) {
       this.setState({
         ready: true,
       });
@@ -38,8 +40,12 @@ class ScreenLoader extends PureComponent {
 }
 
 ScreenLoader.propTypes = {
-  in: PropTypes.bool.isRequired,
   loader: PropTypes.func.isRequired,
+  match: PropTypes.object,
+};
+
+ScreenLoader.defaultProps = {
+  match: null,
 };
 
 export default ScreenLoader;

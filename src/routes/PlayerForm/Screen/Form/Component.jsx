@@ -18,7 +18,7 @@ import { noop, PLAYER_FORM } from '../../../../constants';
 import GenderFemale from '../../../../components/icons/gender/Female';
 import GenderMale from '../../../../components/icons/gender/Male';
 
-import ColorPicker from '../../ColorPicker';
+import ColorPicker from './ColorPicker';
 
 const messages = defineMessages({
   label: {

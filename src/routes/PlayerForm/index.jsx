@@ -17,8 +17,8 @@ const PlayerForm = ({ path }) => (
   <Route path={path}>
     {({ match }) => (
       <ScreenLoader
-        in={Boolean(match)}
         loader={loader}
+        match={match}
       />
     )}
   </Route>

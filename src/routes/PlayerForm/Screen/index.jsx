@@ -4,11 +4,11 @@ import Slide from 'material-ui/transitions/Slide';
 
 import Component from './Component';
 
-const PlayerFormScreen = ({ appear, in: inProp }) => (
+const PlayerFormScreen = ({ appear, match }) => (
   <Slide
     appear={appear}
     direction="up"
-    in={inProp}
+    in={Boolean(match)}
     mountOnEnter
     unmountOnExit
   >
@@ -18,7 +18,11 @@ const PlayerFormScreen = ({ appear, in: inProp }) => (
 
 PlayerFormScreen.propTypes = {
   appear: PropTypes.bool.isRequired,
-  in: PropTypes.bool.isRequired,
+  match: PropTypes.object,
+};
+
+PlayerFormScreen.defaultProps = {
+  match: null,
 };
 
 export default PlayerFormScreen;
