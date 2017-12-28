@@ -1,7 +1,7 @@
 import brown from 'material-ui/colors/brown';
 import { createMuiTheme } from 'material-ui/styles';
 
-import { ios } from '../helpers/platforms';
+import { ios } from '../utils/platforms';
 
 const theme = {
   overrides: {

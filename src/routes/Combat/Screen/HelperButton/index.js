@@ -6,7 +6,7 @@ import compose from 'recompose/compose';
 import { addMonster } from 'munchkin-core/es/actions';
 import createMonster from 'munchkin-core/es/utils/createMonster';
 
-import HelperButton from '../../../../components/fab/HelperButton';
+import HelperButton from './Component';
 
 const mapStateToProps = (state, ownProps) => ({
   expanded: Boolean(matchPath(ownProps.location.pathname, { path: '/player/:id/combat/add' })),

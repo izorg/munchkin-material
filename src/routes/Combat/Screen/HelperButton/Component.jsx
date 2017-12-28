@@ -12,12 +12,12 @@ import ContentAdd from 'material-ui-icons/Add';
 import SocialPersonAdd from 'material-ui-icons/PersonAdd';
 import cns from 'classnames';
 
-import { noop } from '../../../constants';
-import { classesObject } from '../../../utils/propTypes';
+import { noop } from '../../../../constants';
+import { classesObject } from '../../../../utils/propTypes';
 
 import Fade from './Fade';
-import EmoticonDevil from '../../icons/EmoticonDevil';
-import HelperSelector from '../../../routes/Combat/Screen/Page/HelperSelector/index';
+import EmoticonDevil from '../../../../components/icons/EmoticonDevil';
+import HelperSelector from '../Page/HelperSelector';
 
 const styles = {
   container: {
@@ -62,7 +62,7 @@ const styles = {
   },
 };
 
-class FabHelperButton extends PureComponent {
+class CombatScreenHelperButton extends PureComponent {
   constructor(props) {
     super(props);
 
@@ -154,7 +154,7 @@ class FabHelperButton extends PureComponent {
   }
 }
 
-FabHelperButton.propTypes = {
+CombatScreenHelperButton.propTypes = {
   classes: classesObject.isRequired, // eslint-disable-line react/no-typos
   expanded: PropTypes.bool,
   helper: PropTypes.bool,
@@ -164,7 +164,7 @@ FabHelperButton.propTypes = {
   playerId: PropTypes.string.isRequired,
 };
 
-FabHelperButton.defaultProps = {
+CombatScreenHelperButton.defaultProps = {
   expanded: false,
   helper: false,
   onAdd: noop,
@@ -172,4 +172,4 @@ FabHelperButton.defaultProps = {
   onMonsterAdd: noop,
 };
 
-export default withStyles(styles)(FabHelperButton);
+export default withStyles(styles)(CombatScreenHelperButton);

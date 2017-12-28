@@ -10,11 +10,11 @@ import { withStyles } from 'material-ui/styles';
 import ActionReorder from 'material-ui-icons/Reorder';
 
 import { noop } from '../../../../../../constants';
-import getGenderIconClass from '../../../../../../helpers/getGenderIconClass';
-import { ios } from '../../../../../../helpers/platforms';
+import getGenderIconClass from '../../../../../../utils/getGenderIconClass';
+import { ios } from '../../../../../../utils/platforms';
 import { classesObject, playerInstance } from '../../../../../../utils/propTypes';
 
-import modes from '../../../../modes';
+import * as modes from '../../../../modes';
 
 import PlayerListItemAvatar from './Avatar';
 

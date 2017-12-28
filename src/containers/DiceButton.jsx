@@ -9,11 +9,11 @@ const mapStateToProps = state => ({
   disableTriggerFocus: state.app.disableDiceButtonTooltipTriggerFocus,
 });
 
-const mapDispatchToProps = dispatch => ({
-  onClick: () => {
+const mapDispatchToProps = {
+  onClick: () => (dispatch) => {
     dispatch(throwDice());
     dispatch(push({ search: '?dice' }));
   },
-});
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(IconButton);

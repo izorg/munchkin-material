@@ -23,10 +23,10 @@ const mapStateToProps = state => ({
     <FormattedMessage id="player.form.title" defaultMessage="New munchkin" />,
 });
 
-const mapDispatchToProps = dispatch => ({
-  onCancel: () => dispatch(goBack()),
-  onSubmit: () => dispatch(formActions.submit(PLAYER_FORM)),
-});
+const mapDispatchToProps = {
+  onCancel: goBack,
+  onSubmit: () => formActions.submit(PLAYER_FORM),
+};
 
 const styles = {
   leftButton: {

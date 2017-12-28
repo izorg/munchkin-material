@@ -12,13 +12,13 @@ const mapStateToProps = state => ({
     .map(id => state.players[id]),
 });
 
-const mapDispatchToProps = dispatch => ({
-  onClose: () => dispatch(goBack()),
-  onSelect: (id) => {
+const mapDispatchToProps = {
+  onClose: goBack,
+  onSelect: id => (dispatch) => {
     dispatch(setCombatHelper(id));
     dispatch(go(-2));
   },
-});
+};
 
 const CombatHelperSelector = props => (
   <Route exact path="/player/:id/combat/add/helper">

@@ -19,10 +19,10 @@ import { removePlayer } from 'munchkin-core/es/actions';
 import { unselectAllPlayers } from '../../../../../actions';
 import Title from '../../../../../components/Title';
 import { noop } from '../../../../../constants';
-import { ios } from '../../../../../helpers/platforms';
+import { ios } from '../../../../../utils/platforms';
 import { classesObject } from '../../../../../utils/propTypes';
 
-import modes from '../../../modes';
+import * as modes from '../../../modes';
 import { getModeFromPathname } from '../../../path';
 
 const mapStateToProps = state => ({
@@ -31,25 +31,25 @@ const mapStateToProps = state => ({
   selectedPlayerIds: state.app.selectedPlayerIds,
 });
 
-const mapDispatchToProps = dispatch => ({
-  onMultiSelectDeactivate: () => {
+const mapDispatchToProps = {
+  onMultiSelectDeactivate: () => (dispatch) => {
     dispatch(unselectAllPlayers());
     dispatch(goBack());
   },
-  onPlayersDelete: (selectedPlayerIds) => {
+  onPlayersDelete: selectedPlayerIds => (dispatch) => {
     selectedPlayerIds.forEach((id) => {
       dispatch(removePlayer(id));
     });
     dispatch(goBack());
   },
-  onToggleEditClick: (mode) => {
+  onToggleEditClick: mode => (dispatch) => {
     if (mode === modes.EDIT) {
       dispatch(goBack());
     } else {
       dispatch(push(`/${modes.EDIT}`));
     }
   },
-});
+};
 
 const messages = defineMessages({
   edit: {

@@ -2,7 +2,7 @@ import connect from 'react-redux/es/connect/connect';
 import { MALE } from 'munchkin-core/es/utils/gender';
 
 import { importContact, submitPlayer } from '../../../../actions';
-import getRandomMaterialColor from '../../../../helpers/getRandomMaterialColor';
+import getRandomMaterialColor from '../../../../utils/getRandomMaterialColor';
 
 import Component from './Component';
 

@@ -19,12 +19,12 @@ const mapStateToProps = ({
   playerBonus: combat.playerBonus,
 });
 
-const mapDispatchToProps = dispatch => ({
-  onHelperBonusChange: bonus => dispatch(setCombatHelperBonus(bonus)),
-  onHelperRemove: () => dispatch(removeHelper()),
+const mapDispatchToProps = {
+  onHelperBonusChange: setCombatHelperBonus,
+  onHelperRemove: removeHelper,
   onMonsterAdd: () => addMonster(createMonster()),
-  onMonsterRemove: id => dispatch(removeMonster(id)),
-  onPlayerBonusChange: bonus => dispatch(setCombatPlayerBonus(bonus)),
-});
+  onMonsterRemove: removeMonster,
+  onPlayerBonusChange: setCombatPlayerBonus,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Component);

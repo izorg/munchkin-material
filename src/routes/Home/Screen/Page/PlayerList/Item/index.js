@@ -2,7 +2,7 @@ import connect from 'react-redux/es/connect/connect';
 import { goBack, push } from 'connected-react-router/lib/actions';
 
 import { setActivePlayer, togglePlayer, unselectAllPlayers } from '../../../../../../actions';
-import modes from '../../../../modes';
+import * as modes from '../../../../modes';
 import { getModeFromPathname } from '../../../../path';
 
 import Component from './Component';

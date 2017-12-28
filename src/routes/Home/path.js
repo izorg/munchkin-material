@@ -1,6 +1,6 @@
 import matchPath from 'react-router-dom/es/matchPath';
 
-import modes from './modes';
+import * as modes from './modes';
 
 const path = `/:mode(${Object.values(modes).join('|')})?`;
 
