@@ -1,6 +1,15 @@
 import formActions from 'redux-form/es/actions';
 import { goBack, push } from 'connected-react-router/lib/actions';
-import { addMonster, addPlayer, setCombatHelper, setCombatHelperBonus, startCombat, updatePlayer } from 'munchkin-core/es/actions';
+import {
+  addMonster,
+  addPlayer,
+  setCombatHelper,
+  setCombatHelperBonus,
+  startCombat,
+  setPlayerGender,
+  updatePlayer,
+} from 'munchkin-core/es/actions';
+import { FEMALE, MALE } from 'munchkin-core/es/utils/gender';
 import createMonster from 'munchkin-core/es/utils/createMonster';
 import createPlayer from 'munchkin-core/es/utils/createPlayer';
 
@@ -109,6 +118,18 @@ export const togglePlayer = id => ({
   type: types.TOGGLE_PLAYER,
   id,
 });
+
+export const togglePlayerGender = id => (dispatch, getState) => {
+  const player = getState().players[id];
+  const { gender } = player;
+
+
+  if (gender === MALE) {
+    dispatch(setPlayerGender(id, FEMALE));
+  } else if (gender === FEMALE) {
+    dispatch(setPlayerGender(id, MALE));
+  }
+};
 
 export const unselectAllPlayers = () => ({
   type: types.UNSELECT_ALL_PLAYERS,

@@ -1,8 +1,13 @@
 import connect from 'react-redux/es/connect/connect';
 import { goBack, push } from 'connected-react-router/lib/actions';
 
-import { setActivePlayer, togglePlayer, unselectAllPlayers } from '../../../../../../actions';
-import * as modes from '../../../../modes';
+import {
+  setActivePlayer,
+  togglePlayer,
+  togglePlayerGender,
+  unselectAllPlayers,
+} from '../../../../../../actions';
+import { EDIT, MULTI } from '../../../../modes';
 import { getModeFromPathname } from '../../../../path';
 
 import Component from './Component';
@@ -15,31 +20,31 @@ const mapStateToProps = (state, ownProps) => {
     color: state.playerColors[playerId],
     mode,
     player: state.players[playerId],
-    selected: mode === modes.MULTI && state.app.selectedPlayerIds.includes(playerId),
+    selected: mode === MULTI && state.app.selectedPlayerIds.includes(playerId),
   };
 };
 
 const onPress = playerId => (dispatch, getState) => {
   const mode = getModeFromPathname(getState().router.location.pathname);
 
-  if (mode !== modes.EDIT) {
+  if (mode !== EDIT) {
     if (navigator.vibrate) {
       navigator.vibrate(20);
     }
 
     dispatch(unselectAllPlayers());
     dispatch(togglePlayer(playerId));
-    dispatch(push(`/${modes.MULTI}`));
+    dispatch(push(`/${MULTI}`));
   }
 };
 
 const onTap = playerId => (dispatch, getState) => {
   const mode = getModeFromPathname(getState().router.location.pathname);
 
-  if (mode === modes.EDIT) {
+  if (mode === EDIT) {
     dispatch(setActivePlayer(playerId));
-    dispatch(push(`/${modes.EDIT}/${playerId}`));
-  } else if (mode === modes.MULTI) {
+    dispatch(push(`/${EDIT}/${playerId}`));
+  } else if (mode === MULTI) {
     const { app: { selectedPlayerIds } } = getState();
 
     if (selectedPlayerIds.length === 1 && selectedPlayerIds[0] === playerId) {
@@ -53,7 +58,19 @@ const onTap = playerId => (dispatch, getState) => {
   }
 };
 
+const onAvatarTap = playerId => (dispatch, getState) => {
+  const mode = getModeFromPathname(getState().router.location.pathname);
+
+  if (!mode) {
+    dispatch(onPress(playerId));
+  } else {
+    dispatch(onTap(playerId));
+  }
+};
+
 const mapDispatchToProps = {
+  onAvatarTap,
+  onGenderToggle: togglePlayerGender,
   onPress,
   onTap,
 };

@@ -63,12 +63,22 @@ class HomeScreenPagePlayerListItemComponent extends PureComponent {
         <div>{children}</div>
       </Hammer>
     );
+
+    this.avatarComponent = params => (
+      <div {...params} ref={(node) => { this.avatarNode = node; }} />
+    );
   }
 
-  handleTap() {
-    const { onTap, player } = this.props;
+  handleTap(e) {
+    const { onAvatarTap, onTap, player } = this.props;
 
-    onTap(player.id);
+    // console.log('tap', this.avatarNode, e.target);
+
+    if (e.target === this.avatarNode) {
+      onAvatarTap(player.id);
+    } else {
+      onTap(player.id);
+    }
   }
 
   handlePress() {
@@ -79,7 +89,7 @@ class HomeScreenPagePlayerListItemComponent extends PureComponent {
 
   render() {
     const {
-      classes, color, player, selected, mode,
+      classes, color, mode, onGenderToggle, player, selected,
     } = this.props;
     const GenderIcon = getGenderIconClass(player.gender);
 
@@ -93,6 +103,7 @@ class HomeScreenPagePlayerListItemComponent extends PureComponent {
       >
         <Avatar
           color={color}
+          component={this.avatarComponent}
           name={player.name}
           selected={selected}
         />
@@ -126,11 +137,11 @@ class HomeScreenPagePlayerListItemComponent extends PureComponent {
             root: classes.listItemSecondaryActionRoot,
           }}
         >
-          <IconButton component="span" disableRipple>
+          <IconButton component="span" disableRipple={mode === modes.EDIT}>
             {mode === modes.EDIT ? (
               <ItemHandle />
             ) : (
-              <GenderIcon onClick={this.handleTap} />
+              <GenderIcon onClick={() => onGenderToggle(player.id)} />
             )}
           </IconButton>
         </ListItemSecondaryAction>
@@ -143,6 +154,8 @@ HomeScreenPagePlayerListItemComponent.propTypes = {
   classes: classesObject.isRequired, // eslint-disable-line react/no-typos
   color: PropTypes.string,
   mode: PropTypes.oneOf(Object.values(modes)),
+  onAvatarTap: PropTypes.func,
+  onGenderToggle: PropTypes.func,
   onPress: PropTypes.func,
   onTap: PropTypes.func,
   player: playerInstance.isRequired, // eslint-disable-line react/no-typos
@@ -152,6 +165,8 @@ HomeScreenPagePlayerListItemComponent.propTypes = {
 HomeScreenPagePlayerListItemComponent.defaultProps = {
   color: '',
   mode: null,
+  onAvatarTap: noop,
+  onGenderToggle: noop,
   onPress: noop,
   onTap: noop,
   selected: false,
