@@ -19,8 +19,27 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-const selectPlayer = (playerId, mode) => (dispatch, getState) => {
-  if (mode === modes.MULTI) {
+const onPress = playerId => (dispatch, getState) => {
+  const mode = getModeFromPathname(getState().router.location.pathname);
+
+  if (mode !== modes.EDIT) {
+    if (navigator.vibrate) {
+      navigator.vibrate(20);
+    }
+
+    dispatch(unselectAllPlayers());
+    dispatch(togglePlayer(playerId));
+    dispatch(push(`/${modes.MULTI}`));
+  }
+};
+
+const onTap = playerId => (dispatch, getState) => {
+  const mode = getModeFromPathname(getState().router.location.pathname);
+
+  if (mode === modes.EDIT) {
+    dispatch(setActivePlayer(playerId));
+    dispatch(push(`/${modes.EDIT}/${playerId}`));
+  } else if (mode === modes.MULTI) {
     const { app: { selectedPlayerIds } } = getState();
 
     if (selectedPlayerIds.length === 1 && selectedPlayerIds[0] === playerId) {
@@ -35,22 +54,8 @@ const selectPlayer = (playerId, mode) => (dispatch, getState) => {
 };
 
 const mapDispatchToProps = {
-  onCheck: selectPlayer,
-  onClick: (playerId, mode) => (dispatch) => {
-    if (mode === modes.EDIT) {
-      dispatch(setActivePlayer(playerId));
-      dispatch(push(`/${modes.EDIT}/${playerId}`));
-    } else {
-      dispatch(selectPlayer(playerId, mode));
-    }
-  },
-  onPress: (playerId, mode) => (dispatch) => {
-    if (mode !== modes.EDIT) {
-      dispatch(unselectAllPlayers());
-      dispatch(togglePlayer(playerId));
-      dispatch(push(`/${modes.MULTI}`));
-    }
-  },
+  onPress,
+  onTap,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Component);

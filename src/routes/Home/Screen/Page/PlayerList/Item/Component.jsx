@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
+import Hammer from 'react-hammerjs';
 import { FormattedMessage } from 'react-intl';
 import { SortableHandle } from 'react-sortable-hoc';
-import Tappable from 'react-tappable/lib/Tappable';
 import PropTypes from 'prop-types';
 import IconButton from 'material-ui/IconButton';
 import { ListItem, ListItemSecondaryAction, ListItemText } from 'material-ui/List';
@@ -11,14 +11,12 @@ import ActionReorder from 'material-ui-icons/Reorder';
 
 import { noop } from '../../../../../../constants';
 import getGenderIconClass from '../../../../../../utils/getGenderIconClass';
-import { ios } from '../../../../../../utils/platforms';
 import { classesObject, playerInstance } from '../../../../../../utils/propTypes';
 
 import * as modes from '../../../../modes';
 
-import PlayerListItemAvatar from './Avatar';
+import Avatar from './Avatar';
 
-const Container = props => <Tappable component="div" pressDelay={500} {...props} />;
 const ItemHandle = SortableHandle(ActionReorder);
 
 const styles = theme => ({
@@ -40,39 +38,43 @@ const styles = theme => ({
 });
 
 class HomeScreenPagePlayerListItemComponent extends PureComponent {
-  componentWillMount() {
-    this.handleClick = this.handleClick.bind(this);
+  constructor(props) {
+    super(props);
+
+    this.handleTap = this.handleTap.bind(this);
     this.handlePress = this.handlePress.bind(this);
+
+    this.container = ({ children, ...rest }) => (
+      <Hammer
+        {...rest}
+        onPress={this.handlePress}
+        onTap={this.handleTap}
+        options={{
+          recognizers: {
+            press: {
+              time: 501,
+            },
+            tap: {
+              time: 500,
+            },
+          },
+        }}
+      >
+        <div>{children}</div>
+      </Hammer>
+    );
   }
 
-  handlePress(e) {
-    const { mode, onPress, player } = this.props;
+  handleTap() {
+    const { onTap, player } = this.props;
 
-    if (navigator.vibrate) {
-      navigator.vibrate(20);
-    }
-
-    onPress(player.id, mode);
-
-    if (ios || e.type === 'mousedown') {
-      this.preventClick = true;
-    }
+    onTap(player.id);
   }
 
-  handleClick() {
-    const {
-      mode, onCheck, onClick, player,
-    } = this.props;
+  handlePress() {
+    const { onPress, player } = this.props;
 
-    if (mode === modes.MULTI) {
-      if (this.preventClick) {
-        delete this.preventClick;
-      } else {
-        onCheck(player.id, mode);
-      }
-    } else {
-      onClick(player.id, mode);
-    }
+    onPress(player.id);
   }
 
   render() {
@@ -87,11 +89,9 @@ class HomeScreenPagePlayerListItemComponent extends PureComponent {
         classes={{
           gutters: classes.listItemGutters,
         }}
-        component={Container}
-        onClick={this.handleClick}
-        onPress={!mode ? this.handlePress : undefined}
+        component={this.container}
       >
-        <PlayerListItemAvatar
+        <Avatar
           color={color}
           name={player.name}
           selected={selected}
@@ -130,7 +130,7 @@ class HomeScreenPagePlayerListItemComponent extends PureComponent {
             {mode === modes.EDIT ? (
               <ItemHandle />
             ) : (
-              <GenderIcon onClick={this.handleClick} />
+              <GenderIcon onClick={this.handleTap} />
             )}
           </IconButton>
         </ListItemSecondaryAction>
@@ -143,9 +143,8 @@ HomeScreenPagePlayerListItemComponent.propTypes = {
   classes: classesObject.isRequired, // eslint-disable-line react/no-typos
   color: PropTypes.string,
   mode: PropTypes.oneOf(Object.values(modes)),
-  onCheck: PropTypes.func,
-  onClick: PropTypes.func,
   onPress: PropTypes.func,
+  onTap: PropTypes.func,
   player: playerInstance.isRequired, // eslint-disable-line react/no-typos
   selected: PropTypes.bool,
 };
@@ -153,9 +152,8 @@ HomeScreenPagePlayerListItemComponent.propTypes = {
 HomeScreenPagePlayerListItemComponent.defaultProps = {
   color: '',
   mode: null,
-  onCheck: noop,
-  onClick: noop,
   onPress: noop,
+  onTap: noop,
   selected: false,
 };
 

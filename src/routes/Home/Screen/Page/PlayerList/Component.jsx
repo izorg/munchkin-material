@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import { SortableContainer, SortableElement } from 'react-sortable-hoc';
 import PropTypes from 'prop-types';
 import List from 'material-ui/List';
@@ -20,25 +20,41 @@ const styles = theme => ({
   },
 });
 
-const HomeScreenPagePlayerList = ({ classes, onPlayerMove, playerList }) => (
-  <SortableList
-    component="div"
-    helperClass={classes.sortableHelper}
-    lockAxis="y"
-    lockOffset={0}
-    lockToContainerEdges
-    onSortEnd={({ oldIndex, newIndex }) => onPlayerMove(oldIndex, newIndex)}
-    useDragHandle
-  >
-    {playerList.map((playerId, index) => (
-      <SortableListItem
-        index={index}
-        key={playerId}
-        playerId={playerId}
-      />
-    ))}
-  </SortableList>
-);
+class HomeScreenPagePlayerList extends PureComponent {
+  constructor(props) {
+    super(props);
+
+    this.handleSortEnd = this.handleSortEnd.bind(this);
+  }
+
+  handleSortEnd({ oldIndex, newIndex }) {
+    this.props.onPlayerMove(oldIndex, newIndex);
+  }
+
+  render() {
+    const { classes, playerList } = this.props;
+
+    return (
+      <SortableList
+        component="div"
+        helperClass={classes.sortableHelper}
+        lockAxis="y"
+        lockOffset={0}
+        lockToContainerEdges
+        onSortEnd={this.handleSortEnd}
+        useDragHandle
+      >
+        {playerList.map((playerId, index) => (
+          <SortableListItem
+            index={index}
+            key={playerId}
+            playerId={playerId}
+          />
+        ))}
+      </SortableList>
+    );
+  }
+}
 
 HomeScreenPagePlayerList.propTypes = {
   classes: classesObject.isRequired, // eslint-disable-line react/no-typos
