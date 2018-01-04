@@ -62,7 +62,9 @@ const onAvatarTap = playerId => (dispatch, getState) => {
   const mode = getModeFromPathname(getState().router.location.pathname);
 
   if (!mode) {
-    dispatch(onPress(playerId));
+    dispatch(unselectAllPlayers());
+    dispatch(togglePlayer(playerId));
+    dispatch(push(`/${MULTI}`));
   } else {
     dispatch(onTap(playerId));
   }
