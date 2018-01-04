@@ -1,8 +1,7 @@
 import React from 'react';
 import CSSTransition from 'react-transition-group/CSSTransition';
-import compose from 'recompose/compose';
 import PropTypes from 'prop-types';
-import { withStyles, withTheme } from 'material-ui/styles';
+import { withStyles } from 'material-ui/styles';
 
 import { classesObject, themeObject } from '../../utils/propTypes';
 
@@ -77,7 +76,4 @@ Transition.defaultProps = {
   children: null,
 };
 
-export default compose(
-  withStyles(styles),
-  withTheme(),
-)(Transition);
+export default withStyles(styles, { withTheme: true })(Transition);

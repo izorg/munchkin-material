@@ -1,7 +1,6 @@
 import React from 'react';
 import CSSTransition from 'react-transition-group/CSSTransition';
-import compose from 'recompose/compose';
-import { withStyles, withTheme } from 'material-ui/styles';
+import { withStyles } from 'material-ui/styles';
 
 import { classesObject, themeObject } from '../../../../../utils/propTypes';
 
@@ -56,7 +55,4 @@ FabHelperButtonFade.propTypes = {
   theme: themeObject.isRequired, // eslint-disable-line react/no-typos
 };
 
-export default compose(
-  withStyles(styles),
-  withTheme(),
-)(FabHelperButtonFade);
+export default withStyles(styles, { withTheme: true })(FabHelperButtonFade);

@@ -1,7 +1,6 @@
 import React from 'react';
 import CSSTransition from 'react-transition-group/CSSTransition';
-import { withStyles, withTheme } from 'material-ui/styles';
-import compose from 'recompose/compose';
+import { withStyles } from 'material-ui/styles';
 
 import { classesObject, themeObject } from '../../utils/propTypes';
 
@@ -65,7 +64,4 @@ DiceTransition.propTypes = {
   theme: themeObject.isRequired, // eslint-disable-line react/no-typos
 };
 
-export default compose(
-  withStyles(styles),
-  withTheme(),
-)(DiceTransition);
+export default withStyles(styles, { withTheme: true })(DiceTransition);
