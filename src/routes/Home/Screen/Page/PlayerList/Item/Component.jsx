@@ -72,8 +72,6 @@ class HomeScreenPagePlayerListItemComponent extends PureComponent {
   handleTap(e) {
     const { onAvatarTap, onTap, player } = this.props;
 
-    // console.log('tap', this.avatarNode, e.target);
-
     if (e.target === this.avatarNode) {
       onAvatarTap(player.id);
     } else {
@@ -137,7 +135,7 @@ class HomeScreenPagePlayerListItemComponent extends PureComponent {
             root: classes.listItemSecondaryActionRoot,
           }}
         >
-          <IconButton component="span" disableRipple={mode === modes.EDIT}>
+          <IconButton component="span" disableRipple={Boolean(mode)}>
             {mode === modes.EDIT ? (
               <ItemHandle />
             ) : (

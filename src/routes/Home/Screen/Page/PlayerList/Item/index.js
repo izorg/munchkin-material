@@ -70,9 +70,19 @@ const onAvatarTap = playerId => (dispatch, getState) => {
   }
 };
 
+const onGenderToggle = playerId => (dispatch, getState) => {
+  const mode = getModeFromPathname(getState().router.location.pathname);
+
+  if (!mode) {
+    dispatch(togglePlayerGender(playerId));
+  } else {
+    dispatch(onTap(playerId));
+  }
+};
+
 const mapDispatchToProps = {
   onAvatarTap,
-  onGenderToggle: togglePlayerGender,
+  onGenderToggle,
   onPress,
   onTap,
 };
