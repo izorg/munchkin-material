@@ -18,7 +18,7 @@ import { removePlayer } from 'munchkin-core/es/actions';
 
 import { unselectAllPlayers } from '../../../../../actions';
 import Title from '../../../../../components/Title';
-import { noop } from '../../../../../constants';
+import noop from '../../../../../utils/noop';
 import { ios } from '../../../../../utils/platforms';
 import { classesObject } from '../../../../../utils/propTypes';
 

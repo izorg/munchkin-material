@@ -7,7 +7,7 @@ import Dialog, { DialogContent, DialogTitle } from 'material-ui/Dialog';
 import * as colors from 'material-ui/colors';
 import { withStyles } from 'material-ui/styles';
 
-import { noop } from '../../constants';
+import noop from '../../utils/noop';
 import { classesObject } from '../../utils/propTypes';
 
 const { common, yellow, ...availableColors } = colors;

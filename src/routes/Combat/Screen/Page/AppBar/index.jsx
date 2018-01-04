@@ -10,7 +10,7 @@ import Toolbar from 'material-ui/Toolbar';
 import { withStyles } from 'material-ui/styles';
 import NavigationArrowBack from 'material-ui-icons/ArrowBack';
 
-import { noop } from '../../../../../constants';
+import noop from '../../../../../utils/noop';
 import DiceIconButton from '../../../../../containers/DiceButton';
 import { classesObject } from '../../../../../utils/propTypes';
 

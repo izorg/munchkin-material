@@ -9,7 +9,7 @@ import Typography from 'material-ui/Typography';
 import { withStyles } from 'material-ui/styles';
 import ActionReorder from 'material-ui-icons/Reorder';
 
-import { noop } from '../../../../../../constants';
+import noop from '../../../../../../utils/noop';
 import getGenderIconClass from '../../../../../../utils/getGenderIconClass';
 import { classesObject, playerInstance } from '../../../../../../utils/propTypes';
 

@@ -12,7 +12,7 @@ import ContentAdd from 'material-ui-icons/Add';
 import SocialPersonAdd from 'material-ui-icons/PersonAdd';
 import cns from 'classnames';
 
-import { noop } from '../../../../constants';
+import noop from '../../../../utils/noop';
 import { classesObject } from '../../../../utils/propTypes';
 
 import Fade from './Fade';

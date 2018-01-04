@@ -6,7 +6,7 @@ import NavigationArrowDropDown from 'material-ui-icons/ArrowDropDown';
 import NavigationArrowDropUp from 'material-ui-icons/ArrowDropUp';
 import cns from 'classnames';
 
-import { noop } from '../../constants';
+import noop from '../../utils/noop';
 import { classesObject } from '../../utils/propTypes';
 
 const styles = theme => ({

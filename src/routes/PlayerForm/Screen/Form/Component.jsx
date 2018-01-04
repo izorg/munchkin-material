@@ -13,7 +13,8 @@ import TextField from 'material-ui/TextField';
 import SocialPersonAdd from 'material-ui-icons/PersonAdd';
 import { FEMALE, MALE } from 'munchkin-core/es/utils/gender';
 
-import { noop, PLAYER_FORM } from '../../../../constants';
+import { PLAYER_FORM } from '../../../../constants';
+import noop from '../../../../utils/noop';
 
 import GenderFemale from '../../../../components/icons/gender/Female';
 import GenderMale from '../../../../components/icons/gender/Male';

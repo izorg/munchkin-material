@@ -14,7 +14,7 @@ import createMonster from 'munchkin-core/es/utils/createMonster';
 import createPlayer from 'munchkin-core/es/utils/createPlayer';
 
 import { PLAYER_FORM } from '../constants';
-import * as types from '../constants/actionTypes';
+import * as types from '../utils/actionTypes';
 
 export const disableDiceButtonTooltipTriggerFocus = () => ({
   type: types.DISABLE_DICE_BUTTON_TOOLTIP_TRIGGER_FOCUS,

@@ -7,7 +7,7 @@ import cns from 'classnames';
 
 import Counter from '../../../../../../components/Counter';
 import Gender from '../../../../../../components/Gender';
-import { noop } from '../../../../../../constants';
+import noop from '../../../../../../utils/noop';
 import { classesObject, playerInstance } from '../../../../../../utils/propTypes';
 
 const styles = theme => ({

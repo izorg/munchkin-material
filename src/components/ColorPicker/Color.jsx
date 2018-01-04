@@ -4,7 +4,7 @@ import Avatar from 'material-ui/Avatar';
 import ButtonBase from 'material-ui/ButtonBase';
 import { withStyles } from 'material-ui/styles';
 
-import { noop } from '../../constants';
+import noop from '../../utils/noop';
 import { classesObject } from '../../utils/propTypes';
 
 const styles = {

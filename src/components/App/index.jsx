@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import { MuiThemeProvider, withStyles } from 'material-ui/styles';
 
 import Root from '../../routes/Root';
-import { noop } from '../../constants';
+import noop from '../../utils/noop';
 import LocaleProvider from '../../containers/LocaleProvider';
 import munchkinWoff from '../../fonts/munchkin.woff';
 import munchkinWoff2 from '../../fonts/munchkin.woff2';

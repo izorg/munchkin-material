@@ -6,7 +6,7 @@ import List, { ListItem, ListItemText } from 'material-ui/List';
 import Typography from 'material-ui/Typography';
 import { withStyles } from 'material-ui/styles';
 
-import { noop } from '../../../../../constants';
+import noop from '../../../../../utils/noop';
 import { classesObject } from '../../../../../utils/propTypes';
 
 const styles = {

@@ -1,6 +1,6 @@
 import { REMOVE_PLAYER } from 'munchkin-core/es/utils/actionTypes';
 
-import { SET_PLAYER_COLOR } from '../../constants/actionTypes';
+import { SET_PLAYER_COLOR } from '../../utils/actionTypes';
 
 import reducer from '../playerColors';
 

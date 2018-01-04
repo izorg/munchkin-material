@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
-import { noop } from '../../constants';
+import noop from '../../utils/noop';
 
 import Color from './Color';
 import Dialog from './Dialog';

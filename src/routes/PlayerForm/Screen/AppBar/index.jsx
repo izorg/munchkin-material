@@ -12,7 +12,8 @@ import { withStyles } from 'material-ui/styles';
 import NavigationArrowBack from 'material-ui-icons/ArrowBack';
 import NavigationCheck from 'material-ui-icons/Check';
 
-import { noop, PLAYER_FORM } from '../../../../constants';
+import { PLAYER_FORM } from '../../../../constants';
+import noop from '../../../../utils/noop';
 import { classesObject } from '../../../../utils/propTypes';
 
 import Title from '../../../../components/Title';

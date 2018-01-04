@@ -5,7 +5,7 @@ import Typography from 'material-ui/Typography';
 import { withStyles } from 'material-ui/styles';
 
 import Counter from '../../../../../components/Counter';
-import { noop } from '../../../../../constants';
+import noop from '../../../../../utils/noop';
 import { classesObject, monsterInstance } from '../../../../../utils/propTypes';
 
 const styles = {

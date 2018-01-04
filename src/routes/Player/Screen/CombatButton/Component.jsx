@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import Button from 'material-ui/Button';
 
-import { noop } from '../../../../constants/index';
+import noop from '../../../../utils/noop';
 
 import SwordCross from '../../../../components/icons/SwordCross';
 

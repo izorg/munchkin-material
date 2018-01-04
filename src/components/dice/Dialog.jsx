@@ -7,7 +7,7 @@ import { withStyles } from 'material-ui/styles';
 
 import DiceTransition from './Transition';
 
-import { noop } from '../../constants';
+import noop from '../../utils/noop';
 import DiceOne from '../icons/dice/one';
 import DiceTwo from '../icons/dice/two';
 import DiceThree from '../icons/dice/three';

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import List from 'material-ui/List';
 import { withStyles } from 'material-ui/styles';
 
-import { noop } from '../../../../../constants';
+import noop from '../../../../../utils/noop';
 import { classesObject } from '../../../../../utils/propTypes';
 
 import Item from './Item';

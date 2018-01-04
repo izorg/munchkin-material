@@ -24,10 +24,6 @@
     "node": ">=8"
   },
   "jest": {
-    "coveragePathIgnorePatterns": [
-      "./src/constants/",
-      "/node_modules/"
-    ],
     "notify": true,
     "transformIgnorePatterns": [
       "node_modules/(?!(munchkin-core|react-router-redux/es|redux-form/es|lodash-es|history/es)/)"

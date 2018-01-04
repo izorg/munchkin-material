@@ -5,7 +5,7 @@ import { withStyles } from 'material-ui/styles';
 import Typography from 'material-ui/Typography';
 
 import Counter from '../../../../../components/Counter';
-import { noop } from '../../../../../constants';
+import noop from '../../../../../utils/noop';
 import { classesObject, playerInstance } from '../../../../../utils/propTypes';
 
 const styles = {

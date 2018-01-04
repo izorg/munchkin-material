@@ -8,7 +8,7 @@ import Paper from 'material-ui/Paper';
 import { withStyles } from 'material-ui/styles';
 import cns from 'classnames';
 
-import { noop } from '../../../../../constants';
+import noop from '../../../../../utils/noop';
 import { classesObject } from '../../../../../utils/propTypes';
 
 import CloseCircle from '../../../../../components/icons/CloseCircle';

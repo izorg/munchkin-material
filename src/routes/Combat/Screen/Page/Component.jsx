@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Typography from 'material-ui/Typography';
 import { withStyles } from 'material-ui/styles';
 
-import { noop } from '../../../../constants';
+import noop from '../../../../utils/noop';
 import { classesObject, playerInstance } from '../../../../utils/propTypes';
 
 import Layout, { LayoutContent, LayoutHeader } from '../../../../components/Layout';
