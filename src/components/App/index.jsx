@@ -3,6 +3,7 @@ import Provider from 'react-redux/es/components/Provider';
 import { storeShape } from 'react-redux/es/utils/PropTypes';
 import { ConnectedRouter } from 'connected-react-router';
 import PropTypes from 'prop-types';
+import Reboot from 'material-ui/Reboot';
 import { MuiThemeProvider, withStyles } from 'material-ui/styles';
 
 import Root from '../../routes/Root';
@@ -28,13 +29,10 @@ const styles = {
       lineHeight: 1.15,
       overflow: 'hidden',
       textSizeAdjust: '100%',
-      '-moz-osx-font-smoothing': 'grayscale',
-      '-webkit-font-smoothing': 'antialiased',
     },
 
     body: {
       height: '100%',
-      margin: 0,
       overflow: 'hidden',
       userSelect: 'none',
       width: '100%',
@@ -63,9 +61,11 @@ class App extends PureComponent {
       <Provider store={store}>
         <LocaleProvider>
           <MuiThemeProvider theme={munchkinTheme}>
-            <ConnectedRouter history={history}>
-              <Root />
-            </ConnectedRouter>
+            <Reboot>
+              <ConnectedRouter history={history}>
+                <Root />
+              </ConnectedRouter>
+            </Reboot>
           </MuiThemeProvider>
         </LocaleProvider>
       </Provider>
