@@ -16,7 +16,6 @@ import ActionDelete from 'material-ui-icons/Delete';
 import EditorModeEdit from 'material-ui-icons/ModeEdit';
 import { removePlayer } from 'munchkin-core/es/actions';
 
-import { unselectAllPlayers } from '../../../../../actions';
 import Title from '../../../../../components/Title';
 import noop from '../../../../../utils/noop';
 import { ios } from '../../../../../utils/platforms';
@@ -32,10 +31,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-  onMultiSelectDeactivate: () => (dispatch) => {
-    dispatch(unselectAllPlayers());
-    dispatch(goBack());
-  },
+  onMultiSelectDeactivate: goBack,
   onPlayersDelete: selectedPlayerIds => (dispatch) => {
     selectedPlayerIds.forEach((id) => {
       dispatch(removePlayer(id));
