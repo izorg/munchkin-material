@@ -4,7 +4,7 @@ import { FormattedMessage } from 'react-intl';
 import { SortableHandle } from 'react-sortable-hoc';
 import PropTypes from 'prop-types';
 import IconButton from 'material-ui/IconButton';
-import { ListItem, ListItemSecondaryAction, ListItemText } from 'material-ui/List';
+import { ListItem, ListItemIcon, ListItemSecondaryAction, ListItemText } from 'material-ui/List';
 import Typography from 'material-ui/Typography';
 import { withStyles } from 'material-ui/styles';
 import ActionReorder from 'material-ui-icons/Reorder';
@@ -23,6 +23,7 @@ const styles = theme => ({
   listItemGutters: {
     [theme.breakpoints.up('sm')]: {
       paddingLeft: 24,
+      paddingRight: 24,
     },
   },
 
@@ -35,14 +36,18 @@ const styles = theme => ({
   text: {
     overflow: 'hidden',
   },
+
+  rightIcon: {
+    marginRight: 0,
+  },
 });
 
 class HomeScreenPagePlayerListItemComponent extends PureComponent {
   constructor(props) {
     super(props);
 
-    this.handleTap = this.handleTap.bind(this);
     this.handlePress = this.handlePress.bind(this);
+    this.handleTap = this.handleTap.bind(this);
 
     this.container = ({ children, ...rest }) => (
       <Hammer
@@ -65,29 +70,46 @@ class HomeScreenPagePlayerListItemComponent extends PureComponent {
     );
 
     this.avatarComponent = params => (
-      <div {...params} ref={(node) => { this.avatarNode = node; }} />
+      <div
+        {...params}
+        ref={(node) => {
+          this.avatarNode = node;
+        }}
+      />
     );
   }
 
   handleTap(e) {
-    const { onAvatarTap, onTap, player } = this.props;
+    const {
+      mode, onMultiSelectActivate, onPlayerEdit, onPlayerSelect, onPlayerToggle, player,
+    } = this.props;
 
-    if (e.target === this.avatarNode) {
-      onAvatarTap(player.id);
+    if (mode === modes.EDIT) {
+      onPlayerEdit(player.id);
+    } else if (mode === modes.MULTI) {
+      onPlayerToggle(player.id);
+    } else if (e.target === this.avatarNode) {
+      onMultiSelectActivate(player.id);
     } else {
-      onTap(player.id);
+      onPlayerSelect(player.id);
     }
   }
 
   handlePress() {
-    const { onPress, player } = this.props;
+    const { mode, onMultiSelectActivate, player } = this.props;
 
-    onPress(player.id);
+    if (!mode) {
+      if (navigator.vibrate) {
+        navigator.vibrate(20);
+      }
+
+      onMultiSelectActivate(player.id);
+    }
   }
 
   render() {
     const {
-      classes, color, mode, onGenderToggle, player, selected,
+      classes, color, mode, player, selected,
     } = this.props;
     const GenderIcon = getGenderIconClass(player.gender);
 
@@ -130,19 +152,21 @@ class HomeScreenPagePlayerListItemComponent extends PureComponent {
           }
         />
 
-        <ListItemSecondaryAction
-          classes={{
-            root: classes.listItemSecondaryActionRoot,
-          }}
-        >
-          <IconButton component="span" disableRipple={Boolean(mode)}>
-            {mode === modes.EDIT ? (
+        {mode === modes.EDIT ? (
+          <ListItemSecondaryAction
+            classes={{
+              root: classes.listItemSecondaryActionRoot,
+            }}
+          >
+            <IconButton component="span" disableRipple>
               <ItemHandle />
-            ) : (
-              <GenderIcon onClick={() => onGenderToggle(player.id)} />
-            )}
-          </IconButton>
-        </ListItemSecondaryAction>
+            </IconButton>
+          </ListItemSecondaryAction>
+        ) : (
+          <ListItemIcon className={classes.rightIcon}>
+            <GenderIcon />
+          </ListItemIcon>
+        )}
       </ListItem>
     );
   }
@@ -152,10 +176,10 @@ HomeScreenPagePlayerListItemComponent.propTypes = {
   classes: classesObject.isRequired, // eslint-disable-line react/no-typos
   color: PropTypes.string,
   mode: PropTypes.oneOf(Object.values(modes)),
-  onAvatarTap: PropTypes.func,
-  onGenderToggle: PropTypes.func,
-  onPress: PropTypes.func,
-  onTap: PropTypes.func,
+  onMultiSelectActivate: PropTypes.func,
+  onPlayerEdit: PropTypes.func,
+  onPlayerSelect: PropTypes.func,
+  onPlayerToggle: PropTypes.func,
   player: playerInstance.isRequired, // eslint-disable-line react/no-typos
   selected: PropTypes.bool,
 };
@@ -163,10 +187,10 @@ HomeScreenPagePlayerListItemComponent.propTypes = {
 HomeScreenPagePlayerListItemComponent.defaultProps = {
   color: '',
   mode: null,
-  onAvatarTap: noop,
-  onGenderToggle: noop,
-  onPress: noop,
-  onTap: noop,
+  onMultiSelectActivate: noop,
+  onPlayerEdit: noop,
+  onPlayerSelect: noop,
+  onPlayerToggle: noop,
   selected: false,
 };
 

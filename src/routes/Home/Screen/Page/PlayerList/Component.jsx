@@ -32,37 +32,53 @@ class HomeScreenPagePlayerList extends PureComponent {
   }
 
   render() {
-    const { classes, playerList } = this.props;
+    const { classes, editMode, playerList } = this.props;
+
+    if (editMode) {
+      return (
+        <SortableList
+          component="div"
+          helperClass={classes.sortableHelper}
+          lockAxis="y"
+          lockOffset={0}
+          lockToContainerEdges
+          onSortEnd={this.handleSortEnd}
+          useDragHandle
+        >
+          {playerList.map((playerId, index) => (
+            <SortableListItem
+              index={index}
+              key={playerId}
+              playerId={playerId}
+            />
+          ))}
+        </SortableList>
+      );
+    }
 
     return (
-      <SortableList
-        component="div"
-        helperClass={classes.sortableHelper}
-        lockAxis="y"
-        lockOffset={0}
-        lockToContainerEdges
-        onSortEnd={this.handleSortEnd}
-        useDragHandle
-      >
+      <List component="div">
         {playerList.map((playerId, index) => (
-          <SortableListItem
+          <Item
             index={index}
             key={playerId}
             playerId={playerId}
           />
         ))}
-      </SortableList>
+      </List>
     );
   }
 }
 
 HomeScreenPagePlayerList.propTypes = {
   classes: classesObject.isRequired, // eslint-disable-line react/no-typos
+  editMode: PropTypes.bool,
   onPlayerMove: PropTypes.func,
   playerList: PropTypes.arrayOf(PropTypes.string),
 };
 
 HomeScreenPagePlayerList.defaultProps = {
+  editMode: false,
   onPlayerMove: noop,
   playerList: [],
 };
