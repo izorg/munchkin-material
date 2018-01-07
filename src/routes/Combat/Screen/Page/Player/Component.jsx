@@ -1,20 +1,25 @@
 import React, { PureComponent } from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
-import { withStyles } from 'material-ui/styles';
+import IconButton from 'material-ui/IconButton';
 import Typography from 'material-ui/Typography';
+import { withStyles } from 'material-ui/styles';
 
-import Counter from '../../../../../components/Counter';
 import noop from '../../../../../utils/noop';
 import { classesObject, playerInstance } from '../../../../../utils/propTypes';
 
+import Counter from '../../../../../components/Counter';
+import Gender from '../../../../../components/Gender';
+
 const styles = {
   player: {
+    position: 'relative',
     textAlign: 'center',
   },
 
   name: {
     margin: '0 0 8px',
+    padding: '0 24px',
   },
 
   stats: {
@@ -23,6 +28,14 @@ const styles = {
 
   item: {
     flex: 1,
+  },
+
+  gender: {
+    height: 36,
+    position: 'absolute',
+    right: -8,
+    top: -8,
+    width: 36,
   },
 };
 
@@ -67,10 +80,12 @@ class CombatPlayer extends PureComponent {
   }
 
   render() {
-    const { bonus, classes, player } = this.props;
+    const {
+      bonus, classes, onGenderToggle, player,
+    } = this.props;
 
     return (
-      <div className={classes.player} key={player.id.toString()}>
+      <div className={classes.player} key={player.id}>
         <Typography
           align="center"
           className={classes.name}
@@ -79,6 +94,14 @@ class CombatPlayer extends PureComponent {
         >
           {player.name}
         </Typography>
+
+        <IconButton
+          className={classes.gender}
+          color="inherit"
+          onClick={() => onGenderToggle(player.id)}
+        >
+          <Gender gender={player.gender} />
+        </IconButton>
 
         <div className={classes.stats}>
           <Counter
@@ -117,6 +140,7 @@ CombatPlayer.propTypes = {
   onBonusChange: PropTypes.func,
   onGearDecrement: PropTypes.func,
   onGearIncrement: PropTypes.func,
+  onGenderToggle: PropTypes.func,
   onLevelDecrement: PropTypes.func,
   onLevelIncrement: PropTypes.func,
   player: playerInstance.isRequired, // eslint-disable-line react/no-typos
@@ -126,6 +150,7 @@ CombatPlayer.defaultProps = {
   onBonusChange: noop,
   onGearDecrement: noop,
   onGearIncrement: noop,
+  onGenderToggle: noop,
   onLevelDecrement: noop,
   onLevelIncrement: noop,
 };
