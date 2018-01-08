@@ -8,6 +8,7 @@ import { ListItem, ListItemIcon, ListItemSecondaryAction, ListItemText } from 'm
 import Typography from 'material-ui/Typography';
 import { withStyles } from 'material-ui/styles';
 import ActionReorder from 'material-ui-icons/Reorder';
+import cns from 'classnames';
 
 import noop from '../../../../../../utils/noop';
 import getGenderIconClass from '../../../../../../utils/getGenderIconClass';
@@ -20,6 +21,10 @@ import Avatar from './Avatar';
 const ItemHandle = SortableHandle(ActionReorder);
 
 const styles = theme => ({
+  secondaryActionPadding: {
+    paddingRight: 36,
+  },
+
   listItemGutters: {
     [theme.breakpoints.up('sm')]: {
       paddingLeft: 24,
@@ -119,6 +124,7 @@ class HomeScreenPagePlayerListItemComponent extends PureComponent {
         classes={{
           gutters: classes.listItemGutters,
         }}
+        className={cns({ [classes.secondaryActionPadding]: mode === modes.EDIT })}
         component={this.container}
       >
         <Avatar

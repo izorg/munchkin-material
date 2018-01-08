@@ -90,7 +90,7 @@ class CombatScreenHelperButton extends PureComponent {
 
     return (
       <div className={classes.container}>
-        {expanded && <Backdrop invisible onClick={onBackdropClick} />}
+        {expanded && <Backdrop invisible onClick={onBackdropClick} open />}
 
         <TransitionGroup className={classes.miniContainer}>
           {helper && expanded && (

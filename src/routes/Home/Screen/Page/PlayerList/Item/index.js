@@ -40,13 +40,13 @@ const onPlayerSelect = playerId => (dispatch) => {
 };
 
 const onPlayerToggle = playerId => (dispatch, getState) => {
-  dispatch(togglePlayer(playerId));
-
   const { app: { selectedPlayerIds } } = getState();
 
-  if (!selectedPlayerIds.length) {
+  if (selectedPlayerIds.length === 1 && playerId === selectedPlayerIds[0]) {
     dispatch(goBack());
   }
+
+  dispatch(togglePlayer(playerId));
 };
 
 const mapDispatchToProps = {
