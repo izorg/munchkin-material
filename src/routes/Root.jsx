@@ -9,7 +9,7 @@ import Player from './Player';
 import PlayerForm from './PlayerForm';
 
 const Root = () => (
-  <Fragment>
+  <Fragment key="Root">
     <Helmet>
       <html lang={navigator.language} />
     </Helmet>

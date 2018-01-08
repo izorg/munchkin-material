@@ -9,7 +9,7 @@ import Dialog from './Dialog';
 const ColorPicker = ({
   onChange, onClick, onClose, open, value,
 }) => (
-  <Fragment>
+  <Fragment key="ColorPicker">
     <Color
       onClick={onClick}
       value={value}

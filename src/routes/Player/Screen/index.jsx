@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import { hot } from 'react-hot-loader';
 import PropTypes from 'prop-types';
 import Slide from 'material-ui/transitions/Slide';
 
@@ -8,7 +9,7 @@ import CombatButton from './CombatButton';
 import Page from './Page';
 
 const PlayerScreen = ({ appear, match }) => (
-  <Fragment>
+  <Fragment key="PlayerScreen">
     <Slide
       appear={appear}
       direction="left"
@@ -36,4 +37,4 @@ PlayerScreen.defaultProps = {
   match: null,
 };
 
-export default PlayerScreen;
+export default hot(module)(PlayerScreen);
