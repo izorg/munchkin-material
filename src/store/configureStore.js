@@ -11,13 +11,13 @@ import thunk from 'redux-thunk';
 
 import reducers from '../reducers';
 
-export default (history) => {
-  const rootReducer = connectRouter(history)(combineReducers({
-    ...coreReducers,
-    ...reducers,
-    form: formReducer,
-  }));
+const getRootReducer = history => connectRouter(history)(combineReducers({
+  ...coreReducers,
+  ...reducers,
+  form: formReducer,
+}));
 
+export default (history) => {
   const enhancer = composeWithDevTools(
     applyMiddleware(
       thunk,
@@ -34,13 +34,13 @@ export default (history) => {
   );
 
   const store = createStore(
-    rootReducer,
+    getRootReducer(history),
     enhancer,
   );
 
   /* istanbul ignore if  */
   if (module.hot) {
-    module.hot.accept('../reducers', () => store.replaceReducer(rootReducer));
+    module.hot.accept('../reducers', () => store.replaceReducer(getRootReducer(history)));
   }
 
   store.dispatch(setVersion('core', version));
