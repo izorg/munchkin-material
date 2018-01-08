@@ -4,8 +4,6 @@ const merge = require('webpack-merge');
 
 const config = require('./common.js');
 
-const srcPath = path.resolve(__dirname, '../src');
-
 module.exports = merge.strategy({
   'module.rules': 'prepend',
 })(config, {
@@ -13,9 +11,7 @@ module.exports = merge.strategy({
     rules: [
       {
         test: /\.jsx?$/,
-        include: [
-          srcPath,
-        ],
+        exclude: /node_modules/,
         loader: 'string-replace-loader',
         options: {
           search: 'webpackMode: "lazy"',

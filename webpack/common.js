@@ -2,8 +2,6 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const srcPath = path.resolve(__dirname, '../src');
-
 module.exports = {
   entry: [
     'core-js/es6/map',
@@ -26,9 +24,7 @@ module.exports = {
     rules: [
       {
         test: /\.jsx?$/,
-        include: [
-          srcPath,
-        ],
+        exclude: /node_modules/,
         use: [
           'babel-loader',
         ],

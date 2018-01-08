@@ -1,10 +1,8 @@
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const path = require('path');
 const webpack = require('webpack');
 const WebpackNotifierPlugin = require('webpack-notifier');
 const merge = require('webpack-merge');
 
-const srcPath = path.resolve(__dirname, '../src');
 const config = require('./common.js');
 
 module.exports = merge.strategy({
@@ -29,9 +27,7 @@ module.exports = merge.strategy({
     rules: [
       {
         test: /\.jsx?$/,
-        include: [
-          srcPath,
-        ],
+        exclude: /node_modules/,
         use: [
           {
             loader: 'eslint-loader',
