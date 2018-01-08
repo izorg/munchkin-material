@@ -15,8 +15,6 @@ module.exports = merge.strategy({
   entry: [
     'babel-polyfill',
     'react-hot-loader/patch',
-    `webpack-dev-server/client?http://${config.devServer.host}:${config.devServer.port}`,
-    'webpack/hot/only-dev-server',
     './src/site.js',
     './src/test/index.js',
     './src/index.jsx',
