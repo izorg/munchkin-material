@@ -9,7 +9,10 @@ import Page from './Page';
 const HomeScreen = ({ match }) => (
   <Fragment key="HomeScreen">
     <Page />
-    <Transition in={Boolean(match) && match.isExact && !match.params.mode}>
+    <Transition
+      appear={false}
+      in={Boolean(match) && match.isExact && !match.params.mode}
+    >
       <NewPlayerButton />
     </Transition>
   </Fragment>
