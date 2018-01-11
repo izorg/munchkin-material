@@ -7,7 +7,7 @@ import NewPlayerButton from './NewPlayerButton';
 import Page from './Page';
 
 const HomeScreen = ({ match }) => (
-  <Fragment key="HomeScreen">
+  <Fragment>
     <Page />
     <Transition
       appear={false}

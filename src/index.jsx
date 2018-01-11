@@ -2,6 +2,7 @@ import 'babel-polyfill';
 
 import React from 'react';
 import { render } from 'react-dom';
+import { AppContainer } from 'react-hot-loader';
 import createHistory from 'history/es/createHashHistory';
 
 import { setFullVersion } from './actions';
@@ -15,7 +16,9 @@ const store = configureStore(history);
 const { dispatch } = store;
 
 const renderAppContainer = (Component, appEl, options) => render(
-  <Component {...options} history={history} store={store} />,
+  <AppContainer warnings={false}>
+    <Component {...options} history={history} store={store} />
+  </AppContainer>,
   appEl,
 );
 
@@ -25,6 +28,10 @@ const defaultOptions = {
 
 const init = (appEl, options = defaultOptions) => {
   renderAppContainer(App, appEl, options);
+
+  if (module.hot) {
+    module.hot.accept('./components/App', () => renderAppContainer(App, appEl, options));
+  }
 
   return {
     history,

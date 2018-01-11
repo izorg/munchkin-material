@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react';
-import { hot } from 'react-hot-loader';
 import Provider from 'react-redux/es/components/Provider';
 import { storeShape } from 'react-redux/es/utils/PropTypes';
 import { ConnectedRouter } from 'connected-react-router';
@@ -88,4 +87,4 @@ App.defaultProps = {
   buyFullVersion: noop,
 };
 
-export default hot(module)(withStyles(styles)(App));
+export default withStyles(styles)(App);
