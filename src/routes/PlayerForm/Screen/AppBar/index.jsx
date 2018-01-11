@@ -12,7 +12,7 @@ import { withStyles } from 'material-ui/styles';
 import NavigationArrowBack from 'material-ui-icons/ArrowBack';
 import NavigationCheck from 'material-ui-icons/Check';
 
-import { PLAYER_FORM } from '../../../../constants';
+import { form } from '../Form/Component';
 import noop from '../../../../utils/noop';
 import { classesObject } from '../../../../utils/propTypes';
 
@@ -26,7 +26,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
   onCancel: goBack,
-  onSubmit: () => formActions.submit(PLAYER_FORM),
+  onSubmit: () => formActions.submit(form),
 };
 
 const styles = {

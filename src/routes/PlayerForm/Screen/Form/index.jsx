@@ -1,10 +1,11 @@
 import connect from 'react-redux/es/connect/connect';
+import formActions from 'redux-form/es/actions';
 import { MALE } from 'munchkin-core/es/utils/gender';
 
-import { importContact, submitPlayer } from '../../../../actions';
+import { submitPlayer } from '../../../../actions';
 import getRandomMaterialColor from '../../../../utils/getRandomMaterialColor';
 
-import Component from './Component';
+import Component, { form } from './Component';
 
 const getInitialValues = ({ app: { activePlayerId }, playerColors, players }) => {
   let initialValues = {
@@ -37,8 +38,18 @@ const mapStateToProps = state => ({
   newPlayer: !state.app.activePlayerId,
 });
 
+const onImport = () => (dispatch) => {
+  navigator.contacts.pickContact(({ displayName, photos }) => {
+    dispatch(formActions.change(form, 'name', displayName));
+
+    if (photos) {
+      dispatch(formActions.change(form, 'avatar', photos[0].value));
+    }
+  });
+};
+
 const mapDispatchToProps = {
-  onImport: importContact,
+  onImport,
   onSubmit: submitPlayer,
 };
 

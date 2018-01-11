@@ -13,13 +13,14 @@ import TextField from 'material-ui/TextField';
 import SocialPersonAdd from 'material-ui-icons/PersonAdd';
 import { FEMALE, MALE } from 'munchkin-core/es/utils/gender';
 
-import { PLAYER_FORM } from '../../../../constants';
 import noop from '../../../../utils/noop';
 
 import GenderFemale from '../../../../components/icons/gender/Female';
 import GenderMale from '../../../../components/icons/gender/Male';
 
 import ColorPicker from './ColorPicker';
+
+export const form = 'player';
 
 const messages = defineMessages({
   label: {
@@ -123,7 +124,7 @@ PlayerForm.defaultProps = {
 
 export default compose(
   reduxForm({
-    form: PLAYER_FORM,
+    form,
   }),
   injectIntl,
 )(PlayerForm);

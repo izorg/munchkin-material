@@ -1,4 +1,3 @@
-import formActions from 'redux-form/es/actions';
 import { goBack, push } from 'connected-react-router/lib/actions';
 import {
   addMonster,
@@ -13,7 +12,6 @@ import { FEMALE, MALE } from 'munchkin-core/es/utils/gender';
 import createMonster from 'munchkin-core/es/utils/createMonster';
 import createPlayer from 'munchkin-core/es/utils/createPlayer';
 
-import { PLAYER_FORM } from '../constants';
 import * as types from '../utils/actionTypes';
 
 export const disableDiceButtonTooltipTriggerFocus = () => ({
@@ -35,18 +33,6 @@ export const goToCombat = playerId => (dispatch, getState) => {
 
     dispatch(push(`/player/${playerId}/combat`));
   }
-};
-
-export const importContact = () => (dispatch) => {
-  navigator.contacts.pickContact(({ displayName, photos }) => {
-    const form = PLAYER_FORM;
-
-    dispatch(formActions.change(form, 'name', displayName));
-
-    if (photos) {
-      dispatch(formActions.change(form, 'avatar', photos[0].value));
-    }
-  });
 };
 
 export const movePlayer = (oldPosition, newPosition) => ({
