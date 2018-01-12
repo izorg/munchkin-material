@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import { findDOMNode } from 'react-dom';
 import { SortableContainer, SortableElement } from 'react-sortable-hoc';
 import PropTypes from 'prop-types';
 import List from 'material-ui/List';
@@ -13,6 +14,10 @@ const SortableList = SortableContainer(List);
 const SortableListItem = SortableElement(Item);
 
 const styles = theme => ({
+  list: {
+    overflowY: 'auto',
+  },
+
   sortableHelper: {
     backgroundColor: '#FFFFFF !important',
     boxShadow: theme.shadows[3],
@@ -27,6 +32,30 @@ class HomeScreenPagePlayerList extends PureComponent {
     this.handleSortEnd = this.handleSortEnd.bind(this);
   }
 
+  componentWillUpdate(nextProps) {
+    if (this.props.editMode !== nextProps.editMode) {
+      // eslint-disable-next-line react/no-find-dom-node
+      const node = findDOMNode(this);
+
+      this.scrollTop = node.scrollTop;
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    // eslint-disable-next-line react/no-find-dom-node
+    const node = findDOMNode(this);
+
+    if (this.scrollTop) {
+      node.scrollTop = this.scrollTop;
+
+      delete this.scrollTop;
+    }
+
+    if (this.props.playerList.length > prevProps.playerList.length) {
+      node.scrollTop = node.scrollHeight;
+    }
+  }
+
   handleSortEnd({ oldIndex, newIndex }) {
     this.props.onPlayerMove(oldIndex, newIndex);
   }
@@ -37,6 +66,7 @@ class HomeScreenPagePlayerList extends PureComponent {
     if (editMode) {
       return (
         <SortableList
+          className={classes.list}
           component="div"
           helperClass={classes.sortableHelper}
           lockAxis="y"
@@ -57,7 +87,10 @@ class HomeScreenPagePlayerList extends PureComponent {
     }
 
     return (
-      <List component="div">
+      <List
+        className={classes.list}
+        component="div"
+      >
         {playerList.map((playerId, index) => (
           <Item
             index={index}

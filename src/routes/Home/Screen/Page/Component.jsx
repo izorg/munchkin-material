@@ -12,6 +12,8 @@ import PlayerList from './PlayerList';
 
 const styles = {
   content: {
+    display: 'flex',
+    flexDirection: 'column',
     padding: 0,
   },
 
