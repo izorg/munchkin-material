@@ -55,11 +55,6 @@ const styles = {
     position: 'absolute',
     top: -128,
   },
-
-  mini: {
-    height: 40,
-    width: 40,
-  },
 };
 
 class CombatScreenHelperButton extends PureComponent {
@@ -102,9 +97,9 @@ class CombatScreenHelperButton extends PureComponent {
                   title={<FormattedMessage id="combat.add.monster" defaultMessage="Monster" />}
                 >
                   <Button
-                    className={classes.mini}
                     color="primary"
                     fab
+                    mini
                     onClick={() => onMonsterAdd(true)}
                   >
                     <EmoticonDevil />
@@ -123,10 +118,10 @@ class CombatScreenHelperButton extends PureComponent {
                   title={<FormattedMessage id="combat.add.helper" defaultMessage="Helper" />}
                 >
                   <Button
-                    className={classes.mini}
                     color="primary"
                     component={Link}
                     fab
+                    mini
                     to={`/player/${playerId}/combat/add/helper`}
                   >
                     <SocialPersonAdd />
@@ -143,9 +138,10 @@ class CombatScreenHelperButton extends PureComponent {
           fab
           onClick={this.handleClick}
         >
-          {helper ? (
-            <ContentAdd className={cns(classes.icon, { [classes.expanded]: expanded })} />
-          ) : <EmoticonDevil />}
+          {helper
+            ? <ContentAdd className={cns(classes.icon, { [classes.expanded]: expanded })} />
+            : <EmoticonDevil />
+          }
         </Button>
 
         <HelperSelector />
