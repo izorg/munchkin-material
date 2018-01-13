@@ -5,10 +5,6 @@ import { throwDice } from '../actions';
 
 import IconButton from '../components/dice/IconButton';
 
-const mapStateToProps = state => ({
-  disableTriggerFocus: state.app.disableDiceButtonTooltipTriggerFocus,
-});
-
 const mapDispatchToProps = {
   onClick: () => (dispatch) => {
     dispatch(throwDice());
@@ -16,4 +12,4 @@ const mapDispatchToProps = {
   },
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(IconButton);
+export default connect(undefined, mapDispatchToProps)(IconButton);

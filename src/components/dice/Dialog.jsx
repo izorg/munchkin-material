@@ -68,7 +68,7 @@ class DiceDialog extends PureComponent {
     delete props.onDiceClick;
 
     return (
-      <Dialog {...props}>
+      <Dialog disableRestoreFocus {...props}>
         <TransitionGroup className={classes.content}>
           <DiceTransition key={attempt}>
             <IconButton
