@@ -3,7 +3,6 @@ export const MOVE_PLAYER = 'app/MOVE_PLAYER';
 export const SET_ACTIVE_PLAYER = 'app/SET_ACTIVE_PLAYER';
 export const SET_FULL_VERSION = 'app/SET_FULL_VERSION';
 export const SET_LOCALE = 'app/SET_LOCALE';
-export const SET_PLAYER_COLOR = 'app/SET_PLAYER_COLOR';
 export const THROW_DICE = 'app/THROW_DICE';
 export const TOGGLE_EDIT_MODE = 'app/TOGGLE_EDIT_MODE';
 export const TOGGLE_PLAYER = 'app/TOGGLE_PLAYER';

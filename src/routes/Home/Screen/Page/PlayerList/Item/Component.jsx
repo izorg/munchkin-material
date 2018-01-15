@@ -114,7 +114,7 @@ class HomeScreenPagePlayerListItemComponent extends PureComponent {
 
   render() {
     const {
-      classes, color, mode, player, selected,
+      classes, mode, player, selected,
     } = this.props;
     const GenderIcon = getGenderIconClass(player.gender);
 
@@ -128,7 +128,7 @@ class HomeScreenPagePlayerListItemComponent extends PureComponent {
         component={this.container}
       >
         <Avatar
-          color={color}
+          color={player.color}
           component={this.avatarComponent}
           name={player.name}
           selected={selected}
@@ -180,7 +180,6 @@ class HomeScreenPagePlayerListItemComponent extends PureComponent {
 
 HomeScreenPagePlayerListItemComponent.propTypes = {
   classes: classesObject.isRequired, // eslint-disable-line react/no-typos
-  color: PropTypes.string,
   mode: PropTypes.oneOf(Object.values(modes)),
   onMultiSelectActivate: PropTypes.func,
   onPlayerEdit: PropTypes.func,
@@ -191,7 +190,6 @@ HomeScreenPagePlayerListItemComponent.propTypes = {
 };
 
 HomeScreenPagePlayerListItemComponent.defaultProps = {
-  color: '',
   mode: null,
   onMultiSelectActivate: noop,
   onPlayerEdit: noop,

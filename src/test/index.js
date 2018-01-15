@@ -1,6 +1,6 @@
 import { addPlayer, removePlayer } from 'munchkin-core/es/actions';
 
-import { setLocale, setPlayerColor } from '../actions';
+import { setLocale } from '../actions';
 import { getLocale } from '../i18n';
 
 import players from './players';
@@ -15,10 +15,6 @@ const setTestData = () => {
 
   players[locale].forEach((data) => {
     dispatch(addPlayer(data.player));
-    dispatch(setPlayerColor({
-      color: data.color,
-      id: data.player.id,
-    }));
   });
 };
 

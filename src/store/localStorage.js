@@ -1,3 +1,7 @@
+import compose from 'redux/es/compose';
+
+import migrations from './migrations';
+
 const key = 'redux';
 
 export const loadState = () => {
@@ -8,7 +12,7 @@ export const loadState = () => {
       return undefined;
     }
 
-    return JSON.parse(serializedState);
+    return compose(...migrations)(JSON.parse(serializedState));
   } catch (error) {
     // eslint-disable-next-line no-console
     console.warn('Can\'t load state from localStorage');

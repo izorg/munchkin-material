@@ -7,7 +7,7 @@ import getRandomMaterialColor from '../../../../utils/getRandomMaterialColor';
 
 import Component, { form } from './Component';
 
-const getInitialValues = ({ app: { activePlayerId }, playerColors, players }) => {
+const getInitialValues = ({ app: { activePlayerId }, players }) => {
   let initialValues = {
     gender: MALE,
   };
@@ -19,7 +19,6 @@ const getInitialValues = ({ app: { activePlayerId }, playerColors, players }) =>
       initialValues = {
         ...initialValues,
         ...selectedPlayer,
-        color: playerColors[activePlayerId],
       };
     }
   } else {

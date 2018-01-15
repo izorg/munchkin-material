@@ -16,7 +16,6 @@ const mapStateToProps = (state, ownProps) => {
   const mode = getModeFromPathname(state.router.location.pathname);
 
   return {
-    color: state.playerColors[playerId],
     mode,
     player: state.players[playerId],
     selected: mode === MULTI && state.app.selectedPlayerIds.includes(playerId),

@@ -53,14 +53,8 @@ export const setLocale = locale => ({
   locale,
 });
 
-export const setPlayerColor = ({ color, id }) => ({
-  type: types.SET_PLAYER_COLOR,
-  color,
-  id,
-});
-
 export const submitPlayer = values => (dispatch) => {
-  const { color, id, name = '' } = values;
+  const { id, name = '' } = values;
 
   if (name.trim()) {
     const player = createPlayer(values);
@@ -70,11 +64,6 @@ export const submitPlayer = values => (dispatch) => {
     } else {
       dispatch(addPlayer(player));
     }
-
-    dispatch(setPlayerColor({
-      id: player.id,
-      color,
-    }));
 
     dispatch(setActivePlayer(player.id));
   }
