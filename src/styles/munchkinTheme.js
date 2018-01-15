@@ -21,6 +21,7 @@ const theme = {
 
   palette: {
     background: {
+      avatar: brown[500],
       default: common.white,
     },
     primary: {
