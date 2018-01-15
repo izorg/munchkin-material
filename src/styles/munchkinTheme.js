@@ -23,7 +23,9 @@ const theme = {
     background: {
       default: common.white,
     },
-    primary: brown,
+    primary: {
+      main: brown[500],
+    },
   },
 
   typography: {
