@@ -15,12 +15,12 @@
         "useBuiltIns": true
       }
     ],
-    "stage-3",
     "react"
   ],
 
   "plugins": [
     "syntax-dynamic-import",
+    "transform-object-rest-spread",
     "version-inline"
   ],
 
