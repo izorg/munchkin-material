@@ -13,6 +13,7 @@ import Gender from '../../../../../components/Gender';
 
 const styles = {
   player: {
+    padding: 8,
     position: 'relative',
     textAlign: 'center',
   },
@@ -33,8 +34,8 @@ const styles = {
   gender: {
     height: 36,
     position: 'absolute',
-    right: -8,
-    top: -8,
+    right: 0,
+    top: 0,
     width: 36,
   },
 };

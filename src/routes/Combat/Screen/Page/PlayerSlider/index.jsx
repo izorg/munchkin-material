@@ -21,10 +21,6 @@ const styles = {
     position: 'relative',
   },
 
-  playerContainer: {
-    padding: 8,
-  },
-
   remove: {
     bottom: 16,
     height: 36,
@@ -41,7 +37,7 @@ const styles = {
     },
 
     playerContainer: {
-      paddingLeft: 36,
+      paddingLeft: 28,
     },
 
     remove: {
@@ -143,7 +139,6 @@ class CombatPlayerSlider extends PureComponent {
             index={index}
             onChangeIndex={this.handleChangeIndex}
             slideStyle={{
-              boxSizing: 'border-box',
               padding: '0 16px 16px',
               position: 'relative',
             }}
@@ -168,7 +163,6 @@ class CombatPlayerSlider extends PureComponent {
             index={index}
             onChangeIndex={this.handleChangeIndex}
             slideStyle={{
-              boxSizing: 'border-box',
               height: 215,
               padding: '8px 8px 8px 0',
               position: 'relative',

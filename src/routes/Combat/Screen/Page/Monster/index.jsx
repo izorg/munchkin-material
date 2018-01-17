@@ -10,6 +10,7 @@ import { classesObject, monsterInstance } from '../../../../../utils/propTypes';
 
 const styles = {
   monster: {
+    padding: 8,
     textAlign: 'center',
   },
 

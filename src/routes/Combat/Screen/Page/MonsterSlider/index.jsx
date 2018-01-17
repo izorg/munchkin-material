@@ -21,10 +21,6 @@ const styles = {
     position: 'relative',
   },
 
-  monsterContainer: {
-    padding: 8,
-  },
-
   remove: {
     position: 'absolute !important',
     right: 16,
@@ -38,7 +34,7 @@ const styles = {
     },
 
     monsterContainer: {
-      paddingRight: 64,
+      paddingRight: 56,
     },
 
     remove: {
@@ -132,7 +128,6 @@ class CombatMonsterSlider extends PureComponent {
             index={index}
             onChangeIndex={this.handleChangeIndex}
             slideStyle={{
-              boxSizing: 'border-box',
               padding: '16px 16px 0',
               position: 'relative',
             }}
@@ -157,7 +152,6 @@ class CombatMonsterSlider extends PureComponent {
             index={index}
             onChangeIndex={this.handleChangeIndex}
             slideStyle={{
-              boxSizing: 'border-box',
               height: 215,
               padding: '8px 0 8px 8px',
               position: 'relative',
