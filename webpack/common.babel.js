@@ -1,8 +1,8 @@
-const path = require('path');
-const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+import path from 'path';
+import webpack from 'webpack';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 
-module.exports = {
+export default {
   entry: [
     'core-js/es6/map',
     'core-js/es6/set',
@@ -26,7 +26,27 @@ module.exports = {
         test: /\.jsx?$/,
         exclude: /node_modules/,
         use: [
-          'babel-loader',
+          {
+            loader: 'babel-loader',
+            options: {
+              presets: [
+                [
+                  'env',
+                  {
+                    targets: {
+                      android: '4.4.2',
+                      chrome: 49,
+                      edge: 14,
+                      firefox: 45,
+                      ie: 11,
+                      safari: 10,
+                    },
+                    useBuiltIns: true,
+                  },
+                ],
+              ],
+            },
+          },
         ],
       },
       {

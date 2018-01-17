@@ -1,9 +1,9 @@
-const webpack = require('webpack');
-const merge = require('webpack-merge');
+import webpack from 'webpack';
+import merge from 'webpack-merge';
 
-const config = require('./common.js');
+import config from './common.babel';
 
-module.exports = merge.strategy({
+export default merge.strategy({
   'module.rules': 'prepend',
 })(config, {
   module: {

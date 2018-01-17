@@ -1,11 +1,11 @@
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const webpack = require('webpack');
-const WebpackNotifierPlugin = require('webpack-notifier');
-const merge = require('webpack-merge');
+import CopyWebpackPlugin from 'copy-webpack-plugin';
+import webpack from 'webpack';
+import merge from 'webpack-merge';
+import WebpackNotifierPlugin from 'webpack-notifier';
 
-const config = require('./common.js');
+import config from './common.babel';
 
-module.exports = merge.strategy({
+export default merge.strategy({
   entry: 'replace',
 })(config, {
   devtool: 'eval-source-map',

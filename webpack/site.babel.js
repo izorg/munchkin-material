@@ -1,12 +1,12 @@
-const CnameWebpackPlugin = require('cname-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const OfflinePlugin = require('offline-plugin');
-const path = require('path');
-const webpack = require('webpack');
-const merge = require('webpack-merge');
+import CnameWebpackPlugin from 'cname-webpack-plugin';
+import CopyWebpackPlugin from 'copy-webpack-plugin';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import OfflinePlugin from 'offline-plugin';
+import path from 'path';
+import webpack from 'webpack';
+import merge from 'webpack-merge';
 
-const config = require('./common.js');
+import config from './common.babel';
 
 module.exports = merge.smartStrategy({
   entry: 'prepend',
