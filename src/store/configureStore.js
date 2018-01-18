@@ -6,8 +6,7 @@ import version from 'munchkin-core/es/utils/version';
 import { connectRouter, routerMiddleware } from 'connected-react-router';
 import formReducer from 'redux-form/es/reducer';
 import thunk from 'redux-thunk';
-import pick from 'lodash/pick';
-import throttle from 'lodash/throttle';
+import { pick, throttle } from 'lodash-es';
 
 import reducers from '../reducers';
 
