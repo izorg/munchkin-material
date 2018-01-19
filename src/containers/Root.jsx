@@ -1,12 +1,12 @@
 import React, { Fragment } from 'react';
 import Helmet from 'react-helmet/es/Helmet';
 
-import DiceDialog from '../containers/DiceDialog';
+import Combat from '../routes/Combat';
+import Home from '../routes/Home';
+import Player from '../routes/Player';
+import PlayerForm from '../routes/PlayerForm';
 
-import Combat from './Combat';
-import Home from './Home';
-import Player from './Player';
-import PlayerForm from './PlayerForm';
+import DiceDialog from './DiceDialog';
 
 const Root = () => (
   <Fragment>

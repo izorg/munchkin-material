@@ -5,12 +5,12 @@ import { ConnectedRouter } from 'connected-react-router';
 import PropTypes from 'prop-types';
 import Reboot from 'material-ui/Reboot';
 import { MuiThemeProvider, withStyles } from 'material-ui/styles';
+import { noop } from 'lodash-es';
 
-import Root from '../../routes/Root';
-import noop from '../../utils/noop';
 import LocaleProvider from '../../containers/LocaleProvider';
 import munchkinWoff from '../../fonts/munchkin.woff';
 import munchkinWoff2 from '../../fonts/munchkin.woff2';
+import Root from '../../containers/Root';
 import munchkinTheme from '../../styles/munchkinTheme';
 
 const styles = {
@@ -32,6 +32,7 @@ const styles = {
     },
 
     body: {
+      backgroundColor: '#FFFFFF',
       height: '100%',
       overflow: 'hidden',
       userSelect: 'none',
@@ -40,7 +41,6 @@ const styles = {
     },
 
     '#app': {
-      backgroundColor: '#000000',
       height: '100%',
       position: 'relative',
     },
