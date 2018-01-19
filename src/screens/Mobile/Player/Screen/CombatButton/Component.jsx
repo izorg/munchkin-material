@@ -1,8 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import Button from 'material-ui/Button';
-
-import noop from '../../../../../utils/noop';
+import { noop } from 'lodash-es';
 
 import SwordCross from '../../../../../components/icons/SwordCross';
 

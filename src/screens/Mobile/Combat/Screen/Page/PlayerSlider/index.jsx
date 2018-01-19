@@ -6,9 +6,9 @@ import IconButton from 'material-ui/IconButton';
 import Paper from 'material-ui/Paper';
 import { withStyles } from 'material-ui/styles';
 import cns from 'classnames';
+import { noop } from 'lodash-es';
 
-import noop from '../../../../../../utils/noop';
-import { classesObject, playerInstance } from '../../../../../../utils/propTypes';
+import { playerShape } from '../../../../../../utils/propTypes';
 
 import CloseCircle from '../../../../../../components/icons/CloseCircle';
 
@@ -183,13 +183,12 @@ class CombatPlayerSlider extends PureComponent {
 }
 
 CombatPlayerSlider.propTypes = {
-  classes: classesObject.isRequired, // eslint-disable-line react/no-typos
   className: PropTypes.string,
-  helper: playerInstance,
+  helper: playerShape,
   onHelperBonusChange: PropTypes.func,
   onHelperRemove: PropTypes.func,
   onPlayerBonusChange: PropTypes.func,
-  player: playerInstance.isRequired, // eslint-disable-line react/no-typos
+  player: playerShape.isRequired, // eslint-disable-line react/no-typos
 };
 
 CombatPlayerSlider.defaultProps = {

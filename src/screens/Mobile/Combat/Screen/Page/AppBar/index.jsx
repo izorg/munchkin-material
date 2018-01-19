@@ -9,10 +9,9 @@ import IconButton from 'material-ui/IconButton';
 import Toolbar from 'material-ui/Toolbar';
 import { withStyles } from 'material-ui/styles';
 import NavigationArrowBack from 'material-ui-icons/ArrowBack';
+import { noop } from 'lodash-es';
 
-import noop from '../../../../../../utils/noop';
 import DiceIconButton from '../../../../../../containers/DiceButton';
-import { classesObject } from '../../../../../../utils/propTypes';
 
 import Title from '../../../../../../components/Title';
 
@@ -50,7 +49,6 @@ const CombatScreenPageAppBar = ({ classes, onBack }) => (
 );
 
 CombatScreenPageAppBar.propTypes = {
-  classes: classesObject.isRequired, // eslint-disable-line react/no-typos
   onBack: PropTypes.func,
 };
 

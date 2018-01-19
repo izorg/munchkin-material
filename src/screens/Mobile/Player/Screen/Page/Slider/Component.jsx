@@ -3,9 +3,7 @@ import SwipeableViews from 'react-swipeable-views';
 import { bindKeyboard, virtualize } from 'react-swipeable-views-utils';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
-
-import noop from '../../../../../../utils/noop';
-import { classesObject } from '../../../../../../utils/propTypes';
+import { noop } from 'lodash-es';
 
 import PlayerStats from './Stats';
 
@@ -99,7 +97,6 @@ class PlayerSlider extends PureComponent {
 }
 
 PlayerSlider.propTypes = {
-  classes: classesObject.isRequired, // eslint-disable-line react/no-typos
   initialSlide: PropTypes.number.isRequired, // eslint-disable-line react/no-typos
   onPlayerChange: PropTypes.func,
   playerList: PropTypes.arrayOf(PropTypes.string).isRequired,

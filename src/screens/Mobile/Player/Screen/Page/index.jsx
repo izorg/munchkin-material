@@ -1,8 +1,6 @@
 import React from 'react';
 import { withStyles } from 'material-ui/styles';
 
-import { classesObject } from '../../../../../utils/propTypes';
-
 import Layout, { LayoutContent, LayoutHeader } from '../../../../../components/Layout';
 
 import AppBar from './AppBar';
@@ -32,9 +30,5 @@ const PlayerScreenComponent = ({ classes }) => (
     </LayoutContent>
   </Layout>
 );
-
-PlayerScreenComponent.propTypes = {
-  classes: classesObject.isRequired, // eslint-disable-line react/no-typos
-};
 
 export default withStyles(styles)(PlayerScreenComponent);

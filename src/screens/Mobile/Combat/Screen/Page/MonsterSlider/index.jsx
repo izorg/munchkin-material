@@ -7,9 +7,7 @@ import IconButton from 'material-ui/IconButton';
 import Paper from 'material-ui/Paper';
 import { withStyles } from 'material-ui/styles';
 import cns from 'classnames';
-
-import noop from '../../../../../../utils/noop';
-import { classesObject } from '../../../../../../utils/propTypes';
+import { noop } from 'lodash-es';
 
 import CloseCircle from '../../../../../../components/icons/CloseCircle';
 import Monster from '../../../Monster';
@@ -172,7 +170,6 @@ class CombatMonsterSlider extends PureComponent {
 }
 
 CombatMonsterSlider.propTypes = {
-  classes: classesObject.isRequired, // eslint-disable-line react/no-typos
   className: PropTypes.string,
   monsters: PropTypes.arrayOf(PropTypes.object),
   onMonsterRemove: PropTypes.func,

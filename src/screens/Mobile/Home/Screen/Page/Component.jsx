@@ -4,7 +4,6 @@ import { withStyles } from 'material-ui/styles';
 import cns from 'classnames';
 
 import Layout, { LayoutContent, LayoutHeader } from '../../../../../components/Layout';
-import { classesObject } from '../../../../../utils/propTypes';
 
 import AppBar from './AppBar';
 import Empty from './Empty';
@@ -40,7 +39,6 @@ const HomeScreenPage = ({ classes, empty }) => (
 );
 
 HomeScreenPage.propTypes = {
-  classes: classesObject.isRequired, // eslint-disable-line react/no-typos
   empty: PropTypes.bool,
 };
 

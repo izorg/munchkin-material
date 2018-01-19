@@ -4,9 +4,7 @@ import { SortableContainer, SortableElement } from 'react-sortable-hoc';
 import PropTypes from 'prop-types';
 import List from 'material-ui/List';
 import { withStyles } from 'material-ui/styles';
-
-import noop from '../../../../../../utils/noop';
-import { classesObject } from '../../../../../../utils/propTypes';
+import { noop } from 'lodash-es';
 
 import Item from './Item';
 
@@ -104,7 +102,6 @@ class HomeScreenPagePlayerList extends PureComponent {
 }
 
 HomeScreenPagePlayerList.propTypes = {
-  classes: classesObject.isRequired, // eslint-disable-line react/no-typos
   editMode: PropTypes.bool,
   onPlayerMove: PropTypes.func,
   playerList: PropTypes.arrayOf(PropTypes.string),

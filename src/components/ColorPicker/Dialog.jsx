@@ -6,9 +6,7 @@ import ButtonBase from 'material-ui/ButtonBase';
 import Dialog, { DialogContent, DialogTitle } from 'material-ui/Dialog';
 import * as colors from 'material-ui/colors';
 import { withStyles } from 'material-ui/styles';
-
-import noop from '../../utils/noop';
-import { classesObject } from '../../utils/propTypes';
+import { noop } from 'lodash-es';
 
 const { common, yellow, ...availableColors } = colors;
 
@@ -51,7 +49,6 @@ const ColorPickerDialog = ({ classes, onSelect, ...props }) => (
 );
 
 ColorPickerDialog.propTypes = {
-  classes: classesObject.isRequired, // eslint-disable-line react/no-typos
   onSelect: PropTypes.func,
 };
 

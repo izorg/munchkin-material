@@ -3,10 +3,10 @@ import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 import Typography from 'material-ui/Typography';
 import { withStyles } from 'material-ui/styles';
+import { noop } from 'lodash-es';
 
 import Counter from '../../../../../../components/Counter';
-import noop from '../../../../../../utils/noop';
-import { classesObject, monsterInstance } from '../../../../../../utils/propTypes';
+import { monsterShape } from '../../../../../../utils/propTypes';
 
 const styles = {
   monster: {
@@ -68,8 +68,7 @@ const CombatMonster = ({
 );
 
 CombatMonster.propTypes = {
-  classes: classesObject.isRequired, // eslint-disable-line react/no-typos
-  monster: monsterInstance.isRequired, // eslint-disable-line react/no-typos
+  monster: monsterShape.isRequired, // eslint-disable-line react/no-typos
   onBonusDecrement: PropTypes.func,
   onBonusIncrement: PropTypes.func,
   onLevelDecrement: PropTypes.func,

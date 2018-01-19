@@ -9,10 +9,10 @@ import Typography from 'material-ui/Typography';
 import { withStyles } from 'material-ui/styles';
 import ActionReorder from 'material-ui-icons/Reorder';
 import cns from 'classnames';
+import { noop } from 'lodash-es';
 
-import noop from '../../../../../../../utils/noop';
 import getGenderIconClass from '../../../../../../../utils/getGenderIconClass';
-import { classesObject, playerInstance } from '../../../../../../../utils/propTypes';
+import { playerShape } from '../../../../../../../utils/propTypes';
 
 import * as modes from '../../../../modes';
 
@@ -179,13 +179,12 @@ class HomeScreenPagePlayerListItemComponent extends PureComponent {
 }
 
 HomeScreenPagePlayerListItemComponent.propTypes = {
-  classes: classesObject.isRequired, // eslint-disable-line react/no-typos
   mode: PropTypes.oneOf(Object.values(modes)),
   onMultiSelectActivate: PropTypes.func,
   onPlayerEdit: PropTypes.func,
   onPlayerSelect: PropTypes.func,
   onPlayerToggle: PropTypes.func,
-  player: playerInstance.isRequired, // eslint-disable-line react/no-typos
+  player: playerShape.isRequired, // eslint-disable-line react/no-typos
   selected: PropTypes.bool,
 };
 

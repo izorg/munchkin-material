@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 import IconButton from 'material-ui/IconButton';
 import Typography from 'material-ui/Typography';
 import { withStyles } from 'material-ui/styles';
+import { noop } from 'lodash-es';
 
-import noop from '../../../../../../utils/noop';
-import { classesObject, playerInstance } from '../../../../../../utils/propTypes';
+import { playerShape } from '../../../../../../utils/propTypes';
 
 import Counter from '../../../../../../components/Counter';
 import Gender from '../../../../../../components/Gender';
@@ -137,14 +137,13 @@ class CombatPlayer extends PureComponent {
 
 CombatPlayer.propTypes = {
   bonus: PropTypes.number.isRequired,
-  classes: classesObject.isRequired, // eslint-disable-line react/no-typos
   onBonusChange: PropTypes.func,
   onGearDecrement: PropTypes.func,
   onGearIncrement: PropTypes.func,
   onGenderToggle: PropTypes.func,
   onLevelDecrement: PropTypes.func,
   onLevelIncrement: PropTypes.func,
-  player: playerInstance.isRequired, // eslint-disable-line react/no-typos
+  player: playerShape.isRequired, // eslint-disable-line react/no-typos
 };
 
 CombatPlayer.defaultProps = {

@@ -4,9 +4,9 @@ import React from 'react';
 import { render } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 import createHistory from 'history/es/createHashHistory';
+import { noop } from 'lodash-es';
 
 import { setFullVersion } from './actions';
-import noop from './utils/noop';
 import App from './components/App';
 import configureStore from './store/configureStore';
 

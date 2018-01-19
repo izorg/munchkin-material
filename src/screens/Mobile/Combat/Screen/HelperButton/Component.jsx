@@ -11,9 +11,7 @@ import transitions, { duration } from 'material-ui/styles/transitions';
 import ContentAdd from 'material-ui-icons/Add';
 import SocialPersonAdd from 'material-ui-icons/PersonAdd';
 import cns from 'classnames';
-
-import noop from '../../../../../utils/noop';
-import { classesObject } from '../../../../../utils/propTypes';
+import { noop } from 'lodash-es';
 
 import Fade from './Fade';
 import EmoticonDevil from '../../../../../components/icons/EmoticonDevil';
@@ -151,7 +149,6 @@ class CombatScreenHelperButton extends PureComponent {
 }
 
 CombatScreenHelperButton.propTypes = {
-  classes: classesObject.isRequired, // eslint-disable-line react/no-typos
   expanded: PropTypes.bool,
   helper: PropTypes.bool,
   onAdd: PropTypes.func,

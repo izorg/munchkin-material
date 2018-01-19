@@ -4,8 +4,6 @@ import Typography from 'material-ui/Typography';
 import { withStyles } from 'material-ui/styles';
 import AccountCircle from 'material-ui-icons/AccountCircle';
 
-import { classesObject } from '../../../../../../utils/propTypes';
-
 const styles = theme => ({
   nobody: {
     color: theme.palette.text.hint,
@@ -32,9 +30,5 @@ const HomeScreenPageEmpty = ({ classes }) => (
     </Typography>
   </div>
 );
-
-HomeScreenPageEmpty.propTypes = {
-  classes: classesObject.isRequired, // eslint-disable-line react/no-typos
-};
 
 export default withStyles(styles)(HomeScreenPageEmpty);

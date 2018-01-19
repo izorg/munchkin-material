@@ -8,9 +8,7 @@ import IconButton from 'material-ui/IconButton';
 import Toolbar from 'material-ui/Toolbar';
 import { withStyles } from 'material-ui/styles';
 import NavigationArrowBack from 'material-ui-icons/ArrowBack';
-
-import noop from '../../../../../../utils/noop';
-import { classesObject } from '../../../../../../utils/propTypes';
+import { noop } from 'lodash-es';
 
 import Title from '../../../../../../components/Title';
 import DiceIconButton from '../../../../../../containers/DiceButton';
@@ -53,7 +51,6 @@ const PlayerScreenAppBar = ({ classes, onBack, title }) => (
 );
 
 PlayerScreenAppBar.propTypes = {
-  classes: classesObject.isRequired, // eslint-disable-line react/no-typos
   onBack: PropTypes.func,
   title: PropTypes.string,
 };

@@ -11,10 +11,9 @@ import Toolbar from 'material-ui/Toolbar';
 import { withStyles } from 'material-ui/styles';
 import NavigationArrowBack from 'material-ui-icons/ArrowBack';
 import NavigationCheck from 'material-ui-icons/Check';
+import { noop } from 'lodash-es';
 
 import { form } from '../Form/Component';
-import noop from '../../../../../utils/noop';
-import { classesObject } from '../../../../../utils/propTypes';
 
 import Title from '../../../../../components/Title';
 
@@ -60,7 +59,6 @@ const PlayerFormScreenAppBar = ({
 );
 
 PlayerFormScreenAppBar.propTypes = {
-  classes: classesObject.isRequired, // eslint-disable-line react/no-typos
   onCancel: PropTypes.func,
   onSubmit: PropTypes.func,
   title: PropTypes.node,

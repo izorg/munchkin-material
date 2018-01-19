@@ -4,8 +4,6 @@ import Paper from 'material-ui/Paper';
 import { withStyles } from 'material-ui/styles';
 import cns from 'classnames';
 
-import { classesObject } from '../../utils/propTypes';
-
 export { default as LayoutContent } from './Content';
 export { default as LayoutHeader } from './Header';
 
@@ -32,7 +30,6 @@ const Layout = ({ classes, className, ...props }) => (
 );
 
 Layout.propTypes = {
-  classes: classesObject.isRequired, // eslint-disable-line react/no-typos
   className: PropTypes.string,
 };
 

@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import cns from 'classnames';
 
-import { classesObject } from '../../utils/propTypes';
-
 const styles = theme => ({
   layoutContent: {
     flexGrow: 1,
@@ -27,7 +25,6 @@ const LayoutContent = ({ classes, className, ...props }) => (
 );
 
 LayoutContent.propTypes = {
-  classes: classesObject.isRequired, // eslint-disable-line react/no-typos
   className: PropTypes.string,
 };
 

@@ -4,17 +4,16 @@ import PropTypes from 'prop-types';
 import Dialog from 'material-ui/Dialog';
 import IconButton from 'material-ui/IconButton';
 import { withStyles } from 'material-ui/styles';
+import { noop } from 'lodash-es';
 
 import DiceTransition from './Transition';
 
-import noop from '../../utils/noop';
 import DiceOne from '../icons/dice/one';
 import DiceTwo from '../icons/dice/two';
 import DiceThree from '../icons/dice/three';
 import DiceFour from '../icons/dice/four';
 import DiceFive from '../icons/dice/five';
 import DiceSix from '../icons/dice/six';
-import { classesObject } from '../../utils/propTypes';
 
 const diceSize = 120;
 
@@ -87,7 +86,6 @@ class DiceDialog extends PureComponent {
 }
 
 DiceDialog.propTypes = {
-  classes: classesObject.isRequired, // eslint-disable-line react/no-typos
   dice: PropTypes.number,
   onDiceClick: PropTypes.func,
 };

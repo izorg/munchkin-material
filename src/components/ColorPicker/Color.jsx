@@ -3,9 +3,7 @@ import PropTypes from 'prop-types';
 import Avatar from 'material-ui/Avatar';
 import ButtonBase from 'material-ui/ButtonBase';
 import { withStyles } from 'material-ui/styles';
-
-import noop from '../../utils/noop';
-import { classesObject } from '../../utils/propTypes';
+import { noop } from 'lodash-es';
 
 const styles = {
   button: {
@@ -29,7 +27,6 @@ const ColorPicker = ({ classes, onClick, value }) => (
 );
 
 ColorPicker.propTypes = {
-  classes: classesObject.isRequired, // eslint-disable-line react/no-typos
   onClick: PropTypes.func,
   value: PropTypes.string,
 };

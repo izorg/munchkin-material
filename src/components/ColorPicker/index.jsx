@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-
-import noop from '../../utils/noop';
+import { noop } from 'lodash-es';
 
 import Color from './Color';
 import Dialog from './Dialog';

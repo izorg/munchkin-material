@@ -2,8 +2,6 @@ import React from 'react';
 import Paper from 'material-ui/Paper';
 import { withStyles } from 'material-ui/styles';
 
-import { classesObject } from '../../utils/propTypes';
-
 const styles = {
   screen: {
     height: '100%',
@@ -22,9 +20,5 @@ const LoadingScreen = ({ classes }) => (
     className={classes.screen}
   />
 );
-
-LoadingScreen.propTypes = {
-  classes: classesObject.isRequired, // eslint-disable-line react/no-typos
-};
 
 export default withStyles(styles)(LoadingScreen);

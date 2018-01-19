@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import Zoom from 'material-ui/transitions/Zoom';
 
-import { classesObject, themeObject } from '../../utils/propTypes';
-
 const styles = theme => ({
   container: {
     bottom: theme.spacing.unit * 2,
@@ -31,8 +29,6 @@ const Transition = ({
 
 Transition.propTypes = {
   children: PropTypes.node,
-  classes: classesObject.isRequired, // eslint-disable-line react/no-typos
-  theme: themeObject.isRequired, // eslint-disable-line react/no-typos
 };
 
 Transition.defaultProps = {

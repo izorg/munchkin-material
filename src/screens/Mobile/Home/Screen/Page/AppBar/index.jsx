@@ -14,12 +14,11 @@ import NavigationCheck from 'material-ui-icons/Check';
 import NavigationClose from 'material-ui-icons/Close';
 import ActionDelete from 'material-ui-icons/Delete';
 import EditorModeEdit from 'material-ui-icons/ModeEdit';
+import { noop } from 'lodash-es';
 import { removePlayer } from 'munchkin-core/es/actions';
 
 import Title from '../../../../../../components/Title';
-import noop from '../../../../../../utils/noop';
 import { ios } from '../../../../../../utils/platforms';
-import { classesObject } from '../../../../../../utils/propTypes';
 
 import * as modes from '../../../modes';
 import { getModeFromPathname } from '../../../path';
@@ -175,7 +174,6 @@ const HomeScreenPageAppBar = ({
 };
 
 HomeScreenPageAppBar.propTypes = {
-  classes: classesObject.isRequired, // eslint-disable-line react/no-typos
   empty: PropTypes.bool,
   intl: intlShape.isRequired, // eslint-disable-line react/no-typos
   mode: PropTypes.oneOf(Object.values(modes)),

@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Typography from 'material-ui/Typography';
 import { withStyles } from 'material-ui/styles';
+import { noop } from 'lodash-es';
 
-import noop from '../../../../../utils/noop';
-import { classesObject, playerInstance } from '../../../../../utils/propTypes';
+import { playerShape } from '../../../../../utils/propTypes';
 
 import Layout, { LayoutContent, LayoutHeader } from '../../../../../components/Layout';
 
@@ -106,8 +106,7 @@ const CombatScreenPage = ({
 );
 
 CombatScreenPage.propTypes = {
-  classes: classesObject.isRequired, // eslint-disable-line react/no-typos
-  helper: playerInstance,
+  helper: playerShape,
   helperBonus: PropTypes.number,
   monsters: PropTypes.arrayOf(PropTypes.object),
   onHelperBonusChange: PropTypes.func,
@@ -115,7 +114,7 @@ CombatScreenPage.propTypes = {
   onMonsterAdd: PropTypes.func,
   onMonsterRemove: PropTypes.func,
   onPlayerBonusChange: PropTypes.func,
-  player: playerInstance.isRequired, // eslint-disable-line react/no-typos
+  player: playerShape.isRequired, // eslint-disable-line react/no-typos
   playerBonus: PropTypes.number,
 };
 

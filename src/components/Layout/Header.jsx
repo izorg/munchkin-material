@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import cns from 'classnames';
 
-import { classesObject } from '../../utils/propTypes';
-
 const styles = {
   layoutHeader: {
     flex: '0 0 auto',
@@ -20,7 +18,6 @@ const LayoutHeader = ({ classes, className, ...props }) => (
 );
 
 LayoutHeader.propTypes = {
-  classes: classesObject.isRequired, // eslint-disable-line react/no-typos
   className: PropTypes.string,
 };
 

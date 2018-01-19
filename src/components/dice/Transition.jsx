@@ -2,8 +2,6 @@ import React from 'react';
 import CSSTransition from 'react-transition-group/CSSTransition';
 import { withStyles } from 'material-ui/styles';
 
-import { classesObject, themeObject } from '../../utils/propTypes';
-
 const styles = theme => ({
   enter: {
     height: '100%',
@@ -58,10 +56,5 @@ const DiceTransition = ({ classes, theme, ...props }) => (
     }}
   />
 );
-
-DiceTransition.propTypes = {
-  classes: classesObject.isRequired, // eslint-disable-line react/no-typos
-  theme: themeObject.isRequired, // eslint-disable-line react/no-typos
-};
 
 export default withStyles(styles, { withTheme: true })(DiceTransition);

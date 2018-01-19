@@ -4,11 +4,11 @@ import PropTypes from 'prop-types';
 import IconButton from 'material-ui/IconButton';
 import { withStyles } from 'material-ui/styles';
 import cns from 'classnames';
+import { noop } from 'lodash-es';
 
 import Counter from '../../../../../../../components/Counter';
 import Gender from '../../../../../../../components/Gender';
-import noop from '../../../../../../../utils/noop';
-import { classesObject, playerInstance } from '../../../../../../../utils/propTypes';
+import { playerShape } from '../../../../../../../utils/propTypes';
 
 const styles = theme => ({
   stats: {
@@ -122,14 +122,13 @@ const PlayerStats = ({
 );
 
 PlayerStats.propTypes = {
-  classes: classesObject.isRequired, // eslint-disable-line react/no-typos
   className: PropTypes.string,
   onGearDecrement: PropTypes.func,
   onGearIncrement: PropTypes.func,
   onGenderToggle: PropTypes.func,
   onLevelDecrement: PropTypes.func,
   onLevelIncrement: PropTypes.func,
-  player: playerInstance.isRequired, // eslint-disable-line react/no-typos
+  player: playerShape.isRequired, // eslint-disable-line react/no-typos
 };
 
 PlayerStats.defaultProps = {

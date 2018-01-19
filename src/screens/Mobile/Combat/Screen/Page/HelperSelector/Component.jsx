@@ -5,9 +5,7 @@ import Dialog, { DialogContent, DialogTitle } from 'material-ui/Dialog';
 import List, { ListItem, ListItemText } from 'material-ui/List';
 import Typography from 'material-ui/Typography';
 import { withStyles } from 'material-ui/styles';
-
-import noop from '../../../../../../utils/noop';
-import { classesObject } from '../../../../../../utils/propTypes';
+import { noop } from 'lodash-es';
 
 const styles = {
   dialogPaper: {
@@ -78,7 +76,6 @@ const HelperSelector = ({
 );
 
 HelperSelector.propTypes = {
-  classes: classesObject.isRequired, // eslint-disable-line react/no-typos
   helpers: PropTypes.arrayOf(PropTypes.object),
   onSelect: PropTypes.func,
 };

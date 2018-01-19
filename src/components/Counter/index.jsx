@@ -5,9 +5,7 @@ import { withStyles } from 'material-ui/styles';
 import NavigationArrowDropDown from 'material-ui-icons/ArrowDropDown';
 import NavigationArrowDropUp from 'material-ui-icons/ArrowDropUp';
 import cns from 'classnames';
-
-import noop from '../../utils/noop';
-import { classesObject } from '../../utils/propTypes';
+import { noop } from 'lodash-es';
 
 const styles = theme => ({
   counter: {
@@ -72,7 +70,6 @@ const Counter = ({
 );
 
 Counter.propTypes = {
-  classes: classesObject.isRequired, // eslint-disable-line react/no-typos
   className: PropTypes.string,
   compact: PropTypes.bool,
   onDecrement: PropTypes.func,
