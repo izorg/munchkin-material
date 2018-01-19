@@ -1,10 +1,9 @@
 import React, { Fragment } from 'react';
 import Helmet from 'react-helmet/es/Helmet';
+import Hidden from 'material-ui/Hidden';
 
-import Combat from '../routes/Combat';
-import Home from '../routes/Home';
-import Player from '../routes/Player';
-import PlayerForm from '../routes/PlayerForm';
+import Mobile from '../screens/Mobile';
+import Tablet from '../screens/Tablet';
 
 import DiceDialog from './DiceDialog';
 
@@ -14,10 +13,13 @@ const Root = () => (
       <html lang={navigator.language} />
     </Helmet>
 
-    <Home />
-    <PlayerForm />
-    <Player />
-    <Combat />
+    <Hidden smUp>
+      <Mobile />
+    </Hidden>
+
+    <Hidden xsDown>
+      <Tablet />
+    </Hidden>
 
     <DiceDialog />
   </Fragment>
