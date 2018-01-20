@@ -1,14 +1,15 @@
 {
   "name": "munchkin-web",
   "version": "5.1.2",
-  "main": "./dist/js/app.js",
+  "main": "dist/js/app.js",
   "files": [
     "dist/"
   ],
   "scripts": {
+    "clean": "rimraf coverage dist doc messages site",
     "dev": "cross-env NODE_ENV=development webpack-dev-server --config=webpack/dev.babel.js",
     "dist": "cross-env NODE_ENV=production webpack --config=webpack/dist.babel.js",
-    "doc": "rimraf doc && jsdoc ./src -r -d doc",
+    "doc": "rimraf doc && jsdoc src -r -d doc",
     "i18n:download": "node scripts/i18n/download.js",
     "i18n:translate": "node scripts/i18n/translate.js",
     "i18n:upload": "node scripts/i18n/upload.js",
