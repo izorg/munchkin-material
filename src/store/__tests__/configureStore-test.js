@@ -1,4 +1,3 @@
-/* global expect, test */
 import createHistory from 'history/es/createMemoryHistory';
 
 import configureStore from '../configureStore';

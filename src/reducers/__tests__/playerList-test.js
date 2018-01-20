@@ -4,7 +4,6 @@ import { MOVE_PLAYER } from '../../utils/actionTypes';
 
 import reducer from '../playerList';
 
-/* global test, expect */
 test('should add player', () => {
   let playerList = reducer(undefined, {
     type: ADD_PLAYER,

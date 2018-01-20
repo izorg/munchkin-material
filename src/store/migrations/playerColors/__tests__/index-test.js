@@ -1,4 +1,3 @@
-/* global expect, test */
 import state from './state.json';
 
 import migrate from '../index';
