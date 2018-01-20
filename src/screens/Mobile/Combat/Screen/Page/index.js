@@ -2,7 +2,7 @@ import connect from 'react-redux/es/connect/connect';
 import {
   addMonster, removeMonster, setCombatHelperBonus,
   setCombatPlayerBonus,
-} from 'munchkin-core/es/actions/index';
+} from 'munchkin-core/es/actions';
 import createMonster from 'munchkin-core/es/utils/createMonster';
 
 import { removeHelper } from '../../../../../actions';

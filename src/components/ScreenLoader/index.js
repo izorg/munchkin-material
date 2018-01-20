@@ -2,7 +2,7 @@ import { createElement, PureComponent } from 'react';
 import Loadable from 'react-loadable';
 import PropTypes from 'prop-types';
 
-import LoadingScreen from '../components/LoadingScreen';
+import LoadingScreen from '../LoadingScreen';
 
 class ScreenLoader extends PureComponent {
   constructor(props) {

@@ -1,7 +1,7 @@
 import React from 'react';
 import Route from 'react-router-dom/es/Route';
 
-import ScreenLoader from '../../../containers/ScreenLoader';
+import ScreenLoader from '../../../components/ScreenLoader';
 
 const loader = () => import(/* webpackChunkName: "player", webpackMode: "lazy" */ './Screen');
 

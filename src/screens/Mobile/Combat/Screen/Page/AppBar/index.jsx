@@ -11,7 +11,7 @@ import { withStyles } from 'material-ui/styles';
 import NavigationArrowBack from 'material-ui-icons/ArrowBack';
 import { noop } from 'lodash-es';
 
-import DiceIconButton from '../../../../../../containers/DiceButton';
+import DiceIconButton from '../../../../../../components/dice/Button';
 
 import Title from '../../../../../../components/Title';
 

@@ -7,10 +7,10 @@ import Reboot from 'material-ui/Reboot';
 import { MuiThemeProvider, withStyles } from 'material-ui/styles';
 import { noop } from 'lodash-es';
 
-import LocaleProvider from '../../containers/LocaleProvider';
+import LocaleProvider from '../LocaleProvider';
 import munchkinWoff from '../../fonts/munchkin.woff';
 import munchkinWoff2 from '../../fonts/munchkin.woff2';
-import Root from '../../containers/Root';
+import Root from '../Root';
 import munchkinTheme from '../../styles/munchkinTheme';
 
 const styles = {

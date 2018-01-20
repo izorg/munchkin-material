@@ -1,9 +1,9 @@
 import { goBack } from 'connected-react-router/lib/actions';
 import connect from 'react-redux/es/connect/connect';
 
-import { throwDice } from '../actions';
+import { throwDice } from '../../../actions';
 
-import DiceDialog from '../components/dice/Dialog';
+import Component from './Component';
 
 const mapStateToProps = state => ({
   dice: state.app.dice,
@@ -15,4 +15,4 @@ const mapDispatchToProps = {
   onClose: goBack,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(DiceDialog);
+export default connect(mapStateToProps, mapDispatchToProps)(Component);

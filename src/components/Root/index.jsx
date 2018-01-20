@@ -2,10 +2,10 @@ import React, { Fragment } from 'react';
 import Helmet from 'react-helmet/es/Helmet';
 import Hidden from 'material-ui/Hidden';
 
-import Mobile from '../screens/Mobile';
-import Tablet from '../screens/Tablet';
+import Mobile from '../../screens/Mobile';
+import Tablet from '../../screens/Tablet';
 
-import DiceDialog from './DiceDialog';
+import DiceDialog from '../dice/Dialog';
 
 const Root = () => (
   <Fragment>

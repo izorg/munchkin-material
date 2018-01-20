@@ -6,14 +6,14 @@ import IconButton from 'material-ui/IconButton';
 import { withStyles } from 'material-ui/styles';
 import { noop } from 'lodash-es';
 
-import DiceTransition from './Transition';
+import DiceTransition from '../Transition';
 
-import DiceOne from '../icons/dice/one';
-import DiceTwo from '../icons/dice/two';
-import DiceThree from '../icons/dice/three';
-import DiceFour from '../icons/dice/four';
-import DiceFive from '../icons/dice/five';
-import DiceSix from '../icons/dice/six';
+import DiceOne from '../../icons/dice/one';
+import DiceTwo from '../../icons/dice/two';
+import DiceThree from '../../icons/dice/three';
+import DiceFour from '../../icons/dice/four';
+import DiceFive from '../../icons/dice/five';
+import DiceSix from '../../icons/dice/six';
 
 const diceSize = 120;
 

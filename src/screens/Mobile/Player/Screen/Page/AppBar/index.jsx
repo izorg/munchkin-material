@@ -11,7 +11,7 @@ import NavigationArrowBack from 'material-ui-icons/ArrowBack';
 import { noop } from 'lodash-es';
 
 import Title from '../../../../../../components/Title';
-import DiceIconButton from '../../../../../../containers/DiceButton';
+import DiceIconButton from '../../../../../../components/dice/Button';
 
 const mapStateToProps = state => ({
   title: state.players[state.app.activePlayerId].name,

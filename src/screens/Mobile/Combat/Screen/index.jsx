@@ -4,7 +4,7 @@ import Slide from 'material-ui/transitions/Slide';
 
 import Transition from '../../../../components/fab/Transition';
 
-import HelperButton from './HelperButton/index';
+import HelperButton from './HelperButton';
 import Page from './Page';
 
 const CombatScreen = ({ appear, match }) => (

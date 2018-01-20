@@ -1,7 +1,7 @@
 import { IntlProvider } from 'react-intl';
 import connect from 'react-redux/es/connect/connect';
 
-import { getLocale, getMessages } from '../i18n';
+import { getLocale, getMessages } from '../../i18n';
 
 const mapStateToProps = (state) => {
   const locale = state.app.locale || getLocale();
