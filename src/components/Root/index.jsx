@@ -2,8 +2,8 @@ import React, { Fragment } from 'react';
 import Helmet from 'react-helmet/es/Helmet';
 import Hidden from 'material-ui/Hidden';
 
-import Mobile from '../../screens/Mobile';
-import Tablet from '../../screens/Tablet';
+import Mobile from '../../structures/Mobile';
+import Tablet from '../../structures/Tablet';
 
 import DiceDialog from '../dice/Dialog';
 

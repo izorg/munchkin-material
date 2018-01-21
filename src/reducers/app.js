@@ -1,7 +1,6 @@
 import * as types from '../utils/actionTypes';
 
 const initialState = {
-  activePlayerId: null,
   dice: null,
   fullVersion: false,
   locale: null,
@@ -10,15 +9,6 @@ const initialState = {
 
 const app = (state = initialState, action) => {
   switch (action.type) {
-    case types.SET_ACTIVE_PLAYER: {
-      const { id } = action;
-
-      return {
-        ...state,
-        activePlayerId: id || null,
-      };
-    }
-
     case types.SET_FULL_VERSION:
       return {
         ...state,

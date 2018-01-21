@@ -5,7 +5,6 @@ import { withStyles } from 'material-ui/styles';
 import cns from 'classnames';
 
 export { default as LayoutContent } from './Content';
-export { default as LayoutHeader } from './Header';
 
 const styles = {
   layout: {

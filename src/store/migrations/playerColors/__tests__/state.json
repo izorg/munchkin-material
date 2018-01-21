@@ -35,7 +35,6 @@
     "app": "5.0.4"
   },
   "app": {
-    "activePlayerId": null,
     "dice": null,
     "fullVersion": true,
     "locale": null,

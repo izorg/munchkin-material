@@ -38,11 +38,6 @@ export const removeHelper = () => (dispatch) => {
   dispatch(setCombatHelperBonus(0));
 };
 
-export const setActivePlayer = id => ({
-  type: types.SET_ACTIVE_PLAYER,
-  id,
-});
-
 export const setFullVersion = (fullVersion = true) => ({
   type: types.SET_FULL_VERSION,
   fullVersion,
@@ -64,8 +59,6 @@ export const submitPlayer = values => (dispatch) => {
     } else {
       dispatch(addPlayer(player));
     }
-
-    dispatch(setActivePlayer(player.id));
   }
 
   dispatch(goBack());

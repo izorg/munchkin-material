@@ -3,19 +3,11 @@ import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import cns from 'classnames';
 
-const styles = theme => ({
+const styles = {
   layoutContent: {
-    flexGrow: 1,
-    overflowY: 'auto',
-    paddingLeft: theme.spacing.unit * 2,
-    paddingRight: theme.spacing.unit * 2,
-
-    [theme.breakpoints.up('sm')]: {
-      paddingLeft: theme.spacing.unit * 3,
-      paddingRight: theme.spacing.unit * 3,
-    },
+    flex: 1,
   },
-});
+};
 
 const LayoutContent = ({ classes, className, ...props }) => (
   <div
