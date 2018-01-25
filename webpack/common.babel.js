@@ -4,8 +4,6 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 
 export default {
   entry: [
-    'core-js/es6/map',
-    'core-js/es6/set',
     './src/index.jsx',
   ],
 
@@ -33,6 +31,10 @@ export default {
                 [
                   'env',
                   {
+                    exclude: [
+                      'es6.symbol',
+                      'transform-es2015-typeof-symbol',
+                    ],
                     targets: {
                       android: '4.4.2',
                       chrome: 49,
