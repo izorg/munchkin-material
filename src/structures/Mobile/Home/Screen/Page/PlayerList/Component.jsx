@@ -4,9 +4,8 @@ import { SortableContainer, SortableElement } from 'react-sortable-hoc';
 import PropTypes from 'prop-types';
 import List from 'material-ui/List';
 import { withStyles } from 'material-ui/styles';
+import cns from 'classnames';
 import { noop } from 'lodash-es';
-
-import Nobody from '../../../../../../components/Nobody';
 
 import Item from './Item';
 
@@ -61,16 +60,16 @@ class HomeScreenPagePlayerList extends PureComponent {
   }
 
   render() {
-    const { classes, editMode, playerList } = this.props;
+    const {
+      classes, className: classNameProp, editMode, playerList,
+    } = this.props;
 
-    if (!playerList.length) {
-      return <Nobody />;
-    }
+    const className = cns(classNameProp, classes.list);
 
     if (editMode) {
       return (
         <SortableList
-          className={classes.list}
+          className={className}
           component="div"
           helperClass={classes.sortableHelper}
           lockAxis="y"
@@ -92,7 +91,7 @@ class HomeScreenPagePlayerList extends PureComponent {
 
     return (
       <List
-        className={classes.list}
+        className={className}
         component="div"
       >
         {playerList.map((playerId, index) => (
@@ -108,12 +107,14 @@ class HomeScreenPagePlayerList extends PureComponent {
 }
 
 HomeScreenPagePlayerList.propTypes = {
+  className: PropTypes.string,
   editMode: PropTypes.bool,
   onPlayerMove: PropTypes.func,
   playerList: PropTypes.arrayOf(PropTypes.string),
 };
 
 HomeScreenPagePlayerList.defaultProps = {
+  className: '',
   editMode: false,
   onPlayerMove: noop,
   playerList: [],
