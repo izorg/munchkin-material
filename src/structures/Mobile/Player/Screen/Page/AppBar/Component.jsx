@@ -23,7 +23,7 @@ const styles = {
 const Component = ({ classes, onBack, title }) => (
   <AppBar color="primary" position="static">
     <Toolbar>
-      <IconButton className={classes.leftButton} color="contrast" onClick={onBack}>
+      <IconButton className={classes.leftButton} color="inherit" onClick={onBack}>
         <NavigationArrowBack />
       </IconButton>
 
@@ -33,7 +33,7 @@ const Component = ({ classes, onBack, title }) => (
 
       <DiceButton
         className={classes.rightButton}
-        color="contrast"
+        color="inherit"
       />
     </Toolbar>
   </AppBar>

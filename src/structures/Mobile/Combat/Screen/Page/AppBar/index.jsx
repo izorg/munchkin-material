@@ -32,7 +32,7 @@ const styles = {
 const CombatScreenPageAppBar = ({ classes, onBack }) => (
   <AppBar color="primary" position="static">
     <Toolbar>
-      <IconButton className={classes.leftButton} color="contrast" onClick={onBack}>
+      <IconButton className={classes.leftButton} color="inherit" onClick={onBack}>
         <NavigationArrowBack />
       </IconButton>
 
@@ -42,7 +42,7 @@ const CombatScreenPageAppBar = ({ classes, onBack }) => (
 
       <DiceIconButton
         className={classes.rightButton}
-        color="contrast"
+        color="inherit"
       />
     </Toolbar>
   </AppBar>

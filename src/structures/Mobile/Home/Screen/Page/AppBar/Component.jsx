@@ -101,7 +101,7 @@ const HomeScreenPageAppBarComponent = ({
         iconElementRight = (
           <IconButton
             className={classes.rightButton}
-            color="contrast"
+            color="inherit"
             onClick={() => onToggleEditClick(mode)}
           >
             <NavigationCheck />
@@ -115,7 +115,7 @@ const HomeScreenPageAppBarComponent = ({
             <IconButton
               aria-label={editTitle}
               className={classes.rightButton}
-              color="contrast"
+              color="inherit"
               onClick={() => onToggleEditClick(mode)}
             >
               <EditorModeEdit />

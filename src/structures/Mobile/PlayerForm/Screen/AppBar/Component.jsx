@@ -25,7 +25,7 @@ const PlayerFormScreenAppBar = ({
 }) => (
   <AppBar color="primary" position="static">
     <Toolbar>
-      <IconButton className={classes.leftButton} color="contrast" onClick={onCancel}>
+      <IconButton className={classes.leftButton} color="inherit" onClick={onCancel}>
         <NavigationArrowBack />
       </IconButton>
 
@@ -33,7 +33,7 @@ const PlayerFormScreenAppBar = ({
         {title}
       </Title>
 
-      <IconButton className={classes.rightButton} color="contrast" onClick={onSubmit}>
+      <IconButton className={classes.rightButton} color="inherit" onClick={onSubmit}>
         <NavigationCheck />
       </IconButton>
     </Toolbar>
