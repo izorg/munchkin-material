@@ -4,7 +4,7 @@ import Slide from 'material-ui/transitions/Slide';
 
 import Transition from '../../../../components/fab/Transition';
 
-import CombatButton from './CombatButton/index';
+import CombatButton from './CombatButton';
 import Page from './Page';
 
 class PlayerScreen extends PureComponent {

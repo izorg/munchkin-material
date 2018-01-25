@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Transition from '../../../../components/fab/Transition';
 
 import NewPlayerButton from './NewPlayerButton';
-import Page from './Page/index';
+import Page from './Page';
 
 const HomeScreen = ({ match }) => (
   <Fragment>

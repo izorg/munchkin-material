@@ -7,7 +7,7 @@ import { noop } from 'lodash-es';
 import Layout, { LayoutContent } from '../../../../../components/Layout';
 
 import AppBar from './AppBar';
-import MonsterSlider from './MonsterSlider/index';
+import MonsterSlider from './MonsterSlider';
 import PlayerSlider from './PlayerSlider';
 
 const styles = theme => ({

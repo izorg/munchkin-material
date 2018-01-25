@@ -3,7 +3,7 @@ import { withStyles } from 'material-ui/styles';
 
 import Layout, { LayoutContent } from '../../../../components/Layout';
 
-import AppBar from './AppBar/index';
+import AppBar from './AppBar';
 import Form from './Form';
 
 const styles = theme => ({
