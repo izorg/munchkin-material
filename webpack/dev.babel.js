@@ -6,7 +6,7 @@ import WebpackNotifierPlugin from 'webpack-notifier';
 import config from './common.babel';
 
 export default merge.strategy({
-  entry: 'replace',
+  entry: 'prepend',
 })(config, {
   devtool: 'eval-source-map',
 
@@ -14,7 +14,6 @@ export default merge.strategy({
     'babel-polyfill',
     './src/site.js',
     './src/test/index.js',
-    './src/index.jsx',
   ],
 
   output: {
