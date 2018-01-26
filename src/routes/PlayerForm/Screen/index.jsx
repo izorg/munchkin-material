@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import { hot } from 'react-hot-loader';
 import PropTypes from 'prop-types';
 import Slide from 'material-ui/transitions/Slide';
 
@@ -58,4 +59,4 @@ PlayerFormScreen.defaultProps = {
   match: null,
 };
 
-export default PlayerFormScreen;
+export default hot(module)(PlayerFormScreen);

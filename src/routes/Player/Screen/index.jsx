@@ -1,4 +1,5 @@
 import React, { Fragment, PureComponent } from 'react';
+import { hot } from 'react-hot-loader';
 import PropTypes from 'prop-types';
 import Slide from 'material-ui/transitions/Slide';
 
@@ -71,4 +72,4 @@ PlayerScreen.defaultProps = {
   match: null,
 };
 
-export default PlayerScreen;
+export default hot(module)(PlayerScreen);

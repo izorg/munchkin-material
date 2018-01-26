@@ -1,6 +1,8 @@
 import React, { PureComponent } from 'react';
+import { hot } from 'react-hot-loader';
 import Provider from 'react-redux/es/components/Provider';
 import { storeShape } from 'react-redux/es/utils/PropTypes';
+import compose from 'recompose/compose';
 import { ConnectedRouter } from 'connected-react-router';
 import PropTypes from 'prop-types';
 import Reboot from 'material-ui/Reboot';
@@ -87,4 +89,7 @@ App.defaultProps = {
   buyFullVersion: noop,
 };
 
-export default withStyles(styles)(App);
+export default compose(
+  hot(module),
+  withStyles(styles),
+)(App);

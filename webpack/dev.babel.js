@@ -12,7 +12,6 @@ export default merge.strategy({
 
   entry: [
     'babel-polyfill',
-    'react-hot-loader/patch',
     './src/site.js',
     './src/test/index.js',
     './src/index.jsx',

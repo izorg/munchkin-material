@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import { hot } from 'react-hot-loader';
 import PropTypes from 'prop-types';
 import Slide from 'material-ui/transitions/Slide';
 
@@ -36,4 +37,4 @@ CombatScreen.defaultProps = {
   match: null,
 };
 
-export default CombatScreen;
+export default hot(module)(CombatScreen);
