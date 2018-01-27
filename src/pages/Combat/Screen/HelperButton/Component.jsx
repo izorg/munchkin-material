@@ -8,14 +8,16 @@ import Tooltip from 'material-ui/Tooltip';
 import Backdrop from 'material-ui/Modal/Backdrop';
 import { withStyles } from 'material-ui/styles';
 import transitions, { duration } from 'material-ui/styles/transitions';
-import ContentAdd from 'material-ui-icons/Add';
-import SocialPersonAdd from 'material-ui-icons/PersonAdd';
+import AddIcon from 'material-ui-icons/Add';
+import PersonAddIcon from 'material-ui-icons/PersonAdd';
 import cns from 'classnames';
 import { noop } from 'lodash-es';
 
-import Fade from './Fade';
 import EmoticonDevil from '../../../../components/icons/EmoticonDevil';
+
 import HelperSelector from '../Page/HelperSelector';
+
+import Fade from './Fade';
 
 const styles = {
   container: {
@@ -122,7 +124,7 @@ class CombatScreenHelperButton extends PureComponent {
                     mini
                     to={`/player/${playerId}/combat/add/helper`}
                   >
-                    <SocialPersonAdd />
+                    <PersonAddIcon />
                   </Button>
                 </Tooltip>
               </div>
@@ -137,7 +139,7 @@ class CombatScreenHelperButton extends PureComponent {
           onClick={this.handleClick}
         >
           {helper
-            ? <ContentAdd className={cns(classes.icon, { [classes.expanded]: expanded })} />
+            ? <AddIcon className={cns(classes.icon, { [classes.expanded]: expanded })} />
             : <EmoticonDevil />
           }
         </Button>

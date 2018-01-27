@@ -15,7 +15,6 @@ import { noop } from 'lodash-es';
 
 import PlayerListTitleMessage from '../../../../../components/PlayerListTitleMessage';
 import Title from '../../../../../components/Title';
-import { ios } from '../../../../../utils/platforms';
 
 import * as modes from '../../../modes';
 
@@ -83,46 +82,35 @@ const HomeScreenPageAppBarComponent = ({
         </IconButton>
       );
 
-      if (!ios) {
-        titleStyle = {
-          ...titleStyle,
-          marginLeft: 20,
-        };
-      }
+      titleStyle = {
+        ...titleStyle,
+        marginLeft: 20,
+      };
+    } else if (editMode) {
+      iconElementRight = (
+        <IconButton
+          className={classes.rightButton}
+          color="inherit"
+          onClick={() => onToggleEditClick(mode)}
+        >
+          <NavigationCheck />
+        </IconButton>
+      );
     } else {
-      if (ios) {
-        titleStyle = {
-          ...titleStyle,
-          marginLeft: 48,
-        };
-      }
+      const editTitle = intl.formatMessage(messages.edit);
 
-      if (editMode) {
-        iconElementRight = (
+      iconElementRight = (
+        <Tooltip title={editTitle}>
           <IconButton
+            aria-label={editTitle}
             className={classes.rightButton}
             color="inherit"
             onClick={() => onToggleEditClick(mode)}
           >
-            <NavigationCheck />
+            <EditorModeEdit />
           </IconButton>
-        );
-      } else {
-        const editTitle = intl.formatMessage(messages.edit);
-
-        iconElementRight = (
-          <Tooltip title={editTitle}>
-            <IconButton
-              aria-label={editTitle}
-              className={classes.rightButton}
-              color="inherit"
-              onClick={() => onToggleEditClick(mode)}
-            >
-              <EditorModeEdit />
-            </IconButton>
-          </Tooltip>
-        );
-      }
+        </Tooltip>
+      );
     }
   }
 

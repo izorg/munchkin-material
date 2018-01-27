@@ -1,5 +1,4 @@
 import React from 'react';
-import connect from 'react-redux/es/connect/connect';
 import PropTypes from 'prop-types';
 
 import Layout from '../../../../components/Layout';
@@ -8,21 +7,19 @@ import Nobody from '../../../../components/Nobody';
 import AppBar from './AppBar';
 import PlayerList from './PlayerList';
 
-const mapStateToProps = state => ({ empty: !state.playerList.length });
-
-const MobileHomeScreenPage = ({ empty }) => (
+const HomeScreenPageComponent = ({ empty }) => (
   <Layout>
     <AppBar />
     {empty ? <Nobody /> : <PlayerList />}
   </Layout>
 );
 
-MobileHomeScreenPage.propTypes = {
+HomeScreenPageComponent.propTypes = {
   empty: PropTypes.bool,
 };
 
-MobileHomeScreenPage.defaultProps = {
+HomeScreenPageComponent.defaultProps = {
   empty: false,
 };
 
-export default connect(mapStateToProps)(MobileHomeScreenPage);
+export default HomeScreenPageComponent;
