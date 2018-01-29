@@ -1,10 +1,8 @@
 import React from 'react';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
-import PropTypes from 'prop-types';
 import compose from 'recompose/compose';
-import AppBar from 'material-ui/AppBar';
+import PropTypes from 'prop-types';
 import IconButton from 'material-ui/IconButton';
-import Toolbar from 'material-ui/Toolbar';
 import Tooltip from 'material-ui/Tooltip';
 import { withStyles } from 'material-ui/styles';
 import NavigationCheck from 'material-ui-icons/Check';
@@ -13,6 +11,7 @@ import ActionDelete from 'material-ui-icons/Delete';
 import EditorModeEdit from 'material-ui-icons/ModeEdit';
 import { noop } from 'lodash-es';
 
+import AppBar from '../../../../../components/AppBar';
 import PlayerListTitleMessage from '../../../../../components/PlayerListTitleMessage';
 import Title from '../../../../../components/Title';
 
@@ -26,19 +25,12 @@ const messages = defineMessages({
 });
 
 const styles = theme => ({
-  appBar: {
-    transition: theme.transitions.create(['background-color'], {
-      duration: theme.transitions.duration.short,
-      easing: theme.transitions.easing.sharp,
-    }),
+  multiTitle: {
+    marginLeft: 20,
   },
 
-  leftButton: {
-    marginLeft: -12,
-  },
-
-  rightButton: {
-    marginRight: -12,
+  title: {
+    marginLeft: theme.spacing.unit * 2,
   },
 });
 
@@ -54,82 +46,53 @@ const HomeScreenPageAppBarComponent = ({
 }) => {
   const editMode = mode === modes.EDIT;
   const multiMode = mode === modes.MULTI;
+  const buttonColor = multiMode ? 'default' : 'inherit';
 
-  let iconElementLeft = null;
-  let iconElementRight = null;
   let title = <PlayerListTitleMessage />;
-  let titleStyle = {};
-
-  if (!empty) {
-    if (multiMode) {
-      iconElementLeft = (
-        <IconButton
-          className={classes.leftButton}
-          color="default"
-          onClick={onMultiSelectDeactivate}
-        >
-          <NavigationClose />
-        </IconButton>
-      );
-
-      iconElementRight = (
-        <IconButton
-          className={classes.rightButton}
-          color="default"
-          onClick={() => onPlayersDelete(selectedPlayerIds)}
-        >
-          <ActionDelete />
-        </IconButton>
-      );
-
-      titleStyle = {
-        ...titleStyle,
-        marginLeft: 20,
-      };
-    } else if (editMode) {
-      iconElementRight = (
-        <IconButton
-          className={classes.rightButton}
-          color="inherit"
-          onClick={() => onToggleEditClick(mode)}
-        >
-          <NavigationCheck />
-        </IconButton>
-      );
-    } else {
-      const editTitle = intl.formatMessage(messages.edit);
-
-      iconElementRight = (
-        <Tooltip title={editTitle}>
-          <IconButton
-            aria-label={editTitle}
-            className={classes.rightButton}
-            color="inherit"
-            onClick={() => onToggleEditClick(mode)}
-          >
-            <EditorModeEdit />
-          </IconButton>
-        </Tooltip>
-      );
-    }
-  }
 
   if (multiMode) {
     title = selectedPlayerIds.length;
   }
 
+  const editTitle = intl.formatMessage(messages.edit);
+
   return (
-    <AppBar className={classes.appBar} color={multiMode ? 'default' : 'primary'} position="static">
-      <Toolbar>
-        {iconElementLeft}
-        <Title
-          color={multiMode ? 'default' : 'inherit'}
-          style={titleStyle}
+    <AppBar color={multiMode ? 'default' : 'primary'} position="static">
+      {multiMode && (
+        <IconButton
+          color="default"
+          onClick={onMultiSelectDeactivate}
         >
-          {title}
-        </Title>
-        {iconElementRight}
-      </Toolbar>
+          <NavigationClose />
+        </IconButton>
+      )}
+      <Title
+        color={multiMode ? 'default' : 'inherit'}
+        className={multiMode ? classes.multiTitle : classes.title}
+      >
+        {title}
+      </Title>
+
+      {!empty && !multiMode && (
+        <Tooltip title={editTitle}>
+          <IconButton
+            aria-label={editTitle}
+            color={buttonColor}
+            onClick={() => onToggleEditClick(mode)}
+          >
+            {editMode ? <NavigationCheck /> : <EditorModeEdit />}
+          </IconButton>
+        </Tooltip>
+      )}
+
+      {multiMode && (
+        <IconButton
+          color={buttonColor}
+          onClick={() => onPlayersDelete(selectedPlayerIds)}
+        >
+          <ActionDelete />
+        </IconButton>
+      )}
     </AppBar>
   );
 };

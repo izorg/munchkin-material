@@ -69,11 +69,6 @@ export const throwDice = () => ({
   dice: Math.floor(Math.random() * 6) + 1,
 });
 
-export const toggleEditMode = force => ({
-  type: types.TOGGLE_EDIT_MODE,
-  editMode: force,
-});
-
 export const togglePlayer = id => ({
   type: types.TOGGLE_PLAYER,
   id,

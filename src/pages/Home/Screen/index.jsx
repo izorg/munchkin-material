@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import Transition from '../../../components/fab/Transition';
 
-import NewPlayerButton from './NewPlayerButton';
+import NewPlayerButton from './PlayerAddButton';
 import Page from './Page/index';
 
 const HomeScreen = ({ match }) => (

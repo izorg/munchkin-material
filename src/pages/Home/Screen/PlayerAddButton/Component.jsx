@@ -12,7 +12,7 @@ const messages = defineMessages({
   },
 });
 
-const FabAdd = ({ intl, onClick }) => (
+const PlayerAddButtonComponent = ({ intl, onClick }) => (
   <Button
     aria-label={intl.formatMessage(messages.label)}
     color="primary"
@@ -23,13 +23,13 @@ const FabAdd = ({ intl, onClick }) => (
   </Button>
 );
 
-FabAdd.propTypes = {
+PlayerAddButtonComponent.propTypes = {
   intl: intlShape.isRequired, // eslint-disable-line react/no-typos
   onClick: PropTypes.func,
 };
 
-FabAdd.defaultProps = {
+PlayerAddButtonComponent.defaultProps = {
   onClick: noop,
 };
 
-export default injectIntl(FabAdd);
+export default injectIntl(PlayerAddButtonComponent);

@@ -31,15 +31,6 @@ const app = (state = initialState, action) => {
       };
     }
 
-    case types.TOGGLE_EDIT_MODE: {
-      const editMode = typeof action.editMode !== 'undefined' ? action.editMode : !state.editMode;
-
-      return {
-        ...state,
-        editMode,
-      };
-    }
-
     case types.TOGGLE_PLAYER: {
       const { id } = action;
 
