@@ -21,7 +21,7 @@ const styles = {
 };
 
 const ColorPicker = ({ classes, onClick, value }) => (
-  <ButtonBase className={classes.button} focusRipple onClick={onClick}>
+  <ButtonBase centerRipple className={classes.button} focusRipple onClick={onClick}>
     <Avatar className={classes.color} style={{ backgroundColor: value }} />
   </ButtonBase>
 );
