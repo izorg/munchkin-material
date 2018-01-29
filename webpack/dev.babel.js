@@ -11,7 +11,7 @@ export default merge.strategy({
   devtool: 'eval-source-map',
 
   entry: [
-    'babel-polyfill',
+    '@babel/polyfill',
     './src/site.js',
     './src/test/index.js',
   ],

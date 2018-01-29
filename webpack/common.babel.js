@@ -29,21 +29,21 @@ export default {
             options: {
               presets: [
                 [
-                  'env',
+                  '@babel/preset-env',
                   {
                     exclude: [
                       'es6.symbol',
-                      'transform-es2015-typeof-symbol',
+                      'transform-typeof-symbol',
                     ],
                     targets: {
-                      android: '4.4.2',
+                      android: '4.4',
                       chrome: 49,
                       edge: 14,
                       firefox: 45,
                       ie: 11,
                       safari: 10,
                     },
-                    useBuiltIns: true,
+                    useBuiltIns: 'usage',
                   },
                 ],
               ],
