@@ -1,14 +1,9 @@
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 import path from 'path';
 import webpack from 'webpack';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
 
 export default {
-  entry: [
-    './src/index.jsx',
-  ],
-
   output: {
-    filename: 'js/app.js',
     library: 'munchkin',
     path: path.resolve(__dirname, '../dist'),
     publicPath: '',
@@ -31,10 +26,6 @@ export default {
                 [
                   '@babel/preset-env',
                   {
-                    exclude: [
-                      'es6.symbol',
-                      'transform-typeof-symbol',
-                    ],
                     targets: {
                       android: '4.4',
                       chrome: 49,
@@ -43,7 +34,7 @@ export default {
                       ie: 11,
                       safari: 10,
                     },
-                    useBuiltIns: 'usage',
+                    useBuiltIns: 'entry',
                   },
                 ],
               ],

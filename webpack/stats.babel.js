@@ -1,9 +1,9 @@
 import merge from 'webpack-merge';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 
-import config from './site.babel';
+import site from './site.babel';
 
-export default merge(config, {
+export default merge(site, {
   plugins: [
     new BundleAnalyzerPlugin({
       analyzerPort: 3001,

@@ -1,19 +1,19 @@
 import CnameWebpackPlugin from 'cname-webpack-plugin';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import merge from 'webpack-merge';
 import OfflinePlugin from 'offline-plugin';
 import path from 'path';
 import webpack from 'webpack';
-import merge from 'webpack-merge';
 
-import config from './common.babel';
+import common from './common.babel';
 
-module.exports = merge.smartStrategy({
-  entry: 'prepend',
-})(config, {
+const config = merge.smart(common, {
   entry: [
+    './src/polyfill.js',
     './src/offline.js',
     './src/site.js',
+    './src/index.jsx',
   ],
 
   output: {
@@ -82,3 +82,5 @@ module.exports = merge.smartStrategy({
     }),
   ],
 });
+
+export default config;

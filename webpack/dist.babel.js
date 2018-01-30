@@ -1,21 +1,35 @@
-import webpack from 'webpack';
 import merge from 'webpack-merge';
+import path from 'path';
+import webpack from 'webpack';
 
-import config from './common.babel';
+import common from './common.babel';
 
-export default merge.strategy({
-  'module.rules': 'prepend',
-})(config, {
+const config = merge.smart(common, {
+  entry: [
+    './src/polyfill.js',
+    './src/index.jsx',
+  ],
+
+  output: {
+    filename: 'js/app.js',
+    library: 'munchkin',
+    path: path.resolve(__dirname, '../dist'),
+  },
+
   module: {
     rules: [
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        loader: 'string-replace-loader',
-        options: {
-          search: 'webpackMode: "lazy"',
-          replace: 'webpackMode: "eager"',
-        },
+        use: [
+          {
+            loader: 'string-replace-loader',
+            options: {
+              search: 'webpackMode: "lazy"',
+              replace: 'webpackMode: "eager"',
+            },
+          },
+        ],
       },
     ],
   },
@@ -24,3 +38,5 @@ export default merge.strategy({
     new webpack.optimize.UglifyJsPlugin(),
   ],
 });
+
+export default config;

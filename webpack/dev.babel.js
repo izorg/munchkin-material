@@ -1,24 +1,25 @@
 import CopyWebpackPlugin from 'copy-webpack-plugin';
-import webpack from 'webpack';
 import merge from 'webpack-merge';
+import path from 'path';
+import webpack from 'webpack';
 import WebpackNotifierPlugin from 'webpack-notifier';
 
-import config from './common.babel';
+import common from './common.babel';
 
-export default merge.strategy({
-  entry: 'prepend',
-})(config, {
+const config = merge.smart(common, {
   devtool: 'eval-source-map',
 
   entry: [
-    '@babel/polyfill',
+    './src/polyfill.js',
     './src/site.js',
     './src/test/index.js',
+    './src/index.jsx',
   ],
 
   output: {
     chunkFilename: '[name].js',
     filename: '[name].js',
+    path: path.resolve(__dirname, '../dev'),
   },
 
   module: {
@@ -56,3 +57,5 @@ export default merge.strategy({
     overlay: true,
   },
 });
+
+export default config;
