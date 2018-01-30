@@ -7,7 +7,6 @@ import { ConnectedRouter } from 'connected-react-router';
 import PropTypes from 'prop-types';
 import Reboot from 'material-ui/Reboot';
 import { MuiThemeProvider, withStyles } from 'material-ui/styles';
-import { noop } from 'lodash-es';
 
 import LocaleProvider from '../LocaleProvider';
 import munchkinWoff from '../../fonts/munchkin.woff';
@@ -80,13 +79,9 @@ App.childContextTypes = {
 };
 
 App.propTypes = {
-  buyFullVersion: PropTypes.func,
+  buyFullVersion: PropTypes.func.isRequired,
   history: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
   store: storeShape.isRequired, // eslint-disable-line react/no-typos
-};
-
-App.defaultProps = {
-  buyFullVersion: noop,
 };
 
 export default compose(

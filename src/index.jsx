@@ -9,14 +9,17 @@ import configureStore from './store/configureStore';
 
 const history = createHistory();
 
-const store = configureStore(history);
-const { dispatch } = store;
-
 const defaultOptions = {
   buyFullVersion: noop,
+  storageKey: 'redux',
 };
 
-const init = (appEl, options = defaultOptions) => {
+const init = (appEl, initOptions) => {
+  const { storageKey, ...options } = { ...defaultOptions, ...initOptions };
+
+  const store = configureStore(history, storageKey);
+  const { dispatch } = store;
+
   render(
     <App {...options} history={history} store={store} />,
     appEl,

@@ -20,13 +20,13 @@ const getRootReducer = history => compose(
   form: formReducer,
 });
 
-export default (history) => {
+export default (history, storageKey) => {
   const enhancer = composeWithDevTools(applyMiddleware(
     thunk,
     routerMiddleware(history),
   ));
 
-  const preloadedState = loadState();
+  const preloadedState = loadState(storageKey);
 
   const store = createStore(
     getRootReducer(history),
@@ -37,7 +37,7 @@ export default (history) => {
   store.subscribe(throttle(() => {
     const state = pick(store.getState(), Object.keys(reducers));
 
-    saveState(state);
+    saveState(storageKey, state);
   }, 100));
 
   /* istanbul ignore if  */

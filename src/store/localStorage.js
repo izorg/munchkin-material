@@ -2,9 +2,7 @@ import compose from 'redux/es/compose';
 
 import migrations from './migrations';
 
-const key = 'redux';
-
-export const loadState = () => {
+export const loadState = (key) => {
   try {
     const serializedState = localStorage.getItem(key);
 
@@ -21,7 +19,7 @@ export const loadState = () => {
   }
 };
 
-export const saveState = (state) => {
+export const saveState = (key, state) => {
   try {
     const serializedState = JSON.stringify(state);
 
