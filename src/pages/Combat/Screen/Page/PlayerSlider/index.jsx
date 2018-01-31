@@ -6,7 +6,7 @@ import IconButton from 'material-ui/IconButton';
 import Paper from 'material-ui/Paper';
 import { withStyles } from 'material-ui/styles';
 import cns from 'classnames';
-import { noop } from 'lodash-es';
+import { noop } from 'lodash';
 
 import CloseCircle from '../../../../../components/icons/CloseCircle';
 

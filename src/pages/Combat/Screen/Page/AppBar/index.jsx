@@ -9,7 +9,7 @@ import IconButton from 'material-ui/IconButton';
 import Toolbar from 'material-ui/Toolbar';
 import { withStyles } from 'material-ui/styles';
 import NavigationArrowBack from 'material-ui-icons/ArrowBack';
-import { noop } from 'lodash-es';
+import { noop } from 'lodash';
 
 import DiceIconButton from '../../../../../components/dice/Button';
 

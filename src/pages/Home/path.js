@@ -1,4 +1,4 @@
-import matchPath from 'react-router-dom/es/matchPath';
+import matchPath from 'react-router-dom/matchPath';
 
 import * as modes from './modes';
 

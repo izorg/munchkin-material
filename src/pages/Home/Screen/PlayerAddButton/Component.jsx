@@ -3,7 +3,7 @@ import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import PropTypes from 'prop-types';
 import Button from 'material-ui/Button';
 import ContentAdd from 'material-ui-icons/Add';
-import { noop } from 'lodash-es';
+import { noop } from 'lodash';
 
 const messages = defineMessages({
   label: {

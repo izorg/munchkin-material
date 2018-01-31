@@ -1,5 +1,5 @@
 import React from 'react';
-import Route from 'react-router-dom/es/Route';
+import Route from 'react-router-dom/Route';
 
 import path from './path';
 import Screen from './Screen';

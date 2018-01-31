@@ -9,7 +9,7 @@ import NavigationCheck from 'material-ui-icons/Check';
 import NavigationClose from 'material-ui-icons/Close';
 import ActionDelete from 'material-ui-icons/Delete';
 import EditorModeEdit from 'material-ui-icons/ModeEdit';
-import { noop } from 'lodash-es';
+import { noop } from 'lodash';
 
 import AppBar from '../../../../../components/AppBar';
 import DiceButton from '../../../../../components/dice/Button';

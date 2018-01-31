@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import List from 'material-ui/List';
 import { withStyles } from 'material-ui/styles';
 import cns from 'classnames';
-import { noop } from 'lodash-es';
+import { noop } from 'lodash';
 
 import Item from './Item';
 

@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
-import Field from 'redux-form/es/Field';
-import reduxForm from 'redux-form/es/reduxForm';
+import Field from 'redux-form/lib/Field';
+import reduxForm from 'redux-form/lib/reduxForm';
 import { defineMessages, FormattedMessage, injectIntl, intlShape } from 'react-intl';
 import RadioGroup from 'redux-form-material-ui/es/RadioGroup';
 import compose from 'recompose/compose';
@@ -12,7 +12,7 @@ import Radio from 'material-ui/Radio';
 import TextField from 'material-ui/TextField';
 import SocialPersonAdd from 'material-ui-icons/PersonAdd';
 import { FEMALE, MALE } from 'munchkin-core/es/utils/gender';
-import { noop } from 'lodash-es';
+import { noop } from 'lodash';
 
 import GenderFemale from '../../../../components/icons/gender/Female';
 import GenderMale from '../../../../components/icons/gender/Male';

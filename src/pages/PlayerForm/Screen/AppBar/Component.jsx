@@ -7,7 +7,7 @@ import Toolbar from 'material-ui/Toolbar';
 import { withStyles } from 'material-ui/styles';
 import NavigationArrowBack from 'material-ui-icons/ArrowBack';
 import NavigationCheck from 'material-ui-icons/Check';
-import { noop } from 'lodash-es';
+import { noop } from 'lodash';
 
 import Title from '../../../../components/Title';
 

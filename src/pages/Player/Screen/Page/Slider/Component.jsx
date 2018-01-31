@@ -3,7 +3,7 @@ import SwipeableViews from 'react-swipeable-views';
 import { bindKeyboard, virtualize } from 'react-swipeable-views-utils';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
-import { noop } from 'lodash-es';
+import { noop } from 'lodash';
 
 import PlayerStats from './Stats';
 

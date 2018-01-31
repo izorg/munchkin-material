@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
-import createHistory from 'history/es/createHashHistory';
-import { noop } from 'lodash-es';
+import createHistory from 'history/createHashHistory';
+import { noop } from 'lodash';
 
 import { setFullVersion } from './actions';
 import App from './components/App';

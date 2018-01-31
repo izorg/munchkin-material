@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Avatar from 'material-ui/Avatar';
 import ButtonBase from 'material-ui/ButtonBase';
 import { withStyles } from 'material-ui/styles';
-import { noop } from 'lodash-es';
+import { noop } from 'lodash';
 
 const styles = {
   button: {

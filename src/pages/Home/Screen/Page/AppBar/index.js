@@ -1,5 +1,5 @@
 import connect from 'react-redux/es/connect/connect';
-import withRouter from 'react-router-dom/es/withRouter';
+import withRouter from 'react-router-dom/withRouter';
 import { goBack, push } from 'connected-react-router/lib/actions';
 import compose from 'recompose/compose';
 import { removePlayer } from 'munchkin-core/es/actions';

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Typography from 'material-ui/Typography';
 import { withStyles } from 'material-ui/styles';
-import { noop } from 'lodash-es';
+import { noop } from 'lodash';
 
 import Layout, { LayoutContent } from '../../../../components/Layout';
 

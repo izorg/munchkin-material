@@ -4,9 +4,9 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import { setVersion } from 'munchkin-core/es/actions';
 import version from 'munchkin-core/es/utils/version';
 import { connectRouter, routerMiddleware } from 'connected-react-router';
-import formReducer from 'redux-form/es/reducer';
+import formReducer from 'redux-form/lib/reducer';
 import thunk from 'redux-thunk';
-import { pick, throttle } from 'lodash-es';
+import { pick, throttle } from 'lodash';
 
 import reducers from '../reducers';
 

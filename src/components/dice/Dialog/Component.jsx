@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Dialog from 'material-ui/Dialog';
 import IconButton from 'material-ui/IconButton';
 import { withStyles } from 'material-ui/styles';
-import { noop } from 'lodash-es';
+import { noop } from 'lodash';
 
 import DiceTransition from '../Transition';
 

@@ -1,4 +1,4 @@
-import compose from 'redux/es/compose';
+import compose from 'redux/lib/compose';
 
 import migrations from './migrations';
 

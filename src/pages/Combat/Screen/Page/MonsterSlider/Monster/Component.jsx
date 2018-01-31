@@ -3,7 +3,7 @@ import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 import Typography from 'material-ui/Typography';
 import { withStyles } from 'material-ui/styles';
-import { noop } from 'lodash-es';
+import { noop } from 'lodash';
 
 import Counter from '../../../../../../components/Counter';
 

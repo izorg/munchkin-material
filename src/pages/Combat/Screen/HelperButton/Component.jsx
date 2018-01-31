@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { FormattedMessage } from 'react-intl';
-import Link from 'react-router-dom/es/Link';
+import Link from 'react-router-dom/Link';
 import TransitionGroup from 'react-transition-group/TransitionGroup';
 import PropTypes from 'prop-types';
 import Button from 'material-ui/Button';
@@ -11,7 +11,7 @@ import transitions, { duration } from 'material-ui/styles/transitions';
 import AddIcon from 'material-ui-icons/Add';
 import PersonAddIcon from 'material-ui-icons/PersonAdd';
 import cns from 'classnames';
-import { noop } from 'lodash-es';
+import { noop } from 'lodash';
 
 import EmoticonDevil from '../../../../components/icons/EmoticonDevil';
 

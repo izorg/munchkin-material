@@ -1,4 +1,4 @@
-import createHistory from 'history/es/createMemoryHistory';
+import createHistory from 'history/createMemoryHistory';
 
 import configureStore from '../configureStore';
 

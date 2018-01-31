@@ -1,6 +1,6 @@
 import connect from 'react-redux/es/connect/connect';
-import matchPath from 'react-router-dom/es/matchPath';
-import withRouter from 'react-router-dom/es/withRouter';
+import matchPath from 'react-router-dom/matchPath';
+import withRouter from 'react-router-dom/withRouter';
 import { goBack, push } from 'connected-react-router/lib/actions';
 import compose from 'recompose/compose';
 import { addMonster } from 'munchkin-core/es/actions';

@@ -5,7 +5,7 @@ import Dialog, { DialogContent, DialogTitle } from 'material-ui/Dialog';
 import List, { ListItem, ListItemText } from 'material-ui/List';
 import Typography from 'material-ui/Typography';
 import { withStyles } from 'material-ui/styles';
-import { noop } from 'lodash-es';
+import { noop } from 'lodash';
 
 const styles = {
   dialogPaper: {

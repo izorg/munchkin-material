@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import IconButton from 'material-ui/IconButton';
 import { withStyles } from 'material-ui/styles';
 import cns from 'classnames';
-import { noop } from 'lodash-es';
+import { noop } from 'lodash';
 
 import Counter from '../../../../../../components/Counter';
 import Gender from '../../../../../../components/Gender';

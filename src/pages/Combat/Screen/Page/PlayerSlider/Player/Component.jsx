@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import IconButton from 'material-ui/IconButton';
 import Typography from 'material-ui/Typography';
 import { withStyles } from 'material-ui/styles';
-import { noop } from 'lodash-es';
+import { noop } from 'lodash';
 import { FEMALE, MALE } from 'munchkin-core/es/utils/gender';
 
 import Counter from '../../../../../../components/Counter';

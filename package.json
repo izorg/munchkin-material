@@ -32,7 +32,7 @@
       "jest-localstorage-mock"
     ],
     "transformIgnorePatterns": [
-      "<rootDir>/node_modules/(?!(history/es|lodash-es|munchkin-core|react-router/es|react-router-dom/es|react-router-redux/es|redux/es|redux-form/es)/)"
+      "<rootDir>/node_modules/(?!(lodash-es|munchkin-core)/)"
     ]
   },
   "devDependencies": {
@@ -84,7 +84,7 @@
     "jss-nested": "6.0.1",
     "jss-props-sort": "6.0.0",
     "jss-vendor-prefixer": "8.0.0",
-    "lodash-es": "4.17.4",
+    "lodash": "4.17.4",
     "material-ui": "1.0.0-beta.31",
     "material-ui-icons": "1.0.0-beta.17",
     "munchkin-core": "5.0.8",

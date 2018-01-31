@@ -9,7 +9,7 @@ import Typography from 'material-ui/Typography';
 import { withStyles } from 'material-ui/styles';
 import ActionReorder from 'material-ui-icons/Reorder';
 import cns from 'classnames';
-import { noop } from 'lodash-es';
+import { noop } from 'lodash';
 
 import getGenderIconClass from '../../../../../../utils/getGenderIconClass';
 import { playerShape } from '../../../../../../utils/propTypes';
