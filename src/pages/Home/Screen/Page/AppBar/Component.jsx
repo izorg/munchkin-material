@@ -1,5 +1,5 @@
 import React from 'react';
-import { defineMessages, injectIntl, intlShape } from 'react-intl';
+import { defineMessages, FormattedMessage, injectIntl, intlShape } from 'react-intl';
 import compose from 'recompose/compose';
 import PropTypes from 'prop-types';
 import IconButton from 'material-ui/IconButton';
@@ -13,7 +13,6 @@ import { noop } from 'lodash-es';
 
 import AppBar from '../../../../../components/AppBar';
 import DiceButton from '../../../../../components/dice/Button';
-import PlayerListTitleMessage from '../../../../../components/PlayerListTitleMessage';
 import Title from '../../../../../components/Title';
 
 import * as modes from '../../../modes';
@@ -49,12 +48,6 @@ const HomeScreenPageAppBarComponent = ({
   const multiMode = mode === modes.MULTI;
   const buttonColor = multiMode ? 'default' : 'inherit';
 
-  let title = <PlayerListTitleMessage />;
-
-  if (multiMode) {
-    title = selectedPlayerIds.length;
-  }
-
   const editTitle = intl.formatMessage(messages.edit);
 
   return (
@@ -71,7 +64,11 @@ const HomeScreenPageAppBarComponent = ({
         color={multiMode ? 'default' : 'inherit'}
         className={multiMode ? classes.multiTitle : classes.title}
       >
-        {title}
+        {
+          multiMode
+            ? selectedPlayerIds.length
+            : <FormattedMessage id="player.list.title" defaultMessage="Munchkins" />
+        }
       </Title>
 
       <DiceButton color={buttonColor} />
