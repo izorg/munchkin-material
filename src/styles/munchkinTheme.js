@@ -2,10 +2,15 @@ import brown from 'material-ui/colors/brown';
 import { createMuiTheme } from 'material-ui/styles';
 
 const theme = {
-  palette: {
-    background: {
-      avatar: brown[500],
+  overrides: {
+    MuiAvatar: {
+      colorDefault: {
+        backgroundColor: brown[500],
+      },
     },
+  },
+
+  palette: {
     primary: {
       main: brown[500],
     },
