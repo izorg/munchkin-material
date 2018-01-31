@@ -1,5 +1,3 @@
-import React from 'react';
-import { FormattedMessage } from 'react-intl';
 import connect from 'react-redux/es/connect/connect';
 import compose from 'recompose/compose';
 import getContext from 'recompose/getContext';
@@ -16,9 +14,7 @@ const contextTypes = {
 };
 
 const mapStateToProps = (state, ownProps) => ({
-  title: ownProps.playerId ?
-    <FormattedMessage id="player.form.titleEdit" defaultMessage="Edit munchkin" /> :
-    <FormattedMessage id="player.form.title" defaultMessage="New munchkin" />,
+  edit: Boolean(ownProps.playerId),
 });
 
 const mapDispatchToProps = {

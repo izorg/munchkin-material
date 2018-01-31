@@ -1,4 +1,5 @@
 import React from 'react';
+import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 import AppBar from 'material-ui/AppBar';
 import IconButton from 'material-ui/IconButton';
@@ -21,7 +22,7 @@ const styles = {
 };
 
 const PlayerFormScreenAppBar = ({
-  classes, onCancel, onSubmit, title,
+  classes, edit, onCancel, onSubmit,
 }) => (
   <AppBar color="primary" position="static">
     <Toolbar>
@@ -30,7 +31,11 @@ const PlayerFormScreenAppBar = ({
       </IconButton>
 
       <Title>
-        {title}
+        {
+          edit
+            ? <FormattedMessage id="player.form.titleEdit" defaultMessage="Edit munchkin" />
+            : <FormattedMessage id="player.form.title" defaultMessage="New munchkin" />
+        }
       </Title>
 
       <IconButton className={classes.rightButton} color="inherit" onClick={onSubmit}>
@@ -41,15 +46,15 @@ const PlayerFormScreenAppBar = ({
 );
 
 PlayerFormScreenAppBar.propTypes = {
+  edit: PropTypes.bool,
   onCancel: PropTypes.func,
   onSubmit: PropTypes.func,
-  title: PropTypes.node,
 };
 
 PlayerFormScreenAppBar.defaultProps = {
+  edit: false,
   onCancel: noop,
   onSubmit: noop,
-  title: '',
 };
 
 export default withStyles(styles)(PlayerFormScreenAppBar);
