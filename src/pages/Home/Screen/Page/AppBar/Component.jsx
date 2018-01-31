@@ -12,6 +12,7 @@ import EditorModeEdit from 'material-ui-icons/ModeEdit';
 import { noop } from 'lodash-es';
 
 import AppBar from '../../../../../components/AppBar';
+import DiceButton from '../../../../../components/dice/Button';
 import PlayerListTitleMessage from '../../../../../components/PlayerListTitleMessage';
 import Title from '../../../../../components/Title';
 
@@ -72,6 +73,8 @@ const HomeScreenPageAppBarComponent = ({
       >
         {title}
       </Title>
+
+      <DiceButton color={buttonColor} />
 
       {!empty && !multiMode && (
         <Tooltip title={editTitle}>
