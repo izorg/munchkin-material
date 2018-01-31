@@ -10,10 +10,10 @@ import common from './common.babel';
 
 const config = merge.smart(common, {
   entry: [
-    './src/polyfill.js',
-    './src/offline.js',
-    './src/site.js',
-    './src/index.jsx',
+    './polyfill.js',
+    './offline.js',
+    './site.js',
+    './index.jsx',
   ],
 
   output: {
@@ -43,16 +43,16 @@ const config = merge.smart(common, {
     }),
 
     new CopyWebpackPlugin([
-      { from: './src/images', to: 'images', ignore: 'favicon.png' },
-      { from: './src/manifest.json' },
-      { from: './src/manifest-ru.json' },
+      { from: './images', to: 'images', ignore: 'favicon.png' },
+      { from: './manifest.json' },
+      { from: './manifest-ru.json' },
     ]),
 
     new HtmlWebpackPlugin({
-      favicon: './src/images/favicon.png',
+      favicon: './images/favicon.png',
       filename: 'ru.html',
       manifest: 'manifest-ru.json',
-      template: './src/index.ejs',
+      template: './index.ejs',
       title: 'Все манчкины',
     }),
 

@@ -10,10 +10,10 @@ const config = merge.smart(common, {
   devtool: 'eval-source-map',
 
   entry: [
-    './src/polyfill.js',
-    './src/site.js',
-    './src/test/index.js',
-    './src/index.jsx',
+    './polyfill.js',
+    './site.js',
+    './test/index.js',
+    './index.jsx',
   ],
 
   output: {
@@ -48,7 +48,7 @@ const config = merge.smart(common, {
     new WebpackNotifierPlugin(),
 
     new CopyWebpackPlugin([
-      { from: './src/manifest.json' },
+      { from: './manifest.json' },
     ]),
   ],
 

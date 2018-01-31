@@ -3,6 +3,8 @@ import path from 'path';
 import webpack from 'webpack';
 
 export default {
+  context: path.resolve(__dirname, '../src'),
+
   output: {
     library: 'munchkin',
     path: path.resolve(__dirname, '../dist'),
@@ -34,6 +36,10 @@ export default {
                       ie: 11,
                       safari: 10,
                     },
+                    /*
+                     * Have to use `entry` instead of `usage` cause of
+                     * Android & IE browser support in development env
+                     */
                     useBuiltIns: 'entry',
                   },
                 ],
@@ -57,9 +63,9 @@ export default {
     new webpack.EnvironmentPlugin(['NODE_ENV']),
 
     new HtmlWebpackPlugin({
-      favicon: './src/images/favicon.png',
+      favicon: './images/favicon.png',
       manifest: 'manifest.json',
-      template: './src/index.ejs',
+      template: './index.ejs',
       title: 'All munchkins',
     }),
   ],

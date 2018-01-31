@@ -6,8 +6,8 @@ import common from './common.babel';
 
 const config = merge.smart(common, {
   entry: [
-    './src/polyfill.js',
-    './src/index.jsx',
+    './polyfill.js',
+    './index.jsx',
   ],
 
   output: {
