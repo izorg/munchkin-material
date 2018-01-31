@@ -55,25 +55,29 @@ class HomeScreenPagePlayerListItemComponent extends PureComponent {
     this.handlePress = this.handlePress.bind(this);
     this.handleTap = this.handleTap.bind(this);
 
-    this.container = ({ children, ...rest }) => (
-      <Hammer
-        {...rest}
-        onPress={this.handlePress}
-        onTap={this.handleTap}
-        options={{
-          recognizers: {
-            press: {
-              time: 501,
+    this.container = ({ children, ...rest }) => {
+      const Component = props.mode === modes.EDIT ? 'div' : 'li';
+
+      return (
+        <Hammer
+          {...rest}
+          onPress={this.handlePress}
+          onTap={this.handleTap}
+          options={{
+            recognizers: {
+              press: {
+                time: 501,
+              },
+              tap: {
+                time: 500,
+              },
             },
-            tap: {
-              time: 500,
-            },
-          },
-        }}
-      >
-        <div>{children}</div>
-      </Hammer>
-    );
+          }}
+        >
+          <Component>{children}</Component>
+        </Hammer>
+      );
+    };
 
     this.avatarComponent = params => (
       <div
@@ -165,7 +169,7 @@ class HomeScreenPagePlayerListItemComponent extends PureComponent {
               root: classes.listItemSecondaryActionRoot,
             }}
           >
-            <IconButton component="span" disableRipple>
+            <IconButton disableRipple tabIndex={-1}>
               <ItemHandle />
             </IconButton>
           </ListItemSecondaryAction>

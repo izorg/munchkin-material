@@ -20,6 +20,7 @@ const styles = theme => ({
   sortableHelper: {
     backgroundColor: '#FFFFFF !important',
     boxShadow: theme.shadows[3],
+    listStyle: 'none',
     zIndex: 2,
   },
 });
@@ -70,7 +71,6 @@ class HomeScreenPagePlayerList extends PureComponent {
       return (
         <SortableList
           className={className}
-          component="div"
           helperClass={classes.sortableHelper}
           lockAxis="y"
           lockOffset={0}
@@ -90,10 +90,7 @@ class HomeScreenPagePlayerList extends PureComponent {
     }
 
     return (
-      <List
-        className={className}
-        component="div"
-      >
+      <List className={className}>
         {playerList.map((playerId, index) => (
           <Item
             index={index}
