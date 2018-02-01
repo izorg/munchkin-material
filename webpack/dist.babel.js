@@ -16,25 +16,11 @@ const config = merge.smart(common, {
     path: path.resolve(__dirname, '../dist'),
   },
 
-  module: {
-    rules: [
-      {
-        test: /\.jsx?$/,
-        exclude: /node_modules/,
-        use: [
-          {
-            loader: 'string-replace-loader',
-            options: {
-              search: 'webpackMode: "lazy"',
-              replace: 'webpackMode: "eager"',
-            },
-          },
-        ],
-      },
-    ],
-  },
-
   plugins: [
+    new webpack.optimize.LimitChunkCountPlugin({
+      maxChunks: 1,
+    }),
+
     new webpack.optimize.UglifyJsPlugin(),
   ],
 });

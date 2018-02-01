@@ -5,7 +5,7 @@ import compose from 'recompose/compose';
 
 import ScreenLoader from '../../components/ScreenLoader';
 
-const loader = () => import(/* webpackChunkName: "player-form", webpackMode: "lazy" */ './Screen');
+const loader = () => import(/* webpackChunkName: "player-form" */ './Screen');
 
 // eslint-disable-next-line react/prop-types
 const children = ({ match }) => (

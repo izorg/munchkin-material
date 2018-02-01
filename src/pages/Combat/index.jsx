@@ -3,7 +3,7 @@ import Route from 'react-router-dom/Route';
 
 import ScreenLoader from '../../components/ScreenLoader';
 
-const loader = () => import(/* webpackChunkName: "combat", webpackMode: "lazy" */ './Screen');
+const loader = () => import(/* webpackChunkName: "combat" */ './Screen');
 
 const PlayerCombat = () => (
   <Route path="/player/:id/combat">
