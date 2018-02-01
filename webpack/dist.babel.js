@@ -1,6 +1,8 @@
-import merge from 'webpack-merge';
 import path from 'path';
 import webpack from 'webpack';
+import merge from 'webpack-merge';
+
+import CleanWebpackPlugin from 'clean-webpack-plugin';
 
 import common from './common.babel';
 
@@ -17,6 +19,10 @@ const config = merge.smart(common, {
   },
 
   plugins: [
+    new CleanWebpackPlugin(path.resolve(__dirname, '../dist'), {
+      allowExternal: true,
+    }),
+
     new webpack.optimize.LimitChunkCountPlugin({
       maxChunks: 1,
     }),

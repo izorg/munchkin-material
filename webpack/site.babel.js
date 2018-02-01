@@ -1,10 +1,12 @@
+import path from 'path';
+import webpack from 'webpack';
+import merge from 'webpack-merge';
+
+import CleanWebpackPlugin from 'clean-webpack-plugin';
 import CnameWebpackPlugin from 'cname-webpack-plugin';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-import merge from 'webpack-merge';
 import OfflinePlugin from 'offline-plugin';
-import path from 'path';
-import webpack from 'webpack';
 
 import common from './common.babel';
 
@@ -36,6 +38,10 @@ const config = merge.smart(common, {
   },
 
   plugins: [
+    new CleanWebpackPlugin(path.resolve(__dirname, '../site'), {
+      allowExternal: true,
+    }),
+
     new webpack.optimize.UglifyJsPlugin(),
 
     new CnameWebpackPlugin({
