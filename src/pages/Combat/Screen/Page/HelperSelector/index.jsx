@@ -6,31 +6,26 @@ import { setCombatHelper } from 'munchkin-core/es/actions';
 
 import HelperSelector from './Component';
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   helpers: state.playerList
-    .filter(id => id !== state.combat.playerId)
-    .map(id => state.players[id]),
+    .filter((id) => id !== state.combat.playerId)
+    .map((id) => state.players[id]),
 });
 
 const mapDispatchToProps = {
   onClose: goBack,
-  onSelect: id => (dispatch) => {
+  onSelect: (id) => (dispatch) => {
     dispatch(setCombatHelper(id));
     dispatch(go(-2));
   },
 };
 
-const CombatHelperSelector = props => (
+const CombatHelperSelector = (props) => (
   <Route exact path="/player/:id/combat/add/helper">
-    {({ match }) => (
-      <HelperSelector {...props} open={!!match} />
-    )}
+    {({ match }) => <HelperSelector {...props} open={!!match} />}
   </Route>
 );
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-  undefined,
-  { pure: false },
-)(CombatHelperSelector);
+export default connect(mapStateToProps, mapDispatchToProps, undefined, {
+  pure: false,
+})(CombatHelperSelector);

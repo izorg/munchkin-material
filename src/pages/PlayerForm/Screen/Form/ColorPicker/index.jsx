@@ -3,7 +3,7 @@ import { goBack, push } from 'connected-react-router/lib/actions';
 
 import ColorPickerField from '../../../../../components/ColorPicker/Field';
 
-const mapStateToprops = state => ({
+const mapStateToprops = (state) => ({
   open: state.router.location.search === '?color',
 });
 

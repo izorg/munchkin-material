@@ -13,16 +13,22 @@ axios.defaults.auth = {
 };
 
 function exportDocument(document) {
-  return axios.post('/document/export', undefined, {
-    params: {
-      documentIds: [document.id],
-    },
-  }).then(({ data }) => data);
+  return axios
+    .post('/document/export', undefined, {
+      params: {
+        documentIds: [document.id],
+      },
+    })
+    .then(({ data }) => data);
 }
 
-const deleteDocuments = documentIds => axios.delete('/document', { params: { documentIds } });
+const deleteDocuments = (documentIds) =>
+  axios.delete('/document', { params: { documentIds } });
 
-const getDocuments = () => axios.get(`/project/${projectId}`).then(({ data: { documents } }) => documents);
+const getDocuments = () =>
+  axios
+    .get(`/project/${projectId}`)
+    .then(({ data: { documents } }) => documents);
 
 function getTaskResult(taskId, language, resolve) {
   console.log('getTaskResult');
@@ -46,7 +52,11 @@ function getTranslation(taskId, language) {
 
 const updateDocument = (filePath) => {
   exec(
-    `curl -X PUT --user ${config.accountId}:${config.key} -F "file=@${filePath}" ${axios.defaults.baseURL}/document/update?documentId=${documentId}`,
+    `curl -X PUT --user ${config.accountId}:${
+      config.key
+    } -F "file=@${filePath}" ${
+      axios.defaults.baseURL
+    }/document/update?documentId=${documentId}`,
     (error, stdout) => {
       if (error) {
         console.log('error', error);

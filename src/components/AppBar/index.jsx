@@ -5,7 +5,7 @@ import Toolbar from 'material-ui/Toolbar';
 import { withStyles } from 'material-ui/styles';
 import cns from 'classnames';
 
-const styles = theme => ({
+const styles = (theme) => ({
   appBar: {
     paddingLeft: 4,
     paddingRight: 4,
@@ -21,16 +21,9 @@ const styles = theme => ({
   },
 });
 
-const AppBar = ({
-  children, classes, className, ...props
-}) => (
-  <MuiAppBar
-    className={cns(className, classes.appBar)}
-    {...props}
-  >
-    <Toolbar disableGutters>
-      {children}
-    </Toolbar>
+const AppBar = ({ children, classes, className, ...props }) => (
+  <MuiAppBar className={cns(className, classes.appBar)} {...props}>
+    <Toolbar disableGutters>{children}</Toolbar>
   </MuiAppBar>
 );
 

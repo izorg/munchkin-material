@@ -16,7 +16,7 @@ const contextTypes = {
 };
 
 const initialValuesSelector = createSelector(
-  state => state.players,
+  (state) => state.players,
   (state, ownProps) => ownProps.playerId,
   (players, playerId) => {
     let initialValues = {

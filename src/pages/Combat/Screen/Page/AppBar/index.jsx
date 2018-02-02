@@ -32,7 +32,11 @@ const styles = {
 const CombatScreenPageAppBar = ({ classes, onBack }) => (
   <AppBar color="primary" position="static">
     <Toolbar>
-      <IconButton className={classes.leftButton} color="inherit" onClick={onBack}>
+      <IconButton
+        className={classes.leftButton}
+        color="inherit"
+        onClick={onBack}
+      >
         <NavigationArrowBack />
       </IconButton>
 
@@ -40,10 +44,7 @@ const CombatScreenPageAppBar = ({ classes, onBack }) => (
         <FormattedMessage id="combat" defaultMessage="Combat" />
       </Title>
 
-      <DiceIconButton
-        className={classes.rightButton}
-        color="inherit"
-      />
+      <DiceIconButton className={classes.rightButton} color="inherit" />
     </Toolbar>
   </AppBar>
 );

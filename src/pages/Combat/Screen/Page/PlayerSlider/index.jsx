@@ -108,15 +108,9 @@ class CombatPlayerSlider extends PureComponent {
       });
     }
 
-    const players = playersProps.map(props => (
-      <Paper
-        className={classes.playerContainer}
-        key={props.id}
-      >
-        <Player
-          id={props.id}
-          onBonusChange={props.onBonusChange}
-        />
+    const players = playersProps.map((props) => (
+      <Paper className={classes.playerContainer} key={props.id}>
+        <Player id={props.id} onBonusChange={props.onBonusChange} />
 
         {props.id !== playerId && (
           <IconButton

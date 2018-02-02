@@ -7,7 +7,7 @@ import { goToCombat } from '../../../../actions';
 
 import Component from './Component';
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   fullVersion: state.app.fullVersion,
 });
 

@@ -19,10 +19,7 @@ const CombatScreen = ({ appear, match }) => (
     >
       <Page />
     </Slide>
-    <Transition
-      appear={appear}
-      in={Boolean(match)}
-    >
+    <Transition appear={appear} in={Boolean(match)}>
       <HelperButton />
     </Transition>
   </Fragment>

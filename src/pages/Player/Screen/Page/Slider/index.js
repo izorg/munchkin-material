@@ -16,7 +16,7 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = {
-  onPlayerChange: playerId => (dispatch) => {
+  onPlayerChange: (playerId) => (dispatch) => {
     dispatch(replace(`/player/${playerId}`));
   },
 };

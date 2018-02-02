@@ -12,7 +12,7 @@ import Item from './Item';
 const SortableList = SortableContainer(List);
 const SortableListItem = SortableElement(Item);
 
-const styles = theme => ({
+const styles = (theme) => ({
   list: {
     overflowY: 'auto',
   },
@@ -62,7 +62,10 @@ class HomeScreenPagePlayerList extends PureComponent {
 
   render() {
     const {
-      classes, className: classNameProp, editMode, playerList,
+      classes,
+      className: classNameProp,
+      editMode,
+      playerList,
     } = this.props;
 
     const className = cns(classNameProp, classes.list);
@@ -92,11 +95,7 @@ class HomeScreenPagePlayerList extends PureComponent {
     return (
       <List className={className}>
         {playerList.map((playerId, index) => (
-          <Item
-            index={index}
-            key={playerId}
-            playerId={playerId}
-          />
+          <Item index={index} key={playerId} playerId={playerId} />
         ))}
       </List>
     );

@@ -88,33 +88,34 @@ class CombatMonsterSlider extends PureComponent {
     const { index } = this.state;
 
     const views = monsters.map((id, monsterIndex) => (
-      <Paper
-        className={classes.monsterContainer}
-        key={id}
-      >
+      <Paper className={classes.monsterContainer} key={id}>
         <Monster
           id={id}
-          title={<FormattedMessage
-            id="combat.monster"
-            defaultMessage="Monster {number}"
-            values={{
-              number: monsterIndex + 1,
-            }}
-          />}
+          title={
+            <FormattedMessage
+              id="combat.monster"
+              defaultMessage="Monster {number}"
+              values={{
+                number: monsterIndex + 1,
+              }}
+            />
+          }
         />
 
-        {monsters.length > 1 && monsterIndex === index && (
-          <IconButton
-            className={classes.remove}
-            onClick={() => this.handleRemove(id)}
-            style={{
-              width: 36,
-              height: 36,
-              padding: 6,
-            }}
-          >
-            <CloseCircle />
-          </IconButton>)}
+        {monsters.length > 1 &&
+          monsterIndex === index && (
+            <IconButton
+              className={classes.remove}
+              onClick={() => this.handleRemove(id)}
+              style={{
+                width: 36,
+                height: 36,
+                padding: 6,
+              }}
+            >
+              <CloseCircle />
+            </IconButton>
+          )}
       </Paper>
     ));
 

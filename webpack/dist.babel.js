@@ -7,10 +7,7 @@ import CleanWebpackPlugin from 'clean-webpack-plugin';
 import common from './common.babel';
 
 const config = merge.smart(common, {
-  entry: [
-    './polyfill.js',
-    './index.jsx',
-  ],
+  entry: ['./polyfill.js', './index.jsx'],
 
   output: {
     filename: 'js/app.js',

@@ -38,12 +38,7 @@ const CombatMonster = ({
   title,
 }) => (
   <div className={classes.monster}>
-    <Typography
-      align="center"
-      className={classes.name}
-      component="div"
-      noWrap
-    >
+    <Typography align="center" className={classes.name} component="div" noWrap>
       {title}
     </Typography>
 
@@ -53,7 +48,9 @@ const CombatMonster = ({
         compact
         onDecrement={() => onLevelDecrement(id)}
         onIncrement={() => onLevelIncrement(id)}
-        title={<FormattedMessage id="combat.monster.level" defaultMessage="Level" />}
+        title={
+          <FormattedMessage id="combat.monster.level" defaultMessage="Level" />
+        }
         value={level}
       />
       <Counter
@@ -61,7 +58,12 @@ const CombatMonster = ({
         compact
         onDecrement={() => onBonusDecrement(id)}
         onIncrement={() => onBonusIncrement(id)}
-        title={<FormattedMessage id="combat.monster.modifier" defaultMessage="Modifier" />}
+        title={
+          <FormattedMessage
+            id="combat.monster.modifier"
+            defaultMessage="Modifier"
+          />
+        }
         value={bonus}
       />
     </div>

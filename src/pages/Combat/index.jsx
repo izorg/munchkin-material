@@ -7,12 +7,7 @@ const loader = () => import(/* webpackChunkName: "combat" */ './Screen');
 
 const PlayerCombat = () => (
   <Route path="/player/:id/combat">
-    {({ match }) => (
-      <ScreenLoader
-        loader={loader}
-        match={match}
-      />
-    )}
+    {({ match }) => <ScreenLoader loader={loader} match={match} />}
   </Route>
 );
 

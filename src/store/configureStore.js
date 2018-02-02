@@ -12,37 +12,34 @@ import reducers from '../reducers';
 
 import { loadState, saveState } from './localStorage';
 
-const getRootReducer = history => compose(
-  connectRouter(history),
-  combineReducers,
-)({
-  ...reducers,
-  form: formReducer,
-});
+const getRootReducer = (history) =>
+  compose(connectRouter(history), combineReducers)({
+    ...reducers,
+    form: formReducer,
+  });
 
 export default (history, storageKey) => {
-  const enhancer = composeWithDevTools(applyMiddleware(
-    thunk,
-    routerMiddleware(history),
-  ));
+  const enhancer = composeWithDevTools(
+    applyMiddleware(thunk, routerMiddleware(history)),
+  );
 
   const preloadedState = loadState(storageKey);
 
-  const store = createStore(
-    getRootReducer(history),
-    preloadedState,
-    enhancer,
+  const store = createStore(getRootReducer(history), preloadedState, enhancer);
+
+  store.subscribe(
+    throttle(() => {
+      const state = pick(store.getState(), Object.keys(reducers));
+
+      saveState(storageKey, state);
+    }, 100),
   );
-
-  store.subscribe(throttle(() => {
-    const state = pick(store.getState(), Object.keys(reducers));
-
-    saveState(storageKey, state);
-  }, 100));
 
   /* istanbul ignore if  */
   if (module.hot) {
-    module.hot.accept('../reducers', () => store.replaceReducer(getRootReducer(history)));
+    module.hot.accept('../reducers', () =>
+      store.replaceReducer(getRootReducer(history)),
+    );
   }
 
   store.dispatch(setVersion('core', version));

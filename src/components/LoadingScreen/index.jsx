@@ -14,11 +14,7 @@ const styles = {
 };
 
 const LoadingScreen = ({ classes }) => (
-  <Paper
-    elevation={0}
-    square
-    className={classes.screen}
-  />
+  <Paper elevation={0} square className={classes.screen} />
 );
 
 export default withStyles(styles)(LoadingScreen);

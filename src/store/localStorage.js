@@ -13,7 +13,7 @@ export const loadState = (key) => {
     return compose(...migrations)(JSON.parse(serializedState));
   } catch (error) {
     // eslint-disable-next-line no-console
-    console.warn('Can\'t load state from localStorage');
+    console.warn("Can't load state from localStorage");
 
     return undefined;
   }
@@ -26,6 +26,6 @@ export const saveState = (key, state) => {
     localStorage.setItem(key, serializedState);
   } catch (error) {
     // eslint-disable-next-line no-console
-    console.warn('Can\'t save state to localStorage');
+    console.warn("Can't save state to localStorage");
   }
 };

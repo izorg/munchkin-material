@@ -66,7 +66,12 @@ class CombatScreenHelperButton extends PureComponent {
 
   handleClick() {
     const {
-      expanded, helper, onAdd, onBackdropClick, onMonsterAdd, playerId,
+      expanded,
+      helper,
+      onAdd,
+      onBackdropClick,
+      onMonsterAdd,
+      playerId,
     } = this.props;
 
     if (expanded) {
@@ -80,7 +85,12 @@ class CombatScreenHelperButton extends PureComponent {
 
   render() {
     const {
-      classes, expanded, helper, onBackdropClick, onMonsterAdd, playerId,
+      classes,
+      expanded,
+      helper,
+      onBackdropClick,
+      onMonsterAdd,
+      playerId,
     } = this.props;
 
     return (
@@ -88,48 +98,60 @@ class CombatScreenHelperButton extends PureComponent {
         {expanded && <Backdrop invisible onClick={onBackdropClick} open />}
 
         <TransitionGroup className={classes.miniContainer}>
-          {helper && expanded && (
-            <Fade>
-              <div className={classes.monster}>
-                <Tooltip
-                  open
-                  placement="left"
-                  title={<FormattedMessage id="combat.add.monster" defaultMessage="Monster" />}
-                >
-                  <Button
-                    color="primary"
-                    fab
-                    mini
-                    onClick={() => onMonsterAdd(true)}
+          {helper &&
+            expanded && (
+              <Fade>
+                <div className={classes.monster}>
+                  <Tooltip
+                    open
+                    placement="left"
+                    title={
+                      <FormattedMessage
+                        id="combat.add.monster"
+                        defaultMessage="Monster"
+                      />
+                    }
                   >
-                    <EmoticonDevil />
-                  </Button>
-                </Tooltip>
-              </div>
-            </Fade>
-          )}
+                    <Button
+                      color="primary"
+                      fab
+                      mini
+                      onClick={() => onMonsterAdd(true)}
+                    >
+                      <EmoticonDevil />
+                    </Button>
+                  </Tooltip>
+                </div>
+              </Fade>
+            )}
 
-          {helper && expanded && (
-            <Fade>
-              <div className={classes.helper}>
-                <Tooltip
-                  open
-                  placement="left"
-                  title={<FormattedMessage id="combat.add.helper" defaultMessage="Helper" />}
-                >
-                  <Button
-                    color="primary"
-                    component={Link}
-                    fab
-                    mini
-                    to={`/player/${playerId}/combat/add/helper`}
+          {helper &&
+            expanded && (
+              <Fade>
+                <div className={classes.helper}>
+                  <Tooltip
+                    open
+                    placement="left"
+                    title={
+                      <FormattedMessage
+                        id="combat.add.helper"
+                        defaultMessage="Helper"
+                      />
+                    }
                   >
-                    <PersonAddIcon />
-                  </Button>
-                </Tooltip>
-              </div>
-            </Fade>
-          )}
+                    <Button
+                      color="primary"
+                      component={Link}
+                      fab
+                      mini
+                      to={`/player/${playerId}/combat/add/helper`}
+                    >
+                      <PersonAddIcon />
+                    </Button>
+                  </Tooltip>
+                </div>
+              </Fade>
+            )}
         </TransitionGroup>
 
         <Button
@@ -138,10 +160,13 @@ class CombatScreenHelperButton extends PureComponent {
           fab
           onClick={this.handleClick}
         >
-          {helper
-            ? <AddIcon className={cns(classes.icon, { [classes.expanded]: expanded })} />
-            : <EmoticonDevil />
-          }
+          {helper ? (
+            <AddIcon
+              className={cns(classes.icon, { [classes.expanded]: expanded })}
+            />
+          ) : (
+            <EmoticonDevil />
+          )}
         </Button>
 
         <HelperSelector />

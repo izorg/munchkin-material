@@ -18,17 +18,17 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-const onMultiSelectActivate = playerId => (dispatch) => {
+const onMultiSelectActivate = (playerId) => (dispatch) => {
   dispatch(unselectAllPlayers());
   dispatch(togglePlayer(playerId));
   dispatch(push(`/${MULTI}`));
 };
 
-const onPlayerEdit = playerId => push(`/${EDIT}/${playerId}`);
+const onPlayerEdit = (playerId) => push(`/${EDIT}/${playerId}`);
 
-const onPlayerSelect = playerId => push(`/player/${playerId}`);
+const onPlayerSelect = (playerId) => push(`/player/${playerId}`);
 
-const onPlayerToggle = playerId => (dispatch, getState) => {
+const onPlayerToggle = (playerId) => (dispatch, getState) => {
   const { app: { selectedPlayerIds } } = getState();
 
   if (selectedPlayerIds.length === 1 && playerId === selectedPlayerIds[0]) {

@@ -7,7 +7,7 @@ import NavigationArrowDropUp from 'material-ui-icons/ArrowDropUp';
 import cns from 'classnames';
 import { noop } from 'lodash';
 
-const styles = theme => ({
+const styles = (theme) => ({
   counter: {
     textAlign: 'center',
   },
@@ -40,7 +40,13 @@ const styles = theme => ({
 });
 
 const Counter = ({
-  classes, className, compact, onDecrement, onIncrement, title, value,
+  classes,
+  className,
+  compact,
+  onDecrement,
+  onIncrement,
+  title,
+  value,
 }) => (
   <div className={cns(className, classes.counter)}>
     <div className={cns(classes.title, { [classes.compactTitle]: compact })}>
@@ -55,9 +61,7 @@ const Counter = ({
       <NavigationArrowDropUp />
     </IconButton>
 
-    <div className={classes.value}>
-      {value}
-    </div>
+    <div className={classes.value}>{value}</div>
 
     <IconButton
       className={cns(classes.button, { [classes.compactButton]: compact })}

@@ -20,18 +20,13 @@ const init = (appEl, initOptions) => {
   const store = configureStore(history, storageKey);
   const { dispatch } = store;
 
-  render(
-    <App {...options} history={history} store={store} />,
-    appEl,
-  );
+  render(<App {...options} history={history} store={store} />, appEl);
 
   return {
     history,
-    setFullVersion: fullVersion => dispatch(setFullVersion(fullVersion)),
+    setFullVersion: (fullVersion) => dispatch(setFullVersion(fullVersion)),
     store,
   };
 };
 
-export {
-  init, // eslint-disable-line import/prefer-default-export
-};
+export { init }; // eslint-disable-line import/prefer-default-export

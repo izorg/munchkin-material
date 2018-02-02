@@ -5,7 +5,7 @@ import { throwDice } from '../../../actions';
 
 import Component from './Component';
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   onClick: () => {
     dispatch(throwDice());
     dispatch(push({ search: '?dice' }));

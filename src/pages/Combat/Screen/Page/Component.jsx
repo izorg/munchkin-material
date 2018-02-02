@@ -10,7 +10,7 @@ import AppBar from './AppBar';
 import MonsterSlider from './MonsterSlider';
 import PlayerSlider from './PlayerSlider';
 
-const styles = theme => ({
+const styles = (theme) => ({
   content: {
     display: 'flex',
     flexDirection: 'column',
@@ -78,13 +78,11 @@ const CombatScreenPage = ({
       />
 
       <div className={classes.total}>
-        <span className={classes.value}>
-          {combinedPlayerStrength}
-        </span>
-        <Typography className={classes.versus} component="span">vs</Typography>
-        <span className={classes.value}>
-          {combinedMonsterStrength}
-        </span>
+        <span className={classes.value}>{combinedPlayerStrength}</span>
+        <Typography className={classes.versus} component="span">
+          vs
+        </Typography>
+        <span className={classes.value}>{combinedMonsterStrength}</span>
       </div>
 
       <MonsterSlider

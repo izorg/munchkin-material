@@ -5,7 +5,7 @@ import { throwDice } from '../../../actions';
 
 import Component from './Component';
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   dice: state.app.dice,
   open: state.router.location.search === '?dice',
 });

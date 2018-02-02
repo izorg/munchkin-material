@@ -9,12 +9,7 @@ import common from './common.babel';
 const config = merge.smart(common, {
   devtool: 'eval-source-map',
 
-  entry: [
-    './polyfill.js',
-    './site.js',
-    './test/index.js',
-    './index.jsx',
-  ],
+  entry: ['./polyfill.js', './site.js', './test/index.js', './index.jsx'],
 
   output: {
     chunkFilename: '[name].js',
@@ -47,9 +42,7 @@ const config = merge.smart(common, {
 
     new WebpackNotifierPlugin(),
 
-    new CopyWebpackPlugin([
-      { from: './manifest.json' },
-    ]),
+    new CopyWebpackPlugin([{ from: './manifest.json' }]),
   ],
 
   devServer: {

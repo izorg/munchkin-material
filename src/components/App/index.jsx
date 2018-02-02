@@ -38,7 +38,7 @@ const styles = {
       overflow: 'hidden',
       userSelect: 'none',
       width: '100%',
-      '-webkit-touch-callout': 'none', /* iOS Safari */
+      '-webkit-touch-callout': 'none' /* iOS Safari */,
     },
 
     '#app': {
@@ -84,7 +84,4 @@ App.propTypes = {
   store: storeShape.isRequired, // eslint-disable-line react/no-typos
 };
 
-export default compose(
-  hot(module),
-  withStyles(styles),
-)(App);
+export default compose(hot(module), withStyles(styles))(App);

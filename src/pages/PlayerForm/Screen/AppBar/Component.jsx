@@ -21,24 +21,36 @@ const styles = {
   },
 };
 
-const PlayerFormScreenAppBar = ({
-  classes, edit, onCancel, onSubmit,
-}) => (
+const PlayerFormScreenAppBar = ({ classes, edit, onCancel, onSubmit }) => (
   <AppBar color="primary" position="static">
     <Toolbar>
-      <IconButton className={classes.leftButton} color="inherit" onClick={onCancel}>
+      <IconButton
+        className={classes.leftButton}
+        color="inherit"
+        onClick={onCancel}
+      >
         <NavigationArrowBack />
       </IconButton>
 
       <Title>
-        {
-          edit
-            ? <FormattedMessage id="player.form.titleEdit" defaultMessage="Edit munchkin" />
-            : <FormattedMessage id="player.form.title" defaultMessage="New munchkin" />
-        }
+        {edit ? (
+          <FormattedMessage
+            id="player.form.titleEdit"
+            defaultMessage="Edit munchkin"
+          />
+        ) : (
+          <FormattedMessage
+            id="player.form.title"
+            defaultMessage="New munchkin"
+          />
+        )}
       </Title>
 
-      <IconButton className={classes.rightButton} color="inherit" onClick={onSubmit}>
+      <IconButton
+        className={classes.rightButton}
+        color="inherit"
+        onClick={onSubmit}
+      >
         <NavigationCheck />
       </IconButton>
     </Toolbar>

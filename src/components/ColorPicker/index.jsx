@@ -5,14 +5,9 @@ import { noop } from 'lodash';
 import Color from './Color';
 import Dialog from './Dialog';
 
-const ColorPicker = ({
-  onChange, onClick, onClose, open, value,
-}) => (
+const ColorPicker = ({ onChange, onClick, onClose, open, value }) => (
   <Fragment>
-    <Color
-      onClick={onClick}
-      value={value}
-    />
+    <Color onClick={onClick} value={value} />
     <Dialog
       onClose={onClose}
       open={open}

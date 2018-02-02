@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import Zoom from 'material-ui/transitions/Zoom';
 
-const styles = theme => ({
+const styles = (theme) => ({
   container: {
     bottom: theme.spacing.unit * 2,
     position: 'fixed',
@@ -12,18 +12,14 @@ const styles = theme => ({
   },
 });
 
-const Transition = ({
-  classes, children, theme, ...props
-}) => (
+const Transition = ({ classes, children, theme, ...props }) => (
   <Zoom
     enterDelay={theme.transitions.duration.leavingScreen}
     mountOnEnter
     unmountOnExit
     {...props}
   >
-    <div className={classes.container}>
-      {children}
-    </div>
+    <div className={classes.container}>{children}</div>
   </Zoom>
 );
 

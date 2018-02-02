@@ -11,12 +11,7 @@ import OfflinePlugin from 'offline-plugin';
 import common from './common.babel';
 
 const config = merge.smart(common, {
-  entry: [
-    './polyfill.js',
-    './offline.js',
-    './site.js',
-    './index.jsx',
-  ],
+  entry: ['./polyfill.js', './offline.js', './site.js', './index.jsx'],
 
   output: {
     chunkFilename: 'js/[name].[chunkhash].js',
@@ -66,21 +61,11 @@ const config = merge.smart(common, {
 
     new OfflinePlugin({
       caches: {
-        main: [
-          '*.html',
-          'js/main.*.js',
-        ],
-        additional: [
-          'js/*.js',
-          'fonts/**',
-        ],
-        optional: [
-          ':rest:',
-        ],
+        main: ['*.html', 'js/main.*.js'],
+        additional: ['js/*.js', 'fonts/**'],
+        optional: [':rest:'],
       },
-      excludes: [
-        'CNAME',
-      ],
+      excludes: ['CNAME'],
       safeToUseOptionalCaches: true,
       ServiceWorker: {
         events: true,

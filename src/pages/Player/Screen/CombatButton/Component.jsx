@@ -21,9 +21,7 @@ class PlayerScreenCombatButtonComponent extends PureComponent {
   }
 
   handleClick() {
-    const {
-      buyFullVersion, fullVersion, goToCombat, playerId,
-    } = this.props;
+    const { buyFullVersion, fullVersion, goToCombat, playerId } = this.props;
 
     if (!fullVersion) {
       buyFullVersion();
@@ -34,11 +32,7 @@ class PlayerScreenCombatButtonComponent extends PureComponent {
 
   render() {
     return (
-      <Button
-        color="primary"
-        fab
-        onClick={this.handleClick}
-      >
+      <Button color="primary" fab onClick={this.handleClick}>
         <SwordCross />
       </Button>
     );

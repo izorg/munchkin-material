@@ -10,10 +10,7 @@ const styles = {
 };
 
 const LayoutContent = ({ classes, className, ...props }) => (
-  <div
-    {...props}
-    className={cns(classes.layoutContent, className)}
-  />
+  <div {...props} className={cns(classes.layoutContent, className)} />
 );
 
 LayoutContent.propTypes = {

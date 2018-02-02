@@ -9,15 +9,17 @@ import createMonster from 'munchkin-core/es/utils/createMonster';
 import HelperButton from './Component';
 
 const mapStateToProps = (state, ownProps) => ({
-  expanded: Boolean(matchPath(ownProps.location.pathname, { path: '/player/:id/combat/add' })),
+  expanded: Boolean(
+    matchPath(ownProps.location.pathname, { path: '/player/:id/combat/add' }),
+  ),
   helper: !state.combat.helperId && state.playerList.length > 1,
   playerId: state.combat.playerId,
 });
 
 const mapDispatchToProps = {
-  onAdd: playerId => push(`/player/${playerId}/combat/add`),
+  onAdd: (playerId) => push(`/player/${playerId}/combat/add`),
   onBackdropClick: goBack,
-  onMonsterAdd: back => (dispatch) => {
+  onMonsterAdd: (back) => (dispatch) => {
     dispatch(addMonster(createMonster()));
 
     if (back) {

@@ -9,7 +9,7 @@ import { getModeFromPathname } from '../../../path';
 
 import Component from './Component';
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   empty: state.playerList.length === 0,
   mode: getModeFromPathname(state.router.location.pathname),
   selectedPlayerIds: state.app.selectedPlayerIds,
@@ -17,13 +17,13 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
   onMultiSelectDeactivate: goBack,
-  onPlayersDelete: selectedPlayerIds => (dispatch) => {
+  onPlayersDelete: (selectedPlayerIds) => (dispatch) => {
     selectedPlayerIds.forEach((id) => {
       dispatch(removePlayer(id));
     });
     dispatch(goBack());
   },
-  onToggleEditClick: mode => (dispatch) => {
+  onToggleEditClick: (mode) => (dispatch) => {
     if (mode === modes.EDIT) {
       dispatch(goBack());
     } else {

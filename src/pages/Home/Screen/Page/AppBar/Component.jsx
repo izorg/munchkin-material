@@ -1,5 +1,10 @@
 import React from 'react';
-import { defineMessages, FormattedMessage, injectIntl, intlShape } from 'react-intl';
+import {
+  defineMessages,
+  FormattedMessage,
+  injectIntl,
+  intlShape,
+} from 'react-intl';
 import compose from 'recompose/compose';
 import PropTypes from 'prop-types';
 import IconButton from 'material-ui/IconButton';
@@ -65,26 +70,27 @@ const HomeScreenPageAppBarComponent = ({
         color={multiMode ? 'default' : 'inherit'}
         className={classes.title}
       >
-        {
-          multiMode
-            ? selectedPlayerIds.length
-            : <FormattedMessage id="player.list.title" defaultMessage="Munchkins" />
-        }
+        {multiMode ? (
+          selectedPlayerIds.length
+        ) : (
+          <FormattedMessage id="player.list.title" defaultMessage="Munchkins" />
+        )}
       </Title>
 
       <DiceButton color={buttonColor} />
 
-      {!empty && !multiMode && (
-        <Tooltip title={editTitle}>
-          <IconButton
-            aria-label={editTitle}
-            color={buttonColor}
-            onClick={() => onToggleEditClick(mode)}
-          >
-            {editMode ? <NavigationCheck /> : <EditorModeEdit />}
-          </IconButton>
-        </Tooltip>
-      )}
+      {!empty &&
+        !multiMode && (
+          <Tooltip title={editTitle}>
+            <IconButton
+              aria-label={editTitle}
+              color={buttonColor}
+              onClick={() => onToggleEditClick(mode)}
+            >
+              {editMode ? <NavigationCheck /> : <EditorModeEdit />}
+            </IconButton>
+          </Tooltip>
+        )}
 
       {multiMode && (
         <IconButton
@@ -117,7 +123,6 @@ HomeScreenPageAppBarComponent.defaultProps = {
   selectedPlayerIds: [],
 };
 
-export default compose(
-  injectIntl,
-  withStyles(styles),
-)(HomeScreenPageAppBarComponent);
+export default compose(injectIntl, withStyles(styles))(
+  HomeScreenPageAppBarComponent,
+);

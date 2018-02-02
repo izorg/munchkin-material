@@ -8,21 +8,13 @@ import en from '../languages/en.json';
 import ru from '../languages/ru.json';
 import uk from '../languages/uk.json';
 
-const availableLocales = [
-  'en',
-  'ru',
-  'uk',
-];
+const availableLocales = ['en', 'ru', 'uk'];
 
 const defaultLocale = 'en';
 
 const LANGUAGE_LENGTH = 2;
 
-addLocaleData([
-  ...enLocaleData,
-  ...ruLocaleData,
-  ...ukLocaleData,
-]);
+addLocaleData([...enLocaleData, ...ruLocaleData, ...ukLocaleData]);
 
 export const getLocale = () => {
   const language = navigator.language || navigator.userLanguage;

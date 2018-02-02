@@ -7,10 +7,7 @@ const initialState = [];
 const playerList = (state = initialState, action) => {
   switch (action.type) {
     case ADD_PLAYER: {
-      return [
-        ...state,
-        action.player.id,
-      ];
+      return [...state, action.player.id];
     }
 
     case MOVE_PLAYER: {
@@ -31,10 +28,7 @@ const playerList = (state = initialState, action) => {
     case REMOVE_PLAYER: {
       const index = state.indexOf(action.id);
 
-      return [
-        ...state.slice(0, index),
-        ...state.slice(index + 1),
-      ];
+      return [...state.slice(0, index), ...state.slice(index + 1)];
     }
 
     /* istanbul ignore next  */

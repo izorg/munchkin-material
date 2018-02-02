@@ -10,7 +10,7 @@ import Counter from '../../../../../../components/Counter';
 import Gender from '../../../../../../components/Gender';
 import { playerShape } from '../../../../../../utils/propTypes';
 
-const styles = theme => ({
+const styles = (theme) => ({
   stats: {
     display: 'flex',
     flexDirection: 'column-reverse',
@@ -47,8 +47,8 @@ const styles = theme => ({
 
   strengthValue: {
     fontFamily: `"Munchkin", ${theme.typography.fontFamily}`,
-    fontSize: 72, /* 36px * 2 */
-    lineHeight: 0.575, /* 1.15 / 2 */
+    fontSize: 72, // 36px * 2
+    lineHeight: 0.575, // 1.15 / 2
     marginTop: 32,
   },
 
@@ -86,7 +86,9 @@ const PlayerStats = ({
         <Counter
           onDecrement={() => onLevelDecrement(player.id)}
           onIncrement={() => onLevelIncrement(player.id)}
-          title={<FormattedMessage id="player.stats.level" defaultMessage="Level" />}
+          title={
+            <FormattedMessage id="player.stats.level" defaultMessage="Level" />
+          }
           value={player.level}
         />
       </div>
@@ -94,7 +96,9 @@ const PlayerStats = ({
         <Counter
           onDecrement={() => onGearDecrement(player.id)}
           onIncrement={() => onGearIncrement(player.id)}
-          title={<FormattedMessage id="player.stats.gear" defaultMessage="Gear" />}
+          title={
+            <FormattedMessage id="player.stats.gear" defaultMessage="Gear" />
+          }
           value={player.gear}
         />
       </div>
@@ -102,7 +106,10 @@ const PlayerStats = ({
     <div className={classes.mainContainer}>
       <div className={classes.strengthCounter}>
         <div className={classes.strengthTitle}>
-          <FormattedMessage id="player.stats.strength" defaultMessage="Strength" />
+          <FormattedMessage
+            id="player.stats.strength"
+            defaultMessage="Strength"
+          />
         </div>
 
         <div className={classes.strengthValue}>

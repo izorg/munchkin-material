@@ -10,8 +10,8 @@ const LANG_DIR = './languages/';
 // there are messages in different components that use the same `id`. The result
 // is a flat collection of `id: message` pairs for the app's default locale.
 const defaultMessages = globSync(MESSAGES_PATTERN)
-  .map(filename => fs.readFileSync(filename, 'utf8'))
-  .map(file => JSON.parse(file))
+  .map((filename) => fs.readFileSync(filename, 'utf8'))
+  .map((file) => JSON.parse(file))
   .reduce((collection, descriptors) => {
     descriptors.forEach(({ id, defaultMessage }) => {
       // eslint-disable-next-line no-prototype-builtins
@@ -27,4 +27,7 @@ const defaultMessages = globSync(MESSAGES_PATTERN)
   }, {});
 
 mkdirpSync(LANG_DIR);
-fs.writeFileSync(`${LANG_DIR}en.json`, JSON.stringify(defaultMessages, null, 2));
+fs.writeFileSync(
+  `${LANG_DIR}en.json`,
+  JSON.stringify(defaultMessages, null, 2),
+);

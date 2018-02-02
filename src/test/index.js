@@ -9,7 +9,7 @@ const setTestData = () => {
   const { dispatch } = window.app.store;
   const { app, playerList } = window.app.store.getState();
 
-  playerList.forEach(id => dispatch(removePlayer(id)));
+  playerList.forEach((id) => dispatch(removePlayer(id)));
 
   const locale = app.locale || getLocale();
 

@@ -7,7 +7,7 @@ import { getModeFromPathname } from '../../../path';
 
 import Component from './Component';
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   editMode: getModeFromPathname(state.router.location.pathname) === EDIT,
   playerList: state.playerList,
 });

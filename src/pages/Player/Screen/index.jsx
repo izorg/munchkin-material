@@ -48,10 +48,7 @@ class PlayerScreen extends PureComponent {
         >
           <Page />
         </Slide>
-        <Transition
-          appear={appear}
-          in={Boolean(match) && match.isExact}
-        >
+        <Transition appear={appear} in={Boolean(match) && match.isExact}>
           <CombatButton appear={appear} playerId={playerId} />
         </Transition>
       </Fragment>

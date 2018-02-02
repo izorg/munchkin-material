@@ -37,16 +37,15 @@ const app = (state = initialState, action) => {
       if (state.selectedPlayerIds.includes(id)) {
         return {
           ...state,
-          selectedPlayerIds: state.selectedPlayerIds.filter(selectedId => selectedId !== id),
+          selectedPlayerIds: state.selectedPlayerIds.filter(
+            (selectedId) => selectedId !== id,
+          ),
         };
       }
 
       return {
         ...state,
-        selectedPlayerIds: [
-          ...state.selectedPlayerIds,
-          id,
-        ],
+        selectedPlayerIds: [...state.selectedPlayerIds, id],
       };
     }
 

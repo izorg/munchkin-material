@@ -6,7 +6,7 @@ import Layout, { LayoutContent } from '../../../components/Layout';
 import AppBar from './AppBar';
 import Form from './Form';
 
-const styles = theme => ({
+const styles = (theme) => ({
   content: theme.mixins.gutters({}),
 });
 

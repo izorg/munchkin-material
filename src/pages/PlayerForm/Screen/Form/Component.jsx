@@ -1,7 +1,12 @@
 import React, { PureComponent } from 'react';
 import Field from 'redux-form/lib/Field';
 import reduxForm from 'redux-form/lib/reduxForm';
-import { defineMessages, FormattedMessage, injectIntl, intlShape } from 'react-intl';
+import {
+  defineMessages,
+  FormattedMessage,
+  injectIntl,
+  intlShape,
+} from 'react-intl';
 import RadioGroup from 'redux-form-material-ui/es/RadioGroup';
 import compose from 'recompose/compose';
 import PropTypes from 'prop-types';
@@ -34,16 +39,10 @@ class PlayerForm extends PureComponent {
   }
 
   render() {
-    const {
-      handleSubmit, intl, newPlayer, onImport,
-    } = this.props;
+    const { handleSubmit, intl, newPlayer, onImport } = this.props;
 
     return (
-      <form
-        autoComplete="off"
-        noValidate
-        onSubmit={handleSubmit}
-      >
+      <form autoComplete="off" noValidate onSubmit={handleSubmit}>
         <Field component="input" name="avatar" type="hidden" />
 
         <Field
@@ -55,30 +54,31 @@ class PlayerForm extends PureComponent {
           placeholder={intl.formatMessage(messages.label)}
         />
 
-        {
-          newPlayer && navigator.contacts ? (
-            <IconButton
-              disableTouchRipple
-              onClick={onImport}
-              style={{
-                height: 24,
-                padding: 0,
-                position: 'absolute',
-                right: 0,
-                top: 12,
-                width: 24,
-              }}
-            >
-              <SocialPersonAdd />
-            </IconButton>
-          ) : null
-        }
+        {newPlayer && navigator.contacts ? (
+          <IconButton
+            disableTouchRipple
+            onClick={onImport}
+            style={{
+              height: 24,
+              padding: 0,
+              position: 'absolute',
+              right: 0,
+              top: 12,
+              width: 24,
+            }}
+          >
+            <SocialPersonAdd />
+          </IconButton>
+        ) : null}
 
         <Grid container>
           <Grid item xs={6} sm={3} md={2} lg={1}>
             <FormControl component="fieldset" margin="normal">
               <FormLabel component="legend">
-                <FormattedMessage id="player.form.gender" defaultMessage="Gender" />
+                <FormattedMessage
+                  id="player.form.gender"
+                  defaultMessage="Gender"
+                />
               </FormLabel>
               <Field component={RadioGroup} name="gender">
                 <FormControlLabel
@@ -98,7 +98,10 @@ class PlayerForm extends PureComponent {
           <Grid item xs={6} sm={3} md={2} lg={1}>
             <FormControl margin="normal">
               <FormLabel>
-                <FormattedMessage id="player.form.color" defaultMessage="Color" />
+                <FormattedMessage
+                  id="player.form.color"
+                  defaultMessage="Color"
+                />
               </FormLabel>
               <Field component={ColorPicker} name="color" />
             </FormControl>

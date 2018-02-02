@@ -1,8 +1,6 @@
 import * as colors from 'material-ui/colors';
 
-const {
-  brown, common, yellow, ...availableColors
-} = colors;
+const { brown, common, yellow, ...availableColors } = colors;
 
 const colorKeys = Object.keys(availableColors);
 

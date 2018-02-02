@@ -14,7 +14,7 @@ import createPlayer from 'munchkin-core/es/utils/createPlayer';
 
 import * as types from '../utils/actionTypes';
 
-export const goToCombat = playerId => (dispatch, getState) => {
+export const goToCombat = (playerId) => (dispatch, getState) => {
   const { app: { fullVersion } } = getState();
 
   if (fullVersion) {
@@ -43,12 +43,12 @@ export const setFullVersion = (fullVersion = true) => ({
   fullVersion,
 });
 
-export const setLocale = locale => ({
+export const setLocale = (locale) => ({
   type: types.SET_LOCALE,
   locale,
 });
 
-export const submitPlayer = values => (dispatch) => {
+export const submitPlayer = (values) => (dispatch) => {
   const { id, name = '' } = values;
 
   if (name.trim()) {
@@ -69,15 +69,14 @@ export const throwDice = () => ({
   dice: Math.floor(Math.random() * 6) + 1,
 });
 
-export const togglePlayer = id => ({
+export const togglePlayer = (id) => ({
   type: types.TOGGLE_PLAYER,
   id,
 });
 
-export const togglePlayerGender = id => (dispatch, getState) => {
+export const togglePlayerGender = (id) => (dispatch, getState) => {
   const player = getState().players[id];
   const { gender } = player;
-
 
   if (gender === MALE) {
     dispatch(setPlayerGender(id, FEMALE));

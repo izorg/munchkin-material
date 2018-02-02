@@ -2,7 +2,7 @@ import React from 'react';
 import CSSTransition from 'react-transition-group/CSSTransition';
 import { withStyles } from 'material-ui/styles';
 
-const styles = theme => ({
+const styles = (theme) => ({
   enter: {
     opacity: 0,
     transform: 'scale(0.5) translateY(20px)',

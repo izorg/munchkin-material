@@ -81,7 +81,14 @@ class CombatPlayer extends PureComponent {
 
   render() {
     const {
-      bonus, classes, gear, gender, id, level, name, onGenderToggle,
+      bonus,
+      classes,
+      gear,
+      gender,
+      id,
+      level,
+      name,
+      onGenderToggle,
     } = this.props;
 
     return (
@@ -109,7 +116,12 @@ class CombatPlayer extends PureComponent {
             compact
             onDecrement={this.handleLevelDecrement}
             onIncrement={this.handleLevelIncrement}
-            title={<FormattedMessage id="combat.player.level" defaultMessage="Level" />}
+            title={
+              <FormattedMessage
+                id="combat.player.level"
+                defaultMessage="Level"
+              />
+            }
             value={level}
           />
           <Counter
@@ -117,7 +129,9 @@ class CombatPlayer extends PureComponent {
             compact
             onDecrement={this.handleGearDecrement}
             onIncrement={this.handleGearIncrement}
-            title={<FormattedMessage id="combat.player.gear" defaultMessage="Gear" />}
+            title={
+              <FormattedMessage id="combat.player.gear" defaultMessage="Gear" />
+            }
             value={gear}
           />
           <Counter
@@ -125,7 +139,12 @@ class CombatPlayer extends PureComponent {
             compact
             onDecrement={() => this.handleBonusChange(-1)}
             onIncrement={() => this.handleBonusChange(+1)}
-            title={<FormattedMessage id="combat.player.modifier" defaultMessage="Modifier" />}
+            title={
+              <FormattedMessage
+                id="combat.player.modifier"
+                defaultMessage="Modifier"
+              />
+            }
             value={bonus}
           />
         </div>

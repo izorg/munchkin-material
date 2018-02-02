@@ -1,5 +1,3 @@
 import playerColors from './playerColors';
 
-export default [
-  playerColors,
-];
+export default [playerColors];

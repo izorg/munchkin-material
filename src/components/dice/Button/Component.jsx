@@ -5,7 +5,7 @@ import Tooltip from 'material-ui/Tooltip';
 
 import DiceMultipleIcon from '../../icons/dice/multiple';
 
-const DiceIconButton = props => (
+const DiceIconButton = (props) => (
   <Tooltip title={<FormattedMessage id="dice" defaultMessage="Dice" />}>
     <IconButton {...props}>
       <DiceMultipleIcon />

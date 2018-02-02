@@ -2,7 +2,7 @@ import React from 'react';
 import CSSTransition from 'react-transition-group/CSSTransition';
 import { withStyles } from 'material-ui/styles';
 
-const styles = theme => ({
+const styles = (theme) => ({
   enter: {
     height: '100%',
     left: 0,

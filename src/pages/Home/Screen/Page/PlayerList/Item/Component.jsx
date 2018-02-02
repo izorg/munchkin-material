@@ -4,7 +4,12 @@ import { FormattedMessage } from 'react-intl';
 import { SortableHandle } from 'react-sortable-hoc';
 import PropTypes from 'prop-types';
 import IconButton from 'material-ui/IconButton';
-import { ListItem, ListItemIcon, ListItemSecondaryAction, ListItemText } from 'material-ui/List';
+import {
+  ListItem,
+  ListItemIcon,
+  ListItemSecondaryAction,
+  ListItemText,
+} from 'material-ui/List';
 import Typography from 'material-ui/Typography';
 import { withStyles } from 'material-ui/styles';
 import ActionReorder from 'material-ui-icons/Reorder';
@@ -18,10 +23,9 @@ import Avatar from '../../../../../../components/player/Avatar';
 
 import * as modes from '../../../../modes';
 
-
 const ItemHandle = SortableHandle(ActionReorder);
 
-const styles = theme => ({
+const styles = (theme) => ({
   secondaryActionPadding: {
     paddingRight: 36,
   },
@@ -79,7 +83,7 @@ class HomeScreenPagePlayerListItemComponent extends PureComponent {
       );
     };
 
-    this.avatarComponent = params => (
+    this.avatarComponent = (params) => (
       <div
         {...params}
         ref={(node) => {
@@ -91,7 +95,12 @@ class HomeScreenPagePlayerListItemComponent extends PureComponent {
 
   handleTap(e) {
     const {
-      mode, onMultiSelectActivate, onPlayerEdit, onPlayerSelect, onPlayerToggle, player,
+      mode,
+      onMultiSelectActivate,
+      onPlayerEdit,
+      onPlayerSelect,
+      onPlayerToggle,
+      player,
     } = this.props;
 
     if (mode === modes.EDIT) {
@@ -118,9 +127,7 @@ class HomeScreenPagePlayerListItemComponent extends PureComponent {
   }
 
   render() {
-    const {
-      classes, mode, player, selected,
-    } = this.props;
+    const { classes, mode, player, selected } = this.props;
     const GenderIcon = getGenderIconClass(player.gender);
 
     return (
@@ -129,7 +136,9 @@ class HomeScreenPagePlayerListItemComponent extends PureComponent {
         classes={{
           gutters: classes.listItemGutters,
         }}
-        className={cns({ [classes.secondaryActionPadding]: mode === modes.EDIT })}
+        className={cns({
+          [classes.secondaryActionPadding]: mode === modes.EDIT,
+        })}
         component={this.container}
       >
         <Avatar
@@ -141,7 +150,11 @@ class HomeScreenPagePlayerListItemComponent extends PureComponent {
 
         <ListItemText
           className={classes.text}
-          primary={<Typography component="div" noWrap>{player.name}</Typography>}
+          primary={
+            <Typography component="div" noWrap>
+              {player.name}
+            </Typography>
+          }
           secondary={
             <span>
               <FormattedMessage

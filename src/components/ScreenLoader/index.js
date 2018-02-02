@@ -35,7 +35,9 @@ class ScreenLoader extends PureComponent {
   render() {
     const { appear, ready } = this.state;
 
-    return ready ? createElement(this.loadableScreen, { appear, ...this.props }) : null;
+    return ready
+      ? createElement(this.loadableScreen, { appear, ...this.props })
+      : null;
   }
 }
 

@@ -32,11 +32,19 @@ const styles = ({ spacing: { unit } }) => ({
 const ColorPickerDialog = ({ classes, onSelect, ...props }) => (
   <Dialog {...props}>
     <DialogTitle>
-      <FormattedMessage id="colorPicker.dialog.title" defaultMessage="Choose color" />
+      <FormattedMessage
+        id="colorPicker.dialog.title"
+        defaultMessage="Choose color"
+      />
     </DialogTitle>
     <DialogContent className={classes.content}>
-      {Object.keys(availableColors).map(key => (
-        <ButtonBase centerRipple className={classes.button} focusRipple key={key}>
+      {Object.keys(availableColors).map((key) => (
+        <ButtonBase
+          centerRipple
+          className={classes.button}
+          focusRipple
+          key={key}
+        >
           <Avatar
             className={classes.color}
             onClick={() => onSelect(availableColors[key][500])}

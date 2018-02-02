@@ -9,7 +9,7 @@ import PlayerStats from './Stats';
 
 const PlayerSwipeableViews = bindKeyboard(virtualize(SwipeableViews));
 
-const styles = theme => ({
+const styles = (theme) => ({
   item: {
     flexGrow: 1,
     paddingLeft: theme.spacing.unit * 2,
