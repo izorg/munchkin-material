@@ -24,15 +24,15 @@ const messages = defineMessages({
   },
 });
 
-const styles = theme => ({
-  multiTitle: {
-    marginLeft: 20,
+const styles = {
+  multiSelectDeactivateButton: {
+    marginRight: 8,
   },
 
   title: {
-    marginLeft: theme.spacing.unit * 2,
+    marginLeft: 12,
   },
-});
+};
 
 const HomeScreenPageAppBarComponent = ({
   classes,
@@ -54,6 +54,7 @@ const HomeScreenPageAppBarComponent = ({
     <AppBar color={multiMode ? 'default' : 'primary'} position="static">
       {multiMode && (
         <IconButton
+          className={classes.multiSelectDeactivateButton}
           color="default"
           onClick={onMultiSelectDeactivate}
         >
@@ -62,7 +63,7 @@ const HomeScreenPageAppBarComponent = ({
       )}
       <Title
         color={multiMode ? 'default' : 'inherit'}
-        className={multiMode ? classes.multiTitle : classes.title}
+        className={classes.title}
       >
         {
           multiMode
