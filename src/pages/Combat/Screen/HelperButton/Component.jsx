@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { Fragment, PureComponent } from 'react';
 import { FormattedMessage } from 'react-intl';
 import Link from 'react-router-dom/Link';
 import TransitionGroup from 'react-transition-group/TransitionGroup';
@@ -94,83 +94,85 @@ class CombatScreenHelperButton extends PureComponent {
     } = this.props;
 
     return (
-      <div className={classes.container}>
+      <Fragment>
         {expanded && <Backdrop invisible onClick={onBackdropClick} open />}
 
-        <TransitionGroup className={classes.miniContainer}>
-          {helper &&
-            expanded && (
-              <Fade>
-                <div className={classes.monster}>
-                  <Tooltip
-                    open
-                    placement="left"
-                    title={
-                      <FormattedMessage
-                        id="combat.add.monster"
-                        defaultMessage="Monster"
-                      />
-                    }
-                  >
-                    <Button
-                      color="primary"
-                      fab
-                      mini
-                      onClick={() => onMonsterAdd(true)}
+        <div className={classes.container}>
+          <TransitionGroup className={classes.miniContainer}>
+            {helper &&
+              expanded && (
+                <Fade>
+                  <div className={classes.monster}>
+                    <Tooltip
+                      open
+                      placement="left"
+                      title={
+                        <FormattedMessage
+                          id="combat.add.monster"
+                          defaultMessage="Monster"
+                        />
+                      }
                     >
-                      <EmoticonDevil />
-                    </Button>
-                  </Tooltip>
-                </div>
-              </Fade>
-            )}
+                      <Button
+                        color="primary"
+                        fab
+                        mini
+                        onClick={() => onMonsterAdd(true)}
+                      >
+                        <EmoticonDevil />
+                      </Button>
+                    </Tooltip>
+                  </div>
+                </Fade>
+              )}
 
-          {helper &&
-            expanded && (
-              <Fade>
-                <div className={classes.helper}>
-                  <Tooltip
-                    open
-                    placement="left"
-                    title={
-                      <FormattedMessage
-                        id="combat.add.helper"
-                        defaultMessage="Helper"
-                      />
-                    }
-                  >
-                    <Button
-                      color="primary"
-                      component={Link}
-                      fab
-                      mini
-                      to={`/player/${playerId}/combat/add/helper`}
+            {helper &&
+              expanded && (
+                <Fade>
+                  <div className={classes.helper}>
+                    <Tooltip
+                      open
+                      placement="left"
+                      title={
+                        <FormattedMessage
+                          id="combat.add.helper"
+                          defaultMessage="Helper"
+                        />
+                      }
                     >
-                      <PersonAddIcon />
-                    </Button>
-                  </Tooltip>
-                </div>
-              </Fade>
+                      <Button
+                        color="primary"
+                        component={Link}
+                        fab
+                        mini
+                        to={`/player/${playerId}/combat/add/helper`}
+                      >
+                        <PersonAddIcon />
+                      </Button>
+                    </Tooltip>
+                  </div>
+                </Fade>
+              )}
+          </TransitionGroup>
+
+          <Button
+            className={classes.button}
+            color="primary"
+            fab
+            onClick={this.handleClick}
+          >
+            {helper ? (
+              <AddIcon
+                className={cns(classes.icon, { [classes.expanded]: expanded })}
+              />
+            ) : (
+              <EmoticonDevil />
             )}
-        </TransitionGroup>
+          </Button>
 
-        <Button
-          className={classes.button}
-          color="primary"
-          fab
-          onClick={this.handleClick}
-        >
-          {helper ? (
-            <AddIcon
-              className={cns(classes.icon, { [classes.expanded]: expanded })}
-            />
-          ) : (
-            <EmoticonDevil />
-          )}
-        </Button>
-
-        <HelperSelector />
-      </div>
+          <HelperSelector />
+        </div>
+      </Fragment>
     );
   }
 }
