@@ -6,6 +6,7 @@ import Slide from 'material-ui/transitions/Slide';
 import Transition from '../../../components/fab/Transition';
 
 import HelperButton from './HelperButton';
+import HelperSelector from './Page/HelperSelector';
 import Page from './Page';
 
 const CombatScreen = ({ appear, match }) => (
@@ -22,6 +23,7 @@ const CombatScreen = ({ appear, match }) => (
     <Transition appear={appear} in={Boolean(match)}>
       <HelperButton />
     </Transition>
+    <HelperSelector />
   </Fragment>
 );
 

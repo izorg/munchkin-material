@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 
 import Transition from '../../../components/fab/Transition';
 
-import NewPlayerButton from './PlayerAddButton';
-import Page from './Page/index';
+import Page from './Page';
+import PlayerAddButton from './PlayerAddButton';
 
 const HomeScreen = ({ match }) => (
   <Fragment>
@@ -13,7 +13,7 @@ const HomeScreen = ({ match }) => (
       appear={false}
       in={Boolean(match) && match.isExact && !match.params.mode}
     >
-      <NewPlayerButton />
+      <PlayerAddButton />
     </Transition>
   </Fragment>
 );

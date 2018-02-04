@@ -1,10 +1,11 @@
 import React from 'react';
+import bindActionCreators from 'redux/lib/bindActionCreators';
 import connect from 'react-redux/es/connect/connect';
 import Route from 'react-router-dom/Route';
-import { go, goBack } from 'connected-react-router/lib/actions';
+import { goBack } from 'connected-react-router/lib/actions';
 import { setCombatHelper } from 'munchkin-core/es/actions';
 
-import HelperSelector from './Component';
+import Component from './Component';
 
 const mapStateToProps = (state) => ({
   helpers: state.playerList
@@ -12,20 +13,27 @@ const mapStateToProps = (state) => ({
     .map((id) => state.players[id]),
 });
 
-const mapDispatchToProps = {
-  onClose: goBack,
-  onSelect: (id) => (dispatch) => {
+const mapDispatchToProps = (dispatch) => ({
+  ...bindActionCreators(
+    {
+      onClose: goBack,
+    },
+    dispatch,
+  ),
+  onSelect: (id) => {
     dispatch(setCombatHelper(id));
-    dispatch(go(-2));
+    dispatch(goBack());
   },
-};
+});
 
-const CombatHelperSelector = (props) => (
+const ConnectedComponent = connect(mapStateToProps, mapDispatchToProps)(
+  Component,
+);
+
+const HelperSelector = (props) => (
   <Route exact path="/player/:id/combat/add/helper">
-    {({ match }) => <HelperSelector {...props} open={!!match} />}
+    {({ match }) => <ConnectedComponent {...props} open={!!match} />}
   </Route>
 );
 
-export default connect(mapStateToProps, mapDispatchToProps, undefined, {
-  pure: false,
-})(CombatHelperSelector);
+export default HelperSelector;

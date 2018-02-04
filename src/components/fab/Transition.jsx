@@ -1,9 +1,34 @@
 import React from 'react';
+import CSSTransition from 'react-transition-group/CSSTransition';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
-import Zoom from 'material-ui/transitions/Zoom';
 
 const styles = (theme) => ({
+  enter: {
+    transform: 'scale(0)',
+  },
+
+  enterActive: {
+    transform: 'scale(1)',
+    transition: theme.transitions.create('transform', {
+      delay: theme.transitions.duration.leavingScreen,
+      duration: theme.transitions.duration.enteringScreen,
+      // easing: theme.transitions.easing.easeOut,
+    }),
+  },
+
+  exit: {
+    transform: 'scale(1)',
+  },
+
+  exitActive: {
+    transform: 'scale(0)',
+    transition: theme.transitions.create('transform', {
+      duration: theme.transitions.duration.leavingScreen,
+      // easing: theme.transitions.easing.easeIn,
+    }),
+  },
+
   container: {
     bottom: theme.spacing.unit * 2,
     position: 'fixed',
@@ -13,14 +38,27 @@ const styles = (theme) => ({
 });
 
 const Transition = ({ classes, children, theme, ...props }) => (
-  <Zoom
-    enterDelay={theme.transitions.duration.leavingScreen}
+  <CSSTransition
+    classNames={{
+      appear: classes.enter,
+      appearActive: classes.enterActive,
+      enter: classes.enter,
+      enterActive: classes.enterActive,
+      exit: classes.exit,
+      exitActive: classes.exitActive,
+    }}
     mountOnEnter
+    timeout={{
+      enter:
+        theme.transitions.duration.leavingScreen +
+        theme.transitions.duration.enteringScreen,
+      exit: theme.transitions.duration.leavingScreen,
+    }}
     unmountOnExit
     {...props}
   >
     <div className={classes.container}>{children}</div>
-  </Zoom>
+  </CSSTransition>
 );
 
 Transition.propTypes = {
