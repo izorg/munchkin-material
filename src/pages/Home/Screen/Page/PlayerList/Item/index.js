@@ -1,4 +1,4 @@
-import connect from 'react-redux/es/connect/connect';
+import { connect } from 'react-redux';
 import { goBack, push } from 'connected-react-router/lib/actions';
 
 import { togglePlayer, unselectAllPlayers } from '../../../../../../actions';

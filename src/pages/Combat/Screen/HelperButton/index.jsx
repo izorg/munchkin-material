@@ -1,9 +1,9 @@
 import React, { Fragment } from 'react';
-import connect from 'react-redux/es/connect/connect';
+import { connect } from 'react-redux';
 import Route from 'react-router-dom/Route';
 import { goBack, push } from 'connected-react-router/lib/actions';
-import { addMonster } from 'munchkin-core/es/actions';
-import createMonster from 'munchkin-core/es/utils/createMonster';
+import { addMonster } from 'munchkin-core/lib/actions';
+import createMonster from 'munchkin-core/lib/utils/createMonster';
 
 import Component from './Component';
 

@@ -1,4 +1,4 @@
-import connect from 'react-redux/es/connect/connect';
+import { connect } from 'react-redux';
 import { push } from 'connected-react-router/lib/actions';
 
 import Component from './Component';

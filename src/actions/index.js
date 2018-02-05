@@ -7,10 +7,10 @@ import {
   startCombat,
   setPlayerGender,
   updatePlayer,
-} from 'munchkin-core/es/actions';
-import { FEMALE, MALE } from 'munchkin-core/es/utils/gender';
-import createMonster from 'munchkin-core/es/utils/createMonster';
-import createPlayer from 'munchkin-core/es/utils/createPlayer';
+} from 'munchkin-core/lib/actions';
+import { FEMALE, MALE } from 'munchkin-core/lib/utils/gender';
+import createMonster from 'munchkin-core/lib/utils/createMonster';
+import createPlayer from 'munchkin-core/lib/utils/createPlayer';
 
 import * as types from '../utils/actionTypes';
 

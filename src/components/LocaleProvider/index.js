@@ -1,5 +1,5 @@
 import { IntlProvider } from 'react-intl';
-import connect from 'react-redux/es/connect/connect';
+import { connect } from 'react-redux';
 
 import { getLocale, getMessages } from '../../i18n';
 

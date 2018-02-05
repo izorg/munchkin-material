@@ -1,8 +1,8 @@
 /* global __VERSION__ */
 import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import { setVersion } from 'munchkin-core/es/actions';
-import version from 'munchkin-core/es/utils/version';
+import { setVersion } from 'munchkin-core/lib/actions';
+import version from 'munchkin-core/lib/utils/version';
 import { connectRouter, routerMiddleware } from 'connected-react-router';
 import formReducer from 'redux-form/lib/reducer';
 import thunk from 'redux-thunk';

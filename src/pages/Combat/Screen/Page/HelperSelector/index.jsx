@@ -1,9 +1,9 @@
 import React from 'react';
 import bindActionCreators from 'redux/lib/bindActionCreators';
-import connect from 'react-redux/es/connect/connect';
+import { connect } from 'react-redux';
 import Route from 'react-router-dom/Route';
 import { goBack } from 'connected-react-router/lib/actions';
-import { setCombatHelper } from 'munchkin-core/es/actions';
+import { setCombatHelper } from 'munchkin-core/lib/actions';
 
 import Component from './Component';
 

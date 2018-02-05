@@ -1,4 +1,4 @@
-import connect from 'react-redux/es/connect/connect';
+import { connect } from 'react-redux';
 import getContext from 'recompose/getContext';
 import { replace } from 'connected-react-router/lib/actions';
 import compose from 'recompose/compose';

@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import Helmet from 'react-helmet/es/Helmet';
+import Helmet from 'react-helmet/lib/Helmet';
 
 import Combat from '../../pages/Combat';
 import Home from '../../pages/Home';

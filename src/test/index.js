@@ -1,4 +1,4 @@
-import { addPlayer, removePlayer } from 'munchkin-core/es/actions';
+import { addPlayer, removePlayer } from 'munchkin-core/lib/actions';
 
 import { setLocale } from '../actions';
 import { getLocale } from '../i18n';

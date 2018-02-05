@@ -1,8 +1,8 @@
-import connect from 'react-redux/es/connect/connect';
+import { connect } from 'react-redux';
 import withRouter from 'react-router-dom/withRouter';
 import { goBack, push } from 'connected-react-router/lib/actions';
 import compose from 'recompose/compose';
-import { removePlayer } from 'munchkin-core/es/actions';
+import { removePlayer } from 'munchkin-core/lib/actions';
 
 import * as modes from '../../../modes';
 import { getModeFromPathname } from '../../../path';

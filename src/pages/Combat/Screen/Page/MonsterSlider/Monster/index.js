@@ -1,10 +1,10 @@
-import connect from 'react-redux/es/connect/connect';
+import { connect } from 'react-redux';
 import {
   decrementMonsterBonus,
   decrementMonsterLevel,
   incrementMonsterBonus,
   incrementMonsterLevel,
-} from 'munchkin-core/es/actions';
+} from 'munchkin-core/lib/actions';
 
 import Monster from './Component';
 

@@ -1,10 +1,10 @@
-import connect from 'react-redux/es/connect/connect';
+import { connect } from 'react-redux';
 import {
   decrementPlayerGear,
   decrementPlayerLevel,
   incrementPlayerGear,
   incrementPlayerLevel,
-} from 'munchkin-core/es/actions';
+} from 'munchkin-core/lib/actions';
 
 import { togglePlayerGender } from '../../../../../../actions';
 

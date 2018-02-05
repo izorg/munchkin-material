@@ -1,6 +1,6 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
-import connect from 'react-redux/es/connect/connect';
+import { connect } from 'react-redux';
 import { goBack } from 'connected-react-router/lib/actions';
 import compose from 'recompose/compose';
 import PropTypes from 'prop-types';

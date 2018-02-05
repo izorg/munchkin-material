@@ -5,7 +5,7 @@ import IconButton from 'material-ui/IconButton';
 import Typography from 'material-ui/Typography';
 import { withStyles } from 'material-ui/styles';
 import { noop } from 'lodash';
-import { FEMALE, MALE } from 'munchkin-core/es/utils/gender';
+import { FEMALE, MALE } from 'munchkin-core/lib/utils/gender';
 
 import Counter from '../../../../../../components/Counter';
 import Gender from '../../../../../../components/Gender';

@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { hot } from 'react-hot-loader';
-import Provider from 'react-redux/es/components/Provider';
-import { storeShape } from 'react-redux/es/utils/PropTypes';
+import { Provider } from 'react-redux';
+import { storeShape } from 'react-redux/lib/utils/PropTypes';
 import compose from 'recompose/compose';
 import { ConnectedRouter } from 'connected-react-router';
 import PropTypes from 'prop-types';

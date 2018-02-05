@@ -1,5 +1,5 @@
 import { goBack } from 'connected-react-router/lib/actions';
-import connect from 'react-redux/es/connect/connect';
+import { connect } from 'react-redux';
 
 import { throwDice } from '../../../actions';
 

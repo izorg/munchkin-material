@@ -7,7 +7,7 @@ import {
   injectIntl,
   intlShape,
 } from 'react-intl';
-import RadioGroup from 'redux-form-material-ui/es/RadioGroup';
+import RadioGroup from 'redux-form-material-ui/lib/RadioGroup';
 import compose from 'recompose/compose';
 import PropTypes from 'prop-types';
 import { FormControl, FormLabel, FormControlLabel } from 'material-ui/Form';
@@ -16,7 +16,7 @@ import IconButton from 'material-ui/IconButton';
 import Radio from 'material-ui/Radio';
 import TextField from 'material-ui/TextField';
 import SocialPersonAdd from 'material-ui-icons/PersonAdd';
-import { FEMALE, MALE } from 'munchkin-core/es/utils/gender';
+import { FEMALE, MALE } from 'munchkin-core/lib/utils/gender';
 import { noop } from 'lodash';
 
 import GenderFemale from '../../../../components/icons/gender/Female';
