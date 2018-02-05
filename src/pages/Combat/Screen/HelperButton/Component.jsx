@@ -133,8 +133,8 @@ class CombatScreenHelperButton extends PureComponent {
         <Button
           className={classes.button}
           color="primary"
-          fab
           onClick={this.handleClick}
+          variant="fab"
         >
           {helper ? (
             <AddIcon

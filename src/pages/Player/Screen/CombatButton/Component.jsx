@@ -32,7 +32,7 @@ class PlayerScreenCombatButtonComponent extends PureComponent {
 
   render() {
     return (
-      <Button color="primary" fab onClick={this.handleClick}>
+      <Button color="primary" onClick={this.handleClick} variant="fab">
         <SwordCross />
       </Button>
     );

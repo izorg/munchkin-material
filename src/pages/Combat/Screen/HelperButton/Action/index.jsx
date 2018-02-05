@@ -101,8 +101,8 @@ class Action extends PureComponent {
             <Button
               className={classes.button}
               color="primary"
-              fab
               mini
+              variant="fab"
               {...props}
             >
               {children}

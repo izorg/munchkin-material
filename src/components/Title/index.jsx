@@ -15,7 +15,7 @@ const Title = ({ className, classes, ...props }) => (
     className={cns(classes.title, className)}
     color="inherit"
     noWrap
-    type="title"
+    variant="title"
     {...props}
   />
 );

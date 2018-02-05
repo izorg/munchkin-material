@@ -16,8 +16,8 @@ const PlayerAddButtonComponent = ({ intl, onClick }) => (
   <Button
     aria-label={intl.formatMessage(messages.label)}
     color="primary"
-    fab
     onClick={onClick}
+    variant="fab"
   >
     <ContentAdd />
   </Button>

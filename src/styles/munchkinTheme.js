@@ -1,7 +1,20 @@
 import brown from 'material-ui/colors/brown';
 import { createMuiTheme } from 'material-ui/styles';
+// import createBreakpoints from 'material-ui/styles/createBreakpoints';
+
+// const breakpoints = createBreakpoints({});
 
 const theme = {
+  // mixins: {
+  //   toolbar: {
+  //     minHeight: 56,
+  //
+  //     [breakpoints.up('sm')]: {
+  //       minHeight: 64,
+  //     },
+  //   },
+  // },
+
   overrides: {
     MuiAvatar: {
       colorDefault: {
