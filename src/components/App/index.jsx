@@ -1,4 +1,5 @@
-import React, { PureComponent } from 'react';
+import React, { Fragment, PureComponent } from 'react';
+import Helmet from 'react-helmet/lib/Helmet';
 import { hot } from 'react-hot-loader';
 import { Provider } from 'react-redux';
 import { storeShape } from 'react-redux/lib/utils/PropTypes';
@@ -7,6 +8,7 @@ import { ConnectedRouter } from 'connected-react-router';
 import PropTypes from 'prop-types';
 import Reboot from 'material-ui/Reboot';
 import { MuiThemeProvider, withStyles } from 'material-ui/styles';
+import o9n from 'o9n';
 
 import LocaleProvider from '../LocaleProvider';
 import munchkinWoff from '../../fonts/munchkin.woff';
@@ -48,28 +50,62 @@ const styles = {
   },
 };
 
+const getOrientation = () => o9n.orientation.type.split('-')[0];
+
 class App extends PureComponent {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      orientation: getOrientation(),
+    };
+
+    this.updateOrientation = this.updateOrientation.bind(this);
+  }
+
   getChildContext() {
     const { buyFullVersion } = this.props;
 
     return { buyFullVersion };
   }
 
+  componentDidMount() {
+    o9n.orientation.addEventListener('change', this.updateOrientation);
+  }
+
+  componentWillUnmount() {
+    o9n.orientation.removeEventListener('change', this.updateOrientation);
+  }
+
+  updateOrientation() {
+    this.setState({
+      orientation: getOrientation(),
+    });
+  }
+
   render() {
     const { history, store } = this.props;
+    const { orientation } = this.state;
 
     return (
-      <Provider store={store}>
-        <LocaleProvider>
-          <MuiThemeProvider theme={munchkinTheme}>
-            <Reboot>
-              <ConnectedRouter history={history}>
-                <Root />
-              </ConnectedRouter>
-            </Reboot>
-          </MuiThemeProvider>
-        </LocaleProvider>
-      </Provider>
+      <Fragment>
+        <Helmet>
+          <html lang={navigator.language} />
+          <body className={orientation} />
+        </Helmet>
+
+        <Provider store={store}>
+          <LocaleProvider>
+            <MuiThemeProvider theme={munchkinTheme}>
+              <Reboot>
+                <ConnectedRouter history={history}>
+                  <Root />
+                </ConnectedRouter>
+              </Reboot>
+            </MuiThemeProvider>
+          </LocaleProvider>
+        </Provider>
+      </Fragment>
     );
   }
 }
