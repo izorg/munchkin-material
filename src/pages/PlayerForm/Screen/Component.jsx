@@ -7,7 +7,11 @@ import AppBar from './AppBar';
 import Form from './Form';
 
 const styles = (theme) => ({
-  content: theme.mixins.gutters({}),
+  content: {
+    ...theme.mixins.gutters({}),
+
+    overflowY: 'auto',
+  },
 });
 
 const PlayerFormScreenComponent = ({ classes }) => (
