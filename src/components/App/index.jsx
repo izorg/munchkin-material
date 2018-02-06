@@ -8,7 +8,6 @@ import { ConnectedRouter } from 'connected-react-router';
 import PropTypes from 'prop-types';
 import Reboot from 'material-ui/Reboot';
 import { MuiThemeProvider, withStyles } from 'material-ui/styles';
-import o9n from 'o9n';
 
 import LocaleProvider from '../LocaleProvider';
 import munchkinWoff from '../../fonts/munchkin.woff';
@@ -50,48 +49,20 @@ const styles = {
   },
 };
 
-const getOrientation = () => o9n.orientation.type.split('-')[0];
-
 class App extends PureComponent {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      orientation: getOrientation(),
-    };
-
-    this.updateOrientation = this.updateOrientation.bind(this);
-  }
-
   getChildContext() {
     const { buyFullVersion } = this.props;
 
     return { buyFullVersion };
   }
 
-  componentDidMount() {
-    o9n.orientation.addEventListener('change', this.updateOrientation);
-  }
-
-  componentWillUnmount() {
-    o9n.orientation.removeEventListener('change', this.updateOrientation);
-  }
-
-  updateOrientation() {
-    this.setState({
-      orientation: getOrientation(),
-    });
-  }
-
   render() {
     const { history, store } = this.props;
-    const { orientation } = this.state;
 
     return (
       <Fragment>
         <Helmet>
           <html lang={navigator.language} />
-          <body className={orientation} />
         </Helmet>
 
         <Provider store={store}>

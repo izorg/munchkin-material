@@ -9,12 +9,6 @@ const theme = {
     toolbar: {
       minHeight: 56,
 
-      '.landscape &': {
-        [breakpoints.down('xs')]: {
-          minHeight: 48,
-        },
-      },
-
       [breakpoints.up('sm')]: {
         minHeight: 64,
       },
