@@ -19,10 +19,13 @@ export const finishCombat = () => ({
 });
 
 export const goToCombat = (playerId) => (dispatch, getState) => {
-  const { app: { combatFinished, fullVersion } } = getState();
+  const {
+    app: { combatFinished, fullVersion },
+    combat: { playerId: combatPlayerId },
+  } = getState();
 
   if (fullVersion) {
-    if (combatFinished || playerId !== getState().combat.playerId) {
+    if (combatFinished || playerId !== combatPlayerId) {
       dispatch(startCombat(playerId));
       dispatch(addMonster(createMonster()));
     }
