@@ -1,5 +1,4 @@
 import React from 'react';
-import bindActionCreators from 'redux/lib/bindActionCreators';
 import { connect } from 'react-redux';
 import Route from 'react-router-dom/Route';
 import { goBack } from 'connected-react-router/lib/actions';
@@ -13,18 +12,13 @@ const mapStateToProps = (state) => ({
     .map((id) => state.players[id]),
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  ...bindActionCreators(
-    {
-      onClose: goBack,
-    },
-    dispatch,
-  ),
-  onSelect: (id) => {
+const mapDispatchToProps = {
+  onClose: goBack,
+  onSelect: (id) => (dispatch) => {
     dispatch(setCombatHelper(id));
     dispatch(goBack());
   },
-});
+};
 
 const ConnectedComponent = connect(mapStateToProps, mapDispatchToProps)(
   Component,

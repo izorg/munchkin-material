@@ -1,6 +1,9 @@
+import { START_COMBAT } from 'munchkin-core/lib/utils/actionTypes';
+
 import * as types from '../utils/actionTypes';
 
 const initialState = {
+  combatFinished: false,
   dice: null,
   fullVersion: false,
   locale: null,
@@ -9,6 +12,12 @@ const initialState = {
 
 const app = (state = initialState, action) => {
   switch (action.type) {
+    case types.FINISH_COMBAT:
+      return {
+        ...state,
+        combatFinished: true,
+      };
+
     case types.SET_FULL_VERSION:
       return {
         ...state,
@@ -19,6 +28,13 @@ const app = (state = initialState, action) => {
       return {
         ...state,
         locale: action.locale,
+      };
+    }
+
+    case START_COMBAT: {
+      return {
+        ...state,
+        combatFinished: false,
       };
     }
 

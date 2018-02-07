@@ -1,3 +1,4 @@
+export const FINISH_COMBAT = 'app/FINISH_COMBAT';
 export const IMPORT_CONTACT = 'app/IMPORT_CONTACT';
 export const MOVE_PLAYER = 'app/MOVE_PLAYER';
 export const SET_FULL_VERSION = 'app/SET_FULL_VERSION';

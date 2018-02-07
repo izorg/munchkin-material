@@ -14,11 +14,15 @@ import createPlayer from 'munchkin-core/lib/utils/createPlayer';
 
 import * as types from '../utils/actionTypes';
 
+export const finishCombat = () => ({
+  type: types.FINISH_COMBAT,
+});
+
 export const goToCombat = (playerId) => (dispatch, getState) => {
-  const { app: { fullVersion } } = getState();
+  const { app: { combatFinished, fullVersion } } = getState();
 
   if (fullVersion) {
-    if (playerId !== getState().combat.playerId) {
+    if (combatFinished || playerId !== getState().combat.playerId) {
       dispatch(startCombat(playerId));
       dispatch(addMonster(createMonster()));
     }
