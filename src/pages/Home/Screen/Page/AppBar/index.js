@@ -1,7 +1,5 @@
 import { connect } from 'react-redux';
-import withRouter from 'react-router-dom/withRouter';
 import { goBack, push } from 'connected-react-router/lib/actions';
-import compose from 'recompose/compose';
 import { removePlayer } from 'munchkin-core/lib/actions';
 
 import * as modes from '../../../modes';
@@ -23,16 +21,8 @@ const mapDispatchToProps = {
     });
     dispatch(goBack());
   },
-  onToggleEditClick: (mode) => (dispatch) => {
-    if (mode === modes.EDIT) {
-      dispatch(goBack());
-    } else {
-      dispatch(push(`/${modes.EDIT}`));
-    }
-  },
+  onToggleEditClick: (mode) =>
+    mode === modes.EDIT ? goBack() : push(`/${modes.EDIT}`),
 };
 
-export default compose(
-  withRouter,
-  connect(mapStateToProps, mapDispatchToProps),
-)(Component);
+export default connect(mapStateToProps, mapDispatchToProps)(Component);

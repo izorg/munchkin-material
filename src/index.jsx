@@ -7,6 +7,13 @@ import { setFullVersion } from './actions';
 import App from './components/App';
 import configureStore from './store/configureStore';
 
+// if (process.env.NODE_ENV !== 'production') {
+//   // eslint-disable-next-line global-require
+//   const { whyDidYouUpdate } = require('why-did-you-update');
+//
+//   whyDidYouUpdate(React);
+// }
+
 const history = createHistory();
 
 const defaultOptions = {

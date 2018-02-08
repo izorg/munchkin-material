@@ -1,7 +1,5 @@
 import React, { Fragment } from 'react';
 import Route from 'react-router-dom/Route';
-import withRouter from 'react-router-dom/withRouter';
-import compose from 'recompose/compose';
 
 import ScreenLoader from '../../components/ScreenLoader';
 
@@ -17,4 +15,4 @@ const PlayerForm = () => (
   </Fragment>
 );
 
-export default compose(withRouter)(PlayerForm);
+export default PlayerForm;

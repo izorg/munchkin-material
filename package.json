@@ -123,6 +123,7 @@
     "webpack-bundle-analyzer": "2.10.0",
     "webpack-dev-server": "2.11.1",
     "webpack-merge": "4.1.1",
-    "webpack-notifier": "1.5.1"
+    "webpack-notifier": "1.5.1",
+    "why-did-you-update": "0.1.0"
   }
 }
