@@ -30,7 +30,7 @@ const messages = defineMessages({
 });
 
 const styles = {
-  multiSelectDeactivateButton: {
+  leftButton: {
     marginRight: 8,
   },
 
@@ -59,7 +59,7 @@ const HomeScreenPageAppBarComponent = ({
     <AppBar color={multiMode ? 'default' : 'primary'} position="static">
       {multiMode && (
         <IconButton
-          className={classes.multiSelectDeactivateButton}
+          className={classes.leftButton}
           color="default"
           onClick={onMultiSelectDeactivate}
         >

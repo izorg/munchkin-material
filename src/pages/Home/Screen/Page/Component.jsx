@@ -1,17 +1,21 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 import Layout from '../../../../components/Layout';
 import Nobody from '../../../../components/Nobody';
 
 import AppBar from './AppBar';
+import MenuDrawer from './MenuDrawer';
 import PlayerList from './PlayerList';
 
 const HomeScreenPageComponent = ({ empty }) => (
-  <Layout>
-    <AppBar />
-    {empty ? <Nobody /> : <PlayerList />}
-  </Layout>
+  <Fragment>
+    <Layout>
+      <AppBar />
+      {empty ? <Nobody /> : <PlayerList />}
+    </Layout>
+    <MenuDrawer />
+  </Fragment>
 );
 
 HomeScreenPageComponent.propTypes = {
