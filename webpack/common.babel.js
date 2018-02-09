@@ -28,6 +28,7 @@ export default {
                 [
                   '@babel/preset-env',
                   {
+                    modules: false,
                     targets: {
                       android: '4.4',
                       chrome: 49,
