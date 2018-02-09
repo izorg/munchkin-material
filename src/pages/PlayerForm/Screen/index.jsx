@@ -32,6 +32,7 @@ class PlayerFormScreen extends PureComponent {
 
   render() {
     const { appear, match } = this.props;
+
     return (
       <Slide
         appear={appear}
