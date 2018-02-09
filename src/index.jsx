@@ -11,7 +11,9 @@ import configureStore from './store/configureStore';
 //   // eslint-disable-next-line global-require
 //   const { whyDidYouUpdate } = require('why-did-you-update');
 //
-//   whyDidYouUpdate(React);
+//   whyDidYouUpdate(React, {
+//     exclude: /(Backdrop|CSSTransition|FormattedMessage|IconButton|Paper|Portal|ProxyComponent|RefHolder|Ripple|SvgIcon|Tooltip|TouchRipple|TransitionGroup)/,
+//   });
 // }
 
 const history = createHistory();
