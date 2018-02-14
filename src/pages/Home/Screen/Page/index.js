@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { push } from 'connected-react-router/lib/actions';
 
 import Component from './Component';
 
@@ -6,4 +7,8 @@ const mapStateToProps = (state) => ({
   empty: !state.playerList.length,
 });
 
-export default connect(mapStateToProps)(Component);
+const mapDispatchToProps = {
+  onMenuOpen: () => push('/?menu'),
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Component);

@@ -22,6 +22,8 @@ import Title from '../../../../../components/Title';
 
 import * as modes from '../../../modes';
 
+import MenuButton from './MenuButton';
+
 const messages = defineMessages({
   edit: {
     id: 'player.list.edit',
@@ -57,7 +59,7 @@ const HomeScreenPageAppBarComponent = ({
 
   return (
     <AppBar color={multiMode ? 'default' : 'primary'} position="static">
-      {multiMode && (
+      {multiMode ? (
         <IconButton
           className={classes.leftButton}
           color="default"
@@ -65,6 +67,8 @@ const HomeScreenPageAppBarComponent = ({
         >
           <NavigationClose />
         </IconButton>
+      ) : (
+        <MenuButton className={classes.leftButton} color="inherit" />
       )}
       <Title
         color={multiMode ? 'default' : 'inherit'}
