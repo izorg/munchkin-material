@@ -9,6 +9,7 @@ import Nobody from '../../../../components/Nobody';
 import AppBar from './AppBar';
 import MenuDrawer from './MenuDrawer';
 import PlayerList from './PlayerList';
+import ThemeDialog from './ThemeDialog';
 
 const HomeScreenPageComponent = ({ empty, onMenuOpen }) => (
   <Fragment>
@@ -23,6 +24,7 @@ const HomeScreenPageComponent = ({ empty, onMenuOpen }) => (
       {empty ? <Nobody /> : <PlayerList />}
     </Layout>
     <MenuDrawer />
+    <ThemeDialog />
   </Fragment>
 );
 

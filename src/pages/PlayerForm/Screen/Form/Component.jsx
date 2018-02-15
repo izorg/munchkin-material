@@ -82,12 +82,12 @@ class PlayerForm extends PureComponent {
               </FormLabel>
               <Field component={RadioGroup} name="gender">
                 <FormControlLabel
-                  control={<Radio />}
+                  control={<Radio color="primary" />}
                   label={<GenderMale />}
                   value={MALE}
                 />
                 <FormControlLabel
-                  control={<Radio />}
+                  control={<Radio color="primary" />}
                   label={<GenderFemale />}
                   value={FEMALE}
                 />

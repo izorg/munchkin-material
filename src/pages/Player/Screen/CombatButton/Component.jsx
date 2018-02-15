@@ -12,20 +12,10 @@ class PlayerScreenCombatButtonComponent extends PureComponent {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  componentWillReceiveProps(nextProps) {
-    const { fullVersion, goToCombat, playerId } = nextProps;
-
-    if (!this.props.fullVersion && fullVersion && playerId) {
-      goToCombat(playerId);
-    }
-  }
-
   handleClick() {
-    const { buyFullVersion, fullVersion, goToCombat, playerId } = this.props;
+    const { goToCombat, playerId } = this.props;
 
-    if (!fullVersion) {
-      buyFullVersion();
-    } else if (playerId) {
+    if (playerId) {
       goToCombat(playerId);
     }
   }
@@ -40,15 +30,11 @@ class PlayerScreenCombatButtonComponent extends PureComponent {
 }
 
 PlayerScreenCombatButtonComponent.propTypes = {
-  buyFullVersion: PropTypes.func,
-  fullVersion: PropTypes.bool,
   goToCombat: PropTypes.func,
   playerId: PropTypes.string,
 };
 
 PlayerScreenCombatButtonComponent.defaultProps = {
-  buyFullVersion: noop,
-  fullVersion: false,
   goToCombat: noop,
   playerId: null,
 };

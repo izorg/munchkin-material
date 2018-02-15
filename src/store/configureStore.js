@@ -11,6 +11,7 @@ import { pick, throttle } from 'lodash';
 import reducers from '../reducers';
 
 import { loadState, saveState } from './localStorage';
+import purchase from './middlewares/purchase';
 
 const getRootReducer = (history) =>
   compose(connectRouter(history), combineReducers)({
@@ -18,9 +19,9 @@ const getRootReducer = (history) =>
     form: formReducer,
   });
 
-export default (history, storageKey) => {
+export default ({ buyFullVersion, history, storageKey }) => {
   const enhancer = composeWithDevTools(
-    applyMiddleware(thunk, routerMiddleware(history)),
+    applyMiddleware(thunk, purchase(buyFullVersion), routerMiddleware(history)),
   );
 
   const preloadedState = loadState(storageKey);

@@ -1,8 +1,8 @@
-/* global munchkin */
+/* global MunchkinApp */
 
 document.addEventListener('DOMContentLoaded', () => {
   const el = document.getElementById('app');
-  const app = munchkin.init(el);
+  const app = MunchkinApp(el);
 
   if (process.env.NODE_ENV === 'development') {
     window.app = app;

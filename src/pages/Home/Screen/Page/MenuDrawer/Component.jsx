@@ -1,9 +1,12 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import Drawer from 'material-ui/Drawer';
+import List from 'material-ui/List';
 import { withStyles } from 'material-ui/styles';
 import Hammer from 'hammerjs';
 import { noop } from 'lodash';
+
+import ThemeItem from './ThemeItem';
 
 const styles = (theme) => ({
   menu: {
@@ -33,15 +36,17 @@ class Component extends PureComponent {
   componentWillUnmount() {
     document.body.removeChild(this.container);
 
-    this.hammer.off('swipeleft', this.props.onClose);
+    this.hammer.destroy();
   }
 
   render() {
     const { classes, ...props } = this.props;
 
     return (
-      <Drawer container={this.container} {...props}>
-        <div className={classes.menu} />
+      <Drawer container={this.container} disableRestoreFocus {...props}>
+        <List className={classes.menu}>
+          <ThemeItem />
+        </List>
       </Drawer>
     );
   }

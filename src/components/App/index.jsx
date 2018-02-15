@@ -7,13 +7,13 @@ import compose from 'recompose/compose';
 import { ConnectedRouter } from 'connected-react-router';
 import PropTypes from 'prop-types';
 import Reboot from 'material-ui/Reboot';
-import { MuiThemeProvider, withStyles } from 'material-ui/styles';
+import { withStyles } from 'material-ui/styles';
 
 import LocaleProvider from '../LocaleProvider';
+import ThemeProvider from '../ThemeProvider';
 import munchkinWoff from '../../fonts/munchkin.woff';
 import munchkinWoff2 from '../../fonts/munchkin.woff2';
 import Root from '../Root';
-import munchkinTheme from '../../styles/munchkinTheme';
 
 const styles = {
   '@global': {
@@ -67,13 +67,13 @@ class App extends PureComponent {
 
         <Provider store={store}>
           <LocaleProvider>
-            <MuiThemeProvider theme={munchkinTheme}>
+            <ThemeProvider>
               <Reboot>
                 <ConnectedRouter history={history}>
                   <Root />
                 </ConnectedRouter>
               </Reboot>
-            </MuiThemeProvider>
+            </ThemeProvider>
           </LocaleProvider>
         </Provider>
       </Fragment>

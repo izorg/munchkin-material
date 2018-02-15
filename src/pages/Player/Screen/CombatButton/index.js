@@ -7,19 +7,15 @@ import { goToCombat } from '../../../../actions';
 
 import Component from './Component';
 
-const mapStateToProps = (state) => ({
-  fullVersion: state.app.fullVersion,
-});
-
 const mapDispatchToProps = {
   goToCombat,
 };
 
 const contextTypes = {
-  buyFullVersion: PropTypes.func,
+  playerId: PropTypes.string,
 };
 
 export default compose(
-  connect(mapStateToProps, mapDispatchToProps),
   getContext(contextTypes),
+  connect(undefined, mapDispatchToProps),
 )(Component);

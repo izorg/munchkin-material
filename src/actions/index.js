@@ -20,16 +20,16 @@ export const finishCombat = () => ({
 
 export const goToCombat = (playerId) => (dispatch, getState) => {
   const {
-    app: { combatFinished, fullVersion },
+    app: { combatFinished },
     combat: { playerId: combatPlayerId },
   } = getState();
 
-  if (fullVersion) {
-    if (combatFinished || playerId !== combatPlayerId) {
-      dispatch(startCombat(playerId));
+  if (combatFinished || playerId !== combatPlayerId) {
+    dispatch(startCombat(playerId)).then(() => {
       dispatch(addMonster(createMonster()));
-    }
-
+      dispatch(push(`/player/${playerId}/combat`));
+    });
+  } else {
     dispatch(push(`/player/${playerId}/combat`));
   }
 };
@@ -53,6 +53,11 @@ export const setFullVersion = (fullVersion = true) => ({
 export const setLocale = (locale) => ({
   type: types.SET_LOCALE,
   locale,
+});
+
+export const setTheme = (theme) => ({
+  type: types.SET_THEME,
+  theme,
 });
 
 export const submitPlayer = (values) => (dispatch) => {

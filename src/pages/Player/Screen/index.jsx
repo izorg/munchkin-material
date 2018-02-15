@@ -35,7 +35,6 @@ class PlayerScreen extends PureComponent {
 
   render() {
     const { appear, match } = this.props;
-    const { playerId } = this.state;
 
     return (
       <Fragment>
@@ -49,7 +48,7 @@ class PlayerScreen extends PureComponent {
           <Page />
         </Slide>
         <Transition appear={appear} in={Boolean(match) && match.isExact}>
-          <CombatButton appear={appear} playerId={playerId} />
+          <CombatButton />
         </Transition>
       </Fragment>
     );

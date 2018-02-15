@@ -11,7 +11,6 @@ const config = merge.smart(common, {
 
   output: {
     filename: 'js/app.js',
-    library: 'munchkin',
     path: path.resolve(__dirname, '../dist'),
   },
 

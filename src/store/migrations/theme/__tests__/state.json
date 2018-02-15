@@ -1,0 +1,62 @@
+{
+  "combat": {
+    "helperBonus": 0,
+    "helperId": null,
+    "monsters": [
+      "f9f4a9ef-ca67-4483-848a-66f5c0770d12"
+    ],
+    "playerBonus": 0,
+    "playerId": "1924ff93-10e8-4e6d-a2d4-9da563958c2f"
+  },
+  "monsters": {
+    "f9f4a9ef-ca67-4483-848a-66f5c0770d12": {
+      "id": "f9f4a9ef-ca67-4483-848a-66f5c0770d12",
+      "bonus": 0,
+      "level": 1
+    }
+  },
+  "players": {
+    "1924ff93-10e8-4e6d-a2d4-9da563958c2f": {
+      "id": "1924ff93-10e8-4e6d-a2d4-9da563958c2f",
+      "gear": 19,
+      "gender": "male",
+      "level": 6,
+      "color": "#8bc34a",
+      "name": "Илья Муромец"
+    },
+    "8ab85093-7f85-435c-959b-4f16a5bd4eda": {
+      "id": "8ab85093-7f85-435c-959b-4f16a5bd4eda",
+      "gear": 13,
+      "gender": "male",
+      "level": 6,
+      "color": "#009688",
+      "name": "Соловей Разбойник"
+    },
+    "461674ed-e7be-4c50-b9af-90f2750798d1": {
+      "id": "461674ed-e7be-4c50-b9af-90f2750798d1",
+      "gear": 7,
+      "gender": "female",
+      "level": 8,
+      "color": "#E91E63",
+      "name": "Василиса Премудрая"
+    }
+  },
+  "versions": {
+    "core": "5.0.10",
+    "app": "5.1.12"
+  },
+  "app": {
+    "dice": 6,
+    "fullVersion": true,
+    "locale": "ru",
+    "selectedPlayerIds": [
+      "1924ff93-10e8-4e6d-a2d4-9da563958c2f"
+    ],
+    "combatFinished": false
+  },
+  "playerList": [
+    "1924ff93-10e8-4e6d-a2d4-9da563958c2f",
+    "8ab85093-7f85-435c-959b-4f16a5bd4eda",
+    "461674ed-e7be-4c50-b9af-90f2750798d1"
+  ]
+}

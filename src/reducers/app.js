@@ -1,13 +1,15 @@
 import { START_COMBAT } from 'munchkin-core/lib/utils/actionTypes';
 
+import { key as theme } from '../styles/themes/munchkin';
 import * as types from '../utils/actionTypes';
 
 const initialState = {
   combatFinished: false,
-  dice: null,
+  dice: undefined,
   fullVersion: false,
-  locale: null,
+  locale: undefined,
   selectedPlayerIds: [],
+  theme,
 };
 
 const app = (state = initialState, action) => {
@@ -28,6 +30,13 @@ const app = (state = initialState, action) => {
       return {
         ...state,
         locale: action.locale,
+      };
+    }
+
+    case types.SET_THEME: {
+      return {
+        ...state,
+        theme: action.theme,
       };
     }
 

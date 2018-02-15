@@ -6,7 +6,8 @@ export default {
   context: path.resolve(__dirname, '../src'),
 
   output: {
-    library: 'munchkin',
+    library: 'MunchkinApp',
+    libraryExport: 'default',
     path: path.resolve(__dirname, '../dist'),
     publicPath: '',
   },

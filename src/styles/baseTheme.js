@@ -1,10 +1,9 @@
 import brown from 'material-ui/colors/brown';
-import { createMuiTheme } from 'material-ui/styles';
 import createBreakpoints from 'material-ui/styles/createBreakpoints';
 
 const breakpoints = createBreakpoints({});
 
-const theme = {
+export default {
   mixins: {
     toolbar: {
       minHeight: 56,
@@ -33,5 +32,3 @@ const theme = {
     fontFamily: '"Roboto", "San Francisco", "Helvetica", "Arial", sans-serif',
   },
 };
-
-export default createMuiTheme(theme);
