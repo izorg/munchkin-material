@@ -18,7 +18,7 @@ import configureStore from './store/configureStore';
 const history = createHistory();
 
 const defaultOptions = {
-  buyFullVersion: () => new Promise((resolve) => setTimeout(resolve, 1000)),
+  buyFullVersion: () => Promise.resolve(),
   storageKey: 'redux',
 };
 

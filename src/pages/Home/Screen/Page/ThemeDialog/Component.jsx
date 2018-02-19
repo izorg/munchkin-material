@@ -82,7 +82,6 @@ class ThemeDialog extends PureComponent {
       <Dialog
         onClose={onClose}
         onEntering={this.handleEntering}
-        onFocus={() => console.trace('dialog focus')}
         open={open}
         PaperProps={{ component: 'form', onSubmit: this.handleSubmit }}
       >
