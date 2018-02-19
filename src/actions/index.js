@@ -1,4 +1,5 @@
 import { goBack, push } from 'connected-react-router/lib/actions';
+import { noop } from 'lodash';
 import {
   addMonster,
   addPlayer,
@@ -25,10 +26,12 @@ export const goToCombat = (playerId) => (dispatch, getState) => {
   } = getState();
 
   if (combatFinished || playerId !== combatPlayerId) {
-    dispatch(startCombat(playerId)).then(() => {
-      dispatch(addMonster(createMonster()));
-      dispatch(push(`/player/${playerId}/combat`));
-    });
+    dispatch(startCombat(playerId))
+      .then(() => {
+        dispatch(addMonster(createMonster()));
+        dispatch(push(`/player/${playerId}/combat`));
+      })
+      .catch(noop);
   } else {
     dispatch(push(`/player/${playerId}/combat`));
   }
