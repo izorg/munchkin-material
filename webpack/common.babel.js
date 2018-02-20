@@ -56,7 +56,7 @@ export default {
         options: {
           name: '[name].[ext]',
           outputPath: 'fonts/',
-          publicPath: '../fonts/',
+          publicPath: 'fonts/',
         },
       },
     ],
