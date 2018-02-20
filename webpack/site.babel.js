@@ -27,6 +27,7 @@ const config = merge.smart(common, {
         options: {
           name: '[name].[hash].[ext]',
           outputPath: 'fonts/',
+          publicPath: '../fonts/',
         },
       },
     ],
