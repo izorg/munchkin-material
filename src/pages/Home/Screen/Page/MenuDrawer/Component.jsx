@@ -9,6 +9,10 @@ import { noop } from 'lodash';
 import ThemeItem from './ThemeItem';
 
 const styles = (theme) => ({
+  paper: {
+    touchAction: 'pan-y',
+  },
+
   menu: {
     width: 'calc(100vw - 56px)',
 
@@ -43,7 +47,12 @@ class Component extends PureComponent {
     const { classes, ...props } = this.props;
 
     return (
-      <Drawer container={this.container} disableRestoreFocus {...props}>
+      <Drawer
+        classes={{ paper: classes.paper }}
+        container={this.container}
+        disableRestoreFocus
+        {...props}
+      >
         <List className={classes.menu}>
           <ThemeItem />
         </List>
