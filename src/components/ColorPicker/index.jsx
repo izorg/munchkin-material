@@ -15,6 +15,7 @@ const ColorPicker = ({ onChange, onClick, onClose, open, value }) => (
         onChange(color);
         onClose();
       }}
+      value={value}
     />
   </Fragment>
 );

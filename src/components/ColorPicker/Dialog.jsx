@@ -6,6 +6,7 @@ import ButtonBase from 'material-ui/ButtonBase';
 import Dialog, { DialogContent, DialogTitle } from 'material-ui/Dialog';
 import * as colors from 'material-ui/colors';
 import { withStyles } from 'material-ui/styles';
+import CheckIcon from 'material-ui-icons/Check';
 import { noop } from 'lodash';
 
 const { common, yellow, ...availableColors } = colors;
@@ -29,7 +30,7 @@ const styles = ({ spacing: { unit } }) => ({
   },
 });
 
-const ColorPickerDialog = ({ classes, onSelect, ...props }) => (
+const ColorPickerDialog = ({ classes, onSelect, value, ...props }) => (
   <Dialog {...props}>
     <DialogTitle>
       <FormattedMessage
@@ -49,7 +50,9 @@ const ColorPickerDialog = ({ classes, onSelect, ...props }) => (
             className={classes.color}
             onClick={() => onSelect(availableColors[key][500])}
             style={{ backgroundColor: availableColors[key][500] }}
-          />
+          >
+            {value === availableColors[key][500] && <CheckIcon />}
+          </Avatar>
         </ButtonBase>
       ))}
     </DialogContent>
@@ -58,6 +61,7 @@ const ColorPickerDialog = ({ classes, onSelect, ...props }) => (
 
 ColorPickerDialog.propTypes = {
   onSelect: PropTypes.func,
+  value: PropTypes.string.isRequired,
 };
 
 ColorPickerDialog.defaultProps = {
