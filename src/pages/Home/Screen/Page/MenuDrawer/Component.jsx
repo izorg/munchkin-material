@@ -6,6 +6,7 @@ import { withStyles } from 'material-ui/styles';
 import Hammer from 'hammerjs';
 import { noop } from 'lodash';
 
+import InsomniaItem from './InsomniaItem';
 import ThemeItem from './ThemeItem';
 
 const styles = (theme) => ({
@@ -55,6 +56,7 @@ class Component extends PureComponent {
       >
         <List className={classes.menu}>
           <ThemeItem />
+          <InsomniaItem />
         </List>
       </Drawer>
     );

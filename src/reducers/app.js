@@ -7,6 +7,7 @@ const initialState = {
   combatFinished: false,
   dice: undefined,
   fullVersion: false,
+  keepAwake: false,
   locale: undefined,
   selectedPlayerIds: [],
   theme,
@@ -30,6 +31,13 @@ const app = (state = initialState, action) => {
       return {
         ...state,
         locale: action.locale,
+      };
+    }
+
+    case types.SET_KEEP_AWAKE: {
+      return {
+        ...state,
+        keepAwake: action.keepAwake,
       };
     }
 

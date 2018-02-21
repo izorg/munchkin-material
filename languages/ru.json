@@ -16,6 +16,7 @@
   "combat.player.modifier": "Модиф-р",
   "player.list.edit": "Изменить",
   "player.list.title": "Манчкины",
+  "menu.keepAwake": "Не выключать",
   "menu.theme": "Тема",
   "player.list.item.secondaryTextLevel": "Уровень {level}",
   "player.list.item.secondaryTextStrength": "Сила {strength}",

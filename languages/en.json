@@ -16,6 +16,7 @@
   "combat.player.modifier": "Modifier",
   "player.list.edit": "Edit",
   "player.list.title": "Munchkins",
+  "menu.keepAwake": "Keep awake",
   "menu.theme": "Theme",
   "player.list.item.secondaryTextLevel": "Level {level}",
   "player.list.item.secondaryTextStrength": "Strength {strength}",

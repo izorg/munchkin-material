@@ -53,6 +53,11 @@ export const setFullVersion = (fullVersion = true) => ({
   fullVersion,
 });
 
+export const setKeepAwake = (keepAwake) => ({
+  type: types.SET_KEEP_AWAKE,
+  keepAwake,
+});
+
 export const setLocale = (locale) => ({
   type: types.SET_LOCALE,
   locale,
