@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { push } from 'connected-react-router/lib/actions';
+import { goBack } from 'connected-react-router/lib/actions';
 import { parse } from 'qs';
 
 import Component from './Component';
@@ -15,7 +15,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = {
-  onClose: () => push('/'),
+  onClose: goBack,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Component);

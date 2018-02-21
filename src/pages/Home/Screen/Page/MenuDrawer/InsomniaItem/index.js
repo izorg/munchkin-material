@@ -15,13 +15,13 @@ const mapDispatchToProps = {
     dispatch(setKeepAwake(keepAwake));
 
     if (keepAwake) {
-      window.plugins.insomnia
-        .keepAwake()
-        .then(noop, () => dispatch(setKeepAwake(!keepAwake)));
+      window.plugins.insomnia.keepAwake(noop, () =>
+        dispatch(setKeepAwake(!keepAwake)),
+      );
     } else {
-      window.plugins.insomnia
-        .allowSleepAgain()
-        .then(noop, () => dispatch(setKeepAwake(!keepAwake)));
+      window.plugins.insomnia.allowSleepAgain(noop, () =>
+        dispatch(setKeepAwake(!keepAwake)),
+      );
     }
   },
 };
