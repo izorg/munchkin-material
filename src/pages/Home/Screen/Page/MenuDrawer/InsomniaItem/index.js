@@ -1,5 +1,7 @@
 import { connect } from 'react-redux';
-import { noop } from 'lodash';
+import compose from 'recompose/compose';
+import getContext from 'recompose/getContext';
+import PropTypes from 'prop-types';
 
 import { setKeepAwake } from '../../../../../../actions';
 
@@ -7,23 +9,17 @@ import Component from './Component';
 
 const mapStateToProps = (state) => ({
   keepAwake: state.app.keepAwake,
-  supported: window.plugins && window.plugins.insomnia,
 });
 
 const mapDispatchToProps = {
-  onChange: (keepAwake) => (dispatch) => {
-    dispatch(setKeepAwake(keepAwake));
-
-    if (keepAwake) {
-      window.plugins.insomnia.keepAwake(noop, () =>
-        dispatch(setKeepAwake(!keepAwake)),
-      );
-    } else {
-      window.plugins.insomnia.allowSleepAgain(noop, () =>
-        dispatch(setKeepAwake(!keepAwake)),
-      );
-    }
-  },
+  onChange: setKeepAwake,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Component);
+const contextTypes = {
+  keepAwakeSupport: PropTypes.bool,
+};
+
+export default compose(
+  connect(mapStateToProps, mapDispatchToProps),
+  getContext(contextTypes),
+)(Component);

@@ -51,9 +51,9 @@ const styles = {
 
 class App extends PureComponent {
   getChildContext() {
-    const { buyFullVersion } = this.props;
+    const { buyFullVersion, keepAwakeSupport } = this.props;
 
-    return { buyFullVersion };
+    return { buyFullVersion, keepAwakeSupport };
   }
 
   render() {
@@ -83,11 +83,13 @@ class App extends PureComponent {
 
 App.childContextTypes = {
   buyFullVersion: PropTypes.func,
+  keepAwakeSupport: PropTypes.bool,
 };
 
 App.propTypes = {
   buyFullVersion: PropTypes.func.isRequired,
   history: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
+  keepAwakeSupport: PropTypes.bool.isRequired,
   store: storeShape.isRequired, // eslint-disable-line react/no-typos
 };
 

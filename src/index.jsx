@@ -19,6 +19,7 @@ const history = createHistory();
 
 const defaultOptions = {
   buyFullVersion: () => Promise.resolve(),
+  keepAwakeSupport: false,
   storageKey: 'redux',
 };
 

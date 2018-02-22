@@ -23,9 +23,9 @@ class InsomniaItemComponent extends PureComponent {
   }
 
   render() {
-    const { keepAwake, supported } = this.props;
+    const { keepAwake, keepAwakeSupport } = this.props;
 
-    return supported ? (
+    return keepAwakeSupport ? (
       <ListItem>
         <ListItemIcon>
           <PowerSettingsNewIcon />
@@ -49,14 +49,14 @@ class InsomniaItemComponent extends PureComponent {
 
 InsomniaItemComponent.propTypes = {
   keepAwake: PropTypes.bool,
+  keepAwakeSupport: PropTypes.bool,
   onChange: PropTypes.func,
-  supported: PropTypes.bool,
 };
 
 InsomniaItemComponent.defaultProps = {
   keepAwake: false,
+  keepAwakeSupport: false,
   onChange: noop,
-  supported: false,
 };
 
 export default InsomniaItemComponent;
