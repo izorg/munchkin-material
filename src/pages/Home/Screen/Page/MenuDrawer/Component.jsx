@@ -9,19 +9,16 @@ import { noop } from 'lodash';
 import InsomniaItem from './InsomniaItem';
 import ThemeItem from './ThemeItem';
 
-const styles = (theme) => ({
+const styles = {
   paper: {
     touchAction: 'pan-y',
   },
 
   menu: {
+    maxWidth: 320,
     width: 'calc(100vw - 56px)',
-
-    [theme.breakpoints.up('sm')]: {
-      width: 280,
-    },
   },
-});
+};
 
 class Component extends PureComponent {
   constructor(props) {
