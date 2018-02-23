@@ -1,12 +1,8 @@
-import React, { PureComponent } from 'react';
+import React, { Fragment, PureComponent } from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
-import {
-  ListItem,
-  ListItemIcon,
-  ListItemSecondaryAction,
-  ListItemText,
-} from 'material-ui/List';
+import Divider from 'material-ui/Divider';
+import { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
 import Switch from 'material-ui/Switch';
 import PowerSettingsNewIcon from 'material-ui-icons/PowerSettingsNew';
 import { noop } from 'lodash';
@@ -15,34 +11,41 @@ class InsomniaItemComponent extends PureComponent {
   constructor(props) {
     super(props);
 
-    this.handleChange = this.handleChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
-  handleChange(event, keepAwake) {
-    this.props.onChange(keepAwake);
+  handleClick() {
+    const { keepAwake, onChange } = this.props;
+
+    onChange(!keepAwake);
   }
 
   render() {
     const { keepAwake, keepAwakeSupport } = this.props;
 
     return keepAwakeSupport ? (
-      <ListItem>
-        <ListItemIcon>
-          <PowerSettingsNewIcon />
-        </ListItemIcon>
-        <ListItemText
-          primary={
-            <FormattedMessage id="menu.keepAwake" defaultMessage="Keep awake" />
-          }
-        />
-        <ListItemSecondaryAction>
+      <Fragment>
+        <Divider />
+        <ListItem button onClick={this.handleClick}>
+          <ListItemIcon>
+            <PowerSettingsNewIcon />
+          </ListItemIcon>
+          <ListItemText
+            primary={
+              <FormattedMessage
+                id="menu.keepAwake"
+                defaultMessage="Keep awake"
+              />
+            }
+          />
           <Switch
             checked={keepAwake}
             color="primary"
-            onChange={this.handleChange}
+            disableRipple
+            tabIndex={-1}
           />
-        </ListItemSecondaryAction>
-      </ListItem>
+        </ListItem>
+      </Fragment>
     ) : null;
   }
 }
