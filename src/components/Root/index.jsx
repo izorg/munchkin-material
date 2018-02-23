@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
-import Helmet from 'react-helmet/lib/Helmet';
 
+import Head from '../Head';
 import Combat from '../../pages/Combat';
 import Home from '../../pages/Home';
 import Player from '../../pages/Player';
@@ -10,9 +10,7 @@ import DiceDialog from '../dice/Dialog';
 
 const Root = () => (
   <Fragment>
-    <Helmet>
-      <html lang={navigator.language} />
-    </Helmet>
+    <Head />
 
     <Home />
     <PlayerForm />

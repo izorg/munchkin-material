@@ -1,5 +1,4 @@
-import React, { Fragment, PureComponent } from 'react';
-import Helmet from 'react-helmet/lib/Helmet';
+import React, { PureComponent } from 'react';
 import { hot } from 'react-hot-loader';
 import { Provider } from 'react-redux';
 import { storeShape } from 'react-redux/lib/utils/PropTypes';
@@ -60,23 +59,17 @@ class App extends PureComponent {
     const { history, store } = this.props;
 
     return (
-      <Fragment>
-        <Helmet>
-          <html lang={navigator.language} />
-        </Helmet>
-
-        <Provider store={store}>
-          <LocaleProvider>
-            <ThemeProvider>
-              <Reboot>
-                <ConnectedRouter history={history}>
-                  <Root />
-                </ConnectedRouter>
-              </Reboot>
-            </ThemeProvider>
-          </LocaleProvider>
-        </Provider>
-      </Fragment>
+      <Provider store={store}>
+        <LocaleProvider>
+          <ThemeProvider>
+            <Reboot>
+              <ConnectedRouter history={history}>
+                <Root />
+              </ConnectedRouter>
+            </Reboot>
+          </ThemeProvider>
+        </LocaleProvider>
+      </Provider>
     );
   }
 }
