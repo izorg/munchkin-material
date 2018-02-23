@@ -7,13 +7,12 @@ import {
   injectIntl,
   intlShape,
 } from 'react-intl';
-import RadioGroup from 'redux-form-material-ui/lib/RadioGroup';
 import compose from 'recompose/compose';
 import PropTypes from 'prop-types';
 import { FormControl, FormLabel, FormControlLabel } from 'material-ui/Form';
 import Grid from 'material-ui/Grid';
 import IconButton from 'material-ui/IconButton';
-import Radio from 'material-ui/Radio';
+import Radio, { RadioGroup } from 'material-ui/Radio';
 import TextField from 'material-ui/TextField';
 import SocialPersonAdd from 'material-ui-icons/PersonAdd';
 import { FEMALE, MALE } from 'munchkin-core/lib/utils/gender';
@@ -38,6 +37,10 @@ class PlayerForm extends PureComponent {
     return <TextField {...input} {...props} />;
   }
 
+  static renderRadioGroup({ input, ...props }) {
+    return <RadioGroup {...input} {...props} />;
+  }
+
   render() {
     const { handleSubmit, intl, newPlayer, onImport } = this.props;
 
@@ -47,7 +50,7 @@ class PlayerForm extends PureComponent {
 
         <Field
           autoFocus={newPlayer}
-          component={this.constructor.renderTextField}
+          component={PlayerForm.renderTextField}
           fullWidth
           margin="normal"
           name="name"
@@ -80,7 +83,7 @@ class PlayerForm extends PureComponent {
                   defaultMessage="Gender"
                 />
               </FormLabel>
-              <Field component={RadioGroup} name="gender">
+              <Field component={PlayerForm.renderRadioGroup} name="gender">
                 <FormControlLabel
                   control={<Radio color="primary" />}
                   label={<GenderMale />}
