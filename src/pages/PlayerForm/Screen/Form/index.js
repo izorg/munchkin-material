@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
 import compose from 'recompose/compose';
 import getContext from 'recompose/getContext';
-import formActions from 'redux-form/lib/actions';
 import { createSelector } from 'reselect/es';
 import PropTypes from 'prop-types';
 import { MALE } from 'munchkin-core/lib/utils/gender';
@@ -9,7 +8,7 @@ import { MALE } from 'munchkin-core/lib/utils/gender';
 import { submitPlayer } from '../../../../actions';
 import getRandomMaterialColor from '../../../../utils/getRandomMaterialColor';
 
-import Component, { form } from './Component';
+import Component from './Component';
 
 const contextTypes = {
   playerId: PropTypes.string,
@@ -49,18 +48,17 @@ const mapStateToProps = (state, ownProps) => ({
   newPlayer: !ownProps.playerId,
 });
 
-const onImport = () => (dispatch) => {
-  navigator.contacts.pickContact(({ displayName, photos }) => {
-    dispatch(formActions.change(form, 'name', displayName));
-
-    if (photos) {
-      dispatch(formActions.change(form, 'avatar', photos[0].value));
-    }
-  });
-};
+// const onImport = () => (dispatch) => {
+//   navigator.contacts.pickContact(({ displayName, photos }) => {
+//     dispatch(formActions.change(form, 'name', displayName));
+//
+//     if (photos) {
+//       dispatch(formActions.change(form, 'avatar', photos[0].value));
+//     }
+//   });
+// };
 
 const mapDispatchToProps = {
-  onImport,
   onSubmit: submitPlayer,
 };
 
