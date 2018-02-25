@@ -1,17 +1,12 @@
 import { connect } from 'react-redux';
-import matchPath from 'react-router-dom/matchPath';
-import { createSelector, createStructuredSelector } from 'reselect';
+import { createStructuredSelector } from 'reselect';
 
-import path from './path';
+import { matchSelector } from './selectors';
+
 import Screen from './Screen';
 
-const match = createSelector(
-  (state) => state.router.location.pathname,
-  (pathname) => matchPath(pathname, { path }),
-);
-
 const mapStateToProps = createStructuredSelector({
-  match,
+  match: matchSelector,
 });
 
 export default connect(mapStateToProps)(Screen);

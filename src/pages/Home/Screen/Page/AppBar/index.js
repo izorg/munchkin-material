@@ -3,13 +3,13 @@ import { goBack, push } from 'connected-react-router/lib/actions';
 import { removePlayer } from 'munchkin-core/lib/actions';
 
 import * as modes from '../../../modes';
-import { getModeFromPathname } from '../../../path';
+import { modeSelector } from '../../../selectors';
 
 import Component from './Component';
 
 const mapStateToProps = (state) => ({
   empty: state.playerList.length === 0,
-  mode: getModeFromPathname(state.router.location.pathname),
+  mode: modeSelector(state),
   selectedPlayerIds: state.app.selectedPlayerIds,
 });
 

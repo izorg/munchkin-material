@@ -22,6 +22,7 @@ import { playerShape } from '../../../../../../utils/propTypes';
 import Avatar from '../../../../../../components/player/Avatar';
 
 import * as modes from '../../../../modes';
+import modeShape from '../../../../modeShape';
 
 const ItemHandle = SortableHandle(ActionReorder);
 
@@ -197,7 +198,7 @@ class HomeScreenPagePlayerListItemComponent extends PureComponent {
 }
 
 HomeScreenPagePlayerListItemComponent.propTypes = {
-  mode: PropTypes.oneOf(Object.values(modes)),
+  mode: modeShape,
   onMultiSelectActivate: PropTypes.func,
   onPlayerEdit: PropTypes.func,
   onPlayerSelect: PropTypes.func,

@@ -21,6 +21,7 @@ import DiceButton from '../../../../../components/dice/Button';
 import Title from '../../../../../components/Title';
 
 import * as modes from '../../../modes';
+import modeShape from '../../../modeShape';
 
 import MenuButton from './MenuButton';
 
@@ -111,7 +112,7 @@ const HomeScreenPageAppBarComponent = ({
 HomeScreenPageAppBarComponent.propTypes = {
   empty: PropTypes.bool,
   intl: intlShape.isRequired, // eslint-disable-line react/no-typos
-  mode: PropTypes.oneOf(Object.values(modes)),
+  mode: modeShape,
   onMultiSelectDeactivate: PropTypes.func,
   onPlayersDelete: PropTypes.func,
   onToggleEditClick: PropTypes.func,

@@ -3,12 +3,12 @@ import { connect } from 'react-redux';
 import { movePlayer } from '../../../../../actions';
 
 import { EDIT } from '../../../modes';
-import { getModeFromPathname } from '../../../path';
+import { modeSelector } from '../../../selectors';
 
 import Component from './Component';
 
 const mapStateToProps = (state) => ({
-  editMode: getModeFromPathname(state.router.location.pathname) === EDIT,
+  editMode: modeSelector(state) === EDIT,
   playerList: state.playerList,
 });
 

@@ -3,13 +3,13 @@ import { goBack, push } from 'connected-react-router/lib/actions';
 
 import { togglePlayer, unselectAllPlayers } from '../../../../../../actions';
 import { EDIT, MULTI } from '../../../../modes';
-import { getModeFromPathname } from '../../../../path';
+import { modeSelector } from '../../../../selectors';
 
 import Component from './Component';
 
 const mapStateToProps = (state, ownProps) => {
   const { playerId } = ownProps;
-  const mode = getModeFromPathname(state.router.location.pathname);
+  const mode = modeSelector(state);
 
   return {
     mode,
