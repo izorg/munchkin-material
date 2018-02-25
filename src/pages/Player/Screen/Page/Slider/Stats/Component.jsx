@@ -135,7 +135,7 @@ PlayerStats.propTypes = {
   onGenderToggle: PropTypes.func,
   onLevelDecrement: PropTypes.func,
   onLevelIncrement: PropTypes.func,
-  player: playerShape.isRequired, // eslint-disable-line react/no-typos
+  player: playerShape.isRequired,
 };
 
 PlayerStats.defaultProps = {

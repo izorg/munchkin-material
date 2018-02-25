@@ -95,7 +95,7 @@ class PlayerForm extends PureComponent {
 
 PlayerForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
-  intl: intlShape.isRequired, // eslint-disable-line react/no-typos
+  intl: intlShape.isRequired,
   newPlayer: PropTypes.bool,
 };
 

@@ -203,7 +203,7 @@ HomeScreenPagePlayerListItemComponent.propTypes = {
   onPlayerEdit: PropTypes.func,
   onPlayerSelect: PropTypes.func,
   onPlayerToggle: PropTypes.func,
-  player: playerShape.isRequired, // eslint-disable-line react/no-typos
+  player: playerShape.isRequired,
   selected: PropTypes.bool,
 };
 

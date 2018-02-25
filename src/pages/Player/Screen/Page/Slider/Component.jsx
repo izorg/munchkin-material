@@ -97,7 +97,7 @@ class PlayerSlider extends PureComponent {
 }
 
 PlayerSlider.propTypes = {
-  initialSlide: PropTypes.number.isRequired, // eslint-disable-line react/no-typos
+  initialSlide: PropTypes.number.isRequired,
   onPlayerChange: PropTypes.func,
   playerList: PropTypes.arrayOf(PropTypes.string).isRequired,
 };

@@ -81,9 +81,9 @@ App.childContextTypes = {
 
 App.propTypes = {
   buyFullVersion: PropTypes.func.isRequired,
-  history: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
+  history: PropTypes.object.isRequired,
   keepAwakeSupport: PropTypes.bool.isRequired,
-  store: storeShape.isRequired, // eslint-disable-line react/no-typos
+  store: storeShape.isRequired,
 };
 
 export default compose(hot(module), withStyles(styles))(App);

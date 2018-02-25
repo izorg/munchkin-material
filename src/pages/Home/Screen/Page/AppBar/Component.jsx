@@ -111,7 +111,7 @@ const HomeScreenPageAppBarComponent = ({
 
 HomeScreenPageAppBarComponent.propTypes = {
   empty: PropTypes.bool,
-  intl: intlShape.isRequired, // eslint-disable-line react/no-typos
+  intl: intlShape.isRequired,
   mode: modeShape,
   onMultiSelectDeactivate: PropTypes.func,
   onPlayersDelete: PropTypes.func,

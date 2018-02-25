@@ -24,7 +24,7 @@ const PlayerAddButtonComponent = ({ intl, onClick }) => (
 );
 
 PlayerAddButtonComponent.propTypes = {
-  intl: intlShape.isRequired, // eslint-disable-line react/no-typos
+  intl: intlShape.isRequired,
   onClick: PropTypes.func,
 };
 
