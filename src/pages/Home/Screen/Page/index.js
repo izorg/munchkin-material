@@ -8,7 +8,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = {
-  onMenuOpen: () => push('/?menu'),
+  onMenuOpen: () => push({ search: '?menu' }),
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Component);
