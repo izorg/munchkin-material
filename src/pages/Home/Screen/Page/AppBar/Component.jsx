@@ -14,10 +14,12 @@ import NavigationCheck from 'material-ui-icons/Check';
 import NavigationClose from 'material-ui-icons/Close';
 import ActionDelete from 'material-ui-icons/Delete';
 import EditorModeEdit from 'material-ui-icons/ModeEdit';
+import SettingsBackupRestoreIcon from 'material-ui-icons/SettingsBackupRestore';
 import { noop } from 'lodash';
 
 import AppBar from '../../../../../components/AppBar';
 import DiceButton from '../../../../../components/dice/Button';
+import FlagCheckeredIcon from '../../../../../components/icons/FlagCheckered';
 import Title from '../../../../../components/Title';
 
 import * as modes from '../../../modes';
@@ -49,14 +51,31 @@ const HomeScreenPageAppBarComponent = ({
   mode,
   onMultiSelectDeactivate,
   onPlayersDelete,
+  onResetPlayer,
   onToggleEditClick,
+  onTurnFinish,
   selectedPlayerIds,
 }) => {
   const editMode = mode === modes.EDIT;
   const multiMode = mode === modes.MULTI;
+  const singleMode = mode === modes.SINGLE;
   const buttonColor = multiMode ? 'default' : 'inherit';
 
   const editTitle = intl.formatMessage(messages.edit);
+
+  let title = (
+    <FormattedMessage id="player.list.title" defaultMessage="Munchkins" />
+  );
+
+  if (multiMode) {
+    title = selectedPlayerIds.length;
+  }
+
+  if (singleMode) {
+    title = (
+      <FormattedMessage id="home.single.title" defaultMessage="Munchkin" />
+    );
+  }
 
   return (
     <AppBar color={multiMode ? 'default' : 'primary'} position="static">
@@ -75,17 +94,20 @@ const HomeScreenPageAppBarComponent = ({
         color={multiMode ? 'default' : 'inherit'}
         className={classes.title}
       >
-        {multiMode ? (
-          selectedPlayerIds.length
-        ) : (
-          <FormattedMessage id="player.list.title" defaultMessage="Munchkins" />
-        )}
+        {title}
       </Title>
+
+      {singleMode && (
+        <IconButton color="inherit" onClick={onResetPlayer}>
+          <SettingsBackupRestoreIcon />
+        </IconButton>
+      )}
 
       <DiceButton color={buttonColor} />
 
       {!empty &&
-        !multiMode && (
+        !multiMode &&
+        !singleMode && (
           <Tooltip title={editTitle}>
             <IconButton
               aria-label={editTitle}
@@ -105,6 +127,12 @@ const HomeScreenPageAppBarComponent = ({
           <ActionDelete />
         </IconButton>
       )}
+
+      {singleMode && (
+        <IconButton color="inherit" onClick={onTurnFinish}>
+          <FlagCheckeredIcon />
+        </IconButton>
+      )}
     </AppBar>
   );
 };
@@ -115,7 +143,9 @@ HomeScreenPageAppBarComponent.propTypes = {
   mode: modeShape,
   onMultiSelectDeactivate: PropTypes.func,
   onPlayersDelete: PropTypes.func,
+  onResetPlayer: PropTypes.func,
   onToggleEditClick: PropTypes.func,
+  onTurnFinish: PropTypes.func,
   selectedPlayerIds: PropTypes.arrayOf(PropTypes.string),
 };
 
@@ -124,7 +154,9 @@ HomeScreenPageAppBarComponent.defaultProps = {
   mode: null,
   onMultiSelectDeactivate: noop,
   onPlayersDelete: noop,
+  onResetPlayer: noop,
   onToggleEditClick: noop,
+  onTurnFinish: noop,
   selectedPlayerIds: [],
 };
 

@@ -10,6 +10,7 @@ const initialState = {
   keepAwake: false,
   locale: undefined,
   selectedPlayerIds: [],
+  singleModePlayerId: undefined,
   theme,
 };
 
@@ -31,6 +32,13 @@ const app = (state = initialState, action) => {
       return {
         ...state,
         locale: action.locale,
+      };
+    }
+
+    case types.SET_SINGLE_MODE_PLAYER: {
+      return {
+        ...state,
+        singleModePlayerId: action.id,
       };
     }
 

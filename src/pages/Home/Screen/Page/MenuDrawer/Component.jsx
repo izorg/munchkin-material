@@ -7,6 +7,7 @@ import Hammer from 'hammerjs';
 import { noop } from 'lodash';
 
 import InsomniaItem from './InsomniaItem';
+import SingleModeItem from './SingleModeItem';
 import ThemeItem from './ThemeItem';
 
 const styles = {
@@ -51,8 +52,9 @@ class Component extends PureComponent {
         disableRestoreFocus
         {...props}
       >
-        <List className={classes.menu}>
+        <List className={classes.menu} component="div">
           <ThemeItem />
+          <SingleModeItem />
           <InsomniaItem />
         </List>
       </Drawer>

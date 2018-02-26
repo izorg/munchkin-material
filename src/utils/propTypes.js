@@ -10,5 +10,5 @@ export const playerShape = PropTypes.shape({
   gear: PropTypes.number.isRequired,
   id: PropTypes.string.isRequired,
   level: PropTypes.number.isRequired,
-  name: PropTypes.string.isRequired,
+  name: PropTypes.string,
 });

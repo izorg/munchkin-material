@@ -73,6 +73,26 @@ export const setLocale = (locale) => ({
   locale,
 });
 
+const setSingleModePlayer = (id) => ({
+  type: types.SET_SINGLE_MODE_PLAYER,
+  id,
+});
+
+export const setSingleMode = () => (dispatch, getState) => {
+  const { app: { singleModePlayerId } } = getState();
+
+  if (!singleModePlayerId) {
+    const player = createPlayer();
+
+    dispatch(addPlayer(player));
+    dispatch(setSingleModePlayer(player.id));
+
+    return dispatch(startCombat(player.id));
+  }
+
+  return dispatch(startCombat(singleModePlayerId));
+};
+
 export const setTheme = (theme) => ({
   type: types.SET_THEME,
   theme,

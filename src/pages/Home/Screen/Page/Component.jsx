@@ -9,11 +9,22 @@ import Nobody from '../../../../components/Nobody';
 import AppBar from './AppBar';
 import MenuDrawer from './MenuDrawer';
 import PlayerList from './PlayerList';
+import SinglePlayer from './SinglePlayer';
 import ThemeDialog from './ThemeDialog';
 
 class HomeScreenPageComponent extends PureComponent {
   render() {
-    const { empty, onMenuOpen } = this.props;
+    const { empty, onMenuOpen, singleMode } = this.props;
+
+    let content;
+
+    if (singleMode) {
+      content = <SinglePlayer />;
+    } else if (empty) {
+      content = <Nobody />;
+    } else {
+      content = <PlayerList />;
+    }
 
     return (
       <Fragment>
@@ -25,7 +36,7 @@ class HomeScreenPageComponent extends PureComponent {
           )}
         >
           <AppBar />
-          {empty ? <Nobody /> : <PlayerList />}
+          {content}
         </Layout>
         <MenuDrawer />
         <ThemeDialog />
@@ -37,11 +48,13 @@ class HomeScreenPageComponent extends PureComponent {
 HomeScreenPageComponent.propTypes = {
   empty: PropTypes.bool,
   onMenuOpen: PropTypes.func,
+  singleMode: PropTypes.bool,
 };
 
 HomeScreenPageComponent.defaultProps = {
   empty: false,
   onMenuOpen: noop,
+  singleMode: false,
 };
 
 export default HomeScreenPageComponent;

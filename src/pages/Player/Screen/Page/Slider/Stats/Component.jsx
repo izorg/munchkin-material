@@ -65,7 +65,7 @@ const styles = (theme) => ({
     },
 
     strengthValue: {
-      marginTop: 72,
+      marginTop: 64,
     },
   },
 });
