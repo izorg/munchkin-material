@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import { withStyles } from 'material-ui/styles';
 
 import Layout, { LayoutContent } from '../../../components/Layout';
@@ -14,13 +14,19 @@ const styles = (theme) => ({
   },
 });
 
-const PlayerFormScreenComponent = ({ classes }) => (
-  <Layout>
-    <AppBar />
-    <LayoutContent className={classes.content}>
-      <Form />
-    </LayoutContent>
-  </Layout>
-);
+class PlayerFormScreenComponent extends PureComponent {
+  render() {
+    const { classes } = this.props;
+
+    return (
+      <Layout>
+        <AppBar />
+        <LayoutContent className={classes.content}>
+          <Form />
+        </LayoutContent>
+      </Layout>
+    );
+  }
+}
 
 export default withStyles(styles)(PlayerFormScreenComponent);

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import Typography from 'material-ui/Typography';
 import { withStyles } from 'material-ui/styles';
@@ -53,46 +53,52 @@ const styles = (theme) => ({
   },
 });
 
-const CombatScreenPage = ({
-  classes,
-  combinedMonsterStrength,
-  combinedPlayerStrength,
-  helperId,
-  onHelperBonusChange,
-  onHelperRemove,
-  onMonsterAdd,
-  onMonsterRemove,
-  onPlayerBonusChange,
-  playerId,
-}) => (
-  <Layout>
-    <AppBar />
-    <LayoutContent className={classes.content}>
-      <PlayerSlider
-        className={classes.players}
-        helperId={helperId}
-        onHelperBonusChange={onHelperBonusChange}
-        onHelperRemove={onHelperRemove}
-        onPlayerBonusChange={onPlayerBonusChange}
-        playerId={playerId}
-      />
+class CombatScreenPage extends PureComponent {
+  render() {
+    const {
+      classes,
+      combinedMonsterStrength,
+      combinedPlayerStrength,
+      helperId,
+      onHelperBonusChange,
+      onHelperRemove,
+      onMonsterAdd,
+      onMonsterRemove,
+      onPlayerBonusChange,
+      playerId,
+    } = this.props;
 
-      <div className={classes.total}>
-        <span className={classes.value}>{combinedPlayerStrength}</span>
-        <Typography className={classes.versus} component="span">
-          vs
-        </Typography>
-        <span className={classes.value}>{combinedMonsterStrength}</span>
-      </div>
+    return (
+      <Layout>
+        <AppBar />
+        <LayoutContent className={classes.content}>
+          <PlayerSlider
+            className={classes.players}
+            helperId={helperId}
+            onHelperBonusChange={onHelperBonusChange}
+            onHelperRemove={onHelperRemove}
+            onPlayerBonusChange={onPlayerBonusChange}
+            playerId={playerId}
+          />
 
-      <MonsterSlider
-        className={classes.monsters}
-        onMonsterAdd={onMonsterAdd}
-        onMonsterRemove={onMonsterRemove}
-      />
-    </LayoutContent>
-  </Layout>
-);
+          <div className={classes.total}>
+            <span className={classes.value}>{combinedPlayerStrength}</span>
+            <Typography className={classes.versus} component="span">
+              vs
+            </Typography>
+            <span className={classes.value}>{combinedMonsterStrength}</span>
+          </div>
+
+          <MonsterSlider
+            className={classes.monsters}
+            onMonsterAdd={onMonsterAdd}
+            onMonsterRemove={onMonsterRemove}
+          />
+        </LayoutContent>
+      </Layout>
+    );
+  }
+}
 
 CombatScreenPage.propTypes = {
   combinedMonsterStrength: PropTypes.number.isRequired,
