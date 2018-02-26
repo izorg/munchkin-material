@@ -15,6 +15,11 @@ import createPlayer from 'munchkin-core/lib/utils/createPlayer';
 
 import * as types from '../utils/actionTypes';
 
+const addPlayerToList = (id) => ({
+  type: types.ADD_PLAYER_TO_LIST,
+  id,
+});
+
 export const finishCombat = () => ({
   type: types.FINISH_COMBAT,
 });
@@ -48,6 +53,11 @@ export const removeHelper = () => (dispatch) => {
   dispatch(setCombatHelperBonus(0));
 };
 
+export const removePlayerFromList = (id) => ({
+  type: types.REMOVE_PLAYER_FROM_LIST,
+  id,
+});
+
 export const setFullVersion = (fullVersion = true) => ({
   type: types.SET_FULL_VERSION,
   fullVersion,
@@ -78,6 +88,7 @@ export const submitPlayer = (values) => (dispatch) => {
       dispatch(updatePlayer(player));
     } else {
       dispatch(addPlayer(player));
+      dispatch(addPlayerToList(player.id));
     }
   }
 

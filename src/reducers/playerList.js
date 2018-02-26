@@ -1,13 +1,15 @@
-import { ADD_PLAYER, REMOVE_PLAYER } from 'munchkin-core/lib/utils/actionTypes';
-
-import { MOVE_PLAYER } from '../utils/actionTypes';
+import {
+  ADD_PLAYER_TO_LIST,
+  MOVE_PLAYER,
+  REMOVE_PLAYER_FROM_LIST,
+} from '../utils/actionTypes';
 
 const initialState = [];
 
 const playerList = (state = initialState, action) => {
   switch (action.type) {
-    case ADD_PLAYER: {
-      return [...state, action.player.id];
+    case ADD_PLAYER_TO_LIST: {
+      return [...state, action.id];
     }
 
     case MOVE_PLAYER: {
@@ -25,7 +27,7 @@ const playerList = (state = initialState, action) => {
       ];
     }
 
-    case REMOVE_PLAYER: {
+    case REMOVE_PLAYER_FROM_LIST: {
       const index = state.indexOf(action.id);
 
       return [...state.slice(0, index), ...state.slice(index + 1)];

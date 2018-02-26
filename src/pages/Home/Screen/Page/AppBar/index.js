@@ -2,6 +2,8 @@ import { connect } from 'react-redux';
 import { goBack, push } from 'connected-react-router/lib/actions';
 import { removePlayer } from 'munchkin-core/lib/actions';
 
+import { removePlayerFromList } from '../../../../../actions';
+
 import * as modes from '../../../modes';
 import { modeSelector } from '../../../selectors';
 
@@ -17,6 +19,7 @@ const mapDispatchToProps = {
   onMultiSelectDeactivate: goBack,
   onPlayersDelete: (selectedPlayerIds) => (dispatch) => {
     selectedPlayerIds.forEach((id) => {
+      dispatch(removePlayerFromList(id));
       dispatch(removePlayer(id));
     });
     dispatch(goBack());
