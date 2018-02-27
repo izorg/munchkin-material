@@ -22,7 +22,7 @@
     "prettier/prettier": [
       "error",
       {
-        "arrowParens": "allways",
+        "arrowParens": "always",
         "singleQuote": true,
         "trailingComma": "all"
       }
