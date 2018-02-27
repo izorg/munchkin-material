@@ -15,7 +15,7 @@ import createPlayer from 'munchkin-core/lib/utils/createPlayer';
 
 import * as types from '../utils/actionTypes';
 
-const addPlayerToList = (id) => ({
+export const addPlayerToList = (id) => ({
   type: types.ADD_PLAYER_TO_LIST,
   id,
 });
