@@ -7,6 +7,8 @@ import WebpackNotifierPlugin from 'webpack-notifier';
 import common from './common.babel';
 
 const config = merge.smart(common, {
+  mode: 'development',
+
   devtool: 'eval-source-map',
 
   entry: ['./polyfill.js', './site.js', './dev/index.js', './index.jsx'],

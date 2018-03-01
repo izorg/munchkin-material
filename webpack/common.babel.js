@@ -7,6 +7,8 @@ import WebpackPwaManifest from 'webpack-pwa-manifest';
 import manifest from './manifest';
 
 export default {
+  mode: 'production',
+
   context: path.resolve(__dirname, '../src'),
 
   output: {

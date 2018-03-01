@@ -22,8 +22,6 @@ const config = merge.smart(common, {
     new webpack.optimize.LimitChunkCountPlugin({
       maxChunks: 1,
     }),
-
-    new webpack.optimize.UglifyJsPlugin(),
   ],
 });
 

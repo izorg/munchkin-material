@@ -34,12 +34,16 @@ const config = merge.smart(common, {
     ],
   },
 
+  optimization: {
+    splitChunks: {
+      maxAsyncRequests: 1,
+    },
+  },
+
   plugins: [
     new CleanWebpackPlugin(path.resolve(__dirname, '../site'), {
       allowExternal: true,
     }),
-
-    new webpack.optimize.UglifyJsPlugin(),
 
     new CnameWebpackPlugin({
       domain: 'web.allmunchkins.com',
@@ -77,6 +81,7 @@ const config = merge.smart(common, {
       safeToUseOptionalCaches: true,
       ServiceWorker: {
         events: true,
+        minify: false,
       },
     }),
   ],
