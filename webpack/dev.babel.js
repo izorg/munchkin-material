@@ -1,7 +1,7 @@
-import CopyWebpackPlugin from 'copy-webpack-plugin';
-import merge from 'webpack-merge';
 import path from 'path';
 import webpack from 'webpack';
+import merge from 'webpack-merge';
+
 import WebpackNotifierPlugin from 'webpack-notifier';
 
 import common from './common.babel';
@@ -41,8 +41,6 @@ const config = merge.smart(common, {
     new webpack.NamedModulesPlugin(),
 
     new WebpackNotifierPlugin(),
-
-    new CopyWebpackPlugin([{ from: './manifest.json' }]),
   ],
 
   devServer: {
