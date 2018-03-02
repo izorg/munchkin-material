@@ -21,7 +21,7 @@ import GenderMale from '../../../components/icons/gender/Male';
 import Layout, { LayoutContent } from '../../../components/Layout';
 
 import AppBar from './AppBar';
-import ColorPicker from './Form/ColorPicker';
+import ColorPicker from './ColorPicker';
 
 const messages = defineMessages({
   label: {
@@ -38,12 +38,16 @@ const styles = (theme) => ({
 });
 
 class PlayerFormScreenComponent extends PureComponent {
-  static renderTextField({ input, ...props }) {
-    return <TextField {...input} {...props} />;
+  static renderColorPicker({ input, ...props }) {
+    return <ColorPicker {...input} {...props} />;
   }
 
   static renderRadioGroup({ input, ...props }) {
     return <RadioGroup {...input} {...props} />;
+  }
+
+  static renderTextField({ input, ...props }) {
+    return <TextField {...input} {...props} />;
   }
 
   render() {
@@ -102,7 +106,10 @@ class PlayerFormScreenComponent extends PureComponent {
                     defaultMessage="Color"
                   />
                 </FormLabel>
-                <Field component={ColorPicker} name="color" />
+                <Field
+                  component={PlayerFormScreenComponent.renderColorPicker}
+                  name="color"
+                />
               </FormControl>
             </Grid>
           </Grid>
