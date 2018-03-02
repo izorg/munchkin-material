@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { goBack, push } from 'connected-react-router/lib/actions';
 
-import ColorPickerField from '../../../../../components/ColorPicker/Field';
+import ColorPickerField from './Field';
 
 const mapStateToprops = (state) => ({
   open: state.router.location.search === '?color',

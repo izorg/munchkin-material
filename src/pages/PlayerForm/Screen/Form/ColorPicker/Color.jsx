@@ -20,12 +20,15 @@ const styles = {
   },
 };
 
-const ColorPicker = ({ classes, onClick, value }) => (
+// eslint-disable-next-line react/prop-types
+const ColorPicker = ({ classes, onClick, meta, value, ...props }) => (
   <ButtonBase
     centerRipple
     className={classes.button}
     focusRipple
     onClick={onClick}
+    value={value}
+    {...props}
   >
     <Avatar className={classes.color} style={{ backgroundColor: value }} />
   </ButtonBase>
@@ -33,12 +36,11 @@ const ColorPicker = ({ classes, onClick, value }) => (
 
 ColorPicker.propTypes = {
   onClick: PropTypes.func,
-  value: PropTypes.string,
+  value: PropTypes.string.isRequired,
 };
 
 ColorPicker.defaultProps = {
   onClick: noop,
-  value: '',
 };
 
 export default withStyles(styles)(ColorPicker);

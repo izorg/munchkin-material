@@ -22,7 +22,7 @@ const styles = {
 
 class PlayerFormScreenAppBarComponent extends PureComponent {
   render() {
-    const { classes, edit, onCancel, onSubmit } = this.props;
+    const { classes, edit, onCancel } = this.props;
 
     return (
       <AppBar>
@@ -48,7 +48,7 @@ class PlayerFormScreenAppBarComponent extends PureComponent {
           )}
         </Title>
 
-        <IconButton color="inherit" onClick={onSubmit}>
+        <IconButton color="inherit" type="submit">
           <NavigationCheck />
         </IconButton>
       </AppBar>
@@ -59,13 +59,11 @@ class PlayerFormScreenAppBarComponent extends PureComponent {
 PlayerFormScreenAppBarComponent.propTypes = {
   edit: PropTypes.bool,
   onCancel: PropTypes.func,
-  onSubmit: PropTypes.func,
 };
 
 PlayerFormScreenAppBarComponent.defaultProps = {
   edit: false,
   onCancel: noop,
-  onSubmit: noop,
 };
 
 export default withStyles(styles)(PlayerFormScreenAppBarComponent);
