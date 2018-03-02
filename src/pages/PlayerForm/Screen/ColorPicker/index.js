@@ -8,7 +8,7 @@ const mapStateToprops = (state) => ({
 });
 
 const mapDispatchToProps = {
-  onClick: () => push({ search: '?color' }),
+  onOpen: () => push({ search: '?color' }),
   onClose: goBack,
 };
 
