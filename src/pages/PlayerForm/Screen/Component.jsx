@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react';
+import { Field, Form } from 'react-final-form';
 import compose from 'recompose/compose';
-import Field from 'redux-form/lib/Field';
-import reduxForm from 'redux-form/lib/reduxForm';
 import {
   defineMessages,
   FormattedMessage,
@@ -14,11 +13,13 @@ import Grid from 'material-ui/Grid';
 import Radio, { RadioGroup } from 'material-ui/Radio';
 import TextField from 'material-ui/TextField';
 import { withStyles } from 'material-ui/styles';
+import { noop } from 'lodash';
 import { FEMALE, MALE } from 'munchkin-core/lib/utils/gender';
 
 import GenderFemale from '../../../components/icons/gender/Female';
 import GenderMale from '../../../components/icons/gender/Male';
 import Layout, { LayoutContent } from '../../../components/Layout';
+import { genderProp } from '../../../utils/propTypes';
 
 import AppBar from './AppBar';
 import ColorPicker from './ColorPicker';
@@ -51,86 +52,96 @@ class PlayerFormScreenComponent extends PureComponent {
   }
 
   render() {
-    const { classes, handleSubmit, intl, newPlayer } = this.props;
+    const { classes, initialValues, intl, newPlayer, onSubmit } = this.props;
 
     return (
-      <Layout
-        autoComplete="off"
-        component="form"
-        noValidate
-        onSubmit={handleSubmit}
-      >
-        <AppBar />
-        <LayoutContent className={classes.content}>
-          <Field
-            autoFocus={newPlayer}
-            component={PlayerFormScreenComponent.renderTextField}
-            fullWidth
-            margin="normal"
-            name="name"
-            placeholder={intl.formatMessage(messages.label)}
-          />
+      <Form
+        initialValues={initialValues}
+        onSubmit={onSubmit}
+        render={({ handleSubmit }) => (
+          <Layout
+            autoComplete="off"
+            component="form"
+            noValidate
+            onSubmit={handleSubmit}
+          >
+            <AppBar />
+            <LayoutContent className={classes.content}>
+              <Field
+                autoFocus={newPlayer}
+                component={PlayerFormScreenComponent.renderTextField}
+                fullWidth
+                margin="normal"
+                name="name"
+                placeholder={intl.formatMessage(messages.label)}
+              />
 
-          <Grid container>
-            <Grid item xs={6} sm={3} md={2} lg={1}>
-              <FormControl component="fieldset" margin="normal">
-                <FormLabel component="legend">
-                  <FormattedMessage
-                    id="player.form.gender"
-                    defaultMessage="Gender"
-                  />
-                </FormLabel>
-                <Field
-                  component={PlayerFormScreenComponent.renderRadioGroup}
-                  name="gender"
-                >
-                  <FormControlLabel
-                    control={<Radio color="primary" />}
-                    label={<GenderMale />}
-                    value={MALE}
-                  />
-                  <FormControlLabel
-                    control={<Radio color="primary" />}
-                    label={<GenderFemale />}
-                    value={FEMALE}
-                  />
-                </Field>
-              </FormControl>
-            </Grid>
+              <Grid container>
+                <Grid item xs={6} sm={3} md={2} lg={1}>
+                  <FormControl component="fieldset" margin="normal">
+                    <FormLabel component="legend">
+                      <FormattedMessage
+                        id="player.form.gender"
+                        defaultMessage="Gender"
+                      />
+                    </FormLabel>
+                    <Field
+                      component={PlayerFormScreenComponent.renderRadioGroup}
+                      name="gender"
+                    >
+                      <FormControlLabel
+                        control={<Radio color="primary" />}
+                        label={<GenderMale />}
+                        value={MALE}
+                      />
+                      <FormControlLabel
+                        control={<Radio color="primary" />}
+                        label={<GenderFemale />}
+                        value={FEMALE}
+                      />
+                    </Field>
+                  </FormControl>
+                </Grid>
 
-            <Grid item xs={6} sm={3} md={2} lg={1}>
-              <FormControl margin="normal">
-                <FormLabel>
-                  <FormattedMessage
-                    id="player.form.color"
-                    defaultMessage="Color"
-                  />
-                </FormLabel>
-                <Field
-                  component={PlayerFormScreenComponent.renderColorPicker}
-                  name="color"
-                />
-              </FormControl>
-            </Grid>
-          </Grid>
-        </LayoutContent>
-      </Layout>
+                <Grid item xs={6} sm={3} md={2} lg={1}>
+                  <FormControl margin="normal">
+                    <FormLabel>
+                      <FormattedMessage
+                        id="player.form.color"
+                        defaultMessage="Color"
+                      />
+                    </FormLabel>
+                    <Field
+                      component={PlayerFormScreenComponent.renderColorPicker}
+                      name="color"
+                    />
+                  </FormControl>
+                </Grid>
+              </Grid>
+            </LayoutContent>
+          </Layout>
+        )}
+      />
     );
   }
 }
 
 PlayerFormScreenComponent.propTypes = {
-  handleSubmit: PropTypes.func.isRequired,
+  initialValues: PropTypes.shape({
+    name: PropTypes.string,
+    gender: genderProp.isRequired,
+    color: PropTypes.string.isRequired,
+  }).isRequired,
   intl: intlShape.isRequired,
   newPlayer: PropTypes.bool,
+  onSubmit: PropTypes.func,
 };
 
 PlayerFormScreenComponent.defaultProps = {
   newPlayer: true,
+  onSubmit: noop,
 };
 
-export default compose(
-  reduxForm({ form: 'player' }),
-  injectIntl,
-  withStyles(styles),
-)(PlayerFormScreenComponent);
+export default compose(injectIntl, withStyles(styles))(
+  PlayerFormScreenComponent,
+);

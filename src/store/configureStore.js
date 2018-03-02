@@ -4,7 +4,6 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import { setVersion } from 'munchkin-core/lib/actions';
 import version from 'munchkin-core/lib/utils/version';
 import { connectRouter, routerMiddleware } from 'connected-react-router';
-import formReducer from 'redux-form/lib/reducer';
 import thunk from 'redux-thunk';
 import { pick, throttle } from 'lodash';
 
@@ -14,10 +13,7 @@ import { loadState, saveState } from './localStorage';
 import purchase from './middlewares/purchase';
 
 const getRootReducer = (history) =>
-  compose(connectRouter(history), combineReducers)({
-    ...reducers,
-    form: formReducer,
-  });
+  compose(connectRouter(history), combineReducers)(reducers);
 
 export default ({ buyFullVersion, history, storageKey }) => {
   const enhancer = composeWithDevTools(
