@@ -78,7 +78,7 @@ const HomeScreenPageAppBarComponent = ({
   }
 
   return (
-    <AppBar color={multiMode ? 'default' : 'primary'} position="static">
+    <AppBar color={multiMode ? 'default' : 'primary'}>
       {multiMode ? (
         <IconButton
           className={classes.leftButton}

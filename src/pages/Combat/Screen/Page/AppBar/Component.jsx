@@ -1,34 +1,33 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
-import { connect } from 'react-redux';
-import { goBack } from 'connected-react-router/lib/actions';
 import PropTypes from 'prop-types';
 import IconButton from 'material-ui/IconButton';
+import { withStyles } from 'material-ui/styles';
 import NavigationArrowBack from 'material-ui-icons/ArrowBack';
 import { noop } from 'lodash';
-
-import { finishCombat } from '../../../../../actions';
 
 import AppBar from '../../../../../components/AppBar';
 import DiceIconButton from '../../../../../components/dice/Button';
 import FlagCheckered from '../../../../../components/icons/FlagCheckered';
 import Title from '../../../../../components/Title';
 
-const mapDispatchToProps = {
-  onBack: goBack,
-  onFinish: () => (dispatch) => {
-    dispatch(finishCombat());
-    dispatch(goBack());
+const styles = {
+  leftButton: {
+    marginRight: 8,
+  },
+
+  title: {
+    marginLeft: 12,
   },
 };
 
-const CombatScreenPageAppBar = ({ onBack, onFinish }) => (
-  <AppBar color="primary" position="static">
-    <IconButton color="inherit" onClick={onBack}>
+const CombatScreenPageAppBarComponent = ({ classes, onBack, onFinish }) => (
+  <AppBar>
+    <IconButton className={classes.leftButton} color="inherit" onClick={onBack}>
       <NavigationArrowBack />
     </IconButton>
 
-    <Title>
+    <Title className={classes.title}>
       <FormattedMessage id="combat" defaultMessage="Combat" />
     </Title>
 
@@ -40,14 +39,14 @@ const CombatScreenPageAppBar = ({ onBack, onFinish }) => (
   </AppBar>
 );
 
-CombatScreenPageAppBar.propTypes = {
+CombatScreenPageAppBarComponent.propTypes = {
   onBack: PropTypes.func,
   onFinish: PropTypes.func,
 };
 
-CombatScreenPageAppBar.defaultProps = {
+CombatScreenPageAppBarComponent.defaultProps = {
   onBack: noop,
   onFinish: noop,
 };
 
-export default connect(undefined, mapDispatchToProps)(CombatScreenPageAppBar);
+export default withStyles(styles)(CombatScreenPageAppBarComponent);

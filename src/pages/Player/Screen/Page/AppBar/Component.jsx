@@ -1,40 +1,33 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import AppBar from 'material-ui/AppBar';
 import IconButton from 'material-ui/IconButton';
-import Toolbar from 'material-ui/Toolbar';
 import { withStyles } from 'material-ui/styles';
 import NavigationArrowBack from 'material-ui-icons/ArrowBack';
 import { noop } from 'lodash';
 
+import AppBar from '../../../../../components/AppBar';
 import DiceButton from '../../../../../components/dice/Button';
 import Title from '../../../../../components/Title';
 
 const styles = {
   leftButton: {
-    marginLeft: -12,
+    marginRight: 8,
   },
 
-  rightButton: {
-    marginRight: -12,
+  title: {
+    marginLeft: 12,
   },
 };
 
 const Component = ({ classes, onBack, title }) => (
-  <AppBar color="primary" position="static">
-    <Toolbar>
-      <IconButton
-        className={classes.leftButton}
-        color="inherit"
-        onClick={onBack}
-      >
-        <NavigationArrowBack />
-      </IconButton>
+  <AppBar>
+    <IconButton className={classes.leftButton} color="inherit" onClick={onBack}>
+      <NavigationArrowBack />
+    </IconButton>
 
-      <Title>{title}</Title>
+    <Title className={classes.title}>{title}</Title>
 
-      <DiceButton className={classes.rightButton} color="inherit" />
-    </Toolbar>
+    <DiceButton color="inherit" />
   </AppBar>
 );
 

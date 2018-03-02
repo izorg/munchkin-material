@@ -22,7 +22,12 @@ const styles = (theme) => ({
 });
 
 const AppBar = ({ children, classes, className, ...props }) => (
-  <MuiAppBar className={cns(className, classes.appBar)} {...props}>
+  <MuiAppBar
+    className={cns(className, classes.appBar)}
+    color="primary"
+    position="static"
+    {...props}
+  >
     <Toolbar disableGutters>{children}</Toolbar>
   </MuiAppBar>
 );
