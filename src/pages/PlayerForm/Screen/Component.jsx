@@ -58,6 +58,7 @@ class PlayerFormScreenComponent extends PureComponent {
       <Form
         initialValues={initialValues}
         onSubmit={onSubmit}
+        subscription={{ submitting: true }}
         render={({ handleSubmit }) => (
           <Layout
             autoComplete="off"
