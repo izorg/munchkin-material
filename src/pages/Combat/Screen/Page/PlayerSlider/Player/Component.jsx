@@ -5,10 +5,10 @@ import IconButton from 'material-ui/IconButton';
 import Typography from 'material-ui/Typography';
 import { withStyles } from 'material-ui/styles';
 import { noop } from 'lodash';
-import { FEMALE, MALE } from 'munchkin-core/lib/utils/gender';
 
 import Counter from '../../../../../../components/Counter';
 import Gender from '../../../../../../components/Gender';
+import { genderProp } from '../../../../../../utils/propTypes';
 
 const styles = {
   player: {
@@ -156,7 +156,7 @@ class CombatPlayer extends PureComponent {
 CombatPlayer.propTypes = {
   bonus: PropTypes.number.isRequired,
   gear: PropTypes.number.isRequired,
-  gender: PropTypes.oneOf([FEMALE, MALE]).isRequired,
+  gender: genderProp.isRequired,
   id: PropTypes.string.isRequired,
   level: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
