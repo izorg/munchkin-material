@@ -1,10 +1,10 @@
 import React, { Fragment } from 'react';
 
 import Head from '../Head';
-import Combat from '../../pages/Combat';
-import Home from '../../pages/Home';
-import Player from '../../pages/Player';
-import PlayerForm from '../../pages/PlayerForm';
+import Combat from '../../routes/Combat';
+import Home from '../../routes/Home';
+import Player from '../../routes/Player';
+import PlayerForm from '../../routes/PlayerForm';
 
 import DiceDialog from '../dice/Dialog';
 
