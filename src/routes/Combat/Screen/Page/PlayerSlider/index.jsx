@@ -20,11 +20,11 @@ const styles = {
   },
 
   remove: {
-    bottom: 16,
+    bottom: 8,
     height: 36,
     padding: 6,
     position: 'absolute',
-    right: 16,
+    right: 8,
     width: 36,
   },
 
@@ -131,7 +131,7 @@ class CombatPlayerSlider extends PureComponent {
             index={index}
             onChangeIndex={this.handleChangeIndex}
             slideStyle={{
-              padding: '0 16px 16px',
+              padding: '0 8px 8px',
               position: 'relative',
             }}
             style={{

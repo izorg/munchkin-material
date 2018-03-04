@@ -22,8 +22,8 @@ const styles = {
 
   remove: {
     position: 'absolute !important',
-    right: 16,
-    top: 16,
+    right: 8,
+    top: 8,
   },
 
   '@media (orientation: landscape)': {
@@ -127,7 +127,7 @@ class CombatMonsterSlider extends PureComponent {
             index={index}
             onChangeIndex={this.handleChangeIndex}
             slideStyle={{
-              padding: '16px 16px 0',
+              padding: '8px 8px 0',
               position: 'relative',
             }}
             style={{
