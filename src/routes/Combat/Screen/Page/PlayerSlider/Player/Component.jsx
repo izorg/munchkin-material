@@ -6,9 +6,10 @@ import Typography from 'material-ui/Typography';
 import { withStyles } from 'material-ui/styles';
 import { noop } from 'lodash';
 
-import Counter from '../../../../../../components/Counter';
 import Gender from '../../../../../../components/Gender';
 import { genderProp } from '../../../../../../utils/propTypes';
+
+import Counter from '../../Counter';
 
 const styles = {
   player: {
@@ -113,7 +114,6 @@ class CombatPlayer extends PureComponent {
         <div className={classes.stats}>
           <Counter
             className={classes.item}
-            compact
             onDecrement={this.handleLevelDecrement}
             onIncrement={this.handleLevelIncrement}
             title={
@@ -126,7 +126,6 @@ class CombatPlayer extends PureComponent {
           />
           <Counter
             className={classes.item}
-            compact
             onDecrement={this.handleGearDecrement}
             onIncrement={this.handleGearIncrement}
             title={
@@ -136,7 +135,6 @@ class CombatPlayer extends PureComponent {
           />
           <Counter
             className={classes.item}
-            compact
             onDecrement={() => this.handleBonusChange(-1)}
             onIncrement={() => this.handleBonusChange(+1)}
             title={

@@ -14,22 +14,35 @@ const styles = (theme) => ({
 
   title: {
     fontFamily: `"Munchkin", ${theme.typography.fontFamily}`,
-    fontSize: 24,
+    fontSize: 16,
   },
 
   button: {
-    fontSize: 64,
-    height: 64,
-    width: 64,
+    fontSize: 48,
+    height: 48,
+    width: 48,
   },
 
   value: {
     fontFamily: `"Munchkin", ${theme.typography.fontFamily}`,
-    fontSize: 36,
+    fontSize: theme.typography.display1.fontSize,
+    lineHeight: theme.typography.display1.lineHeight,
+  },
+
+  '@media (orientation: portrait) and (min-width: 360px) and (min-height: 600px)': {
+    title: {
+      fontSize: 20,
+    },
+
+    button: {
+      fontSize: 64,
+      height: 64,
+      width: 64,
+    },
   },
 });
 
-const Counter = ({
+const CombatScreenPageCounter = ({
   classes,
   className,
   onDecrement,
@@ -60,7 +73,7 @@ const Counter = ({
   </div>
 );
 
-Counter.propTypes = {
+CombatScreenPageCounter.propTypes = {
   className: PropTypes.string,
   onDecrement: PropTypes.func,
   onIncrement: PropTypes.func,
@@ -68,10 +81,10 @@ Counter.propTypes = {
   value: PropTypes.number.isRequired,
 };
 
-Counter.defaultProps = {
+CombatScreenPageCounter.defaultProps = {
   className: '',
   onDecrement: noop,
   onIncrement: noop,
 };
 
-export default withStyles(styles)(Counter);
+export default withStyles(styles)(CombatScreenPageCounter);

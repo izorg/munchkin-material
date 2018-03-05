@@ -5,7 +5,7 @@ import Typography from 'material-ui/Typography';
 import { withStyles } from 'material-ui/styles';
 import { noop } from 'lodash';
 
-import Counter from '../../../../../../components/Counter';
+import Counter from '../../Counter';
 
 const styles = {
   monster: {
@@ -45,7 +45,6 @@ const CombatMonster = ({
     <div className={classes.stats}>
       <Counter
         className={classes.item}
-        compact
         onDecrement={() => onLevelDecrement(id)}
         onIncrement={() => onLevelIncrement(id)}
         title={
@@ -55,7 +54,6 @@ const CombatMonster = ({
       />
       <Counter
         className={classes.item}
-        compact
         onDecrement={() => onBonusDecrement(id)}
         onIncrement={() => onBonusIncrement(id)}
         title={
