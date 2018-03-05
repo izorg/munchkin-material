@@ -34,10 +34,6 @@ const styles = {
       overflow: 'hidden',
     },
 
-    playerContainer: {
-      paddingLeft: 28,
-    },
-
     remove: {
       right: 8,
       bottom: 8,
@@ -109,7 +105,7 @@ class CombatPlayerSlider extends PureComponent {
     }
 
     const players = playersProps.map((props) => (
-      <Paper className={classes.playerContainer} key={props.id}>
+      <Paper key={props.id}>
         <Player id={props.id} onBonusChange={props.onBonusChange} />
 
         {props.id !== playerId && (

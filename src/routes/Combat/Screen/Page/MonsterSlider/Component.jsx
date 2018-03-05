@@ -29,11 +29,6 @@ const styles = {
   '@media (orientation: landscape)': {
     monsters: {
       alignItems: 'center',
-      overflow: 'hidden',
-    },
-
-    monsterContainer: {
-      paddingRight: 56,
     },
 
     remove: {
@@ -88,7 +83,7 @@ class CombatMonsterSlider extends PureComponent {
     const { index } = this.state;
 
     const views = monsters.map((id, monsterIndex) => (
-      <Paper className={classes.monsterContainer} key={id}>
+      <Paper key={id}>
         <Monster
           id={id}
           title={
@@ -152,6 +147,7 @@ class CombatMonsterSlider extends PureComponent {
             onChangeIndex={this.handleChangeIndex}
             slideStyle={{
               height: 215,
+              overflow: 'visible',
               padding: '8px 0 8px 8px',
               position: 'relative',
             }}
@@ -159,6 +155,7 @@ class CombatMonsterSlider extends PureComponent {
               alignItems: 'center',
               display: 'flex',
               overflowY: 'visible',
+              paddingRight: 48,
               width: '100%',
             }}
           >
