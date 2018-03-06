@@ -147,15 +147,13 @@ class CombatMonsterSlider extends PureComponent {
             onChangeIndex={this.handleChangeIndex}
             slideStyle={{
               height: 215,
-              overflow: 'visible',
-              padding: '8px 0 8px 8px',
+              padding: '8px 48px 8px 8px',
               position: 'relative',
             }}
             style={{
               alignItems: 'center',
               display: 'flex',
               overflowY: 'visible',
-              paddingRight: 48,
               width: '100%',
             }}
           >
