@@ -22,7 +22,7 @@ const setTestData = () => {
   });
 };
 
-window.munchkinTest = {
+window.munchkinDev = {
   setLocale: (locale) => {
     const { dispatch } = window.app.store;
 
