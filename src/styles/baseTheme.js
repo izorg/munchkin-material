@@ -20,6 +20,12 @@ export default {
         backgroundColor: brown[500],
       },
     },
+
+    MuiSvgIcon: {
+      root: {
+        fontSize: 'inherit',
+      },
+    },
   },
 
   palette: {
