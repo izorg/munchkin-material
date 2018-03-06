@@ -7,6 +7,7 @@ export default merge(site, {
   plugins: [
     new BundleAnalyzerPlugin({
       analyzerPort: 3001,
+      defaultSizes: 'gzip',
     }),
   ],
 });
