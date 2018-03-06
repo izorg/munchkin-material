@@ -26,12 +26,6 @@
   "engines": {
     "node": ">=8"
   },
-  "jest": {
-    "notify": true,
-    "setupFiles": [
-      "jest-localstorage-mock"
-    ]
-  },
   "devDependencies": {
     "@babel/cli": "7.0.0-beta.40",
     "@babel/core": "7.0.0-beta.40",
@@ -62,6 +56,8 @@
     "connected-react-router": "4.3.0",
     "cross-env": "5.1.3",
     "deepmerge": "2.0.1",
+    "enzyme": "3.3.0",
+    "enzyme-adapter-react-16": "1.1.1",
     "eslint": "4.18.2",
     "eslint-config-airbnb": "16.1.0",
     "eslint-config-prettier": "2.9.0",

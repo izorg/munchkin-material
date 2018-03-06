@@ -19,7 +19,7 @@ const Gender = ({ gender, ...props }) => {
 };
 
 Gender.propTypes = {
-  gender: genderProp.isRequired,
+  gender: genderProp,
 };
 
 Gender.muiName = 'SvgIcon';
