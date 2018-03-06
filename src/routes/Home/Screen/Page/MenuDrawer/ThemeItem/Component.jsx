@@ -12,7 +12,7 @@ class ThemeItem extends PureComponent {
     const { theme } = this.props;
 
     return (
-      <ListItem button component={Link} replace to="/?theme">
+      <ListItem button component={Link} replace to={{ search: '?theme' }}>
         <ListItemIcon>
           <PaletteIcon style={{ color: themes[theme].palette.primary.main }} />
         </ListItemIcon>
