@@ -36,6 +36,10 @@ const styles = (theme) => ({
     ...theme.mixins.gutters({}),
     overflowY: 'auto',
   },
+
+  icon: {
+    fontSize: theme.typography.pxToRem(24),
+  },
 });
 
 class PlayerFormScreenComponent extends PureComponent {
@@ -92,12 +96,12 @@ class PlayerFormScreenComponent extends PureComponent {
                     >
                       <FormControlLabel
                         control={<Radio color="primary" />}
-                        label={<GenderMale />}
+                        label={<GenderMale className={classes.icon} />}
                         value={MALE}
                       />
                       <FormControlLabel
                         control={<Radio color="primary" />}
-                        label={<GenderFemale />}
+                        label={<GenderFemale className={classes.icon} />}
                         value={FEMALE}
                       />
                     </Field>
