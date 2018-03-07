@@ -9,6 +9,7 @@ import OfflinePlugin from 'offline-plugin';
 import WebpackPwaManifest from 'webpack-pwa-manifest';
 
 import common from './common.babel';
+import manifest from './manifest';
 
 const config = merge.smart(common, {
   entry: ['./polyfill.js', './offline.js', './site.js', './index.jsx'],
@@ -53,25 +54,10 @@ const config = merge.smart(common, {
     }),
 
     new WebpackPwaManifest({
-      background_color: '#FFFFFF',
-      display: 'standalone',
+      ...manifest,
       filename: 'manifest-ru.json',
-      inject: false,
       name: 'Все манчкины',
       short_name: 'Все манчкины',
-      start_url: '/',
-      icons: [
-        {
-          destination: path.join('images'),
-          size: 192,
-          src: path.resolve('src/images/favicon.png'),
-        },
-        {
-          destination: path.join('images'),
-          size: 512,
-          src: path.resolve('src/images/icon-512x512.png'),
-        },
-      ],
     }),
 
     new webpack.HashedModuleIdsPlugin(),

@@ -4,6 +4,8 @@ import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import WebpackPwaManifest from 'webpack-pwa-manifest';
 
+import manifest from './manifest';
+
 export default {
   context: path.resolve(__dirname, '../src'),
 
@@ -74,27 +76,7 @@ export default {
       title: 'All munchkins',
     }),
 
-    new WebpackPwaManifest({
-      background_color: '#FFFFFF',
-      display: 'standalone',
-      filename: 'manifest.json',
-      inject: false,
-      name: 'All munchkins',
-      short_name: 'All munchkins',
-      start_url: '/',
-      icons: [
-        {
-          destination: path.join('images'),
-          size: 192,
-          src: path.resolve('src/images/favicon.png'),
-        },
-        {
-          destination: path.join('images'),
-          size: 512,
-          src: path.resolve('src/images/icon-512x512.png'),
-        },
-      ],
-    }),
+    new WebpackPwaManifest(manifest),
   ],
 
   devServer: {
