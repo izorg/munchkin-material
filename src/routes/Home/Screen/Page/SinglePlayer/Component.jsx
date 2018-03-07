@@ -7,7 +7,7 @@ import { withStyles } from 'material-ui/styles';
 import { playerShape } from '../../../../../utils/propTypes';
 
 import Counter from '../../../../../components/Counter';
-import Gender from '../../../../../components/Gender';
+import Sex from '../../../../../components/Sex';
 
 const styles = (theme) => ({
   content: {
@@ -46,7 +46,7 @@ const styles = (theme) => ({
     marginTop: 32,
   },
 
-  gender: {
+  sex: {
     fontSize: 36,
     height: 64,
     padding: 12,
@@ -77,9 +77,9 @@ class SinglePlayerComponent extends PureComponent {
       onBonusIncrement,
       onGearDecrement,
       onGearIncrement,
-      onGenderToggle,
       onLevelDecrement,
       onLevelIncrement,
+      onSexToggle,
       player,
     } = this.props;
 
@@ -133,11 +133,11 @@ class SinglePlayerComponent extends PureComponent {
           </div>
 
           <IconButton
-            className={classes.gender}
+            className={classes.sex}
             color="inherit"
-            onClick={onGenderToggle}
+            onClick={onSexToggle}
           >
-            <Gender gender={player.gender} />
+            <Sex sex={player.sex} />
           </IconButton>
         </div>
       </div>
@@ -151,9 +151,9 @@ SinglePlayerComponent.propTypes = {
   onBonusIncrement: PropTypes.func.isRequired,
   onGearDecrement: PropTypes.func.isRequired,
   onGearIncrement: PropTypes.func.isRequired,
-  onGenderToggle: PropTypes.func.isRequired,
   onLevelDecrement: PropTypes.func.isRequired,
   onLevelIncrement: PropTypes.func.isRequired,
+  onSexToggle: PropTypes.func.isRequired,
   player: playerShape.isRequired,
 };
 

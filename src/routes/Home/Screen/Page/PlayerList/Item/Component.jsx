@@ -16,7 +16,7 @@ import ActionReorder from 'material-ui-icons/Reorder';
 import cns from 'classnames';
 import { noop } from 'lodash';
 
-import getGenderIconClass from '../../../../../../utils/getGenderIconClass';
+import getSexIconClass from '../../../../../../utils/getSexIconClass';
 import { playerShape } from '../../../../../../utils/propTypes';
 
 import Avatar from '../../../../../../components/player/Avatar';
@@ -129,7 +129,7 @@ class HomeScreenPagePlayerListItemComponent extends PureComponent {
 
   render() {
     const { classes, mode, player, selected } = this.props;
-    const GenderIcon = getGenderIconClass(player.gender);
+    const SexIcon = getSexIconClass(player.sex);
 
     return (
       <ListItem
@@ -189,7 +189,7 @@ class HomeScreenPagePlayerListItemComponent extends PureComponent {
           </ListItemSecondaryAction>
         ) : (
           <ListItemIcon className={classes.rightIcon}>
-            <GenderIcon />
+            <SexIcon />
           </ListItemIcon>
         )}
       </ListItem>

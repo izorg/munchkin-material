@@ -1,0 +1,28 @@
+{
+  "players": {
+    "27a1f6ff-5e0b-44d2-95c0-5b3542b91fd0": {
+      "id": "27a1f6ff-5e0b-44d2-95c0-5b3542b91fd0",
+      "gear": 13,
+      "gender": "male",
+      "level": 3,
+      "color": "#607D8B",
+      "name": "Barack Obama"
+    },
+    "d74da9fc-9895-4592-b989-40f47b2e3264": {
+      "id": "d74da9fc-9895-4592-b989-40f47b2e3264",
+      "gear": 20,
+      "gender": "male",
+      "level": 5,
+      "color": "#FFC107",
+      "name": "Donald Trump"
+    },
+    "0ff367ae-feb6-498c-be07-6e90ba62c24c": {
+      "id": "0ff367ae-feb6-498c-be07-6e90ba62c24c",
+      "gear": 10,
+      "gender": "female",
+      "level": 7,
+      "color": "#03A9F4",
+      "name": "Hillary Clinton"
+    }
+  }
+}

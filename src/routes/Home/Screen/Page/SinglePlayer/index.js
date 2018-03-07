@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { setCombatPlayerBonus, updatePlayer } from 'munchkin-core/lib/actions';
 
 import Component from './Component';
-import { togglePlayerGender } from '../../../../../actions';
+import { togglePlayerSex } from '../../../../../actions';
 
 const mapStateToProps = (state) => ({
   bonus: state.combat.playerBonus,
@@ -32,10 +32,10 @@ const mapDispatchToProps = {
       }),
     );
   },
-  onGenderToggle: () => (dispatch, getState) => {
+  onSexToggle: () => (dispatch, getState) => {
     const { combat: { playerId } } = getState();
 
-    dispatch(togglePlayerGender(playerId));
+    dispatch(togglePlayerSex(playerId));
   },
   onGearIncrement: () => (dispatch, getState) => {
     const { combat: { playerId }, players } = getState();

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { createSelector, createStructuredSelector } from 'reselect';
 import PropTypes from 'prop-types';
 import Slide from 'material-ui/transitions/Slide';
-import { MALE } from 'munchkin-core/lib/utils/gender';
+import { MALE } from 'munchkin-core/lib/utils/sex';
 
 import { submitPlayer } from '../../../actions';
 import getRandomMaterialColor from '../../../utils/getRandomMaterialColor';
@@ -16,7 +16,7 @@ const initialValues = createSelector(
   (state, ownProps) => ownProps.playerId,
   (players, playerId) => {
     let values = {
-      gender: MALE,
+      sex: MALE,
     };
 
     if (playerId) {

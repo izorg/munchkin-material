@@ -1,5 +1,5 @@
 import createPlayer from 'munchkin-core/lib/utils/createPlayer';
-import { FEMALE } from 'munchkin-core/lib/utils/gender';
+import { FEMALE } from 'munchkin-core/lib/utils/sex';
 
 export default {
   en: [
@@ -23,7 +23,7 @@ export default {
       player: createPlayer({
         color: '#03A9F4',
         gear: 10,
-        gender: FEMALE,
+        sex: FEMALE,
         level: 7,
         name: 'Hillary Clinton',
       }),
@@ -51,7 +51,7 @@ export default {
       player: createPlayer({
         color: '#E91E63',
         gear: 7,
-        gender: FEMALE,
+        sex: FEMALE,
         level: 8,
         name: 'Василиса Премудрая',
       }),

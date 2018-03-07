@@ -7,7 +7,7 @@ import cns from 'classnames';
 import { noop } from 'lodash';
 
 import Counter from '../../../../../../components/Counter';
-import Gender from '../../../../../../components/Gender';
+import Sex from '../../../../../../components/Sex';
 import { playerShape } from '../../../../../../utils/propTypes';
 
 const styles = (theme) => ({
@@ -52,7 +52,7 @@ const styles = (theme) => ({
     marginTop: 32,
   },
 
-  gender: {
+  sex: {
     fontSize: 36,
     height: 64,
     padding: 12,
@@ -75,10 +75,10 @@ const PlayerStats = ({
   className,
   onGearDecrement,
   onGearIncrement,
-  player,
-  onGenderToggle,
   onLevelDecrement,
   onLevelIncrement,
+  onSexToggle,
+  player,
 }) => (
   <div className={cns(className, classes.stats)}>
     <div className={classes.counters}>
@@ -117,11 +117,11 @@ const PlayerStats = ({
         </div>
 
         <IconButton
-          className={classes.gender}
+          className={classes.sex}
           color="inherit"
-          onClick={() => onGenderToggle(player.id)}
+          onClick={() => onSexToggle(player.id)}
         >
-          <Gender gender={player.gender} />
+          <Sex sex={player.sex} />
         </IconButton>
       </div>
     </div>
@@ -132,9 +132,9 @@ PlayerStats.propTypes = {
   className: PropTypes.string,
   onGearDecrement: PropTypes.func,
   onGearIncrement: PropTypes.func,
-  onGenderToggle: PropTypes.func,
   onLevelDecrement: PropTypes.func,
   onLevelIncrement: PropTypes.func,
+  onSexToggle: PropTypes.func,
   player: playerShape.isRequired,
 };
 
@@ -142,9 +142,9 @@ PlayerStats.defaultProps = {
   className: '',
   onGearDecrement: noop,
   onGearIncrement: noop,
-  onGenderToggle: noop,
   onLevelDecrement: noop,
   onLevelIncrement: noop,
+  onSexToggle: noop,
 };
 
 export default withStyles(styles)(PlayerStats);

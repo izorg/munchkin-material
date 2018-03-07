@@ -6,8 +6,8 @@ import Typography from 'material-ui/Typography';
 import { withStyles } from 'material-ui/styles';
 import { noop } from 'lodash';
 
-import Gender from '../../../../../../components/Gender';
-import { genderProp } from '../../../../../../utils/propTypes';
+import Sex from '../../../../../../components/Sex';
+import { sexProp } from '../../../../../../utils/propTypes';
 
 import Counter from '../../Counter';
 
@@ -31,7 +31,7 @@ const styles = {
     flex: 1,
   },
 
-  gender: {
+  sex: {
     height: 36,
     position: 'absolute',
     right: 0,
@@ -85,11 +85,11 @@ class CombatPlayer extends PureComponent {
       bonus,
       classes,
       gear,
-      gender,
       id,
       level,
       name,
-      onGenderToggle,
+      onSexToggle,
+      sex,
     } = this.props;
 
     return (
@@ -104,11 +104,11 @@ class CombatPlayer extends PureComponent {
         </Typography>
 
         <IconButton
-          className={classes.gender}
+          className={classes.sex}
           color="inherit"
-          onClick={() => onGenderToggle(id)}
+          onClick={() => onSexToggle(id)}
         >
-          <Gender gender={gender} />
+          <Sex sex={sex} />
         </IconButton>
 
         <div className={classes.stats}>
@@ -154,25 +154,25 @@ class CombatPlayer extends PureComponent {
 CombatPlayer.propTypes = {
   bonus: PropTypes.number.isRequired,
   gear: PropTypes.number.isRequired,
-  gender: genderProp.isRequired,
   id: PropTypes.string.isRequired,
   level: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   onBonusChange: PropTypes.func,
   onGearDecrement: PropTypes.func,
   onGearIncrement: PropTypes.func,
-  onGenderToggle: PropTypes.func,
   onLevelDecrement: PropTypes.func,
   onLevelIncrement: PropTypes.func,
+  onSexToggle: PropTypes.func,
+  sex: sexProp.isRequired,
 };
 
 CombatPlayer.defaultProps = {
   onBonusChange: noop,
   onGearDecrement: noop,
   onGearIncrement: noop,
-  onGenderToggle: noop,
   onLevelDecrement: noop,
   onLevelIncrement: noop,
+  onSexToggle: noop,
 };
 
 export default withStyles(styles)(CombatPlayer);

@@ -14,12 +14,12 @@ import Radio, { RadioGroup } from 'material-ui/Radio';
 import TextField from 'material-ui/TextField';
 import { withStyles } from 'material-ui/styles';
 import { noop } from 'lodash';
-import { FEMALE, MALE } from 'munchkin-core/lib/utils/gender';
+import { FEMALE, MALE } from 'munchkin-core/lib/utils/sex';
 
-import GenderFemale from '../../../components/icons/gender/Female';
-import GenderMale from '../../../components/icons/gender/Male';
+import SexFemale from '../../../components/icons/sex/Female';
+import SexMale from '../../../components/icons/sex/Male';
 import Layout, { LayoutContent } from '../../../components/Layout';
-import { genderProp } from '../../../utils/propTypes';
+import { sexProp } from '../../../utils/propTypes';
 
 import AppBar from './AppBar';
 import ColorPicker from './ColorPicker';
@@ -86,22 +86,22 @@ class PlayerFormScreenComponent extends PureComponent {
                   <FormControl component="fieldset" margin="normal">
                     <FormLabel component="legend">
                       <FormattedMessage
-                        id="player.form.gender"
-                        defaultMessage="Gender"
+                        id="player.form.sex"
+                        defaultMessage="Sex"
                       />
                     </FormLabel>
                     <Field
                       component={PlayerFormScreenComponent.renderRadioGroup}
-                      name="gender"
+                      name="sex"
                     >
                       <FormControlLabel
                         control={<Radio color="primary" />}
-                        label={<GenderMale className={classes.icon} />}
+                        label={<SexMale className={classes.icon} />}
                         value={MALE}
                       />
                       <FormControlLabel
                         control={<Radio color="primary" />}
-                        label={<GenderFemale className={classes.icon} />}
+                        label={<SexFemale className={classes.icon} />}
                         value={FEMALE}
                       />
                     </Field>
@@ -133,9 +133,9 @@ class PlayerFormScreenComponent extends PureComponent {
 
 PlayerFormScreenComponent.propTypes = {
   initialValues: PropTypes.shape({
-    name: PropTypes.string,
-    gender: genderProp.isRequired,
     color: PropTypes.string.isRequired,
+    name: PropTypes.string,
+    sex: sexProp.isRequired,
   }).isRequired,
   intl: intlShape.isRequired,
   newPlayer: PropTypes.bool,

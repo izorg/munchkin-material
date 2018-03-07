@@ -6,7 +6,7 @@ import {
   incrementPlayerLevel,
 } from 'munchkin-core/lib/actions';
 
-import { togglePlayerGender } from '../../../../../../actions';
+import { togglePlayerSex } from '../../../../../../actions';
 
 import Component from './Component';
 
@@ -17,9 +17,9 @@ const mapStateToProps = (state, ownProps) => ({
 const mapDispatchToProps = {
   onGearDecrement: decrementPlayerGear,
   onGearIncrement: incrementPlayerGear,
-  onGenderToggle: togglePlayerGender,
   onLevelDecrement: decrementPlayerLevel,
   onLevelIncrement: incrementPlayerLevel,
+  onSexToggle: togglePlayerSex,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Component);

@@ -6,10 +6,10 @@ import {
   setCombatHelper,
   setCombatHelperBonus,
   startCombat,
-  setPlayerGender,
+  setPlayerSex,
   updatePlayer,
 } from 'munchkin-core/lib/actions';
-import { FEMALE, MALE } from 'munchkin-core/lib/utils/gender';
+import { FEMALE, MALE } from 'munchkin-core/lib/utils/sex';
 import createMonster from 'munchkin-core/lib/utils/createMonster';
 import createPlayer from 'munchkin-core/lib/utils/createPlayer';
 
@@ -125,14 +125,14 @@ export const togglePlayer = (id) => ({
   id,
 });
 
-export const togglePlayerGender = (id) => (dispatch, getState) => {
+export const togglePlayerSex = (id) => (dispatch, getState) => {
   const player = getState().players[id];
-  const { gender } = player;
+  const { sex } = player;
 
-  if (gender === MALE) {
-    dispatch(setPlayerGender(id, FEMALE));
-  } else if (gender === FEMALE) {
-    dispatch(setPlayerGender(id, MALE));
+  if (sex === MALE) {
+    dispatch(setPlayerSex(id, FEMALE));
+  } else if (sex === FEMALE) {
+    dispatch(setPlayerSex(id, MALE));
   }
 };
 
