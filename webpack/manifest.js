@@ -18,6 +18,7 @@ export default {
   ],
   inject: false,
   name: 'All munchkins',
+  orientation: 'any',
   short_name: 'All munchkins',
   start_url: '/',
   theme_color: '#000000',
