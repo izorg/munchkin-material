@@ -1,5 +1,4 @@
 {
-  "colorPicker.dialog.title": "Вибрати колір",
   "dice": "Кубик",
   "player.list.empty": "Список гравців порожній",
   "combat.add.monster": "Монстр",
@@ -24,7 +23,7 @@
   "player.list.item.secondaryTextStrength": "Сила {strength}",
   "singlePlayer.level": "Рівень",
   "singlePlayer.gear": "Бонус",
-  "singlePlayer.modifier": "Мод-р",
+  "singlePlayer.modifier": "Модиф-р",
   "singlePlayer.strength": "Сила",
   "themeDialog.title": "Виберіть тему",
   "themeDialog.cancel": "Скасувати",
@@ -35,11 +34,12 @@
   "player.stats.strength": "Сила",
   "player.form.titleEdit": "Редагувати манчкіна",
   "player.form.title": "Новий манчкін",
+  "colorPicker.dialog.title": "Вибрати колір",
   "player.form.namePlaceholder": "Ім'я",
   "player.form.gender": "Стать",
   "player.form.color": "Колір",
   "theme.name.apocalypse": "Апокаліпсис",
   "theme.name.booty": "Піратський",
-  "theme.name.chtulhu": "Ктулху",
+  "theme.name.cthulhu": "Ктулху",
   "theme.name.munchkin": "Манчкін"
 }

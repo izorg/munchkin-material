@@ -1,5 +1,4 @@
 {
-  "colorPicker.dialog.title": "Choose color",
   "dice": "Dice",
   "player.list.empty": "No players in the list",
   "combat.add.monster": "Monster",
@@ -35,11 +34,12 @@
   "player.stats.strength": "Strength",
   "player.form.titleEdit": "Edit munchkin",
   "player.form.title": "New munchkin",
+  "colorPicker.dialog.title": "Choose color",
   "player.form.namePlaceholder": "Name",
   "player.form.gender": "Gender",
   "player.form.color": "Color",
   "theme.name.apocalypse": "Apocalypse",
   "theme.name.booty": "Booty",
-  "theme.name.chtulhu": "Chtulhu",
+  "theme.name.cthulhu": "Cthulhu",
   "theme.name.munchkin": "Munchkin"
 }

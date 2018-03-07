@@ -20,9 +20,9 @@ import {
   name as bootyName,
 } from '../../../../../styles/themes/booty';
 import {
-  key as chtulhuKey,
-  name as chtulhuName,
-} from '../../../../../styles/themes/chtulhu';
+  key as cthulhuKey,
+  name as cthulhuName,
+} from '../../../../../styles/themes/cthulhu';
 import {
   key as munchkinKey,
   name as munchkinName,
@@ -42,8 +42,8 @@ const options = [
     value: bootyKey,
   },
   {
-    label: chtulhuName,
-    value: chtulhuKey,
+    label: cthulhuName,
+    value: cthulhuKey,
   },
 ];
 
