@@ -63,12 +63,16 @@ const config = merge.smart(common, {
     new webpack.HashedModuleIdsPlugin(),
 
     new OfflinePlugin({
+      appShell: '/',
       caches: {
         main: ['*.html', 'js/main.*.js'],
         additional: ['js/*.js', 'fonts/**'],
         optional: [':rest:'],
       },
       excludes: ['CNAME'],
+      externals: [
+        'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700',
+      ],
       safeToUseOptionalCaches: true,
       ServiceWorker: {
         events: true,
