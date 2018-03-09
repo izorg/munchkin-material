@@ -1,18 +1,20 @@
-import React, { PureComponent } from 'react';
+import React, { Fragment, PureComponent } from 'react';
 import { hot } from 'react-hot-loader';
 import { Provider } from 'react-redux';
 import { storeShape } from 'react-redux/lib/utils/PropTypes';
 import compose from 'recompose/compose';
 import { ConnectedRouter } from 'connected-react-router';
 import PropTypes from 'prop-types';
-import Reboot from 'material-ui/Reboot';
+import CssBaseline from 'material-ui/CssBaseline';
 import { withStyles } from 'material-ui/styles';
 
-import LocaleProvider from '../LocaleProvider';
-import ThemeProvider from '../ThemeProvider';
 import munchkinWoff from '../../fonts/munchkin.woff';
 import munchkinWoff2 from '../../fonts/munchkin.woff2';
+
+import Head from '../Head';
+import LocaleProvider from '../LocaleProvider';
 import Root from '../Root';
+import ThemeProvider from '../ThemeProvider';
 
 const styles = {
   '@global': {
@@ -60,15 +62,17 @@ class App extends PureComponent {
 
     return (
       <Provider store={store}>
-        <LocaleProvider>
-          <ThemeProvider>
-            <Reboot>
-              <ConnectedRouter history={history}>
+        <ConnectedRouter history={history}>
+          <LocaleProvider>
+            <ThemeProvider>
+              <Fragment>
+                <CssBaseline />
+                <Head />
                 <Root />
-              </ConnectedRouter>
-            </Reboot>
-          </ThemeProvider>
-        </LocaleProvider>
+              </Fragment>
+            </ThemeProvider>
+          </LocaleProvider>
+        </ConnectedRouter>
       </Provider>
     );
   }
