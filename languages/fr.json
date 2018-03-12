@@ -1,5 +1,5 @@
 {
-  "dice": "Dés",
+  "dice": "Dé",
   "player.list.empty": "Aucun joueur dans la liste",
   "combat.add.monster": "Monstre",
   "combat.add.helper": "Assistant",
@@ -16,7 +16,7 @@
   "player.list.edit": "Modifier",
   "player.list.title": "Munchkins",
   "home.single.title": "Munchkin",
-  "menu.keepAwake": "Reste éveillé",
+  "menu.keepAwake": "Laisser allumé",
   "menu.singleMode": "Mode solo",
   "menu.theme": "Thème",
   "player.list.item.secondaryTextLevel": "Niveau {level}",
@@ -25,7 +25,7 @@
   "singlePlayer.gear": "Bonus",
   "singlePlayer.modifier": "Mod",
   "singlePlayer.strength": "Force",
-  "themeDialog.title": "Sélectionne un thème",
+  "themeDialog.title": "Sélectionner un thème",
   "themeDialog.cancel": "Annuler",
   "themeDialog.submit": "OK",
   "mainButton.label": "Ajouter",
@@ -39,7 +39,7 @@
   "player.form.sex": "Sexe",
   "player.form.color": "Couleur",
   "theme.name.apocalypse": "Apocalypse",
-  "theme.name.booty": "Booty",
+  "theme.name.booty": "Butin",
   "theme.name.cthulhu": "Cthulhu",
   "theme.name.munchkin": "Munchkin"
 }
