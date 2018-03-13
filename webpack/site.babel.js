@@ -45,20 +45,20 @@ const config = merge.smart(common, {
       domain: 'web.allmunchkins.com',
     }),
 
-    new HtmlWebpackPlugin({
-      favicon: './images/favicon.png',
-      filename: 'ru.html',
-      manifest: 'manifest-ru.json',
-      template: './index.ejs',
-      title: 'Манчкин - счётчик уровней',
-    }),
-
     new WebpackPwaManifest({
       ...manifest,
       filename: 'manifest-ru.json',
       name: 'Манчкин - счётчик уровней',
       short_name: 'Манчкин',
       start_url: '/ru.html',
+    }),
+
+    new HtmlWebpackPlugin({
+      favicon: './images/favicon.png',
+      filename: 'ru.html',
+      manifest: 'manifest-ru.json',
+      template: './index.ejs',
+      title: 'Манчкин - счётчик уровней',
     }),
 
     new webpack.HashedModuleIdsPlugin(),

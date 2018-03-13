@@ -69,19 +69,19 @@ export default {
   plugins: [
     new webpack.EnvironmentPlugin(['NODE_ENV']),
 
-    new HtmlWebpackPlugin({
-      favicon: './images/favicon.png',
-      manifest: 'manifest.json',
-      template: './index.ejs',
-      title: 'Munchkin Level Counter',
-    }),
-
     new WebpackPwaManifest({
       ...manifest,
       filename: 'manifest.json',
       name: 'Munchkin Level Counter',
       short_name: 'Munchkin',
       start_url: '/',
+    }),
+
+    new HtmlWebpackPlugin({
+      favicon: './images/favicon.png',
+      manifest: 'manifest.json',
+      template: './index.ejs',
+      title: 'Munchkin Level Counter',
     }),
   ],
 
