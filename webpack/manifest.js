@@ -3,7 +3,6 @@ import path from 'path';
 export default {
   background_color: '#FFFFFF',
   display: 'standalone',
-  filename: 'manifest.json',
   icons: [
     {
       destination: path.join('images'),
@@ -12,9 +11,6 @@ export default {
     },
   ],
   inject: false,
-  name: 'Munchkin Level Counter',
   orientation: 'any',
-  short_name: 'Munchkin',
-  start_url: '/',
   theme_color: '#000000',
 };

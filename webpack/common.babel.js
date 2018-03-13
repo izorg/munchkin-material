@@ -76,7 +76,13 @@ export default {
       title: 'Munchkin Level Counter',
     }),
 
-    new WebpackPwaManifest(manifest),
+    new WebpackPwaManifest({
+      ...manifest,
+      filename: 'manifest.json',
+      name: 'Munchkin Level Counter',
+      short_name: 'Munchkin',
+      start_url: '/',
+    }),
   ],
 
   devServer: {

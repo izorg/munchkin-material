@@ -58,6 +58,7 @@ const config = merge.smart(common, {
       filename: 'manifest-ru.json',
       name: 'Манчкин - счётчик уровней',
       short_name: 'Манчкин',
+      start_url: '/ru.html',
     }),
 
     new webpack.HashedModuleIdsPlugin(),
