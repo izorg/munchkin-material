@@ -50,14 +50,14 @@ const config = merge.smart(common, {
       filename: 'ru.html',
       manifest: 'manifest-ru.json',
       template: './index.ejs',
-      title: 'Все манчкины',
+      title: 'Манчкин - счётчик уровней',
     }),
 
     new WebpackPwaManifest({
       ...manifest,
       filename: 'manifest-ru.json',
-      name: 'Все манчкины',
-      short_name: 'Все манчкины',
+      name: 'Манчкин - счётчик уровней',
+      short_name: 'Манчкин',
     }),
 
     new webpack.HashedModuleIdsPlugin(),

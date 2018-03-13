@@ -7,19 +7,14 @@ export default {
   icons: [
     {
       destination: path.join('images'),
-      size: 192,
-      src: path.resolve('src/images/favicon.png'),
-    },
-    {
-      destination: path.join('images'),
-      size: 512,
+      sizes: [192, 256, 384, 512],
       src: path.resolve('src/images/icon-512x512.png'),
     },
   ],
   inject: false,
-  name: 'All munchkins',
+  name: 'Munchkin Level Counter',
   orientation: 'any',
-  short_name: 'All munchkins',
+  short_name: 'Munchkin',
   start_url: '/',
   theme_color: '#000000',
 };

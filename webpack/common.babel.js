@@ -73,7 +73,7 @@ export default {
       favicon: './images/favicon.png',
       manifest: 'manifest.json',
       template: './index.ejs',
-      title: 'All munchkins',
+      title: 'Munchkin Level Counter',
     }),
 
     new WebpackPwaManifest(manifest),
