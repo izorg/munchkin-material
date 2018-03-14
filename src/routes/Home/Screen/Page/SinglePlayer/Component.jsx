@@ -88,6 +88,7 @@ class SinglePlayerComponent extends PureComponent {
         <div className={classes.counters}>
           <Counter
             className={classes.counter}
+            data-screenshots="level-counter"
             onDecrement={onLevelDecrement}
             onIncrement={onLevelIncrement}
             title={
@@ -100,6 +101,7 @@ class SinglePlayerComponent extends PureComponent {
           />
           <Counter
             className={classes.counter}
+            data-screenshots="gear-counter"
             onDecrement={onGearDecrement}
             onIncrement={onGearIncrement}
             title={
@@ -109,6 +111,7 @@ class SinglePlayerComponent extends PureComponent {
           />
           <Counter
             className={classes.counter}
+            data-screenshots="modifier-counter"
             onDecrement={onBonusDecrement}
             onIncrement={onBonusIncrement}
             title={

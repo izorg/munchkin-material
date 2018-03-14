@@ -21,13 +21,18 @@ const styles = {
 
 const Component = ({ classes, onBack, title }) => (
   <AppBar>
-    <IconButton className={classes.leftButton} color="inherit" onClick={onBack}>
+    <IconButton
+      className={classes.leftButton}
+      color="inherit"
+      data-screenshots="player-back-button"
+      onClick={onBack}
+    >
       <NavigationArrowBack />
     </IconButton>
 
     <Title className={classes.title}>{title}</Title>
 
-    <DiceButton color="inherit" />
+    <DiceButton color="inherit" data-screenshots="player-dice-button" />
   </AppBar>
 );
 

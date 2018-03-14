@@ -26,7 +26,11 @@ class SingleModeItemComponent extends PureComponent {
     return (
       <Fragment>
         <Divider />
-        <ListItem button onClick={this.handleClick}>
+        <ListItem
+          button
+          data-screenshots="single-mode-item"
+          onClick={this.handleClick}
+        >
           <ListItemIcon>
             <PersonIcon />
           </ListItemIcon>

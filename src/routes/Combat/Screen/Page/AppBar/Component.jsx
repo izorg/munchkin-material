@@ -23,7 +23,12 @@ const styles = {
 
 const CombatScreenPageAppBarComponent = ({ classes, onBack, onFinish }) => (
   <AppBar>
-    <IconButton className={classes.leftButton} color="inherit" onClick={onBack}>
+    <IconButton
+      className={classes.leftButton}
+      color="inherit"
+      data-screenshots="combat-back-button"
+      onClick={onBack}
+    >
       <NavigationArrowBack />
     </IconButton>
 

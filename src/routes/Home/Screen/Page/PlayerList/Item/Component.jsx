@@ -141,6 +141,7 @@ class HomeScreenPagePlayerListItemComponent extends PureComponent {
           [classes.secondaryActionPadding]: mode === modes.EDIT,
         })}
         component={this.container}
+        data-screenshots="player-list-item"
       >
         <Avatar
           color={player.color}

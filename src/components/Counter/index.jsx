@@ -36,13 +36,15 @@ const Counter = ({
   onIncrement,
   title,
   value,
+  ...props
 }) => (
-  <div className={cns(className, classes.counter)}>
+  <div className={cns(className, classes.counter)} {...props}>
     <div className={classes.title}>{title}</div>
 
     <IconButton
       className={classes.button}
       color="inherit"
+      data-screenshots="increment-button"
       onClick={onIncrement}
     >
       <NavigationArrowDropUp />
@@ -53,6 +55,7 @@ const Counter = ({
     <IconButton
       className={classes.button}
       color="inherit"
+      data-screenshots="decrement-button"
       onClick={onDecrement}
     >
       <NavigationArrowDropDown />

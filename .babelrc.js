@@ -29,6 +29,7 @@ module.exports = {
             polyfill: false,
           },
         ],
+        ['react-remove-properties', { properties: ['data-screenshots'] }],
         'transform-react-remove-prop-types',
       ],
     },
