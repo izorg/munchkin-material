@@ -13,10 +13,11 @@ import ru from '../languages/ru.json';
 import uk from '../languages/uk.json';
 
 export const EN = 'en';
+export const FR = 'fr';
 export const RU = 'ru';
 export const UK = 'uk';
 
-const availableLocales = [EN, RU, UK];
+const availableLocales = [EN, FR, RU, UK];
 
 const defaultLocale = EN;
 
