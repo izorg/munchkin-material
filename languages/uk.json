@@ -1,5 +1,5 @@
 {
-  "dice": "Кубик",
+  "dice": "Кубiк",
   "player.list.empty": "Список гравців порожній",
   "combat.add.monster": "Монстр",
   "combat.add.helper": "Помічник",
@@ -16,7 +16,7 @@
   "player.list.edit": "Змінити",
   "player.list.title": "Манчкіни",
   "home.single.title": "Манчкін",
-  "menu.keepAwake": "Чи не вимикати",
+  "menu.keepAwake": "Не вимикати",
   "menu.singleMode": "Один гравець",
   "menu.theme": "Тема",
   "player.list.item.secondaryTextLevel": "Рівень {level}",
