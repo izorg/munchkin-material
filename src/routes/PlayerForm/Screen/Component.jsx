@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import { Field, Form } from 'react-final-form';
 import compose from 'recompose/compose';
 import {
@@ -42,7 +42,7 @@ const styles = (theme) => ({
   },
 });
 
-class PlayerFormScreenComponent extends PureComponent {
+class PlayerFormScreenComponent extends Component {
   static renderColorPicker({ input, ...props }) {
     return <ColorPicker {...input} {...props} />;
   }
@@ -53,6 +53,10 @@ class PlayerFormScreenComponent extends PureComponent {
 
   static renderTextField({ input, ...props }) {
     return <TextField {...input} {...props} />;
+  }
+
+  shouldComponentUpdate() {
+    return false;
   }
 
   render() {
