@@ -15,6 +15,7 @@ const SortableListItem = SortableElement(Item);
 const styles = (theme) => ({
   list: {
     overflowY: 'auto',
+    paddingBottom: 56,
     touchAction: 'pan-y',
   },
 
