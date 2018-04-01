@@ -1,7 +1,5 @@
 import React, { Fragment, PureComponent } from 'react';
-import Hammer from 'react-hammerjs';
 import PropTypes from 'prop-types';
-import { noop } from 'lodash';
 
 import Layout from '../../../../components/Layout';
 import Nobody from '../../../../components/Nobody';
@@ -14,7 +12,7 @@ import ThemeDialog from './ThemeDialog';
 
 class HomeScreenPageComponent extends PureComponent {
   render() {
-    const { empty, onMenuOpen, singleMode } = this.props;
+    const { empty, menu, singleMode } = this.props;
 
     let content;
 
@@ -28,17 +26,11 @@ class HomeScreenPageComponent extends PureComponent {
 
     return (
       <Fragment>
-        <Layout
-          component={(props) => (
-            <Hammer onSwipeRight={onMenuOpen}>
-              <div {...props} />
-            </Hammer>
-          )}
-        >
+        <Layout>
           <AppBar />
           {content}
         </Layout>
-        <MenuDrawer />
+        {menu && <MenuDrawer />}
         <ThemeDialog />
       </Fragment>
     );
@@ -47,13 +39,13 @@ class HomeScreenPageComponent extends PureComponent {
 
 HomeScreenPageComponent.propTypes = {
   empty: PropTypes.bool,
-  onMenuOpen: PropTypes.func,
+  menu: PropTypes.bool,
   singleMode: PropTypes.bool,
 };
 
 HomeScreenPageComponent.defaultProps = {
   empty: false,
-  onMenuOpen: noop,
+  menu: false,
   singleMode: false,
 };
 
