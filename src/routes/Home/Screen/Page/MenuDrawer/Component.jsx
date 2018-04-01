@@ -28,7 +28,7 @@ const styles = (theme) => ({
   },
 });
 
-const swipeAreaWidth = 20;
+const swipeAreaWidth = 32;
 
 class Component extends PureComponent {
   constructor(props) {
@@ -39,8 +39,6 @@ class Component extends PureComponent {
     this.state = {
       maybeSwiping: false,
     };
-
-    // this.handleTouchStart = this.handleTouchStart.bind(this);
 
     this.handlePan = this.handlePan.bind(this);
     this.handlePanStart = this.handlePanStart.bind(this);
