@@ -18,6 +18,10 @@ const styles = (theme) => ({
       paddingLeft: 12,
       paddingRight: 12,
     },
+
+    '.android &': {
+      paddingTop: 24,
+    },
   },
 });
 
