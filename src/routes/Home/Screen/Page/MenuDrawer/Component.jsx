@@ -20,10 +20,6 @@ const styles = (theme) => ({
 
   paper: {
     touchAction: 'pan-y',
-
-    '.android &': {
-      paddingTop: 24,
-    },
   },
 
   menu: {
