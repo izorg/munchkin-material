@@ -81,7 +81,7 @@
     "lodash": "4.17.5",
     "material-ui": "1.0.0-beta.39",
     "material-ui-icons": "1.0.0-beta.36",
-    "munchkin-core": "6.0.3",
+    "munchkin-core": "7.0.0",
     "offline-plugin": "4.9.0",
     "prettier": "1.11.1",
     "prop-types": "15.6.1",

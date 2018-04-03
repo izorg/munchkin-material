@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
-import { setCombatPlayerBonus, updatePlayer } from 'munchkin-core/lib/actions';
+import { setCombatPlayerBonus } from 'munchkin-core/lib/ducks/combat';
+import { updatePlayer } from 'munchkin-core/lib/ducks/players';
 
 import Component from './Component';
 import { togglePlayerSex } from '../../../../../actions';

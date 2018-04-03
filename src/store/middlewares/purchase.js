@@ -1,4 +1,4 @@
-import { START_COMBAT } from 'munchkin-core/lib/utils/actionTypes';
+import { START_COMBAT } from 'munchkin-core/lib/ducks/combat';
 
 import { setFullVersion } from '../../actions';
 import { SET_THEME } from '../../utils/actionTypes';

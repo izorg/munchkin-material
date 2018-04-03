@@ -1,14 +1,16 @@
 import { goBack, push } from 'connected-react-router/lib/actions';
 import { noop } from 'lodash';
 import {
-  addMonster,
-  addPlayer,
   setCombatHelper,
   setCombatHelperBonus,
   startCombat,
+} from 'munchkin-core/lib/ducks/combat';
+import { addMonster } from 'munchkin-core/lib/ducks/monsters';
+import {
+  addPlayer,
   setPlayerSex,
   updatePlayer,
-} from 'munchkin-core/lib/actions';
+} from 'munchkin-core/lib/ducks/players';
 import { FEMALE, MALE } from 'munchkin-core/lib/utils/sex';
 import createMonster from 'munchkin-core/lib/utils/createMonster';
 import createPlayer from 'munchkin-core/lib/utils/createPlayer';

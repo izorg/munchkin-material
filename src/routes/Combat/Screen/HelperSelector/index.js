@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import matchPath from 'react-router-dom/matchPath';
 import { goBack } from 'connected-react-router/lib/actions';
 import { createSelector, createStructuredSelector } from 'reselect';
-import { setCombatHelper } from 'munchkin-core/lib/actions';
+import { setCombatHelper } from 'munchkin-core/lib/ducks/combat';
 
 import Component from './Component';
 

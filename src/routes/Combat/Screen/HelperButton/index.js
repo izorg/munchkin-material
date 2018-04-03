@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import matchPath from 'react-router-dom/matchPath';
 import { goBack, push } from 'connected-react-router/lib/actions';
 import { createSelector, createStructuredSelector } from 'reselect';
-import { addMonster } from 'munchkin-core/lib/actions';
+import { addMonster } from 'munchkin-core/lib/ducks/monsters';
 import createMonster from 'munchkin-core/lib/utils/createMonster';
 
 import Component from './Component';

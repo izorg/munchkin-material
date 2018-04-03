@@ -1,10 +1,7 @@
 import { connect } from 'react-redux';
 import { goBack, push } from 'connected-react-router/lib/actions';
-import {
-  removePlayer,
-  setCombatPlayerBonus,
-  updatePlayer,
-} from 'munchkin-core/lib/actions';
+import { setCombatPlayerBonus } from 'munchkin-core/lib/ducks/combat';
+import { removePlayer, updatePlayer } from 'munchkin-core/lib/ducks/players';
 
 import { removePlayerFromList } from '../../../../../actions';
 

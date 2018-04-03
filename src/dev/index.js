@@ -1,4 +1,4 @@
-import { addPlayer, removePlayer } from 'munchkin-core/lib/actions';
+import { addPlayer, removePlayer } from 'munchkin-core/lib/ducks/players';
 
 import { addPlayerToList, removePlayerFromList, setLocale } from '../actions';
 import { getLocale } from '../i18n';

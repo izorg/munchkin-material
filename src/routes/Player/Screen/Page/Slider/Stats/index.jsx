@@ -4,7 +4,7 @@ import {
   decrementPlayerLevel,
   incrementPlayerGear,
   incrementPlayerLevel,
-} from 'munchkin-core/lib/actions';
+} from 'munchkin-core/lib/ducks/players';
 
 import { togglePlayerSex } from '../../../../../../actions';
 

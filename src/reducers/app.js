@@ -1,4 +1,4 @@
-import { START_COMBAT } from 'munchkin-core/lib/utils/actionTypes';
+import { START_COMBAT } from 'munchkin-core/lib/ducks/combat';
 
 import { key as theme } from '../styles/themes/munchkin';
 import * as types from '../utils/actionTypes';
