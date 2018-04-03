@@ -53,7 +53,10 @@ class Component extends PureComponent {
   }
 
   componentDidMount() {
+    const { enable } = this.props;
+
     this.hammer = new Hammer(document.body, {
+      enable,
       recognizers: [
         [Hammer.Swipe, { direction: Hammer.DIRECTION_HORIZONTAL }],
         [Hammer.Pan, { direction: Hammer.DIRECTION_HORIZONTAL }, ['swipe']],
@@ -70,9 +73,19 @@ class Component extends PureComponent {
     this.hammer.on('swiperight', this.handleSwipeRight);
   }
 
+  componentWillReceiveProps(nextProps) {
+    const { enable } = nextProps;
+
+    if (this.hammer && this.props.enable !== enable) {
+      this.hammer.set({ enable });
+    }
+  }
+
   componentWillUnmount() {
     this.hammer.stop();
     this.hammer.destroy();
+
+    this.hammer = null;
   }
 
   setPosition(translate) {
@@ -260,12 +273,14 @@ class Component extends PureComponent {
 }
 
 Component.propTypes = {
+  enable: PropTypes.bool,
   onClose: PropTypes.func,
   onOpen: PropTypes.func,
   open: PropTypes.bool,
 };
 
 Component.defaultProps = {
+  enable: false,
   onClose: noop,
   onOpen: noop,
   open: false,

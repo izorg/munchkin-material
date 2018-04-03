@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import { goBack, push } from 'connected-react-router/lib/actions';
+import { isEmpty, isEqual } from 'lodash';
 import { parse } from 'qs';
 
 import Component from './Component';
@@ -10,6 +11,7 @@ const mapStateToProps = (state) => {
   });
 
   return {
+    enable: isEmpty(search) || isEqual(search, { menu: '' }),
     open: search.menu !== undefined,
   };
 };

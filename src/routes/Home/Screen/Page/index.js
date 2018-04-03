@@ -1,14 +1,14 @@
 import { connect } from 'react-redux';
 import { createSelector, createStructuredSelector } from 'reselect';
 
-import { EDIT, SINGLE } from '../../modes';
+import { MULTI, SINGLE } from '../../modes';
 import { matchSelector, modeSelector } from '../../selectors';
 
 import Component from './Component';
 
 const menu = createSelector(
   matchSelector,
-  (match) => match && match.isExact && match.params.mode !== EDIT,
+  (match) => match && match.isExact && match.params.mode !== MULTI,
 );
 
 const singleMode = createSelector(modeSelector, (mode) => mode === SINGLE);
