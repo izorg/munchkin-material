@@ -92,12 +92,11 @@ class Action extends PureComponent {
           classes={{
             tooltip: classes.tooltip,
           }}
-          className={cns(classes.tooltipContainer, className)}
           open={inProp}
           placement="left"
           title={title}
         >
-          <div>
+          <div className={cns(classes.tooltipContainer, className)}>
             <Button
               className={classes.button}
               color="primary"
