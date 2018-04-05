@@ -182,7 +182,7 @@ class Component extends PureComponent {
     this.setState({ maybeSwiping: true });
 
     if (!this.props.open) {
-      this.setPosition(swipeAreaWidth - this.paper.clientWidth);
+      this.setPosition(20 - this.paper.clientWidth);
     }
   }
 
