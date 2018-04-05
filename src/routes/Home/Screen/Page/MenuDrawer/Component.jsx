@@ -58,14 +58,14 @@ class Component extends PureComponent {
     this.hammer = new Hammer(document.body, {
       enable,
       recognizers: [
-        [Hammer.Swipe, { direction: Hammer.DIRECTION_ALL }],
-        [Hammer.Pan, { direction: Hammer.DIRECTION_ALL }, ['swipe']],
+        [Hammer.Swipe, { direction: Hammer.DIRECTION_HORIZONTAL }],
+        [Hammer.Pan, { direction: Hammer.DIRECTION_HORIZONTAL }, ['swipe']],
         [Hammer.Press],
       ],
     });
 
     this.hammer.on('panstart', this.handlePanStart);
-    this.hammer.on('panleft panright', this.handlePan);
+    this.hammer.on('pan', this.handlePan);
     this.hammer.on('panend', this.handlePanEnd);
     this.hammer.on('press', this.handlePress);
     this.hammer.on('pressup', this.handlePressUp);
@@ -182,7 +182,7 @@ class Component extends PureComponent {
     this.setState({ maybeSwiping: true });
 
     if (!this.props.open) {
-      this.setPosition(20 - this.paper.clientWidth);
+      this.setPosition(swipeAreaWidth - this.paper.clientWidth);
     }
   }
 
