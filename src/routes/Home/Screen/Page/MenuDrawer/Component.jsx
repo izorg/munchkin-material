@@ -40,13 +40,13 @@ class Component extends PureComponent {
       maybeSwiping: false,
     };
 
-    this.handlePan = this.handlePan.bind(this);
-    this.handlePanStart = this.handlePanStart.bind(this);
     this.handlePanEnd = this.handlePanEnd.bind(this);
+    this.handlePanMove = this.handlePanMove.bind(this);
+    this.handlePanStart = this.handlePanStart.bind(this);
     this.handlePress = this.handlePress.bind(this);
     this.handlePressUp = this.handlePressUp.bind(this);
-    this.handleSwipeRight = this.handleSwipeRight.bind(this);
     this.handleSwipeLeft = this.handleSwipeLeft.bind(this);
+    this.handleSwipeRight = this.handleSwipeRight.bind(this);
 
     this.handleBackdropRef = this.handleBackdropRef.bind(this);
     this.handlePaperRef = this.handlePaperRef.bind(this);
@@ -65,8 +65,8 @@ class Component extends PureComponent {
     });
 
     this.hammer.on('panstart', this.handlePanStart);
-    this.hammer.on('pan', this.handlePan);
-    this.hammer.on('panend', this.handlePanEnd);
+    this.hammer.on('panend pancancel', this.handlePanEnd);
+    this.hammer.on('panmove', this.handlePanMove);
     this.hammer.on('press', this.handlePress);
     this.hammer.on('pressup', this.handlePressUp);
     this.hammer.on('swipeleft', this.handleSwipeLeft);
@@ -101,11 +101,22 @@ class Component extends PureComponent {
   }
 
   handlePanStart(event) {
+    const { additionalEvent, srcEvent } = event;
+
+    if (
+      additionalEvent === 'panup' ||
+      additionalEvent === 'pandown' ||
+      srcEvent.type === 'pointercancel'
+    ) {
+      return;
+    }
+
     const { open } = this.props;
 
     const { center: { x } } = event;
 
     this.startX = x;
+    this.currentX = x;
 
     if (open) {
       this.setState({ maybeSwiping: true });
@@ -115,16 +126,21 @@ class Component extends PureComponent {
       }
 
       this.setState({ maybeSwiping: true });
+      this.setPosition(x - this.paper.clientWidth);
     }
   }
 
-  handlePan(event) {
+  handlePanMove(event) {
     const { maybeSwiping } = this.state;
     const { open } = this.props;
 
     if (!maybeSwiping) {
       return;
     }
+
+    const { center: { x } } = event;
+
+    this.currentX = x;
 
     if (open) {
       const { deltaX } = event;
@@ -141,13 +157,11 @@ class Component extends PureComponent {
         );
       }
     } else {
-      const { center: { x } } = event;
-
       this.setPosition(Math.min(x - this.paper.clientWidth, 0));
     }
   }
 
-  handlePanEnd(event) {
+  handlePanEnd() {
     const { maybeSwiping } = this.state;
 
     if (!maybeSwiping) {
@@ -156,10 +170,9 @@ class Component extends PureComponent {
 
     this.setState({ maybeSwiping: false });
 
-    const { center: { x } } = event;
     const { onClose, onOpen, open } = this.props;
 
-    if (x > this.paper.clientWidth / 2) {
+    if (this.currentX > this.paper.clientWidth / 2) {
       if (!open) {
         onOpen();
       } else {
@@ -168,7 +181,7 @@ class Component extends PureComponent {
     } else if (open) {
       onClose();
     } else {
-      this.setPosition(-this.paper.clientHeight);
+      this.setPosition(-this.paper.clientWidth);
     }
   }
 
