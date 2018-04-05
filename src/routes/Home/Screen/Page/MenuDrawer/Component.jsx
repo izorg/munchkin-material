@@ -60,7 +60,7 @@ class Component extends PureComponent {
       recognizers: [
         [Hammer.Swipe, { direction: Hammer.DIRECTION_HORIZONTAL }],
         [Hammer.Pan, { direction: Hammer.DIRECTION_HORIZONTAL }, ['swipe']],
-        [Hammer.Press],
+        [Hammer.Press, { time: 151 }],
       ],
     });
 
