@@ -1,6 +1,6 @@
-import React, { PureComponent } from 'react';
+import React, { Fragment, PureComponent } from 'react';
 import { findDOMNode } from 'react-dom';
-import { FormattedMessage } from 'react-intl';
+// import { FormattedMessage } from 'react-intl';
 import { SortableHandle } from 'react-sortable-hoc';
 import PropTypes from 'prop-types';
 import IconButton from 'material-ui/IconButton';
@@ -10,8 +10,8 @@ import {
   ListItemSecondaryAction,
   ListItemText,
 } from 'material-ui/List';
-import Typography from 'material-ui/Typography';
 import { withStyles } from 'material-ui/styles';
+import ChevronUp from 'material-ui-icons/KeyboardArrowUp';
 import ActionReorder from 'material-ui-icons/Reorder';
 import cns from 'classnames';
 import Hammer from 'hammerjs';
@@ -21,6 +21,7 @@ import getSexIconClass from '../../../../../../utils/getSexIconClass';
 import { playerShape } from '../../../../../../utils/propTypes';
 
 import Avatar from '../../../../../../components/player/Avatar';
+import ChevronDoubleUpIcon from '../../../../../../components/icons/ChevronDoubleUp';
 
 import * as modes from '../../../../modes';
 import modeShape from '../../../../modeShape';
@@ -29,7 +30,7 @@ const ItemHandle = SortableHandle(ActionReorder);
 
 const styles = (theme) => ({
   secondaryActionPadding: {
-    paddingRight: 36,
+    paddingRight: 40,
   },
 
   listItemGutters: {
@@ -46,11 +47,39 @@ const styles = (theme) => ({
   },
 
   text: {
-    overflow: 'hidden',
+    paddingRight: 12,
   },
 
   rightIcon: {
     marginRight: 0,
+  },
+
+  primary: {
+    display: 'flex',
+  },
+
+  name: {
+    flex: 1,
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+  },
+
+  level: {
+    alignItems: 'center',
+    display: 'inline-flex',
+    fontSize: 18,
+    justifyContent: 'flex-end',
+    marginLeft: 4,
+    width: 40,
+  },
+
+  strength: {
+    alignItems: 'center',
+    display: 'inline-flex',
+    fontSize: 18,
+    justifyContent: 'flex-end',
+    marginLeft: 4,
+    width: 44,
   },
 });
 
@@ -171,32 +200,27 @@ class HomeScreenPagePlayerListItemComponent extends PureComponent {
         />
 
         <ListItemText
-          className={classes.text}
+          // className={classes.text}
+          classes={{
+            root: classes.text,
+            primary: classes.primary,
+          }}
           primary={
-            <Typography component="div" noWrap>
-              {player.name}
-            </Typography>
+            <Fragment>
+              <span className={classes.name}>{player.name}</span>
+
+              <span className={classes.level}>
+                {player.level}
+                <ChevronUp />
+              </span>
+
+              <span className={classes.strength}>
+                {player.level + player.gear}
+                <ChevronDoubleUpIcon />
+              </span>
+            </Fragment>
           }
           ref={this.handleTextRef}
-          secondary={
-            <span>
-              <FormattedMessage
-                id="player.list.item.secondaryTextLevel"
-                defaultMessage="Level {level}"
-                values={{
-                  level: <b>{player.level}</b>,
-                }}
-              />
-              <br />
-              <FormattedMessage
-                id="player.list.item.secondaryTextStrength"
-                defaultMessage="Strength {strength}"
-                values={{
-                  strength: <b>{player.level + player.gear}</b>,
-                }}
-              />
-            </span>
-          }
         />
 
         {mode === modes.EDIT ? (
