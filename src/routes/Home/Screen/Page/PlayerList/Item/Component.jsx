@@ -67,19 +67,19 @@ const styles = (theme) => ({
   level: {
     alignItems: 'center',
     display: 'inline-flex',
-    fontSize: 18,
+    fontSize: 20,
     justifyContent: 'flex-end',
     marginLeft: 4,
-    width: 40,
+    width: 44,
   },
 
   strength: {
     alignItems: 'center',
     display: 'inline-flex',
-    fontSize: 18,
+    fontSize: 20,
     justifyContent: 'flex-end',
     marginLeft: 4,
-    width: 44,
+    width: 48,
   },
 });
 
