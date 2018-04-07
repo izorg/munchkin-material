@@ -1,26 +1,23 @@
 import React, { Fragment, PureComponent } from 'react';
 import { findDOMNode } from 'react-dom';
-// import { FormattedMessage } from 'react-intl';
 import { SortableHandle } from 'react-sortable-hoc';
 import PropTypes from 'prop-types';
 import IconButton from 'material-ui/IconButton';
 import {
   ListItem,
-  ListItemIcon,
   ListItemSecondaryAction,
   ListItemText,
 } from 'material-ui/List';
 import { withStyles } from 'material-ui/styles';
 import ChevronUp from 'material-ui-icons/KeyboardArrowUp';
 import ActionReorder from 'material-ui-icons/Reorder';
-import cns from 'classnames';
 import Hammer from 'hammerjs';
 import { noop } from 'lodash';
 
 import getSexIconClass from '../../../../../../utils/getSexIconClass';
 import { playerShape } from '../../../../../../utils/propTypes';
 
-import Avatar from '../../../../../../components/player/Avatar';
+import Avatar from './Avatar';
 import ChevronDoubleUpIcon from '../../../../../../components/icons/ChevronDoubleUp';
 
 import * as modes from '../../../../modes';
@@ -29,10 +26,6 @@ import modeShape from '../../../../modeShape';
 const ItemHandle = SortableHandle(ActionReorder);
 
 const styles = (theme) => ({
-  secondaryActionPadding: {
-    paddingRight: 40,
-  },
-
   listItemGutters: {
     [theme.breakpoints.up('sm')]: {
       paddingLeft: 24,
@@ -46,8 +39,12 @@ const styles = (theme) => ({
     },
   },
 
+  sex: {
+    fontSize: 24,
+  },
+
   text: {
-    paddingRight: 12,
+    paddingRight: 0,
   },
 
   rightIcon: {
@@ -62,6 +59,7 @@ const styles = (theme) => ({
     flex: 1,
     overflow: 'hidden',
     textOverflow: 'ellipsis',
+    whiteSpace: 'nowrap',
   },
 
   level: {
@@ -69,7 +67,7 @@ const styles = (theme) => ({
     display: 'inline-flex',
     fontSize: 20,
     justifyContent: 'flex-end',
-    marginLeft: 4,
+    marginLeft: theme.spacing.unit,
     width: 44,
   },
 
@@ -121,7 +119,7 @@ class HomeScreenPagePlayerListItemComponent extends PureComponent {
       onPlayerEdit(player.id);
     } else if (mode === modes.MULTI) {
       onPlayerToggle(player.id);
-    } else if (event.target === this.avatar) {
+    } else if (this.avatar.contains(event.target)) {
       onMultiSelectActivate(player.id);
     } else {
       onPlayerSelect(player.id);
@@ -185,9 +183,6 @@ class HomeScreenPagePlayerListItemComponent extends PureComponent {
         classes={{
           gutters: classes.listItemGutters,
         }}
-        className={cns({
-          [classes.secondaryActionPadding]: mode === modes.EDIT,
-        })}
         component={mode === modes.EDIT ? 'div' : 'li'}
         data-screenshots="player-list-item"
         ref={this.handleItemRef}
@@ -197,33 +192,38 @@ class HomeScreenPagePlayerListItemComponent extends PureComponent {
           name={player.name}
           ref={this.handleAvatarRef}
           selected={selected}
-        />
+        >
+          <SexIcon className={classes.sex} />
+        </Avatar>
 
         <ListItemText
-          // className={classes.text}
           classes={{
-            root: classes.text,
+            root: mode !== modes.EDIT ? classes.text : undefined,
             primary: classes.primary,
           }}
           primary={
             <Fragment>
               <span className={classes.name}>{player.name}</span>
 
-              <span className={classes.level}>
-                {player.level}
-                <ChevronUp />
-              </span>
+              {mode !== modes.EDIT && (
+                <Fragment>
+                  <span className={classes.level}>
+                    {player.level}
+                    <ChevronUp />
+                  </span>
 
-              <span className={classes.strength}>
-                {player.level + player.gear}
-                <ChevronDoubleUpIcon />
-              </span>
+                  <span className={classes.strength}>
+                    {player.level + player.gear}
+                    <ChevronDoubleUpIcon />
+                  </span>
+                </Fragment>
+              )}
             </Fragment>
           }
           ref={this.handleTextRef}
         />
 
-        {mode === modes.EDIT ? (
+        {mode === modes.EDIT && (
           <ListItemSecondaryAction
             classes={{
               root: classes.listItemSecondaryActionRoot,
@@ -233,10 +233,6 @@ class HomeScreenPagePlayerListItemComponent extends PureComponent {
               <ItemHandle />
             </IconButton>
           </ListItemSecondaryAction>
-        ) : (
-          <ListItemIcon className={classes.rightIcon}>
-            <SexIcon />
-          </ListItemIcon>
         )}
       </ListItem>
     );

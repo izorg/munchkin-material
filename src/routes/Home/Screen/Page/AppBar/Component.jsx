@@ -103,7 +103,7 @@ const HomeScreenPageAppBarComponent = ({
         </IconButton>
       )}
 
-      <DiceButton color={buttonColor} />
+      {(!mode || singleMode) && <DiceButton color={buttonColor} />}
 
       {!empty &&
         !multiMode &&

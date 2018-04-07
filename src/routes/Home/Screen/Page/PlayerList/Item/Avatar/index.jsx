@@ -5,30 +5,33 @@ import NavigationCheck from 'material-ui-icons/Check';
 
 class PlayerAvatar extends PureComponent {
   render() {
-    const { color, name, selected, style, ...props } = this.props;
+    const {
+      children,
+      color,
+      selected,
+      style: styleProp,
+      ...props
+    } = this.props;
 
-    let avatarStyle = { ...style };
+    let style = { ...styleProp };
 
     if (!selected && color) {
-      avatarStyle = {
-        ...avatarStyle,
+      style = {
+        ...style,
         backgroundColor: color,
       };
     }
 
     return (
-      <Avatar style={avatarStyle} {...props}>
-        {selected ? (
-          <NavigationCheck />
-        ) : (
-          String.fromCodePoint(name.codePointAt(0)).toUpperCase()
-        )}
+      <Avatar style={style} {...props}>
+        {selected ? <NavigationCheck /> : children}
       </Avatar>
     );
   }
 }
 
 PlayerAvatar.propTypes = {
+  children: PropTypes.node,
   color: PropTypes.string,
   name: PropTypes.string,
   selected: PropTypes.bool,
@@ -36,6 +39,7 @@ PlayerAvatar.propTypes = {
 };
 
 PlayerAvatar.defaultProps = {
+  children: null,
   color: '',
   name: '',
   selected: false,
