@@ -6,7 +6,7 @@ import ButtonBase from 'material-ui/ButtonBase';
 import Dialog, { DialogContent, DialogTitle } from 'material-ui/Dialog';
 import * as colors from 'material-ui/colors';
 import { withStyles } from 'material-ui/styles';
-import CheckIcon from 'material-ui-icons/Check';
+import CheckIcon from '@material-ui/icons/Check';
 import { noop } from 'lodash';
 
 const { common, yellow, ...availableColors } = colors;

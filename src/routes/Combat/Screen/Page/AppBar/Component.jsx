@@ -3,7 +3,7 @@ import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 import IconButton from 'material-ui/IconButton';
 import { withStyles } from 'material-ui/styles';
-import NavigationArrowBack from 'material-ui-icons/ArrowBack';
+import NavigationArrowBack from '@material-ui/icons/ArrowBack';
 import { noop } from 'lodash';
 
 import AppBar from '../../../../../components/AppBar';

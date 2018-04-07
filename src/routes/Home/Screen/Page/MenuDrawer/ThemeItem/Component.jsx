@@ -3,7 +3,7 @@ import { FormattedMessage } from 'react-intl';
 import Link from 'react-router-dom/Link';
 import PropTypes from 'prop-types';
 import { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
-import PaletteIcon from 'material-ui-icons/Palette';
+import PaletteIcon from '@material-ui/icons/Palette';
 
 import themes, { names as themeNames } from '../../../../../../styles/themes';
 

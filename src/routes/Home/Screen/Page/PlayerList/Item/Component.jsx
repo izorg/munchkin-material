@@ -9,8 +9,8 @@ import {
   ListItemText,
 } from 'material-ui/List';
 import { withStyles } from 'material-ui/styles';
-import ChevronUp from 'material-ui-icons/KeyboardArrowUp';
-import ActionReorder from 'material-ui-icons/Reorder';
+import ChevronUp from '@material-ui/icons/KeyboardArrowUp';
+import ActionReorder from '@material-ui/icons/Reorder';
 import Hammer from 'hammerjs';
 import { noop } from 'lodash';
 

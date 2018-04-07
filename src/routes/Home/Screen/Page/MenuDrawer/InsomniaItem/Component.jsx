@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Divider from 'material-ui/Divider';
 import { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
 import Switch from 'material-ui/Switch';
-import PowerSettingsNewIcon from 'material-ui-icons/PowerSettingsNew';
+import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew';
 import { noop } from 'lodash';
 
 class InsomniaItemComponent extends PureComponent {

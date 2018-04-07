@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Divider from 'material-ui/Divider';
 import { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
 import Switch from 'material-ui/Switch';
-import PersonIcon from 'material-ui-icons/Person';
+import PersonIcon from '@material-ui/icons/Person';
 import { noop } from 'lodash';
 
 class SingleModeItemComponent extends PureComponent {

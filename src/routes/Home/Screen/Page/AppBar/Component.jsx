@@ -10,11 +10,11 @@ import PropTypes from 'prop-types';
 import IconButton from 'material-ui/IconButton';
 import Tooltip from 'material-ui/Tooltip';
 import { withStyles } from 'material-ui/styles';
-import NavigationCheck from 'material-ui-icons/Check';
-import NavigationClose from 'material-ui-icons/Close';
-import ActionDelete from 'material-ui-icons/Delete';
-import EditorModeEdit from 'material-ui-icons/ModeEdit';
-import SettingsBackupRestoreIcon from 'material-ui-icons/SettingsBackupRestore';
+import NavigationCheck from '@material-ui/icons/Check';
+import NavigationClose from '@material-ui/icons/Close';
+import ActionDelete from '@material-ui/icons/Delete';
+import EditorModeEdit from '@material-ui/icons/ModeEdit';
+import SettingsBackupRestoreIcon from '@material-ui/icons/SettingsBackupRestore';
 import { noop } from 'lodash';
 
 import AppBar from '../../../../../components/AppBar';

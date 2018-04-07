@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import Avatar from 'material-ui/Avatar';
-import NavigationCheck from 'material-ui-icons/Check';
+import NavigationCheck from '@material-ui/icons/Check';
 
 class PlayerAvatar extends PureComponent {
   render() {

@@ -3,8 +3,8 @@ import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 import IconButton from 'material-ui/IconButton';
 import { withStyles } from 'material-ui/styles';
-import NavigationArrowBack from 'material-ui-icons/ArrowBack';
-import NavigationCheck from 'material-ui-icons/Check';
+import NavigationArrowBack from '@material-ui/icons/ArrowBack';
+import NavigationCheck from '@material-ui/icons/Check';
 import { noop } from 'lodash';
 
 import AppBar from '../../../../components/AppBar';

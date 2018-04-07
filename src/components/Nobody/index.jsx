@@ -2,7 +2,7 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import Typography from 'material-ui/Typography';
 import { withStyles } from 'material-ui/styles';
-import AccountCircle from 'material-ui-icons/AccountCircle';
+import AccountCircle from '@material-ui/icons/AccountCircle';
 
 const styles = (theme) => ({
   nobody: {
