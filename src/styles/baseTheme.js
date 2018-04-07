@@ -34,6 +34,12 @@ export default {
     },
   },
 
+  props: {
+    MuiTooltip: {
+      disableFocusListener: true,
+    },
+  },
+
   typography: {
     fontFamily: '"Roboto", "San Francisco", "Helvetica", "Arial", sans-serif',
   },
