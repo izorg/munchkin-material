@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { replace } from 'connected-react-router/lib/actions';
 import { noop } from 'lodash';
 
-import { setSingleMode } from '../../../../../../actions';
+import { setSingleMode } from '../../../../../../ducks/app';
 
 import { SINGLE } from '../../../../modes';
 import { modeSelector } from '../../../../selectors';

@@ -1,12 +1,10 @@
-import {
-  ADD_PLAYER_TO_LIST,
-  MOVE_PLAYER,
-  REMOVE_PLAYER_FROM_LIST,
-} from '../utils/actionTypes';
+export const ADD_PLAYER_TO_LIST = 'app/ADD_PLAYER_TO_LIST';
+export const MOVE_PLAYER = 'app/MOVE_PLAYER';
+export const REMOVE_PLAYER_FROM_LIST = 'app/REMOVE_PLAYER_FROM_LIST';
 
 const initialState = [];
 
-const playerList = (state = initialState, action) => {
+export default (state = initialState, action) => {
   switch (action.type) {
     case ADD_PLAYER_TO_LIST: {
       return [...state, action.id];
@@ -39,4 +37,18 @@ const playerList = (state = initialState, action) => {
   }
 };
 
-export default playerList;
+export const addPlayerToList = (id) => ({
+  type: ADD_PLAYER_TO_LIST,
+  id,
+});
+
+export const movePlayer = (oldPosition, newPosition) => ({
+  type: MOVE_PLAYER,
+  oldPosition,
+  newPosition,
+});
+
+export const removePlayerFromList = (id) => ({
+  type: REMOVE_PLAYER_FROM_LIST,
+  id,
+});

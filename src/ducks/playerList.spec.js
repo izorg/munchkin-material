@@ -1,10 +1,8 @@
-import {
+import reducer, {
   ADD_PLAYER_TO_LIST,
   MOVE_PLAYER,
   REMOVE_PLAYER_FROM_LIST,
-} from '../../utils/actionTypes';
-
-import reducer from '../playerList';
+} from './playerList';
 
 test('should add player', () => {
   let playerList = reducer(undefined, {

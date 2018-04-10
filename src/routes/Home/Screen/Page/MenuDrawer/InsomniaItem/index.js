@@ -3,7 +3,7 @@ import compose from 'recompose/compose';
 import getContext from 'recompose/getContext';
 import PropTypes from 'prop-types';
 
-import { setKeepAwake } from '../../../../../../actions';
+import { setKeepAwake } from '../../../../../../ducks/app';
 
 import Component from './Component';
 

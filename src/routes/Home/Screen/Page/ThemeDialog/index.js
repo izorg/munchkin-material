@@ -3,7 +3,7 @@ import { goBack } from 'connected-react-router/lib/actions';
 import { parse } from 'qs';
 import { noop } from 'lodash';
 
-import { setTheme } from '../../../../../actions';
+import { setTheme } from '../../../../../ducks/app';
 
 import Component from './Component';
 

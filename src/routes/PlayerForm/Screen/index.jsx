@@ -1,15 +1,18 @@
 import React, { PureComponent } from 'react';
 import { hot } from 'react-hot-loader';
 import { connect } from 'react-redux';
+import { goBack } from 'connected-react-router/lib/actions';
 import { createSelector, createStructuredSelector } from 'reselect';
 import PropTypes from 'prop-types';
 import Slide from 'material-ui/transitions/Slide';
+import { addPlayer, updatePlayer } from 'munchkin-core/lib/ducks/players';
+import createPlayer from 'munchkin-core/lib/utils/createPlayer';
 import { MALE } from 'munchkin-core/lib/utils/sex';
 
-import { submitPlayer } from '../../../actions';
 import getRandomMaterialColor from '../../../utils/getRandomMaterialColor';
 
 import Component from './Component';
+import { addPlayerToList } from '../../../ducks/playerList';
 
 const initialValues = createSelector(
   (state) => state.players,
@@ -43,6 +46,23 @@ const mapStateToProps = createStructuredSelector({
   initialValues,
   newPlayer: (state, ownProps) => !ownProps.playerId,
 });
+
+const submitPlayer = (values) => (dispatch) => {
+  const { id, name = '' } = values;
+
+  if (name.trim()) {
+    const player = createPlayer(values);
+
+    if (id) {
+      dispatch(updatePlayer(player));
+    } else {
+      dispatch(addPlayer(player));
+      dispatch(addPlayerToList(player.id));
+    }
+  }
+
+  dispatch(goBack());
+};
 
 const mapDispatchToProps = {
   onSubmit: submitPlayer,

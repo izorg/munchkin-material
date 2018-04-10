@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { movePlayer } from '../../../../../actions';
+import { movePlayer } from '../../../../../ducks/playerList';
 
 import { EDIT } from '../../../modes';
 import { modeSelector } from '../../../selectors';

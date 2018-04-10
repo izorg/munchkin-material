@@ -2,18 +2,9 @@ import React from 'react';
 import { render } from 'react-dom';
 import createHistory from 'history/createHashHistory';
 
-import { setFullVersion } from './actions';
 import App from './components/App';
+import { setFullVersion } from './ducks/app';
 import configureStore from './store/configureStore';
-
-// if (process.env.NODE_ENV !== 'production') {
-//   // eslint-disable-next-line global-require
-//   const { whyDidYouUpdate } = require('why-did-you-update');
-//
-//   whyDidYouUpdate(React, {
-//     exclude: /(Backdrop|CSSTransition|FormattedMessage|IconButton|Paper|Portal|ProxyComponent|RefHolder|Ripple|SvgIcon|Tooltip|TouchRipple|TransitionGroup)/,
-//   });
-// }
 
 const history = createHistory();
 

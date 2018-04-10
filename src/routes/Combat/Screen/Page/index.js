@@ -1,12 +1,11 @@
 import { connect } from 'react-redux';
 import {
+  setCombatHelper,
   setCombatHelperBonus,
   setCombatPlayerBonus,
 } from 'munchkin-core/lib/ducks/combat';
 import { addMonster, removeMonster } from 'munchkin-core/lib/ducks/monsters';
 import createMonster from 'munchkin-core/lib/utils/createMonster';
-
-import { removeHelper } from '../../../../actions';
 
 import Component from './Component';
 
@@ -36,6 +35,11 @@ const mapStateToProps = (state) => {
     monsters: Object.values(state.monsters),
     playerId,
   };
+};
+
+const removeHelper = () => (dispatch) => {
+  dispatch(setCombatHelper(null));
+  dispatch(setCombatHelperBonus(0));
 };
 
 const mapDispatchToProps = {

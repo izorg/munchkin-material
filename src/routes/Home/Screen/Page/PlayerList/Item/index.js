@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { goBack, push } from 'connected-react-router/lib/actions';
 
-import { togglePlayer, unselectAllPlayers } from '../../../../../../actions';
+import { togglePlayer, unselectAllPlayers } from '../../../../../../ducks/app';
 import { EDIT, MULTI } from '../../../../modes';
 import { modeSelector } from '../../../../selectors';
 

@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { goBack } from 'connected-react-router/lib/actions';
 
-import { finishCombat } from '../../../../../actions';
+import { finishCombat } from '../../../../../ducks/app';
 
 import Component from './Component';
 

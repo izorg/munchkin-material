@@ -1,7 +1,7 @@
 import { goBack } from 'connected-react-router/lib/actions';
 import { connect } from 'react-redux';
 
-import { throwDice } from '../../../actions';
+import { throwDice } from '../../../ducks/app';
 
 import Component from './Component';
 

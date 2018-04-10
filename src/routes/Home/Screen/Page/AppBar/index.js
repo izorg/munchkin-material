@@ -3,7 +3,7 @@ import { goBack, push } from 'connected-react-router/lib/actions';
 import { setCombatPlayerBonus } from 'munchkin-core/lib/ducks/combat';
 import { removePlayer, updatePlayer } from 'munchkin-core/lib/ducks/players';
 
-import { removePlayerFromList } from '../../../../../actions';
+import { removePlayerFromList } from '../../../../../ducks/playerList';
 
 import * as modes from '../../../modes';
 import { modeSelector } from '../../../selectors';
