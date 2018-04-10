@@ -39,10 +39,6 @@ const styles = (theme) => ({
     },
   },
 
-  sex: {
-    fontSize: 24,
-  },
-
   text: {
     paddingRight: 0,
   },
@@ -193,7 +189,7 @@ class HomeScreenPagePlayerListItemComponent extends PureComponent {
           ref={this.handleAvatarRef}
           selected={selected}
         >
-          <SexIcon className={classes.sex} />
+          <SexIcon />
         </Avatar>
 
         <ListItemText
