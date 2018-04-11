@@ -1,27 +1,24 @@
 import { connect } from 'react-redux';
-import { replace } from 'connected-react-router/lib/actions';
+import { goBack } from 'connected-react-router/lib/actions';
 import { noop } from 'lodash';
 
 import { setSingleMode } from '../../../../../../ducks/app';
 
-import { SINGLE } from '../../../../modes';
-import { modeSelector } from '../../../../selectors';
-
 import Component from './Component';
 
 const mapStateToProps = (state) => ({
-  singleMode: modeSelector(state) === SINGLE,
+  singleMode: state.app.singleMode,
 });
 
 const mapDispatchToProps = {
   onChange: (singleMode) => (dispatch) => {
     if (singleMode) {
-      dispatch(setSingleMode()).then(
-        () => dispatch(replace(`/${SINGLE}`)),
-        noop,
-      );
+      dispatch(setSingleMode(singleMode))
+        .then(() => dispatch(goBack()))
+        .catch(noop);
     } else {
-      dispatch(replace('/'));
+      dispatch(setSingleMode(singleMode));
+      dispatch(goBack());
     }
   },
 };

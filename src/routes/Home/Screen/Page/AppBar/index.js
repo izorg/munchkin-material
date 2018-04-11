@@ -14,6 +14,7 @@ const mapStateToProps = (state) => ({
   empty: state.playerList.length === 0,
   mode: modeSelector(state),
   selectedPlayerIds: state.app.selectedPlayerIds,
+  singleMode: state.app.singleMode,
 });
 
 const mapDispatchToProps = {
