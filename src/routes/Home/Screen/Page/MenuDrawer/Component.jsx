@@ -113,7 +113,9 @@ class Component extends PureComponent {
 
     const { open } = this.props;
 
-    const { center: { x } } = event;
+    const {
+      center: { x },
+    } = event;
 
     this.startX = x;
     this.currentX = x;
@@ -138,7 +140,9 @@ class Component extends PureComponent {
       return;
     }
 
-    const { center: { x } } = event;
+    const {
+      center: { x },
+    } = event;
 
     this.currentX = x;
 
@@ -186,7 +190,9 @@ class Component extends PureComponent {
   }
 
   handlePress(event) {
-    const { center: { x } } = event;
+    const {
+      center: { x },
+    } = event;
 
     if (x > swipeAreaWidth) {
       return;

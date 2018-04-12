@@ -29,7 +29,9 @@ const onPlayerEdit = (playerId) => push(`/${EDIT}/${playerId}`);
 const onPlayerSelect = (playerId) => push(`/player/${playerId}`);
 
 const onPlayerToggle = (playerId) => (dispatch, getState) => {
-  const { app: { selectedPlayerIds } } = getState();
+  const {
+    app: { selectedPlayerIds },
+  } = getState();
 
   if (selectedPlayerIds.length === 1 && playerId === selectedPlayerIds[0]) {
     dispatch(goBack());

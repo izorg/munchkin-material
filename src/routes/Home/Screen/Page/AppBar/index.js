@@ -27,7 +27,9 @@ const mapDispatchToProps = {
     dispatch(goBack());
   },
   onResetPlayer: () => (dispatch, getState) => {
-    const { combat: { playerId: id } } = getState();
+    const {
+      combat: { playerId: id },
+    } = getState();
 
     dispatch(
       updatePlayer({

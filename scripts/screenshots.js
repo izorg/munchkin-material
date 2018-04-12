@@ -12,7 +12,9 @@ import { URL } from 'url';
 import { EN, RU } from '../src/i18n';
 import config from '../webpack/site.babel';
 
-const { devServer: { host, port } } = config;
+const {
+  devServer: { host, port },
+} = config;
 
 const appUrl = `http://${host}:${port}`;
 

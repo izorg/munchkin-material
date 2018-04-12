@@ -12,17 +12,24 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
   onBonusDecrement: () => (dispatch, getState) => {
-    const { combat: { playerBonus } } = getState();
+    const {
+      combat: { playerBonus },
+    } = getState();
 
     dispatch(setCombatPlayerBonus(playerBonus - 1));
   },
   onBonusIncrement: () => (dispatch, getState) => {
-    const { combat: { playerBonus } } = getState();
+    const {
+      combat: { playerBonus },
+    } = getState();
 
     dispatch(setCombatPlayerBonus(playerBonus + 1));
   },
   onGearDecrement: () => (dispatch, getState) => {
-    const { combat: { playerId }, players } = getState();
+    const {
+      combat: { playerId },
+      players,
+    } = getState();
 
     const player = players[playerId];
 
@@ -34,12 +41,17 @@ const mapDispatchToProps = {
     );
   },
   onSexToggle: () => (dispatch, getState) => {
-    const { combat: { playerId } } = getState();
+    const {
+      combat: { playerId },
+    } = getState();
 
     dispatch(togglePlayerSex(playerId));
   },
   onGearIncrement: () => (dispatch, getState) => {
-    const { combat: { playerId }, players } = getState();
+    const {
+      combat: { playerId },
+      players,
+    } = getState();
 
     const player = players[playerId];
 
@@ -51,7 +63,10 @@ const mapDispatchToProps = {
     );
   },
   onLevelDecrement: () => (dispatch, getState) => {
-    const { combat: { playerId }, players } = getState();
+    const {
+      combat: { playerId },
+      players,
+    } = getState();
 
     const player = players[playerId];
 
@@ -63,7 +78,10 @@ const mapDispatchToProps = {
     );
   },
   onLevelIncrement: () => (dispatch, getState) => {
-    const { combat: { playerId }, players } = getState();
+    const {
+      combat: { playerId },
+      players,
+    } = getState();
 
     const player = players[playerId];
 
