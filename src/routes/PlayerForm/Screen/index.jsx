@@ -4,15 +4,16 @@ import { connect } from 'react-redux';
 import { goBack } from 'connected-react-router/lib/actions';
 import { createSelector, createStructuredSelector } from 'reselect';
 import PropTypes from 'prop-types';
+import Dialog from 'material-ui/Dialog';
 import Slide from 'material-ui/transitions/Slide';
 import { addPlayer, updatePlayer } from 'munchkin-core/lib/ducks/players';
 import createPlayer from 'munchkin-core/lib/utils/createPlayer';
 import { MALE } from 'munchkin-core/lib/utils/sex';
 
+import { addPlayerToList } from '../../../ducks/playerList';
 import getRandomMaterialColor from '../../../utils/getRandomMaterialColor';
 
 import Component from './Component';
-import { addPlayerToList } from '../../../ducks/playerList';
 
 const initialValues = createSelector(
   (state) => state.players,
@@ -77,8 +78,12 @@ class PlayerFormScreen extends PureComponent {
     super(props);
 
     this.state = {
+      appear: props.appear,
       playerId: props.match.params.id,
     };
+
+    this.handleExited = this.handleExited.bind(this);
+    this.renderTransition = this.renderTransition.bind(this);
   }
 
   getChildContext() {
@@ -97,20 +102,34 @@ class PlayerFormScreen extends PureComponent {
     }
   }
 
+  handleExited() {
+    if (!this.state.appear) {
+      this.setState({
+        appear: true,
+      });
+    }
+  }
+
+  renderTransition(props) {
+    const { appear } = this.state;
+
+    return <Slide {...props} appear={appear} direction="up" />;
+  }
+
   render() {
-    const { appear, match } = this.props;
+    const { match } = this.props;
     const { playerId } = this.state;
 
     return (
-      <Slide
-        appear={appear}
-        direction="up"
-        in={Boolean(match)}
-        mountOnEnter
-        unmountOnExit
+      <Dialog
+        fullScreen
+        hideBackdrop
+        onExited={this.handleExited}
+        open={Boolean(match)}
+        transition={this.renderTransition}
       >
         <ConnectedComponent playerId={playerId} />
-      </Slide>
+      </Dialog>
     );
   }
 }
