@@ -98,6 +98,7 @@ class Component extends PureComponent {
     const backdropStyle = this.backdrop.style;
 
     backdropStyle.opacity = 1 + translate / this.paper.clientWidth;
+    backdropStyle.transitionDuration = '0ms';
   }
 
   handlePanStart(event) {
