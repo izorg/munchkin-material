@@ -10,7 +10,7 @@ import {
 import PropTypes from 'prop-types';
 import { FormControl, FormLabel, FormControlLabel } from 'material-ui/Form';
 import Grid from 'material-ui/Grid';
-import Radio, { RadioGroup } from 'material-ui/Radio';
+import Radio from 'material-ui/Radio';
 import TextField from 'material-ui/TextField';
 import { withStyles } from 'material-ui/styles';
 import { noop } from 'lodash';
@@ -47,8 +47,21 @@ class PlayerFormScreenComponent extends Component {
     return <ColorPicker {...input} {...props} />;
   }
 
-  static renderRadioGroup({ input, ...props }) {
-    return <RadioGroup {...input} {...props} />;
+  static renderRadio(props) {
+    const {
+      input: { checked, name, onChange, value, ...restInput },
+    } = props;
+
+    return (
+      <Radio
+        checked={checked}
+        color="primary"
+        inputProps={restInput}
+        name={name}
+        onChange={onChange}
+        value={value}
+      />
+    );
   }
 
   static renderTextField({ input, ...props }) {
@@ -94,21 +107,28 @@ class PlayerFormScreenComponent extends Component {
                         defaultMessage="Sex"
                       />
                     </FormLabel>
-                    <Field
-                      component={PlayerFormScreenComponent.renderRadioGroup}
-                      name="sex"
-                    >
-                      <FormControlLabel
-                        control={<Radio color="primary" />}
-                        label={<SexMale className={classes.icon} />}
-                        value={MALE}
-                      />
-                      <FormControlLabel
-                        control={<Radio color="primary" />}
-                        label={<SexFemale className={classes.icon} />}
-                        value={FEMALE}
-                      />
-                    </Field>
+                    <FormControlLabel
+                      control={
+                        <Field
+                          component={PlayerFormScreenComponent.renderRadio}
+                          name="sex"
+                          type="radio"
+                        />
+                      }
+                      label={<SexMale className={classes.icon} />}
+                      value={MALE}
+                    />
+                    <FormControlLabel
+                      control={
+                        <Field
+                          component={PlayerFormScreenComponent.renderRadio}
+                          name="sex"
+                          type="radio"
+                        />
+                      }
+                      label={<SexFemale className={classes.icon} />}
+                      value={FEMALE}
+                    />
                   </FormControl>
                 </Grid>
 
