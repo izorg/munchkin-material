@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import Button from 'material-ui/Button';
 import Backdrop from 'material-ui/Modal/Backdrop';
 import { withStyles } from 'material-ui/styles';
-import transitions, { duration } from 'material-ui/styles/transitions';
 import AddIcon from '@material-ui/icons/Add';
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import cns from 'classnames';
@@ -39,8 +38,8 @@ const styles = (theme) => ({
   },
 
   icon: {
-    transition: transitions.create('transform', {
-      duration: duration.shorter,
+    transition: theme.transitions.create('transform', {
+      duration: theme.transitions.duration.shorter,
     }),
   },
 
