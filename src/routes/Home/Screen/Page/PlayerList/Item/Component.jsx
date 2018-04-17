@@ -75,6 +75,12 @@ const styles = (theme) => ({
     marginLeft: 4,
     width: 48,
   },
+
+  itemHandle: {
+    '&:hover': {
+      backgroundColor: 'transparent',
+    },
+  },
 });
 
 class HomeScreenPagePlayerListItemComponent extends PureComponent {
@@ -225,7 +231,11 @@ class HomeScreenPagePlayerListItemComponent extends PureComponent {
               root: classes.listItemSecondaryActionRoot,
             }}
           >
-            <IconButton disableRipple tabIndex={-1}>
+            <IconButton
+              className={classes.itemHandle}
+              disableRipple
+              tabIndex={-1}
+            >
               <ItemHandle />
             </IconButton>
           </ListItemSecondaryAction>

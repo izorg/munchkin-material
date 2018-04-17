@@ -30,6 +30,10 @@ const styles = {
     height: diceSize,
     padding: 0,
     width: diceSize,
+
+    '&:hover': {
+      backgroundColor: 'transparent',
+    },
   },
 };
 
