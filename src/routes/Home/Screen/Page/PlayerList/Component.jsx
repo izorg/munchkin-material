@@ -20,7 +20,7 @@ const styles = (theme) => ({
   },
 
   sortableHelper: {
-    backgroundColor: '#FFFFFF !important',
+    backgroundColor: theme.palette.common.white,
     boxShadow: theme.shadows[3],
     listStyle: 'none',
     zIndex: 2,
