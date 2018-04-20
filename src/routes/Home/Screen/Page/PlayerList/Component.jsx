@@ -22,12 +22,22 @@ const styles = (theme) => ({
   sortableHelper: {
     backgroundColor: theme.palette.common.white,
     boxShadow: theme.shadows[3],
-    listStyle: 'none',
-    zIndex: 2,
+    pointerEvents: 'auto !important',
+
+    '& > div': {
+      pointerEvents: 'none',
+    },
   },
 });
 
 class HomeScreenPagePlayerList extends PureComponent {
+  static handleRef(list) {
+    if (list) {
+      // eslint-disable-next-line no-param-reassign
+      list.document = { body: list.container }; // dirty hack to render helper inside list
+    }
+  }
+
   constructor(props) {
     super(props);
 
@@ -78,9 +88,9 @@ class HomeScreenPagePlayerList extends PureComponent {
           className={className}
           helperClass={classes.sortableHelper}
           lockAxis="y"
-          lockOffset={0}
           lockToContainerEdges
           onSortEnd={this.handleSortEnd}
+          ref={HomeScreenPagePlayerList.handleRef}
           useDragHandle
         >
           {playerList.map((playerId, index) => (
