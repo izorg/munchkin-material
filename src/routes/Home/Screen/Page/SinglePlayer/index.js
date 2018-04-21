@@ -1,9 +1,8 @@
 import { connect } from 'react-redux';
 import { setCombatPlayerBonus } from 'munchkin-core/lib/ducks/combat';
-import { updatePlayer } from 'munchkin-core/lib/ducks/players';
+import { togglePlayerSex, updatePlayer } from 'munchkin-core/lib/ducks/players';
 
 import Component from './Component';
-import { togglePlayerSex } from '../../../../../actions';
 
 const mapStateToProps = (state) => ({
   bonus: state.combat.playerBonus,
