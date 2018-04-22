@@ -1,35 +1,16 @@
 import { addLocaleData } from 'react-intl';
 
-import deLocaleData from 'react-intl/locale-data/de';
-import enLocaleData from 'react-intl/locale-data/en';
-import frLocaleData from 'react-intl/locale-data/fr';
-import ruLocaleData from 'react-intl/locale-data/ru';
-import ukLocaleData from 'react-intl/locale-data/uk';
-
-import de from '../languages/de.json';
-import en from '../languages/en.json';
-import fr from '../languages/fr.json';
-import ru from '../languages/ru.json';
-import uk from '../languages/uk.json';
-
+export const DE = 'de';
 export const EN = 'en';
 export const FR = 'fr';
 export const RU = 'ru';
 export const UK = 'uk';
 
-const availableLocales = [EN, FR, RU, UK];
+export const availableLocales = [EN, FR, RU, UK];
 
 const defaultLocale = EN;
 
 const LANGUAGE_LENGTH = 2;
-
-addLocaleData([
-  ...deLocaleData,
-  ...enLocaleData,
-  ...frLocaleData,
-  ...ruLocaleData,
-  ...ukLocaleData,
-]);
 
 export const getLocale = () => {
   const language = navigator.language || navigator.userLanguage;
@@ -39,14 +20,49 @@ export const getLocale = () => {
   return availableLocales.includes(locale) ? locale : defaultLocale;
 };
 
-export const getMessages = (locale) => {
-  const allMessages = {
-    de,
-    en,
-    fr,
-    ru,
-    uk,
-  };
+let allMessages = {};
 
-  return allMessages[locale] || allMessages[defaultLocale];
+export const getMessages = (locale) =>
+  allMessages[locale] || allMessages[defaultLocale];
+
+const loaders = {
+  [DE]: () =>
+    Promise.all([
+      import(/* webpackChunkName: "locales/de" */ 'react-intl/locale-data/de'),
+      import(/* webpackChunkName: "locales/de" */ '../languages/de.json'),
+    ]),
+
+  [FR]: () =>
+    Promise.all([
+      import(/* webpackChunkName: "locales/fr" */ 'react-intl/locale-data/fr'),
+      import(/* webpackChunkName: "locales/fr" */ '../languages/fr.json'),
+    ]),
+
+  [EN]: () =>
+    Promise.all([
+      import(/* webpackChunkName: "locales/en" */ 'react-intl/locale-data/en'),
+      import(/* webpackChunkName: "locales/en" */ '../languages/en.json'),
+    ]),
+
+  [RU]: () =>
+    Promise.all([
+      import(/* webpackChunkName: "locales/ru" */ 'react-intl/locale-data/ru'),
+      import(/* webpackChunkName: "locales/ru" */ '../languages/ru.json'),
+    ]),
+
+  [UK]: () =>
+    Promise.all([
+      import(/* webpackChunkName: "locales/uk" */ 'react-intl/locale-data/uk'),
+      import(/* webpackChunkName: "locales/uk" */ '../languages/uk.json'),
+    ]),
 };
+
+export const loadLocale = (locale) =>
+  loaders[locale]().then(([intlLocale, messages]) => {
+    addLocaleData(intlLocale.default);
+
+    allMessages = {
+      ...allMessages,
+      [locale]: messages,
+    };
+  });
