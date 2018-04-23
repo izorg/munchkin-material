@@ -57,6 +57,7 @@
     "clean-webpack-plugin": "0.1.19",
     "cname-webpack-plugin": "1.0.1",
     "connected-react-router": "4.3.0",
+    "core-js": "2.5.5",
     "cross-env": "5.1.4",
     "deepmerge": "2.1.0",
     "enzyme": "3.3.0",

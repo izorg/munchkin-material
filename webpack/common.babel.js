@@ -45,11 +45,7 @@ export default {
                       ie: 11,
                       safari: 10,
                     },
-                    /*
-                     * Have to use `entry` instead of `usage` cause of
-                     * Android & IE browser support in development env
-                     */
-                    useBuiltIns: 'entry',
+                    useBuiltIns: 'usage',
                   },
                 ],
               ],
