@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 import { createSelector, createStructuredSelector } from 'reselect';
 
-import { MULTI } from '../../modes';
-import { matchSelector } from '../../selectors';
+import { MULTI, SINGLE } from '../../modes';
+import { matchSelector, modeSelector } from '../../selectors';
 
 import Component from './Component';
 
@@ -11,10 +11,12 @@ const menu = createSelector(
   (match) => match && match.isExact && match.params.mode !== MULTI,
 );
 
+const singleMode = createSelector(modeSelector, (mode) => mode === SINGLE);
+
 const mapStateToProps = createStructuredSelector({
   empty: (state) => !state.playerList.length,
   menu,
-  singleMode: (state) => state.app.singleMode,
+  singleMode,
 });
 
 export default connect(mapStateToProps)(Component);

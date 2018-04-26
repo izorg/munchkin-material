@@ -55,10 +55,10 @@ const HomeScreenPageAppBarComponent = ({
   onToggleEditClick,
   onTurnFinish,
   selectedPlayerIds,
-  singleMode,
 }) => {
   const editMode = mode === modes.EDIT;
   const multiMode = mode === modes.MULTI;
+  const singleMode = mode === modes.SINGLE;
   const buttonColor = multiMode ? 'default' : 'inherit';
 
   const editTitle = intl.formatMessage(messages.edit);
@@ -147,7 +147,6 @@ HomeScreenPageAppBarComponent.propTypes = {
   onToggleEditClick: PropTypes.func,
   onTurnFinish: PropTypes.func,
   selectedPlayerIds: PropTypes.arrayOf(PropTypes.string),
-  singleMode: PropTypes.bool,
 };
 
 HomeScreenPageAppBarComponent.defaultProps = {
@@ -159,7 +158,6 @@ HomeScreenPageAppBarComponent.defaultProps = {
   onToggleEditClick: noop,
   onTurnFinish: noop,
   selectedPlayerIds: [],
-  singleMode: false,
 };
 
 export default compose(injectIntl, withStyles(styles))(

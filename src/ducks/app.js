@@ -1,7 +1,6 @@
 import { START_COMBAT, startCombat } from 'munchkin-core/lib/ducks/combat';
 import { addPlayer } from 'munchkin-core/lib/ducks/players';
 import createPlayer from 'munchkin-core/lib/utils/createPlayer';
-import { noop } from 'lodash';
 
 import { key as theme } from '../styles/themes/munchkin';
 
@@ -9,7 +8,6 @@ export const FINISH_COMBAT = 'app/FINISH_COMBAT';
 export const SET_FULL_VERSION = 'app/SET_FULL_VERSION';
 export const SET_KEEP_AWAKE = 'app/SET_KEEP_AWAKE';
 export const SET_LOCALE = 'app/SET_LOCALE';
-export const SET_SINGLE_MODE = 'app/SET_SINGLE_MODE';
 export const SET_SINGLE_MODE_PLAYER = 'app/SET_SINGLE_MODE_PLAYER';
 export const SET_THEME = 'app/SET_THEME';
 export const THROW_DICE = 'app/THROW_DICE';
@@ -52,13 +50,6 @@ export default (state = initialState, action) => {
       return {
         ...state,
         locale: action.locale,
-      };
-    }
-
-    case SET_SINGLE_MODE: {
-      return {
-        ...state,
-        singleMode: action.singleMode,
       };
     }
 
@@ -143,36 +134,24 @@ export const setLocale = (locale) => ({
   locale,
 });
 
-export const setSingleMode = (singleMode) => (dispatch, getState) => {
-  if (singleMode) {
-    let { singleModePlayerId } = getState().app;
+export const setSingleMode = () => (dispatch, getState) => {
+  const {
+    app: { singleModePlayerId },
+  } = getState();
 
-    if (!singleModePlayerId) {
-      const player = createPlayer();
+  if (!singleModePlayerId) {
+    const player = createPlayer();
 
-      dispatch(addPlayer(player));
-      dispatch({
-        type: SET_SINGLE_MODE_PLAYER,
-        id: player.id,
-      });
+    dispatch(addPlayer(player));
+    dispatch({
+      type: SET_SINGLE_MODE_PLAYER,
+      id: player.id,
+    });
 
-      singleModePlayerId = player.id;
-    }
-
-    return dispatch(startCombat(singleModePlayerId)).then(
-      () =>
-        dispatch({
-          type: SET_SINGLE_MODE,
-          singleMode,
-        }),
-      noop,
-    );
+    return dispatch(startCombat(player.id));
   }
 
-  return dispatch({
-    type: SET_SINGLE_MODE,
-    singleMode,
-  });
+  return dispatch(startCombat(singleModePlayerId));
 };
 
 // eslint-disable-next-line no-shadow
