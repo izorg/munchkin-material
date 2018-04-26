@@ -81,7 +81,6 @@ const config = merge.smart(common, {
       safeToUseOptionalCaches: true,
       ServiceWorker: {
         events: true,
-        minify: false,
       },
     }),
   ],
