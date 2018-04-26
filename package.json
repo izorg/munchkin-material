@@ -10,7 +10,7 @@
     "dev": "cross-env NODE_ENV=development webpack-dev-server --config=webpack/dev.babel.js",
     "dist": "cross-env NODE_ENV=production webpack --config=webpack/dist.babel.js",
     "i18n:download": "node scripts/i18n/download.js",
-    "i18n:translate": "node scripts/i18n/translate.js",
+    "i18n:translate": "npm run dist && node scripts/i18n/translate.js && npm run clean",
     "i18n:upload": "node scripts/i18n/upload.js",
     "lint": "eslint . --ext .js,.jsx",
     "precommit": "npm run lint && npm test",
