@@ -126,7 +126,7 @@ class PlayerFormScreen extends PureComponent {
         hideBackdrop
         onExited={this.handleExited}
         open={Boolean(match)}
-        transition={this.renderTransition}
+        TransitionComponent={this.renderTransition}
       >
         <ConnectedComponent playerId={playerId} />
       </Dialog>

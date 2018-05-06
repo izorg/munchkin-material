@@ -29,6 +29,12 @@ export default {
       },
     },
 
+    MuiListItemIcon: {
+      root: {
+        fontSize: 24,
+      },
+    },
+
     MuiSvgIcon: {
       root: {
         fontSize: 'inherit',
