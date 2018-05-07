@@ -39,19 +39,19 @@ const ColorPickerDialog = ({ classes, onSelect, value, ...props }) => (
       />
     </DialogTitle>
     <DialogContent className={classes.content}>
-      {Object.keys(availableColors).map((key) => (
+      {Object.keys(availableColors).map((color) => (
         <ButtonBase
           centerRipple
           className={classes.button}
           focusRipple
-          key={key}
+          key={color}
+          onClick={() => onSelect(availableColors[color][500])}
         >
           <Avatar
             className={classes.color}
-            onClick={() => onSelect(availableColors[key][500])}
-            style={{ backgroundColor: availableColors[key][500] }}
+            style={{ backgroundColor: availableColors[color][500] }}
           >
-            {value === availableColors[key][500] && <CheckIcon />}
+            {value === availableColors[color][500] && <CheckIcon />}
           </Avatar>
         </ButtonBase>
       ))}
