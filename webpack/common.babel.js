@@ -45,7 +45,11 @@ export default {
                       ie: 11,
                       safari: 10,
                     },
-                    useBuiltIns: 'usage',
+                    /*
+                     * Have to use `entry` instead of `usage` cause of
+                     * Android 4.4 support
+                     */
+                    useBuiltIns: 'entry',
                   },
                 ],
               ],
