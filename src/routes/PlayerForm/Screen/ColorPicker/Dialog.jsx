@@ -2,13 +2,11 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 import Dialog, { DialogContent, DialogTitle } from 'material-ui/Dialog';
-import * as colors from 'material-ui/colors';
 import { withStyles } from 'material-ui/styles';
 import { noop } from 'lodash';
 
+import availableColors from './availableColors';
 import Color from './Color';
-
-const { common, yellow, ...availableColors } = colors;
 
 const styles = ({ spacing: { unit } }) => ({
   content: {

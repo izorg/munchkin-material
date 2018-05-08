@@ -1,10 +1,12 @@
 import React, { Fragment, PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import Hidden from 'material-ui/Hidden';
 import { withStyles } from 'material-ui/styles';
 import { noop } from 'lodash';
 
 import Color from './Color';
 import Dialog from './Dialog';
+import Popover from './Popover';
 
 const styles = {
   color: {
@@ -18,9 +20,14 @@ class ColorPicker extends PureComponent {
 
     this.ignoreNextBlur = false;
 
+    this.state = {
+      anchorEl: undefined,
+    };
+
     this.handleBlur = this.handleBlur.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
+    this.handleButtonRef = this.handleButtonRef.bind(this);
   }
 
   handleBlur(event) {
@@ -52,6 +59,12 @@ class ColorPicker extends PureComponent {
     }
   }
 
+  handleButtonRef(anchorEl) {
+    this.setState({
+      anchorEl,
+    });
+  }
+
   render() {
     const {
       classes,
@@ -63,10 +76,13 @@ class ColorPicker extends PureComponent {
       value,
     } = this.props;
 
+    const { anchorEl } = this.state;
+
     return (
       <Fragment>
         <Color
           className={classes.color}
+          buttonRef={this.handleButtonRef}
           onBlur={this.handleBlur}
           onClick={this.handleClick}
           onFocus={onFocus}
@@ -74,15 +90,29 @@ class ColorPicker extends PureComponent {
           name={name}
           value={value}
         />
-        <Dialog
-          onClose={onClose}
-          open={open}
-          onSelect={(color) => {
-            onChange(color);
-            onClose();
-          }}
-          value={value}
-        />
+        <Hidden smUp>
+          <Dialog
+            onClose={onClose}
+            open={open}
+            onSelect={(color) => {
+              onChange(color);
+              onClose();
+            }}
+            value={value}
+          />
+        </Hidden>
+        <Hidden xsDown>
+          <Popover
+            anchorEl={anchorEl}
+            onClose={onClose}
+            open={open}
+            onSelect={(color) => {
+              onChange(color);
+              onClose();
+            }}
+            value={value}
+          />
+        </Hidden>
       </Fragment>
     );
   }
