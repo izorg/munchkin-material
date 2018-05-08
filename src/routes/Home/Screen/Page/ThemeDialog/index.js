@@ -1,16 +1,14 @@
 import { connect } from 'react-redux';
 import { goBack } from 'connected-react-router/lib/actions';
-import { parse } from 'qs';
 import { noop } from 'lodash';
 
 import { setTheme } from '../../../../../ducks/app';
+import getSearch from '../../../../../utils/getSearch';
 
 import Component from './Component';
 
 const mapStateToProps = (state) => {
-  const search = parse(state.router.location.search, {
-    ignoreQueryPrefix: true,
-  });
+  const search = getSearch(state);
 
   return {
     open: search.theme !== undefined,

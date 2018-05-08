@@ -1,14 +1,13 @@
 import { connect } from 'react-redux';
 import { goBack, push } from 'connected-react-router/lib/actions';
 import { isEmpty, isEqual } from 'lodash';
-import { parse } from 'qs';
+
+import getSearch from '../../../../../utils/getSearch';
 
 import Component from './Component';
 
 const mapStateToProps = (state) => {
-  const search = parse(state.router.location.search, {
-    ignoreQueryPrefix: true,
-  });
+  const search = getSearch(state);
 
   return {
     enable: isEmpty(search) || isEqual(search, { menu: '' }),
