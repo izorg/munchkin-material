@@ -1,9 +1,16 @@
 import React, { Fragment, PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import { withStyles } from 'material-ui/styles';
 import { noop } from 'lodash';
 
 import Color from './Color';
 import Dialog from './Dialog';
+
+const styles = {
+  color: {
+    marginLeft: -6,
+  },
+};
 
 class ColorPicker extends PureComponent {
   constructor(props) {
@@ -46,11 +53,20 @@ class ColorPicker extends PureComponent {
   }
 
   render() {
-    const { name, onChange, onClose, onFocus, open, value } = this.props;
+    const {
+      classes,
+      name,
+      onChange,
+      onClose,
+      onFocus,
+      open,
+      value,
+    } = this.props;
 
     return (
       <Fragment>
         <Color
+          className={classes.color}
           onBlur={this.handleBlur}
           onClick={this.handleClick}
           onFocus={onFocus}
@@ -95,4 +111,4 @@ ColorPicker.defaultProps = {
   value: '',
 };
 
-export default ColorPicker;
+export default withStyles(styles)(ColorPicker);

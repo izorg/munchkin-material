@@ -39,6 +39,7 @@
       {
         "ignore": [
           "classes",
+          "className",
           "theme"
         ]
       }
