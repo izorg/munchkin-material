@@ -7,8 +7,8 @@ import NavigationArrowBack from '@material-ui/icons/ArrowBack';
 import NavigationCheck from '@material-ui/icons/Check';
 import { noop } from 'lodash';
 
-import AppBar from '../../../../components/AppBar';
-import Title from '../../../../components/Title';
+import AppBar from '../../../../../components/AppBar';
+import Title from '../../../../../components/Title';
 
 const styles = {
   leftButton: {

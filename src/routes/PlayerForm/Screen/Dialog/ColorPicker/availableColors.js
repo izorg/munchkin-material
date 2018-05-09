@@ -1,4 +1,4 @@
-import * as colors from 'material-ui/colors/index';
+import * as colors from 'material-ui/colors';
 
 const { common, yellow, ...availableColors } = colors;
 
