@@ -20,7 +20,6 @@ module.exports = {
         '@babel/plugin-transform-react-constant-elements',
         '@babel/plugin-transform-react-inline-elements',
         ['@babel/plugin-transform-runtime', { polyfill: false }],
-        ['react-intl', { messagesDir: './messages/' }],
         ['react-remove-properties', { properties: ['data-screenshots'] }],
         'transform-react-remove-prop-types',
       ],
@@ -28,6 +27,11 @@ module.exports = {
     test: {
       plugins: [
         'dynamic-import-node',
+      ],
+    },
+    i18n: {
+      plugins: [
+        ['react-intl', { messagesDir: './messages/' }],
       ],
     },
   },
