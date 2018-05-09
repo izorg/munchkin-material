@@ -44,6 +44,7 @@ const mapStateToProps = createStructuredSelector({
 });
 
 const mapDispatchToProps = {
+  onClose: goBack,
   onSubmit: (values) => (dispatch) => {
     const { id, name = '' } = values;
 

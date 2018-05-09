@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { Field, Form } from 'react-final-form';
 import compose from 'recompose/compose';
 import {
@@ -8,8 +8,15 @@ import {
   intlShape,
 } from 'react-intl';
 import PropTypes from 'prop-types';
-import Dialog from 'material-ui/Dialog';
+import Button from 'material-ui/Button';
+import Dialog, {
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  withMobileDialog,
+} from 'material-ui/Dialog';
 import { FormControl, FormLabel, FormControlLabel } from 'material-ui/Form';
+import Hidden from 'material-ui/Hidden';
 import Grid from 'material-ui/Grid';
 import Radio from 'material-ui/Radio';
 import TextField from 'material-ui/TextField';
@@ -20,11 +27,12 @@ import { FEMALE, MALE } from 'munchkin-core/lib/utils/sex';
 
 import SexFemale from '../../../../components/icons/sex/Female';
 import SexMale from '../../../../components/icons/sex/Male';
-import Layout, { LayoutContent } from '../../../../components/Layout';
 import { sexProp } from '../../../../utils/propTypes';
 
 import AppBar from './AppBar';
 import ColorPicker from './ColorPicker';
+
+const FORM_ID = 'player-form';
 
 const messages = defineMessages({
   label: {
@@ -34,9 +42,14 @@ const messages = defineMessages({
 });
 
 const styles = (theme) => ({
-  content: {
-    ...theme.mixins.gutters({}),
-    overflowY: 'auto',
+  dialog: {
+    minWidth: 320,
+  },
+
+  title: {
+    [theme.breakpoints.down('xs')]: {
+      padding: 0,
+    },
   },
 
   icon: {
@@ -44,7 +57,11 @@ const styles = (theme) => ({
   },
 });
 
-class PlayerFormScreenComponent extends Component {
+class DialogComponent extends PureComponent {
+  static handleExternalSubmit() {
+    document.getElementById(FORM_ID).dispatchEvent(new Event('submit'));
+  }
+
   static renderColorPicker({ input, ...props }) {
     return <ColorPicker {...input} {...props} />;
   }
@@ -98,37 +115,64 @@ class PlayerFormScreenComponent extends Component {
   render() {
     const {
       classes,
+      fullScreen,
       initialValues,
       intl,
       newPlayer,
+      onClose,
       onSubmit,
       open,
     } = this.props;
 
+    const title =
+      initialValues && initialValues.id ? (
+        <FormattedMessage
+          id="player.form.titleEdit"
+          defaultMessage="Edit munchkin"
+        />
+      ) : (
+        <FormattedMessage
+          id="player.form.title"
+          defaultMessage="New munchkin"
+        />
+      );
+
     return (
       <Dialog
-        fullScreen
-        hideBackdrop
+        classes={{
+          paper: classes.dialog,
+        }}
+        fullScreen={fullScreen}
+        hideBackdrop={fullScreen}
+        onClose={onClose}
         onExited={this.handleExited}
         open={open}
         TransitionComponent={this.renderTransition}
       >
-        <Form
-          initialValues={initialValues}
-          onSubmit={onSubmit}
-          subscription={{ submitting: true }}
-          render={({ handleSubmit }) => (
-            <Layout
-              autoComplete="off"
-              component="form"
-              noValidate
-              onSubmit={handleSubmit}
-            >
-              <AppBar />
-              <LayoutContent className={classes.content}>
+        <DialogTitle className={classes.title}>
+          <Hidden smUp>
+            <AppBar
+              onSubmit={DialogComponent.handleExternalSubmit}
+              title={title}
+            />
+          </Hidden>
+          <Hidden xsDown>{title}</Hidden>
+        </DialogTitle>
+        <DialogContent>
+          <Form
+            initialValues={initialValues}
+            onSubmit={onSubmit}
+            subscription={{ submitting: true }}
+            render={({ handleSubmit }) => (
+              <form
+                autoComplete="off"
+                id={FORM_ID}
+                noValidate
+                onSubmit={handleSubmit}
+              >
                 <Field
                   autoFocus={newPlayer}
-                  component={PlayerFormScreenComponent.renderTextField}
+                  component={DialogComponent.renderTextField}
                   fullWidth
                   margin="normal"
                   name="name"
@@ -136,7 +180,7 @@ class PlayerFormScreenComponent extends Component {
                 />
 
                 <Grid container>
-                  <Grid item xs={6} sm={3} md={2} lg={1}>
+                  <Grid item xs={6} md={2} lg={1}>
                     <FormControl component="fieldset" margin="normal">
                       <FormLabel component="legend">
                         <FormattedMessage
@@ -147,7 +191,7 @@ class PlayerFormScreenComponent extends Component {
                       <FormControlLabel
                         control={
                           <Field
-                            component={PlayerFormScreenComponent.renderRadio}
+                            component={DialogComponent.renderRadio}
                             name="sex"
                             type="radio"
                           />
@@ -158,7 +202,7 @@ class PlayerFormScreenComponent extends Component {
                       <FormControlLabel
                         control={
                           <Field
-                            component={PlayerFormScreenComponent.renderRadio}
+                            component={DialogComponent.renderRadio}
                             name="sex"
                             type="radio"
                           />
@@ -169,7 +213,7 @@ class PlayerFormScreenComponent extends Component {
                     </FormControl>
                   </Grid>
 
-                  <Grid item xs={6} sm={3} md={2} lg={1}>
+                  <Grid item xs={6} md={2} lg={1}>
                     <FormControl margin="normal">
                       <FormLabel>
                         <FormattedMessage
@@ -178,23 +222,40 @@ class PlayerFormScreenComponent extends Component {
                         />
                       </FormLabel>
                       <Field
-                        component={PlayerFormScreenComponent.renderColorPicker}
+                        component={DialogComponent.renderColorPicker}
                         name="color"
                       />
                     </FormControl>
                   </Grid>
                 </Grid>
-              </LayoutContent>
-            </Layout>
-          )}
-        />
+              </form>
+            )}
+          />
+        </DialogContent>
+        <Hidden xsDown>
+          <DialogActions>
+            <Button color="primary" onClick={onClose}>
+              <FormattedMessage
+                id="player.form.cancel"
+                defaultMessage="Cancel"
+              />
+            </Button>
+            <Button
+              color="primary"
+              onClick={DialogComponent.handleExternalSubmit}
+            >
+              <FormattedMessage id="player.form.save" defaultMessage="Save" />
+            </Button>
+          </DialogActions>
+        </Hidden>
       </Dialog>
     );
   }
 }
 
-PlayerFormScreenComponent.propTypes = {
+DialogComponent.propTypes = {
   appear: PropTypes.bool,
+  fullScreen: PropTypes.bool.isRequired,
   initialValues: PropTypes.shape({
     color: PropTypes.string.isRequired,
     name: PropTypes.string,
@@ -202,17 +263,21 @@ PlayerFormScreenComponent.propTypes = {
   }).isRequired,
   intl: intlShape.isRequired,
   newPlayer: PropTypes.bool,
+  onClose: PropTypes.func,
   onSubmit: PropTypes.func,
   open: PropTypes.bool,
 };
 
-PlayerFormScreenComponent.defaultProps = {
+DialogComponent.defaultProps = {
   appear: false,
   newPlayer: true,
+  onClose: noop,
   onSubmit: noop,
   open: false,
 };
 
-export default compose(injectIntl, withStyles(styles))(
-  PlayerFormScreenComponent,
-);
+export default compose(
+  injectIntl,
+  withStyles(styles),
+  withMobileDialog({ breakpoint: 'xs' }),
+)(DialogComponent);

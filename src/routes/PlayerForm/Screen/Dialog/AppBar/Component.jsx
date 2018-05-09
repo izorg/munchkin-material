@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react';
-import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 import IconButton from 'material-ui/IconButton';
 import { withStyles } from 'material-ui/styles';
@@ -22,7 +21,7 @@ const styles = {
 
 class PlayerFormScreenAppBarComponent extends PureComponent {
   render() {
-    const { classes, edit, onCancel } = this.props;
+    const { classes, onCancel, onSubmit, title } = this.props;
 
     return (
       <AppBar>
@@ -34,21 +33,9 @@ class PlayerFormScreenAppBarComponent extends PureComponent {
           <NavigationArrowBack />
         </IconButton>
 
-        <Title className={classes.title}>
-          {edit ? (
-            <FormattedMessage
-              id="player.form.titleEdit"
-              defaultMessage="Edit munchkin"
-            />
-          ) : (
-            <FormattedMessage
-              id="player.form.title"
-              defaultMessage="New munchkin"
-            />
-          )}
-        </Title>
+        <Title className={classes.title}>{title}</Title>
 
-        <IconButton color="inherit" type="submit">
+        <IconButton color="inherit" onClick={onSubmit}>
           <NavigationCheck />
         </IconButton>
       </AppBar>
@@ -57,13 +44,15 @@ class PlayerFormScreenAppBarComponent extends PureComponent {
 }
 
 PlayerFormScreenAppBarComponent.propTypes = {
-  edit: PropTypes.bool,
   onCancel: PropTypes.func,
+  onSubmit: PropTypes.func,
+  title: PropTypes.node,
 };
 
 PlayerFormScreenAppBarComponent.defaultProps = {
-  edit: false,
   onCancel: noop,
+  onSubmit: noop,
+  title: null,
 };
 
 export default withStyles(styles)(PlayerFormScreenAppBarComponent);
