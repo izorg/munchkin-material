@@ -21,7 +21,9 @@ import Grid from 'material-ui/Grid';
 import Radio from 'material-ui/Radio';
 import TextField from 'material-ui/TextField';
 import { withStyles } from 'material-ui/styles';
+import Fade from 'material-ui/es/transitions/Fade';
 import Slide from 'material-ui/es/transitions/Slide';
+import { isWidthDown } from 'material-ui/utils/withWidth';
 import { noop } from 'lodash';
 import { FEMALE, MALE } from 'munchkin-core/lib/utils/sex';
 
@@ -109,7 +111,11 @@ class DialogComponent extends PureComponent {
   renderTransition(props) {
     const { appear } = this.state;
 
-    return <Slide {...props} appear={appear} direction="up" />;
+    if (isWidthDown('xs', window.innerWidth)) {
+      return <Slide {...props} appear={appear} direction="up" />;
+    }
+
+    return <Fade {...props} appear={appear} />;
   }
 
   render() {
@@ -180,7 +186,7 @@ class DialogComponent extends PureComponent {
                 />
 
                 <Grid container>
-                  <Grid item xs={6} md={2} lg={1}>
+                  <Grid item xs={6}>
                     <FormControl component="fieldset" margin="normal">
                       <FormLabel component="legend">
                         <FormattedMessage
@@ -213,7 +219,7 @@ class DialogComponent extends PureComponent {
                     </FormControl>
                   </Grid>
 
-                  <Grid item xs={6} md={2} lg={1}>
+                  <Grid item xs={6}>
                     <FormControl margin="normal">
                       <FormLabel>
                         <FormattedMessage
