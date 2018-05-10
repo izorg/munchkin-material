@@ -23,7 +23,6 @@ import TextField from 'material-ui/TextField';
 import { withStyles } from 'material-ui/styles';
 import Fade from 'material-ui/es/transitions/Fade';
 import Slide from 'material-ui/es/transitions/Slide';
-import { isWidthDown } from 'material-ui/utils/withWidth';
 import { noop } from 'lodash';
 import { FEMALE, MALE } from 'munchkin-core/lib/utils/sex';
 
@@ -109,9 +108,10 @@ class DialogComponent extends PureComponent {
   }
 
   renderTransition(props) {
+    const { fullScreen } = this.props;
     const { appear } = this.state;
 
-    if (isWidthDown('xs', window.innerWidth)) {
+    if (fullScreen) {
       return <Slide {...props} appear={appear} direction="up" />;
     }
 
