@@ -4,21 +4,14 @@ import { SortableContainer, SortableElement } from 'react-sortable-hoc';
 import PropTypes from 'prop-types';
 import List from 'material-ui/List';
 import { withStyles } from 'material-ui/styles';
-import cns from 'classnames';
 import { noop } from 'lodash';
 
 import Item from './Item';
 
-const SortableList = SortableContainer(List);
+const SortableList = SortableContainer(List, { withRef: true });
 const SortableListItem = SortableElement(Item);
 
 const styles = (theme) => ({
-  list: {
-    overflowY: 'auto',
-    paddingBottom: 56,
-    touchAction: 'pan-y',
-  },
-
   sortableHelper: {
     backgroundColor: theme.palette.common.white,
     boxShadow: theme.shadows[3],
@@ -31,17 +24,11 @@ const styles = (theme) => ({
 });
 
 class HomeScreenPagePlayerList extends PureComponent {
-  static handleRef(list) {
-    if (list) {
-      // eslint-disable-next-line no-param-reassign
-      list.document = { body: list.container }; // dirty hack to render helper inside list
-    }
-  }
-
   constructor(props) {
     super(props);
 
     this.handleSortEnd = this.handleSortEnd.bind(this);
+    this.handleRef = this.handleRef.bind(this);
   }
 
   componentWillUpdate(nextProps) {
@@ -68,6 +55,13 @@ class HomeScreenPagePlayerList extends PureComponent {
     }
   }
 
+  handleRef(list) {
+    if (list) {
+      // eslint-disable-next-line no-param-reassign,react/no-find-dom-node
+      list.document = { body: findDOMNode(this) }; // dirty hack to render helper inside list
+    }
+  }
+
   handleSortEnd({ oldIndex, newIndex }) {
     this.props.onPlayerMove(oldIndex, newIndex);
   }
@@ -75,22 +69,22 @@ class HomeScreenPagePlayerList extends PureComponent {
   render() {
     const {
       classes,
-      className: classNameProp,
+      className,
       editMode,
+      getContainer,
       playerList,
     } = this.props;
-
-    const className = cns(classNameProp, classes.list);
 
     if (editMode) {
       return (
         <SortableList
           className={className}
+          getContainer={getContainer}
           helperClass={classes.sortableHelper}
           lockAxis="y"
           lockToContainerEdges
           onSortEnd={this.handleSortEnd}
-          ref={HomeScreenPagePlayerList.handleRef}
+          ref={this.handleRef}
           useDragHandle
         >
           {playerList.map((playerId, index) => (
@@ -117,6 +111,7 @@ class HomeScreenPagePlayerList extends PureComponent {
 HomeScreenPagePlayerList.propTypes = {
   className: PropTypes.string,
   editMode: PropTypes.bool,
+  getContainer: PropTypes.func,
   onPlayerMove: PropTypes.func,
   playerList: PropTypes.arrayOf(PropTypes.string),
 };
@@ -124,6 +119,7 @@ HomeScreenPagePlayerList.propTypes = {
 HomeScreenPagePlayerList.defaultProps = {
   className: '',
   editMode: false,
+  getContainer: undefined,
   onPlayerMove: noop,
   playerList: [],
 };

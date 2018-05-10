@@ -14,10 +14,6 @@ import HelperSelector from './HelperSelector';
 import Page from './Page';
 
 const styles = {
-  modal: {
-    zIndex: 1,
-  },
-
   transition: {
     height: '100%',
     left: 0,
@@ -51,7 +47,7 @@ class CombatScreen extends PureComponent {
     const { appear } = this.state;
 
     return (
-      <Modal className={classes.modal} hideBackdrop open={Boolean(match)}>
+      <Modal hideBackdrop open={Boolean(match)}>
         <Transition
           appear={appear}
           in={Boolean(match)}

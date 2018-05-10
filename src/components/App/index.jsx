@@ -35,7 +35,6 @@ const styles = {
     },
 
     body: {
-      backgroundColor: '#FFFFFF',
       height: '100%',
       overflow: 'hidden',
       userSelect: 'none',
