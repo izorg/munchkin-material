@@ -66,6 +66,32 @@ const styles = (theme) => ({
       marginTop: 64,
     },
   },
+
+  '@media (min-width: 600px) and (orientation: portrait)': {
+    content: {
+      alignSelf: 'center',
+      justifyContent: 'center',
+      maxWidth: 400,
+      width: '100%',
+    },
+
+    counters: {
+      flex: 'none',
+      height: 240,
+    },
+
+    strengthCounter: {
+      flex: 'none',
+      height: 240,
+    },
+  },
+
+  '@media (min-width: 600px) and (orientation: landscape)': {
+    content: {
+      margin: '0 auto',
+      width: 480,
+    },
+  },
 });
 
 class SinglePlayerComponent extends PureComponent {

@@ -20,15 +20,20 @@ const styles = (theme) => ({
   },
 
   content: {
+    display: 'flex',
     flex: 1,
+    flexDirection: 'column',
     overflowY: 'auto',
     touchAction: 'pan-y',
   },
 
   listContainer: {
+    flex: 1,
+
     [theme.breakpoints.up('sm')]: {
-      maxWidth: 400,
+      flex: 'none',
       margin: '0 auto',
+      width: 400,
     },
   },
 

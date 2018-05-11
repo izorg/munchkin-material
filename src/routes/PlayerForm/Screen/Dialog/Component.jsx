@@ -21,8 +21,8 @@ import Grid from 'material-ui/Grid';
 import Radio from 'material-ui/Radio';
 import TextField from 'material-ui/TextField';
 import { withStyles } from 'material-ui/styles';
-import Fade from 'material-ui/es/transitions/Fade';
-import Slide from 'material-ui/es/transitions/Slide';
+import Fade from 'material-ui/transitions/Fade';
+import Slide from 'material-ui/transitions/Slide';
 import { noop } from 'lodash';
 import { FEMALE, MALE } from 'munchkin-core/lib/utils/sex';
 

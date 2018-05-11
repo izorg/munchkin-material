@@ -12,12 +12,23 @@ const PlayerSwipeableViews = bindKeyboard(virtualize(SwipeableViews));
 const styles = (theme) => ({
   item: {
     flexGrow: 1,
+    height: '100%',
     paddingLeft: theme.spacing.unit * 2,
     paddingRight: theme.spacing.unit * 2,
+    width: '100%',
 
     [theme.breakpoints.up('sm')]: {
       paddingLeft: theme.spacing.unit * 3,
       paddingRight: theme.spacing.unit * 3,
+    },
+
+    '@media (orientation: portrait)': {
+      height: 480,
+      maxWidth: 400,
+    },
+
+    '@media (orientation: landscape)': {
+      maxWidth: 600,
     },
   },
 });
@@ -83,7 +94,9 @@ class PlayerSlider extends PureComponent {
         overscanSlideBefore={1}
         slideRenderer={this.slideRenderer}
         slideStyle={{
+          alignItems: 'center',
           display: 'flex',
+          justifyContent: 'center',
           overflow: 'hidden',
         }}
         style={{

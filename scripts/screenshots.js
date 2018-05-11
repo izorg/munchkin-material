@@ -18,7 +18,11 @@ const {
 
 const appUrl = `http://${host}:${port}`;
 
-const mobile = devices['Nexus 5'];
+const sizes = {
+  mobile: devices['Nexus 5'],
+  tablet7: devices['Nexus 7'],
+  tablet10: devices['Nexus 10'],
+};
 const dir = 'screenshots';
 
 if (fs.existsSync(dir)) {
@@ -27,7 +31,7 @@ if (fs.existsSync(dir)) {
   fs.mkdirSync(dir);
 }
 
-const getScreenshots = async ({ locale }) => {
+const getScreenshots = async ({ locale, size = 'mobile' }) => {
   console.log('locale', locale);
 
   const browser = await puppeteer.launch();
@@ -48,7 +52,7 @@ const getScreenshots = async ({ locale }) => {
     console.log('hashchange event:', new URL(url).hash),
   );
 
-  await page.emulate(mobile);
+  await page.emulate(sizes[size]);
 
   let count = 0;
 
@@ -60,7 +64,7 @@ const getScreenshots = async ({ locale }) => {
     window.munchkinDev.setTestData();
   }, locale);
   await page.screenshot({
-    path: path.join(dir, `${locale}-${count}-home.png`),
+    path: path.join(dir, `${locale}-${size}-${count}-home.png`),
   });
 
   // Player
@@ -68,7 +72,7 @@ const getScreenshots = async ({ locale }) => {
   await page.click('[data-screenshots="player-list-item"]');
   await page.waitFor(duration.enteringScreen);
   await page.screenshot({
-    path: path.join(dir, `${locale}-${count}-player.png`),
+    path: path.join(dir, `${locale}-${size}-${count}-player.png`),
   });
 
   // Dice
@@ -76,7 +80,7 @@ const getScreenshots = async ({ locale }) => {
   await page.click('[data-screenshots="player-dice-button"]');
   await page.waitFor(duration.enteringScreen);
   await page.screenshot({
-    path: path.join(dir, `${locale}-${count}-dice.png`),
+    path: path.join(dir, `${locale}-${size}-${count}-dice.png`),
   });
 
   // Combat
@@ -86,7 +90,7 @@ const getScreenshots = async ({ locale }) => {
   await page.click('[data-screenshots="combat-button"]');
   await page.waitFor(duration.enteringScreen);
   await page.screenshot({
-    path: path.join(dir, `${locale}-${count}-combat.png`),
+    path: path.join(dir, `${locale}-${size}-${count}-combat.png`),
   });
 
   // Single mode
@@ -122,13 +126,17 @@ const getScreenshots = async ({ locale }) => {
   );
   await page.waitFor(duration.enteringScreen);
   await page.screenshot({
-    path: path.join(dir, `${locale}-${count}-single.png`),
+    path: path.join(dir, `${locale}-${size}-${count}-single.png`),
   });
 
   await browser.close();
 };
 
 (async () => {
-  await getScreenshots({ locale: EN });
-  await getScreenshots({ locale: RU });
+  await getScreenshots({ locale: EN, size: 'mobile' });
+  await getScreenshots({ locale: RU, size: 'mobile' });
+  await getScreenshots({ locale: EN, size: 'tablet7' });
+  await getScreenshots({ locale: RU, size: 'tablet7' });
+  await getScreenshots({ locale: EN, size: 'tablet10' });
+  await getScreenshots({ locale: RU, size: 'tablet10' });
 })();

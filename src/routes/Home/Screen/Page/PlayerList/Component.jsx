@@ -41,8 +41,7 @@ class HomeScreenPagePlayerList extends PureComponent {
   }
 
   componentDidUpdate(prevProps) {
-    // eslint-disable-next-line react/no-find-dom-node
-    const node = findDOMNode(this);
+    const node = this.props.getContainer();
 
     if (this.scrollTop) {
       node.scrollTop = this.scrollTop;

@@ -26,6 +26,12 @@ const styles = {
     top: 8,
   },
 
+  '@media (min-width: 600px) and (orientation: portrait)': {
+    paper: {
+      marginBottom: 8,
+    },
+  },
+
   '@media (orientation: landscape)': {
     monsters: {
       alignItems: 'center',
@@ -83,7 +89,7 @@ class CombatMonsterSlider extends PureComponent {
     const { index } = this.state;
 
     const views = monsters.map((id, monsterIndex) => (
-      <Paper key={id}>
+      <Paper className={classes.paper} key={id}>
         <Monster
           id={id}
           title={

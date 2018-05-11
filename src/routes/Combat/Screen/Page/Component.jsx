@@ -41,6 +41,24 @@ const styles = (theme) => ({
     margin: '0 0.5em',
   },
 
+  '@media (min-width: 600px) and (orientation: portrait)': {
+    content: {
+      justifyContent: 'center',
+    },
+
+    players: {
+      flex: 'none',
+    },
+
+    monsters: {
+      flex: 'none',
+    },
+
+    total: {
+      padding: `${theme.spacing.unit * 2}px 0`,
+    },
+  },
+
   '@media (orientation: landscape)': {
     content: {
       flexDirection: 'row',

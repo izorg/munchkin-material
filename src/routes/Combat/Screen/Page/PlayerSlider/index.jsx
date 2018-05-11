@@ -28,6 +28,12 @@ const styles = {
     width: 36,
   },
 
+  '@media (min-width: 600px) and (orientation: portrait)': {
+    paper: {
+      marginTop: 8,
+    },
+  },
+
   '@media (orientation: landscape)': {
     players: {
       alignItems: 'center',
@@ -105,7 +111,7 @@ class CombatPlayerSlider extends PureComponent {
     }
 
     const players = playersProps.map((props) => (
-      <Paper key={props.id}>
+      <Paper className={classes.paper} key={props.id}>
         <Player id={props.id} onBonusChange={props.onBonusChange} />
 
         {props.id !== playerId && (
