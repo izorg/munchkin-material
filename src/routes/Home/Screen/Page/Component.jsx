@@ -36,7 +36,7 @@ const styles = (theme) => ({
     paddingBottom: 56,
 
     [theme.breakpoints.up('sm')]: {
-      paddingBottom: 0,
+      paddingBottom: theme.spacing.unit,
     },
   },
 });
