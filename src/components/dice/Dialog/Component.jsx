@@ -35,6 +35,10 @@ const styles = {
       backgroundColor: 'transparent',
     },
   },
+
+  icon: {
+    fontSize: 'inherit',
+  },
 };
 
 const diceComponent = {
@@ -80,7 +84,8 @@ class DiceDialog extends PureComponent {
               disableRipple
               onClick={this.handleDiceClick}
             >
-              {dice && createElement(diceComponent[dice])}
+              {dice &&
+                createElement(diceComponent[dice], { className: classes.icon })}
             </IconButton>
           </DiceTransition>
         </TransitionGroup>

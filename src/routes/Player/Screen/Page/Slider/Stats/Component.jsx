@@ -59,6 +59,10 @@ const styles = (theme) => ({
     width: 64,
   },
 
+  sexIcon: {
+    fontSize: 'inherit',
+  },
+
   '@media (orientation: landscape)': {
     stats: {
       flexDirection: 'row',
@@ -121,7 +125,7 @@ const PlayerStats = ({
           color="inherit"
           onClick={() => onSexToggle(player.id)}
         >
-          <Sex sex={player.sex} />
+          <Sex className={classes.sexIcon} sex={player.sex} />
         </IconButton>
       </div>
     </div>

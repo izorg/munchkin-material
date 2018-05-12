@@ -23,6 +23,10 @@ const styles = (theme) => ({
     width: 48,
   },
 
+  icon: {
+    fontSize: 'inherit',
+  },
+
   value: {
     fontFamily: `"Munchkin", ${theme.typography.fontFamily}`,
     fontSize: theme.typography.display1.fontSize,
@@ -58,7 +62,7 @@ const CombatScreenPageCounter = ({
       color="inherit"
       onClick={onIncrement}
     >
-      <NavigationArrowDropUp />
+      <NavigationArrowDropUp className={classes.icon} />
     </IconButton>
 
     <div className={classes.value}>{value}</div>
@@ -68,7 +72,7 @@ const CombatScreenPageCounter = ({
       color="inherit"
       onClick={onDecrement}
     >
-      <NavigationArrowDropDown />
+      <NavigationArrowDropDown className={classes.icon} />
     </IconButton>
   </div>
 );

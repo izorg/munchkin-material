@@ -53,6 +53,10 @@ const styles = (theme) => ({
     width: 64,
   },
 
+  sexIcon: {
+    fontSize: 'inherit',
+  },
+
   '@media (orientation: landscape)': {
     content: {
       flexDirection: 'row',
@@ -166,7 +170,7 @@ class SinglePlayerComponent extends PureComponent {
             color="inherit"
             onClick={onSexToggle}
           >
-            <Sex sex={player.sex} />
+            <Sex className={classes.sexIcon} sex={player.sex} />
           </IconButton>
         </div>
       </div>

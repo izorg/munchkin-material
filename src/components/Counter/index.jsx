@@ -23,6 +23,10 @@ const styles = (theme) => ({
     width: 64,
   },
 
+  icon: {
+    fontSize: 'inherit',
+  },
+
   value: {
     fontFamily: `"Munchkin", ${theme.typography.fontFamily}`,
     fontSize: 36,
@@ -47,7 +51,7 @@ const Counter = ({
       data-screenshots="increment-button"
       onClick={onIncrement}
     >
-      <NavigationArrowDropUp />
+      <NavigationArrowDropUp className={classes.icon} />
     </IconButton>
 
     <div className={classes.value}>{value}</div>
@@ -58,7 +62,7 @@ const Counter = ({
       data-screenshots="decrement-button"
       onClick={onDecrement}
     >
-      <NavigationArrowDropDown />
+      <NavigationArrowDropDown className={classes.icon} />
     </IconButton>
   </div>
 );
