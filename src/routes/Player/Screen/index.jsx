@@ -12,7 +12,11 @@ import FabTransition from '../../../components/fab/Transition';
 import CombatButton from './CombatButton';
 import Page from './Page';
 
-const styles = {
+const styles = (theme) => ({
+  root: {
+    zIndex: theme.zIndex.modal - 1,
+  },
+
   transition: {
     height: '100%',
     left: 0,
@@ -20,7 +24,7 @@ const styles = {
     top: 0,
     width: '100%',
   },
-};
+});
 
 class PlayerScreen extends PureComponent {
   constructor(props) {
@@ -63,7 +67,7 @@ class PlayerScreen extends PureComponent {
     const { appear } = this.state;
 
     return (
-      <Modal hideBackdrop open={Boolean(match)}>
+      <Modal className={classes.root} hideBackdrop open={Boolean(match)}>
         <Transition
           appear={appear}
           in={Boolean(match)}
