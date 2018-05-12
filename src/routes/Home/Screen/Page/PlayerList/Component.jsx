@@ -1,104 +1,153 @@
 import React, { PureComponent } from 'react';
+import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 import { findDOMNode } from 'react-dom';
-import { SortableContainer, SortableElement } from 'react-sortable-hoc';
 import PropTypes from 'prop-types';
 import List from 'material-ui/List';
 import { withStyles } from 'material-ui/styles';
+import cns from 'classnames';
 import { noop } from 'lodash';
 
 import Item from './Item';
 
-const SortableList = SortableContainer(List, { withRef: true });
-const SortableListItem = SortableElement(Item);
-
-const styles = (theme) => ({
-  sortableHelper: {
-    backgroundColor: theme.palette.common.white,
-    boxShadow: theme.shadows[3],
-    pointerEvents: 'auto !important',
-
-    '& > div': {
-      pointerEvents: 'none',
+const styles = {
+  dragging: {
+    '& [data-react-beautiful-dnd-draggable="0"]': {
+      transition: 'transform 0.2s cubic-bezier(0.2, 0, 0, 1)',
     },
   },
-});
+
+  drag: {
+    '&:hover': {
+      backgroundColor: 'transparent',
+    },
+  },
+};
 
 class HomeScreenPagePlayerList extends PureComponent {
   constructor(props) {
     super(props);
 
-    this.handleSortEnd = this.handleSortEnd.bind(this);
-    this.handleRef = this.handleRef.bind(this);
+    this.state = {
+      dragging: false,
+    };
+
+    this.handleDragStart = this.handleDragStart.bind(this);
+    this.handleDragEnd = this.handleDragEnd.bind(this);
   }
 
-  componentWillUpdate(nextProps) {
-    if (this.props.editMode !== nextProps.editMode) {
-      // eslint-disable-next-line react/no-find-dom-node
-      const node = findDOMNode(this);
-
-      this.scrollTop = node.scrollTop;
-    }
+  handleDragStart() {
+    this.setState({
+      dragging: true,
+    });
   }
 
-  componentDidUpdate(prevProps) {
-    const node = this.props.getContainer();
+  handleDragEnd({ destination, source }) {
+    const { onPlayerMove } = this.props;
 
-    if (this.scrollTop) {
-      node.scrollTop = this.scrollTop;
-
-      delete this.scrollTop;
+    if (destination && destination.index !== source.index) {
+      onPlayerMove(source.index, destination.index);
     }
 
-    if (this.props.playerList.length > prevProps.playerList.length) {
-      node.scrollTop = node.scrollHeight;
-    }
-  }
-
-  handleRef(list) {
-    if (list) {
-      // eslint-disable-next-line no-param-reassign,react/no-find-dom-node
-      list.document = { body: findDOMNode(this) }; // dirty hack to render helper inside list
-    }
-  }
-
-  handleSortEnd({ oldIndex, newIndex }) {
-    this.props.onPlayerMove(oldIndex, newIndex);
+    this.setState({
+      dragging: false,
+    });
   }
 
   render() {
     const {
       classes,
-      className,
       editMode,
-      getContainer,
+      onPlayerMove,
       playerList,
+      theme,
+      ...rest
     } = this.props;
+    const { dragging } = this.state;
 
     if (editMode) {
       return (
-        <SortableList
-          className={className}
-          getContainer={getContainer}
-          helperClass={classes.sortableHelper}
-          lockAxis="y"
-          lockToContainerEdges
-          onSortEnd={this.handleSortEnd}
-          ref={this.handleRef}
-          useDragHandle
+        <DragDropContext
+          onDragStart={this.handleDragStart}
+          onDragEnd={this.handleDragEnd}
         >
-          {playerList.map((playerId, index) => (
-            <SortableListItem
-              index={index}
-              key={playerId}
-              playerId={playerId}
-            />
-          ))}
-        </SortableList>
+          <Droppable droppableId="player-list">
+            {({ droppableProps, innerRef: droppableRef }) => (
+              <List
+                className={cns({ [classes.dragging]: dragging })}
+                ref={(list) => {
+                  // eslint-disable-next-line react/no-find-dom-node
+                  droppableRef(findDOMNode(list));
+                }}
+                {...rest}
+                {...droppableProps}
+              >
+                {playerList.map((playerId, index) => (
+                  <Draggable
+                    disableInteractiveElementBlocking
+                    draggableId={playerId}
+                    index={index}
+                    key={playerId}
+                  >
+                    {(
+                      {
+                        draggableProps,
+                        dragHandleProps,
+                        innerRef: draggableRef,
+                      },
+                      { isDragging },
+                    ) => {
+                      let style = { ...draggableProps.style };
+
+                      if (isDragging) {
+                        style = {
+                          ...style,
+                          backgroundColor: theme.palette.common.white,
+                          boxShadow: theme.shadows[3],
+                          pointerEvents: 'auto',
+                          zIndex: 1,
+                        };
+                      }
+
+                      if (style.transform) {
+                        const transform = style.transform.replace(
+                          /translate\(([0-9.-]+px), ([0-9.-]+px)\)/,
+                          'translate(0, $2)',
+                        );
+
+                        style = {
+                          ...style,
+                          transform,
+                          WebkitTransform: transform,
+                        };
+                      }
+
+                      return (
+                        <Item
+                          className={cns({ [classes.drag]: isDragging })}
+                          ContainerProps={{
+                            ...draggableProps,
+                            style,
+                          }}
+                          dragHandleProps={dragHandleProps}
+                          playerId={playerId}
+                          ref={(item) => {
+                            // eslint-disable-next-line react/no-find-dom-node
+                            draggableRef(findDOMNode(item));
+                          }}
+                        />
+                      );
+                    }}
+                  </Draggable>
+                ))}
+              </List>
+            )}
+          </Droppable>
+        </DragDropContext>
       );
     }
 
     return (
-      <List className={className}>
+      <List {...rest}>
         {playerList.map((playerId, index) => (
           <Item index={index} key={playerId} playerId={playerId} />
         ))}
@@ -108,19 +157,17 @@ class HomeScreenPagePlayerList extends PureComponent {
 }
 
 HomeScreenPagePlayerList.propTypes = {
-  className: PropTypes.string,
   editMode: PropTypes.bool,
-  getContainer: PropTypes.func,
   onPlayerMove: PropTypes.func,
   playerList: PropTypes.arrayOf(PropTypes.string),
 };
 
 HomeScreenPagePlayerList.defaultProps = {
-  className: '',
   editMode: false,
-  getContainer: undefined,
   onPlayerMove: noop,
   playerList: [],
 };
 
-export default withStyles(styles)(HomeScreenPagePlayerList);
+export default withStyles(styles, { withTheme: true })(
+  HomeScreenPagePlayerList,
+);

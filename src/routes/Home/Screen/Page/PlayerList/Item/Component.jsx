@@ -1,6 +1,5 @@
 import React, { Fragment, PureComponent } from 'react';
 import { findDOMNode } from 'react-dom';
-import { SortableHandle } from 'react-sortable-hoc';
 import PropTypes from 'prop-types';
 import IconButton from 'material-ui/IconButton';
 import {
@@ -22,8 +21,6 @@ import ChevronDoubleUpIcon from '../../../../../../components/icons/ChevronDoubl
 
 import * as modes from '../../../../modes';
 import modeShape from '../../../../modeShape';
-
-const ItemHandle = SortableHandle(ActionReorder);
 
 const styles = (theme) => ({
   listItemGutters: {
@@ -74,12 +71,6 @@ const styles = (theme) => ({
     justifyContent: 'flex-end',
     marginLeft: 4,
     width: 48,
-  },
-
-  itemHandle: {
-    '&:hover': {
-      backgroundColor: 'transparent',
-    },
   },
 });
 
@@ -176,7 +167,19 @@ class HomeScreenPagePlayerListItemComponent extends PureComponent {
   }
 
   render() {
-    const { classes, mode, player, selected } = this.props;
+    const {
+      classes,
+      dragHandleProps,
+      mode,
+      player,
+      playerId,
+      onMultiSelectActivate,
+      onPlayerEdit,
+      onPlayerSelect,
+      onPlayerToggle,
+      selected,
+      ...rest
+    } = this.props;
     const SexIcon = getSexIconClass(player.sex);
 
     return (
@@ -188,6 +191,7 @@ class HomeScreenPagePlayerListItemComponent extends PureComponent {
         component={mode === modes.EDIT ? 'div' : 'li'}
         data-screenshots="player-list-item"
         ref={this.handleItemRef}
+        {...rest}
       >
         <Avatar
           color={player.color}
@@ -231,12 +235,8 @@ class HomeScreenPagePlayerListItemComponent extends PureComponent {
               root: classes.listItemSecondaryActionRoot,
             }}
           >
-            <IconButton
-              className={classes.itemHandle}
-              disableRipple
-              tabIndex={-1}
-            >
-              <ItemHandle />
+            <IconButton {...dragHandleProps}>
+              <ActionReorder />
             </IconButton>
           </ListItemSecondaryAction>
         )}
@@ -246,16 +246,19 @@ class HomeScreenPagePlayerListItemComponent extends PureComponent {
 }
 
 HomeScreenPagePlayerListItemComponent.propTypes = {
+  dragHandleProps: PropTypes.object,
   mode: modeShape,
   onMultiSelectActivate: PropTypes.func,
   onPlayerEdit: PropTypes.func,
   onPlayerSelect: PropTypes.func,
   onPlayerToggle: PropTypes.func,
   player: playerShape.isRequired,
+  playerId: PropTypes.string.isRequired,
   selected: PropTypes.bool,
 };
 
 HomeScreenPagePlayerListItemComponent.defaultProps = {
+  dragHandleProps: undefined,
   mode: null,
   onMultiSelectActivate: noop,
   onPlayerEdit: noop,

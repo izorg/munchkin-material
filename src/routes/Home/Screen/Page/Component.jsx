@@ -1,5 +1,4 @@
-import React, { Fragment, PureComponent } from 'react';
-import { findDOMNode } from 'react-dom';
+import React, { createRef, Fragment, PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import Paper from 'material-ui/Paper';
 import { withStyles } from 'material-ui/styles';
@@ -29,19 +28,13 @@ const styles = (theme) => ({
 
   listContainer: {
     flex: 1,
+    paddingBottom: 48,
 
     [theme.breakpoints.up('sm')]: {
       flex: 'none',
       margin: '0 auto',
+      paddingBottom: 0,
       width: 400,
-    },
-  },
-
-  list: {
-    paddingBottom: 56,
-
-    [theme.breakpoints.up('sm')]: {
-      paddingBottom: theme.spacing.unit,
     },
   },
 });
@@ -50,12 +43,15 @@ class Component extends PureComponent {
   constructor(props) {
     super(props);
 
-    this.handleContainer = this.handleContainer.bind(this);
+    this.contentRef = createRef();
   }
 
-  handleContainer() {
-    // eslint-disable-next-line react/no-find-dom-node
-    return findDOMNode(this).querySelector('[data-container]');
+  componentDidUpdate(prevProps) {
+    const node = this.contentRef.current;
+
+    if (this.props.playerCount > prevProps.playerCount) {
+      node.scrollTop = node.scrollHeight;
+    }
   }
 
   render() {
@@ -69,12 +65,9 @@ class Component extends PureComponent {
       content = <Nobody />;
     } else {
       content = (
-        <div className={classes.content} data-container>
+        <div className={classes.content} ref={this.contentRef}>
           <Paper className={classes.listContainer}>
-            <PlayerList
-              className={classes.list}
-              getContainer={this.handleContainer}
-            />
+            <PlayerList />
           </Paper>
         </div>
       );
@@ -96,12 +89,14 @@ class Component extends PureComponent {
 Component.propTypes = {
   empty: PropTypes.bool,
   menu: PropTypes.bool,
+  playerCount: PropTypes.number,
   singleMode: PropTypes.bool,
 };
 
 Component.defaultProps = {
   empty: false,
   menu: false,
+  playerCount: 0,
   singleMode: false,
 };
 
