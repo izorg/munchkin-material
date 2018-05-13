@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Paper from 'material-ui/Paper';
 import { withStyles } from 'material-ui/styles';
 import cns from 'classnames';
@@ -27,13 +26,5 @@ const Layout = ({ classes, className, ...props }) => (
     {...props}
   />
 );
-
-Layout.propTypes = {
-  className: PropTypes.string,
-};
-
-Layout.defaultProps = {
-  className: '',
-};
 
 export default withStyles(styles)(Layout);

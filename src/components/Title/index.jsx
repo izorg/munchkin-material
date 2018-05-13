@@ -1,7 +1,6 @@
 import React from 'react';
 import Typography from 'material-ui/Typography';
 import { withStyles } from 'material-ui/styles';
-import PropTypes from 'prop-types';
 import cns from 'classnames';
 
 const styles = {
@@ -19,13 +18,5 @@ const Title = ({ className, classes, ...props }) => (
     {...props}
   />
 );
-
-Title.propTypes = {
-  className: PropTypes.string,
-};
-
-Title.defaultProps = {
-  className: '',
-};
 
 export default withStyles(styles)(Title);

@@ -177,7 +177,6 @@ class CombatPlayerSlider extends PureComponent {
 }
 
 CombatPlayerSlider.propTypes = {
-  className: PropTypes.string,
   helperId: PropTypes.string,
   onHelperBonusChange: PropTypes.func,
   onHelperRemove: PropTypes.func,
@@ -186,7 +185,6 @@ CombatPlayerSlider.propTypes = {
 };
 
 CombatPlayerSlider.defaultProps = {
-  className: '',
   helperId: null,
   onHelperBonusChange: noop,
   onHelperRemove: noop,

@@ -133,7 +133,6 @@ const PlayerStats = ({
 );
 
 PlayerStats.propTypes = {
-  className: PropTypes.string,
   onGearDecrement: PropTypes.func,
   onGearIncrement: PropTypes.func,
   onLevelDecrement: PropTypes.func,
@@ -143,7 +142,6 @@ PlayerStats.propTypes = {
 };
 
 PlayerStats.defaultProps = {
-  className: '',
   onGearDecrement: noop,
   onGearIncrement: noop,
   onLevelDecrement: noop,

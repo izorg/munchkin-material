@@ -68,7 +68,6 @@ const Counter = ({
 );
 
 Counter.propTypes = {
-  className: PropTypes.string,
   onDecrement: PropTypes.func,
   onIncrement: PropTypes.func,
   title: PropTypes.node.isRequired,
@@ -76,7 +75,6 @@ Counter.propTypes = {
 };
 
 Counter.defaultProps = {
-  className: '',
   onDecrement: noop,
   onIncrement: noop,
 };

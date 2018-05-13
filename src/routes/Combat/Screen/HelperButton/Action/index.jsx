@@ -115,13 +115,8 @@ class Action extends PureComponent {
 
 Action.propTypes = {
   children: PropTypes.node.isRequired,
-  className: PropTypes.string,
   in: PropTypes.bool.isRequired,
   title: PropTypes.node.isRequired,
-};
-
-Action.defaultProps = {
-  className: '',
 };
 
 export default withStyles(styles, { withTheme: true })(Action);

@@ -78,7 +78,6 @@ const CombatScreenPageCounter = ({
 );
 
 CombatScreenPageCounter.propTypes = {
-  className: PropTypes.string,
   onDecrement: PropTypes.func,
   onIncrement: PropTypes.func,
   title: PropTypes.node.isRequired,
@@ -86,7 +85,6 @@ CombatScreenPageCounter.propTypes = {
 };
 
 CombatScreenPageCounter.defaultProps = {
-  className: '',
   onDecrement: noop,
   onIncrement: noop,
 };

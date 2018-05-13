@@ -34,12 +34,10 @@ const AppBar = ({ children, classes, className, ...props }) => (
 
 AppBar.propTypes = {
   children: PropTypes.node,
-  className: PropTypes.string,
 };
 
 AppBar.defaultProps = {
   children: null,
-  className: '',
 };
 
 export default withStyles(styles)(AppBar);

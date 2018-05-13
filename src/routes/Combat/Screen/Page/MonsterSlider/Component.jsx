@@ -172,13 +172,11 @@ class CombatMonsterSlider extends PureComponent {
 }
 
 CombatMonsterSlider.propTypes = {
-  className: PropTypes.string,
   monsters: PropTypes.arrayOf(PropTypes.string),
   onMonsterRemove: PropTypes.func,
 };
 
 CombatMonsterSlider.defaultProps = {
-  className: '',
   monsters: [],
   onMonsterRemove: noop,
 };
