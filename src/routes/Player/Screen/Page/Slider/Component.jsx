@@ -27,7 +27,7 @@ const styles = (theme) => ({
     },
 
     [`${theme.breakpoints.up('sm')} and (orientation: portrait)`]: {
-      height: 480,
+      maxHeight: 480,
       maxWidth: 400,
       paddingBottom: 0,
     },
