@@ -17,17 +17,22 @@ const styles = (theme) => ({
     paddingRight: theme.spacing.unit * 2,
     width: '100%',
 
+    '@media (orientation: portrait)': {
+      paddingBottom: 56,
+    },
+
     [theme.breakpoints.up('sm')]: {
       paddingLeft: theme.spacing.unit * 3,
       paddingRight: theme.spacing.unit * 3,
     },
 
-    '@media (orientation: portrait)': {
+    [`${theme.breakpoints.up('sm')} and (orientation: portrait)`]: {
       height: 480,
       maxWidth: 400,
+      paddingBottom: 0,
     },
 
-    '@media (orientation: landscape)': {
+    [`${theme.breakpoints.up('sm')} and (orientation: landscape)`]: {
       maxWidth: 600,
     },
   },
@@ -86,7 +91,7 @@ class PlayerSlider extends PureComponent {
       <PlayerSwipeableViews
         onChangeIndex={this.handleChangeIndex}
         containerStyle={{
-          flexGrow: 1,
+          flex: '1 0 auto',
         }}
         enableMouseEvents
         index={index}
@@ -96,6 +101,7 @@ class PlayerSlider extends PureComponent {
         slideStyle={{
           alignItems: 'center',
           display: 'flex',
+          flexDirection: 'column',
           justifyContent: 'center',
           overflow: 'hidden',
         }}

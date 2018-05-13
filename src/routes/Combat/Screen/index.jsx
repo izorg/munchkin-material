@@ -21,7 +21,7 @@ const styles = (theme) => ({
   transition: {
     height: '100%',
     left: 0,
-    position: 'fixed',
+    position: 'absolute',
     top: 0,
     width: '100%',
   },

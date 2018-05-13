@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { withStyles } from 'material-ui/styles';
 
-import Layout, { LayoutContent } from '../../../../components/Layout';
+import Layout from '../../../../components/Layout';
 
 import AppBar from './AppBar';
 import Slider from './Slider';
@@ -9,14 +9,7 @@ import Slider from './Slider';
 const styles = {
   sliderContent: {
     display: 'flex',
-    paddingLeft: 0,
-    paddingRight: 0,
-  },
-
-  '@media (orientation: portrait)': {
-    sliderContent: {
-      paddingBottom: 56,
-    },
+    flex: 1,
   },
 };
 
@@ -27,9 +20,9 @@ class PlayerPage extends PureComponent {
     return (
       <Layout>
         <AppBar />
-        <LayoutContent className={classes.sliderContent}>
+        <div className={classes.sliderContent}>
           <Slider />
-        </LayoutContent>
+        </div>
       </Layout>
     );
   }
