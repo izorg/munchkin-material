@@ -235,7 +235,7 @@ class HomeScreenPagePlayerListItemComponent extends PureComponent {
               root: classes.listItemSecondaryActionRoot,
             }}
           >
-            <IconButton {...dragHandleProps}>
+            <IconButton disableRipple {...dragHandleProps}>
               <ActionReorder />
             </IconButton>
           </ListItemSecondaryAction>
