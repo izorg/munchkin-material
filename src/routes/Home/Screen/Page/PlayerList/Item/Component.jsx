@@ -74,7 +74,7 @@ const styles = (theme) => ({
   },
 });
 
-class HomeScreenPagePlayerListItemComponent extends PureComponent {
+class HomePlayerListItem extends PureComponent {
   constructor(props) {
     super(props);
 
@@ -245,7 +245,7 @@ class HomeScreenPagePlayerListItemComponent extends PureComponent {
   }
 }
 
-HomeScreenPagePlayerListItemComponent.propTypes = {
+HomePlayerListItem.propTypes = {
   dragHandleProps: PropTypes.object,
   mode: modeShape,
   onMultiSelectActivate: PropTypes.func,
@@ -257,7 +257,7 @@ HomeScreenPagePlayerListItemComponent.propTypes = {
   selected: PropTypes.bool,
 };
 
-HomeScreenPagePlayerListItemComponent.defaultProps = {
+HomePlayerListItem.defaultProps = {
   dragHandleProps: undefined,
   mode: null,
   onMultiSelectActivate: noop,
@@ -267,4 +267,4 @@ HomeScreenPagePlayerListItemComponent.defaultProps = {
   selected: false,
 };
 
-export default withStyles(styles)(HomeScreenPagePlayerListItemComponent);
+export default withStyles(styles)(HomePlayerListItem);

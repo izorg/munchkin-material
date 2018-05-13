@@ -47,7 +47,7 @@ const styles = (theme) => ({
   },
 });
 
-class CombatScreenHelperButton extends PureComponent {
+class CombatHelperButton extends PureComponent {
   constructor(props) {
     super(props);
 
@@ -146,7 +146,7 @@ class CombatScreenHelperButton extends PureComponent {
   }
 }
 
-CombatScreenHelperButton.propTypes = {
+CombatHelperButton.propTypes = {
   expanded: PropTypes.bool,
   helper: PropTypes.bool,
   onAdd: PropTypes.func,
@@ -156,7 +156,7 @@ CombatScreenHelperButton.propTypes = {
   playerId: PropTypes.string.isRequired,
 };
 
-CombatScreenHelperButton.defaultProps = {
+CombatHelperButton.defaultProps = {
   expanded: false,
   helper: false,
   onAdd: noop,
@@ -165,4 +165,4 @@ CombatScreenHelperButton.defaultProps = {
   onMonsterAdd: noop,
 };
 
-export default withStyles(styles)(CombatScreenHelperButton);
+export default withStyles(styles)(CombatHelperButton);

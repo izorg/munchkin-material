@@ -30,7 +30,7 @@ const styles = (theme) => ({
 
 const swipeAreaWidth = 32;
 
-class Component extends PureComponent {
+class HomeMenuDrawer extends PureComponent {
   constructor(props) {
     super(props);
 
@@ -292,18 +292,18 @@ class Component extends PureComponent {
   }
 }
 
-Component.propTypes = {
+HomeMenuDrawer.propTypes = {
   enable: PropTypes.bool,
   onClose: PropTypes.func,
   onOpen: PropTypes.func,
   open: PropTypes.bool,
 };
 
-Component.defaultProps = {
+HomeMenuDrawer.defaultProps = {
   enable: false,
   onClose: noop,
   onOpen: noop,
   open: false,
 };
 
-export default withStyles(styles)(Component);
+export default withStyles(styles)(HomeMenuDrawer);

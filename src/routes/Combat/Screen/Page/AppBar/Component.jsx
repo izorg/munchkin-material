@@ -21,7 +21,7 @@ const styles = {
   },
 };
 
-const CombatScreenPageAppBarComponent = ({ classes, onBack, onFinish }) => (
+const CombatAppBar = ({ classes, onBack, onFinish }) => (
   <AppBar>
     <IconButton
       className={classes.leftButton}
@@ -44,14 +44,14 @@ const CombatScreenPageAppBarComponent = ({ classes, onBack, onFinish }) => (
   </AppBar>
 );
 
-CombatScreenPageAppBarComponent.propTypes = {
+CombatAppBar.propTypes = {
   onBack: PropTypes.func,
   onFinish: PropTypes.func,
 };
 
-CombatScreenPageAppBarComponent.defaultProps = {
+CombatAppBar.defaultProps = {
   onBack: noop,
   onFinish: noop,
 };
 
-export default withStyles(styles)(CombatScreenPageAppBarComponent);
+export default withStyles(styles)(CombatAppBar);

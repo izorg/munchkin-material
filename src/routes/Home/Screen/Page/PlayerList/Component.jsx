@@ -23,7 +23,7 @@ const styles = {
   },
 };
 
-class HomeScreenPagePlayerList extends PureComponent {
+class HomePlayerList extends PureComponent {
   constructor(props) {
     super(props);
 
@@ -156,18 +156,16 @@ class HomeScreenPagePlayerList extends PureComponent {
   }
 }
 
-HomeScreenPagePlayerList.propTypes = {
+HomePlayerList.propTypes = {
   editMode: PropTypes.bool,
   onPlayerMove: PropTypes.func,
   playerList: PropTypes.arrayOf(PropTypes.string),
 };
 
-HomeScreenPagePlayerList.defaultProps = {
+HomePlayerList.defaultProps = {
   editMode: false,
   onPlayerMove: noop,
   playerList: [],
 };
 
-export default withStyles(styles, { withTheme: true })(
-  HomeScreenPagePlayerList,
-);
+export default withStyles(styles, { withTheme: true })(HomePlayerList);

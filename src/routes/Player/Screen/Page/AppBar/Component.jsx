@@ -19,7 +19,7 @@ const styles = {
   },
 };
 
-const Component = ({ classes, onBack, title }) => (
+const PlayerAppBar = ({ classes, onBack, title }) => (
   <AppBar>
     <IconButton
       className={classes.leftButton}
@@ -36,14 +36,14 @@ const Component = ({ classes, onBack, title }) => (
   </AppBar>
 );
 
-Component.propTypes = {
+PlayerAppBar.propTypes = {
   onBack: PropTypes.func,
   title: PropTypes.string,
 };
 
-Component.defaultProps = {
+PlayerAppBar.defaultProps = {
   onBack: noop,
   title: '',
 };
 
-export default withStyles(styles)(Component);
+export default withStyles(styles)(PlayerAppBar);

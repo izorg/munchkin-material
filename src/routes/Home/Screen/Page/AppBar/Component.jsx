@@ -44,7 +44,7 @@ const styles = {
   },
 };
 
-const HomeScreenPageAppBarComponent = ({
+const HomeAppBar = ({
   classes,
   empty,
   intl,
@@ -137,7 +137,7 @@ const HomeScreenPageAppBarComponent = ({
   );
 };
 
-HomeScreenPageAppBarComponent.propTypes = {
+HomeAppBar.propTypes = {
   empty: PropTypes.bool,
   intl: intlShape.isRequired,
   mode: modeShape,
@@ -150,7 +150,7 @@ HomeScreenPageAppBarComponent.propTypes = {
   singleMode: PropTypes.bool,
 };
 
-HomeScreenPageAppBarComponent.defaultProps = {
+HomeAppBar.defaultProps = {
   empty: false,
   mode: null,
   onMultiSelectDeactivate: noop,
@@ -162,6 +162,4 @@ HomeScreenPageAppBarComponent.defaultProps = {
   singleMode: false,
 };
 
-export default compose(injectIntl, withStyles(styles))(
-  HomeScreenPageAppBarComponent,
-);
+export default compose(injectIntl, withStyles(styles))(HomeAppBar);

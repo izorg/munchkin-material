@@ -20,7 +20,7 @@ const styles = {
   },
 };
 
-class PlayerScreenComponent extends PureComponent {
+class PlayerPage extends PureComponent {
   render() {
     const { classes } = this.props;
 
@@ -35,4 +35,4 @@ class PlayerScreenComponent extends PureComponent {
   }
 }
 
-export default withStyles(styles)(PlayerScreenComponent);
+export default withStyles(styles)(PlayerPage);

@@ -39,7 +39,7 @@ const styles = (theme) => ({
   },
 });
 
-class Component extends PureComponent {
+class HomePage extends PureComponent {
   constructor(props) {
     super(props);
 
@@ -86,18 +86,18 @@ class Component extends PureComponent {
   }
 }
 
-Component.propTypes = {
+HomePage.propTypes = {
   empty: PropTypes.bool,
   menu: PropTypes.bool,
   playerCount: PropTypes.number,
   singleMode: PropTypes.bool,
 };
 
-Component.defaultProps = {
+HomePage.defaultProps = {
   empty: false,
   menu: false,
   playerCount: 0,
   singleMode: false,
 };
 
-export default withStyles(styles)(Component);
+export default withStyles(styles)(HomePage);
