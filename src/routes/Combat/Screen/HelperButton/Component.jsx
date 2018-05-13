@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
 import { FormattedMessage } from 'react-intl';
-import Link from 'react-router-dom/Link';
 import PropTypes from 'prop-types';
 import Button from 'material-ui/Button';
 import Backdrop from 'material-ui/Modal/Backdrop';
@@ -80,6 +79,7 @@ class CombatScreenHelperButton extends PureComponent {
       expanded,
       helper,
       onBackdropClick,
+      onHelperClick,
       onMonsterAdd,
       playerId,
     } = this.props;
@@ -114,16 +114,14 @@ class CombatScreenHelperButton extends PureComponent {
           </Action>
           <Action
             className={classes.action}
-            component={Link}
             in={actionVisible}
-            replace
+            onClick={() => onHelperClick(playerId)}
             title={
               <FormattedMessage
                 id="combat.add.helper"
                 defaultMessage="Helper"
               />
             }
-            to={`/player/${playerId}/combat/add/helper`}
           >
             <PersonAddIcon />
           </Action>
@@ -153,6 +151,7 @@ CombatScreenHelperButton.propTypes = {
   helper: PropTypes.bool,
   onAdd: PropTypes.func,
   onBackdropClick: PropTypes.func,
+  onHelperClick: PropTypes.func,
   onMonsterAdd: PropTypes.func,
   playerId: PropTypes.string.isRequired,
 };
@@ -162,6 +161,7 @@ CombatScreenHelperButton.defaultProps = {
   helper: false,
   onAdd: noop,
   onBackdropClick: noop,
+  onHelperClick: noop,
   onMonsterAdd: noop,
 };
 

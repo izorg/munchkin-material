@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import matchPath from 'react-router-dom/matchPath';
-import { goBack, push } from 'connected-react-router/lib/actions';
+import { goBack, push, replace } from 'connected-react-router/lib/actions';
 import { createSelector, createStructuredSelector } from 'reselect';
 import { addMonster } from 'munchkin-core/lib/ducks/monsters';
 import createMonster from 'munchkin-core/lib/utils/createMonster';
@@ -24,6 +24,7 @@ const mapStateToProps = createStructuredSelector({
 const mapDispatchToProps = {
   onAdd: (playerId) => push(`/player/${playerId}/combat/add`),
   onBackdropClick: goBack,
+  onHelperClick: (playerId) => replace(`/player/${playerId}/combat/add/helper`),
   onMonsterAdd: (back) => (dispatch) => {
     dispatch(addMonster(createMonster()));
 

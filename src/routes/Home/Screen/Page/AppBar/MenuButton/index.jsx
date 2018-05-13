@@ -1,21 +1,21 @@
 import React, { PureComponent } from 'react';
-import Link from 'react-router-dom/Link';
+import { connect } from 'react-redux';
+import { push } from 'connected-react-router/lib/actions';
 import IconButton from 'material-ui/IconButton';
 import Menu from '@material-ui/icons/Menu';
 
 class MenuButton extends PureComponent {
   render() {
     return (
-      <IconButton
-        component={Link}
-        data-screenshots="menu"
-        to={{ search: '?menu' }}
-        {...this.props}
-      >
+      <IconButton data-screenshots="menu" {...this.props}>
         <Menu />
       </IconButton>
     );
   }
 }
 
-export default MenuButton;
+const mapDispatchToProps = {
+  onClick: () => push({ search: '?menu' }),
+};
+
+export default connect(undefined, mapDispatchToProps)(MenuButton);
