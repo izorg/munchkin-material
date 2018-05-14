@@ -1,7 +1,7 @@
 import React from 'react';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import PropTypes from 'prop-types';
-import Button from 'material-ui/Button';
+import Button from '@material-ui/core/Button';
 import ContentAdd from '@material-ui/icons/Add';
 import { noop } from 'lodash';
 

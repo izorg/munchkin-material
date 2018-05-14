@@ -1,6 +1,6 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
-import brown from 'material-ui/colors/brown';
+import brown from '@material-ui/core/colors/brown';
 
 export const key = 'munchkin';
 

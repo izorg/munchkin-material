@@ -1,6 +1,6 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
-import lightGreen from 'material-ui/colors/lightGreen';
+import lightGreen from '@material-ui/core/colors/lightGreen';
 
 export const key = 'cthulhu';
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
-import red from 'material-ui/colors/red';
+import red from '@material-ui/core/colors/red';
 
 export const key = 'booty';
 

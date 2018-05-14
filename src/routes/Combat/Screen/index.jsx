@@ -3,9 +3,9 @@ import { hot } from 'react-hot-loader';
 import Transition from 'react-transition-group/Transition';
 import compose from 'recompose/compose';
 import PropTypes from 'prop-types';
-import Modal from 'material-ui/Modal';
-import Slide from 'material-ui/transitions/Slide';
-import { withStyles } from 'material-ui/styles';
+import Modal from '@material-ui/core/Modal';
+import Slide from '@material-ui/core/Slide';
+import { withStyles } from '@material-ui/core/styles';
 
 import FabTransition from '../../../components/fab/Transition';
 

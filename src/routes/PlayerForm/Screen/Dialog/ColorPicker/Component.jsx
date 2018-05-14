@@ -1,7 +1,7 @@
 import React, { Fragment, PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import Hidden from 'material-ui/Hidden';
-import { withStyles } from 'material-ui/styles';
+import Hidden from '@material-ui/core/Hidden';
+import { withStyles } from '@material-ui/core/styles';
 import { noop } from 'lodash';
 
 import Color from './Color';

@@ -2,8 +2,8 @@ import React, { PureComponent } from 'react';
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 import { findDOMNode } from 'react-dom';
 import PropTypes from 'prop-types';
-import List from 'material-ui/List';
-import { withStyles } from 'material-ui/styles';
+import List from '@material-ui/core/List';
+import { withStyles } from '@material-ui/core/styles';
 import cns from 'classnames';
 import { noop } from 'lodash';
 

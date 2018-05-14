@@ -1,7 +1,9 @@
 import React, { PureComponent } from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
-import { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
 import PaletteIcon from '@material-ui/icons/Palette';
 
 import themes, { names as themeNames } from '../../../../../../styles/themes';

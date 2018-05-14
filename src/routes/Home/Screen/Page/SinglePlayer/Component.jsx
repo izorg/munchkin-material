@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
-import IconButton from 'material-ui/IconButton';
-import { withStyles } from 'material-ui/styles';
+import IconButton from '@material-ui/core/IconButton';
+import { withStyles } from '@material-ui/core/styles';
 
 import { playerShape } from '../../../../../utils/propTypes';
 

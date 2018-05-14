@@ -1,5 +1,5 @@
-import brown from 'material-ui/colors/brown';
-import createBreakpoints from 'material-ui/styles/createBreakpoints';
+import brown from '@material-ui/core/colors/brown';
+import createBreakpoints from '@material-ui/core/styles/createBreakpoints';
 
 const breakpoints = createBreakpoints({});
 

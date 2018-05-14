@@ -1,11 +1,11 @@
 import React, { Fragment, PureComponent } from 'react';
 import { findDOMNode } from 'react-dom';
 import PropTypes from 'prop-types';
-import { Backdrop } from 'material-ui/Modal';
-import Drawer from 'material-ui/Drawer';
-import List from 'material-ui/List';
-import Portal from 'material-ui/Portal';
-import { withStyles } from 'material-ui/styles';
+import { Backdrop } from '@material-ui/core/Modal';
+import Drawer from '@material-ui/core/Drawer';
+import List from '@material-ui/core/List';
+import Portal from '@material-ui/core/Portal';
+import { withStyles } from '@material-ui/core/styles';
 import Hammer from 'hammerjs';
 import { noop } from 'lodash';
 

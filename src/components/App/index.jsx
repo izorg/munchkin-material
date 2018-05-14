@@ -5,8 +5,8 @@ import { storeShape } from 'react-redux/lib/utils/PropTypes';
 import compose from 'recompose/compose';
 import { ConnectedRouter } from 'connected-react-router';
 import PropTypes from 'prop-types';
-import CssBaseline from 'material-ui/CssBaseline';
-import { withStyles } from 'material-ui/styles';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import { withStyles } from '@material-ui/core/styles';
 
 import munchkinWoff from '../../fonts/munchkin.woff';
 import munchkinWoff2 from '../../fonts/munchkin.woff2';

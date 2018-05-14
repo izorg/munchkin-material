@@ -7,9 +7,9 @@ import {
 } from 'react-intl';
 import compose from 'recompose/compose';
 import PropTypes from 'prop-types';
-import IconButton from 'material-ui/IconButton';
-import Tooltip from 'material-ui/Tooltip';
-import { withStyles } from 'material-ui/styles';
+import IconButton from '@material-ui/core/IconButton';
+import Tooltip from '@material-ui/core/Tooltip';
+import { withStyles } from '@material-ui/core/styles';
 import NavigationCheck from '@material-ui/icons/Check';
 import NavigationClose from '@material-ui/icons/Close';
 import ActionDelete from '@material-ui/icons/Delete';

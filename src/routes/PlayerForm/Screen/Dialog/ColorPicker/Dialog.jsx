@@ -1,8 +1,10 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
-import Dialog, { DialogContent, DialogTitle } from 'material-ui/Dialog';
-import { withStyles } from 'material-ui/styles';
+import Dialog from '@material-ui/core/Dialog';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import { withStyles } from '@material-ui/core/styles';
 import { noop } from 'lodash';
 
 import availableColors from './availableColors';

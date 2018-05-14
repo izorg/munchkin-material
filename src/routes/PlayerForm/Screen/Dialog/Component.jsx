@@ -8,21 +8,22 @@ import {
   intlShape,
 } from 'react-intl';
 import PropTypes from 'prop-types';
-import Button from 'material-ui/Button';
-import Dialog, {
-  DialogActions,
-  DialogContent,
-  DialogTitle,
-  withMobileDialog,
-} from 'material-ui/Dialog';
-import { FormControl, FormLabel, FormControlLabel } from 'material-ui/Form';
-import Hidden from 'material-ui/Hidden';
-import Grid from 'material-ui/Grid';
-import Radio from 'material-ui/Radio';
-import TextField from 'material-ui/TextField';
-import { withStyles } from 'material-ui/styles';
-import Fade from 'material-ui/transitions/Fade';
-import Slide from 'material-ui/transitions/Slide';
+import Button from '@material-ui/core/Button';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import withMobileDialog from '@material-ui/core/withMobileDialog';
+import FormControl from '@material-ui/core/FormControl';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormLabel from '@material-ui/core/FormLabel';
+import Hidden from '@material-ui/core/Hidden';
+import Grid from '@material-ui/core/Grid';
+import Radio from '@material-ui/core/Radio';
+import TextField from '@material-ui/core/TextField';
+import { withStyles } from '@material-ui/core/styles';
+import Fade from '@material-ui/core/Fade';
+import Slide from '@material-ui/core/Slide';
 import { noop } from 'lodash';
 import { FEMALE, MALE } from 'munchkin-core/lib/utils/sex';
 

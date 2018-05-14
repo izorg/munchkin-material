@@ -6,7 +6,7 @@ import { range } from 'lodash';
 import puppeteer from 'puppeteer';
 import devices from 'puppeteer/DeviceDescriptors';
 import rimraf from 'rimraf';
-import { duration } from 'material-ui/styles/transitions';
+import { duration } from '@material-ui/core/styles/transitions';
 import { URL } from 'url';
 
 import { EN, RU } from '../src/i18n';

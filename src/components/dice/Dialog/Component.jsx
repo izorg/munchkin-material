@@ -1,9 +1,9 @@
 import React, { createElement, PureComponent } from 'react';
 import TransitionGroup from 'react-transition-group/TransitionGroup';
 import PropTypes from 'prop-types';
-import Dialog from 'material-ui/Dialog';
-import IconButton from 'material-ui/IconButton';
-import { withStyles } from 'material-ui/styles';
+import Dialog from '@material-ui/core/Dialog';
+import IconButton from '@material-ui/core/IconButton';
+import { withStyles } from '@material-ui/core/styles';
 import { noop } from 'lodash';
 
 import DiceTransition from '../Transition';

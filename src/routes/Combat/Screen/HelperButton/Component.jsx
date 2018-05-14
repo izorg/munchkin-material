@@ -1,9 +1,9 @@
 import React, { PureComponent } from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
-import Button from 'material-ui/Button';
-import Backdrop from 'material-ui/Modal/Backdrop';
-import { withStyles } from 'material-ui/styles';
+import Button from '@material-ui/core/Button';
+import Backdrop from '@material-ui/core/Backdrop';
+import { withStyles } from '@material-ui/core/styles';
 import AddIcon from '@material-ui/icons/Add';
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import cns from 'classnames';
