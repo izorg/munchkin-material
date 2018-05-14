@@ -73,10 +73,10 @@ class HomeMenuDrawer extends PureComponent {
     this.hammer.on('swiperight', this.handleSwipeRight);
   }
 
-  componentWillReceiveProps(nextProps) {
-    const { enable } = nextProps;
+  componentDidUpdate(prevProps) {
+    const { enable } = this.props;
 
-    if (this.hammer && this.props.enable !== enable) {
+    if (this.hammer && enable !== prevProps.enable) {
       this.hammer.set({ enable });
     }
   }

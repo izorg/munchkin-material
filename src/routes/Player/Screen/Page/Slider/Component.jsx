@@ -45,9 +45,7 @@ class PlayerSlider extends PureComponent {
     this.state = {
       index: props.initialSlide,
     };
-  }
 
-  componentWillMount() {
     this.handleChangeIndex = this.handleChangeIndex.bind(this);
     this.slideRenderer = this.slideRenderer.bind(this);
   }

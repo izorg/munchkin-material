@@ -22,8 +22,7 @@ export const getLocale = () => {
 
 let allMessages = {};
 
-export const getMessages = (locale) =>
-  allMessages[locale] || allMessages[defaultLocale];
+export const getMessages = (locale) => allMessages[locale];
 
 const loaders = {
   [DE]: () =>
@@ -57,12 +56,15 @@ const loaders = {
     ]),
 };
 
-export const loadLocale = (locale) =>
-  loaders[locale]().then(([intlLocale, messages]) => {
-    addLocaleData(intlLocale.default);
+export const loadLocale = async (locale) => {
+  const [intlLocale, messages] = await loaders[locale]();
 
-    allMessages = {
-      ...allMessages,
-      [locale]: messages,
-    };
-  });
+  addLocaleData(intlLocale.default);
+
+  allMessages = {
+    ...allMessages,
+    [locale]: messages,
+  };
+
+  return { messages };
+};

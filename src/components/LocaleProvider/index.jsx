@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { IntlProvider } from 'react-intl';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -11,52 +11,52 @@ const mapStateToProps = (state) => ({
 
 const textComponent = ({ children }) => children;
 
-class LocaleProvider extends Component {
+class LocaleProvider extends PureComponent {
   constructor(props) {
     super(props);
 
+    const { locale } = props;
+
     this.state = {
-      loaded: false,
+      locale,
+      messages: getMessages(locale),
     };
   }
 
-  async componentWillMount() {
+  componentDidMount() {
+    this.updateLocale(this.props.locale);
+  }
+
+  componentDidUpdate() {
     const { locale } = this.props;
 
-    await loadLocale(locale);
+    if (this.state.locale !== locale) {
+      this.updateLocale(locale);
+    }
+  }
+
+  async updateLocale(locale) {
+    const { messages } = await loadLocale(locale);
 
     this.setState({
-      loaded: true,
+      locale,
+      messages,
     });
   }
 
-  async componentWillReceiveProps(nextProps) {
-    if (nextProps.locale !== this.props.locale) {
-      await loadLocale(nextProps.locale);
-
-      this.forceUpdate();
-    }
-  }
-
-  shouldComponentUpdate(nextProps) {
-    return nextProps.locale === this.props.locale;
-  }
-
   render() {
-    const { loaded } = this.state;
+    const { locale, messages } = this.state;
 
-    if (!loaded) {
+    if (!messages) {
       return null;
     }
 
-    const { locale, ...rest } = this.props;
-
     return (
       <IntlProvider
-        {...rest}
+        {...this.props}
         key={locale}
         locale={locale}
-        messages={getMessages(locale)}
+        messages={messages}
         textComponent={textComponent}
       />
     );

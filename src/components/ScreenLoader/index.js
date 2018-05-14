@@ -24,12 +24,14 @@ class ScreenLoader extends PureComponent {
     };
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (!this.state.ready && Boolean(nextProps.match)) {
-      this.setState({
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (!prevState.ready && Boolean(nextProps.match)) {
+      return {
         ready: true,
-      });
+      };
     }
+
+    return null;
   }
 
   render() {

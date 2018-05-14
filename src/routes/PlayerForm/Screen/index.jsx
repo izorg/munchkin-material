@@ -20,14 +20,16 @@ class PlayerFormScreen extends PureComponent {
     return { playerId };
   }
 
-  componentWillReceiveProps(nextProps) {
-    const match = nextProps.match || this.props.match;
+  static getDerivedStateFromProps(nextProps, prevState) {
+    const { match } = nextProps;
 
-    if (match && match.params.id !== this.state.playerId) {
-      this.setState({
+    if (match && match.params.id !== prevState.playerId) {
+      return {
         playerId: match.params.id,
-      });
+      };
     }
+
+    return null;
   }
 
   render() {

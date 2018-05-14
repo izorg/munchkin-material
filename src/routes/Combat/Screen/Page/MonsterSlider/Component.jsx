@@ -57,10 +57,13 @@ class CombatMonsterSlider extends PureComponent {
     this.handleChangeIndex = this.handleChangeIndex.bind(this);
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.monsters.length > this.props.monsters.length) {
+  componentDidUpdate(prevProps) {
+    const { monsters } = this.props;
+
+    if (monsters.length > prevProps.monsters.length) {
+      // eslint-disable-next-line react/no-did-update-set-state
       this.setState({
-        index: nextProps.monsters.length - 1,
+        index: monsters.length - 1,
       });
     }
   }

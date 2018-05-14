@@ -59,15 +59,17 @@ class CombatPlayerSlider extends PureComponent {
     this.handleHelperRemove = this.handleHelperRemove.bind(this);
   }
 
-  componentWillReceiveProps(nextProps) {
-    const { helperId } = this.props;
-    const { index } = this.state;
+  static getDerivedStateFromProps(nextProps, prevState) {
+    const { helperId } = nextProps;
+    const { index } = prevState;
 
     if (!helperId && nextProps.helperId && index === 0) {
-      this.setState({
+      return {
         index: 1,
-      });
+      };
     }
+
+    return null;
   }
 
   handleChangeIndex(index) {
