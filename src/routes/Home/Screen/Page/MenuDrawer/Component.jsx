@@ -1,7 +1,7 @@
 import React, { Fragment, PureComponent } from 'react';
 import { findDOMNode } from 'react-dom';
 import PropTypes from 'prop-types';
-import { Backdrop } from '@material-ui/core/Modal';
+import Backdrop from '@material-ui/core/Backdrop';
 import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import Portal from '@material-ui/core/Portal';
