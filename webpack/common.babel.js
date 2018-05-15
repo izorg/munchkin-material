@@ -1,5 +1,4 @@
 import path from 'path';
-import webpack from 'webpack';
 
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import WebpackPwaManifest from 'webpack-pwa-manifest';
@@ -70,8 +69,6 @@ export default {
   },
 
   plugins: [
-    new webpack.EnvironmentPlugin(['NODE_ENV']),
-
     new WebpackPwaManifest({
       ...manifest,
       filename: 'manifest.json',
