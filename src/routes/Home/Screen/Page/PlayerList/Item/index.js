@@ -29,15 +29,15 @@ const onPlayerEdit = (playerId) => push(`/${EDIT}/${playerId}`);
 const onPlayerSelect = (playerId) => push(`/player/${playerId}`);
 
 const onPlayerToggle = (playerId) => (dispatch, getState) => {
+  dispatch(togglePlayer(playerId));
+
   const {
     app: { selectedPlayerIds },
   } = getState();
 
-  if (selectedPlayerIds.length === 1 && playerId === selectedPlayerIds[0]) {
+  if (selectedPlayerIds.length === 0) {
     dispatch(goBack());
   }
-
-  dispatch(togglePlayer(playerId));
 };
 
 const mapDispatchToProps = {
