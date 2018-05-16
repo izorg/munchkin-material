@@ -2,14 +2,14 @@ import React, { Fragment, PureComponent } from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 import Divider from '@material-ui/core/Divider';
-import ListItem from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import Switch from '@material-ui/core/Switch';
 import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew';
 import { noop } from 'lodash';
 
-class InsomniaItemComponent extends PureComponent {
+class InsomniaItem extends PureComponent {
   constructor(props) {
     super(props);
 
@@ -52,16 +52,16 @@ class InsomniaItemComponent extends PureComponent {
   }
 }
 
-InsomniaItemComponent.propTypes = {
+InsomniaItem.propTypes = {
   keepAwake: PropTypes.bool,
   keepAwakeSupport: PropTypes.bool,
   onChange: PropTypes.func,
 };
 
-InsomniaItemComponent.defaultProps = {
+InsomniaItem.defaultProps = {
   keepAwake: false,
   keepAwakeSupport: false,
   onChange: noop,
 };
 
-export default InsomniaItemComponent;
+export default InsomniaItem;

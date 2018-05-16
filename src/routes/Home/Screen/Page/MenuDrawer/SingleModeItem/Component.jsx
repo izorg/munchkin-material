@@ -9,7 +9,7 @@ import Switch from '@material-ui/core/Switch';
 import PersonIcon from '@material-ui/icons/Person';
 import { noop } from 'lodash';
 
-class SingleModeItemComponent extends PureComponent {
+class SingleModeItem extends PureComponent {
   constructor(props) {
     super(props);
 
@@ -56,14 +56,14 @@ class SingleModeItemComponent extends PureComponent {
   }
 }
 
-SingleModeItemComponent.propTypes = {
+SingleModeItem.propTypes = {
   onChange: PropTypes.func,
   singleMode: PropTypes.bool,
 };
 
-SingleModeItemComponent.defaultProps = {
+SingleModeItem.defaultProps = {
   onChange: noop,
   singleMode: false,
 };
 
-export default SingleModeItemComponent;
+export default SingleModeItem;
