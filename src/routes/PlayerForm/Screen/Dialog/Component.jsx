@@ -49,8 +49,19 @@ const styles = (theme) => ({
   },
 
   title: {
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down('md')]: {
       padding: 0,
+    },
+  },
+
+  content: {
+    [theme.breakpoints.up('md')]: {
+      alignSelf: 'center',
+      width: 600,
+    },
+
+    [theme.breakpoints.up('lg')]: {
+      width: '100%',
     },
   },
 
@@ -157,15 +168,15 @@ class DialogComponent extends PureComponent {
         TransitionComponent={this.renderTransition}
       >
         <DialogTitle className={classes.title}>
-          <Hidden smUp>
+          <Hidden lgUp>
             <AppBar
               onSubmit={DialogComponent.handleExternalSubmit}
               title={title}
             />
           </Hidden>
-          <Hidden xsDown>{title}</Hidden>
+          <Hidden mdDown>{title}</Hidden>
         </DialogTitle>
-        <DialogContent>
+        <DialogContent className={classes.content}>
           <Form
             initialValues={initialValues}
             onSubmit={onSubmit}
@@ -239,7 +250,7 @@ class DialogComponent extends PureComponent {
             )}
           />
         </DialogContent>
-        <Hidden xsDown>
+        <Hidden mdDown>
           <DialogActions>
             <Button color="primary" onClick={onClose}>
               <FormattedMessage
@@ -286,5 +297,5 @@ DialogComponent.defaultProps = {
 export default compose(
   injectIntl,
   withStyles(styles),
-  withMobileDialog({ breakpoint: 'xs' }),
+  withMobileDialog({ breakpoint: 'md' }),
 )(DialogComponent);
