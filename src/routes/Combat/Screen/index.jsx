@@ -15,7 +15,6 @@ import Page from './Page';
 
 const styles = (theme) => ({
   root: {
-    position: 'absolute',
     zIndex: theme.zIndex.modal - 1,
   },
 

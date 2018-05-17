@@ -20,6 +20,13 @@ export default {
         backgroundColor: brown[500],
       },
     },
+
+    MuiModal: {
+      root: {
+        height: '100vh',
+        width: '100vw',
+      },
+    },
   },
 
   palette: {
