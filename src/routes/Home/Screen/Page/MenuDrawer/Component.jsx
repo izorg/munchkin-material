@@ -88,12 +88,14 @@ class HomeMenuDrawer extends PureComponent {
     this.hammer = null;
   }
 
-  setPosition(translate) {
+  setPosition(translate, duration = '0ms') {
     const transform = `translate(${translate}px, 0)`;
     const drawerStyle = this.paper.style;
 
     drawerStyle.webkitTransform = transform;
     drawerStyle.transform = transform;
+    drawerStyle.webkitTransitionDuration = duration;
+    drawerStyle.transitionDuration = duration;
 
     const backdropStyle = this.backdrop.style;
 
@@ -167,6 +169,7 @@ class HomeMenuDrawer extends PureComponent {
   }
 
   handlePanEnd() {
+    const { theme } = this.props;
     const { maybeSwiping } = this.state;
 
     if (!maybeSwiping) {
@@ -181,12 +184,15 @@ class HomeMenuDrawer extends PureComponent {
       if (!open) {
         onOpen();
       } else {
-        this.setPosition(0);
+        this.setPosition(0, `${theme.transitions.duration.enteringScreen}ms`);
       }
     } else if (open) {
       onClose();
     } else {
-      this.setPosition(-this.paper.clientWidth);
+      this.setPosition(
+        -this.paper.clientWidth,
+        `${theme.transitions.duration.leavingScreen}ms`,
+      );
     }
   }
 
@@ -202,7 +208,12 @@ class HomeMenuDrawer extends PureComponent {
     this.setState({ maybeSwiping: true });
 
     if (!this.props.open) {
-      this.setPosition(20 - this.paper.clientWidth);
+      const { theme } = this.props;
+
+      this.setPosition(
+        20 - this.paper.clientWidth,
+        `${theme.transitions.duration.enteringScreen}ms`,
+      );
     }
   }
 
@@ -215,7 +226,12 @@ class HomeMenuDrawer extends PureComponent {
 
     this.setState({ maybeSwiping: false });
 
-    this.setPosition(-this.paper.clientWidth);
+    const { theme } = this.props;
+
+    this.setPosition(
+      -this.paper.clientWidth,
+      `${theme.transitions.duration.leavingScreen}ms`,
+    );
   }
 
   handleSwipeRight() {
@@ -306,4 +322,4 @@ HomeMenuDrawer.defaultProps = {
   open: false,
 };
 
-export default withStyles(styles)(HomeMenuDrawer);
+export default withStyles(styles, { withTheme: true })(HomeMenuDrawer);
