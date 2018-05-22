@@ -57,13 +57,13 @@ class App extends PureComponent {
   }
 
   render() {
-    const { history, store } = this.props;
+    const { disableHover, history, store } = this.props;
 
     return (
       <Provider store={store}>
         <ConnectedRouter history={history}>
           <LocaleProvider>
-            <ThemeProvider>
+            <ThemeProvider disableHover={disableHover}>
               <Fragment>
                 <CssBaseline />
                 <Head />
@@ -84,9 +84,14 @@ App.childContextTypes = {
 
 App.propTypes = {
   buyFullVersion: PropTypes.func.isRequired,
+  disableHover: PropTypes.bool,
   history: PropTypes.object.isRequired,
   keepAwakeSupport: PropTypes.bool.isRequired,
   store: storeShape.isRequired,
+};
+
+App.defaultProps = {
+  disableHover: false,
 };
 
 export default compose(hot(module), withStyles(styles))(App);

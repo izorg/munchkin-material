@@ -7,11 +7,17 @@ import themes from '../../styles/themes';
 
 const theme = createSelector(
   (state) => state.app.theme,
-  (key) => createTheme(themes[key]),
+  (state, ownProps) => ownProps.disableHover,
+  (key, disableHover) => createTheme(themes[key], disableHover),
 );
 
 const mapStateToProps = createStructuredSelector({
   theme,
 });
 
-export default connect(mapStateToProps, {})(MuiThemeProvider);
+export default connect(
+  mapStateToProps,
+  undefined,
+  (stateProps, dispatchProps, { children }) =>
+    Object.assign({}, { children }, stateProps),
+)(MuiThemeProvider);
