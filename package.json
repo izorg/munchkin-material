@@ -7,8 +7,8 @@
   ],
   "scripts": {
     "clean": "rimraf coverage dist messages site",
-    "dev": "webpack-dev-server --config=webpack/dev.babel.js",
-    "dist": "webpack --config=webpack/dist.babel.js",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --config=webpack/dev.babel.js",
+    "dist": "cross-env NODE_ENV=production webpack --config=webpack/dist.babel.js",
     "i18n:download": "node scripts/i18n/download.js",
     "i18n:translate": "cross-env BABEL_ENV=i18n babel src --out-dir temp && node scripts/i18n/translate.js && rimraf temp messages",
     "i18n:upload": "node scripts/i18n/upload.js",
@@ -16,9 +16,9 @@
     "precommit": "npm run lint && npm test",
     "prepush": "npm run lint && npm test",
     "screenshots": "babel-node scripts/screenshots.js",
-    "site": "webpack --config=webpack/site.babel.js",
-    "start": "webpack-dev-server --config=webpack/site.babel.js",
-    "stats": "webpack --config=webpack/stats.babel.js",
+    "site": "cross-env NODE_ENV=production webpack --config=webpack/site.babel.js",
+    "start": "cross-env NODE_ENV=production webpack-dev-server --config=webpack/site.babel.js",
+    "stats": "cross-env NODE_ENV=production webpack --config=webpack/stats.babel.js",
     "test": "jest",
     "test:coverage": "npm test -- --coverage",
     "test:watch": "npm test -- --watch"
