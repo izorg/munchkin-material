@@ -12,7 +12,7 @@ import CloseCircle from '../../../../../components/icons/CloseCircle';
 
 import Player from './Player';
 
-const styles = {
+const styles = (theme) => ({
   players: {
     alignItems: 'flex-start',
     display: 'flex',
@@ -28,7 +28,7 @@ const styles = {
     width: 36,
   },
 
-  '@media (min-width: 600px) and (orientation: portrait)': {
+  [`${theme.breakpoints.up('sm')} and (orientation: portrait)`]: {
     paper: {
       marginTop: 8,
     },
@@ -45,7 +45,7 @@ const styles = {
       bottom: 8,
     },
   },
-};
+});
 
 class CombatPlayerSlider extends PureComponent {
   constructor(props) {

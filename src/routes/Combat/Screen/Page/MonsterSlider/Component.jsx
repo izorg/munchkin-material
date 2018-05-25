@@ -13,7 +13,7 @@ import CloseCircle from '../../../../../components/icons/CloseCircle';
 
 import Monster from './Monster';
 
-const styles = {
+const styles = (theme) => ({
   monsters: {
     alignItems: 'flex-end',
     display: 'flex',
@@ -26,7 +26,7 @@ const styles = {
     top: 8,
   },
 
-  '@media (min-width: 600px) and (orientation: portrait)': {
+  [`${theme.breakpoints.up('sm')} and (orientation: portrait)`]: {
     paper: {
       marginBottom: 8,
     },
@@ -44,7 +44,7 @@ const styles = {
       top: 'auto',
     },
   },
-};
+});
 
 class CombatMonsterSlider extends PureComponent {
   constructor(props) {

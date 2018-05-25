@@ -47,7 +47,7 @@ const styles = (theme) => ({
     margin: '0 0.5em',
   },
 
-  '@media (min-width: 600px) and (orientation: portrait)': {
+  [`${theme.breakpoints.up('sm')} and (orientation: portrait)`]: {
     content: {
       justifyContent: 'center',
     },

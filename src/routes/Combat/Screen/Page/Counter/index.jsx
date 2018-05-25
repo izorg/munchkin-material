@@ -46,7 +46,7 @@ const styles = (theme) => ({
   },
 });
 
-const CombatScreenPageCounter = ({
+const CombatCounter = ({
   classes,
   className,
   onDecrement,
@@ -77,16 +77,16 @@ const CombatScreenPageCounter = ({
   </div>
 );
 
-CombatScreenPageCounter.propTypes = {
+CombatCounter.propTypes = {
   onDecrement: PropTypes.func,
   onIncrement: PropTypes.func,
   title: PropTypes.node.isRequired,
   value: PropTypes.number.isRequired,
 };
 
-CombatScreenPageCounter.defaultProps = {
+CombatCounter.defaultProps = {
   onDecrement: noop,
   onIncrement: noop,
 };
 
-export default withStyles(styles)(CombatScreenPageCounter);
+export default withStyles(styles)(CombatCounter);

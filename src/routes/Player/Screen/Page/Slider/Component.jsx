@@ -35,7 +35,10 @@ const styles = (theme) => ({
     },
 
     [`${theme.breakpoints.up('sm')} and (orientation: landscape)`]: {
+      flex: 'none',
+      height: 'auto',
       maxWidth: 600,
+      padding: theme.spacing.unit * 3,
     },
   },
 
