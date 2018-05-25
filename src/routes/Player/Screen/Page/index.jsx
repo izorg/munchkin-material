@@ -6,7 +6,7 @@ import Slider from './Slider';
 
 const styles = (theme) => ({
   root: {
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: theme.palette.background.default,
     display: 'flex',
     flex: 1,
     flexDirection: 'column',

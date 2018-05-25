@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import SwipeableViews from 'react-swipeable-views';
 import { bindKeyboard, virtualize } from 'react-swipeable-views-utils';
 import PropTypes from 'prop-types';
+import Paper from '@material-ui/core/Paper';
 import { withStyles } from '@material-ui/core/styles';
 import { noop } from 'lodash';
 
@@ -11,6 +12,7 @@ const PlayerSwipeableViews = bindKeyboard(virtualize(SwipeableViews));
 
 const styles = (theme) => ({
   item: {
+    display: 'flex',
     flexGrow: 1,
     height: '100%',
     paddingLeft: theme.spacing.unit * 2,
@@ -35,6 +37,10 @@ const styles = (theme) => ({
     [`${theme.breakpoints.up('sm')} and (orientation: landscape)`]: {
       maxWidth: 600,
     },
+  },
+
+  stats: {
+    flex: 1,
   },
 });
 
@@ -78,7 +84,9 @@ class PlayerSlider extends PureComponent {
     const playerId = playerList[playerIndex];
 
     return (
-      <PlayerStats className={classes.item} key={key} playerId={playerId} />
+      <Paper className={classes.item} key={key}>
+        <PlayerStats className={classes.stats} playerId={playerId} />
+      </Paper>
     );
   }
 
@@ -87,12 +95,12 @@ class PlayerSlider extends PureComponent {
 
     return (
       <PlayerSwipeableViews
-        onChangeIndex={this.handleChangeIndex}
         containerStyle={{
           flex: '1 0 auto',
         }}
         enableMouseEvents
         index={index}
+        onChangeIndex={this.handleChangeIndex}
         overscanSlideAfter={1}
         overscanSlideBefore={1}
         slideRenderer={this.slideRenderer}
@@ -101,7 +109,6 @@ class PlayerSlider extends PureComponent {
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'center',
-          overflow: 'hidden',
         }}
         style={{
           display: 'flex',
