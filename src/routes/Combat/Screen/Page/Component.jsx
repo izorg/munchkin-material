@@ -4,15 +4,21 @@ import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import { noop } from 'lodash';
 
-import Layout, { LayoutContent } from '../../../../components/Layout';
-
 import AppBar from './AppBar';
 import MonsterSlider from './MonsterSlider';
 import PlayerSlider from './PlayerSlider';
 
 const styles = (theme) => ({
+  root: {
+    backgroundColor: theme.palette.background.paper,
+    display: 'flex',
+    flex: 1,
+    flexDirection: 'column',
+  },
+
   content: {
     display: 'flex',
+    flex: 1,
     flexDirection: 'column',
     padding: 0,
   },
@@ -87,9 +93,9 @@ class CombatScreenPage extends PureComponent {
     } = this.props;
 
     return (
-      <Layout>
+      <div className={classes.root}>
         <AppBar />
-        <LayoutContent className={classes.content}>
+        <div className={classes.content}>
           <PlayerSlider
             className={classes.players}
             helperId={helperId}
@@ -112,8 +118,8 @@ class CombatScreenPage extends PureComponent {
             onMonsterAdd={onMonsterAdd}
             onMonsterRemove={onMonsterRemove}
           />
-        </LayoutContent>
-      </Layout>
+        </div>
+      </div>
     );
   }
 }

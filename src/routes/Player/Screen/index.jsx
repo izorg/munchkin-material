@@ -14,15 +14,14 @@ import Page from './Page';
 
 const styles = (theme) => ({
   root: {
+    flexDirection: 'column',
     zIndex: theme.zIndex.modal - 1,
   },
 
   transition: {
-    height: '100%',
-    left: 0,
-    position: 'absolute',
-    top: 0,
-    width: '100%',
+    display: 'flex',
+    flex: 1,
+    flexDirection: 'column',
   },
 });
 
