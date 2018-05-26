@@ -72,7 +72,17 @@ const styles = (theme) => ({
 
 class DialogComponent extends PureComponent {
   static handleExternalSubmit() {
-    document.getElementById(FORM_ID).dispatchEvent(new Event('submit'));
+    let event;
+
+    if (typeof Event === 'function') {
+      event = new Event('submit');
+    } else {
+      event = document.createEvent('Event');
+
+      event.initEvent('submit', true, true);
+    }
+
+    document.getElementById(FORM_ID).dispatchEvent(event);
   }
 
   static renderColorPicker({ input, ...props }) {
