@@ -2,6 +2,7 @@ import React, { createRef, Fragment, PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import Paper from '@material-ui/core/Paper';
 import { withStyles } from '@material-ui/core/styles';
+import cns from 'classnames';
 
 import Nobody from '../../../../components/Nobody';
 
@@ -16,6 +17,10 @@ const styles = (theme) => ({
     display: 'flex',
     flexDirection: 'column',
     height: '100%',
+  },
+
+  single: {
+    backgroundColor: theme.palette.background.paper,
   },
 
   content: {
@@ -75,7 +80,7 @@ class HomePage extends PureComponent {
 
     return (
       <Fragment>
-        <div className={classes.root}>
+        <div className={cns(classes.root, { [classes.single]: singleMode })}>
           <AppBar />
           {content}
         </div>
