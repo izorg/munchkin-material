@@ -298,6 +298,7 @@ class HomeMenuDrawer extends PureComponent {
             <InsomniaItem />
           </List>
         </Drawer>
+
         {maybeSwiping && (
           <Portal>
             <Backdrop className={classes.backdrop} invisible open />
