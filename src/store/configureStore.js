@@ -13,7 +13,10 @@ import { loadState, saveState } from './localStorage';
 import purchase from './middlewares/purchase';
 
 const getRootReducer = (history) =>
-  compose(connectRouter(history), combineReducers)(reducers);
+  compose(
+    connectRouter(history),
+    combineReducers,
+  )(reducers);
 
 export default ({ buyFullVersion, history, storageKey }) => {
   const enhancer = composeWithDevTools(

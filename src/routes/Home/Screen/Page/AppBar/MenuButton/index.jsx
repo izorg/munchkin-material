@@ -18,4 +18,7 @@ const mapDispatchToProps = {
   onClick: () => push({ search: '?menu' }),
 };
 
-export default connect(undefined, mapDispatchToProps)(MenuButton);
+export default connect(
+  undefined,
+  mapDispatchToProps,
+)(MenuButton);

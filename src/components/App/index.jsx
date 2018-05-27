@@ -94,4 +94,7 @@ App.defaultProps = {
   disableHover: false,
 };
 
-export default compose(hot(module), withStyles(styles))(App);
+export default compose(
+  hot(module),
+  withStyles(styles),
+)(App);

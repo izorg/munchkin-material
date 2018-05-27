@@ -92,6 +92,7 @@ CombatScreen.defaultProps = {
   match: null,
 };
 
-export default compose(hot(module), withStyles(styles, { withTheme: true }))(
-  CombatScreen,
-);
+export default compose(
+  hot(module),
+  withStyles(styles, { withTheme: true }),
+)(CombatScreen);

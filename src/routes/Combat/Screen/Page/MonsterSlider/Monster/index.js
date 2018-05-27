@@ -19,4 +19,7 @@ const mapDispatchToProps = {
   onLevelIncrement: incrementMonsterLevel,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Monster);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Monster);

@@ -164,4 +164,7 @@ PlayerForm.defaultProps = {
   onSubmit: noop,
 };
 
-export default compose(injectIntl, withStyles(styles))(PlayerForm);
+export default compose(
+  injectIntl,
+  withStyles(styles),
+)(PlayerForm);

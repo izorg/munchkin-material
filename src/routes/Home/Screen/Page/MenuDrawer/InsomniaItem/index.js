@@ -24,6 +24,9 @@ const contextTypes = {
 };
 
 export default compose(
-  connect(mapStateToProps, mapDispatchToProps),
+  connect(
+    mapStateToProps,
+    mapDispatchToProps,
+  ),
   getContext(contextTypes),
 )(Component);

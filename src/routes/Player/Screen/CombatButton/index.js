@@ -38,5 +38,8 @@ const contextTypes = {
 
 export default compose(
   getContext(contextTypes),
-  connect(undefined, mapDispatchToProps),
+  connect(
+    undefined,
+    mapDispatchToProps,
+  ),
 )(Component);

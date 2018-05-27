@@ -7,4 +7,7 @@ const mapDispatchToProps = {
   onClick: () => push('/new'),
 };
 
-export default connect(undefined, mapDispatchToProps)(Component);
+export default connect(
+  undefined,
+  mapDispatchToProps,
+)(Component);

@@ -7,4 +7,7 @@ const mapDispatchToProps = {
   onCancel: goBack,
 };
 
-export default connect(undefined, mapDispatchToProps)(Component);
+export default connect(
+  undefined,
+  mapDispatchToProps,
+)(Component);

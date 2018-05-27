@@ -113,6 +113,7 @@ PlayerScreen.defaultProps = {
   match: null,
 };
 
-export default compose(hot(module), withStyles(styles, { withTheme: true }))(
-  PlayerScreen,
-);
+export default compose(
+  hot(module),
+  withStyles(styles, { withTheme: true }),
+)(PlayerScreen);

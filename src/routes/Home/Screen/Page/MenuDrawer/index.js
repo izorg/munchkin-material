@@ -20,4 +20,7 @@ const mapDispatchToProps = {
   onOpen: () => push({ search: '?menu' }),
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Component);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Component);

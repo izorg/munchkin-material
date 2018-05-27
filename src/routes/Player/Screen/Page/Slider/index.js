@@ -23,5 +23,8 @@ const mapDispatchToProps = {
 
 export default compose(
   getContext(contextTypes),
-  connect(mapStateToProps, mapDispatchToProps),
+  connect(
+    mapStateToProps,
+    mapDispatchToProps,
+  ),
 )(Slider);

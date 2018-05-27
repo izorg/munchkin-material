@@ -14,4 +14,7 @@ const mapDispatchToProps = {
   onClose: goBack,
 };
 
-export default connect(mapStateToprops, mapDispatchToProps)(Component);
+export default connect(
+  mapStateToprops,
+  mapDispatchToProps,
+)(Component);

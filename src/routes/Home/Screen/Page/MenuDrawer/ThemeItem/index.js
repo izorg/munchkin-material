@@ -11,4 +11,7 @@ const mapDispatchToProps = {
   onClick: () => replace({ search: '?theme' }),
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Component);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Component);

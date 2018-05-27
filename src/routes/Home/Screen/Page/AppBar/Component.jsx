@@ -162,4 +162,7 @@ HomeAppBar.defaultProps = {
   singleMode: false,
 };
 
-export default compose(injectIntl, withStyles(styles))(HomeAppBar);
+export default compose(
+  injectIntl,
+  withStyles(styles),
+)(HomeAppBar);
