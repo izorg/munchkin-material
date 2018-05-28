@@ -16,6 +16,7 @@ const styles = {
 
   color: {
     height: 36,
+    margin: '0 auto',
     width: 36,
   },
 };
