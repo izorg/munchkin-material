@@ -5,9 +5,8 @@ import compose from 'recompose/compose';
 import PropTypes from 'prop-types';
 import Modal from '@material-ui/core/Modal';
 import Slide from '@material-ui/core/Slide';
+import Zoom from '@material-ui/core/Zoom';
 import { withStyles } from '@material-ui/core/styles';
-
-import FabTransition from '../../../components/fab/Transition';
 
 import CombatButton from './CombatButton';
 import Page from './Page';
@@ -67,6 +66,8 @@ class PlayerScreen extends PureComponent {
     const { classes, match, theme } = this.props;
     const { appear } = this.state;
 
+    const inProp = Boolean(match) && match.isExact;
+
     return (
       <Modal className={classes.root} hideBackdrop open={Boolean(match)}>
         <Transition
@@ -90,9 +91,17 @@ class PlayerScreen extends PureComponent {
             >
               <Page />
             </Slide>
-            <FabTransition appear={appear} in={Boolean(match) && match.isExact}>
+            <Zoom
+              appear={appear}
+              in={inProp}
+              style={{
+                transitionDelay: inProp
+                  ? theme.transitions.duration.leavingScreen
+                  : 0,
+              }}
+            >
               <CombatButton />
-            </FabTransition>
+            </Zoom>
           </div>
         </Transition>
       </Modal>

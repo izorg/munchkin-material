@@ -5,9 +5,8 @@ import compose from 'recompose/compose';
 import PropTypes from 'prop-types';
 import Modal from '@material-ui/core/Modal';
 import Slide from '@material-ui/core/Slide';
+import Zoom from '@material-ui/core/Zoom';
 import { withStyles } from '@material-ui/core/styles';
-
-import FabTransition from '../../../components/fab/Transition';
 
 import HelperButton from './HelperButton';
 import HelperSelector from './HelperSelector';
@@ -49,11 +48,13 @@ class CombatScreen extends PureComponent {
     const { classes, match, theme } = this.props;
     const { appear } = this.state;
 
+    const inProp = Boolean(match);
+
     return (
-      <Modal className={classes.root} hideBackdrop open={Boolean(match)}>
+      <Modal className={classes.root} hideBackdrop open={inProp}>
         <Transition
           appear={appear}
-          in={Boolean(match)}
+          in={inProp}
           mountOnEnter
           onExited={this.handleExited}
           timeout={{
@@ -66,15 +67,25 @@ class CombatScreen extends PureComponent {
             <Slide
               appear={appear}
               direction="left"
-              in={Boolean(match)}
+              in={inProp}
               mountOnEnter
               unmountOnExit
             >
               <Page />
             </Slide>
-            <FabTransition appear={appear} in={Boolean(match)}>
+
+            <Zoom
+              appear={appear}
+              in={inProp}
+              style={{
+                transitionDelay: inProp
+                  ? theme.transitions.duration.leavingScreen
+                  : 0,
+              }}
+            >
               <HelperButton />
-            </FabTransition>
+            </Zoom>
+
             <HelperSelector />
           </div>
         </Transition>

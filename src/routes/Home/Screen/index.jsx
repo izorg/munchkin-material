@@ -1,18 +1,25 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
+import compose from 'recompose/compose';
 import PropTypes from 'prop-types';
-
-import Transition from '../../../components/fab/Transition';
+import Zoom from '@material-ui/core/Zoom';
+import { withTheme } from '@material-ui/core/styles';
 
 import Page from './Page';
 import PlayerAddButton from './PlayerAddButton';
 
-const HomeScreen = ({ in: inProp }) => (
+const HomeScreen = ({ in: inProp, theme }) => (
   <Fragment>
     <Page />
-    <Transition appear={false} in={inProp}>
+    <Zoom
+      appear={false}
+      in={inProp}
+      style={{
+        transitionDelay: inProp ? theme.transitions.duration.leavingScreen : 0,
+      }}
+    >
       <PlayerAddButton />
-    </Transition>
+    </Zoom>
   </Fragment>
 );
 
@@ -35,4 +42,7 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-export default connect(mapStateToProps)(HomeScreen);
+export default compose(
+  connect(mapStateToProps),
+  withTheme(),
+)(HomeScreen);

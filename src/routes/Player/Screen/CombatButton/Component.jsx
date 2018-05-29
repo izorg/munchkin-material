@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import Button from '@material-ui/core/Button';
 import { noop } from 'lodash';
 
+import Fab from '../../../../components/Fab';
 import SwordCross from '../../../../components/icons/SwordCross';
 
 class PlayerScreenCombatButtonComponent extends PureComponent {
@@ -21,15 +21,16 @@ class PlayerScreenCombatButtonComponent extends PureComponent {
   }
 
   render() {
+    const { goToCombat, playerId, ...rest } = this.props;
+
     return (
-      <Button
-        color="primary"
+      <Fab
         data-screenshots="combat-button"
         onClick={this.handleClick}
-        variant="fab"
+        {...rest}
       >
         <SwordCross />
-      </Button>
+      </Fab>
     );
   }
 }

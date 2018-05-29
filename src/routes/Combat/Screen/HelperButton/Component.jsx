@@ -1,7 +1,6 @@
-import React, { PureComponent } from 'react';
+import React, { Fragment, PureComponent } from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
-import Button from '@material-ui/core/Button';
 import Backdrop from '@material-ui/core/Backdrop';
 import { withStyles } from '@material-ui/core/styles';
 import AddIcon from '@material-ui/icons/Add';
@@ -9,6 +8,7 @@ import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import cns from 'classnames';
 import { noop } from 'lodash';
 
+import Fab from '../../../../components/Fab';
 import EmoticonDevil from '../../../../components/icons/EmoticonDevil';
 
 import Action from './Action';
@@ -20,10 +20,14 @@ const styles = (theme) => ({
 
   backdrop: {
     backgroundColor: 'rgba(250, 250, 250, .9)',
+    zIndex: 1,
   },
 
   container: {
-    position: 'relative',
+    bottom: theme.spacing.unit * 2,
+    position: 'fixed',
+    right: theme.spacing.unit * 2,
+    zIndex: 2,
   },
 
   miniContainer: {
@@ -33,6 +37,8 @@ const styles = (theme) => ({
   },
 
   button: {
+    bottom: 0,
+    left: 0,
     position: 'relative',
   },
 
@@ -76,18 +82,62 @@ class CombatHelperButton extends PureComponent {
   render() {
     const {
       classes,
+      className,
       expanded,
       helper,
+      onAdd,
       onBackdropClick,
       onHelperClick,
       onMonsterAdd,
       playerId,
+      ...rest
     } = this.props;
 
     const actionVisible = helper && expanded;
 
     return (
-      <div className={classes.container}>
+      <Fragment>
+        <div className={cns(classes.container, className)} {...rest}>
+          <div className={classes.miniContainer}>
+            <Action
+              className={classes.action}
+              in={actionVisible}
+              onClick={() => onMonsterAdd(true)}
+              title={
+                <FormattedMessage
+                  id="combat.add.monster"
+                  defaultMessage="Monster"
+                />
+              }
+            >
+              <EmoticonDevil />
+            </Action>
+            <Action
+              className={classes.action}
+              in={actionVisible}
+              onClick={() => onHelperClick(playerId)}
+              title={
+                <FormattedMessage
+                  id="combat.add.helper"
+                  defaultMessage="Helper"
+                />
+              }
+            >
+              <PersonAddIcon />
+            </Action>
+          </div>
+
+          <Fab className={classes.button} onClick={this.handleClick}>
+            {helper ? (
+              <AddIcon
+                className={cns(classes.icon, { [classes.expanded]: expanded })}
+              />
+            ) : (
+              <EmoticonDevil />
+            )}
+          </Fab>
+        </div>
+
         {expanded && (
           <Backdrop
             classes={{
@@ -97,51 +147,7 @@ class CombatHelperButton extends PureComponent {
             open
           />
         )}
-
-        <div className={classes.miniContainer}>
-          <Action
-            className={classes.action}
-            in={actionVisible}
-            onClick={() => onMonsterAdd(true)}
-            title={
-              <FormattedMessage
-                id="combat.add.monster"
-                defaultMessage="Monster"
-              />
-            }
-          >
-            <EmoticonDevil />
-          </Action>
-          <Action
-            className={classes.action}
-            in={actionVisible}
-            onClick={() => onHelperClick(playerId)}
-            title={
-              <FormattedMessage
-                id="combat.add.helper"
-                defaultMessage="Helper"
-              />
-            }
-          >
-            <PersonAddIcon />
-          </Action>
-        </div>
-
-        <Button
-          className={classes.button}
-          color="primary"
-          onClick={this.handleClick}
-          variant="fab"
-        >
-          {helper ? (
-            <AddIcon
-              className={cns(classes.icon, { [classes.expanded]: expanded })}
-            />
-          ) : (
-            <EmoticonDevil />
-          )}
-        </Button>
-      </div>
+      </Fragment>
     );
   }
 }
