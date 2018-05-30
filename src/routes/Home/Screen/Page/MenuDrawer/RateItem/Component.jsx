@@ -1,15 +1,14 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
-import getContext from 'recompose/getContext';
 import PropTypes from 'prop-types';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import Star from '@material-ui/icons/Star';
 
-const RateItem = ({ rateLink }) =>
+const RateItem = ({ rateLink, ...rest }) =>
   rateLink && (
-    <ListItem component="a" button href={rateLink} target="_blank">
+    <ListItem {...rest} component="a" button href={rateLink} target="_blank">
       <ListItemIcon>
         <Star />
       </ListItemIcon>
@@ -29,8 +28,4 @@ RateItem.defaultProps = {
   rateLink: null,
 };
 
-const contextTypes = {
-  rateLink: PropTypes.string,
-};
-
-export default getContext(contextTypes)(RateItem);
+export default RateItem;
