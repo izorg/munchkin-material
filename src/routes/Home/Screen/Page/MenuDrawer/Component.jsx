@@ -10,6 +10,7 @@ import Hammer from 'hammerjs';
 import { noop } from 'lodash';
 
 import InsomniaItem from './InsomniaItem';
+import RateItem from './RateItem';
 import SingleModeItem from './SingleModeItem';
 import ThemeItem from './ThemeItem';
 
@@ -296,6 +297,7 @@ class HomeMenuDrawer extends PureComponent {
             <ThemeItem />
             <SingleModeItem />
             <InsomniaItem />
+            <RateItem />
           </List>
         </Drawer>
 

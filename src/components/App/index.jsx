@@ -51,9 +51,9 @@ const styles = {
 
 class App extends PureComponent {
   getChildContext() {
-    const { buyFullVersion, keepAwakeSupport } = this.props;
+    const { buyFullVersion, keepAwakeSupport, rateLink } = this.props;
 
-    return { buyFullVersion, keepAwakeSupport };
+    return { buyFullVersion, keepAwakeSupport, rateLink };
   }
 
   render() {
@@ -80,6 +80,7 @@ class App extends PureComponent {
 App.childContextTypes = {
   buyFullVersion: PropTypes.func,
   keepAwakeSupport: PropTypes.bool,
+  rateLink: PropTypes.string,
 };
 
 App.propTypes = {
@@ -87,11 +88,13 @@ App.propTypes = {
   disableHover: PropTypes.bool,
   history: PropTypes.object.isRequired,
   keepAwakeSupport: PropTypes.bool.isRequired,
+  rateLink: PropTypes.string,
   store: storeShape.isRequired,
 };
 
 App.defaultProps = {
   disableHover: false,
+  rateLink: null,
 };
 
 export default compose(

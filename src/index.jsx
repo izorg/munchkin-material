@@ -12,6 +12,7 @@ const defaultOptions = {
   buyFullVersion: () => Promise.resolve(),
   disableHover: false,
   keepAwakeSupport: false,
+  rateLink: null,
   storageKey: 'redux',
 };
 
