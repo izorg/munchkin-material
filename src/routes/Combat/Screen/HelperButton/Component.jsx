@@ -127,7 +127,11 @@ class CombatHelperButton extends PureComponent {
             </Action>
           </div>
 
-          <Fab className={classes.button} onClick={this.handleClick}>
+          <Fab
+            className={classes.button}
+            color={expanded ? 'default' : 'primary'}
+            onClick={this.handleClick}
+          >
             {helper ? (
               <AddIcon
                 className={cns(classes.icon, { [classes.expanded]: expanded })}
