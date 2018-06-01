@@ -1,62 +1,30 @@
 import React, { PureComponent } from 'react';
-import CSSTransition from 'react-transition-group/CSSTransition';
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
-import Tooltip from '@material-ui/core/Tooltip';
+import Fade from '@material-ui/core/Fade';
 import { withStyles } from '@material-ui/core/styles';
 import cns from 'classnames';
 
 const styles = (theme) => ({
-  button: {},
-
-  tooltipContainer: {
+  root: {
     display: 'block',
-  },
-
-  enter: {
-    '& $button': {
-      opacity: 0,
-      transform: 'scale(0.5) translateY(20px)',
-    },
-  },
-
-  enterActive: {
-    '& $button': {
-      opacity: 1,
-      transform: 'scale(1) translateY(0)',
-      transition: theme.transitions.create(['opacity', 'transform'], {
-        duration: theme.transitions.duration.shortest,
-        easing: theme.transitions.easing.easeIn,
-      }),
-    },
-  },
-
-  exit: {
-    '& $button': {
-      opacity: 1,
-      transform: 'scale(1)',
-    },
-  },
-
-  exitActive: {
-    '& $button': {
-      opacity: 0,
-      transform: 'scale(0.8)',
-      transition: theme.transitions.create(['opacity', 'transform'], {
-        duration: theme.transitions.duration.shortest,
-        easing: theme.transitions.easing.easeOut,
-      }),
-    },
+    position: 'relative',
   },
 
   tooltip: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: theme.palette.common.white,
     border: `1px solid ${theme.palette.grey[400]}`,
     borderBottomWidth: 2,
     borderRadius: theme.spacing.unit,
     color: theme.palette.grey[600],
+    fontFamily: theme.typography.fontFamily,
+    fontSize: theme.typography.pxToRem(14),
     fontWeight: 'bold',
-    opacity: 1,
+    lineHeight: `${theme.typography.round(14 / 10)}em`,
+    padding: `${theme.spacing.unit / 2}px ${theme.spacing.unit}px`,
+    position: 'absolute',
+    right: 50,
+    top: 5,
   },
 });
 
@@ -73,42 +41,20 @@ class Action extends PureComponent {
     } = this.props;
 
     return (
-      <CSSTransition
-        classNames={{
-          enter: classes.enter,
-          enterActive: classes.enterActive,
-          exit: classes.exit,
-          exitActive: classes.exitActive,
-        }}
+      <Fade
         in={inProp}
         mountOnEnter
-        timeout={{
-          enter: theme.transitions.duration.shortest,
-          exit: theme.transitions.duration.shortest,
-        }}
+        timeout={theme.transitions.duration.shorter}
         unmountOnExit
       >
-        <Tooltip
-          classes={{
-            tooltip: classes.tooltip,
-          }}
-          open={inProp}
-          placement="left"
-          title={title}
-        >
-          <div className={cns(classes.tooltipContainer, className)}>
-            <Button
-              className={classes.button}
-              color="primary"
-              mini
-              variant="fab"
-              {...props}
-            >
-              {children}
-            </Button>
-          </div>
-        </Tooltip>
-      </CSSTransition>
+        <div className={cns(classes.root, className)}>
+          <Button color="primary" mini variant="fab" {...props}>
+            {children}
+          </Button>
+
+          <div className={classes.tooltip}>{title}</div>
+        </div>
+      </Fade>
     );
   }
 }
