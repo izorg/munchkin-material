@@ -21,9 +21,12 @@ const styles = (theme) => ({
     fontSize: theme.typography.pxToRem(14),
     fontWeight: 'bold',
     lineHeight: `${theme.typography.round(14 / 10)}em`,
-    padding: `${theme.spacing.unit / 2}px ${theme.spacing.unit}px`,
+    padding: `${theme.spacing.unit / 4 + 1}px ${theme.spacing.unit}px ${theme
+      .spacing.unit /
+      4 -
+      1}px`,
     position: 'absolute',
-    right: 50,
+    right: 66,
     top: 5,
   },
 });
