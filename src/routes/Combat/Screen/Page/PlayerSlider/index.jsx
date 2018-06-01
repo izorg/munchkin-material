@@ -52,6 +52,7 @@ class CombatPlayerSlider extends PureComponent {
     super(props);
 
     this.state = {
+      helperId: props.helperId,
       index: 0,
     };
 
@@ -63,13 +64,23 @@ class CombatPlayerSlider extends PureComponent {
     const { helperId } = nextProps;
     const { index } = prevState;
 
-    if (!helperId && nextProps.helperId && index === 0) {
-      return {
+    let nextState = null;
+
+    if (helperId !== prevState.helperId) {
+      nextState = {
+        ...nextState,
+        helperId,
+      };
+    }
+
+    if (!prevState.helperId && helperId && index === 0) {
+      nextState = {
+        ...nextState,
         index: 1,
       };
     }
 
-    return null;
+    return nextState;
   }
 
   handleChangeIndex(index) {
