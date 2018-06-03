@@ -38,6 +38,14 @@ const styles = (theme) => ({
 });
 
 class PlayerForm extends PureComponent {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      initialValues: props.initialValues,
+    };
+  }
+
   static renderColorPicker({ input, ...props }) {
     return <ColorPicker {...input} {...props} />;
   }
@@ -61,14 +69,6 @@ class PlayerForm extends PureComponent {
 
   static renderTextField({ input, ...props }) {
     return <TextField {...input} {...props} />;
-  }
-
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      initialValues: props.initialValues,
-    };
   }
 
   render() {
