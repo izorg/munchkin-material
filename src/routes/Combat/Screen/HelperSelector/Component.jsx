@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 import Dialog from '@material-ui/core/Dialog';
@@ -7,11 +7,13 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
+import ChevronUp from '@material-ui/icons/KeyboardArrowUp';
 import { noop } from 'lodash';
 
-const styles = {
+import ChevronDoubleUpIcon from '../../../../components/icons/ChevronDoubleUp';
+
+const styles = (theme) => ({
   dialogPaper: {
     overflowY: 'auto',
     width: '75%',
@@ -25,7 +27,36 @@ const styles = {
     overflow: 'hidden',
     paddingRight: 0,
   },
-};
+
+  primary: {
+    display: 'flex',
+  },
+
+  name: {
+    flex: 1,
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+    whiteSpace: 'nowrap',
+  },
+
+  level: {
+    alignItems: 'center',
+    display: 'inline-flex',
+    fontSize: 20,
+    justifyContent: 'flex-end',
+    marginLeft: theme.spacing.unit,
+    width: 44,
+  },
+
+  strength: {
+    alignItems: 'center',
+    display: 'inline-flex',
+    fontSize: 20,
+    justifyContent: 'flex-end',
+    marginLeft: 4,
+    width: 48,
+  },
+});
 
 const HelperSelector = ({ classes, helpers, onSelect, ...props }) => (
   <Dialog
@@ -51,30 +82,22 @@ const HelperSelector = ({ classes, helpers, onSelect, ...props }) => (
             <ListItemText
               classes={{
                 root: classes.textRoot,
+                primary: classes.primary,
               }}
               primary={
-                <Typography component="div" noWrap>
-                  {helper.name}
-                </Typography>
-              }
-              secondary={
-                <span>
-                  <FormattedMessage
-                    id="combat.helperSelector.level"
-                    defaultMessage="Level {level}"
-                    values={{
-                      level: <b>{helper.level}</b>,
-                    }}
-                  />
-                  <br />
-                  <FormattedMessage
-                    id="combat.helperSelector.strength"
-                    defaultMessage="Strength {strength}"
-                    values={{
-                      strength: <b>{helper.level + helper.gear}</b>,
-                    }}
-                  />
-                </span>
+                <Fragment>
+                  <span className={classes.name}>{helper.name}</span>
+
+                  <span className={classes.level}>
+                    {helper.level}
+                    <ChevronUp />
+                  </span>
+
+                  <span className={classes.strength}>
+                    {helper.level + helper.gear}
+                    <ChevronDoubleUpIcon />
+                  </span>
+                </Fragment>
               }
             />
           </ListItem>
