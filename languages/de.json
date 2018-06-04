@@ -4,8 +4,6 @@
   "combat.add.monster": "Monster",
   "combat.add.helper": "Helfer",
   "combat.helperSelector.title": "Wählen Helfer",
-  "combat.helperSelector.level": "Stufe {level}",
-  "combat.helperSelector.strength": "Stärke {strength}",
   "combat": "Kampf",
   "combat.monster": "Monster {number}",
   "combat.monster.level": "Stufe",
@@ -42,5 +40,6 @@
   "theme.name.apocalypse": "Apokalypse",
   "theme.name.booty": "Freibeuter",
   "theme.name.cthulhu": "Cthulhu",
+  "theme.name.legends": "Legenden",
   "theme.name.munchkin": "Munchkin"
 }

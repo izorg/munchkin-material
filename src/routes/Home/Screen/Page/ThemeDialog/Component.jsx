@@ -25,6 +25,10 @@ import {
   name as cthulhuName,
 } from '../../../../../styles/themes/cthulhu';
 import {
+  key as legendsKey,
+  name as legendsName,
+} from '../../../../../styles/themes/legends';
+import {
   key as munchkinKey,
   name as munchkinName,
 } from '../../../../../styles/themes/munchkin';
@@ -45,6 +49,10 @@ const options = [
   {
     label: cthulhuName,
     value: cthulhuKey,
+  },
+  {
+    label: legendsName,
+    value: legendsKey,
   },
 ];
 

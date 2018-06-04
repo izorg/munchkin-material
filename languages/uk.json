@@ -4,8 +4,6 @@
   "combat.add.monster": "Монстр",
   "combat.add.helper": "Помічник",
   "combat.helperSelector.title": "Виберіть помічника",
-  "combat.helperSelector.level": "Рівень {level}",
-  "combat.helperSelector.strength": "Сила {strength}",
   "combat": "Бій",
   "combat.monster": "Монстр {number}",
   "combat.monster.level": "Рівень",
@@ -42,5 +40,6 @@
   "theme.name.apocalypse": "Апокаліпсис",
   "theme.name.booty": "Піратський",
   "theme.name.cthulhu": "Ктулху",
+  "theme.name.legends": "Легенди",
   "theme.name.munchkin": "Манчкін"
 }
