@@ -1,5 +1,8 @@
 import React, { PureComponent } from 'react';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
+import compose from 'recompose/compose';
+import withProps from 'recompose/withProps';
+import { createSelector, createStructuredSelector } from 'reselect';
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
@@ -10,51 +13,18 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import { withStyles } from '@material-ui/core/styles';
-import { noop } from 'lodash';
+import { noop, sortBy } from 'lodash';
 
-import {
-  key as apocalypseKey,
-  name as apocalypseName,
-} from '../../../../../styles/themes/apocalypse';
-import {
-  key as bootyKey,
-  name as bootyName,
-} from '../../../../../styles/themes/booty';
-import {
-  key as cthulhuKey,
-  name as cthulhuName,
-} from '../../../../../styles/themes/cthulhu';
-import {
-  key as legendsKey,
-  name as legendsName,
-} from '../../../../../styles/themes/legends';
-import {
-  key as munchkinKey,
-  name as munchkinName,
-} from '../../../../../styles/themes/munchkin';
+import { names } from '../../../../../styles/themes';
 
-const options = [
-  {
-    label: munchkinName,
-    value: munchkinKey,
-  },
-  {
-    label: apocalypseName,
-    value: apocalypseKey,
-  },
-  {
-    label: bootyName,
-    value: bootyKey,
-  },
-  {
-    label: cthulhuName,
-    value: cthulhuKey,
-  },
-  {
-    label: legendsName,
-    value: legendsKey,
-  },
-];
+const optionsSelector = createSelector(
+  ({ intl }) => intl,
+  (intl) =>
+    sortBy(
+      Object.keys(names).map((value) => ({ label: names[value], value })),
+      ({ label }) => intl.formatMessage(label.props),
+    ),
+);
 
 const styles = {
   content: {
@@ -91,7 +61,7 @@ class ThemeDialog extends PureComponent {
 
   render() {
     const { value } = this.state;
-    const { classes, onClose, open } = this.props;
+    const { classes, onClose, open, options } = this.props;
 
     return (
       <Dialog
@@ -142,6 +112,12 @@ ThemeDialog.propTypes = {
   onClose: PropTypes.func,
   onSubmit: PropTypes.func,
   open: PropTypes.bool,
+  options: PropTypes.arrayOf(
+    PropTypes.shape({
+      label: PropTypes.node.isRequired,
+      value: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
   value: PropTypes.string.isRequired,
 };
 
@@ -151,4 +127,12 @@ ThemeDialog.defaultProps = {
   open: false,
 };
 
-export default withStyles(styles)(ThemeDialog);
+export default compose(
+  injectIntl,
+  withProps(
+    createStructuredSelector({
+      options: optionsSelector,
+    }),
+  ),
+  withStyles(styles),
+)(ThemeDialog);
