@@ -11,39 +11,72 @@ import PlayerStats from './Stats';
 const PlayerSwipeableViews = bindKeyboard(virtualize(SwipeableViews));
 
 const styles = (theme) => ({
+  itemContainer: {
+    alignItems: 'center',
+    display: 'flex',
+    flex: 1,
+    justifyContent: 'center',
+  },
+
   item: {
     display: 'flex',
     flexGrow: 1,
     height: '100%',
+    justifyContent: 'center',
     paddingLeft: theme.spacing.unit * 2,
     paddingRight: theme.spacing.unit * 2,
     width: '100%',
-
-    '@media (orientation: portrait)': {
-      paddingBottom: 56,
-    },
-
-    [theme.breakpoints.up('sm')]: {
-      paddingLeft: theme.spacing.unit * 3,
-      paddingRight: theme.spacing.unit * 3,
-    },
-
-    [`${theme.breakpoints.up('sm')} and (orientation: portrait)`]: {
-      maxHeight: 480,
-      maxWidth: 400,
-      paddingBottom: 0,
-    },
-
-    [`${theme.breakpoints.up('sm')} and (orientation: landscape)`]: {
-      flex: 'none',
-      height: 'auto',
-      maxWidth: 600,
-      padding: theme.spacing.unit * 3,
-    },
   },
 
   stats: {
     flex: 1,
+  },
+
+  '@media (orientation: portrait)': {
+    item: {
+      paddingBottom: 56,
+    },
+  },
+
+  [theme.breakpoints.up('sm')]: {
+    root: {
+      paddingLeft: theme.spacing.unit * 8,
+      paddingRight: theme.spacing.unit * 8,
+    },
+
+    itemContainer: {
+      paddingLeft: theme.spacing.unit * 2,
+      paddingRight: theme.spacing.unit * 2,
+    },
+
+    item: {
+      paddingLeft: theme.spacing.unit * 3,
+      paddingRight: theme.spacing.unit * 3,
+    },
+
+    '@media (orientation: portrait)': {
+      item: {
+        maxHeight: 480,
+        paddingBottom: 0,
+      },
+
+      stats: {
+        maxWidth: 300,
+      },
+    },
+
+    '@media (orientation: landscape)': {
+      item: {
+        flex: 'none',
+        height: 'auto',
+        paddingBottom: theme.spacing.unit * 2,
+        paddingTop: theme.spacing.unit * 2,
+      },
+
+      stats: {
+        maxWidth: 400,
+      },
+    },
   },
 });
 
@@ -87,17 +120,21 @@ class PlayerSlider extends PureComponent {
     const playerId = playerList[playerIndex];
 
     return (
-      <Paper className={classes.item} key={key}>
-        <PlayerStats className={classes.stats} playerId={playerId} />
-      </Paper>
+      <div className={classes.itemContainer} key={key}>
+        <Paper className={classes.item}>
+          <PlayerStats className={classes.stats} playerId={playerId} />
+        </Paper>
+      </div>
     );
   }
 
   render() {
+    const { classes } = this.props;
     const { index } = this.state;
 
     return (
       <PlayerSwipeableViews
+        className={classes.root}
         containerStyle={{
           flex: '1 0 auto',
         }}
@@ -105,13 +142,10 @@ class PlayerSlider extends PureComponent {
         index={index}
         onChangeIndex={this.handleChangeIndex}
         overscanSlideAfter={1}
-        overscanSlideBefore={1}
+        overscanSlideBefore={2}
         slideRenderer={this.slideRenderer}
         slideStyle={{
-          alignItems: 'center',
           display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
         }}
         style={{
           display: 'flex',

@@ -20,12 +20,12 @@ const styles = (theme) => ({
   mainContainer: {
     display: 'flex',
     flexDirection: 'column',
-    flex: '1 1 50%',
+    flex: '1',
     justifyContent: 'center',
   },
 
   counters: {
-    flex: '1 1 50%',
+    flex: '1',
     display: 'flex',
   },
 
@@ -66,6 +66,10 @@ const styles = (theme) => ({
   '@media (orientation: landscape)': {
     stats: {
       flexDirection: 'row',
+    },
+
+    counters: {
+      flex: 2,
     },
 
     strengthValue: {
