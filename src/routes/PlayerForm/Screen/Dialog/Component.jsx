@@ -122,6 +122,7 @@ class DialogComponent extends PureComponent {
         classes={{
           paper: classes.dialog,
         }}
+        disableRestoreFocus
         fullScreen={fullScreen}
         hideBackdrop={fullScreen}
         onClose={onClose}
