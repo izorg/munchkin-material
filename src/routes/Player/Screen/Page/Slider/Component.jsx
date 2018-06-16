@@ -38,6 +38,12 @@ const styles = (theme) => ({
     },
   },
 
+  [theme.breakpoints.down('xs')]: {
+    item: {
+      boxShadow: 'none',
+    },
+  },
+
   [theme.breakpoints.up('sm')]: {
     root: {
       paddingLeft: theme.spacing.unit * 8,
