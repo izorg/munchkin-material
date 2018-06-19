@@ -1,6 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 import createHistory from 'history/createHashHistory';
+import WebFont from 'webfontloader';
 
 import App from './components/App';
 import { setFullVersion } from './ducks/app';
@@ -12,12 +13,26 @@ const defaultOptions = {
   buyFullVersion: () => Promise.resolve(),
   disableHover: false,
   keepAwakeSupport: false,
+  loadFonts: true,
   rateLink: null,
   storageKey: 'redux',
 };
 
 const init = (appEl, initOptions) => {
-  const { storageKey, ...options } = { ...defaultOptions, ...initOptions };
+  const { loadFonts, storageKey, ...options } = {
+    ...defaultOptions,
+    ...initOptions,
+  };
+
+  if (loadFonts) {
+    WebFont.load({
+      classes: false,
+      events: false,
+      google: {
+        families: ['Roboto:300,400,500,700'],
+      },
+    });
+  }
 
   const store = configureStore({
     buyFullVersion: options.buyFullVersion,
