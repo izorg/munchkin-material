@@ -9,6 +9,11 @@ const styles = (theme) => ({
     position: 'fixed',
     right: theme.spacing.unit * 2,
     zIndex: 2,
+
+    [theme.breakpoints.up('sm')]: {
+      bottom: theme.spacing.unit * 3,
+      right: theme.spacing.unit * 3,
+    },
   },
 });
 
