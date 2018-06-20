@@ -1,4 +1,5 @@
 {
+  "parser": "babel-eslint",
   "extends": [
     "airbnb",
     "plugin:jest/recommended",
@@ -7,7 +8,6 @@
   "env": {
     "browser": true
   },
-  "parser": "babel-eslint",
   "plugins": [
     "prettier"
   ],
@@ -35,7 +35,7 @@
       }
     ],
     "react/prop-types": [
-      2,
+      "error",
       {
         "ignore": [
           "classes",
