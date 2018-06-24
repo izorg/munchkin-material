@@ -2,7 +2,7 @@
 const axios = require('axios');
 const { exec } = require('child_process');
 
-const config = require('../config.json').smartcat; // eslint-disable-line import/no-unresolved
+const config = require('../config.json').smartcat;
 
 const { documentId, projectId } = config;
 
@@ -12,43 +12,50 @@ axios.defaults.auth = {
   password: config.key,
 };
 
-function exportDocument(document) {
-  return axios
-    .post('/document/export', undefined, {
-      params: {
-        documentIds: [document.id],
-      },
-    })
-    .then(({ data }) => data);
-}
+const exportDocument = async (document) => {
+  const { data } = await axios.post('/document/export', undefined, {
+    params: {
+      documentIds: [document.id],
+    },
+  });
 
-const deleteDocuments = (documentIds) =>
+  return data;
+};
+
+const deleteDocuments = async (documentIds) =>
   axios.delete('/document', { params: { documentIds } });
 
-const getDocuments = () =>
-  axios
-    .get(`/project/${projectId}`)
-    .then(({ data: { documents } }) => documents);
+const getDocuments = async () => {
+  const {
+    data: { documents },
+  } = await axios.get(`/project/${projectId}`);
 
-function getTaskResult(taskId, language, resolve) {
-  console.log('getTaskResult');
-  axios.get(`/document/export/${taskId}`).then(({ data, status }) => {
-    console.log('status', status);
-    if (status === 200 && data) {
-      resolve(data);
-    } else if (status === 204) {
-      setTimeout(() => {
-        getTaskResult(taskId, language, resolve);
-      }, 1000);
+  return documents;
+};
+
+const timeout = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+function* getTask(taskId) {
+  while (true) {
+    yield axios.get(`/document/export/${taskId}`);
+    yield timeout(1000);
+  }
+}
+
+const getTranslation = async (taskId) => {
+  // eslint-disable-next-line no-restricted-syntax
+  for await (const result of getTask(taskId)) {
+    if (result) {
+      const { data, status } = result;
+
+      if (status === 200 && data) {
+        return data;
+      }
     }
-  });
-}
+  }
 
-function getTranslation(taskId, language) {
-  return new Promise((resolve) => {
-    getTaskResult(taskId, language, resolve);
-  });
-}
+  return undefined;
+};
 
 const updateDocument = (filePath) => {
   exec(
