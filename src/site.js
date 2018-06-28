@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const { host, pathname, protocol } = window.location;
 
   const app = MunchkinApp(el, {
-    shareLink: `${protocol}${host}${pathname}`,
+    shareLink: `${protocol}//${host}${pathname}`,
   });
 
   if (process.env.NODE_ENV === 'development') {
