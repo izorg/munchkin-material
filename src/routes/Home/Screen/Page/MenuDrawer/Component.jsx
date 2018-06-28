@@ -11,6 +11,7 @@ import { noop } from 'lodash';
 
 import InsomniaItem from './InsomniaItem';
 import RateItem from './RateItem';
+import ShareItem from './ShareItem';
 import SingleModeItem from './SingleModeItem';
 import ThemeItem from './ThemeItem';
 
@@ -298,6 +299,7 @@ class HomeMenuDrawer extends PureComponent {
             <SingleModeItem />
             <InsomniaItem />
             <RateItem />
+            <ShareItem />
           </List>
         </Drawer>
 
