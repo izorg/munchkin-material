@@ -14,6 +14,7 @@ import Page from './Page';
 
 const styles = (theme) => ({
   root: {
+    display: 'flex',
     flexDirection: 'column',
     zIndex: theme.zIndex.modal - 1,
   },
