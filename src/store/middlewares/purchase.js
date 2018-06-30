@@ -4,7 +4,7 @@ import { SET_THEME, setFullVersion } from '../../ducks/app';
 
 const actionTypes = [SET_THEME, START_COMBAT];
 
-export default (buyFullVersion) => ({ getState, dispatch }) => (next) => (
+export default (buyFullVersion) => ({ getState, dispatch }) => (next) => async (
   action,
 ) => {
   if (actionTypes.includes(action.type)) {
@@ -12,11 +12,10 @@ export default (buyFullVersion) => ({ getState, dispatch }) => (next) => (
       return Promise.resolve(next(action));
     }
 
-    return buyFullVersion().then(() => {
-      dispatch(setFullVersion(true));
+    await buyFullVersion();
+    dispatch(setFullVersion(true));
 
-      return next(action);
-    });
+    return next(action);
   }
 
   return next(action);

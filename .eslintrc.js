@@ -14,6 +14,7 @@ module.exports = {
         devDependencies: true,
       },
     ],
+    'no-empty': ['error', { allowEmptyCatch: true }],
     'prettier/prettier': ['error', prettier],
     'react/forbid-prop-types': [
       true,

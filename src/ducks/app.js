@@ -1,7 +1,6 @@
 import { START_COMBAT, startCombat } from 'munchkin-core/lib/ducks/combat';
 import { addPlayer } from 'munchkin-core/lib/ducks/players';
 import createPlayer from 'munchkin-core/lib/utils/createPlayer';
-import { noop } from 'lodash';
 
 import { key as theme } from '../styles/themes/munchkin';
 
@@ -144,7 +143,7 @@ export const setLocale = (locale) => ({
   locale,
 });
 
-export const setSingleMode = (singleMode) => (dispatch, getState) => {
+export const setSingleMode = (singleMode) => async (dispatch, getState) => {
   if (singleMode) {
     let { singleModePlayerId } = getState().app;
 
@@ -160,20 +159,20 @@ export const setSingleMode = (singleMode) => (dispatch, getState) => {
       singleModePlayerId = player.id;
     }
 
-    return dispatch(startCombat(singleModePlayerId))
-      .then(() =>
-        dispatch({
-          type: SET_SINGLE_MODE,
-          singleMode,
-        }),
-      )
-      .catch(noop);
-  }
+    try {
+      await dispatch(startCombat(singleModePlayerId));
 
-  return dispatch({
-    type: SET_SINGLE_MODE,
-    singleMode,
-  });
+      dispatch({
+        type: SET_SINGLE_MODE,
+        singleMode,
+      });
+    } catch (error) {}
+  } else {
+    dispatch({
+      type: SET_SINGLE_MODE,
+      singleMode,
+    });
+  }
 };
 
 // eslint-disable-next-line no-shadow

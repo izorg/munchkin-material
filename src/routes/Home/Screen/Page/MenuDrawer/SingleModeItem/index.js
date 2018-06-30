@@ -1,6 +1,5 @@
 import { connect } from 'react-redux';
 import { goBack } from 'connected-react-router/lib/actions';
-import { noop } from 'lodash';
 
 import { setSingleMode } from '../../../../../../ducks/app';
 
@@ -11,11 +10,12 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = {
-  onChange: (singleMode) => (dispatch) => {
+  onChange: (singleMode) => async (dispatch) => {
     if (singleMode) {
-      dispatch(setSingleMode(singleMode))
-        .then(() => dispatch(goBack()))
-        .catch(noop);
+      try {
+        await dispatch(setSingleMode(singleMode));
+        dispatch(goBack());
+      } catch (error) {}
     } else {
       dispatch(setSingleMode(singleMode));
       dispatch(goBack());

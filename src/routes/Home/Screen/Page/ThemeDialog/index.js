@@ -1,6 +1,5 @@
 import { connect } from 'react-redux';
 import { goBack } from 'connected-react-router/lib/actions';
-import { noop } from 'lodash';
 
 import { setTheme } from '../../../../../ducks/app';
 import getSearch from '../../../../../utils/getSearch';
@@ -18,10 +17,11 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
   onClose: goBack,
-  onSubmit: (theme) => (dispatch) => {
-    dispatch(setTheme(theme))
-      .then(() => dispatch(goBack()))
-      .catch(noop);
+  onSubmit: (theme) => async (dispatch) => {
+    try {
+      await dispatch(setTheme(theme));
+      dispatch(goBack());
+    } catch (error) {}
   },
 };
 
