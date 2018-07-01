@@ -11,8 +11,6 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import Share from '@material-ui/icons/Share';
 
-const supports = 'share' in navigator;
-
 const messages = defineMessages({
   text: {
     id: 'share.text',
@@ -26,7 +24,6 @@ const messages = defineMessages({
 });
 
 const ShareItem = ({ intl, onClick, shareLink, ...rest }) =>
-  supports &&
   shareLink && (
     <ListItem
       button

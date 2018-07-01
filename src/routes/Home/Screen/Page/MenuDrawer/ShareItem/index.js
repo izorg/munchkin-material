@@ -1,6 +1,8 @@
 import { connect } from 'react-redux';
 import compose from 'recompose/compose';
+import branch from 'recompose/branch';
 import getContext from 'recompose/getContext';
+import renderNothing from 'recompose/renderNothing';
 import { goBack } from 'connected-react-router/lib/actions';
 import PropTypes from 'prop-types';
 
@@ -20,6 +22,7 @@ const contextTypes = {
 };
 
 export default compose(
+  branch(() => !navigator.share, renderNothing),
   connect(
     undefined,
     mapDispatchToProps,
