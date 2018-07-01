@@ -8,6 +8,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import { withStyles } from '@material-ui/core/styles';
 import ChevronUp from '@material-ui/icons/KeyboardArrowUp';
 import ActionReorder from '@material-ui/icons/Reorder';
+import cns from 'classnames';
 import Hammer from 'hammerjs';
 import { noop } from 'lodash';
 
@@ -169,16 +170,18 @@ class HomePlayerListItem extends PureComponent {
       classes,
       dragHandleProps,
       mode,
-      player,
-      playerId,
       onMultiSelectActivate,
       onPlayerEdit,
       onPlayerSelect,
       onPlayerToggle,
+      player,
+      playerId,
       selected,
       ...rest
     } = this.props;
+
     const SexIcon = getSexIconClass(player.sex);
+    const editMode = mode === modes.EDIT;
 
     return (
       <ListItem
@@ -186,7 +189,7 @@ class HomePlayerListItem extends PureComponent {
         classes={{
           gutters: classes.listItemGutters,
         }}
-        component={mode === modes.EDIT ? 'div' : 'li'}
+        component={editMode ? 'div' : 'li'}
         data-screenshots="player-list-item"
         ref={this.handleItemRef}
         {...rest}
@@ -202,14 +205,14 @@ class HomePlayerListItem extends PureComponent {
 
         <ListItemText
           classes={{
-            root: mode !== modes.EDIT ? classes.text : undefined,
+            root: cns({ [classes.text]: !editMode }),
             primary: classes.primary,
           }}
           primary={
             <Fragment>
               <span className={classes.name}>{player.name}</span>
 
-              {mode !== modes.EDIT && (
+              {!editMode && (
                 <Fragment>
                   <span className={classes.level}>
                     {player.level}
@@ -227,7 +230,7 @@ class HomePlayerListItem extends PureComponent {
           ref={this.handleTextRef}
         />
 
-        {mode === modes.EDIT && (
+        {editMode && (
           <ListItemSecondaryAction
             classes={{
               root: classes.listItemSecondaryActionRoot,
