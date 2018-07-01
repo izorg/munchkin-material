@@ -6,7 +6,16 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import Switch from '@material-ui/core/Switch';
 import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew';
+import { withStyles } from '@material-ui/core/styles';
+import cns from 'classnames';
 import { noop } from 'lodash';
+
+const styles = {
+  root: {
+    paddingBottom: 0,
+    paddingTop: 0,
+  },
+};
 
 class InsomniaItem extends PureComponent {
   constructor(props) {
@@ -22,10 +31,14 @@ class InsomniaItem extends PureComponent {
   }
 
   render() {
-    const { keepAwake, keepAwakeSupport } = this.props;
+    const { classes, className, keepAwake, keepAwakeSupport } = this.props;
 
     return keepAwakeSupport ? (
-      <ListItem button onClick={this.handleClick}>
+      <ListItem
+        button
+        className={cns(classes.root, className)}
+        onClick={this.handleClick}
+      >
         <ListItemIcon>
           <PowerSettingsNewIcon />
         </ListItemIcon>
@@ -57,4 +70,4 @@ InsomniaItem.defaultProps = {
   onChange: noop,
 };
 
-export default InsomniaItem;
+export default withStyles(styles)(InsomniaItem);

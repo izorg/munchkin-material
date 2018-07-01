@@ -9,6 +9,8 @@ export const name = (
 );
 
 export default {
+  id: key,
+
   overrides: {
     MuiAvatar: {
       colorDefault: {

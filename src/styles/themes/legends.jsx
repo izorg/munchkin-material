@@ -10,6 +10,8 @@ export const name = (
 );
 
 export default {
+  id: key,
+
   overrides: {
     MuiAppBar: {
       colorPrimary: {

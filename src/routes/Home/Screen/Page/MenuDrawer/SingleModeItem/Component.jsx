@@ -6,7 +6,16 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import Switch from '@material-ui/core/Switch';
 import PersonIcon from '@material-ui/icons/Person';
+import { withStyles } from '@material-ui/core/styles';
+import cns from 'classnames';
 import { noop } from 'lodash';
+
+const styles = {
+  root: {
+    paddingBottom: 0,
+    paddingTop: 0,
+  },
+};
 
 class SingleModeItem extends PureComponent {
   constructor(props) {
@@ -22,11 +31,12 @@ class SingleModeItem extends PureComponent {
   }
 
   render() {
-    const { singleMode } = this.props;
+    const { classes, className, singleMode } = this.props;
 
     return (
       <ListItem
         button
+        className={cns(classes.root, className)}
         data-screenshots="single-mode-item"
         onClick={this.handleClick}
       >
@@ -62,4 +72,4 @@ SingleModeItem.defaultProps = {
   singleMode: false,
 };
 
-export default SingleModeItem;
+export default withStyles(styles)(SingleModeItem);
