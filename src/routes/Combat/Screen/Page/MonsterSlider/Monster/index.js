@@ -4,7 +4,7 @@ import {
   decrementMonsterLevel,
   incrementMonsterBonus,
   incrementMonsterLevel,
-} from 'munchkin-core/lib/ducks/monsters';
+} from 'munchkin-core';
 
 import Monster from './Component';
 

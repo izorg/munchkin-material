@@ -1,16 +1,18 @@
-import combat from 'munchkin-core/lib/ducks/combat';
-import monsters from 'munchkin-core/lib/ducks/monsters';
-import players from 'munchkin-core/lib/ducks/players';
-import versions from 'munchkin-core/lib/ducks/versions';
+import {
+  combatReducer,
+  monstersReducer,
+  playersReducer,
+  versionsReducer,
+} from 'munchkin-core';
 
 import app from '../ducks/app';
 import playerList from '../ducks/playerList';
 
 export default {
   app,
-  combat,
-  monsters,
+  combat: combatReducer,
+  monsters: monstersReducer,
   playerList,
-  players,
-  versions,
+  players: playersReducer,
+  versions: versionsReducer,
 };

@@ -1,9 +1,7 @@
 import { connect } from 'react-redux';
 import { createSelector, createStructuredSelector } from 'reselect';
 import { goBack } from 'connected-react-router/lib/actions';
-import { addPlayer, updatePlayer } from 'munchkin-core/lib/ducks/players';
-import createPlayer from 'munchkin-core/lib/utils/createPlayer';
-import { MALE } from 'munchkin-core/lib/utils/sex';
+import { addPlayer, createPlayer, MALE, updatePlayer } from 'munchkin-core';
 
 import { addPlayerToList } from '../../../../ducks/playerList';
 import getRandomMaterialColor from '../../../../utils/getRandomMaterialColor';

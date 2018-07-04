@@ -1,5 +1,4 @@
-import createPlayer from 'munchkin-core/lib/utils/createPlayer';
-import { FEMALE } from 'munchkin-core/lib/utils/sex';
+import { createPlayer, FEMALE } from 'munchkin-core';
 
 export default {
   en: [

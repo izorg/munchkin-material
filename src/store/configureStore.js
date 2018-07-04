@@ -1,11 +1,10 @@
 /* global __VERSION__ */
 import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import version from 'munchkin-core/lib/utils/version';
+import { setVersion, version } from 'munchkin-core';
 import { connectRouter, routerMiddleware } from 'connected-react-router';
 import thunk from 'redux-thunk';
 import { pick, throttle } from 'lodash';
-import { setVersion } from 'munchkin-core/lib/ducks/versions';
 
 import reducers from '../reducers';
 

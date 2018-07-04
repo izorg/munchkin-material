@@ -1,6 +1,9 @@
-import { START_COMBAT, startCombat } from 'munchkin-core/lib/ducks/combat';
-import { addPlayer } from 'munchkin-core/lib/ducks/players';
-import createPlayer from 'munchkin-core/lib/utils/createPlayer';
+import {
+  addPlayer,
+  createPlayer,
+  START_COMBAT,
+  startCombat,
+} from 'munchkin-core';
 
 import { key as theme } from '../styles/themes/munchkin';
 

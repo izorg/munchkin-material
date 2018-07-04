@@ -1,5 +1,5 @@
 import React from 'react';
-import { FEMALE, MALE } from 'munchkin-core/lib/utils/sex';
+import { FEMALE, MALE } from 'munchkin-core';
 
 import SexFemale from '../icons/sex/Female';
 import SexMale from '../icons/sex/Male';

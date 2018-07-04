@@ -1,11 +1,12 @@
 import { connect } from 'react-redux';
 import {
+  addMonster,
+  createMonster,
+  removeMonster,
   setCombatHelper,
   setCombatHelperBonus,
   setCombatPlayerBonus,
-} from 'munchkin-core/lib/ducks/combat';
-import { addMonster, removeMonster } from 'munchkin-core/lib/ducks/monsters';
-import createMonster from 'munchkin-core/lib/utils/createMonster';
+} from 'munchkin-core';
 
 import Component from './Component';
 

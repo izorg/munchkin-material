@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
-import * as sex from 'munchkin-core/lib/utils/sex';
+import { FEMALE, MALE } from 'munchkin-core';
 
-export const sexProp = PropTypes.oneOf(Object.values(sex));
+export const sexProp = PropTypes.oneOf([FEMALE, MALE]);
 
 export const monsterShape = PropTypes.shape({
   bonus: PropTypes.number.isRequired,
