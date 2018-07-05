@@ -6,7 +6,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Paper from '@material-ui/core/Paper';
 import { withStyles } from '@material-ui/core/styles';
 import cns from 'classnames';
-import { noop } from 'lodash';
+import { compact, noop } from 'lodash';
 
 import CloseCircle from '../../../../../components/icons/CloseCircle';
 
@@ -71,13 +71,13 @@ class CombatPlayerSlider extends PureComponent {
         ...nextState,
         helperId,
       };
-    }
 
-    if (!prevState.helperId && helperId && index === 0) {
-      nextState = {
-        ...nextState,
-        index: 1,
-      };
+      if (!prevState.helperId && helperId && index === 0) {
+        nextState = {
+          ...nextState,
+          index: 1,
+        };
+      }
     }
 
     return nextState;
@@ -109,34 +109,23 @@ class CombatPlayerSlider extends PureComponent {
 
     const { index } = this.state;
 
-    const playersProps = [
-      {
-        id: playerId,
-        onBonusChange: onPlayerBonusChange,
-      },
-    ];
+    const players = compact([
+      <Paper className={classes.paper} key={playerId}>
+        <Player id={playerId} onBonusChange={onPlayerBonusChange} />
+      </Paper>,
+      helperId && (
+        <Paper className={classes.paper} key={helperId}>
+          <Player id={helperId} onBonusChange={onHelperBonusChange} />
 
-    if (helperId) {
-      playersProps.push({
-        id: helperId,
-        onBonusChange: onHelperBonusChange,
-      });
-    }
-
-    const players = playersProps.map((props) => (
-      <Paper className={classes.paper} key={props.id}>
-        <Player id={props.id} onBonusChange={props.onBonusChange} />
-
-        {props.id !== playerId && (
           <IconButton
             className={classes.remove}
             onClick={this.handleHelperRemove}
           >
             <CloseCircle />
           </IconButton>
-        )}
-      </Paper>
-    ));
+        </Paper>
+      ),
+    ]);
 
     return (
       <div className={cns(classes.players, className)}>
