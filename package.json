@@ -18,7 +18,7 @@
     "screenshots": "babel-node scripts/screenshots.js",
     "site": "cross-env NODE_ENV=production webpack --config=webpack/site.babel.js",
     "start": "cross-env NODE_ENV=production webpack-dev-server --config=webpack/site.babel.js",
-    "stats": "cross-env NODE_ENV=production webpack --config=webpack/stats.babel.js",
+    "stats": "cross-env STATS=true npm run site",
     "test": "jest",
     "test:coverage": "npm test -- --coverage",
     "test:watch": "npm test -- --watch"

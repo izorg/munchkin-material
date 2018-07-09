@@ -1,4 +1,5 @@
 import path from 'path';
+import { compact } from 'lodash';
 import webpack from 'webpack';
 import merge from 'webpack-merge';
 
@@ -6,6 +7,7 @@ import CleanWebpackPlugin from 'clean-webpack-plugin';
 import CnameWebpackPlugin from 'cname-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import OfflinePlugin from 'offline-plugin';
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import WebpackPwaManifest from 'webpack-pwa-manifest';
 
 import common from './common.babel';
@@ -40,7 +42,7 @@ const config = merge.smart(common, {
     },
   },
 
-  plugins: [
+  plugins: compact([
     new CleanWebpackPlugin(path.resolve(__dirname, '../site'), {
       allowExternal: true,
     }),
@@ -83,7 +85,13 @@ const config = merge.smart(common, {
         events: true,
       },
     }),
-  ],
+
+    process.env.STATS &&
+      new BundleAnalyzerPlugin({
+        analyzerPort: 3001,
+        defaultSizes: 'gzip',
+      }),
+  ]),
 });
 
 export default config;
