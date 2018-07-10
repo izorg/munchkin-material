@@ -10,7 +10,7 @@ import { duration } from '@material-ui/core/styles/transitions';
 import { URL } from 'url';
 
 import { EN, RU } from '../src/i18n';
-import config from '../webpack/site.babel';
+import config from '../webpack.config';
 
 const {
   devServer: { host, port },
