@@ -1,7 +1,6 @@
 import React, { Fragment, PureComponent } from 'react';
 import { hot } from 'react-hot-loader';
 import { Provider } from 'react-redux';
-import { storeShape } from 'react-redux/lib/utils/PropTypes';
 import compose from 'recompose/compose';
 import { ConnectedRouter } from 'connected-react-router';
 import PropTypes from 'prop-types';
@@ -95,7 +94,11 @@ App.propTypes = {
   keepAwakeSupport: PropTypes.bool.isRequired,
   rateLink: PropTypes.string,
   shareLink: PropTypes.string,
-  store: storeShape.isRequired,
+  store: PropTypes.shape({
+    dispatch: PropTypes.func.isRequired,
+    getState: PropTypes.func.isRequired,
+    subscribe: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
 App.defaultProps = {
