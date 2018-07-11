@@ -11,7 +11,6 @@ const history = createHistory();
 
 const defaultOptions = {
   buyFullVersion: () => Promise.resolve(),
-  disableHover: false,
   keepAwakeSupport: false,
   loadFonts: true,
   rateLink: null,

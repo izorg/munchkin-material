@@ -7,8 +7,7 @@ import themes from '../../styles/themes';
 
 const theme = createSelector(
   (state) => state.app.theme,
-  (state, ownProps) => ownProps.disableHover,
-  (key, disableHover) => createTheme(themes[key], disableHover),
+  (key) => createTheme(themes[key]),
 );
 
 const mapStateToProps = createStructuredSelector({
