@@ -1,4 +1,5 @@
-import React, { PureComponent } from 'react';
+import React, { Fragment, PureComponent } from 'react';
+import { Helmet } from 'react-helmet';
 import { IntlProvider } from 'react-intl';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -52,13 +53,18 @@ class LocaleProvider extends PureComponent {
     }
 
     return (
-      <IntlProvider
-        {...this.props}
-        key={locale}
-        locale={locale}
-        messages={messages}
-        textComponent={textComponent}
-      />
+      <Fragment>
+        <Helmet>
+          <html lang={locale} />
+        </Helmet>
+        <IntlProvider
+          {...this.props}
+          key={locale}
+          locale={locale}
+          messages={messages}
+          textComponent={textComponent}
+        />
+      </Fragment>
     );
   }
 }

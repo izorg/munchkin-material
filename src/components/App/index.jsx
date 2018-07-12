@@ -10,7 +10,6 @@ import { withStyles } from '@material-ui/core/styles';
 import munchkinWoff from '../../fonts/munchkin.woff';
 import munchkinWoff2 from '../../fonts/munchkin.woff2';
 
-import Head from '../Head';
 import LocaleProvider from '../LocaleProvider';
 import Root from '../Root';
 import ThemeProvider from '../ThemeProvider';
@@ -70,7 +69,6 @@ class App extends PureComponent {
             <ThemeProvider>
               <Fragment>
                 <CssBaseline />
-                <Head />
                 <Root />
               </Fragment>
             </ThemeProvider>
