@@ -6,14 +6,19 @@ const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CnameWebpackPlugin = require('cname-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const OfflinePlugin = require('offline-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const WebpackNotifierPlugin = require('webpack-notifier');
 const WebpackPwaManifest = require('webpack-pwa-manifest');
+const { GenerateSW } = require('workbox-webpack-plugin');
 
 const dev = process.env.NODE_ENV === 'development';
 const dist = process.env.BUILD === 'dist';
 const site = process.env.BUILD === 'site';
+
+const html = {
+  favicon: './images/favicon.png',
+  template: './index.ejs',
+};
 
 const manifest = {
   background_color: '#FFFFFF',
@@ -160,38 +165,23 @@ module.exports = {
       }),
 
     new HtmlWebpackPlugin({
-      favicon: './images/favicon.png',
+      ...html,
       manifest: 'manifest.json',
-      template: './index.ejs',
       title: 'Munchkin Level Counter',
     }),
 
     site &&
       new HtmlWebpackPlugin({
-        favicon: './images/favicon.png',
+        ...html,
         filename: 'ru.html',
         manifest: 'manifest-ru.json',
-        template: './index.ejs',
         title: 'Манчкин - счётчик уровней',
       }),
 
     !dev &&
       site &&
-      new OfflinePlugin({
-        appShell: '/',
-        caches: {
-          main: ['*.html', 'js/main.*.js'],
-          additional: ['js/*.js', 'fonts/**'],
-          optional: [':rest:'],
-        },
-        excludes: ['CNAME'],
-        externals: [
-          'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700',
-        ],
-        safeToUseOptionalCaches: true,
-        ServiceWorker: {
-          events: true,
-        },
+      new GenerateSW({
+        exclude: ['CNAME'],
       }),
 
     process.env.STATS &&

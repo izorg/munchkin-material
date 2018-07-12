@@ -85,7 +85,6 @@
     "jest-localstorage-mock": "2.2.0",
     "lodash": "4.17.10",
     "munchkin-core": "8.0.1",
-    "offline-plugin": "5.0.5",
     "prettier": "1.13.7",
     "prop-types": "15.6.2",
     "puppeteer": "1.5.0",
@@ -120,6 +119,7 @@
     "webpack-dev-server": "3.1.4",
     "webpack-merge": "4.1.3",
     "webpack-notifier": "1.6.0",
-    "webpack-pwa-manifest": "3.6.2"
+    "webpack-pwa-manifest": "3.6.2",
+    "workbox-webpack-plugin": "3.4.1"
   }
 }
