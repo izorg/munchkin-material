@@ -150,8 +150,7 @@ module.exports = {
       start_url: '/',
     }),
 
-    !dev &&
-      site &&
+    site &&
       new WebpackPwaManifest({
         ...manifest,
         filename: 'manifest-ru.json',
@@ -167,8 +166,7 @@ module.exports = {
       title: 'Munchkin Level Counter',
     }),
 
-    !dev &&
-      site &&
+    site &&
       new HtmlWebpackPlugin({
         favicon: './images/favicon.png',
         filename: 'ru.html',
