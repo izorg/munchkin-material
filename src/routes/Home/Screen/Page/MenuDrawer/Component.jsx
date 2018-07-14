@@ -36,9 +36,11 @@ class HomeMenuDrawer extends PureComponent {
   constructor(props) {
     super(props);
 
+    this.animationTimeout = null;
     this.startX = null;
 
     this.state = {
+      animation: false,
       maybeSwiping: false,
     };
 
@@ -52,6 +54,8 @@ class HomeMenuDrawer extends PureComponent {
 
     this.handleBackdropRef = this.handleBackdropRef.bind(this);
     this.handlePaperRef = this.handlePaperRef.bind(this);
+
+    this.handleClose = this.handleClose.bind(this);
   }
 
   componentDidMount() {
@@ -88,21 +92,35 @@ class HomeMenuDrawer extends PureComponent {
     this.hammer.destroy();
 
     this.hammer = null;
+
+    clearTimeout(this.animationTimeout);
   }
 
-  setPosition(translate, duration = '0ms') {
+  setPosition(translate, duration = 0) {
     const transform = `translate(${translate}px, 0)`;
     const drawerStyle = this.paper.style;
 
     drawerStyle.webkitTransform = transform;
     drawerStyle.transform = transform;
-    drawerStyle.webkitTransitionDuration = duration;
-    drawerStyle.transitionDuration = duration;
+    drawerStyle.webkitTransitionDuration = `${duration}ms`;
+    drawerStyle.transitionDuration = `${duration}ms`;
 
     const backdropStyle = this.backdrop.style;
 
     backdropStyle.opacity = 1 + translate / this.paper.clientWidth;
     backdropStyle.transitionDuration = '0ms';
+
+    clearTimeout(this.animationTimeout);
+    this.setState({ animation: false });
+
+    if (duration) {
+      this.setState({ animation: true });
+
+      this.animationTimeout = setTimeout(
+        () => this.setState({ animation: false }),
+        duration,
+      );
+    }
   }
 
   handlePanStart(event) {
@@ -123,7 +141,6 @@ class HomeMenuDrawer extends PureComponent {
     } = event;
 
     this.startX = x;
-    this.currentX = x;
 
     if (open) {
       this.setState({ maybeSwiping: true });
@@ -147,13 +164,10 @@ class HomeMenuDrawer extends PureComponent {
 
     const {
       center: { x },
+      deltaX,
     } = event;
 
-    this.currentX = x;
-
     if (open) {
-      const { deltaX } = event;
-
       if (deltaX < 0) {
         this.setPosition(
           Math.min(
@@ -170,8 +184,7 @@ class HomeMenuDrawer extends PureComponent {
     }
   }
 
-  handlePanEnd() {
-    const { theme } = this.props;
+  handlePanEnd(event) {
     const { maybeSwiping } = this.state;
 
     if (!maybeSwiping) {
@@ -180,21 +193,28 @@ class HomeMenuDrawer extends PureComponent {
 
     this.setState({ maybeSwiping: false });
 
-    const { onClose, onOpen, open } = this.props;
+    const { onClose, onOpen, open, theme } = this.props;
+    const {
+      center: { x },
+      deltaX,
+    } = event;
 
-    if (this.currentX > this.paper.clientWidth / 2) {
-      if (!open) {
+    if (open) {
+      if (x < this.paper.clientWidth / 2) {
+        onClose();
+      } else {
+        this.setPosition(0, theme.transitions.duration.leavingScreen);
+      }
+    } else {
+      // eslint-disable-next-line no-lonely-if
+      if (deltaX >= this.paper.clientWidth / 2) {
         onOpen();
       } else {
-        this.setPosition(0, `${theme.transitions.duration.enteringScreen}ms`);
+        this.setPosition(
+          -this.paper.clientWidth,
+          theme.transitions.duration.leavingScreen,
+        );
       }
-    } else if (open) {
-      onClose();
-    } else {
-      this.setPosition(
-        -this.paper.clientWidth,
-        `${theme.transitions.duration.leavingScreen}ms`,
-      );
     }
   }
 
@@ -214,7 +234,7 @@ class HomeMenuDrawer extends PureComponent {
 
       this.setPosition(
         20 - this.paper.clientWidth,
-        `${theme.transitions.duration.enteringScreen}ms`,
+        theme.transitions.duration.enteringScreen,
       );
     }
   }
@@ -232,7 +252,7 @@ class HomeMenuDrawer extends PureComponent {
 
     this.setPosition(
       -this.paper.clientWidth,
-      `${theme.transitions.duration.leavingScreen}ms`,
+      theme.transitions.duration.leavingScreen,
     );
   }
 
@@ -274,9 +294,17 @@ class HomeMenuDrawer extends PureComponent {
     this.paper = node ? findDOMNode(node) : null;
   }
 
+  handleClose() {
+    const { onClose, open } = this.props;
+
+    if (open) {
+      onClose();
+    }
+  }
+
   render() {
-    const { classes, onClose, open } = this.props;
-    const { maybeSwiping } = this.state;
+    const { classes, open } = this.props;
+    const { animation, maybeSwiping } = this.state;
 
     return (
       <Fragment>
@@ -288,7 +316,7 @@ class HomeMenuDrawer extends PureComponent {
               ref: this.handleBackdropRef,
             },
           }}
-          onClose={onClose}
+          onClose={this.handleClose}
           open={maybeSwiping || open}
           PaperProps={{
             ref: this.handlePaperRef,
@@ -303,7 +331,7 @@ class HomeMenuDrawer extends PureComponent {
           </List>
         </Drawer>
 
-        {maybeSwiping && (
+        {(animation || maybeSwiping) && (
           <Portal>
             <Backdrop className={classes.backdrop} invisible open />
           </Portal>
