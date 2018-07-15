@@ -44,6 +44,7 @@ class HomeMenuDrawer extends PureComponent {
       maybeSwiping: false,
     };
 
+    this.handlePan = this.handlePan.bind(this);
     this.handlePanEnd = this.handlePanEnd.bind(this);
     this.handlePanMove = this.handlePanMove.bind(this);
     this.handlePanStart = this.handlePanStart.bind(this);
@@ -65,14 +66,28 @@ class HomeMenuDrawer extends PureComponent {
       enable,
       recognizers: [
         [Hammer.Swipe, { direction: Hammer.DIRECTION_HORIZONTAL }],
-        [Hammer.Pan, { direction: Hammer.DIRECTION_HORIZONTAL }, ['swipe']],
+        [
+          Hammer.Pan,
+          {
+            event: 'panh',
+            direction: Hammer.DIRECTION_HORIZONTAL,
+            threshold: 0,
+          },
+          ['swipe'],
+        ],
+        [
+          Hammer.Pan,
+          { event: 'panv', direction: Hammer.DIRECTION_VERTICAL, threshold: 0 },
+          ['panh'],
+        ],
         [Hammer.Press, { time: 151 }],
       ],
     });
 
-    this.hammer.on('panstart', this.handlePanStart);
-    this.hammer.on('panend pancancel', this.handlePanEnd);
-    this.hammer.on('panmove', this.handlePanMove);
+    this.hammer.on('panh panv', this.handlePan);
+    this.hammer.on('panhstart', this.handlePanStart);
+    this.hammer.on('panhmove', this.handlePanMove);
+    this.hammer.on('panhend panvend', this.handlePanEnd);
     this.hammer.on('press', this.handlePress);
     this.hammer.on('pressup', this.handlePressUp);
     this.hammer.on('swipeleft', this.handleSwipeLeft);
@@ -123,17 +138,18 @@ class HomeMenuDrawer extends PureComponent {
     }
   }
 
-  handlePanStart(event) {
-    const { additionalEvent, srcEvent } = event;
+  handlePan(event) {
+    const { open } = this.props;
+    const { maybeSwiping } = this.state;
 
-    if (
-      additionalEvent === 'panup' ||
-      additionalEvent === 'pandown' ||
-      srcEvent.type === 'pointercancel'
-    ) {
+    if (!maybeSwiping || open || event.srcEvent.type !== 'pointercancel') {
       return;
     }
 
+    this.setState({ maybeSwiping: false });
+  }
+
+  handlePanStart(event) {
     const { open } = this.props;
 
     const {
@@ -150,7 +166,7 @@ class HomeMenuDrawer extends PureComponent {
       }
 
       this.setState({ maybeSwiping: true });
-      this.setPosition(x - this.paper.clientWidth);
+      this.setPosition(Math.max(x, 20) - this.paper.clientWidth);
     }
   }
 
@@ -180,7 +196,7 @@ class HomeMenuDrawer extends PureComponent {
         );
       }
     } else {
-      this.setPosition(Math.min(x - this.paper.clientWidth, 0));
+      this.setPosition(Math.min(Math.max(x, 20) - this.paper.clientWidth, 0));
     }
   }
 
@@ -330,7 +346,12 @@ class HomeMenuDrawer extends PureComponent {
 
         {(animation || maybeSwiping) && (
           <Portal>
-            <Backdrop className={classes.backdrop} invisible open />
+            <Backdrop
+              appear={false}
+              className={classes.backdrop}
+              invisible
+              open
+            />
           </Portal>
         )}
       </Fragment>
