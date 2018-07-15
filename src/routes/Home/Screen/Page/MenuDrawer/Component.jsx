@@ -194,13 +194,10 @@ class HomeMenuDrawer extends PureComponent {
     this.setState({ maybeSwiping: false });
 
     const { onClose, onOpen, open, theme } = this.props;
-    const {
-      center: { x },
-      deltaX,
-    } = event;
+    const { deltaX } = event;
 
     if (open) {
-      if (x < this.paper.clientWidth / 2) {
+      if (-deltaX >= this.paper.clientWidth / 2) {
         onClose();
       } else {
         this.setPosition(0, theme.transitions.duration.leavingScreen);
