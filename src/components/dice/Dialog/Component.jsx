@@ -1,8 +1,8 @@
 import React, { createElement, PureComponent } from 'react';
 import TransitionGroup from 'react-transition-group/TransitionGroup';
 import PropTypes from 'prop-types';
+import ButtonBase from '@material-ui/core/ButtonBase';
 import Dialog from '@material-ui/core/Dialog';
-import IconButton from '@material-ui/core/IconButton';
 import { withStyles } from '@material-ui/core/styles';
 import { noop } from 'lodash';
 
@@ -18,25 +18,21 @@ import DiceSix from '../../icons/dice/six';
 const diceSize = 120;
 
 const styles = {
-  content: {
-    height: diceSize,
-    position: 'relative',
-    width: diceSize,
-  },
-
   button: {
     display: 'block',
     fontSize: diceSize,
     height: diceSize,
     padding: 0,
+    position: 'relative',
     width: diceSize,
+  },
 
-    '&:hover': {
-      backgroundColor: 'transparent',
-    },
+  iconWrapper: {
+    display: 'block',
   },
 
   icon: {
+    display: 'block',
     fontSize: 'inherit',
   },
 };
@@ -69,24 +65,26 @@ class DiceDialog extends PureComponent {
   }
 
   render() {
-    const { classes, dice, ...props } = this.props;
+    const { classes, dice, onDiceClick, ...rest } = this.props;
     const { attempt } = this.state;
 
-    delete props.onDiceClick;
-
     return (
-      <Dialog disableRestoreFocus {...props}>
-        <TransitionGroup className={classes.content}>
+      <Dialog disableRestoreFocus {...rest}>
+        <TransitionGroup
+          autoFocus
+          className={classes.button}
+          component={ButtonBase}
+          disableRipple
+          focusVisibleClassName=""
+          onClick={this.handleDiceClick}
+        >
           <DiceTransition key={attempt}>
-            <IconButton
-              className={classes.button}
-              color="inherit"
-              disableRipple
-              onClick={this.handleDiceClick}
-            >
+            <span className={classes.iconWrapper}>
               {dice &&
-                createElement(diceComponent[dice], { className: classes.icon })}
-            </IconButton>
+                createElement(diceComponent[dice], {
+                  className: classes.icon,
+                })}
+            </span>
           </DiceTransition>
         </TransitionGroup>
       </Dialog>
