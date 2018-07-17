@@ -22,6 +22,7 @@ const styles = (theme) => ({
     display: 'flex',
     flex: 1,
     flexDirection: 'column',
+    outline: 'none',
   },
 });
 
