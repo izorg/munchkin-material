@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import { noop } from 'lodash';
+import cns from 'classnames';
 
 import AppBar from './AppBar';
 import MonsterSlider from './MonsterSlider';
@@ -82,6 +83,7 @@ class CombatScreenPage extends PureComponent {
   render() {
     const {
       classes,
+      className,
       combinedMonsterStrength,
       combinedPlayerStrength,
       helperId,
@@ -91,10 +93,11 @@ class CombatScreenPage extends PureComponent {
       onMonsterRemove,
       onPlayerBonusChange,
       playerId,
+      ...rest
     } = this.props;
 
     return (
-      <div className={classes.root}>
+      <div className={cns(classes.root, className)} {...rest}>
         <AppBar />
         <div className={classes.content}>
           <PlayerSlider

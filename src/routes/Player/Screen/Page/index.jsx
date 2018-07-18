@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import { withStyles } from '@material-ui/core/styles';
+import cns from 'classnames';
 
 import AppBar from './AppBar';
 import Slider from './Slider';
@@ -20,10 +21,10 @@ const styles = (theme) => ({
 
 class PlayerPage extends PureComponent {
   render() {
-    const { classes } = this.props;
+    const { classes, className, ...rest } = this.props;
 
     return (
-      <div className={classes.root}>
+      <div className={cns(classes.root, className)} {...rest}>
         <AppBar />
         <div className={classes.sliderContent}>
           <Slider />
