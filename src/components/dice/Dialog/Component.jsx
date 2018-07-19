@@ -27,10 +27,6 @@ const styles = {
     width: diceSize,
   },
 
-  iconWrapper: {
-    display: 'block',
-  },
-
   icon: {
     display: 'block',
     fontSize: 'inherit',
@@ -61,7 +57,9 @@ class DiceDialog extends PureComponent {
     const { onDiceClick } = this.props;
     const { attempt } = this.state;
 
-    this.setState({ attempt: attempt + 1 }, onDiceClick);
+    onDiceClick();
+
+    this.setState({ attempt: attempt + 1 });
   }
 
   render() {
@@ -78,14 +76,13 @@ class DiceDialog extends PureComponent {
           focusVisibleClassName=""
           onClick={this.handleDiceClick}
         >
-          <DiceTransition key={attempt}>
-            <span className={classes.iconWrapper}>
-              {dice &&
-                createElement(diceComponent[dice], {
-                  className: classes.icon,
-                })}
-            </span>
-          </DiceTransition>
+          {dice && (
+            <DiceTransition key={attempt}>
+              {createElement(diceComponent[dice], {
+                className: classes.icon,
+              })}
+            </DiceTransition>
+          )}
         </TransitionGroup>
       </Dialog>
     );

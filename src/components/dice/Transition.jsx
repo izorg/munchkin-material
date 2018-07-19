@@ -11,6 +11,7 @@ const styles = (theme) => ({
     width: '100%',
 
     transform: 'scale(0)',
+    willChange: 'transform',
   },
 
   enterActive: {
@@ -30,6 +31,7 @@ const styles = (theme) => ({
     width: '100%',
 
     transform: 'scale(1)',
+    willChange: 'transform',
   },
 
   leaveActive: {
