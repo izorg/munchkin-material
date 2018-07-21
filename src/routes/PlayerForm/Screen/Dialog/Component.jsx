@@ -11,9 +11,9 @@ import withMobileDialog from '@material-ui/core/withMobileDialog';
 import Hidden from '@material-ui/core/Hidden';
 import { withStyles } from '@material-ui/core/styles';
 import Fade from '@material-ui/core/Fade';
-import Slide from '@material-ui/core/Slide';
 import { noop } from 'lodash';
 
+import FadeUp from '../../../../components/FadeUp';
 import { sexProp } from '../../../../utils/propTypes';
 
 import AppBar from './AppBar';
@@ -86,11 +86,9 @@ class DialogComponent extends PureComponent {
     const { fullScreen } = this.props;
     const { appear } = this.state;
 
-    if (fullScreen) {
-      return <Slide {...props} appear={appear} direction="up" />;
-    }
+    const Transition = fullScreen ? FadeUp : Fade;
 
-    return <Fade {...props} appear={appear} />;
+    return <Transition {...props} appear={appear} />;
   }
 
   render() {

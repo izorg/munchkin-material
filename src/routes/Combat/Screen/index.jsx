@@ -4,9 +4,10 @@ import Transition from 'react-transition-group/Transition';
 import compose from 'recompose/compose';
 import PropTypes from 'prop-types';
 import Modal from '@material-ui/core/Modal';
-import Slide from '@material-ui/core/Slide';
 import Zoom from '@material-ui/core/Zoom';
 import { withStyles } from '@material-ui/core/styles';
+
+import FadeUp from '../../../components/FadeUp';
 
 import HelperButton from './HelperButton';
 import HelperSelector from './HelperSelector';
@@ -66,15 +67,9 @@ class CombatScreen extends PureComponent {
           unmountOnExit
         >
           <div className={classes.transition}>
-            <Slide
-              appear={appear}
-              direction="left"
-              in={inProp}
-              mountOnEnter
-              unmountOnExit
-            >
+            <FadeUp appear={appear} in={inProp} mountOnEnter unmountOnExit>
               <Page />
-            </Slide>
+            </FadeUp>
 
             <Zoom
               appear={appear}

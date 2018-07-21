@@ -4,9 +4,10 @@ import Transition from 'react-transition-group/Transition';
 import compose from 'recompose/compose';
 import PropTypes from 'prop-types';
 import Modal from '@material-ui/core/Modal';
-import Slide from '@material-ui/core/Slide';
 import Zoom from '@material-ui/core/Zoom';
 import { withStyles } from '@material-ui/core/styles';
+
+import FadeUp from '../../../components/FadeUp';
 
 import CombatButton from './CombatButton';
 import Page from './Page';
@@ -84,15 +85,14 @@ class PlayerScreen extends PureComponent {
           unmountOnExit
         >
           <div className={classes.transition}>
-            <Slide
+            <FadeUp
               appear={appear}
-              direction="left"
               in={Boolean(match)}
               mountOnEnter
               unmountOnExit
             >
               <Page />
-            </Slide>
+            </FadeUp>
             <Zoom
               appear={appear}
               in={inProp}
