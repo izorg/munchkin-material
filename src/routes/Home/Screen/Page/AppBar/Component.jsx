@@ -10,10 +10,10 @@ import PropTypes from 'prop-types';
 import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
 import { withStyles } from '@material-ui/core/styles';
-import NavigationCheck from '@material-ui/icons/Check';
-import NavigationClose from '@material-ui/icons/Close';
-import ActionDelete from '@material-ui/icons/Delete';
-import EditorModeEdit from '@material-ui/icons/ModeEdit';
+import CheckIcon from '@material-ui/icons/Check';
+import CloseIcon from '@material-ui/icons/Close';
+import DeleteIcon from '@material-ui/icons/Delete';
+import EditIcon from '@material-ui/icons/Edit';
 import SettingsBackupRestoreIcon from '@material-ui/icons/SettingsBackupRestore';
 import { noop } from 'lodash';
 
@@ -85,7 +85,7 @@ const HomeAppBar = ({
           color="default"
           onClick={onMultiSelectDeactivate}
         >
-          <NavigationClose />
+          <CloseIcon />
         </IconButton>
       ) : (
         <MenuButton className={classes.leftButton} color="inherit" />
@@ -114,7 +114,7 @@ const HomeAppBar = ({
               color={buttonColor}
               onClick={() => onToggleEditClick(mode)}
             >
-              {editMode ? <NavigationCheck /> : <EditorModeEdit />}
+              {editMode ? <CheckIcon /> : <EditIcon />}
             </IconButton>
           </Tooltip>
         )}
@@ -124,7 +124,7 @@ const HomeAppBar = ({
           color={buttonColor}
           onClick={() => onPlayersDelete(selectedPlayerIds)}
         >
-          <ActionDelete />
+          <DeleteIcon />
         </IconButton>
       )}
 
