@@ -234,34 +234,32 @@ class HomeMenuDrawer extends PureComponent {
   handlePress(event) {
     const {
       center: { x },
+      srcEvent: { type },
     } = event;
 
-    if (x > swipeAreaWidth) {
+    const { open, theme } = this.props;
+
+    if (x > swipeAreaWidth || open || type === 'pointerup') {
       return;
     }
 
     this.setState({ maybeSwiping: true });
 
-    if (!this.props.open) {
-      const { theme } = this.props;
-
-      this.setPosition(
-        20 - this.paper.clientWidth,
-        theme.transitions.duration.enteringScreen,
-      );
-    }
+    this.setPosition(
+      20 - this.paper.clientWidth,
+      theme.transitions.duration.enteringScreen,
+    );
   }
 
   handlePressUp() {
     const { maybeSwiping } = this.state;
+    const { open, theme } = this.props;
 
-    if (!maybeSwiping) {
+    if (!maybeSwiping || open) {
       return;
     }
 
     this.setState({ maybeSwiping: false });
-
-    const { theme } = this.props;
 
     this.setPosition(
       -this.paper.clientWidth,
