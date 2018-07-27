@@ -2,12 +2,12 @@ import { connect } from 'react-redux';
 import { goBack } from 'connected-react-router/lib/actions';
 
 import { setTheme } from '../../../../../ducks/app';
-import getSearch from '../../../../../utils/getSearch';
+import { getQuery } from '../../../../../utils/location';
 
 import Component from './Component';
 
 const mapStateToProps = (state) => {
-  const search = getSearch(state);
+  const search = getQuery(state);
 
   return {
     open: search.theme !== undefined,

@@ -4,6 +4,8 @@ import { push } from 'connected-react-router/lib/actions';
 import IconButton from '@material-ui/core/IconButton';
 import Menu from '@material-ui/icons/Menu';
 
+import { stringifyQuery } from '../../../../../../utils/location';
+
 class MenuButton extends PureComponent {
   render() {
     return (
@@ -15,7 +17,7 @@ class MenuButton extends PureComponent {
 }
 
 const mapDispatchToProps = {
-  onClick: () => push({ search: '?menu' }),
+  onClick: () => push({ search: stringifyQuery({ menu: null }) }),
 };
 
 export default connect(

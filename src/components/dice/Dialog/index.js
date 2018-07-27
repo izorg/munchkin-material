@@ -2,13 +2,13 @@ import { connect } from 'react-redux';
 import { goBack } from 'connected-react-router/lib/actions';
 
 import { throwDice } from '../../../ducks/app';
-import getSearch from '../../../utils/getSearch';
+import { getQuery } from '../../../utils/location';
 
 import Component from './Component';
 
 const mapStateToProps = (state) => ({
   dice: state.app.dice,
-  open: getSearch(state).dice !== undefined,
+  open: getQuery(state).dice !== undefined,
 });
 
 const mapDispatchToProps = {

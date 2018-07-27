@@ -2,12 +2,12 @@ import { connect } from 'react-redux';
 import { goBack, push } from 'connected-react-router/lib/actions';
 import { isEmpty, isEqual } from 'lodash';
 
-import getSearch from '../../../../../utils/getSearch';
+import { getQuery, stringifyQuery } from '../../../../../utils/location';
 
 import Component from './Component';
 
 const mapStateToProps = (state) => {
-  const search = getSearch(state);
+  const search = getQuery(state);
 
   return {
     enable: isEmpty(search) || isEqual(search, { menu: '' }),
@@ -17,7 +17,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
   onClose: goBack,
-  onOpen: () => push({ search: '?menu' }),
+  onOpen: () => push({ search: stringifyQuery({ menu: null }) }),
 };
 
 export default connect(

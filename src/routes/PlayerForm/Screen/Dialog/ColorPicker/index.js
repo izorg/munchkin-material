@@ -1,12 +1,12 @@
 import { connect } from 'react-redux';
 import { goBack, push } from 'connected-react-router/lib/actions';
 
-import getSearch from '../../../../../utils/getSearch';
+import { getQuery } from '../../../../../utils/location';
 
 import Component from './Component';
 
 const mapStateToprops = (state) => ({
-  open: getSearch(state).color !== undefined,
+  open: getQuery(state).color !== undefined,
 });
 
 const mapDispatchToProps = {
