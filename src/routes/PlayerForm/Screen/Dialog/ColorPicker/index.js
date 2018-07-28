@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { goBack, push } from 'connected-react-router/lib/actions';
 
-import { getQuery } from '../../../../../utils/location';
+import { getQuery, stringifyQuery } from '../../../../../utils/location';
 
 import Component from './Component';
 
@@ -10,7 +10,7 @@ const mapStateToprops = (state) => ({
 });
 
 const mapDispatchToProps = {
-  onOpen: () => push({ search: '?color' }),
+  onOpen: () => push({ search: stringifyQuery({ color: null }) }),
   onClose: goBack,
 };
 
