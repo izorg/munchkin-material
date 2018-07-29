@@ -1,10 +1,10 @@
 language: node_js
 cache:
   directories:
-    - "$HOME/.npm"
+    - '$HOME/.npm'
 branches:
   only:
-  - master
+    - master
 install: npm ci
 script:
   - npm run lint
