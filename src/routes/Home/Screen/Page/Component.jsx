@@ -7,6 +7,7 @@ import cns from 'classnames';
 import Nobody from '../../../../components/Nobody';
 
 import AppBar from './AppBar';
+import LevelLimitDialog from './LevelLimitDialog';
 import MenuDrawer from './MenuDrawer';
 import PlayerList from './PlayerList';
 import SinglePlayer from './SinglePlayer';
@@ -85,6 +86,7 @@ class HomePage extends PureComponent {
           {content}
         </div>
         {menu && <MenuDrawer />}
+        <LevelLimitDialog />
         <ThemeDialog />
       </Fragment>
     );

@@ -1,15 +1,47 @@
 import { connect } from 'react-redux';
+import { createSelector, createStructuredSelector } from 'reselect';
 import {
   setCombatPlayerBonus,
   togglePlayerSex,
   updatePlayer,
 } from 'munchkin-core';
+import { get } from 'lodash/fp';
+
+import {
+  isLevelDecrementDisabled,
+  isLevelIncrementDisabled,
+} from '../../../../../utils/levelLimit';
 
 import Component from './Component';
 
-const mapStateToProps = (state) => ({
-  bonus: state.combat.playerBonus,
-  player: state.players[state.app.singleModePlayerId],
+const playerSelector = createSelector(
+  get('players'),
+  get(['app', 'singleModePlayerId']),
+  (players, id) => players[id],
+);
+
+const getPlayerLevel = createSelector(playerSelector, get('level'));
+
+const levelDecrementDisabled = (state) => {
+  const levelLimit = get(['app', 'levelLimit'], state);
+  const level = getPlayerLevel(state);
+
+  return isLevelDecrementDisabled(level, levelLimit);
+};
+
+const levelIncrementDisabled = (state) => {
+  const levelLimit = get(['app', 'levelLimit'], state);
+  const epic = get(['app', 'epic'], state);
+  const level = getPlayerLevel(state);
+
+  return isLevelIncrementDisabled(level, levelLimit, epic);
+};
+
+const mapStateToProps = createStructuredSelector({
+  bonus: get(['combat', 'playerBonus']),
+  levelDecrementDisabled,
+  levelIncrementDisabled,
+  player: playerSelector,
 });
 
 const mapDispatchToProps = {

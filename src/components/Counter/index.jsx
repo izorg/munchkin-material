@@ -36,6 +36,8 @@ const styles = (theme) => ({
 const Counter = ({
   classes,
   className,
+  decrementDisabled,
+  incrementDisabled,
   onDecrement,
   onIncrement,
   title,
@@ -49,6 +51,7 @@ const Counter = ({
       className={classes.button}
       color="inherit"
       data-screenshots="increment-button"
+      disabled={incrementDisabled}
       onClick={onIncrement}
     >
       <NavigationArrowDropUp className={classes.icon} />
@@ -60,6 +63,7 @@ const Counter = ({
       className={classes.button}
       color="inherit"
       data-screenshots="decrement-button"
+      disabled={decrementDisabled}
       onClick={onDecrement}
     >
       <NavigationArrowDropDown className={classes.icon} />
@@ -68,6 +72,8 @@ const Counter = ({
 );
 
 Counter.propTypes = {
+  decrementDisabled: PropTypes.bool,
+  incrementDisabled: PropTypes.bool,
   onDecrement: PropTypes.func,
   onIncrement: PropTypes.func,
   title: PropTypes.node.isRequired,
@@ -75,6 +81,8 @@ Counter.propTypes = {
 };
 
 Counter.defaultProps = {
+  decrementDisabled: false,
+  incrementDisabled: false,
   onDecrement: noop,
   onIncrement: noop,
 };

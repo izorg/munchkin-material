@@ -49,6 +49,8 @@ const styles = (theme) => ({
 const CombatCounter = ({
   classes,
   className,
+  decrementDisabled,
+  incrementDisabled,
   onDecrement,
   onIncrement,
   title,
@@ -60,6 +62,7 @@ const CombatCounter = ({
     <IconButton
       className={classes.button}
       color="inherit"
+      disabled={incrementDisabled}
       onClick={onIncrement}
     >
       <NavigationArrowDropUp className={classes.icon} />
@@ -70,6 +73,7 @@ const CombatCounter = ({
     <IconButton
       className={classes.button}
       color="inherit"
+      disabled={decrementDisabled}
       onClick={onDecrement}
     >
       <NavigationArrowDropDown className={classes.icon} />
@@ -78,6 +82,8 @@ const CombatCounter = ({
 );
 
 CombatCounter.propTypes = {
+  decrementDisabled: PropTypes.bool,
+  incrementDisabled: PropTypes.bool,
   onDecrement: PropTypes.func,
   onIncrement: PropTypes.func,
   title: PropTypes.node.isRequired,
@@ -85,6 +91,8 @@ CombatCounter.propTypes = {
 };
 
 CombatCounter.defaultProps = {
+  decrementDisabled: false,
+  incrementDisabled: false,
   onDecrement: noop,
   onIncrement: noop,
 };

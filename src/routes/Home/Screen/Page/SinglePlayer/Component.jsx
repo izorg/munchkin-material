@@ -103,6 +103,8 @@ class SinglePlayerComponent extends PureComponent {
     const {
       bonus,
       classes,
+      levelDecrementDisabled,
+      levelIncrementDisabled,
       onBonusDecrement,
       onBonusIncrement,
       onGearDecrement,
@@ -119,6 +121,8 @@ class SinglePlayerComponent extends PureComponent {
           <Counter
             className={classes.counter}
             data-screenshots="level-counter"
+            decrementDisabled={levelDecrementDisabled}
+            incrementDisabled={levelIncrementDisabled}
             onDecrement={onLevelDecrement}
             onIncrement={onLevelIncrement}
             title={
@@ -180,6 +184,8 @@ class SinglePlayerComponent extends PureComponent {
 
 SinglePlayerComponent.propTypes = {
   bonus: PropTypes.number.isRequired,
+  levelDecrementDisabled: PropTypes.bool,
+  levelIncrementDisabled: PropTypes.bool,
   onBonusDecrement: PropTypes.func.isRequired,
   onBonusIncrement: PropTypes.func.isRequired,
   onGearDecrement: PropTypes.func.isRequired,
@@ -188,6 +194,11 @@ SinglePlayerComponent.propTypes = {
   onLevelIncrement: PropTypes.func.isRequired,
   onSexToggle: PropTypes.func.isRequired,
   player: playerShape.isRequired,
+};
+
+SinglePlayerComponent.defaultProps = {
+  levelDecrementDisabled: false,
+  levelIncrementDisabled: false,
 };
 
 export default withStyles(styles)(SinglePlayerComponent);

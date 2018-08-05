@@ -81,6 +81,8 @@ const styles = (theme) => ({
 const PlayerStats = ({
   classes,
   className,
+  levelDecrementDisabled,
+  levelIncrementDisabled,
   onGearDecrement,
   onGearIncrement,
   onLevelDecrement,
@@ -92,6 +94,8 @@ const PlayerStats = ({
     <div className={classes.counters}>
       <div className={classes.counterContainer}>
         <Counter
+          decrementDisabled={levelDecrementDisabled}
+          incrementDisabled={levelIncrementDisabled}
           onDecrement={() => onLevelDecrement(player.id)}
           onIncrement={() => onLevelIncrement(player.id)}
           title={
@@ -137,6 +141,8 @@ const PlayerStats = ({
 );
 
 PlayerStats.propTypes = {
+  levelDecrementDisabled: PropTypes.bool,
+  levelIncrementDisabled: PropTypes.bool,
   onGearDecrement: PropTypes.func,
   onGearIncrement: PropTypes.func,
   onLevelDecrement: PropTypes.func,
@@ -146,6 +152,8 @@ PlayerStats.propTypes = {
 };
 
 PlayerStats.defaultProps = {
+  levelDecrementDisabled: false,
+  levelIncrementDisabled: false,
   onGearDecrement: noop,
   onGearIncrement: noop,
   onLevelDecrement: noop,

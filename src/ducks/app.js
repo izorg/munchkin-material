@@ -8,9 +8,11 @@ import {
 import { key as theme } from '../styles/themes/munchkin';
 
 export const FINISH_COMBAT = 'app/FINISH_COMBAT';
+export const SET_EPIC = 'app/SET_EPIC';
 export const SET_FULL_VERSION = 'app/SET_FULL_VERSION';
 export const SET_KEEP_AWAKE = 'app/SET_KEEP_AWAKE';
 export const SET_LOCALE = 'app/SET_LOCALE';
+export const SET_LEVEL_LIMIT = 'app/SET_LEVEL_LIMIT';
 export const SET_SINGLE_MODE = 'app/SET_SINGLE_MODE';
 export const SET_SINGLE_MODE_PLAYER = 'app/SET_SINGLE_MODE_PLAYER';
 export const SET_THEME = 'app/SET_THEME';
@@ -21,8 +23,10 @@ export const UNSELECT_ALL_PLAYERS = 'app/UNSELECT_ALL_PLAYERS';
 const initialState = {
   combatFinished: false,
   dice: undefined,
+  epic: false,
   fullVersion: false,
   keepAwake: false,
+  levelLimit: false,
   locale: undefined,
   selectedPlayerIds: [],
   singleMode: false,
@@ -38,6 +42,12 @@ export default (state = initialState, action) => {
         combatFinished: true,
       };
 
+    case SET_EPIC:
+      return {
+        ...state,
+        epic: action.epic,
+      };
+
     case SET_FULL_VERSION:
       return {
         ...state,
@@ -48,6 +58,13 @@ export default (state = initialState, action) => {
       return {
         ...state,
         keepAwake: action.keepAwake,
+      };
+    }
+
+    case SET_LEVEL_LIMIT: {
+      return {
+        ...state,
+        levelLimit: action.levelLimit,
       };
     }
 
@@ -131,6 +148,11 @@ export const finishCombat = () => ({
   type: FINISH_COMBAT,
 });
 
+export const setEpic = (epic = true) => ({
+  type: SET_EPIC,
+  epic,
+});
+
 export const setFullVersion = (fullVersion = true) => ({
   type: SET_FULL_VERSION,
   fullVersion,
@@ -139,6 +161,11 @@ export const setFullVersion = (fullVersion = true) => ({
 export const setKeepAwake = (keepAwake) => ({
   type: SET_KEEP_AWAKE,
   keepAwake,
+});
+
+export const setLevelLimit = (levelLimit = true) => ({
+  type: SET_LEVEL_LIMIT,
+  levelLimit,
 });
 
 export const setLocale = (locale) => ({

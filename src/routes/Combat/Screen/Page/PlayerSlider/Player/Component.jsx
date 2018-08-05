@@ -87,6 +87,8 @@ class CombatPlayer extends PureComponent {
       gear,
       id,
       level,
+      levelDecrementDisabled,
+      levelIncrementDisabled,
       name,
       onSexToggle,
       sex,
@@ -114,6 +116,8 @@ class CombatPlayer extends PureComponent {
         <div className={classes.stats}>
           <Counter
             className={classes.item}
+            decrementDisabled={levelDecrementDisabled}
+            incrementDisabled={levelIncrementDisabled}
             onDecrement={this.handleLevelDecrement}
             onIncrement={this.handleLevelIncrement}
             title={
@@ -156,6 +160,8 @@ CombatPlayer.propTypes = {
   gear: PropTypes.number.isRequired,
   id: PropTypes.string.isRequired,
   level: PropTypes.number.isRequired,
+  levelDecrementDisabled: PropTypes.bool,
+  levelIncrementDisabled: PropTypes.bool,
   name: PropTypes.string.isRequired,
   onBonusChange: PropTypes.func,
   onGearDecrement: PropTypes.func,
@@ -167,6 +173,8 @@ CombatPlayer.propTypes = {
 };
 
 CombatPlayer.defaultProps = {
+  levelDecrementDisabled: false,
+  levelIncrementDisabled: false,
   onBonusChange: noop,
   onGearDecrement: noop,
   onGearIncrement: noop,
