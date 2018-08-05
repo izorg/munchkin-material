@@ -7,14 +7,10 @@ module.exports = {
     '@babel/plugin-syntax-dynamic-import',
     '@babel/plugin-transform-modules-commonjs',
     'lodash',
+    'react-hot-loader/babel',
     'version-inline',
   ],
   env: {
-    development: {
-      plugins: [
-        'react-hot-loader/babel',
-      ],
-    },
     production: {
       plugins: [
         '@babel/plugin-transform-react-constant-elements',
