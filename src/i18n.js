@@ -6,7 +6,7 @@ export const FR = 'fr';
 export const RU = 'ru';
 export const UK = 'uk';
 
-export const availableLocales = [EN, FR, RU, UK];
+export const availableLocales = [DE, EN, FR, RU, UK];
 
 const defaultLocale = EN;
 
