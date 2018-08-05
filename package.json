@@ -19,9 +19,7 @@
     "site": "cross-env NODE_ENV=production BUILD=site webpack",
     "start": "cross-env NODE_ENV=production BUILD=site webpack-dev-server",
     "stats": "cross-env STATS=true npm run site",
-    "test": "jest",
-    "test:coverage": "npm test -- --coverage",
-    "test:watch": "npm test -- --watch"
+    "test": "jest"
   },
   "engines": {
     "node": ">=10",
