@@ -74,7 +74,12 @@ class PlayerScreen extends PureComponent {
     const inProp = Boolean(match) && match.isExact;
 
     return (
-      <Modal className={classes.root} hideBackdrop open={Boolean(match)}>
+      <Modal
+        className={classes.root}
+        disablePortal
+        hideBackdrop
+        open={Boolean(match)}
+      >
         <Transition
           appear={appear}
           in={Boolean(match)}

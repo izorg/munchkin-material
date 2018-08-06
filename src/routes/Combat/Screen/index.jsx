@@ -56,7 +56,7 @@ class CombatScreen extends PureComponent {
     const inProp = Boolean(match);
 
     return (
-      <Modal className={classes.root} hideBackdrop open={inProp}>
+      <Modal className={classes.root} disablePortal hideBackdrop open={inProp}>
         <Transition
           appear={appear}
           in={inProp}
