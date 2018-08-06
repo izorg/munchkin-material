@@ -53,9 +53,10 @@ class HomePage extends PureComponent {
   }
 
   componentDidUpdate(prevProps) {
+    const { playerCount } = this.props;
     const node = this.contentRef.current;
 
-    if (this.props.playerCount > prevProps.playerCount) {
+    if (playerCount > prevProps.playerCount) {
       node.scrollTop = node.scrollHeight;
     }
   }

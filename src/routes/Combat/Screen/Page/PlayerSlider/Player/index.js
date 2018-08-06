@@ -36,7 +36,9 @@ const levelIncrementDisabled = (state, ownProps) => {
 const getBonus = (id, combat) => {
   if (id === combat.playerId) {
     return combat.playerBonus;
-  } else if (id === combat.helperId) {
+  }
+
+  if (id === combat.helperId) {
     return combat.helperBonus;
   }
 

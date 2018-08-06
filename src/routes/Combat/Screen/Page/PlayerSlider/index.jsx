@@ -90,11 +90,13 @@ class CombatPlayerSlider extends PureComponent {
   }
 
   handleHelperRemove() {
+    const { onHelperRemove } = this.props;
+
     this.setState({
       index: 0,
     });
 
-    this.props.onHelperRemove();
+    onHelperRemove();
   }
 
   render() {

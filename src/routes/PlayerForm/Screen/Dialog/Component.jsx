@@ -75,7 +75,9 @@ class DialogComponent extends PureComponent {
   }
 
   handleExited() {
-    if (!this.state.appear) {
+    const { appear } = this.state;
+
+    if (!appear) {
       this.setState({
         appear: true,
       });

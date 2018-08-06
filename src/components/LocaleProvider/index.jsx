@@ -25,13 +25,16 @@ class LocaleProvider extends PureComponent {
   }
 
   componentDidMount() {
-    this.updateLocale(this.props.locale);
+    const { locale } = this.props;
+
+    this.updateLocale(locale);
   }
 
   componentDidUpdate() {
     const { locale } = this.props;
+    const { locale: stateLocale } = this.state;
 
-    if (this.state.locale !== locale) {
+    if (stateLocale !== locale) {
       this.updateLocale(locale);
     }
   }

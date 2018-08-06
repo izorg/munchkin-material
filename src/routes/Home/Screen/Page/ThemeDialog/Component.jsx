@@ -54,9 +54,12 @@ class ThemeDialog extends PureComponent {
   }
 
   handleSubmit(event) {
+    const { onSubmit } = this.props;
+    const { value } = this.state;
+
     event.preventDefault();
 
-    this.props.onSubmit(this.state.value);
+    onSubmit(value);
   }
 
   render() {
