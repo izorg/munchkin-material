@@ -73,7 +73,6 @@ class DiceDialog extends PureComponent {
           className={classes.button}
           component={ButtonBase}
           disableRipple
-          focusVisibleClassName=""
           onClick={this.handleDiceClick}
         >
           {dice && (
