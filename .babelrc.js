@@ -15,7 +15,7 @@ module.exports = {
       plugins: [
         '@babel/plugin-transform-react-constant-elements',
         '@babel/plugin-transform-react-inline-elements',
-        ['@babel/plugin-transform-runtime', { polyfill: false }],
+        ['@babel/plugin-transform-runtime', { corejs: 2 }],
         ['react-remove-properties', { properties: ['data-screenshots'] }],
         'transform-react-remove-prop-types',
       ],
