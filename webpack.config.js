@@ -46,16 +46,16 @@ module.exports = {
   entry: compact([
     './polyfill.js',
     !dev && site && './offline.js',
-    site && './site.js',
-    dev && './dev/index.js',
     './index.jsx',
+    site && './site.js',
+    dev && site && './dev/index.js',
   ]),
 
   context: path.resolve(__dirname, './src'),
 
   output: {
     filename: dev || dist ? 'js/[name].js' : 'js/[name].[chunkhash].js',
-    library: 'MunchkinApp',
+    library: dist ? 'MunchkinApp' : undefined,
     libraryExport: 'default',
     path: outputPath,
     publicPath: '',
@@ -140,6 +140,10 @@ module.exports = {
       new webpack.optimize.LimitChunkCountPlugin({
         maxChunks: 1,
       }),
+
+    new webpack.DefinePlugin({
+      SITE: process.env.BUILD === 'site',
+    }),
 
     !dev &&
       site &&

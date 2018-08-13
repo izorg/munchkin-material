@@ -8,27 +8,15 @@ module.exports = {
   },
   plugins: ['json', 'prettier'],
   rules: {
-    'import/no-extraneous-dependencies': [
-      'error',
-      {
-        devDependencies: true,
-      },
-    ],
+    'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
     'no-empty': ['error', { allowEmptyCatch: true }],
     'prettier/prettier': ['error', prettier],
-    'react/forbid-prop-types': [
-      true,
-      {
-        forbid: ['match'],
-      },
-    ],
+    'react/forbid-prop-types': [true, { forbid: ['match'] }],
     'react/jsx-one-expression-per-line': 'off',
     'react/jsx-wrap-multilines': 'off',
     'react/prop-types': [
       'error',
-      {
-        ignore: ['classes', 'className', 'theme'],
-      },
+      { ignore: ['classes', 'className', 'theme'] },
     ],
   },
 };
