@@ -1,12 +1,14 @@
 import { connect } from 'react-redux';
 import { goBack } from 'connected-react-router/lib/actions';
+import { createStructuredSelector } from 'reselect';
+import { get } from 'lodash/fp';
 
 import { setSingleMode } from '../../../../../../ducks/app';
 
 import Component from './Component';
 
-const mapStateToProps = (state) => ({
-  singleMode: state.app.singleMode,
+const mapStateToProps = createStructuredSelector({
+  singleMode: get(['app', 'singleMode']),
 });
 
 const mapDispatchToProps = {

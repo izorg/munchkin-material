@@ -15,6 +15,7 @@ import RateItem from './RateItem';
 import ShareItem from './ShareItem';
 import SingleModeItem from './SingleModeItem';
 import ThemeItem from './ThemeItem';
+import VersionItem from './VersionItem';
 
 const styles = (theme) => ({
   backdrop: {
@@ -341,6 +342,7 @@ class HomeMenuDrawer extends PureComponent {
             <InsomniaItem />
             <RateItem />
             <ShareItem />
+            <VersionItem />
           </List>
         </Drawer>
 

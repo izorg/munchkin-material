@@ -7,6 +7,7 @@ import {
 
 import app from '../ducks/app';
 import playerList from '../ducks/playerList';
+import update from '../ducks/update';
 
 export default {
   app,
@@ -14,5 +15,6 @@ export default {
   monsters: monstersReducer,
   playerList,
   players: playersReducer,
+  update,
   versions: versionsReducer,
 };

@@ -9,7 +9,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const WebpackNotifierPlugin = require('webpack-notifier');
 const WebpackPwaManifest = require('webpack-pwa-manifest');
-const { GenerateSW } = require('workbox-webpack-plugin');
+const { InjectManifest } = require('workbox-webpack-plugin');
 
 const dev = process.env.NODE_ENV === 'development';
 const dist = process.env.BUILD === 'dist';
@@ -184,8 +184,10 @@ module.exports = {
 
     !dev &&
       site &&
-      new GenerateSW({
+      new InjectManifest({
         exclude: ['CNAME'],
+        precacheManifestFilename: 'js/precache-manifest.[manifestHash].js',
+        swSrc: path.resolve(__dirname, './src/service-worker.js'),
       }),
 
     process.env.STATS &&
