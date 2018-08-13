@@ -12,7 +12,6 @@ module.exports = {
     'no-empty': ['error', { allowEmptyCatch: true }],
     'prettier/prettier': ['error', prettier],
     'react/forbid-prop-types': [true, { forbid: ['match'] }],
-    'react/jsx-one-expression-per-line': 'off',
     'react/jsx-wrap-multilines': 'off',
     'react/prop-types': [
       'error',
