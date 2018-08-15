@@ -9,6 +9,7 @@ import { withStyles } from '@material-ui/core/styles';
 
 import FadeUp from '../../../components/FadeUp';
 
+import { Provider } from '../context';
 import CombatButton from './CombatButton';
 import Page from './Page';
 
@@ -69,7 +70,7 @@ class PlayerScreen extends PureComponent {
 
   render() {
     const { classes, match, theme } = this.props;
-    const { appear } = this.state;
+    const { appear, playerId } = this.state;
 
     const inProp = Boolean(match) && match.isExact;
 
@@ -92,25 +93,27 @@ class PlayerScreen extends PureComponent {
           unmountOnExit
         >
           <div className={classes.transition}>
-            <FadeUp
-              appear={appear}
-              in={Boolean(match)}
-              mountOnEnter
-              unmountOnExit
-            >
-              <Page />
-            </FadeUp>
-            <Zoom
-              appear={appear}
-              in={inProp}
-              style={{
-                transitionDelay: inProp
-                  ? theme.transitions.duration.leavingScreen
-                  : 0,
-              }}
-            >
-              <CombatButton />
-            </Zoom>
+            <Provider value={playerId}>
+              <FadeUp
+                appear={appear}
+                in={Boolean(match)}
+                mountOnEnter
+                unmountOnExit
+              >
+                <Page />
+              </FadeUp>
+              <Zoom
+                appear={appear}
+                in={inProp}
+                style={{
+                  transitionDelay: inProp
+                    ? theme.transitions.duration.leavingScreen
+                    : 0,
+                }}
+              >
+                <CombatButton />
+              </Zoom>
+            </Provider>
           </div>
         </Transition>
       </Modal>
