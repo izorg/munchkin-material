@@ -236,7 +236,11 @@ class HomePlayerListItem extends PureComponent {
               root: classes.listItemSecondaryActionRoot,
             }}
           >
-            <IconButton disableRipple {...dragHandleProps}>
+            <IconButton
+              disableRipple
+              focusVisibleClassName=""
+              {...dragHandleProps}
+            >
               <ActionReorder />
             </IconButton>
           </ListItemSecondaryAction>
