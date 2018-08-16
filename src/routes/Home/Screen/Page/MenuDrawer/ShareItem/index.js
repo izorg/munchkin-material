@@ -3,7 +3,7 @@ import compose from 'recompose/compose';
 import branch from 'recompose/branch';
 import getContext from 'recompose/getContext';
 import renderNothing from 'recompose/renderNothing';
-import { goBack } from 'connected-react-router/lib/actions';
+import { goBack } from 'connected-react-router';
 import PropTypes from 'prop-types';
 
 import Component from './Component';

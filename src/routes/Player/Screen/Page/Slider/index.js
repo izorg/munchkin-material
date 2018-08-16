@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import getContext from 'recompose/getContext';
-import { replace } from 'connected-react-router/lib/actions';
+import { replace } from 'connected-react-router';
 import compose from 'recompose/compose';
 import PropTypes from 'prop-types';
 

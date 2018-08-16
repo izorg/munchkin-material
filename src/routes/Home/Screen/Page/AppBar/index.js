@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { goBack, push } from 'connected-react-router/lib/actions';
+import { goBack, push } from 'connected-react-router';
 import {
   removePlayer,
   setCombatPlayerBonus,

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { goBack } from 'connected-react-router/lib/actions';
+import { goBack } from 'connected-react-router';
 
 import { setTheme } from '../../../../../ducks/app';
 import { getQuery } from '../../../../../utils/location';

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import matchPath from 'react-router-dom/matchPath';
-import { goBack, push, replace } from 'connected-react-router/lib/actions';
+import { goBack, push, replace } from 'connected-react-router';
 import { createSelector, createStructuredSelector } from 'reselect';
 import { addMonster, createMonster } from 'munchkin-core';
 

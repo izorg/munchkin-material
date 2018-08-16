@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { createSelector, createStructuredSelector } from 'reselect';
-import { goBack } from 'connected-react-router/lib/actions';
+import { goBack } from 'connected-react-router';
 import { addPlayer, createPlayer, MALE, updatePlayer } from 'munchkin-core';
 
 import { addPlayerToList } from '../../../../ducks/playerList';

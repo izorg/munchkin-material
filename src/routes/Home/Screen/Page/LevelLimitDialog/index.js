@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { goBack } from 'connected-react-router/lib/actions';
+import { goBack } from 'connected-react-router';
 import { createSelector, createStructuredSelector } from 'reselect';
 import { flow, get, isUndefined, negate } from 'lodash/fp';
 

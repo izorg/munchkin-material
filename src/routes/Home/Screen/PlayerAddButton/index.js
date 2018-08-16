@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { push } from 'connected-react-router/lib/actions';
+import { push } from 'connected-react-router';
 
 import Component from './Component';
 
