@@ -82,7 +82,7 @@ class HomeMenuDrawer extends PureComponent {
           { event: 'panv', direction: Hammer.DIRECTION_VERTICAL, threshold: 0 },
           ['panh'],
         ],
-        [Hammer.Press, { time: 151 }],
+        [Hammer.Press],
       ],
     });
 
