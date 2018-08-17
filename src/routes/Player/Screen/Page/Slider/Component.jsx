@@ -95,12 +95,6 @@ class PlayerSlider extends PureComponent {
       index: props.initialSlide,
     };
 
-    this.springConfig = {
-      delay: '0s',
-      duration: `${props.theme.transitions.duration.shortest}ms`,
-      easeFunction: 'cubic-bezier(0.15, 0.3, 0.25, 1)',
-    };
-
     this.handleChangeIndex = this.handleChangeIndex.bind(this);
     this.slideRenderer = this.slideRenderer.bind(this);
   }
@@ -160,7 +154,6 @@ class PlayerSlider extends PureComponent {
         slideStyle={{
           display: 'flex',
         }}
-        springConfig={this.springConfig}
         style={{
           display: 'flex',
           flexDirection: 'column',
@@ -181,4 +174,4 @@ PlayerSlider.defaultProps = {
   onPlayerChange: noop,
 };
 
-export default withStyles(styles, { withTheme: true })(PlayerSlider);
+export default withStyles(styles)(PlayerSlider);
