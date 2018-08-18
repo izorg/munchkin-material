@@ -1,3 +1,4 @@
+import { goBack } from 'connected-react-router';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { get } from 'lodash/fp';
@@ -14,6 +15,7 @@ const mapStateToProps = createStructuredSelector({
 const mapDispatchToProps = {
   onClick: () => (dispatch, getState) => {
     if (get('update', getState())) {
+      dispatch(goBack());
       dispatch(applyUpdate());
     }
   },
