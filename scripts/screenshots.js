@@ -58,7 +58,7 @@ const getScreenshots = async ({ locale, size = 'mobile' }) => {
 
   // Home
   count += 1;
-  await page.goto(appUrl);
+  await page.goto(appUrl, { waitUntil: 'networkidle0' });
   page.evaluate((testLocale) => {
     window.munchkinDev.setLocale(testLocale);
     window.munchkinDev.setTestData();
