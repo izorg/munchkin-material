@@ -12,6 +12,6 @@ This web app is an example of how I work with the code. How I implement practice
 
 ### Input criteria
 
-* Client-side web app
-* LocalStorage as permanent storage
-* Redux store is the only source of truth
+- Client-side web app
+- LocalStorage as permanent storage
+- Redux store is the only source of truth

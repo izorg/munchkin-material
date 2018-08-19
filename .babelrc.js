@@ -1,7 +1,5 @@
 module.exports = {
-  presets: [
-    '@babel/preset-react',
-  ],
+  presets: ['@babel/preset-react'],
   plugins: [
     '@babel/plugin-proposal-object-rest-spread',
     '@babel/plugin-syntax-dynamic-import',
@@ -21,14 +19,10 @@ module.exports = {
       ],
     },
     test: {
-      plugins: [
-        'dynamic-import-node',
-      ],
+      plugins: ['dynamic-import-node'],
     },
     i18n: {
-      plugins: [
-        ['react-intl', { messagesDir: './messages/' }],
-      ],
+      plugins: [['react-intl', { messagesDir: './messages/' }]],
     },
   },
 };
