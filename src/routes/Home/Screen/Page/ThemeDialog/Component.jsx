@@ -74,10 +74,7 @@ class ThemeDialog extends PureComponent {
         PaperProps={{ component: 'form', onSubmit: this.handleSubmit }}
       >
         <DialogTitle>
-          <FormattedMessage
-            id="themeDialog.title"
-            defaultMessage="Select theme"
-          />
+          <FormattedMessage id="themeDialog.title" defaultMessage="Theme" />
         </DialogTitle>
         <DialogContent className={classes.content}>
           <RadioGroup
