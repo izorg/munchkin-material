@@ -1,5 +1,7 @@
 import init from './index';
+import registerServiceWorker from './registerServiceWorker';
 
+const dev = process.env.NODE_ENV === 'development';
 const el = document.getElementById('app');
 
 const { host, pathname, protocol } = window.location;
@@ -10,6 +12,8 @@ const app = init(el, {
 
 app.setFullVersion(true);
 
-if (process.env.NODE_ENV === 'development') {
+if (dev) {
   window.app = app;
+} else {
+  registerServiceWorker(app.store);
 }

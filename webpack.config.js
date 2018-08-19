@@ -141,10 +141,6 @@ module.exports = {
         maxChunks: 1,
       }),
 
-    new webpack.DefinePlugin({
-      SITE: process.env.BUILD === 'site',
-    }),
-
     !dev &&
       site &&
       new CnameWebpackPlugin({

@@ -5,7 +5,6 @@ import WebFont from 'webfontloader';
 
 import App from './components/App';
 import { setFullVersion } from './ducks/app';
-import registerServiceWorker from './registerServiceWorker';
 import configureStore from './store/configureStore';
 
 const history = createHistory();
@@ -41,10 +40,6 @@ const init = (appEl, initOptions) => {
     storageKey,
   });
   const { dispatch } = store;
-
-  if (process.env.NODE_ENV === 'production' && SITE) {
-    registerServiceWorker(store);
-  }
 
   render(<App {...options} history={history} store={store} />, appEl);
 

@@ -6,9 +6,6 @@ module.exports = {
   env: {
     browser: true,
   },
-  globals: {
-    SITE: true,
-  },
   plugins: ['json', 'prettier'],
   rules: {
     'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
