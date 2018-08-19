@@ -1,5 +1,5 @@
 module.exports = {
   notify: true,
-  setupTestFrameworkScriptFile: './src/setupTests.js',
+  setupTestFrameworkScriptFile: './scripts/setupEnzyme.js',
   testURL: 'http://localhost',
 };
