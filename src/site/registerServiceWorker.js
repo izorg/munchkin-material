@@ -1,4 +1,4 @@
-import { showUpdate } from './ducks/update';
+import { showUpdate } from '../ducks/update';
 
 // https://developers.google.com/web/tools/workbox/guides/advanced-recipes#offer_a_page_reload_for_users
 
