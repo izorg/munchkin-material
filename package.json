@@ -6,7 +6,7 @@
     "dist/"
   ],
   "scripts": {
-    "clean": "rimraf coverage dist messages node_modules/.cache site",
+    "clean": "rimraf coverage dist messages node_modules/.cache screenshots site",
     "dev": "cross-env NODE_ENV=development BUILD=site webpack-dev-server",
     "dist": "cross-env NODE_ENV=production BUILD=dist webpack",
     "i18n:download": "node scripts/i18n/download.js",
