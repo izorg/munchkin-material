@@ -45,8 +45,7 @@ module.exports = {
 
   entry: compact([
     './polyfill.js',
-    './index.jsx',
-    site && './site/index.js',
+    site ? './site/index.js' : './index.jsx',
     dev && site && './dev/index.js',
   ]),
 

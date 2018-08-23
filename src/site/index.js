@@ -1,3 +1,5 @@
+import './googleAnalytics';
+
 import init from '../index';
 
 import registerServiceWorker from './registerServiceWorker';
