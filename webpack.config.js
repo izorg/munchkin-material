@@ -86,11 +86,7 @@ module.exports = {
                       ie: 11,
                       safari: 10,
                     },
-                    /*
-                     * Have to use `entry` instead of `usage` cause of
-                     * Android 4.4 support
-                     */
-                    useBuiltIns: 'entry',
+                    useBuiltIns: 'usage',
                   },
                 ],
               ],
