@@ -67,7 +67,7 @@ class PlayerForm extends PureComponent {
     );
   }
 
-  static renderTextField({ input, ...props }) {
+  static renderTextField({ input, meta, ...props }) {
     return <TextField {...input} {...props} />;
   }
 
