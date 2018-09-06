@@ -162,7 +162,7 @@ class CombatPlayerSlider extends PureComponent {
             onChangeIndex={this.handleChangeIndex}
             slideStyle={{
               height: 215,
-              padding: '8px 8px 8px 0',
+              padding: '8px 8px 8px 24px',
               position: 'relative',
             }}
             style={{

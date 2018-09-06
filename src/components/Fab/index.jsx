@@ -13,6 +13,10 @@ const styles = (theme) => ({
     [theme.breakpoints.up('sm')]: {
       bottom: theme.spacing.unit * 3,
       right: theme.spacing.unit * 3,
+
+      '@supports(padding: max(0px))': {
+        right: `max(${theme.spacing.unit * 3}px, env(safe-area-inset-right))`,
+      },
     },
   },
 });

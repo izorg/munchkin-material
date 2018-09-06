@@ -17,6 +17,11 @@ const styles = (theme) => ({
     [theme.breakpoints.up('sm')]: {
       paddingLeft: 12,
       paddingRight: 12,
+
+      '@supports(padding: max(0px))': {
+        paddingLeft: 'max(12px, env(safe-area-inset-left) - 12px)',
+        paddingRight: 'max(12px, env(safe-area-inset-right) - 12px)',
+      },
     },
   },
 });

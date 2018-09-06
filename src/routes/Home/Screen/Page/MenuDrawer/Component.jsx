@@ -29,6 +29,11 @@ const styles = (theme) => ({
   menu: {
     maxWidth: 320,
     width: 'calc(100vw - 56px)',
+
+    '@supports(padding: max(0px))': {
+      maxWidth: 'calc(320px + env(safe-area-inset-left))',
+      paddingLeft: 'env(safe-area-inset-left)',
+    },
   },
 });
 

@@ -3,11 +3,11 @@ import { hot } from 'react-hot-loader';
 import Transition from 'react-transition-group/Transition';
 import compose from 'recompose/compose';
 import PropTypes from 'prop-types';
-import Modal from '@material-ui/core/Modal';
 import Zoom from '@material-ui/core/Zoom';
 import { withStyles } from '@material-ui/core/styles';
 
 import FadeUp from '../../../components/FadeUp';
+import ModalScreen from '../../../components/ModalScreen';
 
 import { Provider } from '../context';
 import CombatButton from './CombatButton';
@@ -75,7 +75,7 @@ class PlayerScreen extends PureComponent {
     const inProp = Boolean(match) && match.isExact;
 
     return (
-      <Modal
+      <ModalScreen
         className={classes.root}
         disablePortal
         hideBackdrop
@@ -116,7 +116,7 @@ class PlayerScreen extends PureComponent {
             </Provider>
           </div>
         </Transition>
-      </Modal>
+      </ModalScreen>
     );
   }
 }

@@ -11,6 +11,7 @@ import withMobileDialog from '@material-ui/core/withMobileDialog';
 import Hidden from '@material-ui/core/Hidden';
 import { withStyles } from '@material-ui/core/styles';
 import Fade from '@material-ui/core/Fade';
+import cns from 'classnames';
 import { noop } from 'lodash';
 
 import FadeUp from '../../../../components/FadeUp';
@@ -22,6 +23,10 @@ import Form from './Form';
 const FORM_ID = 'player-form';
 
 const styles = (theme) => ({
+  root: {
+    height: '100%',
+  },
+
   dialog: {
     minWidth: 320,
   },
@@ -33,6 +38,11 @@ const styles = (theme) => ({
   },
 
   content: {
+    '@supports(padding: max(0px))': {
+      paddingLeft: 'max(24px, env(safe-area-inset-left))',
+      paddingRight: 'max(24px, env(safe-area-inset-right))',
+    },
+
     [theme.breakpoints.up('md')]: {
       alignSelf: 'center',
       width: 600,
@@ -96,6 +106,7 @@ class DialogComponent extends PureComponent {
   render() {
     const {
       classes,
+      className,
       fullScreen,
       initialValues,
       newPlayer,
@@ -119,6 +130,7 @@ class DialogComponent extends PureComponent {
 
     return (
       <Dialog
+        className={cns(classes.root, className)}
         classes={{
           paper: classes.dialog,
         }}

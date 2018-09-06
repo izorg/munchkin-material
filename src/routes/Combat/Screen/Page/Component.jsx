@@ -23,6 +23,11 @@ const styles = (theme) => ({
     flex: 1,
     flexDirection: 'column',
     padding: 0,
+
+    '@supports(padding: env(safe-area-inset-left))': {
+      paddingLeft: 'env(safe-area-inset-left)',
+      paddingRight: 'env(safe-area-inset-right)',
+    },
   },
 
   players: {
