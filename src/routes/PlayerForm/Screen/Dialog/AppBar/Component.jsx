@@ -2,11 +2,11 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import IconButton from '@material-ui/core/IconButton';
 import { withStyles } from '@material-ui/core/styles';
-import NavigationArrowBack from '@material-ui/icons/ArrowBack';
 import NavigationCheck from '@material-ui/icons/Check';
 import { noop } from 'lodash';
 
 import AppBar from '../../../../../components/AppBar';
+import BackButton from '../../../../../components/BackButton';
 import Title from '../../../../../components/Title';
 
 const styles = {
@@ -25,13 +25,7 @@ class PlayerFormScreenAppBarComponent extends PureComponent {
 
     return (
       <AppBar>
-        <IconButton
-          className={classes.leftButton}
-          color="inherit"
-          onClick={onCancel}
-        >
-          <NavigationArrowBack />
-        </IconButton>
+        <BackButton className={classes.leftButton} onClick={onCancel} />
 
         <Title className={classes.title}>{title}</Title>
 

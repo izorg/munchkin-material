@@ -3,10 +3,10 @@ import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 import IconButton from '@material-ui/core/IconButton';
 import { withStyles } from '@material-ui/core/styles';
-import NavigationArrowBack from '@material-ui/icons/ArrowBack';
 import { noop } from 'lodash';
 
 import AppBar from '../../../../../components/AppBar';
+import BackButton from '../../../../../components/BackButton';
 import DiceIconButton from '../../../../../components/dice/Button';
 import FlagCheckered from '../../../../../components/icons/FlagCheckered';
 import Title from '../../../../../components/Title';
@@ -23,14 +23,11 @@ const styles = {
 
 const CombatAppBar = ({ classes, onBack, onFinish }) => (
   <AppBar>
-    <IconButton
+    <BackButton
       className={classes.leftButton}
-      color="inherit"
       data-screenshots="combat-back-button"
       onClick={onBack}
-    >
-      <NavigationArrowBack />
-    </IconButton>
+    />
 
     <Title className={classes.title}>
       <FormattedMessage id="combat" defaultMessage="Combat" />
