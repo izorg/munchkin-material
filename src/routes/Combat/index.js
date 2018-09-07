@@ -1,12 +1,20 @@
-import { createMatchSelector } from 'connected-react-router';
+import { getLocation } from 'connected-react-router';
 import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
+import matchPath from 'react-router-dom/matchPath';
+import { createSelector, createStructuredSelector } from 'reselect';
+import { flow, get } from 'lodash/fp';
 
 import ScreenLoader from '../../components/ScreenLoader';
 
 const loader = () => import(/* webpackChunkName: "combat" */ './Screen');
 
-const match = createMatchSelector({ path: '/player/:id/combat' });
+const match = createSelector(
+  flow(
+    getLocation,
+    get('pathname'),
+  ),
+  (pathname) => matchPath(pathname, { path: '/player/:id/combat' }),
+);
 
 const mapStateToProps = createStructuredSelector({
   loader: () => loader,
