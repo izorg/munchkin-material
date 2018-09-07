@@ -96,7 +96,7 @@
     "munchkin-core": "8.1.4",
     "prettier": "1.14.2",
     "prop-types": "15.6.2",
-    "puppeteer": "1.7.0",
+    "puppeteer": "1.8.0",
     "qs": "6.5.2",
     "react": "16.5.0",
     "react-beautiful-dnd": "9.0.2",
