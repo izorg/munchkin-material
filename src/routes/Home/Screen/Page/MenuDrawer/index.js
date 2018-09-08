@@ -3,6 +3,7 @@ import { goBack, push } from 'connected-react-router';
 import { isEmpty, isEqual } from 'lodash';
 
 import { getQuery, stringifyQuery } from '../../../../../utils/location';
+import { ios } from '../../../../../utils/platforms';
 
 import Component from './Component';
 
@@ -10,7 +11,7 @@ const mapStateToProps = (state) => {
   const search = getQuery(state);
 
   return {
-    enable: isEmpty(search) || isEqual(search, { menu: '' }),
+    enable: !ios && (isEmpty(search) || isEqual(search, { menu: '' })),
     open: search.menu !== undefined,
   };
 };
