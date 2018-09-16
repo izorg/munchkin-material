@@ -23,33 +23,28 @@ const messages = defineMessages({
   },
 });
 
-const ShareItem = ({ intl, onClick, shareLink, ...rest }) =>
-  shareLink && (
-    <ListItem
-      button
-      onClick={() =>
-        onClick({
-          text: intl.formatMessage(messages.text),
-          title: intl.formatMessage(messages.share),
-          url: shareLink,
-        })
-      }
-      {...rest}
-    >
-      <ListItemIcon>
-        <Share />
-      </ListItemIcon>
-      <ListItemText primary={intl.formatMessage(messages.share)} />
-    </ListItem>
-  );
+const ShareItem = ({ intl, onClick, shareLink, ...rest }) => (
+  <ListItem
+    button
+    onClick={() =>
+      onClick({
+        text: intl.formatMessage(messages.text),
+        title: intl.formatMessage(messages.share),
+        url: shareLink,
+      })
+    }
+    {...rest}
+  >
+    <ListItemIcon>
+      <Share />
+    </ListItemIcon>
+    <ListItemText primary={intl.formatMessage(messages.share)} />
+  </ListItem>
+);
 
 ShareItem.propTypes = {
   intl: intlShape.isRequired,
-  shareLink: PropTypes.string,
-};
-
-ShareItem.defaultProps = {
-  shareLink: null,
+  shareLink: PropTypes.string.isRequired,
 };
 
 export default injectIntl(ShareItem);

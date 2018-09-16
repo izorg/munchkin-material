@@ -19,7 +19,7 @@ const defaultOptions = {
 };
 
 const init = (appEl, initOptions) => {
-  const { loadFonts, storageKey, ...options } = {
+  const { buyFullVersion, loadFonts, storageKey, ...options } = {
     ...defaultOptions,
     ...initOptions,
   };
@@ -37,7 +37,7 @@ const init = (appEl, initOptions) => {
   }
 
   const store = configureStore({
-    buyFullVersion: options.buyFullVersion,
+    buyFullVersion,
     history,
     storageKey,
   });

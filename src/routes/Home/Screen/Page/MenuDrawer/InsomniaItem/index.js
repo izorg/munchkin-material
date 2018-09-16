@@ -1,8 +1,11 @@
 import { connect } from 'react-redux';
+import branch from 'recompose/branch';
 import compose from 'recompose/compose';
-import getContext from 'recompose/getContext';
-import PropTypes from 'prop-types';
+import fromRenderProps from 'recompose/fromRenderProps';
+import renderNothing from 'recompose/renderNothing';
+import { pick } from 'lodash/fp';
 
+import { OptionsConsumer } from '../../../../../../components/OptionsContext';
 import { setKeepAwake } from '../../../../../../ducks/app';
 
 import Component from './Component';
@@ -15,14 +18,11 @@ const mapDispatchToProps = {
   onChange: setKeepAwake,
 };
 
-const contextTypes = {
-  keepAwakeSupport: PropTypes.bool,
-};
-
 export default compose(
+  fromRenderProps(OptionsConsumer, pick('keepAwakeSupport')),
+  branch(({ keepAwakeSupport }) => !keepAwakeSupport, renderNothing),
   connect(
     mapStateToProps,
     mapDispatchToProps,
   ),
-  getContext(contextTypes),
 )(Component);

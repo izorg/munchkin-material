@@ -31,9 +31,9 @@ class InsomniaItem extends PureComponent {
   }
 
   render() {
-    const { classes, className, keepAwake, keepAwakeSupport } = this.props;
+    const { classes, className, keepAwake } = this.props;
 
-    return keepAwakeSupport ? (
+    return (
       <ListItem
         button
         className={cns(classes.root, className)}
@@ -54,19 +54,17 @@ class InsomniaItem extends PureComponent {
           tabIndex={-1}
         />
       </ListItem>
-    ) : null;
+    );
   }
 }
 
 InsomniaItem.propTypes = {
   keepAwake: PropTypes.bool,
-  keepAwakeSupport: PropTypes.bool,
   onChange: PropTypes.func,
 };
 
 InsomniaItem.defaultProps = {
   keepAwake: false,
-  keepAwakeSupport: false,
   onChange: noop,
 };
 

@@ -1,10 +1,12 @@
 import { connect } from 'react-redux';
-import compose from 'recompose/compose';
 import branch from 'recompose/branch';
-import getContext from 'recompose/getContext';
+import compose from 'recompose/compose';
+import fromRenderProps from 'recompose/fromRenderProps';
 import renderNothing from 'recompose/renderNothing';
 import { goBack } from 'connected-react-router';
-import PropTypes from 'prop-types';
+import { pick } from 'lodash/fp';
+
+import { OptionsConsumer } from '../../../../../../components/OptionsContext';
 
 import Component from './Component';
 
@@ -17,15 +19,11 @@ const mapDispatchToProps = {
   },
 };
 
-const contextTypes = {
-  shareLink: PropTypes.string,
-};
-
 export default compose(
-  branch(() => !navigator.share, renderNothing),
+  fromRenderProps(OptionsConsumer, pick('shareLink')),
+  branch(({ shareLink }) => !shareLink || !navigator.share, renderNothing),
   connect(
     undefined,
     mapDispatchToProps,
   ),
-  getContext(contextTypes),
 )(Component);

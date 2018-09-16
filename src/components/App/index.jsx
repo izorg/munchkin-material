@@ -1,4 +1,4 @@
-import React, { Fragment, PureComponent } from 'react';
+import React, { Fragment } from 'react';
 import { hot } from 'react-hot-loader';
 import { Provider } from 'react-redux';
 import compose from 'recompose/compose';
@@ -11,6 +11,7 @@ import munchkinWoff from '../../fonts/munchkin.woff';
 import munchkinWoff2 from '../../fonts/munchkin.woff2';
 
 import LocaleProvider from '../LocaleProvider';
+import { OptionsProvider } from '../OptionsContext';
 import Root from '../Root';
 import ThemeProvider from '../ThemeProvider';
 
@@ -46,56 +47,29 @@ const styles = {
   },
 };
 
-class App extends PureComponent {
-  getChildContext() {
-    const {
-      buyFullVersion,
-      keepAwakeSupport,
-      rateLink,
-      shareLink,
-    } = this.props;
-
-    return { buyFullVersion, keepAwakeSupport, rateLink, shareLink };
-  }
-
-  render() {
-    const { history, store } = this.props;
-
-    return (
-      <Provider store={store}>
-        <ConnectedRouter history={history}>
-          <LocaleProvider>
-            <ThemeProvider>
-              <Fragment>
-                <CssBaseline />
-                <Root />
-              </Fragment>
-            </ThemeProvider>
-          </LocaleProvider>
-        </ConnectedRouter>
-      </Provider>
-    );
-  }
-}
-
-App.childContextTypes = {
-  buyFullVersion: PropTypes.func,
-  keepAwakeSupport: PropTypes.bool,
-  rateLink: PropTypes.string,
-  shareLink: PropTypes.string,
-};
+const App = ({ history, keepAwakeSupport, rateLink, shareLink, store }) => (
+  <OptionsProvider value={{ keepAwakeSupport, rateLink, shareLink }}>
+    <Provider store={store}>
+      <ConnectedRouter history={history}>
+        <LocaleProvider>
+          <ThemeProvider>
+            <Fragment>
+              <CssBaseline />
+              <Root />
+            </Fragment>
+          </ThemeProvider>
+        </LocaleProvider>
+      </ConnectedRouter>
+    </Provider>
+  </OptionsProvider>
+);
 
 App.propTypes = {
-  buyFullVersion: PropTypes.func.isRequired,
   history: PropTypes.object.isRequired,
   keepAwakeSupport: PropTypes.bool.isRequired,
   rateLink: PropTypes.string,
   shareLink: PropTypes.string,
-  store: PropTypes.shape({
-    dispatch: PropTypes.func.isRequired,
-    getState: PropTypes.func.isRequired,
-    subscribe: PropTypes.func.isRequired,
-  }).isRequired,
+  store: PropTypes.object.isRequired,
 };
 
 App.defaultProps = {
