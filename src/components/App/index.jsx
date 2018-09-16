@@ -18,16 +18,15 @@ const styles = {
   '@global': {
     '@font-face': {
       fontFamily: 'Munchkin',
+      fontStyle: 'normal',
+      fontWeight: 'normal',
       src: `
         url(${munchkinWoff2}) format('woff2'),
         url(${munchkinWoff}) format('woff')`,
-      fontWeight: 'normal',
-      fontStyle: 'normal',
     },
 
     html: {
       height: '100%',
-      lineHeight: 1.15,
       overflow: 'hidden',
       textSizeAdjust: '100%',
     },
@@ -36,8 +35,8 @@ const styles = {
       height: '100%',
       overflow: 'hidden',
       userSelect: 'none',
+      WebkitTouchCallout: 'none', // iOS Safari
       width: '100%',
-      '-webkit-touch-callout': 'none' /* iOS Safari */,
     },
 
     '#app': {

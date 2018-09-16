@@ -27,7 +27,9 @@ const init = (appEl, initOptions) => {
   if (loadFonts) {
     WebFont.load({
       classes: false,
-      events: false,
+      custom: {
+        families: ['Munchkin'],
+      },
       google: {
         families: ['Roboto:300,400,500,700'],
       },
