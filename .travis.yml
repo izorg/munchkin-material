@@ -5,6 +5,7 @@ cache:
 branches:
   only:
     - master
+    - /^v\d+\.\d+(\.\d+)?(-\S*)?$/
 install: npm ci
 script:
   - npm run lint
@@ -17,7 +18,7 @@ deploy:
     api_key: $NPM_TOKEN
     skip_cleanup: true
     on:
-      branch: master
+      tags: true
   - provider: pages
     github_token: $GITHUB_TOKEN
     local_dir: site
