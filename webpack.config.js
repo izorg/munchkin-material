@@ -56,7 +56,7 @@ module.exports = {
     library: dist ? 'MunchkinApp' : undefined,
     libraryExport: 'default',
     path: outputPath,
-    publicPath: '',
+    publicPath: site ? '/' : '',
   },
 
   resolve: {
@@ -107,7 +107,7 @@ module.exports = {
         options: {
           name: dev || dist ? '[name].[ext]' : '[name].[hash].[ext]',
           outputPath: 'fonts/',
-          publicPath: 'fonts/',
+          publicPath: site ? '/fonts/' : 'fonts/',
         },
       },
     ],
@@ -152,10 +152,10 @@ module.exports = {
     site &&
       new WebpackPwaManifest({
         ...manifest,
-        filename: 'manifest-ru.json',
+        filename: 'ru/manifest.json',
         name: 'Манчкин - счётчик уровней',
         short_name: 'Манчкин',
-        start_url: '/ru.html',
+        start_url: '/ru/',
       }),
 
     new HtmlWebpackPlugin({
@@ -167,8 +167,8 @@ module.exports = {
     site &&
       new HtmlWebpackPlugin({
         ...html,
-        filename: 'ru.html',
-        manifest: 'manifest-ru.json',
+        filename: 'ru/index.html',
+        manifest: '/ru/manifest.json',
         title: 'Манчкин - счётчик уровней',
       }),
 
