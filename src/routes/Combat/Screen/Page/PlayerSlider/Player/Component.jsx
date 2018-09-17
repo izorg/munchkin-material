@@ -43,16 +43,25 @@ class CombatPlayer extends PureComponent {
   constructor(props) {
     super(props);
 
+    this.handleBonusDecrement = this.handleBonusDecrement.bind(this);
+    this.handleBonusIncrement = this.handleBonusIncrement.bind(this);
     this.handleGearDecrement = this.handleGearDecrement.bind(this);
     this.handleGearIncrement = this.handleGearIncrement.bind(this);
     this.handleLevelDecrement = this.handleLevelDecrement.bind(this);
     this.handleLevelIncrement = this.handleLevelIncrement.bind(this);
+    this.handleSexToggle = this.handleSexToggle.bind(this);
   }
 
-  handleBonusChange(value) {
+  handleBonusDecrement() {
     const { bonus, onBonusChange } = this.props;
 
-    onBonusChange(bonus + value);
+    onBonusChange(bonus - 1);
+  }
+
+  handleBonusIncrement() {
+    const { bonus, onBonusChange } = this.props;
+
+    onBonusChange(bonus + 1);
   }
 
   handleGearDecrement() {
@@ -79,17 +88,21 @@ class CombatPlayer extends PureComponent {
     onLevelIncrement(id);
   }
 
+  handleSexToggle() {
+    const { id, onSexToggle } = this.props;
+
+    onSexToggle(id);
+  }
+
   render() {
     const {
       bonus,
       classes,
       gear,
-      id,
       level,
       levelDecrementDisabled,
       levelIncrementDisabled,
       name,
-      onSexToggle,
       sex,
     } = this.props;
 
@@ -107,7 +120,7 @@ class CombatPlayer extends PureComponent {
         <IconButton
           className={classes.sex}
           color="inherit"
-          onClick={() => onSexToggle(id)}
+          onClick={this.handleSexToggle}
         >
           <Sex sex={sex} />
         </IconButton>
@@ -138,8 +151,8 @@ class CombatPlayer extends PureComponent {
           />
           <Counter
             className={classes.item}
-            onDecrement={() => this.handleBonusChange(-1)}
-            onIncrement={() => this.handleBonusChange(+1)}
+            onDecrement={this.handleBonusDecrement}
+            onIncrement={this.handleBonusIncrement}
             title={
               <FormattedMessage
                 id="combat.player.modifier"
