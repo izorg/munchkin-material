@@ -93,7 +93,7 @@
     "jest": "23.6.0",
     "lint-staged": "7.2.2",
     "lodash": "4.17.11",
-    "munchkin-core": "8.1.4",
+    "munchkin-core": "8.1.5",
     "prettier": "1.14.2",
     "prop-types": "15.6.2",
     "puppeteer": "1.8.0",
