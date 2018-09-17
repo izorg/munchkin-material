@@ -19,8 +19,7 @@ const styles = (theme) => ({
 
   button: {
     fontSize: 64,
-    height: 64,
-    width: 64,
+    padding: 0,
   },
 
   icon: {

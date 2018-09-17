@@ -32,11 +32,10 @@ const styles = {
   },
 
   sex: {
-    height: 36,
+    padding: 6,
     position: 'absolute',
     right: 0,
     top: 0,
-    width: 36,
   },
 };
 
