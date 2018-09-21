@@ -32,10 +32,6 @@
       "git add"
     ]
   },
-  "engines": {
-    "node": ">=10",
-    "npm": ">=6"
-  },
   "devDependencies": {
     "@babel/cli": "7.1.0",
     "@babel/core": "7.1.0",
@@ -61,7 +57,7 @@
     "babel-plugin-lodash": "3.3.4",
     "babel-plugin-react-intl": "3.0.0",
     "babel-plugin-react-remove-properties": "0.2.5",
-    "babel-plugin-transform-react-remove-prop-types": "0.4.15",
+    "babel-plugin-transform-react-remove-prop-types": "0.4.18",
     "babel-plugin-version-inline": "1.0.0",
     "classnames": "2.2.6",
     "clean-webpack-plugin": "0.1.19",
@@ -75,9 +71,9 @@
     "eslint": "5.6.0",
     "eslint-config-airbnb": "17.1.0",
     "eslint-config-prettier": "3.0.1",
-    "eslint-loader": "2.1.0",
+    "eslint-loader": "2.1.1",
     "eslint-plugin-import": "2.14.0",
-    "eslint-plugin-jest": "21.22.0",
+    "eslint-plugin-jest": "21.22.1",
     "eslint-plugin-json": "1.2.1",
     "eslint-plugin-jsx-a11y": "6.1.1",
     "eslint-plugin-prettier": "2.6.2",
@@ -91,10 +87,10 @@
     "husky": "0.14.3",
     "identity-obj-proxy": "3.0.0",
     "jest": "23.6.0",
-    "lint-staged": "7.2.2",
+    "lint-staged": "7.3.0",
     "lodash": "4.17.11",
-    "munchkin-core": "8.1.5",
-    "prettier": "1.14.2",
+    "munchkin-core": "8.1.6",
+    "prettier": "1.14.3",
     "prop-types": "15.6.2",
     "puppeteer": "1.8.0",
     "qs": "6.5.2",
@@ -104,7 +100,7 @@
     "react-final-form": "3.6.5",
     "react-hammerjs": "1.0.1",
     "react-helmet": "5.2.0",
-    "react-hot-loader": "4.3.8",
+    "react-hot-loader": "4.3.11",
     "react-intl": "2.6.0",
     "react-loadable": "5.5.0",
     "react-redux": "5.0.7",
@@ -129,6 +125,6 @@
     "webpack-merge": "4.1.4",
     "webpack-notifier": "1.6.0",
     "webpack-pwa-manifest": "3.7.1",
-    "workbox-webpack-plugin": "3.5.0"
+    "workbox-webpack-plugin": "3.6.1"
   }
 }
