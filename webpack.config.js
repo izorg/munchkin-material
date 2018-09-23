@@ -17,7 +17,6 @@ const site = process.env.BUILD === 'site';
 
 const html = {
   favicon: './images/favicon.png',
-  template: './index.ejs',
 };
 
 const manifest = {
@@ -110,6 +109,22 @@ module.exports = {
           publicPath: site ? '/fonts/' : 'fonts/',
         },
       },
+      {
+        test: /\.png$/,
+        loader: 'file-loader',
+        options: {
+          name: dev || dist ? '[name].[ext]' : '[name].[hash].[ext]',
+          outputPath: 'images/',
+          publicPath: site ? '/images/' : 'images/',
+        },
+      },
+      {
+        test: /\.html$/,
+        loader: 'html-loader',
+        options: {
+          attrs: ['link:href'],
+        },
+      },
     ],
   },
 
@@ -124,9 +139,15 @@ module.exports = {
   plugins: compact([
     !dev && new CleanWebpackPlugin(outputPath),
 
-    dev && new webpack.HotModuleReplacementPlugin(),
+    !dev &&
+      site &&
+      new CnameWebpackPlugin({
+        domain: 'web.allmunchkins.com',
+      }),
 
     !dev && new webpack.HashedModuleIdsPlugin(),
+
+    dev && new webpack.HotModuleReplacementPlugin(),
 
     dev && new WebpackNotifierPlugin(),
 
@@ -135,19 +156,14 @@ module.exports = {
         maxChunks: 1,
       }),
 
-    !dev &&
-      site &&
-      new CnameWebpackPlugin({
-        domain: 'web.allmunchkins.com',
+    site &&
+      new WebpackPwaManifest({
+        ...manifest,
+        filename: 'manifest.json',
+        name: 'Munchkin Level Counter',
+        short_name: 'Munchkin',
+        start_url: '/',
       }),
-
-    new WebpackPwaManifest({
-      ...manifest,
-      filename: 'manifest.json',
-      name: 'Munchkin Level Counter',
-      short_name: 'Munchkin',
-      start_url: '/',
-    }),
 
     site &&
       new WebpackPwaManifest({
@@ -158,18 +174,18 @@ module.exports = {
         start_url: '/ru/',
       }),
 
-    new HtmlWebpackPlugin({
-      ...html,
-      manifest: 'manifest.json',
-      title: 'Munchkin Level Counter',
-    }),
+    site &&
+      new HtmlWebpackPlugin({
+        ...html,
+        filename: 'index.html',
+        template: './html/en.html',
+      }),
 
     site &&
       new HtmlWebpackPlugin({
         ...html,
         filename: 'ru/index.html',
-        manifest: '/ru/manifest.json',
-        title: 'Манчкин - счётчик уровней',
+        template: './html/ru.html',
       }),
 
     !dev &&
