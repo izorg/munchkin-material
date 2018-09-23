@@ -73,7 +73,7 @@ class HomePage extends PureComponent {
     } else {
       content = (
         <div className={classes.content} ref={this.contentRef}>
-          <Paper className={classes.listContainer}>
+          <Paper className={classes.listContainer} square>
             <PlayerList />
           </Paper>
         </div>
