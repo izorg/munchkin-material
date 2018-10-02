@@ -11,6 +11,7 @@ import { noop } from 'lodash';
 
 import InsomniaItem from './InsomniaItem';
 import LevelLimitItem from './LevelLimitItem';
+import PrivacyItem from './PrivacyItem';
 import RateItem from './RateItem';
 import ShareItem from './ShareItem';
 import SingleModeItem from './SingleModeItem';
@@ -347,6 +348,7 @@ class HomeMenuDrawer extends PureComponent {
             <InsomniaItem />
             <RateItem />
             <ShareItem />
+            <PrivacyItem />
             <VersionItem />
           </List>
         </Drawer>

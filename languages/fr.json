@@ -25,6 +25,7 @@
   "menu.levelLimit": "Munchkin ({minLevel} - {maxLevel})",
   "menu.noLevelLimit": "Pas de limite",
   "menu.level": "Limite de niveau",
+  "menu.privacyPolicy": "Règles de confidentialité",
   "menu.rateApp": "Noter l’app",
   "menu.share": "Partager",
   "share.text": "Compteur de niveau Munchkin simple mais puissant",
