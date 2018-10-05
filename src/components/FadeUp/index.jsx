@@ -32,7 +32,7 @@ const styles = (theme) => ({
   },
 });
 
-const DiceTransition = ({ classes, theme, ...props }) => (
+const FadeUp = ({ classes, theme, ...props }) => (
   <CSSTransition
     {...props}
     classNames={{
@@ -50,4 +50,4 @@ const DiceTransition = ({ classes, theme, ...props }) => (
   />
 );
 
-export default withStyles(styles, { withTheme: true })(DiceTransition);
+export default withStyles(styles, { withTheme: true })(FadeUp);
