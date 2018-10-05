@@ -175,7 +175,6 @@ class HomePlayerListItem extends PureComponent {
       onPlayerSelect,
       onPlayerToggle,
       player,
-      playerId,
       selected,
       ...rest
     } = this.props;
@@ -258,7 +257,6 @@ HomePlayerListItem.propTypes = {
   onPlayerSelect: PropTypes.func,
   onPlayerToggle: PropTypes.func,
   player: playerShape.isRequired,
-  playerId: PropTypes.string.isRequired,
   selected: PropTypes.bool,
 };
 

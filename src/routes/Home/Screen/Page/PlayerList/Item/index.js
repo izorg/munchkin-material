@@ -1,5 +1,8 @@
 import { connect } from 'react-redux';
 import { goBack, push } from 'connected-react-router';
+import compose from 'recompose/compose';
+import mapProps from 'recompose/mapProps';
+import { omit } from 'lodash/fp';
 
 import { togglePlayer, unselectAllPlayers } from '../../../../../../ducks/app';
 import { EDIT, MULTI } from '../../../../modes';
@@ -47,7 +50,10 @@ const mapDispatchToProps = {
   onPlayerToggle,
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
+export default compose(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps,
+  ),
+  mapProps(omit('playerId')),
 )(Component);
