@@ -1,6 +1,5 @@
 import React, { createRef, Fragment, PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import Paper from '@material-ui/core/Paper';
 import { withStyles } from '@material-ui/core/styles';
 import cns from 'classnames';
 
@@ -25,21 +24,23 @@ const styles = (theme) => ({
   },
 
   content: {
-    display: 'flex',
+    backgroundColor: theme.palette.background.paper,
     flex: 1,
-    flexDirection: 'column',
     overflowY: 'auto',
-    touchAction: 'pan-y',
-  },
-
-  listContainer: {
-    flex: 1,
     paddingBottom: 48,
+    touchAction: 'pan-y',
 
     [theme.breakpoints.up('sm')]: {
-      flex: 'none',
-      margin: '0 auto',
+      backgroundColor: 'transparent',
       paddingBottom: 0,
+    },
+  },
+
+  list: {
+    [theme.breakpoints.up('sm')]: {
+      backgroundColor: theme.palette.background.paper,
+      boxShadow: theme.shadows[2],
+      margin: '0 auto',
       width: 400,
     },
   },
@@ -73,9 +74,7 @@ class HomePage extends PureComponent {
     } else {
       content = (
         <div className={classes.content} ref={this.contentRef}>
-          <Paper className={classes.listContainer} square>
-            <PlayerList />
-          </Paper>
+          <PlayerList className={classes.list} />
         </div>
       );
     }
