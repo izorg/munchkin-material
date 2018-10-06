@@ -158,6 +158,10 @@ class HomeMenuDrawer extends PureComponent {
   }
 
   handlePanStart(event) {
+    if (event.srcEvent.type === 'pointercancel') {
+      return;
+    }
+
     const { open } = this.props;
 
     const {

@@ -17,7 +17,13 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = {
-  onClose: goBack,
+  onClose: () => (dispatch, getState) => {
+    const search = getQuery(getState());
+
+    if (search.menu !== undefined) {
+      dispatch(goBack());
+    }
+  },
   onOpen: () => push({ search: stringifyQuery({ menu: null }) }),
 };
 
