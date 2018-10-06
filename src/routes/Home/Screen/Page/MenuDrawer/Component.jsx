@@ -279,20 +279,18 @@ class HomeMenuDrawer extends PureComponent {
     );
   }
 
-  handleSwipeRight() {
+  handleSwipeRight(event) {
     const { onOpen, open } = this.props;
 
-    if (this.startX > swipeAreaWidth) {
+    if (open || event.center.x - event.deltaX > swipeAreaWidth) {
       return;
     }
 
-    if (!open) {
-      this.setState({
-        maybeSwiping: false,
-      });
+    this.setState({
+      maybeSwiping: false,
+    });
 
-      onOpen();
-    }
+    onOpen();
   }
 
   handleSwipeLeft() {
