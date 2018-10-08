@@ -29,7 +29,7 @@ const Nobody = ({ classes }) => (
       align="center"
       color="inherit"
       component="div"
-      variant="subheading"
+      variant="subtitle1"
     >
       <FormattedMessage
         id="player.list.empty"

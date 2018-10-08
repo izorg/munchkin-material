@@ -29,6 +29,7 @@ const styles = (theme) => ({
   },
 
   primary: {
+    alignItems: 'center',
     display: 'flex',
   },
 

@@ -28,8 +28,8 @@ const styles = (theme) => ({
 
   value: {
     fontFamily: `"Munchkin", ${theme.typography.fontFamily}`,
-    fontSize: theme.typography.display1.fontSize,
-    lineHeight: theme.typography.display1.lineHeight,
+    fontSize: theme.typography.h4.fontSize,
+    lineHeight: theme.typography.h4.lineHeight,
   },
 
   '@media (orientation: portrait) and (min-width: 360px) and (min-height: 600px)': {
