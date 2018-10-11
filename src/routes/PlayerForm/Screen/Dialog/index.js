@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import { createSelector, createStructuredSelector } from 'reselect';
 import { goBack } from 'connected-react-router';
 import { addPlayer, createPlayer, MALE, updatePlayer } from 'munchkin-core';
+import { map } from 'lodash/fp';
 
 import { addPlayerToList } from '../../../../ducks/playerList';
 import getRandomMaterialColor from '../../../../utils/getRandomMaterialColor';
@@ -28,7 +29,7 @@ const initialValues = createSelector(
     } else {
       values = {
         ...values,
-        color: getRandomMaterialColor(),
+        color: getRandomMaterialColor(map('color', players)),
       };
     }
 

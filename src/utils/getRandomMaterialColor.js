@@ -1,11 +1,15 @@
-import * as colors from '@material-ui/core/colors';
+import { without } from 'lodash/fp';
 
-const { brown, common, yellow, ...availableColors } = colors;
+import availableColors from './availableColors';
 
-const colorKeys = Object.keys(availableColors);
+export default (excluded = []) => {
+  let preferredColors = without(excluded, availableColors);
 
-export default () => {
-  const index = Math.floor(Math.random() * colorKeys.length);
+  if (!preferredColors.length) {
+    preferredColors = availableColors;
+  }
 
-  return availableColors[colorKeys[index]][500];
+  const index = Math.floor(Math.random() * preferredColors.length);
+
+  return preferredColors[index];
 };

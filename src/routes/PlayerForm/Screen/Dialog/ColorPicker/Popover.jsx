@@ -4,7 +4,8 @@ import Popover from '@material-ui/core/Popover';
 import { withStyles } from '@material-ui/core/styles';
 import { noop } from 'lodash';
 
-import availableColors from './availableColors';
+import availableColors from '../../../../../utils/availableColors';
+
 import Color from './Color';
 
 const styles = {
@@ -15,12 +16,12 @@ const styles = {
 
 const ColorPickerPopover = ({ classes, onSelect, value, ...props }) => (
   <Popover classes={{ paper: classes.paper }} {...props}>
-    {Object.keys(availableColors).map((color) => (
+    {availableColors.map((color) => (
       <Color
         key={color}
-        onClick={() => onSelect(availableColors[color][500])}
-        selected={value === availableColors[color][500]}
-        value={availableColors[color][500]}
+        onClick={() => onSelect(color)}
+        selected={value === color}
+        value={color}
       />
     ))}
   </Popover>

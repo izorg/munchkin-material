@@ -7,7 +7,8 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import { withStyles } from '@material-ui/core/styles';
 import { noop } from 'lodash';
 
-import availableColors from './availableColors';
+import availableColors from '../../../../../utils/availableColors';
+
 import Color from './Color';
 
 const styles = ({ spacing: { unit } }) => ({
@@ -26,12 +27,12 @@ const ColorPickerDialog = ({ classes, onSelect, value, ...props }) => (
       />
     </DialogTitle>
     <DialogContent className={classes.content}>
-      {Object.keys(availableColors).map((color) => (
+      {availableColors.map((color) => (
         <Color
           key={color}
-          onClick={() => onSelect(availableColors[color][500])}
-          selected={value === availableColors[color][500]}
-          value={availableColors[color][500]}
+          onClick={() => onSelect(color)}
+          selected={value === color}
+          value={color}
         />
       ))}
     </DialogContent>
