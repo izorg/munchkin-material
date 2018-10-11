@@ -1,20 +1,19 @@
 import { connect } from 'react-redux';
 import { goBack, push } from 'connected-react-router';
-import { isEmpty, isEqual } from 'lodash';
+import { createStructuredSelector } from 'reselect';
+import { flow, get, isUndefined, negate } from 'lodash/fp';
 
 import { getQuery, stringifyQuery } from '../../../../../utils/location';
-import { ios } from '../../../../../utils/platforms';
 
 import Component from './Component';
 
-const mapStateToProps = (state) => {
-  const search = getQuery(state);
-
-  return {
-    enable: !ios && (isEmpty(search) || isEqual(search, { menu: '' })),
-    open: search.menu !== undefined,
-  };
-};
+const mapStateToProps = createStructuredSelector({
+  open: flow(
+    getQuery,
+    get('menu'),
+    negate(isUndefined),
+  ),
+});
 
 const mapDispatchToProps = {
   onClose: () => (dispatch, getState) => {
