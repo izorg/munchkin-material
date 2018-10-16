@@ -1,10 +1,10 @@
-import React, { Fragment, PureComponent } from 'react';
-import { findDOMNode } from 'react-dom';
+import React, { createRef, Fragment, PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import IconButton from '@material-ui/core/IconButton';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import ListItemText from '@material-ui/core/ListItemText';
+import RootRef from '@material-ui/core/RootRef';
 import { withStyles } from '@material-ui/core/styles';
 import ChevronUp from '@material-ui/icons/KeyboardArrowUp';
 import ActionReorder from '@material-ui/icons/Reorder';
@@ -78,12 +78,12 @@ class HomePlayerListItem extends PureComponent {
   constructor(props) {
     super(props);
 
+    this.avatarRef = createRef();
+    this.itemRef = createRef();
+    this.textRef = createRef();
+
     this.handleTap = this.handleTap.bind(this);
     this.handlePress = this.handlePress.bind(this);
-
-    this.handleItemRef = this.handleItemRef.bind(this);
-    this.handleAvatarRef = this.handleAvatarRef.bind(this);
-    this.handleTextRef = this.handleTextRef.bind(this);
   }
 
   componentDidMount() {
@@ -112,7 +112,7 @@ class HomePlayerListItem extends PureComponent {
       onPlayerEdit(player.id);
     } else if (mode === modes.MULTI) {
       onPlayerToggle(player.id);
-    } else if (this.avatar.contains(event.target)) {
+    } else if (this.avatarRef.current.contains(event.target)) {
       onMultiSelectActivate(player.id);
     } else {
       onPlayerSelect(player.id);
@@ -122,7 +122,7 @@ class HomePlayerListItem extends PureComponent {
   handlePress(event) {
     const { mode, onMultiSelectActivate, player } = this.props;
 
-    if (!mode && this.text.contains(event.target)) {
+    if (!mode && this.textRef.current.contains(event.target)) {
       if (navigator.vibrate) {
         navigator.vibrate(20);
       }
@@ -131,25 +131,10 @@ class HomePlayerListItem extends PureComponent {
     }
   }
 
-  handleAvatarRef(node) {
-    // eslint-disable-next-line react/no-find-dom-node
-    this.avatar = node ? findDOMNode(node) : null;
-  }
-
-  handleItemRef(node) {
-    // eslint-disable-next-line react/no-find-dom-node
-    this.item = node ? findDOMNode(node) : null;
-  }
-
-  handleTextRef(node) {
-    // eslint-disable-next-line react/no-find-dom-node
-    this.text = node ? findDOMNode(node) : null;
-  }
-
   updateHammer() {
     this.removeHammer();
 
-    this.hammer = new Hammer(this.item, {
+    this.hammer = new Hammer(this.itemRef.current, {
       recognizers: [[Hammer.Tap, { time: 500 }], [Hammer.Press, { time: 501 }]],
     });
 
@@ -184,68 +169,67 @@ class HomePlayerListItem extends PureComponent {
     const editMode = mode === modes.EDIT;
 
     return (
-      <ListItem
-        button
-        classes={{
-          gutters: classes.listItemGutters,
-        }}
-        component={editMode ? 'div' : 'li'}
-        data-screenshots="player-list-item"
-        ref={this.handleItemRef}
-        {...rest}
-      >
-        <Avatar
-          color={player.color}
-          name={player.name}
-          ref={this.handleAvatarRef}
-          selected={selected}
-        >
-          <SexIcon />
-        </Avatar>
-
-        <ListItemText
+      <RootRef rootRef={this.itemRef}>
+        <ListItem
+          button
           classes={{
-            root: cns({ [classes.text]: !editMode }),
-            primary: classes.primary,
+            gutters: classes.listItemGutters,
           }}
-          primary={
-            <Fragment>
-              <span className={classes.name}>{player.name}</span>
+          component={editMode ? 'div' : 'li'}
+          data-screenshots="player-list-item"
+          {...rest}
+        >
+          <RootRef rootRef={this.avatarRef}>
+            <Avatar color={player.color} name={player.name} selected={selected}>
+              <SexIcon />
+            </Avatar>
+          </RootRef>
 
-              {!editMode && (
+          <RootRef rootRef={this.textRef}>
+            <ListItemText
+              classes={{
+                root: cns({ [classes.text]: !editMode }),
+                primary: classes.primary,
+              }}
+              primary={
                 <Fragment>
-                  <span className={classes.level}>
-                    {player.level}
-                    <ChevronUp />
-                  </span>
+                  <span className={classes.name}>{player.name}</span>
 
-                  <span className={classes.strength}>
-                    {player.level + player.gear}
-                    <ChevronDoubleUpIcon />
-                  </span>
+                  {!editMode && (
+                    <Fragment>
+                      <span className={classes.level}>
+                        {player.level}
+                        <ChevronUp />
+                      </span>
+
+                      <span className={classes.strength}>
+                        {player.level + player.gear}
+                        <ChevronDoubleUpIcon />
+                      </span>
+                    </Fragment>
+                  )}
                 </Fragment>
-              )}
-            </Fragment>
-          }
-          ref={this.handleTextRef}
-        />
+              }
+            />
+          </RootRef>
 
-        {editMode && (
-          <ListItemSecondaryAction
-            classes={{
-              root: classes.listItemSecondaryActionRoot,
-            }}
-          >
-            <IconButton
-              disableRipple
-              focusVisibleClassName=""
-              {...dragHandleProps}
+          {editMode && (
+            <ListItemSecondaryAction
+              classes={{
+                root: classes.listItemSecondaryActionRoot,
+              }}
             >
-              <ActionReorder />
-            </IconButton>
-          </ListItemSecondaryAction>
-        )}
-      </ListItem>
+              <IconButton
+                disableRipple
+                focusVisibleClassName=""
+                {...dragHandleProps}
+              >
+                <ActionReorder />
+              </IconButton>
+            </ListItemSecondaryAction>
+          )}
+        </ListItem>
+      </RootRef>
     );
   }
 }
