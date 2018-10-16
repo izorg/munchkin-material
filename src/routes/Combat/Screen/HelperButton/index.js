@@ -6,7 +6,7 @@ import { addMonster, createMonster } from 'munchkin-core';
 
 import Component from './Component';
 
-const expanded = createSelector(
+const open = createSelector(
   (state) => state.router.location.pathname,
   (pathname) =>
     Boolean(
@@ -15,8 +15,8 @@ const expanded = createSelector(
 );
 
 const mapStateToProps = createStructuredSelector({
-  expanded,
   helper: (state) => !state.combat.helperId && state.playerList.length > 1,
+  open,
   playerId: (state) => state.combat.playerId,
 });
 

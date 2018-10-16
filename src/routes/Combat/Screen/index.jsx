@@ -3,7 +3,6 @@ import { hot } from 'react-hot-loader';
 import Transition from 'react-transition-group/Transition';
 import compose from 'recompose/compose';
 import PropTypes from 'prop-types';
-import Zoom from '@material-ui/core/Zoom';
 import { withStyles } from '@material-ui/core/styles';
 
 import FadeUp from '../../../components/FadeUp';
@@ -73,17 +72,17 @@ class CombatScreen extends PureComponent {
               <Page />
             </FadeUp>
 
-            <Zoom
-              appear={appear}
-              in={inProp}
-              style={{
-                transitionDelay: inProp
-                  ? theme.transitions.duration.leavingScreen
-                  : 0,
+            <HelperButton
+              TransitionProps={{
+                appear,
+                in: inProp,
+                style: {
+                  transitionDelay: inProp
+                    ? theme.transitions.duration.leavingScreen
+                    : 0,
+                },
               }}
-            >
-              <HelperButton />
-            </Zoom>
+            />
 
             <HelperSelector />
           </div>
