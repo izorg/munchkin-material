@@ -2,18 +2,22 @@ import React, { Fragment, PureComponent } from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 import Backdrop from '@material-ui/core/Backdrop';
-import { MuiThemeProvider, withStyles } from '@material-ui/core/styles';
-import SpeedDial from '@material-ui/lab/SpeedDial';
-import SpeedDialAction from '@material-ui/lab/SpeedDialAction';
-import SpeedDialIcon from '@material-ui/lab/SpeedDialIcon';
+import { withStyles } from '@material-ui/core/styles';
+import AddIcon from '@material-ui/icons/Add';
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import cns from 'classnames';
-import deepmerge from 'deepmerge';
-import { noop } from 'lodash/fp';
+import { noop } from 'lodash';
 
+import Fab from '../../../../components/Fab';
 import EmoticonDevil from '../../../../components/icons/EmoticonDevil';
 
+import Action from './Action';
+
 const styles = (theme) => ({
+  action: {
+    marginBottom: theme.spacing.unit * 2,
+  },
+
   backdrop: {
     backgroundColor: 'rgba(250, 250, 250, .9)',
     zIndex: 1,
@@ -35,10 +39,26 @@ const styles = (theme) => ({
     },
   },
 
+  miniContainer: {
+    bottom: 56,
+    left: 8,
+    position: 'absolute',
+  },
+
   button: {
     bottom: 0,
     left: 0,
     position: 'relative',
+  },
+
+  icon: {
+    transition: theme.transitions.create('transform', {
+      duration: theme.transitions.duration.shorter,
+    }),
+  },
+
+  expanded: {
+    transform: 'rotate(45deg)',
   },
 });
 
@@ -51,15 +71,15 @@ class CombatHelperButton extends PureComponent {
 
   handleClick() {
     const {
+      expanded,
       helper,
       onAdd,
       onBackdropClick,
       onMonsterAdd,
-      open,
       playerId,
     } = this.props;
 
-    if (open) {
+    if (expanded) {
       onBackdropClick();
     } else if (helper) {
       onAdd(playerId);
@@ -72,95 +92,66 @@ class CombatHelperButton extends PureComponent {
     const {
       classes,
       className,
+      expanded,
       helper,
       onAdd,
       onBackdropClick,
       onHelperClick,
       onMonsterAdd,
-      open,
       playerId,
-      theme,
       ...rest
     } = this.props;
 
+    const actionVisible = helper && expanded;
+
     return (
       <Fragment>
-        <MuiThemeProvider
-          theme={deepmerge(theme, {
-            overrides: {
-              MuiSpeedDialAction: {
-                button: {
-                  color: theme.palette.primary.contrastText,
-                  backgroundColor: theme.palette.primary.main,
-
-                  '&:hover': {
-                    backgroundColor: theme.palette.primary.dark,
-
-                    '@media (hover: none)': {
-                      backgroundColor: theme.palette.primary.main,
-                    },
-                  },
-                },
-              },
-              MuiTooltip: {
-                tooltip: {
-                  backgroundColor: theme.palette.common.white,
-                  border: `1px solid ${theme.palette.grey[400]}`,
-                  borderBottomWidth: 2,
-                  borderRadius: theme.spacing.unit,
-                  color: theme.palette.grey[600],
-                  fontSize: theme.typography.pxToRem(14),
-                  fontWeight: 'bold',
-                  lineHeight: `${theme.typography.round(14 / 10)}em`,
-                  padding: `${theme.spacing.unit / 4 + 1}px ${
-                    theme.spacing.unit
-                  }px ${theme.spacing.unit / 4 - 1}px`,
-                },
-
-                tooltipPlacementLeft: {
-                  margin: `0 ${theme.spacing.unit * 3}px`,
-                },
-              },
-            },
-          })}
-        >
-          <SpeedDial
-            ariaLabel=" "
-            ButtonProps={{
-              color: open ? 'default' : 'primary',
-            }}
-            className={cns(classes.container, className)}
-            icon={helper ? <SpeedDialIcon /> : <EmoticonDevil />}
-            onClick={this.handleClick}
-            open={open}
-            {...rest}
-          >
-            <SpeedDialAction
-              icon={<PersonAddIcon />}
-              onClick={() => onHelperClick(playerId)}
-              tooltipTitle={
-                <FormattedMessage
-                  id="combat.add.helper"
-                  defaultMessage="Helper"
-                />
-              }
-              tooltipOpen
-            />
-            <SpeedDialAction
-              icon={<EmoticonDevil />}
+        <div className={cns(classes.container, className)} {...rest}>
+          <div className={classes.miniContainer}>
+            <Action
+              className={classes.action}
+              in={actionVisible}
               onClick={() => onMonsterAdd(true)}
-              tooltipTitle={
+              title={
                 <FormattedMessage
                   id="combat.add.monster"
                   defaultMessage="Monster"
                 />
               }
-              tooltipOpen
-            />
-          </SpeedDial>
-        </MuiThemeProvider>
+            >
+              <EmoticonDevil />
+            </Action>
+            <Action
+              className={classes.action}
+              in={actionVisible}
+              onClick={() => onHelperClick(playerId)}
+              title={
+                <FormattedMessage
+                  id="combat.add.helper"
+                  defaultMessage="Helper"
+                />
+              }
+            >
+              <PersonAddIcon />
+            </Action>
+          </div>
 
-        {open && (
+          <Fab
+            className={classes.button}
+            color={expanded ? 'default' : 'primary'}
+            onClick={this.handleClick}
+          >
+            {helper ? (
+              <AddIcon
+                className={cns(classes.icon, { [classes.expanded]: expanded })}
+              />
+            ) : (
+              <EmoticonDevil />
+            )}
+          </Fab>
+        </div>
+
+        {expanded && (
           <Backdrop
             classes={{
               root: classes.backdrop,
@@ -175,22 +166,22 @@ class CombatHelperButton extends PureComponent {
 }
 
 CombatHelperButton.propTypes = {
+  expanded: PropTypes.bool,
   helper: PropTypes.bool,
   onAdd: PropTypes.func,
   onBackdropClick: PropTypes.func,
   onHelperClick: PropTypes.func,
   onMonsterAdd: PropTypes.func,
-  open: PropTypes.bool,
   playerId: PropTypes.string.isRequired,
 };
 
 CombatHelperButton.defaultProps = {
+  expanded: false,
   helper: false,
   onAdd: noop,
   onBackdropClick: noop,
   onHelperClick: noop,
   onMonsterAdd: noop,
-  open: false,
 };
 
-export default withStyles(styles, { withTheme: true })(CombatHelperButton);
+export default withStyles(styles)(CombatHelperButton);
