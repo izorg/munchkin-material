@@ -1,25 +1,26 @@
 import { connect } from 'react-redux';
 import { goBack } from 'connected-react-router';
+import { createStructuredSelector } from 'reselect';
+import { flow, get } from 'lodash/fp';
 
 import { setTheme } from '../../../../../ducks/theme';
 import { getQuery } from '../../../../../utils/location';
 
 import Component from './Component';
 
-const mapStateToProps = (state) => {
-  const search = getQuery(state);
-
-  return {
-    open: search.theme !== undefined,
-    value: state.theme.id,
-  };
-};
+const mapStateToProps = createStructuredSelector({
+  open: flow(
+    getQuery,
+    ({ theme }) => theme !== undefined,
+  ),
+  theme: get('theme'),
+});
 
 const mapDispatchToProps = {
   onClose: goBack,
-  onSubmit: (id) => async (dispatch) => {
+  onSubmit: (theme) => async (dispatch) => {
     try {
-      await dispatch(setTheme({ id }));
+      await dispatch(setTheme(theme));
       dispatch(goBack());
     } catch (error) {}
   },

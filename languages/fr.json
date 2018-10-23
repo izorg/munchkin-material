@@ -37,6 +37,7 @@
   "singlePlayer.modifier": "Mod",
   "singlePlayer.strength": "Force",
   "themeDialog.title": "Thème",
+  "themeDialog.dark": "Foncé",
   "themeDialog.cancel": "Annuler",
   "themeDialog.submit": "OK",
   "mainButton.label": "Ajouter",

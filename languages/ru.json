@@ -37,6 +37,7 @@
   "singlePlayer.modifier": "Модиф-р",
   "singlePlayer.strength": "Сила",
   "themeDialog.title": "Тема",
+  "themeDialog.dark": "Тёмная",
   "themeDialog.cancel": "Отменить",
   "themeDialog.submit": "OK",
   "mainButton.label": "Добавить",

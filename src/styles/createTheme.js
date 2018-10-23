@@ -3,5 +3,7 @@ import deepmerge from 'deepmerge';
 
 import baseTheme from './baseTheme';
 
-export default (selectedTheme) =>
-  createMuiTheme(deepmerge(baseTheme, selectedTheme));
+export default (selectedTheme, type) =>
+  createMuiTheme(
+    deepmerge.all([baseTheme, selectedTheme, { palette: { type } }]),
+  );

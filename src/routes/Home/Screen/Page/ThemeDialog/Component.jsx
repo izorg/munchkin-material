@@ -5,6 +5,7 @@ import withProps from 'recompose/withProps';
 import { createSelector, createStructuredSelector } from 'reselect';
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
+import Checkbox from '@material-ui/core/Checkbox';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
@@ -37,16 +38,22 @@ class ThemeDialog extends PureComponent {
     super(props);
 
     this.state = {
-      value: props.value,
+      theme: props.theme,
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleEntering = this.handleEntering.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleTypeChange = this.handleTypeChange.bind(this);
   }
 
-  handleChange(event, value) {
-    this.setState({ value });
+  handleChange(event, id) {
+    this.setState(({ theme }) => ({
+      theme: {
+        ...theme,
+        id,
+      },
+    }));
   }
 
   handleEntering() {
@@ -55,15 +62,24 @@ class ThemeDialog extends PureComponent {
 
   handleSubmit(event) {
     const { onSubmit } = this.props;
-    const { value } = this.state;
+    const { theme } = this.state;
 
     event.preventDefault();
 
-    onSubmit(value);
+    onSubmit(theme);
+  }
+
+  handleTypeChange(event, checked) {
+    this.setState(({ theme }) => ({
+      theme: {
+        ...theme,
+        type: checked ? 'dark' : 'light',
+      },
+    }));
   }
 
   render() {
-    const { value } = this.state;
+    const { theme } = this.state;
     const { classes, onClose, open, options } = this.props;
 
     return (
@@ -78,12 +94,12 @@ class ThemeDialog extends PureComponent {
         </DialogTitle>
         <DialogContent className={classes.content}>
           <RadioGroup
-            name="theme"
+            name="id"
             onChange={this.handleChange}
             ref={(node) => {
               this.radioGroup = node;
             }}
-            value={value}
+            value={theme.id}
           >
             {options.map((option) => (
               <FormControlLabel
@@ -94,6 +110,14 @@ class ThemeDialog extends PureComponent {
               />
             ))}
           </RadioGroup>
+          <FormControlLabel
+            checked={theme.type === 'dark'}
+            control={<Checkbox color="primary" name="type" />}
+            label={
+              <FormattedMessage id="themeDialog.dark" defaultMessage="Dark" />
+            }
+            onChange={this.handleTypeChange}
+          />
         </DialogContent>
         <DialogActions>
           <Button color="primary" onClick={onClose}>
@@ -118,7 +142,10 @@ ThemeDialog.propTypes = {
       value: PropTypes.string.isRequired,
     }),
   ).isRequired,
-  value: PropTypes.string.isRequired,
+  theme: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 ThemeDialog.defaultProps = {
