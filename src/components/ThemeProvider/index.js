@@ -6,7 +6,7 @@ import createTheme from '../../styles/createTheme';
 import themes from '../../styles/themes';
 
 const theme = createSelector(
-  (state) => state.app.theme,
+  (state) => state.theme.id,
   (key) => createTheme(themes[key]),
 );
 

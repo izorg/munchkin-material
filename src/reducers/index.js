@@ -7,6 +7,7 @@ import {
 
 import app from '../ducks/app';
 import playerList from '../ducks/playerList';
+import theme from '../ducks/theme';
 import update from '../ducks/update';
 
 export default {
@@ -15,6 +16,7 @@ export default {
   monsters: monstersReducer,
   playerList,
   players: playersReducer,
+  theme,
   update,
   versions: versionsReducer,
 };

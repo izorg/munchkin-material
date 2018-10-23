@@ -5,8 +5,6 @@ import {
   startCombat,
 } from 'munchkin-core';
 
-import { key as theme } from '../styles/themes/munchkin';
-
 export const FINISH_COMBAT = 'app/FINISH_COMBAT';
 export const SET_EPIC = 'app/SET_EPIC';
 export const SET_FULL_VERSION = 'app/SET_FULL_VERSION';
@@ -15,7 +13,6 @@ export const SET_LOCALE = 'app/SET_LOCALE';
 export const SET_LEVEL_LIMIT = 'app/SET_LEVEL_LIMIT';
 export const SET_SINGLE_MODE = 'app/SET_SINGLE_MODE';
 export const SET_SINGLE_MODE_PLAYER = 'app/SET_SINGLE_MODE_PLAYER';
-export const SET_THEME = 'app/SET_THEME';
 export const THROW_DICE = 'app/THROW_DICE';
 export const TOGGLE_PLAYER = 'app/TOGGLE_PLAYER';
 export const UNSELECT_ALL_PLAYERS = 'app/UNSELECT_ALL_PLAYERS';
@@ -31,7 +28,6 @@ const initialState = {
   selectedPlayerIds: [],
   singleMode: false,
   singleModePlayerId: undefined,
-  theme,
 };
 
 export default (state = initialState, action) => {
@@ -86,13 +82,6 @@ export default (state = initialState, action) => {
       return {
         ...state,
         singleModePlayerId: action.id,
-      };
-    }
-
-    case SET_THEME: {
-      return {
-        ...state,
-        theme: action.theme,
       };
     }
 
@@ -204,12 +193,6 @@ export const setSingleMode = (singleMode) => async (dispatch, getState) => {
     });
   }
 };
-
-// eslint-disable-next-line no-shadow
-export const setTheme = (theme) => ({
-  type: SET_THEME,
-  theme,
-});
 
 export const throwDice = () => ({
   type: THROW_DICE,

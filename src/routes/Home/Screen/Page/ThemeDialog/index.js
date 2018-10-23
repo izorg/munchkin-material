@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { goBack } from 'connected-react-router';
 
-import { setTheme } from '../../../../../ducks/app';
+import { setTheme } from '../../../../../ducks/theme';
 import { getQuery } from '../../../../../utils/location';
 
 import Component from './Component';
@@ -11,15 +11,15 @@ const mapStateToProps = (state) => {
 
   return {
     open: search.theme !== undefined,
-    value: state.app.theme,
+    value: state.theme.id,
   };
 };
 
 const mapDispatchToProps = {
   onClose: goBack,
-  onSubmit: (theme) => async (dispatch) => {
+  onSubmit: (id) => async (dispatch) => {
     try {
-      await dispatch(setTheme(theme));
+      await dispatch(setTheme({ id }));
       dispatch(goBack());
     } catch (error) {}
   },

@@ -1,6 +1,7 @@
 import { START_COMBAT } from 'munchkin-core';
 
-import { SET_THEME, setFullVersion } from '../../ducks/app';
+import { setFullVersion } from '../../ducks/app';
+import { SET_THEME } from '../../ducks/theme';
 
 const actionTypes = [SET_THEME, START_COMBAT];
 
