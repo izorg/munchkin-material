@@ -46,6 +46,7 @@ const styles = (theme) => ({
   },
 
   value: {
+    color: theme.palette.text.primary,
     fontFamily: `"Munchkin", ${theme.typography.fontFamily}`,
     fontSize: '2em',
   },

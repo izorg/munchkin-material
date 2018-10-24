@@ -17,8 +17,9 @@ import DiceSix from '../../icons/dice/six';
 
 const diceSize = 120;
 
-const styles = {
+const styles = (theme) => ({
   button: {
+    color: theme.palette.text.primary,
     display: 'block',
     fontSize: diceSize,
     height: diceSize,
@@ -31,7 +32,7 @@ const styles = {
     display: 'block',
     fontSize: 'inherit',
   },
-};
+});
 
 const diceComponent = {
   1: DiceOne,

@@ -35,11 +35,13 @@ const styles = (theme) => ({
   },
 
   strengthTitle: {
+    color: theme.palette.text.primary,
     fontFamily: `"Munchkin", ${theme.typography.fontFamily}`,
     fontSize: 24,
   },
 
   strengthValue: {
+    color: theme.palette.text.primary,
     fontFamily: `"Munchkin", ${theme.typography.fontFamily}`,
     fontSize: 72, // 36px * 2
     lineHeight: 0.575, // 1.15 / 2
@@ -169,11 +171,7 @@ class SinglePlayerComponent extends PureComponent {
             {player.level + player.gear + bonus}
           </div>
 
-          <IconButton
-            className={classes.sex}
-            color="inherit"
-            onClick={onSexToggle}
-          >
+          <IconButton className={classes.sex} onClick={onSexToggle}>
             <Sex className={classes.sexIcon} sex={player.sex} />
           </IconButton>
         </div>

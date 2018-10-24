@@ -13,6 +13,7 @@ const styles = (theme) => ({
   },
 
   title: {
+    color: theme.palette.text.primary,
     fontFamily: `"Munchkin", ${theme.typography.fontFamily}`,
     fontSize: 16,
   },
@@ -27,6 +28,7 @@ const styles = (theme) => ({
   },
 
   value: {
+    color: theme.palette.text.primary,
     fontFamily: `"Munchkin", ${theme.typography.fontFamily}`,
     fontSize: theme.typography.h4.fontSize,
     lineHeight: theme.typography.h4.lineHeight,
@@ -60,7 +62,6 @@ const CombatCounter = ({
 
     <IconButton
       className={classes.button}
-      color="inherit"
       disabled={incrementDisabled}
       onClick={onIncrement}
     >
@@ -71,7 +72,6 @@ const CombatCounter = ({
 
     <IconButton
       className={classes.button}
-      color="inherit"
       disabled={decrementDisabled}
       onClick={onDecrement}
     >

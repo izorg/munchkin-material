@@ -117,11 +117,7 @@ class CombatPlayer extends PureComponent {
           {name}
         </Typography>
 
-        <IconButton
-          className={classes.sex}
-          color="inherit"
-          onClick={this.handleSexToggle}
-        >
+        <IconButton className={classes.sex} onClick={this.handleSexToggle}>
           <Sex sex={sex} />
         </IconButton>
 

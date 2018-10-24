@@ -101,7 +101,7 @@ class HomePlayerList extends PureComponent {
                       if (isDragging) {
                         style = {
                           ...style,
-                          backgroundColor: theme.palette.common.white,
+                          backgroundColor: theme.palette.background.paper,
                           boxShadow: theme.shadows[3],
                           pointerEvents: 'auto',
                           zIndex: 1,

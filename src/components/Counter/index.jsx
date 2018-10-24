@@ -7,30 +7,33 @@ import NavigationArrowDropUp from '@material-ui/icons/ArrowDropUp';
 import cns from 'classnames';
 import { noop } from 'lodash';
 
-const styles = (theme) => ({
-  counter: {
-    textAlign: 'center',
-  },
+const styles = (theme) =>
+  console.log(theme) || {
+    counter: {
+      textAlign: 'center',
+    },
 
-  title: {
-    fontFamily: `"Munchkin", ${theme.typography.fontFamily}`,
-    fontSize: 24,
-  },
+    title: {
+      color: theme.palette.text.primary,
+      fontFamily: `"Munchkin", ${theme.typography.fontFamily}`,
+      fontSize: 24,
+    },
 
-  button: {
-    fontSize: 64,
-    padding: 0,
-  },
+    button: {
+      fontSize: 64,
+      padding: 0,
+    },
 
-  icon: {
-    fontSize: 'inherit',
-  },
+    icon: {
+      fontSize: 'inherit',
+    },
 
-  value: {
-    fontFamily: `"Munchkin", ${theme.typography.fontFamily}`,
-    fontSize: 36,
-  },
-});
+    value: {
+      color: theme.palette.text.primary,
+      fontFamily: `"Munchkin", ${theme.typography.fontFamily}`,
+      fontSize: 36,
+    },
+  };
 
 const Counter = ({
   classes,
@@ -48,7 +51,6 @@ const Counter = ({
 
     <IconButton
       className={classes.button}
-      color="inherit"
       data-screenshots="increment-button"
       disabled={incrementDisabled}
       onClick={onIncrement}
@@ -60,7 +62,6 @@ const Counter = ({
 
     <IconButton
       className={classes.button}
-      color="inherit"
       data-screenshots="decrement-button"
       disabled={decrementDisabled}
       onClick={onDecrement}
