@@ -7,33 +7,32 @@ import NavigationArrowDropUp from '@material-ui/icons/ArrowDropUp';
 import cns from 'classnames';
 import { noop } from 'lodash';
 
-const styles = (theme) =>
-  console.log(theme) || {
-    counter: {
-      textAlign: 'center',
-    },
+const styles = (theme) => ({
+  counter: {
+    textAlign: 'center',
+  },
 
-    title: {
-      color: theme.palette.text.primary,
-      fontFamily: `"Munchkin", ${theme.typography.fontFamily}`,
-      fontSize: 24,
-    },
+  title: {
+    color: theme.palette.text.primary,
+    fontFamily: `"Munchkin", ${theme.typography.fontFamily}`,
+    fontSize: 24,
+  },
 
-    button: {
-      fontSize: 64,
-      padding: 0,
-    },
+  button: {
+    fontSize: 64,
+    padding: 0,
+  },
 
-    icon: {
-      fontSize: 'inherit',
-    },
+  icon: {
+    fontSize: 'inherit',
+  },
 
-    value: {
-      color: theme.palette.text.primary,
-      fontFamily: `"Munchkin", ${theme.typography.fontFamily}`,
-      fontSize: 36,
-    },
-  };
+  value: {
+    color: theme.palette.text.primary,
+    fontFamily: `"Munchkin", ${theme.typography.fontFamily}`,
+    fontSize: 36,
+  },
+});
 
 const Counter = ({
   classes,
