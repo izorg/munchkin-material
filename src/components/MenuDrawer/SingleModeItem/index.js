@@ -3,7 +3,7 @@ import { goBack } from 'connected-react-router';
 import { createStructuredSelector } from 'reselect';
 import { get } from 'lodash/fp';
 
-import { setSingleMode } from '../../../../../../ducks/app';
+import { setSingleMode } from '../../../ducks/app';
 
 import Component from './Component';
 

@@ -3,7 +3,7 @@ import { goBack, push } from 'connected-react-router';
 import { createStructuredSelector } from 'reselect';
 import { flow, get, isUndefined, negate } from 'lodash/fp';
 
-import { getQuery, stringifyQuery } from '../../../../../utils/location';
+import { getQuery, stringifyQuery } from '../../utils/location';
 
 import Component from './Component';
 

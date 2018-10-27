@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { replace } from 'connected-react-router';
 
-import { stringifyQuery } from '../../../../../../utils/location';
+import { stringifyQuery } from '../../../utils/location';
 
 import Component from './Component';
 

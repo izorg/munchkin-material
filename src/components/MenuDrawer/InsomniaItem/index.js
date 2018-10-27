@@ -5,8 +5,9 @@ import fromRenderProps from 'recompose/fromRenderProps';
 import renderNothing from 'recompose/renderNothing';
 import { pick } from 'lodash/fp';
 
-import { OptionsConsumer } from '../../../../../../components/OptionsContext';
-import { setKeepAwake } from '../../../../../../ducks/app';
+import { setKeepAwake } from '../../../ducks/app';
+
+import { OptionsConsumer } from '../../OptionsContext';
 
 import Component from './Component';
 

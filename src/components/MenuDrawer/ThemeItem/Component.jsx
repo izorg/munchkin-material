@@ -7,7 +7,7 @@ import PaletteIcon from '@material-ui/icons/Palette';
 import { withStyles } from '@material-ui/core/styles';
 import cns from 'classnames';
 
-import { names as themeNames } from '../../../../../../styles/themes';
+import { names as themeNames } from '../../../styles/themes';
 
 const styles = {
   root: {

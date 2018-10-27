@@ -4,7 +4,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 
-import SecurityAccount from '../../../../../../components/icons/SecurityAccount';
+import SecurityAccount from '../../icons/SecurityAccount';
 
 const PrivacyItem = (props) => (
   <ListItem

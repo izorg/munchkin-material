@@ -6,7 +6,7 @@ import renderNothing from 'recompose/renderNothing';
 import { goBack } from 'connected-react-router';
 import { pick } from 'lodash/fp';
 
-import { OptionsConsumer } from '../../../../../../components/OptionsContext';
+import { OptionsConsumer } from '../../OptionsContext';
 
 import Component from './Component';
 
