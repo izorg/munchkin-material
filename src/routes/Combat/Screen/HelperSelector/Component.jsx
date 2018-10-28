@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
+import Avatar from '@material-ui/core/Avatar';
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
@@ -12,6 +13,7 @@ import ChevronUp from '@material-ui/icons/KeyboardArrowUp';
 import { noop } from 'lodash/fp';
 
 import ChevronDoubleUpIcon from '../../../../components/icons/ChevronDoubleUp';
+import getSexIconClass from '../../../../utils/getSexIconClass';
 
 const styles = (theme) => ({
   dialogPaper: {
@@ -74,35 +76,42 @@ const HelperSelector = ({ classes, helpers, onSelect, ...props }) => (
     </DialogTitle>
     <DialogContent className={classes.content}>
       <List>
-        {helpers.map((helper) => (
-          <ListItem
-            button
-            key={helper.id.toString()}
-            onClick={() => onSelect(helper.id)}
-          >
-            <ListItemText
-              classes={{
-                root: classes.textRoot,
-                primary: classes.primary,
-              }}
-              primary={
-                <Fragment>
-                  <span className={classes.name}>{helper.name}</span>
+        {helpers.map((helper) => {
+          const SexIcon = getSexIconClass(helper.sex);
 
-                  <span className={classes.level}>
-                    {helper.level}
-                    <ChevronUp />
-                  </span>
+          return (
+            <ListItem
+              button
+              key={helper.id.toString()}
+              onClick={() => onSelect(helper.id)}
+            >
+              <Avatar style={{ backgroundColor: helper.color }}>
+                <SexIcon />
+              </Avatar>
+              <ListItemText
+                classes={{
+                  root: classes.textRoot,
+                  primary: classes.primary,
+                }}
+                primary={
+                  <Fragment>
+                    <span className={classes.name}>{helper.name}</span>
 
-                  <span className={classes.strength}>
-                    {helper.level + helper.gear}
-                    <ChevronDoubleUpIcon />
-                  </span>
-                </Fragment>
-              }
-            />
-          </ListItem>
-        ))}
+                    <span className={classes.level}>
+                      {helper.level}
+                      <ChevronUp />
+                    </span>
+
+                    <span className={classes.strength}>
+                      {helper.level + helper.gear}
+                      <ChevronDoubleUpIcon />
+                    </span>
+                  </Fragment>
+                }
+              />
+            </ListItem>
+          );
+        })}
       </List>
     </DialogContent>
   </Dialog>
