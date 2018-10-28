@@ -17,8 +17,7 @@ import getSexIconClass from '../../../../utils/getSexIconClass';
 
 const styles = (theme) => ({
   dialogPaper: {
-    overflowY: 'auto',
-    width: '75%',
+    margin: theme.spacing.unit * 2,
   },
 
   content: {
@@ -63,10 +62,10 @@ const styles = (theme) => ({
 
 const HelperSelector = ({ classes, helpers, onSelect, ...props }) => (
   <Dialog
-    {...props}
     classes={{
       paper: classes.dialogPaper,
     }}
+    {...props}
   >
     <DialogTitle>
       <FormattedMessage
