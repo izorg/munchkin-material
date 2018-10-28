@@ -9,7 +9,7 @@ import SpeedDialIcon from '@material-ui/lab/SpeedDialIcon';
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import cns from 'classnames';
 import deepmerge from 'deepmerge';
-import { noop } from 'lodash/fp';
+import { delay, noop } from 'lodash/fp';
 
 import EmoticonDevil from '../../../../components/icons/EmoticonDevil';
 
@@ -123,7 +123,7 @@ class CombatHelperButton extends PureComponent {
             />
             <SpeedDialAction
               icon={<PersonAddIcon />}
-              onClick={() => onHelperClick(playerId)}
+              onClick={() => delay(10, () => onHelperClick(playerId))}
               tooltipTitle={
                 <FormattedMessage
                   id="combat.add.helper"
