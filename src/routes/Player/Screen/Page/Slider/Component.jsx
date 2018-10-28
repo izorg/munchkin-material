@@ -4,7 +4,7 @@ import { bindKeyboard, virtualize } from 'react-swipeable-views-utils';
 import PropTypes from 'prop-types';
 import Paper from '@material-ui/core/Paper';
 import { withStyles } from '@material-ui/core/styles';
-import { noop } from 'lodash';
+import { noop } from 'lodash/fp';
 
 import PlayerStats from './Stats';
 

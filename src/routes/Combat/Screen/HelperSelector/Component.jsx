@@ -9,7 +9,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import { withStyles } from '@material-ui/core/styles';
 import ChevronUp from '@material-ui/icons/KeyboardArrowUp';
-import { noop } from 'lodash';
+import { noop } from 'lodash/fp';
 
 import ChevronDoubleUpIcon from '../../../../components/icons/ChevronDoubleUp';
 

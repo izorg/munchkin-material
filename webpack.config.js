@@ -1,6 +1,6 @@
 const path = require('path');
 
-const { compact } = require('lodash');
+const { compact } = require('lodash/fp');
 const webpack = require('webpack');
 
 const CleanWebpackPlugin = require('clean-webpack-plugin');

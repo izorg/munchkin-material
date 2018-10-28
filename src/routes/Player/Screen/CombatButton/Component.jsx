@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { noop } from 'lodash';
+import { noop } from 'lodash/fp';
 
 import Fab from '../../../../components/Fab';
 import SwordCross from '../../../../components/icons/SwordCross';

@@ -11,7 +11,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import { withStyles } from '@material-ui/core/styles';
-import { noop } from 'lodash';
+import { noop } from 'lodash/fp';
 
 import {
   MAX_EPIC_LEVEL,

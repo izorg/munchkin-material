@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import IconButton from '@material-ui/core/IconButton';
 import { withStyles } from '@material-ui/core/styles';
 import NavigationCheck from '@material-ui/icons/Check';
-import { noop } from 'lodash';
+import { noop } from 'lodash/fp';
 
 import AppBar from '../../../../../components/AppBar';
 import BackButton from '../../../../../components/BackButton';

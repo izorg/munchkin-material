@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import CSSTransition from 'react-transition-group/CSSTransition';
 import Backdrop from '@material-ui/core/Backdrop';
 import { withStyles } from '@material-ui/core/styles';
-import { noop } from 'lodash';
+import { noop } from 'lodash/fp';
 
 const styles = (theme) => ({
   backdrop: {

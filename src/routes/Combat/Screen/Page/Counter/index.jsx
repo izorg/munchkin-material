@@ -5,7 +5,7 @@ import { withStyles } from '@material-ui/core/styles';
 import NavigationArrowDropDown from '@material-ui/icons/ArrowDropDown';
 import NavigationArrowDropUp from '@material-ui/icons/ArrowDropUp';
 import cns from 'classnames';
-import { noop } from 'lodash';
+import { noop } from 'lodash/fp';
 
 const styles = (theme) => ({
   counter: {

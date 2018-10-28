@@ -14,7 +14,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import { withStyles } from '@material-ui/core/styles';
-import { noop, sortBy } from 'lodash';
+import { noop, sortBy } from 'lodash/fp';
 
 import { names } from '../../../../../styles/themes';
 
@@ -22,8 +22,8 @@ const optionsSelector = createSelector(
   ({ intl }) => intl,
   (intl) =>
     sortBy(
-      Object.keys(names).map((value) => ({ label: names[value], value })),
       ({ label }) => intl.formatMessage(label.props),
+      Object.keys(names).map((value) => ({ label: names[value], value })),
     ),
 );
 

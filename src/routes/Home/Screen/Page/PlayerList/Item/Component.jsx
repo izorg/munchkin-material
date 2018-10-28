@@ -10,7 +10,7 @@ import ChevronUp from '@material-ui/icons/KeyboardArrowUp';
 import ActionReorder from '@material-ui/icons/Reorder';
 import cns from 'classnames';
 import Hammer from 'hammerjs';
-import { noop } from 'lodash';
+import { noop } from 'lodash/fp';
 
 import getSexIconClass from '../../../../../../utils/getSexIconClass';
 import { playerShape } from '../../../../../../utils/propTypes';

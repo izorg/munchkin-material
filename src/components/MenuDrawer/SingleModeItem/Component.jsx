@@ -8,7 +8,7 @@ import Switch from '@material-ui/core/Switch';
 import PersonIcon from '@material-ui/icons/Person';
 import { withStyles } from '@material-ui/core/styles';
 import cns from 'classnames';
-import { noop } from 'lodash';
+import { noop } from 'lodash/fp';
 
 const styles = {
   root: {

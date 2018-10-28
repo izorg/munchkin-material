@@ -2,7 +2,7 @@
 import fs from 'fs';
 import path from 'path';
 
-import { range } from 'lodash';
+import { range } from 'lodash/fp';
 import puppeteer from 'puppeteer';
 import devices from 'puppeteer/DeviceDescriptors';
 import rimraf from 'rimraf';
@@ -104,21 +104,21 @@ const getScreenshots = async ({ locale, size = 'mobile' }) => {
   await page.click('[data-screenshots="single-mode-item"]');
   await page.waitFor(duration.leavingScreen);
   await Promise.all(
-    range(3).map(async () =>
+    range(0, 3).map(async () =>
       page.click(
         '[data-screenshots="level-counter"] [data-screenshots="increment-button"]',
       ),
     ),
   );
   await Promise.all(
-    range(8).map(async () =>
+    range(0, 8).map(async () =>
       page.click(
         '[data-screenshots="gear-counter"] [data-screenshots="increment-button"]',
       ),
     ),
   );
   await Promise.all(
-    range(3).map(async () =>
+    range(0, 3).map(async () =>
       page.click(
         '[data-screenshots="modifier-counter"] [data-screenshots="decrement-button"]',
       ),

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import Dialog from '@material-ui/core/Dialog';
 import { withStyles } from '@material-ui/core/styles';
-import { noop } from 'lodash';
+import { noop } from 'lodash/fp';
 
 import DiceTransition from '../Transition';
 

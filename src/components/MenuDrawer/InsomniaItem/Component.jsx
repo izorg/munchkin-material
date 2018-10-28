@@ -8,7 +8,7 @@ import Switch from '@material-ui/core/Switch';
 import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew';
 import { withStyles } from '@material-ui/core/styles';
 import cns from 'classnames';
-import { noop } from 'lodash';
+import { noop } from 'lodash/fp';
 
 const styles = {
   root: {

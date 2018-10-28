@@ -16,7 +16,7 @@ import Radio from '@material-ui/core/Radio';
 import TextField from '@material-ui/core/TextField';
 import { withStyles } from '@material-ui/core/styles';
 import { FEMALE, MALE } from 'munchkin-core';
-import { noop } from 'lodash';
+import { noop } from 'lodash/fp';
 
 import SexFemale from '../../../../../components/icons/sex/Female';
 import SexMale from '../../../../../components/icons/sex/Male';

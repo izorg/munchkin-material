@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Popover from '@material-ui/core/Popover';
 import { withStyles } from '@material-ui/core/styles';
-import { noop } from 'lodash';
+import { noop } from 'lodash/fp';
 
 import availableColors from '../../../../../utils/availableColors';
 

@@ -4,7 +4,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import { setVersion, version } from 'munchkin-core';
 import { connectRouter, routerMiddleware } from 'connected-react-router';
 import thunk from 'redux-thunk';
-import { pick, throttle } from 'lodash';
+import { pick, throttle } from 'lodash/fp';
 
 import reducers from '../reducers';
 
@@ -27,11 +27,11 @@ export default ({ buyFullVersion, history, storageKey }) => {
   const store = createStore(getRootReducer(history), preloadedState, enhancer);
 
   store.subscribe(
-    throttle(() => {
-      const state = pick(store.getState(), Object.keys(reducers));
+    throttle(100, () => {
+      const state = pick(Object.keys(reducers), store.getState());
 
       saveState(storageKey, state);
-    }, 100),
+    }),
   );
 
   /* istanbul ignore if  */

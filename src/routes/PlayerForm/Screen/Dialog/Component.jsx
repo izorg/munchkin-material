@@ -12,7 +12,7 @@ import Hidden from '@material-ui/core/Hidden';
 import { withStyles } from '@material-ui/core/styles';
 import Fade from '@material-ui/core/Fade';
 import cns from 'classnames';
-import { noop } from 'lodash';
+import { noop } from 'lodash/fp';
 
 import FadeUp from '../../../../components/FadeUp';
 import { sexProp } from '../../../../utils/propTypes';

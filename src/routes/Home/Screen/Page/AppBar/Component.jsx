@@ -15,7 +15,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 import SettingsBackupRestoreIcon from '@material-ui/icons/SettingsBackupRestore';
-import { noop } from 'lodash';
+import { noop } from 'lodash/fp';
 
 import AppBar from '../../../../../components/AppBar';
 import DiceButton from '../../../../../components/dice/Button';
