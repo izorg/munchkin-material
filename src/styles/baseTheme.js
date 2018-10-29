@@ -24,6 +24,12 @@ export default (type) => {
           backgroundColor: brown[500],
         },
       },
+
+      MuiDialog: {
+        paperScrollPaper: {
+          maxHeight: 'calc(100% - 32px)',
+        },
+      },
     },
 
     palette: {
