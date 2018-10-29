@@ -89,7 +89,7 @@
     "husky": "1.1.2",
     "identity-obj-proxy": "3.0.0",
     "jest": "23.6.0",
-    "lint-staged": "7.3.0",
+    "lint-staged": "8.0.0",
     "lodash": "4.17.11",
     "munchkin-core": "8.1.7",
     "prettier": "1.14.3",
