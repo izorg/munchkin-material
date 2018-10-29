@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
-import { findDOMNode } from 'react-dom';
 import PropTypes from 'prop-types';
 import List from '@material-ui/core/List';
+import RootRef from '@material-ui/core/RootRef';
 import { withStyles } from '@material-ui/core/styles';
 import cns from 'classnames';
 import { noop } from 'lodash/fp';
@@ -72,74 +72,70 @@ class HomePlayerList extends PureComponent {
         >
           <Droppable droppableId="player-list">
             {({ droppableProps, innerRef: droppableRef }) => (
-              <List
-                className={cns({ [classes.dragging]: dragging })}
-                ref={(list) => {
-                  // eslint-disable-next-line react/no-find-dom-node
-                  droppableRef(findDOMNode(list));
-                }}
-                {...rest}
-                {...droppableProps}
-              >
-                {playerList.map((playerId, index) => (
-                  <Draggable
-                    disableInteractiveElementBlocking
-                    draggableId={playerId}
-                    index={index}
-                    key={playerId}
-                  >
-                    {(
-                      {
-                        draggableProps,
-                        dragHandleProps,
-                        innerRef: draggableRef,
-                      },
-                      { isDragging },
-                    ) => {
-                      let style = { ...draggableProps.style };
+              <RootRef rootRef={droppableRef}>
+                <List
+                  className={cns({ [classes.dragging]: dragging })}
+                  {...rest}
+                  {...droppableProps}
+                >
+                  {playerList.map((playerId, index) => (
+                    <Draggable
+                      disableInteractiveElementBlocking
+                      draggableId={playerId}
+                      index={index}
+                      key={playerId}
+                    >
+                      {(
+                        {
+                          draggableProps,
+                          dragHandleProps,
+                          innerRef: draggableRef,
+                        },
+                        { isDragging },
+                      ) => {
+                        let style = { ...draggableProps.style };
 
-                      if (isDragging) {
-                        style = {
-                          ...style,
-                          backgroundColor: theme.palette.background.paper,
-                          boxShadow: theme.shadows[3],
-                          pointerEvents: 'auto',
-                          zIndex: 1,
-                        };
-                      }
+                        if (isDragging) {
+                          style = {
+                            ...style,
+                            backgroundColor: theme.palette.background.paper,
+                            boxShadow: theme.shadows[3],
+                            pointerEvents: 'auto',
+                            zIndex: 1,
+                          };
+                        }
 
-                      if (style.transform) {
-                        const transform = style.transform.replace(
-                          /translate\(([0-9.-]+px), ([0-9.-]+px)\)/,
-                          'translate(0, $2)',
+                        if (style.transform) {
+                          const transform = style.transform.replace(
+                            /translate\(([0-9.-]+px), ([0-9.-]+px)\)/,
+                            'translate(0, $2)',
+                          );
+
+                          style = {
+                            ...style,
+                            transform,
+                            WebkitTransform: transform,
+                          };
+                        }
+
+                        return (
+                          <RootRef rootRef={draggableRef}>
+                            <Item
+                              className={cns({ [classes.drag]: isDragging })}
+                              ContainerProps={{
+                                ...draggableProps,
+                                style,
+                              }}
+                              dragHandleProps={dragHandleProps}
+                              playerId={playerId}
+                            />
+                          </RootRef>
                         );
-
-                        style = {
-                          ...style,
-                          transform,
-                          WebkitTransform: transform,
-                        };
-                      }
-
-                      return (
-                        <Item
-                          className={cns({ [classes.drag]: isDragging })}
-                          ContainerProps={{
-                            ...draggableProps,
-                            style,
-                          }}
-                          dragHandleProps={dragHandleProps}
-                          playerId={playerId}
-                          ref={(item) => {
-                            // eslint-disable-next-line react/no-find-dom-node
-                            draggableRef(findDOMNode(item));
-                          }}
-                        />
-                      );
-                    }}
-                  </Draggable>
-                ))}
-              </List>
+                      }}
+                    </Draggable>
+                  ))}
+                </List>
+              </RootRef>
             )}
           </Droppable>
         </DragDropContext>
