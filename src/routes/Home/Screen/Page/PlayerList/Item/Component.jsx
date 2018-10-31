@@ -10,7 +10,7 @@ import ChevronUp from '@material-ui/icons/KeyboardArrowUp';
 import ActionReorder from '@material-ui/icons/Reorder';
 import cns from 'classnames';
 import Hammer from 'hammerjs';
-import { noop } from 'lodash/fp';
+import { debounce, noop } from 'lodash/fp';
 
 import getSexIconClass from '../../../../../../utils/getSexIconClass';
 import { playerShape } from '../../../../../../utils/propTypes';
@@ -82,16 +82,12 @@ class HomePlayerListItem extends PureComponent {
     this.itemRef = createRef();
     this.textRef = createRef();
 
-    this.handleTap = this.handleTap.bind(this);
-    this.handlePress = this.handlePress.bind(this);
+    this.handleTap = debounce(30, this.handleTap.bind(this));
+    this.handlePress = debounce(30, this.handlePress.bind(this));
   }
 
   componentDidMount() {
-    this.updateHammer();
-  }
-
-  componentDidUpdate() {
-    this.updateHammer();
+    this.addHammer();
   }
 
   componentWillUnmount() {
@@ -131,9 +127,7 @@ class HomePlayerListItem extends PureComponent {
     }
   }
 
-  updateHammer() {
-    this.removeHammer();
-
+  addHammer() {
     this.hammer = new Hammer(this.itemRef.current, {
       recognizers: [[Hammer.Tap, { time: 500 }], [Hammer.Press, { time: 501 }]],
     });
