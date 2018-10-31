@@ -2,7 +2,6 @@ import React, { PureComponent } from 'react';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import compose from 'recompose/compose';
 import PropTypes from 'prop-types';
-import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
@@ -18,6 +17,9 @@ import {
   MAX_LEVEL,
   MIN_LEVEL,
 } from '../../../../../utils/levelLimit';
+
+import CancelButton from '../../../../../components/CancelButton';
+import SubmitButton from '../../../../../components/SubmitButton';
 
 export const DEFAULT_MUNCHKIN_LIMIT = 'default';
 export const EPIC_MUNCHKIN_LIMIT = 'epic';
@@ -128,18 +130,8 @@ class LevelDialog extends PureComponent {
           </RadioGroup>
         </DialogContent>
         <DialogActions>
-          <Button color="primary" onClick={onClose}>
-            <FormattedMessage
-              id="levelLimitDialog.cancel"
-              defaultMessage="Cancel"
-            />
-          </Button>
-          <Button color="primary" type="submit">
-            <FormattedMessage
-              id="levelLimitDialog.submit"
-              defaultMessage="OK"
-            />
-          </Button>
+          <CancelButton onClick={onClose} />
+          <SubmitButton />
         </DialogActions>
       </Dialog>
     );

@@ -4,7 +4,6 @@ import compose from 'recompose/compose';
 import withProps from 'recompose/withProps';
 import { createSelector, createStructuredSelector } from 'reselect';
 import PropTypes from 'prop-types';
-import Button from '@material-ui/core/Button';
 import Checkbox from '@material-ui/core/Checkbox';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -17,6 +16,9 @@ import { withStyles } from '@material-ui/core/styles';
 import { noop, sortBy } from 'lodash/fp';
 
 import { names } from '../../../../../styles/themes';
+
+import CancelButton from '../../../../../components/CancelButton';
+import SubmitButton from '../../../../../components/SubmitButton';
 
 const optionsSelector = createSelector(
   ({ intl }) => intl,
@@ -120,12 +122,8 @@ class ThemeDialog extends PureComponent {
           />
         </DialogContent>
         <DialogActions>
-          <Button color="primary" onClick={onClose}>
-            <FormattedMessage id="themeDialog.cancel" defaultMessage="Cancel" />
-          </Button>
-          <Button color="primary" type="submit">
-            <FormattedMessage id="themeDialog.submit" defaultMessage="OK" />
-          </Button>
+          <CancelButton onClick={onClose} />
+          <SubmitButton />
         </DialogActions>
       </Dialog>
     );
