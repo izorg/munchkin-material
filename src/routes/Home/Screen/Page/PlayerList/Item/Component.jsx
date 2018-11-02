@@ -95,6 +95,10 @@ class HomePlayerListItem extends PureComponent {
   }
 
   handleTap(event) {
+    if (event.srcEvent.defaultPrevented) {
+      return;
+    }
+
     const {
       mode,
       onMultiSelectActivate,

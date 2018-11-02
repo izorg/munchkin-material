@@ -28,6 +28,7 @@ const styles = (theme) => ({
     flex: 1,
     overflowY: 'auto',
     paddingBottom: 48,
+    touchAction: 'pan-y',
 
     [theme.breakpoints.up('sm')]: {
       backgroundColor: 'transparent',
