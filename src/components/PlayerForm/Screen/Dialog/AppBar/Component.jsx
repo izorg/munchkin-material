@@ -5,9 +5,9 @@ import { withStyles } from '@material-ui/core/styles';
 import NavigationCheck from '@material-ui/icons/Check';
 import { noop } from 'lodash/fp';
 
-import AppBar from '../../../../../components/AppBar';
-import BackButton from '../../../../../components/BackButton';
-import Title from '../../../../../components/Title';
+import AppBar from '../../../../AppBar';
+import BackButton from '../../../../BackButton';
+import Title from '../../../../Title';
 
 const styles = {
   leftButton: {

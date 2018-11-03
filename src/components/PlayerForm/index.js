@@ -2,9 +2,10 @@ import { connect } from 'react-redux';
 import matchPath from 'react-router-dom/matchPath';
 import { createSelector, createStructuredSelector } from 'reselect';
 
-import ScreenLoader from '../../components/ScreenLoader';
+import ScreenLoader from '../ScreenLoader';
 
-const loader = () => import(/* webpackChunkName: "player-form" */ './Screen');
+const loader = () =>
+  import(/* webpackChunkName: "player-form" */ './Screen/index');
 
 const match = createSelector(
   (state) => state.router.location.pathname,

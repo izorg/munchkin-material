@@ -3,7 +3,7 @@ import React, { Fragment } from 'react';
 import Combat from '../../routes/Combat';
 import Home from '../../routes/Home';
 import Player from '../../routes/Player';
-import PlayerForm from '../../routes/PlayerForm';
+import PlayerForm from '../PlayerForm';
 
 import DiceDialog from '../dice/Dialog';
 

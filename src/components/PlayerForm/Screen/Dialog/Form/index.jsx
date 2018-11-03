@@ -18,8 +18,8 @@ import { withStyles } from '@material-ui/core/styles';
 import { FEMALE, MALE } from 'munchkin-core';
 import { noop } from 'lodash/fp';
 
-import SexFemale from '../../../../../components/icons/sex/Female';
-import SexMale from '../../../../../components/icons/sex/Male';
+import SexFemale from '../../../../icons/sex/Female';
+import SexMale from '../../../../icons/sex/Male';
 import { sexProp } from '../../../../../utils/propTypes';
 
 import ColorPicker from '../ColorPicker';

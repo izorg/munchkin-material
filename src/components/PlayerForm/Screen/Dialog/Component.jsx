@@ -14,7 +14,7 @@ import Fade from '@material-ui/core/Fade';
 import cns from 'classnames';
 import { noop } from 'lodash/fp';
 
-import FadeUp from '../../../../components/FadeUp';
+import FadeUp from '../../../FadeUp';
 import { sexProp } from '../../../../utils/propTypes';
 
 import AppBar from './AppBar';
