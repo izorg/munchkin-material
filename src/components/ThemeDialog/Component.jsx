@@ -15,10 +15,10 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import { withStyles } from '@material-ui/core/styles';
 import { noop, sortBy } from 'lodash/fp';
 
-import { names } from '../../../../../styles/themes';
+import { names } from '../../styles/themes';
 
-import CancelButton from '../../../../../components/CancelButton';
-import SubmitButton from '../../../../../components/SubmitButton';
+import CancelButton from '../CancelButton';
+import SubmitButton from '../SubmitButton';
 
 const optionsSelector = createSelector(
   ({ intl }) => intl,

@@ -3,8 +3,8 @@ import { goBack } from 'connected-react-router';
 import { createStructuredSelector } from 'reselect';
 import { flow, get } from 'lodash/fp';
 
-import { setTheme } from '../../../../../ducks/theme';
-import { getQuery } from '../../../../../utils/location';
+import { setTheme } from '../../ducks/theme';
+import { getQuery } from '../../utils/location';
 
 import Component from './Component';
 

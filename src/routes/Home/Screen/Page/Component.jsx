@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import cns from 'classnames';
 
+import LevelLimitDialog from '../../../../components/LevelLimitDialog';
 import MenuDrawer from '../../../../components/MenuDrawer';
 import Nobody from '../../../../components/Nobody';
+import ThemeDialog from '../../../../components/ThemeDialog';
 
 import AppBar from './AppBar';
-import LevelLimitDialog from './LevelLimitDialog';
 import PlayerList from './PlayerList';
 import SinglePlayer from './SinglePlayer';
-import ThemeDialog from './ThemeDialog';
 
 const styles = (theme) => ({
   root: {

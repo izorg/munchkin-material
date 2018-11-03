@@ -3,8 +3,8 @@ import { goBack } from 'connected-react-router';
 import { createSelector, createStructuredSelector } from 'reselect';
 import { flow, get, isUndefined, negate } from 'lodash/fp';
 
-import { setEpic, setLevelLimit } from '../../../../../ducks/app';
-import { getQuery } from '../../../../../utils/location';
+import { setEpic, setLevelLimit } from '../../ducks/app';
+import { getQuery } from '../../utils/location';
 
 import Component, {
   DEFAULT_MUNCHKIN_LIMIT,

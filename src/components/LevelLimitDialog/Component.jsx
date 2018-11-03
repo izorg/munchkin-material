@@ -12,14 +12,10 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import { withStyles } from '@material-ui/core/styles';
 import { noop } from 'lodash/fp';
 
-import {
-  MAX_EPIC_LEVEL,
-  MAX_LEVEL,
-  MIN_LEVEL,
-} from '../../../../../utils/levelLimit';
+import { MAX_EPIC_LEVEL, MAX_LEVEL, MIN_LEVEL } from '../../utils/levelLimit';
 
-import CancelButton from '../../../../../components/CancelButton';
-import SubmitButton from '../../../../../components/SubmitButton';
+import CancelButton from '../CancelButton';
+import SubmitButton from '../SubmitButton';
 
 export const DEFAULT_MUNCHKIN_LIMIT = 'default';
 export const EPIC_MUNCHKIN_LIMIT = 'epic';
