@@ -1,5 +1,5 @@
 /* global __VERSION__ */
-import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
+import { applyMiddleware, combineReducers, createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { setVersion, version } from 'munchkin-core';
 import { connectRouter, routerMiddleware } from 'connected-react-router';
@@ -11,11 +11,11 @@ import reducers from '../reducers';
 import { loadState, saveState } from './localStorage';
 import purchase from './middlewares/purchase';
 
-const getRootReducer = (history) =>
-  compose(
-    connectRouter(history),
-    combineReducers,
-  )(reducers);
+const createRootReducer = (history) =>
+  combineReducers({
+    router: connectRouter(history),
+    ...reducers,
+  });
 
 export default ({ buyFullVersion, history, storageKey }) => {
   const enhancer = composeWithDevTools(
@@ -24,7 +24,11 @@ export default ({ buyFullVersion, history, storageKey }) => {
 
   const preloadedState = loadState(storageKey);
 
-  const store = createStore(getRootReducer(history), preloadedState, enhancer);
+  const store = createStore(
+    createRootReducer(history),
+    preloadedState,
+    enhancer,
+  );
 
   store.subscribe(
     throttle(100, () => {
@@ -37,7 +41,7 @@ export default ({ buyFullVersion, history, storageKey }) => {
   /* istanbul ignore if  */
   if (module.hot) {
     module.hot.accept('../reducers', () =>
-      store.replaceReducer(getRootReducer(history)),
+      store.replaceReducer(createRootReducer(history)),
     );
   }
 
