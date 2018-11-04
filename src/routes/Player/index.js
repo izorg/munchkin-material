@@ -1,6 +1,6 @@
 import { getLocation } from 'connected-react-router';
 import { connect } from 'react-redux';
-import matchPath from 'react-router-dom/matchPath';
+import { matchPath } from 'react-router-dom';
 import { createSelector, createStructuredSelector } from 'reselect';
 import { flow, get } from 'lodash/fp';
 

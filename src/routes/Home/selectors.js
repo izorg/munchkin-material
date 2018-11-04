@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect';
-import matchPath from 'react-router-dom/matchPath';
+import { matchPath } from 'react-router-dom';
 
 import * as modes from './modes';
 
