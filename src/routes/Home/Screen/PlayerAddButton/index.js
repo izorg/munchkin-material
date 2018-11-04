@@ -4,7 +4,7 @@ import { push } from 'connected-react-router';
 import Component from './Component';
 
 const mapDispatchToProps = {
-  onClick: () => push('/new'),
+  onClick: () => push('?player'),
 };
 
 export default connect(

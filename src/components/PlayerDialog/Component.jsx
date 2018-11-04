@@ -14,8 +14,7 @@ import Fade from '@material-ui/core/Fade';
 import cns from 'classnames';
 import { noop } from 'lodash/fp';
 
-import FadeUp from '../../../FadeUp';
-import { sexProp } from '../../../../utils/propTypes';
+import FadeUp from '../FadeUp';
 
 import AppBar from './AppBar';
 import Form from './Form';
@@ -59,6 +58,36 @@ const styles = (theme) => ({
 });
 
 class DialogComponent extends PureComponent {
+  static getDerivedStateFromProps(nextProps, prevState) {
+    let state = null;
+
+    if (prevState.appear === undefined) {
+      state = {
+        ...state,
+        appear: !nextProps.open,
+      };
+    } else {
+      state = {
+        ...state,
+        appear: true,
+      };
+    }
+
+    if (nextProps.playerId) {
+      state = {
+        ...state,
+        edit: true,
+      };
+    } else if (nextProps.playerId === null) {
+      state = {
+        ...state,
+        edit: false,
+      };
+    }
+
+    return state;
+  }
+
   static handleExternalSubmit() {
     let event;
 
@@ -76,22 +105,9 @@ class DialogComponent extends PureComponent {
   constructor(props) {
     super(props);
 
-    this.state = {
-      appear: props.appear,
-    };
+    this.state = {};
 
-    this.handleExited = this.handleExited.bind(this);
     this.renderTransition = this.renderTransition.bind(this);
-  }
-
-  handleExited() {
-    const { appear } = this.state;
-
-    if (!appear) {
-      this.setState({
-        appear: true,
-      });
-    }
   }
 
   renderTransition(props) {
@@ -104,29 +120,18 @@ class DialogComponent extends PureComponent {
   }
 
   render() {
-    const {
-      classes,
-      className,
-      fullScreen,
-      initialValues,
-      newPlayer,
-      onClose,
-      onSubmit,
-      open,
-    } = this.props;
+    const { classes, className, fullScreen, onClose, playerId } = this.props;
 
-    const title =
-      initialValues && initialValues.id ? (
-        <FormattedMessage
-          id="player.form.titleEdit"
-          defaultMessage="Edit munchkin"
-        />
-      ) : (
-        <FormattedMessage
-          id="player.form.title"
-          defaultMessage="New munchkin"
-        />
-      );
+    const { edit } = this.state;
+
+    const title = edit ? (
+      <FormattedMessage
+        id="player.form.titleEdit"
+        defaultMessage="Edit munchkin"
+      />
+    ) : (
+      <FormattedMessage id="player.form.title" defaultMessage="New munchkin" />
+    );
 
     return (
       <Dialog
@@ -138,8 +143,7 @@ class DialogComponent extends PureComponent {
         fullScreen={fullScreen}
         hideBackdrop={fullScreen}
         onClose={onClose}
-        onExited={this.handleExited}
-        open={open}
+        open={playerId !== undefined}
         TransitionComponent={this.renderTransition}
       >
         <DialogTitle className={classes.title}>
@@ -152,12 +156,7 @@ class DialogComponent extends PureComponent {
           <Hidden mdDown>{title}</Hidden>
         </DialogTitle>
         <DialogContent className={classes.content}>
-          <Form
-            autoFocus={newPlayer}
-            id={FORM_ID}
-            initialValues={initialValues}
-            onSubmit={onSubmit}
-          />
+          <Form id={FORM_ID} playerId={playerId} />
         </DialogContent>
         <Hidden mdDown>
           <DialogActions>
@@ -181,25 +180,14 @@ class DialogComponent extends PureComponent {
 }
 
 DialogComponent.propTypes = {
-  appear: PropTypes.bool,
   fullScreen: PropTypes.bool.isRequired,
-  initialValues: PropTypes.shape({
-    color: PropTypes.string.isRequired,
-    name: PropTypes.string,
-    sex: sexProp.isRequired,
-  }).isRequired,
-  newPlayer: PropTypes.bool,
   onClose: PropTypes.func,
-  onSubmit: PropTypes.func,
-  open: PropTypes.bool,
+  playerId: PropTypes.string,
 };
 
 DialogComponent.defaultProps = {
-  appear: false,
-  newPlayer: true,
   onClose: noop,
-  onSubmit: noop,
-  open: false,
+  playerId: undefined,
 };
 
 export default compose(

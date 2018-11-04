@@ -7,7 +7,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import { withStyles } from '@material-ui/core/styles';
 import { noop } from 'lodash/fp';
 
-import availableColors from '../../../../../utils/availableColors';
+import availableColors from '../../../utils/availableColors';
 
 import Color from './Color';
 

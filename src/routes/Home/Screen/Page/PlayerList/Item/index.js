@@ -5,7 +5,7 @@ import mapProps from 'recompose/mapProps';
 import { omit } from 'lodash/fp';
 
 import { togglePlayer, unselectAllPlayers } from '../../../../../../ducks/app';
-import { EDIT, MULTI } from '../../../../modes';
+import { MULTI } from '../../../../modes';
 import { modeSelector } from '../../../../selectors';
 
 import Component from './Component';
@@ -27,7 +27,7 @@ const onMultiSelectActivate = (playerId) => (dispatch) => {
   dispatch(push(`/${MULTI}`));
 };
 
-const onPlayerEdit = (playerId) => push(`/${EDIT}/${playerId}`);
+const onPlayerEdit = (playerId) => push(`?player=${playerId}`);
 
 const onPlayerSelect = (playerId) => push(`/player/${playerId}`);
 

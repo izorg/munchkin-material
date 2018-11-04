@@ -18,9 +18,9 @@ import { withStyles } from '@material-ui/core/styles';
 import { FEMALE, MALE } from 'munchkin-core';
 import { noop } from 'lodash/fp';
 
-import SexFemale from '../../../../icons/sex/Female';
-import SexMale from '../../../../icons/sex/Male';
-import { sexProp } from '../../../../../utils/propTypes';
+import SexFemale from '../../icons/sex/Female';
+import SexMale from '../../icons/sex/Male';
+import { sexProp } from '../../../utils/propTypes';
 
 import ColorPicker from '../ColorPicker';
 
@@ -38,14 +38,6 @@ const styles = (theme) => ({
 });
 
 class PlayerForm extends PureComponent {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      initialValues: props.initialValues,
-    };
-  }
-
   static renderColorPicker({ input, ...props }) {
     return <ColorPicker {...input} {...props} />;
   }
@@ -72,18 +64,18 @@ class PlayerForm extends PureComponent {
   }
 
   render() {
-    const { autoFocus, classes, id, intl, onSubmit } = this.props;
-    const { initialValues } = this.state;
+    const { classes, id, initialValues, intl, onSubmit } = this.props;
 
     return (
       <Form
         initialValues={initialValues}
         onSubmit={onSubmit}
         subscription={{ submitting: true }}
-        render={({ handleSubmit }) => (
+      >
+        {({ handleSubmit }) => (
           <form autoComplete="off" id={id} noValidate onSubmit={handleSubmit}>
             <Field
-              autoFocus={autoFocus}
+              autoFocus={!initialValues.id}
               component={PlayerForm.renderTextField}
               fullWidth
               margin="normal"
@@ -142,16 +134,16 @@ class PlayerForm extends PureComponent {
             </Grid>
           </form>
         )}
-      />
+      </Form>
     );
   }
 }
 
 PlayerForm.propTypes = {
-  autoFocus: PropTypes.bool,
   id: PropTypes.string.isRequired,
   initialValues: PropTypes.shape({
     color: PropTypes.string.isRequired,
+    id: PropTypes.string,
     name: PropTypes.string,
     sex: sexProp.isRequired,
   }).isRequired,
@@ -160,7 +152,6 @@ PlayerForm.propTypes = {
 };
 
 PlayerForm.defaultProps = {
-  autoFocus: false,
   onSubmit: noop,
 };
 

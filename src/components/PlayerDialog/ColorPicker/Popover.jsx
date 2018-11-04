@@ -4,7 +4,7 @@ import Popover from '@material-ui/core/Popover';
 import { withStyles } from '@material-ui/core/styles';
 import { noop } from 'lodash/fp';
 
-import availableColors from '../../../../../utils/availableColors';
+import availableColors from '../../../utils/availableColors';
 
 import Color from './Color';
 
