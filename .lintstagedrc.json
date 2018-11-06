@@ -1,0 +1,10 @@
+{
+  "**/*.{js,json,jsx}": [
+    "eslint --ext .js,.json,.jsx --fix",
+    "git add"
+  ],
+  "**/*.{md,yml}": [
+    "prettier --write",
+    "git add"
+  ]
+}

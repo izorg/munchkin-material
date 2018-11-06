@@ -13,24 +13,11 @@
     "i18n:translate": "cross-env BABEL_ENV=i18n babel src --out-dir temp && node scripts/i18n/translate.js && rimraf temp messages",
     "i18n:upload": "node scripts/i18n/upload.js",
     "lint": "eslint . --ext .js,.json,.jsx",
-    "precommit": "lint-staged && npm test",
-    "postcommit": "git update-index --again",
-    "prepush": "npm run lint && npm test",
     "screenshots": "babel-node scripts/screenshots.js",
     "site": "cross-env NODE_ENV=production BUILD=site webpack",
     "start": "cross-env NODE_ENV=production BUILD=site webpack-dev-server",
     "stats": "cross-env STATS=true npm run site",
     "test": "jest"
-  },
-  "lint-staged": {
-    "**/*.{js,json,jsx}": [
-      "eslint --ext .js,.json,.jsx --fix",
-      "git add"
-    ],
-    "**/*.{md,yml}": [
-      "prettier --write",
-      "git add"
-    ]
   },
   "devDependencies": {
     "@babel/cli": "7.1.2",
