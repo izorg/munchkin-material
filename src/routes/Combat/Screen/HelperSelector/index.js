@@ -1,28 +1,22 @@
 import { connect } from 'react-redux';
-import { matchPath } from 'react-router-dom';
 import { goBack } from 'connected-react-router';
-import { createSelector, createStructuredSelector } from 'reselect';
+import { createStructuredSelector } from 'reselect';
 import { setCombatHelper } from 'munchkin-core';
+import { flow, get, isEqual } from 'lodash/fp';
 
 import Component from './Component';
-
-const open = createSelector(
-  (state) => state.router.location.pathname,
-  (pathname) =>
-    Boolean(
-      matchPath(pathname, {
-        exact: true,
-        path: '/player/:id/combat/add/helper',
-      }),
-    ),
-);
+import { getQuery } from '../../../../utils/location';
 
 const mapStateToProps = createStructuredSelector({
   helpers: (state) =>
     state.playerList
       .filter((id) => id !== state.combat.playerId)
       .map((id) => state.players[id]),
-  open,
+  open: flow(
+    getQuery,
+    get('add'),
+    isEqual('helper'),
+  ),
 });
 
 const mapDispatchToProps = {
