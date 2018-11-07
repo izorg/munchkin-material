@@ -106,20 +106,19 @@ class CombatMonsterSlider extends PureComponent {
           }
         />
 
-        {monsters.length > 1 &&
-          monsterIndex === index && (
-            <IconButton
-              className={classes.remove}
-              onClick={() => this.handleRemove(id)}
-              style={{
-                width: 36,
-                height: 36,
-                padding: 6,
-              }}
-            >
-              <CloseCircle />
-            </IconButton>
-          )}
+        {monsters.length > 1 && monsterIndex === index && (
+          <IconButton
+            className={classes.remove}
+            onClick={() => this.handleRemove(id)}
+            style={{
+              width: 36,
+              height: 36,
+              padding: 6,
+            }}
+          >
+            <CloseCircle />
+          </IconButton>
+        )}
       </Paper>
     ));
 

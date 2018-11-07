@@ -105,19 +105,17 @@ const HomeAppBar = ({
 
       {(!mode || singleMode) && <DiceButton color={buttonColor} />}
 
-      {!empty &&
-        !multiMode &&
-        !singleMode && (
-          <Tooltip title={editTitle}>
-            <IconButton
-              aria-label={editTitle}
-              color={buttonColor}
-              onClick={() => onToggleEditClick(mode)}
-            >
-              {editMode ? <CheckIcon /> : <EditIcon />}
-            </IconButton>
-          </Tooltip>
-        )}
+      {!empty && !multiMode && !singleMode && (
+        <Tooltip title={editTitle}>
+          <IconButton
+            aria-label={editTitle}
+            color={buttonColor}
+            onClick={() => onToggleEditClick(mode)}
+          >
+            {editMode ? <CheckIcon /> : <EditIcon />}
+          </IconButton>
+        </Tooltip>
+      )}
 
       {multiMode && (
         <IconButton
