@@ -427,6 +427,9 @@ class HomeMenuDrawer extends PureComponent {
         ModalProps={{
           BackdropProps: {
             ref: this.handleBackdropRef,
+            style: {
+              pointerEvents: maybeSwiping ? 'none' : '',
+            },
           },
         }}
         open={open || maybeSwiping}
