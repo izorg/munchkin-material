@@ -6,6 +6,7 @@ const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CnameWebpackPlugin = require('cname-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const WebpackNotifierPlugin = require('webpack-notifier');
 const WebpackPwaManifest = require('webpack-pwa-manifest');
@@ -128,13 +129,19 @@ module.exports = {
     ],
   },
 
-  optimization: site
-    ? {
-        splitChunks: {
+  optimization: {
+    minimizer: [
+      new TerserPlugin({
+        cache: true,
+        parallel: true,
+      }),
+    ],
+    splitChunks: site
+      ? {
           maxAsyncRequests: 1,
-        },
-      }
-    : undefined,
+        }
+      : undefined,
+  },
 
   plugins: compact([
     !dev && new CleanWebpackPlugin(outputPath),
