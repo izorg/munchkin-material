@@ -1,6 +1,7 @@
 const { platform, userAgent } = navigator;
 
 export const ios = platform === 'iPhone' || platform === 'iPad';
+export const android = userAgent.includes('Android');
 
-export const edge = userAgent.indexOf('Edge') > -1;
-export const ie = userAgent.indexOf('Trident') > -1;
+export const edge = userAgent.includes('Edge');
+export const ie = userAgent.includes('Trident');

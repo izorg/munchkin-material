@@ -1,8 +1,9 @@
 import deepmerge from 'deepmerge';
-
 import brown from '@material-ui/core/colors/brown';
 import createBreakpoints from '@material-ui/core/styles/createBreakpoints';
 import createPalette from '@material-ui/core/styles/createPalette';
+
+import { android } from '../utils/platforms';
 
 const breakpoints = createBreakpoints({});
 
@@ -49,6 +50,24 @@ export default (type) => {
       useNextVariants: true,
     },
   };
+
+  if (android) {
+    theme = deepmerge(theme, {
+      overrides: {
+        MuiFormControlLabel: {
+          label: {
+            marginTop: 3,
+          },
+        },
+
+        MuiListItemText: {
+          primary: {
+            marginTop: 2,
+          },
+        },
+      },
+    });
+  }
 
   if (type === 'light') {
     const palette = createPalette({ type });
