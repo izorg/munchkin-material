@@ -9,7 +9,10 @@ import { modeSelector } from '../../../selectors';
 
 import Component from './Component';
 
-const editMode = createSelector(modeSelector, isEqual(EDIT));
+const editMode = createSelector(
+  modeSelector,
+  isEqual(EDIT),
+);
 
 const mapStateToProps = createStructuredSelector({
   editMode,

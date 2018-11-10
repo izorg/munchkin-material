@@ -79,7 +79,7 @@
     "lint-staged": "8.0.4",
     "lodash": "4.17.11",
     "munchkin-core": "8.1.7",
-    "prettier": "1.15.1",
+    "prettier": "1.15.2",
     "prop-types": "15.6.2",
     "puppeteer": "1.10.0",
     "qs": "6.5.2",

@@ -20,7 +20,10 @@ const playerSelector = createSelector(
   (players, id) => players[id],
 );
 
-const getPlayerLevel = createSelector(playerSelector, get('level'));
+const getPlayerLevel = createSelector(
+  playerSelector,
+  get('level'),
+);
 
 const levelDecrementDisabled = (state) => {
   const levelLimit = get(['app', 'levelLimit'], state);
