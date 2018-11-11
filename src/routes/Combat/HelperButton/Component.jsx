@@ -11,7 +11,7 @@ import cns from 'classnames';
 import deepmerge from 'deepmerge';
 import { delay, noop } from 'lodash/fp';
 
-import EmoticonDevil from '../../../../components/icons/EmoticonDevil';
+import EmoticonDevil from '../../../components/icons/EmoticonDevil';
 
 const styles = (theme) => ({
   backdrop: {

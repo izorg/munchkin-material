@@ -4,7 +4,7 @@ import { createSelector, createStructuredSelector } from 'reselect';
 import { addMonster, createMonster } from 'munchkin-core';
 import { flow, get, isNull } from 'lodash/fp';
 
-import { getQuery } from '../../../../utils/location';
+import { getQuery } from '../../../utils/location';
 
 import Component from './Component';
 

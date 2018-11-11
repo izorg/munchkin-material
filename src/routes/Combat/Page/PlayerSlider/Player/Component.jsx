@@ -6,8 +6,8 @@ import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import { noop } from 'lodash/fp';
 
-import Sex from '../../../../../../components/Sex';
-import { sexProp } from '../../../../../../utils/propTypes';
+import Sex from '../../../../../components/Sex';
+import { sexProp } from '../../../../../utils/propTypes';
 
 import Counter from '../../Counter';
 

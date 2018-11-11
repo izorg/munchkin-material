@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { noop } from 'lodash/fp';
 
-import AppBar from '../../../../../components/AppBar';
-import BackButton from '../../../../../components/BackButton';
-import DiceButton from '../../../../../components/dice/Button';
-import Title from '../../../../../components/Title';
+import AppBar from '../../../../components/AppBar';
+import BackButton from '../../../../components/BackButton';
+import DiceButton from '../../../../components/dice/Button';
+import Title from '../../../../components/Title';
 
 const styles = {
   leftButton: {

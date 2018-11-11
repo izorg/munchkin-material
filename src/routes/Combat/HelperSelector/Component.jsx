@@ -12,8 +12,8 @@ import { withStyles } from '@material-ui/core/styles';
 import ChevronUp from '@material-ui/icons/KeyboardArrowUp';
 import { noop } from 'lodash/fp';
 
-import ChevronDoubleUpIcon from '../../../../components/icons/ChevronDoubleUp';
-import getSexIconClass from '../../../../utils/getSexIconClass';
+import ChevronDoubleUpIcon from '../../../components/icons/ChevronDoubleUp';
+import getSexIconClass from '../../../utils/getSexIconClass';
 
 const styles = (theme) => ({
   dialogPaper: {

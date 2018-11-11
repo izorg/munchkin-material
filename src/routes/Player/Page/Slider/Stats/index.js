@@ -12,7 +12,7 @@ import { get } from 'lodash/fp';
 import {
   isLevelDecrementDisabled,
   isLevelIncrementDisabled,
-} from '../../../../../../utils/levelLimit';
+} from '../../../../../utils/levelLimit';
 
 import Component from './Component';
 

@@ -5,8 +5,8 @@ import compose from 'recompose/compose';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 
-import FadeUp from '../../../components/FadeUp';
-import ModalScreen from '../../../components/ModalScreen';
+import FadeUp from '../../components/FadeUp';
+import ModalScreen from '../../components/ModalScreen';
 
 import HelperButton from './HelperButton';
 import HelperSelector from './HelperSelector';
@@ -34,11 +34,9 @@ class CombatScreen extends PureComponent {
     this.state = {
       appear: props.appear,
     };
-
-    this.handleExited = this.handleExited.bind(this);
   }
 
-  handleExited() {
+  componentDidMount() {
     const { appear } = this.state;
 
     if (!appear) {
@@ -60,7 +58,6 @@ class CombatScreen extends PureComponent {
           appear={appear}
           in={inProp}
           mountOnEnter
-          onExited={this.handleExited}
           timeout={{
             enter: theme.transitions.duration.enteringScreen,
             exit: theme.transitions.duration.leavingScreen,

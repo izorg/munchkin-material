@@ -6,10 +6,10 @@ import PropTypes from 'prop-types';
 import Zoom from '@material-ui/core/Zoom';
 import { withStyles } from '@material-ui/core/styles';
 
-import FadeUp from '../../../components/FadeUp';
-import ModalScreen from '../../../components/ModalScreen';
+import FadeUp from '../../components/FadeUp';
+import ModalScreen from '../../components/ModalScreen';
 
-import { Provider } from '../context';
+import { Provider } from './context';
 import CombatButton from './CombatButton';
 import Page from './Page';
 
@@ -36,8 +36,6 @@ class PlayerScreen extends PureComponent {
       appear: props.appear,
       playerId: props.match.params.id,
     };
-
-    this.handleExited = this.handleExited.bind(this);
   }
 
   getChildContext() {
@@ -58,7 +56,7 @@ class PlayerScreen extends PureComponent {
     return null;
   }
 
-  handleExited() {
+  componentDidMount() {
     const { appear } = this.state;
 
     if (!appear) {
@@ -85,7 +83,6 @@ class PlayerScreen extends PureComponent {
           appear={appear}
           in={Boolean(match)}
           mountOnEnter
-          onExited={this.handleExited}
           timeout={{
             enter: theme.transitions.duration.enteringScreen,
             exit: theme.transitions.duration.leavingScreen,

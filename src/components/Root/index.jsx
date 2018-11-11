@@ -1,17 +1,35 @@
 import React, { Fragment } from 'react';
+import { Route } from 'react-router-dom';
 
-import Combat from '../../routes/Combat';
 import Home from '../../routes/Home';
-import Player from '../../routes/Player';
 
 import DiceDialog from '../dice/Dialog';
 import PlayerDialog from '../PlayerDialog';
+import ScreenLoader from '../ScreenLoader';
 
 const Root = () => (
   <Fragment>
     <Home />
-    <Player />
-    <Combat />
+    <Route path="/player/:id">
+      {({ match }) => (
+        <ScreenLoader
+          loader={() =>
+            import(/* webpackChunkName: "player" */ '../../routes/Player')
+          }
+          match={match}
+        />
+      )}
+    </Route>
+    <Route path="/player/:id/combat">
+      {({ match }) => (
+        <ScreenLoader
+          loader={() =>
+            import(/* webpackChunkName: "combat" */ '../../routes/Combat')
+          }
+          match={match}
+        />
+      )}
+    </Route>
 
     <DiceDialog />
     <PlayerDialog />

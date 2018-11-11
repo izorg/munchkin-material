@@ -5,7 +5,7 @@ import { setCombatHelper } from 'munchkin-core';
 import { flow, get, isEqual } from 'lodash/fp';
 
 import Component from './Component';
-import { getQuery } from '../../../../utils/location';
+import { getQuery } from '../../../utils/location';
 
 const mapStateToProps = createStructuredSelector({
   helpers: (state) =>

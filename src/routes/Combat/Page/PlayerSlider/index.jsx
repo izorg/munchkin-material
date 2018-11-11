@@ -8,7 +8,7 @@ import { withStyles } from '@material-ui/core/styles';
 import cns from 'classnames';
 import { compact, noop } from 'lodash/fp';
 
-import CloseCircle from '../../../../../components/icons/CloseCircle';
+import CloseCircle from '../../../../components/icons/CloseCircle';
 
 import Player from './Player';
 
