@@ -2,7 +2,7 @@ import React from 'react';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import ContentAdd from '@material-ui/icons/Add';
 
-import Fab from '../../../../components/Fab';
+import Fab from '../../../components/Fab';
 
 const messages = defineMessages({
   label: {

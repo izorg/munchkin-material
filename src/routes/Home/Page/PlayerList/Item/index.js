@@ -4,9 +4,9 @@ import compose from 'recompose/compose';
 import mapProps from 'recompose/mapProps';
 import { omit } from 'lodash/fp';
 
-import { togglePlayer, unselectAllPlayers } from '../../../../../../ducks/app';
-import { MULTI } from '../../../../modes';
-import { modeSelector } from '../../../../selectors';
+import { togglePlayer, unselectAllPlayers } from '../../../../../ducks/app';
+import { MULTI } from '../../../modes';
+import { modeSelector } from '../../../selectors';
 
 import Component from './Component';
 

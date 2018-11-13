@@ -4,10 +4,10 @@ import PropTypes from 'prop-types';
 import IconButton from '@material-ui/core/IconButton';
 import { withStyles } from '@material-ui/core/styles';
 
-import { playerShape } from '../../../../../utils/propTypes';
+import { playerShape } from '../../../../utils/propTypes';
 
-import Counter from '../../../../../components/Counter';
-import Sex from '../../../../../components/Sex';
+import Counter from '../../../../components/Counter';
+import Sex from '../../../../components/Sex';
 
 const styles = (theme) => ({
   content: {

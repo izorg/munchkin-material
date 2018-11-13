@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import cns from 'classnames';
 
-import LevelLimitDialog from '../../../../components/LevelLimitDialog';
-import MenuDrawer from '../../../../components/MenuDrawer';
-import Nobody from '../../../../components/Nobody';
-import ThemeDialog from '../../../../components/ThemeDialog';
+import LevelLimitDialog from '../../../components/LevelLimitDialog';
+import MenuDrawer from '../../../components/MenuDrawer';
+import Nobody from '../../../components/Nobody';
+import ThemeDialog from '../../../components/ThemeDialog';
 
 import AppBar from './AppBar';
 import PlayerList from './PlayerList';
@@ -55,6 +55,7 @@ class HomePage extends PureComponent {
 
   componentDidUpdate(prevProps) {
     const { playerCount } = this.props;
+
     const node = this.contentRef.current;
 
     if (playerCount > prevProps.playerCount) {

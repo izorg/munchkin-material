@@ -6,10 +6,10 @@ import {
   updatePlayer,
 } from 'munchkin-core';
 
-import { removePlayerFromList } from '../../../../../ducks/playerList';
+import { removePlayerFromList } from '../../../../ducks/playerList';
 
-import * as modes from '../../../modes';
-import { modeSelector } from '../../../selectors';
+import * as modes from '../../modes';
+import { modeSelector } from '../../selectors';
 
 import Component from './Component';
 

@@ -17,13 +17,13 @@ import EditIcon from '@material-ui/icons/Edit';
 import SettingsBackupRestoreIcon from '@material-ui/icons/SettingsBackupRestore';
 import { noop } from 'lodash/fp';
 
-import AppBar from '../../../../../components/AppBar';
-import DiceButton from '../../../../../components/dice/Button';
-import FlagCheckeredIcon from '../../../../../components/icons/FlagCheckered';
-import Title from '../../../../../components/Title';
+import AppBar from '../../../../components/AppBar';
+import DiceButton from '../../../../components/dice/Button';
+import FlagCheckeredIcon from '../../../../components/icons/FlagCheckered';
+import Title from '../../../../components/Title';
 
-import * as modes from '../../../modes';
-import modeShape from '../../../modeShape';
+import * as modes from '../../modes';
+import modeShape from '../../modeShape';
 
 import MenuButton from './MenuButton';
 

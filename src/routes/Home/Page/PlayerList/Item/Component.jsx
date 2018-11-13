@@ -12,14 +12,14 @@ import cns from 'classnames';
 import Hammer from 'hammerjs';
 import { debounce, noop } from 'lodash/fp';
 
-import getSexIconClass from '../../../../../../utils/getSexIconClass';
-import { playerShape } from '../../../../../../utils/propTypes';
+import getSexIconClass from '../../../../../utils/getSexIconClass';
+import { playerShape } from '../../../../../utils/propTypes';
 
 import Avatar from './Avatar';
-import ChevronDoubleUpIcon from '../../../../../../components/icons/ChevronDoubleUp';
+import ChevronDoubleUpIcon from '../../../../../components/icons/ChevronDoubleUp';
 
-import * as modes from '../../../../modes';
-import modeShape from '../../../../modeShape';
+import * as modes from '../../../modes';
+import modeShape from '../../../modeShape';
 
 const styles = (theme) => ({
   listItemGutters: {

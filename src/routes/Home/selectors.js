@@ -3,7 +3,7 @@ import { matchPath } from 'react-router-dom';
 
 import * as modes from './modes';
 
-const path = `/:mode(${Object.values(modes).join('|')})?`;
+export const path = `/:mode(${Object.values(modes).join('|')})?`;
 
 export const matchSelector = createSelector(
   (state) => state.router.location.pathname,

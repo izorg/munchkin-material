@@ -1,12 +1,16 @@
 import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
 
-import { matchSelector } from './selectors';
+import Component from './Component';
 
-import Screen from './Screen';
+const mapStateToProps = (state, ownProps) => {
+  const {
+    app: { singleMode },
+  } = state;
+  const { match } = ownProps;
 
-const mapStateToProps = createStructuredSelector({
-  match: matchSelector,
-});
+  return {
+    in: Boolean(match) && match.isExact && !match.params.mode && !singleMode,
+  };
+};
 
-export default connect(mapStateToProps)(Screen);
+export default connect(mapStateToProps)(Component);

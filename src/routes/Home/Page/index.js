@@ -1,13 +1,14 @@
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import { compose } from 'recompose';
 import { createSelector, createStructuredSelector } from 'reselect';
 
-import { MULTI } from '../../modes';
-import { matchSelector } from '../../selectors';
+import { MULTI } from '../modes';
 
 import Component from './Component';
 
 const menu = createSelector(
-  matchSelector,
+  (state, ownProps) => ownProps.match,
   (match) => match && match.isExact && match.params.mode !== MULTI,
 );
 
@@ -18,4 +19,7 @@ const mapStateToProps = createStructuredSelector({
   singleMode: (state) => state.app.singleMode,
 });
 
-export default connect(mapStateToProps)(Component);
+export default compose(
+  withRouter,
+  connect(mapStateToProps),
+)(Component);
