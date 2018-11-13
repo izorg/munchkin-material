@@ -33,7 +33,6 @@ const mapStateToProps = (state) => {
     combinedMonsterStrength,
     combinedPlayerStrength: playerStrength + helperStrength,
     helperId,
-    monsters: Object.values(state.monsters),
     playerId,
   };
 };
