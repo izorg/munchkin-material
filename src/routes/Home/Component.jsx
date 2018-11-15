@@ -1,16 +1,15 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Zoom from '@material-ui/core/Zoom';
-import { withTheme } from '@material-ui/core/styles';
 
 import Page from './Page';
 import PlayerAddButton from './PlayerAddButton';
 
-const Home = ({ in: inProp, theme }) => (
+const Home = ({ fabAppear, in: inProp, theme }) => (
   <Fragment>
     <Page />
     <Zoom
-      appear={false}
+      appear={fabAppear}
       in={inProp}
       style={{
         transitionDelay: inProp ? theme.transitions.duration.leavingScreen : 0,
@@ -22,6 +21,7 @@ const Home = ({ in: inProp, theme }) => (
 );
 
 Home.propTypes = {
+  fabAppear: PropTypes.bool.isRequired,
   in: PropTypes.bool,
 };
 
@@ -29,4 +29,4 @@ Home.defaultProps = {
   in: false,
 };
 
-export default withTheme()(Home);
+export default Home;

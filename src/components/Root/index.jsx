@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react';
 import { Route } from 'react-router-dom';
 
-import Home from '../../routes/Home';
 import { path } from '../../routes/Home/selectors';
 
 import DiceDialog from '../dice/Dialog';
@@ -10,12 +9,19 @@ import ScreenLoader from '../ScreenLoader';
 
 const Root = () => (
   <Fragment>
-    <Route path={path}>{({ match }) => <Home match={match} />}</Route>
+    <Route path={path}>
+      {({ match }) => (
+        <ScreenLoader
+          loader={() => import(/* webpackMode: "eager" */ '../../routes/Home')}
+          match={match}
+        />
+      )}
+    </Route>
     <Route path="/player/:id">
       {({ match }) => (
         <ScreenLoader
           loader={() =>
-            import(/* webpackChunkName: "player" */ '../../routes/Player')
+            import(/* webpackChunkName: "player", webpackPrefetch: true */ '../../routes/Player')
           }
           match={match}
         />
@@ -25,7 +31,7 @@ const Root = () => (
       {({ match }) => (
         <ScreenLoader
           loader={() =>
-            import(/* webpackChunkName: "combat" */ '../../routes/Combat')
+            import(/* webpackChunkName: "combat", webpackPrefetch: true */ '../../routes/Combat')
           }
           match={match}
         />

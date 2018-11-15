@@ -33,7 +33,6 @@ class PlayerScreen extends PureComponent {
     super(props);
 
     this.state = {
-      appear: props.appear,
       playerId: props.match.params.id,
     };
   }
@@ -56,19 +55,9 @@ class PlayerScreen extends PureComponent {
     return null;
   }
 
-  componentDidMount() {
-    const { appear } = this.state;
-
-    if (!appear) {
-      this.setState({
-        appear: true,
-      });
-    }
-  }
-
   render() {
-    const { classes, match, theme } = this.props;
-    const { appear, playerId } = this.state;
+    const { appear, classes, fabAppear, match, theme } = this.props;
+    const { playerId } = this.state;
 
     const inProp = Boolean(match) && match.isExact;
 
@@ -100,7 +89,7 @@ class PlayerScreen extends PureComponent {
                 <Page />
               </FadeUp>
               <Zoom
-                appear={appear}
+                appear={fabAppear}
                 in={inProp}
                 style={{
                   transitionDelay: inProp
@@ -124,6 +113,7 @@ PlayerScreen.childContextTypes = {
 
 PlayerScreen.propTypes = {
   appear: PropTypes.bool.isRequired,
+  fabAppear: PropTypes.bool.isRequired,
   match: PropTypes.object,
 };
 
@@ -133,5 +123,5 @@ PlayerScreen.defaultProps = {
 
 export default compose(
   hot(module),
-  withStyles(styles, { withTheme: true }),
+  withStyles(styles),
 )(PlayerScreen);

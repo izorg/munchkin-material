@@ -78,9 +78,11 @@ class DiceDialog extends PureComponent {
         >
           {dice && (
             <DiceTransition key={attempt}>
-              {createElement(diceComponent[dice], {
-                className: classes.icon,
-              })}
+              <span>
+                {createElement(diceComponent[dice], {
+                  className: classes.icon,
+                })}
+              </span>
             </DiceTransition>
           )}
         </TransitionGroup>
