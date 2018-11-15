@@ -7,7 +7,10 @@ import { withStyles } from '@material-ui/core/styles';
 import cns from 'classnames';
 import { noop } from 'lodash/fp';
 
+import { EDIT } from '../../modes';
+
 import Item from './Item';
+import modeShape from '../../modeShape';
 
 const styles = {
   dragging: {
@@ -56,7 +59,7 @@ class HomePlayerList extends PureComponent {
   render() {
     const {
       classes,
-      editMode,
+      mode,
       onPlayerMove,
       playerList,
       theme,
@@ -64,7 +67,7 @@ class HomePlayerList extends PureComponent {
     } = this.props;
     const { dragging } = this.state;
 
-    if (editMode) {
+    if (mode === EDIT) {
       return (
         <DragDropContext
           onDragStart={this.handleDragStart}
@@ -127,6 +130,7 @@ class HomePlayerList extends PureComponent {
                                 style,
                               }}
                               dragHandleProps={dragHandleProps}
+                              mode={mode}
                               playerId={playerId}
                             />
                           </RootRef>
@@ -145,7 +149,7 @@ class HomePlayerList extends PureComponent {
     return (
       <List {...rest}>
         {playerList.map((playerId, index) => (
-          <Item index={index} key={playerId} playerId={playerId} />
+          <Item index={index} key={playerId} mode={mode} playerId={playerId} />
         ))}
       </List>
     );
@@ -153,13 +157,13 @@ class HomePlayerList extends PureComponent {
 }
 
 HomePlayerList.propTypes = {
-  editMode: PropTypes.bool,
+  mode: modeShape,
   onPlayerMove: PropTypes.func,
   playerList: PropTypes.arrayOf(PropTypes.string),
 };
 
 HomePlayerList.defaultProps = {
-  editMode: false,
+  mode: undefined,
   onPlayerMove: noop,
   playerList: [],
 };

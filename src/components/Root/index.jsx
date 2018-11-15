@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { Route } from 'react-router-dom';
 
-import { path } from '../../routes/Home/selectors';
+import * as modes from '../../routes/Home/modes';
 
 import DiceDialog from '../dice/Dialog';
 import PlayerDialog from '../PlayerDialog';
@@ -9,7 +9,7 @@ import ScreenLoader from '../ScreenLoader';
 
 const Root = () => (
   <Fragment>
-    <Route path={path}>
+    <Route path={`/:mode(${Object.values(modes).join('|')})?`}>
       {({ match }) => (
         <ScreenLoader
           loader={() => import(/* webpackMode: "eager" */ '../../routes/Home')}

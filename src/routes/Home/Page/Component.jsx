@@ -8,6 +8,8 @@ import MenuDrawer from '../../../components/MenuDrawer';
 import Nobody from '../../../components/Nobody';
 import ThemeDialog from '../../../components/ThemeDialog';
 
+import modeShape from '../modeShape';
+
 import AppBar from './AppBar';
 import PlayerList from './PlayerList';
 import SinglePlayer from './SinglePlayer';
@@ -64,7 +66,7 @@ class HomePage extends PureComponent {
   }
 
   render() {
-    const { classes, empty, menu, singleMode } = this.props;
+    const { classes, empty, menu, mode, singleMode } = this.props;
 
     let content;
 
@@ -75,7 +77,7 @@ class HomePage extends PureComponent {
     } else {
       content = (
         <div className={classes.content} ref={this.contentRef}>
-          <PlayerList className={classes.list} />
+          <PlayerList className={classes.list} mode={mode} />
         </div>
       );
     }
@@ -83,7 +85,7 @@ class HomePage extends PureComponent {
     return (
       <Fragment>
         <div className={cns(classes.root, { [classes.single]: singleMode })}>
-          <AppBar />
+          <AppBar mode={mode} singleMode={singleMode} />
           {content}
         </div>
         {menu && <MenuDrawer />}
@@ -97,6 +99,7 @@ class HomePage extends PureComponent {
 HomePage.propTypes = {
   empty: PropTypes.bool,
   menu: PropTypes.bool,
+  mode: modeShape,
   playerCount: PropTypes.number,
   singleMode: PropTypes.bool,
 };
@@ -104,6 +107,7 @@ HomePage.propTypes = {
 HomePage.defaultProps = {
   empty: false,
   menu: false,
+  mode: undefined,
   playerCount: 0,
   singleMode: false,
 };

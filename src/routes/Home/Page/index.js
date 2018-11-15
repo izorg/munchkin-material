@@ -16,7 +16,6 @@ const mapStateToProps = createStructuredSelector({
   empty: (state) => !state.playerList.length,
   menu,
   playerCount: (state) => state.playerList.length,
-  singleMode: (state) => state.app.singleMode,
 });
 
 export default compose(

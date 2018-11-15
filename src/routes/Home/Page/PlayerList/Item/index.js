@@ -6,16 +6,14 @@ import { omit } from 'lodash/fp';
 
 import { togglePlayer, unselectAllPlayers } from '../../../../../ducks/app';
 import { MULTI } from '../../../modes';
-import { modeSelector } from '../../../selectors';
 
 import Component from './Component';
 
 const mapStateToProps = (state, ownProps) => {
   const { playerId } = ownProps;
-  const mode = modeSelector(state);
+  const { mode } = ownProps;
 
   return {
-    mode,
     player: state.players[playerId],
     selected: mode === MULTI && state.app.selectedPlayerIds.includes(playerId),
   };

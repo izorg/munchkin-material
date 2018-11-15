@@ -9,15 +9,12 @@ import {
 import { removePlayerFromList } from '../../../../ducks/playerList';
 
 import * as modes from '../../modes';
-import { modeSelector } from '../../selectors';
 
 import Component from './Component';
 
 const mapStateToProps = (state) => ({
   empty: state.playerList.length === 0,
-  mode: modeSelector(state),
   selectedPlayerIds: state.app.selectedPlayerIds,
-  singleMode: state.app.singleMode,
 });
 
 const mapDispatchToProps = {
