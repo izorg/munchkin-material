@@ -16,10 +16,6 @@ const dev = process.env.NODE_ENV === 'development';
 const dist = process.env.BUILD === 'dist';
 const site = process.env.BUILD === 'site';
 
-const html = {
-  favicon: './images/favicon.png',
-};
-
 const manifest = {
   background_color: '#FFFFFF',
   display: 'standalone',
@@ -183,14 +179,12 @@ module.exports = {
 
     site &&
       new HtmlWebpackPlugin({
-        ...html,
         filename: 'index.html',
         template: './html/en.html',
       }),
 
     site &&
       new HtmlWebpackPlugin({
-        ...html,
         filename: 'ru/index.html',
         template: './html/ru.html',
       }),
