@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
 import { hot } from 'react-hot-loader';
-import Transition from 'react-transition-group/Transition';
 import compose from 'recompose/compose';
 import PropTypes from 'prop-types';
 import Zoom from '@material-ui/core/Zoom';
@@ -13,20 +12,19 @@ import { Provider } from './context';
 import CombatButton from './CombatButton';
 import Page from './Page';
 
-const styles = (theme) => ({
+const styles = {
   root: {
     display: 'flex',
     flexDirection: 'column',
-    zIndex: theme.zIndex.modal - 1,
   },
 
-  transition: {
+  content: {
     display: 'flex',
     flex: 1,
     flexDirection: 'column',
     outline: 'none',
   },
-});
+};
 
 class PlayerScreen extends PureComponent {
   constructor(props) {
@@ -62,46 +60,30 @@ class PlayerScreen extends PureComponent {
     const inProp = Boolean(match) && match.isExact;
 
     return (
-      <ModalScreen
-        className={classes.root}
-        disablePortal
-        hideBackdrop
-        open={Boolean(match)}
-      >
-        <Transition
-          appear={appear}
-          in={Boolean(match)}
-          mountOnEnter
-          timeout={{
-            enter: theme.transitions.duration.enteringScreen,
-            exit: theme.transitions.duration.leavingScreen,
-          }}
-          unmountOnExit
-        >
-          <div className={classes.transition}>
-            <Provider value={playerId}>
-              <FadeUp
-                appear={appear}
-                in={Boolean(match)}
-                mountOnEnter
-                unmountOnExit
-              >
-                <Page />
-              </FadeUp>
-              <Zoom
-                appear={fabAppear}
-                in={inProp}
-                style={{
-                  transitionDelay: inProp
-                    ? theme.transitions.duration.leavingScreen
-                    : 0,
-                }}
-              >
-                <CombatButton />
-              </Zoom>
-            </Provider>
-          </div>
-        </Transition>
+      <ModalScreen className={classes.root} disablePortal hideBackdrop open>
+        <div className={classes.content}>
+          <Provider value={playerId}>
+            <FadeUp
+              appear={appear}
+              in={Boolean(match)}
+              mountOnEnter
+              unmountOnExit
+            >
+              <Page />
+            </FadeUp>
+            <Zoom
+              appear={fabAppear}
+              in={inProp}
+              style={{
+                transitionDelay: inProp
+                  ? theme.transitions.duration.leavingScreen
+                  : 0,
+              }}
+            >
+              <CombatButton />
+            </Zoom>
+          </Provider>
+        </div>
       </ModalScreen>
     );
   }
