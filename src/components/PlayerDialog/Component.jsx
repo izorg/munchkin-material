@@ -7,11 +7,11 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import withMobileDialog from '@material-ui/core/withMobileDialog';
 import Hidden from '@material-ui/core/Hidden';
-import { withStyles } from '@material-ui/core/styles';
 import Fade from '@material-ui/core/Fade';
 import Slide from '@material-ui/core/Slide';
+import { withStyles } from '@material-ui/core/styles';
+import withMobileDialog from '@material-ui/core/withMobileDialog';
 import cns from 'classnames';
 import { noop } from 'lodash/fp';
 
@@ -55,41 +55,25 @@ const styles = (theme) => ({
       width: '100%',
     },
   },
-
-  icon: {
-    fontSize: theme.typography.pxToRem(24),
-  },
 });
 
-class DialogComponent extends PureComponent {
-  static getDerivedStateFromProps(nextProps, prevState) {
-    let state = null;
+let appear = false;
 
-    if (prevState.appear === undefined) {
-      state = {
-        ...state,
-        appear: !nextProps.open,
-      };
-    } else {
-      state = {
-        ...state,
-        appear: true,
+class PlayerDialog extends PureComponent {
+  static getDerivedStateFromProps(props) {
+    if (props.playerId) {
+      return {
+        edit: true,
       };
     }
 
-    if (nextProps.playerId) {
-      state = {
-        ...state,
-        edit: true,
-      };
-    } else if (nextProps.playerId === null) {
-      state = {
-        ...state,
+    if (props.playerId === null) {
+      return {
         edit: false,
       };
     }
 
-    return state;
+    return null;
   }
 
   static handleExternalSubmit() {
@@ -110,23 +94,10 @@ class DialogComponent extends PureComponent {
     super(props);
 
     this.state = {};
-
-    this.renderTransition = this.renderTransition.bind(this);
   }
 
-  renderTransition(props) {
-    const { fullScreen } = this.props;
-    const { appear } = this.state;
-
-    let Transition;
-
-    if (fullScreen) {
-      Transition = ios ? SlideUp : FadeUp;
-    } else {
-      Transition = Fade;
-    }
-
-    return <Transition {...props} appear={appear} />;
+  componentDidMount() {
+    appear = true;
   }
 
   render() {
@@ -143,6 +114,12 @@ class DialogComponent extends PureComponent {
       <FormattedMessage id="player.form.title" defaultMessage="New munchkin" />
     );
 
+    let Transition = Fade;
+
+    if (fullScreen) {
+      Transition = ios ? SlideUp : FadeUp;
+    }
+
     return (
       <Dialog
         className={cns(classes.root, className)}
@@ -154,12 +131,15 @@ class DialogComponent extends PureComponent {
         hideBackdrop={fullScreen}
         onClose={onClose}
         open={playerId !== undefined}
-        TransitionComponent={this.renderTransition}
+        TransitionComponent={Transition}
+        TransitionProps={{
+          appear,
+        }}
       >
         <DialogTitle className={classes.title}>
           <Hidden lgUp>
             <AppBar
-              onSubmit={DialogComponent.handleExternalSubmit}
+              onSubmit={PlayerDialog.handleExternalSubmit}
               title={title}
             />
           </Hidden>
@@ -176,10 +156,7 @@ class DialogComponent extends PureComponent {
                 defaultMessage="Cancel"
               />
             </Button>
-            <Button
-              color="primary"
-              onClick={DialogComponent.handleExternalSubmit}
-            >
+            <Button color="primary" onClick={PlayerDialog.handleExternalSubmit}>
               <FormattedMessage id="player.form.save" defaultMessage="Save" />
             </Button>
           </DialogActions>
@@ -189,13 +166,13 @@ class DialogComponent extends PureComponent {
   }
 }
 
-DialogComponent.propTypes = {
+PlayerDialog.propTypes = {
   fullScreen: PropTypes.bool.isRequired,
   onClose: PropTypes.func,
   playerId: PropTypes.string,
 };
 
-DialogComponent.defaultProps = {
+PlayerDialog.defaultProps = {
   onClose: noop,
   playerId: undefined,
 };
@@ -203,4 +180,4 @@ DialogComponent.defaultProps = {
 export default compose(
   withStyles(styles),
   withMobileDialog({ breakpoint: 'md' }),
-)(DialogComponent);
+)(PlayerDialog);
