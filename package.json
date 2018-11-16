@@ -86,7 +86,7 @@
     "react": "16.6.3",
     "react-beautiful-dnd": "10.0.1",
     "react-dom": "16.6.3",
-    "react-final-form": "4.0.0",
+    "react-final-form": "4.0.2",
     "react-hammerjs": "1.0.1",
     "react-helmet": "5.2.0",
     "react-hot-loader": "4.3.12",
