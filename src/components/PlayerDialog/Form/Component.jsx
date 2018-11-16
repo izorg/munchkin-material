@@ -31,11 +31,11 @@ const messages = defineMessages({
   },
 });
 
-const styles = (theme) => ({
+const styles = {
   icon: {
-    fontSize: theme.typography.pxToRem(24),
+    verticalAlign: 'middle',
   },
-});
+};
 
 class PlayerForm extends PureComponent {
   static renderColorPicker({ input, ...props }) {
