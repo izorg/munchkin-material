@@ -1,6 +1,8 @@
-import { connect } from 'react-redux';
 import { goBack } from 'connected-react-router';
+import { connect } from 'react-redux';
 import { createSelector, createStructuredSelector } from 'reselect';
+import compose from 'recompose/compose';
+import shouldUpdate from 'recompose/shouldUpdate';
 import { addPlayer, createPlayer, MALE, updatePlayer } from 'munchkin-core';
 import { get, map } from 'lodash/fp';
 
@@ -26,17 +28,21 @@ const mapStateToProps = createStructuredSelector({
 });
 
 const mapDispatchToProps = {
-  onSubmit: (values) => (dispatch) => {
-    const { id, name = '' } = values;
+  onSubmit: (values, form) => (dispatch) => {
+    const { dirty } = form.getState();
 
-    if (name.trim()) {
-      const player = createPlayer(values);
+    if (dirty) {
+      const { id, name = '' } = values;
 
-      if (id) {
-        dispatch(updatePlayer(player));
-      } else {
-        dispatch(addPlayer(player));
-        dispatch(addPlayerToList(player.id));
+      if (name.trim()) {
+        const player = createPlayer(values);
+
+        if (id) {
+          dispatch(updatePlayer(player));
+        } else {
+          dispatch(addPlayer(player));
+          dispatch(addPlayerToList(player.id));
+        }
       }
     }
 
@@ -44,12 +50,15 @@ const mapDispatchToProps = {
   },
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-  (stateProps, dispatchProps, { playerId, ...ownProps }) => ({
-    ...ownProps,
-    ...stateProps,
-    ...dispatchProps,
-  }),
+export default compose(
+  shouldUpdate((props, { playerId }) => playerId !== undefined),
+  connect(
+    mapStateToProps,
+    mapDispatchToProps,
+    (stateProps, dispatchProps, { playerId, ...ownProps }) => ({
+      ...ownProps,
+      ...stateProps,
+      ...dispatchProps,
+    }),
+  ),
 )(Component);
