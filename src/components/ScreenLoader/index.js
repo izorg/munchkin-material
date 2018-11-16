@@ -72,7 +72,7 @@ class ScreenLoader extends PureComponent {
     if ((!match || !match.isExact) && ready) {
       this.readyTimeout = setTimeout(
         () => this.setState({ ready: false }),
-        theme.transitions.duration.enteringScreen,
+        theme.transitions.duration.enteringScreen * 2,
       );
     }
   }

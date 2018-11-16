@@ -11,6 +11,7 @@ import withMobileDialog from '@material-ui/core/withMobileDialog';
 import Hidden from '@material-ui/core/Hidden';
 import { withStyles } from '@material-ui/core/styles';
 import Fade from '@material-ui/core/Fade';
+import Slide from '@material-ui/core/Slide';
 import cns from 'classnames';
 import { noop } from 'lodash/fp';
 
@@ -18,8 +19,11 @@ import FadeUp from '../FadeUp';
 
 import AppBar from './AppBar';
 import Form from './Form';
+import { ios } from '../../utils/platforms';
 
 const FORM_ID = 'player-form';
+
+const SlideUp = (props) => <Slide direction="up" {...props} />;
 
 const styles = (theme) => ({
   root: {
@@ -114,7 +118,13 @@ class DialogComponent extends PureComponent {
     const { fullScreen } = this.props;
     const { appear } = this.state;
 
-    const Transition = fullScreen ? FadeUp : Fade;
+    let Transition;
+
+    if (fullScreen) {
+      Transition = ios ? SlideUp : FadeUp;
+    } else {
+      Transition = Fade;
+    }
 
     return <Transition {...props} appear={appear} />;
   }

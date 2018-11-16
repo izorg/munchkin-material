@@ -2,11 +2,13 @@ import React, { PureComponent } from 'react';
 import { hot } from 'react-hot-loader';
 import compose from 'recompose/compose';
 import PropTypes from 'prop-types';
+import Slide from '@material-ui/core/Slide';
 import Zoom from '@material-ui/core/Zoom';
 import { withStyles } from '@material-ui/core/styles';
 
 import FadeUp from '../../components/FadeUp';
 import ModalScreen from '../../components/ModalScreen';
+import { ios } from '../../utils/platforms';
 
 import { Provider } from './context';
 import CombatButton from './CombatButton';
@@ -25,6 +27,10 @@ const styles = {
     outline: 'none',
   },
 };
+
+const Transition = ios
+  ? (props) => <Slide direction="left" {...props} />
+  : FadeUp;
 
 class PlayerScreen extends PureComponent {
   constructor(props) {
@@ -63,14 +69,14 @@ class PlayerScreen extends PureComponent {
       <ModalScreen className={classes.root} disablePortal hideBackdrop open>
         <div className={classes.content}>
           <Provider value={playerId}>
-            <FadeUp
+            <Transition
               appear={appear}
               in={Boolean(match)}
               mountOnEnter
               unmountOnExit
             >
               <Page />
-            </FadeUp>
+            </Transition>
             <Zoom
               appear={fabAppear}
               in={inProp}

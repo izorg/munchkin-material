@@ -11,6 +11,8 @@ import { getTransitionProps } from '@material-ui/core/transitions/utils';
 import Hammer from 'hammerjs';
 import { throttle } from 'lodash';
 
+import { ios } from '../../utils/platforms';
+
 import InsomniaItem from './InsomniaItem';
 import LevelLimitItem from './LevelLimitItem';
 import PrivacyItem from './PrivacyItem';
@@ -180,7 +182,7 @@ class HomeMenuDrawer extends PureComponent {
 
     this.start = current;
 
-    if (!open && current > swipeAreaWidth) {
+    if (!open && (current > swipeAreaWidth || ios)) {
       return;
     }
 
@@ -335,7 +337,7 @@ class HomeMenuDrawer extends PureComponent {
           : event.center.y;
     }
 
-    if (maybeSwiping || open || current > swipeAreaWidth) {
+    if (maybeSwiping || open || current > swipeAreaWidth || ios) {
       return;
     }
 
