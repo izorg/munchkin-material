@@ -73,8 +73,9 @@ class PlayerForm extends PureComponent {
         subscription={{ submitting: true }}
       >
         {({ handleSubmit }) => (
-          <form autoComplete="off" id={id} noValidate onSubmit={handleSubmit}>
+          <form id={id} onSubmit={handleSubmit}>
             <Field
+              autoComplete="off"
               autoFocus={!initialValues.id}
               component={PlayerForm.renderTextField}
               fullWidth
