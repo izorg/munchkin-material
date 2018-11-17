@@ -11,7 +11,7 @@ const styles = (theme) => ({
 
   enterActive: {
     opacity: 1,
-    transform: 'translateY(0);',
+    transform: 'translateY(0)',
     transition: theme.transitions.create(['opacity', 'transform'], {
       duration: theme.transitions.duration.enteringScreen,
     }),
@@ -34,7 +34,6 @@ const styles = (theme) => ({
 
 const FadeUp = ({ classes, theme, ...props }) => (
   <CSSTransition
-    {...props}
     classNames={{
       appear: classes.enter,
       appearActive: classes.enterActive,
@@ -47,6 +46,7 @@ const FadeUp = ({ classes, theme, ...props }) => (
       enter: theme.transitions.duration.enteringScreen,
       exit: theme.transitions.duration.leavingScreen,
     }}
+    {...props}
   />
 );
 
