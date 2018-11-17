@@ -93,17 +93,49 @@ class PlayerDialog extends PureComponent {
 
     this.nameRef = createRef();
 
+    this.handleClose = this.handleClose.bind(this);
     this.handleEntered = this.handleEntered.bind(this);
+    this.focusName = this.focusName.bind(this);
   }
 
   componentDidMount() {
     appear = true;
   }
 
+  componentWillUnmount() {
+    if (this.focusTimeout) {
+      clearTimeout(this.focusTimeout);
+
+      this.focusTimeout = null;
+    }
+  }
+
+  handleClose() {
+    const { onClose } = this.props;
+
+    if (this.focusTimeout) {
+      clearTimeout(this.focusTimeout);
+
+      this.focusTimeout = null;
+    }
+
+    onClose();
+  }
+
   handleEntered() {
     const { edit } = this.state;
 
+    if (!edit) {
+      this.focusTimeout = setTimeout(this.focusName, 100);
+    }
+  }
+
+  focusName() {
+    const { edit } = this.state;
+
     const node = this.nameRef.current;
+
+    this.focusTimeout = null;
 
     if (!edit && node) {
       node.focus();
@@ -111,7 +143,7 @@ class PlayerDialog extends PureComponent {
   }
 
   render() {
-    const { classes, fullScreen, onClose, playerId } = this.props;
+    const { classes, fullScreen, playerId } = this.props;
 
     const { edit } = this.state;
 
@@ -138,7 +170,7 @@ class PlayerDialog extends PureComponent {
         disableRestoreFocus
         fullScreen={fullScreen}
         hideBackdrop={fullScreen}
-        onClose={onClose}
+        onClose={this.handleClose}
         onEntered={this.handleEntered}
         open={playerId !== undefined}
         TransitionComponent={Transition}
@@ -160,7 +192,7 @@ class PlayerDialog extends PureComponent {
         </DialogContent>
         <Hidden mdDown>
           <DialogActions>
-            <Button color="primary" onClick={onClose}>
+            <Button color="primary" onClick={this.handleClose}>
               <FormattedMessage
                 id="player.form.cancel"
                 defaultMessage="Cancel"
