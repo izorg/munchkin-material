@@ -8,10 +8,10 @@ import {
 } from 'react-intl';
 import compose from 'recompose/compose';
 import PropTypes from 'prop-types';
-import Grid from '@material-ui/core/Grid';
 import FormControl from '@material-ui/core/FormControl';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormLabel from '@material-ui/core/FormLabel';
+import Grid from '@material-ui/core/Grid';
 import Radio from '@material-ui/core/Radio';
 import TextField from '@material-ui/core/TextField';
 import { withStyles } from '@material-ui/core/styles';
@@ -20,6 +20,7 @@ import { noop } from 'lodash/fp';
 
 import SexFemale from '../../icons/sex/Female';
 import SexMale from '../../icons/sex/Male';
+import { ios } from '../../../utils/platforms';
 import { sexProp } from '../../../utils/propTypes';
 
 import ColorPicker from '../ColorPicker';
@@ -80,6 +81,7 @@ const PlayerForm = ({
       <form id={id} onSubmit={handleSubmit}>
         <Field
           autoComplete="off"
+          autoFocus={!initialValues.id && ios && !window.cordova}
           component={renderTextField}
           fullWidth
           inputRef={nameRef}
