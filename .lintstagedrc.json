@@ -3,7 +3,7 @@
     "eslint --ext .js,.json,.jsx --fix",
     "git add"
   ],
-  "**/*.{md,yml}": [
+  "**/*.{html,md,yml}": [
     "prettier --write",
     "git add"
   ]
