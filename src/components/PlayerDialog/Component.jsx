@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { createRef, PureComponent } from 'react';
 import compose from 'recompose/compose';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
@@ -7,29 +7,25 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import Hidden from '@material-ui/core/Hidden';
 import Fade from '@material-ui/core/Fade';
+import Hidden from '@material-ui/core/Hidden';
 import Slide from '@material-ui/core/Slide';
 import { withStyles } from '@material-ui/core/styles';
 import withMobileDialog from '@material-ui/core/withMobileDialog';
-import cns from 'classnames';
 import { noop } from 'lodash/fp';
+
+import { ios } from '../../utils/platforms';
 
 import FadeUp from '../FadeUp';
 
 import AppBar from './AppBar';
 import Form from './Form';
-import { ios } from '../../utils/platforms';
 
 const FORM_ID = 'player-form';
 
 const SlideUp = (props) => <Slide direction="up" {...props} />;
 
 const styles = (theme) => ({
-  root: {
-    height: '100%',
-  },
-
   dialog: {
     minWidth: 320,
   },
@@ -94,14 +90,28 @@ class PlayerDialog extends PureComponent {
     super(props);
 
     this.state = {};
+
+    this.nameRef = createRef();
+
+    this.handleEntered = this.handleEntered.bind(this);
   }
 
   componentDidMount() {
     appear = true;
   }
 
+  handleEntered() {
+    const { edit } = this.state;
+
+    const node = this.nameRef.current;
+
+    if (!edit && node) {
+      node.focus();
+    }
+  }
+
   render() {
-    const { classes, className, fullScreen, onClose, playerId } = this.props;
+    const { classes, fullScreen, onClose, playerId } = this.props;
 
     const { edit } = this.state;
 
@@ -122,7 +132,6 @@ class PlayerDialog extends PureComponent {
 
     return (
       <Dialog
-        className={cns(classes.root, className)}
         classes={{
           paper: classes.dialog,
         }}
@@ -130,6 +139,7 @@ class PlayerDialog extends PureComponent {
         fullScreen={fullScreen}
         hideBackdrop={fullScreen}
         onClose={onClose}
+        onEntered={this.handleEntered}
         open={playerId !== undefined}
         TransitionComponent={Transition}
         TransitionProps={{
@@ -146,7 +156,7 @@ class PlayerDialog extends PureComponent {
           <Hidden mdDown>{title}</Hidden>
         </DialogTitle>
         <DialogContent className={classes.content}>
-          <Form id={FORM_ID} playerId={playerId} />
+          <Form id={FORM_ID} nameRef={this.nameRef} playerId={playerId} />
         </DialogContent>
         <Hidden mdDown>
           <DialogActions>

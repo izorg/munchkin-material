@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import { Field, Form } from 'react-final-form';
 import {
   defineMessages,
@@ -37,108 +37,96 @@ const styles = {
   },
 };
 
-class PlayerForm extends PureComponent {
-  static renderColorPicker({ input, ...props }) {
-    return <ColorPicker {...input} {...props} />;
-  }
+const renderColorPicker = ({ input, ...props }) => (
+  <ColorPicker {...input} {...props} />
+);
 
-  static renderRadio(props) {
-    const {
-      input: { checked, name, onChange, value, ...restInput },
-    } = props;
+const renderRadio = (props) => {
+  const {
+    // eslint-disable-next-line react/prop-types
+    input: { checked, name, onChange, value, ...inputProps },
+  } = props;
 
-    return (
-      <Radio
-        checked={checked}
-        color="primary"
-        inputProps={restInput}
-        name={name}
-        onChange={onChange}
-        value={value}
-      />
-    );
-  }
+  return (
+    <Radio
+      checked={checked}
+      color="primary"
+      inputProps={inputProps}
+      name={name}
+      onChange={onChange}
+      value={value}
+    />
+  );
+};
 
-  static renderTextField({ input, meta, ...props }) {
-    return <TextField {...input} {...props} />;
-  }
+const renderTextField = ({ input, meta, ...props }) => (
+  <TextField {...input} {...props} />
+);
 
-  render() {
-    const { classes, id, initialValues, intl, onSubmit } = this.props;
+const PlayerForm = ({
+  classes,
+  id,
+  initialValues,
+  intl,
+  nameRef,
+  onSubmit,
+}) => (
+  <Form
+    initialValues={initialValues}
+    onSubmit={onSubmit}
+    subscription={{ submitting: true }}
+  >
+    {({ handleSubmit }) => (
+      <form id={id} onSubmit={handleSubmit}>
+        <Field
+          autoComplete="off"
+          component={renderTextField}
+          fullWidth
+          inputRef={nameRef}
+          margin="normal"
+          name="name"
+          placeholder={intl.formatMessage(messages.label)}
+        />
 
-    return (
-      <Form
-        initialValues={initialValues}
-        onSubmit={onSubmit}
-        subscription={{ submitting: true }}
-      >
-        {({ handleSubmit }) => (
-          <form id={id} onSubmit={handleSubmit}>
-            <Field
-              autoComplete="off"
-              autoFocus={!initialValues.id}
-              component={PlayerForm.renderTextField}
-              fullWidth
-              margin="normal"
-              name="name"
-              placeholder={intl.formatMessage(messages.label)}
-            />
+        <Grid container>
+          <Grid item xs={6}>
+            <FormControl component="fieldset" margin="normal">
+              <FormLabel component="legend">
+                <FormattedMessage id="player.form.sex" defaultMessage="Sex" />
+              </FormLabel>
+              <FormControlLabel
+                control={
+                  <Field component={renderRadio} name="sex" type="radio" />
+                }
+                label={<SexMale className={classes.icon} />}
+                value={MALE}
+              />
+              <FormControlLabel
+                control={
+                  <Field component={renderRadio} name="sex" type="radio" />
+                }
+                label={<SexFemale className={classes.icon} />}
+                value={FEMALE}
+              />
+            </FormControl>
+          </Grid>
 
-            <Grid container>
-              <Grid item xs={6}>
-                <FormControl component="fieldset" margin="normal">
-                  <FormLabel component="legend">
-                    <FormattedMessage
-                      id="player.form.sex"
-                      defaultMessage="Sex"
-                    />
-                  </FormLabel>
-                  <FormControlLabel
-                    control={
-                      <Field
-                        component={PlayerForm.renderRadio}
-                        name="sex"
-                        type="radio"
-                      />
-                    }
-                    label={<SexMale className={classes.icon} />}
-                    value={MALE}
-                  />
-                  <FormControlLabel
-                    control={
-                      <Field
-                        component={PlayerForm.renderRadio}
-                        name="sex"
-                        type="radio"
-                      />
-                    }
-                    label={<SexFemale className={classes.icon} />}
-                    value={FEMALE}
-                  />
-                </FormControl>
-              </Grid>
-
-              <Grid item xs={6}>
-                <FormControl margin="normal">
-                  <FormLabel>
-                    <FormattedMessage
-                      id="player.form.color"
-                      defaultMessage="Color"
-                    />
-                  </FormLabel>
-                  <Field
-                    component={PlayerForm.renderColorPicker}
-                    name="color"
-                  />
-                </FormControl>
-              </Grid>
-            </Grid>
-          </form>
-        )}
-      </Form>
-    );
-  }
-}
+          <Grid item xs={6}>
+            <FormControl margin="normal">
+              <FormLabel>
+                <FormattedMessage
+                  id="player.form.color"
+                  defaultMessage="Color"
+                />
+              </FormLabel>
+              <Field component={renderColorPicker} name="color" />
+            </FormControl>
+          </Grid>
+        </Grid>
+      </form>
+    )}
+  </Form>
+);
 
 PlayerForm.propTypes = {
   id: PropTypes.string.isRequired,
@@ -149,6 +137,9 @@ PlayerForm.propTypes = {
     sex: sexProp.isRequired,
   }).isRequired,
   intl: intlShape.isRequired,
+  nameRef: PropTypes.shape({
+    current: PropTypes.node,
+  }).isRequired,
   onSubmit: PropTypes.func,
 };
 
