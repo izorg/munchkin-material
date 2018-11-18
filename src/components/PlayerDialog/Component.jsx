@@ -126,7 +126,7 @@ class PlayerDialog extends PureComponent {
     const { edit } = this.state;
 
     if (!edit) {
-      this.focusTimeout = setTimeout(this.focusName, 10);
+      this.focusTimeout = setTimeout(this.focusName, 100);
     }
   }
 
