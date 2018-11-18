@@ -23,7 +23,7 @@ export const NO_LIMIT = 'no-limit';
 
 const styles = {
   content: {
-    paddingBottom: 0,
+    paddingBottom: 1,
   },
 };
 

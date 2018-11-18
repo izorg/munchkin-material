@@ -31,7 +31,7 @@ const optionsSelector = createSelector(
 
 const styles = {
   content: {
-    paddingBottom: 0,
+    paddingBottom: 1,
   },
 };
 

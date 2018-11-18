@@ -33,6 +33,10 @@ const messages = defineMessages({
 });
 
 const styles = {
+  label: {
+    marginTop: 0,
+  },
+
   icon: {
     verticalAlign: 'middle',
   },
@@ -97,6 +101,9 @@ const PlayerForm = ({
                 <FormattedMessage id="player.form.sex" defaultMessage="Sex" />
               </FormLabel>
               <FormControlLabel
+                classes={{
+                  label: classes.label,
+                }}
                 control={
                   <Field component={renderRadio} name="sex" type="radio" />
                 }
@@ -104,6 +111,9 @@ const PlayerForm = ({
                 value={MALE}
               />
               <FormControlLabel
+                classes={{
+                  label: classes.label,
+                }}
                 control={
                   <Field component={renderRadio} name="sex" type="radio" />
                 }
@@ -139,9 +149,7 @@ PlayerForm.propTypes = {
     sex: sexProp.isRequired,
   }).isRequired,
   intl: intlShape.isRequired,
-  nameRef: PropTypes.shape({
-    current: PropTypes.node,
-  }).isRequired,
+  nameRef: PropTypes.object.isRequired,
   onSubmit: PropTypes.func,
 };
 
