@@ -1,5 +1,5 @@
-import React from 'react';
-import { Field, Form } from 'react-final-form';
+import React, { createRef, Fragment, PureComponent } from 'react';
+import { Field } from 'react-final-form';
 import {
   defineMessages,
   FormattedMessage,
@@ -16,12 +16,9 @@ import Radio from '@material-ui/core/Radio';
 import TextField from '@material-ui/core/TextField';
 import { withStyles } from '@material-ui/core/styles';
 import { FEMALE, MALE } from 'munchkin-core';
-import { noop } from 'lodash/fp';
 
 import SexFemale from '../../icons/sex/Female';
 import SexMale from '../../icons/sex/Male';
-import { ios } from '../../../utils/platforms';
-import { sexProp } from '../../../utils/propTypes';
 
 import ColorPicker from '../ColorPicker';
 
@@ -68,27 +65,24 @@ const renderTextField = ({ input, meta, ...props }) => (
   <TextField {...input} {...props} />
 );
 
-const PlayerForm = ({
-  classes,
-  id,
-  initialValues,
-  intl,
-  nameRef,
-  onSubmit,
-}) => (
-  <Form
-    initialValues={initialValues}
-    onSubmit={onSubmit}
-    subscription={{ submitting: true }}
-  >
-    {({ handleSubmit }) => (
-      <form id={id} onSubmit={handleSubmit}>
+class PlayerForm extends PureComponent {
+  constructor(props) {
+    super(props);
+
+    this.nameRef = createRef();
+  }
+
+  render() {
+    const { autoFocus, classes, intl } = this.props;
+
+    return (
+      <Fragment>
         <Field
           autoComplete="off"
-          autoFocus={!initialValues.id && ios && !window.cordova}
+          autoFocus={autoFocus}
           component={renderTextField}
           fullWidth
-          inputRef={nameRef}
+          inputRef={this.nameRef}
           margin="normal"
           name="name"
           placeholder={intl.formatMessage(messages.label)}
@@ -135,26 +129,18 @@ const PlayerForm = ({
             </FormControl>
           </Grid>
         </Grid>
-      </form>
-    )}
-  </Form>
-);
+      </Fragment>
+    );
+  }
+}
 
 PlayerForm.propTypes = {
-  id: PropTypes.string.isRequired,
-  initialValues: PropTypes.shape({
-    color: PropTypes.string.isRequired,
-    id: PropTypes.string,
-    name: PropTypes.string,
-    sex: sexProp.isRequired,
-  }).isRequired,
+  autoFocus: PropTypes.bool,
   intl: intlShape.isRequired,
-  nameRef: PropTypes.object.isRequired,
-  onSubmit: PropTypes.func,
 };
 
 PlayerForm.defaultProps = {
-  onSubmit: noop,
+  autoFocus: false,
 };
 
 export default compose(

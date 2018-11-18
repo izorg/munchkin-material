@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import IconButton from '@material-ui/core/IconButton';
 import { withStyles } from '@material-ui/core/styles';
@@ -19,33 +19,25 @@ const styles = {
   },
 };
 
-class PlayerFormScreenAppBarComponent extends PureComponent {
-  render() {
-    const { classes, onCancel, onSubmit, title } = this.props;
+const PlayerFormScreenAppBarComponent = ({ classes, onCancel, title }) => (
+  <AppBar>
+    <BackButton className={classes.leftButton} onClick={onCancel} />
 
-    return (
-      <AppBar>
-        <BackButton className={classes.leftButton} onClick={onCancel} />
+    <Title className={classes.title}>{title}</Title>
 
-        <Title className={classes.title}>{title}</Title>
-
-        <IconButton color="inherit" onClick={onSubmit}>
-          <NavigationCheck />
-        </IconButton>
-      </AppBar>
-    );
-  }
-}
+    <IconButton color="inherit" type="submit">
+      <NavigationCheck />
+    </IconButton>
+  </AppBar>
+);
 
 PlayerFormScreenAppBarComponent.propTypes = {
   onCancel: PropTypes.func,
-  onSubmit: PropTypes.func,
   title: PropTypes.node,
 };
 
 PlayerFormScreenAppBarComponent.defaultProps = {
   onCancel: noop,
-  onSubmit: noop,
   title: null,
 };
 

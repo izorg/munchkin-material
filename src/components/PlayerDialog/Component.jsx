@@ -1,6 +1,8 @@
 import React, { createRef, PureComponent } from 'react';
-import compose from 'recompose/compose';
 import { FormattedMessage } from 'react-intl';
+import { Form as FinalForm } from 'react-final-form';
+import compose from 'recompose/compose';
+import shouldUpdate from 'recompose/shouldUpdate';
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
@@ -12,16 +14,15 @@ import Hidden from '@material-ui/core/Hidden';
 import Slide from '@material-ui/core/Slide';
 import { withStyles } from '@material-ui/core/styles';
 import withMobileDialog from '@material-ui/core/withMobileDialog';
-import { noop } from 'lodash/fp';
+import { noop, stubFalse } from 'lodash/fp';
 
 import { ios } from '../../utils/platforms';
+import { sexProp } from '../../utils/propTypes';
 
 import FadeUp from '../FadeUp';
 
 import AppBar from './AppBar';
-import Form from './Form';
-
-const FORM_ID = 'player-form';
+import Content from './Content';
 
 const SlideUp = (props) => <Slide direction="up" {...props} />;
 
@@ -55,43 +56,23 @@ const styles = (theme) => ({
 
 let appear = false;
 
+const FormComponent = shouldUpdate(stubFalse)(
+  ({ initialValues, onSubmit, ...rest }) => (
+    <FinalForm
+      initialValues={initialValues}
+      onSubmit={onSubmit}
+      subscription={{ submitting: true }}
+    >
+      {({ handleSubmit }) => <form onSubmit={handleSubmit} {...rest} />}
+    </FinalForm>
+  ),
+);
+
 class PlayerDialog extends PureComponent {
-  static getDerivedStateFromProps(props) {
-    if (props.playerId) {
-      return {
-        edit: true,
-      };
-    }
-
-    if (props.playerId === null) {
-      return {
-        edit: false,
-      };
-    }
-
-    return null;
-  }
-
-  static handleExternalSubmit() {
-    let event;
-
-    if (typeof Event === 'function') {
-      event = new Event('submit');
-    } else {
-      event = document.createEvent('Event');
-
-      event.initEvent('submit', true, true);
-    }
-
-    document.getElementById(FORM_ID).dispatchEvent(event);
-  }
-
   constructor(props) {
     super(props);
 
-    this.state = {};
-
-    this.nameRef = createRef();
+    this.contentRef = createRef();
 
     this.handleClose = this.handleClose.bind(this);
     this.handleEntered = this.handleEntered.bind(this);
@@ -123,7 +104,7 @@ class PlayerDialog extends PureComponent {
   }
 
   handleEntered() {
-    const { edit } = this.state;
+    const { edit } = this.props;
 
     if (!edit) {
       this.focusTimeout = setTimeout(this.focusName, 100);
@@ -131,9 +112,9 @@ class PlayerDialog extends PureComponent {
   }
 
   focusName() {
-    const { edit } = this.state;
+    const { edit } = this.props;
 
-    const node = this.nameRef.current;
+    const node = this.contentRef.current.nameRef.current;
 
     this.focusTimeout = null;
 
@@ -143,9 +124,14 @@ class PlayerDialog extends PureComponent {
   }
 
   render() {
-    const { classes, fullScreen, playerId } = this.props;
-
-    const { edit } = this.state;
+    const {
+      classes,
+      edit,
+      fullScreen,
+      initialValues,
+      onSubmit,
+      open,
+    } = this.props;
 
     const title = edit ? (
       <FormattedMessage
@@ -172,7 +158,12 @@ class PlayerDialog extends PureComponent {
         hideBackdrop={fullScreen}
         onClose={this.handleClose}
         onEntered={this.handleEntered}
-        open={playerId !== undefined}
+        open={open}
+        PaperProps={{
+          component: FormComponent,
+          initialValues,
+          onSubmit,
+        }}
         TransitionComponent={Transition}
         TransitionProps={{
           appear,
@@ -180,15 +171,15 @@ class PlayerDialog extends PureComponent {
       >
         <DialogTitle className={classes.title}>
           <Hidden lgUp>
-            <AppBar
-              onSubmit={PlayerDialog.handleExternalSubmit}
-              title={title}
-            />
+            <AppBar onCancel={this.handleClose} title={title} />
           </Hidden>
           <Hidden mdDown>{title}</Hidden>
         </DialogTitle>
         <DialogContent className={classes.content}>
-          <Form id={FORM_ID} nameRef={this.nameRef} playerId={playerId} />
+          <Content
+            autoFocus={!edit && ios && !window.cordova}
+            innerRef={this.contentRef}
+          />
         </DialogContent>
         <Hidden mdDown>
           <DialogActions>
@@ -198,7 +189,7 @@ class PlayerDialog extends PureComponent {
                 defaultMessage="Cancel"
               />
             </Button>
-            <Button color="primary" onClick={PlayerDialog.handleExternalSubmit}>
+            <Button color="primary" type="submit">
               <FormattedMessage id="player.form.save" defaultMessage="Save" />
             </Button>
           </DialogActions>
@@ -209,17 +200,27 @@ class PlayerDialog extends PureComponent {
 }
 
 PlayerDialog.propTypes = {
+  edit: PropTypes.bool,
   fullScreen: PropTypes.bool.isRequired,
+  initialValues: PropTypes.shape({
+    color: PropTypes.string.isRequired,
+    id: PropTypes.string,
+    name: PropTypes.string,
+    sex: sexProp.isRequired,
+  }).isRequired,
   onClose: PropTypes.func,
-  playerId: PropTypes.string,
+  open: PropTypes.bool,
+  onSubmit: PropTypes.func.isRequired,
 };
 
 PlayerDialog.defaultProps = {
+  edit: false,
   onClose: noop,
+  open: false,
   playerId: undefined,
 };
 
 export default compose(
-  withStyles(styles),
   withMobileDialog({ breakpoint: 'md' }),
+  withStyles(styles),
 )(PlayerDialog);
