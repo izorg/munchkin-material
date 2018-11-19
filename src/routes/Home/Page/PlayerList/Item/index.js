@@ -1,5 +1,5 @@
-import { connect } from 'react-redux';
 import { goBack, push } from 'connected-react-router';
+import { connect } from 'react-redux';
 import compose from 'recompose/compose';
 import mapProps from 'recompose/mapProps';
 import { omit } from 'lodash/fp';

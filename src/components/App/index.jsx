@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react';
+import { ConnectedRouter } from 'connected-react-router';
 import { hot } from 'react-hot-loader';
 import { Provider } from 'react-redux';
 import compose from 'recompose/compose';
-import { ConnectedRouter } from 'connected-react-router';
 import PropTypes from 'prop-types';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { withStyles } from '@material-ui/core/styles';

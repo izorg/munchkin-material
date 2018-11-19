@@ -1,5 +1,5 @@
-import { connect } from 'react-redux';
 import { goBack, push, replace } from 'connected-react-router';
+import { connect } from 'react-redux';
 import { createSelector, createStructuredSelector } from 'reselect';
 import { addMonster, createMonster } from 'munchkin-core';
 import { flow, get, isNull } from 'lodash/fp';

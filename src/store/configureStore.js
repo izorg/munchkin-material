@@ -1,8 +1,8 @@
 /* global __VERSION__ */
+import { connectRouter, routerMiddleware } from 'connected-react-router';
 import { applyMiddleware, combineReducers, createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { setVersion, version } from 'munchkin-core';
-import { connectRouter, routerMiddleware } from 'connected-react-router';
 import thunk from 'redux-thunk';
 import { pick, throttle } from 'lodash/fp';
 

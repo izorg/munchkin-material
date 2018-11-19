@@ -1,5 +1,5 @@
-import { connect } from 'react-redux';
 import { push } from 'connected-react-router';
+import { connect } from 'react-redux';
 import compose from 'recompose/compose';
 import getContext from 'recompose/getContext';
 import PropTypes from 'prop-types';

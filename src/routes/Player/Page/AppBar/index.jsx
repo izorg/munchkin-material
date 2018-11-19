@@ -1,6 +1,6 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { goBack } from 'connected-react-router';
+import { connect } from 'react-redux';
 
 import { Consumer } from '../../context';
 import Component from './Component';

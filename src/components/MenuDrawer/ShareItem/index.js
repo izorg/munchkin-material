@@ -1,9 +1,9 @@
+import { goBack } from 'connected-react-router';
 import { connect } from 'react-redux';
 import branch from 'recompose/branch';
 import compose from 'recompose/compose';
 import fromRenderProps from 'recompose/fromRenderProps';
 import renderNothing from 'recompose/renderNothing';
-import { goBack } from 'connected-react-router';
 import { pick } from 'lodash/fp';
 
 import { OptionsConsumer } from '../../OptionsContext';
