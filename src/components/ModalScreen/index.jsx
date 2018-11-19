@@ -1,6 +1,6 @@
 import React from 'react';
 import Modal from '@material-ui/core/Modal';
-import { withStyles } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
 import cns from 'classnames';
 
 const styles = (theme) => ({
