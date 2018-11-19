@@ -19,14 +19,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
   onMultiSelectDeactivate: goBack,
-  onPlayersDelete: (selectedPlayerIds) => (dispatch) => {
-    selectedPlayerIds.forEach((id) => {
-      dispatch(removePlayerFromList(id));
-      dispatch(removePlayer(id));
-    });
-    dispatch(goBack());
-  },
-  onResetPlayer: () => (dispatch, getState) => {
+  onPlayerReset: () => (dispatch, getState) => {
     const {
       combat: { playerId: id },
     } = getState();
@@ -39,6 +32,26 @@ const mapDispatchToProps = {
       }),
     );
     dispatch(setCombatPlayerBonus(0));
+  },
+  onPlayersDelete: (selectedPlayerIds) => (dispatch) => {
+    selectedPlayerIds.forEach((id) => {
+      dispatch(removePlayerFromList(id));
+      dispatch(removePlayer(id));
+    });
+    dispatch(goBack());
+  },
+  onPlayersReset: () => (dispatch, getState) => {
+    const { playerList } = getState();
+
+    playerList.map((id) =>
+      dispatch(
+        updatePlayer({
+          gear: 0,
+          id,
+          level: 1,
+        }),
+      ),
+    );
   },
   onToggleEditClick: (mode) =>
     mode === modes.EDIT ? goBack() : push(`/${modes.EDIT}`),

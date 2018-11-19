@@ -65,6 +65,7 @@ class HomePlayerList extends PureComponent {
       theme,
       ...rest
     } = this.props;
+
     const { dragging } = this.state;
 
     if (mode === EDIT) {

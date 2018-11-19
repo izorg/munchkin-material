@@ -50,8 +50,9 @@ const HomeAppBar = ({
   intl,
   mode,
   onMultiSelectDeactivate,
+  onPlayerReset,
   onPlayersDelete,
-  onResetPlayer,
+  onPlayersReset,
   onToggleEditClick,
   onTurnFinish,
   selectedPlayerIds,
@@ -97,8 +98,11 @@ const HomeAppBar = ({
         {title}
       </Title>
 
-      {singleMode && (
-        <IconButton color="inherit" onClick={onResetPlayer}>
+      {(singleMode || (!mode && !empty)) && (
+        <IconButton
+          color="inherit"
+          onClick={singleMode ? onPlayerReset : onPlayersReset}
+        >
           <SettingsBackupRestoreIcon />
         </IconButton>
       )}
@@ -140,8 +144,9 @@ HomeAppBar.propTypes = {
   intl: intlShape.isRequired,
   mode: modeShape,
   onMultiSelectDeactivate: PropTypes.func,
+  onPlayerReset: PropTypes.func,
   onPlayersDelete: PropTypes.func,
-  onResetPlayer: PropTypes.func,
+  onPlayersReset: PropTypes.func,
   onToggleEditClick: PropTypes.func,
   onTurnFinish: PropTypes.func,
   selectedPlayerIds: PropTypes.arrayOf(PropTypes.string),
@@ -152,8 +157,9 @@ HomeAppBar.defaultProps = {
   empty: false,
   mode: null,
   onMultiSelectDeactivate: noop,
+  onPlayerReset: noop,
   onPlayersDelete: noop,
-  onResetPlayer: noop,
+  onPlayersReset: noop,
   onToggleEditClick: noop,
   onTurnFinish: noop,
   selectedPlayerIds: [],
