@@ -40,12 +40,6 @@ class PlayerScreen extends PureComponent {
     };
   }
 
-  getChildContext() {
-    const { playerId } = this.state;
-
-    return { playerId };
-  }
-
   static getDerivedStateFromProps(nextProps, prevState) {
     const { match } = nextProps;
 
@@ -84,17 +78,13 @@ class PlayerScreen extends PureComponent {
                 : 0,
             }}
           >
-            <CombatButton />
+            <CombatButton playerId={playerId} />
           </Zoom>
         </div>
       </ModalScreen>
     );
   }
 }
-
-PlayerScreen.childContextTypes = {
-  playerId: PropTypes.string,
-};
 
 PlayerScreen.propTypes = {
   appear: PropTypes.bool.isRequired,

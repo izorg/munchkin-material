@@ -1,8 +1,6 @@
 import { push } from 'connected-react-router';
 import { connect } from 'react-redux';
 import compose from 'recompose/compose';
-import getContext from 'recompose/getContext';
-import PropTypes from 'prop-types';
 import { addMonster, createMonster, startCombat } from 'munchkin-core';
 
 import Component from './Component';
@@ -28,12 +26,7 @@ const mapDispatchToProps = {
   goToCombat,
 };
 
-const contextTypes = {
-  playerId: PropTypes.string,
-};
-
 export default compose(
-  getContext(contextTypes),
   connect(
     undefined,
     mapDispatchToProps,
