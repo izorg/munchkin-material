@@ -2,6 +2,7 @@ import { goBack, push } from 'connected-react-router';
 import { connect } from 'react-redux';
 import {
   removePlayer,
+  setCombatHelperBonus,
   setCombatPlayerBonus,
   updatePlayer,
 } from 'munchkin-core';
@@ -52,6 +53,9 @@ const mapDispatchToProps = {
         }),
       ),
     );
+
+    dispatch(setCombatPlayerBonus(0));
+    dispatch(setCombatHelperBonus(0));
   },
   onToggleEditClick: (mode) =>
     mode === modes.EDIT ? goBack() : push(`/${modes.EDIT}`),
