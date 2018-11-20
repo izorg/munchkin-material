@@ -95,9 +95,9 @@ const getScreenshots = async ({ locale, size = 'mobile' }) => {
 
   // Single mode
   await page.click('[data-screenshots="combat-back-button"]');
-  await page.waitFor(duration.leavingScreen);
+  await page.waitFor(duration.enteringScreen * 2);
   await page.click('[data-screenshots="player-back-button"]');
-  await page.waitFor(duration.leavingScreen);
+  await page.waitFor(duration.enteringScreen * 2);
   count += 1;
   await page.click('[data-screenshots="menu"]');
   await page.waitFor(duration.enteringScreen);
