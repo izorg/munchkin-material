@@ -32,6 +32,11 @@ const messages = defineMessages({
     id: 'player.list.edit',
     defaultMessage: 'Edit',
   },
+
+  reset: {
+    id: 'player.list.reset',
+    defaultMessage: 'Reset',
+  },
 });
 
 const styles = {
@@ -99,12 +104,14 @@ const HomeAppBar = ({
       </Title>
 
       {(singleMode || (!mode && !empty)) && (
-        <IconButton
-          color="inherit"
-          onClick={singleMode ? onPlayerReset : onPlayersReset}
-        >
-          <SettingsBackupRestoreIcon />
-        </IconButton>
+        <Tooltip title={intl.formatMessage(messages.reset)}>
+          <IconButton
+            color="inherit"
+            onClick={singleMode ? onPlayerReset : onPlayersReset}
+          >
+            <SettingsBackupRestoreIcon />
+          </IconButton>
+        </Tooltip>
       )}
 
       {(!mode || singleMode) && <DiceButton color={buttonColor} />}
