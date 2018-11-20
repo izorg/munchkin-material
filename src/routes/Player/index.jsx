@@ -10,7 +10,6 @@ import FadeUp from '../../components/FadeUp';
 import ModalScreen from '../../components/ModalScreen';
 import { ios } from '../../utils/platforms';
 
-import { Provider } from './context';
 import CombatButton from './CombatButton';
 import Page from './Page';
 
@@ -68,27 +67,25 @@ class PlayerScreen extends PureComponent {
     return (
       <ModalScreen className={classes.root} disablePortal hideBackdrop open>
         <div className={classes.content}>
-          <Provider value={playerId}>
-            <Transition
-              appear={appear}
-              in={Boolean(match)}
-              mountOnEnter
-              unmountOnExit
-            >
-              <Page />
-            </Transition>
-            <Zoom
-              appear={fabAppear}
-              in={inProp}
-              style={{
-                transitionDelay: inProp
-                  ? theme.transitions.duration.leavingScreen
-                  : 0,
-              }}
-            >
-              <CombatButton />
-            </Zoom>
-          </Provider>
+          <Transition
+            appear={appear}
+            in={Boolean(match)}
+            mountOnEnter
+            unmountOnExit
+          >
+            <Page playerId={playerId} />
+          </Transition>
+          <Zoom
+            appear={fabAppear}
+            in={inProp}
+            style={{
+              transitionDelay: inProp
+                ? theme.transitions.duration.leavingScreen
+                : 0,
+            }}
+          >
+            <CombatButton />
+          </Zoom>
         </div>
       </ModalScreen>
     );

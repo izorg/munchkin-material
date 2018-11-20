@@ -1,8 +1,6 @@
-import React from 'react';
 import { goBack } from 'connected-react-router';
 import { connect } from 'react-redux';
 
-import { Consumer } from '../../context';
 import Component from './Component';
 
 const mapStateToProps = (state, ownProps) => ({
@@ -13,13 +11,7 @@ const mapDispatchToProps = {
   onBack: goBack,
 };
 
-const ConnectedComponent = connect(
+export default connect(
   mapStateToProps,
   mapDispatchToProps,
 )(Component);
-
-export default (props) => (
-  <Consumer>
-    {(playerId) => <ConnectedComponent playerId={playerId} {...props} />}
-  </Consumer>
-);

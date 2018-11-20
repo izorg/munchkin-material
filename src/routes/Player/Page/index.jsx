@@ -21,13 +21,13 @@ const styles = (theme) => ({
 
 class PlayerPage extends PureComponent {
   render() {
-    const { classes, className, ...rest } = this.props;
+    const { classes, className, playerId, ...rest } = this.props;
 
     return (
       <div className={cns(classes.root, className)} {...rest}>
-        <AppBar />
+        <AppBar playerId={playerId} />
         <div className={classes.sliderContent}>
-          <Slider />
+          <Slider playerId={playerId} />
         </div>
       </div>
     );
