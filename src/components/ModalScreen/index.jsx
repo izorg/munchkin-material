@@ -3,18 +3,19 @@ import Modal from '@material-ui/core/Modal';
 import { withStyles } from '@material-ui/core/styles';
 import cns from 'classnames';
 
-const styles = (theme) => ({
+const styles = {
   root: {
-    height: '100%',
-    zIndex: theme.zIndex.modal - 1,
+    display: 'flex',
+    flexDirection: 'column',
   },
-});
+};
 
 const ModalScreen = ({ classes, className, ...rest }) => (
   <Modal
     className={cns(classes.root, className)}
     disablePortal
     hideBackdrop
+    open
     {...rest}
   />
 );

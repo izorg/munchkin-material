@@ -17,26 +17,20 @@ const Transition = ios
   ? (props) => <Slide direction="left" {...props} />
   : FadeUp;
 
-const styles = (theme) => ({
-  root: {
-    display: 'flex',
-    flexDirection: 'column',
-    zIndex: theme.zIndex.modal - 1,
-  },
-
+const styles = {
   content: {
     display: 'flex',
     flex: 1,
     flexDirection: 'column',
     outline: 'none',
   },
-});
+};
 
 const CombatScreen = ({ appear, classes, fabAppear, match, theme }) => {
   const inProp = Boolean(match);
 
   return (
-    <ModalScreen className={classes.root} open>
+    <ModalScreen>
       <div className={classes.content}>
         <Transition appear={fabAppear} in={inProp} mountOnEnter unmountOnExit>
           <Page />

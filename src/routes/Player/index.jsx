@@ -14,11 +14,6 @@ import CombatButton from './CombatButton';
 import Page from './Page';
 
 const styles = {
-  root: {
-    display: 'flex',
-    flexDirection: 'column',
-  },
-
   content: {
     display: 'flex',
     flex: 1,
@@ -59,7 +54,7 @@ class PlayerScreen extends PureComponent {
     const inProp = Boolean(match) && match.isExact;
 
     return (
-      <ModalScreen className={classes.root} disablePortal hideBackdrop open>
+      <ModalScreen>
         <div className={classes.content}>
           <Transition
             appear={appear}
