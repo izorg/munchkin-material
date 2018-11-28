@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from '@material-ui/core/Button';
+import Fab from '@material-ui/core/Fab';
 import { withStyles } from '@material-ui/core/styles';
 import cns from 'classnames';
 
@@ -22,12 +22,7 @@ const styles = (theme) => ({
 });
 
 const FabButton = ({ classes, className, ...rest }) => (
-  <Button
-    className={cns(className, classes.root)}
-    color="primary"
-    variant="fab"
-    {...rest}
-  />
+  <Fab className={cns(className, classes.root)} color="primary" {...rest} />
 );
 
 export default withStyles(styles)(FabButton);
