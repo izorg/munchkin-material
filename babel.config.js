@@ -4,9 +4,9 @@ module.exports = {
     '@babel/plugin-proposal-object-rest-spread',
     '@babel/plugin-syntax-dynamic-import',
     '@babel/plugin-transform-modules-commonjs',
-    'lodash',
+    'babel-plugin-lodash',
+    'babel-plugin-version-inline',
     'react-hot-loader/babel',
-    'version-inline',
   ],
   env: {
     production: {
@@ -14,15 +14,18 @@ module.exports = {
         '@babel/plugin-transform-react-constant-elements',
         '@babel/plugin-transform-react-inline-elements',
         ['@babel/plugin-transform-runtime', { corejs: 2 }],
-        ['react-remove-properties', { properties: ['data-screenshots'] }],
-        'transform-react-remove-prop-types',
+        [
+          'babel-plugin-react-remove-properties',
+          { properties: ['data-screenshots'] },
+        ],
+        'babel-plugin-transform-react-remove-prop-types',
       ],
     },
     test: {
-      plugins: ['dynamic-import-node'],
+      plugins: ['babel-plugin-dynamic-import-node'],
     },
     i18n: {
-      plugins: [['react-intl', { messagesDir: './messages/' }]],
+      plugins: [['babel-plugin-react-intl', { messagesDir: './messages/' }]],
     },
   },
 };
