@@ -36,9 +36,9 @@ export default (type) => {
         },
       },
 
-      MuiListItemText: {
-        primary: {
-          marginTop: 1,
+      MuiListItemIcon: {
+        root: {
+          marginTop: -2,
         },
       },
     },
