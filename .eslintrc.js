@@ -5,13 +5,14 @@ module.exports = {
   extends: [
     'airbnb',
     'plugin:jest/recommended',
+    'plugin:lodash-fp/recommended',
     'plugin:prettier/recommended',
     'prettier/react',
   ],
   env: {
     browser: true,
   },
-  plugins: ['json', 'prettier'],
+  plugins: ['json', 'lodash-fp', 'prettier'],
   rules: {
     'import/no-extraneous-dependencies': [
       'error',
