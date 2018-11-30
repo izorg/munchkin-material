@@ -1,10 +1,40 @@
+const transform = {
+  '@material-ui/core': {
+    transform: (member) => {
+      if (
+        [
+          'createMuiTheme',
+          'MuiThemeProvider',
+          'withStyles',
+          'withTheme',
+        ].includes(member)
+      ) {
+        return `@material-ui/core/styles/${member}`;
+      }
+
+      return `@material-ui/core/${member}`;
+    },
+    preventFullImport: true,
+  },
+
+  'lodash/fp': {
+    transform: (member) => `lodash/fp/${member}`,
+    preventFullImport: true,
+  },
+
+  recompose: {
+    transform: (member) => `recompose/${member}`,
+    preventFullImport: true,
+  },
+};
+
 module.exports = {
   presets: ['@babel/preset-react'],
   plugins: [
     '@babel/plugin-proposal-object-rest-spread',
     '@babel/plugin-syntax-dynamic-import',
     '@babel/plugin-transform-modules-commonjs',
-    'babel-plugin-lodash',
+    ['babel-plugin-transform-imports', transform],
     'babel-plugin-version-inline',
     'react-hot-loader/babel',
   ],

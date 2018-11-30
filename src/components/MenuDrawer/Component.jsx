@@ -9,7 +9,7 @@ import { withStyles } from '@material-ui/core/styles';
 import { duration } from '@material-ui/core/styles/transitions';
 import { getTransitionProps } from '@material-ui/core/transitions/utils';
 import Hammer from 'hammerjs';
-import { throttle } from 'lodash';
+import { throttle } from 'lodash/fp';
 
 import { ios } from '../../utils/platforms';
 
@@ -72,9 +72,11 @@ class HomeMenuDrawer extends PureComponent {
     this.handlePaperRef = this.handlePaperRef.bind(this);
 
     this.handlePanStart = this.handlePanStart.bind(this);
-    this.handlePanMove = throttle(this.handlePanMove.bind(this), 30, {
-      leading: false,
-    });
+    this.handlePanMove = throttle.convert({ fixed: false })(
+      30,
+      this.handlePanMove.bind(this),
+      { leading: false },
+    );
     this.handlePanEnd = this.handlePanEnd.bind(this);
     this.handlePanCancel = this.handlePanCancel.bind(this);
     this.handlePress = this.handlePress.bind(this);

@@ -2,10 +2,9 @@ import React, { Fragment } from 'react';
 import { ConnectedRouter } from 'connected-react-router';
 import { hot } from 'react-hot-loader';
 import { Provider } from 'react-redux';
-import compose from 'recompose/compose';
+import { compose } from 'recompose';
 import PropTypes from 'prop-types';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import { withStyles } from '@material-ui/core/styles';
+import { CssBaseline, withStyles } from '@material-ui/core';
 
 import munchkinWoff from '../../fonts/munchkin.woff';
 import munchkinWoff2 from '../../fonts/munchkin.woff2';
