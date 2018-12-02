@@ -1,6 +1,5 @@
 const path = require('path');
 
-const { compact } = require('lodash/fp');
 const webpack = require('webpack');
 
 const CleanWebpackPlugin = require('clean-webpack-plugin');
@@ -38,11 +37,11 @@ module.exports = {
 
   devtool: dev && 'eval-source-map',
 
-  entry: compact([
+  entry: [
     './polyfill.js',
     site ? './site/index.js' : './index.jsx',
     dev && site && './dev/index.js',
-  ]),
+  ].filter(Boolean),
 
   context: path.resolve(__dirname, './src'),
 
@@ -63,7 +62,7 @@ module.exports = {
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        use: compact([
+        use: [
           {
             loader: 'babel-loader',
             options: {
@@ -73,14 +72,6 @@ module.exports = {
                   '@babel/preset-env',
                   {
                     modules: false,
-                    targets: {
-                      android: '4.4',
-                      chrome: 49,
-                      edge: 14,
-                      firefox: 45,
-                      ie: 11,
-                      safari: 10,
-                    },
                     useBuiltIns: 'usage',
                   },
                 ],
@@ -94,7 +85,7 @@ module.exports = {
               emitWarning: true,
             },
           },
-        ]),
+        ].filter(Boolean),
       },
       {
         test: /\.(woff|woff2)$/,
@@ -132,7 +123,7 @@ module.exports = {
       : undefined,
   },
 
-  plugins: compact([
+  plugins: [
     !dev && new CleanWebpackPlugin(outputPath),
 
     !dev &&
@@ -195,7 +186,7 @@ module.exports = {
         analyzerPort: 3001,
         defaultSizes: 'gzip',
       }),
-  ]),
+  ].filter(Boolean),
 
   devServer: {
     compress: true,
