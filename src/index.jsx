@@ -33,7 +33,7 @@ const init = (appEl, initOptions) => {
         families: ['Munchkin'],
       },
       google: {
-        families: ['Roboto:300,400,500,700'],
+        families: ['Roboto:300,400,500'],
       },
     });
   }
