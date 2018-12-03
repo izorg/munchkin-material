@@ -38,7 +38,6 @@ module.exports = {
   devtool: dev && 'eval-source-map',
 
   entry: [
-    './polyfill.js',
     site ? './site/index.js' : './index.jsx',
     dev && site && './dev/index.js',
   ].filter(Boolean),
@@ -67,15 +66,6 @@ module.exports = {
             loader: 'babel-loader',
             options: {
               cacheDirectory: true,
-              presets: [
-                [
-                  '@babel/preset-env',
-                  {
-                    modules: false,
-                    useBuiltIns: 'usage',
-                  },
-                ],
-              ],
             },
           },
           dev && {

@@ -28,34 +28,53 @@ const transform = {
   },
 };
 
+const prod = process.env.NODE_ENV === 'production';
+const i18n = process.env.BABEL_ENV === 'i18n';
+const test = process.env.BABEL_ENV === 'test';
+const modules = test ? 'auto' : false;
+
 module.exports = {
-  presets: ['@babel/preset-react'],
+  presets: [
+    [
+      '@babel/preset-env',
+      {
+        include: ['es6.object.set-prototype-of'], // for react-hot-loader on Android 4.4
+        loose: true,
+        modules,
+        useBuiltIns: 'entry',
+      },
+    ],
+    [
+      '@babel/preset-react',
+      {
+        development: !prod,
+      },
+    ],
+  ],
   plugins: [
-    '@babel/plugin-proposal-object-rest-spread',
+    [
+      '@babel/plugin-transform-runtime',
+      {
+        helpers: false,
+        useESModules: modules,
+      },
+    ],
     '@babel/plugin-syntax-dynamic-import',
-    '@babel/plugin-transform-modules-commonjs',
+    i18n && [
+      'babel-plugin-react-intl',
+      {
+        messagesDir: './messages/',
+      },
+    ],
+    prod && [
+      'babel-plugin-react-remove-properties',
+      {
+        properties: ['data-screenshots'],
+      },
+    ],
     ['babel-plugin-transform-imports', transform],
+    prod && 'babel-plugin-transform-react-remove-prop-types',
     'babel-plugin-version-inline',
     'react-hot-loader/babel',
-  ],
-  env: {
-    production: {
-      plugins: [
-        '@babel/plugin-transform-react-constant-elements',
-        '@babel/plugin-transform-react-inline-elements',
-        ['@babel/plugin-transform-runtime', { corejs: 2 }],
-        [
-          'babel-plugin-react-remove-properties',
-          { properties: ['data-screenshots'] },
-        ],
-        'babel-plugin-transform-react-remove-prop-types',
-      ],
-    },
-    test: {
-      plugins: ['babel-plugin-dynamic-import-node'],
-    },
-    i18n: {
-      plugins: [['babel-plugin-react-intl', { messagesDir: './messages/' }]],
-    },
-  },
+  ].filter(Boolean),
 };
