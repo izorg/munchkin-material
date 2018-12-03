@@ -1,7 +1,6 @@
+import SexFemale from 'mdi-material-ui/GenderFemale';
+import SexMale from 'mdi-material-ui/GenderMale';
 import { FEMALE, MALE } from 'munchkin-core';
-
-import SexFemale from '../components/icons/sex/Female';
-import SexMale from '../components/icons/sex/Male';
 
 export default function(sex) {
   switch (sex) {

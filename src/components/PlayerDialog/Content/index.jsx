@@ -15,10 +15,9 @@ import Grid from '@material-ui/core/Grid';
 import Radio from '@material-ui/core/Radio';
 import TextField from '@material-ui/core/TextField';
 import { withStyles } from '@material-ui/core/styles';
+import SexFemale from 'mdi-material-ui/GenderFemale';
+import SexMale from 'mdi-material-ui/GenderMale';
 import { FEMALE, MALE } from 'munchkin-core';
-
-import SexFemale from '../../icons/sex/Female';
-import SexMale from '../../icons/sex/Male';
 
 import ColorPicker from '../ColorPicker';
 

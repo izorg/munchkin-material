@@ -7,11 +7,10 @@ import SpeedDial from '@material-ui/lab/SpeedDial';
 import SpeedDialAction from '@material-ui/lab/SpeedDialAction';
 import SpeedDialIcon from '@material-ui/lab/SpeedDialIcon';
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
+import EmoticonDevil from 'mdi-material-ui/EmoticonDevilOutline';
 import cns from 'classnames';
 import deepmerge from 'deepmerge';
 import { delay, noop } from 'lodash/fp';
-
-import EmoticonDevil from '../../../components/icons/EmoticonDevil';
 
 const styles = (theme) => ({
   backdrop: {

@@ -3,8 +3,7 @@ import { FormattedMessage } from 'react-intl';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-
-import SecurityAccount from '../../icons/SecurityAccount';
+import SecurityAccount from 'mdi-material-ui/ShieldAccount';
 
 const PrivacyItem = (props) => (
   <ListItem

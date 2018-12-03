@@ -76,6 +76,7 @@
     "jest": "23.6.0",
     "lint-staged": "8.1.0",
     "lodash": "4.17.11",
+    "mdi-material-ui": "5.7.0",
     "munchkin-core": "8.1.13",
     "prettier": "1.15.3",
     "prop-types": "15.6.2",

@@ -5,10 +5,9 @@ import PropTypes from 'prop-types';
 import IconButton from '@material-ui/core/IconButton';
 import Paper from '@material-ui/core/Paper';
 import { withStyles } from '@material-ui/core/styles';
+import CloseCircle from 'mdi-material-ui/CloseCircle';
 import cns from 'classnames';
 import { compact, noop } from 'lodash/fp';
-
-import CloseCircle from '../../../../components/icons/CloseCircle';
 
 import Player from './Player';
 

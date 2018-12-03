@@ -4,16 +4,15 @@ import PropTypes from 'prop-types';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import Dialog from '@material-ui/core/Dialog';
 import { withStyles } from '@material-ui/core/styles';
+import DiceOne from 'mdi-material-ui/Dice1';
+import DiceTwo from 'mdi-material-ui/Dice2';
+import DiceThree from 'mdi-material-ui/Dice3';
+import DiceFour from 'mdi-material-ui/Dice4';
+import DiceFive from 'mdi-material-ui/Dice5';
+import DiceSix from 'mdi-material-ui/Dice6';
 import { noop } from 'lodash/fp';
 
 import DiceTransition from '../Transition';
-
-import DiceOne from '../../icons/dice/one';
-import DiceTwo from '../../icons/dice/two';
-import DiceThree from '../../icons/dice/three';
-import DiceFour from '../../icons/dice/four';
-import DiceFive from '../../icons/dice/five';
-import DiceSix from '../../icons/dice/six';
 
 const diceSize = 120;
 

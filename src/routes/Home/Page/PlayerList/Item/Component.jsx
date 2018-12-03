@@ -8,6 +8,7 @@ import RootRef from '@material-ui/core/RootRef';
 import { withStyles } from '@material-ui/core/styles';
 import ChevronUp from '@material-ui/icons/KeyboardArrowUp';
 import ActionReorder from '@material-ui/icons/Reorder';
+import ChevronDoubleUpIcon from 'mdi-material-ui/ChevronDoubleUp';
 import cns from 'classnames';
 import Hammer from 'hammerjs';
 import { debounce, noop } from 'lodash/fp';
@@ -16,7 +17,6 @@ import getSexIconClass from '../../../../../utils/getSexIconClass';
 import { playerShape } from '../../../../../utils/propTypes';
 
 import Avatar from './Avatar';
-import ChevronDoubleUpIcon from '../../../../../components/icons/ChevronDoubleUp';
 
 import * as modes from '../../../modes';
 import modeShape from '../../../modeShape';

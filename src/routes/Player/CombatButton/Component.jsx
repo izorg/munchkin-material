@@ -1,9 +1,9 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import SwordCross from 'mdi-material-ui/SwordCross';
 import { noop } from 'lodash/fp';
 
 import Fab from '../../../components/Fab';
-import SwordCross from '../../../components/icons/SwordCross';
 
 class PlayerScreenCombatButtonComponent extends PureComponent {
   constructor(props) {

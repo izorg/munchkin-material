@@ -15,11 +15,11 @@ import CloseIcon from '@material-ui/icons/Close';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 import SettingsBackupRestoreIcon from '@material-ui/icons/SettingsBackupRestore';
+import FlagCheckered from 'mdi-material-ui/FlagCheckered';
 import { noop } from 'lodash/fp';
 
 import AppBar from '../../../../components/AppBar';
 import DiceButton from '../../../../components/dice/Button';
-import FlagCheckeredIcon from '../../../../components/icons/FlagCheckered';
 import Title from '../../../../components/Title';
 
 import * as modes from '../../modes';
@@ -139,7 +139,7 @@ const HomeAppBar = ({
 
       {singleMode && (
         <IconButton color="inherit" onClick={onTurnFinish}>
-          <FlagCheckeredIcon />
+          <FlagCheckered />
         </IconButton>
       )}
     </AppBar>
