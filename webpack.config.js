@@ -88,12 +88,22 @@ module.exports = {
       },
       {
         test: /\.png$/,
-        loader: 'file-loader',
-        options: {
-          name: dev || dist ? '[name].[ext]' : '[name].[hash].[ext]',
-          outputPath: 'images/',
-          publicPath: site ? '/images/' : 'images/',
-        },
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: dev || dist ? '[name].[ext]' : '[name].[hash].[ext]',
+              outputPath: 'images/',
+              publicPath: site ? '/images/' : 'images/',
+            },
+          },
+          {
+            loader: 'image-webpack-loader',
+            options: {
+              disable: dev,
+            },
+          },
+        ],
       },
       {
         test: /\.html$/,
