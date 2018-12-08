@@ -27,6 +27,14 @@ const styles = (theme) => ({
     width: diceSize,
   },
 
+  iconWrapper: {
+    height: '100%',
+    left: 0,
+    position: 'absolute',
+    top: 0,
+    width: '100%',
+  },
+
   icon: {
     display: 'block',
     fontSize: 'inherit',
@@ -77,7 +85,7 @@ class DiceDialog extends PureComponent {
         >
           {dice && (
             <DiceTransition key={attempt}>
-              <span>
+              <span className={classes.iconWrapper}>
                 {createElement(diceComponent[dice], {
                   className: classes.icon,
                 })}

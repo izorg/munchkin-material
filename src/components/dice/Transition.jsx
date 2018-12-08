@@ -1,15 +1,9 @@
-import React from 'react';
 import CSSTransition from 'react-transition-group/CSSTransition';
-import { withStyles } from '@material-ui/core/styles';
+import { compose, mapProps, setDisplayName } from 'recompose';
+import { withStyles } from '@material-ui/core';
 
 const styles = (theme) => ({
   enter: {
-    height: '100%',
-    left: 0,
-    position: 'absolute',
-    top: 0,
-    width: '100%',
-
     transform: 'scale(0)',
     willChange: 'transform',
   },
@@ -24,12 +18,6 @@ const styles = (theme) => ({
   },
 
   leave: {
-    height: '100%',
-    left: 0,
-    position: 'absolute',
-    top: 0,
-    width: '100%',
-
     transform: 'scale(1)',
     willChange: 'transform',
   },
@@ -43,20 +31,20 @@ const styles = (theme) => ({
   },
 });
 
-const DiceTransition = ({ classes, theme, ...props }) => (
-  <CSSTransition
-    {...props}
-    classNames={{
+const addEndListener = (node, done) =>
+  node.addEventListener('transitionend', done, false);
+
+export default compose(
+  withStyles(styles),
+  setDisplayName('DiceTransition'),
+  mapProps(({ classes, ...props }) => ({
+    ...props,
+    addEndListener,
+    classNames: {
       enter: classes.enter,
       enterActive: classes.enterActive,
       exit: classes.leave,
       exitActive: classes.leaveActive,
-    }}
-    timeout={{
-      enter: theme.transitions.duration.shortest * 2,
-      exit: theme.transitions.duration.shortest,
-    }}
-  />
-);
-
-export default withStyles(styles, { withTheme: true })(DiceTransition);
+    },
+  })),
+)(CSSTransition);
