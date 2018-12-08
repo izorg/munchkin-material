@@ -15,6 +15,11 @@ const styles = (theme) => ({
     transition: theme.transitions.create(['opacity', 'transform'], {
       duration: theme.transitions.duration.enteringScreen,
     }),
+    fallbacks: {
+      transition: theme.transitions.create(['opacity', '-webkit-transform'], {
+        duration: theme.transitions.duration.enteringScreen,
+      }),
+    },
   },
 
   leave: {
@@ -29,6 +34,11 @@ const styles = (theme) => ({
     transition: theme.transitions.create(['opacity', 'transform'], {
       duration: theme.transitions.duration.leavingScreen,
     }),
+    fallbacks: {
+      transition: theme.transitions.create(['opacity', '-webkit-transform'], {
+        duration: theme.transitions.duration.leavingScreen,
+      }),
+    },
   },
 });
 
@@ -43,7 +53,7 @@ const FadeUp = ({ classes, theme, ...props }) => (
       exitActive: classes.leaveActive,
     }}
     timeout={{
-      enter: theme.transitions.duration.enteringScreen,
+      enter: theme.transitions.duration.enteringScreen * 100,
       exit: theme.transitions.duration.leavingScreen,
     }}
     {...props}

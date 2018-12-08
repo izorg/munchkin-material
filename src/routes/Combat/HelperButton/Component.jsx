@@ -12,6 +12,8 @@ import cns from 'classnames';
 import deepmerge from 'deepmerge';
 import { delay, noop } from 'lodash/fp';
 
+import Zoom from '../../../components/transitions/Zoom';
+
 const styles = (theme) => ({
   backdrop: {
     backgroundColor:
@@ -108,6 +110,7 @@ class CombatHelperButton extends PureComponent {
             icon={helper ? <SpeedDialIcon /> : <EmoticonDevil />}
             onClick={this.handleClick}
             open={open}
+            TransitionComponent={Zoom}
             {...rest}
           >
             <SpeedDialAction

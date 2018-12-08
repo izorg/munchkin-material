@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import Zoom from '@material-ui/core/Zoom';
+
+import Zoom from '../../components/transitions/Zoom';
 
 import modeShape from './modeShape';
 

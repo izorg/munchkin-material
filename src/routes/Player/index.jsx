@@ -3,11 +3,11 @@ import { hot } from 'react-hot-loader';
 import compose from 'recompose/compose';
 import PropTypes from 'prop-types';
 import Slide from '@material-ui/core/Slide';
-import Zoom from '@material-ui/core/Zoom';
 import { withStyles } from '@material-ui/core/styles';
 
 import FadeUp from '../../components/FadeUp';
 import ModalScreen from '../../components/ModalScreen';
+import Zoom from '../../components/transitions/Zoom';
 import { ios } from '../../utils/platforms';
 
 import CombatButton from './CombatButton';
