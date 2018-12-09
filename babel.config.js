@@ -22,6 +22,11 @@ const transform = {
     preventFullImport: true,
   },
 
+  'react-transition-group': {
+    transform: (member) => `react-transition-group/${member}`,
+    preventFullImport: true,
+  },
+
   recompose: {
     transform: (member) => `recompose/${member}`,
     preventFullImport: true,
