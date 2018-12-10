@@ -1,3 +1,5 @@
+const { version } = require('./package');
+
 const transform = {
   '@material-ui/core': {
     transform: (member) => {
@@ -77,9 +79,14 @@ module.exports = {
         properties: ['data-screenshots'],
       },
     ],
+    [
+      'babel-plugin-transform-define',
+      {
+        VERSION: version,
+      },
+    ],
     ['babel-plugin-transform-imports', transform],
     prod && 'babel-plugin-transform-react-remove-prop-types',
-    'babel-plugin-version-inline',
     'react-hot-loader/babel',
   ].filter(Boolean),
 };

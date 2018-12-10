@@ -12,7 +12,10 @@ module.exports = {
   env: {
     browser: true,
   },
-  plugins: ['json', 'lodash-fp', 'prettier'],
+  globals: {
+    VERSION: true,
+  },
+  plugins: ['json'],
   rules: {
     'import/no-extraneous-dependencies': [
       'error',

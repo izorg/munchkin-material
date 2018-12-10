@@ -1,4 +1,3 @@
-/* global __VERSION__ */
 import { connectRouter, routerMiddleware } from 'connected-react-router';
 import { applyMiddleware, combineReducers, createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
@@ -46,7 +45,7 @@ export default ({ buyFullVersion, history, storageKey }) => {
   }
 
   store.dispatch(setVersion('core', version));
-  store.dispatch(setVersion('app', __VERSION__));
+  store.dispatch(setVersion('app', VERSION));
 
   return store;
 };
