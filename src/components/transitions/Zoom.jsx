@@ -21,7 +21,7 @@ const styles = {
   },
 };
 
-class FabTransition extends Component {
+class Zoom extends Component {
   constructor(props, context) {
     super(props, context);
 
@@ -113,9 +113,8 @@ class FabTransition extends Component {
   }
 }
 
-FabTransition.propTypes = {
+Zoom.propTypes = {
   children: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
-  in: PropTypes.bool,
   onEnter: PropTypes.func,
   onExit: PropTypes.func,
   timeout: PropTypes.oneOfType([
@@ -127,9 +126,8 @@ FabTransition.propTypes = {
   ]),
 };
 
-FabTransition.defaultProps = {
+Zoom.defaultProps = {
   children: null,
-  in: false,
   onEnter: noop,
   onExit: noop,
   timeout: {
@@ -138,4 +136,4 @@ FabTransition.defaultProps = {
   },
 };
 
-export default withTheme()(FabTransition);
+export default withTheme()(Zoom);
