@@ -40,9 +40,12 @@ class FadeUp extends Component {
   handleEntering(node) {
     const { onEntering, theme } = this.props;
 
-    const transitionProps = getTransitionProps(this.props, {
-      mode: 'enter',
-    });
+    const transitionProps = {
+      ...getTransitionProps(this.props, {
+        mode: 'enter',
+      }),
+      easing: theme.transitions.easing.easeOut,
+    };
 
     /* eslint-disable no-param-reassign */
     node.style.webkitTransition = theme.transitions.create(
@@ -97,9 +100,12 @@ class FadeUp extends Component {
   handleExiting(node) {
     const { onExiting, theme } = this.props;
 
-    const transitionProps = getTransitionProps(this.props, {
-      mode: 'exit',
-    });
+    const transitionProps = {
+      ...getTransitionProps(this.props, {
+        mode: 'exit',
+      }),
+      easing: theme.transitions.easing.sharp,
+    };
 
     /* eslint-disable no-param-reassign */
     node.style.webkitTransition = theme.transitions.create(
