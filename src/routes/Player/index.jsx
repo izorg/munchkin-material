@@ -2,29 +2,9 @@ import React, { PureComponent } from 'react';
 import { hot } from 'react-hot-loader';
 import compose from 'recompose/compose';
 import PropTypes from 'prop-types';
-import Slide from '@material-ui/core/Slide';
-import { withStyles } from '@material-ui/core/styles';
-
-import FadeUp from '../../components/FadeUp';
-import ModalScreen from '../../components/ModalScreen';
-import Zoom from '../../components/transitions/Zoom';
-import { ios } from '../../utils/platforms';
 
 import CombatButton from './CombatButton';
 import Page from './Page';
-
-const styles = {
-  content: {
-    display: 'flex',
-    flex: 1,
-    flexDirection: 'column',
-    outline: 'none',
-  },
-};
-
-const Transition = ios
-  ? (props) => <Slide direction="left" {...props} />
-  : FadeUp;
 
 class PlayerScreen extends PureComponent {
   constructor(props) {
@@ -48,42 +28,18 @@ class PlayerScreen extends PureComponent {
   }
 
   render() {
-    const { appear, classes, fabAppear, match, theme } = this.props;
     const { playerId } = this.state;
 
-    const inProp = Boolean(match) && match.isExact;
-
     return (
-      <ModalScreen>
-        <div className={classes.content}>
-          <Transition
-            appear={appear}
-            in={Boolean(match)}
-            mountOnEnter
-            unmountOnExit
-          >
-            <Page playerId={playerId} />
-          </Transition>
-          <Zoom
-            appear={fabAppear}
-            in={inProp}
-            style={{
-              transitionDelay: inProp
-                ? theme.transitions.duration.leavingScreen
-                : 0,
-            }}
-          >
-            <CombatButton playerId={playerId} />
-          </Zoom>
-        </div>
-      </ModalScreen>
+      <>
+        <Page playerId={playerId} />
+        <CombatButton playerId={playerId} />
+      </>
     );
   }
 }
 
 PlayerScreen.propTypes = {
-  appear: PropTypes.bool.isRequired,
-  fabAppear: PropTypes.bool.isRequired,
   match: PropTypes.object,
 };
 
@@ -91,7 +47,4 @@ PlayerScreen.defaultProps = {
   match: null,
 };
 
-export default compose(
-  hot(module),
-  withStyles(styles),
-)(PlayerScreen);
+export default compose(hot(module))(PlayerScreen);

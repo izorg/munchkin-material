@@ -19,7 +19,7 @@ import { noop, stubFalse } from 'lodash/fp';
 import { ios } from '../../utils/platforms';
 import { sexProp } from '../../utils/propTypes';
 
-import FadeUp from '../FadeUp';
+import ScreenTransition from '../Screen/Transition';
 
 import AppBar from './AppBar';
 import Content from './Content';
@@ -145,7 +145,7 @@ class PlayerDialog extends PureComponent {
     let Transition = Fade;
 
     if (fullScreen) {
-      Transition = ios ? SlideUp : FadeUp;
+      Transition = ios ? SlideUp : ScreenTransition;
     }
 
     return (

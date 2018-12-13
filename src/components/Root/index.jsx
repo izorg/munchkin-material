@@ -5,13 +5,14 @@ import * as modes from '../../routes/Home/modes';
 
 import DiceDialog from '../dice/Dialog';
 import PlayerDialog from '../PlayerDialog';
-import ScreenLoader from '../ScreenLoader';
+import Screen from '../Screen';
 
 const Root = () => (
   <Fragment>
     <Route path={`/:mode(${Object.values(modes).join('|')})?`}>
       {({ match }) => (
-        <ScreenLoader
+        <Screen
+          appear={false}
           loader={() => import(/* webpackMode: "eager" */ '../../routes/Home')}
           match={match}
         />
@@ -19,7 +20,7 @@ const Root = () => (
     </Route>
     <Route path="/player/:id">
       {({ match }) => (
-        <ScreenLoader
+        <Screen
           loader={() =>
             import(/* webpackChunkName: "player", webpackPrefetch: true */ '../../routes/Player')
           }
@@ -29,7 +30,7 @@ const Root = () => (
     </Route>
     <Route path="/player/:id/combat">
       {({ match }) => (
-        <ScreenLoader
+        <Screen
           loader={() =>
             import(/* webpackChunkName: "combat", webpackPrefetch: true */ '../../routes/Combat')
           }

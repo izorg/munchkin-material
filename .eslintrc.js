@@ -1,5 +1,3 @@
-const prettier = require('./.prettierrc');
-
 module.exports = {
   parser: 'babel-eslint',
   extends: [
@@ -29,7 +27,7 @@ module.exports = {
         allowEmptyCatch: true,
       },
     ],
-    'prettier/prettier': ['error', prettier],
+    'prettier/prettier': 'error',
     'react/forbid-prop-types': [
       'error',
       {

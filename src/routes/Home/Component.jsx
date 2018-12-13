@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import Zoom from '../../components/transitions/Zoom';
@@ -8,29 +8,16 @@ import modeShape from './modeShape';
 import Page from './Page';
 import PlayerAddButton from './PlayerAddButton';
 
-const Home = ({ fabAppear, match, mode, singleMode, theme }) => {
-  const inProp = Boolean(match) && match.isExact && !mode && !singleMode;
-
-  return (
-    <Fragment>
-      <Page mode={mode} singleMode={singleMode} />
-      <Zoom
-        appear={fabAppear}
-        in={inProp}
-        style={{
-          transitionDelay: inProp
-            ? theme.transitions.duration.leavingScreen
-            : 0,
-        }}
-      >
-        <PlayerAddButton />
-      </Zoom>
-    </Fragment>
-  );
-};
+const Home = ({ match, mode, singleMode }) => (
+  <>
+    <Page mode={mode} singleMode={singleMode} />
+    <Zoom appear={false} in={Boolean(match) && !mode && !singleMode}>
+      <PlayerAddButton />
+    </Zoom>
+  </>
+);
 
 Home.propTypes = {
-  fabAppear: PropTypes.bool.isRequired,
   match: PropTypes.object,
   mode: modeShape,
   singleMode: PropTypes.bool,

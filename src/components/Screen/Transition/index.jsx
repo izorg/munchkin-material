@@ -9,7 +9,7 @@ import {
 } from '@material-ui/core/transitions/utils';
 import { noop } from 'lodash/fp';
 
-class FadeUp extends Component {
+class ScreenTransition extends Component {
   constructor() {
     super();
 
@@ -169,7 +169,7 @@ class FadeUp extends Component {
   }
 }
 
-FadeUp.propTypes = {
+ScreenTransition.propTypes = {
   children: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
   onEnter: PropTypes.func,
   onEntered: PropTypes.func,
@@ -186,7 +186,7 @@ FadeUp.propTypes = {
   ]),
 };
 
-FadeUp.defaultProps = {
+ScreenTransition.defaultProps = {
   children: null,
   onEnter: noop,
   onEntered: noop,
@@ -200,4 +200,4 @@ FadeUp.defaultProps = {
   },
 };
 
-export default withTheme()(FadeUp);
+export default withTheme()(ScreenTransition);
