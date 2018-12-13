@@ -83,7 +83,7 @@
     "puppeteer": "1.11.0",
     "qs": "6.6.0",
     "react": "16.6.3",
-    "react-beautiful-dnd": "10.0.2",
+    "react-beautiful-dnd": "10.0.3",
     "react-dom": "16.6.3",
     "react-final-form": "4.0.2",
     "react-helmet": "5.2.0",
