@@ -26,6 +26,7 @@ export default compose(
   defaultProps({
     disableEscapeKeyDown: true,
     disablePortal: true,
+    PaperProps: { elevation: 0 },
     fullScreen: true,
     hideBackdrop: true,
     TransitionComponent,
