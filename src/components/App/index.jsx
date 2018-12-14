@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { ConnectedRouter } from 'connected-react-router';
-import { hot } from 'react-hot-loader';
+import { hot } from 'react-hot-loader/root';
 import { Provider } from 'react-redux';
 import { compose } from 'recompose';
 import PropTypes from 'prop-types';
@@ -77,6 +77,6 @@ App.defaultProps = {
 };
 
 export default compose(
-  hot(module),
+  hot,
   withStyles(styles),
 )(App);

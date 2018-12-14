@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { hot } from 'react-hot-loader';
+import { hot } from 'react-hot-loader/root';
 import compose from 'recompose/compose';
 
 import HelperButton from './HelperButton';
@@ -21,6 +21,6 @@ const CombatScreen = () => (
 );
 
 export default compose(
-  hot(module),
+  hot,
   memo,
 )(CombatScreen);

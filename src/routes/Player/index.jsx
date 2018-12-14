@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
-import { hot } from 'react-hot-loader';
-import compose from 'recompose/compose';
+import { hot } from 'react-hot-loader/root';
 import PropTypes from 'prop-types';
 
 import CombatButton from './CombatButton';
@@ -47,4 +46,4 @@ PlayerScreen.defaultProps = {
   match: null,
 };
 
-export default compose(hot(module))(PlayerScreen);
+export default hot(PlayerScreen);

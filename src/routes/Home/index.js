@@ -1,4 +1,4 @@
-import { hot } from 'react-hot-loader';
+import { hot } from 'react-hot-loader/root';
 import { connect } from 'react-redux';
 import { compose } from 'recompose';
 import { createStructuredSelector } from 'reselect';
@@ -14,6 +14,6 @@ const mapStateToProps = createStructuredSelector({
 });
 
 export default compose(
-  hot(module),
+  hot,
   connect(mapStateToProps),
 )(Component);
