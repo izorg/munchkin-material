@@ -115,14 +115,6 @@ module.exports = {
     ],
   },
 
-  optimization: {
-    splitChunks: site
-      ? {
-          maxAsyncRequests: 1,
-        }
-      : undefined,
-  },
-
   plugins: [
     !dev && new CleanWebpackPlugin(outputPath),
 
