@@ -7,7 +7,7 @@ const PrivacyItem = (props) => (
   <ListItem
     component="a"
     button
-    href="https://allmunchkins.com/privacy.html"
+    href="https://allmunchkins.com/privacy"
     target="_blank"
     {...props}
   >
