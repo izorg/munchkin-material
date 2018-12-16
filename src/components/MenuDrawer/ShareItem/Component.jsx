@@ -14,11 +14,6 @@ const messages = defineMessages({
     id: 'share.text',
     defaultMessage: 'Simple but powerful Munchkin level counter',
   },
-
-  title: {
-    id: 'share.title',
-    defaultMessage: 'Munchkin Level Counter',
-  },
 });
 
 const ShareItem = ({ intl, onClick, shareLink, ...rest }) => (
