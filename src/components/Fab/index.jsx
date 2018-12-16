@@ -1,6 +1,5 @@
 import React from 'react';
-import Fab from '@material-ui/core/Fab';
-import { withStyles } from '@material-ui/core/styles';
+import { Fab, withStyles } from '@material-ui/core';
 import cns from 'classnames';
 
 const styles = (theme) => ({

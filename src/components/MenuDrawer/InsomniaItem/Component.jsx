@@ -1,12 +1,14 @@
 import React, { PureComponent } from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import Switch from '@material-ui/core/Switch';
-import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew';
-import { withStyles } from '@material-ui/core/styles';
+import {
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  Switch,
+  withStyles,
+} from '@material-ui/core';
+import { PowerSettingsNew } from '@material-ui/icons';
 import cns from 'classnames';
 import { noop } from 'lodash/fp';
 
@@ -40,7 +42,7 @@ class InsomniaItem extends PureComponent {
         onClick={this.handleClick}
       >
         <ListItemIcon>
-          <PowerSettingsNewIcon />
+          <PowerSettingsNew />
         </ListItemIcon>
         <ListItemText
           primary={

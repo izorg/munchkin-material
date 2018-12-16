@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import IconButton from '@material-ui/core/IconButton';
-import { withStyles } from '@material-ui/core/styles';
-import NavigationCheck from '@material-ui/icons/Check';
+import { IconButton, withStyles } from '@material-ui/core';
+import { Check } from '@material-ui/icons';
 import { noop } from 'lodash/fp';
 
 import AppBar from '../../AppBar';
@@ -26,7 +25,7 @@ const PlayerFormScreenAppBarComponent = ({ classes, onCancel, title }) => (
     <Title className={classes.title}>{title}</Title>
 
     <IconButton color="inherit" type="submit">
-      <NavigationCheck />
+      <Check />
     </IconButton>
   </AppBar>
 );

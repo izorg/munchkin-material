@@ -5,17 +5,17 @@ import {
   injectIntl,
   intlShape,
 } from 'react-intl';
-import compose from 'recompose/compose';
+import { compose } from 'recompose';
 import PropTypes from 'prop-types';
-import IconButton from '@material-ui/core/IconButton';
-import Tooltip from '@material-ui/core/Tooltip';
-import { withStyles } from '@material-ui/core/styles';
-import CheckIcon from '@material-ui/icons/Check';
-import CloseIcon from '@material-ui/icons/Close';
-import DeleteIcon from '@material-ui/icons/Delete';
-import EditIcon from '@material-ui/icons/Edit';
-import SettingsBackupRestoreIcon from '@material-ui/icons/SettingsBackupRestore';
-import FlagCheckered from 'mdi-material-ui/FlagCheckered';
+import { IconButton, Tooltip, withStyles } from '@material-ui/core';
+import {
+  Check,
+  Close,
+  Delete,
+  Edit,
+  SettingsBackupRestore,
+} from '@material-ui/icons';
+import { FlagCheckered } from 'mdi-material-ui';
 import { noop } from 'lodash/fp';
 
 import AppBar from '../../../../components/AppBar';
@@ -91,7 +91,7 @@ const HomeAppBar = ({
           color="default"
           onClick={onMultiSelectDeactivate}
         >
-          <CloseIcon />
+          <Close />
         </IconButton>
       ) : (
         <MenuButton className={classes.leftButton} color="inherit" />
@@ -109,7 +109,7 @@ const HomeAppBar = ({
             color="inherit"
             onClick={singleMode ? onPlayerReset : onPlayersReset}
           >
-            <SettingsBackupRestoreIcon />
+            <SettingsBackupRestore />
           </IconButton>
         </Tooltip>
       )}
@@ -123,7 +123,7 @@ const HomeAppBar = ({
             color={buttonColor}
             onClick={() => onToggleEditClick(mode)}
           >
-            {editMode ? <CheckIcon /> : <EditIcon />}
+            {editMode ? <Check /> : <Edit />}
           </IconButton>
         </Tooltip>
       )}
@@ -133,7 +133,7 @@ const HomeAppBar = ({
           color={buttonColor}
           onClick={() => onPlayersDelete(selectedPlayerIds)}
         >
-          <DeleteIcon />
+          <Delete />
         </IconButton>
       )}
 

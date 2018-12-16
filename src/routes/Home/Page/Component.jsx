@@ -1,6 +1,6 @@
-import React, { createRef, Fragment, PureComponent } from 'react';
+import React, { createRef, PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core';
 import cns from 'classnames';
 
 import LevelLimitDialog from '../../../components/LevelLimitDialog';
@@ -83,7 +83,7 @@ class HomePage extends PureComponent {
     }
 
     return (
-      <Fragment>
+      <>
         <div className={cns(classes.root, { [classes.single]: singleMode })}>
           <AppBar mode={mode} singleMode={singleMode} />
           {content}
@@ -91,7 +91,7 @@ class HomePage extends PureComponent {
         {menu && <MenuDrawer />}
         <LevelLimitDialog />
         <ThemeDialog />
-      </Fragment>
+      </>
     );
   }
 }

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import compose from 'recompose/compose';
+import { compose } from 'recompose';
 import { createSelector, createStructuredSelector } from 'reselect';
 
 import { MULTI } from '../modes';

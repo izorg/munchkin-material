@@ -1,6 +1,5 @@
 import React from 'react';
-import Typography from '@material-ui/core/Typography';
-import { withStyles } from '@material-ui/core/styles';
+import { Typography, withStyles } from '@material-ui/core';
 import cns from 'classnames';
 
 const styles = {

@@ -1,13 +1,12 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
-import IconButton from '@material-ui/core/IconButton';
-import Tooltip from '@material-ui/core/Tooltip';
-import DiceMultipleIcon from 'mdi-material-ui/DiceMultiple';
+import { IconButton, Tooltip } from '@material-ui/core';
+import { DiceMultiple } from 'mdi-material-ui';
 
 const DiceIconButton = (props) => (
   <Tooltip title={<FormattedMessage id="dice" defaultMessage="Dice" />}>
     <IconButton {...props}>
-      <DiceMultipleIcon />
+      <DiceMultiple />
     </IconButton>
   </Tooltip>
 );

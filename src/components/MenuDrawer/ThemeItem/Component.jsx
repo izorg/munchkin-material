@@ -1,10 +1,12 @@
 import React, { PureComponent } from 'react';
 import { FormattedMessage } from 'react-intl';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import PaletteIcon from '@material-ui/icons/Palette';
-import { withStyles } from '@material-ui/core/styles';
+import {
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  withStyles,
+} from '@material-ui/core';
+import { Palette } from '@material-ui/icons';
 import cns from 'classnames';
 
 import { names as themeNames } from '../../../styles/themes';
@@ -23,7 +25,7 @@ class ThemeItem extends PureComponent {
     return (
       <ListItem button className={cns(className, classes.root)} {...rest}>
         <ListItemIcon>
-          <PaletteIcon style={{ color: theme.palette.primary.main }} />
+          <Palette style={{ color: theme.palette.primary.main }} />
         </ListItemIcon>
         <ListItemText
           primary={<FormattedMessage id="menu.theme" defaultMessage="Theme" />}

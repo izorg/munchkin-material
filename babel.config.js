@@ -19,8 +19,23 @@ const transform = {
     preventFullImport: true,
   },
 
+  '@material-ui/lab': {
+    transform: (member) => `@material-ui/lab/${member}`,
+    preventFullImport: true,
+  },
+
+  '@material-ui/icons': {
+    transform: (member) => `@material-ui/icons/${member}`,
+    preventFullImport: true,
+  },
+
   'lodash/fp': {
     transform: (member) => `lodash/fp/${member}`,
+    preventFullImport: true,
+  },
+
+  'mdi-material-ui': {
+    transform: (member) => `mdi-material-ui/${member}`,
     preventFullImport: true,
   },
 

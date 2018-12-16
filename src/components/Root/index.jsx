@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { Route } from 'react-router-dom';
 
 import * as modes from '../../routes/Home/modes';
@@ -8,7 +8,7 @@ import PlayerDialog from '../PlayerDialog';
 import Screen from '../Screen';
 
 const Root = () => (
-  <Fragment>
+  <>
     <Route path={`/:mode(${Object.values(modes).join('|')})?`}>
       {({ match }) => (
         <Screen
@@ -41,7 +41,7 @@ const Root = () => (
 
     <DiceDialog />
     <PlayerDialog />
-  </Fragment>
+  </>
 );
 
 export default Root;

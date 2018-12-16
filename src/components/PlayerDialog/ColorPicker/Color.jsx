@@ -1,9 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Avatar from '@material-ui/core/Avatar';
-import ButtonBase from '@material-ui/core/ButtonBase';
-import { withStyles } from '@material-ui/core/styles';
-import CheckIcon from '@material-ui/icons/Check';
+import { Avatar, ButtonBase, withStyles } from '@material-ui/core';
+import { Check } from '@material-ui/icons';
 import cns from 'classnames';
 
 const styles = {
@@ -30,7 +28,7 @@ const Color = ({ classes, className, selected, value, ...props }) => (
     {...props}
   >
     <Avatar className={classes.color} style={{ backgroundColor: value }}>
-      {selected && <CheckIcon />}
+      {selected && <Check />}
     </Avatar>
   </ButtonBase>
 );

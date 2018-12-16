@@ -1,8 +1,5 @@
 import { connect } from 'react-redux';
-import branch from 'recompose/branch';
-import compose from 'recompose/compose';
-import fromRenderProps from 'recompose/fromRenderProps';
-import renderNothing from 'recompose/renderNothing';
+import { branch, compose, fromRenderProps, renderNothing } from 'recompose';
 import { pick } from 'lodash/fp';
 
 import { setKeepAwake } from '../../../ducks/app';

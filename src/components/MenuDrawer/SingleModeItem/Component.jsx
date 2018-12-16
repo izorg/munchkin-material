@@ -1,12 +1,14 @@
 import React, { PureComponent } from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import Switch from '@material-ui/core/Switch';
-import PersonIcon from '@material-ui/icons/Person';
-import { withStyles } from '@material-ui/core/styles';
+import {
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  Switch,
+  withStyles,
+} from '@material-ui/core';
+import { Person } from '@material-ui/icons';
 import cns from 'classnames';
 import { noop } from 'lodash/fp';
 
@@ -41,7 +43,7 @@ class SingleModeItem extends PureComponent {
         onClick={this.handleClick}
       >
         <ListItemIcon>
-          <PersonIcon />
+          <Person />
         </ListItemIcon>
         <ListItemText
           primary={

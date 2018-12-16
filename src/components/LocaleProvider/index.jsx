@@ -1,4 +1,4 @@
-import React, { Fragment, PureComponent } from 'react';
+import React, { PureComponent } from 'react';
 import { Helmet } from 'react-helmet';
 import { IntlProvider } from 'react-intl';
 import { connect } from 'react-redux';
@@ -56,7 +56,7 @@ class LocaleProvider extends PureComponent {
     }
 
     return (
-      <Fragment>
+      <>
         <Helmet>
           <html lang={locale} />
         </Helmet>
@@ -67,7 +67,7 @@ class LocaleProvider extends PureComponent {
           messages={messages}
           textComponent={textComponent}
         />
-      </Fragment>
+      </>
     );
   }
 }

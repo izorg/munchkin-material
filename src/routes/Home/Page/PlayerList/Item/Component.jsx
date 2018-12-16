@@ -1,14 +1,15 @@
-import React, { createRef, Fragment, PureComponent } from 'react';
+import React, { createRef, PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import IconButton from '@material-ui/core/IconButton';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
-import ListItemText from '@material-ui/core/ListItemText';
-import RootRef from '@material-ui/core/RootRef';
-import { withStyles } from '@material-ui/core/styles';
-import ChevronUp from '@material-ui/icons/KeyboardArrowUp';
-import ActionReorder from '@material-ui/icons/Reorder';
-import ChevronDoubleUpIcon from 'mdi-material-ui/ChevronDoubleUp';
+import {
+  IconButton,
+  ListItem,
+  ListItemSecondaryAction,
+  ListItemText,
+  RootRef,
+  withStyles,
+} from '@material-ui/core';
+import { KeyboardArrowUp, Reorder } from '@material-ui/icons';
+import { ChevronDoubleUp } from 'mdi-material-ui';
 import cns from 'classnames';
 import Hammer from 'hammerjs';
 import { debounce, noop } from 'lodash/fp';
@@ -190,23 +191,23 @@ class HomePlayerListItem extends PureComponent {
                 primary: classes.primary,
               }}
               primary={
-                <Fragment>
+                <>
                   <span className={classes.name}>{player.name}</span>
 
                   {!editMode && (
-                    <Fragment>
+                    <>
                       <span className={classes.level}>
                         {player.level}
-                        <ChevronUp />
+                        <KeyboardArrowUp />
                       </span>
 
                       <span className={classes.strength}>
                         {player.level + player.gear}
-                        <ChevronDoubleUpIcon />
+                        <ChevronDoubleUp />
                       </span>
-                    </Fragment>
+                    </>
                   )}
-                </Fragment>
+                </>
               }
             />
           </RootRef>
@@ -222,7 +223,7 @@ class HomePlayerListItem extends PureComponent {
                 focusVisibleClassName=""
                 {...dragHandleProps}
               >
-                <ActionReorder />
+                <Reorder />
               </IconButton>
             </ListItemSecondaryAction>
           )}

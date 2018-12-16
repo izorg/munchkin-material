@@ -1,4 +1,4 @@
-import CSSTransition from 'react-transition-group/CSSTransition';
+import { CSSTransition } from 'react-transition-group';
 import { compose, mapProps, setDisplayName } from 'recompose';
 import { withStyles } from '@material-ui/core';
 

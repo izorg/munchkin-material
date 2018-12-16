@@ -1,7 +1,6 @@
 import { goBack, push } from 'connected-react-router';
 import { connect } from 'react-redux';
-import compose from 'recompose/compose';
-import mapProps from 'recompose/mapProps';
+import { compose, mapProps } from 'recompose';
 import { omit } from 'lodash/fp';
 
 import { togglePlayer, unselectAllPlayers } from '../../../../../ducks/app';

@@ -1,13 +1,10 @@
-import React, { Fragment, PureComponent } from 'react';
+import React, { PureComponent } from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
-import Backdrop from '@material-ui/core/Backdrop';
-import { MuiThemeProvider, withStyles } from '@material-ui/core/styles';
-import SpeedDial from '@material-ui/lab/SpeedDial';
-import SpeedDialAction from '@material-ui/lab/SpeedDialAction';
-import SpeedDialIcon from '@material-ui/lab/SpeedDialIcon';
-import PersonAddIcon from '@material-ui/icons/PersonAdd';
-import EmoticonDevil from 'mdi-material-ui/EmoticonDevilOutline';
+import { Backdrop, MuiThemeProvider, withStyles } from '@material-ui/core';
+import { SpeedDial, SpeedDialAction, SpeedDialIcon } from '@material-ui/lab';
+import { PersonAdd } from '@material-ui/icons';
+import { EmoticonDevilOutline } from 'mdi-material-ui';
 import cns from 'classnames';
 import deepmerge from 'deepmerge';
 import { delay, noop } from 'lodash/fp';
@@ -80,7 +77,7 @@ class CombatHelperButton extends PureComponent {
     } = this.props;
 
     return (
-      <Fragment>
+      <>
         <MuiThemeProvider
           theme={deepmerge(theme, {
             overrides: {
@@ -107,14 +104,14 @@ class CombatHelperButton extends PureComponent {
               color: open ? 'default' : 'primary',
             }}
             className={cns(classes.container, className)}
-            icon={helper ? <SpeedDialIcon /> : <EmoticonDevil />}
+            icon={helper ? <SpeedDialIcon /> : <EmoticonDevilOutline />}
             onClick={this.handleClick}
             open={open}
             TransitionComponent={Zoom}
             {...rest}
           >
             <SpeedDialAction
-              icon={<EmoticonDevil />}
+              icon={<EmoticonDevilOutline />}
               onClick={() => onMonsterAdd(true)}
               tooltipTitle={
                 <FormattedMessage
@@ -124,7 +121,7 @@ class CombatHelperButton extends PureComponent {
               }
             />
             <SpeedDialAction
-              icon={<PersonAddIcon />}
+              icon={<PersonAdd />}
               onClick={() => delay(10, () => onHelperClick(playerId))}
               tooltipTitle={
                 <FormattedMessage
@@ -145,7 +142,7 @@ class CombatHelperButton extends PureComponent {
             open
           />
         )}
-      </Fragment>
+      </>
     );
   }
 }

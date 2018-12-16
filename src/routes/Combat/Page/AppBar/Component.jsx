@@ -1,9 +1,8 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
-import IconButton from '@material-ui/core/IconButton';
-import { withStyles } from '@material-ui/core/styles';
-import FlagCheckered from 'mdi-material-ui/FlagCheckered';
+import { IconButton, withStyles } from '@material-ui/core';
+import { FlagCheckered } from 'mdi-material-ui';
 import { noop } from 'lodash/fp';
 
 import AppBar from '../../../../components/AppBar';

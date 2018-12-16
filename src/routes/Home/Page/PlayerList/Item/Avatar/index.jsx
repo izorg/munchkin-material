@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import Avatar from '@material-ui/core/Avatar';
-import NavigationCheck from '@material-ui/icons/Check';
+import { Avatar } from '@material-ui/core';
+import { Check } from '@material-ui/icons';
 
 class PlayerAvatar extends PureComponent {
   render() {
@@ -24,7 +24,7 @@ class PlayerAvatar extends PureComponent {
 
     return (
       <Avatar style={style} {...props}>
-        {selected ? <NavigationCheck /> : children}
+        {selected ? <Check /> : children}
       </Avatar>
     );
   }

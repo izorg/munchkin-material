@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import SwordCross from 'mdi-material-ui/SwordCross';
+import { SwordCross } from 'mdi-material-ui';
 import { noop } from 'lodash/fp';
 
 import Fab from '../../../components/Fab';

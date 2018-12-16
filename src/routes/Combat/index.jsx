@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import { hot } from 'react-hot-loader/root';
-import compose from 'recompose/compose';
+import { compose } from 'recompose';
 
 import HelperButton from './HelperButton';
 import HelperSelector from './HelperSelector';

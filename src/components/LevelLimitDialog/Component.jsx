@@ -1,15 +1,17 @@
 import React, { PureComponent } from 'react';
 import { FormattedMessage, injectIntl } from 'react-intl';
-import compose from 'recompose/compose';
+import { compose } from 'recompose';
 import PropTypes from 'prop-types';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import { withStyles } from '@material-ui/core/styles';
+import {
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  FormControlLabel,
+  Radio,
+  RadioGroup,
+  withStyles,
+} from '@material-ui/core';
 import { noop } from 'lodash/fp';
 
 import { MAX_EPIC_LEVEL, MAX_LEVEL, MIN_LEVEL } from '../../utils/levelLimit';

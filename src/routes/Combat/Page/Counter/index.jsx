@@ -1,9 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import IconButton from '@material-ui/core/IconButton';
-import { withStyles } from '@material-ui/core/styles';
-import NavigationArrowDropDown from '@material-ui/icons/ArrowDropDown';
-import NavigationArrowDropUp from '@material-ui/icons/ArrowDropUp';
+import { IconButton, withStyles } from '@material-ui/core';
+import { ArrowDropDown, ArrowDropUp } from '@material-ui/icons';
 import cns from 'classnames';
 import { noop } from 'lodash/fp';
 
@@ -65,7 +63,7 @@ const CombatCounter = ({
       disabled={incrementDisabled}
       onClick={onIncrement}
     >
-      <NavigationArrowDropUp className={classes.icon} />
+      <ArrowDropUp className={classes.icon} />
     </IconButton>
 
     <div className={classes.value}>{value}</div>
@@ -75,7 +73,7 @@ const CombatCounter = ({
       disabled={decrementDisabled}
       onClick={onDecrement}
     >
-      <NavigationArrowDropDown className={classes.icon} />
+      <ArrowDropDown className={classes.icon} />
     </IconButton>
   </div>
 );

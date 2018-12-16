@@ -1,4 +1,4 @@
-import React, { createRef, Fragment, PureComponent } from 'react';
+import React, { createRef, PureComponent } from 'react';
 import { Field } from 'react-final-form';
 import {
   defineMessages,
@@ -6,17 +6,18 @@ import {
   injectIntl,
   intlShape,
 } from 'react-intl';
-import compose from 'recompose/compose';
+import { compose } from 'recompose';
 import PropTypes from 'prop-types';
-import FormControl from '@material-ui/core/FormControl';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormLabel from '@material-ui/core/FormLabel';
-import Grid from '@material-ui/core/Grid';
-import Radio from '@material-ui/core/Radio';
-import TextField from '@material-ui/core/TextField';
-import { withStyles } from '@material-ui/core/styles';
-import SexFemale from 'mdi-material-ui/GenderFemale';
-import SexMale from 'mdi-material-ui/GenderMale';
+import {
+  FormControl,
+  FormControlLabel,
+  FormLabel,
+  Grid,
+  Radio,
+  TextField,
+  withStyles,
+} from '@material-ui/core';
+import { GenderFemale, GenderMale } from 'mdi-material-ui';
 import { FEMALE, MALE } from 'munchkin-core';
 
 import ColorPicker from '../ColorPicker';
@@ -75,7 +76,7 @@ class PlayerForm extends PureComponent {
     const { autoFocus, classes, intl } = this.props;
 
     return (
-      <Fragment>
+      <>
         <Field
           autoComplete="off"
           autoFocus={autoFocus}
@@ -100,7 +101,7 @@ class PlayerForm extends PureComponent {
                 control={
                   <Field component={renderRadio} name="sex" type="radio" />
                 }
-                label={<SexMale className={classes.icon} />}
+                label={<GenderMale className={classes.icon} />}
                 value={MALE}
               />
               <FormControlLabel
@@ -110,7 +111,7 @@ class PlayerForm extends PureComponent {
                 control={
                   <Field component={renderRadio} name="sex" type="radio" />
                 }
-                label={<SexFemale className={classes.icon} />}
+                label={<GenderFemale className={classes.icon} />}
                 value={FEMALE}
               />
             </FormControl>
@@ -128,7 +129,7 @@ class PlayerForm extends PureComponent {
             </FormControl>
           </Grid>
         </Grid>
-      </Fragment>
+      </>
     );
   }
 }

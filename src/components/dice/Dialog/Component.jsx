@@ -1,15 +1,8 @@
 import React, { createElement, PureComponent } from 'react';
-import TransitionGroup from 'react-transition-group/TransitionGroup';
+import { TransitionGroup } from 'react-transition-group';
 import PropTypes from 'prop-types';
-import ButtonBase from '@material-ui/core/ButtonBase';
-import Dialog from '@material-ui/core/Dialog';
-import { withStyles } from '@material-ui/core/styles';
-import DiceOne from 'mdi-material-ui/Dice1';
-import DiceTwo from 'mdi-material-ui/Dice2';
-import DiceThree from 'mdi-material-ui/Dice3';
-import DiceFour from 'mdi-material-ui/Dice4';
-import DiceFive from 'mdi-material-ui/Dice5';
-import DiceSix from 'mdi-material-ui/Dice6';
+import { ButtonBase, Dialog, withStyles } from '@material-ui/core';
+import { Dice1, Dice2, Dice3, Dice4, Dice5, Dice6 } from 'mdi-material-ui';
 import { noop } from 'lodash/fp';
 
 import DiceTransition from '../Transition';
@@ -42,12 +35,12 @@ const styles = (theme) => ({
 });
 
 const diceComponent = {
-  1: DiceOne,
-  2: DiceTwo,
-  3: DiceThree,
-  4: DiceFour,
-  5: DiceFive,
-  6: DiceSix,
+  1: Dice1,
+  2: Dice2,
+  3: Dice3,
+  4: Dice4,
+  5: Dice5,
+  6: Dice6,
 };
 
 class DiceDialog extends PureComponent {

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { createSelector, createStructuredSelector } from 'reselect';
-import { MuiThemeProvider } from '@material-ui/core/styles';
+import { MuiThemeProvider } from '@material-ui/core';
 
 import createTheme from '../../styles/createTheme';
 import themes from '../../styles/themes';

@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
 import { push } from 'connected-react-router';
 import { connect } from 'react-redux';
-import IconButton from '@material-ui/core/IconButton';
-import Menu from '@material-ui/icons/Menu';
+import { IconButton } from '@material-ui/core';
+import { Menu } from '@material-ui/icons';
 
 import { stringifyQuery } from '../../../../../utils/location';
 

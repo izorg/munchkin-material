@@ -1,9 +1,7 @@
 import React, { PureComponent } from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
-import { withStyles } from '@material-ui/core/styles';
+import { IconButton, Typography, withStyles } from '@material-ui/core';
 import { noop } from 'lodash/fp';
 
 import Sex from '../../../../../components/Sex';

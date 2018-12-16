@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { ConnectedRouter } from 'connected-react-router';
 import { hot } from 'react-hot-loader/root';
 import { Provider } from 'react-redux';
@@ -52,10 +52,10 @@ const App = ({ history, keepAwakeSupport, rateLink, shareLink, store }) => (
       <ConnectedRouter history={history}>
         <LocaleProvider>
           <ThemeProvider>
-            <Fragment>
+            <>
               <CssBaseline />
               <Root />
-            </Fragment>
+            </>
           </ThemeProvider>
         </LocaleProvider>
       </ConnectedRouter>

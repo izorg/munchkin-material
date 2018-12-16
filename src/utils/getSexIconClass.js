@@ -1,14 +1,13 @@
-import SexFemale from 'mdi-material-ui/GenderFemale';
-import SexMale from 'mdi-material-ui/GenderMale';
+import { GenderFemale, GenderMale } from 'mdi-material-ui';
 import { FEMALE, MALE } from 'munchkin-core';
 
 export default function(sex) {
   switch (sex) {
     case FEMALE:
-      return SexFemale;
+      return GenderFemale;
 
     case MALE:
-      return SexMale;
+      return GenderMale;
 
     default:
       return null;

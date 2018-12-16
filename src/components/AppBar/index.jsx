@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import MuiAppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import { withStyles } from '@material-ui/core/styles';
+import { AppBar as MuiAppBar, Toolbar, withStyles } from '@material-ui/core';
 import cns from 'classnames';
 
 const styles = (theme) => ({

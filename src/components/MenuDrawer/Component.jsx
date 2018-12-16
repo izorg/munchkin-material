@@ -1,11 +1,10 @@
 import React, { PureComponent } from 'react';
 import { findDOMNode } from 'react-dom';
-import List from '@material-ui/core/List';
+import { List, withStyles } from '@material-ui/core';
 import Drawer, {
   getAnchor,
   isHorizontal,
 } from '@material-ui/core/Drawer/Drawer';
-import { withStyles } from '@material-ui/core/styles';
 import { duration } from '@material-ui/core/styles/transitions';
 import { getTransitionProps } from '@material-ui/core/transitions/utils';
 import Hammer from 'hammerjs';

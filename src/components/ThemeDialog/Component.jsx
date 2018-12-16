@@ -1,18 +1,19 @@
 import React, { PureComponent } from 'react';
 import { FormattedMessage, injectIntl } from 'react-intl';
-import compose from 'recompose/compose';
-import withProps from 'recompose/withProps';
+import { compose, withProps } from 'recompose';
 import { createSelector, createStructuredSelector } from 'reselect';
 import PropTypes from 'prop-types';
-import Checkbox from '@material-ui/core/Checkbox';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import { withStyles } from '@material-ui/core/styles';
+import {
+  Checkbox,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  FormControlLabel,
+  Radio,
+  RadioGroup,
+  withStyles,
+} from '@material-ui/core';
 import { noop, sortBy } from 'lodash/fp';
 
 import { names } from '../../styles/themes';

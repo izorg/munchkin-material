@@ -1,16 +1,18 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
-import Avatar from '@material-ui/core/Avatar';
-import Dialog from '@material-ui/core/Dialog';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import { withStyles } from '@material-ui/core/styles';
-import ChevronUp from '@material-ui/icons/KeyboardArrowUp';
-import ChevronDoubleUpIcon from 'mdi-material-ui/ChevronDoubleUp';
+import {
+  Avatar,
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  List,
+  ListItem,
+  ListItemText,
+  withStyles,
+} from '@material-ui/core';
+import { KeyboardArrowUp } from '@material-ui/icons';
+import { ChevronDoubleUp } from 'mdi-material-ui';
 import { noop } from 'lodash/fp';
 
 import getSexIconClass from '../../../utils/getSexIconClass';
@@ -93,19 +95,19 @@ const HelperSelector = ({ classes, helpers, onSelect, ...props }) => (
                   primary: classes.primary,
                 }}
                 primary={
-                  <Fragment>
+                  <>
                     <span className={classes.name}>{helper.name}</span>
 
                     <span className={classes.level}>
                       {helper.level}
-                      <ChevronUp />
+                      <KeyboardArrowUp />
                     </span>
 
                     <span className={classes.strength}>
                       {helper.level + helper.gear}
-                      <ChevronDoubleUpIcon />
+                      <ChevronDoubleUp />
                     </span>
-                  </Fragment>
+                  </>
                 }
               />
             </ListItem>

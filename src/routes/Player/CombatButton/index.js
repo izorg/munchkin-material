@@ -1,6 +1,5 @@
 import { push } from 'connected-react-router';
 import { connect } from 'react-redux';
-import compose from 'recompose/compose';
 import { addMonster, createMonster, startCombat } from 'munchkin-core';
 
 import Component from './Component';
@@ -26,9 +25,7 @@ const mapDispatchToProps = {
   goToCombat,
 };
 
-export default compose(
-  connect(
-    undefined,
-    mapDispatchToProps,
-  ),
+export default connect(
+  undefined,
+  mapDispatchToProps,
 )(Component);

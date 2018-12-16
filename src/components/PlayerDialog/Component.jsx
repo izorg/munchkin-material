@@ -1,19 +1,20 @@
 import React, { createRef, PureComponent } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { Form as FinalForm } from 'react-final-form';
-import compose from 'recompose/compose';
-import shouldUpdate from 'recompose/shouldUpdate';
+import { compose, shouldUpdate } from 'recompose';
 import PropTypes from 'prop-types';
-import Button from '@material-ui/core/Button';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import Fade from '@material-ui/core/Fade';
-import Hidden from '@material-ui/core/Hidden';
-import Slide from '@material-ui/core/Slide';
-import { withStyles } from '@material-ui/core/styles';
-import withMobileDialog from '@material-ui/core/withMobileDialog';
+import {
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  Fade,
+  Hidden,
+  Slide,
+  withMobileDialog,
+  withStyles,
+} from '@material-ui/core';
 import { noop, stubFalse } from 'lodash/fp';
 
 import { ios } from '../../utils/platforms';

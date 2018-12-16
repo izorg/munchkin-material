@@ -1,10 +1,8 @@
 import React from 'react';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import PropTypes from 'prop-types';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import Share from '@material-ui/icons/Share';
+import { ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
+import { Share } from '@material-ui/icons';
 
 const messages = defineMessages({
   share: {

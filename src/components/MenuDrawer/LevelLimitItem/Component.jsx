@@ -1,11 +1,13 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import SwapVertIcon from '@material-ui/icons/SwapVert';
-import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
+import {
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  withStyles,
+} from '@material-ui/core';
+import { SwapVert } from '@material-ui/icons';
 import cns from 'classnames';
 
 import {
@@ -57,7 +59,7 @@ const LevelLimitItem = ({ classes, className, epic, levelLimit, ...rest }) => {
   return (
     <ListItem button className={cns(className, classes.root)} {...rest}>
       <ListItemIcon>
-        <SwapVertIcon />
+        <SwapVert />
       </ListItemIcon>
       <ListItemText
         primary={

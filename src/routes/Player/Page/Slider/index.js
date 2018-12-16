@@ -1,6 +1,5 @@
 import { replace } from 'connected-react-router';
 import { connect } from 'react-redux';
-import compose from 'recompose/compose';
 
 import Slider from './Component';
 
@@ -15,9 +14,7 @@ const mapDispatchToProps = {
   },
 };
 
-export default compose(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps,
-  ),
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
 )(Slider);

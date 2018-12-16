@@ -1,4 +1,4 @@
-import { createMuiTheme } from '@material-ui/core/styles';
+import { createMuiTheme } from '@material-ui/core';
 import deepmerge from 'deepmerge';
 
 import baseTheme from './baseTheme';

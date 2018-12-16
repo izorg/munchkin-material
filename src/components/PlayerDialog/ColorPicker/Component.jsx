@@ -1,7 +1,6 @@
-import React, { Fragment, PureComponent } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import Hidden from '@material-ui/core/Hidden';
-import { withStyles } from '@material-ui/core/styles';
+import { Hidden, withStyles } from '@material-ui/core';
 import { noop } from 'lodash/fp';
 
 import Color from './Color';
@@ -79,7 +78,7 @@ class ColorPicker extends PureComponent {
     const { anchorEl } = this.state;
 
     return (
-      <Fragment>
+      <>
         <Color
           className={classes.color}
           buttonRef={this.handleButtonRef}
@@ -113,7 +112,7 @@ class ColorPicker extends PureComponent {
             value={value}
           />
         </Hidden>
-      </Fragment>
+      </>
     );
   }
 }
