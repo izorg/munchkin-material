@@ -1,6 +1,26 @@
 const { version } = require('./package');
 
+const getDefaultTransform = (libs = []) =>
+  libs.reduce(
+    (result, lib) => ({
+      ...result,
+      [lib]: {
+        transform: (member) => `${lib}/${member}`,
+        preventFullImport: true,
+      },
+    }),
+    {},
+  );
+
 const transform = {
+  ...getDefaultTransform([
+    '@material-ui/icons',
+    '@material-ui/lab',
+    'lodash/fp',
+    'mdi-material-ui',
+    'react-transition-group',
+    'recompose',
+  ]),
   '@material-ui/core': {
     transform: (member) => {
       if (
@@ -16,36 +36,6 @@ const transform = {
 
       return `@material-ui/core/${member}`;
     },
-    preventFullImport: true,
-  },
-
-  '@material-ui/lab': {
-    transform: (member) => `@material-ui/lab/${member}`,
-    preventFullImport: true,
-  },
-
-  '@material-ui/icons': {
-    transform: (member) => `@material-ui/icons/${member}`,
-    preventFullImport: true,
-  },
-
-  'lodash/fp': {
-    transform: (member) => `lodash/fp/${member}`,
-    preventFullImport: true,
-  },
-
-  'mdi-material-ui': {
-    transform: (member) => `mdi-material-ui/${member}`,
-    preventFullImport: true,
-  },
-
-  'react-transition-group': {
-    transform: (member) => `react-transition-group/${member}`,
-    preventFullImport: true,
-  },
-
-  recompose: {
-    transform: (member) => `recompose/${member}`,
     preventFullImport: true,
   },
 };
