@@ -42,20 +42,32 @@ const mapDispatchToProps = {
     dispatch(goBack());
   },
   onPlayersReset: () => (dispatch, getState) => {
-    const { playerList } = getState();
+    const { playerList, players } = getState();
 
-    playerList.map((id) =>
-      dispatch(
-        updatePlayer({
-          gear: 0,
-          id,
-          level: 1,
-        }),
-      ),
-    );
+    // const undo = [];
+
+    playerList.forEach((id) => {
+      const player = players[id];
+
+      if (player.level !== 1 || player.gear !== 0) {
+        // undo.push(player);
+
+        dispatch(
+          updatePlayer({
+            gear: 0,
+            id,
+            level: 1,
+          }),
+        );
+      }
+    });
 
     dispatch(setCombatPlayerBonus(0));
     dispatch(setCombatHelperBonus(0));
+
+    // if (undo.length) {
+    //   console.log('undo', undo);
+    // }
   },
   onToggleEditClick: (mode) =>
     mode === modes.EDIT ? goBack() : push(`/${modes.EDIT}`),

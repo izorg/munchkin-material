@@ -1,7 +1,7 @@
 import React, { Component, lazy, Suspense } from 'react';
 import PropTypes from 'prop-types';
 
-import ScreenDialog from './Dialog';
+import ScreenModal from './Modal';
 import Loading from './Loading';
 
 let screenAppear = false;
@@ -27,11 +27,11 @@ class ScreenLoader extends Component {
     const LazyComponent = this.component;
 
     return (
-      <ScreenDialog open={Boolean(match)} TransitionProps={{ appear }}>
+      <ScreenModal appear={appear} open={Boolean(match)}>
         <Suspense fallback={<Loading />}>
           <LazyComponent match={match} {...rest} />
         </Suspense>
-      </ScreenDialog>
+      </ScreenModal>
     );
   }
 }
