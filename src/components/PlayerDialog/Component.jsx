@@ -107,19 +107,17 @@ class PlayerDialog extends PureComponent {
   handleEntered() {
     const { edit } = this.props;
 
-    if (!edit) {
+    if (!edit && ios && window.cordova) {
       this.focusTimeout = setTimeout(this.focusName, 100);
     }
   }
 
   focusName() {
-    const { edit } = this.props;
-
     const node = this.contentRef.current.nameRef.current;
 
     this.focusTimeout = null;
 
-    if (!edit && node) {
+    if (node) {
       node.focus();
     }
   }
@@ -178,7 +176,7 @@ class PlayerDialog extends PureComponent {
         </DialogTitle>
         <DialogContent className={classes.content}>
           <Content
-            autoFocus={!edit && ios && !window.cordova}
+            autoFocus={!edit && (!ios || !window.cordova)}
             innerRef={this.contentRef}
           />
         </DialogContent>
