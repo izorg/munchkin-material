@@ -41,4 +41,15 @@ module.exports = {
       },
     ],
   },
+  overrides: [
+    {
+      files: ['scripts/**/*.js'],
+      env: {
+        node: true,
+      },
+      rules: {
+        'no-console': 'off',
+      },
+    },
+  ],
 };

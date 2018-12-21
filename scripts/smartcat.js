@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 const axios = require('axios');
 const { exec } = require('child_process');
 
