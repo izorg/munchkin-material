@@ -52,10 +52,8 @@ const App = ({ history, keepAwakeSupport, rateLink, shareLink, store }) => (
       <ConnectedRouter history={history}>
         <LocaleProvider>
           <ThemeProvider>
-            <>
-              <CssBaseline />
-              <Root />
-            </>
+            <CssBaseline />
+            <Root />
           </ThemeProvider>
         </LocaleProvider>
       </ConnectedRouter>

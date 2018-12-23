@@ -2,6 +2,8 @@ const fs = require('fs');
 const globSync = require('glob').sync; // eslint-disable-line import/no-extraneous-dependencies
 const mkdirpSync = require('mkdirp').sync; // eslint-disable-line import/no-extraneous-dependencies
 
+const { flow, fromPairs, head, sortBy, toPairs } = require('lodash/fp');
+
 const MESSAGES_PATTERN = './messages/**/*.json';
 const LANG_DIR = './languages/';
 
@@ -27,7 +29,11 @@ const defaultMessages = globSync(MESSAGES_PATTERN)
   }, {});
 
 mkdirpSync(LANG_DIR);
-fs.writeFileSync(
-  `${LANG_DIR}en.json`,
-  JSON.stringify(defaultMessages, null, 2),
-);
+
+const sortedMessages = flow(
+  toPairs,
+  sortBy(head),
+  fromPairs,
+)(defaultMessages);
+
+fs.writeFileSync(`${LANG_DIR}en.json`, JSON.stringify(sortedMessages, null, 2));

@@ -1,14 +1,21 @@
 import React from 'react';
-import { FormattedMessage } from 'react-intl';
+import { defineMessages, injectIntl } from 'react-intl';
 import { IconButton, Tooltip } from '@material-ui/core';
 import { DiceMultiple } from 'mdi-material-ui';
 
-const DiceIconButton = (props) => (
-  <Tooltip title={<FormattedMessage id="dice" defaultMessage="Dice" />}>
+const messages = defineMessages({
+  dice: {
+    id: 'dice',
+    defaultMessage: 'Dice',
+  },
+});
+
+const DiceIconButton = ({ intl, ...props }) => (
+  <Tooltip title={intl.formatMessage(messages.dice)}>
     <IconButton {...props}>
       <DiceMultiple />
     </IconButton>
   </Tooltip>
 );
 
-export default DiceIconButton;
+export default injectIntl(DiceIconButton);
