@@ -9,7 +9,7 @@ import {
 import { Palette } from '@material-ui/icons';
 import cns from 'classnames';
 
-import { names as themeNames } from '../../../styles/themes';
+import { names as themeNames } from '../../../../styles/themes';
 
 const styles = {
   root: {

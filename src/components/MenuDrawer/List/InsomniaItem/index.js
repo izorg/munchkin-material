@@ -2,9 +2,9 @@ import { connect } from 'react-redux';
 import { branch, compose, fromRenderProps, renderNothing } from 'recompose';
 import { pick } from 'lodash/fp';
 
-import { setKeepAwake } from '../../../ducks/app';
+import { setKeepAwake } from '../../../../ducks/app';
 
-import { OptionsConsumer } from '../../OptionsContext';
+import { OptionsConsumer } from '../../../OptionsContext';
 
 import Component from './Component';
 

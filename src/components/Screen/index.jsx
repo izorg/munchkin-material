@@ -1,8 +1,9 @@
 import React, { Component, lazy, Suspense } from 'react';
 import PropTypes from 'prop-types';
 
+import Loading from '../Loading';
+
 import ScreenModal from './Modal';
-import Loading from './Loading';
 
 let screenAppear = false;
 

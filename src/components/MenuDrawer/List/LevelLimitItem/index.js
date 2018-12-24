@@ -1,24 +1,19 @@
-import { goBack } from 'connected-react-router';
+import { replace } from 'connected-react-router';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { get } from 'lodash/fp';
 
-import { applyUpdate } from '../../../ducks/update';
+import { stringifyQuery } from '../../../../utils/location';
 
 import Component from './Component';
 
 const mapStateToProps = createStructuredSelector({
-  update: get('update'),
-  version: get(['versions', 'app']),
+  epic: get(['app', 'epic']),
+  levelLimit: get(['app', 'levelLimit']),
 });
 
 const mapDispatchToProps = {
-  onClick: () => (dispatch, getState) => {
-    if (get('update', getState())) {
-      dispatch(goBack());
-      dispatch(applyUpdate());
-    }
-  },
+  onClick: () => replace({ search: stringifyQuery({ levelLimit: null }) }),
 };
 
 export default connect(

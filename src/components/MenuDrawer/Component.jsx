@@ -1,6 +1,6 @@
-import React, { PureComponent } from 'react';
+import React, { Component, lazy, Suspense } from 'react';
 import { findDOMNode } from 'react-dom';
-import { List, withStyles } from '@material-ui/core';
+import { withStyles } from '@material-ui/core';
 import Drawer, {
   getAnchor,
   isHorizontal,
@@ -12,22 +12,14 @@ import { throttle } from 'lodash/fp';
 
 import { ios } from '../../utils/platforms';
 
-import InsomniaItem from './InsomniaItem';
-import LevelLimitItem from './LevelLimitItem';
-import PrivacyItem from './PrivacyItem';
-import RateItem from './RateItem';
-import ShareItem from './ShareItem';
-import SingleModeItem from './SingleModeItem';
-import ThemeItem from './ThemeItem';
-import VersionItem from './VersionItem';
+import Loading from '../Loading';
+
+const MenuList = lazy(() => import(/* webpackChunkName: "menu" */ './List'));
 
 const styles = {
   paper: {
-    touchAction: 'pan-y',
-  },
-
-  menu: {
     maxWidth: 320,
+    touchAction: 'pan-y',
     width: 'calc(100vw - 56px)',
 
     '@supports(padding: env(safe-area-inset-left))': {
@@ -41,7 +33,7 @@ const hysteresis = 0.5;
 const minFlingVelocity = 0.3;
 const swipeAreaWidth = 20;
 
-class HomeMenuDrawer extends PureComponent {
+class HomeMenuDrawer extends Component {
   static getDerivedStateFromProps(nextProps, prevState) {
     if (typeof prevState.maybeSwiping === 'undefined') {
       return {
@@ -444,16 +436,9 @@ class HomeMenuDrawer extends PureComponent {
         }}
         {...rest}
       >
-        <List className={classes.menu} component="div">
-          <ThemeItem />
-          <SingleModeItem />
-          <LevelLimitItem />
-          <InsomniaItem />
-          <RateItem />
-          <ShareItem />
-          <PrivacyItem />
-          <VersionItem />
-        </List>
+        <Suspense fallback={<Loading />}>
+          <MenuList />
+        </Suspense>
       </Drawer>
     );
   }

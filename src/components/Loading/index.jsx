@@ -12,10 +12,10 @@ const styles = {
   },
 };
 
-const ScreenLoading = ({ classes }) => (
+const Loading = ({ classes }) => (
   <div className={classes.loading}>
     <CircularProgress />
   </div>
 );
 
-export default withStyles(styles)(ScreenLoading);
+export default withStyles(styles)(Loading);

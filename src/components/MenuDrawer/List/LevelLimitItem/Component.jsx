@@ -14,7 +14,7 @@ import {
   MAX_EPIC_LEVEL,
   MAX_LEVEL,
   MIN_LEVEL,
-} from '../../../utils/levelLimit';
+} from '../../../../utils/levelLimit';
 
 const styles = {
   root: {

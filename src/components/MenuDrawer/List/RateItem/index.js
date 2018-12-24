@@ -3,22 +3,17 @@ import { connect } from 'react-redux';
 import { branch, compose, fromRenderProps, renderNothing } from 'recompose';
 import { pick } from 'lodash/fp';
 
-import { OptionsConsumer } from '../../OptionsContext';
+import { OptionsConsumer } from '../../../OptionsContext';
 
 import Component from './Component';
 
 const mapDispatchToProps = {
-  onClick: (shareObject) => async (dispatch) => {
-    try {
-      await navigator.share(shareObject);
-      dispatch(goBack());
-    } catch (error) {}
-  },
+  onClick: goBack,
 };
 
 export default compose(
-  fromRenderProps(OptionsConsumer, pick('shareLink')),
-  branch(({ shareLink }) => !shareLink || !navigator.share, renderNothing),
+  fromRenderProps(OptionsConsumer, pick('rateLink')),
+  branch(({ rateLink }) => !rateLink, renderNothing),
   connect(
     undefined,
     mapDispatchToProps,
