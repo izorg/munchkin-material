@@ -1,5 +1,5 @@
-import React from 'react';
 import { ConnectedRouter } from 'connected-react-router';
+import React from 'react';
 import { hot } from 'react-hot-loader/root';
 import { Provider } from 'react-redux';
 import { compose } from 'recompose';
