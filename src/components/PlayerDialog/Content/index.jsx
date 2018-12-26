@@ -78,7 +78,6 @@ class PlayerForm extends PureComponent {
     return (
       <>
         <Field
-          autoComplete="off"
           autoFocus={autoFocus}
           component={renderTextField}
           fullWidth
