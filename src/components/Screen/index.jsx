@@ -38,11 +38,13 @@ class ScreenLoader extends Component {
 }
 
 ScreenLoader.propTypes = {
+  appear: PropTypes.bool,
   loader: PropTypes.func.isRequired,
   match: PropTypes.object,
 };
 
 ScreenLoader.defaultProps = {
+  appear: undefined,
   match: null,
 };
 

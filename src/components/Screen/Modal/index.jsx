@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Modal, Slide, withStyles } from '@material-ui/core';
 
 import { ios } from '../../../utils/platforms';
@@ -38,5 +39,16 @@ const ScreenModal = ({ appear, children, classes, open, ...rest }) => (
     </TransitionComponent>
   </Modal>
 );
+
+ScreenModal.propTypes = {
+  appear: PropTypes.bool,
+  children: PropTypes.node.isRequired,
+  open: PropTypes.bool,
+};
+
+ScreenModal.defaultProps = {
+  appear: undefined,
+  open: false,
+};
 
 export default withStyles(styles)(ScreenModal);

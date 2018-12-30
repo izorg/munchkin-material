@@ -216,7 +216,6 @@ PlayerDialog.defaultProps = {
   edit: false,
   onClose: noop,
   open: false,
-  playerId: undefined,
 };
 
 export default compose(

@@ -32,6 +32,7 @@ class LocaleProvider extends PureComponent {
 
   componentDidUpdate() {
     const { locale } = this.props;
+    // eslint-disable-next-line react/prop-types
     const { locale: stateLocale } = this.state;
 
     if (stateLocale !== locale) {

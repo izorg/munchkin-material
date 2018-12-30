@@ -39,6 +39,7 @@ const styles = {
   },
 };
 
+// eslint-disable-next-line react/prop-types
 const renderColorPicker = ({ input, ...props }) => (
   <ColorPicker {...input} {...props} />
 );
@@ -61,6 +62,7 @@ const renderRadio = (props) => {
   );
 };
 
+// eslint-disable-next-line react/prop-types
 const renderTextField = ({ input, meta, ...props }) => (
   <TextField {...input} {...props} />
 );

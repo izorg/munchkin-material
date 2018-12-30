@@ -37,6 +37,7 @@ const ShareItem = ({ intl, onClick, shareLink, ...rest }) => (
 
 ShareItem.propTypes = {
   intl: intlShape.isRequired,
+  onClick: PropTypes.func.isRequired,
   shareLink: PropTypes.string.isRequired,
 };
 

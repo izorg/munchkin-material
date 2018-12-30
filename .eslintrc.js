@@ -37,7 +37,7 @@ module.exports = {
     'react/prop-types': [
       'error',
       {
-        ignore: ['classes', 'className', 'theme'],
+        ignore: ['classes', 'className', 'style', 'theme'],
       },
     ],
   },

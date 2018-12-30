@@ -1,5 +1,6 @@
 import React, { Component, lazy, Suspense } from 'react';
 import { findDOMNode } from 'react-dom';
+import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core';
 import Drawer, {
   getAnchor,
@@ -444,8 +445,20 @@ class HomeMenuDrawer extends Component {
   }
 }
 
+HomeMenuDrawer.propTypes = {
+  anchor: PropTypes.oneOf(['left']),
+  onClose: PropTypes.func.isRequired,
+  onOpen: PropTypes.func.isRequired,
+  open: PropTypes.bool,
+  transitionDuration: PropTypes.shape({
+    enter: PropTypes.number.isRequired,
+    exit: PropTypes.number.isRequired,
+  }),
+};
+
 HomeMenuDrawer.defaultProps = {
   anchor: 'left',
+  open: false,
   transitionDuration: {
     enter: duration.enteringScreen,
     exit: duration.leavingScreen,
