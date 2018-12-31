@@ -57,5 +57,7 @@
   "theme.name.star": "Звёздный",
   "theme.name.super": "Супер",
   "themeDialog.dark": "Тёмная",
-  "themeDialog.title": "Тема"
+  "themeDialog.title": "Тема",
+  "undo": "Отменить",
+  "undo.resetPlayers": "Игроки были сброшены"
 }

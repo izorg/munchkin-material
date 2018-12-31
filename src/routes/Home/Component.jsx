@@ -14,6 +14,7 @@ import AppBar from './AppBar';
 import PlayerAddButton from './PlayerAddButton';
 import PlayerList from './PlayerList';
 import SinglePlayer from './SinglePlayer';
+import Undo from './Undo';
 
 const styles = (theme) => ({
   root: {
@@ -98,6 +99,8 @@ class Home extends Component {
         {menu && <MenuDrawer />}
         <LevelLimitDialog />
         <ThemeDialog />
+
+        <Undo />
       </>
     );
   }

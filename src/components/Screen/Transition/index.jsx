@@ -10,8 +10,8 @@ import {
 import { noop } from 'lodash/fp';
 
 class ScreenTransition extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.handleEnter = this.handleEnter.bind(this);
     this.handleEntered = this.handleEntered.bind(this);

@@ -57,5 +57,7 @@
   "theme.name.star": "Star",
   "theme.name.super": "Super",
   "themeDialog.dark": "Dark",
-  "themeDialog.title": "Theme"
+  "themeDialog.title": "Theme",
+  "undo": "Undo",
+  "undo.resetPlayers": "Players have been reset"
 }

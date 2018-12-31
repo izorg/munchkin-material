@@ -57,5 +57,7 @@
   "theme.name.star": "Зоряний",
   "theme.name.super": "Супер",
   "themeDialog.dark": "Темна",
-  "themeDialog.title": "Тема"
+  "themeDialog.title": "Тема",
+  "undo": "Відмінити",
+  "undo.resetPlayers": "Гравці були скинуті"
 }

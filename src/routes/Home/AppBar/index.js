@@ -8,6 +8,7 @@ import {
 } from 'munchkin-core';
 
 import { removePlayerFromList } from '../../../ducks/playerList';
+import { setUndo, UNDO_RESET_PLAYERS } from '../../../ducks/undo';
 
 import * as modes from '../modes';
 
@@ -44,13 +45,13 @@ const mapDispatchToProps = {
   onPlayersReset: () => (dispatch, getState) => {
     const { playerList, players } = getState();
 
-    // const undo = [];
+    const undo = [];
 
     playerList.forEach((id) => {
       const player = players[id];
 
       if (player.level !== 1 || player.gear !== 0) {
-        // undo.push(player);
+        undo.push(player);
 
         dispatch(
           updatePlayer({
@@ -65,9 +66,14 @@ const mapDispatchToProps = {
     dispatch(setCombatPlayerBonus(0));
     dispatch(setCombatHelperBonus(0));
 
-    // if (undo.length) {
-    //   console.log('undo', undo);
-    // }
+    if (undo.length) {
+      dispatch(
+        setUndo({
+          type: UNDO_RESET_PLAYERS,
+          players: undo,
+        }),
+      );
+    }
   },
   onToggleEditClick: (mode) =>
     mode === modes.EDIT ? goBack() : push(`/${modes.EDIT}`),
