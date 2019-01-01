@@ -1,5 +1,6 @@
 import deepmerge from 'deepmerge';
 import brown from '@material-ui/core/colors/brown';
+import orange from '@material-ui/core/colors/orange';
 import createBreakpoints from '@material-ui/core/styles/createBreakpoints';
 import createPalette from '@material-ui/core/styles/createPalette';
 
@@ -46,6 +47,9 @@ export default (type) => {
     palette: {
       primary: {
         main: brown[500],
+      },
+      secondary: {
+        main: orange.A400,
       },
     },
 
