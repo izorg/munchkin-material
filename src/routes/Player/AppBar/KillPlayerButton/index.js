@@ -1,10 +1,24 @@
 import { connect } from 'react-redux';
+import { compose, fromRenderProps } from 'recompose';
+import { createSelector, createStructuredSelector } from 'reselect';
 import { get } from 'lodash/fp';
 import { killPlayer } from 'munchkin-core';
 
 import { setUndo, UNDO_KILL_PLAYER } from '../../../../ducks/undo';
 
+import PlayerContext from '../../../../components/PlayerContext';
+
 import Component from './Component';
+
+const disabled = createSelector(
+  get('players'),
+  (state, ownProps) => ownProps.playerId,
+  (players, playerId) => players[playerId].gear === 0,
+);
+
+const mapStateToProps = createStructuredSelector({
+  disabled,
+});
 
 const mapDispatchToProps = {
   onClick: (playerId) => (dispatch, getState) => {
@@ -20,7 +34,10 @@ const mapDispatchToProps = {
   },
 };
 
-export default connect(
-  undefined,
-  mapDispatchToProps,
+export default compose(
+  fromRenderProps(PlayerContext.Consumer, (playerId) => ({ playerId })),
+  connect(
+    mapStateToProps,
+    mapDispatchToProps,
+  ),
 )(Component);

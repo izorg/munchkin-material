@@ -4,8 +4,6 @@ import PropTypes from 'prop-types';
 import { IconButton, Tooltip } from '@material-ui/core';
 import { Skull } from 'mdi-material-ui';
 
-import PlayerContext from '../../../../components/PlayerContext';
-
 const messages = defineMessages({
   kill: {
     id: 'kill',
@@ -13,21 +11,20 @@ const messages = defineMessages({
   },
 });
 
-const KillPlayerButton = ({ intl, onClick, ...props }) => (
-  <PlayerContext.Consumer>
-    {(playerId) => (
-      <Tooltip title={intl.formatMessage(messages.kill)}>
-        <IconButton onClick={() => onClick(playerId)} {...props}>
-          <Skull />
-        </IconButton>
-      </Tooltip>
-    )}
-  </PlayerContext.Consumer>
+const KillPlayerButton = ({ intl, onClick, playerId, ...props }) => (
+  <Tooltip title={intl.formatMessage(messages.kill)}>
+    <span>
+      <IconButton onClick={() => onClick(playerId)} {...props}>
+        <Skull />
+      </IconButton>
+    </span>
+  </Tooltip>
 );
 
 KillPlayerButton.propTypes = {
   intl: intlShape.isRequired,
   onClick: PropTypes.func.isRequired,
+  playerId: PropTypes.string.isRequired,
 };
 
 export default injectIntl(KillPlayerButton);
