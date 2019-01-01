@@ -8,6 +8,8 @@ import BackButton from '../../../components/BackButton';
 import DiceButton from '../../../components/dice/Button';
 import Title from '../../../components/Title';
 
+import KillPlayerButton from './KillPlayerButton';
+
 const styles = {
   leftButton: {
     marginRight: 8,
@@ -29,6 +31,7 @@ const PlayerAppBar = ({ classes, onBack, title }) => (
     <Title className={classes.title}>{title}</Title>
 
     <DiceButton color="inherit" data-screenshots="player-dice-button" />
+    <KillPlayerButton color="inherit" />
   </AppBar>
 );
 

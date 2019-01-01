@@ -14,6 +14,7 @@
   "combat.player.modifier": "Mod",
   "dice": "Würfel",
   "home.single.title": "Munchkin",
+  "kill": "Töten",
   "levelLimitDialog.defaultLimit": "Munchkin ({minLevel} - {maxLevel})",
   "levelLimitDialog.epic": "Episches Munchkin ({minLevel} - {maxLevel})",
   "levelLimitDialog.noLimit": "Keine Begrenzung",
@@ -59,5 +60,6 @@
   "themeDialog.dark": "Dunkel",
   "themeDialog.title": "Thema",
   "undo": "Rückgängig machen",
+  "undo.killPlayer": "{name} {sex, select, female {ist gestorben} male {ist gestorben}}",
   "undo.resetPlayers": "Die Spieler wurden zurückgesetzt"
 }

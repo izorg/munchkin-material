@@ -14,6 +14,7 @@
   "combat.player.modifier": "Модиф-р",
   "dice": "Кубик",
   "home.single.title": "Манчкін",
+  "kill": "Вбивати",
   "levelLimitDialog.defaultLimit": "Манчкін ({minLevel} - {maxLevel})",
   "levelLimitDialog.epic": "Епічний Манчкін ({minLevel} - {maxLevel})",
   "levelLimitDialog.noLimit": "Без обмеження",
@@ -47,7 +48,7 @@
   "share.text": "Простий і зручний гравець рівня для гри в Манчкін",
   "singlePlayer.gear": "Бонус",
   "singlePlayer.level": "Рівень",
-  "singlePlayer.modifier": "Мод-р",
+  "singlePlayer.modifier": "Модиф-р",
   "singlePlayer.strength": "Сила",
   "theme.name.apocalypse": "Апокаліпсис",
   "theme.name.booty": "Піратський",
@@ -59,5 +60,6 @@
   "themeDialog.dark": "Темна",
   "themeDialog.title": "Тема",
   "undo": "Відмінити",
+  "undo.killPlayer": "{name} {sex, select, female {померла} male {помер}}",
   "undo.resetPlayers": "Гравці були скинуті"
 }

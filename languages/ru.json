@@ -14,6 +14,7 @@
   "combat.player.modifier": "Модиф-р",
   "dice": "Кубик",
   "home.single.title": "Манчкин",
+  "kill": "Убить",
   "levelLimitDialog.defaultLimit": "Манчкин ({minLevel} - {maxLevel})",
   "levelLimitDialog.epic": "Эпический Манчкин ({minLevel} - {maxLevel})",
   "levelLimitDialog.noLimit": "Без ограничения",
@@ -47,7 +48,7 @@
   "share.text": "Простой и удобный счётчик уровней для игры в Манчкин",
   "singlePlayer.gear": "Бонус",
   "singlePlayer.level": "Уровень",
-  "singlePlayer.modifier": "Мод-р",
+  "singlePlayer.modifier": "Модиф-р",
   "singlePlayer.strength": "Сила",
   "theme.name.apocalypse": "Апокалипсис",
   "theme.name.booty": "Пиратский",
@@ -59,5 +60,6 @@
   "themeDialog.dark": "Тёмная",
   "themeDialog.title": "Тема",
   "undo": "Отменить",
+  "undo.killPlayer": "{name} {sex, select, female {умерла} male {умер}}",
   "undo.resetPlayers": "Игроки были сброшены"
 }

@@ -4,9 +4,12 @@ import { compose } from 'recompose';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core';
 
+import PlayerContext from '../../components/PlayerContext';
+
 import AppBar from './AppBar';
 import CombatButton from './CombatButton';
 import Slider from './Slider';
+import Undo from './Undo';
 
 const styles = (theme) => ({
   root: {
@@ -31,10 +34,10 @@ class Player extends PureComponent {
     };
   }
 
-  static getDerivedStateFromProps(nextProps, prevState) {
+  static getDerivedStateFromProps(nextProps) {
     const { match } = nextProps;
 
-    if (match && match.params.id !== prevState.playerId) {
+    if (match) {
       return {
         playerId: match.params.id,
       };
@@ -48,7 +51,7 @@ class Player extends PureComponent {
     const { playerId } = this.state;
 
     return (
-      <>
+      <PlayerContext.Provider value={playerId}>
         <div className={classes.root}>
           <AppBar playerId={playerId} />
           <div className={classes.sliderContent}>
@@ -56,7 +59,8 @@ class Player extends PureComponent {
           </div>
         </div>
         <CombatButton playerId={playerId} />
-      </>
+        <Undo />
+      </PlayerContext.Provider>
     );
   }
 }

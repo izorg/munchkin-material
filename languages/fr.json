@@ -14,6 +14,7 @@
   "combat.player.modifier": "Mod",
   "dice": "Dé",
   "home.single.title": "Munchkin",
+  "kill": "Tuer",
   "levelLimitDialog.defaultLimit": "Munchkin ({minLevel} - {maxLevel})",
   "levelLimitDialog.epic": "Épique Munchkin ({minLevel} - {maxLevel})",
   "levelLimitDialog.noLimit": "Pas de limite",
@@ -59,5 +60,6 @@
   "themeDialog.dark": "Foncé",
   "themeDialog.title": "Thème",
   "undo": "Annuler",
+  "undo.killPlayer": "{name} {sex, select, female {est morte} male {est mort}}",
   "undo.resetPlayers": "Les joueurs ont été réinitialisés"
 }
