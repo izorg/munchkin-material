@@ -8,13 +8,7 @@ import {
 import { compose } from 'recompose';
 import PropTypes from 'prop-types';
 import { IconButton, Tooltip, withStyles } from '@material-ui/core';
-import {
-  Check,
-  Close,
-  Delete,
-  Edit,
-  SettingsBackupRestore,
-} from '@material-ui/icons';
+import { Check, Close, Delete, Edit } from '@material-ui/icons';
 import { FlagCheckered } from 'mdi-material-ui';
 import { noop } from 'lodash/fp';
 
@@ -26,6 +20,7 @@ import * as modes from '../modes';
 import modeShape from '../modeShape';
 
 import MenuButton from './MenuButton';
+import ResetButton from './ResetButton';
 
 const messages = defineMessages({
   edit: {
@@ -55,9 +50,7 @@ const HomeAppBar = ({
   intl,
   mode,
   onMultiSelectDeactivate,
-  onPlayerReset,
   onPlayersDelete,
-  onPlayersReset,
   onToggleEditClick,
   onTurnFinish,
   selectedPlayerIds,
@@ -103,16 +96,7 @@ const HomeAppBar = ({
         {title}
       </Title>
 
-      {(singleMode || (!mode && !empty)) && (
-        <Tooltip title={intl.formatMessage(messages.reset)}>
-          <IconButton
-            color="inherit"
-            onClick={singleMode ? onPlayerReset : onPlayersReset}
-          >
-            <SettingsBackupRestore />
-          </IconButton>
-        </Tooltip>
-      )}
+      {(singleMode || (!mode && !empty)) && <ResetButton />}
 
       {(!mode || singleMode) && <DiceButton color={buttonColor} />}
 
@@ -151,9 +135,7 @@ HomeAppBar.propTypes = {
   intl: intlShape.isRequired,
   mode: modeShape,
   onMultiSelectDeactivate: PropTypes.func,
-  onPlayerReset: PropTypes.func,
   onPlayersDelete: PropTypes.func,
-  onPlayersReset: PropTypes.func,
   onToggleEditClick: PropTypes.func,
   onTurnFinish: PropTypes.func,
   selectedPlayerIds: PropTypes.arrayOf(PropTypes.string),
@@ -164,9 +146,7 @@ HomeAppBar.defaultProps = {
   empty: false,
   mode: null,
   onMultiSelectDeactivate: noop,
-  onPlayerReset: noop,
   onPlayersDelete: noop,
-  onPlayersReset: noop,
   onToggleEditClick: noop,
   onTurnFinish: noop,
   selectedPlayerIds: [],
