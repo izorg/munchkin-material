@@ -128,8 +128,8 @@ class CombatPlayer extends PureComponent {
             onIncrement={this.handleLevelIncrement}
             title={
               <FormattedMessage
-                id="combat.player.level"
                 defaultMessage="Level"
+                id="combat.player.level"
               />
             }
             value={level}
@@ -139,7 +139,7 @@ class CombatPlayer extends PureComponent {
             onDecrement={this.handleGearDecrement}
             onIncrement={this.handleGearIncrement}
             title={
-              <FormattedMessage id="combat.player.gear" defaultMessage="Gear" />
+              <FormattedMessage defaultMessage="Gear" id="combat.player.gear" />
             }
             value={gear}
           />
@@ -149,8 +149,8 @@ class CombatPlayer extends PureComponent {
             onIncrement={this.handleBonusIncrement}
             title={
               <FormattedMessage
-                id="combat.player.modifier"
                 defaultMessage="Modifier"
+                id="combat.player.modifier"
               />
             }
             value={bonus}

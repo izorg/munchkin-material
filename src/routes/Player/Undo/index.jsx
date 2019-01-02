@@ -20,8 +20,8 @@ const message = createSelector(
       case UNDO_KILL_PLAYER:
         return (
           <FormattedMessage
-            id="undo.killPlayer"
             defaultMessage="{name} {sex, select, female {has died} male {has died}}"
+            id="undo.killPlayer"
             values={{
               name,
               sex,

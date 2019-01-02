@@ -5,7 +5,7 @@ import lightBlue from '@material-ui/core/colors/lightBlue';
 export const key = 'star';
 
 export const name = (
-  <FormattedMessage id="theme.name.star" defaultMessage="Star" />
+  <FormattedMessage defaultMessage="Star" id="theme.name.star" />
 );
 
 export default {

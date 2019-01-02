@@ -67,8 +67,8 @@ class LevelDialog extends PureComponent {
       >
         <DialogTitle>
           <FormattedMessage
-            id="levelLimitDialog.title"
             defaultMessage="Level limit"
+            id="levelLimitDialog.title"
           />
         </DialogTitle>
         <DialogContent className={classes.content}>
@@ -81,8 +81,8 @@ class LevelDialog extends PureComponent {
               control={<Radio autoFocus={value === NO_LIMIT} color="primary" />}
               label={
                 <FormattedMessage
-                  id="levelLimitDialog.noLimit"
                   defaultMessage="No limit"
+                  id="levelLimitDialog.noLimit"
                 />
               }
               value={NO_LIMIT}
@@ -96,8 +96,8 @@ class LevelDialog extends PureComponent {
               }
               label={
                 <FormattedMessage
-                  id="levelLimitDialog.defaultLimit"
                   defaultMessage="Munchkin ({minLevel} - {maxLevel})"
+                  id="levelLimitDialog.defaultLimit"
                   values={{
                     minLevel: MIN_LEVEL,
                     maxLevel: MAX_LEVEL,
@@ -115,11 +115,11 @@ class LevelDialog extends PureComponent {
               }
               label={
                 <FormattedMessage
-                  id="levelLimitDialog.epic"
                   defaultMessage="Epic Munchkin ({minLevel} - {maxLevel})"
+                  id="levelLimitDialog.epic"
                   values={{
-                    minLevel: MIN_LEVEL,
                     maxLevel: MAX_EPIC_LEVEL,
+                    minLevel: MIN_LEVEL,
                   }}
                 />
               }

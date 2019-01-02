@@ -46,7 +46,7 @@ class InsomniaItem extends PureComponent {
         </ListItemIcon>
         <ListItemText
           primary={
-            <FormattedMessage id="menu.keepAwake" defaultMessage="Keep awake" />
+            <FormattedMessage defaultMessage="Keep awake" id="menu.keepAwake" />
           }
         />
         <Switch

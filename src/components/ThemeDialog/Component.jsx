@@ -93,21 +93,21 @@ class ThemeDialog extends PureComponent {
         PaperProps={{ component: 'form', onSubmit: this.handleSubmit }}
       >
         <DialogTitle>
-          <FormattedMessage id="themeDialog.title" defaultMessage="Theme" />
+          <FormattedMessage defaultMessage="Theme" id="themeDialog.title" />
         </DialogTitle>
         <DialogContent className={classes.content}>
           <RadioGroup
-            name="id"
-            onChange={this.handleChange}
             ref={(node) => {
               this.radioGroup = node;
             }}
+            name="id"
+            onChange={this.handleChange}
             value={theme.id}
           >
             {options.map((option) => (
               <FormControlLabel
-                control={<Radio color="primary" />}
                 key={option.value}
+                control={<Radio color="primary" />}
                 label={option.label}
                 value={option.value}
               />
@@ -117,7 +117,7 @@ class ThemeDialog extends PureComponent {
             checked={theme.type === 'dark'}
             control={<Checkbox color="primary" name="type" />}
             label={
-              <FormattedMessage id="themeDialog.dark" defaultMessage="Dark" />
+              <FormattedMessage defaultMessage="Dark" id="themeDialog.dark" />
             }
             onChange={this.handleTypeChange}
           />

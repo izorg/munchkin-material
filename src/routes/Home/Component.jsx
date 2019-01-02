@@ -79,7 +79,7 @@ class Home extends Component {
       content = <Nobody />;
     } else {
       content = (
-        <div className={classes.content} ref={this.contentRef}>
+        <div ref={this.contentRef} className={classes.content}>
           <PlayerList className={classes.list} mode={mode} />
         </div>
       );

@@ -5,7 +5,7 @@ import yellow from '@material-ui/core/colors/yellow';
 export const key = 'super';
 
 export const name = (
-  <FormattedMessage id="theme.name.super" defaultMessage="Super" />
+  <FormattedMessage defaultMessage="Super" id="theme.name.super" />
 );
 
 export default {

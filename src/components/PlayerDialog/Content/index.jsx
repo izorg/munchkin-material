@@ -93,7 +93,7 @@ class PlayerForm extends PureComponent {
           <Grid item xs={6}>
             <FormControl component="fieldset" margin="normal">
               <FormLabel component="legend">
-                <FormattedMessage id="player.form.sex" defaultMessage="Sex" />
+                <FormattedMessage defaultMessage="Sex" id="player.form.sex" />
               </FormLabel>
               <FormControlLabel
                 classes={{
@@ -122,8 +122,8 @@ class PlayerForm extends PureComponent {
             <FormControl margin="normal">
               <FormLabel>
                 <FormattedMessage
-                  id="player.form.color"
                   defaultMessage="Color"
+                  id="player.form.color"
                 />
               </FormLabel>
               <Field component={renderColorPicker} name="color" />

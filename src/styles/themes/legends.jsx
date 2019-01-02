@@ -6,7 +6,7 @@ import grey from '@material-ui/core/colors/grey';
 export const key = 'legends';
 
 export const name = (
-  <FormattedMessage id="theme.name.legends" defaultMessage="Legends" />
+  <FormattedMessage defaultMessage="Legends" id="theme.name.legends" />
 );
 
 export default {

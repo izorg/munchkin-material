@@ -18,8 +18,8 @@ const message = createSelector(
       case UNDO_RESET_PLAYERS:
         return (
           <FormattedMessage
-            id="undo.resetPlayers"
             defaultMessage="Players have been reset"
+            id="undo.resetPlayers"
           />
         );
 

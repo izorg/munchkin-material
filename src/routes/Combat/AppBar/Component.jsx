@@ -29,7 +29,7 @@ const CombatAppBar = ({ classes, onBack, onFinish }) => (
     />
 
     <Title className={classes.title}>
-      <FormattedMessage id="combat" defaultMessage="Combat" />
+      <FormattedMessage defaultMessage="Combat" id="combat" />
     </Title>
 
     <DiceIconButton color="inherit" />

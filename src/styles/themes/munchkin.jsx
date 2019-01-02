@@ -5,7 +5,7 @@ import brown from '@material-ui/core/colors/brown';
 export const key = 'munchkin';
 
 export const name = (
-  <FormattedMessage id="theme.name.munchkin" defaultMessage="Munchkin" />
+  <FormattedMessage defaultMessage="Munchkin" id="theme.name.munchkin" />
 );
 
 export default {

@@ -47,7 +47,7 @@ const CombatMonster = ({
         onDecrement={() => onLevelDecrement(id)}
         onIncrement={() => onLevelIncrement(id)}
         title={
-          <FormattedMessage id="combat.monster.level" defaultMessage="Level" />
+          <FormattedMessage defaultMessage="Level" id="combat.monster.level" />
         }
         value={level}
       />
@@ -57,8 +57,8 @@ const CombatMonster = ({
         onIncrement={() => onBonusIncrement(id)}
         title={
           <FormattedMessage
-            id="combat.monster.modifier"
             defaultMessage="Modifier"
+            id="combat.monster.modifier"
           />
         }
         value={bonus}

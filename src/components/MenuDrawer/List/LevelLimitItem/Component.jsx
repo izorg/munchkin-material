@@ -30,8 +30,8 @@ const LevelLimitItem = ({ classes, className, epic, levelLimit, ...rest }) => {
     if (epic) {
       secondary = (
         <FormattedMessage
-          id="menu.epicLevelLimit"
           defaultMessage="Epic Munchkin ({minLevel} - {maxLevel})"
+          id="menu.epicLevelLimit"
           values={{
             minLevel: MIN_LEVEL,
             maxLevel: MAX_EPIC_LEVEL,
@@ -41,8 +41,8 @@ const LevelLimitItem = ({ classes, className, epic, levelLimit, ...rest }) => {
     } else {
       secondary = (
         <FormattedMessage
-          id="menu.levelLimit"
           defaultMessage="Munchkin ({minLevel} - {maxLevel})"
+          id="menu.levelLimit"
           values={{
             minLevel: MIN_LEVEL,
             maxLevel: MAX_LEVEL,
@@ -52,7 +52,7 @@ const LevelLimitItem = ({ classes, className, epic, levelLimit, ...rest }) => {
     }
   } else {
     secondary = (
-      <FormattedMessage id="menu.noLevelLimit" defaultMessage="No limit" />
+      <FormattedMessage defaultMessage="No limit" id="menu.noLevelLimit" />
     );
   }
 
@@ -63,7 +63,7 @@ const LevelLimitItem = ({ classes, className, epic, levelLimit, ...rest }) => {
       </ListItemIcon>
       <ListItemText
         primary={
-          <FormattedMessage id="menu.level" defaultMessage="Level limit" />
+          <FormattedMessage defaultMessage="Level limit" id="menu.level" />
         }
         secondary={secondary}
       />

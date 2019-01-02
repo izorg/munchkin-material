@@ -34,12 +34,15 @@ module.exports = {
         forbid: ['match'],
       },
     ],
+    'react/jsx-sort-default-props': 'error',
+    'react/jsx-sort-props': 'error',
     'react/prop-types': [
       'error',
       {
         ignore: ['classes', 'className', 'style', 'theme'],
       },
     ],
+    'react/sort-prop-types': 'error',
   },
   overrides: [
     {

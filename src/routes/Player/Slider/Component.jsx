@@ -126,7 +126,7 @@ class PlayerSlider extends PureComponent {
     const playerId = playerList[playerIndex];
 
     return (
-      <div className={classes.itemContainer} key={key}>
+      <div key={key} className={classes.itemContainer}>
         <Paper className={classes.item}>
           <PlayerStats className={classes.stats} playerId={playerId} />
         </Paper>

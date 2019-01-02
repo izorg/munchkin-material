@@ -71,8 +71,8 @@ const HelperSelector = ({ classes, helpers, onSelect, ...props }) => (
   >
     <DialogTitle>
       <FormattedMessage
-        id="combat.helperSelector.title"
         defaultMessage="Choose helper"
+        id="combat.helperSelector.title"
       />
     </DialogTitle>
     <DialogContent className={classes.content}>
@@ -82,8 +82,8 @@ const HelperSelector = ({ classes, helpers, onSelect, ...props }) => (
 
           return (
             <ListItem
-              button
               key={helper.id.toString()}
+              button
               onClick={() => onSelect(helper.id)}
             >
               <Avatar style={{ backgroundColor: helper.color }}>

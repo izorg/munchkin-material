@@ -5,8 +5,8 @@ import { ShieldAccount } from 'mdi-material-ui';
 
 const PrivacyItem = (props) => (
   <ListItem
-    component="a"
     button
+    component="a"
     href="https://allmunchkins.com/privacy"
     target="_blank"
     {...props}
@@ -17,8 +17,8 @@ const PrivacyItem = (props) => (
     <ListItemText
       primary={
         <FormattedMessage
-          id="menu.privacyPolicy"
           defaultMessage="Privacy Policy"
+          id="menu.privacyPolicy"
         />
       }
     />

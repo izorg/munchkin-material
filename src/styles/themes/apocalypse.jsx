@@ -5,7 +5,7 @@ import orange from '@material-ui/core/colors/orange';
 export const key = 'apocalypse';
 
 export const name = (
-  <FormattedMessage id="theme.name.apocalypse" defaultMessage="Apocalypse" />
+  <FormattedMessage defaultMessage="Apocalypse" id="theme.name.apocalypse" />
 );
 
 export default {

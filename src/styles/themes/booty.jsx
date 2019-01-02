@@ -5,7 +5,7 @@ import red from '@material-ui/core/colors/red';
 export const key = 'booty';
 
 export const name = (
-  <FormattedMessage id="theme.name.booty" defaultMessage="Booty" />
+  <FormattedMessage defaultMessage="Booty" id="theme.name.booty" />
 );
 
 export default {

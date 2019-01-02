@@ -24,8 +24,8 @@ const ColorPickerDialog = ({ classes, onSelect, value, ...props }) => (
   <Dialog {...props}>
     <DialogTitle>
       <FormattedMessage
-        id="colorPicker.dialog.title"
         defaultMessage="Choose color"
+        id="colorPicker.dialog.title"
       />
     </DialogTitle>
     <DialogContent className={classes.content}>

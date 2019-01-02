@@ -5,13 +5,13 @@ import { ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
 import { Star } from '@material-ui/icons';
 
 const RateItem = ({ rateLink, ...rest }) => (
-  <ListItem component="a" button href={rateLink} target="_blank" {...rest}>
+  <ListItem button component="a" href={rateLink} target="_blank" {...rest}>
     <ListItemIcon>
       <Star />
     </ListItemIcon>
     <ListItemText
       primary={
-        <FormattedMessage id="menu.rateApp" defaultMessage="Rate the app" />
+        <FormattedMessage defaultMessage="Rate the app" id="menu.rateApp" />
       }
     />
   </ListItem>

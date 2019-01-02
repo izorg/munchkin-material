@@ -48,8 +48,8 @@ class SingleModeItem extends PureComponent {
         <ListItemText
           primary={
             <FormattedMessage
-              id="menu.singleMode"
               defaultMessage="Single mode"
+              id="menu.singleMode"
             />
           }
         />

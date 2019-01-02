@@ -134,11 +134,11 @@ class PlayerDialog extends PureComponent {
 
     const title = edit ? (
       <FormattedMessage
-        id="player.form.titleEdit"
         defaultMessage="Edit munchkin"
+        id="player.form.titleEdit"
       />
     ) : (
-      <FormattedMessage id="player.form.title" defaultMessage="New munchkin" />
+      <FormattedMessage defaultMessage="New munchkin" id="player.form.title" />
     );
 
     let Transition = Fade;
@@ -184,12 +184,12 @@ class PlayerDialog extends PureComponent {
           <DialogActions>
             <Button color="primary" onClick={this.handleClose}>
               <FormattedMessage
-                id="player.form.cancel"
                 defaultMessage="Cancel"
+                id="player.form.cancel"
               />
             </Button>
             <Button color="primary" type="submit">
-              <FormattedMessage id="player.form.save" defaultMessage="Save" />
+              <FormattedMessage defaultMessage="Save" id="player.form.save" />
             </Button>
           </DialogActions>
         </Hidden>
@@ -208,8 +208,8 @@ PlayerDialog.propTypes = {
     sex: sexProp.isRequired,
   }).isRequired,
   onClose: PropTypes.func,
-  open: PropTypes.bool,
   onSubmit: PropTypes.func.isRequired,
+  open: PropTypes.bool,
 };
 
 PlayerDialog.defaultProps = {

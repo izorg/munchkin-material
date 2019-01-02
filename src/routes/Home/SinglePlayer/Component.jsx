@@ -128,8 +128,8 @@ class SinglePlayerComponent extends PureComponent {
             onIncrement={onLevelIncrement}
             title={
               <FormattedMessage
-                id="singlePlayer.level"
                 defaultMessage="Level"
+                id="singlePlayer.level"
               />
             }
             value={player.level}
@@ -140,7 +140,7 @@ class SinglePlayerComponent extends PureComponent {
             onDecrement={onGearDecrement}
             onIncrement={onGearIncrement}
             title={
-              <FormattedMessage id="singlePlayer.gear" defaultMessage="Gear" />
+              <FormattedMessage defaultMessage="Gear" id="singlePlayer.gear" />
             }
             value={player.gear}
           />
@@ -151,8 +151,8 @@ class SinglePlayerComponent extends PureComponent {
             onIncrement={onBonusIncrement}
             title={
               <FormattedMessage
-                id="singlePlayer.modifier"
                 defaultMessage="Modifier"
+                id="singlePlayer.modifier"
               />
             }
             value={bonus}
@@ -161,8 +161,8 @@ class SinglePlayerComponent extends PureComponent {
         <div className={classes.strengthCounter}>
           <div className={classes.strengthTitle}>
             <FormattedMessage
-              id="singlePlayer.strength"
               defaultMessage="Strength"
+              id="singlePlayer.strength"
             />
           </div>
 

@@ -90,13 +90,13 @@ class CombatMonsterSlider extends PureComponent {
     const { index } = this.state;
 
     const views = monsters.map((id, monsterIndex) => (
-      <Paper className={classes.paper} key={id}>
+      <Paper key={id} className={classes.paper}>
         <Monster
           id={id}
           title={
             <FormattedMessage
-              id="combat.monster"
               defaultMessage="Monster {number}"
+              id="combat.monster"
               values={{
                 number: monsterIndex + 1,
               }}

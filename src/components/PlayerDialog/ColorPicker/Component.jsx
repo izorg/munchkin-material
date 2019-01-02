@@ -80,23 +80,23 @@ class ColorPicker extends PureComponent {
     return (
       <>
         <Color
-          className={classes.color}
           buttonRef={this.handleButtonRef}
+          className={classes.color}
+          name={name}
           onBlur={this.handleBlur}
           onClick={this.handleClick}
           onFocus={onFocus}
           onKeyDown={this.handleKeyDown}
-          name={name}
           value={value}
         />
         <Hidden smUp>
           <Dialog
             onClose={onClose}
-            open={open}
             onSelect={(color) => {
               onChange(color);
               onClose();
             }}
+            open={open}
             value={value}
           />
         </Hidden>
@@ -104,11 +104,11 @@ class ColorPicker extends PureComponent {
           <Popover
             anchorEl={anchorEl}
             onClose={onClose}
-            open={open}
             onSelect={(color) => {
               onChange(color);
               onClose();
             }}
+            open={open}
             value={value}
           />
         </Hidden>

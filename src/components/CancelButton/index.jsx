@@ -5,7 +5,7 @@ import { Button } from '@material-ui/core';
 const CancelButton = (props) => <Button {...props} />;
 
 CancelButton.defaultProps = {
-  children: <FormattedMessage id="button.cancel" defaultMessage="Cancel" />,
+  children: <FormattedMessage defaultMessage="Cancel" id="button.cancel" />,
   color: 'primary',
 };
 

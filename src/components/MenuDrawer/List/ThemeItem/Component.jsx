@@ -28,7 +28,7 @@ class ThemeItem extends PureComponent {
           <Palette style={{ color: theme.palette.primary.main }} />
         </ListItemIcon>
         <ListItemText
-          primary={<FormattedMessage id="menu.theme" defaultMessage="Theme" />}
+          primary={<FormattedMessage defaultMessage="Theme" id="menu.theme" />}
           secondary={themeNames[theme.id]}
         />
       </ListItem>

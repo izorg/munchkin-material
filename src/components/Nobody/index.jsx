@@ -31,8 +31,8 @@ const Nobody = ({ classes }) => (
       variant="subtitle1"
     >
       <FormattedMessage
-        id="player.list.empty"
         defaultMessage="No players in the list"
+        id="player.list.empty"
       />
     </Typography>
   </div>

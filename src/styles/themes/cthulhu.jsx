@@ -5,7 +5,7 @@ import lightGreen from '@material-ui/core/colors/lightGreen';
 export const key = 'cthulhu';
 
 export const name = (
-  <FormattedMessage id="theme.name.cthulhu" defaultMessage="Cthulhu" />
+  <FormattedMessage defaultMessage="Cthulhu" id="theme.name.cthulhu" />
 );
 
 export default {

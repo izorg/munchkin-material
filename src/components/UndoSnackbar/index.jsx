@@ -50,7 +50,7 @@ class Undo extends Component {
       <Snackbar
         action={
           <Button color="secondary" onClick={(event) => onClose(event, 'undo')}>
-            <FormattedMessage id="undo" defaultMessage="Undo" />
+            <FormattedMessage defaultMessage="Undo" id="undo" />
           </Button>
         }
         anchorOrigin={{

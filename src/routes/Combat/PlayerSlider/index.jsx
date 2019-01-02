@@ -109,11 +109,11 @@ class CombatPlayerSlider extends PureComponent {
     const { index } = this.state;
 
     const players = compact([
-      <Paper className={classes.paper} key={playerId}>
+      <Paper key={playerId} className={classes.paper}>
         <Player id={playerId} onBonusChange={onPlayerBonusChange} />
       </Paper>,
       helperId && (
-        <Paper className={classes.paper} key={helperId}>
+        <Paper key={helperId} className={classes.paper}>
           <Player id={helperId} onBonusChange={onHelperBonusChange} />
 
           <IconButton

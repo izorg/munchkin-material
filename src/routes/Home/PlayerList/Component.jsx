@@ -69,8 +69,8 @@ class HomePlayerList extends PureComponent {
     if (mode === EDIT) {
       return (
         <DragDropContext
-          onDragStart={this.handleDragStart}
           onDragEnd={this.handleDragEnd}
+          onDragStart={this.handleDragStart}
         >
           <Droppable droppableId="player-list">
             {({ droppableProps, innerRef: droppableRef }) => (
@@ -82,10 +82,10 @@ class HomePlayerList extends PureComponent {
                 >
                   {playerList.map((playerId, index) => (
                     <Draggable
+                      key={playerId}
                       disableInteractiveElementBlocking
                       draggableId={playerId}
                       index={index}
-                      key={playerId}
                     >
                       {(
                         {
@@ -162,7 +162,7 @@ class HomePlayerList extends PureComponent {
     return (
       <List {...rest}>
         {playerList.map((playerId, index) => (
-          <Item index={index} key={playerId} mode={mode} playerId={playerId} />
+          <Item key={playerId} index={index} mode={mode} playerId={playerId} />
         ))}
       </List>
     );

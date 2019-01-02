@@ -100,7 +100,7 @@ const PlayerStats = ({
           onDecrement={() => onLevelDecrement(player.id)}
           onIncrement={() => onLevelIncrement(player.id)}
           title={
-            <FormattedMessage id="player.stats.level" defaultMessage="Level" />
+            <FormattedMessage defaultMessage="Level" id="player.stats.level" />
           }
           value={player.level}
         />
@@ -110,7 +110,7 @@ const PlayerStats = ({
           onDecrement={() => onGearDecrement(player.id)}
           onIncrement={() => onGearIncrement(player.id)}
           title={
-            <FormattedMessage id="player.stats.gear" defaultMessage="Gear" />
+            <FormattedMessage defaultMessage="Gear" id="player.stats.gear" />
           }
           value={player.gear}
         />
@@ -120,8 +120,8 @@ const PlayerStats = ({
       <div className={classes.strengthCounter}>
         <div className={classes.strengthTitle}>
           <FormattedMessage
-            id="player.stats.strength"
             defaultMessage="Strength"
+            id="player.stats.strength"
           />
         </div>
 

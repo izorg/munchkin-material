@@ -115,8 +115,8 @@ class CombatHelperButton extends PureComponent {
               onClick={() => onMonsterAdd(true)}
               tooltipTitle={
                 <FormattedMessage
-                  id="combat.add.monster"
                   defaultMessage="Monster"
+                  id="combat.add.monster"
                 />
               }
             />
@@ -125,8 +125,8 @@ class CombatHelperButton extends PureComponent {
               onClick={() => delay(10, () => onHelperClick(playerId))}
               tooltipTitle={
                 <FormattedMessage
-                  id="combat.add.helper"
                   defaultMessage="Helper"
+                  id="combat.add.helper"
                 />
               }
             />

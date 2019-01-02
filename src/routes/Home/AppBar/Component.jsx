@@ -63,7 +63,7 @@ const HomeAppBar = ({
   const editTitle = intl.formatMessage(messages.edit);
 
   let title = (
-    <FormattedMessage id="player.list.title" defaultMessage="Munchkins" />
+    <FormattedMessage defaultMessage="Munchkins" id="player.list.title" />
   );
 
   if (multiMode) {
@@ -72,7 +72,7 @@ const HomeAppBar = ({
 
   if (singleMode) {
     title = (
-      <FormattedMessage id="home.single.title" defaultMessage="Munchkin" />
+      <FormattedMessage defaultMessage="Munchkin" id="home.single.title" />
     );
   }
 
@@ -90,8 +90,8 @@ const HomeAppBar = ({
         <MenuButton className={classes.leftButton} color="inherit" />
       )}
       <Title
-        color={multiMode ? 'default' : 'inherit'}
         className={classes.title}
+        color={multiMode ? 'default' : 'inherit'}
       >
         {title}
       </Title>
