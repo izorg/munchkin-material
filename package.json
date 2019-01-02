@@ -13,7 +13,7 @@
     "i18n:translate": "cross-env BABEL_ENV=i18n babel src --out-dir temp && node scripts/i18n/translate.js && rimraf temp messages",
     "i18n:upload": "node scripts/i18n/upload.js",
     "lint": "eslint . --ext .js,.json,.jsx",
-    "screenshots": "babel-node scripts/screenshots.js",
+    "screenshots": "BABEL_ENV=test babel-node scripts/screenshots.js",
     "site": "cross-env NODE_ENV=production BUILD=site webpack",
     "start": "cross-env NODE_ENV=production BUILD=site webpack-dev-server",
     "stats": "cross-env STATS=true npm run site",
