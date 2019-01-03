@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { compose, withProps } from 'recompose';
 import { createSelector, createStructuredSelector } from 'reselect';
@@ -36,7 +36,7 @@ const styles = {
   },
 };
 
-class ThemeDialog extends PureComponent {
+class ThemeDialog extends Component {
   constructor(props) {
     super(props);
 
@@ -45,7 +45,6 @@ class ThemeDialog extends PureComponent {
     };
 
     this.handleChange = this.handleChange.bind(this);
-    this.handleEntering = this.handleEntering.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleTypeChange = this.handleTypeChange.bind(this);
   }
@@ -57,10 +56,6 @@ class ThemeDialog extends PureComponent {
         id,
       },
     }));
-  }
-
-  handleEntering() {
-    this.radioGroup.focus();
   }
 
   handleSubmit(event) {
@@ -88,7 +83,6 @@ class ThemeDialog extends PureComponent {
     return (
       <Dialog
         onClose={onClose}
-        onEntering={this.handleEntering}
         open={open}
         PaperProps={{ component: 'form', onSubmit: this.handleSubmit }}
       >
@@ -96,18 +90,16 @@ class ThemeDialog extends PureComponent {
           <FormattedMessage defaultMessage="Theme" id="themeDialog.title" />
         </DialogTitle>
         <DialogContent className={classes.content}>
-          <RadioGroup
-            ref={(node) => {
-              this.radioGroup = node;
-            }}
-            name="id"
-            onChange={this.handleChange}
-            value={theme.id}
-          >
+          <RadioGroup name="id" onChange={this.handleChange} value={theme.id}>
             {options.map((option) => (
               <FormControlLabel
                 key={option.value}
-                control={<Radio color="primary" />}
+                control={
+                  <Radio
+                    autoFocus={option.value === theme.id}
+                    color="primary"
+                  />
+                }
                 label={option.label}
                 value={option.value}
               />
