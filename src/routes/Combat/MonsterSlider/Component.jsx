@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import { IconButton, Paper, withStyles } from '@material-ui/core';
 import { CloseCircle } from 'mdi-material-ui';
 import cns from 'classnames';
-import { noop, size } from 'lodash/fp';
+import { noop } from 'lodash/fp';
 
 import Monster from './Monster';
 
@@ -56,12 +56,11 @@ class CombatMonsterSlider extends PureComponent {
 
   componentDidUpdate(prevProps) {
     const { monsters } = this.props;
-    const count = size(monsters.length);
 
-    if (count > size(prevProps.monsters)) {
+    if (monsters.length > prevProps.monsters.length) {
       // eslint-disable-next-line react/no-did-update-set-state
       this.setState({
-        index: count - 1,
+        index: monsters.length - 1,
       });
     }
   }
