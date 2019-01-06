@@ -1,6 +1,6 @@
 import React, { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
-import { Zoom, withStyles } from '@material-ui/core';
+import { withStyles, Zoom } from '@material-ui/core';
 import cns from 'classnames';
 
 import LevelLimitDialog from '../../components/LevelLimitDialog';

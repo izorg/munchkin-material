@@ -43,6 +43,13 @@ module.exports = {
       },
     ],
     'react/sort-prop-types': 'error',
+    'sort-imports': [
+      'error',
+      {
+        ignoreCase: true,
+        ignoreDeclarationSort: true,
+      },
+    ],
   },
   overrides: [
     {

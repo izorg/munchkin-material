@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import { withTheme } from '@material-ui/core';
 import { duration } from '@material-ui/core/styles/transitions';
 import {
-  reflow,
   getTransitionProps,
+  reflow,
 } from '@material-ui/core/transitions/utils';
 import { noop } from 'lodash/fp';
 
