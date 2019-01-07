@@ -122,7 +122,7 @@ class CombatHelperButton extends PureComponent {
             />
             <SpeedDialAction
               icon={<PersonAdd />}
-              onClick={() => delay(10, () => onHelperClick(playerId))}
+              onClick={() => delay(100, () => onHelperClick(playerId))}
               tooltipTitle={
                 <FormattedMessage
                   defaultMessage="Helper"
