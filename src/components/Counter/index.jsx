@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { IconButton, withStyles } from '@material-ui/core';
+import { withStyles } from '@material-ui/core';
 import { ArrowDropDown, ArrowDropUp } from '@material-ui/icons';
 import cns from 'classnames';
 import { noop } from 'lodash/fp';
+
+import Button from './Button';
 
 const styles = (theme) => ({
   counter: {
@@ -46,25 +48,25 @@ const Counter = ({
   <div className={cns(className, classes.counter)} {...props}>
     <div className={classes.title}>{title}</div>
 
-    <IconButton
+    <Button
       className={classes.button}
       data-screenshots="increment-button"
       disabled={incrementDisabled}
       onClick={onIncrement}
     >
       <ArrowDropUp className={classes.icon} />
-    </IconButton>
+    </Button>
 
     <div className={classes.value}>{value}</div>
 
-    <IconButton
+    <Button
       className={classes.button}
       data-screenshots="decrement-button"
       disabled={decrementDisabled}
       onClick={onDecrement}
     >
       <ArrowDropDown className={classes.icon} />
-    </IconButton>
+    </Button>
   </div>
 );
 
