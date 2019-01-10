@@ -28,18 +28,7 @@ class HomePlayerList extends PureComponent {
   constructor(props) {
     super(props);
 
-    this.state = {
-      dragging: false,
-    };
-
-    this.handleDragStart = this.handleDragStart.bind(this);
     this.handleDragEnd = this.handleDragEnd.bind(this);
-  }
-
-  handleDragStart() {
-    this.setState({
-      dragging: true,
-    });
   }
 
   handleDragEnd({ destination, source }) {
@@ -48,10 +37,6 @@ class HomePlayerList extends PureComponent {
     if (destination && destination.index !== source.index) {
       onPlayerMove(source.index, destination.index);
     }
-
-    this.setState({
-      dragging: false,
-    });
   }
 
   render() {
@@ -64,22 +49,13 @@ class HomePlayerList extends PureComponent {
       ...rest
     } = this.props;
 
-    const { dragging } = this.state;
-
     if (mode === EDIT) {
       return (
-        <DragDropContext
-          onDragEnd={this.handleDragEnd}
-          onDragStart={this.handleDragStart}
-        >
+        <DragDropContext onDragEnd={this.handleDragEnd}>
           <Droppable droppableId="player-list">
             {({ droppableProps, innerRef: droppableRef }) => (
               <RootRef rootRef={droppableRef}>
-                <List
-                  className={cns({ [classes.dragging]: dragging })}
-                  {...rest}
-                  {...droppableProps}
-                >
+                <List {...rest} {...droppableProps}>
                   {playerList.map((playerId, index) => (
                     <Draggable
                       key={playerId}
