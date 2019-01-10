@@ -33,6 +33,7 @@ const styles = (theme) => ({
     overflowY: 'auto',
     paddingBottom: 48,
     touchAction: 'pan-y',
+    WebkitOverflowScrolling: 'touch',
 
     [theme.breakpoints.up('sm')]: {
       backgroundColor: 'transparent',
