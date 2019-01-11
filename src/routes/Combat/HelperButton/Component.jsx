@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 import { Backdrop, MuiThemeProvider, withStyles } from '@material-ui/core';
@@ -7,7 +7,7 @@ import { PersonAdd } from '@material-ui/icons';
 import { EmoticonDevilOutline } from 'mdi-material-ui';
 import cns from 'classnames';
 import deepmerge from 'deepmerge';
-import { delay, noop } from 'lodash/fp';
+import { noop } from 'lodash/fp';
 
 import Zoom from '../../../components/transitions/Zoom';
 
@@ -35,7 +35,7 @@ const styles = (theme) => ({
   },
 });
 
-class CombatHelperButton extends PureComponent {
+class CombatHelperButton extends Component {
   constructor(props) {
     super(props);
 
@@ -121,8 +121,11 @@ class CombatHelperButton extends PureComponent {
               }
             />
             <SpeedDialAction
+              ButtonProps={{
+                onClick: () => onHelperClick(playerId),
+              }}
               icon={<PersonAdd />}
-              onClick={() => delay(100, () => onHelperClick(playerId))}
+              onClick={noop}
               tooltipTitle={
                 <FormattedMessage
                   defaultMessage="Helper"
