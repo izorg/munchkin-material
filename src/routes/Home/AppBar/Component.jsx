@@ -27,11 +27,6 @@ const messages = defineMessages({
     id: 'player.list.edit',
     defaultMessage: 'Edit',
   },
-
-  reset: {
-    id: 'player.list.reset',
-    defaultMessage: 'Reset',
-  },
 });
 
 const styles = {

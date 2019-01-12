@@ -41,8 +41,8 @@ const transform = {
 };
 
 const prod = process.env.NODE_ENV === 'production';
-const i18n = process.env.BABEL_ENV === 'i18n';
-const test = process.env.BABEL_ENV === 'test';
+const i18n = process.env.NODE_ENV === 'i18n';
+const test = process.env.NODE_ENV === 'test';
 const modules = test ? 'auto' : false;
 
 module.exports = {
