@@ -14,22 +14,6 @@ const dev = process.env.NODE_ENV === 'development';
 const dist = process.env.BUILD === 'dist';
 const site = process.env.BUILD === 'site';
 
-const manifest = {
-  background_color: '#FFFFFF',
-  display: 'standalone',
-  fingerprints: !dev && site,
-  icons: [
-    {
-      destination: path.join('images'),
-      sizes: [192, 256, 384, 512],
-      src: path.resolve('src/images/icon-512x512.png'),
-    },
-  ],
-  inject: false,
-  orientation: 'any',
-  theme_color: '#000000',
-};
-
 const outputPath = path.resolve(__dirname, dist ? 'dist' : 'site');
 
 module.exports = {
@@ -136,33 +120,29 @@ module.exports = {
       }),
 
     site &&
-      new WebpackPwaManifest({
-        ...manifest,
-        filename: 'manifest.json',
-        name: 'Munchkin Level Counter',
-        short_name: 'Munchkin',
-        start_url: '/',
-      }),
-
-    site &&
-      new WebpackPwaManifest({
-        ...manifest,
-        filename: 'ru/manifest.json',
-        name: 'Манчкин - счётчик уровней',
-        short_name: 'Манчкин',
-        start_url: '/ru/',
-      }),
-
-    site &&
       new HtmlWebpackPlugin({
         filename: 'index.html',
-        template: './html/en.html',
+        template: './index.html',
       }),
 
     site &&
-      new HtmlWebpackPlugin({
-        filename: 'ru/index.html',
-        template: './html/ru.html',
+      new WebpackPwaManifest({
+        background_color: '#FFFFFF',
+        display: 'standalone',
+        fingerprints: !dev && site,
+        icons: [
+          {
+            destination: path.join('images'),
+            sizes: [192, 256, 384, 512],
+            src: path.resolve('src/images/icon-512x512.png'),
+          },
+        ],
+        inject: true,
+        name: 'Munchkin Level Counter',
+        orientation: 'any',
+        short_name: 'Munchkin',
+        theme_color: '#000000',
+        start_url: '/',
       }),
 
     !dev &&
