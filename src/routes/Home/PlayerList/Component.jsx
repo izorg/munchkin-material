@@ -73,26 +73,22 @@ class HomePlayerList extends PureComponent {
                       ) => {
                         let style = { ...draggableProps.style };
 
-                        const transition = theme.transitions.create(
-                          'box-shadow',
-                          {
-                            duration: theme.transitions.duration.standard,
-                          },
-                        );
-
-                        style = {
-                          ...style,
-                          transition: style.transition
-                            ? `${style.transition}, ${transition}`
-                            : transition,
-                        };
-
                         if (isDragging) {
+                          const transition = theme.transitions.create(
+                            'box-shadow',
+                            {
+                              duration: theme.transitions.duration.standard,
+                            },
+                          );
+
                           style = {
                             ...style,
                             backgroundColor: theme.palette.background.paper,
                             boxShadow: theme.shadows[3],
                             pointerEvents: 'auto',
+                            transition: style.transition
+                              ? `${style.transition}, ${transition}`
+                              : transition,
                             zIndex: 1,
                           };
                         }
