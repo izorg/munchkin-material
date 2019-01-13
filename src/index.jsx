@@ -16,6 +16,7 @@ const defaultOptions = {
   keepAwakeSupport: false,
   loadFonts: true,
   rateLink: null,
+  restorePurchases: null,
   shareLink: null,
   storageKey: 'redux',
 };

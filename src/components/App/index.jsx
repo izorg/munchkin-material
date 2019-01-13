@@ -9,8 +9,17 @@ import { OptionsProvider } from '../OptionsContext';
 import Root from '../Root';
 import ThemeProvider from '../ThemeProvider';
 
-const App = ({ history, keepAwakeSupport, rateLink, shareLink, store }) => (
-  <OptionsProvider value={{ keepAwakeSupport, rateLink, shareLink }}>
+const App = ({
+  history,
+  keepAwakeSupport,
+  rateLink,
+  restorePurchases,
+  shareLink,
+  store,
+}) => (
+  <OptionsProvider
+    value={{ keepAwakeSupport, rateLink, restorePurchases, shareLink }}
+  >
     <Provider store={store}>
       <ConnectedRouter history={history}>
         <LocaleProvider>
@@ -27,12 +36,14 @@ App.propTypes = {
   history: PropTypes.object.isRequired,
   keepAwakeSupport: PropTypes.bool.isRequired,
   rateLink: PropTypes.string,
+  restorePurchases: PropTypes.func,
   shareLink: PropTypes.string,
   store: PropTypes.object.isRequired,
 };
 
 App.defaultProps = {
   rateLink: null,
+  restorePurchases: null,
   shareLink: null,
 };
 

@@ -5,6 +5,7 @@ import InsomniaItem from './InsomniaItem';
 import LevelLimitItem from './LevelLimitItem';
 import PrivacyItem from './PrivacyItem';
 import RateItem from './RateItem';
+import RestorePurchasesItem from './RestorePurchasesItem';
 import ShareItem from './ShareItem';
 import SingleModeItem from './SingleModeItem';
 import ThemeItem from './ThemeItem';
@@ -18,6 +19,7 @@ const MenuList = () => (
     <InsomniaItem />
     <RateItem />
     <ShareItem />
+    <RestorePurchasesItem />
     <PrivacyItem />
     <VersionItem />
   </List>
