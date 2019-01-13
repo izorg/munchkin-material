@@ -387,10 +387,12 @@ class HomeMenuDrawer extends Component {
   }
 
   addHammer() {
+    const pressTime = 50;
+
     this.hammer = new Hammer(document.body, {
       recognizers: [
         [Hammer.Pan, { direction: Hammer.DIRECTION_HORIZONTAL, threshold: 3 }],
-        [Hammer.Press, { time: 51 }],
+        [Hammer.Press, { time: pressTime }],
       ],
     });
 

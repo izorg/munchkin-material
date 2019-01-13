@@ -133,8 +133,13 @@ class HomePlayerListItem extends PureComponent {
   }
 
   addHammer() {
+    const pressTime = 500;
+
     this.hammer = new Hammer(this.itemRef.current, {
-      recognizers: [[Hammer.Tap, { time: 500 }], [Hammer.Press, { time: 501 }]],
+      recognizers: [
+        [Hammer.Tap, { time: pressTime - 1 }],
+        [Hammer.Press, { time: pressTime }],
+      ],
     });
 
     this.hammer.on('tap', this.handleTap);
