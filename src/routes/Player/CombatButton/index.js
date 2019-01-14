@@ -11,11 +11,9 @@ const goToCombat = (playerId) => async (dispatch, getState) => {
   } = getState();
 
   if (combatFinished || playerId !== combatPlayerId) {
-    try {
-      await dispatch(startCombat(playerId));
-      dispatch(addMonster(createMonster()));
-      dispatch(push(`/player/${playerId}/combat`));
-    } catch (error) {}
+    dispatch(startCombat(playerId));
+    dispatch(addMonster(createMonster()));
+    dispatch(push(`/player/${playerId}/combat`));
   } else {
     dispatch(push(`/player/${playerId}/combat`));
   }

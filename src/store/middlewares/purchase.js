@@ -1,9 +1,7 @@
-import { START_COMBAT } from 'munchkin-core';
-
-import { setFullVersion } from '../../ducks/app';
+import { SET_SINGLE_MODE, setFullVersion } from '../../ducks/app';
 import { SET_THEME } from '../../ducks/theme';
 
-const actionTypes = [SET_THEME, START_COMBAT];
+const actionTypes = [SET_SINGLE_MODE, SET_THEME];
 
 export default (buyFullVersion) => ({ getState, dispatch }) => (next) => async (
   action,
