@@ -3,16 +3,28 @@ import { connect } from 'react-redux';
 import { createSelector, createStructuredSelector } from 'reselect';
 import PropTypes from 'prop-types';
 import { MuiThemeProvider } from '@material-ui/core';
-import { get } from 'lodash/fp';
+import { flow, get } from 'lodash/fp';
 
 import createTheme from '../../styles/createTheme';
 import themes from '../../styles/themes';
+import { getQuery } from '../../utils/location';
 
 import GlobalCss from './GlobalCss';
 
 const themeSelector = createSelector(
+  flow(
+    getQuery,
+    get('theme'),
+  ),
   get('theme'),
-  (theme) => createTheme(themes[theme.id], theme.type),
+  (previewTheme, currentTheme) => {
+    const theme = {
+      ...currentTheme,
+      ...previewTheme,
+    };
+
+    return createTheme(themes[theme.id], theme.type);
+  },
 );
 
 const mapStateToProps = createStructuredSelector({

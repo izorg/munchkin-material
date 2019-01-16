@@ -40,27 +40,22 @@ class ThemeDialog extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      theme: props.theme,
-    };
-
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleTypeChange = this.handleTypeChange.bind(this);
   }
 
   handleChange(event, id) {
-    this.setState(({ theme }) => ({
-      theme: {
-        ...theme,
-        id,
-      },
-    }));
+    const { onChange, theme } = this.props;
+
+    onChange({
+      ...theme,
+      id,
+    });
   }
 
   handleSubmit(event) {
-    const { onSubmit } = this.props;
-    const { theme } = this.state;
+    const { onSubmit, theme } = this.props;
 
     event.preventDefault();
 
@@ -68,17 +63,16 @@ class ThemeDialog extends Component {
   }
 
   handleTypeChange(event, checked) {
-    this.setState(({ theme }) => ({
-      theme: {
-        ...theme,
-        type: checked ? 'dark' : 'light',
-      },
-    }));
+    const { onChange, theme } = this.props;
+
+    onChange({
+      ...theme,
+      type: checked ? 'dark' : 'light',
+    });
   }
 
   render() {
-    const { theme } = this.state;
-    const { classes, onClose, open, options } = this.props;
+    const { classes, onClose, open, options, theme } = this.props;
 
     return (
       <Dialog
@@ -124,6 +118,7 @@ class ThemeDialog extends Component {
 }
 
 ThemeDialog.propTypes = {
+  onChange: PropTypes.func.isRequired,
   onClose: PropTypes.func,
   onSubmit: PropTypes.func,
   open: PropTypes.bool,
