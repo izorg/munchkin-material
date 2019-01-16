@@ -179,7 +179,7 @@ export const setSingleMode = (singleMode) => async (dispatch, getState) => {
     }
 
     try {
-      dispatch(startCombat(singleModePlayerId));
+      await dispatch(startCombat(singleModePlayerId));
 
       await dispatch({
         type: SET_SINGLE_MODE,

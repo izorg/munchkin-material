@@ -13,6 +13,7 @@ const history = createHistory();
 
 const defaultOptions = {
   buyFullVersion: () => Promise.resolve(),
+  freeCombat: false,
   keepAwakeSupport: false,
   loadFonts: true,
   rateLink: null,
@@ -22,7 +23,7 @@ const defaultOptions = {
 };
 
 const init = (appEl, initOptions) => {
-  const { buyFullVersion, loadFonts, storageKey, ...options } = {
+  const { buyFullVersion, freeCombat, loadFonts, storageKey, ...options } = {
     ...defaultOptions,
     ...initOptions,
   };
@@ -41,6 +42,7 @@ const init = (appEl, initOptions) => {
 
   const store = configureStore({
     buyFullVersion,
+    freeCombat,
     history,
     storageKey,
   });

@@ -16,9 +16,13 @@ const createRootReducer = (history) =>
     ...reducers,
   });
 
-export default ({ buyFullVersion, history, storageKey }) => {
+export default ({ buyFullVersion, freeCombat, history, storageKey }) => {
   const enhancer = composeWithDevTools(
-    applyMiddleware(thunk, purchase(buyFullVersion), routerMiddleware(history)),
+    applyMiddleware(
+      thunk,
+      purchase({ buyFullVersion, freeCombat }),
+      routerMiddleware(history),
+    ),
   );
 
   const preloadedState = loadState(storageKey);
