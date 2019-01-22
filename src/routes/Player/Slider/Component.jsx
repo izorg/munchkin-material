@@ -10,6 +10,10 @@ import PlayerStats from './Stats';
 const PlayerSwipeableViews = bindKeyboard(virtualize(SwipeableViews));
 
 const styles = (theme) => ({
+  slide: {
+    display: 'flex',
+  },
+
   itemContainer: {
     alignItems: 'center',
     display: 'flex',
@@ -149,10 +153,8 @@ class PlayerSlider extends PureComponent {
         onChangeIndex={this.handleChangeIndex}
         overscanSlideAfter={1}
         overscanSlideBefore={2}
+        slideClassName={classes.slide}
         slideRenderer={this.slideRenderer}
-        slideStyle={{
-          display: 'flex',
-        }}
         style={{
           display: 'flex',
           flexDirection: 'column',
