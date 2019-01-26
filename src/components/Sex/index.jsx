@@ -18,7 +18,11 @@ const Sex = ({ sex, ...props }) => {
 };
 
 Sex.propTypes = {
-  sex: sexProp.isRequired,
+  sex: sexProp,
+};
+
+Sex.defaultProps = {
+  sex: undefined,
 };
 
 Sex.muiName = 'SvgIcon';
