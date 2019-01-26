@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 import { Backdrop, MuiThemeProvider, withStyles } from '@material-ui/core';
-import { SpeedDial, SpeedDialAction, SpeedDialIcon } from '@material-ui/lab';
+import { SpeedDial, SpeedDialIcon } from '@material-ui/lab';
 import { PersonAdd } from '@material-ui/icons';
 import { EmoticonDevilOutline } from 'mdi-material-ui';
 import cns from 'classnames';
@@ -10,6 +10,8 @@ import deepmerge from 'deepmerge';
 import { noop } from 'lodash/fp';
 
 import Zoom from '../../../components/transitions/Zoom';
+
+import HelperButtonAction from './Action';
 
 const styles = (theme) => ({
   backdrop: {
@@ -110,7 +112,7 @@ class CombatHelperButton extends Component {
             TransitionComponent={Zoom}
             {...rest}
           >
-            <SpeedDialAction
+            <HelperButtonAction
               icon={<EmoticonDevilOutline />}
               onClick={() => onMonsterAdd(true)}
               tooltipTitle={
@@ -120,12 +122,9 @@ class CombatHelperButton extends Component {
                 />
               }
             />
-            <SpeedDialAction
-              ButtonProps={{
-                onClick: () => onHelperClick(playerId),
-              }}
+            <HelperButtonAction
               icon={<PersonAdd />}
-              onClick={noop}
+              onClick={() => onHelperClick(playerId)}
               tooltipTitle={
                 <FormattedMessage
                   defaultMessage="Helper"
