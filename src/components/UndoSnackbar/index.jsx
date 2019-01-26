@@ -14,6 +14,11 @@ const styles = (theme) => ({
       bottom: theme.spacing.unit,
       left: theme.spacing.unit,
       right: theme.spacing.unit,
+
+      '@supports(padding: max(0px))': {
+        left: `max(${theme.spacing.unit}px, env(safe-area-inset-right))`,
+        right: `max(${theme.spacing.unit}px, env(safe-area-inset-right))`,
+      },
     },
 
     content: {
@@ -22,7 +27,7 @@ const styles = (theme) => ({
   },
 });
 
-class Undo extends Component {
+class UndoSnackbar extends Component {
   constructor(props) {
     super(props);
 
@@ -70,7 +75,7 @@ class Undo extends Component {
   }
 }
 
-Undo.propTypes = {
+UndoSnackbar.propTypes = {
   onClose: PropTypes.func.isRequired,
   width: widthProp.isRequired,
 };
@@ -78,4 +83,4 @@ Undo.propTypes = {
 export default compose(
   withWidth(),
   withStyles(styles),
-)(Undo);
+)(UndoSnackbar);
