@@ -30,6 +30,10 @@ const styles = (theme) => ({
     paddingLeft: theme.spacing.unit * 2,
     paddingRight: theme.spacing.unit * 2,
     width: '100%',
+
+    [theme.palette.type === 'dark' && theme.breakpoints.down('xs')]: {
+      backgroundColor: theme.palette.background.default,
+    },
   },
 
   stats: {

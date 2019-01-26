@@ -7,6 +7,8 @@ import createPalette from '@material-ui/core/styles/createPalette';
 const breakpoints = createBreakpoints({});
 
 export default (type) => {
+  const palette = createPalette({ type });
+
   let theme = {
     mixins: {
       toolbar: {
@@ -66,14 +68,22 @@ export default (type) => {
   };
 
   if (type === 'light') {
-    const palette = createPalette({ type });
-
     theme = deepmerge(theme, {
       overrides: {
         MuiIconButton: {
           root: {
             color: palette.text.primary,
           },
+        },
+      },
+    });
+  }
+
+  if (type === 'dark') {
+    theme = deepmerge(theme, {
+      palette: {
+        background: {
+          default: palette.common.black,
         },
       },
     });
