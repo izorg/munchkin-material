@@ -79,5 +79,15 @@ export default (type) => {
     });
   }
 
+  if (type === 'dark') {
+    theme = deepmerge(theme, {
+      palette: {
+        background: {
+          default: '#202124',
+        },
+      },
+    });
+  }
+
   return theme;
 };
