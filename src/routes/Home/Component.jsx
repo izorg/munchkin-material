@@ -24,10 +24,7 @@ const styles = (theme) => ({
   },
 
   single: {
-    backgroundColor:
-      theme.palette.type === 'dark'
-        ? theme.palette.background.default
-        : theme.palette.background.paper,
+    backgroundColor: theme.palette.background.paper,
   },
 
   content: {
@@ -41,10 +38,6 @@ const styles = (theme) => ({
     [theme.breakpoints.up('sm')]: {
       backgroundColor: 'transparent',
       paddingBottom: 0,
-    },
-
-    [theme.palette.type === 'dark' && theme.breakpoints.down('sm')]: {
-      backgroundColor: theme.palette.background.default,
     },
   },
 
