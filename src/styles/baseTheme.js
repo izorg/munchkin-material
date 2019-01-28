@@ -7,6 +7,8 @@ import createPalette from '@material-ui/core/styles/createPalette';
 const breakpoints = createBreakpoints({});
 
 export default (type) => {
+  const palette = createPalette({ type });
+
   let theme = {
     mixins: {
       toolbar: {
@@ -66,8 +68,6 @@ export default (type) => {
   };
 
   if (type === 'light') {
-    const palette = createPalette({ type });
-
     theme = deepmerge(theme, {
       overrides: {
         MuiIconButton: {
@@ -83,7 +83,7 @@ export default (type) => {
     theme = deepmerge(theme, {
       palette: {
         background: {
-          default: '#202124',
+          default: '#202124', // got it from Contacts app for Android & material.io web site
         },
       },
     });
