@@ -5,7 +5,7 @@ import { IconButton, withStyles } from '@material-ui/core';
 import { FlagCheckered } from 'mdi-material-ui';
 import { noop } from 'lodash/fp';
 
-import AppBar from '../../../components/AppBar';
+import AppBar from '../../../components/TopAppBar';
 import BackButton from '../../../components/BackButton';
 import DiceIconButton from '../../../components/dice/Button';
 import Title from '../../../components/Title';

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core';
 import { noop } from 'lodash/fp';
 
-import AppBar from '../../../components/AppBar';
+import AppBar from '../../../components/TopAppBar';
 import BackButton from '../../../components/BackButton';
 import DiceButton from '../../../components/dice/Button';
 import Title from '../../../components/Title';

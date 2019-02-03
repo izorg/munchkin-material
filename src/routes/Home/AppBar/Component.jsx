@@ -12,7 +12,7 @@ import { Check, Close, Delete, Edit } from '@material-ui/icons';
 import { FlagCheckered } from 'mdi-material-ui';
 import { noop } from 'lodash/fp';
 
-import AppBar from '../../../components/AppBar';
+import AppBar from '../../../components/TopAppBar';
 import DiceButton from '../../../components/dice/Button';
 import Title from '../../../components/Title';
 

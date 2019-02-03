@@ -14,7 +14,15 @@ export default (type) => {
       toolbar: {
         minHeight: 56,
 
-        [breakpoints.up('sm')]: {
+        [`${breakpoints.up('xs')} and (orientation: landscape)`]: {
+          minHeight: 48,
+        },
+
+        [`${breakpoints.up('sm')} and (orientation: portrait)`]: {
+          minHeight: 64,
+        },
+
+        [breakpoints.up('md')]: {
           minHeight: 64,
         },
       },

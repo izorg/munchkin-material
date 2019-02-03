@@ -4,7 +4,7 @@ import { IconButton, withStyles } from '@material-ui/core';
 import { Check } from '@material-ui/icons';
 import { noop } from 'lodash/fp';
 
-import AppBar from '../../AppBar';
+import AppBar from '../../TopAppBar';
 import BackButton from '../../BackButton';
 import Title from '../../Title';
 

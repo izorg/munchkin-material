@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { AppBar as MuiAppBar, Toolbar, withStyles } from '@material-ui/core';
+import { AppBar, Toolbar, withStyles } from '@material-ui/core';
 import cns from 'classnames';
 
 const styles = (theme) => ({
@@ -24,23 +24,23 @@ const styles = (theme) => ({
   },
 });
 
-const AppBar = ({ children, classes, className, ...props }) => (
-  <MuiAppBar
+const TopAppBar = ({ children, classes, className, ...props }) => (
+  <AppBar
     className={cns(className, classes.appBar)}
     color="primary"
     position="static"
     {...props}
   >
     <Toolbar disableGutters>{children}</Toolbar>
-  </MuiAppBar>
+  </AppBar>
 );
 
-AppBar.propTypes = {
+TopAppBar.propTypes = {
   children: PropTypes.node,
 };
 
-AppBar.defaultProps = {
+TopAppBar.defaultProps = {
   children: null,
 };
 
-export default withStyles(styles)(AppBar);
+export default withStyles(styles)(TopAppBar);
