@@ -1,8 +1,10 @@
 import React from 'react';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import PropTypes from 'prop-types';
-import { IconButton, Tooltip } from '@material-ui/core';
+import { Tooltip } from '@material-ui/core';
 import { Skull } from 'mdi-material-ui';
+
+import TopIconButton from '../../../../components/TopIconButton';
 
 const messages = defineMessages({
   kill: {
@@ -14,9 +16,9 @@ const messages = defineMessages({
 const KillPlayerButton = ({ intl, onClick, playerId, ...props }) => (
   <Tooltip title={intl.formatMessage(messages.kill)}>
     <span>
-      <IconButton onClick={() => onClick(playerId)} {...props}>
+      <TopIconButton onClick={() => onClick(playerId)} {...props}>
         <Skull />
-      </IconButton>
+      </TopIconButton>
     </span>
   </Tooltip>
 );

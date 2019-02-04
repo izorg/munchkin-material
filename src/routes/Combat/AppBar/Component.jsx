@@ -1,7 +1,7 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
-import { IconButton, withStyles } from '@material-ui/core';
+import { withStyles } from '@material-ui/core';
 import { FlagCheckered } from 'mdi-material-ui';
 import { noop } from 'lodash/fp';
 
@@ -9,16 +9,21 @@ import AppBar from '../../../components/TopAppBar';
 import BackButton from '../../../components/BackButton';
 import DiceIconButton from '../../../components/dice/Button';
 import Title from '../../../components/Title';
+import TopIconButton from '../../../components/TopIconButton';
 
-const styles = {
+const styles = (theme) => ({
   leftButton: {
     marginRight: 8,
+
+    [theme.breakpoints.down('sm')]: {
+      marginRight: 12,
+    },
   },
 
   title: {
     marginLeft: 12,
   },
-};
+});
 
 const CombatAppBar = ({ classes, onBack, onFinish }) => (
   <AppBar>
@@ -34,9 +39,9 @@ const CombatAppBar = ({ classes, onBack, onFinish }) => (
 
     <DiceIconButton color="inherit" />
 
-    <IconButton color="inherit" onClick={onFinish}>
+    <TopIconButton color="inherit" onClick={onFinish}>
       <FlagCheckered />
-    </IconButton>
+    </TopIconButton>
   </AppBar>
 );
 

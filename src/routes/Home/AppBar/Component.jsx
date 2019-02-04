@@ -7,7 +7,7 @@ import {
 } from 'react-intl';
 import { compose } from 'recompose';
 import PropTypes from 'prop-types';
-import { IconButton, Tooltip, withStyles } from '@material-ui/core';
+import { Tooltip, withStyles } from '@material-ui/core';
 import { Check, Close, Delete, Edit } from '@material-ui/icons';
 import { FlagCheckered } from 'mdi-material-ui';
 import { noop } from 'lodash/fp';
@@ -15,6 +15,7 @@ import { noop } from 'lodash/fp';
 import AppBar from '../../../components/TopAppBar';
 import DiceButton from '../../../components/dice/Button';
 import Title from '../../../components/Title';
+import TopIconButton from '../../../components/TopIconButton';
 
 import * as modes from '../modes';
 import modeShape from '../modeShape';
@@ -29,15 +30,19 @@ const messages = defineMessages({
   },
 });
 
-const styles = {
+const styles = (theme) => ({
   leftButton: {
     marginRight: 8,
+
+    [theme.breakpoints.down('sm')]: {
+      marginRight: 12,
+    },
   },
 
   title: {
     marginLeft: 12,
   },
-};
+});
 
 const HomeAppBar = ({
   classes,
@@ -74,13 +79,13 @@ const HomeAppBar = ({
   return (
     <AppBar color={multiMode ? 'default' : 'primary'}>
       {multiMode ? (
-        <IconButton
+        <TopIconButton
           className={classes.leftButton}
           color="default"
           onClick={onMultiSelectDeactivate}
         >
           <Close />
-        </IconButton>
+        </TopIconButton>
       ) : (
         <MenuButton className={classes.leftButton} color="inherit" />
       )}
@@ -97,29 +102,29 @@ const HomeAppBar = ({
 
       {!empty && !multiMode && !singleMode && (
         <Tooltip title={editTitle}>
-          <IconButton
+          <TopIconButton
             aria-label={editTitle}
             color={buttonColor}
             onClick={() => onToggleEditClick(mode)}
           >
             {editMode ? <Check /> : <Edit />}
-          </IconButton>
+          </TopIconButton>
         </Tooltip>
       )}
 
       {multiMode && (
-        <IconButton
+        <TopIconButton
           color={buttonColor}
           onClick={() => onPlayersDelete(selectedPlayerIds)}
         >
           <Delete />
-        </IconButton>
+        </TopIconButton>
       )}
 
       {singleMode && (
-        <IconButton color="inherit" onClick={onTurnFinish}>
+        <TopIconButton color="inherit" onClick={onTurnFinish}>
           <FlagCheckered />
-        </IconButton>
+        </TopIconButton>
       )}
     </AppBar>
   );

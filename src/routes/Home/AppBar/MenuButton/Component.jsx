@@ -1,7 +1,9 @@
 import React from 'react';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
-import { IconButton, Tooltip } from '@material-ui/core';
+import { Tooltip } from '@material-ui/core';
 import { Menu } from '@material-ui/icons';
+
+import TopIconButton from '../../../../components/TopIconButton';
 
 const messages = defineMessages({
   menu: {
@@ -12,9 +14,9 @@ const messages = defineMessages({
 
 const MenuButton = ({ intl, ...props }) => (
   <Tooltip title={intl.formatMessage(messages.menu)}>
-    <IconButton data-screenshots="menu" {...props}>
+    <TopIconButton data-screenshots="menu" {...props}>
       <Menu />
-    </IconButton>
+    </TopIconButton>
   </Tooltip>
 );
 

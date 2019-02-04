@@ -1,7 +1,9 @@
 import React from 'react';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
-import { IconButton, Tooltip } from '@material-ui/core';
+import { Tooltip } from '@material-ui/core';
 import { DiceMultiple } from 'mdi-material-ui';
+
+import TopIconButton from '../../TopIconButton';
 
 const messages = defineMessages({
   dice: {
@@ -12,9 +14,9 @@ const messages = defineMessages({
 
 const DiceIconButton = ({ intl, ...props }) => (
   <Tooltip title={intl.formatMessage(messages.dice)}>
-    <IconButton {...props}>
+    <TopIconButton {...props}>
       <DiceMultiple />
-    </IconButton>
+    </TopIconButton>
   </Tooltip>
 );
 

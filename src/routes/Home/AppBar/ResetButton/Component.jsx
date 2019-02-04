@@ -1,8 +1,10 @@
 import React from 'react';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import PropTypes from 'prop-types';
-import { IconButton, Tooltip } from '@material-ui/core';
+import { Tooltip } from '@material-ui/core';
 import { SettingsBackupRestore } from '@material-ui/icons';
+
+import TopIconButton from '../../../../components/TopIconButton';
 
 const messages = defineMessages({
   reset: {
@@ -19,13 +21,13 @@ const ResetButton = ({
   ...props
 }) => (
   <Tooltip title={intl.formatMessage(messages.reset)}>
-    <IconButton
+    <TopIconButton
       color="inherit"
       onClick={singleMode ? onPlayerReset : onPlayersReset}
       {...props}
     >
       <SettingsBackupRestore />
-    </IconButton>
+    </TopIconButton>
   </Tooltip>
 );
 

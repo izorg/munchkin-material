@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { IconButton, withStyles } from '@material-ui/core';
+import { withStyles } from '@material-ui/core';
 import { Check } from '@material-ui/icons';
 import { noop } from 'lodash/fp';
 
 import AppBar from '../../TopAppBar';
 import BackButton from '../../BackButton';
 import Title from '../../Title';
+import TopIconButton from '../../TopIconButton';
 
 const styles = {
   leftButton: {
@@ -24,9 +25,9 @@ const PlayerFormScreenAppBarComponent = ({ classes, onCancel, title }) => (
 
     <Title className={classes.title}>{title}</Title>
 
-    <IconButton color="inherit" type="submit">
+    <TopIconButton color="inherit" type="submit">
       <Check />
-    </IconButton>
+    </TopIconButton>
   </AppBar>
 );
 

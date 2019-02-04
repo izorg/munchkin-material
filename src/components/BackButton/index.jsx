@@ -1,6 +1,8 @@
 import React from 'react';
-import { IconButton, withStyles } from '@material-ui/core';
+import { withStyles } from '@material-ui/core';
 import { ArrowBack, KeyboardArrowLeft } from '@material-ui/icons';
+
+import TopIconButton from '../TopIconButton';
 
 import { ios } from '../../utils/platforms';
 
@@ -11,9 +13,9 @@ const styles = {
 };
 
 const BackButton = ({ classes, ...rest }) => (
-  <IconButton color="inherit" {...rest}>
+  <TopIconButton color="inherit" {...rest}>
     {ios ? <KeyboardArrowLeft className={classes.iosIcon} /> : <ArrowBack />}
-  </IconButton>
+  </TopIconButton>
 );
 
 export default withStyles(styles)(BackButton);

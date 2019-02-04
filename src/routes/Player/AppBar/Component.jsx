@@ -10,15 +10,19 @@ import Title from '../../../components/Title';
 
 import KillPlayerButton from './KillPlayerButton';
 
-const styles = {
+const styles = (theme) => ({
   leftButton: {
     marginRight: 8,
+
+    [theme.breakpoints.down('sm')]: {
+      marginRight: 12,
+    },
   },
 
   title: {
     marginLeft: 12,
   },
-};
+});
 
 const PlayerAppBar = ({ classes, onBack, title }) => (
   <AppBar>
