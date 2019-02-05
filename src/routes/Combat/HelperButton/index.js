@@ -21,20 +21,13 @@ const mapStateToProps = createStructuredSelector({
     get('add'),
     isNull,
   ),
-  playerId: get(['combat', 'playerId']),
 });
 
 const mapDispatchToProps = {
   onAdd: () => push(`?add`),
-  onBackdropClick: goBack,
+  onBack: goBack,
   onHelperClick: () => replace(`?add=helper`),
-  onMonsterAdd: (back) => (dispatch) => {
-    dispatch(addMonster(createMonster()));
-
-    if (back) {
-      dispatch(goBack());
-    }
-  },
+  onMonsterAdd: () => addMonster(createMonster()),
 };
 
 export default connect(

@@ -1,13 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 import { Backdrop, MuiThemeProvider, withStyles } from '@material-ui/core';
-import { SpeedDial, SpeedDialIcon } from '@material-ui/lab';
 import { PersonAdd } from '@material-ui/icons';
+import { SpeedDial, SpeedDialIcon } from '@material-ui/lab';
 import { EmoticonDevilOutline } from 'mdi-material-ui';
 import cns from 'classnames';
 import deepmerge from 'deepmerge';
-import { noop } from 'lodash/fp';
 
 import Zoom from '../../../components/transitions/Zoom';
 
@@ -37,134 +36,97 @@ const styles = (theme) => ({
   },
 });
 
-class CombatHelperButton extends Component {
-  constructor(props) {
-    super(props);
+const CombatHelperButton = ({
+  classes,
+  className,
+  helper,
+  onAdd,
+  onBack,
+  onHelperClick,
+  onMonsterAdd,
+  open,
+  theme,
+  ...rest
+}) => (
+  <>
+    <MuiThemeProvider
+      theme={deepmerge(theme, {
+        overrides: {
+          MuiSpeedDialAction: {
+            button: {
+              color: theme.palette.primary.contrastText,
+              backgroundColor: theme.palette.primary.main,
 
-    this.handleClick = this.handleClick.bind(this);
-  }
+              '&:hover': {
+                backgroundColor: theme.palette.primary.dark,
 
-  handleClick() {
-    const {
-      helper,
-      onAdd,
-      onBackdropClick,
-      onMonsterAdd,
-      open,
-      playerId,
-    } = this.props;
-
-    if (open) {
-      onBackdropClick();
-    } else if (helper) {
-      onAdd(playerId);
-    } else {
-      onMonsterAdd();
-    }
-  }
-
-  render() {
-    const {
-      classes,
-      className,
-      helper,
-      onAdd,
-      onBackdropClick,
-      onHelperClick,
-      onMonsterAdd,
-      open,
-      playerId,
-      theme,
-      ...rest
-    } = this.props;
-
-    return (
-      <>
-        <MuiThemeProvider
-          theme={deepmerge(theme, {
-            overrides: {
-              MuiSpeedDialAction: {
-                button: {
-                  color: theme.palette.primary.contrastText,
+                '@media (hover: none)': {
                   backgroundColor: theme.palette.primary.main,
-
-                  '&:hover': {
-                    backgroundColor: theme.palette.primary.dark,
-
-                    '@media (hover: none)': {
-                      backgroundColor: theme.palette.primary.main,
-                    },
-                  },
                 },
               },
             },
-          })}
-        >
-          <SpeedDial
-            ariaLabel=" "
-            ButtonProps={{
-              color: open ? 'default' : 'primary',
-            }}
-            className={cns(classes.container, className)}
-            icon={helper ? <SpeedDialIcon /> : <EmoticonDevilOutline />}
-            onClick={this.handleClick}
-            open={open}
-            TransitionComponent={Zoom}
-            {...rest}
-          >
-            <HelperButtonAction
-              icon={<EmoticonDevilOutline />}
-              onClick={() => onMonsterAdd(true)}
-              tooltipTitle={
-                <FormattedMessage
-                  defaultMessage="Monster"
-                  id="combat.add.monster"
-                />
-              }
+          },
+        },
+      })}
+    >
+      <SpeedDial
+        ariaLabel=" "
+        ButtonProps={{
+          color: open ? 'default' : 'primary',
+        }}
+        className={cns(classes.container, className)}
+        icon={helper ? <SpeedDialIcon /> : <EmoticonDevilOutline />}
+        onClick={() => {
+          if (open) {
+            onBack();
+          } else if (helper) {
+            onAdd();
+          } else {
+            onMonsterAdd();
+          }
+        }}
+        open={open}
+        TransitionComponent={Zoom}
+        {...rest}
+      >
+        <HelperButtonAction
+          icon={<EmoticonDevilOutline />}
+          onClick={() => {
+            onMonsterAdd();
+            onBack();
+          }}
+          tooltipTitle={
+            <FormattedMessage
+              defaultMessage="Monster"
+              id="combat.add.monster"
             />
-            <HelperButtonAction
-              icon={<PersonAdd />}
-              onClick={() => onHelperClick(playerId)}
-              tooltipTitle={
-                <FormattedMessage
-                  defaultMessage="Helper"
-                  id="combat.add.helper"
-                />
-              }
-            />
-          </SpeedDial>
-        </MuiThemeProvider>
+          }
+        />
+        <HelperButtonAction
+          icon={<PersonAdd />}
+          onClick={onHelperClick}
+          tooltipTitle={
+            <FormattedMessage defaultMessage="Helper" id="combat.add.helper" />
+          }
+        />
+      </SpeedDial>
+    </MuiThemeProvider>
 
-        {open && (
-          <Backdrop
-            classes={{
-              root: classes.backdrop,
-            }}
-            onClick={onBackdropClick}
-            open
-          />
-        )}
-      </>
-    );
-  }
-}
+    {open && <Backdrop className={classes.backdrop} onClick={onBack} open />}
+  </>
+);
 
 CombatHelperButton.propTypes = {
   helper: PropTypes.bool,
-  onAdd: PropTypes.func,
-  onBackdropClick: PropTypes.func,
-  onHelperClick: PropTypes.func,
-  onMonsterAdd: PropTypes.func,
+  onAdd: PropTypes.func.isRequired,
+  onBack: PropTypes.func.isRequired,
+  onHelperClick: PropTypes.func.isRequired,
+  onMonsterAdd: PropTypes.func.isRequired,
   open: PropTypes.bool,
-  playerId: PropTypes.string.isRequired,
 };
 
 CombatHelperButton.defaultProps = {
   helper: false,
-  onAdd: noop,
-  onBackdropClick: noop,
-  onHelperClick: noop,
-  onMonsterAdd: noop,
   open: false,
 };
 
