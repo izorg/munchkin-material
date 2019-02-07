@@ -3,7 +3,6 @@ import 'core-js';
 import React from 'react';
 import { render } from 'react-dom';
 import createHistory from 'history/createHashHistory';
-import WebFont from 'webfontloader';
 
 import App from './components/App';
 import { setFullVersion } from './ducks/app';
@@ -15,7 +14,6 @@ const defaultOptions = {
   buyFullVersion: () => Promise.resolve(),
   freeCombat: false,
   keepAwakeSupport: false,
-  loadFonts: true,
   rateLink: null,
   restorePurchases: null,
   shareLink: null,
@@ -23,22 +21,10 @@ const defaultOptions = {
 };
 
 const init = (appEl, initOptions) => {
-  const { buyFullVersion, freeCombat, loadFonts, storageKey, ...options } = {
+  const { buyFullVersion, freeCombat, storageKey, ...options } = {
     ...defaultOptions,
     ...initOptions,
   };
-
-  if (loadFonts) {
-    WebFont.load({
-      classes: false,
-      custom: {
-        families: ['Munchkin'],
-      },
-      google: {
-        families: ['Roboto:300,400,500'],
-      },
-    });
-  }
 
   const store = configureStore({
     buyFullVersion,
