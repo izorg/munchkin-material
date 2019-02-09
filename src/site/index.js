@@ -1,4 +1,3 @@
-import './firebase';
 import './googleAnalytics';
 
 import init from '../index';
