@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import {
   ListItem,
@@ -18,22 +18,16 @@ const styles = {
   },
 };
 
-class ThemeItem extends PureComponent {
-  render() {
-    const { classes, className, theme, ...rest } = this.props;
-
-    return (
-      <ListItem button className={cns(className, classes.root)} {...rest}>
-        <ListItemIcon>
-          <Palette style={{ color: theme.palette.primary.main }} />
-        </ListItemIcon>
-        <ListItemText
-          primary={<FormattedMessage defaultMessage="Theme" id="menu.theme" />}
-          secondary={themeNames[theme.id]}
-        />
-      </ListItem>
-    );
-  }
-}
+const ThemeItem = ({ classes, className, theme, ...rest }) => (
+  <ListItem button className={cns(className, classes.root)} {...rest}>
+    <ListItemIcon>
+      <Palette style={{ color: theme.palette.primary.main }} />
+    </ListItemIcon>
+    <ListItemText
+      primary={<FormattedMessage defaultMessage="Theme" id="menu.theme" />}
+      secondary={themeNames[theme.id]}
+    />
+  </ListItem>
+);
 
 export default withStyles(styles, { withTheme: true })(ThemeItem);

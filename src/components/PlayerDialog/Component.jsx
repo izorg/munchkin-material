@@ -1,4 +1,4 @@
-import React, { createRef, PureComponent } from 'react';
+import React, { Component, createRef } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { Form as FinalForm } from 'react-final-form';
 import { compose, shouldUpdate } from 'recompose';
@@ -15,7 +15,7 @@ import {
   withMobileDialog,
   withStyles,
 } from '@material-ui/core';
-import { noop, stubFalse } from 'lodash/fp';
+import { stubFalse } from 'lodash/fp';
 
 import { ios } from '../../utils/platforms';
 import { sexProp } from '../../utils/propTypes';
@@ -73,7 +73,7 @@ const FormComponent = shouldUpdate(stubFalse)(
   ),
 );
 
-class PlayerDialog extends PureComponent {
+class PlayerDialog extends Component {
   constructor(props) {
     super(props);
 
@@ -211,14 +211,13 @@ PlayerDialog.propTypes = {
     name: PropTypes.string,
     sex: sexProp.isRequired,
   }).isRequired,
-  onClose: PropTypes.func,
+  onClose: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
   open: PropTypes.bool,
 };
 
 PlayerDialog.defaultProps = {
   edit: false,
-  onClose: noop,
   open: false,
 };
 

@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 import { IconButton, withStyles } from '@material-ui/core';
@@ -99,85 +99,76 @@ const styles = (theme) => ({
   },
 });
 
-class SinglePlayerComponent extends PureComponent {
-  render() {
-    const {
-      bonus,
-      classes,
-      levelDecrementDisabled,
-      levelIncrementDisabled,
-      onBonusDecrement,
-      onBonusIncrement,
-      onGearDecrement,
-      onGearIncrement,
-      onLevelDecrement,
-      onLevelIncrement,
-      onSexToggle,
-      player,
-    } = this.props;
-
-    return (
-      <div className={classes.content}>
-        <div className={classes.counters}>
-          <Counter
-            className={classes.counter}
-            data-screenshots="level-counter"
-            decrementDisabled={levelDecrementDisabled}
-            incrementDisabled={levelIncrementDisabled}
-            onDecrement={onLevelDecrement}
-            onIncrement={onLevelIncrement}
-            title={
-              <FormattedMessage
-                defaultMessage="Level"
-                id="singlePlayer.level"
-              />
-            }
-            value={player.level}
+const SinglePlayerComponent = ({
+  bonus,
+  classes,
+  levelDecrementDisabled,
+  levelIncrementDisabled,
+  onBonusDecrement,
+  onBonusIncrement,
+  onGearDecrement,
+  onGearIncrement,
+  onLevelDecrement,
+  onLevelIncrement,
+  onSexToggle,
+  player,
+}) => (
+  <div className={classes.content}>
+    <div className={classes.counters}>
+      <Counter
+        className={classes.counter}
+        data-screenshots="level-counter"
+        decrementDisabled={levelDecrementDisabled}
+        incrementDisabled={levelIncrementDisabled}
+        onDecrement={onLevelDecrement}
+        onIncrement={onLevelIncrement}
+        title={
+          <FormattedMessage defaultMessage="Level" id="singlePlayer.level" />
+        }
+        value={player.level}
+      />
+      <Counter
+        className={classes.counter}
+        data-screenshots="gear-counter"
+        onDecrement={onGearDecrement}
+        onIncrement={onGearIncrement}
+        title={
+          <FormattedMessage defaultMessage="Gear" id="singlePlayer.gear" />
+        }
+        value={player.gear}
+      />
+      <Counter
+        className={classes.counter}
+        data-screenshots="modifier-counter"
+        onDecrement={onBonusDecrement}
+        onIncrement={onBonusIncrement}
+        title={
+          <FormattedMessage
+            defaultMessage="Modifier"
+            id="singlePlayer.modifier"
           />
-          <Counter
-            className={classes.counter}
-            data-screenshots="gear-counter"
-            onDecrement={onGearDecrement}
-            onIncrement={onGearIncrement}
-            title={
-              <FormattedMessage defaultMessage="Gear" id="singlePlayer.gear" />
-            }
-            value={player.gear}
-          />
-          <Counter
-            className={classes.counter}
-            data-screenshots="modifier-counter"
-            onDecrement={onBonusDecrement}
-            onIncrement={onBonusIncrement}
-            title={
-              <FormattedMessage
-                defaultMessage="Modifier"
-                id="singlePlayer.modifier"
-              />
-            }
-            value={bonus}
-          />
-        </div>
-        <div className={classes.strengthCounter}>
-          <div className={classes.strengthTitle}>
-            <FormattedMessage
-              defaultMessage="Strength"
-              id="singlePlayer.strength"
-            />
-          </div>
-
-          <div className={classes.strengthValue}>
-            {player.level + player.gear + bonus}
-          </div>
-
-          <IconButton className={classes.sex} onClick={onSexToggle}>
-            <Sex className={classes.sexIcon} sex={player.sex} />
-          </IconButton>
-        </div>
+        }
+        value={bonus}
+      />
+    </div>
+    <div className={classes.strengthCounter}>
+      <div className={classes.strengthTitle}>
+        <FormattedMessage
+          defaultMessage="Strength"
+          id="singlePlayer.strength"
+        />
       </div>
-    );
-  }
-}
+
+      <div className={classes.strengthValue}>
+        {player.level + player.gear + bonus}
+      </div>
+
+      <IconButton className={classes.sex} onClick={onSexToggle}>
+        <Sex className={classes.sexIcon} sex={player.sex} />
+      </IconButton>
+    </div>
+  </div>
+);
 
 SinglePlayerComponent.propTypes = {
   bonus: PropTypes.number.isRequired,

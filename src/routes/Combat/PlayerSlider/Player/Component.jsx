@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 import { IconButton, Typography, withStyles } from '@material-ui/core';
@@ -37,7 +37,7 @@ const styles = {
   },
 };
 
-class CombatPlayer extends PureComponent {
+class CombatPlayer extends Component {
   constructor(props) {
     super(props);
 

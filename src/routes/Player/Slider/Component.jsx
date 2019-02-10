@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import SwipeableViews from 'react-swipeable-views';
 import { bindKeyboard, virtualize } from 'react-swipeable-views-utils';
 import PropTypes from 'prop-types';
@@ -94,7 +94,7 @@ const styles = (theme) => ({
   },
 });
 
-class PlayerSlider extends PureComponent {
+class PlayerSlider extends Component {
   constructor(props) {
     super(props);
 

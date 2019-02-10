@@ -1,9 +1,8 @@
-import React, { createElement, PureComponent } from 'react';
+import React, { Component, createElement } from 'react';
 import { TransitionGroup } from 'react-transition-group';
 import PropTypes from 'prop-types';
 import { ButtonBase, Dialog, withStyles } from '@material-ui/core';
 import { Dice1, Dice2, Dice3, Dice4, Dice5, Dice6 } from 'mdi-material-ui';
-import { noop } from 'lodash/fp';
 
 import DiceTransition from '../Transition';
 
@@ -43,7 +42,7 @@ const diceComponent = {
   6: Dice6,
 };
 
-class DiceDialog extends PureComponent {
+class DiceDialog extends Component {
   constructor(props) {
     super(props);
 
@@ -93,12 +92,11 @@ class DiceDialog extends PureComponent {
 
 DiceDialog.propTypes = {
   dice: PropTypes.number,
-  onDiceClick: PropTypes.func,
+  onDiceClick: PropTypes.func.isRequired,
 };
 
 DiceDialog.defaultProps = {
   dice: null,
-  onDiceClick: noop,
 };
 
 export default withStyles(styles)(DiceDialog);

@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 import PropTypes from 'prop-types';
 import { List, RootRef, withStyles } from '@material-ui/core';
@@ -24,7 +24,7 @@ const styles = {
   },
 };
 
-class HomePlayerList extends PureComponent {
+class HomePlayerList extends Component {
   constructor(props) {
     super(props);
 

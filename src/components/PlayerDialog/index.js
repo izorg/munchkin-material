@@ -43,28 +43,30 @@ const mapStateToProps = createStructuredSelector({
   open,
 });
 
-const mapDispatchToProps = {
-  onClose: goBack,
-  onSubmit: (values, form) => (dispatch) => {
-    const { dirty } = form.getState();
+const onSubmit = (values, form) => (dispatch) => {
+  const { dirty } = form.getState();
 
-    if (dirty) {
-      const { id, name = '' } = values;
+  if (dirty) {
+    const { id, name = '' } = values;
 
-      if (name.trim()) {
-        const player = createPlayer(values);
+    if (name.trim()) {
+      const player = createPlayer(values);
 
-        if (id) {
-          dispatch(updatePlayer(player));
-        } else {
-          dispatch(addPlayer(player));
-          dispatch(addPlayerToList(player.id));
-        }
+      if (id) {
+        dispatch(updatePlayer(player));
+      } else {
+        dispatch(addPlayer(player));
+        dispatch(addPlayerToList(player.id));
       }
     }
+  }
 
-    dispatch(goBack());
-  },
+  dispatch(goBack());
+};
+
+const mapDispatchToProps = {
+  onClose: goBack,
+  onSubmit,
 };
 
 export default connect(

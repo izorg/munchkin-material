@@ -1,4 +1,4 @@
-import React, { createRef, PureComponent } from 'react';
+import React, { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
 import {
   IconButton,
@@ -75,7 +75,7 @@ const styles = (theme) => ({
   },
 });
 
-class HomePlayerListItem extends PureComponent {
+class HomePlayerListItem extends Component {
   constructor(props) {
     super(props);
 

@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { compose } from 'recompose';
 import PropTypes from 'prop-types';
@@ -12,7 +12,6 @@ import {
   RadioGroup,
   withStyles,
 } from '@material-ui/core';
-import { noop } from 'lodash/fp';
 
 import { MAX_EPIC_LEVEL, MAX_LEVEL, MIN_LEVEL } from '../../utils/levelLimit';
 
@@ -29,7 +28,7 @@ const styles = {
   },
 };
 
-class LevelDialog extends PureComponent {
+class LevelDialog extends Component {
   constructor(props) {
     super(props);
 
@@ -142,14 +141,12 @@ LevelDialog.propTypes = {
     EPIC_MUNCHKIN_LIMIT,
     NO_LIMIT,
   ]).isRequired,
-  onClose: PropTypes.func,
-  onSubmit: PropTypes.func,
+  onClose: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
   open: PropTypes.bool,
 };
 
 LevelDialog.defaultProps = {
-  onClose: noop,
-  onSubmit: noop,
   open: false,
 };
 

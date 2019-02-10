@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import MediaQuery from 'react-responsive';
 import SwipeableViews from 'react-swipeable-views';
@@ -6,7 +6,6 @@ import PropTypes from 'prop-types';
 import { IconButton, Paper, withStyles } from '@material-ui/core';
 import { CloseCircle } from 'mdi-material-ui';
 import cns from 'classnames';
-import { noop } from 'lodash/fp';
 
 import Monster from './Monster';
 
@@ -43,7 +42,7 @@ const styles = (theme) => ({
   },
 });
 
-class CombatMonsterSlider extends PureComponent {
+class CombatMonsterSlider extends Component {
   constructor(props) {
     super(props);
 
@@ -172,12 +171,11 @@ class CombatMonsterSlider extends PureComponent {
 
 CombatMonsterSlider.propTypes = {
   monsters: PropTypes.arrayOf(PropTypes.string),
-  onMonsterRemove: PropTypes.func,
+  onMonsterRemove: PropTypes.func.isRequired,
 };
 
 CombatMonsterSlider.defaultProps = {
   monsters: [],
-  onMonsterRemove: noop,
 };
 
 export default withStyles(styles)(CombatMonsterSlider);

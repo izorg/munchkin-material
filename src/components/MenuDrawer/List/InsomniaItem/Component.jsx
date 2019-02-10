@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 import {
@@ -19,7 +19,7 @@ const styles = {
   },
 };
 
-class InsomniaItem extends PureComponent {
+class InsomniaItem extends Component {
   constructor(props) {
     super(props);
 

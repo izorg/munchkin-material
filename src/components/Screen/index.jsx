@@ -7,7 +7,7 @@ import ScreenModal from './Modal';
 
 let screenAppear = false;
 
-class ScreenLoader extends Component {
+class Screen extends Component {
   constructor(props) {
     super(props);
 
@@ -37,15 +37,15 @@ class ScreenLoader extends Component {
   }
 }
 
-ScreenLoader.propTypes = {
+Screen.propTypes = {
   appear: PropTypes.bool,
   loader: PropTypes.func.isRequired,
   match: PropTypes.object,
 };
 
-ScreenLoader.defaultProps = {
+Screen.defaultProps = {
   appear: undefined,
   match: null,
 };
 
-export default ScreenLoader;
+export default Screen;

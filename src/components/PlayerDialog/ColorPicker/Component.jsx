@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Hidden, withStyles } from '@material-ui/core';
 import { noop } from 'lodash/fp';
@@ -13,7 +13,7 @@ const styles = {
   },
 };
 
-class ColorPicker extends PureComponent {
+class ColorPicker extends Component {
   constructor(props) {
     super(props);
 

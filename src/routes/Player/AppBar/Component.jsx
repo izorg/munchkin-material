@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core';
-import { noop } from 'lodash/fp';
 
 import AppBar from '../../../components/TopAppBar';
 import BackButton from '../../../components/BackButton';
@@ -40,13 +39,8 @@ const PlayerAppBar = ({ classes, onBack, title }) => (
 );
 
 PlayerAppBar.propTypes = {
-  onBack: PropTypes.func,
-  title: PropTypes.string,
-};
-
-PlayerAppBar.defaultProps = {
-  onBack: noop,
-  title: '',
+  onBack: PropTypes.func.isRequired,
+  title: PropTypes.string.isRequired,
 };
 
 export default withStyles(styles)(PlayerAppBar);

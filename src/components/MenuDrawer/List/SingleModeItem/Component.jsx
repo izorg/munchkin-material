@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 import {
@@ -10,7 +10,6 @@ import {
 } from '@material-ui/core';
 import { Person } from '@material-ui/icons';
 import cns from 'classnames';
-import { noop } from 'lodash/fp';
 
 const styles = {
   root: {
@@ -19,7 +18,7 @@ const styles = {
   },
 };
 
-class SingleModeItem extends PureComponent {
+class SingleModeItem extends Component {
   constructor(props) {
     super(props);
 
@@ -65,12 +64,11 @@ class SingleModeItem extends PureComponent {
 }
 
 SingleModeItem.propTypes = {
-  onChange: PropTypes.func,
+  onChange: PropTypes.func.isRequired,
   singleMode: PropTypes.bool,
 };
 
 SingleModeItem.defaultProps = {
-  onChange: noop,
   singleMode: false,
 };
 
