@@ -1,14 +1,17 @@
 import React from 'react';
+import { compose, defaultProps } from 'recompose';
 import PropTypes from 'prop-types';
-import { Modal, Slide, withStyles } from '@material-ui/core';
+import { Fade, Modal, Slide, withStyles } from '@material-ui/core';
+import withWidth, { isWidthDown } from '@material-ui/core/withWidth';
 
 import { ios } from '../../../utils/platforms';
+import { widthProp } from '../../../utils/propTypes';
 
-import Transition from '../Transition';
+import FadeUp from '../Transition';
 
-const TransitionComponent = ios
-  ? (props) => <Slide direction="left" {...props} />
-  : Transition;
+const SlideLeft = defaultProps({ direction: 'left ' })(Slide);
+
+const Transition = ios ? SlideLeft : FadeUp;
 
 const styles = {
   modal: {
@@ -23,27 +26,32 @@ const styles = {
   },
 };
 
-const ScreenModal = ({ appear, children, classes, open, ...rest }) => (
-  <Modal
-    classes={{
-      root: classes.root,
-    }}
-    disableEscapeKeyDown
-    disablePortal
-    hideBackdrop
-    open={open}
-    {...rest}
-  >
-    <TransitionComponent appear={appear} in={open}>
-      <div className={classes.root}>{children}</div>
-    </TransitionComponent>
-  </Modal>
-);
+const ScreenModal = ({ appear, children, classes, open, width, ...rest }) => {
+  const ScreenTransition = isWidthDown('md', width) ? Transition : Fade;
+
+  return (
+    <Modal
+      classes={{
+        root: classes.root,
+      }}
+      disableEscapeKeyDown
+      disablePortal
+      hideBackdrop
+      open={open}
+      {...rest}
+    >
+      <ScreenTransition appear={appear} in={open}>
+        <div className={classes.root}>{children}</div>
+      </ScreenTransition>
+    </Modal>
+  );
+};
 
 ScreenModal.propTypes = {
   appear: PropTypes.bool,
   children: PropTypes.node.isRequired,
   open: PropTypes.bool,
+  width: widthProp.isRequired,
 };
 
 ScreenModal.defaultProps = {
@@ -51,4 +59,7 @@ ScreenModal.defaultProps = {
   open: false,
 };
 
-export default withStyles(styles)(ScreenModal);
+export default compose(
+  withWidth(),
+  withStyles(styles),
+)(ScreenModal);
