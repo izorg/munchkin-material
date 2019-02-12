@@ -14,7 +14,6 @@ import cns from 'classnames';
 import Hammer from 'hammerjs';
 import { debounce, noop } from 'lodash/fp';
 
-import getSexIconClass from '../../../../utils/getSexIconClass';
 import { playerShape } from '../../../../utils/propTypes';
 
 import Avatar from './Avatar';
@@ -169,7 +168,6 @@ class HomePlayerListItem extends Component {
       ...rest
     } = this.props;
 
-    const SexIcon = getSexIconClass(player.sex);
     const editMode = mode === modes.EDIT;
 
     return (
@@ -184,9 +182,7 @@ class HomePlayerListItem extends Component {
           {...rest}
         >
           <RootRef rootRef={this.avatarRef}>
-            <Avatar color={player.color} name={player.name} selected={selected}>
-              <SexIcon />
-            </Avatar>
+            <Avatar color={player.color} selected={selected} sex={player.sex} />
           </RootRef>
 
           <RootRef rootRef={this.textRef}>

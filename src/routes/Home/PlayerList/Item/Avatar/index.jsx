@@ -1,49 +1,40 @@
-import React, { PureComponent } from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { Avatar } from '@material-ui/core';
 import { Check } from '@material-ui/icons';
 
-class PlayerAvatar extends PureComponent {
-  render() {
-    const {
-      children,
-      color,
-      selected,
-      style: styleProp,
-      ...props
-    } = this.props;
+import Sex from '../../../../../components/Sex';
 
-    let style = { ...styleProp };
+import { sexProp } from '../../../../../utils/propTypes';
 
-    if (!selected && color) {
-      style = {
-        ...style,
-        backgroundColor: color,
-      };
-    }
+const PlayerAvatar = ({ color, selected, sex, style: styleProp, ...props }) => {
+  let style = { ...styleProp };
 
-    return (
-      <Avatar style={style} {...props}>
-        {selected ? <Check /> : children}
-      </Avatar>
-    );
+  if (!selected && color) {
+    style = {
+      ...style,
+      backgroundColor: color,
+    };
   }
-}
+
+  return (
+    <Avatar style={style} {...props}>
+      {selected ? <Check /> : <Sex sex={sex} />}
+    </Avatar>
+  );
+};
 
 PlayerAvatar.propTypes = {
-  children: PropTypes.node,
   color: PropTypes.string,
-  name: PropTypes.string,
   selected: PropTypes.bool,
+  sex: sexProp.isRequired,
   style: PropTypes.object,
 };
 
 PlayerAvatar.defaultProps = {
-  children: null,
   color: '',
-  name: '',
   selected: false,
   style: {},
 };
 
-export default PlayerAvatar;
+export default memo(PlayerAvatar);

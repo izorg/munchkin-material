@@ -15,7 +15,7 @@ import { KeyboardArrowUp } from '@material-ui/icons';
 import { ChevronDoubleUp } from 'mdi-material-ui';
 import { noop } from 'lodash/fp';
 
-import getSexIconClass from '../../../utils/getSexIconClass';
+import Sex from '../../../components/Sex';
 
 const styles = (theme) => ({
   dialogPaper: {
@@ -77,42 +77,38 @@ const HelperSelector = ({ classes, helpers, onSelect, ...props }) => (
     </DialogTitle>
     <DialogContent className={classes.content}>
       <List>
-        {helpers.map((helper) => {
-          const SexIcon = getSexIconClass(helper.sex);
+        {helpers.map((helper) => (
+          <ListItem
+            key={helper.id.toString()}
+            button
+            onClick={() => onSelect(helper.id)}
+          >
+            <Avatar style={{ backgroundColor: helper.color }}>
+              <Sex sex={helper.sex} />
+            </Avatar>
+            <ListItemText
+              classes={{
+                root: classes.textRoot,
+                primary: classes.primary,
+              }}
+              primary={
+                <>
+                  <span className={classes.name}>{helper.name}</span>
 
-          return (
-            <ListItem
-              key={helper.id.toString()}
-              button
-              onClick={() => onSelect(helper.id)}
-            >
-              <Avatar style={{ backgroundColor: helper.color }}>
-                <SexIcon />
-              </Avatar>
-              <ListItemText
-                classes={{
-                  root: classes.textRoot,
-                  primary: classes.primary,
-                }}
-                primary={
-                  <>
-                    <span className={classes.name}>{helper.name}</span>
+                  <span className={classes.level}>
+                    {helper.level}
+                    <KeyboardArrowUp />
+                  </span>
 
-                    <span className={classes.level}>
-                      {helper.level}
-                      <KeyboardArrowUp />
-                    </span>
-
-                    <span className={classes.strength}>
-                      {helper.level + helper.gear}
-                      <ChevronDoubleUp />
-                    </span>
-                  </>
-                }
-              />
-            </ListItem>
-          );
-        })}
+                  <span className={classes.strength}>
+                    {helper.level + helper.gear}
+                    <ChevronDoubleUp />
+                  </span>
+                </>
+              }
+            />
+          </ListItem>
+        ))}
       </List>
     </DialogContent>
   </Dialog>
