@@ -4,7 +4,7 @@ import { compose } from 'recompose';
 import PropTypes from 'prop-types';
 import { Button, Fade, Snackbar, withStyles } from '@material-ui/core';
 import withWidth, { isWidthDown } from '@material-ui/core/withWidth';
-import cns from 'classnames';
+import clsx from 'clsx';
 
 import { widthProp } from '../../utils/propTypes';
 
@@ -62,7 +62,7 @@ class UndoSnackbar extends Component {
           horizontal: 'left',
           vertical: 'bottom',
         }}
-        className={cns(classes.root, className)}
+        className={clsx(classes.root, className)}
         ContentProps={{ className: classes.content }}
         onClose={onClose}
         TransitionComponent={isWidthDown('sm', width) ? Fade : undefined}

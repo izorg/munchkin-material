@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core';
 import { ArrowDropDown, ArrowDropUp } from '@material-ui/icons';
-import cns from 'classnames';
+import clsx from 'clsx';
 import { noop } from 'lodash/fp';
 
 import Button from './Button';
@@ -45,7 +45,7 @@ const Counter = ({
   value,
   ...props
 }) => (
-  <div className={cns(className, classes.counter)} {...props}>
+  <div className={clsx(className, classes.counter)} {...props}>
     <div className={classes.title}>{title}</div>
 
     <Button

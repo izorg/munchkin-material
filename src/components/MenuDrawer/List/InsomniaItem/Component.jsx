@@ -9,7 +9,7 @@ import {
   withStyles,
 } from '@material-ui/core';
 import { PowerSettingsNew } from '@material-ui/icons';
-import cns from 'classnames';
+import clsx from 'clsx';
 import { noop } from 'lodash/fp';
 
 const styles = {
@@ -38,7 +38,7 @@ class InsomniaItem extends Component {
     return (
       <ListItem
         button
-        className={cns(classes.root, className)}
+        className={clsx(classes.root, className)}
         onClick={this.handleClick}
       >
         <ListItemIcon>

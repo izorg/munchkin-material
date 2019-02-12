@@ -10,7 +10,7 @@ import {
 } from '@material-ui/core';
 import { KeyboardArrowUp, Reorder } from '@material-ui/icons';
 import { ChevronDoubleUp } from 'mdi-material-ui';
-import cns from 'classnames';
+import clsx from 'clsx';
 import Hammer from 'hammerjs';
 import { debounce, noop } from 'lodash/fp';
 
@@ -188,7 +188,7 @@ class HomePlayerListItem extends Component {
           <RootRef rootRef={this.textRef}>
             <ListItemText
               classes={{
-                root: cns({ [classes.text]: !editMode }),
+                root: clsx({ [classes.text]: !editMode }),
                 primary: classes.primary,
               }}
               primary={

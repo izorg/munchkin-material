@@ -4,7 +4,7 @@ import SwipeableViews from 'react-swipeable-views';
 import PropTypes from 'prop-types';
 import { IconButton, Paper, withStyles } from '@material-ui/core';
 import { CloseCircle } from 'mdi-material-ui';
-import cns from 'classnames';
+import clsx from 'clsx';
 import { compact, noop } from 'lodash/fp';
 
 import Player from './Player';
@@ -127,7 +127,7 @@ class CombatPlayerSlider extends PureComponent {
     ]);
 
     return (
-      <div className={cns(classes.players, className)}>
+      <div className={clsx(classes.players, className)}>
         <MediaQuery orientation="portrait">
           <SwipeableViews
             enableMouseEvents

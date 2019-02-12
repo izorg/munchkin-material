@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 import PropTypes from 'prop-types';
 import { List, RootRef, withStyles } from '@material-ui/core';
-import cns from 'classnames';
+import clsx from 'clsx';
 import { noop } from 'lodash/fp';
 
 import { EDIT } from '../modes';
@@ -109,7 +109,7 @@ class HomePlayerList extends Component {
                         return (
                           <RootRef rootRef={draggableRef}>
                             <Item
-                              className={cns({ [classes.drag]: isDragging })}
+                              className={clsx({ [classes.drag]: isDragging })}
                               ContainerProps={{
                                 ...draggableProps,
                                 style,

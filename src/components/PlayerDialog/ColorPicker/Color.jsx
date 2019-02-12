@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Avatar, ButtonBase, withStyles } from '@material-ui/core';
 import { Check } from '@material-ui/icons';
-import cns from 'classnames';
+import clsx from 'clsx';
 
 const styles = {
   button: {
@@ -22,7 +22,7 @@ const styles = {
 const Color = ({ classes, className, selected, value, ...props }) => (
   <ButtonBase
     centerRipple
-    className={cns(classes.button, className)}
+    className={clsx(classes.button, className)}
     focusRipple
     value={value}
     {...props}

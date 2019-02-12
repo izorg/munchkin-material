@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { AppBar, Toolbar, withStyles } from '@material-ui/core';
-import cns from 'classnames';
+import clsx from 'clsx';
 
 const styles = (theme) => ({
   appBar: {
@@ -26,7 +26,7 @@ const styles = (theme) => ({
 
 const TopAppBar = ({ children, classes, className, ...props }) => (
   <AppBar
-    className={cns(className, classes.appBar)}
+    className={clsx(className, classes.appBar)}
     color="primary"
     position="static"
     {...props}

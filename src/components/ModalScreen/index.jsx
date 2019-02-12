@@ -1,6 +1,6 @@
 import React from 'react';
 import { Modal, withStyles } from '@material-ui/core';
-import cns from 'classnames';
+import clsx from 'clsx';
 
 const styles = {
   root: {
@@ -11,7 +11,7 @@ const styles = {
 
 const ModalScreen = ({ classes, className, ...rest }) => (
   <Modal
-    className={cns(classes.root, className)}
+    className={clsx(classes.root, className)}
     disablePortal
     hideBackdrop
     open

@@ -7,7 +7,7 @@ import {
   withStyles,
 } from '@material-ui/core';
 import { Palette } from '@material-ui/icons';
-import cns from 'classnames';
+import clsx from 'clsx';
 
 import { names as themeNames } from '../../../../styles/themes';
 
@@ -19,7 +19,7 @@ const styles = {
 };
 
 const ThemeItem = ({ classes, className, theme, ...rest }) => (
-  <ListItem button className={cns(className, classes.root)} {...rest}>
+  <ListItem button className={clsx(className, classes.root)} {...rest}>
     <ListItemIcon>
       <Palette style={{ color: theme.palette.primary.main }} />
     </ListItemIcon>

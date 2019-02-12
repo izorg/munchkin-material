@@ -1,6 +1,6 @@
 import React from 'react';
 import { Fab, withStyles } from '@material-ui/core';
-import cns from 'classnames';
+import clsx from 'clsx';
 
 const styles = (theme) => ({
   root: {
@@ -21,7 +21,7 @@ const styles = (theme) => ({
 });
 
 const FabButton = ({ classes, className, ...rest }) => (
-  <Fab className={cns(className, classes.root)} color="primary" {...rest} />
+  <Fab className={clsx(className, classes.root)} color="primary" {...rest} />
 );
 
 export default withStyles(styles)(FabButton);

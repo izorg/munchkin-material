@@ -5,7 +5,7 @@ import SwipeableViews from 'react-swipeable-views';
 import PropTypes from 'prop-types';
 import { IconButton, Paper, withStyles } from '@material-ui/core';
 import { CloseCircle } from 'mdi-material-ui';
-import cns from 'classnames';
+import clsx from 'clsx';
 
 import Monster from './Monster';
 
@@ -119,7 +119,7 @@ class CombatMonsterSlider extends Component {
     ));
 
     return (
-      <div className={cns(classes.monsters, className)}>
+      <div className={clsx(classes.monsters, className)}>
         <MediaQuery orientation="portrait">
           <SwipeableViews
             enableMouseEvents

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core';
 import { ArrowDropDown, ArrowDropUp } from '@material-ui/icons';
-import cns from 'classnames';
+import clsx from 'clsx';
 import { noop } from 'lodash/fp';
 
 import Button from './Button';
@@ -57,7 +57,7 @@ const CombatCounter = ({
   title,
   value,
 }) => (
-  <div className={cns(className, classes.counter)}>
+  <div className={clsx(className, classes.counter)}>
     <div className={classes.title}>{title}</div>
 
     <Button

@@ -8,7 +8,7 @@ import {
   withStyles,
 } from '@material-ui/core';
 import { SwapVert } from '@material-ui/icons';
-import cns from 'classnames';
+import clsx from 'clsx';
 
 import {
   MAX_EPIC_LEVEL,
@@ -57,7 +57,7 @@ const LevelLimitItem = ({ classes, className, epic, levelLimit, ...rest }) => {
   }
 
   return (
-    <ListItem button className={cns(className, classes.root)} {...rest}>
+    <ListItem button className={clsx(className, classes.root)} {...rest}>
       <ListItemIcon>
         <SwapVert />
       </ListItemIcon>

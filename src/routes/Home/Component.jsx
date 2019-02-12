@@ -1,7 +1,7 @@
 import React, { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles, Zoom } from '@material-ui/core';
-import cns from 'classnames';
+import clsx from 'clsx';
 
 import LevelLimitDialog from '../../components/LevelLimitDialog';
 import MenuDrawer from '../../components/MenuDrawer';
@@ -95,7 +95,7 @@ class Home extends Component {
 
     return (
       <>
-        <div className={cns(classes.root, { [classes.single]: singleMode })}>
+        <div className={clsx(classes.root, { [classes.single]: singleMode })}>
           <AppBar mode={mode} singleMode={singleMode} />
           {content}
         </div>

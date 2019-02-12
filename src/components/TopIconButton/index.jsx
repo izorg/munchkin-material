@@ -1,6 +1,6 @@
 import React from 'react';
 import { IconButton, withStyles } from '@material-ui/core';
-import cns from 'classnames';
+import clsx from 'clsx';
 
 const styles = (theme) => ({
   root: {
@@ -12,7 +12,7 @@ const styles = (theme) => ({
 });
 
 const TopIconButton = ({ className, classes, ...rest }) => (
-  <IconButton className={cns(classes.root, className)} {...rest} />
+  <IconButton className={clsx(classes.root, className)} {...rest} />
 );
 
 export default withStyles(styles)(TopIconButton);

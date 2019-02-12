@@ -5,7 +5,7 @@ import { Backdrop, MuiThemeProvider, withStyles } from '@material-ui/core';
 import { PersonAdd } from '@material-ui/icons';
 import { SpeedDial, SpeedDialIcon } from '@material-ui/lab';
 import { EmoticonDevilOutline } from 'mdi-material-ui';
-import cns from 'classnames';
+import clsx from 'clsx';
 import deepmerge from 'deepmerge';
 
 import Zoom from '../../../components/transitions/Zoom';
@@ -74,7 +74,7 @@ const CombatHelperButton = ({
         ButtonProps={{
           color: open ? 'default' : 'primary',
         }}
-        className={cns(classes.container, className)}
+        className={clsx(classes.container, className)}
         icon={helper ? <SpeedDialIcon /> : <EmoticonDevilOutline />}
         onClick={() => {
           if (open) {

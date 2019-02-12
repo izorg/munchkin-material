@@ -2,7 +2,7 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 import { IconButton, withStyles } from '@material-ui/core';
-import cns from 'classnames';
+import clsx from 'clsx';
 import { noop } from 'lodash/fp';
 
 import Counter from '../../../../components/Counter';
@@ -91,7 +91,7 @@ const PlayerStats = ({
   onSexToggle,
   player,
 }) => (
-  <div className={cns(className, classes.stats)}>
+  <div className={clsx(className, classes.stats)}>
     <div className={classes.counters}>
       <div className={classes.counterContainer}>
         <Counter

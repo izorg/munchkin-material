@@ -1,6 +1,6 @@
 import React from 'react';
 import { Typography, withStyles } from '@material-ui/core';
-import cns from 'classnames';
+import clsx from 'clsx';
 
 const styles = {
   title: {
@@ -10,7 +10,7 @@ const styles = {
 
 const Title = ({ className, classes, ...props }) => (
   <Typography
-    className={cns(classes.title, className)}
+    className={clsx(classes.title, className)}
     color="inherit"
     noWrap
     variant="h6"

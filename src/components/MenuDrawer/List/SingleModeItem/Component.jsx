@@ -9,7 +9,7 @@ import {
   withStyles,
 } from '@material-ui/core';
 import { Person } from '@material-ui/icons';
-import cns from 'classnames';
+import clsx from 'clsx';
 
 const styles = {
   root: {
@@ -37,7 +37,7 @@ class SingleModeItem extends Component {
     return (
       <ListItem
         button
-        className={cns(classes.root, className)}
+        className={clsx(classes.root, className)}
         data-screenshots="single-mode-item"
         onClick={this.handleClick}
       >
