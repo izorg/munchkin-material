@@ -29,10 +29,14 @@ const SlideUp = (props) => <Slide direction="up" {...props} />;
 
 const styles = (theme) => ({
   dialog: {
+    backgroundColor:
+      theme.palette.type === 'dark'
+        ? theme.palette.background.default
+        : theme.palette.background.paper,
     minWidth: 320,
 
-    [theme.palette.type === 'dark' && theme.breakpoints.down('md')]: {
-      backgroundColor: theme.palette.background.default,
+    [theme.breakpoints.up('lg')]: {
+      backgroundColor: theme.palette.background.paper,
     },
   },
 

@@ -23,6 +23,10 @@ const styles = (theme) => ({
   },
 
   item: {
+    backgroundColor:
+      theme.palette.type === 'dark'
+        ? theme.palette.background.default
+        : theme.palette.background.paper,
     display: 'flex',
     flexGrow: 1,
     height: '100%',
@@ -31,8 +35,8 @@ const styles = (theme) => ({
     paddingRight: theme.spacing(2),
     width: '100%',
 
-    [theme.palette.type === 'dark' && theme.breakpoints.down('xs')]: {
-      backgroundColor: theme.palette.background.default,
+    [theme.breakpoints.up('sm')]: {
+      backgroundColor: theme.palette.background.paper,
     },
   },
 

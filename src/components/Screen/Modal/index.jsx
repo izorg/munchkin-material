@@ -1,5 +1,5 @@
 import React from 'react';
-import { compose, defaultProps } from 'recompose';
+import { compose } from 'recompose';
 import PropTypes from 'prop-types';
 import { Fade, Modal, Slide, withStyles } from '@material-ui/core';
 import withWidth, { isWidthDown } from '@material-ui/core/withWidth';
@@ -9,7 +9,7 @@ import { widthProp } from '../../../utils/propTypes';
 
 import FadeUp from '../Transition';
 
-const SlideLeft = defaultProps({ direction: 'left ' })(Slide);
+const SlideLeft = (props) => <Slide direction="left" {...props} />;
 
 const Transition = ios ? SlideLeft : FadeUp;
 
