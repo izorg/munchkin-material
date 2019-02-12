@@ -15,7 +15,7 @@ const styles = (theme) => ({
 
   nobodyIcon: {
     height: 96,
-    marginBottom: theme.spacing.unit * 2,
+    marginBottom: theme.spacing(2),
     opacity: 0.2,
     width: 96,
   },

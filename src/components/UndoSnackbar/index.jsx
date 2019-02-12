@@ -11,13 +11,13 @@ import { widthProp } from '../../utils/propTypes';
 const styles = (theme) => ({
   [theme.breakpoints.down('sm')]: {
     root: {
-      bottom: theme.spacing.unit,
-      left: theme.spacing.unit,
-      right: theme.spacing.unit,
+      bottom: theme.spacing(1),
+      left: theme.spacing(1),
+      right: theme.spacing(1),
 
       '@supports(padding: max(0px))': {
-        left: `max(${theme.spacing.unit}px, env(safe-area-inset-right))`,
-        right: `max(${theme.spacing.unit}px, env(safe-area-inset-right))`,
+        left: `max(${theme.spacing(1)}px, env(safe-area-inset-right))`,
+        right: `max(${theme.spacing(1)}px, env(safe-area-inset-right))`,
       },
     },
 

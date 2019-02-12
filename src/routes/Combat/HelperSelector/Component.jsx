@@ -19,7 +19,7 @@ import Sex from '../../../components/Sex';
 
 const styles = (theme) => ({
   dialogPaper: {
-    margin: theme.spacing.unit * 2,
+    margin: theme.spacing(2),
   },
 
   content: {
@@ -48,7 +48,7 @@ const styles = (theme) => ({
     display: 'inline-flex',
     fontSize: 20,
     justifyContent: 'flex-end',
-    marginLeft: theme.spacing.unit * 2,
+    marginLeft: theme.spacing(2),
     width: 44,
   },
 

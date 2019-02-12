@@ -6,13 +6,13 @@ import UndoSnackbar from '../../../components/UndoSnackbar';
 const styles = (theme) => ({
   [theme.breakpoints.down('sm')]: {
     root: {
-      bottom: theme.spacing.unit * 11,
+      bottom: theme.spacing(11),
     },
   },
 
   [theme.breakpoints.down('xs')]: {
     root: {
-      bottom: theme.spacing.unit * 10,
+      bottom: theme.spacing(10),
     },
   },
 });

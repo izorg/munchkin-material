@@ -27,8 +27,8 @@ const styles = (theme) => ({
     flexGrow: 1,
     height: '100%',
     justifyContent: 'center',
-    paddingLeft: theme.spacing.unit * 2,
-    paddingRight: theme.spacing.unit * 2,
+    paddingLeft: theme.spacing(2),
+    paddingRight: theme.spacing(2),
     width: '100%',
 
     [theme.palette.type === 'dark' && theme.breakpoints.down('xs')]: {
@@ -54,18 +54,18 @@ const styles = (theme) => ({
 
   [theme.breakpoints.up('sm')]: {
     root: {
-      paddingLeft: theme.spacing.unit * 8,
-      paddingRight: theme.spacing.unit * 8,
+      paddingLeft: theme.spacing(8),
+      paddingRight: theme.spacing(8),
     },
 
     itemContainer: {
-      paddingLeft: theme.spacing.unit * 2,
-      paddingRight: theme.spacing.unit * 2,
+      paddingLeft: theme.spacing(2),
+      paddingRight: theme.spacing(2),
     },
 
     item: {
-      paddingLeft: theme.spacing.unit * 3,
-      paddingRight: theme.spacing.unit * 3,
+      paddingLeft: theme.spacing(3),
+      paddingRight: theme.spacing(3),
     },
 
     '@media (orientation: portrait)': {
@@ -83,8 +83,8 @@ const styles = (theme) => ({
       item: {
         flex: 'none',
         height: 'auto',
-        paddingBottom: theme.spacing.unit * 2,
-        paddingTop: theme.spacing.unit * 2,
+        paddingBottom: theme.spacing(2),
+        paddingTop: theme.spacing(2),
       },
 
       stats: {

@@ -60,7 +60,7 @@ const styles = (theme) => ({
     display: 'inline-flex',
     fontSize: 20,
     justifyContent: 'flex-end',
-    marginLeft: theme.spacing.unit,
+    marginLeft: theme.spacing(1),
     width: 44,
   },
 

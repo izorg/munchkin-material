@@ -13,9 +13,9 @@ import availableColors from '../../../utils/availableColors';
 
 import Color from './Color';
 
-const styles = ({ spacing: { unit } }) => ({
+const styles = (theme) => ({
   content: {
-    padding: [0, unit, unit * 2],
+    padding: theme.spacing(0, 1, 2),
     textAlign: 'center',
   },
 });
