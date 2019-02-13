@@ -12,33 +12,12 @@ const getDefaultTransform = (libs = []) =>
     {},
   );
 
-const transform = {
-  ...getDefaultTransform([
-    '@material-ui/icons',
-    '@material-ui/lab',
-    'lodash/fp',
-    'mdi-material-ui',
-    'react-transition-group',
-    'recompose',
-  ]),
-  '@material-ui/core': {
-    transform: (member) => {
-      if (
-        [
-          'createMuiTheme',
-          'MuiThemeProvider',
-          'withStyles',
-          'withTheme',
-        ].includes(member)
-      ) {
-        return `@material-ui/core/styles/${member}`;
-      }
-
-      return `@material-ui/core/${member}`;
-    },
-    preventFullImport: true,
-  },
-};
+const transform = getDefaultTransform([
+  'lodash/fp',
+  'mdi-material-ui',
+  'react-transition-group',
+  'recompose',
+]);
 
 const prod = process.env.NODE_ENV === 'production';
 const i18n = process.env.NODE_ENV === 'i18n';
