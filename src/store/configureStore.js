@@ -17,7 +17,9 @@ const createRootReducer = (history) =>
   });
 
 export default ({ buyFullVersion, freeCombat, history, storageKey }) => {
-  const enhancer = composeWithDevTools(
+  const composeEnhancers = composeWithDevTools({ trace: true });
+
+  const enhancer = composeEnhancers(
     applyMiddleware(
       thunk,
       purchase({ buyFullVersion, freeCombat }),
