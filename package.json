@@ -75,7 +75,7 @@
     "lint-staged": "8.1.4",
     "lodash": "4.17.11",
     "mdi-material-ui": "5.9.0",
-    "munchkin-core": "8.2.5",
+    "munchkin-core": "8.2.6",
     "prettier": "1.16.4",
     "prop-types": "15.7.2",
     "puppeteer": "1.12.2",
