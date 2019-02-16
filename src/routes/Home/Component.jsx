@@ -67,7 +67,6 @@ class Home extends Component {
   componentDidUpdate(prevProps) {
     const { playerCount } = this.props;
 
-    // eslint-disable-next-line react/prop-types
     const node = this.contentRef.current;
 
     if (playerCount > prevProps.playerCount) {
