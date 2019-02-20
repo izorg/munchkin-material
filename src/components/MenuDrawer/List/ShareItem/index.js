@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { branch, compose, fromRenderProps, renderNothing } from 'recompose';
 import { pick } from 'lodash/fp';
 
-import { OptionsConsumer } from '../../../OptionsContext';
+import OptionsContext from '../../../OptionsContext';
 
 import Component from './Component';
 
@@ -17,7 +17,7 @@ const mapDispatchToProps = {
 };
 
 export default compose(
-  fromRenderProps(OptionsConsumer, pick('shareLink')),
+  fromRenderProps(OptionsContext.Consumer, pick('shareLink')),
   branch(({ shareLink }) => !shareLink || !navigator.share, renderNothing),
   connect(
     undefined,

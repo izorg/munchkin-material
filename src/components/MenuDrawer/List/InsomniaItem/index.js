@@ -4,7 +4,7 @@ import { pick } from 'lodash/fp';
 
 import { setKeepAwake } from '../../../../ducks/app';
 
-import { OptionsConsumer } from '../../../OptionsContext';
+import OptionsContext from '../../../OptionsContext';
 
 import Component from './Component';
 
@@ -17,7 +17,7 @@ const mapDispatchToProps = {
 };
 
 export default compose(
-  fromRenderProps(OptionsConsumer, pick('keepAwakeSupport')),
+  fromRenderProps(OptionsContext.Consumer, pick('keepAwakeSupport')),
   branch(({ keepAwakeSupport }) => !keepAwakeSupport, renderNothing),
   connect(
     mapStateToProps,

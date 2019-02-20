@@ -44,6 +44,11 @@ module.exports = {
     rules: [
       {
         test: /\.jsx?$/,
+        include: /node_modules/,
+        loader: 'react-hot-loader/webpack',
+      },
+      {
+        test: /\.jsx?$/,
         exclude: /node_modules/,
         use: [
           {
@@ -109,8 +114,6 @@ module.exports = {
       }),
 
     !dev && new webpack.HashedModuleIdsPlugin(),
-
-    dev && new webpack.HotModuleReplacementPlugin(),
 
     dev && new WebpackNotifierPlugin(),
 

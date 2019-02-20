@@ -200,4 +200,4 @@ ScreenTransition.defaultProps = {
   },
 };
 
-export default withTheme()(ScreenTransition);
+export default withTheme(ScreenTransition);

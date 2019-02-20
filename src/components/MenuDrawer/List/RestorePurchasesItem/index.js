@@ -8,7 +8,7 @@ import {
 } from 'recompose';
 import { omit, pick } from 'lodash/fp';
 
-import { OptionsConsumer } from '../../../OptionsContext';
+import OptionsContext from '../../../OptionsContext';
 
 import Component from './Component';
 
@@ -19,7 +19,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = {};
 
 export default compose(
-  fromRenderProps(OptionsConsumer, pick('restorePurchases')),
+  fromRenderProps(OptionsContext.Consumer, pick('restorePurchases')),
   connect(
     mapStateToProps,
     mapDispatchToProps,

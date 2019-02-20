@@ -136,4 +136,4 @@ Zoom.defaultProps = {
   },
 };
 
-export default withTheme()(Zoom);
+export default withTheme(Zoom);

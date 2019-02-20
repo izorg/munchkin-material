@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { branch, compose, fromRenderProps, renderNothing } from 'recompose';
 import { pick } from 'lodash/fp';
 
-import { OptionsConsumer } from '../../../OptionsContext';
+import OptionsContext from '../../../OptionsContext';
 
 import Component from './Component';
 
@@ -12,7 +12,7 @@ const mapDispatchToProps = {
 };
 
 export default compose(
-  fromRenderProps(OptionsConsumer, pick('rateLink')),
+  fromRenderProps(OptionsContext.Consumer, pick('rateLink')),
   branch(({ rateLink }) => !rateLink, renderNothing),
   connect(
     undefined,

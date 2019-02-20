@@ -27,7 +27,6 @@ module.exports = {
         allowEmptyCatch: true,
       },
     ],
-    'prettier/prettier': 'error',
     'react/forbid-prop-types': [
       'error',
       {

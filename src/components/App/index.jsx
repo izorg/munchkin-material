@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import LocaleProvider from '../LocaleProvider';
-import { OptionsProvider } from '../OptionsContext';
+import OptionsContext from '../OptionsContext';
 import Root from '../Root';
 import ThemeProvider from '../ThemeProvider';
 
@@ -17,7 +17,7 @@ const App = ({
   shareLink,
   store,
 }) => (
-  <OptionsProvider
+  <OptionsContext.Provider
     value={{ keepAwakeSupport, rateLink, restorePurchases, shareLink }}
   >
     <Provider store={store}>
@@ -29,7 +29,7 @@ const App = ({
         </LocaleProvider>
       </ConnectedRouter>
     </Provider>
-  </OptionsProvider>
+  </OptionsContext.Provider>
 );
 
 App.propTypes = {
