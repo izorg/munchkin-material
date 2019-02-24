@@ -105,7 +105,9 @@ module.exports = {
   },
 
   plugins: [
-    !dev && new CleanWebpackPlugin(outputPath),
+    new CleanWebpackPlugin(outputPath, {
+      verbose: false,
+    }),
 
     !dev &&
       site &&
