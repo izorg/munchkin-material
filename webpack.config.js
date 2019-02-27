@@ -118,7 +118,7 @@ module.exports = {
 
     !dev && new webpack.HashedModuleIdsPlugin(),
 
-    dev && new WebpackNotifierPlugin(),
+    new WebpackNotifierPlugin(),
 
     dist &&
       new webpack.optimize.LimitChunkCountPlugin({
