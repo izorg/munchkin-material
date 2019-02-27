@@ -16,7 +16,9 @@ const onChange = (singleMode) => async (dispatch) => {
     try {
       await dispatch(setSingleMode(singleMode));
       dispatch(goBack());
-    } catch (error) {}
+    } catch (error) {
+      // no full version
+    }
   } else {
     dispatch(setSingleMode(singleMode));
     dispatch(goBack());

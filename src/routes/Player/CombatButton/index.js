@@ -15,7 +15,9 @@ const goToCombat = (playerId) => async (dispatch, getState) => {
       await dispatch(startCombat(playerId));
       dispatch(addMonster(createMonster()));
       dispatch(push(`/player/${playerId}/combat`));
-    } catch (error) {}
+    } catch (error) {
+      // no full version
+    }
   } else {
     dispatch(push(`/player/${playerId}/combat`));
   }

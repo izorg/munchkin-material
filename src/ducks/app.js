@@ -185,7 +185,9 @@ export const setSingleMode = (singleMode) => async (dispatch, getState) => {
         type: SET_SINGLE_MODE,
         singleMode,
       });
-    } catch (error) {}
+    } catch (error) {
+      // no full version
+    }
   } else {
     dispatch({
       type: SET_SINGLE_MODE,

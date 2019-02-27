@@ -38,8 +38,8 @@ const styles = (theme) => ({
     },
 
     remove: {
-      right: 8,
       bottom: 8,
+      right: 8,
     },
   },
 });

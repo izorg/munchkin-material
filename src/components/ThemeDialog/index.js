@@ -43,7 +43,9 @@ const mapDispatchToProps = {
     try {
       await dispatch(setTheme(theme));
       dispatch(goBack());
-    } catch (error) {}
+    } catch (error) {
+      // no full version
+    }
   },
 };
 

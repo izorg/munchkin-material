@@ -12,7 +12,9 @@ const mapDispatchToProps = {
     try {
       await navigator.share(shareObject);
       dispatch(goBack());
-    } catch (error) {}
+    } catch (error) {
+      // cancel share
+    }
   },
 };
 

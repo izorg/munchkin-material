@@ -21,12 +21,6 @@
         "devDependencies": true
       }
     ],
-    "no-empty": [
-      "error",
-      {
-        "allowEmptyCatch": true
-      }
-    ],
     "react/forbid-prop-types": [
       "error",
       {
@@ -51,16 +45,5 @@
         "ignoreDeclarationSort": true
       }
     ]
-  },
-  "overrides": [
-    {
-      "files": ["scripts/**/*.js"],
-      "env": {
-        "node": true
-      },
-      "rules": {
-        "no-console": "off"
-      }
-    }
-  ]
+  }
 }
