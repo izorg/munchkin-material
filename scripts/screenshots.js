@@ -1,15 +1,17 @@
-import fs from 'fs';
-import path from 'path';
+const fs = require('fs');
+const path = require('path');
 
-import { range } from 'lodash/fp';
-import puppeteer from 'puppeteer';
-import devices from 'puppeteer/DeviceDescriptors';
-import rimraf from 'rimraf';
-import { duration } from '@material-ui/core/styles/transitions';
-import { URL } from 'url';
+const { range } = require('lodash/fp');
+const puppeteer = require('puppeteer');
+const devices = require('puppeteer/DeviceDescriptors');
+const rimraf = require('rimraf');
+const { duration } = require('@material-ui/core/styles/transitions');
+const { URL } = require('url');
 
-import { EN, RU } from '../src/i18n';
-import config from '../webpack.config';
+const config = require('../webpack.config');
+
+const EN = 'en';
+const RU = 'ru';
 
 const {
   devServer: { host, port },
