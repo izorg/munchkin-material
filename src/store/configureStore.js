@@ -1,23 +1,25 @@
 import { connectRouter, routerMiddleware } from 'connected-react-router';
 import { applyMiddleware, combineReducers, createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import { setVersion, version } from 'munchkin-core';
 import thunk from 'redux-thunk';
 import { pick, throttle } from 'lodash/fp';
+import { setVersion, version } from 'munchkin-core';
 
 import reducers from '../reducers';
 
 import { loadState, saveState } from './localStorage';
 import purchase from './middlewares/purchase';
 
-const createRootReducer = (history) =>
-  combineReducers({
-    router: connectRouter(history),
-    ...reducers,
-  });
-
 export default ({ buyFullVersion, freeCombat, history, storageKey }) => {
   const composeEnhancers = composeWithDevTools({ trace: true });
+
+  const createRootReducer = () =>
+    combineReducers({
+      router: connectRouter(history),
+      ...reducers,
+    });
+
+  const preloadedState = loadState(storageKey);
 
   const enhancer = composeEnhancers(
     applyMiddleware(
@@ -27,13 +29,7 @@ export default ({ buyFullVersion, freeCombat, history, storageKey }) => {
     ),
   );
 
-  const preloadedState = loadState(storageKey);
-
-  const store = createStore(
-    createRootReducer(history),
-    preloadedState,
-    enhancer,
-  );
+  const store = createStore(createRootReducer(), preloadedState, enhancer);
 
   store.subscribe(
     throttle(100, () => {
@@ -43,15 +39,15 @@ export default ({ buyFullVersion, freeCombat, history, storageKey }) => {
     }),
   );
 
+  store.dispatch(setVersion('core', version));
+  store.dispatch(setVersion('app', VERSION));
+
   /* istanbul ignore if  */
   if (module.hot) {
     module.hot.accept('../reducers', () =>
-      store.replaceReducer(createRootReducer(history)),
+      store.replaceReducer(createRootReducer()),
     );
   }
-
-  store.dispatch(setVersion('core', version));
-  store.dispatch(setVersion('app', VERSION));
 
   return store;
 };
