@@ -156,7 +156,7 @@ module.exports = {
       new InjectManifest({
         exclude: ['CNAME'],
         precacheManifestFilename: 'js/precache-manifest.[manifestHash].js',
-        swSrc: path.resolve(__dirname, './src/service-worker.js'),
+        swSrc: path.resolve(__dirname, './src/site/service-worker.js'),
       }),
 
     process.env.STATS &&
