@@ -1,7 +1,7 @@
 import { push } from 'connected-react-router';
 import { connect } from 'react-redux';
 
-import { throwDice } from '../../../ducks/app';
+import { throwDice } from '../../../ducks/dice';
 import { stringifyQuery } from '../../../utils/location';
 
 import Component from './Component';

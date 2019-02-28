@@ -1,13 +1,13 @@
 import { goBack } from 'connected-react-router';
 import { connect } from 'react-redux';
 
-import { throwDice } from '../../../ducks/app';
+import { throwDice } from '../../../ducks/dice';
 import { getQuery } from '../../../utils/location';
 
 import Component from './Component';
 
 const mapStateToProps = (state) => ({
-  dice: state.app.dice,
+  dice: state.dice,
   open: getQuery(state).dice !== undefined,
 });
 

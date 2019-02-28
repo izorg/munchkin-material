@@ -1,3 +1,3 @@
-import theme from './theme';
+import dice from './dice';
 
-export default [theme];
+export default [dice];

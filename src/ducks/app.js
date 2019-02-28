@@ -13,13 +13,11 @@ export const SET_LOCALE = 'app/SET_LOCALE';
 export const SET_LEVEL_LIMIT = 'app/SET_LEVEL_LIMIT';
 export const SET_SINGLE_MODE = 'app/SET_SINGLE_MODE';
 export const SET_SINGLE_MODE_PLAYER = 'app/SET_SINGLE_MODE_PLAYER';
-export const THROW_DICE = 'app/THROW_DICE';
 export const TOGGLE_PLAYER = 'app/TOGGLE_PLAYER';
 export const UNSELECT_ALL_PLAYERS = 'app/UNSELECT_ALL_PLAYERS';
 
 const initialState = {
   combatFinished: false,
-  dice: undefined,
   epic: false,
   fullVersion: false,
   keepAwake: false,
@@ -89,15 +87,6 @@ export default (state = initialState, action) => {
       return {
         ...state,
         combatFinished: false,
-      };
-    }
-
-    case THROW_DICE: {
-      const { dice } = action;
-
-      return {
-        ...state,
-        dice,
       };
     }
 
@@ -195,11 +184,6 @@ export const setSingleMode = (singleMode) => async (dispatch, getState) => {
     });
   }
 };
-
-export const throwDice = () => ({
-  type: THROW_DICE,
-  dice: Math.floor(Math.random() * 6) + 1,
-});
 
 export const togglePlayer = (id) => ({
   type: TOGGLE_PLAYER,
