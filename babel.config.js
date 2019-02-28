@@ -29,7 +29,6 @@ module.exports = {
     [
       '@babel/preset-env',
       {
-        include: ['es6.object.set-prototype-of'], // for react-hot-loader on Android 4.4
         loose: true,
         modules,
         useBuiltIns: 'entry',
