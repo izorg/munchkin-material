@@ -1,6 +1,13 @@
+import { GenderFemale, GenderMale } from 'mdi-material-ui';
+import { FEMALE, MALE } from 'munchkin-core';
 import React, { Component, createRef } from 'react';
-import { FormattedMessage } from 'react-intl';
-import { Form as FinalForm } from 'react-final-form';
+import {
+  defineMessages,
+  FormattedMessage,
+  injectIntl,
+  intlShape,
+} from 'react-intl';
+import { Field, Form as FinalForm } from 'react-final-form';
 import { compose, shouldUpdate } from 'recompose';
 import PropTypes from 'prop-types';
 import {
@@ -10,7 +17,13 @@ import {
   DialogContent,
   DialogTitle,
   Fade,
+  FormControl,
+  FormControlLabel,
+  FormLabel,
+  Grid,
+  Radio,
   Slide,
+  TextField,
   withMobileDialog,
   withStyles,
 } from '@material-ui/core';
@@ -22,7 +35,7 @@ import { sexProp } from '../../utils/propTypes';
 import ScreenTransition from '../Screen/Transition';
 
 import AppBar from './AppBar';
-import Content from './Content';
+import ColorPicker from './ColorPicker';
 
 const SlideUp = (props) => <Slide direction="up" {...props} />;
 
@@ -60,7 +73,42 @@ const styles = (theme) => ({
       width: '100%',
     },
   },
+
+  icon: {
+    verticalAlign: 'middle',
+  },
 });
+
+const messages = defineMessages({
+  label: {
+    id: 'player.form.namePlaceholder',
+    defaultMessage: 'Name',
+  },
+});
+
+// eslint-disable-next-line react/prop-types
+const renderColorPicker = ({ input, ...props }) => (
+  <ColorPicker {...input} {...props} />
+);
+
+const renderRadio = ({
+  // eslint-disable-next-line react/prop-types
+  input: { checked, name, onChange, value, ...inputProps },
+}) => (
+  <Radio
+    checked={checked}
+    color="primary"
+    inputProps={inputProps}
+    name={name}
+    onChange={onChange}
+    value={value}
+  />
+);
+
+// eslint-disable-next-line react/prop-types
+const renderTextField = ({ input, meta, ...props }) => (
+  <TextField {...input} {...props} />
+);
 
 let appear = false;
 
@@ -80,7 +128,7 @@ class PlayerDialog extends Component {
   constructor(props) {
     super(props);
 
-    this.contentRef = createRef();
+    this.nameRef = createRef();
 
     this.handleClose = this.handleClose.bind(this);
     this.handleEntered = this.handleEntered.bind(this);
@@ -120,7 +168,7 @@ class PlayerDialog extends Component {
   }
 
   focusName() {
-    const node = this.contentRef.current.nameRef.current;
+    const node = this.nameRef.current;
 
     this.focusTimeout = null;
 
@@ -135,6 +183,7 @@ class PlayerDialog extends Component {
       edit,
       fullScreen,
       initialValues,
+      intl,
       onSubmit,
       open,
     } = this.props;
@@ -183,10 +232,51 @@ class PlayerDialog extends Component {
           )}
         </DialogTitle>
         <DialogContent className={classes.content}>
-          <Content
+          <Field
             autoFocus={!edit && (!ios || !window.cordova)}
-            innerRef={this.contentRef}
+            component={renderTextField}
+            fullWidth
+            inputRef={this.nameRef}
+            margin="normal"
+            name="name"
+            placeholder={intl.formatMessage(messages.label)}
           />
+
+          <Grid container>
+            <Grid item xs={6}>
+              <FormControl component="fieldset" margin="normal">
+                <FormLabel component="legend">
+                  <FormattedMessage defaultMessage="Sex" id="player.form.sex" />
+                </FormLabel>
+                <FormControlLabel
+                  control={
+                    <Field component={renderRadio} name="sex" type="radio" />
+                  }
+                  label={<GenderMale className={classes.icon} />}
+                  value={MALE}
+                />
+                <FormControlLabel
+                  control={
+                    <Field component={renderRadio} name="sex" type="radio" />
+                  }
+                  label={<GenderFemale className={classes.icon} />}
+                  value={FEMALE}
+                />
+              </FormControl>
+            </Grid>
+
+            <Grid item xs={6}>
+              <FormControl margin="normal">
+                <FormLabel>
+                  <FormattedMessage
+                    defaultMessage="Color"
+                    id="player.form.color"
+                  />
+                </FormLabel>
+                <Field component={renderColorPicker} name="color" />
+              </FormControl>
+            </Grid>
+          </Grid>
         </DialogContent>
         {!fullScreen && (
           <DialogActions>
@@ -215,6 +305,7 @@ PlayerDialog.propTypes = {
     name: PropTypes.string,
     sex: sexProp.isRequired,
   }).isRequired,
+  intl: intlShape.isRequired,
   onClose: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
   open: PropTypes.bool,
@@ -227,5 +318,6 @@ PlayerDialog.defaultProps = {
 
 export default compose(
   withMobileDialog({ breakpoint: 'md' }),
+  injectIntl,
   withStyles(styles),
 )(PlayerDialog);
