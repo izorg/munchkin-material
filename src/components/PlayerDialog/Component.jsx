@@ -10,7 +10,6 @@ import {
   DialogContent,
   DialogTitle,
   Fade,
-  Hidden,
   Slide,
   withMobileDialog,
   withStyles,
@@ -177,10 +176,11 @@ class PlayerDialog extends Component {
         }}
       >
         <DialogTitle className={classes.title}>
-          <Hidden lgUp>
+          {fullScreen ? (
             <AppBar onCancel={this.handleClose} title={title} />
-          </Hidden>
-          <Hidden mdDown>{title}</Hidden>
+          ) : (
+            title
+          )}
         </DialogTitle>
         <DialogContent className={classes.content}>
           <Content
@@ -188,7 +188,7 @@ class PlayerDialog extends Component {
             innerRef={this.contentRef}
           />
         </DialogContent>
-        <Hidden mdDown>
+        {!fullScreen && (
           <DialogActions>
             <Button color="primary" onClick={this.handleClose}>
               <FormattedMessage
@@ -200,7 +200,7 @@ class PlayerDialog extends Component {
               <FormattedMessage defaultMessage="Save" id="player.form.save" />
             </Button>
           </DialogActions>
-        </Hidden>
+        )}
       </Dialog>
     );
   }
