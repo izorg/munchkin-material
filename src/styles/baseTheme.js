@@ -40,18 +40,6 @@ export default (type) => {
           maxHeight: 'calc(100% - 32px)',
         },
       },
-
-      MuiFormControlLabel: {
-        label: {
-          marginTop: 1,
-        },
-      },
-
-      MuiListItemIcon: {
-        root: {
-          marginTop: -2,
-        },
-      },
     },
 
     palette: {

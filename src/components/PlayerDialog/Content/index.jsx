@@ -30,10 +30,6 @@ const messages = defineMessages({
 });
 
 const styles = {
-  label: {
-    marginTop: 0,
-  },
-
   icon: {
     verticalAlign: 'middle',
   },
@@ -96,9 +92,6 @@ class PlayerForm extends PureComponent {
                 <FormattedMessage defaultMessage="Sex" id="player.form.sex" />
               </FormLabel>
               <FormControlLabel
-                classes={{
-                  label: classes.label,
-                }}
                 control={
                   <Field component={renderRadio} name="sex" type="radio" />
                 }
@@ -106,9 +99,6 @@ class PlayerForm extends PureComponent {
                 value={MALE}
               />
               <FormControlLabel
-                classes={{
-                  label: classes.label,
-                }}
                 control={
                   <Field component={renderRadio} name="sex" type="radio" />
                 }
