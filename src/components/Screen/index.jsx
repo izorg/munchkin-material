@@ -1,41 +1,38 @@
-import React, { Component, lazy, Suspense } from 'react';
+import React, {
+  lazy,
+  memo,
+  Suspense,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
 import PropTypes from 'prop-types';
 
 import Loading from '../Loading';
 
 import ScreenModal from './Modal';
 
-let screenAppear = false;
+const Screen = ({ appear: appearProp, loader, match, ...rest }) => {
+  const [screenAppear, setScreenAppear] = useState(false);
 
-class Screen extends Component {
-  constructor(props) {
-    super(props);
-
-    this.component = lazy(props.loader);
-  }
-
-  componentDidMount() {
+  useEffect(() => {
     if (!screenAppear) {
-      screenAppear = true;
+      setScreenAppear(true);
     }
-  }
+  }, [screenAppear]);
 
-  render() {
-    const { appear: appearProp, match, ...rest } = this.props;
+  const appear = appearProp !== undefined ? appearProp : screenAppear;
 
-    const appear = appearProp !== undefined ? appearProp : screenAppear;
+  const LazyComponent = useMemo(() => lazy(loader), [loader]);
 
-    const LazyComponent = this.component;
-
-    return (
-      <ScreenModal appear={appear} open={Boolean(match)}>
-        <Suspense fallback={<Loading />}>
-          <LazyComponent match={match} {...rest} />
-        </Suspense>
-      </ScreenModal>
-    );
-  }
-}
+  return (
+    <ScreenModal appear={appear} open={Boolean(match)}>
+      <Suspense fallback={<Loading />}>
+        <LazyComponent match={match} {...rest} />
+      </Suspense>
+    </ScreenModal>
+  );
+};
 
 Screen.propTypes = {
   appear: PropTypes.bool,
@@ -48,4 +45,4 @@ Screen.defaultProps = {
   match: null,
 };
 
-export default Screen;
+export default memo(Screen);
