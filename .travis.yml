@@ -31,3 +31,10 @@ deploy:
     skip_cleanup: true
     on:
       branch: master
+
+  - provider: firebase
+    token:
+      secure: $FIREBASE_TOKEN
+    skip_cleanup: true
+    on:
+      branch: master
