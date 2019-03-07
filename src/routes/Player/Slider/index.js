@@ -9,9 +9,7 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = {
-  onPlayerChange: (playerId) => (dispatch) => {
-    dispatch(replace(`/player/${playerId}`));
-  },
+  onPlayerChange: (playerId) => replace(`/player/${playerId}`),
 };
 
 export default connect(
