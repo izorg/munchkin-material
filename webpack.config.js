@@ -3,7 +3,6 @@ const path = require('path');
 const webpack = require('webpack');
 
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const CnameWebpackPlugin = require('cname-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const WebpackNotifierPlugin = require('webpack-notifier');
@@ -110,12 +109,6 @@ module.exports = {
       verbose: false,
     }),
 
-    !dev &&
-      site &&
-      new CnameWebpackPlugin({
-        domain: 'web.allmunchkins.com',
-      }),
-
     !dev && new webpack.HashedModuleIdsPlugin(),
 
     new WebpackNotifierPlugin({
@@ -156,7 +149,6 @@ module.exports = {
     !dev &&
       site &&
       new InjectManifest({
-        exclude: ['CNAME'],
         precacheManifestFilename: 'js/precache-manifest.[manifestHash].js',
         swSrc: path.resolve(__dirname, './src/site/service-worker.js'),
       }),
