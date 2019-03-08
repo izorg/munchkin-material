@@ -28,6 +28,7 @@ const init = (appEl, initOptions) => {
     history,
     storageKey,
   });
+
   const { dispatch } = store;
 
   render(<App {...options} history={history} store={store} />, appEl);

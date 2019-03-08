@@ -1,5 +1,5 @@
 import { ConnectedRouter } from 'connected-react-router';
-import React from 'react';
+import React, { Component } from 'react';
 import { hot } from 'react-hot-loader/root';
 import { Provider } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -9,28 +9,47 @@ import OptionsContext from '../OptionsContext';
 import Root from '../Root';
 import ThemeProvider from '../ThemeProvider';
 
-const App = ({
-  history,
-  keepAwakeSupport,
-  rateLink,
-  restorePurchases,
-  shareLink,
-  store,
-}) => (
-  <OptionsContext.Provider
-    value={{ keepAwakeSupport, rateLink, restorePurchases, shareLink }}
-  >
-    <Provider store={store}>
-      <ConnectedRouter history={history}>
-        <LocaleProvider>
-          <ThemeProvider>
-            <Root />
-          </ThemeProvider>
-        </LocaleProvider>
-      </ConnectedRouter>
-    </Provider>
-  </OptionsContext.Provider>
-);
+class App extends Component {
+  componentDidCatch(error, errorInfo) {
+    const { Sentry } = this.props;
+
+    if (Sentry) {
+      Sentry.withScope((scope) => {
+        Object.keys(errorInfo).forEach((key) => {
+          scope.setExtra(key, errorInfo[key]);
+        });
+        Sentry.captureException(error);
+      });
+    }
+  }
+
+  render() {
+    const {
+      history,
+      keepAwakeSupport,
+      rateLink,
+      restorePurchases,
+      shareLink,
+      store,
+    } = this.props;
+
+    return (
+      <OptionsContext.Provider
+        value={{ keepAwakeSupport, rateLink, restorePurchases, shareLink }}
+      >
+        <Provider store={store}>
+          <ConnectedRouter history={history}>
+            <LocaleProvider>
+              <ThemeProvider>
+                <Root />
+              </ThemeProvider>
+            </LocaleProvider>
+          </ConnectedRouter>
+        </Provider>
+      </OptionsContext.Provider>
+    );
+  }
+}
 
 App.propTypes = {
   history: PropTypes.object.isRequired,

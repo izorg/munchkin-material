@@ -1,4 +1,5 @@
 import createHistory from 'history/createBrowserHistory';
+import * as Sentry from '@sentry/browser';
 
 import './googleAnalytics';
 
@@ -12,8 +13,15 @@ const history = createHistory();
 
 const { host, pathname, protocol } = window.location;
 
+Sentry.init({
+  dsn: 'https://41e93153dfb94d9db3ed8a2cbc7228a9@sentry.io/253536',
+  environment: process.env.NODE_ENV,
+  release: VERSION,
+});
+
 const app = init(el, {
   history,
+  Sentry,
   shareLink: `${protocol}//${host}${pathname}`,
 });
 

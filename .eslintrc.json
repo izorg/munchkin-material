@@ -34,7 +34,7 @@
     "react/prop-types": [
       "error",
       {
-        "ignore": ["classes", "className", "style", "theme"]
+        "ignore": ["classes", "className", "Sentry", "style", "theme"]
       }
     ],
     "react/sort-prop-types": "error",
