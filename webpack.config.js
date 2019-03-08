@@ -18,7 +18,7 @@ const outputPath = path.resolve(__dirname, dist ? 'dist' : 'site');
 module.exports = {
   mode: process.env.NODE_ENV,
 
-  devtool: dev && 'eval-source-map',
+  devtool: 'source-map',
 
   entry: [
     './polyfill.js',
