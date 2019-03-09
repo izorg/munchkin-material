@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 import {
@@ -10,7 +10,6 @@ import {
 } from '@material-ui/core';
 import { PowerSettingsNew } from '@material-ui/icons';
 import clsx from 'clsx';
-import { noop } from 'lodash/fp';
 
 const styles = {
   root: {
@@ -19,55 +18,35 @@ const styles = {
   },
 };
 
-class InsomniaItem extends Component {
-  constructor(props) {
-    super(props);
+const InsomniaItem = ({ classes, className, keepAwake, onChange }) => {
+  const handleClick = () => onChange(!keepAwake);
 
-    this.handleClick = this.handleClick.bind(this);
-  }
-
-  handleClick() {
-    const { keepAwake, onChange } = this.props;
-
-    onChange(!keepAwake);
-  }
-
-  render() {
-    const { classes, className, keepAwake } = this.props;
-
-    return (
-      <ListItem
-        button
-        className={clsx(classes.root, className)}
-        onClick={this.handleClick}
-      >
-        <ListItemIcon>
-          <PowerSettingsNew />
-        </ListItemIcon>
-        <ListItemText
-          primary={
-            <FormattedMessage defaultMessage="Keep awake" id="menu.keepAwake" />
-          }
-        />
-        <Switch
-          checked={keepAwake}
-          color="primary"
-          disableRipple
-          tabIndex={-1}
-        />
-      </ListItem>
-    );
-  }
-}
+  return (
+    <ListItem
+      button
+      className={clsx(classes.root, className)}
+      onClick={handleClick}
+    >
+      <ListItemIcon>
+        <PowerSettingsNew />
+      </ListItemIcon>
+      <ListItemText
+        primary={
+          <FormattedMessage defaultMessage="Keep awake" id="menu.keepAwake" />
+        }
+      />
+      <Switch checked={keepAwake} color="primary" disableRipple tabIndex={-1} />
+    </ListItem>
+  );
+};
 
 InsomniaItem.propTypes = {
   keepAwake: PropTypes.bool,
-  onChange: PropTypes.func,
+  onChange: PropTypes.func.isRequired,
 };
 
 InsomniaItem.defaultProps = {
   keepAwake: false,
-  onChange: noop,
 };
 
 export default withStyles(styles)(InsomniaItem);
