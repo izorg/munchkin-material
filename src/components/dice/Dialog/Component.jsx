@@ -1,4 +1,4 @@
-import React, { Component, createElement } from 'react';
+import React, { useState } from 'react';
 import { TransitionGroup } from 'react-transition-group';
 import PropTypes from 'prop-types';
 import { ButtonBase, Dialog, withStyles } from '@material-ui/core';
@@ -42,53 +42,37 @@ const diceComponent = {
   6: Dice6,
 };
 
-class DiceDialog extends Component {
-  constructor(props) {
-    super(props);
+const DiceDialog = ({ classes, dice, onDiceClick, ...rest }) => {
+  const [attempt, setAttempt] = useState(0);
 
-    this.state = {
-      attempt: 0,
-    };
-
-    this.handleDiceClick = this.handleDiceClick.bind(this);
-  }
-
-  handleDiceClick() {
-    const { onDiceClick } = this.props;
-    const { attempt } = this.state;
-
+  const handleDiceClick = () => {
     onDiceClick();
 
-    this.setState({ attempt: attempt + 1 });
-  }
+    setAttempt(attempt + 1);
+  };
 
-  render() {
-    const { classes, dice, onDiceClick, ...rest } = this.props;
-    const { attempt } = this.state;
+  const Dice = diceComponent[dice];
 
-    return (
-      <Dialog disableRestoreFocus {...rest}>
-        <TransitionGroup
-          autoFocus
-          className={classes.button}
-          component={ButtonBase}
-          disableRipple
-          onClick={this.handleDiceClick}
-        >
-          {dice && (
-            <DiceTransition key={attempt}>
-              <span className={classes.iconWrapper}>
-                {createElement(diceComponent[dice], {
-                  className: classes.icon,
-                })}
-              </span>
-            </DiceTransition>
-          )}
-        </TransitionGroup>
-      </Dialog>
-    );
-  }
-}
+  return (
+    <Dialog disableRestoreFocus {...rest}>
+      <TransitionGroup
+        autoFocus
+        className={classes.button}
+        component={ButtonBase}
+        disableRipple
+        onClick={handleDiceClick}
+      >
+        {dice && (
+          <DiceTransition key={attempt}>
+            <span className={classes.iconWrapper}>
+              <Dice className={classes.icon} />
+            </span>
+          </DiceTransition>
+        )}
+      </TransitionGroup>
+    </Dialog>
+  );
+};
 
 DiceDialog.propTypes = {
   dice: PropTypes.number,
