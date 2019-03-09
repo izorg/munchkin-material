@@ -18,27 +18,23 @@ const styles = {
   },
 };
 
-const InsomniaItem = ({ classes, className, keepAwake, onChange }) => {
-  const handleClick = () => onChange(!keepAwake);
-
-  return (
-    <ListItem
-      button
-      className={clsx(classes.root, className)}
-      onClick={handleClick}
-    >
-      <ListItemIcon>
-        <PowerSettingsNew />
-      </ListItemIcon>
-      <ListItemText
-        primary={
-          <FormattedMessage defaultMessage="Keep awake" id="menu.keepAwake" />
-        }
-      />
-      <Switch checked={keepAwake} color="primary" disableRipple tabIndex={-1} />
-    </ListItem>
-  );
-};
+const InsomniaItem = ({ classes, className, keepAwake, onChange }) => (
+  <ListItem
+    button
+    className={clsx(classes.root, className)}
+    onClick={() => onChange(!keepAwake)}
+  >
+    <ListItemIcon>
+      <PowerSettingsNew />
+    </ListItemIcon>
+    <ListItemText
+      primary={
+        <FormattedMessage defaultMessage="Keep awake" id="menu.keepAwake" />
+      }
+    />
+    <Switch checked={keepAwake} color="primary" disableRipple tabIndex={-1} />
+  </ListItem>
+);
 
 InsomniaItem.propTypes = {
   keepAwake: PropTypes.bool,

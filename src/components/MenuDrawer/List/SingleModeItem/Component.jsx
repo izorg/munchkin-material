@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 import {
@@ -18,50 +18,24 @@ const styles = {
   },
 };
 
-class SingleModeItem extends Component {
-  constructor(props) {
-    super(props);
-
-    this.handleClick = this.handleClick.bind(this);
-  }
-
-  handleClick() {
-    const { onChange, singleMode } = this.props;
-
-    onChange(!singleMode);
-  }
-
-  render() {
-    const { classes, className, singleMode } = this.props;
-
-    return (
-      <ListItem
-        button
-        className={clsx(classes.root, className)}
-        data-screenshots="single-mode-item"
-        onClick={this.handleClick}
-      >
-        <ListItemIcon>
-          <Person />
-        </ListItemIcon>
-        <ListItemText
-          primary={
-            <FormattedMessage
-              defaultMessage="Single mode"
-              id="menu.singleMode"
-            />
-          }
-        />
-        <Switch
-          checked={singleMode}
-          color="primary"
-          disableRipple
-          tabIndex={-1}
-        />
-      </ListItem>
-    );
-  }
-}
+const SingleModeItem = ({ classes, className, onChange, singleMode }) => (
+  <ListItem
+    button
+    className={clsx(classes.root, className)}
+    data-screenshots="single-mode-item"
+    onClick={() => onChange(!singleMode)}
+  >
+    <ListItemIcon>
+      <Person />
+    </ListItemIcon>
+    <ListItemText
+      primary={
+        <FormattedMessage defaultMessage="Single mode" id="menu.singleMode" />
+      }
+    />
+    <Switch checked={singleMode} color="primary" disableRipple tabIndex={-1} />
+  </ListItem>
+);
 
 SingleModeItem.propTypes = {
   onChange: PropTypes.func.isRequired,
