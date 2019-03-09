@@ -7,18 +7,12 @@ class CounterButton extends Component {
   constructor(props) {
     super(props);
 
+    this.hammer = null;
+
     this.buttonRef = createRef();
   }
 
   componentDidMount() {
-    this.addHammer();
-  }
-
-  componentWillUnmount() {
-    this.removeHammer();
-  }
-
-  addHammer() {
     const { onClick } = this.props;
 
     this.hammer = new Hammer(this.buttonRef.current, {
@@ -28,13 +22,20 @@ class CounterButton extends Component {
     this.hammer.on('tap', onClick);
   }
 
-  removeHammer() {
-    if (this.hammer) {
-      this.hammer.stop();
-      this.hammer.destroy();
+  componentDidUpdate(prevProps) {
+    const { onClick } = this.props;
 
-      this.hammer = null;
+    if (onClick !== prevProps.onClick) {
+      this.hammer.off('tap');
+      this.hammer.on('tap', onClick);
     }
+  }
+
+  componentWillUnmount() {
+    this.hammer.stop();
+    this.hammer.destroy();
+
+    this.hammer = null;
   }
 
   render() {
