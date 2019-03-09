@@ -25,13 +25,6 @@ deploy:
     on:
       tags: true
 
-  - provider: pages
-    github_token: $GITHUB_TOKEN
-    local_dir: site
-    skip_cleanup: true
-    on:
-      branch: master
-
   - provider: firebase
     token:
       secure: $FIREBASE_TOKEN
