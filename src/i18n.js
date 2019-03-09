@@ -14,9 +14,7 @@ const defaultLocale = EN;
 const LANGUAGE_LENGTH = 2;
 
 export const getLocale = () => {
-  const language = navigator.language || navigator.userLanguage;
-
-  const locale = language.substr(0, LANGUAGE_LENGTH);
+  const locale = navigator.language.substr(0, LANGUAGE_LENGTH);
 
   return availableLocales.includes(locale) ? locale : defaultLocale;
 };
