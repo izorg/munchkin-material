@@ -6,7 +6,6 @@ const puppeteer = require('puppeteer');
 const devices = require('puppeteer/DeviceDescriptors');
 const rimraf = require('rimraf');
 const { duration } = require('@material-ui/core/styles/transitions');
-const { URL } = require('url');
 
 const config = require('../webpack.config');
 
@@ -37,21 +36,6 @@ const getScreenshots = async ({ locale, size = 'mobile' }) => {
 
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
-
-  // Catch + "forward" hashchange events from page to node puppeteer.
-  await page.exposeFunction('onHashChange', (url) =>
-    page.emit('hashchange', url),
-  );
-  await page.evaluateOnNewDocument(() => {
-    window.addEventListener('hashchange', () =>
-      window.onHashChange(window.location.href),
-    );
-  });
-
-  // Listen for hashchange events in node Puppeteer code.
-  page.on('hashchange', (url) =>
-    console.log('hashchange event:', new URL(url).hash),
-  );
 
   await page.emulate(sizes[size]);
 

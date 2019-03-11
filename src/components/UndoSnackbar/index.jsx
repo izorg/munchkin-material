@@ -15,7 +15,7 @@ const styles = (theme) => ({
       left: theme.spacing(1),
       right: theme.spacing(1),
 
-      '@supports(padding: max(0px))': {
+      '@supports (padding: max(0px))': {
         left: `max(${theme.spacing(1)}px, env(safe-area-inset-right))`,
         right: `max(${theme.spacing(1)}px, env(safe-area-inset-right))`,
       },

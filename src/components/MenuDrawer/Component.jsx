@@ -23,7 +23,7 @@ const styles = {
     touchAction: 'pan-y',
     width: 'calc(100vw - 56px)',
 
-    '@supports(padding: env(safe-area-inset-left))': {
+    '@supports (padding: env(safe-area-inset-left))': {
       maxWidth: 'calc(320px + env(safe-area-inset-left))',
       paddingLeft: 'env(safe-area-inset-left)',
     },

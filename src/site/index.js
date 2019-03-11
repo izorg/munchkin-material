@@ -1,4 +1,4 @@
-import createHistory from 'history/createBrowserHistory';
+import { createBrowserHistory } from 'history';
 import * as Sentry from '@sentry/browser';
 
 import './googleAnalytics';
@@ -12,7 +12,7 @@ const prod = process.env.NODE_ENV === 'production';
 
 const el = document.getElementById('app');
 
-const history = createHistory();
+const history = createBrowserHistory();
 
 const { host, pathname, protocol } = window.location;
 

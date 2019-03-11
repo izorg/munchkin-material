@@ -24,7 +24,7 @@ const styles = (theme) => ({
     flexDirection: 'column',
     padding: 0,
 
-    '@supports(padding: env(safe-area-inset-left))': {
+    '@supports (padding: env(safe-area-inset-left))': {
       paddingLeft: 'env(safe-area-inset-left)',
       paddingRight: 'env(safe-area-inset-right)',
     },

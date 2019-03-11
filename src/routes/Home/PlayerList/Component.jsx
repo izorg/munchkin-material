@@ -45,7 +45,7 @@ const PlayerList = ({
     return (
       <DragDropContext onDragEnd={handleDragEnd}>
         <Droppable droppableId="player-list">
-          {({ droppableProps, innerRef: droppableRef }) => (
+          {({ droppableProps, innerRef: droppableRef, placeholder }) => (
             <RootRef rootRef={droppableRef}>
               <List {...rest} {...droppableProps}>
                 {playerList.map((playerId, index) => (
@@ -115,6 +115,7 @@ const PlayerList = ({
                     }}
                   </Draggable>
                 ))}
+                {placeholder}
               </List>
             </RootRef>
           )}

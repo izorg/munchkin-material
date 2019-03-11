@@ -59,7 +59,7 @@ const styles = (theme) => ({
   },
 
   content: {
-    '@supports(padding: max(0px))': {
+    '@supports (padding: max(0px))': {
       paddingLeft: 'max(24px, env(safe-area-inset-left))',
       paddingRight: 'max(24px, env(safe-area-inset-right))',
     },
