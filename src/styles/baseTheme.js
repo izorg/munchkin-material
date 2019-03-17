@@ -4,6 +4,8 @@ import orange from '@material-ui/core/colors/orange';
 import createBreakpoints from '@material-ui/core/styles/createBreakpoints';
 import createPalette from '@material-ui/core/styles/createPalette';
 
+import { ios } from '../utils/platforms';
+
 const breakpoints = createBreakpoints({});
 
 export default (type) => {
@@ -54,6 +56,7 @@ export default (type) => {
     props: {
       MuiTooltip: {
         disableFocusListener: true,
+        disableHoverListener: ios,
       },
     },
 
