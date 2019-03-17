@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Hidden, withStyles } from '@material-ui/core';
+import { Hidden, RootRef, withStyles } from '@material-ui/core';
 import { noop } from 'lodash/fp';
 
 import Color from './Color';
@@ -79,16 +79,17 @@ class ColorPicker extends Component {
 
     return (
       <>
-        <Color
-          buttonRef={this.handleButtonRef}
-          className={classes.color}
-          name={name}
-          onBlur={this.handleBlur}
-          onClick={this.handleClick}
-          onFocus={onFocus}
-          onKeyDown={this.handleKeyDown}
-          value={value}
-        />
+        <RootRef rootRef={this.handleButtonRef}>
+          <Color
+            className={classes.color}
+            name={name}
+            onBlur={this.handleBlur}
+            onClick={this.handleClick}
+            onFocus={onFocus}
+            onKeyDown={this.handleKeyDown}
+            value={value}
+          />
+        </RootRef>
         <Hidden smUp>
           <Dialog
             onClose={onClose}
