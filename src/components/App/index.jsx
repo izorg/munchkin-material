@@ -1,11 +1,10 @@
-import { ConnectedRouter } from 'connected-react-router';
 import React, { Component } from 'react';
 import { hot } from 'react-hot-loader/root';
-import { Provider } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import LocaleProvider from '../LocaleProvider';
 import OptionsContext from '../OptionsContext';
+import ReduxProvider from '../ReduxProvider';
 import Root from '../Root';
 import ThemeProvider from '../ThemeProvider';
 
@@ -37,15 +36,13 @@ class App extends Component {
       <OptionsContext.Provider
         value={{ keepAwakeSupport, rateLink, restorePurchases, shareLink }}
       >
-        <Provider store={store}>
-          <ConnectedRouter history={history}>
-            <LocaleProvider>
-              <ThemeProvider>
-                <Root />
-              </ThemeProvider>
-            </LocaleProvider>
-          </ConnectedRouter>
-        </Provider>
+        <ReduxProvider history={history} store={store}>
+          <LocaleProvider>
+            <ThemeProvider>
+              <Root />
+            </ThemeProvider>
+          </LocaleProvider>
+        </ReduxProvider>
       </OptionsContext.Provider>
     );
   }

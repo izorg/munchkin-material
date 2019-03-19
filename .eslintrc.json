@@ -27,7 +27,7 @@
         "forbid": ["match"]
       }
     ],
-    "react-hooks/exhaustive-deps": "warn",
+    "react-hooks/exhaustive-deps": "error",
     "react-hooks/rules-of-hooks": "error",
     "react/jsx-sort-default-props": "error",
     "react/jsx-sort-props": "error",
