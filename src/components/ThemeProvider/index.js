@@ -1,15 +1,12 @@
-import React from 'react';
 import { connect } from 'react-redux';
 import { createSelector, createStructuredSelector } from 'reselect';
-import PropTypes from 'prop-types';
-import { MuiThemeProvider } from '@material-ui/core';
 import { flow, get } from 'lodash/fp';
 
 import createTheme from '../../styles/createTheme';
 import themes from '../../styles/themes';
 import { getQuery } from '../../utils/location';
 
-import GlobalCss from './GlobalCss';
+import Component from './Component';
 
 const themeSelector = createSelector(
   flow(
@@ -33,18 +30,7 @@ const mapStateToProps = createStructuredSelector({
 
 const mapDispatchToProps = {};
 
-const ThemeProvider = ({ children, theme }) => (
-  <MuiThemeProvider theme={theme}>
-    <GlobalCss />
-    {children}
-  </MuiThemeProvider>
-);
-
-ThemeProvider.propTypes = {
-  children: PropTypes.node.isRequired,
-};
-
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(ThemeProvider);
+)(Component);
