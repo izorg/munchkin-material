@@ -37,7 +37,7 @@ const Screen = ({ appear: appearProp, loader, match, ...rest }) => {
 Screen.propTypes = {
   appear: PropTypes.bool,
   loader: PropTypes.func.isRequired,
-  match: PropTypes.object,
+  match: PropTypes.object, // eslint-disable-line react/forbid-prop-types
 };
 
 Screen.defaultProps = {

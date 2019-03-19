@@ -235,7 +235,7 @@ class HomePlayerListItem extends Component {
 }
 
 HomePlayerListItem.propTypes = {
-  dragHandleProps: PropTypes.object,
+  dragHandleProps: PropTypes.object, // eslint-disable-line react/forbid-prop-types
   mode: modeShape,
   onMultiSelectActivate: PropTypes.func,
   onPlayerEdit: PropTypes.func,

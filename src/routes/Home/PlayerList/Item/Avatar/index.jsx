@@ -28,7 +28,7 @@ PlayerAvatar.propTypes = {
   color: PropTypes.string,
   selected: PropTypes.bool,
   sex: sexProp.isRequired,
-  style: PropTypes.object,
+  style: PropTypes.object, // eslint-disable-line react/forbid-prop-types
 };
 
 PlayerAvatar.defaultProps = {

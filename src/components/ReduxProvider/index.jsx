@@ -13,8 +13,8 @@ const ReduxProvider = ({ children, history, store }) => {
 
 ReduxProvider.propTypes = {
   children: PropTypes.node.isRequired,
-  history: PropTypes.object.isRequired,
-  store: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
+  store: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
 };
 
 export default ReduxProvider;

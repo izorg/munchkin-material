@@ -49,12 +49,12 @@ class App extends Component {
 }
 
 App.propTypes = {
-  history: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
   keepAwakeSupport: PropTypes.bool.isRequired,
   rateLink: PropTypes.string,
   restorePurchases: PropTypes.func,
   shareLink: PropTypes.string,
-  store: PropTypes.object.isRequired,
+  store: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
 };
 
 App.defaultProps = {

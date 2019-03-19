@@ -66,7 +66,7 @@ class Player extends PureComponent {
 }
 
 Player.propTypes = {
-  match: PropTypes.object,
+  match: PropTypes.object, // eslint-disable-line react/forbid-prop-types
 };
 
 Player.defaultProps = {

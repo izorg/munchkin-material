@@ -114,7 +114,7 @@ class Home extends Component {
 
 Home.propTypes = {
   empty: PropTypes.bool,
-  match: PropTypes.object,
+  match: PropTypes.object, // eslint-disable-line react/forbid-prop-types
   menu: PropTypes.bool,
   mode: modeShape,
   playerCount: PropTypes.number,
