@@ -13,9 +13,11 @@ import purchase from './middlewares/purchase';
 export default ({ buyFullVersion, freeCombat, history, storageKey }) => {
   const composeEnhancers = composeWithDevTools({ trace: true });
 
+  const router = connectRouter(history);
+
   const createRootReducer = () =>
     combineReducers({
-      router: connectRouter(history),
+      router,
       ...reducers,
     });
 
