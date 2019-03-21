@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { IconButton, Paper, withStyles } from '@material-ui/core';
 import { CloseCircle } from 'mdi-material-ui';
 import clsx from 'clsx';
-import { compact, noop } from 'lodash/fp';
+import { noop } from 'lodash/fp';
 
 import Player from './Player';
 
@@ -108,7 +108,7 @@ class CombatPlayerSlider extends PureComponent {
 
     const { index } = this.state;
 
-    const players = compact([
+    const players = [
       <Paper key={playerId} className={classes.paper}>
         <Player id={playerId} onBonusChange={onPlayerBonusChange} />
       </Paper>,
@@ -124,7 +124,7 @@ class CombatPlayerSlider extends PureComponent {
           </IconButton>
         </Paper>
       ),
-    ]);
+    ].filter(Boolean);
 
     return (
       <div className={clsx(classes.players, className)}>
@@ -150,7 +150,7 @@ class CombatPlayerSlider extends PureComponent {
           <SwipeableViews
             axis="y"
             containerStyle={{
-              height: 215,
+              height: 221, // real phone counter value round float
               width: '100%',
             }}
             enableMouseEvents
@@ -158,7 +158,7 @@ class CombatPlayerSlider extends PureComponent {
             index={index}
             onChangeIndex={this.handleChangeIndex}
             slideStyle={{
-              height: 215,
+              height: 221,
               padding: '8px 8px 8px 24px',
               position: 'relative',
             }}

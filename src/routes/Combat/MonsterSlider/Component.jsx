@@ -142,7 +142,7 @@ class CombatMonsterSlider extends Component {
           <SwipeableViews
             axis="y"
             containerStyle={{
-              height: 215,
+              height: 221,
               width: '100%',
             }}
             enableMouseEvents
@@ -150,7 +150,7 @@ class CombatMonsterSlider extends Component {
             index={index}
             onChangeIndex={this.handleChangeIndex}
             slideStyle={{
-              height: 215,
+              height: 221,
               padding: '8px 48px 8px 8px',
               position: 'relative',
             }}
