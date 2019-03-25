@@ -155,6 +155,7 @@ module.exports = {
 
     process.env.STATS &&
       new BundleAnalyzerPlugin({
+        analyzerHost: 'localhost',
         analyzerPort: 3001,
         defaultSizes: 'gzip',
       }),

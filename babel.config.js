@@ -15,7 +15,6 @@ const getDefaultTransform = (libs = []) =>
 const transform = getDefaultTransform([
   'lodash/fp',
   'mdi-material-ui',
-  'react-transition-group',
   'recompose',
 ]);
 
@@ -29,6 +28,7 @@ module.exports = {
     [
       '@babel/preset-env',
       {
+        corejs: 2,
         loose: true,
         modules,
         useBuiltIns: 'entry',

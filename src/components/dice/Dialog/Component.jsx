@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { TransitionGroup } from 'react-transition-group';
+import TransitionGroup from 'react-transition-group/TransitionGroup';
 import PropTypes from 'prop-types';
 import { ButtonBase, Dialog, withStyles } from '@material-ui/core';
 import { Dice1, Dice2, Dice3, Dice4, Dice5, Dice6 } from 'mdi-material-ui';
