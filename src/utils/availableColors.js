@@ -3,4 +3,6 @@ import { map } from 'lodash/fp';
 
 const { brown, common, ...availableColorSets } = colorSets;
 
-export default map(500, availableColorSets);
+const availableColors = map(500, availableColorSets);
+
+export default availableColors;

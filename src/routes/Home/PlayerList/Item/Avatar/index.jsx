@@ -5,7 +5,7 @@ import { Check } from '@material-ui/icons';
 
 import Sex from '../../../../../components/Sex';
 
-import { sexProp } from '../../../../../utils/propTypes';
+import { colorType, sexProp } from '../../../../../utils/propTypes';
 
 const PlayerAvatar = ({ color, selected, sex, style: styleProp, ...props }) => {
   let style = { ...styleProp };
@@ -25,14 +25,13 @@ const PlayerAvatar = ({ color, selected, sex, style: styleProp, ...props }) => {
 };
 
 PlayerAvatar.propTypes = {
-  color: PropTypes.string,
+  color: colorType.isRequired,
   selected: PropTypes.bool,
   sex: sexProp.isRequired,
   style: PropTypes.object, // eslint-disable-line react/forbid-prop-types
 };
 
 PlayerAvatar.defaultProps = {
-  color: '',
   selected: false,
   style: {},
 };
