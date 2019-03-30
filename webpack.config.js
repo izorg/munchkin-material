@@ -8,6 +8,7 @@ const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const WebpackNotifierPlugin = require('webpack-notifier');
 const WebpackPwaManifest = require('webpack-pwa-manifest');
 const { InjectManifest } = require('workbox-webpack-plugin');
+const WriteFilePlugin = require('write-file-webpack-plugin');
 
 const dev = process.env.NODE_ENV === 'development';
 const dist = process.env.BUILD === 'dist';
@@ -126,6 +127,11 @@ module.exports = {
         template: './index.html',
       }),
 
+    dev &&
+      new WriteFilePlugin({
+        test: /index\.html/,
+      }),
+
     site &&
       new WebpackPwaManifest({
         background_color: '#FFFFFF',
@@ -163,6 +169,7 @@ module.exports = {
 
   devServer: {
     compress: true,
+    contentBase: outputPath,
     historyApiFallback: true,
     host: '0.0.0.0',
     hot: dev,
@@ -174,5 +181,6 @@ module.exports = {
       colors: true,
       progress: true,
     },
+    watchContentBase: true,
   },
 };
