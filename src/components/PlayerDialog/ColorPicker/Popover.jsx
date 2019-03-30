@@ -8,11 +8,14 @@ import { colorType } from '../../../utils/propTypes';
 
 import Color from './Color';
 
-const useStyles = makeStyles({
-  paper: {
-    maxWidth: 288, // 6 * 48 = 288
+const useStyles = makeStyles(
+  {
+    paper: {
+      maxWidth: 288, // 6 * 48 = 288
+    },
   },
-});
+  { name: 'ColorPickerPopover' },
+);
 
 const ColorPickerPopover = ({ onSelect, value, ...props }) => {
   const classes = useStyles();

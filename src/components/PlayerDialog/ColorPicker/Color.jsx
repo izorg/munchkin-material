@@ -5,20 +5,23 @@ import { makeStyles } from '@material-ui/styles';
 import { Check } from '@material-ui/icons';
 import clsx from 'clsx';
 
-const useStyles = makeStyles({
-  button: {
-    borderRadius: '50%',
-    height: 48,
-    padding: 0,
-    width: 48,
-  },
+const useStyles = makeStyles(
+  {
+    button: {
+      borderRadius: '50%',
+      height: 48,
+      padding: 0,
+      width: 48,
+    },
 
-  color: {
-    height: 36,
-    margin: '0 auto',
-    width: 36,
+    color: {
+      height: 36,
+      margin: '0 auto',
+      width: 36,
+    },
   },
-});
+  { name: 'Color' },
+);
 
 const Color = forwardRef(({ className, selected, value, ...props }, ref) => {
   const classes = useStyles();

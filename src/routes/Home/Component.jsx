@@ -17,46 +17,49 @@ import PlayerList from './PlayerList';
 import SinglePlayer from './SinglePlayer';
 import Undo from './Undo';
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    display: 'flex',
-    flexDirection: 'column',
-    height: '100%',
-  },
-
-  single: {
-    backgroundColor:
-      theme.palette.type === 'dark'
-        ? theme.palette.background.default
-        : theme.palette.background.paper,
-  },
-
-  content: {
-    backgroundColor:
-      theme.palette.type === 'dark'
-        ? theme.palette.background.default
-        : theme.palette.background.paper,
-    flex: 1,
-    overflowY: 'auto',
-    paddingBottom: 48,
-    touchAction: 'pan-y',
-    WebkitOverflowScrolling: 'touch',
-
-    [theme.breakpoints.up('sm')]: {
-      backgroundColor: 'transparent',
-      paddingBottom: 0,
+const useStyles = makeStyles(
+  (theme) => ({
+    root: {
+      display: 'flex',
+      flexDirection: 'column',
+      height: '100%',
     },
-  },
 
-  list: {
-    [theme.breakpoints.up('sm')]: {
-      backgroundColor: theme.palette.background.paper,
-      boxShadow: theme.shadows[2],
-      margin: '0 auto',
-      width: 400,
+    single: {
+      backgroundColor:
+        theme.palette.type === 'dark'
+          ? theme.palette.background.default
+          : theme.palette.background.paper,
     },
-  },
-}));
+
+    content: {
+      backgroundColor:
+        theme.palette.type === 'dark'
+          ? theme.palette.background.default
+          : theme.palette.background.paper,
+      flex: 1,
+      overflowY: 'auto',
+      paddingBottom: 48,
+      touchAction: 'pan-y',
+      WebkitOverflowScrolling: 'touch',
+
+      [theme.breakpoints.up('sm')]: {
+        backgroundColor: 'transparent',
+        paddingBottom: 0,
+      },
+    },
+
+    list: {
+      [theme.breakpoints.up('sm')]: {
+        backgroundColor: theme.palette.background.paper,
+        boxShadow: theme.shadows[2],
+        margin: '0 auto',
+        width: 400,
+      },
+    },
+  }),
+  { name: 'Home' },
+);
 
 const Home = ({ empty, match, menu, mode, playerCount, singleMode }) => {
   const contentRef = useRef();

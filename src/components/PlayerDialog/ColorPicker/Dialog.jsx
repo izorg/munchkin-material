@@ -9,12 +9,15 @@ import { colorType } from '../../../utils/propTypes';
 
 import Color from './Color';
 
-const useStyles = makeStyles((theme) => ({
-  content: {
-    padding: theme.spacing(0, 1, 2),
-    textAlign: 'center',
-  },
-}));
+const useStyles = makeStyles(
+  (theme) => ({
+    content: {
+      padding: theme.spacing(0, 1, 2),
+      textAlign: 'center',
+    },
+  }),
+  { name: 'ColorPickerDialog' },
+);
 
 const ColorPickerDialog = ({ onSelect, value, ...props }) => {
   const classes = useStyles();

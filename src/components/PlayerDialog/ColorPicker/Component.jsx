@@ -8,11 +8,14 @@ import Color from './Color';
 import Dialog from './Dialog';
 import Popover from './Popover';
 
-const useStyles = makeStyles({
-  color: {
-    marginLeft: -6,
+const useStyles = makeStyles(
+  {
+    color: {
+      marginLeft: -6,
+    },
   },
-});
+  { name: 'ColorPicker' },
+);
 
 const ColorPicker = ({
   name,
