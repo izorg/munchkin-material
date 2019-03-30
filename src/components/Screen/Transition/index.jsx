@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Transition from 'react-transition-group/Transition';
+import { Transition } from 'react-transition-group';
 import PropTypes from 'prop-types';
 import { withTheme } from '@material-ui/core';
 import { duration } from '@material-ui/core/styles/transitions';
