@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
-import { Avatar, ButtonBase, withStyles } from '@material-ui/core';
+import { Avatar, ButtonBase } from '@material-ui/core';
+import { makeStyles } from '@material-ui/styles';
 import { Check } from '@material-ui/icons';
 import clsx from 'clsx';
 
-const styles = {
+const useStyles = makeStyles({
   button: {
     borderRadius: '50%',
     height: 48,
@@ -17,21 +18,26 @@ const styles = {
     margin: '0 auto',
     width: 36,
   },
-};
+});
 
-const Color = ({ classes, className, selected, value, ...props }) => (
-  <ButtonBase
-    centerRipple
-    className={clsx(classes.button, className)}
-    focusRipple
-    value={value}
-    {...props}
-  >
-    <Avatar className={classes.color} style={{ backgroundColor: value }}>
-      {selected && <Check />}
-    </Avatar>
-  </ButtonBase>
-);
+const Color = forwardRef(({ className, selected, value, ...props }, ref) => {
+  const classes = useStyles();
+
+  return (
+    <ButtonBase
+      ref={ref}
+      centerRipple
+      className={clsx(classes.button, className)}
+      focusRipple
+      value={value}
+      {...props}
+    >
+      <Avatar className={classes.color} style={{ backgroundColor: value }}>
+        {selected && <Check />}
+      </Avatar>
+    </ButtonBase>
+  );
+});
 
 Color.propTypes = {
   selected: PropTypes.bool,
@@ -42,4 +48,4 @@ Color.defaultProps = {
   selected: false,
 };
 
-export default withStyles(styles)(Color);
+export default Color;

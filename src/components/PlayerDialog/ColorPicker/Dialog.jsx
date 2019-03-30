@@ -1,53 +1,49 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
-import {
-  Dialog,
-  DialogContent,
-  DialogTitle,
-  withStyles,
-} from '@material-ui/core';
-import { noop } from 'lodash/fp';
+import { Dialog, DialogContent, DialogTitle } from '@material-ui/core';
+import { makeStyles } from '@material-ui/styles';
 
 import availableColors from '../../../utils/availableColors';
+import { colorType } from '../../../utils/propTypes';
 
 import Color from './Color';
 
-const styles = (theme) => ({
+const useStyles = makeStyles((theme) => ({
   content: {
     padding: theme.spacing(0, 1, 2),
     textAlign: 'center',
   },
-});
+}));
 
-const ColorPickerDialog = ({ classes, onSelect, value, ...props }) => (
-  <Dialog {...props}>
-    <DialogTitle>
-      <FormattedMessage
-        defaultMessage="Choose color"
-        id="colorPicker.dialog.title"
-      />
-    </DialogTitle>
-    <DialogContent className={classes.content}>
-      {availableColors.map((color) => (
-        <Color
-          key={color}
-          onClick={() => onSelect(color)}
-          selected={value === color}
-          value={color}
+const ColorPickerDialog = ({ onSelect, value, ...props }) => {
+  const classes = useStyles();
+
+  return (
+    <Dialog {...props}>
+      <DialogTitle>
+        <FormattedMessage
+          defaultMessage="Choose color"
+          id="colorPicker.dialog.title"
         />
-      ))}
-    </DialogContent>
-  </Dialog>
-);
+      </DialogTitle>
+      <DialogContent className={classes.content}>
+        {availableColors.map((color) => (
+          <Color
+            key={color}
+            onClick={() => onSelect(color)}
+            selected={value === color}
+            value={color}
+          />
+        ))}
+      </DialogContent>
+    </Dialog>
+  );
+};
 
 ColorPickerDialog.propTypes = {
-  onSelect: PropTypes.func,
-  value: PropTypes.string.isRequired,
+  onSelect: PropTypes.func.isRequired,
+  value: colorType.isRequired,
 };
 
-ColorPickerDialog.defaultProps = {
-  onSelect: noop,
-};
-
-export default withStyles(styles)(ColorPickerDialog);
+export default ColorPickerDialog;
