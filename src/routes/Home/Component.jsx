@@ -1,6 +1,7 @@
-import React, { Component, createRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
-import { withStyles, Zoom } from '@material-ui/core';
+import { Zoom } from '@material-ui/core';
+import { makeStyles } from '@material-ui/styles';
 import clsx from 'clsx';
 
 import LevelLimitDialog from '../../components/LevelLimitDialog';
@@ -16,7 +17,7 @@ import PlayerList from './PlayerList';
 import SinglePlayer from './SinglePlayer';
 import Undo from './Undo';
 
-const styles = (theme) => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
     flexDirection: 'column',
@@ -55,62 +56,57 @@ const styles = (theme) => ({
       width: 400,
     },
   },
-});
+}));
 
-class Home extends Component {
-  constructor(props) {
-    super(props);
+const Home = ({ empty, match, menu, mode, playerCount, singleMode }) => {
+  const contentRef = useRef();
+  const playerCountRef = useRef(playerCount);
 
-    this.contentRef = createRef();
-  }
+  const classes = useStyles();
 
-  componentDidUpdate(prevProps) {
-    const { playerCount } = this.props;
+  useEffect(() => {
+    const node = contentRef.current;
 
-    const node = this.contentRef.current;
-
-    if (playerCount > prevProps.playerCount) {
+    if (playerCount > playerCountRef.current) {
       node.scrollTop = node.scrollHeight;
     }
-  }
 
-  render() {
-    const { classes, empty, match, menu, mode, singleMode } = this.props;
+    playerCountRef.current = playerCount;
+  }, [playerCount]);
 
-    let content;
+  let content;
 
-    if (singleMode) {
-      content = <SinglePlayer />;
-    } else if (empty) {
-      content = <Nobody />;
-    } else {
-      content = (
-        <div ref={this.contentRef} className={classes.content}>
-          <PlayerList className={classes.list} mode={mode} />
-        </div>
-      );
-    }
-
-    return (
-      <>
-        <div className={clsx(classes.root, { [classes.single]: singleMode })}>
-          <AppBar mode={mode} singleMode={singleMode} />
-          {content}
-        </div>
-
-        <Zoom appear={false} in={Boolean(match) && !mode && !singleMode}>
-          <PlayerAddButton />
-        </Zoom>
-
-        {menu && <MenuDrawer />}
-        <LevelLimitDialog />
-        <ThemeDialog />
-
-        <Undo />
-      </>
+  if (singleMode) {
+    content = <SinglePlayer />;
+  } else if (empty) {
+    content = <Nobody />;
+  } else {
+    content = (
+      <div ref={contentRef} className={classes.content}>
+        <PlayerList className={classes.list} mode={mode} />
+      </div>
     );
   }
-}
+
+  return (
+    <>
+      <div className={clsx(classes.root, { [classes.single]: singleMode })}>
+        <AppBar mode={mode} singleMode={singleMode} />
+        {content}
+      </div>
+
+      <Zoom appear={false} in={Boolean(match) && !mode && !singleMode}>
+        <PlayerAddButton />
+      </Zoom>
+
+      {menu && <MenuDrawer />}
+      <LevelLimitDialog />
+      <ThemeDialog />
+
+      <Undo />
+    </>
+  );
+};
 
 Home.propTypes = {
   empty: PropTypes.bool,
@@ -130,4 +126,4 @@ Home.defaultProps = {
   singleMode: false,
 };
 
-export default withStyles(styles)(Home);
+export default Home;
