@@ -18,7 +18,7 @@ import Title from '../../../components/Title';
 import TopIconButton from '../../../components/TopIconButton';
 
 import * as modes from '../modes';
-import modeShape from '../modeShape';
+import modeType from '../modeType';
 
 import MenuButton from './MenuButton';
 import ResetButton from './ResetButton';
@@ -133,7 +133,7 @@ const HomeAppBar = ({
 HomeAppBar.propTypes = {
   empty: PropTypes.bool,
   intl: intlShape.isRequired,
-  mode: modeShape,
+  mode: modeType,
   onMultiSelectDeactivate: PropTypes.func,
   onPlayersDelete: PropTypes.func,
   onToggleEditClick: PropTypes.func,

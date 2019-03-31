@@ -6,9 +6,9 @@ import clsx from 'clsx';
 import { noop } from 'lodash/fp';
 
 import { EDIT } from '../modes';
+import modeType from '../modeType';
 
 import Item from './Item';
-import modeShape from '../modeShape';
 
 const styles = {
   dragging: {
@@ -134,7 +134,7 @@ const PlayerList = ({
 };
 
 PlayerList.propTypes = {
-  mode: modeShape,
+  mode: modeType,
   onPlayerMove: PropTypes.func,
   playerList: PropTypes.arrayOf(PropTypes.string),
 };

@@ -19,7 +19,7 @@ import { playerShape } from '../../../../utils/propTypes';
 import Avatar from './Avatar';
 
 import * as modes from '../../modes';
-import modeShape from '../../modeShape';
+import modeType from '../../modeType';
 
 const styles = (theme) => ({
   listItemGutters: {
@@ -236,7 +236,7 @@ class HomePlayerListItem extends Component {
 
 HomePlayerListItem.propTypes = {
   dragHandleProps: PropTypes.object, // eslint-disable-line react/forbid-prop-types
-  mode: modeShape,
+  mode: modeType,
   onMultiSelectActivate: PropTypes.func,
   onPlayerEdit: PropTypes.func,
   onPlayerSelect: PropTypes.func,

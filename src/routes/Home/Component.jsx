@@ -9,7 +9,7 @@ import MenuDrawer from '../../components/MenuDrawer';
 import Nobody from '../../components/Nobody';
 import ThemeDialog from '../../components/ThemeDialog';
 
-import modeShape from './modeShape';
+import modeType from './modeType';
 
 import AppBar from './AppBar';
 import PlayerAddButton from './PlayerAddButton';
@@ -115,7 +115,7 @@ Home.propTypes = {
   empty: PropTypes.bool,
   match: PropTypes.object, // eslint-disable-line react/forbid-prop-types
   menu: PropTypes.bool,
-  mode: modeShape,
+  mode: modeType,
   playerCount: PropTypes.number,
   singleMode: PropTypes.bool,
 };
