@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types';
-import { keys as breakpoints } from '@material-ui/core/styles/createBreakpoints';
 import { FEMALE, MALE } from 'munchkin-core';
 
 import availableColors from './availableColors';
@@ -20,5 +19,3 @@ export const playerShape = PropTypes.shape({
 });
 
 export const sexProp = PropTypes.oneOf([FEMALE, MALE]);
-
-export const widthProp = PropTypes.oneOf(breakpoints);

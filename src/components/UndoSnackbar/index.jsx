@@ -1,86 +1,80 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FormattedMessage } from 'react-intl';
-import { compose } from 'recompose';
 import PropTypes from 'prop-types';
-import { Button, Fade, Snackbar, withStyles } from '@material-ui/core';
-import withWidth, { isWidthDown } from '@material-ui/core/withWidth';
+import { Button, Fade, Snackbar } from '@material-ui/core';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { makeStyles, useTheme } from '@material-ui/styles';
 import clsx from 'clsx';
 
-import { widthProp } from '../../utils/propTypes';
+const useStyles = makeStyles(
+  (theme) => ({
+    [theme.breakpoints.down('sm')]: {
+      root: {
+        bottom: theme.spacing(1),
+        left: theme.spacing(1),
+        right: theme.spacing(1),
 
-const styles = (theme) => ({
-  [theme.breakpoints.down('sm')]: {
-    root: {
-      bottom: theme.spacing(1),
-      left: theme.spacing(1),
-      right: theme.spacing(1),
+        '@supports (padding: max(0px))': {
+          left: `max(${theme.spacing(1)}px, env(safe-area-inset-right))`,
+          right: `max(${theme.spacing(1)}px, env(safe-area-inset-right))`,
+        },
+      },
 
-      '@supports (padding: max(0px))': {
-        left: `max(${theme.spacing(1)}px, env(safe-area-inset-right))`,
-        right: `max(${theme.spacing(1)}px, env(safe-area-inset-right))`,
+      content: {
+        borderRadius: theme.shape.borderRadius,
       },
     },
+  }),
+  { name: 'UndoSnackbar' },
+);
 
-    content: {
-      borderRadius: theme.shape.borderRadius,
-    },
-  },
-});
+const UndoSnackbar = ({ children, className, message, onClose, ...rest }) => {
+  const classes = useStyles();
+  const theme = useTheme();
 
-class UndoSnackbar extends Component {
-  constructor(props) {
-    super(props);
+  const [state, setState] = useState({ children, message });
 
-    this.state = {};
-  }
+  const matches = useMediaQuery(theme.breakpoints.down('sm'), { noSsr: true });
 
-  static getDerivedStateFromProps(nextProps) {
-    const { children, message } = nextProps;
-
+  useEffect(() => {
     if (children || message) {
-      return {
+      setState({
         children,
         message,
-      };
+      });
     }
+  }, [children, message]);
 
-    return null;
-  }
-
-  render() {
-    const { classes, className, onClose, width, ...rest } = this.props;
-    const { children, message } = this.state;
-
-    return (
-      <Snackbar
-        action={
-          <Button color="secondary" onClick={(event) => onClose(event, 'undo')}>
-            <FormattedMessage defaultMessage="Undo" id="undo" />
-          </Button>
-        }
-        anchorOrigin={{
-          horizontal: 'left',
-          vertical: 'bottom',
-        }}
-        className={clsx(classes.root, className)}
-        ContentProps={{ className: classes.content }}
-        onClose={onClose}
-        TransitionComponent={isWidthDown('sm', width) ? Fade : undefined}
-        {...rest}
-        message={message}
-      >
-        {children}
-      </Snackbar>
-    );
-  }
-}
-
-UndoSnackbar.propTypes = {
-  onClose: PropTypes.func.isRequired,
-  width: widthProp.isRequired,
+  return (
+    <Snackbar
+      action={
+        <Button color="secondary" onClick={(event) => onClose(event, 'undo')}>
+          <FormattedMessage defaultMessage="Undo" id="undo" />
+        </Button>
+      }
+      anchorOrigin={{
+        horizontal: 'left',
+        vertical: 'bottom',
+      }}
+      className={clsx(classes.root, className)}
+      ContentProps={{ className: classes.content }}
+      onClose={onClose}
+      TransitionComponent={matches ? Fade : undefined}
+      {...rest}
+      {...state}
+    />
+  );
 };
 
-export default compose(
-  withWidth(),
-  withStyles(styles),
-)(UndoSnackbar);
+UndoSnackbar.propTypes = {
+  children: PropTypes.node,
+  message: PropTypes.node,
+  onClose: PropTypes.func.isRequired,
+};
+
+UndoSnackbar.defaultProps = {
+  children: undefined,
+  message: undefined,
+};
+
+export default UndoSnackbar;

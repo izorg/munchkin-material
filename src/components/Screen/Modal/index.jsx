@@ -1,11 +1,10 @@
 import React from 'react';
-import { compose } from 'recompose';
 import PropTypes from 'prop-types';
-import { Fade, Modal, Slide, withStyles } from '@material-ui/core';
-import withWidth, { isWidthDown } from '@material-ui/core/withWidth';
+import { Fade, Modal, Slide } from '@material-ui/core';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { makeStyles, useTheme } from '@material-ui/styles';
 
 import { ios } from '../../../utils/platforms';
-import { widthProp } from '../../../utils/propTypes';
 
 import FadeUp from '../Transition';
 
@@ -13,21 +12,28 @@ const SlideLeft = (props) => <Slide direction="left" {...props} />;
 
 const Transition = ios ? SlideLeft : FadeUp;
 
-const styles = {
-  modal: {
-    zIndex: 'auto',
-  },
+const useStyles = makeStyles(
+  {
+    modal: {
+      zIndex: 'auto',
+    },
 
-  root: {
-    display: 'flex',
-    flexDirection: 'column',
-    height: '100%',
-    outline: 'none',
+    root: {
+      display: 'flex',
+      flexDirection: 'column',
+      height: '100%',
+      outline: 'none',
+    },
   },
-};
+  { name: 'ScreenModal' },
+);
 
-const ScreenModal = ({ appear, children, classes, open, width, ...rest }) => {
-  const ScreenTransition = isWidthDown('md', width) ? Transition : Fade;
+const ScreenModal = ({ appear, children, open, ...rest }) => {
+  const classes = useStyles();
+  const theme = useTheme();
+
+  const matches = useMediaQuery(theme.breakpoints.up('lg'), { noSsr: true });
+  const ScreenTransition = matches ? Fade : Transition;
 
   return (
     <Modal
@@ -51,7 +57,6 @@ ScreenModal.propTypes = {
   appear: PropTypes.bool,
   children: PropTypes.node.isRequired,
   open: PropTypes.bool,
-  width: widthProp.isRequired,
 };
 
 ScreenModal.defaultProps = {
@@ -59,7 +64,4 @@ ScreenModal.defaultProps = {
   open: false,
 };
 
-export default compose(
-  withWidth(),
-  withStyles(styles),
-)(ScreenModal);
+export default ScreenModal;
