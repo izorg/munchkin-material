@@ -11,11 +11,11 @@ import { getTransitionProps } from '@material-ui/core/transitions/utils';
 import Hammer from 'hammerjs';
 import { throttle } from 'lodash/fp';
 
-import { ios } from '../../utils/platforms';
+import { ios } from '../../../utils/platforms';
 
-import Loading from '../Loading';
+import Loading from '../../Loading';
 
-const MenuList = lazy(() => import(/* webpackChunkName: "menu" */ './List'));
+const MenuList = lazy(() => import(/* webpackChunkName: "menu" */ '../List'));
 
 const styles = {
   paper: {

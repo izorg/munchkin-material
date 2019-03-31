@@ -5,7 +5,7 @@ import { makeStyles } from '@material-ui/styles';
 import clsx from 'clsx';
 
 import LevelLimitDialog from '../../components/LevelLimitDialog';
-import MenuDrawer from '../../components/MenuDrawer';
+import MenuDrawer from '../../components/menu/Drawer';
 import Nobody from '../../components/Nobody';
 import ThemeDialog from '../../components/ThemeDialog';
 
