@@ -181,7 +181,6 @@ module.exports = {
     inline: dev,
     overlay: true,
     port: 3000,
-    publicPath: '/',
     stats: {
       colors: true,
       progress: true,

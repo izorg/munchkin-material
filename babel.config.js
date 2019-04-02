@@ -31,7 +31,7 @@ module.exports = {
         corejs: 3,
         loose: true,
         modules,
-        useBuiltIns: 'entry',
+        useBuiltIns: 'usage',
       },
     ],
     [
