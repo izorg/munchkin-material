@@ -46,7 +46,11 @@ module.exports = {
       {
         test: /\.jsx?$/,
         include: /node_modules/,
-        loader: 'react-hot-loader/webpack',
+        use: [
+          {
+            loader: 'react-hot-loader/webpack',
+          },
+        ],
       },
       {
         test: /\.jsx?$/,
@@ -61,6 +65,7 @@ module.exports = {
           dev && {
             loader: 'eslint-loader',
             options: {
+              cache: true,
               emitError: false,
               emitWarning: true,
             },
