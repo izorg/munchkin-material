@@ -2,14 +2,15 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 import {
-  ListItem,
   ListItemIcon,
   ListItemText,
   Switch,
   withStyles,
 } from '@material-ui/core';
-import { Person } from '@material-ui/icons';
+import { Account, AccountMultiple } from 'mdi-material-ui';
 import clsx from 'clsx';
+
+import ListItem from '../Item';
 
 const styles = {
   root: {
@@ -26,12 +27,13 @@ const SingleModeItem = ({ classes, className, onChange, singleMode }) => (
     onClick={() => onChange(!singleMode)}
   >
     <ListItemIcon>
-      <Person />
+      {singleMode ? <Account /> : <AccountMultiple />}
     </ListItemIcon>
     <ListItemText
       primary={
         <FormattedMessage defaultMessage="Single mode" id="menu.singleMode" />
       }
+      primaryTypographyProps={{ noWrap: true }}
     />
     <Switch checked={singleMode} color="primary" disableRipple tabIndex={-1} />
   </ListItem>

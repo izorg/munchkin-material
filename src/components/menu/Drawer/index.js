@@ -1,27 +1,20 @@
 import { goBack, push } from 'connected-react-router';
 import { connect } from 'react-redux';
-import { createSelector, createStructuredSelector } from 'reselect';
-import { flow, get, isNull } from 'lodash/fp';
+import { createStructuredSelector } from 'reselect';
 
-import { getQuery, stringifyQuery } from '../../../utils/location';
+import { stringifyQuery } from '../../../utils/location';
+
+import openSelector from '../openSelector';
 
 import Component from './Component';
 
-const open = createSelector(
-  getQuery,
-  flow(
-    get('menu'),
-    isNull,
-  ),
-);
-
 const mapStateToProps = createStructuredSelector({
-  open,
+  open: openSelector,
 });
 
 const mapDispatchToProps = {
   onClose: () => (dispatch, getState) => {
-    if (open(getState())) {
+    if (openSelector(getState())) {
       dispatch(goBack());
     }
   },

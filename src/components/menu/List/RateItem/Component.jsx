@@ -1,8 +1,10 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
-import { ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
+import { ListItemIcon, ListItemText } from '@material-ui/core';
 import { Star } from '@material-ui/icons';
+
+import ListItem from '../Item';
 
 const RateItem = ({ rateLink, ...rest }) => (
   <ListItem button component="a" href={rateLink} target="_blank" {...rest}>

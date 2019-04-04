@@ -1,11 +1,14 @@
 import React, { Component, lazy, Suspense } from 'react';
 import { findDOMNode } from 'react-dom';
+import { compose } from 'recompose';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core';
+import withWidth, { isWidthDown, isWidthUp } from '@material-ui/core/withWidth';
 import Drawer, {
   getAnchor,
   isHorizontal,
 } from '@material-ui/core/Drawer/Drawer';
+import { keys as breakpoints } from '@material-ui/core/styles/createBreakpoints';
 import { duration } from '@material-ui/core/styles/transitions';
 import { getTransitionProps } from '@material-ui/core/transitions/utils';
 import Hammer from 'hammerjs';
@@ -77,6 +80,18 @@ class HomeMenuDrawer extends Component {
 
   componentDidMount() {
     this.addHammer();
+  }
+
+  componentDidUpdate(prevProps) {
+    const { onClose, open, width } = this.props;
+
+    if (open && isWidthUp('md', width)) {
+      onClose();
+    }
+
+    if (width !== prevProps.width && this.hammer) {
+      this.hammer.set({ enable: isWidthDown('sm', width) });
+    }
   }
 
   componentWillUnmount() {
@@ -387,9 +402,13 @@ class HomeMenuDrawer extends Component {
   }
 
   addHammer() {
+    const { width } = this.props;
+    const enable = isWidthDown('sm', width);
+
     const pressTime = 50;
 
     this.hammer = new Hammer(document.body, {
+      enable,
       recognizers: [
         [Hammer.Pan, { direction: Hammer.DIRECTION_HORIZONTAL, threshold: 3 }],
         [Hammer.Press, { time: pressTime }],
@@ -456,6 +475,7 @@ HomeMenuDrawer.propTypes = {
     enter: PropTypes.number.isRequired,
     exit: PropTypes.number.isRequired,
   }),
+  width: PropTypes.oneOf(breakpoints).isRequired,
 };
 
 HomeMenuDrawer.defaultProps = {
@@ -467,4 +487,7 @@ HomeMenuDrawer.defaultProps = {
   },
 };
 
-export default withStyles(styles, { withTheme: true })(HomeMenuDrawer);
+export default compose(
+  withWidth(),
+  withStyles(styles, { withTheme: true }),
+)(HomeMenuDrawer);

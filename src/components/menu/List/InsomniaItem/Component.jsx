@@ -2,14 +2,15 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 import {
-  ListItem,
   ListItemIcon,
   ListItemText,
   Switch,
   withStyles,
 } from '@material-ui/core';
-import { PowerSettingsNew } from '@material-ui/icons';
+import { Lightbulb, LightbulbOutline } from 'mdi-material-ui';
 import clsx from 'clsx';
+
+import ListItem from '../Item';
 
 const styles = {
   root: {
@@ -25,7 +26,7 @@ const InsomniaItem = ({ classes, className, keepAwake, onChange }) => (
     onClick={() => onChange(!keepAwake)}
   >
     <ListItemIcon>
-      <PowerSettingsNew />
+      {keepAwake ? <Lightbulb /> : <LightbulbOutline />}
     </ListItemIcon>
     <ListItemText
       primary={

@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
+import { ListItemIcon, ListItemText } from '@material-ui/core';
 import { InfoOutlined, SystemUpdate } from '@material-ui/icons';
+
+import ListItem from '../Item';
 
 const VersionItem = ({ update, version, ...rest }) => (
   <ListItem button {...rest}>

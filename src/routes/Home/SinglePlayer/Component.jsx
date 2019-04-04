@@ -76,6 +76,7 @@ const styles = (theme) => ({
     content: {
       alignSelf: 'center',
       justifyContent: 'center',
+      margin: [[0, 'auto']],
       maxWidth: 400,
       width: '100%',
     },

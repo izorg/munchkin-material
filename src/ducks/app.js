@@ -13,6 +13,7 @@ export const SET_LOCALE = 'app/SET_LOCALE';
 export const SET_LEVEL_LIMIT = 'app/SET_LEVEL_LIMIT';
 export const SET_SINGLE_MODE = 'app/SET_SINGLE_MODE';
 export const SET_SINGLE_MODE_PLAYER = 'app/SET_SINGLE_MODE_PLAYER';
+export const TOGGLE_MENU = 'app/TOGGLE_MENU';
 export const TOGGLE_PLAYER = 'app/TOGGLE_PLAYER';
 export const UNSELECT_ALL_PLAYERS = 'app/UNSELECT_ALL_PLAYERS';
 
@@ -23,6 +24,7 @@ const initialState = {
   keepAwake: false,
   levelLimit: false,
   locale: undefined,
+  menuCollapsed: true,
   selectedPlayerIds: [],
   singleMode: false,
   singleModePlayerId: undefined,
@@ -89,6 +91,12 @@ export default (state = initialState, action) => {
         combatFinished: false,
       };
     }
+
+    case TOGGLE_MENU:
+      return {
+        ...state,
+        menuCollapsed: !state.menuCollapsed,
+      };
 
     case TOGGLE_PLAYER: {
       const { id } = action;
@@ -184,6 +192,10 @@ export const setSingleMode = (singleMode) => async (dispatch, getState) => {
     });
   }
 };
+
+export const toggleMenu = () => ({
+  type: TOGGLE_MENU,
+});
 
 export const togglePlayer = (id) => ({
   type: TOGGLE_PLAYER,

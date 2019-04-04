@@ -6,6 +6,7 @@ import clsx from 'clsx';
 
 import LevelLimitDialog from '../../components/LevelLimitDialog';
 import MenuDrawer from '../../components/menu/Drawer';
+import MenuSidebar from '../../components/menu/Sidebar';
 import Nobody from '../../components/Nobody';
 import ThemeDialog from '../../components/ThemeDialog';
 
@@ -23,6 +24,12 @@ const useStyles = makeStyles(
       display: 'flex',
       flexDirection: 'column',
       height: '100%',
+    },
+
+    main: {
+      display: 'flex',
+      flex: 1,
+      overflowY: 'hidden',
     },
 
     single: {
@@ -95,7 +102,10 @@ const Home = ({ empty, match, menu, mode, playerCount, singleMode }) => {
     <>
       <div className={clsx(classes.root, { [classes.single]: singleMode })}>
         <AppBar mode={mode} singleMode={singleMode} />
-        {content}
+        <main className={classes.main}>
+          <MenuSidebar />
+          {content}
+        </main>
       </div>
 
       <Zoom appear={false} in={Boolean(match) && !mode && !singleMode}>

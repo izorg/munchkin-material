@@ -1,12 +1,7 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
-import {
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-  withStyles,
-} from '@material-ui/core';
+import { ListItemIcon, ListItemText, withStyles } from '@material-ui/core';
 import { SwapVert } from '@material-ui/icons';
 import clsx from 'clsx';
 
@@ -15,6 +10,8 @@ import {
   MAX_LEVEL,
   MIN_LEVEL,
 } from '../../../../utils/levelLimit';
+
+import ListItem from '../Item';
 
 const styles = {
   root: {
@@ -65,7 +62,9 @@ const LevelLimitItem = ({ classes, className, epic, levelLimit, ...rest }) => {
         primary={
           <FormattedMessage defaultMessage="Level limit" id="menu.level" />
         }
+        primaryTypographyProps={{ noWrap: true }}
         secondary={secondary}
+        secondaryTypographyProps={{ noWrap: true }}
       />
     </ListItem>
   );
