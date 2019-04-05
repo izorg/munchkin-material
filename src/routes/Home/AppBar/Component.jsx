@@ -89,12 +89,7 @@ const HomeAppBar = ({
       ) : (
         <MenuButton className={classes.leftButton} color="inherit" />
       )}
-      <Title
-        className={classes.title}
-        color={multiMode ? 'default' : 'inherit'}
-      >
-        {title}
-      </Title>
+      <Title className={classes.title}>{title}</Title>
 
       {(singleMode || (!mode && !empty)) && <ResetButton />}
 
