@@ -14,10 +14,6 @@ const Transition = ios ? SlideLeft : FadeUp;
 
 const useStyles = makeStyles(
   {
-    modal: {
-      zIndex: 'auto',
-    },
-
     root: {
       display: 'flex',
       flexDirection: 'column',
@@ -37,9 +33,6 @@ const ScreenModal = ({ appear, children, open, ...rest }) => {
 
   return (
     <Modal
-      classes={{
-        root: classes.root,
-      }}
       disableEscapeKeyDown
       disablePortal
       hideBackdrop
