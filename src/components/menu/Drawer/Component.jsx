@@ -441,6 +441,7 @@ class HomeMenuDrawer extends Component {
         classes={{
           paper: classes.paper,
         }}
+        data-screenshot="drawer-menu"
         ModalProps={{
           BackdropProps: {
             ref: this.handleBackdropRef,

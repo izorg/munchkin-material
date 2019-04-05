@@ -60,6 +60,7 @@ const MenuSidebar = ({ className, collapsed }) => {
         collapsed && classes.collapsed,
         className,
       )}
+      data-screenshot="sidebar-menu"
     >
       <MuiThemeProvider theme={sidebarTheme}>
         <List />

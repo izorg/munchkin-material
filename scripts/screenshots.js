@@ -34,8 +34,13 @@ if (fs.existsSync(dir)) {
 const getScreenshots = async ({ locale, size = 'mobile' }) => {
   console.log('locale', locale);
 
+  const menuSelector = '[data-screenshot="drawer-menu"]';
+
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
+
+  page.setDefaultTimeout(1000);
+  page.setDefaultNavigationTimeout(5000);
 
   await page.emulate(sizes[size]);
 
@@ -86,7 +91,7 @@ const getScreenshots = async ({ locale, size = 'mobile' }) => {
   count += 1;
   await page.click('[data-screenshots="menu"]');
   await page.waitFor(duration.enteringScreen);
-  await page.click('[data-screenshots="single-mode-item"]');
+  await page.click(`${menuSelector} [data-screenshots="single-mode-item"]`);
   await page.waitFor(duration.leavingScreen);
   await Promise.all(
     range(0, 3).map(async () =>
