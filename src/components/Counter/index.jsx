@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core';
-import { ArrowDropDown, ArrowDropUp } from '@material-ui/icons';
+import { MenuDown, MenuUp } from 'mdi-material-ui';
 import clsx from 'clsx';
 import { noop } from 'lodash/fp';
 
@@ -26,6 +26,14 @@ const useStyles = makeStyles(
 
     icon: {
       fontSize: 'inherit',
+    },
+
+    up: {
+      transform: 'translateY(-2px)',
+    },
+
+    down: {
+      transform: 'translateY(2px)',
     },
 
     value: {
@@ -59,7 +67,7 @@ const Counter = ({
         disabled={incrementDisabled}
         onClick={onIncrement}
       >
-        <ArrowDropUp className={classes.icon} />
+        <MenuUp className={clsx(classes.icon, classes.up)} />
       </Button>
 
       <div className={classes.value}>{value}</div>
@@ -70,7 +78,7 @@ const Counter = ({
         disabled={decrementDisabled}
         onClick={onDecrement}
       >
-        <ArrowDropDown className={classes.icon} />
+        <MenuDown className={clsx(classes.icon, classes.down)} />
       </Button>
     </div>
   );

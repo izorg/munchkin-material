@@ -1,7 +1,7 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { ListItemIcon, ListItemText, withStyles } from '@material-ui/core';
-import { Palette } from '@material-ui/icons';
+import { Palette } from 'mdi-material-ui';
 import clsx from 'clsx';
 
 import { names as themeNames } from '../../../../styles/themes';

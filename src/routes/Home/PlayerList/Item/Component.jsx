@@ -8,8 +8,7 @@ import {
   RootRef,
   withStyles,
 } from '@material-ui/core';
-import { KeyboardArrowUp, Reorder } from '@material-ui/icons';
-import { ChevronDoubleUp } from 'mdi-material-ui';
+import { ChevronDoubleUp, ChevronUp, ReorderHorizontal } from 'mdi-material-ui';
 import clsx from 'clsx';
 import Hammer from 'hammerjs';
 import { debounce, noop } from 'lodash/fp';
@@ -199,7 +198,7 @@ class HomePlayerListItem extends Component {
                     <>
                       <span className={classes.level}>
                         {player.level}
-                        <KeyboardArrowUp />
+                        <ChevronUp />
                       </span>
 
                       <span className={classes.strength}>
@@ -224,7 +223,7 @@ class HomePlayerListItem extends Component {
                 focusVisibleClassName=""
                 {...dragHandleProps}
               >
-                <Reorder />
+                <ReorderHorizontal />
               </IconButton>
             </ListItemSecondaryAction>
           )}

@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core';
-import { ArrowBack, KeyboardArrowLeft } from '@material-ui/icons';
+import { ArrowLeft, ChevronLeft } from 'mdi-material-ui';
 
 import TopIconButton from '../TopIconButton';
 
@@ -20,7 +20,7 @@ const BackButton = (props) => {
 
   return (
     <TopIconButton color="inherit" {...props}>
-      {ios ? <KeyboardArrowLeft className={classes.iosIcon} /> : <ArrowBack />}
+      {ios ? <ChevronLeft className={classes.iosIcon} /> : <ArrowLeft />}
     </TopIconButton>
   );
 };

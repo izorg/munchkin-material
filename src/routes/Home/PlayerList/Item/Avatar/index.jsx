@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { Avatar } from '@material-ui/core';
-import { Check } from '@material-ui/icons';
+import { Check } from 'mdi-material-ui';
 
 import Sex from '../../../../../components/Sex';
 
