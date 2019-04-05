@@ -1,18 +1,23 @@
 import React from 'react';
-import { IconButton, withStyles } from '@material-ui/core';
+import { IconButton, makeStyles } from '@material-ui/core';
 import clsx from 'clsx';
 
-const styles = (theme) => ({
-  root: {
-    [theme.breakpoints.down('sm')]: {
-      margin: 4,
-      padding: 8,
+const useStyles = makeStyles(
+  (theme) => ({
+    root: {
+      [theme.breakpoints.down('sm')]: {
+        margin: 4,
+        padding: 8,
+      },
     },
-  },
-});
-
-const TopIconButton = ({ className, classes, ...rest }) => (
-  <IconButton className={clsx(classes.root, className)} {...rest} />
+  }),
+  { name: 'TopIconButton' },
 );
 
-export default withStyles(styles)(TopIconButton);
+const TopIconButton = ({ className, ...rest }) => {
+  const classes = useStyles();
+
+  return <IconButton className={clsx(classes.root, className)} {...rest} />;
+};
+
+export default TopIconButton;

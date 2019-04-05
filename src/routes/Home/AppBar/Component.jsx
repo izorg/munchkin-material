@@ -81,7 +81,6 @@ const HomeAppBar = ({
       {multiMode ? (
         <TopIconButton
           className={classes.leftButton}
-          color="default"
           onClick={onMultiSelectDeactivate}
         >
           <Close />
@@ -108,10 +107,7 @@ const HomeAppBar = ({
       )}
 
       {multiMode && (
-        <TopIconButton
-          color={buttonColor}
-          onClick={() => onPlayersDelete(selectedPlayerIds)}
-        >
+        <TopIconButton onClick={() => onPlayersDelete(selectedPlayerIds)}>
           <Delete />
         </TopIconButton>
       )}

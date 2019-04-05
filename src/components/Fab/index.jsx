@@ -1,27 +1,34 @@
 import React from 'react';
-import { Fab, withStyles } from '@material-ui/core';
+import { Fab, makeStyles } from '@material-ui/core';
 import clsx from 'clsx';
 
-const styles = (theme) => ({
-  root: {
-    bottom: theme.spacing(2),
-    position: 'fixed',
-    right: theme.spacing(2),
-    zIndex: 2,
+const useStyles = makeStyles(
+  (theme) => ({
+    root: {
+      bottom: theme.spacing(2),
+      position: 'fixed',
+      right: theme.spacing(2),
+      zIndex: 2,
 
-    [theme.breakpoints.up('sm')]: {
-      bottom: theme.spacing(3),
-      right: theme.spacing(3),
+      [theme.breakpoints.up('sm')]: {
+        bottom: theme.spacing(3),
+        right: theme.spacing(3),
 
-      '@supports (padding: max(0px))': {
-        right: `max(${theme.spacing(3)}px, env(safe-area-inset-right))`,
+        '@supports (padding: max(0px))': {
+          right: `max(${theme.spacing(3)}px, env(safe-area-inset-right))`,
+        },
       },
     },
-  },
-});
-
-const FabButton = ({ classes, className, ...rest }) => (
-  <Fab className={clsx(className, classes.root)} color="primary" {...rest} />
+  }),
+  { name: 'FabButton' },
 );
 
-export default withStyles(styles)(FabButton);
+const FabButton = ({ className, ...rest }) => {
+  const classes = useStyles();
+
+  return (
+    <Fab className={clsx(className, classes.root)} color="primary" {...rest} />
+  );
+};
+
+export default FabButton;

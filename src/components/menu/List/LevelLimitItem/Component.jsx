@@ -1,7 +1,7 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
-import { ListItemIcon, ListItemText, withStyles } from '@material-ui/core';
+import { ListItemIcon, ListItemText, makeStyles } from '@material-ui/core';
 import { SwapVert } from '@material-ui/icons';
 import clsx from 'clsx';
 
@@ -13,14 +13,19 @@ import {
 
 import ListItem from '../Item';
 
-const styles = {
-  root: {
-    paddingBottom: 2,
-    paddingTop: 2,
+const useStyles = makeStyles(
+  {
+    root: {
+      paddingBottom: 2,
+      paddingTop: 2,
+    },
   },
-};
+  { name: 'LevelLimitItem' },
+);
 
-const LevelLimitItem = ({ classes, className, epic, levelLimit, ...rest }) => {
+const LevelLimitItem = ({ className, epic, levelLimit, ...rest }) => {
+  const classes = useStyles();
+
   let secondary;
 
   if (levelLimit) {
@@ -80,4 +85,4 @@ LevelLimitItem.defaultProps = {
   levelLimit: false,
 };
 
-export default withStyles(styles)(LevelLimitItem);
+export default LevelLimitItem;
