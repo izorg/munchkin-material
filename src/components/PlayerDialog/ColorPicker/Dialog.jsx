@@ -1,8 +1,12 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
-import { Dialog, DialogContent, DialogTitle } from '@material-ui/core';
-import { makeStyles } from '@material-ui/styles';
+import {
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  makeStyles,
+} from '@material-ui/core';
 
 import availableColors from '../../../utils/availableColors';
 import { colorType } from '../../../utils/propTypes';

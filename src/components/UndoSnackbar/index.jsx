@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
-import { Button, Fade, Snackbar } from '@material-ui/core';
+import { Button, Fade, makeStyles, Snackbar } from '@material-ui/core';
+import { useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { makeStyles, useTheme } from '@material-ui/styles';
 import clsx from 'clsx';
 
 const useStyles = makeStyles(

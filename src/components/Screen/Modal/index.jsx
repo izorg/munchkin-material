@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Fade, Modal, Slide } from '@material-ui/core';
+import { Fade, makeStyles, Modal, Slide } from '@material-ui/core';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { makeStyles, useTheme } from '@material-ui/styles';
+import { useTheme } from '@material-ui/core/styles';
 
 import { ios } from '../../../utils/platforms';
 

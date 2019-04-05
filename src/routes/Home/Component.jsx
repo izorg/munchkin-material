@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
-import { Zoom } from '@material-ui/core';
-import { makeStyles } from '@material-ui/styles';
+import { makeStyles, Zoom } from '@material-ui/core';
 import clsx from 'clsx';
 
 import LevelLimitDialog from '../../components/LevelLimitDialog';

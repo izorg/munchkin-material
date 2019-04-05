@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ThemeProvider as MuiThemeProvider } from '@material-ui/styles';
+import { MuiThemeProvider } from '@material-ui/core';
 
 import GlobalCss from './GlobalCss';
 

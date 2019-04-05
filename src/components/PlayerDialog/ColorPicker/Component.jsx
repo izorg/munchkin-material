@@ -1,7 +1,6 @@
 import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
-import { Hidden } from '@material-ui/core';
-import { makeStyles } from '@material-ui/styles';
+import { Hidden, makeStyles } from '@material-ui/core';
 import { noop } from 'lodash/fp';
 
 import Color from './Color';

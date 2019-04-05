@@ -1,6 +1,5 @@
 import React from 'react';
-import { ListItem } from '@material-ui/core';
-import { makeStyles } from '@material-ui/styles';
+import { ListItem, makeStyles } from '@material-ui/core';
 import clsx from 'clsx';
 
 const useStyles = makeStyles(

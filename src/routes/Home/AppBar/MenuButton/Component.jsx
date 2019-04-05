@@ -2,9 +2,9 @@ import React from 'react';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import PropTypes from 'prop-types';
 import { Tooltip } from '@material-ui/core';
+import { useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { Menu } from '@material-ui/icons';
-import { useTheme } from '@material-ui/styles';
 
 import TopIconButton from '../../../../components/TopIconButton';
 

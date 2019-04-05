@@ -1,6 +1,5 @@
 import React from 'react';
-import { CssBaseline } from '@material-ui/core';
-import { makeStyles } from '@material-ui/styles';
+import { CssBaseline, makeStyles } from '@material-ui/core';
 
 import munchkinWoff from '../../../fonts/munchkin.woff';
 import munchkinWoff2 from '../../../fonts/munchkin.woff2';
