@@ -28,7 +28,7 @@ const useStyles = makeStyles(
     main: {
       display: 'flex',
       flex: 1,
-      overflowY: 'hidden',
+      height: '100%',
     },
 
     single: {
@@ -44,6 +44,7 @@ const useStyles = makeStyles(
           ? theme.palette.background.default
           : theme.palette.background.paper,
       flex: 1,
+      height: '100%',
       overflowY: 'auto',
       paddingBottom: 48,
       touchAction: 'pan-y',
