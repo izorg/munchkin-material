@@ -13,8 +13,9 @@ const mapStateToProps = (state, ownProps) => {
   const { mode } = ownProps;
 
   return {
+    multiSelected:
+      mode === MULTI && state.app.selectedPlayerIds.includes(playerId),
     player: state.players[playerId],
-    selected: mode === MULTI && state.app.selectedPlayerIds.includes(playerId),
   };
 };
 

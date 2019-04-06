@@ -158,12 +158,12 @@ class HomePlayerListItem extends Component {
       classes,
       dragHandleProps,
       mode,
+      multiSelected,
       onMultiSelectActivate,
       onPlayerEdit,
       onPlayerSelect,
       onPlayerToggle,
       player,
-      selected,
       ...rest
     } = this.props;
 
@@ -181,7 +181,11 @@ class HomePlayerListItem extends Component {
           {...rest}
         >
           <RootRef rootRef={this.avatarRef}>
-            <Avatar color={player.color} selected={selected} sex={player.sex} />
+            <Avatar
+              color={player.color}
+              selected={multiSelected}
+              sex={player.sex}
+            />
           </RootRef>
 
           <RootRef rootRef={this.textRef}>
@@ -236,22 +240,22 @@ class HomePlayerListItem extends Component {
 HomePlayerListItem.propTypes = {
   dragHandleProps: PropTypes.object, // eslint-disable-line react/forbid-prop-types
   mode: modeType,
+  multiSelected: PropTypes.bool,
   onMultiSelectActivate: PropTypes.func,
   onPlayerEdit: PropTypes.func,
   onPlayerSelect: PropTypes.func,
   onPlayerToggle: PropTypes.func,
   player: playerShape.isRequired,
-  selected: PropTypes.bool,
 };
 
 HomePlayerListItem.defaultProps = {
   dragHandleProps: undefined,
   mode: null,
+  multiSelected: false,
   onMultiSelectActivate: noop,
   onPlayerEdit: noop,
   onPlayerSelect: noop,
   onPlayerToggle: noop,
-  selected: false,
 };
 
 export default withStyles(styles)(HomePlayerListItem);
