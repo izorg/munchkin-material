@@ -2,7 +2,7 @@ import React from 'react';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import PropTypes from 'prop-types';
 import { ListItemIcon, ListItemText } from '@material-ui/core';
-import { Share } from '@material-ui/icons';
+import { ShareVariant } from 'mdi-material-ui';
 
 import ListItem from '../Item';
 
@@ -31,7 +31,7 @@ const ShareItem = ({ intl, onClick, shareLink, ...rest }) => (
     {...rest}
   >
     <ListItemIcon>
-      <Share />
+      <ShareVariant />
     </ListItemIcon>
     <ListItemText primary={intl.formatMessage(messages.share)} />
   </ListItem>

@@ -2,9 +2,8 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 import { Backdrop, MuiThemeProvider, withStyles } from '@material-ui/core';
-import { PersonAdd } from '@material-ui/icons';
 import { SpeedDial, SpeedDialIcon } from '@material-ui/lab';
-import { EmoticonDevilOutline } from 'mdi-material-ui';
+import { AccountPlus, EmoticonDevilOutline } from 'mdi-material-ui';
 import clsx from 'clsx';
 import deepmerge from 'deepmerge';
 
@@ -103,7 +102,7 @@ const CombatHelperButton = ({
           }
         />
         <HelperButtonAction
-          icon={<PersonAdd />}
+          icon={<AccountPlus />}
           onClick={onHelperClick}
           tooltipTitle={
             <FormattedMessage defaultMessage="Helper" id="combat.add.helper" />

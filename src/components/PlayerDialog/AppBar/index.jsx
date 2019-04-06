@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core';
-import { Check } from '@material-ui/icons';
+import { Check } from 'mdi-material-ui';
 import { noop } from 'lodash/fp';
 
 import AppBar from '../../TopAppBar';

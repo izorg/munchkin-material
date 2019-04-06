@@ -1,6 +1,6 @@
 import React from 'react';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
-import { Add } from '@material-ui/icons';
+import { Plus } from 'mdi-material-ui';
 
 import Fab from '../../../components/Fab';
 
@@ -13,7 +13,7 @@ const messages = defineMessages({
 
 const PlayerAddButtonComponent = ({ intl, ...rest }) => (
   <Fab aria-label={intl.formatMessage(messages.label)} {...rest}>
-    <Add />
+    <Plus />
   </Fab>
 );
 

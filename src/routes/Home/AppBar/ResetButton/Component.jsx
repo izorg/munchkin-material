@@ -2,7 +2,7 @@ import React from 'react';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import PropTypes from 'prop-types';
 import { Tooltip } from '@material-ui/core';
-import { SettingsBackupRestore } from '@material-ui/icons';
+import { BackupRestore } from 'mdi-material-ui';
 
 import TopIconButton from '../../../../components/TopIconButton';
 
@@ -26,7 +26,7 @@ const ResetButton = ({
       onClick={singleMode ? onPlayerReset : onPlayersReset}
       {...props}
     >
-      <SettingsBackupRestore />
+      <BackupRestore />
     </TopIconButton>
   </Tooltip>
 );

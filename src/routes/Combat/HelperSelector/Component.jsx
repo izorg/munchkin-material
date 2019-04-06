@@ -11,8 +11,7 @@ import {
   ListItemText,
   withStyles,
 } from '@material-ui/core';
-import { KeyboardArrowUp } from '@material-ui/icons';
-import { ChevronDoubleUp } from 'mdi-material-ui';
+import { ChevronDoubleUp, ChevronUp } from 'mdi-material-ui';
 import { noop } from 'lodash/fp';
 
 import Sex from '../../../components/Sex';
@@ -97,7 +96,7 @@ const HelperSelector = ({ classes, helpers, onSelect, ...props }) => (
 
                   <span className={classes.level}>
                     {helper.level}
-                    <KeyboardArrowUp />
+                    <ChevronUp />
                   </span>
 
                   <span className={classes.strength}>

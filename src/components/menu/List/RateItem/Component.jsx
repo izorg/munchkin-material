@@ -2,7 +2,7 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 import { ListItemIcon, ListItemText } from '@material-ui/core';
-import { Star } from '@material-ui/icons';
+import { Star } from 'mdi-material-ui';
 
 import ListItem from '../Item';
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { Typography, withStyles } from '@material-ui/core';
-import { AccountCircle } from '@material-ui/icons';
+import { AccountCircle } from 'mdi-material-ui';
 
 const styles = (theme) => ({
   nobody: {

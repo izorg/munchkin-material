@@ -1,13 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { ListItemIcon, ListItemText } from '@material-ui/core';
-import { InfoOutlined, SystemUpdate } from '@material-ui/icons';
+import { CellphoneArrowDown, InformationOutline } from 'mdi-material-ui';
 
 import ListItem from '../Item';
 
 const VersionItem = ({ update, version, ...rest }) => (
   <ListItem button {...rest}>
-    <ListItemIcon>{update ? <SystemUpdate /> : <InfoOutlined />}</ListItemIcon>
+    <ListItemIcon>
+      {update ? <CellphoneArrowDown /> : <InformationOutline />}
+    </ListItemIcon>
     <ListItemText primary={version} />
   </ListItem>
 );

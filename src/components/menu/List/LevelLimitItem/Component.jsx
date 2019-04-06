@@ -2,7 +2,7 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 import { ListItemIcon, ListItemText, makeStyles } from '@material-ui/core';
-import { SwapVert } from '@material-ui/icons';
+import { SwapVertical } from 'mdi-material-ui';
 import clsx from 'clsx';
 
 import {
@@ -61,7 +61,7 @@ const LevelLimitItem = ({ className, epic, levelLimit, ...rest }) => {
   return (
     <ListItem button className={clsx(className, classes.root)} {...rest}>
       <ListItemIcon>
-        <SwapVert />
+        <SwapVertical />
       </ListItemIcon>
       <ListItemText
         primary={

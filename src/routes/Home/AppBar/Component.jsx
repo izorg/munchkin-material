@@ -8,8 +8,7 @@ import {
 import { compose } from 'recompose';
 import PropTypes from 'prop-types';
 import { Tooltip, withStyles } from '@material-ui/core';
-import { Check, Close, Delete, Edit } from '@material-ui/icons';
-import { FlagCheckered } from 'mdi-material-ui';
+import { Check, Close, Delete, FlagCheckered, Pencil } from 'mdi-material-ui';
 import { noop } from 'lodash/fp';
 
 import AppBar from '../../../components/TopAppBar';
@@ -101,7 +100,7 @@ const HomeAppBar = ({
             color={buttonColor}
             onClick={() => onToggleEditClick(mode)}
           >
-            {editMode ? <Check /> : <Edit />}
+            {editMode ? <Check /> : <Pencil />}
           </TopIconButton>
         </Tooltip>
       )}

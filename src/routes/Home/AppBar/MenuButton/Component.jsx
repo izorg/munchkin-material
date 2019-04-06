@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Tooltip } from '@material-ui/core';
 import { useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { Menu } from '@material-ui/icons';
+import { Menu } from 'mdi-material-ui';
 
 import TopIconButton from '../../../../components/TopIconButton';
 
