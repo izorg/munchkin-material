@@ -49,7 +49,7 @@ const styles = (theme) => ({
     color: theme.palette.text.primary,
     fontFamily: `"Munchkin", ${theme.typography.fontFamily}`,
     fontSize: 72, // 36px * 2
-    lineHeight: 0.575, // 1.15 / 2
+    lineHeight: 0.715, // 1.43 / 2
     marginTop: 32,
   },
 
