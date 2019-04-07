@@ -16,16 +16,22 @@ const site = process.env.BUILD === 'site';
 
 const outputPath = path.resolve(__dirname, dist ? 'dist' : 'site');
 
+let entry = './index.jsx';
+
+if (site) {
+  entry = './site/index.js';
+}
+
+if (dev) {
+  entry = './dev/index.js';
+}
+
 module.exports = {
   mode: process.env.NODE_ENV,
 
   devtool: 'source-map',
 
-  entry: [
-    './polyfill.js',
-    site ? './site/index.js' : './index.jsx',
-    dev && site && './dev/index.js',
-  ].filter(Boolean),
+  entry,
 
   context: path.resolve(__dirname, './src'),
 
