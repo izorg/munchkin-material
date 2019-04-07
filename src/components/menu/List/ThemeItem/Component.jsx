@@ -1,12 +1,13 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
-import { ListItemIcon, ListItemText, withStyles } from '@material-ui/core';
+import { ListItemIcon, withStyles } from '@material-ui/core';
 import { Palette } from 'mdi-material-ui';
 import clsx from 'clsx';
 
 import { names as themeNames } from '../../../../styles/themes';
 
 import ListItem from '../Item';
+import ListItemText from '../ItemText';
 
 const styles = {
   root: {

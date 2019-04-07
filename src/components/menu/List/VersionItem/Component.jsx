@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ListItemIcon, ListItemText } from '@material-ui/core';
+import { ListItemIcon } from '@material-ui/core';
 import { CellphoneArrowDown, InformationOutline } from 'mdi-material-ui';
 
 import ListItem from '../Item';
+import ListItemText from '../ItemText';
 
 const VersionItem = ({ update, version, ...rest }) => (
   <ListItem button {...rest}>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
-import { ListItemIcon, ListItemText, makeStyles } from '@material-ui/core';
+import { ListItemIcon, makeStyles } from '@material-ui/core';
 import { SwapVertical } from 'mdi-material-ui';
 import clsx from 'clsx';
 
@@ -12,6 +12,7 @@ import {
 } from '../../../../utils/levelLimit';
 
 import ListItem from '../Item';
+import ListItemText from '../ItemText';
 
 const useStyles = makeStyles(
   {
