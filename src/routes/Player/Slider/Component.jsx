@@ -1,117 +1,111 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import SwipeableViews from 'react-swipeable-views';
 import { bindKeyboard, virtualize } from 'react-swipeable-views-utils';
 import PropTypes from 'prop-types';
-import { Paper, withStyles } from '@material-ui/core';
+import { makeStyles, Paper } from '@material-ui/core';
 import { noop } from 'lodash/fp';
 
 import PlayerStats from './Stats';
 
 const PlayerSwipeableViews = bindKeyboard(virtualize(SwipeableViews));
 
-const styles = (theme) => ({
-  slide: {
-    display: 'flex',
-  },
-
-  itemContainer: {
-    alignItems: 'center',
-    display: 'flex',
-    flex: 1,
-    flexDirection: 'column',
-    justifyContent: 'center',
-  },
-
-  item: {
-    backgroundColor:
-      theme.palette.type === 'dark'
-        ? theme.palette.background.default
-        : theme.palette.background.paper,
-    display: 'flex',
-    flexGrow: 1,
-    height: '100%',
-    justifyContent: 'center',
-    paddingLeft: theme.spacing(2),
-    paddingRight: theme.spacing(2),
-    width: '100%',
-
-    [theme.breakpoints.up('sm')]: {
-      backgroundColor: theme.palette.background.paper,
-    },
-  },
-
-  stats: {
-    flex: 1,
-  },
-
-  '@media (orientation: portrait)': {
-    item: {
-      paddingBottom: 56,
-    },
-  },
-
-  [theme.breakpoints.down('xs')]: {
-    item: {
-      boxShadow: 'none',
-    },
-  },
-
-  [theme.breakpoints.up('sm')]: {
-    root: {
-      paddingLeft: theme.spacing(8),
-      paddingRight: theme.spacing(8),
+const useStyles = makeStyles(
+  (theme) => ({
+    slide: {
+      display: 'flex',
     },
 
     itemContainer: {
-      paddingLeft: theme.spacing(2),
-      paddingRight: theme.spacing(2),
+      alignItems: 'center',
+      display: 'flex',
+      flex: 1,
+      flexDirection: 'column',
+      justifyContent: 'center',
     },
 
     item: {
-      paddingLeft: theme.spacing(3),
-      paddingRight: theme.spacing(3),
+      backgroundColor:
+        theme.palette.type === 'dark'
+          ? theme.palette.background.default
+          : theme.palette.background.paper,
+      display: 'flex',
+      flexGrow: 1,
+      height: '100%',
+      justifyContent: 'center',
+      paddingLeft: theme.spacing(2),
+      paddingRight: theme.spacing(2),
+      width: '100%',
+
+      [theme.breakpoints.up('sm')]: {
+        backgroundColor: theme.palette.background.paper,
+      },
+    },
+
+    stats: {
+      flex: 1,
     },
 
     '@media (orientation: portrait)': {
       item: {
-        maxHeight: 480,
-        paddingBottom: 0,
-      },
-
-      stats: {
-        maxWidth: 300,
+        paddingBottom: 56,
       },
     },
 
-    '@media (orientation: landscape)': {
+    [theme.breakpoints.down('xs')]: {
       item: {
-        flex: 'none',
-        height: 'auto',
-        paddingBottom: theme.spacing(2),
-        paddingTop: theme.spacing(2),
-      },
-
-      stats: {
-        maxWidth: 400,
+        boxShadow: 'none',
       },
     },
-  },
-});
 
-class PlayerSlider extends Component {
-  constructor(props) {
-    super(props);
+    [theme.breakpoints.up('sm')]: {
+      root: {
+        paddingLeft: theme.spacing(8),
+        paddingRight: theme.spacing(8),
+      },
 
-    this.state = {
-      index: props.initialSlide,
-    };
+      itemContainer: {
+        paddingLeft: theme.spacing(2),
+        paddingRight: theme.spacing(2),
+      },
 
-    this.handleChangeIndex = this.handleChangeIndex.bind(this);
-    this.slideRenderer = this.slideRenderer.bind(this);
-  }
+      item: {
+        paddingLeft: theme.spacing(3),
+        paddingRight: theme.spacing(3),
+      },
 
-  getPlayerIndex(index) {
-    const { playerList } = this.props;
+      '@media (orientation: portrait)': {
+        item: {
+          maxHeight: 480,
+          paddingBottom: 0,
+        },
+
+        stats: {
+          maxWidth: 300,
+        },
+      },
+
+      '@media (orientation: landscape)': {
+        item: {
+          flex: 'none',
+          height: 'auto',
+          paddingBottom: theme.spacing(2),
+          paddingTop: theme.spacing(2),
+        },
+
+        stats: {
+          maxWidth: 400,
+        },
+      },
+    },
+  }),
+  { name: 'PlayerSlider' },
+);
+
+const PlayerSlider = ({ initialSlide, onPlayerChange, playerList }) => {
+  const classes = useStyles();
+  const [currentIndex, setCurrentIndex] = useState(initialSlide);
+
+  const getPlayerIndex = (index) => {
     let playerIndex = index % playerList.length;
 
     if (playerIndex < 0) {
@@ -119,22 +113,19 @@ class PlayerSlider extends Component {
     }
 
     return playerIndex;
-  }
+  };
 
-  handleChangeIndex(index) {
-    const { onPlayerChange, playerList } = this.props;
-    const playerIndex = this.getPlayerIndex(index);
+  const handleChangeIndex = (index) => {
+    const playerIndex = getPlayerIndex(index);
 
     onPlayerChange(playerList[playerIndex]);
 
-    this.setState({
-      index,
-    });
-  }
+    setCurrentIndex(index);
+  };
 
-  slideRenderer({ key, index }) {
-    const { classes, playerList } = this.props;
-    const playerIndex = this.getPlayerIndex(index);
+  // eslint-disable-next-line react/prop-types
+  const slideRenderer = ({ key, index }) => {
+    const playerIndex = getPlayerIndex(index);
     const playerId = playerList[playerIndex];
 
     return (
@@ -144,34 +135,29 @@ class PlayerSlider extends Component {
         </Paper>
       </div>
     );
-  }
+  };
 
-  render() {
-    const { classes } = this.props;
-    const { index } = this.state;
-
-    return (
-      <PlayerSwipeableViews
-        className={classes.root}
-        containerStyle={{
-          flex: '1 0 auto',
-        }}
-        enableMouseEvents
-        index={index}
-        onChangeIndex={this.handleChangeIndex}
-        overscanSlideAfter={1}
-        overscanSlideBefore={2}
-        slideClassName={classes.slide}
-        slideRenderer={this.slideRenderer}
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          width: '100%',
-        }}
-      />
-    );
-  }
-}
+  return (
+    <PlayerSwipeableViews
+      className={classes.root}
+      containerStyle={{
+        flex: '1 0 auto',
+      }}
+      enableMouseEvents
+      index={currentIndex}
+      onChangeIndex={handleChangeIndex}
+      overscanSlideAfter={1}
+      overscanSlideBefore={2}
+      slideClassName={classes.slide}
+      slideRenderer={slideRenderer}
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        width: '100%',
+      }}
+    />
+  );
+};
 
 PlayerSlider.propTypes = {
   initialSlide: PropTypes.number.isRequired,
@@ -183,4 +169,4 @@ PlayerSlider.defaultProps = {
   onPlayerChange: noop,
 };
 
-export default withStyles(styles)(PlayerSlider);
+export default PlayerSlider;
