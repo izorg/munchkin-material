@@ -8,20 +8,15 @@ import clsx from 'clsx';
 
 const useStyles = makeStyles(
   (theme) => ({
-    [theme.breakpoints.down('sm')]: {
-      root: {
-        bottom: theme.spacing(1),
-        left: theme.spacing(1),
-        right: theme.spacing(1),
+    root: {
+      '@supports (padding: max(0px))': {
+        left: `max(${theme.spacing(1)}px, env(safe-area-inset-right))`,
+        right: `max(${theme.spacing(1)}px, env(safe-area-inset-right))`,
 
-        '@supports (padding: max(0px))': {
-          left: `max(${theme.spacing(1)}px, env(safe-area-inset-right))`,
-          right: `max(${theme.spacing(1)}px, env(safe-area-inset-right))`,
+        [`${theme.breakpoints.up('sm')}`]: {
+          left: `max(${theme.spacing(3)}px, env(safe-area-inset-right))`,
+          right: `max(${theme.spacing(3)}px, env(safe-area-inset-right))`,
         },
-      },
-
-      content: {
-        borderRadius: theme.shape.borderRadius,
       },
     },
   }),
