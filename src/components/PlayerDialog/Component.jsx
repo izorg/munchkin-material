@@ -32,8 +32,6 @@ import { stubFalse } from 'lodash/fp';
 import { ios } from '../../utils/platforms';
 import { sexProp } from '../../utils/propTypes';
 
-import ScreenTransition from '../Screen/Transition';
-
 import AppBar from './AppBar';
 import ColorPicker from './ColorPicker';
 
@@ -197,11 +195,7 @@ class PlayerDialog extends Component {
       <FormattedMessage defaultMessage="New munchkin" id="player.form.title" />
     );
 
-    let Transition = Fade;
-
-    if (fullScreen) {
-      Transition = ios ? SlideUp : ScreenTransition;
-    }
+    const Transition = fullScreen && ios ? SlideUp : Fade;
 
     return (
       <Dialog

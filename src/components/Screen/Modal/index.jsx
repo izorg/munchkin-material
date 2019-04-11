@@ -6,11 +6,7 @@ import { useTheme } from '@material-ui/core/styles';
 
 import { ios } from '../../../utils/platforms';
 
-import FadeUp from '../Transition';
-
 const SlideLeft = (props) => <Slide direction="left" {...props} />;
-
-const Transition = ios ? SlideLeft : FadeUp;
 
 const useStyles = makeStyles(
   {
@@ -28,8 +24,8 @@ const ScreenModal = ({ appear, children, open, ...rest }) => {
   const classes = useStyles();
   const theme = useTheme();
 
-  const matches = useMediaQuery(theme.breakpoints.up('lg'), { noSsr: true });
-  const ScreenTransition = matches ? Fade : Transition;
+  const matches = useMediaQuery(theme.breakpoints.down('md'), { noSsr: true });
+  const ScreenTransition = matches && ios ? SlideLeft : Fade;
 
   return (
     <Modal
