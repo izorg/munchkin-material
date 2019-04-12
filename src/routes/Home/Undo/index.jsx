@@ -41,7 +41,13 @@ const mapStateToProps = createStructuredSelector({
 
 const mapDispatchToProps = {
   onClose: (event, reason) => (dispatch, getState) => {
-    if (reason === 'undo') {
+    const { undo } = getState();
+
+    if (!undo) {
+      return;
+    }
+
+    if (reason === 'undo' && undo) {
       const players = get(['undo', 'players'], getState());
 
       dispatch(applyUndo());
