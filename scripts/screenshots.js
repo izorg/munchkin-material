@@ -22,6 +22,17 @@ const sizes = {
   mobile: devices['Nexus 5'],
   tablet7: devices['Nexus 7'],
   tablet10: devices['Nexus 10'],
+  iPhoneXs: {
+    viewport: {
+      width: 414,
+      height: 896,
+      deviceScaleFactor: 3,
+      isMobile: true,
+      hasTouch: true,
+    },
+    userAgent:
+      'Mozilla/5.0 (iPhone; CPU iPhone OS 12_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.1 Mobile/15E148 Safari/604.1',
+  },
 };
 const dir = 'screenshots';
 
