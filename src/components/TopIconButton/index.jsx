@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import { IconButton, makeStyles } from '@material-ui/core';
 import clsx from 'clsx';
 
@@ -14,10 +14,12 @@ const useStyles = makeStyles(
   { name: 'TopIconButton' },
 );
 
-const TopIconButton = ({ className, ...rest }) => {
+const TopIconButton = forwardRef(({ className, ...rest }, ref) => {
   const classes = useStyles();
 
-  return <IconButton className={clsx(classes.root, className)} {...rest} />;
-};
+  return (
+    <IconButton ref={ref} className={clsx(classes.root, className)} {...rest} />
+  );
+});
 
 export default TopIconButton;

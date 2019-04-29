@@ -11,8 +11,8 @@ import ListItemText from '../ItemText';
 const useStyles = makeStyles(
   {
     root: {
-      paddingBottom: 0,
-      paddingTop: 0,
+      paddingBottom: 9,
+      paddingTop: 9,
     },
   },
   { name: 'SingleModeItem' },
@@ -41,6 +41,7 @@ const SingleModeItem = ({ className, onChange, singleMode }) => {
         checked={singleMode}
         color="primary"
         disableRipple
+        edge="end"
         tabIndex={-1}
       />
     </ListItem>

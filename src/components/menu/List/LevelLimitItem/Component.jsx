@@ -17,8 +17,8 @@ import ListItemText from '../ItemText';
 const useStyles = makeStyles(
   {
     root: {
-      paddingBottom: 2,
-      paddingTop: 2,
+      paddingBottom: 0,
+      paddingTop: 0,
     },
   },
   { name: 'LevelLimitItem' },

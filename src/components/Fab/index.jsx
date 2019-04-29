@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import { Fab, makeStyles } from '@material-ui/core';
 import clsx from 'clsx';
 
@@ -23,12 +23,17 @@ const useStyles = makeStyles(
   { name: 'FabButton' },
 );
 
-const FabButton = ({ className, ...rest }) => {
+const FabButton = forwardRef(({ className, ...rest }, ref) => {
   const classes = useStyles();
 
   return (
-    <Fab className={clsx(className, classes.root)} color="primary" {...rest} />
+    <Fab
+      ref={ref}
+      className={clsx(className, classes.root)}
+      color="primary"
+      {...rest}
+    />
   );
-};
+});
 
 export default FabButton;

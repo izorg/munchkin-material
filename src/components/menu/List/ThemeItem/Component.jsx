@@ -11,8 +11,8 @@ import ListItemText from '../ItemText';
 
 const styles = {
   root: {
-    paddingBottom: 2,
-    paddingTop: 2,
+    paddingBottom: 0,
+    paddingTop: 0,
   },
 };
 

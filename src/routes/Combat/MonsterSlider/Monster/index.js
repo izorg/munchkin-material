@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { compose, shouldUpdate } from 'recompose';
 import {
   decrementMonsterBonus,
   decrementMonsterLevel,
@@ -19,7 +20,10 @@ const mapDispatchToProps = {
   onLevelIncrement: incrementMonsterLevel,
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
+export default compose(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps,
+  ),
+  shouldUpdate((props, nextProps) => Boolean(nextProps.level !== undefined)),
 )(Monster);

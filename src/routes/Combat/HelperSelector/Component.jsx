@@ -8,6 +8,7 @@ import {
   DialogTitle,
   List,
   ListItem,
+  ListItemAvatar,
   ListItemText,
   withStyles,
 } from '@material-ui/core';
@@ -82,9 +83,11 @@ const HelperSelector = ({ classes, helpers, onSelect, ...props }) => (
             button
             onClick={() => onSelect(helper.id)}
           >
-            <Avatar style={{ backgroundColor: helper.color }}>
-              <Sex sex={helper.sex} />
-            </Avatar>
+            <ListItemAvatar>
+              <Avatar style={{ backgroundColor: helper.color }}>
+                <Sex sex={helper.sex} />
+              </Avatar>
+            </ListItemAvatar>
             <ListItemText
               classes={{
                 root: classes.textRoot,

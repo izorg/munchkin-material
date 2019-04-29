@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
 import { Plus } from 'mdi-material-ui';
 
@@ -11,11 +11,11 @@ const messages = defineMessages({
   },
 });
 
-const PlayerAddButtonComponent = ({ intl, ...rest }) => (
-  <Fab aria-label={intl.formatMessage(messages.label)} {...rest}>
+const PlayerAddButtonComponent = forwardRef(({ intl, ...rest }, ref) => (
+  <Fab ref={ref} aria-label={intl.formatMessage(messages.label)} {...rest}>
     <Plus />
   </Fab>
-);
+));
 
 PlayerAddButtonComponent.propTypes = {
   intl: intlShape.isRequired,

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {
   IconButton,
   ListItem,
+  ListItemAvatar,
   ListItemSecondaryAction,
   ListItemText,
   RootRef,
@@ -181,11 +182,13 @@ class HomePlayerListItem extends Component {
           {...rest}
         >
           <RootRef rootRef={this.avatarRef}>
-            <Avatar
-              color={player.color}
-              selected={multiSelected}
-              sex={player.sex}
-            />
+            <ListItemAvatar>
+              <Avatar
+                color={player.color}
+                selected={multiSelected}
+                sex={player.sex}
+              />
+            </ListItemAvatar>
           </RootRef>
 
           <RootRef rootRef={this.textRef}>

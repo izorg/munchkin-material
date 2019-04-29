@@ -11,8 +11,8 @@ import ListItemText from '../ItemText';
 const useStyles = makeStyles(
   {
     root: {
-      paddingBottom: 0,
-      paddingTop: 0,
+      paddingBottom: 9,
+      paddingTop: 9,
     },
   },
   { name: 'InsomniaItem' },
@@ -35,7 +35,13 @@ const InsomniaItem = ({ className, keepAwake, onChange }) => {
           <FormattedMessage defaultMessage="Keep awake" id="menu.keepAwake" />
         }
       />
-      <Switch checked={keepAwake} color="primary" disableRipple tabIndex={-1} />
+      <Switch
+        checked={keepAwake}
+        color="primary"
+        disableRipple
+        edge="end"
+        tabIndex={-1}
+      />
     </ListItem>
   );
 };

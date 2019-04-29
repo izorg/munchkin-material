@@ -10,4 +10,6 @@ const mapDispatchToProps = {
 export default connect(
   undefined,
   mapDispatchToProps,
+  undefined,
+  { forwardRef: true },
 )(Component);
