@@ -24,7 +24,7 @@ const styles = {
   paper: {
     maxWidth: 320,
     touchAction: 'pan-y',
-    width: 'calc(100vw - 56px)',
+    width: 'calc(100% - 56px)', // use % instead of vw for Android 4.4
 
     '@supports (padding: env(safe-area-inset-left))': {
       maxWidth: 'calc(320px + env(safe-area-inset-left))',
