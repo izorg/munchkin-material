@@ -1,5 +1,6 @@
 import 'core-js/es/map';
 import 'core-js/es/set';
+import 'core-js/es/symbol';
 
 import React from 'react';
 import { render } from 'react-dom';
