@@ -18,7 +18,7 @@ import { playerShape } from '../../../../utils/propTypes';
 
 import Avatar from './Avatar';
 
-import * as modes from '../../modes';
+import { EDIT, MULTI } from '../../modes';
 import modeType from '../../modeType';
 
 const styles = (theme) => ({
@@ -26,12 +26,6 @@ const styles = (theme) => ({
     [theme.breakpoints.up('sm')]: {
       paddingLeft: 24,
       paddingRight: 24,
-    },
-  },
-
-  listItemSecondaryActionRoot: {
-    [theme.breakpoints.up('sm')]: {
-      right: 12,
     },
   },
 
@@ -72,6 +66,12 @@ const styles = (theme) => ({
     marginLeft: 4,
     width: 48,
   },
+
+  reorder: {
+    [theme.breakpoints.up('sm')]: {
+      marginRight: 0,
+    },
+  },
 });
 
 class HomePlayerListItem extends Component {
@@ -108,9 +108,9 @@ class HomePlayerListItem extends Component {
       player,
     } = this.props;
 
-    if (mode === modes.EDIT) {
+    if (mode === EDIT) {
       onPlayerEdit(player.id);
-    } else if (mode === modes.MULTI) {
+    } else if (mode === MULTI) {
       onPlayerToggle(player.id);
     } else if (this.avatarRef.current.contains(event.target)) {
       onMultiSelectActivate(player.id);
@@ -168,7 +168,7 @@ class HomePlayerListItem extends Component {
       ...rest
     } = this.props;
 
-    const editMode = mode === modes.EDIT;
+    const editMode = mode === EDIT;
 
     return (
       <RootRef rootRef={this.itemRef}>
@@ -220,14 +220,11 @@ class HomePlayerListItem extends Component {
           </RootRef>
 
           {editMode && (
-            <ListItemSecondaryAction
-              classes={{
-                root: classes.listItemSecondaryActionRoot,
-              }}
-            >
+            <ListItemSecondaryAction>
               <IconButton
+                className={classes.reorder}
                 disableRipple
-                focusVisibleClassName=""
+                edge="end"
                 {...dragHandleProps}
               >
                 <ReorderHorizontal />
