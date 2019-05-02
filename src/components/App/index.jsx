@@ -26,6 +26,7 @@ class App extends Component {
     const {
       history,
       keepAwakeSupport,
+      privacyLink,
       rateLink,
       restorePurchases,
       shareLink,
@@ -34,7 +35,13 @@ class App extends Component {
 
     return (
       <OptionsContext.Provider
-        value={{ keepAwakeSupport, rateLink, restorePurchases, shareLink }}
+        value={{
+          keepAwakeSupport,
+          privacyLink,
+          rateLink,
+          restorePurchases,
+          shareLink,
+        }}
       >
         <ReduxProvider history={history} store={store}>
           <LocaleProvider>
@@ -51,6 +58,7 @@ class App extends Component {
 App.propTypes = {
   history: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
   keepAwakeSupport: PropTypes.bool.isRequired,
+  privacyLink: PropTypes.string,
   rateLink: PropTypes.string,
   restorePurchases: PropTypes.func,
   shareLink: PropTypes.string,
@@ -58,6 +66,7 @@ App.propTypes = {
 };
 
 App.defaultProps = {
+  privacyLink: null,
   rateLink: null,
   restorePurchases: null,
   shareLink: null,

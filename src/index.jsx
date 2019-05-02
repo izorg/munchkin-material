@@ -14,6 +14,7 @@ const defaultOptions = {
   freeCombat: false,
   history: null,
   keepAwakeSupport: false,
+  privacyLink: null,
   rateLink: null,
   restorePurchases: null,
   shareLink: null,
