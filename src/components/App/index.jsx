@@ -23,26 +23,10 @@ class App extends Component {
   }
 
   render() {
-    const {
-      history,
-      keepAwakeSupport,
-      privacyLink,
-      rateLink,
-      restorePurchases,
-      shareLink,
-      store,
-    } = this.props;
+    const { history, options, store } = this.props;
 
     return (
-      <OptionsContext.Provider
-        value={{
-          keepAwakeSupport,
-          privacyLink,
-          rateLink,
-          restorePurchases,
-          shareLink,
-        }}
-      >
+      <OptionsContext.Provider value={options}>
         <ReduxProvider history={history} store={store}>
           <LocaleProvider>
             <ThemeProvider>
@@ -57,19 +41,8 @@ class App extends Component {
 
 App.propTypes = {
   history: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
-  keepAwakeSupport: PropTypes.bool.isRequired,
-  privacyLink: PropTypes.string,
-  rateLink: PropTypes.string,
-  restorePurchases: PropTypes.func,
-  shareLink: PropTypes.string,
+  options: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
   store: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
-};
-
-App.defaultProps = {
-  privacyLink: null,
-  rateLink: null,
-  restorePurchases: null,
-  shareLink: null,
 };
 
 export default hot(App);

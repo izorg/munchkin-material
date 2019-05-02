@@ -36,7 +36,7 @@ const init = (appEl, initOptions) => {
 
   const { dispatch } = store;
 
-  render(<App {...options} history={history} store={store} />, appEl);
+  render(<App history={history} options={options} store={store} />, appEl);
 
   return {
     setFullVersion: (fullVersion) => dispatch(setFullVersion(fullVersion)),
