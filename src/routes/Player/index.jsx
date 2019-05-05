@@ -1,10 +1,10 @@
 import React, { PureComponent } from 'react';
 import { hot } from 'react-hot-loader/root';
 import { compose } from 'recompose';
-import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core';
 
 import PlayerContext from '../../components/PlayerContext';
+import { matchShape } from '../../utils/propTypes';
 
 import AppBar from './AppBar';
 import CombatButton from './CombatButton';
@@ -66,7 +66,7 @@ class Player extends PureComponent {
 }
 
 Player.propTypes = {
-  match: PropTypes.object, // eslint-disable-line react/forbid-prop-types
+  match: matchShape,
 };
 
 Player.defaultProps = {
