@@ -202,7 +202,6 @@ class PlayerDialog extends Component {
         classes={{
           paper: classes.dialog,
         }}
-        disableRestoreFocus
         fullScreen={fullScreen}
         hideBackdrop={fullScreen}
         onClose={this.handleClose}

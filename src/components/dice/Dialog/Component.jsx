@@ -58,7 +58,7 @@ const DiceDialog = ({ dice, onDiceClick, ...rest }) => {
   const Dice = diceComponent[dice];
 
   return (
-    <Dialog disableRestoreFocus {...rest}>
+    <Dialog {...rest}>
       <TransitionGroup
         autoFocus
         className={classes.button}
