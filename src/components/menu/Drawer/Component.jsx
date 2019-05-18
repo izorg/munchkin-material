@@ -99,7 +99,11 @@ class HomeMenuDrawer extends Component {
   }
 
   getMaxTranslate() {
-    return isHorizontal(this.props)
+    const { anchor: anchorProp, theme } = this.props;
+
+    const anchor = getAnchor(theme, anchorProp);
+
+    return isHorizontal(anchor)
       ? this.paperRef.clientWidth
       : this.paperRef.clientHeight;
   }
@@ -125,14 +129,14 @@ class HomeMenuDrawer extends Component {
 
   setPosition(translate, options = {}) {
     const { mode = null, changeTransition = true } = options;
-    const { theme, transitionDuration } = this.props;
+    const { anchor: anchorProp, theme, transitionDuration } = this.props;
 
-    const anchor = getAnchor(this.props);
+    const anchor = getAnchor(theme, anchorProp);
 
     const rtlTranslateMultiplier =
       ['right', 'bottom'].indexOf(anchor) !== -1 ? 1 : -1;
 
-    const transform = isHorizontal(this.props)
+    const transform = isHorizontal(anchor)
       ? `translate(${rtlTranslateMultiplier * translate}px, 0)`
       : `translate(0, ${rtlTranslateMultiplier * translate}px)`;
 
@@ -172,10 +176,10 @@ class HomeMenuDrawer extends Component {
       return;
     }
 
-    const { open } = this.props;
+    const { anchor: anchorProp, open, theme } = this.props;
     const { maybeSwiping } = this.state;
 
-    const anchor = getAnchor(this.props);
+    const anchor = getAnchor(theme, anchorProp);
 
     const currentX =
       anchor === 'right'
@@ -187,7 +191,7 @@ class HomeMenuDrawer extends Component {
         ? window.innerHeight - event.center.y
         : event.center.y;
 
-    const current = isHorizontal(this.props) ? currentX : currentY;
+    const current = isHorizontal(anchor) ? currentX : currentY;
 
     this.start = current;
 
@@ -210,6 +214,7 @@ class HomeMenuDrawer extends Component {
   }
 
   handlePanMove(event) {
+    const { anchor: anchorProp, theme } = this.props;
     const { maybeSwiping } = this.state;
 
     // the ref may be null when a parent component updates while swiping
@@ -217,8 +222,8 @@ class HomeMenuDrawer extends Component {
       return;
     }
 
-    const anchor = getAnchor(this.props);
-    const horizontalSwipe = isHorizontal(this.props);
+    const anchor = getAnchor(theme, anchorProp);
+    const horizontalSwipe = isHorizontal(anchor);
 
     const currentX =
       anchor === 'right'
@@ -239,7 +244,7 @@ class HomeMenuDrawer extends Component {
   }
 
   handlePanEnd(event) {
-    const { onClose, onOpen, open } = this.props;
+    const { anchor: anchorProp, onClose, onOpen, open, theme } = this.props;
     const { maybeSwiping } = this.state;
 
     if (!maybeSwiping) {
@@ -248,12 +253,12 @@ class HomeMenuDrawer extends Component {
 
     this.setState({ maybeSwiping: false });
 
-    const anchor = getAnchor(this.props);
+    const anchor = getAnchor(theme, anchorProp);
 
     let current;
     let velocity;
 
-    if (isHorizontal(this.props)) {
+    if (isHorizontal(anchor)) {
       current =
         anchor === 'right'
           ? document.body.offsetWidth - event.center.x
@@ -327,14 +332,14 @@ class HomeMenuDrawer extends Component {
       return;
     }
 
-    const { open } = this.props;
+    const { anchor: anchorProp, open, theme } = this.props;
     const { maybeSwiping } = this.state;
 
-    const anchor = getAnchor(this.props);
+    const anchor = getAnchor(theme, anchorProp);
 
     let current;
 
-    if (isHorizontal(this.props)) {
+    if (isHorizontal(anchor)) {
       current =
         anchor === 'right'
           ? document.body.offsetWidth - event.center.x
