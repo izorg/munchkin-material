@@ -1,7 +1,8 @@
 import React, { useCallback } from 'react';
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 import PropTypes from 'prop-types';
-import { List, RootRef, withStyles } from '@material-ui/core';
+import { List, makeStyles, RootRef } from '@material-ui/core';
+import { useTheme } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import { noop } from 'lodash/fp';
 
@@ -10,28 +11,27 @@ import modeType from '../modeType';
 
 import Item from './Item';
 
-const styles = {
-  dragging: {
-    '& [data-react-beautiful-dnd-draggable="0"]': {
-      transition: 'transform 0.2s cubic-bezier(0.2, 0, 0, 1)',
+const useStyles = makeStyles(
+  {
+    dragging: {
+      '& [data-react-beautiful-dnd-draggable="0"]': {
+        transition: 'transform 0.2s cubic-bezier(0.2, 0, 0, 1)',
+      },
+    },
+
+    drag: {
+      '&:hover': {
+        backgroundColor: 'transparent',
+      },
     },
   },
+  { name: 'HomePlayerList' },
+);
 
-  drag: {
-    '&:hover': {
-      backgroundColor: 'transparent',
-    },
-  },
-};
+const HomePlayerList = ({ mode, onPlayerMove, playerList, ...rest }) => {
+  const classes = useStyles();
+  const theme = useTheme();
 
-const PlayerList = ({
-  classes,
-  mode,
-  onPlayerMove,
-  playerList,
-  theme,
-  ...rest
-}) => {
   const handleDragEnd = useCallback(
     ({ destination, source }) => {
       if (destination && destination.index !== source.index) {
@@ -133,16 +133,16 @@ const PlayerList = ({
   );
 };
 
-PlayerList.propTypes = {
+HomePlayerList.propTypes = {
   mode: modeType,
   onPlayerMove: PropTypes.func,
   playerList: PropTypes.arrayOf(PropTypes.string),
 };
 
-PlayerList.defaultProps = {
+HomePlayerList.defaultProps = {
   mode: undefined,
   onPlayerMove: noop,
   playerList: [],
 };
 
-export default withStyles(styles, { withTheme: true })(PlayerList);
+export default HomePlayerList;
