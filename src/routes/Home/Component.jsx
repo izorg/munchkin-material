@@ -29,7 +29,7 @@ const useStyles = makeStyles(
       display: 'flex',
       flex: 1,
       height: '100%',
-      overflowY: 'hidden',
+      overflow: 'hidden',
     },
 
     single: {
