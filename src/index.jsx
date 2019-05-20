@@ -1,6 +1,7 @@
-import 'core-js/es/map';
-import 'core-js/es/set';
-import 'core-js/es/symbol';
+import 'core-js/es/array/find'; // for react-final-form
+import 'core-js/es/map'; // for react
+import 'core-js/es/set'; // for react
+import 'core-js/es/symbol'; // for @material-ui/styles ThemeProvider
 
 import React from 'react';
 import { render } from 'react-dom';
