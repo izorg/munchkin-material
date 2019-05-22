@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import { Avatar } from '@material-ui/core';
 import { Check } from 'mdi-material-ui';
@@ -7,22 +7,24 @@ import Sex from '../../../../../components/Sex';
 
 import { colorType, sexProp } from '../../../../../utils/propTypes';
 
-const PlayerAvatar = ({ color, selected, sex, style: styleProp, ...props }) => {
-  let style = { ...styleProp };
+const PlayerAvatar = forwardRef(
+  ({ color, selected, sex, style: styleProp, ...props }, ref) => {
+    let style = styleProp;
 
-  if (!selected && color) {
-    style = {
-      ...style,
-      backgroundColor: color,
-    };
-  }
+    if (!selected && color) {
+      style = {
+        ...style,
+        backgroundColor: color,
+      };
+    }
 
-  return (
-    <Avatar style={style} {...props}>
-      {selected ? <Check /> : <Sex sex={sex} />}
-    </Avatar>
-  );
-};
+    return (
+      <Avatar ref={ref} style={style} {...props}>
+        {selected ? <Check /> : <Sex sex={sex} />}
+      </Avatar>
+    );
+  },
+);
 
 PlayerAvatar.propTypes = {
   color: colorType.isRequired,
@@ -36,4 +38,4 @@ PlayerAvatar.defaultProps = {
   style: {},
 };
 
-export default memo(PlayerAvatar);
+export default PlayerAvatar;

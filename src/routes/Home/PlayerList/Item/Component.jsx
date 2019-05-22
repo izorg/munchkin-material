@@ -6,7 +6,6 @@ import {
   ListItemAvatar,
   ListItemSecondaryAction,
   ListItemText,
-  RootRef,
   withStyles,
 } from '@material-ui/core';
 import { ChevronDoubleUp, ChevronUp, ReorderHorizontal } from 'mdi-material-ui';
@@ -171,68 +170,65 @@ class HomePlayerListItem extends Component {
     const editMode = mode === EDIT;
 
     return (
-      <RootRef rootRef={this.itemRef}>
-        <ListItem
-          button
+      <ListItem
+        ref={this.itemRef}
+        button
+        classes={{
+          gutters: classes.listItemGutters,
+        }}
+        component={editMode ? 'div' : 'li'}
+        data-screenshots="player-list-item"
+        {...rest}
+      >
+        <ListItemAvatar>
+          <Avatar
+            ref={this.avatarRef}
+            color={player.color}
+            selected={multiSelected}
+            sex={player.sex}
+          />
+        </ListItemAvatar>
+
+        <ListItemText
+          ref={this.textRef}
           classes={{
-            gutters: classes.listItemGutters,
+            root: clsx({ [classes.text]: !editMode }),
+            primary: classes.primary,
           }}
-          component={editMode ? 'div' : 'li'}
-          data-screenshots="player-list-item"
-          {...rest}
-        >
-          <RootRef rootRef={this.avatarRef}>
-            <ListItemAvatar>
-              <Avatar
-                color={player.color}
-                selected={multiSelected}
-                sex={player.sex}
-              />
-            </ListItemAvatar>
-          </RootRef>
+          primary={
+            <>
+              <span className={classes.name}>{player.name}</span>
 
-          <RootRef rootRef={this.textRef}>
-            <ListItemText
-              classes={{
-                root: clsx({ [classes.text]: !editMode }),
-                primary: classes.primary,
-              }}
-              primary={
+              {!editMode && (
                 <>
-                  <span className={classes.name}>{player.name}</span>
+                  <span className={classes.level}>
+                    {player.level}
+                    <ChevronUp />
+                  </span>
 
-                  {!editMode && (
-                    <>
-                      <span className={classes.level}>
-                        {player.level}
-                        <ChevronUp />
-                      </span>
-
-                      <span className={classes.strength}>
-                        {player.level + player.gear}
-                        <ChevronDoubleUp />
-                      </span>
-                    </>
-                  )}
+                  <span className={classes.strength}>
+                    {player.level + player.gear}
+                    <ChevronDoubleUp />
+                  </span>
                 </>
-              }
-            />
-          </RootRef>
+              )}
+            </>
+          }
+        />
 
-          {editMode && (
-            <ListItemSecondaryAction>
-              <IconButton
-                className={classes.reorder}
-                disableRipple
-                edge="end"
-                {...dragHandleProps}
-              >
-                <ReorderHorizontal />
-              </IconButton>
-            </ListItemSecondaryAction>
-          )}
-        </ListItem>
-      </RootRef>
+        {editMode && (
+          <ListItemSecondaryAction>
+            <IconButton
+              className={classes.reorder}
+              disableRipple
+              edge="end"
+              {...dragHandleProps}
+            >
+              <ReorderHorizontal />
+            </IconButton>
+          </ListItemSecondaryAction>
+        )}
+      </ListItem>
     );
   }
 }

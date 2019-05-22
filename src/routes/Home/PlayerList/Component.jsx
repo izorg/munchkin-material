@@ -46,78 +46,72 @@ const HomePlayerList = ({ mode, onPlayerMove, playerList, ...rest }) => {
       <DragDropContext onDragEnd={handleDragEnd}>
         <Droppable droppableId="player-list">
           {({ droppableProps, innerRef: droppableRef, placeholder }) => (
-            <RootRef rootRef={droppableRef}>
-              <List {...rest} {...droppableProps}>
-                {playerList.map((playerId, index) => (
-                  <Draggable
-                    key={playerId}
-                    disableInteractiveElementBlocking
-                    draggableId={playerId}
-                    index={index}
-                  >
-                    {(
-                      {
-                        draggableProps,
-                        dragHandleProps,
-                        innerRef: draggableRef,
-                      },
-                      { isDragging },
-                    ) => {
-                      let style = { ...draggableProps.style };
+            <List {...rest} {...droppableProps} ref={droppableRef}>
+              {playerList.map((playerId, index) => (
+                <Draggable
+                  key={playerId}
+                  disableInteractiveElementBlocking
+                  draggableId={playerId}
+                  index={index}
+                >
+                  {(
+                    { draggableProps, dragHandleProps, innerRef: draggableRef },
+                    { isDragging },
+                  ) => {
+                    let style = { ...draggableProps.style };
 
-                      if (isDragging) {
-                        const transition = theme.transitions.create(
-                          'box-shadow',
-                          {
-                            duration: theme.transitions.duration.standard,
-                          },
-                        );
-
-                        style = {
-                          ...style,
-                          backgroundColor: theme.palette.background.paper,
-                          boxShadow: theme.shadows[3],
-                          pointerEvents: 'auto',
-                          transition: style.transition
-                            ? `${style.transition}, ${transition}`
-                            : transition,
-                          zIndex: 1,
-                        };
-                      }
-
-                      if (style.transform) {
-                        const transform = style.transform.replace(
-                          /translate\(([0-9.-]+px), ([0-9.-]+px)\)/,
-                          'translate(0, $2)',
-                        );
-
-                        style = {
-                          ...style,
-                          transform,
-                          WebkitTransform: transform,
-                        };
-                      }
-
-                      return (
-                        <RootRef rootRef={draggableRef}>
-                          <Item
-                            className={clsx({ [classes.drag]: isDragging })}
-                            ContainerProps={{
-                              ...draggableProps,
-                              style,
-                            }}
-                            dragHandleProps={dragHandleProps}
-                            mode={mode}
-                            playerId={playerId}
-                          />
-                        </RootRef>
+                    if (isDragging) {
+                      const transition = theme.transitions.create(
+                        'box-shadow',
+                        {
+                          duration: theme.transitions.duration.standard,
+                        },
                       );
-                    }}
-                  </Draggable>
-                ))}
-                {placeholder}
-              </List>
-            </RootRef>
+
+                      style = {
+                        ...style,
+                        backgroundColor: theme.palette.background.paper,
+                        boxShadow: theme.shadows[3],
+                        pointerEvents: 'auto',
+                        transition: style.transition
+                          ? `${style.transition}, ${transition}`
+                          : transition,
+                        zIndex: 1,
+                      };
+                    }
+
+                    if (style.transform) {
+                      const transform = style.transform.replace(
+                        /translate\(([0-9.-]+px), ([0-9.-]+px)\)/,
+                        'translate(0, $2)',
+                      );
+
+                      style = {
+                        ...style,
+                        transform,
+                        WebkitTransform: transform,
+                      };
+                    }
+
+                    return (
+                      <RootRef rootRef={draggableRef}>
+                        <Item
+                          className={clsx({ [classes.drag]: isDragging })}
+                          ContainerProps={{
+                            ...draggableProps,
+                            style,
+                          }}
+                          dragHandleProps={dragHandleProps}
+                          mode={mode}
+                          playerId={playerId}
+                        />
+                      </RootRef>
+                    );
+                  }}
+                </Draggable>
+              ))}
+              {placeholder}
+            </List>
           )}
         </Droppable>
       </DragDropContext>
@@ -126,8 +120,8 @@ const HomePlayerList = ({ mode, onPlayerMove, playerList, ...rest }) => {
 
   return (
     <List {...rest}>
-      {playerList.map((playerId, index) => (
-        <Item key={playerId} index={index} mode={mode} playerId={playerId} />
+      {playerList.map((playerId) => (
+        <Item key={playerId} mode={mode} playerId={playerId} />
       ))}
     </List>
   );
