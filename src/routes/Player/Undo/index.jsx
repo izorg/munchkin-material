@@ -7,6 +7,7 @@ import { flow, get, isEqual } from 'lodash/fp';
 import { updatePlayer } from 'munchkin-core';
 
 import { applyUndo, removeUndo, UNDO_KILL_PLAYER } from '../../../ducks/undo';
+
 import Component from './Component';
 
 const getUndoType = get(['undo', 'type']);

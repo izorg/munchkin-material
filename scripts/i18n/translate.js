@@ -1,4 +1,5 @@
 const fs = require('fs');
+
 const globSync = require('glob').sync; // eslint-disable-line import/no-extraneous-dependencies
 const mkdirpSync = require('mkdirp').sync; // eslint-disable-line import/no-extraneous-dependencies
 

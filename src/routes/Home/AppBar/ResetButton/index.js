@@ -7,6 +7,7 @@ import {
   setCombatPlayerBonus,
   updatePlayer,
 } from 'munchkin-core';
+
 import { setUndo, UNDO_RESET_PLAYERS } from '../../../../ducks/undo';
 
 import Component from './Component';

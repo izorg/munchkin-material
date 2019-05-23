@@ -1,5 +1,6 @@
-const axios = require('axios');
 const { exec } = require('child_process');
+
+const axios = require('axios');
 
 // eslint-disable-next-line import/no-unresolved
 const config = require('../config.json').smartcat;

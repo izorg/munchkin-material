@@ -21,6 +21,13 @@
         "devDependencies": true
       }
     ],
+    "import/order": [
+      "error",
+      {
+        "groups": ["builtin", "external", "parent", "sibling", "index"],
+        "newlines-between": "always-and-inside-groups"
+      }
+    ],
     "react-hooks/exhaustive-deps": "error",
     "react-hooks/rules-of-hooks": "error",
     "react/jsx-sort-default-props": "error",

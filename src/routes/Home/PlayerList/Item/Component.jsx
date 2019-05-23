@@ -15,10 +15,10 @@ import { debounce, noop } from 'lodash/fp';
 
 import { playerShape } from '../../../../utils/propTypes';
 
-import Avatar from './Avatar';
-
 import { EDIT, MULTI } from '../../modes';
 import modeType from '../../modeType';
+
+import Avatar from './Avatar';
 
 const styles = (theme) => ({
   listItemGutters: {
