@@ -1,5 +1,3 @@
-import { GenderFemale, GenderMale } from 'mdi-material-ui';
-import { FEMALE, MALE } from 'munchkin-core';
 import React, { Component, createRef } from 'react';
 import {
   defineMessages,
@@ -27,6 +25,8 @@ import {
   withMobileDialog,
   withStyles,
 } from '@material-ui/core';
+import { GenderFemale, GenderMale } from 'mdi-material-ui';
+import { FEMALE, MALE } from 'munchkin-core';
 import { stubFalse } from 'lodash/fp';
 
 import { ios } from '../../utils/platforms';
@@ -83,30 +83,6 @@ const messages = defineMessages({
     defaultMessage: 'Name',
   },
 });
-
-// eslint-disable-next-line react/prop-types
-const renderColorPicker = ({ input, ...props }) => (
-  <ColorPicker {...input} {...props} />
-);
-
-const renderRadio = ({
-  // eslint-disable-next-line react/prop-types
-  input: { checked, name, onChange, value, ...inputProps },
-}) => (
-  <Radio
-    checked={checked}
-    color="primary"
-    inputProps={inputProps}
-    name={name}
-    onChange={onChange}
-    value={value}
-  />
-);
-
-// eslint-disable-next-line react/prop-types
-const renderTextField = ({ input, meta, ...props }) => (
-  <TextField {...input} {...props} />
-);
 
 let appear = false;
 
@@ -225,15 +201,18 @@ class PlayerDialog extends Component {
           )}
         </DialogTitle>
         <DialogContent className={classes.content}>
-          <Field
-            autoFocus={!edit && (!ios || !window.cordova)}
-            component={renderTextField}
-            fullWidth
-            inputRef={this.nameRef}
-            margin="normal"
-            name="name"
-            placeholder={intl.formatMessage(messages.label)}
-          />
+          <Field name="name">
+            {({ input }) => (
+              <TextField
+                autoFocus={!edit && (!ios || !window.cordova)}
+                fullWidth
+                inputRef={this.nameRef}
+                margin="normal"
+                placeholder={intl.formatMessage(messages.label)}
+                {...input}
+              />
+            )}
+          </Field>
 
           <Grid container>
             <Grid item xs={6}>
@@ -243,14 +222,52 @@ class PlayerDialog extends Component {
                 </FormLabel>
                 <FormControlLabel
                   control={
-                    <Field component={renderRadio} name="sex" type="radio" />
+                    <Field name="sex" type="radio">
+                      {({
+                        input: {
+                          checked,
+                          name,
+                          onChange,
+                          value,
+                          ...inputProps
+                        },
+                      }) => (
+                        <Radio
+                          checked={checked}
+                          color="primary"
+                          inputProps={inputProps}
+                          name={name}
+                          onChange={onChange}
+                          value={value}
+                        />
+                      )}
+                    </Field>
                   }
                   label={<GenderMale className={classes.icon} />}
                   value={MALE}
                 />
                 <FormControlLabel
                   control={
-                    <Field component={renderRadio} name="sex" type="radio" />
+                    <Field name="sex" type="radio">
+                      {({
+                        input: {
+                          checked,
+                          name,
+                          onChange,
+                          value,
+                          ...inputProps
+                        },
+                      }) => (
+                        <Radio
+                          checked={checked}
+                          color="primary"
+                          inputProps={inputProps}
+                          name={name}
+                          onChange={onChange}
+                          value={value}
+                        />
+                      )}
+                    </Field>
                   }
                   label={<GenderFemale className={classes.icon} />}
                   value={FEMALE}
@@ -266,7 +283,9 @@ class PlayerDialog extends Component {
                     id="player.form.color"
                   />
                 </FormLabel>
-                <Field component={renderColorPicker} name="color" />
+                <Field name="color">
+                  {({ input }) => <ColorPicker {...input} />}
+                </Field>
               </FormControl>
             </Grid>
           </Grid>
