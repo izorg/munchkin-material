@@ -1,4 +1,5 @@
-import React, { Component, createRef } from 'react';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import React, { useEffect, useRef } from 'react';
 import {
   defineMessages,
   FormattedMessage,
@@ -6,7 +7,7 @@ import {
   intlShape,
 } from 'react-intl';
 import { Field, Form as FinalForm } from 'react-final-form';
-import { compose, shouldUpdate } from 'recompose';
+import { shouldUpdate } from 'recompose';
 import PropTypes from 'prop-types';
 import {
   Button,
@@ -19,12 +20,12 @@ import {
   FormControlLabel,
   FormLabel,
   Grid,
+  makeStyles,
   Radio,
   Slide,
   TextField,
-  withMobileDialog,
-  withStyles,
 } from '@material-ui/core';
+import { useTheme } from '@material-ui/core/styles';
 import { GenderFemale, GenderMale } from 'mdi-material-ui';
 import { FEMALE, MALE } from 'munchkin-core';
 import { stubFalse } from 'lodash/fp';
@@ -37,45 +38,48 @@ import ColorPicker from './ColorPicker';
 
 const SlideUp = (props) => <Slide direction="up" {...props} />;
 
-const styles = (theme) => ({
-  dialog: {
-    backgroundColor:
-      theme.palette.type === 'dark'
-        ? theme.palette.background.default
-        : theme.palette.background.paper,
-    minWidth: 320,
+const useStyles = makeStyles(
+  (theme) => ({
+    dialog: {
+      backgroundColor:
+        theme.palette.type === 'dark'
+          ? theme.palette.background.default
+          : theme.palette.background.paper,
+      minWidth: 320,
 
-    [theme.breakpoints.up('lg')]: {
-      backgroundColor: theme.palette.background.paper,
-    },
-  },
-
-  title: {
-    [theme.breakpoints.down('md')]: {
-      padding: 0,
-    },
-  },
-
-  content: {
-    '@supports (padding: max(0px))': {
-      paddingLeft: 'max(24px, env(safe-area-inset-left))',
-      paddingRight: 'max(24px, env(safe-area-inset-right))',
+      [theme.breakpoints.up('lg')]: {
+        backgroundColor: theme.palette.background.paper,
+      },
     },
 
-    [theme.breakpoints.up('md')]: {
-      alignSelf: 'center',
-      width: 600,
+    title: {
+      [theme.breakpoints.down('md')]: {
+        padding: 0,
+      },
     },
 
-    [theme.breakpoints.up('lg')]: {
-      width: '100%',
-    },
-  },
+    content: {
+      '@supports (padding: max(0px))': {
+        paddingLeft: 'max(24px, env(safe-area-inset-left))',
+        paddingRight: 'max(24px, env(safe-area-inset-right))',
+      },
 
-  icon: {
-    verticalAlign: 'middle',
-  },
-});
+      [theme.breakpoints.up('md')]: {
+        alignSelf: 'center',
+        width: 600,
+      },
+
+      [theme.breakpoints.up('lg')]: {
+        width: '100%',
+      },
+    },
+
+    icon: {
+      verticalAlign: 'middle',
+    },
+  }),
+  { name: 'PlayerDialog' },
+);
 
 const messages = defineMessages({
   label: {
@@ -98,219 +102,188 @@ const FormComponent = shouldUpdate(stubFalse)(
   ),
 );
 
-class PlayerDialog extends Component {
-  constructor(props) {
-    super(props);
+const PlayerDialog = ({
+  edit,
+  initialValues,
+  intl,
+  onClose,
+  onSubmit,
+  open,
+}) => {
+  const classes = useStyles();
+  const theme = useTheme();
 
-    this.nameRef = createRef();
+  const fullScreen = useMediaQuery(theme.breakpoints.down('md'), {
+    noSsr: true,
+  });
 
-    this.handleClose = this.handleClose.bind(this);
-    this.handleEntered = this.handleEntered.bind(this);
-    this.focusName = this.focusName.bind(this);
-  }
+  const nameRef = useRef(null);
+  const focusTimeoutRef = useRef(null);
 
-  componentDidMount() {
+  useEffect(() => {
     appear = true;
-  }
 
-  componentWillUnmount() {
-    if (this.focusTimeout) {
-      clearTimeout(this.focusTimeout);
+    return () => {
+      if (focusTimeoutRef.current) {
+        clearTimeout(focusTimeoutRef.current);
 
-      this.focusTimeout = null;
-    }
-  }
+        focusTimeoutRef.current = null;
+      }
+    };
+  }, []);
 
-  handleClose() {
-    const { onClose } = this.props;
+  const handleClose = () => {
+    if (focusTimeoutRef.current) {
+      clearTimeout(focusTimeoutRef.current);
 
-    if (this.focusTimeout) {
-      clearTimeout(this.focusTimeout);
-
-      this.focusTimeout = null;
+      focusTimeoutRef.current = null;
     }
 
     onClose();
-  }
+  };
 
-  handleEntered() {
-    const { edit } = this.props;
-
+  const handleEntered = () => {
     if (!edit && ios && window.cordova) {
-      this.focusTimeout = setTimeout(this.focusName, 100);
+      focusTimeoutRef.current = setTimeout(() => {
+        const node = nameRef.current;
+
+        focusTimeoutRef.current = null;
+
+        if (node) {
+          node.focus();
+        }
+      }, 100);
     }
-  }
+  };
 
-  focusName() {
-    const node = this.nameRef.current;
+  const title = edit ? (
+    <FormattedMessage
+      defaultMessage="Edit munchkin"
+      id="player.form.titleEdit"
+    />
+  ) : (
+    <FormattedMessage defaultMessage="New munchkin" id="player.form.title" />
+  );
 
-    this.focusTimeout = null;
+  const Transition = fullScreen && ios ? SlideUp : Fade;
 
-    if (node) {
-      node.focus();
-    }
-  }
-
-  render() {
-    const {
-      classes,
-      edit,
-      fullScreen,
-      initialValues,
-      intl,
-      onSubmit,
-      open,
-    } = this.props;
-
-    const title = edit ? (
-      <FormattedMessage
-        defaultMessage="Edit munchkin"
-        id="player.form.titleEdit"
-      />
-    ) : (
-      <FormattedMessage defaultMessage="New munchkin" id="player.form.title" />
-    );
-
-    const Transition = fullScreen && ios ? SlideUp : Fade;
-
-    return (
-      <Dialog
-        classes={{
-          paper: classes.dialog,
-        }}
-        fullScreen={fullScreen}
-        hideBackdrop={fullScreen}
-        onClose={this.handleClose}
-        onEntered={this.handleEntered}
-        open={open}
-        PaperProps={{
-          component: FormComponent,
-          initialValues,
-          onSubmit,
-        }}
-        TransitionComponent={Transition}
-        TransitionProps={{
-          appear,
-        }}
-      >
-        <DialogTitle className={classes.title}>
-          {fullScreen ? (
-            <AppBar onCancel={this.handleClose} title={title} />
-          ) : (
-            title
+  return (
+    <Dialog
+      classes={{
+        paper: classes.dialog,
+      }}
+      fullScreen={fullScreen}
+      hideBackdrop={fullScreen}
+      onClose={handleClose}
+      onEntered={handleEntered}
+      open={open}
+      PaperProps={{
+        component: FormComponent,
+        initialValues,
+        onSubmit,
+      }}
+      TransitionComponent={Transition}
+      TransitionProps={{
+        appear,
+      }}
+    >
+      <DialogTitle className={classes.title}>
+        {fullScreen ? <AppBar onCancel={handleClose} title={title} /> : title}
+      </DialogTitle>
+      <DialogContent className={classes.content}>
+        <Field name="name">
+          {({ input }) => (
+            <TextField
+              autoFocus={!edit && (!ios || !window.cordova)}
+              fullWidth
+              inputRef={nameRef}
+              margin="normal"
+              placeholder={intl.formatMessage(messages.label)}
+              {...input}
+            />
           )}
-        </DialogTitle>
-        <DialogContent className={classes.content}>
-          <Field name="name">
-            {({ input }) => (
-              <TextField
-                autoFocus={!edit && (!ios || !window.cordova)}
-                fullWidth
-                inputRef={this.nameRef}
-                margin="normal"
-                placeholder={intl.formatMessage(messages.label)}
-                {...input}
+        </Field>
+
+        <Grid container>
+          <Grid item xs={6}>
+            <FormControl component="fieldset" margin="normal">
+              <FormLabel component="legend">
+                <FormattedMessage defaultMessage="Sex" id="player.form.sex" />
+              </FormLabel>
+              <FormControlLabel
+                control={
+                  <Field name="sex" type="radio">
+                    {({
+                      input: { checked, name, onChange, value, ...inputProps },
+                    }) => (
+                      <Radio
+                        checked={checked}
+                        color="primary"
+                        inputProps={inputProps}
+                        name={name}
+                        onChange={onChange}
+                        value={value}
+                      />
+                    )}
+                  </Field>
+                }
+                label={<GenderMale className={classes.icon} />}
+                value={MALE}
               />
-            )}
-          </Field>
-
-          <Grid container>
-            <Grid item xs={6}>
-              <FormControl component="fieldset" margin="normal">
-                <FormLabel component="legend">
-                  <FormattedMessage defaultMessage="Sex" id="player.form.sex" />
-                </FormLabel>
-                <FormControlLabel
-                  control={
-                    <Field name="sex" type="radio">
-                      {({
-                        input: {
-                          checked,
-                          name,
-                          onChange,
-                          value,
-                          ...inputProps
-                        },
-                      }) => (
-                        <Radio
-                          checked={checked}
-                          color="primary"
-                          inputProps={inputProps}
-                          name={name}
-                          onChange={onChange}
-                          value={value}
-                        />
-                      )}
-                    </Field>
-                  }
-                  label={<GenderMale className={classes.icon} />}
-                  value={MALE}
-                />
-                <FormControlLabel
-                  control={
-                    <Field name="sex" type="radio">
-                      {({
-                        input: {
-                          checked,
-                          name,
-                          onChange,
-                          value,
-                          ...inputProps
-                        },
-                      }) => (
-                        <Radio
-                          checked={checked}
-                          color="primary"
-                          inputProps={inputProps}
-                          name={name}
-                          onChange={onChange}
-                          value={value}
-                        />
-                      )}
-                    </Field>
-                  }
-                  label={<GenderFemale className={classes.icon} />}
-                  value={FEMALE}
-                />
-              </FormControl>
-            </Grid>
-
-            <Grid item xs={6}>
-              <FormControl margin="normal">
-                <FormLabel>
-                  <FormattedMessage
-                    defaultMessage="Color"
-                    id="player.form.color"
-                  />
-                </FormLabel>
-                <Field name="color">
-                  {({ input }) => <ColorPicker {...input} />}
-                </Field>
-              </FormControl>
-            </Grid>
+              <FormControlLabel
+                control={
+                  <Field name="sex" type="radio">
+                    {({
+                      input: { checked, name, onChange, value, ...inputProps },
+                    }) => (
+                      <Radio
+                        checked={checked}
+                        color="primary"
+                        inputProps={inputProps}
+                        name={name}
+                        onChange={onChange}
+                        value={value}
+                      />
+                    )}
+                  </Field>
+                }
+                label={<GenderFemale className={classes.icon} />}
+                value={FEMALE}
+              />
+            </FormControl>
           </Grid>
-        </DialogContent>
-        {!fullScreen && (
-          <DialogActions>
-            <Button color="primary" onClick={this.handleClose}>
-              <FormattedMessage
-                defaultMessage="Cancel"
-                id="player.form.cancel"
-              />
-            </Button>
-            <Button color="primary" type="submit">
-              <FormattedMessage defaultMessage="Save" id="player.form.save" />
-            </Button>
-          </DialogActions>
-        )}
-      </Dialog>
-    );
-  }
-}
+
+          <Grid item xs={6}>
+            <FormControl margin="normal">
+              <FormLabel>
+                <FormattedMessage
+                  defaultMessage="Color"
+                  id="player.form.color"
+                />
+              </FormLabel>
+              <Field name="color">
+                {({ input }) => <ColorPicker {...input} />}
+              </Field>
+            </FormControl>
+          </Grid>
+        </Grid>
+      </DialogContent>
+      {!fullScreen && (
+        <DialogActions>
+          <Button color="primary" onClick={handleClose}>
+            <FormattedMessage defaultMessage="Cancel" id="player.form.cancel" />
+          </Button>
+          <Button color="primary" type="submit">
+            <FormattedMessage defaultMessage="Save" id="player.form.save" />
+          </Button>
+        </DialogActions>
+      )}
+    </Dialog>
+  );
+};
 
 PlayerDialog.propTypes = {
   edit: PropTypes.bool,
-  fullScreen: PropTypes.bool.isRequired,
   initialValues: PropTypes.shape({
     color: PropTypes.string.isRequired,
     id: PropTypes.string,
@@ -328,8 +301,4 @@ PlayerDialog.defaultProps = {
   open: false,
 };
 
-export default compose(
-  withMobileDialog({ breakpoint: 'md' }),
-  injectIntl,
-  withStyles(styles),
-)(PlayerDialog);
+export default injectIntl(PlayerDialog);
