@@ -1,6 +1,6 @@
 import React, { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
-import { IconButton, RootRef } from '@material-ui/core';
+import { IconButton } from '@material-ui/core';
 import Hammer from 'hammerjs';
 
 class CounterButton extends Component {
@@ -41,11 +41,7 @@ class CounterButton extends Component {
   render() {
     const { onClick, ...rest } = this.props;
 
-    return (
-      <RootRef rootRef={this.buttonRef}>
-        <IconButton {...rest} />
-      </RootRef>
-    );
+    return <IconButton ref={this.buttonRef} {...rest} />;
   }
 }
 
