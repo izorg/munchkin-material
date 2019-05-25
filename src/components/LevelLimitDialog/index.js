@@ -21,6 +21,7 @@ const mapStateToProps = createStructuredSelector({
         if (epic) {
           return EPIC_MUNCHKIN_LIMIT;
         }
+
         return DEFAULT_MUNCHKIN_LIMIT;
       }
 
