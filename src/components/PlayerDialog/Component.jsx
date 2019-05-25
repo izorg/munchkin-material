@@ -179,8 +179,6 @@ const PlayerDialog = ({
             {({ handleSubmit }) => <form onSubmit={handleSubmit} {...props} />}
           </FinalForm>
         ),
-        initialValues: initialValuesRef.current,
-        onSubmit,
       }}
       TransitionComponent={Transition}
       TransitionProps={{
