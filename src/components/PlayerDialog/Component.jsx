@@ -7,7 +7,6 @@ import {
   intlShape,
 } from 'react-intl';
 import { Field, Form as FinalForm } from 'react-final-form';
-import { shouldUpdate } from 'recompose';
 import PropTypes from 'prop-types';
 import {
   Button,
@@ -28,7 +27,6 @@ import {
 import { useTheme } from '@material-ui/core/styles';
 import { GenderFemale, GenderMale } from 'mdi-material-ui';
 import { FEMALE, MALE } from 'munchkin-core';
-import { stubFalse } from 'lodash/fp';
 
 import { ios } from '../../utils/platforms';
 import { sexProp } from '../../utils/propTypes';
@@ -90,18 +88,6 @@ const messages = defineMessages({
 
 let appear = false;
 
-const FormComponent = shouldUpdate(stubFalse)(
-  ({ initialValues, onSubmit, ...rest }) => (
-    <FinalForm
-      initialValues={initialValues}
-      onSubmit={onSubmit}
-      subscription={{ submitting: true }}
-    >
-      {({ handleSubmit }) => <form onSubmit={handleSubmit} {...rest} />}
-    </FinalForm>
-  ),
-);
-
 const PlayerDialog = ({
   edit,
   initialValues,
@@ -119,6 +105,12 @@ const PlayerDialog = ({
 
   const nameRef = useRef(null);
   const focusTimeoutRef = useRef(null);
+
+  const initialValuesRef = useRef();
+
+  if (open) {
+    initialValuesRef.current = initialValues;
+  }
 
   useEffect(() => {
     appear = true;
@@ -178,8 +170,16 @@ const PlayerDialog = ({
       onEntered={handleEntered}
       open={open}
       PaperProps={{
-        component: FormComponent,
-        initialValues,
+        component: (props) => (
+          <FinalForm
+            initialValues={initialValuesRef.current}
+            onSubmit={onSubmit}
+            subscription={{ submitting: true }}
+          >
+            {({ handleSubmit }) => <form onSubmit={handleSubmit} {...props} />}
+          </FinalForm>
+        ),
+        initialValues: initialValuesRef.current,
         onSubmit,
       }}
       TransitionComponent={Transition}
