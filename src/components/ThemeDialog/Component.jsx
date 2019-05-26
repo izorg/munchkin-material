@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { compose, withProps } from 'recompose';
 import { createSelector, createStructuredSelector } from 'reselect';
@@ -10,9 +10,9 @@ import {
   DialogContent,
   DialogTitle,
   FormControlLabel,
+  makeStyles,
   Radio,
   RadioGroup,
-  withStyles,
 } from '@material-ui/core';
 import { noop, sortBy } from 'lodash/fp';
 
@@ -30,92 +30,76 @@ const optionsSelector = createSelector(
     ),
 );
 
-const styles = {
-  content: {
-    paddingBottom: 1,
+const useStyles = makeStyles(
+  {
+    content: {
+      paddingBottom: 1,
+    },
   },
-};
+  { name: 'ThemeDialog' },
+);
 
-class ThemeDialog extends Component {
-  constructor(props) {
-    super(props);
+const ThemeDialog = ({ onChange, onClose, onSubmit, open, options, theme }) => {
+  const classes = useStyles();
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleTypeChange = this.handleTypeChange.bind(this);
-  }
-
-  handleChange(event, id) {
-    const { onChange, theme } = this.props;
-
+  const handleChange = (event, id) => {
     onChange({
       ...theme,
       id,
     });
-  }
+  };
 
-  handleSubmit(event) {
-    const { onSubmit, theme } = this.props;
-
+  const handleSubmit = (event) => {
     event.preventDefault();
 
     onSubmit(theme);
-  }
+  };
 
-  handleTypeChange(event, checked) {
-    const { onChange, theme } = this.props;
-
+  const handleTypeChange = (event, checked) => {
     onChange({
       ...theme,
       type: checked ? 'dark' : 'light',
     });
-  }
+  };
 
-  render() {
-    const { classes, onClose, open, options, theme } = this.props;
-
-    return (
-      <Dialog
-        onClose={onClose}
-        open={open}
-        PaperProps={{ component: 'form', onSubmit: this.handleSubmit }}
-      >
-        <DialogTitle>
-          <FormattedMessage defaultMessage="Theme" id="themeDialog.title" />
-        </DialogTitle>
-        <DialogContent className={classes.content}>
-          <RadioGroup name="id" onChange={this.handleChange} value={theme.id}>
-            {options.map((option) => (
-              <FormControlLabel
-                key={option.value}
-                control={
-                  <Radio
-                    autoFocus={option.value === theme.id}
-                    color="primary"
-                  />
-                }
-                label={option.label}
-                value={option.value}
-              />
-            ))}
-          </RadioGroup>
-          <FormControlLabel
-            checked={theme.type === 'dark'}
-            control={<Checkbox color="primary" name="type" />}
-            label={
-              <FormattedMessage defaultMessage="Dark" id="themeDialog.dark" />
-            }
-            onChange={this.handleTypeChange}
-          />
-        </DialogContent>
-        <DialogActions>
-          <CancelButton onClick={onClose} />
-          <SubmitButton />
-        </DialogActions>
-      </Dialog>
-    );
-  }
-}
+  return (
+    <Dialog
+      onClose={onClose}
+      open={open}
+      PaperProps={{ component: 'form', onSubmit: handleSubmit }}
+    >
+      <DialogTitle>
+        <FormattedMessage defaultMessage="Theme" id="themeDialog.title" />
+      </DialogTitle>
+      <DialogContent className={classes.content}>
+        <RadioGroup name="id" onChange={handleChange} value={theme.id}>
+          {options.map((option) => (
+            <FormControlLabel
+              key={option.value}
+              control={
+                <Radio autoFocus={option.value === theme.id} color="primary" />
+              }
+              label={option.label}
+              value={option.value}
+            />
+          ))}
+        </RadioGroup>
+        <FormControlLabel
+          checked={theme.type === 'dark'}
+          control={<Checkbox color="primary" name="type" />}
+          label={
+            <FormattedMessage defaultMessage="Dark" id="themeDialog.dark" />
+          }
+          onChange={handleTypeChange}
+        />
+      </DialogContent>
+      <DialogActions>
+        <CancelButton onClick={onClose} />
+        <SubmitButton />
+      </DialogActions>
+    </Dialog>
+  );
+};
 
 ThemeDialog.propTypes = {
   onChange: PropTypes.func.isRequired,
@@ -147,5 +131,4 @@ export default compose(
       options: optionsSelector,
     }),
   ),
-  withStyles(styles),
 )(ThemeDialog);
