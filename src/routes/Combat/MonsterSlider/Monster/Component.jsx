@@ -1,32 +1,34 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
-import { Typography, withStyles } from '@material-ui/core';
+import { makeStyles, Typography } from '@material-ui/core';
 import { noop } from 'lodash/fp';
 
 import Counter from '../../Counter';
 
-const styles = {
-  monster: {
-    padding: 8,
-    textAlign: 'center',
-  },
+const useStyles = makeStyles(
+  {
+    monster: {
+      padding: 8,
+      textAlign: 'center',
+    },
 
-  stats: {
-    display: 'flex',
-  },
+    stats: {
+      display: 'flex',
+    },
 
-  item: {
-    flex: 1,
-  },
+    item: {
+      flex: 1,
+    },
 
-  name: {
-    margin: '0 0 8px',
+    name: {
+      margin: '0 0 8px',
+    },
   },
-};
+  { name: 'CombatMonster' },
+);
 
 const CombatMonster = ({
-  classes,
   bonus,
   id,
   level,
@@ -35,37 +37,49 @@ const CombatMonster = ({
   onLevelDecrement,
   onLevelIncrement,
   title,
-}) => (
-  <div className={classes.monster}>
-    <Typography align="center" className={classes.name} component="div" noWrap>
-      {title}
-    </Typography>
+}) => {
+  const classes = useStyles();
 
-    <div className={classes.stats}>
-      <Counter
-        className={classes.item}
-        onDecrement={() => onLevelDecrement(id)}
-        onIncrement={() => onLevelIncrement(id)}
-        title={
-          <FormattedMessage defaultMessage="Level" id="combat.monster.level" />
-        }
-        value={level}
-      />
-      <Counter
-        className={classes.item}
-        onDecrement={() => onBonusDecrement(id)}
-        onIncrement={() => onBonusIncrement(id)}
-        title={
-          <FormattedMessage
-            defaultMessage="Modifier"
-            id="combat.monster.modifier"
-          />
-        }
-        value={bonus}
-      />
+  return (
+    <div className={classes.monster}>
+      <Typography
+        align="center"
+        className={classes.name}
+        component="div"
+        noWrap
+      >
+        {title}
+      </Typography>
+
+      <div className={classes.stats}>
+        <Counter
+          className={classes.item}
+          onDecrement={() => onLevelDecrement(id)}
+          onIncrement={() => onLevelIncrement(id)}
+          title={
+            <FormattedMessage
+              defaultMessage="Level"
+              id="combat.monster.level"
+            />
+          }
+          value={level}
+        />
+        <Counter
+          className={classes.item}
+          onDecrement={() => onBonusDecrement(id)}
+          onIncrement={() => onBonusIncrement(id)}
+          title={
+            <FormattedMessage
+              defaultMessage="Modifier"
+              id="combat.monster.modifier"
+            />
+          }
+          value={bonus}
+        />
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 CombatMonster.propTypes = {
   bonus: PropTypes.number.isRequired,
@@ -86,4 +100,4 @@ CombatMonster.defaultProps = {
   title: '',
 };
 
-export default withStyles(styles)(CombatMonster);
+export default CombatMonster;

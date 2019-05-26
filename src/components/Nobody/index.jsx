@@ -1,41 +1,48 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
-import { Typography, withStyles } from '@material-ui/core';
+import { makeStyles, Typography } from '@material-ui/core';
 import { AccountCircle } from 'mdi-material-ui';
 
-const styles = (theme) => ({
-  nobody: {
-    alignItems: 'center',
-    color: theme.palette.text.hint,
-    display: 'flex',
-    flex: 1,
-    flexDirection: 'column',
-    justifyContent: 'center',
-  },
+const useStyles = makeStyles(
+  (theme) => ({
+    nobody: {
+      alignItems: 'center',
+      color: theme.palette.text.hint,
+      display: 'flex',
+      flex: 1,
+      flexDirection: 'column',
+      justifyContent: 'center',
+    },
 
-  nobodyIcon: {
-    height: 96,
-    marginBottom: theme.spacing(2),
-    opacity: 0.2,
-    width: 96,
-  },
-});
-
-const Nobody = ({ classes }) => (
-  <div className={classes.nobody}>
-    <AccountCircle className={classes.nobodyIcon} />
-    <Typography
-      align="center"
-      color="inherit"
-      component="div"
-      variant="subtitle1"
-    >
-      <FormattedMessage
-        defaultMessage="No players in the list"
-        id="player.list.empty"
-      />
-    </Typography>
-  </div>
+    nobodyIcon: {
+      height: 96,
+      marginBottom: theme.spacing(2),
+      opacity: 0.2,
+      width: 96,
+    },
+  }),
+  { name: 'Nobody' },
 );
 
-export default withStyles(styles)(Nobody);
+const Nobody = () => {
+  const classes = useStyles();
+
+  return (
+    <div className={classes.nobody}>
+      <AccountCircle className={classes.nobodyIcon} />
+      <Typography
+        align="center"
+        color="inherit"
+        component="div"
+        variant="subtitle1"
+      >
+        <FormattedMessage
+          defaultMessage="No players in the list"
+          id="player.list.empty"
+        />
+      </Typography>
+    </div>
+  );
+};
+
+export default Nobody;

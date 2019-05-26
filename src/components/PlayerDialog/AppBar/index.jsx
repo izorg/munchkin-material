@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core';
 import { Check } from 'mdi-material-ui';
 import { noop } from 'lodash/fp';
 
@@ -9,27 +9,34 @@ import BackButton from '../../BackButton';
 import Title from '../../Title';
 import TopIconButton from '../../TopIconButton';
 
-const styles = {
-  leftButton: {
-    marginRight: 8,
+const useStyles = makeStyles(
+  {
+    leftButton: {
+      marginRight: 8,
+    },
+
+    title: {
+      marginLeft: 12,
+    },
   },
-
-  title: {
-    marginLeft: 12,
-  },
-};
-
-const PlayerFormScreenAppBarComponent = ({ classes, onCancel, title }) => (
-  <AppBar>
-    <BackButton className={classes.leftButton} onClick={onCancel} />
-
-    <Title className={classes.title}>{title}</Title>
-
-    <TopIconButton color="inherit" type="submit">
-      <Check />
-    </TopIconButton>
-  </AppBar>
+  { name: 'PlayerFormScreenAppBarComponent' },
 );
+
+const PlayerFormScreenAppBarComponent = ({ onCancel, title }) => {
+  const classes = useStyles();
+
+  return (
+    <AppBar>
+      <BackButton className={classes.leftButton} onClick={onCancel} />
+
+      <Title className={classes.title}>{title}</Title>
+
+      <TopIconButton color="inherit" type="submit">
+        <Check />
+      </TopIconButton>
+    </AppBar>
+  );
+};
 
 PlayerFormScreenAppBarComponent.propTypes = {
   onCancel: PropTypes.func,
@@ -41,4 +48,4 @@ PlayerFormScreenAppBarComponent.defaultProps = {
   title: null,
 };
 
-export default withStyles(styles)(PlayerFormScreenAppBarComponent);
+export default PlayerFormScreenAppBarComponent;

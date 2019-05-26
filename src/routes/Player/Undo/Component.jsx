@@ -1,20 +1,25 @@
 import React from 'react';
-import { withStyles } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core';
 
 import UndoSnackbar from '../../../components/UndoSnackbar';
 
-const styles = (theme) => ({
-  root: {
-    bottom: theme.spacing(11),
+const useStyles = makeStyles(
+  (theme) => ({
+    root: {
+      bottom: theme.spacing(11),
 
-    [theme.breakpoints.up('sm')]: {
-      bottom: theme.spacing(3.5),
+      [theme.breakpoints.up('sm')]: {
+        bottom: theme.spacing(3.5),
+      },
     },
-  },
-});
-
-const Undo = ({ classes, ...rest }) => (
-  <UndoSnackbar className={classes.root} {...rest} />
+  }),
+  { name: 'PlayerUndo' },
 );
 
-export default withStyles(styles)(Undo);
+const PlayerUndo = (props) => {
+  const classes = useStyles();
+
+  return <UndoSnackbar className={classes.root} {...props} />;
+};
+
+export default PlayerUndo;
