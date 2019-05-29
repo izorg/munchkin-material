@@ -61,6 +61,7 @@ const MenuSidebar = ({ className, collapsed }) => {
         className,
       )}
       data-screenshot="sidebar-menu"
+      square
     >
       <MuiThemeProvider theme={sidebarTheme}>
         <List />
