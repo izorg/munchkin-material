@@ -192,12 +192,12 @@ const PlayerDialog = ({
         <Field name="name">
           {({ input }) => (
             <TextField
+              {...input}
               autoFocus={!edit && (!ios || !window.cordova)}
               fullWidth
               inputRef={nameRef}
               margin="normal"
               placeholder={intl.formatMessage(messages.label)}
-              {...input}
             />
           )}
         </Field>
