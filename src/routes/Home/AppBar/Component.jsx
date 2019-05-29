@@ -5,9 +5,8 @@ import {
   injectIntl,
   intlShape,
 } from 'react-intl';
-import { compose } from 'recompose';
 import PropTypes from 'prop-types';
-import { Tooltip, withStyles } from '@material-ui/core';
+import { Tooltip } from '@material-ui/core';
 import { Check, Close, Delete, FlagCheckered, Pencil } from 'mdi-material-ui';
 import { noop } from 'lodash/fp';
 
@@ -29,22 +28,7 @@ const messages = defineMessages({
   },
 });
 
-const styles = (theme) => ({
-  leftButton: {
-    marginRight: 8,
-
-    [theme.breakpoints.down('sm')]: {
-      marginRight: 12,
-    },
-  },
-
-  title: {
-    marginLeft: 12,
-  },
-});
-
 const HomeAppBar = ({
-  classes,
   empty,
   intl,
   mode,
@@ -78,26 +62,24 @@ const HomeAppBar = ({
   return (
     <AppBar color={multiMode ? 'default' : 'primary'}>
       {multiMode ? (
-        <TopIconButton
-          className={classes.leftButton}
-          onClick={onMultiSelectDeactivate}
-        >
+        <TopIconButton edge="start" onClick={onMultiSelectDeactivate}>
           <Close />
         </TopIconButton>
       ) : (
-        <MenuButton className={classes.leftButton} color="inherit" />
+        <MenuButton color="inherit" edge="start" />
       )}
-      <Title className={classes.title}>{title}</Title>
+      <Title>{title}</Title>
 
-      {(singleMode || (!mode && !empty)) && <ResetButton />}
+      {(singleMode || (!mode && !empty)) && <ResetButton edge="end" />}
 
-      {(!mode || singleMode) && <DiceButton color={buttonColor} />}
+      {(!mode || singleMode) && <DiceButton color={buttonColor} edge="end" />}
 
       {!empty && !multiMode && !singleMode && (
         <Tooltip title={editTitle}>
           <TopIconButton
             aria-label={editTitle}
             color={buttonColor}
+            edge="end"
             onClick={() => onToggleEditClick(mode)}
           >
             {editMode ? <Check /> : <Pencil />}
@@ -106,13 +88,16 @@ const HomeAppBar = ({
       )}
 
       {multiMode && (
-        <TopIconButton onClick={() => onPlayersDelete(selectedPlayerIds)}>
+        <TopIconButton
+          edge="end"
+          onClick={() => onPlayersDelete(selectedPlayerIds)}
+        >
           <Delete />
         </TopIconButton>
       )}
 
       {singleMode && (
-        <TopIconButton color="inherit" onClick={onTurnFinish}>
+        <TopIconButton color="inherit" edge="end" onClick={onTurnFinish}>
           <FlagCheckered />
         </TopIconButton>
       )}
@@ -143,7 +128,4 @@ HomeAppBar.defaultProps = {
   singleMode: false,
 };
 
-export default compose(
-  injectIntl,
-  withStyles(styles),
-)(HomeAppBar);
+export default injectIntl(HomeAppBar);

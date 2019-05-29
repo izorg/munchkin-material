@@ -1,25 +1,34 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { AppBar, makeStyles, Toolbar } from '@material-ui/core';
-import clsx from 'clsx';
 
 const useStyles = makeStyles(
   (theme) => ({
-    appBar: {
-      paddingLeft: 4,
-      paddingRight: 4,
+    root: {
       transition: theme.transitions.create(['background-color'], {
         duration: theme.transitions.duration.short,
         easing: theme.transitions.easing.sharp,
       }),
+    },
+
+    gutters: {
+      paddingLeft: theme.spacing(2),
+      paddingRight: theme.spacing(2),
+
+      '@supports (padding: max(0px))': {
+        paddingLeft: `max(${theme.spacing(2)}px, env(safe-area-inset-left))`,
+        paddingRight: `max(${theme.spacing(2)}px, env(safe-area-inset-right))`,
+      },
 
       [theme.breakpoints.up('sm')]: {
-        paddingLeft: 12,
-        paddingRight: 12,
+        paddingLeft: theme.spacing(3),
+        paddingRight: theme.spacing(3),
 
         '@supports (padding: max(0px))': {
-          paddingLeft: 'max(12px, env(safe-area-inset-left) - 12px)',
-          paddingRight: 'max(12px, env(safe-area-inset-right) - 12px)',
+          paddingLeft: `max(${theme.spacing(3)}px, env(safe-area-inset-left))`,
+          paddingRight: `max(${theme.spacing(
+            3,
+          )}px, env(safe-area-inset-right))`,
         },
       },
     },
@@ -27,17 +36,19 @@ const useStyles = makeStyles(
   { name: 'TopAppBar' },
 );
 
-const TopAppBar = ({ children, className, ...props }) => {
+const TopAppBar = ({ children, ...props }) => {
   const classes = useStyles();
 
   return (
     <AppBar
-      className={clsx(className, classes.appBar)}
+      classes={{
+        root: classes.root,
+      }}
       color="primary"
       position="static"
       {...props}
     >
-      <Toolbar disableGutters>{children}</Toolbar>
+      <Toolbar classes={{ gutters: classes.gutters }}>{children}</Toolbar>
     </AppBar>
   );
 };

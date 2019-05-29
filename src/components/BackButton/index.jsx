@@ -19,7 +19,7 @@ const BackButton = (props) => {
   const classes = useStyles();
 
   return (
-    <TopIconButton color="inherit" {...props}>
+    <TopIconButton color="inherit" edge="start" {...props}>
       {ios ? <ChevronLeft className={classes.iosIcon} /> : <ArrowLeft />}
     </TopIconButton>
   );

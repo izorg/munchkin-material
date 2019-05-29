@@ -1,25 +1,41 @@
 import React, { forwardRef } from 'react';
 import { IconButton, makeStyles } from '@material-ui/core';
-import clsx from 'clsx';
 
 const useStyles = makeStyles(
   (theme) => ({
     root: {
-      [theme.breakpoints.down('sm')]: {
-        margin: 4,
-        padding: 8,
+      padding: 8,
+
+      [theme.breakpoints.up('md')]: {
+        padding: 12,
+      },
+    },
+
+    edgeStart: {
+      marginLeft: -8,
+
+      [theme.breakpoints.up('md')]: {
+        marginLeft: -12,
+      },
+    },
+
+    edgeEnd: {
+      marginLeft: 16,
+      marginRight: -8,
+
+      [theme.breakpoints.up('md')]: {
+        marginLeft: 12,
+        marginRight: -12,
       },
     },
   }),
   { name: 'TopIconButton' },
 );
 
-const TopIconButton = forwardRef(({ className, ...rest }, ref) => {
+const TopIconButton = forwardRef((props, ref) => {
   const classes = useStyles();
 
-  return (
-    <IconButton ref={ref} className={clsx(classes.root, className)} {...rest} />
-  );
+  return <IconButton ref={ref} classes={classes} {...props} />;
 });
 
 export default TopIconButton;

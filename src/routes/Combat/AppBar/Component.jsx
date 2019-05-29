@@ -1,7 +1,6 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core';
 import { FlagCheckered } from 'mdi-material-ui';
 import { noop } from 'lodash/fp';
 
@@ -11,46 +10,21 @@ import DiceIconButton from '../../../components/dice/Button';
 import Title from '../../../components/Title';
 import TopIconButton from '../../../components/TopIconButton';
 
-const useStyles = makeStyles(
-  (theme) => ({
-    leftButton: {
-      marginRight: 8,
+const CombatAppBar = ({ onBack, onFinish }) => (
+  <AppBar>
+    <BackButton data-screenshots="combat-back-button" onClick={onBack} />
 
-      [theme.breakpoints.down('sm')]: {
-        marginRight: 12,
-      },
-    },
+    <Title>
+      <FormattedMessage defaultMessage="Combat" id="combat" />
+    </Title>
 
-    title: {
-      marginLeft: 12,
-    },
-  }),
-  { name: 'CombatAppBar' },
+    <DiceIconButton color="inherit" edge="end" />
+
+    <TopIconButton color="inherit" edge="end" onClick={onFinish}>
+      <FlagCheckered />
+    </TopIconButton>
+  </AppBar>
 );
-
-const CombatAppBar = ({ onBack, onFinish }) => {
-  const classes = useStyles();
-
-  return (
-    <AppBar>
-      <BackButton
-        className={classes.leftButton}
-        data-screenshots="combat-back-button"
-        onClick={onBack}
-      />
-
-      <Title className={classes.title}>
-        <FormattedMessage defaultMessage="Combat" id="combat" />
-      </Title>
-
-      <DiceIconButton color="inherit" />
-
-      <TopIconButton color="inherit" onClick={onFinish}>
-        <FlagCheckered />
-      </TopIconButton>
-    </AppBar>
-  );
-};
 
 CombatAppBar.propTypes = {
   onBack: PropTypes.func,
