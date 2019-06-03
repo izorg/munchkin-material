@@ -1,10 +1,8 @@
-import React from 'react';
 import deepmerge from 'deepmerge';
 import brown from '@material-ui/core/colors/brown';
 import orange from '@material-ui/core/colors/orange';
 import createBreakpoints from '@material-ui/core/styles/createBreakpoints';
 import createPalette from '@material-ui/core/styles/createPalette';
-import { RadioboxBlank, RadioboxMarked } from 'mdi-material-ui';
 
 const breakpoints = createBreakpoints({});
 
@@ -42,13 +40,6 @@ export default (type) => {
       },
       secondary: {
         main: orange.A400,
-      },
-    },
-
-    props: {
-      MuiRadio: {
-        checkedIcon: <RadioboxMarked />,
-        icon: <RadioboxBlank />,
       },
     },
 
