@@ -2,7 +2,7 @@ const path = require('path');
 
 const webpack = require('webpack');
 
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const WebpackNotifierPlugin = require('webpack-notifier');
