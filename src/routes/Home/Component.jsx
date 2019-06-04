@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
-import { makeStyles, Zoom } from '@material-ui/core';
+import { makeStyles, Paper, Zoom } from '@material-ui/core';
 import clsx from 'clsx';
 
 import LevelLimitDialog from '../../components/LevelLimitDialog';
@@ -25,6 +25,13 @@ const useStyles = makeStyles(
       height: '100%',
     },
 
+    single: {
+      backgroundColor:
+        theme.palette.type === 'dark'
+          ? theme.palette.background.default
+          : theme.palette.background.paper,
+    },
+
     main: {
       display: 'flex',
       flex: 1,
@@ -32,11 +39,23 @@ const useStyles = makeStyles(
       overflow: 'hidden',
     },
 
-    single: {
-      backgroundColor:
-        theme.palette.type === 'dark'
-          ? theme.palette.background.default
-          : theme.palette.background.paper,
+    menu: {
+      display: 'none',
+      overflowX: 'hidden',
+      padding: 0,
+      transition: theme.transitions.create(['padding', 'width'], {
+        duration: theme.transitions.duration.short,
+      }),
+      width: theme.spacing(40),
+
+      [theme.breakpoints.up('md')]: {
+        display: 'block',
+      },
+    },
+
+    menuCollapsed: {
+      padding: theme.spacing(0, 1),
+      width: theme.spacing(9),
     },
 
     content: {
@@ -69,7 +88,15 @@ const useStyles = makeStyles(
   { name: 'Home' },
 );
 
-const Home = ({ empty, match, menu, mode, playerCount, singleMode }) => {
+const Home = ({
+  empty,
+  match,
+  menu,
+  menuCollapsed,
+  mode,
+  playerCount,
+  singleMode,
+}) => {
   const contentRef = useRef();
   const playerCountRef = useRef(playerCount);
 
@@ -104,7 +131,16 @@ const Home = ({ empty, match, menu, mode, playerCount, singleMode }) => {
       <div className={clsx(classes.root, { [classes.single]: singleMode })}>
         <AppBar mode={mode} singleMode={singleMode} />
         <main className={classes.main}>
-          <MenuSidebar />
+          <Paper
+            className={clsx(
+              classes.menu,
+              menuCollapsed && classes.menuCollapsed,
+            )}
+            data-screenshot="sidebar-menu"
+            square
+          >
+            <MenuSidebar />
+          </Paper>
           {content}
         </main>
       </div>
@@ -126,6 +162,7 @@ Home.propTypes = {
   empty: PropTypes.bool,
   match: PropTypes.object, // eslint-disable-line react/forbid-prop-types
   menu: PropTypes.bool,
+  menuCollapsed: PropTypes.bool,
   mode: modeType,
   playerCount: PropTypes.number,
   singleMode: PropTypes.bool,
@@ -135,6 +172,7 @@ Home.defaultProps = {
   empty: false,
   match: null,
   menu: false,
+  menuCollapsed: true,
   mode: undefined,
   playerCount: 0,
   singleMode: false,

@@ -21,6 +21,7 @@ const mapStateToProps = createStructuredSelector({
     isEmpty,
   ),
   menu,
+  menuCollapsed: get(['app', 'menuCollapsed']),
   mode,
   playerCount: flow(
     get('playerList'),
