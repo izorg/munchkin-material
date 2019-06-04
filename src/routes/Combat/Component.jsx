@@ -163,4 +163,6 @@ Combat.defaultProps = {
   onPlayerBonusChange: noop,
 };
 
+Combat.displayName = 'Combat';
+
 export default Combat;

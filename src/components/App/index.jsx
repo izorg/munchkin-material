@@ -45,4 +45,6 @@ App.propTypes = {
   store: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
 };
 
+App.displayName = 'App';
+
 export default hot(App);

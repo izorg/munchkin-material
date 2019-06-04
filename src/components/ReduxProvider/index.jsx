@@ -17,4 +17,6 @@ ReduxProvider.propTypes = {
   store: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
 };
 
+ReduxProvider.displayName = 'ReduxProvider';
+
 export default ReduxProvider;

@@ -178,4 +178,6 @@ Home.defaultProps = {
   singleMode: false,
 };
 
+Home.displayName = 'Home';
+
 export default Home;

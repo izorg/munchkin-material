@@ -73,6 +73,8 @@ Player.defaultProps = {
   match: null,
 };
 
+Player.displayName = 'Player';
+
 export default compose(
   hot,
   withStyles(styles),
