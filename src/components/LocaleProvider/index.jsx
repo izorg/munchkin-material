@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { Helmet } from 'react-helmet';
 import { IntlProvider } from 'react-intl';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -29,15 +28,16 @@ const LocaleProvider = ({ locale: localeProp, ...rest }) => {
     })();
   }, [localeProp]);
 
+  useEffect(() => {
+    document.querySelector('html').lang = locale;
+  }, [locale]);
+
   if (!messages) {
     return null;
   }
 
   return (
     <>
-      <Helmet>
-        <html lang={locale} />
-      </Helmet>
       <IntlProvider
         {...rest}
         key={locale}
