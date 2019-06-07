@@ -6,7 +6,7 @@ import {
   injectIntl,
   intlShape,
 } from 'react-intl';
-import { Field, Form as FinalForm } from 'react-final-form';
+import { Field, Form } from 'react-final-form';
 import PropTypes from 'prop-types';
 import {
   Button,
@@ -171,13 +171,13 @@ const PlayerDialog = ({
       open={open}
       PaperProps={{
         component: (props) => (
-          <FinalForm
+          <Form
             initialValues={initialValuesRef.current}
             onSubmit={onSubmit}
             subscription={{ submitting: true }}
           >
             {({ handleSubmit }) => <form onSubmit={handleSubmit} {...props} />}
-          </FinalForm>
+          </Form>
         ),
       }}
       TransitionComponent={Transition}
