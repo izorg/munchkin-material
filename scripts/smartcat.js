@@ -60,11 +60,7 @@ const getTranslation = async (taskId) => {
 
 const updateDocument = (filePath) => {
   exec(
-    `curl -X PUT --user ${config.accountId}:${
-      config.key
-    } -F "file=@${filePath}" ${
-      axios.defaults.baseURL
-    }/document/update?documentId=${documentId}`,
+    `curl -X PUT --user ${config.accountId}:${config.key} -F "file=@${filePath}" ${axios.defaults.baseURL}/document/update?documentId=${documentId}`,
     (error, stdout) => {
       if (error) {
         console.log('error', error);
