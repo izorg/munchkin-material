@@ -1,10 +1,8 @@
-import React, { lazy } from 'react';
+import React, { lazy, Suspense } from 'react';
 
 import * as modes from '../../routes/Home/modes';
 
 import DialogRoute from '../DialogRoute';
-import DiceDialog from '../dice/Dialog';
-import PlayerDialog from '../PlayerDialog';
 
 const Home = lazy(() =>
   import(/* webpackChunkName: "home" */ '../../routes/Home'),
@@ -18,6 +16,14 @@ const Combat = lazy(() =>
   import(/* webpackChunkName: "combat" */ '../../routes/Combat'),
 );
 
+const DiceDialog = lazy(() =>
+  import(/* webpackChunkName: "dice-dialog" */ '../dice/Dialog'),
+);
+
+const PlayerDialog = lazy(() =>
+  import(/* webpackChunkName: "player-dialog" */ '../PlayerDialog'),
+);
+
 const Root = () => (
   <>
     <DialogRoute
@@ -27,8 +33,13 @@ const Root = () => (
     <DialogRoute component={Player} path="/player/:id" />
     <DialogRoute component={Combat} path="/player/:id/combat" />
 
-    <DiceDialog />
-    <PlayerDialog />
+    <Suspense fallback={null}>
+      <DiceDialog />
+    </Suspense>
+
+    <Suspense fallback={null}>
+      <PlayerDialog />
+    </Suspense>
   </>
 );
 
