@@ -9,6 +9,7 @@ import RestorePurchasesItem from './RestorePurchasesItem';
 import ShareItem from './ShareItem';
 import SingleModeItem from './SingleModeItem';
 import ThemeItem from './ThemeItem';
+import TranslateItem from './TranslateItem';
 import VersionItem from './VersionItem';
 
 const MenuList = () => (
@@ -20,6 +21,7 @@ const MenuList = () => (
     <RateItem />
     <ShareItem />
     <RestorePurchasesItem />
+    <TranslateItem />
     <PrivacyItem />
     <VersionItem />
   </List>
