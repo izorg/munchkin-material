@@ -1,9 +1,17 @@
 export const APPLY_UPDATE = 'update/APPLY';
 export const SHOW_UPDATE = 'update/SHOW';
 
+export const applyUpdate = () => ({
+  type: APPLY_UPDATE,
+});
+
+export const showUpdate = () => ({
+  type: SHOW_UPDATE,
+});
+
 const initialState = false;
 
-export default (state = initialState, action) => {
+const reducer = (state = initialState, action) => {
   switch (action.type) {
     case APPLY_UPDATE: {
       return false;
@@ -19,10 +27,4 @@ export default (state = initialState, action) => {
   }
 };
 
-export const applyUpdate = () => ({
-  type: APPLY_UPDATE,
-});
-
-export const showUpdate = () => ({
-  type: SHOW_UPDATE,
-});
+export default reducer;

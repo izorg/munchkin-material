@@ -2,12 +2,13 @@ import { addLocaleData } from 'react-intl';
 
 export const DE = 'de';
 export const EN = 'en';
+export const ES = 'es';
 export const FR = 'fr';
 export const IT = 'it';
 export const RU = 'ru';
 export const UK = 'uk';
 
-export const availableLocales = [DE, EN, FR, IT, RU, UK];
+const availableLocales = { DE, EN, ES, FR, IT, RU, UK };
 
 const defaultLocale = EN;
 
@@ -16,7 +17,9 @@ const LANGUAGE_LENGTH = 2;
 export const getLocale = () => {
   const locale = navigator.language.substr(0, LANGUAGE_LENGTH);
 
-  return availableLocales.includes(locale) ? locale : defaultLocale;
+  return Object.values(availableLocales).includes(locale)
+    ? locale
+    : defaultLocale;
 };
 
 let allMessages = {};
@@ -34,6 +37,12 @@ const loaders = {
     Promise.all([
       import(/* webpackChunkName: "locales/en" */ 'react-intl/locale-data/en'),
       import(/* webpackChunkName: "locales/en" */ '../languages/en.json'),
+    ]),
+
+  [ES]: () =>
+    Promise.all([
+      import(/* webpackChunkName: "locales/es" */ 'react-intl/locale-data/es'),
+      import(/* webpackChunkName: "locales/es" */ '../languages/es.json'),
     ]),
 
   [FR]: () =>

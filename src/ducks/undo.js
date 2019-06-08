@@ -7,7 +7,7 @@ export const UNDO_RESET_PLAYERS = 'app/UNDO_RESET_PLAYERS';
 
 const initialState = null;
 
-export default (state, action) => {
+const reducer = (state, action) => {
   switch (action.type) {
     case APPLY_UNDO: {
       return initialState;
@@ -39,3 +39,5 @@ export const setUndo = (undo) => ({
   type: SET_UNDO,
   undo,
 });
+
+export default reducer;

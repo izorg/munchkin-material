@@ -17,6 +17,82 @@ export const TOGGLE_MENU = 'app/TOGGLE_MENU';
 export const TOGGLE_PLAYER = 'app/TOGGLE_PLAYER';
 export const UNSELECT_ALL_PLAYERS = 'app/UNSELECT_ALL_PLAYERS';
 
+export const finishCombat = () => ({
+  type: FINISH_COMBAT,
+});
+
+export const setEpic = (epic = true) => ({
+  type: SET_EPIC,
+  epic,
+});
+
+export const setFullVersion = (fullVersion = true) => ({
+  type: SET_FULL_VERSION,
+  fullVersion,
+});
+
+export const setKeepAwake = (keepAwake) => ({
+  type: SET_KEEP_AWAKE,
+  keepAwake,
+});
+
+export const setLevelLimit = (levelLimit = true) => ({
+  type: SET_LEVEL_LIMIT,
+  levelLimit,
+});
+
+export const setLocale = (locale) => ({
+  type: SET_LOCALE,
+  locale,
+});
+
+export const setSingleMode = (singleMode) => async (dispatch, getState) => {
+  if (singleMode) {
+    let { singleModePlayerId } = getState().app;
+
+    if (!singleModePlayerId) {
+      const player = createPlayer();
+
+      dispatch(addPlayer(player));
+      dispatch({
+        type: SET_SINGLE_MODE_PLAYER,
+        id: player.id,
+      });
+
+      singleModePlayerId = player.id;
+    }
+
+    try {
+      await dispatch(startCombat(singleModePlayerId));
+
+      await dispatch({
+        type: SET_SINGLE_MODE,
+        singleMode,
+      });
+    } catch (error) {
+      // no full version
+    }
+  } else {
+    dispatch({
+      type: SET_SINGLE_MODE,
+      singleMode,
+    });
+  }
+};
+
+export const toggleMenu = () => ({
+  type: TOGGLE_MENU,
+});
+
+export const togglePlayer = (id) => ({
+  type: TOGGLE_PLAYER,
+  id,
+});
+
+export const unselectAllPlayers = () => ({
+  type: UNSELECT_ALL_PLAYERS,
+});
+
 const initialState = {
   combatFinished: false,
   epic: false,
@@ -30,7 +106,7 @@ const initialState = {
   singleModePlayerId: undefined,
 };
 
-export default (state = initialState, action) => {
+const reducer = (state = initialState, action) => {
   switch (action.type) {
     case FINISH_COMBAT:
       return {
@@ -130,78 +206,4 @@ export default (state = initialState, action) => {
   }
 };
 
-export const finishCombat = () => ({
-  type: FINISH_COMBAT,
-});
-
-export const setEpic = (epic = true) => ({
-  type: SET_EPIC,
-  epic,
-});
-
-export const setFullVersion = (fullVersion = true) => ({
-  type: SET_FULL_VERSION,
-  fullVersion,
-});
-
-export const setKeepAwake = (keepAwake) => ({
-  type: SET_KEEP_AWAKE,
-  keepAwake,
-});
-
-export const setLevelLimit = (levelLimit = true) => ({
-  type: SET_LEVEL_LIMIT,
-  levelLimit,
-});
-
-export const setLocale = (locale) => ({
-  type: SET_LOCALE,
-  locale,
-});
-
-export const setSingleMode = (singleMode) => async (dispatch, getState) => {
-  if (singleMode) {
-    let { singleModePlayerId } = getState().app;
-
-    if (!singleModePlayerId) {
-      const player = createPlayer();
-
-      dispatch(addPlayer(player));
-      dispatch({
-        type: SET_SINGLE_MODE_PLAYER,
-        id: player.id,
-      });
-
-      singleModePlayerId = player.id;
-    }
-
-    try {
-      await dispatch(startCombat(singleModePlayerId));
-
-      await dispatch({
-        type: SET_SINGLE_MODE,
-        singleMode,
-      });
-    } catch (error) {
-      // no full version
-    }
-  } else {
-    dispatch({
-      type: SET_SINGLE_MODE,
-      singleMode,
-    });
-  }
-};
-
-export const toggleMenu = () => ({
-  type: TOGGLE_MENU,
-});
-
-export const togglePlayer = (id) => ({
-  type: TOGGLE_PLAYER,
-  id,
-});
-
-export const unselectAllPlayers = () => ({
-  type: UNSELECT_ALL_PLAYERS,
-});
+export default reducer;

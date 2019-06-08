@@ -5,10 +5,6 @@ import PropTypes from 'prop-types';
 
 import { getLocale, getMessages, loadLocale } from '../../i18n';
 
-const mapStateToProps = (state) => ({
-  locale: state.app.locale,
-});
-
 const textComponent = ({ children }) => children;
 
 const LocaleProvider = ({ locale: localeProp, ...rest }) => {
@@ -37,15 +33,13 @@ const LocaleProvider = ({ locale: localeProp, ...rest }) => {
   }
 
   return (
-    <>
-      <IntlProvider
-        {...rest}
-        key={locale}
-        locale={locale}
-        messages={messages}
-        textComponent={textComponent}
-      />
-    </>
+    <IntlProvider
+      {...rest}
+      key={locale}
+      locale={locale}
+      messages={messages}
+      textComponent={textComponent}
+    />
   );
 };
 
@@ -57,4 +51,15 @@ LocaleProvider.defaultProps = {
   locale: getLocale(),
 };
 
-export default connect(mapStateToProps)(LocaleProvider);
+LocaleProvider.displayName = 'LocaleProvider';
+
+const mapStateToProps = (state) => ({
+  locale: state.app.locale,
+});
+
+const mapDispatchToProps = {};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(LocaleProvider);
