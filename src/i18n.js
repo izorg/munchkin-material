@@ -5,10 +5,11 @@ export const EN = 'en';
 export const ES = 'es';
 export const FR = 'fr';
 export const IT = 'it';
+export const PL = 'pl';
 export const RU = 'ru';
 export const UK = 'uk';
 
-const availableLocales = { DE, EN, ES, FR, IT, RU, UK };
+const availableLocales = { DE, EN, ES, FR, IT, PL, RU, UK };
 
 const defaultLocale = EN;
 
@@ -55,6 +56,12 @@ const loaders = {
     Promise.all([
       import(/* webpackChunkName: "locales/fr" */ 'react-intl/locale-data/it'),
       import(/* webpackChunkName: "locales/fr" */ '../languages/it.json'),
+    ]),
+
+  [PL]: () =>
+    Promise.all([
+      import(/* webpackChunkName: "locales/pl" */ 'react-intl/locale-data/pl'),
+      import(/* webpackChunkName: "locales/pl" */ '../languages/pl.json'),
     ]),
 
   [RU]: () =>
