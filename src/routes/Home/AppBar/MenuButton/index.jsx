@@ -1,12 +1,15 @@
 import React from 'react';
+import { push } from 'connected-react-router';
 import { defineMessages, injectIntl, intlShape } from 'react-intl';
-import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
 import { Tooltip } from '@material-ui/core';
 import { useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { Menu } from 'mdi-material-ui';
 
 import TopIconButton from '../../../../components/TopIconButton';
+import { toggleMenu } from '../../../../ducks/app';
+import { stringifyQuery } from '../../../../utils/location';
 
 const messages = defineMessages({
   menu: {
@@ -15,17 +18,19 @@ const messages = defineMessages({
   },
 });
 
-const MenuButton = ({ intl, onClick, ...rest }) => {
+const MenuButton = ({ intl, ...rest }) => {
+  const dispatch = useDispatch();
   const theme = useTheme();
   const mathes = useMediaQuery(theme.breakpoints.up('md'), { noSsr: true });
 
+  const onClick = () =>
+    mathes
+      ? dispatch(toggleMenu())
+      : dispatch(push({ search: stringifyQuery({ menu: null }) }));
+
   return (
     <Tooltip title={intl.formatMessage(messages.menu)}>
-      <TopIconButton
-        data-screenshots="menu"
-        onClick={() => onClick(mathes)}
-        {...rest}
-      >
+      <TopIconButton data-screenshots="menu" onClick={onClick} {...rest}>
         <Menu />
       </TopIconButton>
     </Tooltip>
@@ -34,7 +39,6 @@ const MenuButton = ({ intl, onClick, ...rest }) => {
 
 MenuButton.propTypes = {
   intl: intlShape.isRequired,
-  onClick: PropTypes.func.isRequired,
 };
 
 export default injectIntl(MenuButton);

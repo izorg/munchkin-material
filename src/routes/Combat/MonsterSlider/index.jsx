@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { FormattedMessage } from 'react-intl';
+import { useSelector } from 'react-redux';
 import MediaQuery from 'react-responsive';
 import SwipeableViews from 'react-swipeable-views';
 import PropTypes from 'prop-types';
@@ -45,8 +46,10 @@ const useStyles = makeStyles(
   { name: 'CombatMonsterSlider' },
 );
 
-const CombatMonsterSlider = ({ className, monsters, onMonsterRemove }) => {
+const CombatMonsterSlider = ({ className, onMonsterRemove }) => {
   const classes = useStyles();
+
+  const monsters = useSelector((state) => state.combat.monsters);
 
   const [index, setIndex] = useState(0);
   const monsterCount = useRef(monsters.length);
@@ -151,12 +154,7 @@ const CombatMonsterSlider = ({ className, monsters, onMonsterRemove }) => {
 };
 
 CombatMonsterSlider.propTypes = {
-  monsters: PropTypes.arrayOf(PropTypes.string),
   onMonsterRemove: PropTypes.func.isRequired,
-};
-
-CombatMonsterSlider.defaultProps = {
-  monsters: [],
 };
 
 export default CombatMonsterSlider;
