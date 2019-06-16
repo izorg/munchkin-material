@@ -10,13 +10,14 @@ import ThemeProvider from '../ThemeProvider';
 
 class App extends Component {
   componentDidCatch(error, errorInfo) {
-    const { Sentry } = this.props;
+    const { Sentry, store } = this.props;
 
     if (Sentry) {
       Sentry.withScope((scope) => {
         Object.keys(errorInfo).forEach((key) => {
           scope.setExtra(key, errorInfo[key]);
         });
+        scope.setExtra('state', store.getState());
         Sentry.captureException(error);
       });
     }

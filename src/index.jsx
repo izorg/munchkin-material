@@ -18,12 +18,20 @@ const defaultOptions = {
   privacyLink: null,
   rateLink: null,
   restorePurchases: null,
+  Sentry: null,
   shareLink: null,
   storageKey: 'redux',
 };
 
 const init = (appEl, initOptions) => {
-  const { buyFullVersion, freeCombat, history, storageKey, ...options } = {
+  const {
+    buyFullVersion,
+    freeCombat,
+    history,
+    Sentry,
+    storageKey,
+    ...options
+  } = {
     ...defaultOptions,
     ...initOptions,
   };
@@ -37,7 +45,10 @@ const init = (appEl, initOptions) => {
 
   const { dispatch } = store;
 
-  render(<App history={history} options={options} store={store} />, appEl);
+  render(
+    <App history={history} options={options} Sentry={Sentry} store={store} />,
+    appEl,
+  );
 
   return {
     setFullVersion: (fullVersion) => dispatch(setFullVersion(fullVersion)),
