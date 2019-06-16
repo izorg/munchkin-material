@@ -1,4 +1,3 @@
-import useMediaQuery from '@material-ui/core/useMediaQuery';
 import React, { useEffect, useRef } from 'react';
 import {
   defineMessages,
@@ -9,7 +8,6 @@ import {
 import { Field, Form } from 'react-final-form';
 import PropTypes from 'prop-types';
 import {
-  Button,
   Dialog,
   DialogActions,
   DialogContent,
@@ -24,12 +22,16 @@ import {
   Slide,
   TextField,
 } from '@material-ui/core';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme } from '@material-ui/core/styles';
 import { GenderFemale, GenderMale } from 'mdi-material-ui';
 import { FEMALE, MALE } from 'munchkin-core';
 
 import { ios } from '../../utils/platforms';
 import { sexProp } from '../../utils/propTypes';
+
+import CancelButton from '../CancelButton';
+import SubmitButton from '../SubmitButton';
 
 import AppBar from './AppBar';
 import ColorPicker from './ColorPicker';
@@ -268,12 +270,10 @@ const PlayerDialog = ({
       </DialogContent>
       {!fullScreen && (
         <DialogActions>
-          <Button color="primary" onClick={handleClose}>
-            <FormattedMessage defaultMessage="Cancel" id="player.form.cancel" />
-          </Button>
-          <Button color="primary" type="submit">
+          <CancelButton onClick={handleClose} />
+          <SubmitButton>
             <FormattedMessage defaultMessage="Save" id="player.form.save" />
-          </Button>
+          </SubmitButton>
         </DialogActions>
       )}
     </Dialog>
