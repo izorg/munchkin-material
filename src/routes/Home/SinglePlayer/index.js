@@ -1,12 +1,9 @@
 import { connect } from 'react-redux';
 import { createSelector, createStructuredSelector } from 'reselect';
-import {
-  setCombatPlayerBonus,
-  togglePlayerSex,
-  updatePlayer,
-} from 'munchkin-core';
 import { get } from 'lodash/fp';
 
+import { setCombatPlayerBonus } from '../../../ducks/combat';
+import { togglePlayerSex, updatePlayer } from '../../../ducks/players';
 import {
   isLevelDecrementDisabled,
   isLevelIncrementDisabled,

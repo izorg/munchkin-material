@@ -6,18 +6,17 @@ import { CellphoneArrowDown, InformationOutline } from 'mdi-material-ui';
 import ListItem from '../Item';
 import ListItemText from '../ItemText';
 
-const VersionItem = ({ update, version, ...rest }) => (
+const VersionItem = ({ update, ...rest }) => (
   <ListItem button {...rest}>
     <ListItemIcon>
       {update ? <CellphoneArrowDown /> : <InformationOutline />}
     </ListItemIcon>
-    <ListItemText primary={version} />
+    <ListItemText primary={VERSION} />
   </ListItem>
 );
 
 VersionItem.propTypes = {
   update: PropTypes.bool,
-  version: PropTypes.string.isRequired,
 };
 
 VersionItem.defaultProps = {

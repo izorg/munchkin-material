@@ -36,6 +36,12 @@ const init = (appEl, initOptions) => {
     ...initOptions,
   };
 
+  if (Sentry) {
+    Sentry.configureScope((scope) => {
+      scope.setExtra('version', VERSION);
+    });
+  }
+
   const store = configureStore({
     buyFullVersion,
     freeCombat,

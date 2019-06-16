@@ -2,11 +2,10 @@ import { connect } from 'react-redux';
 import { compose, fromRenderProps } from 'recompose';
 import { createSelector, createStructuredSelector } from 'reselect';
 import { get } from 'lodash/fp';
-import { killPlayer } from 'munchkin-core';
-
-import { setUndo, UNDO_KILL_PLAYER } from '../../../../ducks/undo';
 
 import PlayerContext from '../../../../components/PlayerContext';
+import { killPlayer } from '../../../../ducks/players';
+import { setUndo, UNDO_KILL_PLAYER } from '../../../../ducks/undo';
 
 import Component from './Component';
 

@@ -1,13 +1,12 @@
 import { goBack, push } from 'connected-react-router';
 import { connect } from 'react-redux';
+
 import {
-  removePlayer,
   setCombatHelperBonus,
   setCombatPlayerBonus,
-  updatePlayer,
-} from 'munchkin-core';
-
+} from '../../../ducks/combat';
 import { removePlayerFromList } from '../../../ducks/playerList';
+import { removePlayer, updatePlayer } from '../../../ducks/players';
 import { setUndo, UNDO_RESET_PLAYERS } from '../../../ducks/undo';
 
 import * as modes from '../modes';

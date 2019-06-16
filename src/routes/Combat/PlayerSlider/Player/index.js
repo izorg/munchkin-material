@@ -1,12 +1,13 @@
 import { connect } from 'react-redux';
+import { get } from 'lodash/fp';
+
 import {
   decrementPlayerGear,
   decrementPlayerLevel,
   incrementPlayerGear,
   incrementPlayerLevel,
   togglePlayerSex,
-} from 'munchkin-core';
-import { get } from 'lodash/fp';
+} from '../../../../ducks/players';
 
 import {
   isLevelDecrementDisabled,

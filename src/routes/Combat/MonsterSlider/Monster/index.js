@@ -1,11 +1,12 @@
 import { connect } from 'react-redux';
 import { compose, shouldUpdate } from 'recompose';
+
 import {
   decrementMonsterBonus,
   decrementMonsterLevel,
   incrementMonsterBonus,
   incrementMonsterLevel,
-} from 'munchkin-core';
+} from '../../../../ducks/monsters';
 
 import Monster from './Component';
 

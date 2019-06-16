@@ -1,6 +1,9 @@
 import { push } from 'connected-react-router';
 import { connect } from 'react-redux';
-import { addMonster, createMonster, startCombat } from 'munchkin-core';
+
+import { startCombat } from '../../../ducks/combat';
+import { addMonster } from '../../../ducks/monsters';
+import createMonster from '../../../utils/createMonster';
 
 import Component from './Component';
 

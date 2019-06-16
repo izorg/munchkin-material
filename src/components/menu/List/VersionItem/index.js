@@ -9,7 +9,6 @@ import Component from './Component';
 
 const mapStateToProps = createStructuredSelector({
   update: get('update'),
-  version: get(['versions', 'app']),
 });
 
 const mapDispatchToProps = {

@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
-import { FEMALE, MALE } from 'munchkin-core';
 
 import availableColors from './availableColors';
+import { FEMALE, MALE } from './sex';
 
 export const colorType = PropTypes.oneOf(availableColors);
 

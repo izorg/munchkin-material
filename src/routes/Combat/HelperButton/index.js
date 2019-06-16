@@ -1,9 +1,10 @@
 import { goBack, push, replace } from 'connected-react-router';
 import { connect } from 'react-redux';
 import { createSelector, createStructuredSelector } from 'reselect';
-import { addMonster, createMonster } from 'munchkin-core';
 import { flow, get, isNull } from 'lodash/fp';
 
+import { addMonster } from '../../../ducks/monsters';
+import createMonster from '../../../utils/createMonster';
 import { getQuery } from '../../../utils/location';
 
 import Component from './Component';

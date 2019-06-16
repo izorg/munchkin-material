@@ -1,7 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { GenderFemale, GenderMale } from 'mdi-material-ui';
-import { FEMALE, MALE } from 'munchkin-core';
+
+import { FEMALE, MALE } from '../../utils/sex';
 
 import Sex from './index';
 

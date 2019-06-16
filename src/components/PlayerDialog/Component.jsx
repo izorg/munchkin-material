@@ -25,10 +25,10 @@ import {
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme } from '@material-ui/core/styles';
 import { GenderFemale, GenderMale } from 'mdi-material-ui';
-import { FEMALE, MALE } from 'munchkin-core';
 
 import { ios } from '../../utils/platforms';
 import { sexProp } from '../../utils/propTypes';
+import { FEMALE, MALE } from '../../utils/sex';
 
 import CancelButton from '../CancelButton';
 import SubmitButton from '../SubmitButton';

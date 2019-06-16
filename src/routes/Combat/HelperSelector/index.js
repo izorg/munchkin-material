@@ -1,9 +1,9 @@
 import { goBack } from 'connected-react-router';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-import { setCombatHelper } from 'munchkin-core';
 import { flow, get, isEqual } from 'lodash/fp';
 
+import { setCombatHelper } from '../../../ducks/combat';
 import { getQuery } from '../../../utils/location';
 
 import Component from './Component';

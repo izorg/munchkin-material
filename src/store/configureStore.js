@@ -3,7 +3,6 @@ import { applyMiddleware, combineReducers, createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import { pick, throttle } from 'lodash/fp';
-import { setVersion, version } from 'munchkin-core';
 
 import reducers from '../reducers';
 
@@ -40,9 +39,6 @@ export default ({ buyFullVersion, freeCombat, history, storageKey }) => {
       saveState(storageKey, state);
     }),
   );
-
-  store.dispatch(setVersion('core', version));
-  store.dispatch(setVersion('app', VERSION));
 
   /* istanbul ignore if  */
   if (module.hot) {

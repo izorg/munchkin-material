@@ -1,8 +1,8 @@
 import React from 'react';
 import { GenderFemale, GenderMale } from 'mdi-material-ui';
-import { FEMALE, MALE } from 'munchkin-core';
 
 import { sexProp } from '../../utils/propTypes';
+import { FEMALE, MALE } from '../../utils/sex';
 
 const Sex = ({ sex, ...props }) => {
   switch (sex) {

@@ -4,8 +4,7 @@ import { FormattedMessage } from 'react-intl';
 import { createSelector, createStructuredSelector } from 'reselect';
 import { flow, get, isEqual } from 'lodash/fp';
 
-import { updatePlayer } from 'munchkin-core';
-
+import { updatePlayer } from '../../../ducks/players';
 import { applyUndo, removeUndo, UNDO_KILL_PLAYER } from '../../../ducks/undo';
 
 import Component from './Component';

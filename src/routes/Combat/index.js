@@ -1,14 +1,14 @@
 import { hot } from 'react-hot-loader/root';
 import { connect } from 'react-redux';
 import { compose } from 'recompose';
+
 import {
-  addMonster,
-  createMonster,
-  removeMonster,
   setCombatHelper,
   setCombatHelperBonus,
   setCombatPlayerBonus,
-} from 'munchkin-core';
+} from '../../ducks/combat';
+import { addMonster, removeMonster } from '../../ducks/monsters';
+import createMonster from '../../utils/createMonster';
 
 import Component from './Component';
 

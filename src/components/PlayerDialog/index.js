@@ -1,12 +1,14 @@
 import { goBack } from 'connected-react-router';
 import { connect } from 'react-redux';
 import { createSelector, createStructuredSelector } from 'reselect';
-import { addPlayer, createPlayer, MALE, updatePlayer } from 'munchkin-core';
 import { flow, get, isUndefined, map, negate } from 'lodash/fp';
 
 import { addPlayerToList } from '../../ducks/playerList';
+import { addPlayer, updatePlayer } from '../../ducks/players';
+import createPlayer from '../../utils/createPlayer';
 import { getQuery } from '../../utils/location';
 import getRandomMaterialColor from '../../utils/getRandomMaterialColor';
+import { MALE } from '../../utils/sex';
 
 import Component from './Component';
 

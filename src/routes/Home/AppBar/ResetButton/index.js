@@ -5,9 +5,8 @@ import { get } from 'lodash/fp';
 import {
   setCombatHelperBonus,
   setCombatPlayerBonus,
-  updatePlayer,
-} from 'munchkin-core';
-
+} from '../../../../ducks/combat';
+import { updatePlayer } from '../../../../ducks/players';
 import { setUndo, UNDO_RESET_PLAYERS } from '../../../../ducks/undo';
 
 import Component from './Component';

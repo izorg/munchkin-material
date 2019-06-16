@@ -1,6 +1,5 @@
-import { START_COMBAT } from 'munchkin-core';
-
 import { SET_SINGLE_MODE, setFullVersion } from '../../ducks/app';
+import { START_COMBAT } from '../../ducks/combat/actionTypes';
 import { SET_THEME } from '../../ducks/theme';
 
 export default ({ buyFullVersion, freeCombat }) => {
