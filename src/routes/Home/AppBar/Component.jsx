@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  defineMessages,
-  FormattedMessage,
-  injectIntl,
-  intlShape,
-} from 'react-intl';
+import { defineMessages, FormattedMessage, useIntl } from 'react-intl';
 import PropTypes from 'prop-types';
 import { Tooltip } from '@material-ui/core';
 import { Check, Close, Delete, FlagCheckered, Pencil } from 'mdi-material-ui';
@@ -30,7 +25,6 @@ const messages = defineMessages({
 
 const HomeAppBar = ({
   empty,
-  intl,
   mode,
   onMultiSelectDeactivate,
   onPlayersDelete,
@@ -39,6 +33,8 @@ const HomeAppBar = ({
   selectedPlayerIds,
   singleMode,
 }) => {
+  const intl = useIntl();
+
   const editMode = mode === modes.EDIT;
   const multiMode = mode === modes.MULTI;
   const buttonColor = multiMode ? 'default' : 'inherit';
@@ -107,7 +103,6 @@ const HomeAppBar = ({
 
 HomeAppBar.propTypes = {
   empty: PropTypes.bool,
-  intl: intlShape.isRequired,
   mode: modeType,
   onMultiSelectDeactivate: PropTypes.func,
   onPlayersDelete: PropTypes.func,
@@ -128,4 +123,4 @@ HomeAppBar.defaultProps = {
   singleMode: false,
 };
 
-export default injectIntl(HomeAppBar);
+export default HomeAppBar;

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FormattedMessage, injectIntl } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 import {
   Dialog,
@@ -139,4 +139,4 @@ LevelLimitDialog.defaultProps = {
   open: false,
 };
 
-export default injectIntl(LevelLimitDialog);
+export default LevelLimitDialog;

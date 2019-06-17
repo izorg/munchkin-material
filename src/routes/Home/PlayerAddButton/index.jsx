@@ -1,6 +1,6 @@
 import React from 'react';
 import { push } from 'connected-react-router';
-import { defineMessages, injectIntl, intlShape } from 'react-intl';
+import { defineMessages, useIntl } from 'react-intl';
 import { useDispatch } from 'react-redux';
 import { Plus } from 'mdi-material-ui';
 
@@ -13,8 +13,9 @@ const messages = defineMessages({
   },
 });
 
-const PlayerAddButton = ({ intl, ...rest }) => {
+const PlayerAddButton = (props) => {
   const dispatch = useDispatch();
+  const intl = useIntl();
 
   const onClick = () => dispatch(push('?player'));
 
@@ -22,15 +23,11 @@ const PlayerAddButton = ({ intl, ...rest }) => {
     <Fab
       aria-label={intl.formatMessage(messages.label)}
       onClick={onClick}
-      {...rest}
+      {...props}
     >
       <Plus />
     </Fab>
   );
 };
 
-PlayerAddButton.propTypes = {
-  intl: intlShape.isRequired,
-};
-
-export default injectIntl(PlayerAddButton);
+export default PlayerAddButton;

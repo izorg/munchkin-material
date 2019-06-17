@@ -33,7 +33,6 @@ const LocaleProvider = ({ locale: localeProp, ...rest }) => {
   return (
     <IntlProvider
       {...rest}
-      key={locale}
       locale={locale}
       messages={messages}
       textComponent={Fragment}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { defineMessages, injectIntl, intlShape } from 'react-intl';
+import { defineMessages, useIntl } from 'react-intl';
 import { Tooltip } from '@material-ui/core';
 import { DiceMultiple } from 'mdi-material-ui';
 
@@ -12,16 +12,16 @@ const messages = defineMessages({
   },
 });
 
-const DiceIconButton = ({ intl, ...props }) => (
-  <Tooltip title={intl.formatMessage(messages.dice)}>
-    <TopIconButton {...props}>
-      <DiceMultiple />
-    </TopIconButton>
-  </Tooltip>
-);
+const DiceIconButton = (props) => {
+  const intl = useIntl();
 
-DiceIconButton.propTypes = {
-  intl: intlShape.isRequired,
+  return (
+    <Tooltip title={intl.formatMessage(messages.dice)}>
+      <TopIconButton {...props}>
+        <DiceMultiple />
+      </TopIconButton>
+    </Tooltip>
+  );
 };
 
-export default injectIntl(DiceIconButton);
+export default DiceIconButton;

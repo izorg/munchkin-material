@@ -1,6 +1,6 @@
 import React from 'react';
 import { push } from 'connected-react-router';
-import { defineMessages, injectIntl, intlShape } from 'react-intl';
+import { defineMessages, useIntl } from 'react-intl';
 import { useDispatch } from 'react-redux';
 import { Tooltip } from '@material-ui/core';
 import { useTheme } from '@material-ui/core/styles';
@@ -18,9 +18,11 @@ const messages = defineMessages({
   },
 });
 
-const MenuButton = ({ intl, ...rest }) => {
+const MenuButton = (props) => {
   const dispatch = useDispatch();
+  const intl = useIntl();
   const theme = useTheme();
+
   const mathes = useMediaQuery(theme.breakpoints.up('md'), { noSsr: true });
 
   const onClick = () =>
@@ -30,15 +32,11 @@ const MenuButton = ({ intl, ...rest }) => {
 
   return (
     <Tooltip title={intl.formatMessage(messages.menu)}>
-      <TopIconButton data-screenshots="menu" onClick={onClick} {...rest}>
+      <TopIconButton data-screenshots="menu" onClick={onClick} {...props}>
         <Menu />
       </TopIconButton>
     </Tooltip>
   );
 };
 
-MenuButton.propTypes = {
-  intl: intlShape.isRequired,
-};
-
-export default injectIntl(MenuButton);
+export default MenuButton;

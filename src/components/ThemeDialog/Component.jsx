@@ -1,7 +1,5 @@
 import React from 'react';
-import { FormattedMessage, injectIntl } from 'react-intl';
-import { compose, withProps } from 'recompose';
-import { createSelector, createStructuredSelector } from 'reselect';
+import { FormattedMessage, useIntl } from 'react-intl';
 import PropTypes from 'prop-types';
 import {
   Checkbox,
@@ -21,15 +19,6 @@ import { names } from '../../styles/themes';
 import CancelButton from '../CancelButton';
 import SubmitButton from '../SubmitButton';
 
-const optionsSelector = createSelector(
-  ({ intl }) => intl,
-  (intl) =>
-    sortBy(
-      ({ label }) => intl.formatMessage(label.props),
-      Object.keys(names).map((value) => ({ label: names[value], value })),
-    ),
-);
-
 const useStyles = makeStyles(
   {
     content: {
@@ -39,8 +28,9 @@ const useStyles = makeStyles(
   { name: 'ThemeDialog' },
 );
 
-const ThemeDialog = ({ onChange, onClose, onSubmit, open, options, theme }) => {
+const ThemeDialog = ({ onChange, onClose, onSubmit, open, theme }) => {
   const classes = useStyles();
+  const intl = useIntl();
 
   const handleChange = (event, id) => {
     onChange({
@@ -73,7 +63,10 @@ const ThemeDialog = ({ onChange, onClose, onSubmit, open, options, theme }) => {
       </DialogTitle>
       <DialogContent className={classes.content}>
         <RadioGroup name="id" onChange={handleChange} value={theme.id}>
-          {options.map((option) => (
+          {sortBy(
+            ({ label }) => intl.formatMessage(label.props),
+            Object.keys(names).map((value) => ({ label: names[value], value })),
+          ).map((option) => (
             <FormControlLabel
               key={option.value}
               control={
@@ -106,12 +99,6 @@ ThemeDialog.propTypes = {
   onClose: PropTypes.func,
   onSubmit: PropTypes.func,
   open: PropTypes.bool,
-  options: PropTypes.arrayOf(
-    PropTypes.shape({
-      label: PropTypes.node.isRequired,
-      value: PropTypes.string.isRequired,
-    }),
-  ).isRequired,
   theme: PropTypes.shape({
     id: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired,
@@ -124,11 +111,4 @@ ThemeDialog.defaultProps = {
   open: false,
 };
 
-export default compose(
-  injectIntl,
-  withProps(
-    createStructuredSelector({
-      options: optionsSelector,
-    }),
-  ),
-)(ThemeDialog);
+export default ThemeDialog;

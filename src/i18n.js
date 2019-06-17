@@ -1,5 +1,3 @@
-import { addLocaleData } from 'react-intl';
-
 export const DE = 'de';
 export const EN = 'en';
 export const ES = 'es';
@@ -30,64 +28,35 @@ export const getMessages = (locale) => allMessages[locale];
 
 const loaders = {
   [DE]: () =>
-    Promise.all([
-      import(/* webpackChunkName: "locales/de" */ 'react-intl/locale-data/de'),
-      import(/* webpackChunkName: "locales/de" */ '../languages/de.json'),
-    ]),
+    import(/* webpackChunkName: "locales/de" */ '../languages/de.json'),
 
   [EN]: () =>
-    Promise.all([
-      import(/* webpackChunkName: "locales/en" */ 'react-intl/locale-data/en'),
-      import(/* webpackChunkName: "locales/en" */ '../languages/en.json'),
-    ]),
+    import(/* webpackChunkName: "locales/en" */ '../languages/en.json'),
 
   [ES]: () =>
-    Promise.all([
-      import(/* webpackChunkName: "locales/es" */ 'react-intl/locale-data/es'),
-      import(/* webpackChunkName: "locales/es" */ '../languages/es.json'),
-    ]),
+    import(/* webpackChunkName: "locales/es" */ '../languages/es.json'),
 
   [FR]: () =>
-    Promise.all([
-      import(/* webpackChunkName: "locales/fr" */ 'react-intl/locale-data/fr'),
-      import(/* webpackChunkName: "locales/fr" */ '../languages/fr.json'),
-    ]),
+    import(/* webpackChunkName: "locales/fr" */ '../languages/fr.json'),
 
   [HU]: () =>
-    Promise.all([
-      import(/* webpackChunkName: "locales/hu" */ 'react-intl/locale-data/hu'),
-      import(/* webpackChunkName: "locales/hu" */ '../languages/hu.json'),
-    ]),
+    import(/* webpackChunkName: "locales/hu" */ '../languages/hu.json'),
 
   [IT]: () =>
-    Promise.all([
-      import(/* webpackChunkName: "locales/fr" */ 'react-intl/locale-data/it'),
-      import(/* webpackChunkName: "locales/fr" */ '../languages/it.json'),
-    ]),
+    import(/* webpackChunkName: "locales/fr" */ '../languages/it.json'),
 
   [PL]: () =>
-    Promise.all([
-      import(/* webpackChunkName: "locales/pl" */ 'react-intl/locale-data/pl'),
-      import(/* webpackChunkName: "locales/pl" */ '../languages/pl.json'),
-    ]),
+    import(/* webpackChunkName: "locales/pl" */ '../languages/pl.json'),
 
   [RU]: () =>
-    Promise.all([
-      import(/* webpackChunkName: "locales/ru" */ 'react-intl/locale-data/ru'),
-      import(/* webpackChunkName: "locales/ru" */ '../languages/ru.json'),
-    ]),
+    import(/* webpackChunkName: "locales/ru" */ '../languages/ru.json'),
 
   [UK]: () =>
-    Promise.all([
-      import(/* webpackChunkName: "locales/uk" */ 'react-intl/locale-data/uk'),
-      import(/* webpackChunkName: "locales/uk" */ '../languages/uk.json'),
-    ]),
+    import(/* webpackChunkName: "locales/uk" */ '../languages/uk.json'),
 };
 
 export const loadLocale = async (locale) => {
-  const [intlLocale, messages] = await loaders[locale]();
-
-  addLocaleData(intlLocale.default);
+  const messages = await loaders[locale]();
 
   allMessages = {
     ...allMessages,

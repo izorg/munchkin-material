@@ -1,10 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import {
-  defineMessages,
-  FormattedMessage,
-  injectIntl,
-  intlShape,
-} from 'react-intl';
+import { defineMessages, FormattedMessage, useIntl } from 'react-intl';
 import { Field, Form } from 'react-final-form';
 import PropTypes from 'prop-types';
 import {
@@ -90,15 +85,9 @@ const messages = defineMessages({
 
 let appear = false;
 
-const PlayerDialog = ({
-  edit,
-  initialValues,
-  intl,
-  onClose,
-  onSubmit,
-  open,
-}) => {
+const PlayerDialog = ({ edit, initialValues, onClose, onSubmit, open }) => {
   const classes = useStyles();
+  const intl = useIntl();
   const theme = useTheme();
 
   const fullScreen = useMediaQuery(theme.breakpoints.down('md'), {
@@ -288,7 +277,6 @@ PlayerDialog.propTypes = {
     name: PropTypes.string,
     sex: sexProp.isRequired,
   }).isRequired,
-  intl: intlShape.isRequired,
   onClose: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
   open: PropTypes.bool,
@@ -299,4 +287,4 @@ PlayerDialog.defaultProps = {
   open: false,
 };
 
-export default injectIntl(PlayerDialog);
+export default PlayerDialog;
