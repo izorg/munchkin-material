@@ -41,4 +41,6 @@ MenuSidebar.propTypes = {
   collapsed: PropTypes.bool.isRequired,
 };
 
+MenuSidebar.displayName = 'MenuSidebar';
+
 export default MenuSidebar;

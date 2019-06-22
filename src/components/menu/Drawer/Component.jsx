@@ -37,7 +37,7 @@ const hysteresis = 0.5;
 const minFlingVelocity = 0.3;
 const swipeAreaWidth = 20;
 
-class HomeMenuDrawer extends Component {
+class MenuDrawer extends Component {
   static getDerivedStateFromProps(nextProps, prevState) {
     if (typeof prevState.maybeSwiping === 'undefined') {
       return {
@@ -472,7 +472,7 @@ class HomeMenuDrawer extends Component {
   }
 }
 
-HomeMenuDrawer.propTypes = {
+MenuDrawer.propTypes = {
   anchor: PropTypes.oneOf(['left']),
   onClose: PropTypes.func.isRequired,
   onOpen: PropTypes.func.isRequired,
@@ -484,7 +484,7 @@ HomeMenuDrawer.propTypes = {
   width: PropTypes.oneOf(breakpoints).isRequired,
 };
 
-HomeMenuDrawer.defaultProps = {
+MenuDrawer.defaultProps = {
   anchor: 'left',
   open: false,
   transitionDuration: {
@@ -493,7 +493,9 @@ HomeMenuDrawer.defaultProps = {
   },
 };
 
+MenuDrawer.displayName = 'MenuDrawer';
+
 export default compose(
   withWidth(),
   withStyles(styles, { withTheme: true }),
-)(HomeMenuDrawer);
+)(MenuDrawer);

@@ -100,4 +100,6 @@ Counter.defaultProps = {
   onIncrement: noop,
 };
 
+Counter.displayName = 'Counter';
+
 export default Counter;

@@ -15,4 +15,6 @@ ThemeProvider.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
+ThemeProvider.displayName = 'ThemeProvider';
+
 export default ThemeProvider;

@@ -111,4 +111,6 @@ ThemeDialog.defaultProps = {
   open: false,
 };
 
+ThemeDialog.displayName = 'ThemeDialog';
+
 export default ThemeDialog;

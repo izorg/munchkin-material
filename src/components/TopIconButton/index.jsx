@@ -38,4 +38,6 @@ const TopIconButton = forwardRef((props, ref) => {
   return <IconButton ref={ref} classes={classes} {...props} />;
 });
 
+TopIconButton.displayName = 'TopIconButton';
+
 export default TopIconButton;

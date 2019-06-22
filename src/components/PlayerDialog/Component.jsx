@@ -287,4 +287,6 @@ PlayerDialog.defaultProps = {
   open: false,
 };
 
+PlayerDialog.displayName = 'PlayerDialog';
+
 export default PlayerDialog;

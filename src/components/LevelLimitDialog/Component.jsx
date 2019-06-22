@@ -139,4 +139,6 @@ LevelLimitDialog.defaultProps = {
   open: false,
 };
 
+LevelLimitDialog.displayName = 'LevelLimitDialog';
+
 export default LevelLimitDialog;

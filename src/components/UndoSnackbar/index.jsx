@@ -72,4 +72,6 @@ UndoSnackbar.defaultProps = {
   message: undefined,
 };
 
+UndoSnackbar.displayName = 'UndoSnackbar';
+
 export default UndoSnackbar;

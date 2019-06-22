@@ -20,10 +20,10 @@ const useStyles = makeStyles(
       },
     },
   }),
-  { name: 'FabButton' },
+  { name: 'DialogFab' },
 );
 
-const FabButton = forwardRef(({ className, ...rest }, ref) => {
+const DialogFab = forwardRef(({ className, ...rest }, ref) => {
   const classes = useStyles();
 
   return (
@@ -36,4 +36,6 @@ const FabButton = forwardRef(({ className, ...rest }, ref) => {
   );
 });
 
-export default FabButton;
+DialogFab.displayName = 'DialogFab';
+
+export default DialogFab;

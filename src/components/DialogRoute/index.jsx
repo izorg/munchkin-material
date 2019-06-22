@@ -61,4 +61,6 @@ DialogRoute.propTypes = {
   path: PropTypes.string.isRequired,
 };
 
+DialogRoute.displayName = 'DialogRoute';
+
 export default DialogRoute;

@@ -4,7 +4,7 @@ import { defineMessages, useIntl } from 'react-intl';
 import { useDispatch } from 'react-redux';
 import { Plus } from 'mdi-material-ui';
 
-import Fab from '../../../components/Fab';
+import DialogFab from '../../../components/DialogFab';
 
 const messages = defineMessages({
   label: {
@@ -20,14 +20,16 @@ const PlayerAddButton = (props) => {
   const onClick = () => dispatch(push('?player'));
 
   return (
-    <Fab
+    <DialogFab
       aria-label={intl.formatMessage(messages.label)}
       onClick={onClick}
       {...props}
     >
       <Plus />
-    </Fab>
+    </DialogFab>
   );
 };
+
+PlayerAddButton.displayName = 'PlayerAddButton';
 
 export default PlayerAddButton;

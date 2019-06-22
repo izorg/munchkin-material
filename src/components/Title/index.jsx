@@ -31,4 +31,6 @@ const Title = ({ className, ...props }) => {
   );
 };
 
+Title.displayName = 'Title';
+
 export default Title;

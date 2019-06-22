@@ -27,4 +27,6 @@ const MenuList = () => (
   </List>
 );
 
+MenuList.displayName = 'MenuList';
+
 export default MenuList;

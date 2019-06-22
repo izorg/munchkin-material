@@ -61,4 +61,6 @@ TopAppBar.defaultProps = {
   children: null,
 };
 
+TopAppBar.displayName = 'TopAppBar';
+
 export default TopAppBar;

@@ -45,4 +45,6 @@ const Nobody = () => {
   );
 };
 
+Nobody.displayName = 'Nobody';
+
 export default Nobody;

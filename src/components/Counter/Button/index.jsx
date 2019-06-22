@@ -49,4 +49,6 @@ CounterButton.propTypes = {
   onClick: PropTypes.func.isRequired,
 };
 
+CounterButton.displayName = 'CounterButton';
+
 export default CounterButton;

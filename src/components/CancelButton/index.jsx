@@ -9,4 +9,6 @@ CancelButton.defaultProps = {
   color: 'primary',
 };
 
+CancelButton.displayName = 'CancelButton';
+
 export default CancelButton;

@@ -25,4 +25,6 @@ const BackButton = (props) => {
   );
 };
 
+BackButton.displayName = 'BackButton';
+
 export default BackButton;

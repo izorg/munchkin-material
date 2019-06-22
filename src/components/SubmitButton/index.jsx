@@ -10,4 +10,6 @@ SubmitButton.defaultProps = {
   type: 'submit',
 };
 
+SubmitButton.displayName = 'SubmitButton';
+
 export default SubmitButton;
