@@ -1,7 +1,8 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
-import { Backdrop, MuiThemeProvider, withStyles } from '@material-ui/core';
+import { Backdrop, makeStyles, MuiThemeProvider } from '@material-ui/core';
+import { useTheme } from '@material-ui/core/styles';
 import { SpeedDial, SpeedDialIcon } from '@material-ui/lab';
 import { AccountPlus, EmoticonDevilOutline } from 'mdi-material-ui';
 import clsx from 'clsx';
@@ -11,32 +12,34 @@ import Zoom from '../../../components/transitions/Zoom';
 
 import HelperButtonAction from './Action';
 
-const styles = (theme) => ({
-  backdrop: {
-    backgroundColor:
-      theme.palette.type === 'light' ? 'rgba(250, 250, 250, .9)' : undefined,
-    zIndex: 1,
-  },
+const useStyles = makeStyles(
+  (theme) => ({
+    backdrop: {
+      backgroundColor:
+        theme.palette.type === 'light' ? 'rgba(250, 250, 250, .9)' : undefined,
+      zIndex: 1,
+    },
 
-  container: {
-    bottom: theme.spacing(2),
-    position: 'fixed',
-    right: theme.spacing(2),
-    zIndex: 2,
+    container: {
+      bottom: theme.spacing(2),
+      position: 'fixed',
+      right: theme.spacing(2),
+      zIndex: 2,
 
-    [theme.breakpoints.up('sm')]: {
-      bottom: theme.spacing(3),
-      right: theme.spacing(3),
+      [theme.breakpoints.up('sm')]: {
+        bottom: theme.spacing(3),
+        right: theme.spacing(3),
 
-      '@supports (padding: max(0px))': {
-        right: `max(${theme.spacing(3)}px, env(safe-area-inset-right))`,
+        '@supports (padding: max(0px))': {
+          right: `max(${theme.spacing(3)}px, env(safe-area-inset-right))`,
+        },
       },
     },
-  },
-});
+  }),
+  { name: 'CombatHelperButton' },
+);
 
 const CombatHelperButton = ({
-  classes,
   className,
   helper,
   onAdd,
@@ -44,76 +47,83 @@ const CombatHelperButton = ({
   onHelperClick,
   onMonsterAdd,
   open,
-  theme,
   ...rest
-}) => (
-  <>
-    <MuiThemeProvider
-      theme={deepmerge(theme, {
-        overrides: {
-          MuiSpeedDialAction: {
-            button: {
-              color: theme.palette.primary.contrastText,
-              backgroundColor: theme.palette.primary.main,
+}) => {
+  const classes = useStyles();
+  const theme = useTheme();
 
-              '&:hover': {
-                backgroundColor: theme.palette.primary.dark,
+  return (
+    <>
+      <MuiThemeProvider
+        theme={deepmerge(theme, {
+          overrides: {
+            MuiSpeedDialAction: {
+              button: {
+                color: theme.palette.primary.contrastText,
+                backgroundColor: theme.palette.primary.main,
 
-                '@media (hover: none)': {
-                  backgroundColor: theme.palette.primary.main,
+                '&:hover': {
+                  backgroundColor: theme.palette.primary.dark,
+
+                  '@media (hover: none)': {
+                    backgroundColor: theme.palette.primary.main,
+                  },
                 },
               },
             },
           },
-        },
-      })}
-    >
-      <SpeedDial
-        ariaLabel=" "
-        ButtonProps={{
-          color: open ? 'default' : 'primary',
-        }}
-        className={clsx(classes.container, className)}
-        icon={helper ? <SpeedDialIcon /> : <EmoticonDevilOutline />}
-        onClick={() => {
-          if (open) {
-            onBack();
-          } else if (helper) {
-            onAdd();
-          } else {
-            onMonsterAdd();
-          }
-        }}
-        open={open}
-        TransitionComponent={Zoom}
-        {...rest}
+        })}
       >
-        <HelperButtonAction
-          icon={<EmoticonDevilOutline />}
-          onClick={() => {
-            onMonsterAdd();
-            onBack();
+        <SpeedDial
+          ariaLabel=" "
+          ButtonProps={{
+            color: open ? 'default' : 'primary',
           }}
-          tooltipTitle={
-            <FormattedMessage
-              defaultMessage="Monster"
-              id="combat.add.monster"
-            />
-          }
-        />
-        <HelperButtonAction
-          icon={<AccountPlus />}
-          onClick={onHelperClick}
-          tooltipTitle={
-            <FormattedMessage defaultMessage="Helper" id="combat.add.helper" />
-          }
-        />
-      </SpeedDial>
-    </MuiThemeProvider>
+          className={clsx(classes.container, className)}
+          icon={helper ? <SpeedDialIcon /> : <EmoticonDevilOutline />}
+          onClick={() => {
+            if (open) {
+              onBack();
+            } else if (helper) {
+              onAdd();
+            } else {
+              onMonsterAdd();
+            }
+          }}
+          open={open}
+          TransitionComponent={Zoom}
+          {...rest}
+        >
+          <HelperButtonAction
+            icon={<EmoticonDevilOutline />}
+            onClick={() => {
+              onMonsterAdd();
+              onBack();
+            }}
+            tooltipTitle={
+              <FormattedMessage
+                defaultMessage="Monster"
+                id="combat.add.monster"
+              />
+            }
+          />
+          <HelperButtonAction
+            icon={<AccountPlus />}
+            onClick={onHelperClick}
+            tooltipTitle={
+              <FormattedMessage
+                defaultMessage="Helper"
+                id="combat.add.helper"
+              />
+            }
+          />
+        </SpeedDial>
+      </MuiThemeProvider>
 
-    {open && <Backdrop className={classes.backdrop} onClick={onBack} open />}
-  </>
-);
+      {open && <Backdrop className={classes.backdrop} onClick={onBack} open />}
+    </>
+  );
+};
 
 CombatHelperButton.propTypes = {
   helper: PropTypes.bool,
@@ -129,4 +139,4 @@ CombatHelperButton.defaultProps = {
   open: false,
 };
 
-export default withStyles(styles, { withTheme: true })(CombatHelperButton);
+export default CombatHelperButton;
