@@ -1,7 +1,8 @@
-import React, { PureComponent } from 'react';
+import React, { useRef } from 'react';
 import { hot } from 'react-hot-loader/root';
-import { compose } from 'recompose';
-import { withStyles } from '@material-ui/core';
+import { useSelector } from 'react-redux';
+import { Redirect } from 'react-router-dom';
+import { makeStyles } from '@material-ui/core';
 
 import PlayerContext from '../../components/PlayerContext';
 import { matchShape } from '../../utils/propTypes';
@@ -11,59 +12,55 @@ import CombatButton from './CombatButton';
 import Slider from './Slider';
 import Undo from './Undo';
 
-const styles = (theme) => ({
-  root: {
-    backgroundColor: theme.palette.background.default,
-    display: 'flex',
-    flex: 1,
-    flexDirection: 'column',
-  },
+const useStyles = makeStyles(
+  (theme) => ({
+    root: {
+      backgroundColor: theme.palette.background.default,
+      display: 'flex',
+      flex: 1,
+      flexDirection: 'column',
+    },
 
-  sliderContent: {
-    display: 'flex',
-    flex: 1,
-  },
-});
+    sliderContent: {
+      display: 'flex',
+      flex: 1,
+    },
+  }),
+  { name: 'Player' },
+);
 
-class Player extends PureComponent {
-  constructor(props) {
-    super(props);
+const Player = ({ match }) => {
+  const classes = useStyles();
+  const playerRef = useRef();
+  const playerList = useSelector((state) => state.playerList);
 
-    this.state = {
-      playerId: props.match.params.id,
-    };
+  const playerId = match && match.params.id;
+
+  if (playerId && !playerList.includes(playerId)) {
+    return <Redirect to="/" />;
   }
 
-  static getDerivedStateFromProps(nextProps) {
-    const { match } = nextProps;
-
-    if (match) {
-      return {
-        playerId: match.params.id,
-      };
-    }
-
-    return null;
+  if (playerId) {
+    playerRef.current = playerId;
   }
 
-  render() {
-    const { classes } = this.props;
-    const { playerId } = this.state;
+  if (!playerRef.current) {
+    return <Redirect to="/" />;
+  }
 
-    return (
-      <PlayerContext.Provider value={playerId}>
-        <div className={classes.root}>
-          <AppBar playerId={playerId} />
-          <div className={classes.sliderContent}>
-            <Slider playerId={playerId} />
-          </div>
+  return (
+    <PlayerContext.Provider value={playerRef.current}>
+      <div className={classes.root}>
+        <AppBar playerId={playerRef.current} />
+        <div className={classes.sliderContent}>
+          <Slider playerId={playerRef.current} />
         </div>
-        <CombatButton playerId={playerId} />
-        <Undo />
-      </PlayerContext.Provider>
-    );
-  }
-}
+      </div>
+      <CombatButton playerId={playerRef.current} />
+      <Undo />
+    </PlayerContext.Provider>
+  );
+};
 
 Player.propTypes = {
   match: matchShape,
@@ -75,7 +72,4 @@ Player.defaultProps = {
 
 Player.displayName = 'Player';
 
-export default compose(
-  hot,
-  withStyles(styles),
-)(Player);
+export default hot(Player);
