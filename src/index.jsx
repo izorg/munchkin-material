@@ -3,6 +3,8 @@ import 'core-js/es/map'; // for react
 import 'core-js/es/set'; // for react
 import 'core-js/es/symbol'; // for @material-ui/styles ThemeProvider
 
+import 'react-hot-loader';
+
 import React from 'react';
 import { render } from 'react-dom';
 
