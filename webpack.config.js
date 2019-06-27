@@ -68,15 +68,7 @@ module.exports = {
               cacheDirectory: true,
             },
           },
-          dev && {
-            loader: 'eslint-loader',
-            options: {
-              cache: true,
-              emitError: false,
-              emitWarning: true,
-            },
-          },
-        ].filter(Boolean),
+        ],
       },
       {
         test: /\.(woff|woff2)$/,
