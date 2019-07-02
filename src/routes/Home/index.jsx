@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { makeStyles, Paper, Zoom } from '@material-ui/core';
 import clsx from 'clsx';
@@ -9,9 +10,8 @@ import MenuSidebar from '../../components/menu/Sidebar';
 import Nobody from '../../components/Nobody';
 import ThemeDialog from '../../components/ThemeDialog';
 
-import modeType from './modeType';
-
 import AppBar from './AppBar';
+import { MULTI } from './modes';
 import PlayerAddButton from './PlayerAddButton';
 import PlayerList from './PlayerList';
 import SinglePlayer from './SinglePlayer';
@@ -88,19 +88,16 @@ const useStyles = makeStyles(
   { name: 'Home' },
 );
 
-const Home = ({
-  empty,
-  match,
-  menu,
-  menuCollapsed,
-  mode,
-  playerCount,
-  singleMode,
-}) => {
+const Home = ({ match }) => {
   const contentRef = useRef();
-  const playerCountRef = useRef(playerCount);
 
   const classes = useStyles();
+
+  const playerList = useSelector((state) => state.playerList);
+  const playerCount = playerList.length;
+  const empty = playerCount === 0;
+
+  const playerCountRef = useRef(playerCount);
 
   useEffect(() => {
     const node = contentRef.current;
@@ -114,6 +111,9 @@ const Home = ({
 
   let content;
 
+  const singleMode = useSelector((state) => state.app.singleMode);
+  const { mode } = match.params;
+
   if (singleMode) {
     content = <SinglePlayer />;
   } else if (empty) {
@@ -126,10 +126,13 @@ const Home = ({
     );
   }
 
+  const menu = match.isExact && match.params.mode !== MULTI;
+  const menuCollapsed = useSelector((state) => state.app.menuCollapsed);
+
   return (
     <>
       <div className={clsx(classes.root, { [classes.single]: singleMode })}>
-        <AppBar mode={mode} singleMode={singleMode} />
+        <AppBar empty={empty} mode={mode} singleMode={singleMode} />
         <main className={classes.main}>
           <Paper
             className={clsx(
@@ -145,7 +148,7 @@ const Home = ({
         </main>
       </div>
 
-      <Zoom appear={false} in={Boolean(match) && !mode && !singleMode}>
+      <Zoom appear={false} in={!mode && !singleMode}>
         <PlayerAddButton />
       </Zoom>
 
@@ -159,23 +162,7 @@ const Home = ({
 };
 
 Home.propTypes = {
-  empty: PropTypes.bool,
-  match: PropTypes.object, // eslint-disable-line react/forbid-prop-types
-  menu: PropTypes.bool,
-  menuCollapsed: PropTypes.bool,
-  mode: modeType,
-  playerCount: PropTypes.number,
-  singleMode: PropTypes.bool,
-};
-
-Home.defaultProps = {
-  empty: false,
-  match: null,
-  menu: false,
-  menuCollapsed: true,
-  mode: undefined,
-  playerCount: 0,
-  singleMode: false,
+  match: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
 };
 
 Home.displayName = 'Home';

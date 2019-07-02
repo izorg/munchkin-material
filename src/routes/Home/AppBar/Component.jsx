@@ -37,7 +37,6 @@ const HomeAppBar = ({
 
   const editMode = mode === modes.EDIT;
   const multiMode = mode === modes.MULTI;
-  const buttonColor = multiMode ? 'default' : 'inherit';
 
   const editTitle = intl.formatMessage(messages.edit);
 
@@ -62,19 +61,18 @@ const HomeAppBar = ({
           <Close />
         </TopIconButton>
       ) : (
-        <MenuButton color="inherit" edge="start" />
+        <MenuButton edge="start" />
       )}
       <Title>{title}</Title>
 
       {(singleMode || (!mode && !empty)) && <ResetButton edge="end" />}
 
-      {(!mode || singleMode) && <DiceButton color={buttonColor} edge="end" />}
+      {(!mode || singleMode) && <DiceButton edge="end" />}
 
       {!empty && !multiMode && !singleMode && (
         <Tooltip title={editTitle}>
           <TopIconButton
             aria-label={editTitle}
-            color={buttonColor}
             edge="end"
             onClick={() => onToggleEditClick(mode)}
           >
@@ -93,7 +91,7 @@ const HomeAppBar = ({
       )}
 
       {singleMode && (
-        <TopIconButton color="inherit" edge="end" onClick={onTurnFinish}>
+        <TopIconButton edge="end" onClick={onTurnFinish}>
           <FlagCheckered />
         </TopIconButton>
       )}

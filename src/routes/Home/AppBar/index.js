@@ -14,7 +14,6 @@ import * as modes from '../modes';
 import Component from './Component';
 
 const mapStateToProps = (state) => ({
-  empty: state.playerList.length === 0,
   selectedPlayerIds: state.app.selectedPlayerIds,
 });
 

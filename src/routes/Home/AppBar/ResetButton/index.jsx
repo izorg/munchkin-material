@@ -1,7 +1,10 @@
-import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
-import { get } from 'lodash/fp';
+import React from 'react';
+import { defineMessages, useIntl } from 'react-intl';
+import { useDispatch } from 'react-redux';
+import { Tooltip } from '@material-ui/core';
+import { BackupRestore } from 'mdi-material-ui';
 
+import TopIconButton from '../../../../components/TopIconButton';
 import {
   setCombatHelperBonus,
   setCombatPlayerBonus,
@@ -9,14 +12,19 @@ import {
 import { updatePlayer } from '../../../../ducks/players';
 import { setUndo, UNDO_RESET_PLAYERS } from '../../../../ducks/undo';
 
-import Component from './Component';
-
-const mapStateToProps = createStructuredSelector({
-  singleMode: get(['app', 'singleMode']),
+const messages = defineMessages({
+  reset: {
+    id: 'player.list.reset',
+    defaultMessage: 'Reset',
+  },
 });
 
-const mapDispatchToProps = {
-  onPlayerReset: () => (dispatch, getState) => {
+const onReset = () => (dispatch, getState) => {
+  const {
+    app: { singleMode },
+  } = getState();
+
+  if (singleMode) {
     const {
       combat: { playerId: id },
     } = getState();
@@ -29,8 +37,7 @@ const mapDispatchToProps = {
       }),
     );
     dispatch(setCombatPlayerBonus(0));
-  },
-  onPlayersReset: () => (dispatch, getState) => {
+  } else {
     const { playerList, players } = getState();
 
     const undo = [];
@@ -62,10 +69,24 @@ const mapDispatchToProps = {
         }),
       );
     }
-  },
+  }
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(Component);
+const ResetButton = (props) => {
+  const dispatch = useDispatch();
+  const intl = useIntl();
+
+  return (
+    <Tooltip title={intl.formatMessage(messages.reset)}>
+      <TopIconButton
+        color="inherit"
+        onClick={() => dispatch(onReset())}
+        {...props}
+      >
+        <BackupRestore />
+      </TopIconButton>
+    </Tooltip>
+  );
+};
+
+export default ResetButton;

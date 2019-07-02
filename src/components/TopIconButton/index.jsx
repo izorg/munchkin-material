@@ -35,7 +35,7 @@ const useStyles = makeStyles(
 const TopIconButton = forwardRef((props, ref) => {
   const classes = useStyles();
 
-  return <IconButton ref={ref} classes={classes} {...props} />;
+  return <IconButton ref={ref} classes={classes} color="inherit" {...props} />;
 });
 
 TopIconButton.displayName = 'TopIconButton';

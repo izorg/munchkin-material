@@ -1,9 +1,10 @@
+import { replace } from 'connected-react-router';
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import SwipeableViews from 'react-swipeable-views';
 import { bindKeyboard, virtualize } from 'react-swipeable-views-utils';
 import PropTypes from 'prop-types';
 import { makeStyles, Paper } from '@material-ui/core';
-import { noop } from 'lodash/fp';
 
 import PlayerStats from './Stats';
 
@@ -101,9 +102,15 @@ const useStyles = makeStyles(
   { name: 'PlayerSlider' },
 );
 
-const PlayerSlider = ({ initialSlide, onPlayerChange, playerList }) => {
+const PlayerSlider = ({ playerId }) => {
   const classes = useStyles();
-  const [currentIndex, setCurrentIndex] = useState(initialSlide);
+  const dispatch = useDispatch();
+
+  const playerList = useSelector((state) => state.playerList);
+
+  const [currentIndex, setCurrentIndex] = useState(
+    playerList.indexOf(playerId),
+  );
 
   const getPlayerIndex = (index) => {
     let playerIndex = index % playerList.length;
@@ -118,7 +125,7 @@ const PlayerSlider = ({ initialSlide, onPlayerChange, playerList }) => {
   const handleChangeIndex = (index) => {
     const playerIndex = getPlayerIndex(index);
 
-    onPlayerChange(playerList[playerIndex]);
+    dispatch(replace(`/player/${playerList[playerIndex]}`));
 
     setCurrentIndex(index);
   };
@@ -126,12 +133,12 @@ const PlayerSlider = ({ initialSlide, onPlayerChange, playerList }) => {
   // eslint-disable-next-line react/prop-types
   const slideRenderer = ({ key, index }) => {
     const playerIndex = getPlayerIndex(index);
-    const playerId = playerList[playerIndex];
+    const slidePlayerId = playerList[playerIndex];
 
     return (
       <div key={key} className={classes.itemContainer}>
         <Paper className={classes.item}>
-          <PlayerStats className={classes.stats} playerId={playerId} />
+          <PlayerStats className={classes.stats} playerId={slidePlayerId} />
         </Paper>
       </div>
     );
@@ -160,13 +167,7 @@ const PlayerSlider = ({ initialSlide, onPlayerChange, playerList }) => {
 };
 
 PlayerSlider.propTypes = {
-  initialSlide: PropTypes.number.isRequired,
-  onPlayerChange: PropTypes.func,
-  playerList: PropTypes.arrayOf(PropTypes.string).isRequired,
-};
-
-PlayerSlider.defaultProps = {
-  onPlayerChange: noop,
+  playerId: PropTypes.string.isRequired,
 };
 
 export default PlayerSlider;

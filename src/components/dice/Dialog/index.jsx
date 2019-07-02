@@ -1,9 +1,12 @@
+import { goBack } from 'connected-react-router';
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { TransitionGroup } from 'react-transition-group';
-import PropTypes from 'prop-types';
 import { ButtonBase, Dialog, makeStyles } from '@material-ui/core';
 import { Dice1, Dice2, Dice3, Dice4, Dice5, Dice6 } from 'mdi-material-ui';
 
+import { throwDice } from '../../../ducks/dice';
+import { getQuery } from '../../../utils/location';
 import DiceTransition from '../Transition';
 
 const diceSize = 120;
@@ -45,26 +48,33 @@ const diceComponent = {
   6: Dice6,
 };
 
-const DiceDialog = ({ dice, onDiceClick, ...rest }) => {
+const DiceDialog = (props) => {
   const classes = useStyles();
+  const dispatch = useDispatch();
+
   const [attempt, setAttempt] = useState(0);
 
-  const handleDiceClick = () => {
-    onDiceClick();
+  const dice = useSelector((state) => state.dice);
+  const open = useSelector(getQuery).dice !== undefined;
+
+  const Dice = diceComponent[dice];
+
+  const onDiceClick = () => {
+    dispatch(throwDice());
 
     setAttempt(attempt + 1);
   };
 
-  const Dice = diceComponent[dice];
+  const onDialogClose = () => dispatch(goBack());
 
   return (
-    <Dialog {...rest}>
+    <Dialog {...props} onClose={onDialogClose} open={open}>
       <TransitionGroup
         autoFocus
         className={classes.button}
         component={ButtonBase}
         disableRipple
-        onClick={handleDiceClick}
+        onClick={onDiceClick}
       >
         {dice && (
           <DiceTransition key={attempt}>
@@ -76,15 +86,6 @@ const DiceDialog = ({ dice, onDiceClick, ...rest }) => {
       </TransitionGroup>
     </Dialog>
   );
-};
-
-DiceDialog.propTypes = {
-  dice: PropTypes.number,
-  onDiceClick: PropTypes.func.isRequired,
-};
-
-DiceDialog.defaultProps = {
-  dice: null,
 };
 
 export default DiceDialog;

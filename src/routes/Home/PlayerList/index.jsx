@@ -1,11 +1,11 @@
 import React, { useCallback } from 'react';
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
-import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
 import { List, makeStyles, RootRef } from '@material-ui/core';
 import { useTheme } from '@material-ui/core/styles';
 import clsx from 'clsx';
-import { noop } from 'lodash/fp';
 
+import { movePlayer } from '../../../ducks/playerList';
 import { EDIT } from '../modes';
 import modeType from '../modeType';
 
@@ -28,17 +28,20 @@ const useStyles = makeStyles(
   { name: 'HomePlayerList' },
 );
 
-const HomePlayerList = ({ mode, onPlayerMove, playerList, ...rest }) => {
+const HomePlayerList = ({ mode, ...rest }) => {
   const classes = useStyles();
   const theme = useTheme();
+
+  const dispatch = useDispatch();
+  const playerList = useSelector((state) => state.playerList);
 
   const handleDragEnd = useCallback(
     ({ destination, source }) => {
       if (destination && destination.index !== source.index) {
-        onPlayerMove(source.index, destination.index);
+        dispatch(movePlayer(source.index, destination.index));
       }
     },
-    [onPlayerMove],
+    [dispatch],
   );
 
   if (mode === EDIT) {
@@ -129,14 +132,10 @@ const HomePlayerList = ({ mode, onPlayerMove, playerList, ...rest }) => {
 
 HomePlayerList.propTypes = {
   mode: modeType,
-  onPlayerMove: PropTypes.func,
-  playerList: PropTypes.arrayOf(PropTypes.string),
 };
 
 HomePlayerList.defaultProps = {
   mode: undefined,
-  onPlayerMove: noop,
-  playerList: [],
 };
 
 export default HomePlayerList;
