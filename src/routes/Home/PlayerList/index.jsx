@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 import { useDispatch, useSelector } from 'react-redux';
-import { List, makeStyles, RootRef } from '@material-ui/core';
+import { List, makeStyles } from '@material-ui/core';
 import { useTheme } from '@material-ui/core/styles';
 import clsx from 'clsx';
 
@@ -97,18 +97,17 @@ const HomePlayerList = ({ mode, ...rest }) => {
                     }
 
                     return (
-                      <RootRef rootRef={draggableRef}>
-                        <Item
-                          className={clsx({ [classes.drag]: isDragging })}
-                          ContainerProps={{
-                            ...draggableProps,
-                            style,
-                          }}
-                          dragHandleProps={dragHandleProps}
-                          mode={mode}
-                          playerId={playerId}
-                        />
-                      </RootRef>
+                      <Item
+                        ref={draggableRef}
+                        className={clsx({ [classes.drag]: isDragging })}
+                        ContainerProps={{
+                          ...draggableProps,
+                          style,
+                        }}
+                        dragHandleProps={dragHandleProps}
+                        mode={mode}
+                        playerId={playerId}
+                      />
                     );
                   }}
                 </Draggable>

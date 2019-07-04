@@ -2,20 +2,18 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 import {
-  Avatar,
   Dialog,
   DialogContent,
   DialogTitle,
   List,
   ListItem,
   ListItemAvatar,
-  ListItemText,
   makeStyles,
 } from '@material-ui/core';
-import { ChevronDoubleUp, ChevronUp } from 'mdi-material-ui';
 import { noop } from 'lodash/fp';
 
-import Sex from '../../../components/Sex';
+import PlayerAvatar from '../../../components/PlayerAvatar';
+import PlayerListItemText from '../../../components/PlayerListItemText';
 
 const useStyles = makeStyles(
   (theme) => ({
@@ -25,41 +23,6 @@ const useStyles = makeStyles(
 
     content: {
       padding: 0,
-    },
-
-    textRoot: {
-      overflow: 'hidden',
-      paddingRight: 0,
-    },
-
-    primary: {
-      alignItems: 'center',
-      display: 'flex',
-    },
-
-    name: {
-      flex: 1,
-      overflow: 'hidden',
-      textOverflow: 'ellipsis',
-      whiteSpace: 'nowrap',
-    },
-
-    level: {
-      alignItems: 'center',
-      display: 'inline-flex',
-      fontSize: 20,
-      justifyContent: 'flex-end',
-      marginLeft: theme.spacing(2),
-      width: 44,
-    },
-
-    strength: {
-      alignItems: 'center',
-      display: 'inline-flex',
-      fontSize: 20,
-      justifyContent: 'flex-end',
-      marginLeft: 4,
-      width: 48,
     },
   }),
   { name: 'HelperSelector' },
@@ -90,31 +53,9 @@ const HelperSelector = ({ helpers, onSelect, ...props }) => {
               onClick={() => onSelect(helper.id)}
             >
               <ListItemAvatar>
-                <Avatar style={{ backgroundColor: helper.color }}>
-                  <Sex sex={helper.sex} />
-                </Avatar>
+                <PlayerAvatar color={helper.color} sex={helper.sex} />
               </ListItemAvatar>
-              <ListItemText
-                classes={{
-                  root: classes.textRoot,
-                  primary: classes.primary,
-                }}
-                primary={
-                  <>
-                    <span className={classes.name}>{helper.name}</span>
-
-                    <span className={classes.level}>
-                      {helper.level}
-                      <ChevronUp />
-                    </span>
-
-                    <span className={classes.strength}>
-                      {helper.level + helper.gear}
-                      <ChevronDoubleUp />
-                    </span>
-                  </>
-                }
-              />
+              <PlayerListItemText player={helper} />
             </ListItem>
           ))}
         </List>
