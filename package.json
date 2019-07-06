@@ -85,6 +85,7 @@
     "react-responsive": "7.0.0",
     "react-router-dom": "5.0.1",
     "react-swipeable-views": "0.13.3",
+    "react-swipeable-views-core": "0.13.1",
     "react-swipeable-views-utils": "0.13.3",
     "react-transition-group": "4.2.1",
     "recompose": "0.30.0",

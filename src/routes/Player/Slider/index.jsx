@@ -1,7 +1,8 @@
 import { replace } from 'connected-react-router';
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import SwipeableViews from 'react-swipeable-views';
+import { mod } from 'react-swipeable-views-core';
 import { bindKeyboard, virtualize } from 'react-swipeable-views-utils';
 import PropTypes from 'prop-types';
 import { makeStyles, Paper } from '@material-ui/core';
@@ -12,6 +13,13 @@ const PlayerSwipeableViews = bindKeyboard(virtualize(SwipeableViews));
 
 const useStyles = makeStyles(
   (theme) => ({
+    root: {
+      [theme.breakpoints.up('sm')]: {
+        paddingLeft: theme.spacing(8),
+        paddingRight: theme.spacing(8),
+      },
+    },
+
     slide: {
       display: 'flex',
     },
@@ -22,6 +30,10 @@ const useStyles = makeStyles(
       flex: 1,
       flexDirection: 'column',
       justifyContent: 'center',
+
+      [theme.breakpoints.up('sm')]: {
+        padding: theme.spacing(1, 2),
+      },
     },
 
     item: {
@@ -33,67 +45,44 @@ const useStyles = makeStyles(
       flexGrow: 1,
       height: '100%',
       justifyContent: 'center',
-      paddingLeft: theme.spacing(2),
-      paddingRight: theme.spacing(2),
+      padding: theme.spacing(2),
       width: '100%',
+
+      '@media (orientation: portrait)': {
+        paddingBottom: theme.spacing(7),
+      },
+
+      '@media (min-height: 720px)': {
+        paddingBottom: theme.spacing(2),
+      },
 
       [theme.breakpoints.up('sm')]: {
         backgroundColor: theme.palette.background.paper,
+        boxShadow: theme.shadows[1],
+        paddingLeft: theme.spacing(3),
+        paddingRight: theme.spacing(3),
+
+        '@media (orientation: portrait)': {
+          maxHeight: 480,
+          paddingBottom: theme.spacing(2),
+        },
+
+        '@media (orientation: landscape)': {
+          flex: 'none',
+          height: 'auto',
+        },
       },
     },
 
     stats: {
       flex: 1,
-    },
 
-    '@media (orientation: portrait)': {
-      item: {
-        paddingBottom: 56,
-      },
-    },
-
-    [theme.breakpoints.down('xs')]: {
-      item: {
-        boxShadow: 'none',
-      },
-    },
-
-    [theme.breakpoints.up('sm')]: {
-      root: {
-        paddingLeft: theme.spacing(8),
-        paddingRight: theme.spacing(8),
-      },
-
-      itemContainer: {
-        paddingLeft: theme.spacing(2),
-        paddingRight: theme.spacing(2),
-      },
-
-      item: {
-        paddingLeft: theme.spacing(3),
-        paddingRight: theme.spacing(3),
-      },
-
-      '@media (orientation: portrait)': {
-        item: {
-          maxHeight: 480,
-          paddingBottom: 0,
-        },
-
-        stats: {
+      [theme.breakpoints.up('sm')]: {
+        '@media (orientation: portrait)': {
           maxWidth: 300,
         },
-      },
 
-      '@media (orientation: landscape)': {
-        item: {
-          flex: 'none',
-          height: 'auto',
-          paddingBottom: theme.spacing(2),
-          paddingTop: theme.spacing(2),
-        },
-
-        stats: {
+        '@media (orientation: landscape)': {
           maxWidth: 400,
         },
       },
@@ -107,28 +96,44 @@ const PlayerSlider = ({ playerId }) => {
   const dispatch = useDispatch();
 
   const playerList = useSelector((state) => state.playerList);
+  const playerCount = playerList.length;
 
   const [currentIndex, setCurrentIndex] = useState(
     playerList.indexOf(playerId),
   );
 
-  const getPlayerIndex = (index) => {
-    let playerIndex = index % playerList.length;
+  const getPlayerIndex = useCallback(
+    (index) => {
+      let playerIndex = index % playerCount;
 
-    if (playerIndex < 0) {
-      playerIndex = playerList.length + playerIndex;
+      if (playerIndex < 0) {
+        playerIndex = playerCount + playerIndex;
+      }
+
+      return playerIndex;
+    },
+    [playerCount],
+  );
+
+  useEffect(() => {
+    const sliderPlayerId = playerList[getPlayerIndex(currentIndex)];
+
+    if (sliderPlayerId !== playerId) {
+      dispatch(replace(`/player/${sliderPlayerId}`));
     }
+  }, [currentIndex]); // eslint-disable-line react-hooks/exhaustive-deps
 
-    return playerIndex;
-  };
+  useEffect(() => {
+    const playerIndex = playerList.indexOf(playerId);
 
-  const handleChangeIndex = (index) => {
-    const playerIndex = getPlayerIndex(index);
+    if (playerIndex !== getPlayerIndex(currentIndex)) {
+      setCurrentIndex(
+        currentIndex - mod(currentIndex, playerCount) + playerIndex,
+      );
+    }
+  }, [playerId]); // eslint-disable-line react-hooks/exhaustive-deps
 
-    dispatch(replace(`/player/${playerList[playerIndex]}`));
-
-    setCurrentIndex(index);
-  };
+  const handleChangeIndex = (index) => setCurrentIndex(index);
 
   // eslint-disable-next-line react/prop-types
   const slideRenderer = ({ key, index }) => {
@@ -137,7 +142,7 @@ const PlayerSlider = ({ playerId }) => {
 
     return (
       <div key={key} className={classes.itemContainer}>
-        <Paper className={classes.item}>
+        <Paper className={classes.item} elevation={0}>
           <PlayerStats className={classes.stats} playerId={slidePlayerId} />
         </Paper>
       </div>

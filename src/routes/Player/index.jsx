@@ -9,6 +9,7 @@ import { matchShape } from '../../utils/propTypes';
 
 import AppBar from './AppBar';
 import CombatButton from './CombatButton';
+import PlayerList from './List';
 import Slider from './Slider';
 import Undo from './Undo';
 
@@ -21,9 +22,48 @@ const useStyles = makeStyles(
       flexDirection: 'column',
     },
 
+    content: {
+      display: 'flex',
+      flex: 1,
+      flexDirection: 'column',
+      overflow: 'hidden',
+
+      [theme.breakpoints.up('md')]: {
+        flexDirection: 'row-reverse',
+      },
+    },
+
     sliderContent: {
       display: 'flex',
       flex: 1,
+      overflowY: 'auto',
+
+      [theme.breakpoints.up('md')]: {
+        overflow: 'hidden',
+      },
+    },
+
+    playerList: {
+      backgroundColor: theme.palette.background.paper,
+      boxShadow: theme.shadows[2],
+      display: 'none',
+      flex: '0 1 auto',
+      overflowY: 'auto',
+      paddingBottom: theme.spacing(7),
+
+      '@media (min-height: 720px)': {
+        display: 'block',
+      },
+
+      [theme.breakpoints.up('sm')]: {
+        paddingBottom: theme.spacing(8),
+      },
+
+      [theme.breakpoints.up('md')]: {
+        flex: 'none',
+        paddingBottom: theme.spacing(1),
+        width: theme.spacing(50),
+      },
     },
   }),
   { name: 'Player' },
@@ -52,8 +92,14 @@ const Player = ({ match }) => {
     <PlayerContext.Provider value={playerRef.current}>
       <div className={classes.root}>
         <AppBar playerId={playerRef.current} />
-        <div className={classes.sliderContent}>
-          <Slider playerId={playerRef.current} />
+        <div className={classes.content}>
+          <div className={classes.sliderContent}>
+            <Slider playerId={playerRef.current} />
+          </div>
+          <PlayerList
+            className={classes.playerList}
+            selectedPlayerId={playerRef.current}
+          />
         </div>
       </div>
       <CombatButton playerId={playerRef.current} />
