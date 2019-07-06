@@ -49,7 +49,6 @@ module.exports = {
         useESModules: modules,
       },
     ],
-    '@babel/plugin-syntax-dynamic-import',
     i18n && [
       'babel-plugin-react-intl',
       {
