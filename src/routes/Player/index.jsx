@@ -60,6 +60,7 @@ const useStyles = makeStyles(
       },
 
       [theme.breakpoints.up('md')]: {
+        display: 'block',
         flex: 'none',
         paddingBottom: theme.spacing(1),
         width: theme.spacing(50),
