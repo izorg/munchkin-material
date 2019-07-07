@@ -1,6 +1,6 @@
 {
   "name": "munchkin-web",
-  "version": "8.8.15",
+  "version": "9.0.0",
   "main": "dist/js/app.js",
   "files": [
     "dist/"
