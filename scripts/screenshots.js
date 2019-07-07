@@ -22,7 +22,7 @@ const sizes = {
   mobile: devices['Nexus 5'],
   tablet7: devices['Nexus 7'],
   tablet10: devices['Nexus 10'],
-  iPhoneXs: {
+  iphone65: {
     viewport: {
       width: 414,
       height: 896,
@@ -32,6 +32,28 @@ const sizes = {
     },
     userAgent:
       'Mozilla/5.0 (iPhone; CPU iPhone OS 12_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.1 Mobile/15E148 Safari/604.1',
+  },
+  iphone55: {
+    viewport: {
+      width: 414,
+      height: 736,
+      deviceScaleFactor: 3,
+      isMobile: true,
+      hasTouch: true,
+    },
+    userAgent:
+      'Mozilla/5.0 (iPhone; CPU iPhone OS 12_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.1 Mobile/15E148 Safari/604.1',
+  },
+  ipadpro129: {
+    viewport: {
+      width: 1024,
+      height: 1366,
+      deviceScaleFactor: 2,
+      isMobile: true,
+      hasTouch: true,
+    },
+    userAgent:
+      'Mozilla/5.0 (iPad; CPU OS 12_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.1 Mobile/15E148 Safari/604.1',
   },
 };
 const dir = 'screenshots';
@@ -100,9 +122,15 @@ const getScreenshots = async ({ locale, size = 'mobile' }) => {
   await page.click('[data-screenshots="player-back-button"]');
   await page.waitFor(duration.enteringScreen * 2);
   count += 1;
-  await page.click('[data-screenshots="menu"]');
-  await page.waitFor(duration.enteringScreen);
-  await page.click(`${menuSelector} [data-screenshots="single-mode-item"]`);
+
+  if (size !== 'ipadpro129') {
+    await page.click('[data-screenshots="menu"]');
+    await page.waitFor(duration.enteringScreen);
+    await page.click(`${menuSelector} [data-screenshots="single-mode-item"]`);
+  } else {
+    await page.click('[data-screenshots="single-mode-item"]');
+  }
+
   await page.waitFor(duration.leavingScreen);
   await Promise.all(
     range(0, 3).map(async () =>
@@ -134,6 +162,13 @@ const getScreenshots = async ({ locale, size = 'mobile' }) => {
 };
 
 (async () => {
+  // await getScreenshots({ locale: EN, size: 'iphone65' });
+  // await getScreenshots({ locale: RU, size: 'iphone65' });
+  // await getScreenshots({ locale: EN, size: 'iphone55' });
+  // await getScreenshots({ locale: RU, size: 'iphone55' });
+  // await getScreenshots({ locale: EN, size: 'ipadpro129' });
+  // await getScreenshots({ locale: RU, size: 'ipadpro129' });
+
   await getScreenshots({ locale: EN, size: 'mobile' });
   await getScreenshots({ locale: RU, size: 'mobile' });
   await getScreenshots({ locale: EN, size: 'tablet7' });
