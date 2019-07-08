@@ -35,12 +35,7 @@ const useStyles = makeStyles(
 
     sliderContent: {
       display: 'flex',
-      flex: 1,
-      overflowY: 'auto',
-
-      [theme.breakpoints.up('md')]: {
-        overflow: 'hidden',
-      },
+      flex: '1 0 auto',
     },
 
     playerList: {
