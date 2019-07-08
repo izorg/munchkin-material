@@ -8,24 +8,6 @@ export const PL = 'pl';
 export const RU = 'ru';
 export const UK = 'uk';
 
-const availableLocales = { DE, EN, ES, FR, HU, IT, PL, RU, UK };
-
-const defaultLocale = EN;
-
-const LANGUAGE_LENGTH = 2;
-
-export const getLocale = () => {
-  const locale = navigator.language.substr(0, LANGUAGE_LENGTH);
-
-  return Object.values(availableLocales).includes(locale)
-    ? locale
-    : defaultLocale;
-};
-
-let allMessages = {};
-
-export const getMessages = (locale) => allMessages[locale];
-
 const loaders = {
   [DE]: () =>
     import(/* webpackChunkName: "locales/de" */ '../languages/de.json'),
@@ -55,13 +37,27 @@ const loaders = {
     import(/* webpackChunkName: "locales/uk" */ '../languages/uk.json'),
 };
 
+const defaultLocale = EN;
+
+const LANGUAGE_LENGTH = 2;
+
+export const getLocale = () => {
+  const locale = navigator.language.substr(0, LANGUAGE_LENGTH);
+
+  return loaders[locale] ? locale : defaultLocale;
+};
+
+let allMessages = {};
+
+export const getMessages = (locale) => allMessages[locale];
+
 export const loadLocale = async (locale) => {
-  const messages = await loaders[locale]();
+  const { default: messages } = await loaders[locale]();
 
   allMessages = {
     ...allMessages,
     [locale]: messages,
   };
 
-  return { messages };
+  return messages;
 };

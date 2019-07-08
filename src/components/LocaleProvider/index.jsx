@@ -1,11 +1,14 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import { IntlProvider } from 'react-intl';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 
 import { getLocale, getMessages, loadLocale } from '../../i18n';
 
-const LocaleProvider = ({ locale: localeProp, ...rest }) => {
+const defaultLocale = getLocale();
+
+const LocaleProvider = (props) => {
+  const localeProp = useSelector((state) => state.app.locale) || defaultLocale;
+
   const [{ locale, messages }, setState] = useState({
     locale: localeProp,
     messages: getMessages(localeProp),
@@ -13,11 +16,11 @@ const LocaleProvider = ({ locale: localeProp, ...rest }) => {
 
   useEffect(() => {
     (async () => {
-      const result = await loadLocale(localeProp);
+      const loadedMessages = await loadLocale(localeProp);
 
       setState({
         locale: localeProp,
-        messages: result.messages,
+        messages: loadedMessages,
       });
     })();
   }, [localeProp]);
@@ -32,7 +35,7 @@ const LocaleProvider = ({ locale: localeProp, ...rest }) => {
 
   return (
     <IntlProvider
-      {...rest}
+      {...props}
       locale={locale}
       messages={messages}
       textComponent={Fragment}
@@ -40,23 +43,6 @@ const LocaleProvider = ({ locale: localeProp, ...rest }) => {
   );
 };
 
-LocaleProvider.propTypes = {
-  locale: PropTypes.string,
-};
-
-LocaleProvider.defaultProps = {
-  locale: getLocale(),
-};
-
 LocaleProvider.displayName = 'LocaleProvider';
 
-const mapStateToProps = (state) => ({
-  locale: state.app.locale,
-});
-
-const mapDispatchToProps = {};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(LocaleProvider);
+export default LocaleProvider;
