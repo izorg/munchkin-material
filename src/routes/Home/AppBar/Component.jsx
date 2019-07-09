@@ -15,6 +15,7 @@ import modeType from '../modeType';
 
 import MenuButton from './MenuButton';
 import ResetButton from './ResetButton';
+import ShuffleButton from './ShuffleButton';
 
 const messages = defineMessages({
   edit: {
@@ -68,6 +69,8 @@ const HomeAppBar = ({
       {(singleMode || (!mode && !empty)) && <ResetButton edge="end" />}
 
       {(!mode || singleMode) && <DiceButton edge="end" />}
+
+      {editMode && <ShuffleButton edge="end" />}
 
       {!empty && !multiMode && !singleMode && (
         <Tooltip title={editTitle}>
