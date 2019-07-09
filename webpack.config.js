@@ -60,6 +60,19 @@ module.exports = {
       },
       {
         test: /\.jsx?$/,
+        include: path.resolve(__dirname, './node_modules/react-intl'),
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              babelrc: false,
+              cacheDirectory: true,
+            },
+          },
+        ],
+      },
+      {
+        test: /\.jsx?$/,
         exclude: /node_modules/,
         use: [
           {
