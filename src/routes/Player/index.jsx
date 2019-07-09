@@ -36,6 +36,11 @@ const useStyles = makeStyles(
     sliderContent: {
       display: 'flex',
       flex: '1 0 auto',
+
+      [theme.breakpoints.up('md')]: {
+        flexShrink: 1,
+        overflow: 'hidden',
+      },
     },
 
     playerList: {
