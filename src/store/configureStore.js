@@ -9,7 +9,12 @@ import reducers from '../reducers';
 import { loadState, saveState } from './localStorage';
 import purchase from './middlewares/purchase';
 
-export default ({ buyFullVersion, freeCombat, history, storageKey }) => {
+const configureStore = ({
+  buyFullVersion,
+  freeCombat,
+  history,
+  storageKey,
+}) => {
   const composeEnhancers = composeWithDevTools({ trace: true });
 
   const router = connectRouter(history);
@@ -49,3 +54,5 @@ export default ({ buyFullVersion, freeCombat, history, storageKey }) => {
 
   return store;
 };
+
+export default configureStore;
