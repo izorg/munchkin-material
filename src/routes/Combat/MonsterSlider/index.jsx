@@ -127,7 +127,7 @@ const CombatMonsterSlider = ({ className, onMonsterRemove }) => {
         <SwipeableViews
           axis="y"
           containerStyle={{
-            height: 221,
+            height: 224,
             width: '100%',
           }}
           enableMouseEvents
@@ -135,7 +135,7 @@ const CombatMonsterSlider = ({ className, onMonsterRemove }) => {
           index={index}
           onChangeIndex={(value) => setIndex(value)}
           slideStyle={{
-            height: 221,
+            height: 224,
             padding: '8px 48px 8px 8px',
             position: 'relative',
           }}

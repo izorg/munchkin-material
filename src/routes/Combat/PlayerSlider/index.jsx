@@ -150,7 +150,7 @@ class CombatPlayerSlider extends PureComponent {
           <SwipeableViews
             axis="y"
             containerStyle={{
-              height: 221, // real phone counter value round float
+              height: 224, // real phone counter value round float
               width: '100%',
             }}
             enableMouseEvents
@@ -158,7 +158,7 @@ class CombatPlayerSlider extends PureComponent {
             index={index}
             onChangeIndex={this.handleChangeIndex}
             slideStyle={{
-              height: 221,
+              height: 224,
               padding: '8px 8px 8px 24px',
               position: 'relative',
             }}
