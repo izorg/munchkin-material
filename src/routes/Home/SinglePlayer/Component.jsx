@@ -52,7 +52,7 @@ const useStyles = makeStyles(
 
     counter: {
       flex: 1,
-      overflowX: 'hidden',
+      overflow: 'hidden',
     },
 
     strengthCounter: {
