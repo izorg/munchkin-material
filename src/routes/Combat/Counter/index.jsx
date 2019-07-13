@@ -5,6 +5,8 @@ import { MenuDown, MenuUp } from 'mdi-material-ui';
 import clsx from 'clsx';
 import { noop } from 'lodash/fp';
 
+import CounterLabel from '../../../components/Counter/Label';
+
 import Button from './Button';
 
 const useStyles = makeStyles(
@@ -14,8 +16,6 @@ const useStyles = makeStyles(
     },
 
     title: {
-      color: theme.palette.text.primary,
-      fontFamily: `"Munchkin", ${theme.typography.fontFamily}`,
       fontSize: 16,
     },
 
@@ -71,7 +71,7 @@ const CombatCounter = ({
 
   return (
     <div className={clsx(className, classes.counter)}>
-      <div className={classes.title}>{title}</div>
+      <CounterLabel className={classes.title}>{title}</CounterLabel>
 
       <Button
         className={classes.button}

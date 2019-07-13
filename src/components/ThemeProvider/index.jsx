@@ -2,6 +2,7 @@ import { MuiThemeProvider } from '@material-ui/core';
 import { flow, get } from 'lodash/fp';
 import PropTypes from 'prop-types';
 import React from 'react';
+import { useIntl } from 'react-intl';
 import { useSelector } from 'react-redux';
 import { createSelector } from 'reselect';
 
@@ -28,10 +29,11 @@ const themeSelector = createSelector(
 );
 
 const ThemeProvider = ({ children }) => {
+  const { locale } = useIntl();
   const theme = useSelector(themeSelector);
 
   return (
-    <MuiThemeProvider theme={theme}>
+    <MuiThemeProvider theme={{ ...theme, locale }}>
       <GlobalCss />
       {children}
     </MuiThemeProvider>

@@ -27,6 +27,7 @@ const styles = {
 
   item: {
     flex: 1,
+    overflowX: 'hidden',
   },
 
   sex: {

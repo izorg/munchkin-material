@@ -19,6 +19,7 @@ const useStyles = makeStyles(
 
     item: {
       flex: 1,
+      overflowX: 'hidden',
     },
 
     name: {

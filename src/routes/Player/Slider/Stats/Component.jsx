@@ -6,6 +6,7 @@ import clsx from 'clsx';
 import { noop } from 'lodash/fp';
 
 import Counter from '../../../../components/Counter';
+import CounterLabel from '../../../../components/Counter/Label';
 import Sex from '../../../../components/Sex';
 import { playerShape } from '../../../../utils/propTypes';
 
@@ -41,8 +42,6 @@ const useStyles = makeStyles(
     },
 
     strengthTitle: {
-      color: theme.palette.text.primary,
-      fontFamily: `"Munchkin", ${theme.typography.fontFamily}`,
       fontSize: 24,
     },
 
@@ -126,12 +125,12 @@ const PlayerStats = ({
       </div>
       <div className={classes.mainContainer}>
         <div className={classes.strengthCounter}>
-          <div className={classes.strengthTitle}>
+          <CounterLabel className={classes.strengthTitle}>
             <FormattedMessage
               defaultMessage="Strength"
               id="player.stats.strength"
             />
-          </div>
+          </CounterLabel>
 
           <div className={classes.strengthValue}>
             {player.level + player.gear}

@@ -3,10 +3,10 @@ import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 import { IconButton, makeStyles } from '@material-ui/core';
 
-import { playerShape } from '../../../utils/propTypes';
-
 import Counter from '../../../components/Counter';
+import CounterLabel from '../../../components/Counter/Label';
 import Sex from '../../../components/Sex';
+import { playerShape } from '../../../utils/propTypes';
 
 const useStyles = makeStyles(
   (theme) => ({
@@ -14,16 +14,45 @@ const useStyles = makeStyles(
       display: 'flex',
       flex: 1,
       flexDirection: 'column-reverse',
+
+      '@media (orientation: landscape)': {
+        flexDirection: 'row',
+      },
+
+      [theme.breakpoints.up('sm')]: {
+        margin: '0 auto',
+
+        '@media (orientation: portrait)': {
+          alignSelf: 'center',
+          justifyContent: 'center',
+          maxWidth: 480,
+          width: '100%',
+        },
+
+        '@media (orientation: landscape)': {
+          width: 480,
+        },
+      },
     },
 
     counters: {
       alignItems: 'center',
       display: 'flex',
       flex: 1,
+
+      '@media (orientation: landscape)': {
+        flex: 2,
+      },
+
+      [`${theme.breakpoints.up('sm')} and (orientation: portrait)`]: {
+        flex: 'none',
+        height: 240,
+      },
     },
 
     counter: {
       flex: 1,
+      overflowX: 'hidden',
     },
 
     strengthCounter: {
@@ -32,11 +61,14 @@ const useStyles = makeStyles(
       flexDirection: 'column',
       flex: 1,
       justifyContent: 'center',
+
+      [`${theme.breakpoints.up('sm')} and (orientation: portrait)`]: {
+        flex: 'none',
+        height: 240,
+      },
     },
 
     strengthTitle: {
-      color: theme.palette.text.primary,
-      fontFamily: `"Munchkin", ${theme.typography.fontFamily}`,
       fontSize: 24,
     },
 
@@ -46,6 +78,10 @@ const useStyles = makeStyles(
       fontSize: 72, // 36px * 2
       lineHeight: 0.575, // 1.15 / 2
       marginTop: 32,
+
+      '@media (orientation: landscape)': {
+        marginTop: 64,
+      },
     },
 
     sex: {
@@ -58,52 +94,11 @@ const useStyles = makeStyles(
     sexIcon: {
       fontSize: 'inherit',
     },
-
-    '@media (orientation: landscape)': {
-      content: {
-        flexDirection: 'row',
-      },
-
-      counters: {
-        flex: 2,
-      },
-
-      strengthValue: {
-        marginTop: 64,
-      },
-    },
-
-    [`${theme.breakpoints.up('sm')} and (orientation: portrait)`]: {
-      content: {
-        alignSelf: 'center',
-        justifyContent: 'center',
-        margin: [[0, 'auto']],
-        maxWidth: 400,
-        width: '100%',
-      },
-
-      counters: {
-        flex: 'none',
-        height: 240,
-      },
-
-      strengthCounter: {
-        flex: 'none',
-        height: 240,
-      },
-    },
-
-    [`${theme.breakpoints.up('sm')} and (orientation: landscape)`]: {
-      content: {
-        margin: '0 auto',
-        width: 480,
-      },
-    },
   }),
-  { name: 'SinglePlayerComponent' },
+  { name: 'SinglePlayer' },
 );
 
-const SinglePlayerComponent = ({
+const SinglePlayer = ({
   bonus,
   levelDecrementDisabled,
   levelIncrementDisabled,
@@ -158,12 +153,12 @@ const SinglePlayerComponent = ({
         />
       </div>
       <div className={classes.strengthCounter}>
-        <div className={classes.strengthTitle}>
+        <CounterLabel className={classes.strengthTitle}>
           <FormattedMessage
             defaultMessage="Strength"
             id="singlePlayer.strength"
           />
-        </div>
+        </CounterLabel>
 
         <div className={classes.strengthValue}>
           {player.level + player.gear + bonus}
@@ -177,7 +172,7 @@ const SinglePlayerComponent = ({
   );
 };
 
-SinglePlayerComponent.propTypes = {
+SinglePlayer.propTypes = {
   bonus: PropTypes.number.isRequired,
   levelDecrementDisabled: PropTypes.bool,
   levelIncrementDisabled: PropTypes.bool,
@@ -191,9 +186,11 @@ SinglePlayerComponent.propTypes = {
   player: playerShape.isRequired,
 };
 
-SinglePlayerComponent.defaultProps = {
+SinglePlayer.defaultProps = {
   levelDecrementDisabled: false,
   levelIncrementDisabled: false,
 };
 
-export default SinglePlayerComponent;
+SinglePlayer.displayName = 'SinglePlayer';
+
+export default SinglePlayer;

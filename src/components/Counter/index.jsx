@@ -6,6 +6,7 @@ import clsx from 'clsx';
 import { noop } from 'lodash/fp';
 
 import Button from './Button';
+import CounterLabel from './Label';
 
 const useStyles = makeStyles(
   (theme) => ({
@@ -14,8 +15,6 @@ const useStyles = makeStyles(
     },
 
     title: {
-      color: theme.palette.text.primary,
-      fontFamily: `"Munchkin", ${theme.typography.fontFamily}`,
       fontSize: 24,
     },
 
@@ -59,7 +58,7 @@ const Counter = ({
 
   return (
     <div className={clsx(className, classes.counter)} {...props}>
-      <div className={classes.title}>{title}</div>
+      <CounterLabel className={classes.title}>{title}</CounterLabel>
 
       <Button
         className={classes.button}
