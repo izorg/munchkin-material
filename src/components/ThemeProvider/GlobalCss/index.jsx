@@ -11,9 +11,7 @@ const useStyles = makeStyles(
         fontFamily: 'Munchkin',
         fontStyle: 'normal',
         fontWeight: 'normal',
-        src: `
-        url(${munchkinWoff2}) format('woff2'),
-        url(${munchkinWoff}) format('woff')`,
+        src: `url(${munchkinWoff2}) format('woff2'), url(${munchkinWoff}) format('woff')`,
       },
 
       html: {
