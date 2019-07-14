@@ -1,7 +1,9 @@
 import React, { useEffect, useRef } from 'react';
+import { goBack } from 'connected-react-router';
 import { defineMessages, FormattedMessage, useIntl } from 'react-intl';
 import { Field, Form } from 'react-final-form';
-import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
+import { createSelector } from 'reselect';
 import {
   Dialog,
   DialogActions,
@@ -20,9 +22,14 @@ import {
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme } from '@material-ui/core/styles';
 import { GenderFemale, GenderMale } from 'mdi-material-ui';
+import { flow, get, isUndefined, map, negate } from 'lodash/fp';
 
+import { addPlayerToList } from '../../ducks/playerList';
+import { addPlayer, updatePlayer } from '../../ducks/players';
+import createPlayer from '../../utils/createPlayer';
+import getRandomMaterialColor from '../../utils/getRandomMaterialColor';
+import { getQuery } from '../../utils/location';
 import { ios } from '../../utils/platforms';
-import { sexProp } from '../../utils/propTypes';
 import { FEMALE, MALE } from '../../utils/sex';
 
 import CancelButton from '../CancelButton';
@@ -30,8 +37,6 @@ import SubmitButton from '../SubmitButton';
 
 import AppBar from './AppBar';
 import ColorPicker from './ColorPicker';
-
-const SlideUp = (props) => <Slide direction="up" {...props} />;
 
 const useStyles = makeStyles(
   (theme) => ({
@@ -85,10 +90,42 @@ const messages = defineMessages({
 
 let appear = false;
 
-const PlayerDialog = ({ edit, initialValues, onClose, onSubmit, open }) => {
+const getPlayerId = flow(
+  getQuery,
+  get('player'),
+);
+
+const getEdit = createSelector(
+  getPlayerId,
+  Boolean,
+);
+
+const getInitialValues = createSelector(
+  getPlayerId,
+  get('players'),
+  (playerId, players) =>
+    playerId
+      ? players[playerId]
+      : {
+          color: getRandomMaterialColor(map('color', players)),
+          sex: MALE,
+        },
+);
+
+const getOpen = createSelector(
+  getPlayerId,
+  negate(isUndefined),
+);
+
+const PlayerDialog = () => {
   const classes = useStyles();
+  const dispatch = useDispatch();
   const intl = useIntl();
   const theme = useTheme();
+
+  const edit = useSelector(getEdit);
+  const initialValues = useSelector(getInitialValues);
+  const open = useSelector(getOpen);
 
   const fullScreen = useMediaQuery(theme.breakpoints.down('md'), {
     noSsr: true,
@@ -122,7 +159,7 @@ const PlayerDialog = ({ edit, initialValues, onClose, onSubmit, open }) => {
       focusTimeoutRef.current = null;
     }
 
-    onClose();
+    dispatch(goBack());
   };
 
   const handleEntered = () => {
@@ -139,6 +176,27 @@ const PlayerDialog = ({ edit, initialValues, onClose, onSubmit, open }) => {
     }
   };
 
+  const onSubmit = (values, form) => {
+    const { dirty } = form.getState();
+
+    if (dirty) {
+      const { id, name = '' } = values;
+
+      if (name.trim()) {
+        const player = createPlayer(values);
+
+        if (id) {
+          dispatch(updatePlayer(player));
+        } else {
+          dispatch(addPlayer(player));
+          dispatch(addPlayerToList(player.id));
+        }
+      }
+    }
+
+    dispatch(goBack());
+  };
+
   const title = edit ? (
     <FormattedMessage
       defaultMessage="Edit munchkin"
@@ -147,8 +205,6 @@ const PlayerDialog = ({ edit, initialValues, onClose, onSubmit, open }) => {
   ) : (
     <FormattedMessage defaultMessage="New munchkin" id="player.form.title" />
   );
-
-  const Transition = fullScreen && ios ? SlideUp : Fade;
 
   return (
     <Dialog
@@ -171,9 +227,10 @@ const PlayerDialog = ({ edit, initialValues, onClose, onSubmit, open }) => {
           </Form>
         ),
       }}
-      TransitionComponent={Transition}
+      TransitionComponent={fullScreen && ios ? Slide : Fade}
       TransitionProps={{
         appear,
+        direction: 'up',
       }}
     >
       <DialogTitle className={classes.title}>
@@ -267,24 +324,6 @@ const PlayerDialog = ({ edit, initialValues, onClose, onSubmit, open }) => {
       )}
     </Dialog>
   );
-};
-
-PlayerDialog.propTypes = {
-  edit: PropTypes.bool,
-  initialValues: PropTypes.shape({
-    color: PropTypes.string.isRequired,
-    id: PropTypes.string,
-    name: PropTypes.string,
-    sex: sexProp.isRequired,
-  }).isRequired,
-  onClose: PropTypes.func.isRequired,
-  onSubmit: PropTypes.func.isRequired,
-  open: PropTypes.bool,
-};
-
-PlayerDialog.defaultProps = {
-  edit: false,
-  open: false,
 };
 
 PlayerDialog.displayName = 'PlayerDialog';
