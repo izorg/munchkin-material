@@ -8,11 +8,13 @@ import reducers from '../reducers';
 
 import { loadState, saveState } from './localStorage';
 import purchase from './middlewares/purchase';
+import sentry from './middlewares/sentry';
 
 const configureStore = ({
   buyFullVersion,
   freeCombat,
   history,
+  Sentry,
   storageKey,
 }) => {
   const composeEnhancers = composeWithDevTools({ trace: true });
@@ -31,6 +33,7 @@ const configureStore = ({
     applyMiddleware(
       thunk,
       purchase({ buyFullVersion, freeCombat }),
+      sentry(Sentry),
       routerMiddleware(history),
     ),
   );

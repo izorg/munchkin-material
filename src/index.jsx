@@ -48,6 +48,7 @@ const init = (appEl, initOptions) => {
     buyFullVersion,
     freeCombat,
     history,
+    Sentry,
     storageKey,
   });
 
