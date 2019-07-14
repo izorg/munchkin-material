@@ -29,6 +29,14 @@ const useStyles = makeStyles(
         paddingLeft: 'env(safe-area-inset-left)',
         paddingRight: 'env(safe-area-inset-right)',
       },
+
+      '@media (orientation: portrait)': {
+        overflowY: 'auto',
+      },
+
+      '@media (orientation: landscape)': {
+        overflow: 'hidden',
+      },
     },
 
     players: {
