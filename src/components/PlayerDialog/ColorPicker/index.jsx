@@ -1,7 +1,11 @@
+import { goBack, push } from 'connected-react-router';
 import React, { useRef } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Hidden, makeStyles } from '@material-ui/core';
 import { noop } from 'lodash/fp';
+
+import { getQuery, stringifyQuery } from '../../../utils/location';
 
 import Color from './Color';
 import Dialog from './Dialog';
@@ -16,20 +20,27 @@ const useStyles = makeStyles(
   { name: 'ColorPicker' },
 );
 
-const ColorPicker = ({
-  name,
-  onBlur,
-  onChange,
-  onClose,
-  onFocus,
-  onOpen,
-  open,
-  value,
-}) => {
+const ColorPicker = ({ name, onBlur, onChange, onFocus, value }) => {
   const classes = useStyles();
+  const dispatch = useDispatch();
 
   const anchorEl = useRef(null);
   const ignoreNextBlur = useRef(false);
+
+  const query = useSelector(getQuery);
+
+  const open = query.color === null;
+
+  const onOpen = () =>
+    dispatch(
+      push({
+        search: stringifyQuery({
+          ...query,
+          color: null,
+        }),
+      }),
+    );
+  const onClose = () => dispatch(goBack());
 
   return (
     <>
@@ -91,20 +102,14 @@ ColorPicker.propTypes = {
   name: PropTypes.string.isRequired,
   onBlur: PropTypes.func,
   onChange: PropTypes.func,
-  onClose: PropTypes.func,
   onFocus: PropTypes.func,
-  onOpen: PropTypes.func,
-  open: PropTypes.bool,
   value: PropTypes.string,
 };
 
 ColorPicker.defaultProps = {
   onBlur: noop,
   onChange: noop,
-  onClose: noop,
   onFocus: noop,
-  onOpen: noop,
-  open: false,
   value: '',
 };
 

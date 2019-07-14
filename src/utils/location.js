@@ -1,7 +1,6 @@
-import { push } from 'connected-react-router';
 import { createSelector } from 'reselect';
-import { parse, stringify } from 'qs';
 import { get } from 'lodash/fp';
+import { parse, stringify } from 'qs';
 
 export const getQuery = createSelector(
   get(['router', 'location', 'search']),
@@ -14,13 +13,3 @@ export const getQuery = createSelector(
 
 export const stringifyQuery = (query) =>
   stringify(query, { strictNullHandling: true });
-
-export const addQuery = (query) => (dispatch, getState) =>
-  dispatch(
-    push({
-      search: stringifyQuery({
-        ...getQuery(getState()),
-        ...query,
-      }),
-    }),
-  );
