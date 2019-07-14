@@ -113,4 +113,6 @@ ColorPicker.defaultProps = {
   value: '',
 };
 
+ColorPicker.displayName = 'ColorPicker';
+
 export default ColorPicker;

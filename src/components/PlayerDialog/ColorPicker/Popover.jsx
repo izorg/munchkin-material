@@ -38,4 +38,6 @@ ColorPickerPopover.propTypes = {
   value: colorType.isRequired,
 };
 
+ColorPickerPopover.displayName = 'ColorPickerPopover';
+
 export default ColorPickerPopover;

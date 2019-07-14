@@ -50,4 +50,6 @@ Color.defaultProps = {
   selected: false,
 };
 
+Color.displayName = 'Color';
+
 export default Color;

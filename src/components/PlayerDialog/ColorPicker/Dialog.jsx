@@ -53,4 +53,6 @@ ColorPickerDialog.propTypes = {
   value: colorType.isRequired,
 };
 
+ColorPickerDialog.displayName = 'ColorPickerDialog';
+
 export default ColorPickerDialog;
