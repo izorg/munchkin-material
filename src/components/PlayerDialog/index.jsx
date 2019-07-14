@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { goBack } from 'connected-react-router';
 import { defineMessages, FormattedMessage, useIntl } from 'react-intl';
 import { Field, Form } from 'react-final-form';
@@ -117,14 +117,23 @@ const getOpen = createSelector(
   negate(isUndefined),
 );
 
+// eslint-disable-next-line react/prop-types
+const PaperComponent = ({ initialValues, onSubmit, ...props }) => (
+  <Form initialValues={initialValues} onSubmit={onSubmit} subscription={{}}>
+    {({ handleSubmit }) => <form onSubmit={handleSubmit} {...props} />}
+  </Form>
+);
+
 const PlayerDialog = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const intl = useIntl();
   const theme = useTheme();
 
+  const [initialValues, setInitialValues] = useState();
+
   const edit = useSelector(getEdit);
-  const initialValues = useSelector(getInitialValues);
+  const defaultInitialValues = useSelector(getInitialValues);
   const open = useSelector(getOpen);
 
   const fullScreen = useMediaQuery(theme.breakpoints.down('md'), {
@@ -134,11 +143,11 @@ const PlayerDialog = () => {
   const nameRef = useRef(null);
   const focusTimeoutRef = useRef(null);
 
-  const initialValuesRef = useRef();
-
-  if (open) {
-    initialValuesRef.current = initialValues;
-  }
+  useEffect(() => {
+    if (open) {
+      setInitialValues(defaultInitialValues);
+    }
+  }, [open]); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     appear = true;
@@ -217,15 +226,9 @@ const PlayerDialog = () => {
       onEntered={handleEntered}
       open={open}
       PaperProps={{
-        component: (props) => (
-          <Form
-            initialValues={initialValuesRef.current}
-            onSubmit={onSubmit}
-            subscription={{ submitting: true }}
-          >
-            {({ handleSubmit }) => <form onSubmit={handleSubmit} {...props} />}
-          </Form>
-        ),
+        component: PaperComponent,
+        initialValues,
+        onSubmit,
       }}
       TransitionComponent={fullScreen && ios ? Slide : Fade}
       TransitionProps={{
