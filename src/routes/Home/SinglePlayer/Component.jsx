@@ -76,7 +76,7 @@ const useStyles = makeStyles(
       color: theme.palette.text.primary,
       fontFamily: `"Munchkin", ${theme.typography.fontFamily}`,
       fontSize: 72, // 36px * 2
-      lineHeight: 0.575, // 1.15 / 2
+      lineHeight: theme.typography.body2.lineHeight / 2, // 1.43 / 2
       marginTop: 32,
 
       '@media (orientation: landscape)': {
