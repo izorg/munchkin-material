@@ -1,5 +1,5 @@
 import { goBack, push } from 'connected-react-router';
-import React, { useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Hidden, makeStyles } from '@material-ui/core';
@@ -20,12 +20,27 @@ const useStyles = makeStyles(
   { name: 'ColorPicker' },
 );
 
-const ColorPicker = ({ name, onBlur, onChange, onFocus, value }) => {
+const ColorPicker = ({
+  defaultValue,
+  name,
+  onBlur,
+  onChange,
+  onFocus,
+  value: valueProp,
+}) => {
   const classes = useStyles();
   const dispatch = useDispatch();
 
   const anchorEl = useRef(null);
   const ignoreNextBlur = useRef(false);
+
+  const [value, setValue] = useState(defaultValue || valueProp);
+
+  useEffect(() => {
+    if (valueProp) {
+      setValue(valueProp);
+    }
+  }, [valueProp]);
 
   const query = useSelector(getQuery);
 
@@ -75,6 +90,7 @@ const ColorPicker = ({ name, onBlur, onChange, onFocus, value }) => {
         <Dialog
           onClose={onClose}
           onSelect={(color) => {
+            setValue(color);
             onChange(color);
             onClose();
           }}
@@ -87,6 +103,7 @@ const ColorPicker = ({ name, onBlur, onChange, onFocus, value }) => {
           anchorEl={() => anchorEl.current}
           onClose={onClose}
           onSelect={(color) => {
+            setValue(color);
             onChange(color);
             onClose();
           }}
@@ -99,6 +116,7 @@ const ColorPicker = ({ name, onBlur, onChange, onFocus, value }) => {
 };
 
 ColorPicker.propTypes = {
+  defaultValue: PropTypes.string,
   name: PropTypes.string.isRequired,
   onBlur: PropTypes.func,
   onChange: PropTypes.func,
@@ -107,6 +125,7 @@ ColorPicker.propTypes = {
 };
 
 ColorPicker.defaultProps = {
+  defaultValue: undefined,
   onBlur: noop,
   onChange: noop,
   onFocus: noop,

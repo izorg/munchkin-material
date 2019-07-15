@@ -1,4 +1,3 @@
-import 'core-js/es/array/find'; // for react-final-form
 import 'core-js/es/map'; // for react
 import 'core-js/es/set'; // for react
 import 'core-js/es/symbol'; // for @material-ui/styles ThemeProvider

@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { goBack } from 'connected-react-router';
 import { defineMessages, FormattedMessage, useIntl } from 'react-intl';
-import { Field, Form } from 'react-final-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { createSelector } from 'reselect';
 import {
@@ -16,13 +15,14 @@ import {
   Grid,
   makeStyles,
   Radio,
+  RadioGroup,
   Slide,
   TextField,
 } from '@material-ui/core';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme } from '@material-ui/core/styles';
 import { GenderFemale, GenderMale } from 'mdi-material-ui';
-import { flow, get, isUndefined, map, negate } from 'lodash/fp';
+import { flow, get, isEqual, isUndefined, map, negate } from 'lodash/fp';
 
 import { addPlayerToList } from '../../ducks/playerList';
 import { addPlayer, updatePlayer } from '../../ducks/players';
@@ -117,23 +117,16 @@ const getOpen = createSelector(
   negate(isUndefined),
 );
 
-// eslint-disable-next-line react/prop-types
-const PaperComponent = ({ initialValues, onSubmit, ...props }) => (
-  <Form initialValues={initialValues} onSubmit={onSubmit} subscription={{}}>
-    {({ handleSubmit }) => <form onSubmit={handleSubmit} {...props} />}
-  </Form>
-);
-
 const PlayerDialog = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const intl = useIntl();
   const theme = useTheme();
 
-  const [initialValues, setInitialValues] = useState();
+  const defaultInitialValues = useSelector(getInitialValues);
+  const [initialValues, setInitialValues] = useState(defaultInitialValues);
 
   const edit = useSelector(getEdit);
-  const defaultInitialValues = useSelector(getInitialValues);
   const open = useSelector(getOpen);
 
   const fullScreen = useMediaQuery(theme.breakpoints.down('md'), {
@@ -185,16 +178,31 @@ const PlayerDialog = () => {
     }
   };
 
-  const onSubmit = (values, form) => {
-    const { dirty } = form.getState();
+  const onSubmit = (event) => {
+    event.preventDefault();
 
-    if (dirty) {
-      const { id, name = '' } = values;
+    const form = event.target;
 
-      if (name.trim()) {
-        const player = createPlayer(values);
+    const values = {
+      color: form.color.value,
+      name: form.name.value,
+      sex: form.sex.value,
+    };
 
-        if (id) {
+    const playerValues = {
+      color: initialValues.color,
+      name: initialValues.name,
+      sex: initialValues.sex,
+    };
+
+    if (!isEqual(values, playerValues)) {
+      if (values.name.trim()) {
+        const player = createPlayer({
+          ...initialValues,
+          ...values,
+        });
+
+        if (initialValues.id) {
           dispatch(updatePlayer(player));
         } else {
           dispatch(addPlayer(player));
@@ -226,8 +234,9 @@ const PlayerDialog = () => {
       onEntered={handleEntered}
       open={open}
       PaperProps={{
-        component: PaperComponent,
-        initialValues,
+        component: 'form',
+        name: 'player',
+        // initialValues,
         onSubmit,
       }}
       TransitionComponent={fullScreen && ios ? Slide : Fade}
@@ -240,18 +249,15 @@ const PlayerDialog = () => {
         {fullScreen ? <AppBar onCancel={handleClose} title={title} /> : title}
       </DialogTitle>
       <DialogContent className={classes.content}>
-        <Field name="name">
-          {({ input }) => (
-            <TextField
-              {...input}
-              autoFocus={!edit && (!ios || !window.cordova)}
-              fullWidth
-              inputRef={nameRef}
-              margin="normal"
-              placeholder={intl.formatMessage(messages.label)}
-            />
-          )}
-        </Field>
+        <TextField
+          autoFocus={!edit && (!ios || !window.cordova)}
+          defaultValue={initialValues.name}
+          fullWidth
+          inputRef={nameRef}
+          margin="normal"
+          name="name"
+          placeholder={intl.formatMessage(messages.label)}
+        />
 
         <Grid container>
           <Grid item xs={6}>
@@ -259,46 +265,18 @@ const PlayerDialog = () => {
               <FormLabel component="legend">
                 <FormattedMessage defaultMessage="Sex" id="player.form.sex" />
               </FormLabel>
-              <FormControlLabel
-                control={
-                  <Field name="sex" type="radio">
-                    {({
-                      input: { checked, name, onChange, value, ...inputProps },
-                    }) => (
-                      <Radio
-                        checked={checked}
-                        color="primary"
-                        inputProps={inputProps}
-                        name={name}
-                        onChange={onChange}
-                        value={value}
-                      />
-                    )}
-                  </Field>
-                }
-                label={<GenderMale className={classes.icon} />}
-                value={MALE}
-              />
-              <FormControlLabel
-                control={
-                  <Field name="sex" type="radio">
-                    {({
-                      input: { checked, name, onChange, value, ...inputProps },
-                    }) => (
-                      <Radio
-                        checked={checked}
-                        color="primary"
-                        inputProps={inputProps}
-                        name={name}
-                        onChange={onChange}
-                        value={value}
-                      />
-                    )}
-                  </Field>
-                }
-                label={<GenderFemale className={classes.icon} />}
-                value={FEMALE}
-              />
+              <RadioGroup defaultValue={initialValues.sex} name="sex">
+                <FormControlLabel
+                  control={<Radio color="primary" />}
+                  label={<GenderMale className={classes.icon} />}
+                  value={MALE}
+                />
+                <FormControlLabel
+                  control={<Radio color="primary" />}
+                  label={<GenderFemale className={classes.icon} />}
+                  value={FEMALE}
+                />
+              </RadioGroup>
             </FormControl>
           </Grid>
 
@@ -310,9 +288,7 @@ const PlayerDialog = () => {
                   id="player.form.color"
                 />
               </FormLabel>
-              <Field name="color">
-                {({ input }) => <ColorPicker {...input} />}
-              </Field>
+              <ColorPicker defaultValue={initialValues.color} name="color" />
             </FormControl>
           </Grid>
         </Grid>
