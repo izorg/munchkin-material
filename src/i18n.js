@@ -5,6 +5,7 @@ export const EN = 'en';
 export const ES = 'es';
 export const FR = 'fr';
 export const HU = 'hu';
+export const HY = 'hy';
 export const IT = 'it';
 export const PL = 'pl';
 export const PT = 'pt';
@@ -32,6 +33,9 @@ const loaders = {
 
   [HU]: () =>
     import(/* webpackChunkName: "locales/hu" */ '../languages/hu.json'),
+
+  [HY]: () =>
+    import(/* webpackChunkName: "locales/hy" */ '../languages/hy.json'),
 
   [IT]: () =>
     import(/* webpackChunkName: "locales/it" */ '../languages/it.json'),
