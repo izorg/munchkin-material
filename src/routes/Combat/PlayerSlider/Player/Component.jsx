@@ -1,166 +1,116 @@
-import React, { Component } from 'react';
-import { FormattedMessage } from 'react-intl';
+import React from 'react';
+import { FormattedMessage, useIntl } from 'react-intl';
 import PropTypes from 'prop-types';
-import { IconButton, Typography, withStyles } from '@material-ui/core';
+import { IconButton, makeStyles, Typography } from '@material-ui/core';
 import { noop } from 'lodash/fp';
 
+import { messages } from '../../../../components/Counter';
 import Sex from '../../../../components/Sex';
 import { sexProp } from '../../../../utils/propTypes';
 
 import Counter from '../../Counter';
 
-const styles = {
-  player: {
-    padding: 8,
-    position: 'relative',
-    textAlign: 'center',
+const useStyles = makeStyles(
+  {
+    player: {
+      padding: 8,
+      position: 'relative',
+      textAlign: 'center',
+    },
+
+    name: {
+      margin: '0 0 8px',
+      padding: '0 24px',
+    },
+
+    stats: {
+      display: 'flex',
+    },
+
+    item: {
+      flex: 1,
+      overflow: 'hidden',
+    },
+
+    sex: {
+      padding: 6,
+      position: 'absolute',
+      right: 0,
+      top: 0,
+    },
   },
+  { name: 'CombatPlayer' },
+);
 
-  name: {
-    margin: '0 0 8px',
-    padding: '0 24px',
-  },
+const CombatPlayer = ({
+  bonus,
+  gear,
+  id,
+  level,
+  levelDecrementDisabled,
+  levelIncrementDisabled,
+  name,
+  onBonusChange,
+  onGearDecrement,
+  onGearIncrement,
+  onLevelDecrement,
+  onLevelIncrement,
+  onSexToggle,
+  sex,
+}) => {
+  const classes = useStyles();
+  const intl = useIntl();
 
-  stats: {
-    display: 'flex',
-  },
+  return (
+    <div className={classes.player}>
+      <Typography
+        align="center"
+        className={classes.name}
+        component="div"
+        noWrap
+      >
+        {name}
+      </Typography>
 
-  item: {
-    flex: 1,
-    overflow: 'hidden',
-  },
+      <IconButton className={classes.sex} onClick={() => onSexToggle(id)}>
+        <Sex sex={sex} />
+      </IconButton>
 
-  sex: {
-    padding: 6,
-    position: 'absolute',
-    right: 0,
-    top: 0,
-  },
-};
-
-class CombatPlayer extends Component {
-  constructor(props) {
-    super(props);
-
-    this.handleBonusDecrement = this.handleBonusDecrement.bind(this);
-    this.handleBonusIncrement = this.handleBonusIncrement.bind(this);
-    this.handleGearDecrement = this.handleGearDecrement.bind(this);
-    this.handleGearIncrement = this.handleGearIncrement.bind(this);
-    this.handleLevelDecrement = this.handleLevelDecrement.bind(this);
-    this.handleLevelIncrement = this.handleLevelIncrement.bind(this);
-    this.handleSexToggle = this.handleSexToggle.bind(this);
-  }
-
-  handleBonusDecrement() {
-    const { bonus, onBonusChange } = this.props;
-
-    onBonusChange(bonus - 1);
-  }
-
-  handleBonusIncrement() {
-    const { bonus, onBonusChange } = this.props;
-
-    onBonusChange(bonus + 1);
-  }
-
-  handleGearDecrement() {
-    const { id, onGearDecrement } = this.props;
-
-    onGearDecrement(id);
-  }
-
-  handleGearIncrement() {
-    const { id, onGearIncrement } = this.props;
-
-    onGearIncrement(id);
-  }
-
-  handleLevelDecrement() {
-    const { id, onLevelDecrement } = this.props;
-
-    onLevelDecrement(id);
-  }
-
-  handleLevelIncrement() {
-    const { id, onLevelIncrement } = this.props;
-
-    onLevelIncrement(id);
-  }
-
-  handleSexToggle() {
-    const { id, onSexToggle } = this.props;
-
-    onSexToggle(id);
-  }
-
-  render() {
-    const {
-      bonus,
-      classes,
-      gear,
-      level,
-      levelDecrementDisabled,
-      levelIncrementDisabled,
-      name,
-      sex,
-    } = this.props;
-
-    return (
-      <div className={classes.player}>
-        <Typography
-          align="center"
-          className={classes.name}
-          component="div"
-          noWrap
-        >
-          {name}
-        </Typography>
-
-        <IconButton className={classes.sex} onClick={this.handleSexToggle}>
-          <Sex sex={sex} />
-        </IconButton>
-
-        <div className={classes.stats}>
-          <Counter
-            className={classes.item}
-            decrementDisabled={levelDecrementDisabled}
-            incrementDisabled={levelIncrementDisabled}
-            onDecrement={this.handleLevelDecrement}
-            onIncrement={this.handleLevelIncrement}
-            title={
-              <FormattedMessage
-                defaultMessage="Level"
-                id="combat.player.level"
-              />
-            }
-            value={level}
-          />
-          <Counter
-            className={classes.item}
-            onDecrement={this.handleGearDecrement}
-            onIncrement={this.handleGearIncrement}
-            title={
-              <FormattedMessage defaultMessage="Gear" id="combat.player.gear" />
-            }
-            value={gear}
-          />
-          <Counter
-            className={classes.item}
-            onDecrement={this.handleBonusDecrement}
-            onIncrement={this.handleBonusIncrement}
-            title={
-              <FormattedMessage
-                defaultMessage="Modifier"
-                id="combat.player.modifier"
-              />
-            }
-            value={bonus}
-          />
-        </div>
+      <div className={classes.stats}>
+        <Counter
+          className={classes.item}
+          decrementDisabled={levelDecrementDisabled}
+          incrementDisabled={levelIncrementDisabled}
+          onDecrement={() => onLevelDecrement(id)}
+          onIncrement={() => onLevelIncrement(id)}
+          title={intl.formatMessage(messages.level)}
+          value={level}
+        />
+        <Counter
+          className={classes.item}
+          onDecrement={() => onGearDecrement(id)}
+          onIncrement={() => onGearIncrement(id)}
+          title={
+            <FormattedMessage defaultMessage="Gear" id="combat.player.gear" />
+          }
+          value={gear}
+        />
+        <Counter
+          className={classes.item}
+          onDecrement={() => onBonusChange(bonus - 1)}
+          onIncrement={() => onBonusChange(bonus + 1)}
+          title={
+            <FormattedMessage
+              defaultMessage="Modifier"
+              id="combat.player.modifier"
+            />
+          }
+          value={bonus}
+        />
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 CombatPlayer.propTypes = {
   bonus: PropTypes.number.isRequired,
@@ -190,4 +140,4 @@ CombatPlayer.defaultProps = {
   onSexToggle: noop,
 };
 
-export default withStyles(styles)(CombatPlayer);
+export default CombatPlayer;

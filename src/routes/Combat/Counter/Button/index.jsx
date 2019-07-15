@@ -1,51 +1,37 @@
-import React, { Component, createRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { IconButton } from '@material-ui/core';
 import Hammer from 'hammerjs';
 
-class CounterButton extends Component {
-  constructor(props) {
-    super(props);
+const CounterButton = ({ onClick, ...rest }) => {
+  const buttonRef = useRef();
 
-    this.buttonRef = createRef();
-  }
+  useEffect(() => {
+    if (!onClick) {
+      return undefined;
+    }
 
-  componentDidMount() {
-    this.addHammer();
-  }
-
-  componentWillUnmount() {
-    this.removeHammer();
-  }
-
-  addHammer() {
-    const { onClick } = this.props;
-
-    this.hammer = new Hammer(this.buttonRef.current, {
+    let hammer = new Hammer(buttonRef.current, {
       recognizers: [[Hammer.Tap]],
     });
 
-    this.hammer.on('tap', onClick);
-  }
+    hammer.on('tap', onClick);
 
-  removeHammer() {
-    if (this.hammer) {
-      this.hammer.stop();
-      this.hammer.destroy();
+    return () => {
+      hammer.stop();
+      hammer.destroy();
 
-      this.hammer = null;
-    }
-  }
+      hammer = null;
+    };
+  }, [onClick]);
 
-  render() {
-    const { onClick, ...rest } = this.props;
-
-    return <IconButton ref={this.buttonRef} {...rest} />;
-  }
-}
+  return <IconButton ref={buttonRef} {...rest} />;
+};
 
 CounterButton.propTypes = {
   onClick: PropTypes.func.isRequired,
 };
+
+CounterButton.displayName = 'CounterButton';
 
 export default CounterButton;

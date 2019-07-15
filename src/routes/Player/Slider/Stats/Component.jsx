@@ -1,11 +1,11 @@
 import React from 'react';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 import PropTypes from 'prop-types';
 import { IconButton, makeStyles } from '@material-ui/core';
 import clsx from 'clsx';
 import { noop } from 'lodash/fp';
 
-import Counter from '../../../../components/Counter';
+import Counter, { messages } from '../../../../components/Counter';
 import CounterLabel from '../../../../components/Counter/Label';
 import Sex from '../../../../components/Sex';
 import { playerShape } from '../../../../utils/propTypes';
@@ -93,6 +93,7 @@ const PlayerStats = ({
   player,
 }) => {
   const classes = useStyles();
+  const intl = useIntl();
 
   return (
     <div className={clsx(className, classes.stats)}>
@@ -103,12 +104,7 @@ const PlayerStats = ({
             incrementDisabled={levelIncrementDisabled}
             onDecrement={() => onLevelDecrement(player.id)}
             onIncrement={() => onLevelIncrement(player.id)}
-            title={
-              <FormattedMessage
-                defaultMessage="Level"
-                id="player.stats.level"
-              />
-            }
+            title={intl.formatMessage(messages.level)}
             value={player.level}
           />
         </div>

@@ -100,11 +100,8 @@ const Combat = ({
   combinedMonsterStrength,
   combinedPlayerStrength,
   helperId,
-  onHelperBonusChange,
-  onHelperRemove,
   onMonsterAdd,
   onMonsterRemove,
-  onPlayerBonusChange,
   playerId,
 }) => {
   const classes = useStyles();
@@ -117,9 +114,6 @@ const Combat = ({
           <PlayerSlider
             className={classes.players}
             helperId={helperId}
-            onHelperBonusChange={onHelperBonusChange}
-            onHelperRemove={onHelperRemove}
-            onPlayerBonusChange={onPlayerBonusChange}
             playerId={playerId}
           />
 
@@ -154,21 +148,15 @@ Combat.propTypes = {
   combinedMonsterStrength: PropTypes.number.isRequired,
   combinedPlayerStrength: PropTypes.number.isRequired,
   helperId: PropTypes.string,
-  onHelperBonusChange: PropTypes.func,
-  onHelperRemove: PropTypes.func,
   onMonsterAdd: PropTypes.func,
   onMonsterRemove: PropTypes.func,
-  onPlayerBonusChange: PropTypes.func,
   playerId: PropTypes.string.isRequired,
 };
 
 Combat.defaultProps = {
   helperId: null,
-  onHelperBonusChange: noop,
-  onHelperRemove: noop,
   onMonsterAdd: noop,
   onMonsterRemove: noop,
-  onPlayerBonusChange: noop,
 };
 
 Combat.displayName = 'Combat';

@@ -2,11 +2,6 @@ import { hot } from 'react-hot-loader/root';
 import { connect } from 'react-redux';
 import { compose } from 'recompose';
 
-import {
-  setCombatHelper,
-  setCombatHelperBonus,
-  setCombatPlayerBonus,
-} from '../../ducks/combat';
 import { addMonster, removeMonster } from '../../ducks/monsters';
 import createMonster from '../../utils/createMonster';
 
@@ -39,17 +34,9 @@ const mapStateToProps = (state) => {
   };
 };
 
-const removeHelper = () => (dispatch) => {
-  dispatch(setCombatHelper(null));
-  dispatch(setCombatHelperBonus(0));
-};
-
 const mapDispatchToProps = {
-  onHelperBonusChange: setCombatHelperBonus,
-  onHelperRemove: removeHelper,
   onMonsterAdd: () => addMonster(createMonster()),
   onMonsterRemove: removeMonster,
-  onPlayerBonusChange: setCombatPlayerBonus,
 };
 
 export default compose(

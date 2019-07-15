@@ -1,9 +1,9 @@
 import React from 'react';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 import PropTypes from 'prop-types';
 import { IconButton, makeStyles } from '@material-ui/core';
 
-import Counter from '../../../components/Counter';
+import Counter, { messages } from '../../../components/Counter';
 import CounterLabel from '../../../components/Counter/Label';
 import Sex from '../../../components/Sex';
 import { playerShape } from '../../../utils/propTypes';
@@ -112,6 +112,7 @@ const SinglePlayer = ({
   player,
 }) => {
   const classes = useStyles();
+  const intl = useIntl();
 
   return (
     <div className={classes.content}>
@@ -123,9 +124,7 @@ const SinglePlayer = ({
           incrementDisabled={levelIncrementDisabled}
           onDecrement={onLevelDecrement}
           onIncrement={onLevelIncrement}
-          title={
-            <FormattedMessage defaultMessage="Level" id="singlePlayer.level" />
-          }
+          title={intl.formatMessage(messages.level)}
           value={player.level}
         />
         <Counter

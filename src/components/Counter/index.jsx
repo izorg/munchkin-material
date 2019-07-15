@@ -8,6 +8,8 @@ import { noop } from 'lodash/fp';
 import Button from './Button';
 import CounterLabel from './Label';
 
+export { default as messages } from './messages';
+
 const useStyles = makeStyles(
   (theme) => ({
     counter: {
