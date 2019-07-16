@@ -7,10 +7,8 @@
     "combat.add.monster": "Potwór",
     "combat.helperSelector.title": "Wybierz pomocnika",
     "combat.monster": "Potwór {number}",
-    "combat.monster.level": "Poziom",
     "combat.monster.modifier": "Modyfikator",
     "combat.player.gear": "Przedmiotów",
-    "combat.player.level": "Poziom",
     "combat.player.modifier": "Modyfikator",
     "dice": "Rzut kością",
     "home.single.title": "Munchkin",
@@ -44,11 +42,9 @@
     "player.list.reset": "Zresetuj",
     "player.list.title": "Munchkins",
     "player.stats.gear": "Przedmiotów",
-    "player.stats.level": "Poziom",
     "player.stats.strength": "Siła",
     "share.text": "Prosty, ale potężny licznik poziomów Munchkina",
     "singlePlayer.gear": "Przedmiotów",
-    "singlePlayer.level": "Poziom",
     "singlePlayer.modifier": "Modyfikator",
     "singlePlayer.strength": "Siła",
     "theme.name.apocalypse": "Apokalipsa",
@@ -64,5 +60,6 @@
     "undo.killPlayer": "{name} {sex, select, female {umarła} male {umarł}}",
     "undo.resetPlayers": "Gracze zostali zresetowani",
     "menu.translate": "Tłumaczenie",
-    "player.list.shuffle": "Przetasuj graczy"
+    "player.list.shuffle": "Przetasuj graczy",
+    "counter.level": "Poziom"
 }
