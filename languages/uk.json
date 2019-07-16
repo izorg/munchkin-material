@@ -7,10 +7,8 @@
     "combat.add.monster": "Монстр",
     "combat.helperSelector.title": "Виберіть помічника",
     "combat.monster": "Монстр {number}",
-    "combat.monster.level": "Рівень",
     "combat.monster.modifier": "Модифікатор",
     "combat.player.gear": "Манатки",
-    "combat.player.level": "Рівень",
     "combat.player.modifier": "Модифікатор",
     "dice": "Кубик",
     "home.single.title": "Манчкін",
@@ -44,11 +42,9 @@
     "player.list.reset": "Скидання",
     "player.list.title": "Манчкіни",
     "player.stats.gear": "Манатки",
-    "player.stats.level": "Рівень",
     "player.stats.strength": "Сила",
     "share.text": "Простий і зручний гравець рівня для гри в Манчкін",
     "singlePlayer.gear": "Манатки",
-    "singlePlayer.level": "Рівень",
     "singlePlayer.modifier": "Модифікатор",
     "singlePlayer.strength": "Сила",
     "theme.name.apocalypse": "Апокаліпсис",
@@ -64,5 +60,6 @@
     "undo.killPlayer": "{name} {sex, select, female {померла} male {помер}}",
     "undo.resetPlayers": "Гравці були скинуті",
     "menu.translate": "Перекласти",
-    "player.list.shuffle": "Перемішати гравців"
+    "player.list.shuffle": "Перемішати гравців",
+    "counter.level": "Рівень"
 }
