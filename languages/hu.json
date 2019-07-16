@@ -7,10 +7,8 @@
     "combat.add.monster": "Szörny",
     "combat.helperSelector.title": "Segítség választás",
     "combat.monster": "Szörny {number}",
-    "combat.monster.level": "Szint",
     "combat.monster.modifier": "Módosító",
     "combat.player.gear": "Felszerelés",
-    "combat.player.level": "Szint",
     "combat.player.modifier": "Módosító",
     "dice": "Kocka",
     "home.single.title": "Munchkin",
@@ -44,11 +42,9 @@
     "player.list.reset": "Visszaállítás",
     "player.list.title": "Munchkin-ok",
     "player.stats.gear": "Felszerelés",
-    "player.stats.level": "Szint",
     "player.stats.strength": "Erő",
     "share.text": "Egyszerű, de hatékony Munchkin szint számláló",
     "singlePlayer.gear": "Felszerelés",
-    "singlePlayer.level": "Szint",
     "singlePlayer.modifier": "Módosító",
     "singlePlayer.strength": "Erő",
     "theme.name.apocalypse": "Apokalipszis",
@@ -64,5 +60,6 @@
     "undo.killPlayer": "{name} {sex, select, female {meghalt} male {meghalt}}",
     "undo.resetPlayers": "Játékosok alaphelyzetbe állítva",
     "menu.translate": "Fordít",
-    "player.list.shuffle": "Keverjük össze a játékosokat"
+    "player.list.shuffle": "Keverjük össze a játékosokat",
+    "counter.level": "Szint"
 }
