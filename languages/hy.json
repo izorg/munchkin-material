@@ -7,10 +7,8 @@
     "combat.add.monster": "Հրեշ",
     "combat.helperSelector.title": "Ընտրեք օգնական",
     "combat.monster": "Հրեշ {number}",
-    "combat.monster.level": "Մակարդակ",
     "combat.monster.modifier": "Հզորացնող",
     "combat.player.gear": "Սարք",
-    "combat.player.level": "Մակարդակ",
     "combat.player.modifier": "Ուժեղացնող",
     "dice": "Զառ",
     "home.single.title": "Մանչկին",
@@ -44,11 +42,9 @@
     "player.list.reset": "Վերականգնել",
     "player.list.title": "Մանչկիններ",
     "player.stats.gear": "Սարք",
-    "player.stats.level": "Մակարդակ",
     "player.stats.strength": "Հզորություն",
     "share.text": "Հասարակ բայց հզոր Մանչկինի մակարդակ հաշվող",
     "singlePlayer.gear": "Սարք",
-    "singlePlayer.level": "Մակարդակ",
     "singlePlayer.modifier": "Ուժեղացնող",
     "singlePlayer.strength": "Հզորություն",
     "theme.name.apocalypse": "Ապոկալիպս",
@@ -64,5 +60,6 @@
     "undo.killPlayer": "{name} {sex, select, female {ն մահացավ} male {ն մահացավ}}",
     "undo.resetPlayers": "Խաղացողները վերականգնվեցին",
     "menu.translate": "Թարգմանել",
-    "player.list.shuffle": "Խառնել խաղացողներին"
+    "player.list.shuffle": "Խառնել խաղացողներին",
+    "counter.level": "Մակարդակ"
 }
