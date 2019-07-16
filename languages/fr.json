@@ -7,10 +7,8 @@
     "combat.add.monster": "Monstre",
     "combat.helperSelector.title": "Choisissez l'aide",
     "combat.monster": "Monstre {number}",
-    "combat.monster.level": "Niveau",
     "combat.monster.modifier": "Modificateur",
     "combat.player.gear": "Équipement",
-    "combat.player.level": "Niveau",
     "combat.player.modifier": "Modificateur",
     "dice": "Dé",
     "home.single.title": "Munchkin",
@@ -44,11 +42,9 @@
     "player.list.reset": "Réinitialiser",
     "player.list.title": "Munchkins",
     "player.stats.gear": "Équipement",
-    "player.stats.level": "Niveau",
     "player.stats.strength": "Force",
     "share.text": "Compteur de niveau Munchkin simple mais puissant",
     "singlePlayer.gear": "Équipement",
-    "singlePlayer.level": "Niveau",
     "singlePlayer.modifier": "Modificateur",
     "singlePlayer.strength": "Force",
     "theme.name.apocalypse": "Apocalypse",
@@ -64,5 +60,6 @@
     "undo.killPlayer": "{name} {sex, select, female {est morte} male {est mort}}",
     "undo.resetPlayers": "Les joueurs ont été réinitialisés",
     "menu.translate": "Traduire",
-    "player.list.shuffle": "Mélangez les joueurs"
+    "player.list.shuffle": "Mélangez les joueurs",
+    "counter.level": "Niveau"
 }
