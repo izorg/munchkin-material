@@ -7,10 +7,8 @@
     "combat.add.monster": "Монстр",
     "combat.helperSelector.title": "Выберите помощника",
     "combat.monster": "Монстр {number}",
-    "combat.monster.level": "Уровень",
     "combat.monster.modifier": "Модификатор",
     "combat.player.gear": "Шмотки",
-    "combat.player.level": "Уровень",
     "combat.player.modifier": "Модификатор",
     "dice": "Кубик",
     "home.single.title": "Манчкин",
@@ -44,11 +42,9 @@
     "player.list.reset": "Сброс",
     "player.list.title": "Манчкины",
     "player.stats.gear": "Шмотки",
-    "player.stats.level": "Уровень",
     "player.stats.strength": "Сила",
     "share.text": "Простой и удобный счётчик уровней для игры в Манчкин",
     "singlePlayer.gear": "Шмотки",
-    "singlePlayer.level": "Уровень",
     "singlePlayer.modifier": "Модификатор",
     "singlePlayer.strength": "Сила",
     "theme.name.apocalypse": "Апокалипсис",
@@ -64,5 +60,6 @@
     "undo.killPlayer": "{name} {sex, select, female {умерла} male {умер}}",
     "undo.resetPlayers": "Игроки были сброшены",
     "menu.translate": "Перевести",
-    "player.list.shuffle": "Перемешать игроков"
+    "player.list.shuffle": "Перемешать игроков",
+    "counter.level": "Уровень"
 }
