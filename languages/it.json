@@ -7,10 +7,8 @@
     "combat.add.monster": "Mostro",
     "combat.helperSelector.title": "Scegli un aiutante",
     "combat.monster": "Mostro {number}",
-    "combat.monster.level": "Livello",
     "combat.monster.modifier": "Modificatore",
     "combat.player.gear": "Oggetti",
-    "combat.player.level": "Livello",
     "combat.player.modifier": "Modificatore",
     "dice": "Dado",
     "home.single.title": "Munchkin",
@@ -44,11 +42,9 @@
     "player.list.reset": "Reset",
     "player.list.title": "Munchkin",
     "player.stats.gear": "Oggetti",
-    "player.stats.level": "Livello",
     "player.stats.strength": "Forza",
     "share.text": "Contatore di livelli Munchkin semplice ma potente",
     "singlePlayer.gear": "Oggetti",
-    "singlePlayer.level": "Livello",
     "singlePlayer.modifier": "Modificatore",
     "singlePlayer.strength": "Forza",
     "theme.name.apocalypse": "Apocalisse",
@@ -64,5 +60,6 @@
     "undo.killPlayer": "{name} {sex, select, female {è morta} male {è morta}}",
     "undo.resetPlayers": "I giocatori sono stati ripristinati",
     "menu.translate": "Tradurre",
-    "player.list.shuffle": "Mischia i giocatori"
+    "player.list.shuffle": "Mischia i giocatori",
+    "counter.level": "Livello"
 }
