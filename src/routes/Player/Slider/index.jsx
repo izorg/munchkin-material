@@ -1,5 +1,5 @@
 import { replace } from 'connected-react-router';
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import SwipeableViews from 'react-swipeable-views';
 import { mod } from 'react-swipeable-views-core';
@@ -95,6 +95,8 @@ const PlayerSlider = ({ playerId }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
 
+  const skipNextRef = useRef(false);
+
   const playerList = useSelector((state) => state.playerList);
   const playerCount = playerList.length;
 
@@ -124,6 +126,12 @@ const PlayerSlider = ({ playerId }) => {
   }, [currentIndex]); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
+    if (skipNextRef.current) {
+      skipNextRef.current = false;
+
+      return;
+    }
+
     const playerIndex = playerList.indexOf(playerId);
 
     if (playerIndex !== getPlayerIndex(currentIndex)) {
@@ -133,7 +141,11 @@ const PlayerSlider = ({ playerId }) => {
     }
   }, [playerId]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  const handleChangeIndex = (index) => setCurrentIndex(index);
+  const handleChangeIndex = (index) => {
+    skipNextRef.current = true;
+
+    setCurrentIndex(index);
+  };
 
   // eslint-disable-next-line react/prop-types
   const slideRenderer = ({ key, index }) => {
