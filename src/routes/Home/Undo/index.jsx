@@ -1,17 +1,31 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { FormattedMessage } from 'react-intl';
-import { createSelector, createStructuredSelector } from 'reselect';
 import { flow, get, isEqual } from 'lodash/fp';
+import React from 'react';
+import { FormattedMessage } from 'react-intl';
+import { useDispatch, useSelector } from 'react-redux';
+import { makeStyles } from '@material-ui/core';
+import { createSelector } from 'reselect';
 
+import UndoSnackbar from '../../../components/UndoSnackbar';
 import { updatePlayer } from '../../../ducks/players';
 import { applyUndo, removeUndo, UNDO_RESET_PLAYERS } from '../../../ducks/undo';
 
-import Component from './Component';
+const useStyles = makeStyles(
+  (theme) => ({
+    root: {
+      bottom: theme.spacing(11),
+
+      [theme.breakpoints.up('sm')]: {
+        bottom: theme.spacing(3.5),
+      },
+    },
+  }),
+  { name: 'HomeUndo' },
+);
 
 const getUndoType = get(['undo', 'type']);
+const getPlayers = get(['undo', 'players']);
 
-const message = createSelector(
+const getMessage = createSelector(
   getUndoType,
   (type) => {
     switch (type) {
@@ -29,37 +43,42 @@ const message = createSelector(
   },
 );
 
-const open = flow(
+const getOpen = flow(
   getUndoType,
   isEqual(UNDO_RESET_PLAYERS),
 );
 
-const mapStateToProps = createStructuredSelector({
-  message,
-  open,
-});
+const HomeUndo = () => {
+  const classes = useStyles();
+  const dispatch = useDispatch();
 
-const mapDispatchToProps = {
-  onClose: (event, reason) => (dispatch, getState) => {
-    const { undo } = getState();
+  const message = useSelector(getMessage);
+  const open = useSelector(getOpen);
+  const undo = useSelector((state) => state.undo);
+  const players = useSelector(getPlayers);
 
+  const onClose = (event, reason) => {
     if (!undo) {
       return;
     }
 
     if (reason === 'undo' && undo) {
-      const players = get(['undo', 'players'], getState());
-
       dispatch(applyUndo());
 
       players.forEach((player) => dispatch(updatePlayer(player)));
     } else {
       dispatch(removeUndo());
     }
-  },
+  };
+
+  return (
+    <UndoSnackbar
+      className={classes.root}
+      message={message}
+      onClose={onClose}
+      open={open}
+    />
+  );
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(Component);
+export default HomeUndo;
