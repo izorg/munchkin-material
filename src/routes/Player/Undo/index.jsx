@@ -1,18 +1,31 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
-import { createSelector, createStructuredSelector } from 'reselect';
+import { useDispatch, useSelector } from 'react-redux';
+import { createSelector } from 'reselect';
+import { makeStyles } from '@material-ui/core';
 import { flow, get, isEqual } from 'lodash/fp';
 
+import UndoSnackbar from '../../../components/UndoSnackbar';
 import { updatePlayer } from '../../../ducks/players';
 import { applyUndo, removeUndo, UNDO_KILL_PLAYER } from '../../../ducks/undo';
 
-import Component from './Component';
+const useStyles = makeStyles(
+  (theme) => ({
+    root: {
+      bottom: theme.spacing(11),
+
+      [theme.breakpoints.up('sm')]: {
+        bottom: theme.spacing(3.5),
+      },
+    },
+  }),
+  { name: 'PlayerUndo' },
+);
 
 const getUndoType = get(['undo', 'type']);
 const getPlayer = get(['undo', 'player']);
 
-const message = createSelector(
+const getMessage = createSelector(
   getUndoType,
   getPlayer,
   (type, { name, sex } = {}) => {
@@ -35,31 +48,42 @@ const message = createSelector(
   },
 );
 
-const open = flow(
+const getOpen = flow(
   getUndoType,
   isEqual(UNDO_KILL_PLAYER),
 );
 
-const mapStateToProps = createStructuredSelector({
-  message,
-  open,
-});
+const PlayerUndo = () => {
+  const classes = useStyles();
+  const dispatch = useDispatch();
 
-const mapDispatchToProps = {
-  onClose: (event, reason) => (dispatch, getState) => {
+  const message = useSelector(getMessage);
+  const open = useSelector(getOpen);
+  const player = useSelector(getPlayer);
+  const undo = useSelector((state) => state.undo);
+
+  const onClose = (event, reason) => {
+    if (!undo) {
+      return;
+    }
+
     if (reason === 'undo') {
-      const player = get(['undo', 'player'], getState());
-
       dispatch(applyUndo());
 
       dispatch(updatePlayer(player));
     } else {
       dispatch(removeUndo());
     }
-  },
+  };
+
+  return (
+    <UndoSnackbar
+      className={classes.root}
+      message={message}
+      onClose={onClose}
+      open={open}
+    />
+  );
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(Component);
+export default PlayerUndo;
