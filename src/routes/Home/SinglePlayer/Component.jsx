@@ -1,9 +1,9 @@
 import React from 'react';
-import { FormattedMessage, useIntl } from 'react-intl';
+import { useIntl } from 'react-intl';
 import PropTypes from 'prop-types';
 import { IconButton, makeStyles } from '@material-ui/core';
 
-import Counter, { messages } from '../../../components/Counter';
+import Counter, { counterMessages } from '../../../components/Counter';
 import CounterLabel from '../../../components/Counter/Label';
 import Sex from '../../../components/Sex';
 import { playerShape } from '../../../utils/propTypes';
@@ -124,7 +124,7 @@ const SinglePlayer = ({
           incrementDisabled={levelIncrementDisabled}
           onDecrement={onLevelDecrement}
           onIncrement={onLevelIncrement}
-          title={intl.formatMessage(messages.level)}
+          title={intl.formatMessage(counterMessages.level)}
           value={player.level}
         />
         <Counter
@@ -132,9 +132,7 @@ const SinglePlayer = ({
           data-screenshots="gear-counter"
           onDecrement={onGearDecrement}
           onIncrement={onGearIncrement}
-          title={
-            <FormattedMessage defaultMessage="Gear" id="singlePlayer.gear" />
-          }
+          title={intl.formatMessage(counterMessages.gear)}
           value={player.gear}
         />
         <Counter
@@ -142,21 +140,13 @@ const SinglePlayer = ({
           data-screenshots="modifier-counter"
           onDecrement={onBonusDecrement}
           onIncrement={onBonusIncrement}
-          title={
-            <FormattedMessage
-              defaultMessage="Modifier"
-              id="singlePlayer.modifier"
-            />
-          }
+          title={intl.formatMessage(counterMessages.modifier)}
           value={bonus}
         />
       </div>
       <div className={classes.strengthCounter}>
         <CounterLabel className={classes.strengthTitle}>
-          <FormattedMessage
-            defaultMessage="Strength"
-            id="singlePlayer.strength"
-          />
+          {intl.formatMessage(counterMessages.strength)}
         </CounterLabel>
 
         <div className={classes.strengthValue}>

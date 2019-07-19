@@ -1,10 +1,10 @@
 import React from 'react';
-import { FormattedMessage, useIntl } from 'react-intl';
+import { useIntl } from 'react-intl';
 import PropTypes from 'prop-types';
 import { makeStyles, Typography } from '@material-ui/core';
 import { noop } from 'lodash/fp';
 
-import { messages } from '../../../../components/Counter';
+import { counterMessages } from '../../../../components/Counter';
 
 import Counter from '../../Counter';
 
@@ -60,19 +60,14 @@ const CombatMonster = ({
           className={classes.item}
           onDecrement={() => onLevelDecrement(id)}
           onIncrement={() => onLevelIncrement(id)}
-          title={intl.formatMessage(messages.level)}
+          title={intl.formatMessage(counterMessages.level)}
           value={level}
         />
         <Counter
           className={classes.item}
           onDecrement={() => onBonusDecrement(id)}
           onIncrement={() => onBonusIncrement(id)}
-          title={
-            <FormattedMessage
-              defaultMessage="Modifier"
-              id="combat.monster.modifier"
-            />
-          }
+          title={intl.formatMessage(counterMessages.modifier)}
           value={bonus}
         />
       </div>

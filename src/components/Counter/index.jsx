@@ -4,11 +4,29 @@ import { makeStyles } from '@material-ui/core';
 import { MenuDown, MenuUp } from 'mdi-material-ui';
 import clsx from 'clsx';
 import { noop } from 'lodash/fp';
+import { defineMessages } from 'react-intl';
 
 import Button from './Button';
 import CounterLabel from './Label';
 
-export { default as messages } from './messages';
+export const counterMessages = defineMessages({
+  gear: {
+    id: 'counter.gear',
+    defaultMessage: 'Gear',
+  },
+  level: {
+    id: 'counter.level',
+    defaultMessage: 'Level',
+  },
+  modifier: {
+    id: 'counter.modifier',
+    defaultMessage: 'Modifier',
+  },
+  strength: {
+    id: 'counter.strength',
+    defaultMessage: 'Strength',
+  },
+});
 
 const useStyles = makeStyles(
   (theme) => ({

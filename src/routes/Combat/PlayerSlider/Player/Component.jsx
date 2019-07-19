@@ -1,10 +1,10 @@
 import React from 'react';
-import { FormattedMessage, useIntl } from 'react-intl';
+import { useIntl } from 'react-intl';
 import PropTypes from 'prop-types';
 import { IconButton, makeStyles, Typography } from '@material-ui/core';
 import { noop } from 'lodash/fp';
 
-import { messages } from '../../../../components/Counter';
+import { counterMessages } from '../../../../components/Counter';
 import Sex from '../../../../components/Sex';
 import { sexProp } from '../../../../utils/propTypes';
 
@@ -83,28 +83,21 @@ const CombatPlayer = ({
           incrementDisabled={levelIncrementDisabled}
           onDecrement={() => onLevelDecrement(id)}
           onIncrement={() => onLevelIncrement(id)}
-          title={intl.formatMessage(messages.level)}
+          title={intl.formatMessage(counterMessages.level)}
           value={level}
         />
         <Counter
           className={classes.item}
           onDecrement={() => onGearDecrement(id)}
           onIncrement={() => onGearIncrement(id)}
-          title={
-            <FormattedMessage defaultMessage="Gear" id="combat.player.gear" />
-          }
+          title={intl.formatMessage(counterMessages.gear)}
           value={gear}
         />
         <Counter
           className={classes.item}
           onDecrement={() => onBonusChange(bonus - 1)}
           onIncrement={() => onBonusChange(bonus + 1)}
-          title={
-            <FormattedMessage
-              defaultMessage="Modifier"
-              id="combat.player.modifier"
-            />
-          }
+          title={intl.formatMessage(counterMessages.modifier)}
           value={bonus}
         />
       </div>

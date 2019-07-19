@@ -1,11 +1,11 @@
 import React from 'react';
-import { FormattedMessage, useIntl } from 'react-intl';
+import { useIntl } from 'react-intl';
 import PropTypes from 'prop-types';
 import { IconButton, makeStyles } from '@material-ui/core';
 import clsx from 'clsx';
 import { noop } from 'lodash/fp';
 
-import Counter, { messages } from '../../../../components/Counter';
+import Counter, { counterMessages } from '../../../../components/Counter';
 import CounterLabel from '../../../../components/Counter/Label';
 import Sex from '../../../../components/Sex';
 import { playerShape } from '../../../../utils/propTypes';
@@ -104,7 +104,7 @@ const PlayerStats = ({
             incrementDisabled={levelIncrementDisabled}
             onDecrement={() => onLevelDecrement(player.id)}
             onIncrement={() => onLevelIncrement(player.id)}
-            title={intl.formatMessage(messages.level)}
+            title={intl.formatMessage(counterMessages.level)}
             value={player.level}
           />
         </div>
@@ -112,9 +112,7 @@ const PlayerStats = ({
           <Counter
             onDecrement={() => onGearDecrement(player.id)}
             onIncrement={() => onGearIncrement(player.id)}
-            title={
-              <FormattedMessage defaultMessage="Gear" id="player.stats.gear" />
-            }
+            title={intl.formatMessage(counterMessages.gear)}
             value={player.gear}
           />
         </div>
@@ -122,10 +120,7 @@ const PlayerStats = ({
       <div className={classes.mainContainer}>
         <div className={classes.strengthCounter}>
           <CounterLabel className={classes.strengthTitle}>
-            <FormattedMessage
-              defaultMessage="Strength"
-              id="player.stats.strength"
-            />
+            {intl.formatMessage(counterMessages.strength)}
           </CounterLabel>
 
           <div className={classes.strengthValue}>
