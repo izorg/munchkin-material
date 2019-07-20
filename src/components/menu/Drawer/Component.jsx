@@ -1,5 +1,4 @@
 import React, { Component, lazy, Suspense } from 'react';
-import { findDOMNode } from 'react-dom';
 import { compose } from 'recompose';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core';
@@ -397,13 +396,11 @@ class MenuDrawer extends Component {
   }
 
   handleBackdropRef(ref) {
-    // eslint-disable-next-line react/no-find-dom-node
-    this.backdropRef = ref ? findDOMNode(ref) : null;
+    this.backdropRef = ref;
   }
 
   handlePaperRef(ref) {
-    // eslint-disable-next-line react/no-find-dom-node
-    this.paperRef = ref ? findDOMNode(ref) : null;
+    this.paperRef = ref;
   }
 
   addHammer() {
