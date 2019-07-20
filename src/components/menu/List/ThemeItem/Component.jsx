@@ -1,11 +1,13 @@
 import React from 'react';
-import { FormattedMessage } from 'react-intl';
+import { useIntl } from 'react-intl';
 import { ListItemIcon, makeStyles } from '@material-ui/core';
 import { useTheme } from '@material-ui/core/styles';
 import { Palette } from 'mdi-material-ui';
 import clsx from 'clsx';
 
 import { names as themeNames } from '../../../../styles/themes';
+
+import themeMessages from '../../../theme/messages';
 
 import ListItem from '../Item';
 import ListItemText from '../ItemText';
@@ -22,6 +24,7 @@ const useStyles = makeStyles(
 
 const ThemeItem = ({ className, ...rest }) => {
   const classes = useStyles();
+  const intl = useIntl();
   const theme = useTheme();
 
   return (
@@ -30,7 +33,7 @@ const ThemeItem = ({ className, ...rest }) => {
         <Palette style={{ color: theme.palette.primary.main }} />
       </ListItemIcon>
       <ListItemText
-        primary={<FormattedMessage defaultMessage="Theme" id="menu.theme" />}
+        primary={intl.formatMessage(themeMessages.label)}
         secondary={themeNames[theme.id]}
       />
     </ListItem>

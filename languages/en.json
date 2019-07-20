@@ -26,7 +26,6 @@
   "menu.restorePurchases": "Restore purchases",
   "menu.share": "Share",
   "menu.singleMode": "Single mode",
-  "menu.theme": "Theme",
   "menu.translate": "Translate",
   "player.form.color": "Color",
   "player.form.namePlaceholder": "Name",
@@ -40,6 +39,7 @@
   "player.list.shuffle": "Shuffle players",
   "player.list.title": "Munchkins",
   "share.text": "Simple but powerful Munchkin level counter",
+  "theme": "Theme",
   "theme.name.apocalypse": "Apocalypse",
   "theme.name.booty": "Booty",
   "theme.name.cthulhu": "Cthulhu",
@@ -48,7 +48,6 @@
   "theme.name.star": "Star",
   "theme.name.super": "Super",
   "themeDialog.dark": "Dark",
-  "themeDialog.title": "Theme",
   "undo": "Undo",
   "undo.killPlayer": "{name} {sex,select,female{has died} male{has died}}",
   "undo.resetPlayers": "Players have been reset"

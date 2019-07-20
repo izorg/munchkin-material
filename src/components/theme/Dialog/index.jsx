@@ -1,6 +1,8 @@
 import React from 'react';
+import { goBack, replace } from 'connected-react-router';
 import { FormattedMessage, useIntl } from 'react-intl';
-import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
+import { createSelector } from 'reselect';
 import {
   Checkbox,
   Dialog,
@@ -12,12 +14,16 @@ import {
   Radio,
   RadioGroup,
 } from '@material-ui/core';
-import { noop, sortBy } from 'lodash/fp';
+import { flow, get, sortBy } from 'lodash/fp';
 
-import { names } from '../../styles/themes';
+import { setTheme } from '../../../ducks/theme';
+import { names } from '../../../styles/themes';
+import { getQuery, stringifyQuery } from '../../../utils/location';
 
-import CancelButton from '../CancelButton';
-import SubmitButton from '../SubmitButton';
+import CancelButton from '../../CancelButton';
+import SubmitButton from '../../SubmitButton';
+
+import themeMessages from '../messages';
 
 const useStyles = makeStyles(
   {
@@ -28,15 +34,56 @@ const useStyles = makeStyles(
   { name: 'ThemeDialog' },
 );
 
-const ThemeDialog = ({ onChange, onClose, onSubmit, open, theme }) => {
+const getOpen = flow(
+  getQuery,
+  ({ theme }) => theme !== undefined,
+);
+
+const getTheme = createSelector(
+  flow(
+    getQuery,
+    get('theme'),
+  ),
+  get('theme'),
+  (previewTheme, theme) => ({
+    ...theme,
+    ...previewTheme,
+  }),
+);
+
+const ThemeDialog = () => {
   const classes = useStyles();
+  const dispatch = useDispatch();
   const intl = useIntl();
+
+  const open = useSelector(getOpen);
+  const query = useSelector(getQuery);
+  const theme = useSelector(getTheme);
+
+  const onChange = (selectedTheme) =>
+    dispatch(
+      replace({
+        search: stringifyQuery({
+          ...query,
+          theme: selectedTheme,
+        }),
+      }),
+    );
 
   const handleChange = (event, id) => {
     onChange({
       ...theme,
       id,
     });
+  };
+
+  const onSubmit = async (selectedTheme) => {
+    try {
+      await dispatch(setTheme(selectedTheme));
+      dispatch(goBack());
+    } catch (error) {
+      // no full version
+    }
   };
 
   const handleSubmit = (event) => {
@@ -52,15 +99,15 @@ const ThemeDialog = ({ onChange, onClose, onSubmit, open, theme }) => {
     });
   };
 
+  const onClose = () => dispatch(goBack());
+
   return (
     <Dialog
       onClose={onClose}
       open={open}
       PaperProps={{ component: 'form', onSubmit: handleSubmit }}
     >
-      <DialogTitle>
-        <FormattedMessage defaultMessage="Theme" id="themeDialog.title" />
-      </DialogTitle>
+      <DialogTitle>{intl.formatMessage(themeMessages.label)}</DialogTitle>
       <DialogContent className={classes.content}>
         <RadioGroup name="id" onChange={handleChange} value={theme.id}>
           {sortBy(
@@ -92,23 +139,6 @@ const ThemeDialog = ({ onChange, onClose, onSubmit, open, theme }) => {
       </DialogActions>
     </Dialog>
   );
-};
-
-ThemeDialog.propTypes = {
-  onChange: PropTypes.func.isRequired,
-  onClose: PropTypes.func,
-  onSubmit: PropTypes.func,
-  open: PropTypes.bool,
-  theme: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    type: PropTypes.string.isRequired,
-  }).isRequired,
-};
-
-ThemeDialog.defaultProps = {
-  onClose: noop,
-  onSubmit: noop,
-  open: false,
 };
 
 ThemeDialog.displayName = 'ThemeDialog';

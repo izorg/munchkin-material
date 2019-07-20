@@ -8,7 +8,7 @@ import LevelLimitDialog from '../../components/levelLimit/Dialog';
 import MenuDrawer from '../../components/menu/Drawer';
 import MenuSidebar from '../../components/menu/Sidebar';
 import Nobody from '../../components/Nobody';
-import ThemeDialog from '../../components/ThemeDialog';
+import ThemeDialog from '../../components/theme/Dialog';
 
 import AppBar from './AppBar';
 import { MULTI } from './modes';
