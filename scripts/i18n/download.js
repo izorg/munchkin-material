@@ -1,24 +1,58 @@
 const fs = require('fs-extra');
 
-const api = require('../smartcat');
+// const api = require('../smartcat');
+const poeditor = require('../poeditor');
 
-const downloadTranslation = async (document) => {
-  const task = await api.exportDocument(document);
-  const translation = await api.getTranslation(task.id);
+const {
+  poeditor: { projectId },
+} = require('../../config');
 
+const writeTranslation = async (code, data) => {
   await fs.ensureDir('./languages');
   await fs.writeFile(
-    `./languages/${document.targetLanguage}.json`,
-    JSON.stringify(translation, null, '  '),
+    `./languages/${code}.json`,
+    JSON.stringify(data, null, '  '),
   );
 
-  console.log(`✅ ${document.targetLanguage.toUpperCase()}`);
+  console.log(`✅ ${code.toUpperCase()}`);
 };
+
+// const downloadTranslation = async (document) => {
+//   const task = await api.exportDocument(document);
+//   const translation = await api.getTranslation(task.id);
+//
+//   await writeTranslation(document.targetLanguage, translation);
+// };
 
 (async () => {
   console.log('Downloading locales:');
 
-  const documents = await api.getDocuments();
+  // const documents = await api.getDocuments();
 
-  documents.forEach(downloadTranslation);
+  // documents.forEach(downloadTranslation);
+
+  const response = await poeditor.post('/languages/list', {
+    id: projectId,
+  });
+
+  const languages = response.data.result.languages
+    .map(({ code }) => code)
+    .filter((code) => code !== 'en');
+
+  await Promise.all(
+    languages.map(async (language) => {
+      const url = await poeditor
+        .post('/projects/export', {
+          id: projectId,
+          language,
+          type: 'key_value_json',
+          order: 'terms',
+        })
+        .then(({ data }) => data.result.url);
+
+      const content = await poeditor.get(url).then(({ data }) => data);
+
+      await writeTranslation(language.slice(0, 2), content);
+    }),
+  );
 })();
