@@ -1,10 +1,16 @@
 import React from 'react';
 import { useIntl } from 'react-intl';
+import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { makeStyles, Typography } from '@material-ui/core';
-import { noop } from 'lodash/fp';
 
 import { counterMessages } from '../../../../components/Counter';
+import {
+  decrementMonsterBonus,
+  decrementMonsterLevel,
+  incrementMonsterBonus,
+  incrementMonsterLevel,
+} from '../../../../ducks/monsters';
 
 import Counter from '../../Counter';
 
@@ -31,18 +37,14 @@ const useStyles = makeStyles(
   { name: 'CombatMonster' },
 );
 
-const CombatMonster = ({
-  bonus,
-  id,
-  level,
-  onBonusDecrement,
-  onBonusIncrement,
-  onLevelDecrement,
-  onLevelIncrement,
-  title,
-}) => {
+const CombatMonster = ({ monsterId, title }) => {
   const classes = useStyles();
+  const dispatch = useDispatch();
   const intl = useIntl();
+
+  const monsters = useSelector((state) => state.monsters);
+
+  const { bonus, id, level } = monsters[monsterId];
 
   return (
     <div className={classes.monster}>
@@ -58,15 +60,15 @@ const CombatMonster = ({
       <div className={classes.stats}>
         <Counter
           className={classes.item}
-          onDecrement={() => onLevelDecrement(id)}
-          onIncrement={() => onLevelIncrement(id)}
+          onDecrement={() => dispatch(decrementMonsterLevel(id))}
+          onIncrement={() => dispatch(incrementMonsterLevel(id))}
           title={intl.formatMessage(counterMessages.level)}
           value={level}
         />
         <Counter
           className={classes.item}
-          onDecrement={() => onBonusDecrement(id)}
-          onIncrement={() => onBonusIncrement(id)}
+          onDecrement={() => dispatch(decrementMonsterBonus(id))}
+          onIncrement={() => dispatch(incrementMonsterBonus(id))}
           title={intl.formatMessage(counterMessages.modifier)}
           value={bonus}
         />
@@ -76,22 +78,8 @@ const CombatMonster = ({
 };
 
 CombatMonster.propTypes = {
-  bonus: PropTypes.number.isRequired,
-  id: PropTypes.string.isRequired,
-  level: PropTypes.number.isRequired,
-  onBonusDecrement: PropTypes.func,
-  onBonusIncrement: PropTypes.func,
-  onLevelDecrement: PropTypes.func,
-  onLevelIncrement: PropTypes.func,
-  title: PropTypes.node,
-};
-
-CombatMonster.defaultProps = {
-  onBonusDecrement: noop,
-  onBonusIncrement: noop,
-  onLevelDecrement: noop,
-  onLevelIncrement: noop,
-  title: '',
+  monsterId: PropTypes.string.isRequired,
+  title: PropTypes.node.isRequired,
 };
 
 export default CombatMonster;

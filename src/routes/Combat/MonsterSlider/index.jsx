@@ -75,7 +75,7 @@ const CombatMonsterSlider = ({ className, onMonsterRemove }) => {
   const views = monsters.map((id, monsterIndex) => (
     <Paper key={id} className={classes.paper}>
       <Monster
-        id={id}
+        monsterId={id}
         title={
           <FormattedMessage
             defaultMessage="Monster {number}"
@@ -156,5 +156,7 @@ const CombatMonsterSlider = ({ className, onMonsterRemove }) => {
 CombatMonsterSlider.propTypes = {
   onMonsterRemove: PropTypes.func.isRequired,
 };
+
+CombatMonsterSlider.displayName = 'CombatMonsterSlider';
 
 export default CombatMonsterSlider;
