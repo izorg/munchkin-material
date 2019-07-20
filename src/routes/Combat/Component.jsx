@@ -133,11 +133,7 @@ const Combat = ({
         </div>
       </div>
 
-      <HelperButton
-        TransitionProps={{
-          appear: false,
-        }}
-      />
+      <HelperButton />
 
       <HelperSelector />
     </>

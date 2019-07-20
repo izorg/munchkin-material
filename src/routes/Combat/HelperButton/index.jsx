@@ -1,14 +1,20 @@
-import React from 'react';
+import React, { memo } from 'react';
+import { goBack, push, replace } from 'connected-react-router';
 import { FormattedMessage } from 'react-intl';
-import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
+import { createSelector } from 'reselect';
 import { Backdrop, makeStyles, MuiThemeProvider } from '@material-ui/core';
 import { useTheme } from '@material-ui/core/styles';
 import { SpeedDial, SpeedDialIcon } from '@material-ui/lab';
 import { AccountPlus, EmoticonDevilOutline } from 'mdi-material-ui';
 import clsx from 'clsx';
 import deepmerge from 'deepmerge';
+import { flow, get, isNull } from 'lodash/fp';
 
 import Zoom from '../../../components/transitions/Zoom';
+import { addMonster } from '../../../ducks/monsters';
+import createMonster from '../../../utils/createMonster';
+import { getQuery } from '../../../utils/location';
 
 import HelperButtonAction from './Action';
 
@@ -39,18 +45,30 @@ const useStyles = makeStyles(
   { name: 'CombatHelperButton' },
 );
 
-const CombatHelperButton = ({
-  className,
-  helper,
-  onAdd,
-  onBack,
-  onHelperClick,
-  onMonsterAdd,
-  open,
-  ...rest
-}) => {
+const getHelper = createSelector(
+  get(['combat', 'helperId']),
+  get('playerList'),
+  (helperId, playerList) => !helperId && playerList.length > 1,
+);
+
+const getOpen = flow(
+  getQuery,
+  get('add'),
+  isNull,
+);
+
+const CombatHelperButton = ({ className, ...rest }) => {
   const classes = useStyles();
+  const dispatch = useDispatch();
   const theme = useTheme();
+
+  const helper = useSelector(getHelper);
+  const open = useSelector(getOpen);
+
+  const onAdd = () => dispatch(push(`?add`));
+  const onBack = () => dispatch(goBack());
+  const onHelperClick = () => dispatch(replace(`?add=helper`));
+  const onMonsterAdd = () => dispatch(addMonster(createMonster()));
 
   return (
     <>
@@ -92,6 +110,9 @@ const CombatHelperButton = ({
           }}
           open={open}
           TransitionComponent={Zoom}
+          TransitionProps={{
+            appear: false,
+          }}
           {...rest}
         >
           <HelperButtonAction
@@ -125,18 +146,6 @@ const CombatHelperButton = ({
   );
 };
 
-CombatHelperButton.propTypes = {
-  helper: PropTypes.bool,
-  onAdd: PropTypes.func.isRequired,
-  onBack: PropTypes.func.isRequired,
-  onHelperClick: PropTypes.func.isRequired,
-  onMonsterAdd: PropTypes.func.isRequired,
-  open: PropTypes.bool,
-};
+CombatHelperButton.displayName = 'CombatHelperButton';
 
-CombatHelperButton.defaultProps = {
-  helper: false,
-  open: false,
-};
-
-export default CombatHelperButton;
+export default memo(CombatHelperButton);
