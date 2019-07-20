@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { makeStyles, Paper, Zoom } from '@material-ui/core';
 import clsx from 'clsx';
 
-import LevelLimitDialog from '../../components/LevelLimitDialog';
+import LevelLimitDialog from '../../components/levelLimit/Dialog';
 import MenuDrawer from '../../components/menu/Drawer';
 import MenuSidebar from '../../components/menu/Sidebar';
 import Nobody from '../../components/Nobody';
