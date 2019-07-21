@@ -1,12 +1,13 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { memo, useEffect, useRef, useState } from 'react';
 import { FormattedMessage } from 'react-intl';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import MediaQuery from 'react-responsive';
 import SwipeableViews from 'react-swipeable-views';
-import PropTypes from 'prop-types';
 import { IconButton, makeStyles, Paper } from '@material-ui/core';
 import { CloseCircle } from 'mdi-material-ui';
 import clsx from 'clsx';
+
+import { removeMonster } from '../../../ducks/monsters';
 
 import Monster from './Monster';
 
@@ -46,8 +47,9 @@ const useStyles = makeStyles(
   { name: 'CombatMonsterSlider' },
 );
 
-const CombatMonsterSlider = ({ className, onMonsterRemove }) => {
+const CombatMonsterSlider = ({ className }) => {
   const classes = useStyles();
+  const dispatch = useDispatch();
 
   const monsters = useSelector((state) => state.combat.monsters);
 
@@ -69,7 +71,7 @@ const CombatMonsterSlider = ({ className, onMonsterRemove }) => {
       setIndex(monsterIndex - 1);
     }
 
-    onMonsterRemove(monsterId);
+    dispatch(removeMonster(monsterId));
   };
 
   const views = monsters.map((id, monsterIndex) => (
@@ -153,10 +155,6 @@ const CombatMonsterSlider = ({ className, onMonsterRemove }) => {
   );
 };
 
-CombatMonsterSlider.propTypes = {
-  onMonsterRemove: PropTypes.func.isRequired,
-};
-
 CombatMonsterSlider.displayName = 'CombatMonsterSlider';
 
-export default CombatMonsterSlider;
+export default memo(CombatMonsterSlider);

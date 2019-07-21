@@ -1,7 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { hot } from 'react-hot-loader/root';
+import { useSelector } from 'react-redux';
 import { makeStyles, Typography } from '@material-ui/core';
-import { noop } from 'lodash/fp';
 
 import AppBar from './AppBar';
 import HelperButton from './HelperButton';
@@ -96,15 +96,42 @@ const useStyles = makeStyles(
   { name: 'Combat' },
 );
 
-const Combat = ({
-  combinedMonsterStrength,
-  combinedPlayerStrength,
-  helperId,
-  onMonsterAdd,
-  onMonsterRemove,
-  playerId,
-}) => {
+const combatSelector = (state) => {
+  const {
+    helperBonus,
+    helperId,
+    monsters,
+    playerBonus,
+    playerId,
+  } = state.combat;
+
+  const player = state.players[playerId];
+  const helper = state.players[helperId];
+
+  const playerStrength = player.level + player.gear + playerBonus;
+  const helperStrength = helper ? helper.level + helper.gear + helperBonus : 0;
+
+  const combinedMonsterStrength = monsters
+    .map((id) => state.monsters[id])
+    .reduce((strength, monster) => strength + monster.level + monster.bonus, 0);
+
+  return {
+    combinedMonsterStrength,
+    combinedPlayerStrength: playerStrength + helperStrength,
+    helperId,
+    playerId,
+  };
+};
+
+const Combat = () => {
   const classes = useStyles();
+
+  const {
+    combinedMonsterStrength,
+    combinedPlayerStrength,
+    helperId,
+    playerId,
+  } = useSelector(combatSelector);
 
   return (
     <>
@@ -125,11 +152,7 @@ const Combat = ({
             <span className={classes.value}>{combinedMonsterStrength}</span>
           </div>
 
-          <MonsterSlider
-            className={classes.monsters}
-            onMonsterAdd={onMonsterAdd}
-            onMonsterRemove={onMonsterRemove}
-          />
+          <MonsterSlider className={classes.monsters} />
         </div>
       </div>
 
@@ -140,21 +163,6 @@ const Combat = ({
   );
 };
 
-Combat.propTypes = {
-  combinedMonsterStrength: PropTypes.number.isRequired,
-  combinedPlayerStrength: PropTypes.number.isRequired,
-  helperId: PropTypes.string,
-  onMonsterAdd: PropTypes.func,
-  onMonsterRemove: PropTypes.func,
-  playerId: PropTypes.string.isRequired,
-};
-
-Combat.defaultProps = {
-  helperId: null,
-  onMonsterAdd: noop,
-  onMonsterRemove: noop,
-};
-
 Combat.displayName = 'Combat';
 
-export default Combat;
+export default hot(Combat);

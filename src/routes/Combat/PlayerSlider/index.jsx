@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import MediaQuery from 'react-responsive';
 import SwipeableViews from 'react-swipeable-views';
@@ -74,6 +74,7 @@ const CombatPlayerSlider = ({ className, helperId, playerId }) => {
       <Player
         id={playerId}
         onBonusChange={(bonus) => dispatch(setCombatPlayerBonus(bonus))}
+        playerId={playerId}
       />
     </Paper>,
   ];
@@ -91,6 +92,7 @@ const CombatPlayerSlider = ({ className, helperId, playerId }) => {
         <Player
           id={helperId}
           onBonusChange={(bonus) => dispatch(setCombatHelperBonus(bonus))}
+          playerId={helperId}
         />
 
         <IconButton className={classes.remove} onClick={handleHelperRemove}>
@@ -159,4 +161,4 @@ CombatPlayerSlider.defaultProps = {
   helperId: null,
 };
 
-export default CombatPlayerSlider;
+export default memo(CombatPlayerSlider);

@@ -5,9 +5,8 @@ import { MenuDown, MenuUp } from 'mdi-material-ui';
 import clsx from 'clsx';
 import { noop } from 'lodash/fp';
 
+import CounterButton from '../../../components/Counter/Button';
 import CounterLabel from '../../../components/Counter/Label';
-
-import Button from './Button';
 
 const useStyles = makeStyles(
   (theme) => ({
@@ -73,23 +72,23 @@ const CombatCounter = ({
     <div className={clsx(className, classes.counter)}>
       <CounterLabel className={classes.title}>{title}</CounterLabel>
 
-      <Button
+      <CounterButton
         className={classes.button}
         disabled={incrementDisabled}
         onClick={onIncrement}
       >
         <MenuUp className={clsx(classes.icon, classes.up)} />
-      </Button>
+      </CounterButton>
 
       <div className={classes.value}>{value}</div>
 
-      <Button
+      <CounterButton
         className={classes.button}
         disabled={decrementDisabled}
         onClick={onDecrement}
       >
         <MenuDown className={clsx(classes.icon, classes.down)} />
-      </Button>
+      </CounterButton>
     </div>
   );
 };

@@ -1,12 +1,26 @@
 import React from 'react';
 import { useIntl } from 'react-intl';
+import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { IconButton, makeStyles, Typography } from '@material-ui/core';
-import { noop } from 'lodash/fp';
 
 import { counterMessages } from '../../../../components/Counter';
 import Sex from '../../../../components/Sex';
-import { sexProp } from '../../../../utils/propTypes';
+import {
+  setCombatHelperBonus,
+  setCombatPlayerBonus,
+} from '../../../../ducks/combat';
+import {
+  decrementPlayerGear,
+  decrementPlayerLevel,
+  incrementPlayerGear,
+  incrementPlayerLevel,
+  togglePlayerSex,
+} from '../../../../ducks/players';
+import {
+  isLevelDecrementDisabled,
+  isLevelIncrementDisabled,
+} from '../../../../utils/levelLimit';
 
 import Counter from '../../Counter';
 
@@ -42,24 +56,34 @@ const useStyles = makeStyles(
   { name: 'CombatPlayer' },
 );
 
-const CombatPlayer = ({
-  bonus,
-  gear,
-  id,
-  level,
-  levelDecrementDisabled,
-  levelIncrementDisabled,
-  name,
-  onBonusChange,
-  onGearDecrement,
-  onGearIncrement,
-  onLevelDecrement,
-  onLevelIncrement,
-  onSexToggle,
-  sex,
-}) => {
+const CombatPlayer = ({ playerId }) => {
   const classes = useStyles();
+  const dispatch = useDispatch();
   const intl = useIntl();
+
+  const players = useSelector((state) => state.players);
+  const { gear, id, level, name, sex } = players[playerId];
+
+  const levelLimit = useSelector((state) => state.app.levelLimit);
+  const epic = useSelector((state) => state.app.epic);
+
+  const levelDecrementDisabled = isLevelDecrementDisabled(level, levelLimit);
+  const levelIncrementDisabled = isLevelIncrementDisabled(
+    level,
+    levelLimit,
+    epic,
+  );
+
+  const combat = useSelector((state) => state.combat);
+  const bonus =
+    playerId === combat.helperId ? combat.helperBonus : combat.playerBonus;
+
+  const onBonusChange = (value) =>
+    dispatch(
+      playerId === combat.helperId
+        ? setCombatHelperBonus(value)
+        : setCombatPlayerBonus(value),
+    );
 
   return (
     <div className={classes.player}>
@@ -72,7 +96,10 @@ const CombatPlayer = ({
         {name}
       </Typography>
 
-      <IconButton className={classes.sex} onClick={() => onSexToggle(id)}>
+      <IconButton
+        className={classes.sex}
+        onClick={() => dispatch(togglePlayerSex(id))}
+      >
         <Sex sex={sex} />
       </IconButton>
 
@@ -81,15 +108,15 @@ const CombatPlayer = ({
           className={classes.item}
           decrementDisabled={levelDecrementDisabled}
           incrementDisabled={levelIncrementDisabled}
-          onDecrement={() => onLevelDecrement(id)}
-          onIncrement={() => onLevelIncrement(id)}
+          onDecrement={() => dispatch(decrementPlayerLevel(id))}
+          onIncrement={() => dispatch(incrementPlayerLevel(id))}
           title={intl.formatMessage(counterMessages.level)}
           value={level}
         />
         <Counter
           className={classes.item}
-          onDecrement={() => onGearDecrement(id)}
-          onIncrement={() => onGearIncrement(id)}
+          onDecrement={() => dispatch(decrementPlayerGear(id))}
+          onIncrement={() => dispatch(incrementPlayerGear(id))}
           title={intl.formatMessage(counterMessages.gear)}
           value={gear}
         />
@@ -106,31 +133,7 @@ const CombatPlayer = ({
 };
 
 CombatPlayer.propTypes = {
-  bonus: PropTypes.number.isRequired,
-  gear: PropTypes.number.isRequired,
-  id: PropTypes.string.isRequired,
-  level: PropTypes.number.isRequired,
-  levelDecrementDisabled: PropTypes.bool,
-  levelIncrementDisabled: PropTypes.bool,
-  name: PropTypes.string.isRequired,
-  onBonusChange: PropTypes.func,
-  onGearDecrement: PropTypes.func,
-  onGearIncrement: PropTypes.func,
-  onLevelDecrement: PropTypes.func,
-  onLevelIncrement: PropTypes.func,
-  onSexToggle: PropTypes.func,
-  sex: sexProp.isRequired,
-};
-
-CombatPlayer.defaultProps = {
-  levelDecrementDisabled: false,
-  levelIncrementDisabled: false,
-  onBonusChange: noop,
-  onGearDecrement: noop,
-  onGearIncrement: noop,
-  onLevelDecrement: noop,
-  onLevelIncrement: noop,
-  onSexToggle: noop,
+  playerId: PropTypes.string.isRequired,
 };
 
 export default CombatPlayer;

@@ -115,16 +115,26 @@ const HomePlayerListItem = forwardRef(
         ],
       });
 
-      hammerRef.current.on('tap', handleTap);
-      hammerRef.current.on('press', handlePress);
-
       return () => {
         hammerRef.current.stop();
         hammerRef.current.destroy();
 
         hammerRef.current = null;
       };
-    }, [handlePress, handleTap]);
+    }, []);
+
+    useEffect(() => {
+      hammerRef.current.on('tap', handleTap);
+
+      return () => hammerRef.current && hammerRef.current.off('tap', handleTap);
+    }, [handleTap]);
+
+    useEffect(() => {
+      hammerRef.current.on('press', handlePress);
+
+      return () =>
+        hammerRef.current && hammerRef.current.off('press', handlePress);
+    }, [handlePress]);
 
     return (
       <ListItem
