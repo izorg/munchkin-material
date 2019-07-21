@@ -7,11 +7,7 @@ import { IconButton, makeStyles, Paper } from '@material-ui/core';
 import { CloseCircle } from 'mdi-material-ui';
 import clsx from 'clsx';
 
-import {
-  setCombatHelper,
-  setCombatHelperBonus,
-  setCombatPlayerBonus,
-} from '../../../ducks/combat';
+import { setCombatHelper, setCombatHelperBonus } from '../../../ducks/combat';
 
 import Player from './Player';
 
@@ -71,11 +67,7 @@ const CombatPlayerSlider = ({ className, helperId, playerId }) => {
 
   const players = [
     <Paper key={playerId} className={classes.paper}>
-      <Player
-        id={playerId}
-        onBonusChange={(bonus) => dispatch(setCombatPlayerBonus(bonus))}
-        playerId={playerId}
-      />
+      <Player playerId={playerId} />
     </Paper>,
   ];
 
@@ -89,11 +81,7 @@ const CombatPlayerSlider = ({ className, helperId, playerId }) => {
 
     players.push(
       <Paper key={helperId} className={classes.paper}>
-        <Player
-          id={helperId}
-          onBonusChange={(bonus) => dispatch(setCombatHelperBonus(bonus))}
-          playerId={helperId}
-        />
+        <Player playerId={helperId} />
 
         <IconButton className={classes.remove} onClick={handleHelperRemove}>
           <CloseCircle />
