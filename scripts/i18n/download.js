@@ -5,7 +5,7 @@ const poeditor = require('../poeditor');
 
 const {
   poeditor: { projectId },
-} = require('../../config');
+} = require('../../config'); // eslint-disable-line import/no-unresolved
 
 const writeTranslation = async (code, data) => {
   await fs.ensureDir('./languages');
