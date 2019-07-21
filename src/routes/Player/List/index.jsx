@@ -1,34 +1,22 @@
-import { List, ListItem, ListItemAvatar } from '@material-ui/core';
-import { replace } from 'connected-react-router';
+import { List } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
-import PlayerAvatar from '../../../components/PlayerAvatar';
-import PlayerListItemText from '../../../components/PlayerListItemText';
+import Item from './Item';
 
 const PlayerList = ({ selectedPlayerId, ...props }) => {
-  const dispatch = useDispatch();
-
   const playerList = useSelector((state) => state.playerList);
   const players = useSelector((state) => state.players);
 
   return (
     <List {...props}>
       {playerList.map((playerId) => (
-        <ListItem
+        <Item
           key={playerId}
-          onClick={() => dispatch(replace(`/player/${playerId}`))}
+          player={players[playerId]}
           selected={playerId === selectedPlayerId}
-        >
-          <ListItemAvatar>
-            <PlayerAvatar
-              color={players[playerId].color}
-              sex={players[playerId].sex}
-            />
-          </ListItemAvatar>
-          <PlayerListItemText player={players[playerId]} />
-        </ListItem>
+        />
       ))}
     </List>
   );
