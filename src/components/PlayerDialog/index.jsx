@@ -186,7 +186,7 @@ const PlayerDialog = () => {
     const values = {
       color: form.color.value,
       name: form.name.value,
-      sex: form.sex.value,
+      sex: form.querySelector('input[name="sex"]:checked').value, // to support Android 4.4
     };
 
     const playerValues = {
