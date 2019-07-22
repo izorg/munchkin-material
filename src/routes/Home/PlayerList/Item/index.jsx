@@ -1,5 +1,5 @@
 import { goBack, push } from 'connected-react-router';
-import React, { forwardRef, useEffect, useMemo, useRef } from 'react';
+import React, { forwardRef, useCallback, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import {
   IconButton,
@@ -10,7 +10,6 @@ import {
 import { useForkRef } from '@material-ui/core/utils';
 import { ReorderHorizontal } from 'mdi-material-ui';
 import Hammer from 'hammerjs';
-import { debounce } from 'lodash/fp';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Avatar from '../../../../components/PlayerAvatar';
@@ -46,10 +45,10 @@ const HomePlayerListItem = forwardRef(
   ({ dragHandleProps, mode, playerId, ...rest }, ref) => {
     const dispatch = useDispatch();
 
-    const itemRef = useRef();
-    const avatarRef = useRef();
-    const textRef = useRef();
-    const hammerRef = useRef();
+    const itemRef = useRef(null);
+    const avatarRef = useRef(null);
+    const hammerRef = useRef(null);
+    const ignoringPressUp = useRef(false);
 
     const handleRef = useForkRef(ref, itemRef);
 
@@ -64,45 +63,53 @@ const HomePlayerListItem = forwardRef(
     const players = useSelector((state) => state.players);
     const player = players[playerId];
 
-    const handleTap = useMemo(
-      () =>
-        debounce(30, (event) => {
-          if (event.srcEvent.defaultPrevented) {
-            return;
-          }
-
-          if (editMode) {
-            dispatch(onPlayerEdit(playerId));
-          } else if (multiMode) {
-            dispatch(onPlayerToggle(playerId));
-          } else if (
-            avatarRef.current &&
-            avatarRef.current.contains(event.target)
-          ) {
-            dispatch(onMultiSelectActivate(playerId));
-          } else {
-            dispatch(onPlayerSelect(playerId));
-          }
-        }),
+    const handleTap = useCallback(
+      (event) => {
+        if (editMode) {
+          setTimeout(() => dispatch(onPlayerEdit(playerId)), 300);
+        } else if (multiMode) {
+          dispatch(onPlayerToggle(playerId));
+        } else if (
+          avatarRef.current &&
+          avatarRef.current.contains(event.target)
+        ) {
+          dispatch(onMultiSelectActivate(playerId));
+        } else {
+          setTimeout(() => dispatch(onPlayerSelect(playerId)), 300);
+        }
+      },
       [dispatch, editMode, multiMode, playerId],
     );
 
-    const handlePress = useMemo(
-      () =>
-        debounce(30, (event) => {
-          if (
-            !mode &&
-            textRef.current &&
-            textRef.current.contains(event.target)
-          ) {
-            if (navigator.vibrate) {
-              navigator.vibrate(20);
-            }
+    const handlePress = useCallback(
+      (event) => {
+        ignoringPressUp.current = false;
 
-            dispatch(onMultiSelectActivate(playerId));
+        if (
+          !mode &&
+          (!avatarRef.current || !avatarRef.current.contains(event.target))
+        ) {
+          if (navigator.vibrate) {
+            navigator.vibrate(20);
           }
-        }),
+
+          dispatch(onMultiSelectActivate(playerId));
+
+          ignoringPressUp.current = true;
+        }
+      },
       [dispatch, mode, playerId],
+    );
+
+    const handlePressUp = useCallback(
+      (event) => {
+        if (ignoringPressUp.current) {
+          return;
+        }
+
+        handleTap(event);
+      },
+      [handleTap],
     );
 
     useEffect(() => {
@@ -131,10 +138,15 @@ const HomePlayerListItem = forwardRef(
 
     useEffect(() => {
       hammerRef.current.on('press', handlePress);
+      hammerRef.current.on('pressup', handlePressUp);
 
-      return () =>
-        hammerRef.current && hammerRef.current.off('press', handlePress);
-    }, [handlePress]);
+      return () => {
+        if (hammerRef.current) {
+          hammerRef.current.off('press', handlePress);
+          hammerRef.current.off('pressup', handlePressUp);
+        }
+      };
+    }, [handlePress, handlePressUp]);
 
     return (
       <ListItem
@@ -153,11 +165,7 @@ const HomePlayerListItem = forwardRef(
           />
         </ListItemAvatar>
 
-        <PlayerListItemText
-          ref={textRef}
-          hideStats={editMode}
-          player={player}
-        />
+        <PlayerListItemText hideStats={editMode} player={player} />
 
         {editMode && (
           <ListItemSecondaryAction>
