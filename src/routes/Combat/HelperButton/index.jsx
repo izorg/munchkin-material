@@ -11,7 +11,6 @@ import clsx from 'clsx';
 import deepmerge from 'deepmerge';
 import { flow, get, isNull } from 'lodash/fp';
 
-import Zoom from '../../../components/transitions/Zoom';
 import { addMonster } from '../../../ducks/monsters';
 import createMonster from '../../../utils/createMonster';
 import { getQuery } from '../../../utils/location';
@@ -109,7 +108,6 @@ const CombatHelperButton = ({ className, ...rest }) => {
             }
           }}
           open={open}
-          TransitionComponent={Zoom}
           TransitionProps={{
             appear: false,
           }}
