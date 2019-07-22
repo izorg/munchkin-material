@@ -47,6 +47,7 @@ const HomePlayerListItem = forwardRef(
 
     const itemRef = useRef(null);
     const avatarRef = useRef(null);
+    const reorderRef = useRef(null);
     const hammerRef = useRef(null);
     const ignoringPressUp = useRef(false);
 
@@ -66,6 +67,10 @@ const HomePlayerListItem = forwardRef(
     const handleTap = useCallback(
       (event) => {
         if (editMode) {
+          if (reorderRef.current && reorderRef.current.contains(event.target)) {
+            return;
+          }
+
           setTimeout(() => dispatch(onPlayerEdit(playerId)), 300);
         } else if (multiMode) {
           dispatch(onPlayerToggle(playerId));
@@ -87,7 +92,8 @@ const HomePlayerListItem = forwardRef(
 
         if (
           !mode &&
-          (!avatarRef.current || !avatarRef.current.contains(event.target))
+          (!avatarRef.current || !avatarRef.current.contains(event.target)) &&
+          (!reorderRef.current || !reorderRef.current.contains(event.target))
         ) {
           if (navigator.vibrate) {
             navigator.vibrate(20);
@@ -169,7 +175,12 @@ const HomePlayerListItem = forwardRef(
 
         {editMode && (
           <ListItemSecondaryAction>
-            <IconButton disableRipple edge="end" {...dragHandleProps}>
+            <IconButton
+              ref={reorderRef}
+              disableRipple
+              edge="end"
+              {...dragHandleProps}
+            >
               <ReorderHorizontal />
             </IconButton>
           </ListItemSecondaryAction>
