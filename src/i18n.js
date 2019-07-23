@@ -1,3 +1,4 @@
+export const CS = 'cs';
 export const DA = 'da';
 export const DE = 'de';
 export const EL = 'el';
@@ -13,6 +14,9 @@ export const RU = 'ru';
 export const UK = 'uk';
 
 const loaders = {
+  [CS]: () =>
+    import(/* webpackChunkName: "locales/cs" */ '../languages/cs.json'),
+
   [DA]: () =>
     import(/* webpackChunkName: "locales/da" */ '../languages/da.json'),
 
