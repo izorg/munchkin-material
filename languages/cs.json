@@ -49,6 +49,6 @@
   "theme.name.super": "Super",
   "themeDialog.dark": "Temný",
   "undo": "Zpět",
-  "undo.killPlayer": "{name} {sex,select,female{zemřel} male{zemřela}}",
+  "undo.killPlayer": "{name} {sex,select,female{zemřela} male{zemřel}}",
   "undo.resetPlayers": "Hráči byli resetováni"
 }
