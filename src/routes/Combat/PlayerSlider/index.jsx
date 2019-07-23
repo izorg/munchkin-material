@@ -39,11 +39,6 @@ const useStyles = makeStyles(
         alignItems: 'center',
         overflow: 'hidden',
       },
-
-      remove: {
-        bottom: 8,
-        right: 8,
-      },
     },
   }),
   { name: 'CombatPlayerSlider' },

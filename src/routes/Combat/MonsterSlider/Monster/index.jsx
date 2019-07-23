@@ -21,6 +21,10 @@ const useStyles = makeStyles(
       textAlign: 'center',
     },
 
+    name: {
+      margin: '0 0 8px',
+    },
+
     stats: {
       display: 'flex',
     },
@@ -28,10 +32,6 @@ const useStyles = makeStyles(
     item: {
       flex: 1,
       overflow: 'hidden',
-    },
-
-    name: {
-      margin: '0 0 8px',
     },
   },
   { name: 'CombatMonster' },

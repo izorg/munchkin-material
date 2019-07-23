@@ -34,6 +34,7 @@ const useStyles = makeStyles(
     '@media (orientation: landscape)': {
       monsters: {
         alignItems: 'center',
+        overflow: 'hidden',
       },
 
       remove: {
