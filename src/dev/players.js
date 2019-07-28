@@ -1,8 +1,47 @@
+import { cyan, green, orange, yellow } from '@material-ui/core/colors';
+
+import { CS, EN, RU, UK } from '../i18n';
 import createPlayer from '../utils/createPlayer';
 import { FEMALE } from '../utils/sex';
 
 export default {
-  en: [
+  [CS]: [
+    {
+      player: createPlayer({
+        color: yellow[500],
+        gear: 9,
+        level: 5,
+        name: 'Vladimír',
+      }),
+    },
+    {
+      player: createPlayer({
+        color: green[500],
+        gear: 10,
+        level: 6,
+        name: 'Otakar',
+      }),
+    },
+    {
+      player: createPlayer({
+        color: cyan[500],
+        gear: 6,
+        level: 2,
+        name: 'Zdeněk',
+      }),
+    },
+    {
+      player: createPlayer({
+        color: orange[500],
+        gear: 8,
+        level: 4,
+        name: 'Zuzana',
+        sex: FEMALE,
+      }),
+    },
+  ],
+
+  [EN]: [
     {
       player: createPlayer({
         color: '#607D8B',
@@ -30,7 +69,7 @@ export default {
     },
   ],
 
-  ru: [
+  [RU]: [
     {
       player: createPlayer({
         color: '#F44336',
@@ -54,6 +93,41 @@ export default {
         sex: FEMALE,
         level: 8,
         name: 'Василиса Премудрая',
+      }),
+    },
+  ],
+
+  [UK]: [
+    {
+      player: createPlayer({
+        color: green[500],
+        gear: 10,
+        level: 6,
+        name: 'Зеленський',
+      }),
+    },
+    {
+      player: createPlayer({
+        color: yellow[500],
+        gear: 9,
+        level: 5,
+        name: 'Порошенко',
+      }),
+    },
+    {
+      player: createPlayer({
+        color: orange[500],
+        gear: 8,
+        level: 4,
+        name: 'Янукович',
+      }),
+    },
+    {
+      player: createPlayer({
+        color: cyan[500],
+        gear: 6,
+        level: 2,
+        name: 'Кучма',
       }),
     },
   ],

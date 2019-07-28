@@ -1,16 +1,17 @@
-const fs = require('fs');
 const path = require('path');
 
+const { duration } = require('@material-ui/core/styles/transitions');
+const fs = require('fs-extra');
 const { range } = require('lodash/fp');
 const puppeteer = require('puppeteer');
 const devices = require('puppeteer/DeviceDescriptors');
-const rimraf = require('rimraf');
-const { duration } = require('@material-ui/core/styles/transitions');
 
 const config = require('../webpack.config');
 
+const CS = 'cs';
 const EN = 'en';
 const RU = 'ru';
+const UK = 'uk';
 
 const {
   devServer: { host, port },
@@ -58,14 +59,13 @@ const sizes = {
 };
 const dir = 'screenshots';
 
-if (fs.existsSync(dir)) {
-  rimraf(dir, () => fs.mkdirSync(dir));
-} else {
-  fs.mkdirSync(dir);
-}
+const getScreenshots = async ({ locale, size }) => {
+  console.log(`🌍 ${locale}`);
+  console.log(`📱 ${size}`);
 
-const getScreenshots = async ({ locale, size = 'mobile' }) => {
-  console.log('locale', locale);
+  const screenshotDir = path.join(dir, locale, size);
+
+  await fs.ensureDir(screenshotDir);
 
   const menuSelector = '[data-screenshot="drawer-menu"]';
 
@@ -87,24 +87,27 @@ const getScreenshots = async ({ locale, size = 'mobile' }) => {
     window.munchkinDev.setTestData();
   }, locale);
   await page.screenshot({
-    path: path.join(dir, `${locale}-${size}-${count}-home.png`),
+    path: path.join(screenshotDir, `${count}-home.png`),
   });
+  console.log('📸 home');
 
   // Player
   count += 1;
   await page.click('[data-screenshots="player-list-item"]');
-  await page.waitFor(duration.enteringScreen);
+  await page.waitFor(duration.enteringScreen * 2);
   await page.screenshot({
-    path: path.join(dir, `${locale}-${size}-${count}-player.png`),
+    path: path.join(screenshotDir, `${count}-player.png`),
   });
+  console.log('📸 player');
 
   // Dice
   count += 1;
   await page.click('[data-screenshots="player-dice-button"]');
   await page.waitFor(duration.enteringScreen);
   await page.screenshot({
-    path: path.join(dir, `${locale}-${size}-${count}-dice.png`),
+    path: path.join(screenshotDir, `${count}-dice.png`),
   });
+  console.log('📸 dice');
 
   // Combat
   await page.keyboard.down('Escape');
@@ -113,8 +116,9 @@ const getScreenshots = async ({ locale, size = 'mobile' }) => {
   await page.click('[data-screenshots="combat-button"]');
   await page.waitFor(duration.enteringScreen);
   await page.screenshot({
-    path: path.join(dir, `${locale}-${size}-${count}-combat.png`),
+    path: path.join(screenshotDir, `${count}-combat.png`),
   });
+  console.log('📸 combat');
 
   // Single mode
   await page.click('[data-screenshots="combat-back-button"]');
@@ -155,24 +159,26 @@ const getScreenshots = async ({ locale, size = 'mobile' }) => {
   );
   await page.waitFor(duration.enteringScreen);
   await page.screenshot({
-    path: path.join(dir, `${locale}-${size}-${count}-single.png`),
+    path: path.join(screenshotDir, `${count}-single.png`),
   });
+  console.log('📸 single');
 
   await browser.close();
 };
 
-(async () => {
-  // await getScreenshots({ locale: EN, size: 'iphone65' });
-  // await getScreenshots({ locale: RU, size: 'iphone65' });
-  // await getScreenshots({ locale: EN, size: 'iphone55' });
-  // await getScreenshots({ locale: RU, size: 'iphone55' });
-  // await getScreenshots({ locale: EN, size: 'ipadpro129' });
-  // await getScreenshots({ locale: RU, size: 'ipadpro129' });
+const locales = [CS, EN, RU, UK];
 
-  await getScreenshots({ locale: EN, size: 'mobile' });
-  await getScreenshots({ locale: RU, size: 'mobile' });
-  await getScreenshots({ locale: EN, size: 'tablet7' });
-  await getScreenshots({ locale: RU, size: 'tablet7' });
-  await getScreenshots({ locale: EN, size: 'tablet10' });
-  await getScreenshots({ locale: RU, size: 'tablet10' });
-})();
+const screenshots = async () => {
+  await fs.remove(path.join(dir));
+
+  // eslint-disable-next-line no-restricted-syntax
+  for (const locale of locales) {
+    // eslint-disable-next-line no-restricted-syntax
+    for (const size of Object.keys(sizes)) {
+      // eslint-disable-next-line no-await-in-loop
+      await getScreenshots({ locale, size });
+    }
+  }
+};
+
+screenshots();
