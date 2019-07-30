@@ -2,6 +2,7 @@ import React from 'react';
 import { hot } from 'react-hot-loader/root';
 import { useSelector } from 'react-redux';
 import { makeStyles, Typography } from '@material-ui/core';
+import clsx from 'clsx';
 
 import AppBar from './AppBar';
 import HelperButton from './HelperButton';
@@ -35,62 +36,54 @@ const useStyles = makeStyles(
       },
 
       '@media (orientation: landscape)': {
+        flexDirection: 'row',
         overflow: 'hidden',
+      },
+
+      [`${theme.breakpoints.up('sm')} and (orientation: portrait)`]: {
+        justifyContent: 'center',
       },
     },
 
     players: {
       flex: 1,
+
+      [`${theme.breakpoints.up('sm')} and (orientation: portrait)`]: {
+        flex: 'none',
+      },
     },
 
     monsters: {
       flex: 1,
+
+      [`${theme.breakpoints.up('sm')} and (orientation: portrait)`]: {
+        flex: 'none',
+      },
     },
 
     total: {
-      alignItems: 'center',
-      display: 'flex',
-      justifyContent: 'center',
+      alignSelf: 'center',
+      padding: theme.spacing(1),
       textAlign: 'center',
     },
 
     value: {
-      color: theme.palette.text.primary,
+      display: 'inline-block',
       fontFamily: `"Munchkin", ${theme.typography.fontFamily}`,
-      fontSize: '2em',
+      fontSize: 'inherit',
+      minWidth: 50,
+    },
+
+    combinedPlayerStrength: {
+      textAlign: 'right',
+    },
+
+    combinedMonsterStrength: {
+      textAlign: 'left',
     },
 
     versus: {
-      margin: '0 0.5em',
-    },
-
-    [`${theme.breakpoints.up('sm')} and (orientation: portrait)`]: {
-      content: {
-        justifyContent: 'center',
-      },
-
-      players: {
-        flex: 'none',
-      },
-
-      monsters: {
-        flex: 'none',
-      },
-
-      total: {
-        padding: `${theme.spacing(2)}px 0`,
-      },
-    },
-
-    '@media (orientation: landscape)': {
-      content: {
-        flexDirection: 'row',
-      },
-
-      total: {
-        flexDirection: 'column',
-        width: 50,
-      },
+      margin: theme.spacing(0, 0.5),
     },
   }),
   { name: 'Combat' },
@@ -144,13 +137,19 @@ const Combat = () => {
             playerId={playerId}
           />
 
-          <div className={classes.total}>
-            <span className={classes.value}>{combinedPlayerStrength}</span>
-            <Typography className={classes.versus} component="span">
-              vs
-            </Typography>
-            <span className={classes.value}>{combinedMonsterStrength}</span>
-          </div>
+          <Typography className={classes.total} component="div" variant="h4">
+            <sup
+              className={clsx(classes.value, classes.combinedPlayerStrength)}
+            >
+              {combinedPlayerStrength}
+            </sup>
+            <span className={classes.versus}>/</span>
+            <sub
+              className={clsx(classes.value, classes.combinedMonsterStrength)}
+            >
+              {combinedMonsterStrength}
+            </sub>
+          </Typography>
 
           <MonsterSlider className={classes.monsters} />
         </div>

@@ -39,6 +39,8 @@ const useStyles = makeStyles(
 
     stats: {
       display: 'flex',
+      margin: '0 auto',
+      maxWidth: 420,
     },
 
     item: {
