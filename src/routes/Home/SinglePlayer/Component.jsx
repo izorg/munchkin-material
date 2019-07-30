@@ -11,27 +11,17 @@ import { playerShape } from '../../../utils/propTypes';
 const useStyles = makeStyles(
   (theme) => ({
     content: {
+      alignSelf: 'center',
       display: 'flex',
       flex: 1,
       flexDirection: 'column-reverse',
+      height: '100%',
+      margin: '0 auto',
+      maxHeight: 600,
+      maxWidth: 800,
 
       '@media (orientation: landscape)': {
         flexDirection: 'row',
-      },
-
-      [theme.breakpoints.up('sm')]: {
-        margin: '0 auto',
-
-        '@media (orientation: portrait)': {
-          alignSelf: 'center',
-          justifyContent: 'center',
-          maxWidth: 480,
-          width: '100%',
-        },
-
-        '@media (orientation: landscape)': {
-          width: 480,
-        },
       },
     },
 
@@ -42,11 +32,6 @@ const useStyles = makeStyles(
 
       '@media (orientation: landscape)': {
         flex: 2,
-      },
-
-      [`${theme.breakpoints.up('sm')} and (orientation: portrait)`]: {
-        flex: 'none',
-        height: 240,
       },
     },
 
@@ -61,11 +46,6 @@ const useStyles = makeStyles(
       flexDirection: 'column',
       flex: 1,
       justifyContent: 'center',
-
-      [`${theme.breakpoints.up('sm')} and (orientation: portrait)`]: {
-        flex: 'none',
-        height: 240,
-      },
     },
 
     strengthTitle: {
