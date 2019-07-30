@@ -13,11 +13,11 @@ import {
   FormControlLabel,
   FormLabel,
   Grid,
+  Input,
   makeStyles,
   Radio,
   RadioGroup,
   Slide,
-  TextField,
 } from '@material-ui/core';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme } from '@material-ui/core/styles';
@@ -249,15 +249,15 @@ const PlayerDialog = () => {
         {fullScreen ? <AppBar onCancel={handleClose} title={title} /> : title}
       </DialogTitle>
       <DialogContent className={classes.content}>
-        <TextField
-          autoFocus={!edit && (!ios || !window.cordova)}
-          defaultValue={initialValues.name}
-          fullWidth
-          inputRef={nameRef}
-          margin="normal"
-          name="name"
-          placeholder={intl.formatMessage(messages.label)}
-        />
+        <FormControl fullWidth margin="normal">
+          <Input
+            autoFocus={!edit && (!ios || !window.cordova)}
+            defaultValue={initialValues.name}
+            inputRef={nameRef}
+            name="name"
+            placeholder={intl.formatMessage(messages.label)}
+          />
+        </FormControl>
 
         <Grid container>
           <Grid item xs={6}>
