@@ -8,9 +8,11 @@ export const FR = 'fr';
 export const HU = 'hu';
 export const HY = 'hy';
 export const IT = 'it';
+export const NB = 'nb';
 export const PL = 'pl';
 export const PT = 'pt';
 export const RU = 'ru';
+export const SK = 'sk';
 export const UK = 'uk';
 
 const loaders = {
@@ -44,6 +46,9 @@ const loaders = {
   [IT]: () =>
     import(/* webpackChunkName: "locales/it" */ '../languages/it.json'),
 
+  [NB]: () =>
+    import(/* webpackChunkName: "locales/nb" */ '../languages/nb.json'),
+
   [PL]: () =>
     import(/* webpackChunkName: "locales/pl" */ '../languages/pl.json'),
 
@@ -52,6 +57,9 @@ const loaders = {
 
   [RU]: () =>
     import(/* webpackChunkName: "locales/ru" */ '../languages/ru.json'),
+
+  [SK]: () =>
+    import(/* webpackChunkName: "locales/sk" */ '../languages/sk.json'),
 
   [UK]: () =>
     import(/* webpackChunkName: "locales/uk" */ '../languages/uk.json'),
