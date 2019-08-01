@@ -1,4 +1,5 @@
 import { ADD_MONSTER, REMOVE_MONSTER } from '../monsters/actionTypes';
+import { REMOVE_PLAYER } from '../players/actionTypes';
 
 import {
   SET_COMBAT_HELPER,
@@ -52,6 +53,17 @@ const reducer = (state = initialState, action) => {
         monsters: [...monsters.slice(0, index), ...monsters.slice(index + 1)],
       };
     }
+
+    case REMOVE_PLAYER:
+      if (action.id === state.helperId) {
+        return {
+          ...state,
+          helperBonus: 0,
+          helperId: null,
+        };
+      }
+
+      return state;
 
     case SET_COMBAT_PLAYER_BONUS:
       return {
