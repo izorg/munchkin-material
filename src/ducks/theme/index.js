@@ -1,4 +1,4 @@
-import { key as id } from '../styles/themes/munchkin';
+import { key as id } from '../../styles/themes/munchkin';
 
 export const SET_THEME = 'theme/SET';
 

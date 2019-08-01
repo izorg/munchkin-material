@@ -1,8 +1,8 @@
-import createPlayer from '../utils/createPlayer';
+import createPlayer from '../../utils/createPlayer';
 
-import { startCombat } from './combat';
-import { START_COMBAT } from './combat/actionTypes';
-import { addPlayer } from './players';
+import { startCombat } from '../combat';
+import { START_COMBAT } from '../combat/actionTypes';
+import { addPlayer } from '../players';
 
 export const FINISH_COMBAT = 'app/FINISH_COMBAT';
 export const SET_EPIC = 'app/SET_EPIC';
