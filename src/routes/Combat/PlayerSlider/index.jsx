@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useState } from 'react';
+import React, { memo, useEffect, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import MediaQuery from 'react-responsive';
 import SwipeableViews from 'react-swipeable-views';
@@ -48,12 +48,16 @@ const CombatPlayerSlider = ({ className, helperId, playerId }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
 
+  const initialRender = useRef(true);
+
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
-    if (helperId) {
+    if (!initialRender.current && helperId) {
       setCurrentIndex(1);
     }
+
+    initialRender.current = false;
   }, [helperId]);
 
   const onChangeIndex = (index) => {
