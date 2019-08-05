@@ -90,11 +90,9 @@ const HomePlayerListItem = forwardRef(
       (event) => {
         ignoringPressUp.current = false;
 
-        if (
-          !mode &&
-          (!avatarRef.current || !avatarRef.current.contains(event.target)) &&
-          (!reorderRef.current || !reorderRef.current.contains(event.target))
-        ) {
+        const avatarNode = avatarRef.current;
+
+        if (!mode && (!avatarNode || !avatarNode.contains(event.target))) {
           if (navigator.vibrate) {
             navigator.vibrate(20);
           }
@@ -137,19 +135,23 @@ const HomePlayerListItem = forwardRef(
     }, []);
 
     useEffect(() => {
-      hammerRef.current.on('tap', handleTap);
+      const hammer = hammerRef.current;
 
-      return () => hammerRef.current && hammerRef.current.off('tap', handleTap);
+      hammer.on('tap', handleTap);
+
+      return () => hammer && hammer.off('tap', handleTap);
     }, [handleTap]);
 
     useEffect(() => {
-      hammerRef.current.on('press', handlePress);
-      hammerRef.current.on('pressup', handlePressUp);
+      const hammer = hammerRef.current;
+
+      hammer.on('press', handlePress);
+      hammer.on('pressup', handlePressUp);
 
       return () => {
-        if (hammerRef.current) {
-          hammerRef.current.off('press', handlePress);
-          hammerRef.current.off('pressup', handlePressUp);
+        if (hammer) {
+          hammer.off('press', handlePress);
+          hammer.off('pressup', handlePressUp);
         }
       };
     }, [handlePress, handlePressUp]);
