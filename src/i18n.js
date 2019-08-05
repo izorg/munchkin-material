@@ -9,6 +9,7 @@ export const HU = 'hu';
 export const HY = 'hy';
 export const IT = 'it';
 export const NB = 'nb';
+export const NL = 'nl';
 export const PL = 'pl';
 export const PT = 'pt';
 export const RU = 'ru';
@@ -48,6 +49,9 @@ const loaders = {
 
   [NB]: () =>
     import(/* webpackChunkName: "locales/nb" */ '../languages/nb.json'),
+
+  [NL]: () =>
+    import(/* webpackChunkName: "locales/nl" */ '../languages/nl.json'),
 
   [PL]: () =>
     import(/* webpackChunkName: "locales/pl" */ '../languages/pl.json'),
