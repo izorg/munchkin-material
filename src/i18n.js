@@ -74,9 +74,18 @@ const defaultLocale = EN;
 const LANGUAGE_LENGTH = 2;
 
 export const getLocale = () => {
-  const locale = navigator.language.substr(0, LANGUAGE_LENGTH);
+  const languages =
+    navigator.languages && navigator.languages.length
+      ? navigator.languages
+      : [navigator.language];
 
-  return loaders[locale] ? locale : defaultLocale;
+  const locales = languages.map((language) =>
+    language.substr(0, LANGUAGE_LENGTH),
+  );
+
+  const locale = locales.find((item) => loaders[item]);
+
+  return locale || defaultLocale;
 };
 
 let allMessages = {};
