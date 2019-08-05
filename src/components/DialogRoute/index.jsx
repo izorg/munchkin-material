@@ -37,7 +37,7 @@ const DialogRoute = ({ component: Component, path }) => {
         <Dialog
           classes={classes}
           disableEscapeKeyDown
-          // disablePortal
+          disablePortal
           fullScreen
           hideBackdrop
           open={Boolean(match)}
