@@ -50,8 +50,8 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
-        include: /node_modules/,
+        test: /\.js$/,
+        include: /node_modules\/react-dom/,
         use: [
           {
             loader: 'react-hot-loader/webpack',
