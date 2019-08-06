@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { IntlProvider } from 'react-intl';
 import { useSelector } from 'react-redux';
 
@@ -33,14 +33,7 @@ const LocaleProvider = (props) => {
     return null;
   }
 
-  return (
-    <IntlProvider
-      {...props}
-      locale={locale}
-      messages={messages}
-      textComponent={Fragment}
-    />
-  );
+  return <IntlProvider {...props} locale={locale} messages={messages} />;
 };
 
 LocaleProvider.displayName = 'LocaleProvider';
