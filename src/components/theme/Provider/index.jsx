@@ -6,9 +6,9 @@ import { useIntl } from 'react-intl';
 import { useSelector } from 'react-redux';
 import { createSelector } from 'reselect';
 
-import createTheme from '../../styles/createTheme';
-import themes from '../../styles/themes';
-import { getQuery } from '../../utils/location';
+import createTheme from '../../../styles/createTheme';
+import themes from '../../../styles/themes';
+import { getQuery } from '../../../utils/location';
 
 import GlobalCss from './GlobalCss';
 

@@ -6,7 +6,7 @@ import LocaleProvider from '../LocaleProvider';
 import OptionsContext from '../OptionsContext';
 import ReduxProvider from '../ReduxProvider';
 import Root from '../Root';
-import ThemeProvider from '../ThemeProvider';
+import ThemeProvider from '../theme/Provider';
 
 class App extends Component {
   componentDidCatch(error, errorInfo) {

@@ -54,7 +54,7 @@ const getTheme = createSelector(
 const ThemeDialog = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const intl = useIntl();
+  const { formatMessage } = useIntl();
 
   const open = useSelector(getOpen);
   const query = useSelector(getQuery);
@@ -70,29 +70,25 @@ const ThemeDialog = () => {
       }),
     );
 
-  const handleChange = (event, id) => {
+  const onThemeIdChange = (event, id) => {
     onChange({
       ...theme,
       id,
     });
   };
 
-  const onSubmit = async (selectedTheme) => {
+  const onSubmit = async (event) => {
+    event.preventDefault();
+
     try {
-      await dispatch(setTheme(selectedTheme));
+      await dispatch(setTheme(theme));
       dispatch(goBack());
     } catch (error) {
       // no full version
     }
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-
-    onSubmit(theme);
-  };
-
-  const handleTypeChange = (event, checked) => {
+  const onTypeChange = (event, checked) => {
     onChange({
       ...theme,
       type: checked ? 'dark' : 'light',
@@ -105,13 +101,13 @@ const ThemeDialog = () => {
     <Dialog
       onClose={onClose}
       open={open}
-      PaperProps={{ component: 'form', onSubmit: handleSubmit }}
+      PaperProps={{ component: 'form', onSubmit }}
     >
-      <DialogTitle>{intl.formatMessage(themeMessages.label)}</DialogTitle>
+      <DialogTitle>{formatMessage(themeMessages.label)}</DialogTitle>
       <DialogContent className={classes.content}>
-        <RadioGroup name="id" onChange={handleChange} value={theme.id}>
+        <RadioGroup name="id" onChange={onThemeIdChange} value={theme.id}>
           {sortBy(
-            ({ label }) => intl.formatMessage(label.props),
+            ({ label }) => formatMessage(label.props),
             Object.keys(names).map((value) => ({ label: names[value], value })),
           ).map((option) => (
             <FormControlLabel
@@ -130,7 +126,7 @@ const ThemeDialog = () => {
           label={
             <FormattedMessage defaultMessage="Dark" id="themeDialog.dark" />
           }
-          onChange={handleTypeChange}
+          onChange={onTypeChange}
         />
       </DialogContent>
       <DialogActions>
