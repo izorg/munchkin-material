@@ -34,7 +34,7 @@ const styles = {
 
 const hysteresis = 0.5;
 const minFlingVelocity = 0.3;
-const swipeAreaWidth = 20;
+const swipeAreaWidth = 16;
 
 class MenuDrawer extends PureComponent {
   static getDerivedStateFromProps(nextProps, prevState) {
