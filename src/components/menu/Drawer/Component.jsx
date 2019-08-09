@@ -1,4 +1,4 @@
-import React, { Component, lazy, Suspense } from 'react';
+import React, { lazy, PureComponent, Suspense } from 'react';
 import { compose } from 'recompose';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core';
@@ -36,7 +36,7 @@ const hysteresis = 0.5;
 const minFlingVelocity = 0.3;
 const swipeAreaWidth = 20;
 
-class MenuDrawer extends Component {
+class MenuDrawer extends PureComponent {
   static getDerivedStateFromProps(nextProps, prevState) {
     if (typeof prevState.maybeSwiping === 'undefined') {
       return {
