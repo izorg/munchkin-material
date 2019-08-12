@@ -2,6 +2,7 @@
   "parser": "babel-eslint",
   "extends": [
     "airbnb",
+    "airbnb/hooks",
     "plugin:jest/recommended",
     "plugin:lodash-fp/recommended",
     "plugin:prettier/recommended",
@@ -13,7 +14,7 @@
   "globals": {
     "VERSION": true
   },
-  "plugins": ["json", "react-hooks"],
+  "plugins": ["json"],
   "rules": {
     "import/no-extraneous-dependencies": [
       "error",
@@ -28,8 +29,6 @@
         "newlines-between": "always-and-inside-groups"
       }
     ],
-    "react-hooks/exhaustive-deps": "error",
-    "react-hooks/rules-of-hooks": "error",
     "react/jsx-sort-default-props": "error",
     "react/jsx-sort-props": "error",
     "react/jsx-props-no-spreading": "off",
