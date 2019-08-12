@@ -1,8 +1,7 @@
 import React, { lazy, PureComponent, Suspense } from 'react';
-import { compose } from 'recompose';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core';
-import withWidth, { isWidthDown, isWidthUp } from '@material-ui/core/withWidth';
+import { isWidthUp } from '@material-ui/core/withWidth';
 import Drawer, {
   getAnchor,
   isHorizontal,
@@ -82,14 +81,14 @@ class MenuDrawer extends PureComponent {
   }
 
   componentDidUpdate(prevProps) {
-    const { onClose, open, width } = this.props;
+    const { enable, onClose, open, width } = this.props;
 
     if (open && isWidthUp('md', width)) {
       onClose();
     }
 
-    if (width !== prevProps.width && this.hammer) {
-      this.hammer.set({ enable: isWidthDown('sm', width) });
+    if (enable !== prevProps.enable && this.hammer) {
+      this.hammer.set({ enable });
     }
   }
 
@@ -404,8 +403,7 @@ class MenuDrawer extends PureComponent {
   }
 
   addHammer() {
-    const { width } = this.props;
-    const enable = isWidthDown('sm', width);
+    const { enable } = this.props;
 
     const pressTime = 50;
 
@@ -435,7 +433,7 @@ class MenuDrawer extends PureComponent {
   }
 
   render() {
-    const { classes, onOpen, open, ...rest } = this.props;
+    const { classes, enable, onOpen, open, ...rest } = this.props;
     const { maybeSwiping } = this.state;
 
     return (
@@ -471,6 +469,7 @@ class MenuDrawer extends PureComponent {
 
 MenuDrawer.propTypes = {
   anchor: PropTypes.oneOf(['left']),
+  enable: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
   onOpen: PropTypes.func.isRequired,
   open: PropTypes.bool,
@@ -492,7 +491,4 @@ MenuDrawer.defaultProps = {
 
 MenuDrawer.displayName = 'MenuDrawer';
 
-export default compose(
-  withWidth(),
-  withStyles(styles, { withTheme: true }),
-)(MenuDrawer);
+export default withStyles(styles, { withTheme: true })(MenuDrawer);

@@ -11,7 +11,6 @@ import Nobody from '../../components/Nobody';
 import ThemeDialog from '../../components/theme/Dialog';
 
 import AppBar from './AppBar';
-import { MULTI } from './modes';
 import PlayerAddButton from './PlayerAddButton';
 import PlayerList from './PlayerList';
 import SinglePlayer from './SinglePlayer';
@@ -126,7 +125,6 @@ const Home = ({ match }) => {
     );
   }
 
-  const menu = match.isExact && match.params.mode !== MULTI;
   const menuCollapsed = useSelector((state) => state.app.menuCollapsed);
 
   return (
@@ -152,7 +150,7 @@ const Home = ({ match }) => {
         <PlayerAddButton />
       </Zoom>
 
-      {menu && <MenuDrawer />}
+      <MenuDrawer />
       <LevelLimitDialog />
       <ThemeDialog />
 

@@ -1,14 +1,42 @@
+import withWidth, { isWidthDown } from '@material-ui/core/withWidth';
 import { goBack, push } from 'connected-react-router';
+import { omit } from 'lodash/fp';
 import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
+import { withRouter } from 'react-router-dom';
+import { compose } from 'recompose';
+import { createSelector, createStructuredSelector } from 'reselect';
 
+import { MULTI } from '../../../routes/Home/modes';
 import { stringifyQuery } from '../../../utils/location';
 
 import openSelector from '../openSelector';
 
 import Component from './Component';
 
+const enable = createSelector(
+  openSelector,
+  (state, props) => props.match,
+  (state, props) => props.location,
+  (state, props) => props.width,
+  (open, match, location, width) => {
+    if (open) {
+      return true;
+    }
+
+    if (!match.isExact || match.params.mode === MULTI) {
+      return false;
+    }
+
+    if (location.search) {
+      return false;
+    }
+
+    return isWidthDown('sm', width);
+  },
+);
+
 const mapStateToProps = createStructuredSelector({
+  enable,
   open: openSelector,
 });
 
@@ -21,7 +49,18 @@ const mapDispatchToProps = {
   onOpen: () => push({ search: stringifyQuery({ menu: null }) }),
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
+const mergeProps = (stateProps, dispatchProps, ownProps) => ({
+  ...omit(['history', 'match', 'location', 'staticContext'], ownProps),
+  ...stateProps,
+  ...dispatchProps,
+});
+
+export default compose(
+  withWidth(),
+  withRouter,
+  connect(
+    mapStateToProps,
+    mapDispatchToProps,
+    mergeProps,
+  ),
 )(Component);
