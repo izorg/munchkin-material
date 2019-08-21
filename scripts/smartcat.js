@@ -44,7 +44,7 @@ function* getTask(taskId) {
 }
 
 const getTranslation = async (taskId) => {
-  // eslint-disable-next-line no-restricted-syntax
+  // eslint-disable-next-line no-restricted-syntax,no-unused-vars
   for await (const result of getTask(taskId)) {
     if (result) {
       const { data, status } = result;

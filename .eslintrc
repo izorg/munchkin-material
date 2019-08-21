@@ -39,7 +39,6 @@
       }
     ],
     "react/sort-prop-types": "error",
-    "react/state-in-constructor": ["error", "always"],
     "sort-imports": [
       "error",
       {
