@@ -9,11 +9,15 @@ const Home = lazy(() =>
 );
 
 const Player = lazy(() =>
-  import(/* webpackChunkName: "player" */ '../../routes/Player'),
+  import(
+    /* webpackChunkName: "player", webpackPrefetch: true */ '../../routes/Player'
+  ),
 );
 
 const Combat = lazy(() =>
-  import(/* webpackChunkName: "combat" */ '../../routes/Combat'),
+  import(
+    /* webpackChunkName: "combat", webpackPrefetch: true */ '../../routes/Combat'
+  ),
 );
 
 const DiceDialog = lazy(() =>
