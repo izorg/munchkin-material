@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { createSelector } from 'reselect';
 import { Backdrop, makeStyles, MuiThemeProvider } from '@material-ui/core';
 import { useTheme } from '@material-ui/core/styles';
-import { SpeedDial, SpeedDialIcon } from '@material-ui/lab';
+import { SpeedDial, SpeedDialAction, SpeedDialIcon } from '@material-ui/lab';
 import { AccountPlus, EmoticonDevilOutline } from 'mdi-material-ui';
 import clsx from 'clsx';
 import deepmerge from 'deepmerge';
@@ -14,8 +14,6 @@ import { flow, get, isNull } from 'lodash/fp';
 import { addMonster } from '../../../ducks/monsters';
 import createMonster from '../../../utils/createMonster';
 import { getQuery } from '../../../utils/location';
-
-import HelperButtonAction from './Action';
 
 const useStyles = makeStyles(
   (theme) => ({
@@ -66,16 +64,21 @@ const CombatHelperButton = ({ className, ...rest }) => {
 
   const onAdd = () => dispatch(push(`?add`));
   const onBack = () => dispatch(goBack());
-  const onHelperClick = () => dispatch(replace(`?add=helper`));
+  const onHelperClick = (event) => {
+    event.stopPropagation();
+    dispatch(replace(`?add=helper`));
+  };
   const onMonsterAdd = () => dispatch(addMonster(createMonster()));
 
   return (
     <>
+      {open && <Backdrop className={classes.backdrop} onClick={onBack} open />}
+
       <MuiThemeProvider
         theme={deepmerge(theme, {
           overrides: {
             MuiSpeedDialAction: {
-              button: {
+              fab: {
                 color: theme.palette.primary.contrastText,
                 backgroundColor: theme.palette.primary.main,
 
@@ -93,10 +96,10 @@ const CombatHelperButton = ({ className, ...rest }) => {
       >
         <SpeedDial
           ariaLabel=" "
-          ButtonProps={{
+          className={clsx(classes.container, className)}
+          FabProps={{
             color: open ? 'default' : 'primary',
           }}
-          className={clsx(classes.container, className)}
           icon={helper ? <SpeedDialIcon /> : <EmoticonDevilOutline />}
           onClick={() => {
             if (open) {
@@ -113,9 +116,10 @@ const CombatHelperButton = ({ className, ...rest }) => {
           }}
           {...rest}
         >
-          <HelperButtonAction
+          <SpeedDialAction
             icon={<EmoticonDevilOutline />}
-            onClick={() => {
+            onClick={(event) => {
+              event.stopPropagation();
               onMonsterAdd();
               onBack();
             }}
@@ -126,7 +130,7 @@ const CombatHelperButton = ({ className, ...rest }) => {
               />
             }
           />
-          <HelperButtonAction
+          <SpeedDialAction
             icon={<AccountPlus />}
             onClick={onHelperClick}
             tooltipTitle={
@@ -138,8 +142,6 @@ const CombatHelperButton = ({ className, ...rest }) => {
           />
         </SpeedDial>
       </MuiThemeProvider>
-
-      {open && <Backdrop className={classes.backdrop} onClick={onBack} open />}
     </>
   );
 };
