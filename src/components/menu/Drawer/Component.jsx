@@ -1,4 +1,4 @@
-import React, { lazy, PureComponent, Suspense } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core';
 import { isWidthUp } from '@material-ui/core/withWidth';
@@ -14,9 +14,7 @@ import { throttle } from 'lodash/fp';
 
 import { ios } from '../../../utils/platforms';
 
-import Loading from '../../Loading';
-
-const MenuList = lazy(() => import(/* webpackChunkName: "menu" */ '../List'));
+import MenuList from '../List';
 
 const styles = {
   paper: {
@@ -459,9 +457,7 @@ class MenuDrawer extends PureComponent {
         }}
         {...rest}
       >
-        <Suspense fallback={<Loading />}>
-          <MenuList />
-        </Suspense>
+        <MenuList />
       </Drawer>
     );
   }

@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Dialog, Fade, makeStyles, Slide } from '@material-ui/core';
@@ -6,8 +6,6 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme } from '@material-ui/core/styles';
 
 import { ios } from '../../utils/platforms';
-
-import Loading from '../Loading';
 
 const useStyles = makeStyles(
   {
@@ -47,9 +45,7 @@ const DialogRoute = ({ component: Component, path }) => {
             direction: 'left',
           }}
         >
-          <Suspense fallback={<Loading />}>
-            <Component match={match} {...rest} />
-          </Suspense>
+          <Component match={match} {...rest} />
         </Dialog>
       )}
     </Route>
