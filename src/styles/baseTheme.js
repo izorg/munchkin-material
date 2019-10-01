@@ -6,10 +6,12 @@ import createPalette from '@material-ui/core/styles/createPalette';
 
 const breakpoints = createBreakpoints({});
 
-export default (type) => {
+export default ({ direction, type }) => {
   const palette = createPalette({ type });
 
   let theme = {
+    direction,
+
     mixins: {
       toolbar: {
         minHeight: 56,

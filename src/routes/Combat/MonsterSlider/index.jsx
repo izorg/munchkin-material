@@ -3,7 +3,7 @@ import { FormattedMessage } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
 import MediaQuery from 'react-responsive';
 import SwipeableViews from 'react-swipeable-views';
-import { IconButton, makeStyles, Paper } from '@material-ui/core';
+import { IconButton, makeStyles, Paper, useTheme } from '@material-ui/core';
 import { CloseCircle } from 'mdi-material-ui';
 import clsx from 'clsx';
 
@@ -51,6 +51,7 @@ const useStyles = makeStyles(
 const CombatMonsterSlider = ({ className }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
+  const { direction } = useTheme();
 
   const monsters = useSelector((state) => state.combat.monsters);
 
@@ -110,10 +111,12 @@ const CombatMonsterSlider = ({ className }) => {
     <div className={clsx(classes.monsters, className)}>
       <MediaQuery orientation="portrait">
         <SwipeableViews
+          axis={direction === 'rtl' ? 'x-reverse' : 'x'}
           enableMouseEvents
           index={index}
           onChangeIndex={(value) => setIndex(value)}
           slideStyle={{
+            direction,
             padding: '8px 8px 0',
             position: 'relative',
           }}
@@ -138,8 +141,10 @@ const CombatMonsterSlider = ({ className }) => {
           index={index}
           onChangeIndex={(value) => setIndex(value)}
           slideStyle={{
+            direction,
             height: 224,
-            padding: '8px 48px 8px 8px',
+            padding:
+              direction === 'rtl' ? '8px 8px 8px 48px' : '8px 48px 8px 8px',
             position: 'relative',
           }}
           style={{

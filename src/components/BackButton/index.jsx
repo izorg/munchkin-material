@@ -1,6 +1,11 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core';
-import { ArrowLeft, ChevronLeft } from 'mdi-material-ui';
+import { makeStyles, useTheme } from '@material-ui/core';
+import {
+  ArrowLeft,
+  ArrowRight,
+  ChevronLeft,
+  ChevronRight,
+} from 'mdi-material-ui';
 
 import TopIconButton from '../TopIconButton';
 
@@ -17,10 +22,24 @@ const useStyles = makeStyles(
 
 const BackButton = (props) => {
   const classes = useStyles();
+  const { direction } = useTheme();
+
+  let icon;
+
+  if (ios) {
+    icon =
+      direction === 'rtl' ? (
+        <ChevronRight className={classes.iosIcon} />
+      ) : (
+        <ChevronLeft className={classes.iosIcon} />
+      );
+  } else {
+    icon = direction === 'rtl' ? <ArrowRight /> : <ArrowLeft />;
+  }
 
   return (
     <TopIconButton color="inherit" edge="start" {...props}>
-      {ios ? <ChevronLeft className={classes.iosIcon} /> : <ArrowLeft />}
+      {icon}
     </TopIconButton>
   );
 };

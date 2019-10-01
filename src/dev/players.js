@@ -1,6 +1,6 @@
 import { cyan, green, orange, yellow } from '@material-ui/core/colors';
 
-import { CS, EN, RU, UK } from '../i18n';
+import { CS, EN, HE, RU, UK } from '../i18n';
 import createPlayer from '../utils/createPlayer';
 import { FEMALE } from '../utils/sex';
 
@@ -65,6 +65,33 @@ export default {
         sex: FEMALE,
         level: 7,
         name: 'Hillary Clinton',
+      }),
+    },
+  ],
+
+  [HE]: [
+    {
+      player: createPlayer({
+        color: '#607D8B',
+        gear: 13,
+        level: 3,
+        name: '‏בנימין נתניהו‏‎',
+      }),
+    },
+    {
+      player: createPlayer({
+        color: '#FFC107',
+        gear: 20,
+        level: 5,
+        name: 'אהוד אולמרט‏‎',
+      }),
+    },
+    {
+      player: createPlayer({
+        color: '#03A9F4',
+        gear: 10,
+        level: 7,
+        name: 'אריאל שרון‏',
       }),
     },
   ],

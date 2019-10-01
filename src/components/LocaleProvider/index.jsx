@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { IntlProvider } from 'react-intl';
 import { useSelector } from 'react-redux';
 
-import { getLocale, getMessages, loadLocale } from '../../i18n';
+import { getDirection, getLocale, getMessages, loadLocale } from '../../i18n';
 
 const defaultLocale = getLocale();
 
@@ -27,6 +27,7 @@ const LocaleProvider = (props) => {
 
   useEffect(() => {
     document.querySelector('html').lang = locale;
+    document.querySelector('body').dir = getDirection(locale);
   }, [locale]);
 
   if (!messages) {

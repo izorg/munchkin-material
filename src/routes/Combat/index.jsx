@@ -1,7 +1,7 @@
 import React from 'react';
 import { hot } from 'react-hot-loader/root';
 import { useSelector } from 'react-redux';
-import { makeStyles, Typography } from '@material-ui/core';
+import { makeStyles, Typography, useTheme } from '@material-ui/core';
 import clsx from 'clsx';
 
 import AppBar from './AppBar';
@@ -118,6 +118,7 @@ const combatSelector = (state) => {
 
 const Combat = () => {
   const classes = useStyles();
+  const { direction } = useTheme();
 
   const {
     combinedMonsterStrength,
@@ -143,7 +144,9 @@ const Combat = () => {
             >
               {combinedPlayerStrength}
             </sup>
-            <span className={classes.versus}>/</span>
+            <span className={classes.versus}>
+              {direction === 'rtl' ? '\\' : '/'}
+            </span>
             <sub
               className={clsx(classes.value, classes.combinedMonsterStrength)}
             >

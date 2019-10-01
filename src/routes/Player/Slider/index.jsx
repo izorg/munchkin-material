@@ -5,7 +5,7 @@ import SwipeableViews from 'react-swipeable-views';
 import { mod } from 'react-swipeable-views-core';
 import { bindKeyboard, virtualize } from 'react-swipeable-views-utils';
 import PropTypes from 'prop-types';
-import { makeStyles, Paper } from '@material-ui/core';
+import { makeStyles, Paper, useTheme } from '@material-ui/core';
 
 import PlayerStats from './Stats';
 
@@ -94,6 +94,7 @@ const useStyles = makeStyles(
 const PlayerSlider = ({ playerId }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
+  const { direction } = useTheme();
 
   const skipNextRef = useRef(false);
 
@@ -163,6 +164,7 @@ const PlayerSlider = ({ playerId }) => {
 
   return (
     <PlayerSwipeableViews
+      axis={direction === 'rtl' ? 'x-reverse' : 'x'}
       className={classes.root}
       containerStyle={{
         flex: '1 0 auto',
@@ -174,6 +176,9 @@ const PlayerSlider = ({ playerId }) => {
       overscanSlideBefore={2}
       slideClassName={classes.slide}
       slideRenderer={slideRenderer}
+      slideStyle={{
+        direction,
+      }}
       style={{
         display: 'flex',
         flexDirection: 'column',

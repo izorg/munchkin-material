@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import MediaQuery from 'react-responsive';
 import SwipeableViews from 'react-swipeable-views';
 import PropTypes from 'prop-types';
-import { IconButton, makeStyles, Paper } from '@material-ui/core';
+import { IconButton, makeStyles, Paper, useTheme } from '@material-ui/core';
 import { CloseCircle } from 'mdi-material-ui';
 import clsx from 'clsx';
 
@@ -47,6 +47,7 @@ const useStyles = makeStyles(
 const CombatPlayerSlider = ({ className, helperId, playerId }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
+  const { direction } = useTheme();
 
   const initialRender = useRef(true);
 
@@ -93,10 +94,12 @@ const CombatPlayerSlider = ({ className, helperId, playerId }) => {
     <div className={clsx(classes.players, className)}>
       <MediaQuery orientation="portrait">
         <SwipeableViews
+          axis={direction === 'rtl' ? 'x-reverse' : 'x'}
           enableMouseEvents
           index={currentIndex}
           onChangeIndex={onChangeIndex}
           slideStyle={{
+            direction,
             padding: '0 8px 8px',
             position: 'relative',
           }}
@@ -121,8 +124,10 @@ const CombatPlayerSlider = ({ className, helperId, playerId }) => {
           index={currentIndex}
           onChangeIndex={onChangeIndex}
           slideStyle={{
+            direction,
             height: 224,
-            padding: '8px 8px 8px 24px',
+            padding:
+              direction === 'rtl' ? '8px 24px 8px 8px' : '8px 8px 8px 24px',
             position: 'relative',
           }}
           style={{

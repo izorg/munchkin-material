@@ -5,6 +5,7 @@ export const EL = 'el';
 export const EN = 'en';
 export const ES = 'es';
 export const FR = 'fr';
+export const HE = 'he';
 export const HU = 'hu';
 export const HY = 'hy';
 export const IT = 'it';
@@ -37,6 +38,9 @@ const loaders = {
 
   [FR]: () =>
     import(/* webpackChunkName: "locales/fr" */ '../languages/fr.json'),
+
+  [HE]: () =>
+    import(/* webpackChunkName: "locales/he" */ '../languages/he.json'),
 
   [HU]: () =>
     import(/* webpackChunkName: "locales/hu" */ '../languages/hu.json'),
@@ -72,6 +76,8 @@ const loaders = {
 const defaultLocale = EN;
 
 const LANGUAGE_LENGTH = 2;
+
+export const getDirection = (locale) => ([HE].includes(locale) ? 'rtl' : 'ltr');
 
 export const getLocale = () => {
   const languages =

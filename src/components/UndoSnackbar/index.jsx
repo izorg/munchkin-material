@@ -48,7 +48,7 @@ const UndoSnackbar = ({ children, className, message, onClose, ...rest }) => {
         </Button>
       }
       anchorOrigin={{
-        horizontal: 'left',
+        horizontal: theme.direction === 'rtl' ? 'right' : 'left',
         vertical: 'bottom',
       }}
       className={clsx(classes.root, className)}
