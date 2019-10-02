@@ -1,6 +1,7 @@
 import { createBrowserHistory } from 'history';
 import * as Sentry from '@sentry/browser';
 
+import './firebase';
 import './googleAnalytics';
 
 import init from '../index';
