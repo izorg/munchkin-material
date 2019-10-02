@@ -1,8 +1,5 @@
-import { MuiThemeProvider } from '@material-ui/core';
-import { jssPreset, StylesProvider } from '@material-ui/styles';
-import { create } from 'jss';
-import rtl from 'jss-rtl';
-import { flow, get } from 'lodash/fp';
+import { ThemeProvider as MuiThemeProvider } from '@material-ui/styles';
+import { flow, get, getOr } from 'lodash/fp';
 import PropTypes from 'prop-types';
 import React, { useMemo } from 'react';
 import { useIntl } from 'react-intl';
@@ -17,7 +14,7 @@ import GlobalCss from './GlobalCss';
 
 const getPreviewTheme = flow(
   getQuery,
-  get('theme'),
+  getOr(null, 'theme'),
 );
 
 const getCurrentTheme = get('theme');
@@ -25,14 +22,6 @@ const getCurrentTheme = get('theme');
 const ThemeProvider = ({ children }) => {
   const { locale } = useIntl();
   const direction = getDirection(locale);
-
-  const jss = useMemo(
-    () =>
-      direction === 'rtl'
-        ? create({ plugins: [...jssPreset().plugins, rtl()] })
-        : create({ plugins: jssPreset().plugins }),
-    [direction],
-  );
 
   const previewTheme = useSelector(getPreviewTheme);
   const currentTheme = useSelector(getCurrentTheme);
@@ -47,12 +36,10 @@ const ThemeProvider = ({ children }) => {
   }, [currentTheme, direction, previewTheme]);
 
   return (
-    <StylesProvider jss={jss}>
-      <MuiThemeProvider theme={theme}>
-        <GlobalCss />
-        {children}
-      </MuiThemeProvider>
-    </StylesProvider>
+    <MuiThemeProvider theme={theme}>
+      <GlobalCss />
+      {children}
+    </MuiThemeProvider>
   );
 };
 

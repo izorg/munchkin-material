@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { hot } from 'react-hot-loader/root';
 import PropTypes from 'prop-types';
 
+import AugmentedStylesProvider from '../AugmentedStylesProvider';
 import LocaleProvider from '../LocaleProvider';
 import OptionsContext from '../OptionsContext';
 import ReduxProvider from '../ReduxProvider';
@@ -30,9 +31,11 @@ class App extends Component {
       <OptionsContext.Provider value={options}>
         <ReduxProvider history={history} store={store}>
           <LocaleProvider>
-            <ThemeProvider>
-              <Root />
-            </ThemeProvider>
+            <AugmentedStylesProvider>
+              <ThemeProvider>
+                <Root />
+              </ThemeProvider>
+            </AugmentedStylesProvider>
           </LocaleProvider>
         </ReduxProvider>
       </OptionsContext.Provider>
