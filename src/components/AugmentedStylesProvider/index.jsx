@@ -11,15 +11,16 @@ const AugmentedStylesProvider = ({ children }) => {
   const { locale } = useIntl();
   const direction = getDirection(locale);
 
-  const jss = useMemo(() => {
-    let { plugins } = jssPreset();
-
-    if (direction === 'rtl') {
-      plugins = [...plugins, rtl()];
-    }
-
-    return create({ plugins });
-  }, [direction]);
+  const jss = useMemo(
+    () =>
+      create({
+        plugins: [
+          ...jssPreset().plugins,
+          rtl({ enabled: direction === 'rtl' }),
+        ],
+      }),
+    [direction],
+  );
 
   return <StylesProvider jss={jss}>{children}</StylesProvider>;
 };
