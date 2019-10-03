@@ -3,11 +3,11 @@ import { hot } from 'react-hot-loader/root';
 import PropTypes from 'prop-types';
 
 import AugmentedStylesProvider from '../AugmentedStylesProvider';
+import AugmentedThemeProvider from '../AugmentedThemeProvider';
 import LocaleProvider from '../LocaleProvider';
 import OptionsContext from '../OptionsContext';
 import ReduxProvider from '../ReduxProvider';
 import Root from '../Root';
-import ThemeProvider from '../theme/Provider';
 
 class App extends Component {
   componentDidCatch(error, errorInfo) {
@@ -32,9 +32,9 @@ class App extends Component {
         <ReduxProvider history={history} store={store}>
           <LocaleProvider>
             <AugmentedStylesProvider>
-              <ThemeProvider>
+              <AugmentedThemeProvider>
                 <Root />
-              </ThemeProvider>
+              </AugmentedThemeProvider>
             </AugmentedStylesProvider>
           </LocaleProvider>
         </ReduxProvider>

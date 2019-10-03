@@ -7,8 +7,16 @@ const purchase = ({ buyFullVersion, freeCombat }) => {
 
   return ({ dispatch, getState }) => (next) => (action) => {
     if (actionTypes.includes(action.type) && !getState().app.fullVersion) {
+      if (
+        action.type === SET_THEME &&
+        getState().theme.id === action.theme.id
+      ) {
+        return next(action);
+      }
+
       return buyFullVersion().then(() => {
         dispatch(setFullVersion(true));
+
         return next(action);
       });
     }

@@ -4,11 +4,11 @@ import { FormattedMessage, useIntl } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
 import { createSelector } from 'reselect';
 import {
-  Checkbox,
   Dialog,
   DialogActions,
   DialogContent,
   DialogTitle,
+  Divider,
   FormControlLabel,
   makeStyles,
   Radio,
@@ -77,25 +77,32 @@ const ThemeDialog = () => {
     });
   };
 
+  const onThemeTypeChange = (event, type) => {
+    onChange({
+      ...theme,
+      type,
+    });
+  };
+
   const onSubmit = async (event) => {
     event.preventDefault();
 
     try {
-      await dispatch(setTheme(theme));
+      await dispatch(
+        setTheme({
+          ...theme,
+          type: theme.type || undefined,
+        }),
+      );
       dispatch(goBack());
     } catch (error) {
       // no full version
     }
   };
 
-  const onTypeChange = (event, checked) => {
-    onChange({
-      ...theme,
-      type: checked ? 'dark' : 'light',
-    });
-  };
-
   const onClose = () => dispatch(goBack());
+
+  const typeValue = theme.type || '';
 
   return (
     <Dialog
@@ -105,6 +112,35 @@ const ThemeDialog = () => {
     >
       <DialogTitle>{formatMessage(themeMessages.label)}</DialogTitle>
       <DialogContent className={classes.content}>
+        <RadioGroup name="type" onChange={onThemeTypeChange} value={typeValue}>
+          {window.matchMedia('(prefers-color-scheme)').matches && (
+            <FormControlLabel
+              control={<Radio color="primary" />}
+              label={
+                <FormattedMessage
+                  defaultMessage="System Default"
+                  id="themeDialog.auto"
+                />
+              }
+              value=""
+            />
+          )}
+          <FormControlLabel
+            control={<Radio color="primary" />}
+            label={
+              <FormattedMessage defaultMessage="Light" id="themeDialog.light" />
+            }
+            value="light"
+          />
+          <FormControlLabel
+            control={<Radio color="primary" />}
+            label={
+              <FormattedMessage defaultMessage="Dark" id="themeDialog.dark" />
+            }
+            value="dark"
+          />
+        </RadioGroup>
+        <Divider />
         <RadioGroup name="id" onChange={onThemeIdChange} value={theme.id}>
           {sortBy(
             ({ label }) => formatMessage(label.props),
@@ -120,14 +156,6 @@ const ThemeDialog = () => {
             />
           ))}
         </RadioGroup>
-        <FormControlLabel
-          checked={theme.type === 'dark'}
-          control={<Checkbox color="primary" name="type" />}
-          label={
-            <FormattedMessage defaultMessage="Dark" id="themeDialog.dark" />
-          }
-          onChange={onTypeChange}
-        />
       </DialogContent>
       <DialogActions>
         <CancelButton onClick={onClose} />

@@ -9,7 +9,9 @@ export const setTheme = (theme) => ({
 
 const initialState = {
   id,
-  type: 'light',
+  type: window.matchMedia('(prefers-color-scheme)').matches
+    ? undefined
+    : 'light',
 };
 
 const reducer = (state = initialState, action) => {

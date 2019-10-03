@@ -47,7 +47,9 @@
   "theme.name.munchkin": "מאנצ'קין",
   "theme.name.star": "בין כוכבים",
   "theme.name.super": "סופר",
+  "themeDialog.auto": "ברירת מחדל של המערכת",
   "themeDialog.dark": "כהה",
+  "themeDialog.light": "בהיר",
   "undo": "בטל",
   "undo.killPlayer": " {name} {sex,select,female{נפטרה} male{מת}}",
   "undo.resetPlayers": "השחקנים אופסו"

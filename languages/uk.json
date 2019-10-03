@@ -47,7 +47,9 @@
   "theme.name.munchkin": "Манчкін",
   "theme.name.star": "Зоряний",
   "theme.name.super": "Супер",
+  "themeDialog.auto": "За умовчанням системи",
   "themeDialog.dark": "Темна",
+  "themeDialog.light": "Свiтла",
   "undo": "Відмінити",
   "undo.killPlayer": "{name} {sex, select, female {померла} male {помер}}",
   "undo.resetPlayers": "Гравці були скинуті"

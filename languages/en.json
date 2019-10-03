@@ -47,7 +47,9 @@
   "theme.name.munchkin": "Munchkin",
   "theme.name.star": "Star",
   "theme.name.super": "Super",
+  "themeDialog.auto": "System Default",
   "themeDialog.dark": "Dark",
+  "themeDialog.light": "Light",
   "undo": "Undo",
   "undo.killPlayer": "{name} {sex,select,female{has died} male{has died}}",
   "undo.resetPlayers": "Players have been reset"

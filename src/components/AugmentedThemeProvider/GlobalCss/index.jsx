@@ -2,8 +2,8 @@ import { CssBaseline } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 import React from 'react';
 
-import munchkinWoff from '../../../../fonts/munchkin.woff';
-import munchkinWoff2 from '../../../../fonts/munchkin.woff2';
+import munchkinWoff from '../../../fonts/munchkin.woff';
+import munchkinWoff2 from '../../../fonts/munchkin.woff2';
 
 const useStyles = makeStyles(
   {
