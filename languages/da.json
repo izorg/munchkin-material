@@ -47,7 +47,9 @@
   "theme.name.munchkin": "Munchkin",
   "theme.name.star": "Stjerne",
   "theme.name.super": "Suoer",
+  "themeDialog.auto": "Systemstandard",
   "themeDialog.dark": "Mørk",
+  "themeDialog.light": "Lyst",
   "undo": "Lav om",
   "undo.killPlayer": "{name} {sex, select, female {døde} male {døde}}",
   "undo.resetPlayers": "Spiller er blevet nulstillet"

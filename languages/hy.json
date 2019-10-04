@@ -47,7 +47,9 @@
   "theme.name.munchkin": "Մանչկին",
   "theme.name.star": "Աստղ",
   "theme.name.super": "Սուպեր",
-  "themeDialog.dark": "Խավար",
+  "themeDialog.auto": "Ըամակարգի կանխադիաժ թեման",
+  "themeDialog.dark": "Սուգ",
+  "themeDialog.light": "Բաց",
   "undo": "Ետ գնալ",
   "undo.killPlayer": "{name} {sex, select, female {ն մահացավ} male {ն մահացավ}}",
   "undo.resetPlayers": "Խաղացողները վերականգնվեցին"

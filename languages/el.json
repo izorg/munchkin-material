@@ -47,7 +47,9 @@
   "theme.name.munchkin": "Munchkin",
   "theme.name.star": "Star",
   "theme.name.super": "Super",
-  "themeDialog.dark": "Dark",
+  "themeDialog.auto": "Προεπιλογή συστήματος",
+  "themeDialog.dark": "Σκούρο",
+  "themeDialog.light": "Φως",
   "undo": "Αναίρεση",
   "undo.killPlayer": "{name} {sex, select, female {έχει πεθάνει} male {έχει πεθάνει}}",
   "undo.resetPlayers": "Οι παίκτες έχουν επαναφερθεί"

@@ -47,7 +47,9 @@
   "theme.name.munchkin": "Munchkin",
   "theme.name.star": "Gwiezdny",
   "theme.name.super": "Super",
+  "themeDialog.auto": "Domyślny systemowy",
   "themeDialog.dark": "Ciemny",
+  "themeDialog.light": "Jasny",
   "undo": "Cofnij",
   "undo.killPlayer": "{name} {sex, select, female {umarła} male {umarł}}",
   "undo.resetPlayers": "Gracze zostali zresetowani"

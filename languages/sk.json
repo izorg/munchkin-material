@@ -47,7 +47,9 @@
   "theme.name.munchkin": "Munchkin",
   "theme.name.star": "Hviezdný",
   "theme.name.super": "Super",
-  "themeDialog.dark": "Temný",
+  "themeDialog.auto": "Predvolené nastavenie systému",
+  "themeDialog.dark": "Tmavý",
+  "themeDialog.light": "Svetlý",
   "undo": "Späť",
   "undo.killPlayer": "{name} {sex,select,female{zomrela} male{zomrel}}",
   "undo.resetPlayers": "Hráči boli resetovaní"

@@ -47,7 +47,9 @@
   "theme.name.munchkin": "Munchkin",
   "theme.name.star": "Stern",
   "theme.name.super": "Super",
+  "themeDialog.auto": "Systemstandardeinstellung",
   "themeDialog.dark": "Dunkel",
+  "themeDialog.light": "Hell",
   "undo": "Rückgängig machen",
   "undo.killPlayer": "{name} {sex, select, female {ist gestorben} male {ist gestorben}}",
   "undo.resetPlayers": "Die Spieler wurden zurückgesetzt"

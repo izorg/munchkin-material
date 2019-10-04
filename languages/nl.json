@@ -47,7 +47,9 @@
   "theme.name.munchkin": "Munchkin",
   "theme.name.star": "Ster",
   "theme.name.super": "Super",
+  "themeDialog.auto": "Systeemstandaard",
   "themeDialog.dark": "Donker",
+  "themeDialog.light": "Licht",
   "undo": "Undo",
   "undo.killPlayer": "{name} {sex,select,female{is gestorven} male{is gestorven}}",
   "undo.resetPlayers": "Spelerslijst is opgekuist"
