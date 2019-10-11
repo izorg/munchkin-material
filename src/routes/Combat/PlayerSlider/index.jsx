@@ -1,11 +1,11 @@
+import { IconButton, makeStyles, Paper, useTheme } from '@material-ui/core';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import clsx from 'clsx';
+import { CloseCircle } from 'mdi-material-ui';
+import PropTypes from 'prop-types';
 import React, { memo, useEffect, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import MediaQuery from 'react-responsive';
 import SwipeableViews from 'react-swipeable-views';
-import PropTypes from 'prop-types';
-import { IconButton, makeStyles, Paper, useTheme } from '@material-ui/core';
-import { CloseCircle } from 'mdi-material-ui';
-import clsx from 'clsx';
 
 import { setCombatHelper, setCombatHelperBonus } from '../../../ducks/combat';
 
@@ -48,6 +48,10 @@ const CombatPlayerSlider = ({ className, helperId, playerId }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const { direction } = useTheme();
+
+  const portrait = useMediaQuery('(orientation: portrait)', {
+    noSsr: true,
+  });
 
   const initialRender = useRef(true);
 
@@ -92,7 +96,7 @@ const CombatPlayerSlider = ({ className, helperId, playerId }) => {
 
   return (
     <div className={clsx(classes.players, className)}>
-      <MediaQuery orientation="portrait">
+      {portrait ? (
         <SwipeableViews
           axis={direction === 'rtl' ? 'x-reverse' : 'x'}
           enableMouseEvents
@@ -110,9 +114,7 @@ const CombatPlayerSlider = ({ className, helperId, playerId }) => {
         >
           {players}
         </SwipeableViews>
-      </MediaQuery>
-
-      <MediaQuery orientation="landscape">
+      ) : (
         <SwipeableViews
           axis="y"
           containerStyle={{
@@ -139,7 +141,7 @@ const CombatPlayerSlider = ({ className, helperId, playerId }) => {
         >
           {players}
         </SwipeableViews>
-      </MediaQuery>
+      )}
     </div>
   );
 };
