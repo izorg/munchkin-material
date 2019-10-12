@@ -32,7 +32,7 @@ const ShareItem = (props) => {
     return null;
   }
 
-  const onClick = () => async () => {
+  const onClick = async () => {
     try {
       await navigator.share({
         text: intl.formatMessage(messages.text),
