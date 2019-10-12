@@ -1,4 +1,4 @@
-import { jssPreset, StylesProvider } from '@material-ui/styles';
+import { jssPreset, StylesProvider } from '@material-ui/core/styles';
 import { create } from 'jss';
 import rtl from 'jss-rtl';
 import PropTypes from 'prop-types';
