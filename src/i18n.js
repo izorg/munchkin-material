@@ -15,6 +15,7 @@ export const PL = 'pl';
 export const PT = 'pt';
 export const RU = 'ru';
 export const SK = 'sk';
+export const TR = 'tr';
 export const UK = 'uk';
 
 const loaders = {
@@ -68,6 +69,9 @@ const loaders = {
 
   [SK]: () =>
     import(/* webpackChunkName: "locales/sk" */ '../languages/sk.json'),
+
+  [TR]: () =>
+    import(/* webpackChunkName: "locales/tr" */ '../languages/tr.json'),
 
   [UK]: () =>
     import(/* webpackChunkName: "locales/uk" */ '../languages/uk.json'),
