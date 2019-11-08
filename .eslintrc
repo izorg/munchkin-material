@@ -4,6 +4,7 @@
     "airbnb",
     "airbnb/hooks",
     "plugin:jest/recommended",
+    "plugin:json/recommended",
     "plugin:lodash-fp/recommended",
     "plugin:prettier/recommended",
     "prettier/react"
@@ -14,7 +15,6 @@
   "globals": {
     "VERSION": true
   },
-  "plugins": ["json"],
   "rules": {
     "import/no-extraneous-dependencies": [
       "error",
