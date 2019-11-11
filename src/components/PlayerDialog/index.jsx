@@ -90,15 +90,9 @@ const messages = defineMessages({
 
 let appear = false;
 
-const getPlayerId = flow(
-  getQuery,
-  get('player'),
-);
+const getPlayerId = flow(getQuery, get('player'));
 
-const getEdit = createSelector(
-  getPlayerId,
-  Boolean,
-);
+const getEdit = createSelector(getPlayerId, Boolean);
 
 const getInitialValues = createSelector(
   getPlayerId,
@@ -112,10 +106,7 @@ const getInitialValues = createSelector(
         },
 );
 
-const getOpen = createSelector(
-  getPlayerId,
-  negate(isUndefined),
-);
+const getOpen = createSelector(getPlayerId, negate(isUndefined));
 
 const PlayerDialog = () => {
   const classes = useStyles();

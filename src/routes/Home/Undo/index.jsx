@@ -25,28 +25,22 @@ const useStyles = makeStyles(
 const getUndoType = get(['undo', 'type']);
 const getPlayers = get(['undo', 'players']);
 
-const getMessage = createSelector(
-  getUndoType,
-  (type) => {
-    switch (type) {
-      case UNDO_RESET_PLAYERS:
-        return (
-          <FormattedMessage
-            defaultMessage="Players have been reset"
-            id="undo.resetPlayers"
-          />
-        );
+const getMessage = createSelector(getUndoType, (type) => {
+  switch (type) {
+    case UNDO_RESET_PLAYERS:
+      return (
+        <FormattedMessage
+          defaultMessage="Players have been reset"
+          id="undo.resetPlayers"
+        />
+      );
 
-      default:
-        return null;
-    }
-  },
-);
+    default:
+      return null;
+  }
+});
 
-const getOpen = flow(
-  getUndoType,
-  isEqual(UNDO_RESET_PLAYERS),
-);
+const getOpen = flow(getUndoType, isEqual(UNDO_RESET_PLAYERS));
 
 const HomeUndo = () => {
   const classes = useStyles();

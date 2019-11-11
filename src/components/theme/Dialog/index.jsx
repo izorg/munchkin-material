@@ -34,16 +34,10 @@ const useStyles = makeStyles(
   { name: 'ThemeDialog' },
 );
 
-const getOpen = flow(
-  getQuery,
-  ({ theme }) => theme !== undefined,
-);
+const getOpen = flow(getQuery, ({ theme }) => theme !== undefined);
 
 const getTheme = createSelector(
-  flow(
-    getQuery,
-    get('theme'),
-  ),
+  flow(getQuery, get('theme')),
   get('theme'),
   (previewTheme, theme) => ({
     ...theme,

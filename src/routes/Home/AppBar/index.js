@@ -78,7 +78,4 @@ const mapDispatchToProps = {
   onTurnFinish: () => setCombatPlayerBonus(0),
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(Component);
+export default connect(mapStateToProps, mapDispatchToProps)(Component);

@@ -14,10 +14,7 @@ import { getQuery } from '../../utils/location';
 
 import GlobalCss from './GlobalCss';
 
-const getQueryTheme = flow(
-  getQuery,
-  getOr(null, 'theme'),
-);
+const getQueryTheme = flow(getQuery, getOr(null, 'theme'));
 
 const getCurrentTheme = get('theme');
 

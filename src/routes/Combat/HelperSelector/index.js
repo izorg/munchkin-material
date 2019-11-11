@@ -13,11 +13,7 @@ const mapStateToProps = createStructuredSelector({
     state.playerList
       .filter((id) => id !== state.combat.playerId)
       .map((id) => state.players[id]),
-  open: flow(
-    getQuery,
-    get('add'),
-    isEqual('helper'),
-  ),
+  open: flow(getQuery, get('add'), isEqual('helper')),
 });
 
 const mapDispatchToProps = {
@@ -28,7 +24,4 @@ const mapDispatchToProps = {
   },
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(Component);
+export default connect(mapStateToProps, mapDispatchToProps)(Component);

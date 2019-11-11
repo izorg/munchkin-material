@@ -31,10 +31,6 @@ const defaultMessages = globSync(MESSAGES_PATTERN)
 
 mkdirpSync(LANG_DIR);
 
-const sortedMessages = flow(
-  toPairs,
-  sortBy(head),
-  fromPairs,
-)(defaultMessages);
+const sortedMessages = flow(toPairs, sortBy(head), fromPairs)(defaultMessages);
 
 fs.writeFileSync(`${LANG_DIR}en.json`, JSON.stringify(sortedMessages, null, 2));

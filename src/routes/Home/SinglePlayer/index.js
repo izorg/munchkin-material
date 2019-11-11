@@ -17,10 +17,7 @@ const playerSelector = createSelector(
   (players, id) => players[id],
 );
 
-const getPlayerLevel = createSelector(
-  playerSelector,
-  get('level'),
-);
+const getPlayerLevel = createSelector(playerSelector, get('level'));
 
 const levelDecrementDisabled = (state) => {
   const levelLimit = get(['app', 'levelLimit'], state);
@@ -128,7 +125,4 @@ const mapDispatchToProps = {
   },
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(Component);
+export default connect(mapStateToProps, mapDispatchToProps)(Component);

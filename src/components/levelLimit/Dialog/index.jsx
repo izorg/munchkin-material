@@ -57,11 +57,7 @@ const getDefaultValue = createSelector(
   },
 );
 
-const getOpen = flow(
-  getQuery,
-  get('levelLimit'),
-  negate(isUndefined),
-);
+const getOpen = flow(getQuery, get('levelLimit'), negate(isUndefined));
 
 const LevelLimitDialog = (props) => {
   const classes = useStyles();

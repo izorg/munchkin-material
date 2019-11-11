@@ -48,7 +48,4 @@ const mapDispatchToProps = {
   onSexToggle: togglePlayerSex,
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(Component);
+export default connect(mapStateToProps, mapDispatchToProps)(Component);

@@ -48,11 +48,7 @@ const getHelper = createSelector(
   (helperId, playerList) => !helperId && playerList.length > 1,
 );
 
-const getOpen = flow(
-  getQuery,
-  get('add'),
-  isNull,
-);
+const getOpen = flow(getQuery, get('add'), isNull);
 
 const CombatHelperButton = ({ className, ...rest }) => {
   const classes = useStyles();

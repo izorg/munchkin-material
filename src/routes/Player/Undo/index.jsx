@@ -48,10 +48,7 @@ const getMessage = createSelector(
   },
 );
 
-const getOpen = flow(
-  getUndoType,
-  isEqual(UNDO_KILL_PLAYER),
-);
+const getOpen = flow(getUndoType, isEqual(UNDO_KILL_PLAYER));
 
 const PlayerUndo = () => {
   const classes = useStyles();
