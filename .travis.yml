@@ -9,6 +9,10 @@ branches:
     - master
     - /^v\d+\.\d+(\.\d+)?(-\S*)?$/
 
+env:
+  global:
+    secure: H3GzYxQt3JLf8o9lxC/QAe2RvphBNHOlYhGbxlbQza/mfvDKrHKehqWgg7YRbMZQeyHwYYT7ycw800ZVtlwc3dbPVLJsSgrUyQkJRFK7qn5HuyWmNktYTo+s1Swue68YHQGuCc1WBoX1RcfzNB/EXmt8oTWobuJiqART/16+HWT9smtMqBsUXkE7oVRaoL/fNePOE1gKpgdwDxjFmX14tTfWWFrzz5mFnvjSBYYnEiAzoWo/6aYihChVF8Fs+O2AWUhE6ukA8PAT55DMXpvYf/r0Wvq4mIc4nzmKSlggfHsGDNB6vNRxWKKNbRpggRioM3D1UwXtfxXLpMBD7JTbcESPaS7p7HDRPbXlpUIqasJDPnO09Z6ApZ0fbluDbM6RbcwsukIdcf41DUTAZHyaGNXORhJhCAAF7UBV16o4tYQ/kRmv+aourorMnZjcneiGjiEoNAxReWB9ze8DKIbjndm9xRC3q7Co0YheKGWZ16Ovn2MEeWo/hWtiiwuaWeUi/IOcDxlFFgmNsoBIS7by6z5ltZUsKmUzc3ETBM9+FgI2W7/OJUxILILMxhBiEDy8PW3Z1XcajWexj8vXk8RpTuLMVjhShyPK9audruBRW8YR1D3MHKSdrm8EeOvzA3Ux9TlPvAIKbfFnE9EZVpWKmBZwFWJFWqCUlzyFHZcnBo0=
+
 install: npm ci
 
 script:
