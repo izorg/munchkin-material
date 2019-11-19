@@ -12,11 +12,7 @@ const getDefaultTransform = (libs = []) =>
     {},
   );
 
-const transform = getDefaultTransform([
-  'lodash/fp',
-  'mdi-material-ui',
-  'recompose',
-]);
+const transform = getDefaultTransform(['lodash/fp', 'mdi-material-ui']);
 
 const prod = process.env.NODE_ENV === 'production';
 const i18n = process.env.NODE_ENV === 'i18n';

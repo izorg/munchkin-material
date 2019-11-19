@@ -3,7 +3,6 @@ import { goBack, push } from 'connected-react-router';
 import { omit } from 'lodash/fp';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { compose } from 'recompose';
 import { createSelector, createStructuredSelector } from 'reselect';
 
 import { MULTI } from '../../../routes/Home/modes';
@@ -55,8 +54,8 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => ({
   ...dispatchProps,
 });
 
-export default compose(
-  withWidth(),
-  withRouter,
-  connect(mapStateToProps, mapDispatchToProps, mergeProps),
-)(Component);
+export default withWidth()(
+  withRouter(
+    connect(mapStateToProps, mapDispatchToProps, mergeProps)(Component),
+  ),
+);
