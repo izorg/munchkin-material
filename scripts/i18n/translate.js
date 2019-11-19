@@ -1,7 +1,7 @@
 const fs = require('fs');
 
-const globSync = require('glob').sync; // eslint-disable-line import/no-extraneous-dependencies
-const mkdirpSync = require('mkdirp').sync; // eslint-disable-line import/no-extraneous-dependencies
+const globSync = require('glob').sync;
+const mkdirpSync = require('mkdirp').sync;
 
 const { flow, fromPairs, head, sortBy, toPairs } = require('lodash/fp');
 
