@@ -67,7 +67,7 @@ export default ({ direction, type }) => {
     theme = deepmerge(theme, {
       palette: {
         background: {
-          default: '#202124', // got it from Contacts app for Android & material.io web site
+          default: '#121212',
         },
       },
     });

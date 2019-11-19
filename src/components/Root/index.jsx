@@ -9,6 +9,8 @@ import DialogRoute from '../DialogRoute';
 import DiceDialog from '../dice/Dialog';
 import PlayerDialog from '../PlayerDialog';
 
+const displayName = 'Root';
+
 const Root = () => (
   <>
     <DialogRoute
@@ -23,6 +25,6 @@ const Root = () => (
   </>
 );
 
-Root.displayName = 'Root';
+Root.displayName = displayName;
 
 export default Root;
