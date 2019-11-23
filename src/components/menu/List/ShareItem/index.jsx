@@ -5,7 +5,7 @@ import React from 'react';
 import { defineMessages, useIntl } from 'react-intl';
 import { useDispatch } from 'react-redux';
 
-import { useOptions } from '../../../OptionsProvider';
+import { useConfig } from '../../../ConfigProvider';
 
 import ListItem from '../Item';
 import ListItemText from '../ItemText';
@@ -26,7 +26,7 @@ const ShareItem = (props) => {
   const dispatch = useDispatch();
   const intl = useIntl();
 
-  const { shareLink } = useOptions();
+  const { shareLink } = useConfig();
 
   if (!shareLink || !navigator.share) {
     return null;

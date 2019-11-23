@@ -6,8 +6,8 @@ import { storeShape } from '../../propTypes';
 
 import AugmentedStylesProvider from '../AugmentedStylesProvider';
 import AugmentedThemeProvider from '../AugmentedThemeProvider';
+import ConfigProvider from '../ConfigProvider';
 import LocaleProvider from '../LocaleProvider';
-import OptionsProvider from '../OptionsProvider';
 import Root from '../Root';
 import StoreProvider from '../StoreProvider';
 
@@ -30,7 +30,7 @@ class App extends Component {
     const { history, options, store } = this.props;
 
     return (
-      <OptionsProvider value={options}>
+      <ConfigProvider value={options}>
         <StoreProvider history={history} store={store}>
           <LocaleProvider>
             <AugmentedStylesProvider>
@@ -40,7 +40,7 @@ class App extends Component {
             </AugmentedStylesProvider>
           </LocaleProvider>
         </StoreProvider>
-      </OptionsProvider>
+      </ConfigProvider>
     );
   }
 }

@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { setKeepAwake } from '../../../../ducks/app';
 
-import { useOptions } from '../../../OptionsProvider';
+import { useConfig } from '../../../ConfigProvider';
 
 import ListItem from '../Item';
 import ListItemText from '../ItemText';
@@ -27,7 +27,7 @@ const InsomniaItem = ({ className }) => {
   const classes = useStyles();
 
   const keepAwake = useSelector((state) => state.app.keepAwake);
-  const { keepAwakeSupport } = useOptions();
+  const { keepAwakeSupport } = useConfig();
 
   if (!keepAwakeSupport) {
     return null;

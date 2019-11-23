@@ -3,13 +3,13 @@ import { ShieldAccount } from 'mdi-material-ui';
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 
-import { useOptions } from '../../../OptionsProvider';
+import { useConfig } from '../../../ConfigProvider';
 
 import ListItem from '../Item';
 import ListItemText from '../ItemText';
 
 const PrivacyItem = (props) => {
-  const { privacyLink } = useOptions();
+  const { privacyLink } = useConfig();
 
   if (!privacyLink) {
     return null;

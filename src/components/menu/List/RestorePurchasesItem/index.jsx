@@ -4,13 +4,13 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { useSelector } from 'react-redux';
 
-import { useOptions } from '../../../OptionsProvider';
+import { useConfig } from '../../../ConfigProvider';
 
 import ListItem from '../Item';
 import ListItemText from '../ItemText';
 
 const VersionItem = (props) => {
-  const { restorePurchases } = useOptions();
+  const { restorePurchases } = useConfig();
 
   const fullVersion = useSelector((state) => state.app.fullVersion);
 

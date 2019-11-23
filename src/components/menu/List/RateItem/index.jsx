@@ -5,7 +5,7 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { useDispatch } from 'react-redux';
 
-import { useOptions } from '../../../OptionsProvider';
+import { useConfig } from '../../../ConfigProvider';
 
 import ListItem from '../Item';
 import ListItemText from '../ItemText';
@@ -13,7 +13,7 @@ import ListItemText from '../ItemText';
 const RateItem = (props) => {
   const dispatch = useDispatch();
 
-  const { rateLink } = useOptions();
+  const { rateLink } = useConfig();
 
   if (!rateLink) {
     return null;
