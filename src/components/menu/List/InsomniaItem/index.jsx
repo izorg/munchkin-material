@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { setKeepAwake } from '../../../../ducks/app';
 
-import { useOptions } from '../../../OptionsContext';
+import { useOptions } from '../../../OptionsProvider';
 
 import ListItem from '../Item';
 import ListItemText from '../ItemText';

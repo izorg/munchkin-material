@@ -1,10 +1,10 @@
-import React from 'react';
-import { FormattedMessage } from 'react-intl';
 import { ListItemIcon } from '@material-ui/core';
 import { CloudDownloadOutline } from 'mdi-material-ui';
+import React from 'react';
+import { FormattedMessage } from 'react-intl';
 import { useSelector } from 'react-redux';
 
-import { useOptions } from '../../../OptionsContext';
+import { useOptions } from '../../../OptionsProvider';
 
 import ListItem from '../Item';
 import ListItemText from '../ItemText';

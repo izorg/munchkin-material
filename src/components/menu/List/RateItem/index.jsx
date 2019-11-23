@@ -5,7 +5,7 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { useDispatch } from 'react-redux';
 
-import { useOptions } from '../../../OptionsContext';
+import { useOptions } from '../../../OptionsProvider';
 
 import ListItem from '../Item';
 import ListItemText from '../ItemText';

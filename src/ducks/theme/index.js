@@ -7,12 +7,14 @@ export const setTheme = (theme) => ({
   theme,
 });
 
+const type =
+  window.matchMedia && window.matchMedia('(prefers-color-scheme)').matches
+    ? undefined
+    : 'light';
+
 const initialState = {
   id,
-  type:
-    window.matchMedia && window.matchMedia('(prefers-color-scheme)').matches
-      ? undefined
-      : 'light',
+  type,
 };
 
 const reducer = (state = initialState, action) => {

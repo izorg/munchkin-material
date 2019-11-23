@@ -1,15 +1,15 @@
-import React, { useContext } from 'react';
-import { FormattedMessage } from 'react-intl';
 import { ListItemIcon } from '@material-ui/core';
 import { ShieldAccount } from 'mdi-material-ui';
+import React from 'react';
+import { FormattedMessage } from 'react-intl';
 
-import OptionsContext from '../../../OptionsContext';
+import { useOptions } from '../../../OptionsProvider';
 
 import ListItem from '../Item';
 import ListItemText from '../ItemText';
 
 const PrivacyItem = (props) => {
-  const { privacyLink } = useContext(OptionsContext);
+  const { privacyLink } = useOptions();
 
   if (!privacyLink) {
     return null;

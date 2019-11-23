@@ -1,11 +1,11 @@
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { hot } from 'react-hot-loader/root';
-import PropTypes from 'prop-types';
 
 import AugmentedStylesProvider from '../AugmentedStylesProvider';
 import AugmentedThemeProvider from '../AugmentedThemeProvider';
 import LocaleProvider from '../LocaleProvider';
-import OptionsContext from '../OptionsContext';
+import OptionsProvider from '../OptionsProvider';
 import ReduxProvider from '../ReduxProvider';
 import Root from '../Root';
 
@@ -28,7 +28,7 @@ class App extends Component {
     const { history, options, store } = this.props;
 
     return (
-      <OptionsContext.Provider value={options}>
+      <OptionsProvider value={options}>
         <ReduxProvider history={history} store={store}>
           <LocaleProvider>
             <AugmentedStylesProvider>
@@ -38,7 +38,7 @@ class App extends Component {
             </AugmentedStylesProvider>
           </LocaleProvider>
         </ReduxProvider>
-      </OptionsContext.Provider>
+      </OptionsProvider>
     );
   }
 }
