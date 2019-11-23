@@ -2,6 +2,8 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { hot } from 'react-hot-loader/root';
 
+import { storeShape } from '../../propTypes';
+
 import AugmentedStylesProvider from '../AugmentedStylesProvider';
 import AugmentedThemeProvider from '../AugmentedThemeProvider';
 import LocaleProvider from '../LocaleProvider';
@@ -46,7 +48,7 @@ class App extends Component {
 App.propTypes = {
   history: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
   options: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
-  store: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
+  store: storeShape.isRequired,
 };
 
 App.displayName = 'App';

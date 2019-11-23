@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Provider } from 'react-redux';
 
+import { storeShape } from '../../propTypes';
+
 const displayName = 'StoreProvider';
 
 const StoreProvider = ({ children, history, store }) => (
@@ -14,7 +16,7 @@ const StoreProvider = ({ children, history, store }) => (
 StoreProvider.propTypes = {
   children: PropTypes.node.isRequired,
   history: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
-  store: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
+  store: storeShape.isRequired,
 };
 
 StoreProvider.displayName = displayName;
