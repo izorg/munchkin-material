@@ -3,20 +3,20 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Provider } from 'react-redux';
 
-const displayName = 'ReduxProvider';
+const displayName = 'StoreProvider';
 
-const ReduxProvider = ({ children, history, store }) => (
+const StoreProvider = ({ children, history, store }) => (
   <Provider store={store}>
     <ConnectedRouter history={history}>{children}</ConnectedRouter>
   </Provider>
 );
 
-ReduxProvider.propTypes = {
+StoreProvider.propTypes = {
   children: PropTypes.node.isRequired,
   history: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
   store: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
 };
 
-ReduxProvider.displayName = displayName;
+StoreProvider.displayName = displayName;
 
-export default ReduxProvider;
+export default StoreProvider;

@@ -6,8 +6,8 @@ import AugmentedStylesProvider from '../AugmentedStylesProvider';
 import AugmentedThemeProvider from '../AugmentedThemeProvider';
 import LocaleProvider from '../LocaleProvider';
 import OptionsProvider from '../OptionsProvider';
-import ReduxProvider from '../ReduxProvider';
 import Root from '../Root';
+import StoreProvider from '../StoreProvider';
 
 class App extends Component {
   componentDidCatch(error, errorInfo) {
@@ -29,7 +29,7 @@ class App extends Component {
 
     return (
       <OptionsProvider value={options}>
-        <ReduxProvider history={history} store={store}>
+        <StoreProvider history={history} store={store}>
           <LocaleProvider>
             <AugmentedStylesProvider>
               <AugmentedThemeProvider>
@@ -37,7 +37,7 @@ class App extends Component {
               </AugmentedThemeProvider>
             </AugmentedStylesProvider>
           </LocaleProvider>
-        </ReduxProvider>
+        </StoreProvider>
       </OptionsProvider>
     );
   }
