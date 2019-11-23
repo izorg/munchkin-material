@@ -1,11 +1,11 @@
+import { makeStyles, Paper, useTheme } from '@material-ui/core';
 import { replace } from 'connected-react-router';
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import PropTypes from 'prop-types';
+import React, { useCallback, useMemo, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import SwipeableViews from 'react-swipeable-views';
 import { mod } from 'react-swipeable-views-core';
 import { bindKeyboard, virtualize } from 'react-swipeable-views-utils';
-import PropTypes from 'prop-types';
-import { makeStyles, Paper, useTheme } from '@material-ui/core';
 
 import PlayerStats from './Stats';
 
@@ -96,14 +96,17 @@ const PlayerSlider = ({ playerId }) => {
   const dispatch = useDispatch();
   const { direction } = useTheme();
 
-  const skipNextRef = useRef(false);
+  // const skipNextRef = useRef(false);
+  const indexRef = useRef(0);
 
   const playerList = useSelector((state) => state.playerList);
   const playerCount = playerList.length;
 
-  const [currentIndex, setCurrentIndex] = useState(
-    playerList.indexOf(playerId),
-  );
+  const currentIndex = useMemo(() => {
+    const playerIndex = playerList.indexOf(playerId);
+
+    return indexRef.current - mod(indexRef.current, playerCount) + playerIndex;
+  }, [playerCount, playerId, playerList]);
 
   const getPlayerIndex = useCallback(
     (index) => {
@@ -118,35 +121,14 @@ const PlayerSlider = ({ playerId }) => {
     [playerCount],
   );
 
-  useEffect(() => {
-    const sliderPlayerId = playerList[getPlayerIndex(currentIndex)];
+  const handleChangeIndex = useCallback(
+    (index) => {
+      indexRef.current = index;
 
-    if (sliderPlayerId !== playerId) {
-      dispatch(replace(`/player/${sliderPlayerId}`));
-    }
-  }, [currentIndex]); // eslint-disable-line react-hooks/exhaustive-deps
-
-  useEffect(() => {
-    if (skipNextRef.current) {
-      skipNextRef.current = false;
-
-      return;
-    }
-
-    const playerIndex = playerList.indexOf(playerId);
-
-    if (playerIndex !== getPlayerIndex(currentIndex)) {
-      setCurrentIndex(
-        currentIndex - mod(currentIndex, playerCount) + playerIndex,
-      );
-    }
-  }, [playerId]); // eslint-disable-line react-hooks/exhaustive-deps
-
-  const handleChangeIndex = (index) => {
-    skipNextRef.current = true;
-
-    setCurrentIndex(index);
-  };
+      dispatch(replace(`/player/${playerList[getPlayerIndex(index)]}`));
+    },
+    [dispatch, getPlayerIndex, playerList],
+  );
 
   // eslint-disable-next-line react/prop-types
   const slideRenderer = ({ key, index }) => {
