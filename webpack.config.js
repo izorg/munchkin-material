@@ -99,6 +99,7 @@ module.exports = {
             loader: 'file-loader',
             options: {
               name: dev || dist ? '[name].[ext]' : '[name].[hash].[ext]',
+              esModule: false,
               outputPath: 'images/',
               publicPath: site ? '/images/' : 'images/',
             },
