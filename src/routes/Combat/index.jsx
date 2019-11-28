@@ -66,7 +66,6 @@ const useStyles = makeStyles(
 
     total: {
       alignSelf: 'center',
-      padding: theme.spacing(1),
       textAlign: 'center',
     },
 
