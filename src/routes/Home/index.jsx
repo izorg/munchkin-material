@@ -1,8 +1,8 @@
-import React, { useEffect, useRef } from 'react';
-import { useSelector } from 'react-redux';
-import PropTypes from 'prop-types';
 import { makeStyles, Paper, Zoom } from '@material-ui/core';
 import clsx from 'clsx';
+import PropTypes from 'prop-types';
+import React, { useEffect, useRef } from 'react';
+import { useSelector } from 'react-redux';
 
 import LevelLimitDialog from '../../components/levelLimit/Dialog';
 import MenuDrawer from '../../components/menu/Drawer';
@@ -15,6 +15,8 @@ import PlayerAddButton from './PlayerAddButton';
 import PlayerList from './PlayerList';
 import SinglePlayer from './SinglePlayer';
 import Undo from './Undo';
+
+const displayName = 'Home';
 
 const useStyles = makeStyles(
   (theme) => ({
@@ -84,7 +86,7 @@ const useStyles = makeStyles(
       },
     },
   }),
-  { name: 'Home' },
+  { name: displayName },
 );
 
 const Home = ({ match }) => {
@@ -163,6 +165,6 @@ Home.propTypes = {
   match: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
 };
 
-Home.displayName = 'Home';
+Home.displayName = displayName;
 
 export default Home;

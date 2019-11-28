@@ -1,8 +1,8 @@
+import { makeStyles } from '@material-ui/core';
 import React, { useRef } from 'react';
 import { hot } from 'react-hot-loader/root';
 import { useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import { makeStyles } from '@material-ui/core';
 
 import PlayerContext from '../../components/PlayerContext';
 import { matchShape } from '../../utils/propTypes';
@@ -13,6 +13,8 @@ import PlayerList from './List';
 import Slider from './Slider';
 import Undo from './Undo';
 
+const displayName = 'Player';
+
 const useStyles = makeStyles(
   (theme) => ({
     root: {
@@ -20,13 +22,14 @@ const useStyles = makeStyles(
       display: 'flex',
       flex: 1,
       flexDirection: 'column',
+      overflow: 'hidden',
     },
 
     content: {
       display: 'flex',
       flex: 1,
       flexDirection: 'column',
-      overflow: 'hidden',
+      overflowY: 'auto',
 
       [theme.breakpoints.up('md')]: {
         flexDirection: 'row-reverse',
@@ -67,7 +70,7 @@ const useStyles = makeStyles(
       },
     },
   }),
-  { name: 'Player' },
+  { name: displayName },
 );
 
 const Player = ({ match }) => {
@@ -117,6 +120,6 @@ Player.defaultProps = {
   match: null,
 };
 
-Player.displayName = 'Player';
+Player.displayName = displayName;
 
 export default hot(Player);

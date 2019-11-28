@@ -5,6 +5,8 @@ import React from 'react';
 import munchkinWoff from '../../../fonts/munchkin.woff';
 import munchkinWoff2 from '../../../fonts/munchkin.woff2';
 
+const displayName = 'GlobalCss';
+
 const useStyles = makeStyles(
   {
     '@global': {
@@ -35,7 +37,7 @@ const useStyles = makeStyles(
       },
     },
   },
-  { name: 'GlobalCss' },
+  { name: displayName },
 );
 
 const GlobalCss = () => {
@@ -43,5 +45,7 @@ const GlobalCss = () => {
 
   return <CssBaseline />;
 };
+
+GlobalCss.displayName = displayName;
 
 export default GlobalCss;

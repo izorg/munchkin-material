@@ -1,14 +1,16 @@
+import { makeStyles, Typography, useTheme } from '@material-ui/core';
+import clsx from 'clsx';
 import React from 'react';
 import { hot } from 'react-hot-loader/root';
 import { useSelector } from 'react-redux';
-import { makeStyles, Typography, useTheme } from '@material-ui/core';
-import clsx from 'clsx';
 
 import AppBar from './AppBar';
 import HelperButton from './HelperButton';
 import HelperSelector from './HelperSelector';
 import MonsterSlider from './MonsterSlider';
 import PlayerSlider from './PlayerSlider';
+
+const displayName = 'Combat';
 
 const useStyles = makeStyles(
   (theme) => ({
@@ -17,6 +19,7 @@ const useStyles = makeStyles(
       display: 'flex',
       flex: 1,
       flexDirection: 'column',
+      overflow: 'hidden',
       zIndex: 1,
     },
 
@@ -86,7 +89,7 @@ const useStyles = makeStyles(
       margin: theme.spacing(0, 0.5),
     },
   }),
-  { name: 'Combat' },
+  { name: displayName },
 );
 
 const combatSelector = (state) => {
@@ -165,6 +168,6 @@ const Combat = () => {
   );
 };
 
-Combat.displayName = 'Combat';
+Combat.displayName = displayName;
 
 export default hot(Combat);
