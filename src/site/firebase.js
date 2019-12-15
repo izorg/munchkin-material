@@ -1,6 +1,8 @@
-import firebase from 'firebase/app';
+import 'core-js/es/map';
 
 import 'firebase/analytics';
+
+import firebase from 'firebase/app';
 
 if (process.env.NODE_ENV === 'production') {
   const firebaseConfig = {
