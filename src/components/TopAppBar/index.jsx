@@ -1,6 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import { AppBar, makeStyles, Toolbar } from '@material-ui/core';
+import PropTypes from 'prop-types';
+import React from 'react';
+
+const displayName = 'TopAppBar';
 
 const useStyles = makeStyles(
   (theme) => ({
@@ -33,7 +35,7 @@ const useStyles = makeStyles(
       },
     },
   }),
-  { name: 'TopAppBar' },
+  { name: displayName },
 );
 
 const TopAppBar = ({ children, ...props }) => {
@@ -61,6 +63,6 @@ TopAppBar.defaultProps = {
   children: null,
 };
 
-TopAppBar.displayName = 'TopAppBar';
+TopAppBar.displayName = displayName;
 
 export default TopAppBar;

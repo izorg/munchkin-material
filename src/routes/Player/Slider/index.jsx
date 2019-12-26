@@ -9,6 +9,8 @@ import { bindKeyboard, virtualize } from 'react-swipeable-views-utils';
 
 import PlayerStats from './Stats';
 
+const displayName = 'PlayerSlider';
+
 const PlayerSwipeableViews = bindKeyboard(virtualize(SwipeableViews));
 
 const useStyles = makeStyles(
@@ -88,7 +90,7 @@ const useStyles = makeStyles(
       },
     },
   }),
-  { name: 'PlayerSlider' },
+  { name: displayName },
 );
 
 const PlayerSlider = ({ playerId }) => {
@@ -96,7 +98,6 @@ const PlayerSlider = ({ playerId }) => {
   const dispatch = useDispatch();
   const { direction } = useTheme();
 
-  // const skipNextRef = useRef(false);
   const indexRef = useRef(0);
 
   const playerList = useSelector((state) => state.playerList);
@@ -173,5 +174,7 @@ const PlayerSlider = ({ playerId }) => {
 PlayerSlider.propTypes = {
   playerId: PropTypes.string.isRequired,
 };
+
+PlayerSlider.displayName = displayName;
 
 export default PlayerSlider;

@@ -12,6 +12,8 @@ import { useConfig } from '../../../ConfigProvider';
 import ListItem from '../Item';
 import ListItemText from '../ItemText';
 
+const displayName = 'InsomniaItem';
+
 const useStyles = makeStyles(
   {
     root: {
@@ -19,7 +21,7 @@ const useStyles = makeStyles(
       paddingTop: 9,
     },
   },
-  { name: 'InsomniaItem' },
+  { name: displayName },
 );
 
 const InsomniaItem = ({ className }) => {
@@ -57,5 +59,7 @@ const InsomniaItem = ({ className }) => {
     </ListItem>
   );
 };
+
+InsomniaItem.displayName = displayName;
 
 export default InsomniaItem;

@@ -1,7 +1,9 @@
-import React from 'react';
-import { FormattedMessage } from 'react-intl';
 import { makeStyles, Typography } from '@material-ui/core';
 import { AccountCircle } from 'mdi-material-ui';
+import React from 'react';
+import { FormattedMessage } from 'react-intl';
+
+const displayName = 'Nobody';
 
 const useStyles = makeStyles(
   (theme) => ({
@@ -21,7 +23,7 @@ const useStyles = makeStyles(
       width: 96,
     },
   }),
-  { name: 'Nobody' },
+  { name: displayName },
 );
 
 const Nobody = () => {
@@ -45,6 +47,6 @@ const Nobody = () => {
   );
 };
 
-Nobody.displayName = 'Nobody';
+Nobody.displayName = displayName;
 
 export default Nobody;

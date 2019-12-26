@@ -1,11 +1,13 @@
+import { Dialog, Fade, makeStyles, Slide } from '@material-ui/core';
+import { useTheme } from '@material-ui/core/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import PropTypes from 'prop-types';
 import React, { useEffect } from 'react';
 import { Route } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import { Dialog, Fade, makeStyles, Slide } from '@material-ui/core';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { useTheme } from '@material-ui/core/styles';
 
 import { ios } from '../../utils/platforms';
+
+const displayName = 'DialogRoute';
 
 const useStyles = makeStyles(
   {
@@ -13,7 +15,7 @@ const useStyles = makeStyles(
       backgroundColor: 'transparent',
     },
   },
-  { name: 'DialogRoute' },
+  { name: displayName },
 );
 
 let appear = false;
@@ -57,6 +59,6 @@ DialogRoute.propTypes = {
   path: PropTypes.string.isRequired,
 };
 
-DialogRoute.displayName = 'DialogRoute';
+DialogRoute.displayName = displayName;
 
 export default DialogRoute;

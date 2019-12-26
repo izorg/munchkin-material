@@ -7,6 +7,8 @@ import PlayerAvatar from '../../../../components/PlayerAvatar';
 import PlayerListItemText from '../../../../components/PlayerListItemText';
 import { playerShape } from '../../../../utils/propTypes';
 
+const displayName = 'PlayerListItem';
+
 const PlayerListItem = ({ player, ...props }) => {
   const dispatch = useDispatch();
 
@@ -28,6 +30,6 @@ PlayerListItem.propTypes = {
   player: playerShape.isRequired,
 };
 
-PlayerListItem.displayName = 'PlayerListItem';
+PlayerListItem.displayName = displayName;
 
 export default PlayerListItem;

@@ -1,6 +1,8 @@
-import React from 'react';
 import { makeStyles, Typography } from '@material-ui/core';
 import clsx from 'clsx';
+import React from 'react';
+
+const displayName = 'Title';
 
 const useStyles = makeStyles(
   (theme) => ({
@@ -14,7 +16,7 @@ const useStyles = makeStyles(
       },
     },
   }),
-  { name: 'Title' },
+  { name: displayName },
 );
 
 const Title = ({ className, ...props }) => {
@@ -31,6 +33,6 @@ const Title = ({ className, ...props }) => {
   );
 };
 
-Title.displayName = 'Title';
+Title.displayName = displayName;
 
 export default Title;

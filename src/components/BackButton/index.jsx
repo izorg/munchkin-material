@@ -1,4 +1,3 @@
-import React from 'react';
 import { makeStyles, useTheme } from '@material-ui/core';
 import {
   ArrowLeft,
@@ -6,10 +5,13 @@ import {
   ChevronLeft,
   ChevronRight,
 } from 'mdi-material-ui';
+import React from 'react';
+
+import { ios } from '../../utils/platforms';
 
 import TopIconButton from '../TopIconButton';
 
-import { ios } from '../../utils/platforms';
+const displayName = 'BackButton';
 
 const useStyles = makeStyles(
   {
@@ -17,7 +19,7 @@ const useStyles = makeStyles(
       transform: 'scale(1.5)',
     },
   },
-  { name: 'BackButton' },
+  { name: displayName },
 );
 
 const BackButton = (props) => {
@@ -44,6 +46,6 @@ const BackButton = (props) => {
   );
 };
 
-BackButton.displayName = 'BackButton';
+BackButton.displayName = displayName;
 
 export default BackButton;

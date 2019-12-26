@@ -5,6 +5,8 @@ import { useIntl } from 'react-intl';
 
 import { EN, RU } from '../../../i18n';
 
+const displayName = 'CounterLabel';
+
 const munchkinFontSupportedLocales = [EN, RU];
 
 const useStyles = makeStyles(
@@ -19,7 +21,7 @@ const useStyles = makeStyles(
       whiteSpace: 'nowrap',
     },
   }),
-  { name: 'CounterLabel' },
+  { name: displayName },
 );
 
 const CounterLabel = ({ className, ...props }) => {
@@ -28,5 +30,7 @@ const CounterLabel = ({ className, ...props }) => {
 
   return <div className={clsx(classes.label, className)} {...props} />;
 };
+
+CounterLabel.displayName = displayName;
 
 export default CounterLabel;

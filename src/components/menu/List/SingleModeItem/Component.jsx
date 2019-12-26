@@ -1,12 +1,14 @@
+import { ListItemIcon, makeStyles, Switch } from '@material-ui/core';
+import clsx from 'clsx';
+import { Account, AccountMultiple } from 'mdi-material-ui';
+import PropTypes from 'prop-types';
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
-import PropTypes from 'prop-types';
-import { ListItemIcon, makeStyles, Switch } from '@material-ui/core';
-import { Account, AccountMultiple } from 'mdi-material-ui';
-import clsx from 'clsx';
 
 import ListItem from '../Item';
 import ListItemText from '../ItemText';
+
+const displayName = 'SingleModeItem';
 
 const useStyles = makeStyles(
   {
@@ -15,7 +17,7 @@ const useStyles = makeStyles(
       paddingTop: 9,
     },
   },
-  { name: 'SingleModeItem' },
+  { name: displayName },
 );
 
 const SingleModeItem = ({ className, onChange, singleMode }) => {
@@ -56,5 +58,7 @@ SingleModeItem.propTypes = {
 SingleModeItem.defaultProps = {
   singleMode: false,
 };
+
+SingleModeItem.displayName = displayName;
 
 export default SingleModeItem;

@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { FormattedMessage } from 'react-intl';
-import PropTypes from 'prop-types';
 import { Button, Fade, makeStyles, Snackbar } from '@material-ui/core';
 import { useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import clsx from 'clsx';
+import PropTypes from 'prop-types';
+import React, { useEffect, useState } from 'react';
+import { FormattedMessage } from 'react-intl';
+
+const displayName = 'UndoSnackbar';
 
 const useStyles = makeStyles(
   (theme) => ({
@@ -20,7 +22,7 @@ const useStyles = makeStyles(
       },
     },
   }),
-  { name: 'UndoSnackbar' },
+  { name: displayName },
 );
 
 const UndoSnackbar = ({ children, className, message, onClose, ...rest }) => {
@@ -72,6 +74,6 @@ UndoSnackbar.defaultProps = {
   message: undefined,
 };
 
-UndoSnackbar.displayName = 'UndoSnackbar';
+UndoSnackbar.displayName = displayName;
 
 export default UndoSnackbar;

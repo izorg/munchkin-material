@@ -1,5 +1,7 @@
-import React, { forwardRef } from 'react';
 import { IconButton, makeStyles } from '@material-ui/core';
+import React, { forwardRef } from 'react';
+
+const displayName = 'TopIconButton';
 
 const useStyles = makeStyles(
   (theme) => ({
@@ -29,7 +31,7 @@ const useStyles = makeStyles(
       },
     },
   }),
-  { name: 'TopIconButton' },
+  { name: displayName },
 );
 
 const TopIconButton = forwardRef((props, ref) => {
@@ -38,6 +40,6 @@ const TopIconButton = forwardRef((props, ref) => {
   return <IconButton ref={ref} classes={classes} color="inherit" {...props} />;
 });
 
-TopIconButton.displayName = 'TopIconButton';
+TopIconButton.displayName = displayName;
 
 export default TopIconButton;

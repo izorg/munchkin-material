@@ -1,5 +1,7 @@
-import React from 'react';
 import { CircularProgress, makeStyles } from '@material-ui/core';
+import React from 'react';
+
+const displayName = 'Loading';
 
 const useStyles = makeStyles(
   {
@@ -12,7 +14,7 @@ const useStyles = makeStyles(
       width: '100%',
     },
   },
-  { name: 'Loading' },
+  { name: displayName },
 );
 
 const Loading = () => {
@@ -25,6 +27,6 @@ const Loading = () => {
   );
 };
 
-Loading.displayName = 'Loading';
+Loading.displayName = displayName;
 
 export default Loading;

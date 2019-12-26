@@ -1,14 +1,17 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Check } from 'mdi-material-ui';
 import { noop } from 'lodash/fp';
+import { Check } from 'mdi-material-ui';
+import PropTypes from 'prop-types';
+import React from 'react';
 
-import AppBar from '../../TopAppBar';
 import BackButton from '../../BackButton';
 import Title from '../../Title';
+
+import AppBar from '../../TopAppBar';
 import TopIconButton from '../../TopIconButton';
 
-const PlayerFormScreenAppBarComponent = ({ onCancel, title }) => (
+const displayName = 'PlayerDialogAppBar';
+
+const PlayerDialogAppBar = ({ onCancel, title }) => (
   <AppBar>
     <BackButton onClick={onCancel} />
 
@@ -20,14 +23,16 @@ const PlayerFormScreenAppBarComponent = ({ onCancel, title }) => (
   </AppBar>
 );
 
-PlayerFormScreenAppBarComponent.propTypes = {
+PlayerDialogAppBar.propTypes = {
   onCancel: PropTypes.func,
   title: PropTypes.node,
 };
 
-PlayerFormScreenAppBarComponent.defaultProps = {
+PlayerDialogAppBar.defaultProps = {
   onCancel: noop,
   title: null,
 };
 
-export default PlayerFormScreenAppBarComponent;
+PlayerDialogAppBar.displayName = displayName;
+
+export default PlayerDialogAppBar;

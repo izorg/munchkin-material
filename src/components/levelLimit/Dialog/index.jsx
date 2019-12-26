@@ -28,6 +28,8 @@ import SubmitButton from '../../SubmitButton';
 
 import levelLimitMessages from '../messages';
 
+const displayName = 'LevelLimitDialog';
+
 export const DEFAULT_MUNCHKIN_LIMIT = 'default';
 export const EPIC_MUNCHKIN_LIMIT = 'epic';
 export const NO_LIMIT = 'no-limit';
@@ -38,7 +40,7 @@ const useStyles = makeStyles(
       paddingBottom: 1,
     },
   },
-  { name: 'LevelLimitDialog' },
+  { name: displayName },
 );
 
 const getDefaultValue = createSelector(
@@ -154,6 +156,6 @@ const LevelLimitDialog = (props) => {
   );
 };
 
-LevelLimitDialog.displayName = 'LevelLimitDialog';
+LevelLimitDialog.displayName = displayName;
 
 export default LevelLimitDialog;

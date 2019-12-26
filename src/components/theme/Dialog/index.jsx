@@ -1,8 +1,3 @@
-import React from 'react';
-import { goBack, replace } from 'connected-react-router';
-import { FormattedMessage, useIntl } from 'react-intl';
-import { useDispatch, useSelector } from 'react-redux';
-import { createSelector } from 'reselect';
 import {
   Dialog,
   DialogActions,
@@ -14,7 +9,12 @@ import {
   Radio,
   RadioGroup,
 } from '@material-ui/core';
+import { goBack, replace } from 'connected-react-router';
 import { flow, get, sortBy } from 'lodash/fp';
+import React from 'react';
+import { FormattedMessage, useIntl } from 'react-intl';
+import { useDispatch, useSelector } from 'react-redux';
+import { createSelector } from 'reselect';
 
 import { setTheme } from '../../../ducks/theme';
 import { names } from '../../../styles/themes';
@@ -25,13 +25,15 @@ import SubmitButton from '../../SubmitButton';
 
 import themeMessages from '../messages';
 
+const displayName = 'ThemeDialog';
+
 const useStyles = makeStyles(
   {
     content: {
       paddingBottom: 1,
     },
   },
-  { name: 'ThemeDialog' },
+  { name: displayName },
 );
 
 const getOpen = flow(getQuery, ({ theme }) => theme !== undefined);
@@ -159,6 +161,6 @@ const ThemeDialog = () => {
   );
 };
 
-ThemeDialog.displayName = 'ThemeDialog';
+ThemeDialog.displayName = displayName;
 
 export default ThemeDialog;

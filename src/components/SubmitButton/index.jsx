@@ -1,6 +1,8 @@
+import { Button } from '@material-ui/core';
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
-import { Button } from '@material-ui/core';
+
+const displayName = 'SubmitButton';
 
 const SubmitButton = (props) => <Button {...props} />;
 
@@ -10,6 +12,6 @@ SubmitButton.defaultProps = {
   type: 'submit',
 };
 
-SubmitButton.displayName = 'SubmitButton';
+SubmitButton.displayName = displayName;
 
 export default SubmitButton;

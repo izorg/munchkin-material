@@ -1,11 +1,13 @@
-import React, { forwardRef } from 'react';
-import PropTypes from 'prop-types';
 import { Avatar } from '@material-ui/core';
 import { Check } from 'mdi-material-ui';
+import PropTypes from 'prop-types';
+import React, { forwardRef } from 'react';
 
 import { colorType, sexProp } from '../../utils/propTypes';
 
 import Sex from '../Sex';
+
+const displayName = 'PlayerAvatar';
 
 const PlayerAvatar = forwardRef(
   ({ color, selected, sex, style: styleProp, ...props }, ref) => {
@@ -36,6 +38,6 @@ PlayerAvatar.defaultProps = {
   selected: false,
 };
 
-PlayerAvatar.displayName = 'PlayerAvatar';
+PlayerAvatar.displayName = displayName;
 
 export default PlayerAvatar;

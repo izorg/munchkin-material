@@ -1,6 +1,8 @@
-import React, { forwardRef } from 'react';
 import { Fab, makeStyles } from '@material-ui/core';
 import clsx from 'clsx';
+import React, { forwardRef } from 'react';
+
+const displayName = 'DialogFab';
 
 const useStyles = makeStyles(
   (theme) => ({
@@ -20,7 +22,7 @@ const useStyles = makeStyles(
       },
     },
   }),
-  { name: 'DialogFab' },
+  { name: displayName },
 );
 
 const DialogFab = forwardRef(({ className, ...rest }, ref) => {
@@ -36,6 +38,6 @@ const DialogFab = forwardRef(({ className, ...rest }, ref) => {
   );
 });
 
-DialogFab.displayName = 'DialogFab';
+DialogFab.displayName = displayName;
 
 export default DialogFab;

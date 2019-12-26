@@ -1,15 +1,17 @@
-import React, { useCallback } from 'react';
-import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
-import { useDispatch, useSelector } from 'react-redux';
 import { List, makeStyles } from '@material-ui/core';
 import { useTheme } from '@material-ui/core/styles';
 import clsx from 'clsx';
+import React, { useCallback } from 'react';
+import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { movePlayer } from '../../../ducks/playerList';
 import { EDIT } from '../modes';
 import modeType from '../modeType';
 
 import Item from './Item';
+
+const displayName = 'HomePlayerList';
 
 const useStyles = makeStyles(
   {
@@ -25,7 +27,7 @@ const useStyles = makeStyles(
       },
     },
   },
-  { name: 'HomePlayerList' },
+  { name: displayName },
 );
 
 const HomePlayerList = ({ mode, ...rest }) => {
@@ -136,5 +138,7 @@ HomePlayerList.propTypes = {
 HomePlayerList.defaultProps = {
   mode: undefined,
 };
+
+HomePlayerList.displayName = displayName;
 
 export default HomePlayerList;

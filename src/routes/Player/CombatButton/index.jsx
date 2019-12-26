@@ -1,13 +1,15 @@
-import React from 'react';
 import { push } from 'connected-react-router';
-import { useDispatch } from 'react-redux';
-import PropTypes from 'prop-types';
 import { SwordCross } from 'mdi-material-ui';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { useDispatch } from 'react-redux';
 
 import DialogFab from '../../../components/DialogFab';
 import { startCombat } from '../../../ducks/combat';
 import { addMonster } from '../../../ducks/monsters';
 import createMonster from '../../../utils/createMonster';
+
+const displayName = 'CombatButton';
 
 const goToCombat = (playerId) => async (dispatch, getState) => {
   const {
@@ -46,6 +48,6 @@ CombatButton.propTypes = {
   playerId: PropTypes.string.isRequired,
 };
 
-CombatButton.displayName = 'CombatButton';
+CombatButton.displayName = displayName;
 
 export default CombatButton;

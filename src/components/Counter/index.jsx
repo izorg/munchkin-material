@@ -1,13 +1,15 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core';
-import { MenuDown, MenuUp } from 'mdi-material-ui';
 import clsx from 'clsx';
 import { noop } from 'lodash/fp';
+import { MenuDown, MenuUp } from 'mdi-material-ui';
+import PropTypes from 'prop-types';
+import React from 'react';
 import { defineMessages } from 'react-intl';
 
 import Button from './Button';
 import CounterLabel from './Label';
+
+const displayName = 'Counter';
 
 export const counterMessages = defineMessages({
   gear: {
@@ -61,7 +63,7 @@ const useStyles = makeStyles(
       fontSize: 36,
     },
   }),
-  { name: 'Counter' },
+  { name: displayName },
 );
 
 const Counter = ({
@@ -119,6 +121,6 @@ Counter.defaultProps = {
   onIncrement: noop,
 };
 
-Counter.displayName = 'Counter';
+Counter.displayName = displayName;
 
 export default Counter;

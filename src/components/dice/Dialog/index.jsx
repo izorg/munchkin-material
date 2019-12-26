@@ -1,13 +1,15 @@
+import { ButtonBase, Dialog, makeStyles } from '@material-ui/core';
 import { goBack } from 'connected-react-router';
+import { Dice1, Dice2, Dice3, Dice4, Dice5, Dice6 } from 'mdi-material-ui';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { TransitionGroup } from 'react-transition-group';
-import { ButtonBase, Dialog, makeStyles } from '@material-ui/core';
-import { Dice1, Dice2, Dice3, Dice4, Dice5, Dice6 } from 'mdi-material-ui';
 
 import { throwDice } from '../../../ducks/dice';
 import { getQuery } from '../../../utils/location';
 import DiceTransition from '../Transition';
+
+const displayName = 'DiceDialog';
 
 const diceSize = 120;
 
@@ -36,7 +38,7 @@ const useStyles = makeStyles(
       fontSize: 'inherit',
     },
   }),
-  { name: 'DiceDialog' },
+  { name: displayName },
 );
 
 const diceComponent = {
@@ -87,5 +89,7 @@ const DiceDialog = (props) => {
     </Dialog>
   );
 };
+
+DiceDialog.displayName = displayName;
 
 export default DiceDialog;
