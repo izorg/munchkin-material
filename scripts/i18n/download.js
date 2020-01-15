@@ -52,7 +52,7 @@ const writeTranslation = async (code, data) => {
 
       const content = await poeditor.get(url).then(({ data }) => data);
 
-      await writeTranslation(language.slice(0, 2), content);
+      await writeTranslation(language.toLowerCase(), content);
     }),
   );
 })();

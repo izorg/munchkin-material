@@ -13,6 +13,7 @@ export const NB = 'nb';
 export const NL = 'nl';
 export const PL = 'pl';
 export const PT = 'pt';
+export const PT_BR = 'pt-br';
 export const RU = 'ru';
 export const SK = 'sk';
 export const TR = 'tr';
@@ -61,6 +62,9 @@ const loaders = {
   [PL]: () =>
     import(/* webpackChunkName: "locales/pl" */ '../languages/pl.json'),
 
+  [PT_BR]: () =>
+    import(/* webpackChunkName: "locales/pt-br" */ '../languages/pt-br.json'),
+
   [PT]: () =>
     import(/* webpackChunkName: "locales/pt" */ '../languages/pt.json'),
 
@@ -89,11 +93,15 @@ export const getLocale = () => {
       ? navigator.languages
       : [navigator.language];
 
-  const locales = languages.map((language) =>
-    language.substr(0, LANGUAGE_LENGTH),
-  );
+  const locales = languages.map((language) => language.toLowerCase());
 
-  const locale = locales.find((item) => loaders[item]);
+  let locale = locales.find((item) => loaders[item]);
+
+  if (!locale) {
+    locale = locales.find(
+      (item) => loaders[item.substr(0, LANGUAGE_LENGTH).toLowerCase()],
+    );
+  }
 
   return locale || defaultLocale;
 };
