@@ -12,6 +12,17 @@ describe('i18n', () => {
     expect(getLocale()).toBe('ru');
   });
 
+  test('should get ru locale from ru-ru language', () => {
+    Object.defineProperty(window.navigator, 'languages', {
+      configurable: true,
+      get() {
+        return ['ru-ru'];
+      },
+    });
+
+    expect(getLocale()).toBe('ru');
+  });
+
   test('should get pt-br locale', () => {
     Object.defineProperty(window.navigator, 'languages', {
       configurable: true,

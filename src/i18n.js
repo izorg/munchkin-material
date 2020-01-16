@@ -98,9 +98,9 @@ export const getLocale = () => {
   let locale = locales.find((item) => loaders[item]);
 
   if (!locale) {
-    locale = locales.find(
-      (item) => loaders[item.substr(0, LANGUAGE_LENGTH).toLowerCase()],
-    );
+    locale = locales
+      .map((item) => item.substr(0, LANGUAGE_LENGTH))
+      .find((item) => loaders[item]);
   }
 
   return locale || defaultLocale;
