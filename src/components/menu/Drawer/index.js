@@ -1,4 +1,4 @@
-import withWidth, { isWidthDown } from '@material-ui/core/withWidth';
+import { isWidthDown, withWidth } from '@material-ui/core';
 import { goBack, push } from 'connected-react-router';
 import { omit } from 'lodash/fp';
 import { connect } from 'react-redux';

@@ -1,9 +1,8 @@
+import { ListItemIcon, makeStyles, useTheme } from '@material-ui/core';
+import clsx from 'clsx';
+import { Palette } from 'mdi-material-ui';
 import React from 'react';
 import { useIntl } from 'react-intl';
-import { ListItemIcon, makeStyles } from '@material-ui/core';
-import { useTheme } from '@material-ui/core/styles';
-import { Palette } from 'mdi-material-ui';
-import clsx from 'clsx';
 
 import { names as themeNames } from '../../../../styles/themes';
 

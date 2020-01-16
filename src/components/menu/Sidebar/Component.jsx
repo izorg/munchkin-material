@@ -1,8 +1,7 @@
-import React, { useMemo } from 'react';
-import PropTypes from 'prop-types';
-import { MuiThemeProvider } from '@material-ui/core';
-import { useTheme } from '@material-ui/core/styles';
+import { ThemeProvider, useTheme } from '@material-ui/core';
 import deepmerge from 'deepmerge';
+import PropTypes from 'prop-types';
+import React, { useMemo } from 'react';
 
 import List from '../List';
 
@@ -31,9 +30,9 @@ const MenuSidebar = ({ collapsed }) => {
   }, [collapsed, theme]);
 
   return (
-    <MuiThemeProvider theme={sidebarTheme}>
+    <ThemeProvider theme={sidebarTheme}>
       <List />
-    </MuiThemeProvider>
+    </ThemeProvider>
   );
 };
 

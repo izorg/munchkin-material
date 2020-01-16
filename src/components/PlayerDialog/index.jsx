@@ -1,8 +1,3 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { goBack } from 'connected-react-router';
-import { defineMessages, FormattedMessage, useIntl } from 'react-intl';
-import { useDispatch, useSelector } from 'react-redux';
-import { createSelector } from 'reselect';
 import {
   Dialog,
   DialogActions,
@@ -18,11 +13,16 @@ import {
   Radio,
   RadioGroup,
   Slide,
+  useMediaQuery,
+  useTheme,
 } from '@material-ui/core';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { useTheme } from '@material-ui/core/styles';
-import { GenderFemale, GenderMale } from 'mdi-material-ui';
+import { goBack } from 'connected-react-router';
 import { flow, get, isEqual, isUndefined, map, negate } from 'lodash/fp';
+import { GenderFemale, GenderMale } from 'mdi-material-ui';
+import React, { useEffect, useRef, useState } from 'react';
+import { defineMessages, FormattedMessage, useIntl } from 'react-intl';
+import { useDispatch, useSelector } from 'react-redux';
+import { createSelector } from 'reselect';
 
 import { addPlayerToList } from '../../ducks/playerList';
 import { addPlayer, updatePlayer } from '../../ducks/players';

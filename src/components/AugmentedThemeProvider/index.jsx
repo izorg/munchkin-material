@@ -1,5 +1,8 @@
-import { createMuiTheme, useMediaQuery } from '@material-ui/core';
-import { ThemeProvider } from '@material-ui/core/styles';
+import {
+  createMuiTheme,
+  ThemeProvider,
+  useMediaQuery,
+} from '@material-ui/core';
 import deepmerge from 'deepmerge';
 import { flow, get, getOr } from 'lodash/fp';
 import PropTypes from 'prop-types';

@@ -1,5 +1,4 @@
-import { List, makeStyles } from '@material-ui/core';
-import { useTheme } from '@material-ui/core/styles';
+import { List, makeStyles, useTheme } from '@material-ui/core';
 import clsx from 'clsx';
 import React, { useCallback } from 'react';
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';

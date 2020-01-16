@@ -1,6 +1,11 @@
-import { Button, Fade, makeStyles, Snackbar } from '@material-ui/core';
-import { useTheme } from '@material-ui/core/styles';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
+import {
+  Button,
+  Fade,
+  makeStyles,
+  Snackbar,
+  useMediaQuery,
+  useTheme,
+} from '@material-ui/core';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';

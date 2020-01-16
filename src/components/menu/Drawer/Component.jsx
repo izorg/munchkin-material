@@ -1,7 +1,4 @@
-import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core';
-import { isWidthUp } from '@material-ui/core/withWidth';
+import { isWidthUp, withStyles } from '@material-ui/core';
 import Drawer, {
   getAnchor,
   isHorizontal,
@@ -11,6 +8,8 @@ import { duration } from '@material-ui/core/styles/transitions';
 import { getTransitionProps } from '@material-ui/core/transitions/utils';
 import Hammer from 'hammerjs';
 import { throttle } from 'lodash/fp';
+import PropTypes from 'prop-types';
+import React, { PureComponent } from 'react';
 
 import { ios } from '../../../utils/platforms';
 

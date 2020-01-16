@@ -1,11 +1,9 @@
-import React from 'react';
+import { Tooltip, useMediaQuery, useTheme } from '@material-ui/core';
 import { push } from 'connected-react-router';
+import { Menu } from 'mdi-material-ui';
+import React from 'react';
 import { defineMessages, useIntl } from 'react-intl';
 import { useDispatch } from 'react-redux';
-import { Tooltip } from '@material-ui/core';
-import { useTheme } from '@material-ui/core/styles';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { Menu } from 'mdi-material-ui';
 
 import TopIconButton from '../../../../components/TopIconButton';
 import { toggleMenu } from '../../../../ducks/app';

@@ -1,5 +1,10 @@
-import { IconButton, makeStyles, Paper, useTheme } from '@material-ui/core';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
+import {
+  IconButton,
+  makeStyles,
+  Paper,
+  useMediaQuery,
+  useTheme,
+} from '@material-ui/core';
 import clsx from 'clsx';
 import { CloseCircle } from 'mdi-material-ui';
 import React, { memo, useEffect, useRef, useState } from 'react';

@@ -1,6 +1,11 @@
-import { Dialog, Fade, makeStyles, Slide } from '@material-ui/core';
-import { useTheme } from '@material-ui/core/styles';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
+import {
+  Dialog,
+  Fade,
+  makeStyles,
+  Slide,
+  useMediaQuery,
+  useTheme,
+} from '@material-ui/core';
 import PropTypes from 'prop-types';
 import React, { useEffect } from 'react';
 import { Route } from 'react-router-dom';

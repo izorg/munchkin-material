@@ -1,15 +1,19 @@
-import React, { memo } from 'react';
+import {
+  Backdrop,
+  makeStyles,
+  ThemeProvider,
+  useTheme,
+} from '@material-ui/core';
+import { SpeedDial, SpeedDialAction, SpeedDialIcon } from '@material-ui/lab';
+import clsx from 'clsx';
 import { goBack, push, replace } from 'connected-react-router';
+import deepmerge from 'deepmerge';
+import { flow, get, isNull } from 'lodash/fp';
+import { AccountPlus, EmoticonDevilOutline } from 'mdi-material-ui';
+import React, { memo } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
 import { createSelector } from 'reselect';
-import { Backdrop, makeStyles, MuiThemeProvider } from '@material-ui/core';
-import { useTheme } from '@material-ui/core/styles';
-import { SpeedDial, SpeedDialAction, SpeedDialIcon } from '@material-ui/lab';
-import { AccountPlus, EmoticonDevilOutline } from 'mdi-material-ui';
-import clsx from 'clsx';
-import deepmerge from 'deepmerge';
-import { flow, get, isNull } from 'lodash/fp';
 
 import { addMonster } from '../../../ducks/monsters';
 import createMonster from '../../../utils/createMonster';
@@ -70,7 +74,7 @@ const CombatHelperButton = ({ className, ...rest }) => {
     <>
       {open && <Backdrop className={classes.backdrop} onClick={onBack} open />}
 
-      <MuiThemeProvider
+      <ThemeProvider
         theme={deepmerge(theme, {
           overrides: {
             MuiSpeedDialAction: {
@@ -137,7 +141,7 @@ const CombatHelperButton = ({ className, ...rest }) => {
             }
           />
         </SpeedDial>
-      </MuiThemeProvider>
+      </ThemeProvider>
     </>
   );
 };
