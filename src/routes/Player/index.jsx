@@ -1,6 +1,5 @@
 import { makeStyles } from '@material-ui/core';
 import React, { useRef } from 'react';
-import { hot } from 'react-hot-loader/root';
 import { useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
@@ -122,4 +121,4 @@ Player.defaultProps = {
 
 Player.displayName = displayName;
 
-export default hot(Player);
+export default Player;

@@ -1,7 +1,6 @@
 import { makeStyles, Typography, useTheme } from '@material-ui/core';
 import clsx from 'clsx';
 import React from 'react';
-import { hot } from 'react-hot-loader/root';
 import { useSelector } from 'react-redux';
 
 import AppBar from './AppBar';
@@ -170,4 +169,4 @@ const Combat = () => {
 
 Combat.displayName = displayName;
 
-export default hot(Combat);
+export default Combat;

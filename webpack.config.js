@@ -2,6 +2,7 @@ const path = require('path');
 
 const webpack = require('webpack');
 
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
@@ -51,15 +52,6 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
-        include: /node_modules\/react-dom/,
-        use: [
-          {
-            loader: 'react-hot-loader/webpack',
-          },
-        ],
-      },
-      {
-        test: /\.js$/,
         include: /node_modules\/react-intl/,
         use: [
           {
@@ -79,6 +71,9 @@ module.exports = {
             loader: 'babel-loader',
             options: {
               cacheDirectory: true,
+              plugins: [dev && require.resolve('react-refresh/babel')].filter(
+                Boolean,
+              ),
             },
           },
         ],
@@ -142,6 +137,11 @@ module.exports = {
       new HtmlWebpackPlugin({
         filename: 'index.html',
         template: './index.html',
+      }),
+
+    dev &&
+      new ReactRefreshWebpackPlugin({
+        disableRefreshCheck: true,
       }),
 
     dev &&

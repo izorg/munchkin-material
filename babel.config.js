@@ -65,6 +65,5 @@ module.exports = {
     ],
     ['babel-plugin-transform-imports', transform],
     prod && 'babel-plugin-transform-react-remove-prop-types',
-    'react-hot-loader/babel',
   ].filter(Boolean),
 };
