@@ -1,14 +1,18 @@
+import { Tooltip } from '@material-ui/core';
+import { goBack, push } from 'connected-react-router';
+import { Check, Close, Delete, FlagCheckered, Pencil } from 'mdi-material-ui';
+import PropTypes from 'prop-types';
 import React from 'react';
 import { defineMessages, FormattedMessage, useIntl } from 'react-intl';
-import PropTypes from 'prop-types';
-import { Tooltip } from '@material-ui/core';
-import { Check, Close, Delete, FlagCheckered, Pencil } from 'mdi-material-ui';
-import { noop } from 'lodash/fp';
+import { useDispatch, useSelector } from 'react-redux';
 
-import AppBar from '../../../components/TopAppBar';
 import DiceButton from '../../../components/dice/Button';
 import Title from '../../../components/Title';
+import AppBar from '../../../components/TopAppBar';
 import TopIconButton from '../../../components/TopIconButton';
+import { setCombatPlayerBonus } from '../../../ducks/combat';
+import { removePlayerFromList } from '../../../ducks/playerList';
+import { removePlayer } from '../../../ducks/players';
 
 import * as modes from '../modes';
 import modeType from '../modeType';
@@ -24,17 +28,26 @@ const messages = defineMessages({
   },
 });
 
-const HomeAppBar = ({
-  empty,
-  mode,
-  onMultiSelectDeactivate,
-  onPlayersDelete,
-  onToggleEditClick,
-  onTurnFinish,
-  selectedPlayerIds,
-  singleMode,
-}) => {
+const HomeAppBar = ({ empty, mode, singleMode }) => {
+  const dispatch = useDispatch();
   const intl = useIntl();
+
+  const selectedPlayerIds = useSelector((state) => state.app.selectedPlayerIds);
+
+  const onMultiSelectDeactivate = () => dispatch(goBack());
+
+  const onPlayersDelete = (selected) => {
+    selected.forEach((id) => {
+      dispatch(removePlayerFromList(id));
+      dispatch(removePlayer(id));
+    });
+    dispatch(goBack());
+  };
+
+  const onToggleEditClick = () =>
+    mode === modes.EDIT ? dispatch(goBack()) : dispatch(push(`/${modes.EDIT}`));
+
+  const onTurnFinish = () => dispatch(setCombatPlayerBonus(0));
 
   const editMode = mode === modes.EDIT;
   const multiMode = mode === modes.MULTI;
@@ -64,6 +77,7 @@ const HomeAppBar = ({
       ) : (
         <MenuButton edge="start" />
       )}
+
       <Title>{title}</Title>
 
       {(singleMode || (!mode && !empty)) && <ResetButton edge="end" />}
@@ -105,22 +119,12 @@ const HomeAppBar = ({
 HomeAppBar.propTypes = {
   empty: PropTypes.bool,
   mode: modeType,
-  onMultiSelectDeactivate: PropTypes.func,
-  onPlayersDelete: PropTypes.func,
-  onToggleEditClick: PropTypes.func,
-  onTurnFinish: PropTypes.func,
-  selectedPlayerIds: PropTypes.arrayOf(PropTypes.string),
   singleMode: PropTypes.bool,
 };
 
 HomeAppBar.defaultProps = {
   empty: false,
   mode: null,
-  onMultiSelectDeactivate: noop,
-  onPlayersDelete: noop,
-  onToggleEditClick: noop,
-  onTurnFinish: noop,
-  selectedPlayerIds: [],
   singleMode: false,
 };
 
