@@ -1,12 +1,14 @@
 import { ThemeProvider, useTheme } from '@material-ui/core';
 import deepmerge from 'deepmerge';
-import PropTypes from 'prop-types';
 import React, { useMemo } from 'react';
+import { useSelector } from 'react-redux';
 
 import List from '../List';
 
-const MenuSidebar = ({ collapsed }) => {
+const MenuSidebar = () => {
   const theme = useTheme();
+
+  const collapsed = useSelector((state) => state.app.menuCollapsed);
 
   const sidebarTheme = useMemo(() => {
     const transition = theme.transitions.create(['border-radius', 'padding'], {
@@ -34,10 +36,6 @@ const MenuSidebar = ({ collapsed }) => {
       <List />
     </ThemeProvider>
   );
-};
-
-MenuSidebar.propTypes = {
-  collapsed: PropTypes.bool.isRequired,
 };
 
 MenuSidebar.displayName = 'MenuSidebar';
