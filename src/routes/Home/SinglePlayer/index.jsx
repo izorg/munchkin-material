@@ -1,12 +1,17 @@
+import { IconButton, makeStyles } from '@material-ui/core';
 import React from 'react';
 import { useIntl } from 'react-intl';
-import PropTypes from 'prop-types';
-import { IconButton, makeStyles } from '@material-ui/core';
+import { useDispatch, useSelector } from 'react-redux';
 
 import Counter, { counterMessages } from '../../../components/Counter';
 import CounterLabel from '../../../components/Counter/Label';
 import Sex from '../../../components/Sex';
-import { playerShape } from '../../../utils/propTypes';
+import { setCombatPlayerBonus } from '../../../ducks/combat';
+import { togglePlayerSex, updatePlayer } from '../../../ducks/players';
+import {
+  isLevelDecrementDisabled,
+  isLevelIncrementDisabled,
+} from '../../../utils/levelLimit';
 
 const useStyles = makeStyles(
   (theme) => ({
@@ -78,21 +83,66 @@ const useStyles = makeStyles(
   { name: 'SinglePlayer' },
 );
 
-const SinglePlayer = ({
-  bonus,
-  levelDecrementDisabled,
-  levelIncrementDisabled,
-  onBonusDecrement,
-  onBonusIncrement,
-  onGearDecrement,
-  onGearIncrement,
-  onLevelDecrement,
-  onLevelIncrement,
-  onSexToggle,
-  player,
-}) => {
+const SinglePlayer = () => {
   const classes = useStyles();
+  const dispatch = useDispatch();
   const intl = useIntl();
+
+  const player = useSelector(
+    (state) => state.players[state.app.singleModePlayerId],
+  );
+  const bonus = useSelector((state) => state.combat.playerBonus);
+
+  const levelLimit = useSelector((state) => state.app.levelLimit);
+  const epic = useSelector((state) => state.app.epic);
+
+  const levelDecrementDisabled = isLevelDecrementDisabled(
+    player.level,
+    levelLimit,
+  );
+  const levelIncrementDisabled = isLevelIncrementDisabled(
+    player.level,
+    levelLimit,
+    epic,
+  );
+
+  const onBonusDecrement = () => dispatch(setCombatPlayerBonus(bonus - 1));
+
+  const onBonusIncrement = () => dispatch(setCombatPlayerBonus(bonus + 1));
+
+  const onGearDecrement = () =>
+    dispatch(
+      updatePlayer({
+        ...player,
+        gear: player.gear - 1,
+      }),
+    );
+
+  const onGearIncrement = () =>
+    dispatch(
+      updatePlayer({
+        ...player,
+        gear: player.gear + 1,
+      }),
+    );
+
+  const onLevelDecrement = () =>
+    dispatch(
+      updatePlayer({
+        ...player,
+        level: player.level - 1,
+      }),
+    );
+
+  const onLevelIncrement = () =>
+    dispatch(
+      updatePlayer({
+        ...player,
+        level: player.level + 1,
+      }),
+    );
+
+  const onSexToggle = () => dispatch(togglePlayerSex(player.id));
 
   return (
     <div className={classes.content}>
@@ -139,25 +189,6 @@ const SinglePlayer = ({
       </div>
     </div>
   );
-};
-
-SinglePlayer.propTypes = {
-  bonus: PropTypes.number.isRequired,
-  levelDecrementDisabled: PropTypes.bool,
-  levelIncrementDisabled: PropTypes.bool,
-  onBonusDecrement: PropTypes.func.isRequired,
-  onBonusIncrement: PropTypes.func.isRequired,
-  onGearDecrement: PropTypes.func.isRequired,
-  onGearIncrement: PropTypes.func.isRequired,
-  onLevelDecrement: PropTypes.func.isRequired,
-  onLevelIncrement: PropTypes.func.isRequired,
-  onSexToggle: PropTypes.func.isRequired,
-  player: playerShape.isRequired,
-};
-
-SinglePlayer.defaultProps = {
-  levelDecrementDisabled: false,
-  levelIncrementDisabled: false,
 };
 
 SinglePlayer.displayName = 'SinglePlayer';
