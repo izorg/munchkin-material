@@ -1,14 +1,24 @@
-import React from 'react';
-import { useIntl } from 'react-intl';
-import PropTypes from 'prop-types';
 import { IconButton, makeStyles } from '@material-ui/core';
 import clsx from 'clsx';
-import { noop } from 'lodash/fp';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { useIntl } from 'react-intl';
+import { useDispatch, useSelector } from 'react-redux';
 
 import Counter, { counterMessages } from '../../../../components/Counter';
 import CounterLabel from '../../../../components/Counter/Label';
 import Sex from '../../../../components/Sex';
-import { playerShape } from '../../../../utils/propTypes';
+import {
+  decrementPlayerGear,
+  decrementPlayerLevel,
+  incrementPlayerGear,
+  incrementPlayerLevel,
+  togglePlayerSex,
+} from '../../../../ducks/players';
+import {
+  isLevelDecrementDisabled,
+  isLevelIncrementDisabled,
+} from '../../../../utils/levelLimit';
 
 const useStyles = makeStyles(
   (theme) => ({
@@ -81,19 +91,31 @@ const useStyles = makeStyles(
   { name: 'PlayerStats' },
 );
 
-const PlayerStats = ({
-  className,
-  levelDecrementDisabled,
-  levelIncrementDisabled,
-  onGearDecrement,
-  onGearIncrement,
-  onLevelDecrement,
-  onLevelIncrement,
-  onSexToggle,
-  player,
-}) => {
+const PlayerStats = ({ className, playerId }) => {
   const classes = useStyles();
+  const dispatch = useDispatch();
   const intl = useIntl();
+
+  const player = useSelector((state) => state.players[playerId]);
+  const levelLimit = useSelector((state) => state.app.levelLimit);
+  const epic = useSelector((state) => state.app.epic);
+
+  const levelDecrementDisabled = isLevelDecrementDisabled(
+    player.level,
+    levelLimit,
+  );
+
+  const levelIncrementDisabled = isLevelIncrementDisabled(
+    player.level,
+    levelLimit,
+    epic,
+  );
+
+  const onGearDecrement = (id) => dispatch(decrementPlayerGear(id));
+  const onGearIncrement = (id) => dispatch(incrementPlayerGear(id));
+  const onLevelDecrement = (id) => dispatch(decrementPlayerLevel(id));
+  const onLevelIncrement = (id) => dispatch(incrementPlayerLevel(id));
+  const onSexToggle = (id) => dispatch(togglePlayerSex(id));
 
   return (
     <div className={clsx(className, classes.stats)}>
@@ -140,24 +162,7 @@ const PlayerStats = ({
 };
 
 PlayerStats.propTypes = {
-  levelDecrementDisabled: PropTypes.bool,
-  levelIncrementDisabled: PropTypes.bool,
-  onGearDecrement: PropTypes.func,
-  onGearIncrement: PropTypes.func,
-  onLevelDecrement: PropTypes.func,
-  onLevelIncrement: PropTypes.func,
-  onSexToggle: PropTypes.func,
-  player: playerShape.isRequired,
-};
-
-PlayerStats.defaultProps = {
-  levelDecrementDisabled: false,
-  levelIncrementDisabled: false,
-  onGearDecrement: noop,
-  onGearIncrement: noop,
-  onLevelDecrement: noop,
-  onLevelIncrement: noop,
-  onSexToggle: noop,
+  playerId: PropTypes.string.isRequired,
 };
 
 export default PlayerStats;
