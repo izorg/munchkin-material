@@ -1,6 +1,3 @@
-import React from 'react';
-import { FormattedMessage } from 'react-intl';
-import PropTypes from 'prop-types';
 import {
   Dialog,
   DialogContent,
@@ -10,10 +7,16 @@ import {
   ListItemAvatar,
   makeStyles,
 } from '@material-ui/core';
-import { noop } from 'lodash/fp';
+import { goBack } from 'connected-react-router';
+import { flow, get, isEqual } from 'lodash/fp';
+import React from 'react';
+import { FormattedMessage } from 'react-intl';
+import { useDispatch, useSelector } from 'react-redux';
 
 import PlayerAvatar from '../../../components/PlayerAvatar';
 import PlayerListItemText from '../../../components/PlayerListItemText';
+import { setCombatHelper } from '../../../ducks/combat';
+import { getQuery } from '../../../utils/location';
 
 const useStyles = makeStyles(
   (theme) => ({
@@ -28,14 +31,32 @@ const useStyles = makeStyles(
   { name: 'HelperSelector' },
 );
 
-const HelperSelector = ({ helpers, onSelect, ...props }) => {
+const HelperSelector = (props) => {
   const classes = useStyles();
+  const dispatch = useDispatch();
+
+  const helpers = useSelector((state) =>
+    state.playerList
+      .filter((id) => id !== state.combat.playerId)
+      .map((id) => state.players[id]),
+  );
+
+  const open = useSelector(flow(getQuery, get('add'), isEqual('helper')));
+
+  const onClose = () => dispatch(goBack());
+
+  const onSelect = (id) => {
+    dispatch(setCombatHelper(id));
+    dispatch(goBack());
+  };
 
   return (
     <Dialog
       classes={{
         paper: classes.dialogPaper,
       }}
+      onClose={onClose}
+      open={open}
       {...props}
     >
       <DialogTitle>
@@ -62,16 +83,6 @@ const HelperSelector = ({ helpers, onSelect, ...props }) => {
       </DialogContent>
     </Dialog>
   );
-};
-
-HelperSelector.propTypes = {
-  helpers: PropTypes.arrayOf(PropTypes.object),
-  onSelect: PropTypes.func,
-};
-
-HelperSelector.defaultProps = {
-  helpers: [],
-  onSelect: noop,
 };
 
 export default HelperSelector;
