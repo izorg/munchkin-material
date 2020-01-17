@@ -1,10 +1,13 @@
 import { ListItemIcon, makeStyles, Switch } from '@material-ui/core';
 import clsx from 'clsx';
+import { getLocation, goBack } from 'connected-react-router';
 import { Account, AccountMultiple } from 'mdi-material-ui';
-import PropTypes from 'prop-types';
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
+import { useDispatch, useSelector } from 'react-redux';
 
+import { setSingleMode } from '../../../../ducks/app';
+import openSelector from '../../openSelector';
 import ListItem from '../Item';
 import ListItemText from '../ItemText';
 
@@ -20,8 +23,36 @@ const useStyles = makeStyles(
   { name: displayName },
 );
 
-const SingleModeItem = ({ className, onChange, singleMode }) => {
+const SingleModeItem = ({ className }) => {
   const classes = useStyles();
+  const dispatch = useDispatch();
+
+  const singleMode = useSelector((state) => state.app.singleMode);
+  const open = useSelector(openSelector);
+  const { pathname } = useSelector(getLocation);
+
+  const onChange = (isSingleMode) =>
+    dispatch(async () => {
+      const needBack = open || pathname !== '/';
+
+      if (isSingleMode) {
+        try {
+          await dispatch(setSingleMode(isSingleMode));
+
+          if (needBack) {
+            dispatch(goBack());
+          }
+        } catch (error) {
+          // no full version
+        }
+      } else {
+        dispatch(setSingleMode(isSingleMode));
+
+        if (needBack) {
+          dispatch(goBack());
+        }
+      }
+    });
 
   return (
     <ListItem
@@ -48,15 +79,6 @@ const SingleModeItem = ({ className, onChange, singleMode }) => {
       />
     </ListItem>
   );
-};
-
-SingleModeItem.propTypes = {
-  onChange: PropTypes.func.isRequired,
-  singleMode: PropTypes.bool,
-};
-
-SingleModeItem.defaultProps = {
-  singleMode: false,
 };
 
 SingleModeItem.displayName = displayName;
