@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import { hot } from 'react-hot-loader/root';
 
 import { storeShape } from '../../propTypes';
 import AugmentedStylesProvider from '../AugmentedStylesProvider';
@@ -53,4 +54,4 @@ App.propTypes = {
 
 App.displayName = displayName;
 
-export default App;
+export default hot(App);
