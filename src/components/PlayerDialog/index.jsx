@@ -38,6 +38,8 @@ import SubmitButton from '../SubmitButton';
 import AppBar from './AppBar';
 import ColorPicker from './ColorPicker';
 
+const displayName = 'PlayerDialog';
+
 const useStyles = makeStyles(
   (theme) => ({
     dialog: {
@@ -78,7 +80,7 @@ const useStyles = makeStyles(
       verticalAlign: 'middle',
     },
   }),
-  { name: 'PlayerDialog' },
+  { name: displayName },
 );
 
 const messages = defineMessages({
@@ -296,6 +298,6 @@ const PlayerDialog = () => {
   );
 };
 
-PlayerDialog.displayName = 'PlayerDialog';
+PlayerDialog.displayName = displayName;
 
 export default PlayerDialog;

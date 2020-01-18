@@ -1,14 +1,16 @@
 import { goBack } from 'connected-react-router';
+import PropTypes from 'prop-types';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import PropTypes from 'prop-types';
 
-import AppBar from '../../../components/TopAppBar';
 import BackButton from '../../../components/BackButton';
 import DiceButton from '../../../components/dice/Button';
 import Title from '../../../components/Title';
+import AppBar from '../../../components/TopAppBar';
 
 import KillPlayerButton from './KillPlayerButton';
+
+const displayName = 'PlayerAppBar';
 
 const PlayerAppBar = ({ playerId }) => {
   const dispatch = useDispatch();
@@ -34,5 +36,7 @@ const PlayerAppBar = ({ playerId }) => {
 PlayerAppBar.propTypes = {
   playerId: PropTypes.string.isRequired,
 };
+
+PlayerAppBar.displayName = displayName;
 
 export default PlayerAppBar;

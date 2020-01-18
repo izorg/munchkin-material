@@ -1,11 +1,13 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import { makeStyles, Popover } from '@material-ui/core';
+import PropTypes from 'prop-types';
+import React from 'react';
 
 import availableColors from '../../../utils/availableColors';
 import { colorType } from '../../../utils/propTypes';
 
 import Color from './Color';
+
+const displayName = 'ColorPickerPopover';
 
 const useStyles = makeStyles(
   {
@@ -13,7 +15,7 @@ const useStyles = makeStyles(
       maxWidth: 288, // 6 * 48 = 288
     },
   },
-  { name: 'ColorPickerPopover' },
+  { name: displayName },
 );
 
 const ColorPickerPopover = ({ onSelect, value, ...props }) => {
@@ -38,6 +40,6 @@ ColorPickerPopover.propTypes = {
   value: colorType.isRequired,
 };
 
-ColorPickerPopover.displayName = 'ColorPickerPopover';
+ColorPickerPopover.displayName = displayName;
 
 export default ColorPickerPopover;

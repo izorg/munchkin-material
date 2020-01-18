@@ -1,9 +1,9 @@
+import { Hidden, makeStyles } from '@material-ui/core';
 import { goBack, push } from 'connected-react-router';
+import { noop } from 'lodash/fp';
+import PropTypes from 'prop-types';
 import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import PropTypes from 'prop-types';
-import { Hidden, makeStyles } from '@material-ui/core';
-import { noop } from 'lodash/fp';
 
 import { getQuery, stringifyQuery } from '../../../utils/location';
 
@@ -11,13 +11,15 @@ import Color from './Color';
 import Dialog from './Dialog';
 import Popover from './Popover';
 
+const displayName = 'ColorPicker';
+
 const useStyles = makeStyles(
   {
     color: {
       marginLeft: -6,
     },
   },
-  { name: 'ColorPicker' },
+  { name: displayName },
 );
 
 const ColorPicker = ({
@@ -132,6 +134,6 @@ ColorPicker.defaultProps = {
   value: '',
 };
 
-ColorPicker.displayName = 'ColorPicker';
+ColorPicker.displayName = displayName;
 
 export default ColorPicker;

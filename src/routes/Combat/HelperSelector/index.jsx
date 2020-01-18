@@ -18,6 +18,8 @@ import PlayerListItemText from '../../../components/PlayerListItemText';
 import { setCombatHelper } from '../../../ducks/combat';
 import { getQuery } from '../../../utils/location';
 
+const displayName = 'HelperSelector';
+
 const useStyles = makeStyles(
   (theme) => ({
     dialogPaper: {
@@ -28,7 +30,7 @@ const useStyles = makeStyles(
       padding: 0,
     },
   }),
-  { name: 'HelperSelector' },
+  { name: displayName },
 );
 
 const HelperSelector = (props) => {
@@ -84,5 +86,7 @@ const HelperSelector = (props) => {
     </Dialog>
   );
 };
+
+HelperSelector.displayName = displayName;
 
 export default HelperSelector;

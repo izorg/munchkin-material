@@ -1,13 +1,15 @@
+import { makeStyles } from '@material-ui/core';
 import { flow, get, isEqual } from 'lodash/fp';
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
-import { makeStyles } from '@material-ui/core';
 import { createSelector } from 'reselect';
 
 import UndoSnackbar from '../../../components/UndoSnackbar';
 import { updatePlayer } from '../../../ducks/players';
 import { applyUndo, removeUndo, UNDO_RESET_PLAYERS } from '../../../ducks/undo';
+
+const displayName = 'HomeUndo';
 
 const useStyles = makeStyles(
   (theme) => ({
@@ -19,7 +21,7 @@ const useStyles = makeStyles(
       },
     },
   }),
-  { name: 'HomeUndo' },
+  { name: displayName },
 );
 
 const getUndoType = get(['undo', 'type']);
@@ -74,5 +76,7 @@ const HomeUndo = () => {
     />
   );
 };
+
+HomeUndo.displayName = displayName;
 
 export default HomeUndo;

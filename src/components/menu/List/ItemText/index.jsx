@@ -1,6 +1,8 @@
-import React from 'react';
 import { ListItemText, makeStyles } from '@material-ui/core';
 import clsx from 'clsx';
+import React from 'react';
+
+const displayName = 'MenuListItemText';
 
 const useStyles = makeStyles(
   {
@@ -9,7 +11,7 @@ const useStyles = makeStyles(
       textOverflow: 'ellipsis',
     },
   },
-  { name: 'MenuListItemText' },
+  { name: displayName },
 );
 
 const MenuListItemText = ({ className, ...props }) => {
@@ -25,6 +27,8 @@ const MenuListItemText = ({ className, ...props }) => {
   );
 };
 
-MenuListItemText.muiName = 'MenuListItemText';
+MenuListItemText.displayName = displayName;
+
+MenuListItemText.muiName = displayName;
 
 export default MenuListItemText;

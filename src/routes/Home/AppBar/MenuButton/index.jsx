@@ -9,6 +9,8 @@ import TopIconButton from '../../../../components/TopIconButton';
 import { toggleMenu } from '../../../../ducks/app';
 import { stringifyQuery } from '../../../../utils/location';
 
+const displayName = 'MenuButton';
+
 const messages = defineMessages({
   menu: {
     id: 'menu',
@@ -36,5 +38,7 @@ const MenuButton = (props) => {
     </Tooltip>
   );
 };
+
+MenuButton.displayName = displayName;
 
 export default MenuButton;

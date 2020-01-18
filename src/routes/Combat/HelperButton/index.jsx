@@ -19,6 +19,8 @@ import { addMonster } from '../../../ducks/monsters';
 import createMonster from '../../../utils/createMonster';
 import { getQuery } from '../../../utils/location';
 
+const displayName = 'CombatHelperButton';
+
 const useStyles = makeStyles(
   (theme) => ({
     backdrop: {
@@ -43,7 +45,7 @@ const useStyles = makeStyles(
       },
     },
   }),
-  { name: 'CombatHelperButton' },
+  { name: displayName },
 );
 
 const getHelper = createSelector(
@@ -146,6 +148,6 @@ const CombatHelperButton = ({ className, ...rest }) => {
   );
 };
 
-CombatHelperButton.displayName = 'CombatHelperButton';
+CombatHelperButton.displayName = displayName;
 
 export default memo(CombatHelperButton);

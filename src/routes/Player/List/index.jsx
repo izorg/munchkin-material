@@ -5,6 +5,8 @@ import { useSelector } from 'react-redux';
 
 import Item from './Item';
 
+const displayName = 'PlayerList';
+
 const PlayerList = ({ selectedPlayerId, ...props }) => {
   const playerList = useSelector((state) => state.playerList);
   const players = useSelector((state) => state.players);
@@ -26,6 +28,6 @@ PlayerList.propTypes = {
   selectedPlayerId: PropTypes.string.isRequired,
 };
 
-PlayerList.displayName = 'PlayerList';
+PlayerList.displayName = displayName;
 
 export default PlayerList;

@@ -1,10 +1,12 @@
-import React from 'react';
-import { FormattedMessage } from 'react-intl';
 import { ListItemIcon } from '@material-ui/core';
 import { Translate } from 'mdi-material-ui';
+import React from 'react';
+import { FormattedMessage } from 'react-intl';
 
 import ListItem from '../Item';
 import ListItemText from '../ItemText';
+
+const displayName = 'TranslateItem';
 
 const TranslateItem = (props) => (
   <ListItem
@@ -24,5 +26,7 @@ const TranslateItem = (props) => (
     />
   </ListItem>
 );
+
+TranslateItem.displayName = displayName;
 
 export default TranslateItem;

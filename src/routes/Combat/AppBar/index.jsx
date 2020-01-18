@@ -11,6 +11,8 @@ import AppBar from '../../../components/TopAppBar';
 import TopIconButton from '../../../components/TopIconButton';
 import { finishCombat } from '../../../ducks/app';
 
+const displayName = 'CombatAppBar';
+
 const CombatAppBar = () => {
   const dispatch = useDispatch();
 
@@ -37,5 +39,7 @@ const CombatAppBar = () => {
     </AppBar>
   );
 };
+
+CombatAppBar.displayName = displayName;
 
 export default CombatAppBar;

@@ -1,8 +1,10 @@
-import React, { forwardRef } from 'react';
-import PropTypes from 'prop-types';
 import { Avatar, ButtonBase, makeStyles } from '@material-ui/core';
-import { Check } from 'mdi-material-ui';
 import clsx from 'clsx';
+import { Check } from 'mdi-material-ui';
+import PropTypes from 'prop-types';
+import React, { forwardRef } from 'react';
+
+const displayName = 'Color';
 
 const useStyles = makeStyles(
   {
@@ -19,7 +21,7 @@ const useStyles = makeStyles(
       width: 36,
     },
   },
-  { name: 'Color' },
+  { name: displayName },
 );
 
 const Color = forwardRef(({ className, selected, value, ...props }, ref) => {
@@ -50,6 +52,6 @@ Color.defaultProps = {
   selected: false,
 };
 
-Color.displayName = 'Color';
+Color.displayName = displayName;
 
 export default Color;

@@ -1,8 +1,8 @@
+import { makeStyles, Typography } from '@material-ui/core';
+import PropTypes from 'prop-types';
 import React from 'react';
 import { useIntl } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
-import PropTypes from 'prop-types';
-import { makeStyles, Typography } from '@material-ui/core';
 
 import { counterMessages } from '../../../../components/Counter';
 import {
@@ -13,6 +13,8 @@ import {
 } from '../../../../ducks/monsters';
 
 import Counter from '../../Counter';
+
+const displayName = 'CombatMonster';
 
 const useStyles = makeStyles(
   {
@@ -36,7 +38,7 @@ const useStyles = makeStyles(
       overflow: 'hidden',
     },
   },
-  { name: 'CombatMonster' },
+  { name: displayName },
 );
 
 const CombatMonster = ({ monsterId, title }) => {
@@ -83,5 +85,7 @@ CombatMonster.propTypes = {
   monsterId: PropTypes.string.isRequired,
   title: PropTypes.node.isRequired,
 };
+
+CombatMonster.displayName = displayName;
 
 export default CombatMonster;

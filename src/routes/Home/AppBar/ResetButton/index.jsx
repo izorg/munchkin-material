@@ -1,8 +1,8 @@
+import { Tooltip } from '@material-ui/core';
+import { BackupRestore } from 'mdi-material-ui';
 import React from 'react';
 import { defineMessages, useIntl } from 'react-intl';
 import { useDispatch } from 'react-redux';
-import { Tooltip } from '@material-ui/core';
-import { BackupRestore } from 'mdi-material-ui';
 
 import TopIconButton from '../../../../components/TopIconButton';
 import {
@@ -11,6 +11,8 @@ import {
 } from '../../../../ducks/combat';
 import { updatePlayer } from '../../../../ducks/players';
 import { setUndo, UNDO_RESET_PLAYERS } from '../../../../ducks/undo';
+
+const displayName = 'ResetButton';
 
 const messages = defineMessages({
   reset: {
@@ -88,5 +90,7 @@ const ResetButton = (props) => {
     </Tooltip>
   );
 };
+
+ResetButton.displayName = displayName;
 
 export default ResetButton;

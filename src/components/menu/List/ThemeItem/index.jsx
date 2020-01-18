@@ -15,6 +15,8 @@ import openSelector from '../../openSelector';
 import ListItem from '../Item';
 import ListItemText from '../ItemText';
 
+const displayName = 'ThemeItem';
+
 const useStyles = makeStyles(
   {
     root: {
@@ -22,7 +24,7 @@ const useStyles = makeStyles(
       paddingTop: 0,
     },
   },
-  { name: 'ThemeItem' },
+  { name: displayName },
 );
 
 const ThemeItem = ({ className, ...rest }) => {
@@ -60,5 +62,7 @@ const ThemeItem = ({ className, ...rest }) => {
     </ListItem>
   );
 };
+
+ThemeItem.displayName = displayName;
 
 export default ThemeItem;

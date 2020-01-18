@@ -9,7 +9,9 @@ import { useConfig } from '../../../ConfigProvider';
 import ListItem from '../Item';
 import ListItemText from '../ItemText';
 
-const VersionItem = (props) => {
+const displayName = 'RestorePurchasesItem';
+
+const RestorePurchasesItem = (props) => {
   const { restorePurchases } = useConfig();
 
   const fullVersion = useSelector((state) => state.app.fullVersion);
@@ -35,4 +37,6 @@ const VersionItem = (props) => {
   );
 };
 
-export default VersionItem;
+RestorePurchasesItem.displayName = displayName;
+
+export default RestorePurchasesItem;

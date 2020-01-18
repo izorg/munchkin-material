@@ -17,6 +17,8 @@ import { getQuery } from '../../utils/location';
 
 import GlobalCss from './GlobalCss';
 
+const displayName = 'AugmentedThemeProvider';
+
 const getQueryTheme = flow(getQuery, getOr(null, 'theme'));
 
 const getCurrentTheme = get('theme');
@@ -65,6 +67,6 @@ AugmentedThemeProvider.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-AugmentedThemeProvider.displayName = 'AugmentedThemeProvider';
+AugmentedThemeProvider.displayName = displayName;
 
 export default AugmentedThemeProvider;

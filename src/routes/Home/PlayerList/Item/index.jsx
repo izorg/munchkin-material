@@ -1,6 +1,3 @@
-import { goBack, push } from 'connected-react-router';
-import React, { forwardRef, useCallback, useEffect, useRef } from 'react';
-import PropTypes from 'prop-types';
 import {
   IconButton,
   ListItem,
@@ -8,8 +5,11 @@ import {
   ListItemSecondaryAction,
 } from '@material-ui/core';
 import { useForkRef } from '@material-ui/core/utils';
-import { ReorderHorizontal } from 'mdi-material-ui';
+import { goBack, push } from 'connected-react-router';
 import Hammer from 'hammerjs';
+import { ReorderHorizontal } from 'mdi-material-ui';
+import PropTypes from 'prop-types';
+import React, { forwardRef, useCallback, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Avatar from '../../../../components/PlayerAvatar';
@@ -18,6 +18,8 @@ import { togglePlayer, unselectAllPlayers } from '../../../../ducks/app';
 
 import { EDIT, MULTI } from '../../modes';
 import modeType from '../../modeType';
+
+const displayName = 'HomePlayerListItem';
 
 const onMultiSelectActivate = (playerId) => (dispatch) => {
   dispatch(unselectAllPlayers());
@@ -202,5 +204,7 @@ HomePlayerListItem.defaultProps = {
   dragHandleProps: undefined,
   mode: null,
 };
+
+HomePlayerListItem.displayName = displayName;
 
 export default HomePlayerListItem;

@@ -20,6 +20,8 @@ import {
   isLevelIncrementDisabled,
 } from '../../../../utils/levelLimit';
 
+const displayName = 'PlayerStats';
+
 const useStyles = makeStyles(
   (theme) => ({
     stats: {
@@ -88,7 +90,7 @@ const useStyles = makeStyles(
       },
     },
   }),
-  { name: 'PlayerStats' },
+  { name: displayName },
 );
 
 const PlayerStats = ({ className, playerId }) => {
@@ -164,5 +166,7 @@ const PlayerStats = ({ className, playerId }) => {
 PlayerStats.propTypes = {
   playerId: PropTypes.string.isRequired,
 };
+
+PlayerStats.displayName = displayName;
 
 export default PlayerStats;

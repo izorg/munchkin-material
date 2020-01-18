@@ -10,6 +10,8 @@ import { useConfig } from '../../../ConfigProvider';
 import ListItem from '../Item';
 import ListItemText from '../ItemText';
 
+const displayName = 'ShareItem';
+
 const messages = defineMessages({
   share: {
     id: 'menu.share',
@@ -54,5 +56,7 @@ const ShareItem = (props) => {
     </ListItem>
   );
 };
+
+ShareItem.displayName = displayName;
 
 export default ShareItem;

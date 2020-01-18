@@ -1,17 +1,19 @@
-import React from 'react';
-import { FormattedMessage } from 'react-intl';
-import PropTypes from 'prop-types';
 import {
   Dialog,
   DialogContent,
   DialogTitle,
   makeStyles,
 } from '@material-ui/core';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { FormattedMessage } from 'react-intl';
 
 import availableColors from '../../../utils/availableColors';
 import { colorType } from '../../../utils/propTypes';
 
 import Color from './Color';
+
+const displayName = 'ColorPickerDialog';
 
 const useStyles = makeStyles(
   (theme) => ({
@@ -20,7 +22,7 @@ const useStyles = makeStyles(
       textAlign: 'center',
     },
   }),
-  { name: 'ColorPickerDialog' },
+  { name: displayName },
 );
 
 const ColorPickerDialog = ({ onSelect, value, ...props }) => {
@@ -53,6 +55,6 @@ ColorPickerDialog.propTypes = {
   value: colorType.isRequired,
 };
 
-ColorPickerDialog.displayName = 'ColorPickerDialog';
+ColorPickerDialog.displayName = displayName;
 
 export default ColorPickerDialog;

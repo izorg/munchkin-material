@@ -10,6 +10,8 @@ import { useConfig } from '../../../ConfigProvider';
 import ListItem from '../Item';
 import ListItemText from '../ItemText';
 
+const displayName = 'RateItem';
+
 const RateItem = (props) => {
   const dispatch = useDispatch();
 
@@ -41,5 +43,7 @@ const RateItem = (props) => {
     </ListItem>
   );
 };
+
+RateItem.displayName = displayName;
 
 export default RateItem;

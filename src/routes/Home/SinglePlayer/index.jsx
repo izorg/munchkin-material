@@ -13,6 +13,8 @@ import {
   isLevelIncrementDisabled,
 } from '../../../utils/levelLimit';
 
+const displayName = 'SinglePlayer';
+
 const useStyles = makeStyles(
   (theme) => ({
     content: {
@@ -80,7 +82,7 @@ const useStyles = makeStyles(
       fontSize: 'inherit',
     },
   }),
-  { name: 'SinglePlayer' },
+  { name: displayName },
 );
 
 const SinglePlayer = () => {
@@ -191,6 +193,6 @@ const SinglePlayer = () => {
   );
 };
 
-SinglePlayer.displayName = 'SinglePlayer';
+SinglePlayer.displayName = displayName;
 
 export default SinglePlayer;

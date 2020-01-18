@@ -1,11 +1,13 @@
+import { Tooltip } from '@material-ui/core';
+import { Shuffle } from 'mdi-material-ui';
 import React from 'react';
 import { defineMessages, useIntl } from 'react-intl';
 import { useDispatch } from 'react-redux';
-import { Tooltip } from '@material-ui/core';
-import { Shuffle } from 'mdi-material-ui';
 
 import TopIconButton from '../../../../components/TopIconButton';
 import { shufflePlayers } from '../../../../ducks/playerList';
+
+const displayName = 'ShuffleButton';
 
 const messages = defineMessages({
   shuffle: {
@@ -27,6 +29,6 @@ const ShuffleButton = (props) => {
   );
 };
 
-ShuffleButton.displayName = 'ShuffleButton';
+ShuffleButton.displayName = displayName;
 
 export default ShuffleButton;

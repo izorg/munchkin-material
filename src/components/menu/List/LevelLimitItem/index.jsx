@@ -13,12 +13,12 @@ import {
   MIN_LEVEL,
 } from '../../../../utils/levelLimit';
 import { stringifyQuery } from '../../../../utils/location';
-
 import levelLimitMessages from '../../../levelLimit/messages';
 import openSelector from '../../openSelector';
-
 import ListItem from '../Item';
 import ListItemText from '../ItemText';
+
+const displayName = 'LevelLimitItem';
 
 const useStyles = makeStyles(
   {
@@ -27,7 +27,7 @@ const useStyles = makeStyles(
       paddingTop: 0,
     },
   },
-  { name: 'LevelLimitItem' },
+  { name: displayName },
 );
 
 const LevelLimitItem = ({ className, ...rest }) => {
@@ -84,5 +84,7 @@ const LevelLimitItem = ({ className, ...rest }) => {
     </ListItem>
   );
 };
+
+LevelLimitItem.displayName = displayName;
 
 export default LevelLimitItem;

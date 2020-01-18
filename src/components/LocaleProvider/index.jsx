@@ -4,6 +4,8 @@ import { useSelector } from 'react-redux';
 
 import { getDirection, getLocale, getMessages, loadLocale } from '../../i18n';
 
+const displayName = 'LocaleProvider';
+
 const defaultLocale = getLocale();
 
 const LocaleProvider = (props) => {
@@ -37,6 +39,6 @@ const LocaleProvider = (props) => {
   return <IntlProvider {...props} locale={locale} messages={messages} />;
 };
 
-LocaleProvider.displayName = 'LocaleProvider';
+LocaleProvider.displayName = displayName;
 
 export default LocaleProvider;

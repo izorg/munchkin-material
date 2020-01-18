@@ -5,6 +5,8 @@ import { useSelector } from 'react-redux';
 
 import List from '../List';
 
+const displayName = 'MenuSidebar';
+
 const MenuSidebar = () => {
   const theme = useTheme();
 
@@ -38,6 +40,6 @@ const MenuSidebar = () => {
   );
 };
 
-MenuSidebar.displayName = 'MenuSidebar';
+MenuSidebar.displayName = displayName;
 
 export default MenuSidebar;

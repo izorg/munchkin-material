@@ -8,6 +8,8 @@ import { useConfig } from '../../../ConfigProvider';
 import ListItem from '../Item';
 import ListItemText from '../ItemText';
 
+const displayName = 'PrivacyItem';
+
 const PrivacyItem = (props) => {
   const { privacyLink } = useConfig();
 
@@ -37,5 +39,7 @@ const PrivacyItem = (props) => {
     </ListItem>
   );
 };
+
+PrivacyItem.displayName = displayName;
 
 export default PrivacyItem;

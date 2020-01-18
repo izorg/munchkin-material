@@ -7,6 +7,8 @@ import { useIntl } from 'react-intl';
 
 import { getDirection } from '../../i18n';
 
+const displayName = 'AugmentedStylesProvider';
+
 const AugmentedStylesProvider = ({ children }) => {
   const { locale } = useIntl();
   const direction = getDirection(locale);
@@ -29,6 +31,6 @@ AugmentedStylesProvider.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-AugmentedStylesProvider.displayName = 'AugmentedStylesProvider';
+AugmentedStylesProvider.displayName = displayName;
 
 export default AugmentedStylesProvider;

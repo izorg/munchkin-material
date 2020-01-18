@@ -2,13 +2,14 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
 import { storeShape } from '../../propTypes';
-
 import AugmentedStylesProvider from '../AugmentedStylesProvider';
 import AugmentedThemeProvider from '../AugmentedThemeProvider';
 import ConfigProvider from '../ConfigProvider';
 import LocaleProvider from '../LocaleProvider';
 import Root from '../Root';
 import StoreProvider from '../StoreProvider';
+
+const displayName = 'App';
 
 class App extends Component {
   componentDidCatch(error, errorInfo) {
@@ -50,6 +51,6 @@ App.propTypes = {
   store: storeShape.isRequired,
 };
 
-App.displayName = 'App';
+App.displayName = displayName;
 
 export default App;

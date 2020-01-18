@@ -1,7 +1,9 @@
-import React, { useEffect, useRef } from 'react';
-import PropTypes from 'prop-types';
 import { IconButton } from '@material-ui/core';
 import Hammer from 'hammerjs';
+import PropTypes from 'prop-types';
+import React, { useEffect, useRef } from 'react';
+
+const displayName = 'CounterButton';
 
 const CounterButton = ({ onClick, ...rest }) => {
   const hammerRef = useRef(null);
@@ -33,6 +35,6 @@ CounterButton.propTypes = {
   onClick: PropTypes.func.isRequired,
 };
 
-CounterButton.displayName = 'CounterButton';
+CounterButton.displayName = displayName;
 
 export default CounterButton;

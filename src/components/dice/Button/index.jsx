@@ -1,14 +1,16 @@
-import React from 'react';
+import { Tooltip } from '@material-ui/core';
 import { push } from 'connected-react-router';
+import { DiceMultiple } from 'mdi-material-ui';
+import React from 'react';
 import { defineMessages, useIntl } from 'react-intl';
 import { useDispatch } from 'react-redux';
-import { Tooltip } from '@material-ui/core';
-import { DiceMultiple } from 'mdi-material-ui';
 
 import { throwDice } from '../../../ducks/dice';
 import { stringifyQuery } from '../../../utils/location';
 
 import TopIconButton from '../../TopIconButton';
+
+const displayName = 'DiceIconButton';
 
 const messages = defineMessages({
   dice: {
@@ -34,5 +36,7 @@ const DiceIconButton = (props) => {
     </Tooltip>
   );
 };
+
+DiceIconButton.displayName = displayName;
 
 export default DiceIconButton;

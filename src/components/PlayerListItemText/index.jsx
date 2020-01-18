@@ -5,6 +5,8 @@ import React, { forwardRef } from 'react';
 
 import { playerShape } from '../../utils/propTypes';
 
+const displayName = 'PlayerListItemText';
+
 const useStyles = makeStyles(
   (theme) => ({
     primary: {
@@ -37,7 +39,7 @@ const useStyles = makeStyles(
       width: 48,
     },
   }),
-  { name: 'PlayerListItemText' },
+  { name: displayName },
 );
 
 const PlayerListItemText = forwardRef(({ hideStats, player }, ref) => {
@@ -77,5 +79,7 @@ PlayerListItemText.propTypes = {
 PlayerListItemText.defaultProps = {
   hideStats: false,
 };
+
+PlayerListItemText.displayName = displayName;
 
 export default PlayerListItemText;

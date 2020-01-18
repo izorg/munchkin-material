@@ -15,6 +15,8 @@ import { ios } from '../../../utils/platforms';
 
 import MenuList from '../List';
 
+const displayName = 'MenuDrawer';
+
 const styles = {
   paper: {
     maxWidth: 320,
@@ -484,6 +486,9 @@ MenuDrawer.defaultProps = {
   },
 };
 
-MenuDrawer.displayName = 'MenuDrawer';
+MenuDrawer.displayName = displayName;
 
-export default withStyles(styles, { withTheme: true })(MenuDrawer);
+export default withStyles(styles, {
+  name: displayName,
+  withTheme: true,
+})(MenuDrawer);

@@ -1,6 +1,8 @@
+import { Button } from '@material-ui/core';
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
-import { Button } from '@material-ui/core';
+
+const displayName = 'CancelButton';
 
 const CancelButton = (props) => <Button {...props} />;
 
@@ -9,6 +11,6 @@ CancelButton.defaultProps = {
   color: 'primary',
 };
 
-CancelButton.displayName = 'CancelButton';
+CancelButton.displayName = displayName;
 
 export default CancelButton;

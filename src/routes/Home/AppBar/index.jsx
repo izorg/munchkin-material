@@ -21,6 +21,8 @@ import MenuButton from './MenuButton';
 import ResetButton from './ResetButton';
 import ShuffleButton from './ShuffleButton';
 
+const displayName = 'HomeAppBar';
+
 const messages = defineMessages({
   edit: {
     id: 'player.list.edit',
@@ -127,5 +129,7 @@ HomeAppBar.defaultProps = {
   mode: null,
   singleMode: false,
 };
+
+HomeAppBar.displayName = displayName;
 
 export default HomeAppBar;

@@ -1,8 +1,10 @@
-import React from 'react';
 import { GenderFemale, GenderMale } from 'mdi-material-ui';
+import React from 'react';
 
 import { sexProp } from '../../utils/propTypes';
 import { FEMALE, MALE } from '../../utils/sex';
+
+const displayName = 'Sex';
 
 const Sex = ({ sex, ...props }) => {
   switch (sex) {
@@ -24,6 +26,8 @@ Sex.propTypes = {
 Sex.defaultProps = {
   sex: undefined,
 };
+
+Sex.displayName = displayName;
 
 Sex.muiName = 'SvgIcon';
 

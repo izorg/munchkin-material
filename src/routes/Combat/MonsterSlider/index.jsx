@@ -16,6 +16,8 @@ import { removeMonster } from '../../../ducks/monsters';
 
 import Monster from './Monster';
 
+const displayName = 'CombatMonsterSlider';
+
 const useStyles = makeStyles(
   (theme) => ({
     monsters: {
@@ -168,6 +170,6 @@ const CombatMonsterSlider = ({ className }) => {
   );
 };
 
-CombatMonsterSlider.displayName = 'CombatMonsterSlider';
+CombatMonsterSlider.displayName = displayName;
 
 export default memo(CombatMonsterSlider);

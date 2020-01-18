@@ -1,8 +1,8 @@
+import { IconButton, makeStyles, Typography } from '@material-ui/core';
+import PropTypes from 'prop-types';
 import React from 'react';
 import { useIntl } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
-import PropTypes from 'prop-types';
-import { IconButton, makeStyles, Typography } from '@material-ui/core';
 
 import { counterMessages } from '../../../../components/Counter';
 import Sex from '../../../../components/Sex';
@@ -23,6 +23,8 @@ import {
 } from '../../../../utils/levelLimit';
 
 import Counter from '../../Counter';
+
+const displayName = 'CombatPlayer';
 
 const useStyles = makeStyles(
   {
@@ -137,5 +139,7 @@ const CombatPlayer = ({ playerId }) => {
 CombatPlayer.propTypes = {
   playerId: PropTypes.string.isRequired,
 };
+
+CombatPlayer.displayName = displayName;
 
 export default CombatPlayer;

@@ -9,6 +9,8 @@ import { applyUpdate } from '../../../../ducks/update';
 import ListItem from '../Item';
 import ListItemText from '../ItemText';
 
+const displayName = 'VersionItem';
+
 const VersionItem = (props) => {
   const dispatch = useDispatch();
 
@@ -30,5 +32,7 @@ const VersionItem = (props) => {
     </ListItem>
   );
 };
+
+VersionItem.displayName = displayName;
 
 export default VersionItem;

@@ -16,6 +16,8 @@ import { setCombatHelper, setCombatHelperBonus } from '../../../ducks/combat';
 
 import Player from './Player';
 
+const displayName = 'CombatPlayerSlider';
+
 const useStyles = makeStyles(
   (theme) => ({
     players: {
@@ -159,5 +161,7 @@ CombatPlayerSlider.propTypes = {
 CombatPlayerSlider.defaultProps = {
   helperId: null,
 };
+
+CombatPlayerSlider.displayName = displayName;
 
 export default memo(CombatPlayerSlider);

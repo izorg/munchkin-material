@@ -1,10 +1,12 @@
-import React from 'react';
 import { push } from 'connected-react-router';
+import { Plus } from 'mdi-material-ui';
+import React from 'react';
 import { defineMessages, useIntl } from 'react-intl';
 import { useDispatch } from 'react-redux';
-import { Plus } from 'mdi-material-ui';
 
 import DialogFab from '../../../components/DialogFab';
+
+const displayName = 'PlayerAddButton';
 
 const messages = defineMessages({
   label: {
@@ -30,6 +32,6 @@ const PlayerAddButton = (props) => {
   );
 };
 
-PlayerAddButton.displayName = 'PlayerAddButton';
+PlayerAddButton.displayName = displayName;
 
 export default PlayerAddButton;

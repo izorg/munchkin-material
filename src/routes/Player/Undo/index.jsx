@@ -1,13 +1,15 @@
+import { makeStyles } from '@material-ui/core';
+import { flow, get, isEqual } from 'lodash/fp';
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
 import { createSelector } from 'reselect';
-import { makeStyles } from '@material-ui/core';
-import { flow, get, isEqual } from 'lodash/fp';
 
 import UndoSnackbar from '../../../components/UndoSnackbar';
 import { updatePlayer } from '../../../ducks/players';
 import { applyUndo, removeUndo, UNDO_KILL_PLAYER } from '../../../ducks/undo';
+
+const displayName = 'PlayerUndo';
 
 const useStyles = makeStyles(
   (theme) => ({
@@ -19,7 +21,7 @@ const useStyles = makeStyles(
       },
     },
   }),
-  { name: 'PlayerUndo' },
+  { name: displayName },
 );
 
 const getUndoType = get(['undo', 'type']);
@@ -82,5 +84,7 @@ const PlayerUndo = () => {
     />
   );
 };
+
+PlayerUndo.displayName = displayName;
 
 export default PlayerUndo;

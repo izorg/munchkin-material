@@ -1,12 +1,14 @@
-import React from 'react';
 import { ListItem, makeStyles } from '@material-ui/core';
 import clsx from 'clsx';
+import React from 'react';
+
+const displayName = 'MenuListItem';
 
 const useStyles = makeStyles(
   {
     gutters: {},
   },
-  { name: 'MenuListItem' },
+  { name: displayName },
 );
 
 const MenuListItem = ({ className, ...props }) => {
@@ -15,6 +17,8 @@ const MenuListItem = ({ className, ...props }) => {
   return <ListItem className={clsx(classes.gutters, className)} {...props} />;
 };
 
-MenuListItem.muiName = 'MenuListItem';
+MenuListItem.displayName = displayName;
+
+MenuListItem.muiName = displayName;
 
 export default MenuListItem;
