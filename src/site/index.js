@@ -1,28 +1,19 @@
 import { createBrowserHistory } from 'history';
-import * as Sentry from '@sentry/browser';
-
-import './firebase';
 
 import init from '../index';
 
+import './firebase';
 import registerServiceWorker from './registerServiceWorker';
 
+import Sentry from './sentry';
+
 const dev = process.env.NODE_ENV === 'development';
-const prod = process.env.NODE_ENV === 'production';
 
 const el = document.getElementById('app');
 
 const history = createBrowserHistory();
 
 const { host, pathname, protocol } = window.location;
-
-if (prod) {
-  Sentry.init({
-    dsn: 'https://41e93153dfb94d9db3ed8a2cbc7228a9@sentry.io/253536',
-    environment: process.env.NODE_ENV,
-    release: VERSION,
-  });
-}
 
 const app = init(el, {
   history,
