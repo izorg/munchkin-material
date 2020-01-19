@@ -13,7 +13,7 @@ export const NB = 'nb';
 export const NL = 'nl';
 export const PL = 'pl';
 export const PT = 'pt';
-export const PT_BR = 'pt-br';
+export const PT_BR = 'pt-BR';
 export const RU = 'ru';
 export const SK = 'sk';
 export const TR = 'tr';
@@ -63,7 +63,7 @@ const loaders = {
     import(/* webpackChunkName: "locales/pl" */ '../languages/pl.json'),
 
   [PT_BR]: () =>
-    import(/* webpackChunkName: "locales/pt-br" */ '../languages/pt-br.json'),
+    import(/* webpackChunkName: "locales/pt-br" */ '../languages/pt-BR.json'),
 
   [PT]: () =>
     import(/* webpackChunkName: "locales/pt" */ '../languages/pt.json'),
@@ -82,6 +82,7 @@ const loaders = {
 };
 
 const defaultLocale = EN;
+const supportedLocales = Object.keys(loaders);
 
 const LANGUAGE_LENGTH = 2;
 
@@ -93,15 +94,21 @@ export const getLocale = () => {
       ? navigator.languages
       : [navigator.language];
 
-  const locales = languages.map((language) => language.toLowerCase());
+  let locale;
 
-  let locale = locales.find((item) => loaders[item]);
+  languages.forEach((language) => {
+    if (locale) {
+      return;
+    }
 
-  if (!locale) {
-    locale = locales
-      .map((item) => item.substr(0, LANGUAGE_LENGTH))
-      .find((item) => loaders[item]);
-  }
+    locale = supportedLocales.find((supportedLocale) => {
+      return (
+        supportedLocale === language ||
+        (supportedLocale.length === LANGUAGE_LENGTH &&
+          `${supportedLocale}-${supportedLocale.toUpperCase()}` === language)
+      );
+    });
+  });
 
   return locale || defaultLocale;
 };

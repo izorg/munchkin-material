@@ -12,18 +12,29 @@ describe('i18n', () => {
     expect(getLocale()).toBe('ru');
   });
 
-  test('should get ru locale from ru-ru language', () => {
+  test('should get ru locale from ru-RU language', () => {
     Object.defineProperty(window.navigator, 'languages', {
       configurable: true,
       get() {
-        return ['ru-ru'];
+        return ['ru-RU'];
       },
     });
 
     expect(getLocale()).toBe('ru');
   });
 
-  test('should get pt-br locale', () => {
+  test('should get pt locale from pt-PT language', () => {
+    Object.defineProperty(window.navigator, 'languages', {
+      configurable: true,
+      get() {
+        return ['pt-PT', 'pt-BR', 'ru-RU', 'en-US'];
+      },
+    });
+
+    expect(getLocale()).toBe('pt');
+  });
+
+  test('should get pt-BR locale', () => {
     Object.defineProperty(window.navigator, 'languages', {
       configurable: true,
       get() {
@@ -31,6 +42,6 @@ describe('i18n', () => {
       },
     });
 
-    expect(getLocale()).toBe('pt-br');
+    expect(getLocale()).toBe('pt-BR');
   });
 });
