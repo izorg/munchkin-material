@@ -1,11 +1,11 @@
 import { Hidden, makeStyles } from '@material-ui/core';
 import { goBack, push } from 'connected-react-router';
-import { noop } from 'lodash/fp';
 import PropTypes from 'prop-types';
 import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { getQuery, stringifyQuery } from '../../../utils/location';
+import noop from '../../../utils/noop';
 
 import Color from './Color';
 import Dialog from './Dialog';

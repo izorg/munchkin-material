@@ -1,6 +1,5 @@
 import { makeStyles } from '@material-ui/core';
 import clsx from 'clsx';
-import { noop } from 'lodash/fp';
 import { MenuDown, MenuUp } from 'mdi-material-ui';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -108,8 +107,8 @@ const Counter = ({
 Counter.propTypes = {
   decrementDisabled: PropTypes.bool,
   incrementDisabled: PropTypes.bool,
-  onDecrement: PropTypes.func,
-  onIncrement: PropTypes.func,
+  onDecrement: PropTypes.func.isRequired,
+  onIncrement: PropTypes.func.isRequired,
   title: PropTypes.node.isRequired,
   value: PropTypes.number.isRequired,
 };
@@ -117,8 +116,6 @@ Counter.propTypes = {
 Counter.defaultProps = {
   decrementDisabled: false,
   incrementDisabled: false,
-  onDecrement: noop,
-  onIncrement: noop,
 };
 
 Counter.displayName = displayName;

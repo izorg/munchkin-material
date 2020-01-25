@@ -17,7 +17,7 @@ import {
   useTheme,
 } from '@material-ui/core';
 import { goBack } from 'connected-react-router';
-import { flow, get, isEqual, isUndefined, map, negate } from 'lodash/fp';
+import { isEqual } from 'lodash/fp';
 import { GenderFemale, GenderMale } from 'mdi-material-ui';
 import React, { useEffect, useRef, useState } from 'react';
 import { defineMessages, FormattedMessage, useIntl } from 'react-intl';
@@ -92,23 +92,21 @@ const messages = defineMessages({
 
 let appear = false;
 
-const getPlayerId = flow(getQuery, get('player'));
-
-const getEdit = createSelector(getPlayerId, Boolean);
+const getPlayerId = (state) => getQuery(state).player;
 
 const getInitialValues = createSelector(
   getPlayerId,
-  get('players'),
+  (state) => state.players,
   (playerId, players) =>
     playerId
       ? players[playerId]
       : {
-          color: getRandomMaterialColor(map('color', players)),
+          color: getRandomMaterialColor(
+            Object.values(players).map((player) => player.color),
+          ),
           sex: MALE,
         },
 );
-
-const getOpen = createSelector(getPlayerId, negate(isUndefined));
 
 const PlayerDialog = () => {
   const classes = useStyles();
@@ -119,8 +117,8 @@ const PlayerDialog = () => {
   const defaultInitialValues = useSelector(getInitialValues);
   const [initialValues, setInitialValues] = useState(defaultInitialValues);
 
-  const edit = useSelector(getEdit);
-  const open = useSelector(getOpen);
+  const edit = useSelector((state) => Boolean(getPlayerId(state)));
+  const open = useSelector((state) => getPlayerId(state) !== undefined);
 
   const fullScreen = useMediaQuery(theme.breakpoints.down('md'), {
     noSsr: true,

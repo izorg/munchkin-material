@@ -8,7 +8,6 @@ import { SpeedDial, SpeedDialAction, SpeedDialIcon } from '@material-ui/lab';
 import clsx from 'clsx';
 import { goBack, push, replace } from 'connected-react-router';
 import deepmerge from 'deepmerge';
-import { flow, get, isNull } from 'lodash/fp';
 import { AccountPlus, EmoticonDevilOutline } from 'mdi-material-ui';
 import React, { memo } from 'react';
 import { FormattedMessage } from 'react-intl';
@@ -49,12 +48,12 @@ const useStyles = makeStyles(
 );
 
 const getHelper = createSelector(
-  get(['combat', 'helperId']),
-  get('playerList'),
+  (state) => state.combat.helperId,
+  (state) => state.playerList,
   (helperId, playerList) => !helperId && playerList.length > 1,
 );
 
-const getOpen = flow(getQuery, get('add'), isNull);
+const getOpen = (state) => getQuery(state).add === null;
 
 const CombatHelperButton = ({ className, ...rest }) => {
   const classes = useStyles();

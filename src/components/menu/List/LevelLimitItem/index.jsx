@@ -1,7 +1,6 @@
 import { ListItemIcon, makeStyles } from '@material-ui/core';
 import clsx from 'clsx';
 import { push, replace } from 'connected-react-router';
-import { get } from 'lodash/fp';
 import { SwapVertical } from 'mdi-material-ui';
 import React from 'react';
 import { useIntl } from 'react-intl';
@@ -35,8 +34,8 @@ const LevelLimitItem = ({ className, ...rest }) => {
   const dispatch = useDispatch();
   const intl = useIntl();
 
-  const epic = useSelector(get(['app', 'epic']));
-  const levelLimit = useSelector(get(['app', 'levelLimit']));
+  const epic = useSelector((state) => state.app.epic);
+  const levelLimit = useSelector((state) => state.app.levelLimit);
   const open = useSelector(openSelector);
 
   const onClick = () => {

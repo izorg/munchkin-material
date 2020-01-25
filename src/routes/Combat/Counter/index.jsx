@@ -1,6 +1,5 @@
 import { makeStyles } from '@material-ui/core';
 import clsx from 'clsx';
-import { noop } from 'lodash/fp';
 import { MenuDown, MenuUp } from 'mdi-material-ui';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -98,8 +97,8 @@ const CombatCounter = ({
 CombatCounter.propTypes = {
   decrementDisabled: PropTypes.bool,
   incrementDisabled: PropTypes.bool,
-  onDecrement: PropTypes.func,
-  onIncrement: PropTypes.func,
+  onDecrement: PropTypes.func.isRequired,
+  onIncrement: PropTypes.func.isRequired,
   title: PropTypes.node.isRequired,
   value: PropTypes.number.isRequired,
 };
@@ -107,8 +106,6 @@ CombatCounter.propTypes = {
 CombatCounter.defaultProps = {
   decrementDisabled: false,
   incrementDisabled: false,
-  onDecrement: noop,
-  onIncrement: noop,
 };
 
 CombatCounter.displayName = displayName;

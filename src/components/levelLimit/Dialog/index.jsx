@@ -9,7 +9,6 @@ import {
   RadioGroup,
 } from '@material-ui/core';
 import { goBack } from 'connected-react-router';
-import { flow, get, isUndefined, negate } from 'lodash/fp';
 import React, { useState } from 'react';
 import { useIntl } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
@@ -44,8 +43,8 @@ const useStyles = makeStyles(
 );
 
 const getDefaultValue = createSelector(
-  get(['app', 'levelLimit']),
-  get(['app', 'epic']),
+  (state) => state.app.levelLimit,
+  (state) => state.app.epic,
   (levelLimit, epic) => {
     if (levelLimit) {
       if (epic) {
@@ -59,7 +58,7 @@ const getDefaultValue = createSelector(
   },
 );
 
-const getOpen = flow(getQuery, get('levelLimit'), negate(isUndefined));
+const getOpen = (state) => getQuery(state).levelLimit !== undefined;
 
 const LevelLimitDialog = (props) => {
   const classes = useStyles();

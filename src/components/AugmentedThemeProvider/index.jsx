@@ -4,7 +4,6 @@ import {
   useMediaQuery,
 } from '@material-ui/core';
 import deepmerge from 'deepmerge';
-import { flow, get, getOr } from 'lodash/fp';
 import PropTypes from 'prop-types';
 import React, { useMemo } from 'react';
 import { useIntl } from 'react-intl';
@@ -19,16 +18,12 @@ import GlobalCss from './GlobalCss';
 
 const displayName = 'AugmentedThemeProvider';
 
-const getQueryTheme = flow(getQuery, getOr(null, 'theme'));
-
-const getCurrentTheme = get('theme');
-
 const AugmentedThemeProvider = ({ children }) => {
   const { locale } = useIntl();
   const direction = getDirection(locale);
 
-  const queryTheme = useSelector(getQueryTheme);
-  const currentTheme = useSelector(getCurrentTheme);
+  const queryTheme = useSelector((state) => getQuery(state).theme || null);
+  const currentTheme = useSelector((state) => state.theme);
 
   const dark = useMediaQuery('(prefers-color-scheme: dark)', {
     noSsr: true,

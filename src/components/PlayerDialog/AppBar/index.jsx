@@ -1,11 +1,10 @@
-import { noop } from 'lodash/fp';
 import { Check } from 'mdi-material-ui';
 import PropTypes from 'prop-types';
 import React from 'react';
 
+import noop from '../../../utils/noop';
 import BackButton from '../../BackButton';
 import Title from '../../Title';
-
 import AppBar from '../../TopAppBar';
 import TopIconButton from '../../TopIconButton';
 

@@ -1,8 +1,7 @@
-import * as colorSets from '@material-ui/core/colors';
-import { map } from 'lodash/fp';
+import { colors } from '@material-ui/core';
 
-const { brown, common, ...availableColorSets } = colorSets;
+const { brown, common, ...rest } = colors;
 
-const availableColors = map(500, availableColorSets);
+const availableColors = Object.values(rest).map((color) => color[500]);
 
 export default availableColors;

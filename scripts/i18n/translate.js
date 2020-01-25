@@ -3,8 +3,6 @@ const fs = require('fs');
 const globSync = require('glob').sync;
 const mkdirpSync = require('mkdirp').sync;
 
-const { flow, fromPairs, head, sortBy, toPairs } = require('lodash/fp');
-
 const MESSAGES_PATTERN = './messages/**/*.json';
 const LANG_DIR = './languages/';
 
@@ -31,6 +29,10 @@ const defaultMessages = globSync(MESSAGES_PATTERN)
 
 mkdirpSync(LANG_DIR);
 
-const sortedMessages = flow(toPairs, sortBy(head), fromPairs)(defaultMessages);
+console.log(defaultMessages);
+
+const sortedMessages = Object.fromEntries(
+  Object.entries(defaultMessages).sort(([a], [b]) => (a > b ? 1 : -1)),
+);
 
 fs.writeFileSync(`${LANG_DIR}en.json`, JSON.stringify(sortedMessages, null, 2));

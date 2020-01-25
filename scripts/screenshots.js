@@ -2,7 +2,6 @@ const path = require('path');
 
 const { duration } = require('@material-ui/core/styles/transitions');
 const fs = require('fs-extra');
-const { range } = require('lodash/fp');
 const puppeteer = require('puppeteer');
 const devices = require('puppeteer/DeviceDescriptors');
 
@@ -57,7 +56,11 @@ const sizes = {
       'Mozilla/5.0 (iPad; CPU OS 12_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.1 Mobile/15E148 Safari/604.1',
   },
 };
+
 const dir = 'screenshots';
+
+const range = (start, end) =>
+  Array.from(Array(Math.abs(end - start) + 1), (_, i) => start + i);
 
 const getScreenshots = async ({ locale, size }) => {
   console.log(`🌍 ${locale}`);
