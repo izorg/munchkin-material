@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import React, { forwardRef } from 'react';
 
 import { playerShape } from '../../utils/propTypes';
+import Sex from '../Sex';
 
 const displayName = 'PlayerListItemText';
 
@@ -24,7 +25,7 @@ const useStyles = makeStyles(
     level: {
       alignItems: 'center',
       display: 'inline-flex',
-      fontSize: 20,
+      // fontSize: 20,
       justifyContent: 'flex-end',
       marginLeft: theme.spacing(1),
       width: 44,
@@ -33,10 +34,14 @@ const useStyles = makeStyles(
     strength: {
       alignItems: 'center',
       display: 'inline-flex',
-      fontSize: 20,
+      // fontSize: 20,
       justifyContent: 'flex-end',
       marginLeft: 4,
       width: 48,
+    },
+
+    sex: {
+      fontSize: '1em',
     },
   }),
   { name: displayName },
@@ -66,6 +71,11 @@ const PlayerListItemText = forwardRef(({ hideStats, player }, ref) => {
             </>
           )}
         </span>
+      }
+      secondary={
+        <>
+          <Sex className={classes.sex} sex={player.sex} />
+        </>
       }
     />
   );

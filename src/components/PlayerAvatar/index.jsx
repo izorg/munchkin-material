@@ -3,14 +3,12 @@ import { Check } from 'mdi-material-ui';
 import PropTypes from 'prop-types';
 import React, { forwardRef } from 'react';
 
-import { colorType, sexProp } from '../../utils/propTypes';
-
-import Sex from '../Sex';
+import { colorType } from '../../utils/propTypes';
 
 const displayName = 'PlayerAvatar';
 
 const PlayerAvatar = forwardRef(
-  ({ color, selected, sex, style: styleProp, ...props }, ref) => {
+  ({ color, name, selected, style: styleProp, ...props }, ref) => {
     let style = styleProp;
 
     if (!selected && color) {
@@ -22,7 +20,7 @@ const PlayerAvatar = forwardRef(
 
     return (
       <Avatar ref={ref} style={style} {...props}>
-        {selected ? <Check /> : <Sex sex={sex} />}
+        {selected ? <Check /> : Array.from(name)[0].toUpperCase()}
       </Avatar>
     );
   },
@@ -30,8 +28,8 @@ const PlayerAvatar = forwardRef(
 
 PlayerAvatar.propTypes = {
   color: colorType.isRequired,
+  name: PropTypes.string.isRequired,
   selected: PropTypes.bool,
-  sex: sexProp.isRequired,
 };
 
 PlayerAvatar.defaultProps = {

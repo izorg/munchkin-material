@@ -12,7 +12,7 @@ import PropTypes from 'prop-types';
 import React, { forwardRef, useCallback, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import Avatar from '../../../../components/PlayerAvatar';
+import PlayerAvatar from '../../../../components/PlayerAvatar';
 import PlayerListItemText from '../../../../components/PlayerListItemText';
 import { togglePlayer, unselectAllPlayers } from '../../../../ducks/app';
 
@@ -167,11 +167,11 @@ const HomePlayerListItem = forwardRef(
         {...rest}
       >
         <ListItemAvatar>
-          <Avatar
+          <PlayerAvatar
             ref={avatarRef}
             color={player.color}
+            name={player.name}
             selected={multiMode && selected}
-            sex={player.sex}
           />
         </ListItemAvatar>
 

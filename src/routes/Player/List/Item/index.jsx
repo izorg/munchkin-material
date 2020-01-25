@@ -19,7 +19,7 @@ const PlayerListItem = ({ player, ...props }) => {
       {...props}
     >
       <ListItemAvatar>
-        <PlayerAvatar color={player.color} sex={player.sex} />
+        <PlayerAvatar color={player.color} name={player.name} />
       </ListItemAvatar>
       <PlayerListItemText player={player} />
     </ListItem>

@@ -76,7 +76,7 @@ const HelperSelector = (props) => {
               onClick={() => onSelect(helper.id)}
             >
               <ListItemAvatar>
-                <PlayerAvatar color={helper.color} sex={helper.sex} />
+                <PlayerAvatar color={helper.color} name={helper.name} />
               </ListItemAvatar>
               <PlayerListItemText player={helper} />
             </ListItem>
