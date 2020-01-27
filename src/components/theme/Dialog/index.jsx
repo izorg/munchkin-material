@@ -10,14 +10,14 @@ import {
   RadioGroup,
 } from '@material-ui/core';
 import { goBack, replace } from 'connected-react-router';
-import { flow, get, sortBy } from 'lodash/fp';
+import { flow, get } from 'lodash/fp';
 import React from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
 import { createSelector } from 'reselect';
 
 import { setTheme } from '../../../ducks/theme';
-import { names } from '../../../styles/themes';
+import themes from '../../../styles/themes';
 import { getQuery, stringifyQuery } from '../../../utils/location';
 
 import CancelButton from '../../CancelButton';
@@ -50,7 +50,7 @@ const getTheme = createSelector(
 const ThemeDialog = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const { formatMessage } = useIntl();
+  const intl = useIntl();
 
   const open = useSelector(getOpen);
   const query = useSelector(getQuery);
@@ -106,7 +106,7 @@ const ThemeDialog = () => {
       open={open}
       PaperProps={{ component: 'form', onSubmit }}
     >
-      <DialogTitle>{formatMessage(themeMessages.label)}</DialogTitle>
+      <DialogTitle>{intl.formatMessage(themeMessages.label)}</DialogTitle>
       <DialogContent className={classes.content}>
         <RadioGroup name="type" onChange={onThemeTypeChange} value={typeValue}>
           {window.matchMedia('(prefers-color-scheme)').matches && (
@@ -138,19 +138,31 @@ const ThemeDialog = () => {
         </RadioGroup>
         <Divider />
         <RadioGroup name="id" onChange={onThemeIdChange} value={theme.id}>
-          {sortBy(
-            ({ label }) => formatMessage(label.props),
-            Object.keys(names).map((value) => ({ label: names[value], value })),
-          ).map((option) => (
-            <FormControlLabel
-              key={option.value}
-              control={
-                <Radio autoFocus={option.value === theme.id} color="primary" />
+          {Object.values(themes)
+            .sort((t1, t2) => {
+              const a = intl.formatMessage(t1.messages.name);
+              const b = intl.formatMessage(t2.messages.name);
+
+              if (a < b) {
+                return -1;
               }
-              label={option.label}
-              value={option.value}
-            />
-          ))}
+
+              if (a > b) {
+                return 1;
+              }
+
+              return 0;
+            })
+            .map((option) => (
+              <FormControlLabel
+                key={option.key}
+                control={
+                  <Radio autoFocus={option.key === theme.id} color="primary" />
+                }
+                label={intl.formatMessage(option.messages.name)}
+                value={option.key}
+              />
+            ))}
         </RadioGroup>
       </DialogContent>
       <DialogActions>

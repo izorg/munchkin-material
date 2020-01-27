@@ -44,7 +44,7 @@ const AugmentedThemeProvider = ({ children }) => {
     return createMuiTheme(
       deepmerge.all([
         baseTheme({ direction, type }),
-        themes[previewTheme.id],
+        themes[previewTheme.id].theme,
         { palette: { type } },
       ]),
     );

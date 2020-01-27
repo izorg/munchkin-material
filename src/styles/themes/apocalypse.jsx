@@ -1,16 +1,16 @@
-import React from 'react';
-import { FormattedMessage } from 'react-intl';
 import orange from '@material-ui/core/colors/orange';
+import { defineMessages } from 'react-intl';
 
 export const key = 'apocalypse';
 
-export const name = (
-  <FormattedMessage defaultMessage="Apocalypse" id="theme.name.apocalypse" />
-);
+export const messages = defineMessages({
+  name: {
+    id: 'theme.name.apocalypse',
+    defaultMessage: 'Apocalypse',
+  },
+});
 
-export default {
-  id: key,
-
+export const theme = {
   overrides: {
     MuiAvatar: {
       colorDefault: {

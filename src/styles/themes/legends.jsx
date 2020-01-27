@@ -1,17 +1,17 @@
-import React from 'react';
-import { FormattedMessage } from 'react-intl';
 import common from '@material-ui/core/colors/common';
 import grey from '@material-ui/core/colors/grey';
+import { defineMessages } from 'react-intl';
 
 export const key = 'legends';
 
-export const name = (
-  <FormattedMessage defaultMessage="Legends" id="theme.name.legends" />
-);
+export const messages = defineMessages({
+  name: {
+    id: 'theme.name.legends',
+    defaultMessage: 'Legends',
+  },
+});
 
-export default {
-  id: key,
-
+export const theme = {
   overrides: {
     MuiAppBar: {
       colorPrimary: {

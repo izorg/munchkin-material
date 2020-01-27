@@ -6,7 +6,7 @@ import React from 'react';
 import { useIntl } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { names as themeNames } from '../../../../styles/themes';
+import themes from '../../../../styles/themes';
 import { stringifyQuery } from '../../../../utils/location';
 
 import themeMessages from '../../../theme/messages';
@@ -33,6 +33,8 @@ const ThemeItem = ({ className, ...rest }) => {
   const intl = useIntl();
   const theme = useTheme();
 
+  const themeKey = useSelector((state) => state.theme.id);
+
   const open = useSelector(openSelector);
 
   const onClick = () => {
@@ -57,7 +59,7 @@ const ThemeItem = ({ className, ...rest }) => {
       </ListItemIcon>
       <ListItemText
         primary={intl.formatMessage(themeMessages.label)}
-        secondary={themeNames[theme.id]}
+        secondary={intl.formatMessage(themes[themeKey].messages.name)}
       />
     </ListItem>
   );

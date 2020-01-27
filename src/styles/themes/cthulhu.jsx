@@ -1,16 +1,16 @@
-import React from 'react';
-import { FormattedMessage } from 'react-intl';
 import lightGreen from '@material-ui/core/colors/lightGreen';
+import { defineMessages } from 'react-intl';
 
 export const key = 'cthulhu';
 
-export const name = (
-  <FormattedMessage defaultMessage="Cthulhu" id="theme.name.cthulhu" />
-);
+export const messages = defineMessages({
+  name: {
+    id: 'theme.name.cthulhu',
+    defaultMessage: 'Cthulhu',
+  },
+});
 
-export default {
-  id: key,
-
+export const theme = {
   overrides: {
     MuiAvatar: {
       colorDefault: {

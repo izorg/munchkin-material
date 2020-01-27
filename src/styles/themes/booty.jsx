@@ -1,16 +1,16 @@
-import React from 'react';
-import { FormattedMessage } from 'react-intl';
 import red from '@material-ui/core/colors/red';
+import { defineMessages } from 'react-intl';
 
 export const key = 'booty';
 
-export const name = (
-  <FormattedMessage defaultMessage="Booty" id="theme.name.booty" />
-);
+export const messages = defineMessages({
+  name: {
+    id: 'theme.name.booty',
+    defaultMessage: 'Booty',
+  },
+});
 
-export default {
-  id: key,
-
+export const theme = {
   overrides: {
     MuiAvatar: {
       colorDefault: {
