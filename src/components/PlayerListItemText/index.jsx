@@ -1,5 +1,5 @@
 import { ListItemText, makeStyles } from '@material-ui/core';
-import { ChevronDoubleUp, ChevronUp } from 'mdi-material-ui';
+import { ChevronUp as LevelIcon, Sword as StrengthIcon } from 'mdi-material-ui';
 import PropTypes from 'prop-types';
 import React, { forwardRef } from 'react';
 
@@ -25,7 +25,6 @@ const useStyles = makeStyles(
     level: {
       alignItems: 'center',
       display: 'inline-flex',
-      // fontSize: 20,
       justifyContent: 'flex-end',
       marginLeft: theme.spacing(1),
       width: 44,
@@ -34,10 +33,14 @@ const useStyles = makeStyles(
     strength: {
       alignItems: 'center',
       display: 'inline-flex',
-      // fontSize: 20,
       justifyContent: 'flex-end',
       marginLeft: 4,
       width: 48,
+    },
+
+    strengthIcon: {
+      fontSize: '1.2em',
+      marginLeft: 4,
     },
 
     sex: {
@@ -61,12 +64,12 @@ const PlayerListItemText = forwardRef(({ hideStats, player }, ref) => {
             <>
               <span className={classes.level}>
                 {player.level}
-                <ChevronUp />
+                <LevelIcon />
               </span>
 
               <span className={classes.strength}>
                 {player.level + player.gear}
-                <ChevronDoubleUp />
+                <StrengthIcon className={classes.strengthIcon} />
               </span>
             </>
           )}
