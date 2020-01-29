@@ -9,7 +9,7 @@ import Sex from '../Sex';
 const displayName = 'PlayerListItemText';
 
 const useStyles = makeStyles(
-  {
+  (theme) => ({
     main: {
       display: 'flex',
       flexDirection: 'column',
@@ -48,8 +48,9 @@ const useStyles = makeStyles(
     stats: {
       flexGrow: 0,
       flexShrink: 0,
+      paddingLeft: theme.spacing(1),
     },
-  },
+  }),
   { name: displayName },
 );
 
