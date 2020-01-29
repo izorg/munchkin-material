@@ -9,7 +9,6 @@ const useStyles = makeStyles(
     title: {
       flex: 1,
       paddingLeft: 24,
-      paddingRight: 8,
 
       [theme.breakpoints.up('md')]: {
         paddingLeft: 20,
