@@ -1,7 +1,7 @@
 import { ListItemText, makeStyles } from '@material-ui/core';
 import { ChevronUp as LevelIcon, Sword as StrengthIcon } from 'mdi-material-ui';
 import PropTypes from 'prop-types';
-import React, { forwardRef } from 'react';
+import React from 'react';
 
 import { playerShape } from '../../utils/propTypes';
 import Sex from '../Sex';
@@ -9,10 +9,10 @@ import Sex from '../Sex';
 const displayName = 'PlayerListItemText';
 
 const useStyles = makeStyles(
-  (theme) => ({
-    primary: {
-      alignItems: 'center',
+  {
+    main: {
       display: 'flex',
+      flexDirection: 'column',
     },
 
     name: {
@@ -26,16 +26,14 @@ const useStyles = makeStyles(
       alignItems: 'center',
       display: 'inline-flex',
       justifyContent: 'flex-end',
-      marginLeft: theme.spacing(1),
-      width: 44,
+      width: 50,
     },
 
     strength: {
       alignItems: 'center',
       display: 'inline-flex',
       justifyContent: 'flex-end',
-      marginLeft: 4,
-      width: 48,
+      width: 60,
     },
 
     strengthIcon: {
@@ -46,43 +44,47 @@ const useStyles = makeStyles(
     sex: {
       fontSize: '1em',
     },
-  }),
+
+    stats: {
+      flexGrow: 0,
+      flexShrink: 0,
+    },
+  },
   { name: displayName },
 );
 
-const PlayerListItemText = forwardRef(({ hideStats, player }, ref) => {
+const PlayerListItemText = ({ hideStats, player }) => {
   const classes = useStyles();
 
   return (
-    <ListItemText
-      ref={ref}
-      primary={
-        <span className={classes.primary}>
-          <span className={classes.name}>{player.name}</span>
+    <>
+      <ListItemText
+        className={classes.main}
+        primary={player.name}
+        primaryTypographyProps={{ className: classes.name }}
+        secondary={<Sex className={classes.sex} sex={player.sex} />}
+      />
+      {!hideStats && (
+        <ListItemText
+          className={classes.stats}
+          primaryTypographyProps={{
+            variant: 'h6',
+          }}
+        >
+          <span className={classes.level}>
+            {player.level}
+            <LevelIcon />
+          </span>
 
-          {!hideStats && (
-            <>
-              <span className={classes.level}>
-                {player.level}
-                <LevelIcon />
-              </span>
-
-              <span className={classes.strength}>
-                {player.level + player.gear}
-                <StrengthIcon className={classes.strengthIcon} />
-              </span>
-            </>
-          )}
-        </span>
-      }
-      secondary={
-        <>
-          <Sex className={classes.sex} sex={player.sex} />
-        </>
-      }
-    />
+          <span className={classes.strength}>
+            {player.level + player.gear}
+            <StrengthIcon className={classes.strengthIcon} />
+          </span>
+        </ListItemText>
+      )}
+    </>
   );
-});
+};
 
 PlayerListItemText.propTypes = {
   hideStats: PropTypes.bool,
