@@ -60,16 +60,22 @@ const useStyles = makeStyles(
     strengthValue: {
       color: theme.palette.text.primary,
       fontFamily: `"Munchkin", ${theme.typography.fontFamily}`,
-      fontSize: 72, // 36px * 2
-      lineHeight: theme.typography.body2.lineHeight / 2, // 1.43 / 2
-      marginTop: 32,
+      fontSize: 36,
+
+      '@media (orientation: portrait)': {
+        fontSize: 72, // 36px * 2
+        lineHeight: theme.typography.body2.lineHeight / 2, // 1.43 / 2
+        marginTop: 32,
+      },
     },
 
     sex: {
-      fontSize: 36,
-      height: 64,
-      padding: 12,
-      width: 64,
+      fontSize: 32,
+      padding: 8,
+
+      '@media (orientation: portrait)': {
+        marginTop: 16,
+      },
     },
 
     sexIcon: {
@@ -83,10 +89,6 @@ const useStyles = makeStyles(
 
       counters: {
         flex: 2,
-      },
-
-      strengthValue: {
-        marginTop: 64,
       },
     },
   }),

@@ -1,6 +1,9 @@
 import { makeStyles } from '@material-ui/core';
 import clsx from 'clsx';
-import { MenuDown, MenuUp } from 'mdi-material-ui';
+import {
+  MenuDown as DecrementIcon,
+  MenuUp as IncrementIcon,
+} from 'mdi-material-ui';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { defineMessages } from 'react-intl';
@@ -40,20 +43,16 @@ const useStyles = makeStyles(
     },
 
     button: {
-      fontSize: 64,
+      fontSize: 48,
       padding: 0,
+
+      '& + &': {
+        marginLeft: 8,
+      },
     },
 
     icon: {
       fontSize: 'inherit',
-    },
-
-    up: {
-      transform: 'translateY(-2px)',
-    },
-
-    down: {
-      transform: 'translateY(2px)',
     },
 
     value: {
@@ -81,15 +80,6 @@ const Counter = ({
     <div className={clsx(className, classes.counter)} {...props}>
       <CounterLabel className={classes.title}>{title}</CounterLabel>
 
-      <Button
-        className={classes.button}
-        data-screenshots="increment-button"
-        disabled={incrementDisabled}
-        onClick={onIncrement}
-      >
-        <MenuUp className={clsx(classes.icon, classes.up)} />
-      </Button>
-
       <div className={classes.value}>{value}</div>
 
       <Button
@@ -98,7 +88,16 @@ const Counter = ({
         disabled={decrementDisabled}
         onClick={onDecrement}
       >
-        <MenuDown className={clsx(classes.icon, classes.down)} />
+        <DecrementIcon className={classes.icon} />
+      </Button>
+
+      <Button
+        className={classes.button}
+        data-screenshots="increment-button"
+        disabled={incrementDisabled}
+        onClick={onIncrement}
+      >
+        <IncrementIcon className={classes.icon} />
       </Button>
     </div>
   );
