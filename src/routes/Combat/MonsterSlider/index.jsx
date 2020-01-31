@@ -24,31 +24,37 @@ const useStyles = makeStyles(
       alignItems: 'flex-end',
       display: 'flex',
       position: 'relative',
+
+      '@media (orientation: landscape)': {
+        alignItems: 'center',
+        overflow: 'hidden',
+      },
     },
 
     remove: {
       position: 'absolute !important',
       right: 8,
       top: 8,
-    },
 
-    [`${theme.breakpoints.up('sm')} and (orientation: portrait)`]: {
-      paper: {
-        marginBottom: 8,
-      },
-    },
-
-    '@media (orientation: landscape)': {
-      monsters: {
-        alignItems: 'center',
-        overflow: 'hidden',
-      },
-
-      remove: {
+      '@media (orientation: landscape)': {
         bottom: 8,
         left: 8,
         right: 'auto',
         top: 'auto',
+      },
+    },
+
+    paper: {
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+
+      [`${theme.breakpoints.up('sm')} and (orientation: portrait)`]: {
+        marginBottom: 8,
+      },
+
+      '@media (orientation: landscape)': {
+        height: '100%',
       },
     },
   }),

@@ -29,13 +29,13 @@ const displayName = 'CombatPlayer';
 const useStyles = makeStyles(
   {
     player: {
-      padding: 8,
+      padding: [[8, 8, 32, 8]],
       position: 'relative',
       textAlign: 'center',
     },
 
     name: {
-      margin: '0 0 8px',
+      margin: '0 0 16px',
       padding: '0 24px',
     },
 

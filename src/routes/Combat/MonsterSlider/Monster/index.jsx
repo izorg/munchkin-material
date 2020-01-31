@@ -19,12 +19,16 @@ const displayName = 'CombatMonster';
 const useStyles = makeStyles(
   {
     monster: {
-      padding: 8,
+      padding: [[8, 8, 16, 8]],
       textAlign: 'center',
+
+      '@media (orientation: landscape)': {
+        padding: [[8, 8, 32, 8]],
+      },
     },
 
     name: {
-      margin: '0 0 8px',
+      margin: '0 0 16px',
     },
 
     stats: {

@@ -24,6 +24,11 @@ const useStyles = makeStyles(
       alignItems: 'flex-start',
       display: 'flex',
       position: 'relative',
+
+      '@media (orientation: landscape)': {
+        alignItems: 'center',
+        overflow: 'hidden',
+      },
     },
 
     remove: {
@@ -35,16 +40,17 @@ const useStyles = makeStyles(
       width: 36,
     },
 
-    [`${theme.breakpoints.up('sm')} and (orientation: portrait)`]: {
-      paper: {
+    paper: {
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+
+      [`${theme.breakpoints.up('sm')} and (orientation: portrait)`]: {
         marginTop: 8,
       },
-    },
 
-    '@media (orientation: landscape)': {
-      players: {
-        alignItems: 'center',
-        overflow: 'hidden',
+      '@media (orientation: landscape)': {
+        height: '100%',
       },
     },
   }),
@@ -116,7 +122,7 @@ const CombatPlayerSlider = ({ className, helperId, playerId }) => {
           }}
           style={{
             flex: 1,
-            padding: '0 32px',
+            padding: '0 16px',
           }}
         >
           {players}
@@ -136,7 +142,7 @@ const CombatPlayerSlider = ({ className, helperId, playerId }) => {
             direction,
             height: 224,
             padding:
-              direction === 'rtl' ? '8px 24px 8px 8px' : '8px 8px 8px 24px',
+              direction === 'rtl' ? '8px 16px 8px 8px' : '8px 8px 8px 16px',
             position: 'relative',
           }}
           style={{

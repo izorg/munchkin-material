@@ -45,10 +45,6 @@ const useStyles = makeStyles(
     button: {
       fontSize: 48,
       padding: 0,
-
-      '& + &': {
-        marginLeft: 8,
-      },
     },
 
     icon: {

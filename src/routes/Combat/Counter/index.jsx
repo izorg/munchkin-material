@@ -17,23 +17,23 @@ const useStyles = makeStyles(
 
     title: {
       fontSize: 16,
+
+      '@media (orientation: portrait) and (min-width: 360px) and (min-height: 600px)': {
+        fontSize: 20,
+      },
     },
 
     button: {
-      fontSize: 48,
+      fontSize: 36,
       padding: 0,
+
+      '@media (orientation: landscape)': {
+        fontSize: 32,
+      },
     },
 
     icon: {
       fontSize: 'inherit',
-    },
-
-    up: {
-      transform: 'translateY(-2px)',
-    },
-
-    down: {
-      transform: 'translateY(2px)',
     },
 
     value: {
@@ -41,18 +41,6 @@ const useStyles = makeStyles(
       fontFamily: `"Munchkin", ${theme.typography.fontFamily}`,
       fontSize: theme.typography.h4.fontSize,
       lineHeight: theme.typography.h4.lineHeight,
-    },
-
-    '@media (orientation: portrait) and (min-width: 360px) and (min-height: 600px)': {
-      title: {
-        fontSize: 20,
-      },
-
-      button: {
-        fontSize: 64,
-        height: 64,
-        width: 64,
-      },
     },
   }),
   { name: displayName },
@@ -73,14 +61,6 @@ const CombatCounter = ({
     <div className={clsx(className, classes.counter)}>
       <CounterLabel className={classes.title}>{title}</CounterLabel>
 
-      <CounterButton
-        className={classes.button}
-        disabled={incrementDisabled}
-        onClick={onIncrement}
-      >
-        <MenuUp className={clsx(classes.icon, classes.up)} />
-      </CounterButton>
-
       <div className={classes.value}>{value}</div>
 
       <CounterButton
@@ -88,7 +68,15 @@ const CombatCounter = ({
         disabled={decrementDisabled}
         onClick={onDecrement}
       >
-        <MenuDown className={clsx(classes.icon, classes.down)} />
+        <MenuDown className={classes.icon} />
+      </CounterButton>
+
+      <CounterButton
+        className={classes.button}
+        disabled={incrementDisabled}
+        onClick={onIncrement}
+      >
+        <MenuUp className={classes.icon} />
       </CounterButton>
     </div>
   );
