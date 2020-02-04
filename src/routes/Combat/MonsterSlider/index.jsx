@@ -158,8 +158,7 @@ const CombatMonsterSlider = ({ className }) => {
           slideStyle={{
             direction,
             height: 224,
-            padding:
-              direction === 'rtl' ? '8px 8px 8px 48px' : '8px 48px 8px 8px',
+            padding: 8,
             position: 'relative',
           }}
           style={{

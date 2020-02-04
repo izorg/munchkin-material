@@ -29,6 +29,10 @@ const useStyles = makeStyles(
 
       '@media (orientation: landscape)': {
         fontSize: 32,
+
+        [theme.breakpoints.up('sm')]: {
+          fontSize: 36,
+        },
       },
     },
 

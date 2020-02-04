@@ -50,6 +50,10 @@ const useStyles = makeStyles(
       flexShrink: 0,
       paddingLeft: theme.spacing(1),
     },
+
+    statsPrimary: {
+      fontWeight: theme.typography.fontWeightRegular,
+    },
   }),
   { name: displayName },
 );
@@ -69,6 +73,7 @@ const PlayerListItemText = ({ hideStats, player }) => {
         <ListItemText
           className={classes.stats}
           primaryTypographyProps={{
+            className: classes.statsPrimary,
             variant: 'h6',
           }}
         >

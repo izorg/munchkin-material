@@ -1,7 +1,7 @@
 import { IconButton } from '@material-ui/core';
 import Hammer from 'hammerjs';
 import PropTypes from 'prop-types';
-import React, { useEffect, useRef } from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
 
 const displayName = 'CounterButton';
 
@@ -9,9 +9,27 @@ const CounterButton = ({ onClick, ...rest }) => {
   const hammerRef = useRef(null);
   const buttonRef = useRef(null);
 
+  const pressIntervalRef = useRef(null);
+
+  const onPress = useCallback(() => {
+    onClick();
+
+    pressIntervalRef.current = setInterval(() => {
+      onClick();
+    }, 250);
+  }, [onClick]);
+
+  const onPressUp = useCallback(() => {
+    if (pressIntervalRef.current) {
+      clearInterval(pressIntervalRef.current);
+
+      pressIntervalRef.current = null;
+    }
+  }, []);
+
   useEffect(() => {
     hammerRef.current = new Hammer(buttonRef.current, {
-      recognizers: [[Hammer.Tap]],
+      recognizers: [[Hammer.Tap], [Hammer.Press]],
     });
 
     return () => {
@@ -24,9 +42,19 @@ const CounterButton = ({ onClick, ...rest }) => {
 
   useEffect(() => {
     hammerRef.current.on('tap', onClick);
+    hammerRef.current.on('press', onPress);
+    hammerRef.current.on('pressup', onPressUp);
 
-    return () => hammerRef.current && hammerRef.current.off('tap', onClick);
-  }, [onClick]);
+    return () => {
+      if (hammerRef.current) {
+        hammerRef.current.off('tap', onClick);
+        hammerRef.current.off('press', onPress);
+        hammerRef.current.off('pressup', onPressUp);
+
+        onPressUp();
+      }
+    };
+  }, [onClick, onPress, onPressUp]);
 
   return <IconButton ref={buttonRef} {...rest} />;
 };

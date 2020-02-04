@@ -1,6 +1,6 @@
 import { IconButton, makeStyles, Typography } from '@material-ui/core';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useIntl } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -82,12 +82,49 @@ const CombatPlayer = ({ playerId }) => {
   const bonus =
     playerId === combat.helperId ? combat.helperBonus : combat.playerBonus;
 
-  const onBonusChange = (value) =>
-    dispatch(
-      playerId === combat.helperId
-        ? setCombatHelperBonus(value)
-        : setCombatPlayerBonus(value),
-    );
+  const onBonusChange = useCallback(
+    (value) => {
+      dispatch((_, getState) => {
+        const {
+          combat: { helperBonus, helperId, playerBonus },
+        } = getState();
+
+        const currentBonus = playerId === helperId ? helperBonus : playerBonus;
+
+        dispatch(
+          playerId === helperId
+            ? setCombatHelperBonus(currentBonus + value)
+            : setCombatPlayerBonus(currentBonus + value),
+        );
+      });
+    },
+    [dispatch, playerId],
+  );
+
+  const onBonusDecrement = useCallback(() => onBonusChange(-1), [
+    onBonusChange,
+  ]);
+  const onBonusIncrement = useCallback(() => onBonusChange(1), [onBonusChange]);
+
+  const onPlayerLevelDecrement = useCallback(
+    () => dispatch(decrementPlayerLevel(id)),
+    [dispatch, id],
+  );
+
+  const onPlayerLevelIncrement = useCallback(
+    () => dispatch(incrementPlayerLevel(id)),
+    [dispatch, id],
+  );
+
+  const onPlayerGearDecrement = useCallback(
+    () => dispatch(decrementPlayerGear(id)),
+    [dispatch, id],
+  );
+
+  const onPlayerGearIncrement = useCallback(
+    () => dispatch(incrementPlayerGear(id)),
+    [dispatch, id],
+  );
 
   return (
     <div className={classes.player}>
@@ -112,22 +149,22 @@ const CombatPlayer = ({ playerId }) => {
           className={classes.item}
           decrementDisabled={levelDecrementDisabled}
           incrementDisabled={levelIncrementDisabled}
-          onDecrement={() => dispatch(decrementPlayerLevel(id))}
-          onIncrement={() => dispatch(incrementPlayerLevel(id))}
+          onDecrement={onPlayerLevelDecrement}
+          onIncrement={onPlayerLevelIncrement}
           title={intl.formatMessage(counterMessages.level)}
           value={level}
         />
         <Counter
           className={classes.item}
-          onDecrement={() => dispatch(decrementPlayerGear(id))}
-          onIncrement={() => dispatch(incrementPlayerGear(id))}
+          onDecrement={onPlayerGearDecrement}
+          onIncrement={onPlayerGearIncrement}
           title={intl.formatMessage(counterMessages.gear)}
           value={gear}
         />
         <Counter
           className={classes.item}
-          onDecrement={() => onBonusChange(bonus - 1)}
-          onIncrement={() => onBonusChange(bonus + 1)}
+          onDecrement={onBonusDecrement}
+          onIncrement={onBonusIncrement}
           title={intl.formatMessage(counterMessages.modifier)}
           value={bonus}
         />

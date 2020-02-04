@@ -1,7 +1,7 @@
 import { IconButton, makeStyles } from '@material-ui/core';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useIntl } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -115,11 +115,26 @@ const PlayerStats = ({ className, playerId }) => {
     epic,
   );
 
-  const onGearDecrement = (id) => dispatch(decrementPlayerGear(id));
-  const onGearIncrement = (id) => dispatch(incrementPlayerGear(id));
-  const onLevelDecrement = (id) => dispatch(decrementPlayerLevel(id));
-  const onLevelIncrement = (id) => dispatch(incrementPlayerLevel(id));
-  const onSexToggle = (id) => dispatch(togglePlayerSex(id));
+  const onGearDecrement = useCallback(
+    () => dispatch(decrementPlayerGear(playerId)),
+    [dispatch, playerId],
+  );
+  const onGearIncrement = useCallback(
+    () => dispatch(incrementPlayerGear(playerId)),
+    [dispatch, playerId],
+  );
+  const onLevelDecrement = useCallback(
+    () => dispatch(decrementPlayerLevel(playerId)),
+    [dispatch, playerId],
+  );
+  const onLevelIncrement = useCallback(
+    () => dispatch(incrementPlayerLevel(playerId)),
+    [dispatch, playerId],
+  );
+  const onSexToggle = useCallback(() => dispatch(togglePlayerSex(playerId)), [
+    dispatch,
+    playerId,
+  ]);
 
   return (
     <div className={clsx(className, classes.stats)}>
@@ -128,16 +143,16 @@ const PlayerStats = ({ className, playerId }) => {
           <Counter
             decrementDisabled={levelDecrementDisabled}
             incrementDisabled={levelIncrementDisabled}
-            onDecrement={() => onLevelDecrement(player.id)}
-            onIncrement={() => onLevelIncrement(player.id)}
+            onDecrement={onLevelDecrement}
+            onIncrement={onLevelIncrement}
             title={intl.formatMessage(counterMessages.level)}
             value={player.level}
           />
         </div>
         <div className={classes.counterContainer}>
           <Counter
-            onDecrement={() => onGearDecrement(player.id)}
-            onIncrement={() => onGearIncrement(player.id)}
+            onDecrement={onGearDecrement}
+            onIncrement={onGearIncrement}
             title={intl.formatMessage(counterMessages.gear)}
             value={player.gear}
           />

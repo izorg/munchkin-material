@@ -1,5 +1,5 @@
 import { IconButton, makeStyles } from '@material-ui/core';
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useIntl } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -7,7 +7,13 @@ import Counter, { counterMessages } from '../../../components/Counter';
 import CounterLabel from '../../../components/Counter/Label';
 import Sex from '../../../components/Sex';
 import { setCombatPlayerBonus } from '../../../ducks/combat';
-import { togglePlayerSex, updatePlayer } from '../../../ducks/players';
+import {
+  decrementPlayerGear,
+  decrementPlayerLevel,
+  incrementPlayerGear,
+  incrementPlayerLevel,
+  togglePlayerSex,
+} from '../../../ducks/players';
 import {
   isLevelDecrementDisabled,
   isLevelIncrementDisabled,
@@ -110,43 +116,46 @@ const SinglePlayer = () => {
     epic,
   );
 
-  const onBonusDecrement = () => dispatch(setCombatPlayerBonus(bonus - 1));
+  const onBonusDecrement = useCallback(
+    () =>
+      dispatch((_, getState) =>
+        dispatch(setCombatPlayerBonus(getState().combat.playerBonus - 1)),
+      ),
+    [dispatch],
+  );
 
-  const onBonusIncrement = () => dispatch(setCombatPlayerBonus(bonus + 1));
+  const onBonusIncrement = useCallback(
+    () =>
+      dispatch((_, getState) =>
+        dispatch(setCombatPlayerBonus(getState().combat.playerBonus + 1)),
+      ),
+    [dispatch],
+  );
 
-  const onGearDecrement = () =>
-    dispatch(
-      updatePlayer({
-        ...player,
-        gear: player.gear - 1,
-      }),
-    );
+  const onLevelDecrement = useCallback(
+    () => dispatch(decrementPlayerLevel(player.id)),
+    [dispatch, player.id],
+  );
 
-  const onGearIncrement = () =>
-    dispatch(
-      updatePlayer({
-        ...player,
-        gear: player.gear + 1,
-      }),
-    );
+  const onLevelIncrement = useCallback(
+    () => dispatch(incrementPlayerLevel(player.id)),
+    [dispatch, player.id],
+  );
 
-  const onLevelDecrement = () =>
-    dispatch(
-      updatePlayer({
-        ...player,
-        level: player.level - 1,
-      }),
-    );
+  const onGearDecrement = useCallback(
+    () => dispatch(decrementPlayerGear(player.id)),
+    [dispatch, player.id],
+  );
 
-  const onLevelIncrement = () =>
-    dispatch(
-      updatePlayer({
-        ...player,
-        level: player.level + 1,
-      }),
-    );
+  const onGearIncrement = useCallback(
+    () => dispatch(incrementPlayerGear(player.id)),
+    [dispatch, player.id],
+  );
 
-  const onSexToggle = () => dispatch(togglePlayerSex(player.id));
+  const onSexToggle = useCallback(() => dispatch(togglePlayerSex(player.id)), [
+    dispatch,
+    player.id,
+  ]);
 
   return (
     <div className={classes.content}>

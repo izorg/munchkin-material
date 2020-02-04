@@ -1,6 +1,6 @@
 import { makeStyles, Typography } from '@material-ui/core';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useIntl } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -54,6 +54,26 @@ const CombatMonster = ({ monsterId, title }) => {
 
   const { bonus, id, level } = monsters[monsterId];
 
+  const omMonsterLevelDecrement = useCallback(
+    () => dispatch(decrementMonsterLevel(id)),
+    [dispatch, id],
+  );
+
+  const omMonsterLevelIncrement = useCallback(
+    () => dispatch(incrementMonsterLevel(id)),
+    [dispatch, id],
+  );
+
+  const onMonsterBonusDecrement = useCallback(
+    () => dispatch(decrementMonsterBonus(id)),
+    [dispatch, id],
+  );
+
+  const onMonsterBonusIncrement = useCallback(
+    () => dispatch(incrementMonsterBonus(id)),
+    [dispatch, id],
+  );
+
   return (
     <div className={classes.monster}>
       <Typography
@@ -68,15 +88,15 @@ const CombatMonster = ({ monsterId, title }) => {
       <div className={classes.stats}>
         <Counter
           className={classes.item}
-          onDecrement={() => dispatch(decrementMonsterLevel(id))}
-          onIncrement={() => dispatch(incrementMonsterLevel(id))}
+          onDecrement={omMonsterLevelDecrement}
+          onIncrement={omMonsterLevelIncrement}
           title={intl.formatMessage(counterMessages.level)}
           value={level}
         />
         <Counter
           className={classes.item}
-          onDecrement={() => dispatch(decrementMonsterBonus(id))}
-          onIncrement={() => dispatch(incrementMonsterBonus(id))}
+          onDecrement={onMonsterBonusDecrement}
+          onIncrement={onMonsterBonusIncrement}
           title={intl.formatMessage(counterMessages.modifier)}
           value={bonus}
         />

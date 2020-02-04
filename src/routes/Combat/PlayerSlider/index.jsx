@@ -141,8 +141,7 @@ const CombatPlayerSlider = ({ className, helperId, playerId }) => {
           slideStyle={{
             direction,
             height: 224,
-            padding:
-              direction === 'rtl' ? '8px 16px 8px 8px' : '8px 8px 8px 16px',
+            padding: 8,
             position: 'relative',
           }}
           style={{
