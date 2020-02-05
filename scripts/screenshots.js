@@ -9,6 +9,7 @@ const config = require('../webpack.config');
 
 const CS = 'cs';
 const EN = 'en';
+const HE = 'he';
 const RU = 'ru';
 const UK = 'uk';
 
@@ -169,7 +170,7 @@ const getScreenshots = async ({ locale, size }) => {
   await browser.close();
 };
 
-const locales = [CS, EN, RU, UK];
+const locales = [CS, EN, HE, RU, UK];
 
 const screenshots = async () => {
   await fs.remove(path.join(dir));
