@@ -29,7 +29,7 @@ const CounterButton = ({ onClick, ...rest }) => {
 
   useEffect(() => {
     hammerRef.current = new Hammer(buttonRef.current, {
-      recognizers: [[Hammer.Tap], [Hammer.Press]],
+      recognizers: [[Hammer.Tap], [Hammer.Press], [Hammer.Pan]],
     });
 
     return () => {
@@ -44,12 +44,14 @@ const CounterButton = ({ onClick, ...rest }) => {
     hammerRef.current.on('tap', onClick);
     hammerRef.current.on('press', onPress);
     hammerRef.current.on('pressup', onPressUp);
+    hammerRef.current.on('pan', onPressUp);
 
     return () => {
       if (hammerRef.current) {
         hammerRef.current.off('tap', onClick);
         hammerRef.current.off('press', onPress);
         hammerRef.current.off('pressup', onPressUp);
+        hammerRef.current.off('pan', onPressUp);
 
         onPressUp();
       }
