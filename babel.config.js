@@ -1,19 +1,5 @@
 const { version } = require('./package');
 
-const getDefaultTransform = (libs = []) =>
-  libs.reduce(
-    (result, lib) => ({
-      ...result,
-      [lib]: {
-        transform: (member) => `${lib}/${member}`,
-        preventFullImport: true,
-      },
-    }),
-    {},
-  );
-
-const transform = getDefaultTransform(['lodash/fp', 'mdi-material-ui']);
-
 const prod = process.env.NODE_ENV === 'production';
 const i18n = process.env.NODE_ENV === 'i18n';
 const test = process.env.NODE_ENV === 'test';
@@ -63,7 +49,21 @@ module.exports = {
         VERSION: version,
       },
     ],
-    ['babel-plugin-transform-imports', transform],
+    [
+      'babel-plugin-transform-imports',
+      {
+        'lodash/fp': {
+          // eslint-disable-next-line no-template-curly-in-string
+          transform: 'lodash/fp/${member}',
+          preventFullImport: true,
+        },
+        'mdi-material-ui': {
+          // eslint-disable-next-line no-template-curly-in-string
+          transform: 'mdi-material-ui/${member}',
+          preventFullImport: true,
+        },
+      },
+    ],
     prod && 'babel-plugin-transform-react-remove-prop-types',
   ].filter(Boolean),
 };

@@ -1,9 +1,8 @@
-import { createSelector } from 'reselect';
-import { get } from 'lodash/fp';
 import { parse, stringify } from 'qs';
+import { createSelector } from 'reselect';
 
 export const getQuery = createSelector(
-  get(['router', 'location', 'search']),
+  (state) => state.router.location.search,
   (search) =>
     parse(search, {
       ignoreQueryPrefix: true,

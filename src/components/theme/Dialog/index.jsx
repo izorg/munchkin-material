@@ -10,7 +10,6 @@ import {
   RadioGroup,
 } from '@material-ui/core';
 import { goBack, replace } from 'connected-react-router';
-import { flow, get } from 'lodash/fp';
 import React from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
@@ -36,11 +35,11 @@ const useStyles = makeStyles(
   { name: displayName },
 );
 
-const getOpen = flow(getQuery, ({ theme }) => theme !== undefined);
+const getOpen = (state) => getQuery(state).theme !== undefined;
 
 const getTheme = createSelector(
-  flow(getQuery, get('theme')),
-  get('theme'),
+  (state) => getQuery(state).theme,
+  (state) => state.theme,
   (previewTheme, theme) => ({
     ...theme,
     ...previewTheme,

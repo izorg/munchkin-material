@@ -8,7 +8,6 @@ import {
   makeStyles,
 } from '@material-ui/core';
 import { goBack } from 'connected-react-router';
-import { flow, get, isEqual } from 'lodash/fp';
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
@@ -43,7 +42,7 @@ const HelperSelector = (props) => {
       .map((id) => state.players[id]),
   );
 
-  const open = useSelector(flow(getQuery, get('add'), isEqual('helper')));
+  const open = useSelector((state) => getQuery(state).add === 'helper');
 
   const onClose = () => dispatch(goBack());
 

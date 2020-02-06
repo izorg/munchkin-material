@@ -1,9 +1,9 @@
-import { without } from 'lodash/fp';
-
 import availableColors from './availableColors';
 
-export default (excluded = []) => {
-  let preferredColors = without(excluded, availableColors);
+const getRandomMaterialColor = (excluded = []) => {
+  let preferredColors = availableColors.filter(
+    (color) => !excluded.includes(color),
+  );
 
   if (!preferredColors.length) {
     preferredColors = availableColors;
@@ -13,3 +13,5 @@ export default (excluded = []) => {
 
   return preferredColors[index];
 };
+
+export default getRandomMaterialColor;
