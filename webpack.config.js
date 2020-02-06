@@ -173,7 +173,6 @@ module.exports = {
     !dev &&
       site &&
       new InjectManifest({
-        precacheManifestFilename: 'js/precache-manifest.[manifestHash].js',
         swSrc: path.resolve(__dirname, './src/site/service-worker.js'),
       }),
 
