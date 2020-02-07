@@ -33,12 +33,14 @@ const CounterButton = ({ onClick, ...rest }) => {
     });
 
     return () => {
+      onPressUp();
+
       hammerRef.current.stop();
       hammerRef.current.destroy();
 
       hammerRef.current = null;
     };
-  }, []);
+  }, [onPressUp]);
 
   useEffect(() => {
     hammerRef.current.on('tap', onClick);
