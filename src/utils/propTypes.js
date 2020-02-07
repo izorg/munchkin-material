@@ -5,10 +5,6 @@ import { FEMALE, MALE } from './sex';
 
 export const colorType = PropTypes.oneOf(availableColors);
 
-export const matchShape = PropTypes.shape({
-  params: PropTypes.object,
-});
-
 export const monsterShape = PropTypes.shape({
   bonus: PropTypes.number.isRequired,
   id: PropTypes.string.isRequired,

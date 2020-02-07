@@ -1,10 +1,9 @@
 import { makeStyles } from '@material-ui/core';
 import React, { useRef } from 'react';
 import { useSelector } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, useParams } from 'react-router-dom';
 
 import PlayerContext from '../../components/PlayerContext';
-import { matchShape } from '../../utils/propTypes';
 
 import AppBar from './AppBar';
 import CombatButton from './CombatButton';
@@ -72,12 +71,12 @@ const useStyles = makeStyles(
   { name: displayName },
 );
 
-const Player = ({ match }) => {
+const Player = () => {
   const classes = useStyles();
   const playerRef = useRef();
   const playerList = useSelector((state) => state.playerList);
 
-  const playerId = match && match.params.id;
+  const { id: playerId } = useParams();
 
   if (playerId && !playerList.includes(playerId)) {
     return <Redirect to="/" />;
@@ -109,10 +108,6 @@ const Player = ({ match }) => {
       <Undo />
     </PlayerContext.Provider>
   );
-};
-
-Player.propTypes = {
-  match: matchShape,
 };
 
 Player.defaultProps = {

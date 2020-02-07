@@ -38,7 +38,7 @@ const DialogRoute = ({ component: Component, path }) => {
 
   return (
     <Route path={path}>
-      {({ match, ...rest }) => (
+      {({ match }) => (
         <Dialog
           classes={classes}
           disableEscapeKeyDown
@@ -52,7 +52,7 @@ const DialogRoute = ({ component: Component, path }) => {
             direction: 'left',
           }}
         >
-          <Component match={match} {...rest} />
+          <Component />
         </Dialog>
       )}
     </Route>

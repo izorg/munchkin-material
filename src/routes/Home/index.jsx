@@ -1,8 +1,8 @@
 import { makeStyles, Paper, Zoom } from '@material-ui/core';
 import clsx from 'clsx';
-import PropTypes from 'prop-types';
 import React, { useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 
 import LevelLimitDialog from '../../components/levelLimit/Dialog';
 import MenuDrawer from '../../components/menu/Drawer';
@@ -89,7 +89,7 @@ const useStyles = makeStyles(
   { name: displayName },
 );
 
-const Home = ({ match }) => {
+const Home = () => {
   const contentRef = useRef();
 
   const classes = useStyles();
@@ -113,7 +113,7 @@ const Home = ({ match }) => {
   let content;
 
   const singleMode = useSelector((state) => state.app.singleMode);
-  const { mode } = match.params;
+  const { mode } = useParams();
 
   if (singleMode) {
     content = <SinglePlayer />;
@@ -159,10 +159,6 @@ const Home = ({ match }) => {
       <Undo />
     </>
   );
-};
-
-Home.propTypes = {
-  match: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
 };
 
 Home.displayName = displayName;
