@@ -1,7 +1,7 @@
+const fs = require('fs').promises;
 const path = require('path');
 
 const { duration } = require('@material-ui/core/styles/transitions');
-const fs = require('fs-extra');
 const puppeteer = require('puppeteer');
 const devices = require('puppeteer/DeviceDescriptors');
 
@@ -69,7 +69,13 @@ const getScreenshots = async ({ locale, size }) => {
 
   const screenshotDir = path.join(dir, locale, size);
 
-  await fs.ensureDir(screenshotDir);
+  try {
+    await fs.mkdir(screenshotDir, {
+      recursive: true,
+    });
+  } catch (e) {
+    // dir exists
+  }
 
   const menuSelector = '[data-screenshot="drawer-menu"]';
 
@@ -173,7 +179,9 @@ const getScreenshots = async ({ locale, size }) => {
 const locales = [CS, EN, HE, RU, UK];
 
 const screenshots = async () => {
-  await fs.remove(path.join(dir));
+  await fs.rmdir(path.join(dir), {
+    recursive: true,
+  });
 
   // eslint-disable-next-line no-restricted-syntax,no-unused-vars
   for (const locale of locales) {

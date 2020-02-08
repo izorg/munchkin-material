@@ -1,6 +1,5 @@
-const fs = require('fs-extra');
+const fs = require('fs').promises;
 
-// const api = require('../smartcat');
 const poeditor = require('../poeditor');
 
 const {
@@ -8,7 +7,12 @@ const {
 } = require('../../config'); // eslint-disable-line import/no-unresolved
 
 const writeTranslation = async (code, data) => {
-  await fs.ensureDir('./languages');
+  try {
+    await fs.mkdir('./languages');
+  } catch (e) {
+    // dir exists
+  }
+
   await fs.writeFile(
     `./languages/${code}.json`,
     JSON.stringify(data, null, '  '),
@@ -17,19 +21,8 @@ const writeTranslation = async (code, data) => {
   console.log(`✅ ${code.toUpperCase()}`);
 };
 
-// const downloadTranslation = async (document) => {
-//   const task = await api.exportDocument(document);
-//   const translation = await api.getTranslation(task.id);
-//
-//   await writeTranslation(document.targetLanguage, translation);
-// };
-
 (async () => {
   console.log('Downloading locales:');
-
-  // const documents = await api.getDocuments();
-
-  // documents.forEach(downloadTranslation);
 
   const response = await poeditor.post('/languages/list', {
     id: projectId,
