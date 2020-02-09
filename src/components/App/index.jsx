@@ -18,10 +18,10 @@ class App extends Component {
 
     if (Sentry) {
       Sentry.withScope((scope) => {
-        Object.keys(errorInfo).forEach((key) => {
-          scope.setExtra(key, errorInfo[key]);
+        scope.setExtras({
+          ...errorInfo,
+          state: store.getState(),
         });
-        scope.setExtra('state', store.getState());
         Sentry.captureException(error);
       });
     }

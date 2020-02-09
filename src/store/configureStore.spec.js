@@ -1,6 +1,6 @@
 import { createMemoryHistory } from 'history';
 
-import configureStore from '../configureStore';
+import configureStore from './configureStore';
 
 test('should be created', () => {
   const store = configureStore({ history: createMemoryHistory() });

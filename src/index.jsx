@@ -1,7 +1,6 @@
 import 'core-js/es/map'; // for react
 import 'core-js/es/set'; // for react
 import 'core-js/es/symbol'; // for @material-ui/styles ThemeProvider
-
 import React from 'react';
 import { render } from 'react-dom';
 import 'react-hot-loader';
@@ -38,7 +37,9 @@ const init = (appEl, initOptions) => {
 
   if (Sentry) {
     Sentry.configureScope((scope) => {
-      scope.setExtra('version', VERSION);
+      scope.setExtras({
+        version: VERSION,
+      });
     });
   }
 
