@@ -13,12 +13,15 @@ const displayName = 'Root';
 
 const Root = () => (
   <>
-    <DialogRoute
-      component={Home}
-      path={`/:mode(${Object.values(modes).join('|')})?`}
-    />
-    <DialogRoute component={Player} path="/player/:id" />
-    <DialogRoute component={Combat} path="/player/:id/combat" />
+    <DialogRoute path={`/:mode(${Object.values(modes).join('|')})?`}>
+      <Home />
+    </DialogRoute>
+    <DialogRoute path="/player/:id">
+      <Player />
+    </DialogRoute>
+    <DialogRoute path="/player/:id/combat">
+      <Combat />
+    </DialogRoute>
 
     <DiceDialog />
     <PlayerDialog />

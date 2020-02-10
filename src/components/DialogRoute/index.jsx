@@ -25,7 +25,7 @@ const useStyles = makeStyles(
 
 let appear = false;
 
-const DialogRoute = ({ component: Component, path }) => {
+const DialogRoute = ({ children, path }) => {
   const classes = useStyles();
   const theme = useTheme();
 
@@ -52,7 +52,7 @@ const DialogRoute = ({ component: Component, path }) => {
             direction: 'left',
           }}
         >
-          <Component />
+          {children}
         </Dialog>
       )}
     </Route>
@@ -60,7 +60,7 @@ const DialogRoute = ({ component: Component, path }) => {
 };
 
 DialogRoute.propTypes = {
-  component: PropTypes.elementType.isRequired,
+  children: PropTypes.node.isRequired,
   path: PropTypes.string.isRequired,
 };
 
