@@ -227,7 +227,6 @@ const PlayerDialog = () => {
       PaperProps={{
         component: 'form',
         name: 'player',
-        // initialValues,
         onSubmit,
       }}
       TransitionComponent={fullScreen && ios ? Slide : Fade}
