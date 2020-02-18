@@ -4,6 +4,7 @@ export const DE = 'de';
 export const EL = 'el';
 export const EN = 'en';
 export const ES = 'es';
+export const FI = 'fi';
 export const FR = 'fr';
 export const HE = 'he';
 export const HU = 'hu';
@@ -37,6 +38,9 @@ const loaders = {
 
   [ES]: () =>
     import(/* webpackChunkName: "locales/es" */ '../languages/es.json'),
+
+  [FI]: () =>
+    import(/* webpackChunkName: "locales/fi" */ '../languages/fi.json'),
 
   [FR]: () =>
     import(/* webpackChunkName: "locales/fr" */ '../languages/fr.json'),
