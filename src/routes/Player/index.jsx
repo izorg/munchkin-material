@@ -45,8 +45,6 @@ const useStyles = makeStyles(
     },
 
     playerList: {
-      backgroundColor: theme.palette.background.paper,
-      boxShadow: theme.shadows[2],
       display: 'none',
       flex: '0 1 auto',
       overflowY: 'auto',

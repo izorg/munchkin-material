@@ -1,4 +1,4 @@
-import { List } from '@material-ui/core';
+import { List, Paper } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { useSelector } from 'react-redux';
@@ -12,7 +12,10 @@ const PlayerList = ({ selectedPlayerId, ...props }) => {
   const players = useSelector((state) => state.players);
 
   return (
-    <List {...props}>
+    <List
+      component={(listProps) => <Paper elevation={2} square {...listProps} />}
+      {...props}
+    >
       {playerList.map((playerId) => (
         <Item
           key={playerId}
