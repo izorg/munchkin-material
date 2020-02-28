@@ -86,12 +86,16 @@ module.exports = {
       },
       {
         test: /\.(woff|woff2)$/,
-        loader: 'file-loader',
-        options: {
-          name: dev || dist ? '[name].[ext]' : '[name].[hash].[ext]',
-          outputPath: 'fonts/',
-          publicPath: site ? '/fonts/' : 'fonts/',
-        },
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: dev || dist ? '[name].[ext]' : '[name].[hash].[ext]',
+              outputPath: 'fonts/',
+              publicPath: site ? '/fonts/' : 'fonts/',
+            },
+          },
+        ],
       },
       {
         test: /\.png$/,
@@ -115,10 +119,14 @@ module.exports = {
       },
       {
         test: /\.html$/,
-        loader: 'html-loader',
-        options: {
-          attrs: ['link:href'],
-        },
+        use: [
+          {
+            loader: 'html-loader',
+            options: {
+              attrs: ['link:href'],
+            },
+          },
+        ],
       },
     ],
   },
@@ -128,7 +136,7 @@ module.exports = {
       verbose: false,
     }),
 
-    !dev && new webpack.HashedModuleIdsPlugin(),
+    new webpack.HashedModuleIdsPlugin(),
 
     new WebpackNotifierPlugin({
       alwaysNotify: true,
