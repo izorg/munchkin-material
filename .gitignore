@@ -1,14 +1,11 @@
-/.DS_Store
+.DS_Store
 /.firebase/
 /.idea/
 /.vscode/
-/build/
 /config.json
 /coverage/
 /dist/
-/doc/
 /messages/
-/node_modules/
 /screenshots/
 /site/
-/temp/
+node_modules/

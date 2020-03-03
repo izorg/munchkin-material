@@ -1,0 +1,8 @@
+{
+  "config_android": {
+    "app_name": "Munchkin"
+  },
+  "config_ios": {
+    "CFBundleDisplayName": "Seviye sayacı"
+  }
+}

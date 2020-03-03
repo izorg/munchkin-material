@@ -1,0 +1,12 @@
+{
+  "locale": {
+    "android": ["he", "iw"],
+    "ios": ["he"]
+  },
+  "config_android": {
+    "app_name": "מאנצ'קין"
+  },
+  "config_ios": {
+    "CFBundleDisplayName": "מדד רמת"
+  }
+}

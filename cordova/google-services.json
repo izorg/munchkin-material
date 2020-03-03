@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "996090838746",
+    "firebase_url": "https://izorg-munchkin.firebaseio.com",
+    "project_id": "izorg-munchkin",
+    "storage_bucket": "izorg-munchkin.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:996090838746:android:1ad03f1fb31adfb0",
+        "android_client_info": {
+          "package_name": "com.izorg.munchkin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "996090838746-at5d7cknvu0m7kldstu8rs3cls8pobrl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA5O7q3j-7g8wwcswe34cwYCSJrDwG6p84"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
