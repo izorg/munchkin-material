@@ -5,6 +5,7 @@
 /config.json
 /coverage/
 /dist/
+/firebase-debug.log
 /messages/
 /screenshots/
 /site/
