@@ -14,6 +14,12 @@ script:
   - npm run lint
   - npm run test
   - npm run site
+  - export SENTRY_PROJECT=munchkin-web
+  - VERSION=`node ./scripts/version.js`
+  - sentry-cli releases new "$VERSION"
+  - sentry-cli releases files "$VERSION" upload-sourcemaps site
+  - sentry-cli releases set-commits "$VERSION" --auto
+  - sentry-cli releases deploys "$VERSION" new -e "production"
 
 deploy:
   - provider: firebase
