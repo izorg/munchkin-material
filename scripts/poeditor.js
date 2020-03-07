@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-const { poeditor: config } = require('../config');
+const { poeditor: config } = require('../config'); // eslint-disable-line import/no-unresolved
 
 const poeditor = axios.create({
   baseURL: 'https://api.poeditor.com/v2',
