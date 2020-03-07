@@ -5,9 +5,7 @@
 /.vscode/
 /config.json
 /coverage/
-/dist/
 /firebase-debug.log
-/messages/
 /screenshots/
-/site/
+/web/
 node_modules/

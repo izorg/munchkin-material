@@ -1,25 +1,26 @@
-/* eslint-disable */
+/* eslint-disable no-console */
+/* global cordova */
 import { createHashHistory, createMemoryHistory } from 'history';
 
-import init from '../../src/index';
+import init from './index';
 
-(function() {
-  var FULL_VERSION_ID = 'full_version';
+(() => {
+  const FULL_VERSION_ID = 'full_version';
 
   function initStore() {
     if (!window.store) {
       console.log('Store not available');
-      return;
+      return undefined;
     }
 
-    var store = window.store;
+    const { store } = window;
 
     if (process.env.NODE_ENV === 'development') {
       store.verbosity = store.DEBUG;
     }
 
-    store.error(function(error) {
-      console.log('ERROR ' + error.code + ': ' + error.message);
+    store.error((error) => {
+      console.log(`ERROR ${error.code}: ${error.message}`);
     });
 
     store.register({
@@ -45,12 +46,12 @@ import init from '../../src/index';
       }
     }
 
-    var currentKeepAwake = selectKeepAwake(store.getState());
+    let currentKeepAwake = selectKeepAwake(store.getState());
 
     setKeepAwake(currentKeepAwake);
 
-    store.subscribe(function() {
-      var previousKeepAwake = currentKeepAwake;
+    store.subscribe(() => {
+      const previousKeepAwake = currentKeepAwake;
 
       currentKeepAwake = selectKeepAwake(store.getState());
 
@@ -69,12 +70,12 @@ import init from '../../src/index';
         return 'itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=1448937097';
 
       default:
-        return;
+        throw new Error('No platformId found in cordova');
     }
   }
 
-  var cordovaApp = {
-    init: function() {
+  const cordovaApp = {
+    init() {
       document.addEventListener(
         'deviceready',
         this.onDeviceReady.bind(this),
@@ -82,7 +83,7 @@ import init from '../../src/index';
       );
     },
 
-    onBackButton: function(history, e) {
+    onBackButton(history, e) {
       e.preventDefault();
 
       if (history.canGo(-1)) {
@@ -92,15 +93,15 @@ import init from '../../src/index';
       }
     },
 
-    buyFullVersion: function(store) {
-      return new Promise(function(resolve, reject) {
-        var product = store.get(FULL_VERSION_ID);
+    buyFullVersion(store) {
+      return new Promise((resolve, reject) => {
+        const product = store.get(FULL_VERSION_ID);
 
-        store.once(FULL_VERSION_ID).owned(function() {
+        store.once(FULL_VERSION_ID).owned(() => {
           resolve();
         });
 
-        store.once(FULL_VERSION_ID).cancelled(function() {
+        store.once(FULL_VERSION_ID).cancelled(() => {
           reject();
         });
 
@@ -108,12 +109,12 @@ import init from '../../src/index';
       });
     },
 
-    restorePurchases: function(store) {
+    restorePurchases(store) {
       store.refresh();
     },
 
-    onDeviceReady: function() {
-      var Sentry;
+    onDeviceReady() {
+      let Sentry;
 
       if (cordova.platformId !== 'browser') {
         Sentry = cordova.require('sentry-cordova.Sentry');
@@ -124,17 +125,17 @@ import init from '../../src/index';
         });
       }
 
-      var history =
+      const history =
         cordova.platformId === 'browser'
           ? createHashHistory()
           : createMemoryHistory();
 
-      var playStore = initStore();
-      var options = {
-        history: history,
+      const playStore = initStore();
+      const options = {
+        history,
         keepAwakeSupport: true,
         privacyLink: 'https://allmunchkins.com/privacy',
-        Sentry: Sentry,
+        Sentry,
         shareLink: 'https://allmunchkins.com',
       };
 
@@ -155,9 +156,9 @@ import init from '../../src/index';
       //   return Promise.resolve();
       // };
 
-      var appEl = document.getElementById('app');
-      var munchkinApp = init(appEl, options);
-      var reduxStore = munchkinApp.store;
+      const appEl = document.getElementById('app');
+      const munchkinApp = init(appEl, options);
+      const reduxStore = munchkinApp.store;
 
       document.addEventListener(
         'backbutton',
@@ -168,15 +169,15 @@ import init from '../../src/index';
       handleKeepWakeChange(reduxStore);
 
       if (playStore) {
-        playStore.once(FULL_VERSION_ID).loaded(function() {
+        playStore.once(FULL_VERSION_ID).loaded(() => {
           munchkinApp.setFullVersion(false);
         });
 
-        playStore.once(FULL_VERSION_ID).approved(function(product) {
+        playStore.once(FULL_VERSION_ID).approved((product) => {
           product.finish();
         });
 
-        playStore.once(FULL_VERSION_ID).owned(function() {
+        playStore.once(FULL_VERSION_ID).owned(() => {
           munchkinApp.setFullVersion(true);
         });
 

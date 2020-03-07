@@ -9,14 +9,14 @@ const WebpackNotifierPlugin = require('webpack-notifier');
 const { InjectManifest } = require('workbox-webpack-plugin');
 
 const dev = process.env.NODE_ENV === 'development';
-const dist = process.env.BUILD === 'dist';
-const site = process.env.BUILD === 'site';
+const cordova = process.env.BUILD === 'cordova';
+const web = process.env.BUILD === 'web';
 
-const outputPath = path.resolve(__dirname, dist ? 'cordova/www' : 'site');
+const outputPath = path.resolve(__dirname, cordova ? 'cordova/www' : 'web');
 
-let entry = './cordova/src/index.js';
+let entry = './src/cordova.js';
 
-if (site) {
+if (web) {
   entry = './src/site/index.js';
 }
 
@@ -32,12 +32,10 @@ module.exports = {
   entry,
 
   output: {
-    chunkFilename: dev || dist ? 'js/[name].js' : 'js/[name].[chunkhash].js',
+    chunkFilename: dev || cordova ? 'js/[name].js' : 'js/[name].[chunkhash].js',
     filename: 'js/[name].js',
-    library: dist ? 'MunchkinApp' : undefined,
-    libraryExport: 'default',
     path: outputPath,
-    publicPath: site ? '/' : '',
+    publicPath: web ? '/' : '',
   },
 
   resolve: {
@@ -91,11 +89,11 @@ module.exports = {
 
     new CopyPlugin(
       [
-        { from: 'static/fonts', to: 'fonts' },
-        site && { from: 'static/images', to: 'images' },
-        site && { from: 'static/manifest.json', to: 'manifest.json' },
-        site && { from: 'static/web.html', to: 'index.html' },
-        dist && { from: 'static/cordova.html', to: 'index.html' },
+        { from: 'src/static/fonts', to: 'fonts' },
+        web && { from: 'src/static/images', to: 'images' },
+        web && { from: 'src/static/manifest.json', to: 'manifest.json' },
+        web && { from: 'src/static/web.html', to: 'index.html' },
+        cordova && { from: 'src/static/cordova.html', to: 'index.html' },
       ].filter(Boolean),
     ),
 
@@ -105,15 +103,15 @@ module.exports = {
       alwaysNotify: true,
     }),
 
-    dist &&
+    cordova &&
       new webpack.optimize.LimitChunkCountPlugin({
         maxChunks: 1,
       }),
 
     !dev &&
-      site &&
+      web &&
       new InjectManifest({
-        swSrc: path.resolve(__dirname, './src/site/service-worker.js'),
+        swSrc: './src/service-worker.js',
       }),
 
     process.env.STATS &&

@@ -1,9 +1,5 @@
 /.idea/
 /.vscode/
-/build/
 /cordova/
 /coverage/
-/dist/
-/doc/
-/messages/
-/site/
+/web/

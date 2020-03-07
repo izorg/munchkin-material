@@ -1,6 +1,5 @@
 /.gradle/
 /build.json
-/node_modules/
 /platforms/
 /plugins/
 /sentry.properties
