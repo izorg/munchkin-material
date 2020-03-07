@@ -2,6 +2,8 @@
 <html>
   <head>
     <title>Munchkin</title>
+
+    <meta charset="utf-8" />
     <!--
     Customize this policy to fit your own app's needs. For more guidance, see:
         https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
@@ -22,12 +24,29 @@
       content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, viewport-fit=cover, width=device-width"
     />
 
-    <meta charset="utf-8" />
+    <style>
+      @font-face {
+        font-family: 'Munchkin';
+        font-style: normal;
+        font-weight: normal;
+        src: url(fonts/munchkin.woff2) format('woff2'),
+          url(fonts/munchkin.woff) format('woff');
+      }
+
+      body {
+        background-color: #fafafa;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        body {
+          background-color: #121212;
+        }
+      }
+    </style>
   </head>
   <body>
     <div id="app"></div>
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
-    <script type="text/javascript" src="js/index.js"></script>
   </body>
 </html>

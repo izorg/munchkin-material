@@ -1,12 +1,7 @@
 /.gradle/
-
 /build.json
 /node_modules/
 /platforms/
 /plugins/
 /sentry.properties
-/www/fonts/
-/www/js/
-
-.DS_Store
-npm-debug.log
+/www/

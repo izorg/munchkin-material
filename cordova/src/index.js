@@ -1,6 +1,8 @@
 /* eslint-disable */
 import { createHashHistory, createMemoryHistory } from 'history';
 
+import init from '../../src/index';
+
 (function() {
   var FULL_VERSION_ID = 'full_version';
 
@@ -154,7 +156,7 @@ import { createHashHistory, createMemoryHistory } from 'history';
       // };
 
       var appEl = document.getElementById('app');
-      var munchkinApp = new MunchkinApp(appEl, options);
+      var munchkinApp = init(appEl, options);
       var reduxStore = munchkinApp.store;
 
       document.addEventListener(

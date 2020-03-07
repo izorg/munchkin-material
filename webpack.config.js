@@ -3,27 +3,25 @@ const path = require('path');
 const webpack = require('webpack');
 
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const WebpackNotifierPlugin = require('webpack-notifier');
-const WebpackPwaManifest = require('webpack-pwa-manifest');
 const { InjectManifest } = require('workbox-webpack-plugin');
-const WriteFilePlugin = require('write-file-webpack-plugin');
 
 const dev = process.env.NODE_ENV === 'development';
 const dist = process.env.BUILD === 'dist';
 const site = process.env.BUILD === 'site';
 
-const outputPath = path.resolve(__dirname, dist ? 'dist' : 'site');
+const outputPath = path.resolve(__dirname, dist ? 'cordova/www' : 'site');
 
-let entry = './index.jsx';
+let entry = './cordova/src/index.js';
 
 if (site) {
-  entry = './site/index.js';
+  entry = './src/site/index.js';
 }
 
 if (dev) {
-  entry = './dev/index.js';
+  entry = './src/dev/index.js';
 }
 
 module.exports = {
@@ -33,10 +31,9 @@ module.exports = {
 
   entry,
 
-  context: path.resolve(__dirname, './src'),
-
   output: {
-    filename: dev || dist ? 'js/[name].js' : 'js/[name].[chunkhash].js',
+    chunkFilename: dev || dist ? 'js/[name].js' : 'js/[name].[chunkhash].js',
+    filename: 'js/[name].js',
     library: dist ? 'MunchkinApp' : undefined,
     libraryExport: 'default',
     path: outputPath,
@@ -44,7 +41,7 @@ module.exports = {
   },
 
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: ['.js', '.json', '.jsx'],
   },
 
   module: {
@@ -84,50 +81,6 @@ module.exports = {
           },
         ],
       },
-      {
-        test: /\.(woff|woff2)$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: dev || dist ? '[name].[ext]' : '[name].[hash].[ext]',
-              outputPath: 'fonts/',
-              publicPath: site ? '/fonts/' : 'fonts/',
-            },
-          },
-        ],
-      },
-      {
-        test: /\.png$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: dev || dist ? '[name].[ext]' : '[name].[hash].[ext]',
-              esModule: false,
-              outputPath: 'images/',
-              publicPath: site ? '/images/' : 'images/',
-            },
-          },
-          {
-            loader: 'image-webpack-loader',
-            options: {
-              disable: dev,
-            },
-          },
-        ],
-      },
-      {
-        test: /\.html$/,
-        use: [
-          {
-            loader: 'html-loader',
-            options: {
-              attrs: ['link:href'],
-            },
-          },
-        ],
-      },
     ],
   },
 
@@ -135,6 +88,16 @@ module.exports = {
     new CleanWebpackPlugin({
       verbose: false,
     }),
+
+    new CopyPlugin(
+      [
+        { from: 'static/fonts', to: 'fonts' },
+        site && { from: 'static/images', to: 'images' },
+        site && { from: 'static/manifest.json', to: 'manifest.json' },
+        site && { from: 'static/web.html', to: 'index.html' },
+        dist && { from: 'static/cordova.html', to: 'index.html' },
+      ].filter(Boolean),
+    ),
 
     new webpack.HashedModuleIdsPlugin(),
 
@@ -145,37 +108,6 @@ module.exports = {
     dist &&
       new webpack.optimize.LimitChunkCountPlugin({
         maxChunks: 1,
-      }),
-
-    site &&
-      new HtmlWebpackPlugin({
-        filename: 'index.html',
-        template: './index.html',
-      }),
-
-    dev &&
-      new WriteFilePlugin({
-        test: /index\.html/,
-      }),
-
-    site &&
-      new WebpackPwaManifest({
-        background_color: '#FFFFFF',
-        display: 'standalone',
-        fingerprints: !dev && site,
-        icons: [
-          {
-            destination: path.join('images'),
-            sizes: [192, 256, 384, 512],
-            src: path.resolve('src/images/icon-512x512.png'),
-          },
-        ],
-        inject: true,
-        name: 'Munchkin Level Counter',
-        orientation: 'any',
-        short_name: 'Munchkin',
-        theme_color: '#000000',
-        start_url: '/',
       }),
 
     !dev &&

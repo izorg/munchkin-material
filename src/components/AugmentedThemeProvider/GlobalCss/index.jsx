@@ -1,21 +1,11 @@
 import { CssBaseline, makeStyles } from '@material-ui/core';
 import React from 'react';
 
-import munchkinWoff from '../../../fonts/munchkin.woff';
-import munchkinWoff2 from '../../../fonts/munchkin.woff2';
-
 const displayName = 'GlobalCss';
 
 const useStyles = makeStyles(
   {
     '@global': {
-      '@font-face': {
-        fontFamily: 'Munchkin',
-        fontStyle: 'normal',
-        fontWeight: 'normal',
-        src: `url(${munchkinWoff2}) format('woff2'), url(${munchkinWoff}) format('woff')`,
-      },
-
       html: {
         height: '100%',
         overflow: 'hidden',
