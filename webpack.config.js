@@ -6,7 +6,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const WebpackNotifierPlugin = require('webpack-notifier');
-const { InjectManifest } = require('workbox-webpack-plugin');
+const { GenerateSW } = require('workbox-webpack-plugin');
 
 const dev = process.env.NODE_ENV === 'development';
 const cordova = process.env.BUILD === 'cordova';
@@ -108,11 +108,7 @@ module.exports = {
         maxChunks: 1,
       }),
 
-    !dev &&
-      web &&
-      new InjectManifest({
-        swSrc: './src/service-worker.js',
-      }),
+    !dev && web && new GenerateSW(),
 
     process.env.STATS &&
       new BundleAnalyzerPlugin({

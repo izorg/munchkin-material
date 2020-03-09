@@ -1,9 +1,11 @@
 import { createBrowserHistory } from 'history';
+import { Workbox } from 'workbox-window';
+
+import { showUpdate } from '../ducks/update';
 
 import init from '../index';
 
 import './firebase';
-import registerServiceWorker from './registerServiceWorker';
 
 import Sentry from './sentry';
 
@@ -25,6 +27,24 @@ app.setFullVersion(true);
 
 if (dev) {
   window.app = app;
-} else {
-  registerServiceWorker(app.store);
+} else if ('serviceWorker' in navigator) {
+  const wb = new Workbox('/service-worker.js');
+
+  wb.addEventListener('waiting', () => {
+    app.store.dispatch(showUpdate());
+
+    const prevUpdate = app.store.getState().update;
+
+    app.store.subscribe(() => {
+      if (app.store.getState().update === false && prevUpdate === true) {
+        wb.addEventListener('controlling', () => {
+          window.location.reload();
+        });
+
+        wb.messageSW({ type: 'SKIP_WAITING' });
+      }
+    });
+  });
+
+  wb.register();
 }
