@@ -17,7 +17,7 @@ script:
   - export SENTRY_PROJECT=munchkin-web
   - VERSION=`node ./scripts/version.js`
   - sentry-cli releases new "$VERSION"
-  - sentry-cli releases files "$VERSION" upload-sourcemaps site
+  - sentry-cli releases files "$VERSION" upload-sourcemaps web
   - sentry-cli releases set-commits "$VERSION" --auto
   - sentry-cli releases deploys "$VERSION" new -e "production"
 
