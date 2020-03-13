@@ -1,10 +1,9 @@
 const fs = require('fs').promises;
 
-const poeditor = require('../poeditor');
-
 const {
   poeditor: { projectId },
 } = require('../../config'); // eslint-disable-line import/no-unresolved
+const poeditor = require('../poeditor');
 
 const writeTranslation = async (code, data) => {
   try {

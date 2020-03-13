@@ -25,6 +25,10 @@
     "import/order": [
       "error",
       {
+        "alphabetize": {
+          "caseInsensitive": true,
+          "order": "asc"
+        },
         "groups": ["builtin", "external", "parent", "sibling", "index"],
         "newlines-between": "always-and-inside-groups"
       }
