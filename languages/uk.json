@@ -15,7 +15,7 @@
   "home.single.title": "Манчкін",
   "kill": "Вбити",
   "levelLimit.epic": "Епічний Манчкін ({minLevel} - {maxLevel})",
-  "levelLimit.label": "Меда рівня",
+  "levelLimit.label": "Ліміт рівня",
   "levelLimit.munchkin": "Манчкін ({minLevel} - {maxLevel})",
   "levelLimit.none": "Без обмежень",
   "mainButton.label": "Додати",
