@@ -5,7 +5,6 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { applyUpdate } from '../../../../ducks/update';
-
 import ListItem from '../Item';
 import ListItemText from '../ItemText';
 

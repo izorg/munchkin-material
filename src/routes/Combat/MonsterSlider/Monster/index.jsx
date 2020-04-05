@@ -11,7 +11,6 @@ import {
   incrementMonsterBonus,
   incrementMonsterLevel,
 } from '../../../../ducks/monsters';
-
 import Counter from '../../Counter';
 
 const displayName = 'CombatMonster';

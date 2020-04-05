@@ -30,7 +30,7 @@
           "order": "asc"
         },
         "groups": ["builtin", "external", "parent", "sibling", "index"],
-        "newlines-between": "always-and-inside-groups"
+        "newlines-between": "always"
       }
     ],
     "react/jsx-sort-default-props": "error",

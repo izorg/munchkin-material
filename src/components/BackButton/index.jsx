@@ -8,7 +8,6 @@ import {
 import React from 'react';
 
 import { ios } from '../../utils/platforms';
-
 import TopIconButton from '../TopIconButton';
 
 const displayName = 'BackButton';

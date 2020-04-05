@@ -1,5 +1,4 @@
 import createMonster from '../../utils/createMonster';
-
 import { START_COMBAT } from '../combat/actionTypes';
 
 import {

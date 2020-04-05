@@ -18,10 +18,8 @@ import { createSelector } from 'reselect';
 import { setTheme } from '../../../ducks/theme';
 import themes from '../../../styles/themes';
 import { getQuery, stringifyQuery } from '../../../utils/location';
-
 import CancelButton from '../../CancelButton';
 import SubmitButton from '../../SubmitButton';
-
 import themeMessages from '../messages';
 
 const displayName = 'ThemeDialog';

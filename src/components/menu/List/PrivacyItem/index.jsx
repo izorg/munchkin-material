@@ -4,7 +4,6 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 
 import { useConfig } from '../../../ConfigProvider';
-
 import ListItem from '../Item';
 import ListItemText from '../ItemText';
 

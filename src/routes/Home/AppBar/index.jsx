@@ -13,7 +13,6 @@ import TopIconButton from '../../../components/TopIconButton';
 import { setCombatPlayerBonus } from '../../../ducks/combat';
 import { removePlayerFromList } from '../../../ducks/playerList';
 import { removePlayer } from '../../../ducks/players';
-
 import * as modes from '../modes';
 import modeType from '../modeType';
 

@@ -21,10 +21,8 @@ import {
   MIN_LEVEL,
 } from '../../../utils/levelLimit';
 import { getQuery } from '../../../utils/location';
-
 import CancelButton from '../../CancelButton';
 import SubmitButton from '../../SubmitButton';
-
 import levelLimitMessages from '../messages';
 
 const displayName = 'LevelLimitDialog';

@@ -1,5 +1,4 @@
 import createPlayer from '../../utils/createPlayer';
-
 import { startCombat } from '../combat';
 import { START_COMBAT } from '../combat/actionTypes';
 import { addPlayer } from '../players';

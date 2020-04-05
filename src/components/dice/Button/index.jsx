@@ -7,7 +7,6 @@ import { useDispatch } from 'react-redux';
 
 import { throwDice } from '../../../ducks/dice';
 import { stringifyQuery } from '../../../utils/location';
-
 import TopIconButton from '../../TopIconButton';
 
 const displayName = 'DiceIconButton';

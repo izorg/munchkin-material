@@ -6,9 +6,7 @@ import { FormattedMessage } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { setKeepAwake } from '../../../../ducks/app';
-
 import { useConfig } from '../../../ConfigProvider';
-
 import ListItem from '../Item';
 import ListItemText from '../ItemText';
 

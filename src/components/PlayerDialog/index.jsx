@@ -31,7 +31,6 @@ import getRandomMaterialColor from '../../utils/getRandomMaterialColor';
 import { getQuery } from '../../utils/location';
 import { ios } from '../../utils/platforms';
 import { FEMALE, MALE } from '../../utils/sex';
-
 import CancelButton from '../CancelButton';
 import SubmitButton from '../SubmitButton';
 

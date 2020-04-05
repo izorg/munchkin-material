@@ -12,7 +12,6 @@ import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
 
 import { ios } from '../../../utils/platforms';
-
 import MenuList from '../List';
 
 const displayName = 'MenuDrawer';

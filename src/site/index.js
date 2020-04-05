@@ -2,7 +2,6 @@ import { createBrowserHistory } from 'history';
 import { Workbox } from 'workbox-window';
 
 import { showUpdate } from '../ducks/update';
-
 import init from '../index';
 
 import './firebase';

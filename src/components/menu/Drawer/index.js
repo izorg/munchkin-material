@@ -7,7 +7,6 @@ import { createSelector, createStructuredSelector } from 'reselect';
 
 import { MULTI } from '../../../routes/Home/modes';
 import { stringifyQuery } from '../../../utils/location';
-
 import openSelector from '../openSelector';
 
 import Component from './Component';

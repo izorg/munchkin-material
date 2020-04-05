@@ -5,7 +5,6 @@ import { FormattedMessage } from 'react-intl';
 import { useSelector } from 'react-redux';
 
 import { useConfig } from '../../../ConfigProvider';
-
 import ListItem from '../Item';
 import ListItemText from '../ItemText';
 

@@ -1,4 +1,3 @@
-import brown from '@material-ui/core/colors/brown';
 import orange from '@material-ui/core/colors/orange';
 import { fade } from '@material-ui/core/styles/colorManipulator';
 import createBreakpoints from '@material-ui/core/styles/createBreakpoints';
@@ -24,12 +23,6 @@ export default ({ direction, type }) => {
     },
 
     overrides: {
-      MuiAvatar: {
-        colorDefault: {
-          backgroundColor: brown[500],
-        },
-      },
-
       MuiDialog: {
         paperScrollPaper: {
           maxHeight: 'calc(100% - 32px)',
@@ -38,9 +31,6 @@ export default ({ direction, type }) => {
     },
 
     palette: {
-      primary: {
-        main: brown[500],
-      },
       secondary: {
         main: orange.A400,
       },
@@ -48,7 +38,6 @@ export default ({ direction, type }) => {
 
     typography: {
       fontFamily: '"Roboto", "San Francisco", "Helvetica", "Arial", sans-serif',
-      useNextVariants: true,
     },
   };
 

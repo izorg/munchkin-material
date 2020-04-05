@@ -21,7 +21,6 @@ import {
   isLevelDecrementDisabled,
   isLevelIncrementDisabled,
 } from '../../../../utils/levelLimit';
-
 import Counter from '../../Counter';
 
 const displayName = 'CombatPlayer';

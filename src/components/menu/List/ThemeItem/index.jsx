@@ -8,10 +8,8 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import themes from '../../../../styles/themes';
 import { stringifyQuery } from '../../../../utils/location';
-
 import themeMessages from '../../../theme/messages';
 import openSelector from '../../openSelector';
-
 import ListItem from '../Item';
 import ListItemText from '../ItemText';
 

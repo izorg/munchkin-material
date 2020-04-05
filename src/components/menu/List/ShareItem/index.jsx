@@ -6,7 +6,6 @@ import { defineMessages, useIntl } from 'react-intl';
 import { useDispatch } from 'react-redux';
 
 import { useConfig } from '../../../ConfigProvider';
-
 import ListItem from '../Item';
 import ListItemText from '../ItemText';
 

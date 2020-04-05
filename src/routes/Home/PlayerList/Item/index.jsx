@@ -15,7 +15,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import PlayerAvatar from '../../../../components/PlayerAvatar';
 import PlayerListItemText from '../../../../components/PlayerListItemText';
 import { togglePlayer, unselectAllPlayers } from '../../../../ducks/app';
-
 import { EDIT, MULTI } from '../../modes';
 import modeType from '../../modeType';
 
