@@ -1,36 +1,8 @@
-/* global cordova */
-import { createHashHistory, createMemoryHistory } from 'history';
+import { createMemoryHistory } from 'history';
 
 import init from './index';
 
 const FULL_VERSION_ID = 'full_version';
-
-const initStore = () => {
-  if (!window.store) {
-    // eslint-disable-next-line no-console
-    console.log('Store not available');
-
-    return undefined;
-  }
-
-  const { store } = window;
-
-  if (process.env.NODE_ENV === 'development') {
-    store.verbosity = store.DEBUG;
-  }
-
-  store.error((error) => {
-    // eslint-disable-next-line no-console
-    console.log(`ERROR ${error.code}: ${error.message}`);
-  });
-
-  store.register({
-    id: FULL_VERSION_ID,
-    type: store.NON_CONSUMABLE,
-  });
-
-  return store;
-};
 
 const handleKeepWakeChange = (store) => {
   const selectKeepAwake = (state) => state.app.keepAwake;
@@ -61,6 +33,8 @@ const handleKeepWakeChange = (store) => {
 };
 
 const getRateLink = () => {
+  const { cordova } = window;
+
   switch (cordova.platformId) {
     case 'android':
       return 'market://details?id=com.izorg.munchkin';
@@ -73,26 +47,41 @@ const getRateLink = () => {
   }
 };
 
-const cordovaApp = {
-  init() {
-    document.addEventListener(
-      'deviceready',
-      this.onDeviceReady.bind(this),
-      false,
-    );
-  },
+const onDeviceReady = () => {
+  const { cordova, store } = window;
 
-  onBackButton(history, e) {
-    e.preventDefault();
+  const Sentry = cordova.require('sentry-cordova.Sentry');
 
-    if (history.canGo(-1)) {
-      history.goBack();
-    } else {
-      navigator.app.exitApp();
-    }
-  },
+  Sentry.init({
+    dsn: 'https://14fc03bd8f6249ddbd3917a950656dcc@sentry.io/1423183',
+    environment: process.env.NODE_ENV,
+  });
 
-  buyFullVersion(store) {
+  const history = createMemoryHistory();
+
+  const options = {
+    history,
+    keepAwakeSupport: true,
+    privacyLink: 'https://allmunchkins.com/privacy',
+    Sentry,
+    shareLink: 'https://allmunchkins.com',
+  };
+
+  if (process.env.NODE_ENV === 'development') {
+    store.verbosity = store.DEBUG;
+  }
+
+  store.error((error) => {
+    // eslint-disable-next-line no-console
+    console.log(`ERROR ${error.code}: ${error.message}`);
+  });
+
+  store.register({
+    id: FULL_VERSION_ID,
+    type: store.NON_CONSUMABLE,
+  });
+
+  options.buyFullVersion = () => {
     return new Promise((resolve, reject) => {
       const product = store.get(FULL_VERSION_ID);
 
@@ -106,84 +95,51 @@ const cordovaApp = {
 
       store.order(product);
     });
-  },
+  };
+  options.rateLink = getRateLink();
 
-  restorePurchases(store) {
-    store.refresh();
-  },
+  if (cordova.platformId === 'ios') {
+    options.freeCombat = true;
+    options.restorePurchases = () => store.refresh();
+  }
 
-  onDeviceReady() {
-    let Sentry;
+  // options.buyFullVersion = function() {
+  //   return Promise.resolve();
+  // };
 
-    if (cordova.platformId !== 'browser') {
-      Sentry = cordova.require('sentry-cordova.Sentry');
+  const appEl = document.getElementById('app');
+  const munchkinApp = init(appEl, options);
+  const reduxStore = munchkinApp.store;
 
-      Sentry.init({
-        dsn: 'https://14fc03bd8f6249ddbd3917a950656dcc@sentry.io/1423183',
-        environment: process.env.NODE_ENV,
-      });
+  const onBackButton = (e) => {
+    e.preventDefault();
+
+    if (history.canGo(-1)) {
+      history.goBack();
+    } else {
+      navigator.app.exitApp();
     }
+  };
 
-    const history =
-      cordova.platformId === 'browser'
-        ? createHashHistory()
-        : createMemoryHistory();
+  document.addEventListener('backbutton', onBackButton, false);
 
-    const playStore = initStore();
-    const options = {
-      history,
-      keepAwakeSupport: true,
-      privacyLink: 'https://allmunchkins.com/privacy',
-      Sentry,
-      shareLink: 'https://allmunchkins.com',
-    };
+  handleKeepWakeChange(reduxStore);
 
-    if (playStore) {
-      options.buyFullVersion = this.buyFullVersion.bind(this, playStore);
-      options.rateLink = getRateLink();
+  store.once(FULL_VERSION_ID).loaded(() => {
+    munchkinApp.setFullVersion(false);
+  });
 
-      if (cordova.platformId === 'ios') {
-        options.freeCombat = true;
-        options.restorePurchases = this.restorePurchases.bind(this, playStore);
-      }
-    }
+  store.once(FULL_VERSION_ID).approved((product) => {
+    product.finish();
+  });
 
-    // options.buyFullVersion = function() {
-    //   return Promise.resolve();
-    // };
+  store.once(FULL_VERSION_ID).owned(() => {
+    munchkinApp.setFullVersion(true);
+  });
 
-    const appEl = document.getElementById('app');
-    const munchkinApp = init(appEl, options);
-    const reduxStore = munchkinApp.store;
+  store.refresh();
 
-    document.addEventListener(
-      'backbutton',
-      this.onBackButton.bind(this, history),
-      false,
-    );
-
-    handleKeepWakeChange(reduxStore);
-
-    if (playStore) {
-      playStore.once(FULL_VERSION_ID).loaded(() => {
-        munchkinApp.setFullVersion(false);
-      });
-
-      playStore.once(FULL_VERSION_ID).approved((product) => {
-        product.finish();
-      });
-
-      playStore.once(FULL_VERSION_ID).owned(() => {
-        munchkinApp.setFullVersion(true);
-      });
-
-      playStore.refresh();
-    }
-
-    if (navigator.splashscreen) {
-      navigator.splashscreen.hide();
-    }
-  },
+  navigator.splashscreen.hide();
 };
 
-cordovaApp.init();
+document.addEventListener('deviceready', onDeviceReady, false);
