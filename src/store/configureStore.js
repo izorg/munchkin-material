@@ -7,8 +7,8 @@ import thunk from 'redux-thunk';
 import reducers from '../reducers';
 
 import { loadState, saveState } from './localStorage';
+import errorReporter from './middlewares/errorReporter';
 import purchase from './middlewares/purchase';
-import sentry from './middlewares/sentry';
 
 const configureStore = ({ buyFullVersion, freeCombat, history, Sentry }) => {
   const composeEnhancers = composeWithDevTools({ trace: true });
@@ -25,9 +25,9 @@ const configureStore = ({ buyFullVersion, freeCombat, history, Sentry }) => {
 
   const enhancer = composeEnhancers(
     applyMiddleware(
+      errorReporter(Sentry),
       thunk,
       purchase({ buyFullVersion, freeCombat }),
-      sentry(Sentry),
       routerMiddleware(history),
     ),
   );
