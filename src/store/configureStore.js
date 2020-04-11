@@ -26,9 +26,9 @@ const configureStore = ({ buyFullVersion, freeCombat, history, Sentry }) => {
   const enhancer = composeEnhancers(
     applyMiddleware(
       errorReporter(Sentry),
+      routerMiddleware(history),
       thunk,
       purchase({ buyFullVersion, freeCombat }),
-      routerMiddleware(history),
     ),
   );
 
