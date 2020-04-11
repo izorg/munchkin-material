@@ -1,10 +1,9 @@
-import 'core-js/es/map'; // for react
-import 'core-js/es/set'; // for react
 import React from 'react';
 import { render } from 'react-dom';
 
 import App from './components/App';
 import { setFullVersion } from './ducks/app';
+import './polyfills';
 import configureStore from './store/configureStore';
 
 const defaultOptions = {
