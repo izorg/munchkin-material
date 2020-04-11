@@ -27,23 +27,23 @@ app.setFullVersion(true);
 if (dev) {
   window.app = app;
 } else if ('serviceWorker' in navigator) {
-  const wb = new Workbox('/service-worker.js');
+  const workbox = new Workbox('/service-worker.js');
 
-  wb.addEventListener('waiting', () => {
+  workbox.addEventListener('waiting', () => {
     app.store.dispatch(showUpdate());
 
     const prevUpdate = app.store.getState().update;
 
     app.store.subscribe(() => {
       if (app.store.getState().update === false && prevUpdate === true) {
-        wb.addEventListener('controlling', () => {
+        workbox.addEventListener('controlling', () => {
           window.location.reload();
         });
 
-        wb.messageSW({ type: 'SKIP_WAITING' });
+        workbox.messageSW({ type: 'SKIP_WAITING' });
       }
     });
   });
 
-  wb.register();
+  workbox.register();
 }
