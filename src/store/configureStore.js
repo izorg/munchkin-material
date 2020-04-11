@@ -10,13 +10,7 @@ import { loadState, saveState } from './localStorage';
 import purchase from './middlewares/purchase';
 import sentry from './middlewares/sentry';
 
-const configureStore = ({
-  buyFullVersion,
-  freeCombat,
-  history,
-  Sentry,
-  storageKey,
-}) => {
+const configureStore = ({ buyFullVersion, freeCombat, history, Sentry }) => {
   const composeEnhancers = composeWithDevTools({ trace: true });
 
   const router = connectRouter(history);
@@ -27,7 +21,7 @@ const configureStore = ({
       ...reducers,
     });
 
-  const preloadedState = loadState(storageKey);
+  const preloadedState = loadState();
 
   const enhancer = composeEnhancers(
     applyMiddleware(
@@ -44,7 +38,7 @@ const configureStore = ({
     throttle(100, () => {
       const state = pick(Object.keys(reducers), store.getState());
 
-      saveState(storageKey, state);
+      saveState(state);
     }),
   );
 

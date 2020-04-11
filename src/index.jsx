@@ -17,18 +17,10 @@ const defaultOptions = {
   restorePurchases: null,
   Sentry: null,
   shareLink: null,
-  storageKey: 'redux',
 };
 
 const init = (appEl, initOptions) => {
-  const {
-    buyFullVersion,
-    freeCombat,
-    history,
-    Sentry,
-    storageKey,
-    ...options
-  } = {
+  const { buyFullVersion, freeCombat, history, Sentry, ...options } = {
     ...defaultOptions,
     ...initOptions,
   };
@@ -46,7 +38,6 @@ const init = (appEl, initOptions) => {
     freeCombat,
     history,
     Sentry,
-    storageKey,
   });
 
   const { dispatch } = store;
