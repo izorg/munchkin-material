@@ -1,9 +1,8 @@
-import '../site';
-
 import { setLocale } from '../ducks/app';
 import { addPlayerToList, removePlayerFromList } from '../ducks/playerList';
 import { addPlayer, removePlayer } from '../ducks/players';
 import { getLocale } from '../i18n';
+import '../pwa';
 
 import players from './players';
 

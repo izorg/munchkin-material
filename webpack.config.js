@@ -14,14 +14,10 @@ const web = process.env.BUILD === 'web';
 
 const outputPath = path.resolve(__dirname, cordova ? 'cordova/www' : 'web');
 
-let entry = './src/cordova.js';
+let entry = './src/cordova.jsx';
 
 if (web) {
-  entry = './src/site/index.js';
-}
-
-if (dev) {
-  entry = './src/dev/index.js';
+  entry = './src/pwa.jsx';
 }
 
 module.exports = {

@@ -17,7 +17,7 @@ const FullVersionContext = createContext({
   buyFullVersion: () => {
     throw new Error('No <FullVersionProvider />');
   },
-  fullVersion: false,
+  fullVersion: true,
 });
 
 export const useFullVersion = () => useContext(FullVersionContext);
