@@ -1,13 +1,4 @@
 const errorReporter = (Sentry) => (store) => (next) => (action) => {
-  // const { type, ...rest } = action;
-  //
-  // Sentry.addBreadcrumb({
-  //   category: 'redux.action',
-  //   data: rest,
-  //   level: Sentry.Severity.Info,
-  //   message: type,
-  // });
-
   try {
     return next(action);
   } catch (error) {

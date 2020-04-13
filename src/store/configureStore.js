@@ -8,6 +8,7 @@ import reducers from '../reducers';
 
 import { loadState, saveState } from './localStorage';
 import errorReporter from './middlewares/errorReporter';
+import logger from './middlewares/logger';
 import purchase from './middlewares/purchase';
 
 const configureStore = ({ buyFullVersion, freeCombat, history, Sentry }) => {
@@ -29,6 +30,7 @@ const configureStore = ({ buyFullVersion, freeCombat, history, Sentry }) => {
       routerMiddleware(history),
       thunk,
       purchase({ buyFullVersion, freeCombat }),
+      logger(Sentry),
     ),
   );
 
