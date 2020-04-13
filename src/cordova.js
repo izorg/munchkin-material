@@ -15,7 +15,7 @@ const getRateLink = () => {
       return 'itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=1448937097';
 
     default:
-      throw new Error('No platformId found in cordova');
+      return null;
   }
 };
 
