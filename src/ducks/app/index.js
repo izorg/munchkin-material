@@ -60,22 +60,13 @@ export const setSingleMode = (singleMode) => async (dispatch, getState) => {
       singleModePlayerId = player.id;
     }
 
-    try {
-      await dispatch(startCombat(singleModePlayerId));
-
-      await dispatch({
-        type: SET_SINGLE_MODE,
-        singleMode,
-      });
-    } catch (error) {
-      // no full version
-    }
-  } else {
-    dispatch({
-      type: SET_SINGLE_MODE,
-      singleMode,
-    });
+    dispatch(startCombat(singleModePlayerId));
   }
+
+  dispatch({
+    type: SET_SINGLE_MODE,
+    singleMode,
+  });
 };
 
 export const toggleMenu = () => ({

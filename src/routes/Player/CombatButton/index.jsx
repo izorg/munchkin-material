@@ -2,41 +2,47 @@ import { push } from 'connected-react-router';
 import { SwordCross } from 'mdi-material-ui';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import DialogFab from '../../../components/DialogFab';
+import { useFullVersion } from '../../../components/FullVersionProvider';
 import { startCombat } from '../../../ducks/combat';
 import { addMonster } from '../../../ducks/monsters';
 import createMonster from '../../../utils/createMonster';
 
 const displayName = 'CombatButton';
 
-const goToCombat = (playerId) => async (dispatch, getState) => {
-  const {
-    app: { combatFinished },
-    combat: { playerId: combatPlayerId },
-  } = getState();
-
-  if (combatFinished || playerId !== combatPlayerId) {
-    try {
-      await dispatch(startCombat(playerId));
-      dispatch(addMonster(createMonster()));
-      dispatch(push(`/player/${playerId}/combat`));
-    } catch (error) {
-      // no full version
-    }
-  } else {
-    dispatch(push(`/player/${playerId}/combat`));
-  }
-};
-
 const CombatButton = ({ playerId, ...rest }) => {
+  const { cordova } = window;
+
   const dispatch = useDispatch();
+
+  const combatFinished = useSelector((state) => state.app.combatFinished);
+  const combatPlayerId = useSelector((state) => state.combat.playerId);
+
+  const { buyFullVersion, fullVersion } = useFullVersion();
+
+  const goToCombat = async () => {
+    if (combatFinished || playerId !== combatPlayerId) {
+      if (!fullVersion && cordova?.platformId !== 'ios') {
+        try {
+          await buyFullVersion();
+        } catch (error) {
+          return;
+        }
+      }
+
+      dispatch(startCombat(playerId));
+      dispatch(addMonster(createMonster()));
+    }
+
+    dispatch(push(`/player/${playerId}/combat`));
+  };
 
   return (
     <DialogFab
       data-screenshots="combat-button"
-      onClick={() => dispatch(goToCombat(playerId))}
+      onClick={() => goToCombat()}
       {...rest}
     >
       <SwordCross />

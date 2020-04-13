@@ -2,8 +2,6 @@ import { createMemoryHistory } from 'history';
 
 import init from './index';
 
-const FULL_VERSION_ID = 'full_version';
-
 const getRateLink = () => {
   const { cordova } = window;
 
@@ -20,9 +18,7 @@ const getRateLink = () => {
 };
 
 const onDeviceReady = () => {
-  const { cordova, store } = window;
-
-  // store.verbosity = store.DEBUG;
+  const { cordova } = window;
 
   const Sentry = cordova.require('sentry-cordova.Sentry');
 
@@ -36,37 +32,12 @@ const onDeviceReady = () => {
   const options = {
     history,
     privacyLink: 'https://allmunchkins.com/privacy',
+    rateLink: getRateLink(),
     Sentry,
   };
 
-  store.error((error) => {
-    // eslint-disable-next-line no-console
-    console.log(`ERROR ${error.code}: ${error.message}`);
-  });
-
-  store.register({
-    id: FULL_VERSION_ID,
-    type: store.NON_CONSUMABLE,
-  });
-
-  options.buyFullVersion = () =>
-    new Promise((resolve, reject) => {
-      const product = store.get(FULL_VERSION_ID);
-
-      store.once(FULL_VERSION_ID).owned(() => {
-        resolve();
-      });
-
-      store.once(FULL_VERSION_ID).cancelled(() => {
-        reject();
-      });
-
-      store.order(product);
-    });
-  options.rateLink = getRateLink();
-
   const appEl = document.getElementById('app');
-  const munchkinApp = init(appEl, options);
+  init(appEl, options);
 
   const onBackButton = (e) => {
     e.preventDefault();
@@ -79,20 +50,6 @@ const onDeviceReady = () => {
   };
 
   document.addEventListener('backbutton', onBackButton, false);
-
-  store.once(FULL_VERSION_ID).loaded(() => {
-    munchkinApp.setFullVersion(false);
-  });
-
-  store.once(FULL_VERSION_ID).approved((product) => {
-    product.finish();
-  });
-
-  store.once(FULL_VERSION_ID).owned(() => {
-    munchkinApp.setFullVersion(true);
-  });
-
-  store.refresh();
 
   navigator.splashscreen.hide();
 };

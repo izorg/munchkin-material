@@ -19,8 +19,6 @@ const app = init(el, {
   Sentry,
 });
 
-app.setFullVersion(true);
-
 if (dev) {
   window.app = app;
 } else if ('serviceWorker' in navigator) {

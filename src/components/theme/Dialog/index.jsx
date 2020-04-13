@@ -19,6 +19,7 @@ import { setTheme } from '../../../ducks/theme';
 import themes from '../../../styles/themes';
 import { getQuery, stringifyQuery } from '../../../utils/location';
 import CancelButton from '../../CancelButton';
+import { useFullVersion } from '../../FullVersionProvider';
 import SubmitButton from '../../SubmitButton';
 import themeMessages from '../messages';
 
@@ -48,6 +49,10 @@ const ThemeDialog = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const intl = useIntl();
+
+  const { buyFullVersion, fullVersion } = useFullVersion();
+
+  const themeId = useSelector((state) => state.theme.id);
 
   const open = useSelector(getOpen);
   const query = useSelector(getQuery);
@@ -80,17 +85,21 @@ const ThemeDialog = () => {
   const onSubmit = async (event) => {
     event.preventDefault();
 
-    try {
-      await dispatch(
-        setTheme({
-          ...theme,
-          type: theme.type || undefined,
-        }),
-      );
-      dispatch(goBack());
-    } catch (error) {
-      // no full version
+    if (theme.id !== themeId && !fullVersion) {
+      try {
+        await buyFullVersion();
+      } catch (error) {
+        return;
+      }
     }
+
+    dispatch(
+      setTheme({
+        ...theme,
+        type: theme.type || undefined,
+      }),
+    );
+    dispatch(goBack());
   };
 
   const onClose = () => dispatch(goBack());

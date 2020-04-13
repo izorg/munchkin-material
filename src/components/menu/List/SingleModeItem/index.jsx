@@ -7,6 +7,7 @@ import { FormattedMessage } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { setSingleMode } from '../../../../ducks/app';
+import { useFullVersion } from '../../../FullVersionProvider';
 import openSelector from '../../openSelector';
 import ListItem from '../Item';
 import ListItemText from '../ItemText';
@@ -31,28 +32,25 @@ const SingleModeItem = ({ className }) => {
   const open = useSelector(openSelector);
   const { pathname } = useSelector(getLocation);
 
-  const onChange = (isSingleMode) =>
-    dispatch(async () => {
-      const needBack = open || pathname !== '/';
+  const { buyFullVersion, fullVersion } = useFullVersion();
 
-      if (isSingleMode) {
-        try {
-          await dispatch(setSingleMode(isSingleMode));
+  const onChange = async (isSingleMode) => {
+    const needBack = open || pathname !== '/';
 
-          if (needBack) {
-            dispatch(goBack());
-          }
-        } catch (error) {
-          // no full version
-        }
-      } else {
-        dispatch(setSingleMode(isSingleMode));
-
-        if (needBack) {
-          dispatch(goBack());
-        }
+    if (isSingleMode && !fullVersion) {
+      try {
+        await buyFullVersion();
+      } catch (error) {
+        return;
       }
-    });
+    }
+
+    dispatch(setSingleMode(isSingleMode));
+
+    if (needBack) {
+      dispatch(goBack());
+    }
+  };
 
   return (
     <ListItem

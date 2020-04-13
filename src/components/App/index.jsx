@@ -6,6 +6,7 @@ import { Provider as ReduxProvider } from 'react-redux';
 import AugmentedStylesProvider from '../AugmentedStylesProvider';
 import AugmentedThemeProvider from '../AugmentedThemeProvider';
 import ConfigProvider from '../ConfigProvider';
+import FullVersionProvider from '../FullVersionProvider';
 import LocaleProvider from '../LocaleProvider';
 import Root from '../Root';
 import WakeLockProvider from '../WakeLockProvider';
@@ -36,11 +37,13 @@ class App extends Component {
           <ConnectedRouter history={history}>
             <LocaleProvider>
               <WakeLockProvider>
-                <AugmentedStylesProvider>
-                  <AugmentedThemeProvider>
-                    <Root />
-                  </AugmentedThemeProvider>
-                </AugmentedStylesProvider>
+                <FullVersionProvider>
+                  <AugmentedStylesProvider>
+                    <AugmentedThemeProvider>
+                      <Root />
+                    </AugmentedThemeProvider>
+                  </AugmentedStylesProvider>
+                </FullVersionProvider>
               </WakeLockProvider>
             </LocaleProvider>
           </ConnectedRouter>
