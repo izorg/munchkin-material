@@ -2,7 +2,11 @@ import { SET_SINGLE_MODE, setFullVersion } from '../../ducks/app';
 import { START_COMBAT } from '../../ducks/combat/actionTypes';
 import { SET_THEME } from '../../ducks/theme';
 
-const purchase = ({ buyFullVersion, freeCombat }) => {
+const purchase = ({ buyFullVersion }) => {
+  const { cordova } = window;
+
+  const freeCombat = cordova?.platformId === 'ios';
+
   const actionTypes = [freeCombat ? SET_SINGLE_MODE : START_COMBAT, SET_THEME];
 
   return ({ dispatch, getState }) => (next) => (action) => {

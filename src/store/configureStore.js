@@ -11,7 +11,7 @@ import errorReporter from './middlewares/errorReporter';
 import logger from './middlewares/logger';
 import purchase from './middlewares/purchase';
 
-const configureStore = ({ buyFullVersion, freeCombat, history, Sentry }) => {
+const configureStore = ({ buyFullVersion, history, Sentry }) => {
   const composeEnhancers = composeWithDevTools({ trace: true });
 
   const router = connectRouter(history);
@@ -29,7 +29,7 @@ const configureStore = ({ buyFullVersion, freeCombat, history, Sentry }) => {
       errorReporter(Sentry),
       routerMiddleware(history),
       thunk,
-      purchase({ buyFullVersion, freeCombat }),
+      purchase({ buyFullVersion }),
       logger(Sentry),
     ),
   );

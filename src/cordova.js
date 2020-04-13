@@ -65,14 +65,6 @@ const onDeviceReady = () => {
     });
   options.rateLink = getRateLink();
 
-  if (cordova.platformId === 'ios') {
-    options.freeCombat = true;
-  }
-
-  // options.buyFullVersion = function() {
-  //   return Promise.resolve();
-  // };
-
   const appEl = document.getElementById('app');
   const munchkinApp = init(appEl, options);
 

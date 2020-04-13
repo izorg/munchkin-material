@@ -8,7 +8,6 @@ import configureStore from './store/configureStore';
 
 const defaultOptions = {
   buyFullVersion: () => Promise.resolve(),
-  freeCombat: false,
   history: null,
   privacyLink: null,
   rateLink: null,
@@ -16,7 +15,7 @@ const defaultOptions = {
 };
 
 const init = (appEl, initOptions) => {
-  const { buyFullVersion, freeCombat, history, Sentry, ...options } = {
+  const { buyFullVersion, history, Sentry, ...options } = {
     ...defaultOptions,
     ...initOptions,
   };
@@ -31,7 +30,6 @@ const init = (appEl, initOptions) => {
 
   const store = configureStore({
     buyFullVersion,
-    freeCombat,
     history,
     Sentry,
   });
