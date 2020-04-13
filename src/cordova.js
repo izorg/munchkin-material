@@ -14,13 +14,11 @@ const onDeviceReady = () => {
 
   const history = createMemoryHistory();
 
-  const options = {
+  const appEl = document.getElementById('app');
+  init(appEl, {
     history,
     Sentry,
-  };
-
-  const appEl = document.getElementById('app');
-  init(appEl, options);
+  });
 
   const onBackButton = (e) => {
     e.preventDefault();

@@ -5,7 +5,6 @@ import { Provider as ReduxProvider } from 'react-redux';
 
 import AugmentedStylesProvider from '../AugmentedStylesProvider';
 import AugmentedThemeProvider from '../AugmentedThemeProvider';
-import ConfigProvider from '../ConfigProvider';
 import FullVersionProvider from '../FullVersionProvider';
 import LocaleProvider from '../LocaleProvider';
 import Root from '../Root';
@@ -29,33 +28,30 @@ class App extends Component {
   }
 
   render() {
-    const { history, options, store } = this.props;
+    const { history, store } = this.props;
 
     return (
-      <ConfigProvider value={options}>
-        <ReduxProvider store={store}>
-          <ConnectedRouter history={history}>
-            <LocaleProvider>
-              <WakeLockProvider>
-                <FullVersionProvider>
-                  <AugmentedStylesProvider>
-                    <AugmentedThemeProvider>
-                      <Root />
-                    </AugmentedThemeProvider>
-                  </AugmentedStylesProvider>
-                </FullVersionProvider>
-              </WakeLockProvider>
-            </LocaleProvider>
-          </ConnectedRouter>
-        </ReduxProvider>
-      </ConfigProvider>
+      <ReduxProvider store={store}>
+        <ConnectedRouter history={history}>
+          <LocaleProvider>
+            <WakeLockProvider>
+              <FullVersionProvider>
+                <AugmentedStylesProvider>
+                  <AugmentedThemeProvider>
+                    <Root />
+                  </AugmentedThemeProvider>
+                </AugmentedStylesProvider>
+              </FullVersionProvider>
+            </WakeLockProvider>
+          </LocaleProvider>
+        </ConnectedRouter>
+      </ReduxProvider>
     );
   }
 }
 
 App.propTypes = {
   history: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
-  options: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
   store: PropTypes.shape({
     dispatch: PropTypes.func.isRequired,
     getState: PropTypes.func.isRequired,
