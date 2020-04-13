@@ -1,13 +1,13 @@
+import { ConnectedRouter } from 'connected-react-router';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import { Provider as ReduxProvider } from 'react-redux';
 
-import { storeShape } from '../../propTypes';
 import AugmentedStylesProvider from '../AugmentedStylesProvider';
 import AugmentedThemeProvider from '../AugmentedThemeProvider';
 import ConfigProvider from '../ConfigProvider';
 import LocaleProvider from '../LocaleProvider';
 import Root from '../Root';
-import StoreProvider from '../StoreProvider';
 import WakeLockProvider from '../WakeLockProvider';
 
 const displayName = 'App';
@@ -32,17 +32,19 @@ class App extends Component {
 
     return (
       <ConfigProvider value={options}>
-        <StoreProvider history={history} store={store}>
-          <LocaleProvider>
-            <WakeLockProvider>
-              <AugmentedStylesProvider>
-                <AugmentedThemeProvider>
-                  <Root />
-                </AugmentedThemeProvider>
-              </AugmentedStylesProvider>
-            </WakeLockProvider>
-          </LocaleProvider>
-        </StoreProvider>
+        <ReduxProvider store={store}>
+          <ConnectedRouter history={history}>
+            <LocaleProvider>
+              <WakeLockProvider>
+                <AugmentedStylesProvider>
+                  <AugmentedThemeProvider>
+                    <Root />
+                  </AugmentedThemeProvider>
+                </AugmentedStylesProvider>
+              </WakeLockProvider>
+            </LocaleProvider>
+          </ConnectedRouter>
+        </ReduxProvider>
       </ConfigProvider>
     );
   }
@@ -51,7 +53,10 @@ class App extends Component {
 App.propTypes = {
   history: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
   options: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
-  store: storeShape.isRequired,
+  store: PropTypes.shape({
+    dispatch: PropTypes.func.isRequired,
+    getState: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
 App.displayName = displayName;
