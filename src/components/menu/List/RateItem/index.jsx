@@ -26,7 +26,7 @@ const getRateLink = (platformId) => {
 const RateItem = (props) => {
   const dispatch = useDispatch();
 
-  const rateLink = getRateLink(window?.cordova?.platformId);
+  const rateLink = getRateLink(window.cordova?.platformId);
 
   if (!rateLink) {
     return null;

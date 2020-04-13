@@ -3,16 +3,13 @@ import { ShieldAccount } from 'mdi-material-ui';
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 
-import { useConfig } from '../../../ConfigProvider';
 import ListItem from '../Item';
 import ListItemText from '../ItemText';
 
 const displayName = 'PrivacyItem';
 
 const PrivacyItem = (props) => {
-  const { privacyLink } = useConfig();
-
-  if (!privacyLink) {
+  if (!window.cordova) {
     return null;
   }
 
@@ -20,7 +17,7 @@ const PrivacyItem = (props) => {
     <ListItem
       button
       component="a"
-      href={privacyLink}
+      href="https://allmunchkins.com/privacy"
       target="_blank"
       {...props}
     >

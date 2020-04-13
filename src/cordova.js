@@ -16,7 +16,6 @@ const onDeviceReady = () => {
 
   const options = {
     history,
-    privacyLink: 'https://allmunchkins.com/privacy',
     Sentry,
   };
 

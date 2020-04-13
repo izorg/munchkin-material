@@ -8,7 +8,6 @@ import configureStore from './store/configureStore';
 
 const defaultOptions = {
   history: null,
-  privacyLink: null,
   Sentry: null,
 };
 

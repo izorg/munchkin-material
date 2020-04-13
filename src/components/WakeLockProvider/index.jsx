@@ -24,7 +24,7 @@ export const useWakeLock = () => useContext(WakeLockContext);
 const WakeLockProvider = ({ children }) => {
   const dispatch = useDispatch();
 
-  const insomnia = window?.plugins?.insomnia;
+  const insomnia = window.plugins?.insomnia;
   const wakeLockSupport = !!insomnia;
   const wakeLock = useSelector((state) => state.app.keepAwake);
 
