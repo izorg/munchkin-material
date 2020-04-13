@@ -12,7 +12,6 @@ const defaultOptions = {
   history: null,
   privacyLink: null,
   rateLink: null,
-  restorePurchases: null,
   Sentry: null,
   shareLink: null,
 };

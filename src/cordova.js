@@ -22,6 +22,8 @@ const getRateLink = () => {
 const onDeviceReady = () => {
   const { cordova, store } = window;
 
+  // store.verbosity = store.DEBUG;
+
   const Sentry = cordova.require('sentry-cordova.Sentry');
 
   Sentry.init({
@@ -38,10 +40,6 @@ const onDeviceReady = () => {
     shareLink: 'https://allmunchkins.com',
   };
 
-  if (process.env.NODE_ENV === 'development') {
-    store.verbosity = store.DEBUG;
-  }
-
   store.error((error) => {
     // eslint-disable-next-line no-console
     console.log(`ERROR ${error.code}: ${error.message}`);
@@ -52,8 +50,8 @@ const onDeviceReady = () => {
     type: store.NON_CONSUMABLE,
   });
 
-  options.buyFullVersion = () => {
-    return new Promise((resolve, reject) => {
+  options.buyFullVersion = () =>
+    new Promise((resolve, reject) => {
       const product = store.get(FULL_VERSION_ID);
 
       store.once(FULL_VERSION_ID).owned(() => {
@@ -66,12 +64,10 @@ const onDeviceReady = () => {
 
       store.order(product);
     });
-  };
   options.rateLink = getRateLink();
 
   if (cordova.platformId === 'ios') {
     options.freeCombat = true;
-    options.restorePurchases = () => store.refresh();
   }
 
   // options.buyFullVersion = function() {
