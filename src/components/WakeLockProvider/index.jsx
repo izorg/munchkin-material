@@ -9,6 +9,8 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { setKeepAwake } from '../../ducks/app';
 
+const displayName = 'WakeLockProvider';
+
 const WakeLockContext = createContext({
   setWakeLock: () => {
     throw new Error('No <WakeLockProvider />');
@@ -65,6 +67,6 @@ WakeLockProvider.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-WakeLockProvider.displayName = 'WakeLockProvider';
+WakeLockProvider.displayName = displayName;
 
 export default WakeLockProvider;
