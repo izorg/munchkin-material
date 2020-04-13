@@ -8,6 +8,7 @@ import ConfigProvider from '../ConfigProvider';
 import LocaleProvider from '../LocaleProvider';
 import Root from '../Root';
 import StoreProvider from '../StoreProvider';
+import WakeLockProvider from '../WakeLockProvider';
 
 const displayName = 'App';
 
@@ -33,11 +34,13 @@ class App extends Component {
       <ConfigProvider value={options}>
         <StoreProvider history={history} store={store}>
           <LocaleProvider>
-            <AugmentedStylesProvider>
-              <AugmentedThemeProvider>
-                <Root />
-              </AugmentedThemeProvider>
-            </AugmentedStylesProvider>
+            <WakeLockProvider>
+              <AugmentedStylesProvider>
+                <AugmentedThemeProvider>
+                  <Root />
+                </AugmentedThemeProvider>
+              </AugmentedStylesProvider>
+            </WakeLockProvider>
           </LocaleProvider>
         </StoreProvider>
       </ConfigProvider>

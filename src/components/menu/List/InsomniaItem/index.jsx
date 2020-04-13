@@ -3,10 +3,8 @@ import clsx from 'clsx';
 import { Lightbulb, LightbulbOutline } from 'mdi-material-ui';
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
-import { useDispatch, useSelector } from 'react-redux';
 
-import { setKeepAwake } from '../../../../ducks/app';
-import { useConfig } from '../../../ConfigProvider';
+import { useWakeLock } from '../../../WakeLockProvider';
 import ListItem from '../Item';
 import ListItemText from '../ItemText';
 
@@ -23,13 +21,11 @@ const useStyles = makeStyles(
 );
 
 const InsomniaItem = ({ className }) => {
-  const dispatch = useDispatch();
   const classes = useStyles();
 
-  const keepAwake = useSelector((state) => state.app.keepAwake);
-  const { keepAwakeSupport } = useConfig();
+  const { setWakeLock, wakeLock, wakeLockSupport } = useWakeLock();
 
-  if (!keepAwakeSupport) {
+  if (!wakeLockSupport) {
     return null;
   }
 
@@ -37,10 +33,10 @@ const InsomniaItem = ({ className }) => {
     <ListItem
       button
       className={clsx(classes.root, className)}
-      onClick={() => dispatch(setKeepAwake(!keepAwake))}
+      onClick={() => setWakeLock(!wakeLock)}
     >
       <ListItemIcon>
-        {keepAwake ? <Lightbulb /> : <LightbulbOutline />}
+        {wakeLock ? <Lightbulb /> : <LightbulbOutline />}
       </ListItemIcon>
       <ListItemText
         primary={
@@ -48,7 +44,7 @@ const InsomniaItem = ({ className }) => {
         }
       />
       <Switch
-        checked={keepAwake}
+        checked={wakeLock}
         color="primary"
         disableRipple
         edge="end"

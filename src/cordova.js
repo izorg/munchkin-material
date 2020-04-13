@@ -4,34 +4,6 @@ import init from './index';
 
 const FULL_VERSION_ID = 'full_version';
 
-const handleKeepWakeChange = (store) => {
-  const selectKeepAwake = (state) => state.app.keepAwake;
-
-  const setKeepAwake = (keepAwake) => {
-    if (window.plugins && window.plugins.insomnia) {
-      if (keepAwake) {
-        window.plugins.insomnia.keepAwake();
-      } else {
-        window.plugins.insomnia.allowSleepAgain();
-      }
-    }
-  };
-
-  let currentKeepAwake = selectKeepAwake(store.getState());
-
-  setKeepAwake(currentKeepAwake);
-
-  store.subscribe(() => {
-    const previousKeepAwake = currentKeepAwake;
-
-    currentKeepAwake = selectKeepAwake(store.getState());
-
-    if (previousKeepAwake !== currentKeepAwake) {
-      setKeepAwake(currentKeepAwake);
-    }
-  });
-};
-
 const getRateLink = () => {
   const { cordova } = window;
 
@@ -61,7 +33,6 @@ const onDeviceReady = () => {
 
   const options = {
     history,
-    keepAwakeSupport: true,
     privacyLink: 'https://allmunchkins.com/privacy',
     Sentry,
     shareLink: 'https://allmunchkins.com',
@@ -109,7 +80,6 @@ const onDeviceReady = () => {
 
   const appEl = document.getElementById('app');
   const munchkinApp = init(appEl, options);
-  const reduxStore = munchkinApp.store;
 
   const onBackButton = (e) => {
     e.preventDefault();
@@ -122,8 +92,6 @@ const onDeviceReady = () => {
   };
 
   document.addEventListener('backbutton', onBackButton, false);
-
-  handleKeepWakeChange(reduxStore);
 
   store.once(FULL_VERSION_ID).loaded(() => {
     munchkinApp.setFullVersion(false);

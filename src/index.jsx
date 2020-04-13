@@ -10,7 +10,6 @@ const defaultOptions = {
   buyFullVersion: () => Promise.resolve(),
   freeCombat: false,
   history: null,
-  keepAwakeSupport: false,
   privacyLink: null,
   rateLink: null,
   restorePurchases: null,
