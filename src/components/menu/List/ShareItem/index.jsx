@@ -5,7 +5,6 @@ import React from 'react';
 import { defineMessages, useIntl } from 'react-intl';
 import { useDispatch } from 'react-redux';
 
-import { useConfig } from '../../../ConfigProvider';
 import ListItem from '../Item';
 import ListItemText from '../ItemText';
 
@@ -27,9 +26,16 @@ const ShareItem = (props) => {
   const dispatch = useDispatch();
   const intl = useIntl();
 
-  const { shareLink } = useConfig();
+  const {
+    cordova,
+    location: { host, pathname, protocol },
+  } = window;
 
-  if (!shareLink || !navigator.share) {
+  const shareLink = cordova
+    ? 'https://allmunchkins.com'
+    : `${protocol}//${host}${pathname}`;
+
+  if (!navigator.share) {
     return null;
   }
 

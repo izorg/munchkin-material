@@ -13,7 +13,6 @@ const defaultOptions = {
   privacyLink: null,
   rateLink: null,
   Sentry: null,
-  shareLink: null,
 };
 
 const init = (appEl, initOptions) => {

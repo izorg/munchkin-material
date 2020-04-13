@@ -37,7 +37,6 @@ const onDeviceReady = () => {
     history,
     privacyLink: 'https://allmunchkins.com/privacy',
     Sentry,
-    shareLink: 'https://allmunchkins.com',
   };
 
   store.error((error) => {

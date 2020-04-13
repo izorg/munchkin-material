@@ -14,12 +14,9 @@ const el = document.getElementById('app');
 
 const history = createBrowserHistory();
 
-const { host, pathname, protocol } = window.location;
-
 const app = init(el, {
   history,
   Sentry,
-  shareLink: `${protocol}//${host}${pathname}`,
 });
 
 app.setFullVersion(true);
