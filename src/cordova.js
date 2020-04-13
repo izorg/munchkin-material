@@ -2,21 +2,6 @@ import { createMemoryHistory } from 'history';
 
 import init from './index';
 
-const getRateLink = () => {
-  const { cordova } = window;
-
-  switch (cordova.platformId) {
-    case 'android':
-      return 'market://details?id=com.izorg.munchkin';
-
-    case 'ios':
-      return 'itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=1448937097';
-
-    default:
-      return null;
-  }
-};
-
 const onDeviceReady = () => {
   const { cordova } = window;
 
@@ -32,7 +17,6 @@ const onDeviceReady = () => {
   const options = {
     history,
     privacyLink: 'https://allmunchkins.com/privacy',
-    rateLink: getRateLink(),
     Sentry,
   };
 

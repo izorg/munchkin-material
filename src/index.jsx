@@ -7,15 +7,13 @@ import './polyfills';
 import configureStore from './store/configureStore';
 
 const defaultOptions = {
-  buyFullVersion: () => Promise.resolve(),
   history: null,
   privacyLink: null,
-  rateLink: null,
   Sentry: null,
 };
 
 const init = (appEl, initOptions) => {
-  const { buyFullVersion, history, Sentry, ...options } = {
+  const { history, Sentry, ...options } = {
     ...defaultOptions,
     ...initOptions,
   };
@@ -29,7 +27,6 @@ const init = (appEl, initOptions) => {
   }
 
   const store = configureStore({
-    buyFullVersion,
     history,
     Sentry,
   });

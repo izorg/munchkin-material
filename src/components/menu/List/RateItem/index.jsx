@@ -5,16 +5,28 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { useDispatch } from 'react-redux';
 
-import { useConfig } from '../../../ConfigProvider';
 import ListItem from '../Item';
 import ListItemText from '../ItemText';
 
 const displayName = 'RateItem';
 
+const getRateLink = (platformId) => {
+  switch (platformId) {
+    case 'android':
+      return 'market://details?id=com.izorg.munchkin';
+
+    case 'ios':
+      return 'itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=1448937097';
+
+    default:
+      return null;
+  }
+};
+
 const RateItem = (props) => {
   const dispatch = useDispatch();
 
-  const { rateLink } = useConfig();
+  const rateLink = getRateLink(window?.cordova?.platformId);
 
   if (!rateLink) {
     return null;
