@@ -6,7 +6,6 @@ import playerList from './ducks/playerList';
 import players from './ducks/players';
 import theme from './ducks/theme';
 import undo from './ducks/undo';
-import update from './ducks/update';
 
 export default {
   app,
@@ -17,5 +16,4 @@ export default {
   players,
   theme,
   undo,
-  update,
 };
