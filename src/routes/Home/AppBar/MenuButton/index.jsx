@@ -3,11 +3,11 @@ import { push } from 'connected-react-router';
 import { Menu } from 'mdi-material-ui';
 import React from 'react';
 import { defineMessages, useIntl } from 'react-intl';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import TopIconButton from '../../../../components/TopIconButton';
 import { toggleMenu } from '../../../../ducks/app';
-import { stringifyQuery } from '../../../../utils/location';
+import { getQuery, stringifyQuery } from '../../../../utils/location';
 
 const displayName = 'MenuButton';
 
@@ -23,12 +23,20 @@ const MenuButton = (props) => {
   const intl = useIntl();
   const theme = useTheme();
 
+  const query = useSelector(getQuery);
   const mathes = useMediaQuery(theme.breakpoints.up('md'), { noSsr: true });
 
   const onClick = () =>
     mathes
       ? dispatch(toggleMenu())
-      : dispatch(push({ search: stringifyQuery({ menu: null }) }));
+      : dispatch(
+          push({
+            search: stringifyQuery({
+              ...query,
+              menu: null,
+            }),
+          }),
+        );
 
   return (
     <Tooltip title={intl.formatMessage(messages.menu)}>

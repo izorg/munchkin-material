@@ -13,8 +13,8 @@ import TopIconButton from '../../../components/TopIconButton';
 import { setCombatPlayerBonus } from '../../../ducks/combat';
 import { removePlayerFromList } from '../../../ducks/playerList';
 import { removePlayer } from '../../../ducks/players';
-import * as modes from '../modes';
-import modeType from '../modeType';
+import { getQuery, stringifyQuery } from '../../../utils/location';
+import { EDIT, MULTI } from '../modes';
 
 import MenuButton from './MenuButton';
 import ResetButton from './ResetButton';
@@ -29,9 +29,13 @@ const messages = defineMessages({
   },
 });
 
-const HomeAppBar = ({ empty, mode, singleMode }) => {
+const HomeAppBar = ({ empty, singleMode }) => {
   const dispatch = useDispatch();
   const intl = useIntl();
+  const query = useSelector(getQuery);
+
+  const editMode = query[EDIT] !== undefined;
+  const multiMode = query[MULTI] !== undefined;
 
   const selectedPlayerIds = useSelector((state) => state.app.selectedPlayerIds);
 
@@ -46,12 +50,11 @@ const HomeAppBar = ({ empty, mode, singleMode }) => {
   };
 
   const onToggleEditClick = () =>
-    mode === modes.EDIT ? dispatch(goBack()) : dispatch(push(`/${modes.EDIT}`));
+    editMode
+      ? dispatch(goBack())
+      : dispatch(push({ search: stringifyQuery({ [EDIT]: null }) }));
 
   const onTurnFinish = () => dispatch(setCombatPlayerBonus(0));
-
-  const editMode = mode === modes.EDIT;
-  const multiMode = mode === modes.MULTI;
 
   const editTitle = intl.formatMessage(messages.edit);
 
@@ -81,9 +84,11 @@ const HomeAppBar = ({ empty, mode, singleMode }) => {
 
       <Title>{title}</Title>
 
-      {(singleMode || (!mode && !empty)) && <ResetButton edge="end" />}
+      {(singleMode || (!(editMode || multiMode) && !empty)) && (
+        <ResetButton edge="end" />
+      )}
 
-      {(!mode || singleMode) && <DiceButton edge="end" />}
+      {(!(editMode || multiMode) || singleMode) && <DiceButton edge="end" />}
 
       {editMode && <ShuffleButton edge="end" />}
 
@@ -92,7 +97,7 @@ const HomeAppBar = ({ empty, mode, singleMode }) => {
           <TopIconButton
             aria-label={editTitle}
             edge="end"
-            onClick={() => onToggleEditClick(mode)}
+            onClick={() => onToggleEditClick()}
           >
             {editMode ? <Check /> : <Pencil />}
           </TopIconButton>
@@ -119,13 +124,11 @@ const HomeAppBar = ({ empty, mode, singleMode }) => {
 
 HomeAppBar.propTypes = {
   empty: PropTypes.bool,
-  mode: modeType,
   singleMode: PropTypes.bool,
 };
 
 HomeAppBar.defaultProps = {
   empty: false,
-  mode: null,
   singleMode: false,
 };
 

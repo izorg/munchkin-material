@@ -132,7 +132,7 @@ const Home = () => {
   return (
     <>
       <div className={clsx(classes.root, { [classes.single]: singleMode })}>
-        <AppBar empty={empty} mode={mode} singleMode={singleMode} />
+        <AppBar empty={empty} singleMode={singleMode} />
         <main className={classes.main}>
           <Paper
             className={clsx(

@@ -2,7 +2,6 @@ import React from 'react';
 
 import Combat from '../../routes/Combat';
 import Home from '../../routes/Home';
-import * as modes from '../../routes/Home/modes';
 import Player from '../../routes/Player';
 import DialogRoute from '../DialogRoute';
 import DiceDialog from '../dice/Dialog';
@@ -12,7 +11,7 @@ const displayName = 'Root';
 
 const Root = () => (
   <>
-    <DialogRoute path={`/:mode(${Object.values(modes).join('|')})?`}>
+    <DialogRoute path="/">
       <Home />
     </DialogRoute>
     <DialogRoute path="/player/:id">

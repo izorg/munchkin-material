@@ -5,8 +5,8 @@ import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { movePlayer } from '../../../ducks/playerList';
+import { getQuery } from '../../../utils/location';
 import { EDIT } from '../modes';
-import modeType from '../modeType';
 
 import Item from './Item';
 
@@ -29,11 +29,12 @@ const useStyles = makeStyles(
   { name: displayName },
 );
 
-const HomePlayerList = ({ mode, ...rest }) => {
+const HomePlayerList = (props) => {
   const classes = useStyles();
+  const dispatch = useDispatch();
   const theme = useTheme();
 
-  const dispatch = useDispatch();
+  const query = useSelector(getQuery);
   const playerList = useSelector((state) => state.playerList);
 
   const handleDragEnd = useCallback(
@@ -45,12 +46,12 @@ const HomePlayerList = ({ mode, ...rest }) => {
     [dispatch],
   );
 
-  if (mode === EDIT) {
+  if (query[EDIT] !== undefined) {
     return (
       <DragDropContext onDragEnd={handleDragEnd}>
         <Droppable droppableId="player-list">
           {({ droppableProps, innerRef: droppableRef, placeholder }) => (
-            <List {...rest} {...droppableProps} ref={droppableRef}>
+            <List {...props} {...droppableProps} ref={droppableRef}>
               {playerList.map((playerId, index) => (
                 <Draggable
                   key={playerId}
@@ -106,7 +107,6 @@ const HomePlayerList = ({ mode, ...rest }) => {
                           style,
                         }}
                         dragHandleProps={dragHandleProps}
-                        mode={mode}
                         playerId={playerId}
                       />
                     );
@@ -122,20 +122,12 @@ const HomePlayerList = ({ mode, ...rest }) => {
   }
 
   return (
-    <List {...rest}>
+    <List {...props}>
       {playerList.map((playerId) => (
-        <Item key={playerId} mode={mode} playerId={playerId} />
+        <Item key={playerId} playerId={playerId} />
       ))}
     </List>
   );
-};
-
-HomePlayerList.propTypes = {
-  mode: modeType,
-};
-
-HomePlayerList.defaultProps = {
-  mode: undefined,
 };
 
 HomePlayerList.displayName = displayName;

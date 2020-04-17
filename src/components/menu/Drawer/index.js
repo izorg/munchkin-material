@@ -5,8 +5,8 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { createSelector, createStructuredSelector } from 'reselect';
 
-import { MULTI } from '../../../routes/Home/modes';
-import { stringifyQuery } from '../../../utils/location';
+import { EDIT } from '../../../routes/Home/modes';
+import { getQuery, stringifyQuery } from '../../../utils/location';
 import openSelector from '../openSelector';
 
 import Component from './Component';
@@ -15,21 +15,25 @@ const enable = createSelector(
   openSelector,
   (state, props) => props.match,
   (state, props) => props.location,
+  getQuery,
   (state, props) => props.width,
-  (open, match, location, width) => {
+  (open, match, location, query, width) => {
     if (open) {
       return true;
     }
 
-    if (!match.isExact || match.params.mode === MULTI) {
+    if (!isWidthDown('sm', width)) {
       return false;
     }
 
-    if (location.search) {
+    if (
+      match.isExact &&
+      Object.keys(query).every((key) => [EDIT].includes(key))
+    ) {
       return false;
     }
 
-    return isWidthDown('sm', width);
+    return false;
   },
 );
 
@@ -44,7 +48,15 @@ const mapDispatchToProps = {
       dispatch(goBack());
     }
   },
-  onOpen: () => push({ search: stringifyQuery({ menu: null }) }),
+  onOpen: () => (dispatch, getState) =>
+    dispatch(
+      push({
+        search: stringifyQuery({
+          ...getQuery(getState()),
+          menu: null,
+        }),
+      }),
+    ),
 };
 
 const mergeProps = (stateProps, dispatchProps, ownProps) => ({
