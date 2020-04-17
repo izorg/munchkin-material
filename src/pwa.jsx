@@ -47,6 +47,10 @@ const store = configureStore({
   Sentry,
 });
 
+if (process.env.NODE_ENV === 'development') {
+  window.store = store;
+}
+
 render(
   <AppContainer Sentry={Sentry}>
     <ReduxProvider store={store}>

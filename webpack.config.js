@@ -20,6 +20,10 @@ if (web) {
   entry = './src/pwa.jsx';
 }
 
+if (dev) {
+  entry = './src/dev/index.js';
+}
+
 module.exports = {
   mode: process.env.NODE_ENV,
 

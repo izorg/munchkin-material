@@ -6,9 +6,10 @@ import '../pwa';
 
 import players from './players';
 
+const { dispatch } = window.store;
+
 const setTestData = () => {
-  const { dispatch } = window.app.store;
-  const { app, playerList } = window.app.store.getState();
+  const { app, playerList } = window.store.getState();
 
   playerList.forEach((id) => {
     dispatch(removePlayerFromList(id));
@@ -25,8 +26,6 @@ const setTestData = () => {
 
 window.munchkinDev = {
   setLocale: (locale) => {
-    const { dispatch } = window.app.store;
-
     dispatch(setLocale(locale));
   },
   setTestData,
