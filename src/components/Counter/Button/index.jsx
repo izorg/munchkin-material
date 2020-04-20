@@ -29,6 +29,7 @@ const CounterButton = ({ onClick, ...rest }) => {
 
   useEffect(() => {
     hammerRef.current = new Hammer(buttonRef.current, {
+      inputClass: Hammer.TouchMouseInput, // https://github.com/hammerjs/hammer.js/issues/1084#issuecomment-544220158
       recognizers: [[Hammer.Tap]], // [Hammer.Press], [Hammer.Pan]],
     });
 

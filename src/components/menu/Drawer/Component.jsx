@@ -407,6 +407,7 @@ class MenuDrawer extends PureComponent {
 
     this.hammer = new Hammer(document.body, {
       enable,
+      inputClass: Hammer.TouchMouseInput,
       recognizers: [
         [Hammer.Pan, { direction: Hammer.DIRECTION_HORIZONTAL, threshold: 3 }],
         [Hammer.Press, { time: pressTime }],

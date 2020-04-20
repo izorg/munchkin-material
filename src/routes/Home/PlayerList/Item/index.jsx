@@ -140,6 +140,7 @@ const HomePlayerListItem = forwardRef(
       const pressTime = 500;
 
       hammerRef.current = new Hammer(itemRef.current, {
+        inputClass: Hammer.TouchMouseInput,
         recognizers: [
           [Hammer.Tap, { time: pressTime - 1 }],
           [Hammer.Press, { time: pressTime }],
