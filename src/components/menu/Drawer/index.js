@@ -26,14 +26,9 @@ const enable = createSelector(
       return false;
     }
 
-    if (
-      match.isExact &&
-      Object.keys(query).every((key) => [EDIT].includes(key))
-    ) {
-      return false;
-    }
-
-    return false;
+    return (
+      match.isExact && Object.keys(query).every((key) => [EDIT].includes(key))
+    );
   },
 );
 
