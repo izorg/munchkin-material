@@ -4,7 +4,6 @@
     "airbnb/hooks",
     "plugin:jest/recommended",
     "plugin:json/recommended",
-    "plugin:lodash-fp/recommended",
     "plugin:prettier/recommended",
     "prettier/react"
   ],
