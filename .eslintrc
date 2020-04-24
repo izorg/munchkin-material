@@ -1,5 +1,4 @@
 {
-  "parser": "babel-eslint",
   "extends": [
     "airbnb",
     "airbnb/hooks",
@@ -15,6 +14,7 @@
   "globals": {
     "VERSION": true
   },
+  "parser": "babel-eslint",
   "rules": {
     "import/no-extraneous-dependencies": [
       "error",
@@ -39,7 +39,7 @@
     "react/prop-types": [
       "error",
       {
-        "ignore": ["classes", "className", "Sentry", "style", "theme"]
+        "ignore": ["classes", "className", "style", "theme"]
       }
     ],
     "react/sort-prop-types": "error",
