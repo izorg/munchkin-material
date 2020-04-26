@@ -46,7 +46,7 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
-        include: /node_modules\/react-intl/,
+        include: /node_modules\/(react-intl|react-use-gesture)/,
         use: [
           {
             loader: 'babel-loader',
