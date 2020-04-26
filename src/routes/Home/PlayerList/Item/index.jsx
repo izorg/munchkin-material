@@ -95,7 +95,8 @@ const HomePlayerListItem = forwardRef(
         pressTimeoutRef.current = 0;
       }
 
-      if (tap && elapsedTime > 0 && elapsedTime < 500) {
+      // > 30 to exclude double tap on old devices (iOS 12, Android 5)
+      if (tap && elapsedTime > 30 && elapsedTime < 500) {
         if (pressTimeoutRef.current) {
           clearTimeout(pressTimeoutRef.current);
 
@@ -110,24 +111,22 @@ const HomePlayerListItem = forwardRef(
           return;
         }
 
-        setTimeout(() => {
-          if (editMode) {
-            dispatch(
-              push({
-                search: stringifyQuery({
-                  ...query,
-                  player: playerId,
-                }),
+        if (editMode) {
+          dispatch(
+            push({
+              search: stringifyQuery({
+                ...query,
+                player: playerId,
               }),
-            );
-          } else if (multiMode) {
-            dispatch(onPlayerToggle(playerId));
-          } else if (avatarRef.current && avatarRef.current.contains(target)) {
-            dispatch(onMultiSelectActivate(playerId));
-          } else {
-            dispatch(onPlayerSelect(playerId));
-          }
-        }, 100);
+            }),
+          );
+        } else if (multiMode) {
+          dispatch(onPlayerToggle(playerId));
+        } else if (avatarRef.current && avatarRef.current.contains(target)) {
+          dispatch(onMultiSelectActivate(playerId));
+        } else {
+          dispatch(onPlayerSelect(playerId));
+        }
       }
     });
 
