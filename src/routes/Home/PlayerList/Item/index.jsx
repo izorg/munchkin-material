@@ -45,6 +45,8 @@ const onPlayerToggle = (playerId) => (dispatch, getState) => {
   }
 };
 
+const touch = 'ontouchstart' in window;
+
 const HomePlayerListItem = forwardRef(
   ({ dragHandleProps, playerId, ...rest }, ref) => {
     const dispatch = useDispatch();
@@ -65,70 +67,82 @@ const HomePlayerListItem = forwardRef(
     const players = useSelector((state) => state.players);
     const player = players[playerId];
 
-    const bind = useDrag((state) => {
-      const { distance, elapsedTime, event, first, tap } = state;
+    const onClick = (event) => {
+      if (
+        editMode &&
+        reorderRef.current &&
+        reorderRef.current.contains(event.target)
+      ) {
+        return;
+      }
 
-      const { target } = event;
+      if (editMode) {
+        dispatch(
+          push({
+            search: stringifyQuery({
+              ...query,
+              player: playerId,
+            }),
+          }),
+        );
+      } else if (multiMode) {
+        dispatch(onPlayerToggle(playerId));
+      } else if (
+        avatarRef.current &&
+        avatarRef.current.contains(event.target)
+      ) {
+        dispatch(onMultiSelectActivate(playerId));
+      } else {
+        dispatch(onPlayerSelect(playerId));
+      }
+    };
 
-      if (first) {
-        pressTimeoutRef.current = setTimeout(() => {
-          pressTimeoutRef.current = 0;
+    const bind = useDrag(
+      (state) => {
+        const { distance, elapsedTime, event, first, tap } = state;
 
-          const avatarNode = avatarRef.current;
+        const { target } = event;
 
-          if (
-            !(editMode || multiMode) &&
-            (!avatarNode || !avatarNode.contains(target))
-          ) {
-            if (navigator.vibrate) {
-              navigator.vibrate(20);
+        if (first) {
+          pressTimeoutRef.current = setTimeout(() => {
+            pressTimeoutRef.current = 0;
+
+            const avatarNode = avatarRef.current;
+
+            if (
+              !(editMode || multiMode) &&
+              (!avatarNode || !avatarNode.contains(target))
+            ) {
+              if (navigator.vibrate) {
+                navigator.vibrate(20);
+              }
+
+              dispatch(onMultiSelectActivate(playerId));
             }
+          }, 500);
+        }
 
-            dispatch(onMultiSelectActivate(playerId));
-          }
-        }, 500);
-      }
-
-      if (!first && distance && pressTimeoutRef.current) {
-        clearTimeout(pressTimeoutRef.current);
-
-        pressTimeoutRef.current = 0;
-      }
-
-      // > 30 to exclude double tap on old devices (iOS 12, Android 5)
-      if (tap && elapsedTime > 30 && elapsedTime < 500) {
-        if (pressTimeoutRef.current) {
+        if (!first && distance && pressTimeoutRef.current) {
           clearTimeout(pressTimeoutRef.current);
 
           pressTimeoutRef.current = 0;
         }
 
-        if (
-          editMode &&
-          reorderRef.current &&
-          reorderRef.current.contains(target)
-        ) {
-          return;
-        }
+        // > 30 to exclude double tap on old devices (iOS 12, Android 5)
+        if (tap && elapsedTime > 30 && elapsedTime < 500) {
+          if (pressTimeoutRef.current) {
+            clearTimeout(pressTimeoutRef.current);
 
-        if (editMode) {
-          dispatch(
-            push({
-              search: stringifyQuery({
-                ...query,
-                player: playerId,
-              }),
-            }),
-          );
-        } else if (multiMode) {
-          dispatch(onPlayerToggle(playerId));
-        } else if (avatarRef.current && avatarRef.current.contains(target)) {
-          dispatch(onMultiSelectActivate(playerId));
-        } else {
-          dispatch(onPlayerSelect(playerId));
+            pressTimeoutRef.current = 0;
+          }
+
+          onClick(event);
         }
-      }
-    });
+      },
+      {
+        enabled: touch,
+      },
+    );
 
     return (
       <ListItem
@@ -136,6 +150,7 @@ const HomePlayerListItem = forwardRef(
         button
         component={editMode ? 'div' : 'li'}
         data-screenshots="player-list-item"
+        onClick={touch ? undefined : onClick}
         {...rest}
         {...bind()}
       >

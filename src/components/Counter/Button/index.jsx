@@ -5,16 +5,25 @@ import { useDrag } from 'react-use-gesture';
 
 const displayName = 'CounterButton';
 
+const touch = 'ontouchstart' in window;
+
 const CounterButton = ({ onClick, ...rest }) => {
-  const bind = useDrag((state) => {
-    const { tap } = state;
+  const bind = useDrag(
+    (state) => {
+      const { tap } = state;
 
-    if (tap) {
-      onClick();
-    }
-  });
+      if (tap) {
+        onClick();
+      }
+    },
+    {
+      enabled: touch,
+    },
+  );
 
-  return <IconButton {...rest} {...bind()} />;
+  return (
+    <IconButton onClick={touch ? undefined : onClick} {...rest} {...bind()} />
+  );
 };
 
 CounterButton.propTypes = {
