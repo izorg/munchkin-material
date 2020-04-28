@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux';
 import BackButton from '../../../components/BackButton';
 import DiceIconButton from '../../../components/dice/Button';
 import Title from '../../../components/Title';
-import AppBar from '../../../components/TopAppBar';
+import TopAppBar from '../../../components/TopAppBar';
 import TopIconButton from '../../../components/TopIconButton';
 import { finishCombat } from '../../../ducks/app';
 
@@ -24,7 +24,7 @@ const CombatAppBar = () => {
   };
 
   return (
-    <AppBar>
+    <TopAppBar>
       <BackButton data-screenshots="combat-back-button" onClick={onBack} />
 
       <Title>
@@ -36,7 +36,7 @@ const CombatAppBar = () => {
       <TopIconButton color="inherit" edge="end" onClick={onFinish}>
         <FlagCheckered />
       </TopIconButton>
-    </AppBar>
+    </TopAppBar>
   );
 };
 

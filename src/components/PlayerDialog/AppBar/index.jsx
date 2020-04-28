@@ -5,13 +5,13 @@ import React from 'react';
 import noop from '../../../utils/noop';
 import BackButton from '../../BackButton';
 import Title from '../../Title';
-import AppBar from '../../TopAppBar';
+import TopAppBar from '../../TopAppBar';
 import TopIconButton from '../../TopIconButton';
 
 const displayName = 'PlayerDialogAppBar';
 
 const PlayerDialogAppBar = ({ onCancel, title }) => (
-  <AppBar>
+  <TopAppBar>
     <BackButton onClick={onCancel} />
 
     <Title>{title}</Title>
@@ -19,7 +19,7 @@ const PlayerDialogAppBar = ({ onCancel, title }) => (
     <TopIconButton color="inherit" edge="end" type="submit">
       <Check />
     </TopIconButton>
-  </AppBar>
+  </TopAppBar>
 );
 
 PlayerDialogAppBar.propTypes = {

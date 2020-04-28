@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import DiceButton from '../../../components/dice/Button';
 import Title from '../../../components/Title';
-import AppBar from '../../../components/TopAppBar';
+import TopAppBar from '../../../components/TopAppBar';
 import TopIconButton from '../../../components/TopIconButton';
 import { setCombatPlayerBonus } from '../../../ducks/combat';
 import { removePlayerFromList } from '../../../ducks/playerList';
@@ -73,7 +73,7 @@ const HomeAppBar = ({ empty, singleMode }) => {
   }
 
   return (
-    <AppBar color={multiMode ? 'default' : 'primary'}>
+    <TopAppBar color={multiMode ? 'default' : 'primary'}>
       {multiMode ? (
         <TopIconButton edge="start" onClick={onMultiSelectDeactivate}>
           <Close />
@@ -118,7 +118,7 @@ const HomeAppBar = ({ empty, singleMode }) => {
           <FlagCheckered />
         </TopIconButton>
       )}
-    </AppBar>
+    </TopAppBar>
   );
 };
 

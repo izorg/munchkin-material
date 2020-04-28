@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import BackButton from '../../../components/BackButton';
 import DiceButton from '../../../components/dice/Button';
 import Title from '../../../components/Title';
-import AppBar from '../../../components/TopAppBar';
+import TopAppBar from '../../../components/TopAppBar';
 
 import KillPlayerButton from './KillPlayerButton';
 
@@ -19,7 +19,7 @@ const PlayerAppBar = ({ playerId }) => {
   const title = players[playerId].name;
 
   return (
-    <AppBar>
+    <TopAppBar>
       <BackButton
         data-screenshots="player-back-button"
         onClick={() => dispatch(goBack())}
@@ -29,7 +29,7 @@ const PlayerAppBar = ({ playerId }) => {
 
       <DiceButton data-screenshots="player-dice-button" edge="end" />
       <KillPlayerButton edge="end" playerId={playerId} />
-    </AppBar>
+    </TopAppBar>
   );
 };
 
