@@ -45,8 +45,6 @@ const onPlayerToggle = (playerId) => (dispatch, getState) => {
   }
 };
 
-const touch = 'ontouchstart' in window;
-
 const HomePlayerListItem = forwardRef(
   ({ dragHandleProps, playerId, ...rest }, ref) => {
     const dispatch = useDispatch();
@@ -97,52 +95,54 @@ const HomePlayerListItem = forwardRef(
       }
     };
 
-    const bind = useDrag(
-      (state) => {
-        const { distance, elapsedTime, event, first, tap } = state;
+    const bind = useDrag((state) => {
+      const { distance, elapsedTime, event, first, tap } = state;
 
-        const { target } = event;
+      const { target } = event;
 
-        if (first) {
-          pressTimeoutRef.current = setTimeout(() => {
-            pressTimeoutRef.current = 0;
+      if (first) {
+        event.preventDefault();
 
-            const avatarNode = avatarRef.current;
+        pressTimeoutRef.current = setTimeout(() => {
+          pressTimeoutRef.current = 0;
 
-            if (
-              !(editMode || multiMode) &&
-              (!avatarNode || !avatarNode.contains(target))
-            ) {
-              if (navigator.vibrate) {
-                navigator.vibrate(20);
-              }
+          const avatarNode = avatarRef.current;
 
-              dispatch(onMultiSelectActivate(playerId));
+          if (
+            !(editMode || multiMode) &&
+            (!avatarNode || !avatarNode.contains(target))
+          ) {
+            if (navigator.vibrate) {
+              navigator.vibrate(20);
             }
-          }, 500);
-        }
 
-        if (!first && distance && pressTimeoutRef.current) {
+            dispatch(onMultiSelectActivate(playerId));
+          }
+        }, 500);
+      }
+
+      if (!first && distance && pressTimeoutRef.current) {
+        clearTimeout(pressTimeoutRef.current);
+
+        pressTimeoutRef.current = 0;
+      }
+
+      if (tap && elapsedTime < 500) {
+        if (pressTimeoutRef.current) {
           clearTimeout(pressTimeoutRef.current);
 
           pressTimeoutRef.current = 0;
         }
 
-        // > 30 to exclude double tap on old devices (iOS 12, Android 5)
-        if (tap && elapsedTime > 30 && elapsedTime < 500) {
-          if (pressTimeoutRef.current) {
-            clearTimeout(pressTimeoutRef.current);
+        onClick(event);
+      }
+    });
 
-            pressTimeoutRef.current = 0;
-          }
-
-          onClick(event);
-        }
-      },
-      {
-        enabled: touch,
-      },
-    );
+    const onKeyDown = (event) => {
+      if (event.key === 'Enter') {
+        onClick(event);
+      }
+    };
 
     return (
       <ListItem
@@ -150,9 +150,9 @@ const HomePlayerListItem = forwardRef(
         button
         component={editMode ? 'div' : 'li'}
         data-screenshots="player-list-item"
-        onClick={touch ? undefined : onClick}
         {...rest}
         {...bind()}
+        onKeyDown={onKeyDown}
       >
         <ListItemAvatar>
           <PlayerAvatar

@@ -152,7 +152,6 @@ const PlayerSlider = ({ playerId }) => {
       containerStyle={{
         flex: '1 0 auto',
       }}
-      enableMouseEvents
       index={currentIndex}
       onChangeIndex={handleChangeIndex}
       overscanSlideAfter={1}

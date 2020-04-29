@@ -5,12 +5,9 @@ import { useDrag } from 'react-use-gesture';
 
 const displayName = 'CounterButton';
 
-const CounterButton = (props) => {
-  const { disabled, onClick: onClickProp } = props;
-
+const CounterButton = ({ disabled, onClick, ...rest }) => {
   const timeoutRef = useRef(0);
   const intervalRef = useRef(0);
-  const ignoreClickRef = useRef(false);
 
   const clearPress = useCallback(() => {
     if (timeoutRef.current) {
@@ -33,30 +30,20 @@ const CounterButton = (props) => {
     }
   }, [clearPress, disabled]);
 
-  const onClick = () => {
-    if (ignoreClickRef.current) {
-      ignoreClickRef.current = false;
-    } else {
-      onClickProp();
-    }
-  };
-
   const bind = useDrag((state) => {
-    const { first, tap } = state;
+    const { event, first, tap } = state;
 
-    if (first) {
-      ignoreClickRef.current = false;
+    if (first && !timeoutRef.current && !intervalRef.current) {
+      event.preventDefault();
 
       timeoutRef.current = setTimeout(() => {
-        intervalRef.current = setInterval(() => onClickProp(), 250);
+        intervalRef.current = setInterval(() => onClick(), 250);
       }, 500);
     }
 
     if (tap) {
-      ignoreClickRef.current = true;
-
       if (!intervalRef.current && !disabled) {
-        onClickProp();
+        onClick();
       }
     }
 
@@ -65,7 +52,20 @@ const CounterButton = (props) => {
     }
   });
 
-  return <IconButton {...props} {...bind()} onClick={onClick} />;
+  const onKeyDown = ({ key }) => {
+    if (key === ' ' || key === 'Enter') {
+      onClick();
+    }
+  };
+
+  return (
+    <IconButton
+      disabled={disabled}
+      {...rest}
+      {...bind()}
+      onKeyDown={onKeyDown}
+    />
+  );
 };
 
 CounterButton.propTypes = {
