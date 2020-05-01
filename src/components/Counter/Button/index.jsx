@@ -33,12 +33,13 @@ const CounterButton = ({ disabled, onClick, ...rest }) => {
 
   const bind = useDrag(
     (state) => {
-      const { event, first, tap } = state;
+      const { distance, event, first, last, tap } = state;
 
-      if (first && !timeoutRef.current && !intervalRef.current) {
+      if (first) {
         event.preventDefault();
 
         timeoutRef.current = setTimeout(() => {
+          onClick();
           intervalRef.current = setInterval(() => onClick(), 250);
         }, 500);
       }
@@ -49,7 +50,7 @@ const CounterButton = ({ disabled, onClick, ...rest }) => {
         }
       }
 
-      if (!first) {
+      if (last || distance >= 3) {
         clearPress();
       }
     },

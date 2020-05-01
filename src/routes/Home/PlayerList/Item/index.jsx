@@ -7,7 +7,7 @@ import {
 import { goBack, push } from 'connected-react-router';
 import { ReorderHorizontal } from 'mdi-material-ui';
 import PropTypes from 'prop-types';
-import React, { forwardRef, useRef } from 'react';
+import React, { forwardRef, useCallback, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useDrag } from 'react-use-gesture';
 
@@ -95,6 +95,14 @@ const HomePlayerListItem = forwardRef(
       }
     };
 
+    const clearPress = useCallback(() => {
+      if (pressTimeoutRef.current) {
+        clearTimeout(pressTimeoutRef.current);
+
+        pressTimeoutRef.current = 0;
+      }
+    }, []);
+
     const bind = useDrag((state) => {
       const { distance, elapsedTime, event, first, tap } = state;
 
@@ -121,18 +129,12 @@ const HomePlayerListItem = forwardRef(
         }, 500);
       }
 
-      if (!first && distance && pressTimeoutRef.current) {
-        clearTimeout(pressTimeoutRef.current);
-
-        pressTimeoutRef.current = 0;
+      if (!first && distance >= 3) {
+        clearPress();
       }
 
       if (tap && elapsedTime < 500) {
-        if (pressTimeoutRef.current) {
-          clearTimeout(pressTimeoutRef.current);
-
-          pressTimeoutRef.current = 0;
-        }
+        clearPress();
 
         onClick(event);
       }
