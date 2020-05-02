@@ -68,7 +68,6 @@ const useStyles = makeStyles(
       height: '100%',
       overflowY: 'auto',
       paddingBottom: 48,
-      touchAction: 'pan-y',
       WebkitOverflowScrolling: 'touch',
 
       [theme.breakpoints.up('sm')]: {

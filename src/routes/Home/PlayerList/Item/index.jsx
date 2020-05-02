@@ -3,11 +3,12 @@ import {
   ListItem,
   ListItemAvatar,
   ListItemSecondaryAction,
+  useForkRef,
 } from '@material-ui/core';
 import { goBack, push } from 'connected-react-router';
 import { DragHorizontalVariant as DragIcon } from 'mdi-material-ui';
 import PropTypes from 'prop-types';
-import React, { forwardRef, useCallback, useRef } from 'react';
+import React, { forwardRef, useCallback, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useDrag } from 'react-use-gesture';
 
@@ -23,9 +24,12 @@ const HomePlayerListItem = forwardRef(
   ({ dragHandleProps, playerId, ...rest }, ref) => {
     const dispatch = useDispatch();
 
+    const itemRef = useRef(null);
     const avatarRef = useRef(null);
     const reorderRef = useRef(null);
     const pressTimeoutRef = useRef(0);
+
+    const handleRef = useForkRef(itemRef, ref);
 
     const query = useSelector(getQuery);
     const editMode = query[EDIT] !== undefined;
@@ -96,42 +100,56 @@ const HomePlayerListItem = forwardRef(
       }
     }, []);
 
-    const bind = useDrag((state) => {
-      const { distance, elapsedTime, event, first, tap } = state;
+    const bind = useDrag(
+      (state) => {
+        const { distance, elapsedTime, event, first, tap } = state;
 
-      const { target } = event;
+        const { target } = event;
 
-      if (first) {
-        event.preventDefault();
+        if (first) {
+          pressTimeoutRef.current = setTimeout(() => {
+            pressTimeoutRef.current = 0;
 
-        pressTimeoutRef.current = setTimeout(() => {
-          pressTimeoutRef.current = 0;
+            const avatarNode = avatarRef.current;
 
-          const avatarNode = avatarRef.current;
+            if (
+              !(editMode || multiMode) &&
+              (!avatarNode || !avatarNode.contains(target))
+            ) {
+              if (navigator.vibrate) {
+                navigator.vibrate(20);
+              }
 
-          if (
-            !(editMode || multiMode) &&
-            (!avatarNode || !avatarNode.contains(target))
-          ) {
-            if (navigator.vibrate) {
-              navigator.vibrate(20);
+              onMultiSelectActivate();
             }
+          }, 500);
+        }
 
-            onMultiSelectActivate();
+        if (!first && distance >= 3) {
+          clearPress();
+        }
+
+        if (tap) {
+          event.preventDefault();
+
+          if (elapsedTime < 500) {
+            clearPress();
+
+            onClick(event);
           }
-        }, 500);
-      }
+        }
+      },
+      {
+        domTarget: itemRef,
+        eventOptions: {
+          passive: false,
+        },
+      },
+    );
 
-      if (!first && distance >= 3) {
-        clearPress();
-      }
-
-      if (tap && elapsedTime < 500) {
-        clearPress();
-
-        onClick(event);
-      }
-    });
+    useEffect(() => {
+      bind();
+    }, [bind]);
 
     const onKeyDown = (event) => {
       if (event.key === 'Enter') {
@@ -141,12 +159,11 @@ const HomePlayerListItem = forwardRef(
 
     return (
       <ListItem
-        ref={ref}
+        ref={handleRef}
         button
         component={editMode ? 'div' : 'li'}
         data-screenshots="player-list-item"
         {...rest}
-        {...bind()}
         onKeyDown={onKeyDown}
       >
         <ListItemAvatar>
