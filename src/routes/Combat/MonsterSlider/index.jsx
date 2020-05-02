@@ -81,7 +81,7 @@ const CombatMonsterSlider = ({ className }) => {
     }
 
     monsterCount.current = monsters.length;
-  }, [monsters.length]);
+  }, [monsters]);
 
   const handleRemove = (monsterId) => {
     const monsterIndex = monsters.indexOf(monsterId);
