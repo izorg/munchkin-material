@@ -19,32 +19,6 @@ import { EDIT, MULTI } from '../../modes';
 
 const displayName = 'HomePlayerListItem';
 
-const onMultiSelectActivate = (playerId) => (dispatch) => {
-  dispatch(unselectAllPlayers());
-  dispatch(togglePlayer(playerId));
-  dispatch(
-    push({
-      search: stringifyQuery({
-        [MULTI]: null,
-      }),
-    }),
-  );
-};
-
-const onPlayerSelect = (playerId) => push(`/player/${playerId}`);
-
-const onPlayerToggle = (playerId) => (dispatch, getState) => {
-  dispatch(togglePlayer(playerId));
-
-  const {
-    app: { selectedPlayerIds },
-  } = getState();
-
-  if (selectedPlayerIds.length === 0) {
-    dispatch(goBack());
-  }
-};
-
 const HomePlayerListItem = forwardRef(
   ({ dragHandleProps, playerId, ...rest }, ref) => {
     const dispatch = useDispatch();
@@ -65,6 +39,18 @@ const HomePlayerListItem = forwardRef(
     const players = useSelector((state) => state.players);
     const player = players[playerId];
 
+    const onMultiSelectActivate = () => {
+      dispatch(unselectAllPlayers());
+      dispatch(togglePlayer(playerId));
+      dispatch(
+        push({
+          search: stringifyQuery({
+            [MULTI]: null,
+          }),
+        }),
+      );
+    };
+
     const onClick = (event) => {
       if (
         editMode &&
@@ -84,14 +70,21 @@ const HomePlayerListItem = forwardRef(
           }),
         );
       } else if (multiMode) {
-        dispatch(onPlayerToggle(playerId));
+        dispatch(togglePlayer(playerId));
+
+        if (
+          selectedPlayerIds.length === 1 &&
+          selectedPlayerIds[0] === playerId
+        ) {
+          dispatch(goBack());
+        }
       } else if (
         avatarRef.current &&
         avatarRef.current.contains(event.target)
       ) {
-        dispatch(onMultiSelectActivate(playerId));
+        onMultiSelectActivate();
       } else {
-        dispatch(onPlayerSelect(playerId));
+        dispatch(push(`/player/${playerId}`));
       }
     };
 
@@ -124,7 +117,7 @@ const HomePlayerListItem = forwardRef(
               navigator.vibrate(20);
             }
 
-            dispatch(onMultiSelectActivate(playerId));
+            onMultiSelectActivate();
           }
         }, 500);
       }
