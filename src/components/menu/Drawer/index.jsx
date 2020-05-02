@@ -21,7 +21,6 @@ const useStyles = makeStyles(
   () => ({
     paper: {
       maxWidth: 320,
-      touchAction: 'pan-y',
       width: 'calc(100% - 56px)', // use % instead of vw for Android 4.4
 
       '@supports (padding: env(safe-area-inset-left))': {
@@ -70,9 +69,6 @@ const MenuDrawer = () => {
       onOpen={onOpen}
       open={open}
       PaperProps={{ className: classes.paper }}
-      SwipeAreaProps={{
-        className: classes.swipeArea,
-      }}
     >
       <MenuList />
     </SwipeableDrawer>
