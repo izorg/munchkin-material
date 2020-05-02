@@ -18,6 +18,7 @@ const useStyles = makeStyles(
   {
     paper: {
       backgroundColor: 'transparent',
+      overflow: 'hidden',
     },
   },
   { name: displayName },
