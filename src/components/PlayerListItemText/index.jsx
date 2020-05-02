@@ -1,6 +1,5 @@
 import { ListItemText, makeStyles } from '@material-ui/core';
 import { ChevronUp as LevelIcon, Sword as StrengthIcon } from 'mdi-material-ui';
-import PropTypes from 'prop-types';
 import React from 'react';
 
 import { playerShape } from '../../utils/propTypes';
@@ -58,7 +57,7 @@ const useStyles = makeStyles(
   { name: displayName },
 );
 
-const PlayerListItemText = ({ hideStats, player }) => {
+const PlayerListItemText = ({ player }) => {
   const classes = useStyles();
 
   return (
@@ -69,36 +68,29 @@ const PlayerListItemText = ({ hideStats, player }) => {
         primaryTypographyProps={{ className: classes.name }}
         secondary={<Sex className={classes.sex} sex={player.sex} />}
       />
-      {!hideStats && (
-        <ListItemText
-          className={classes.stats}
-          primaryTypographyProps={{
-            className: classes.statsPrimary,
-            variant: 'h6',
-          }}
-        >
-          <span className={classes.level}>
-            {player.level}
-            <LevelIcon />
-          </span>
+      <ListItemText
+        className={classes.stats}
+        primaryTypographyProps={{
+          className: classes.statsPrimary,
+          variant: 'h6',
+        }}
+      >
+        <span className={classes.level}>
+          {player.level}
+          <LevelIcon />
+        </span>
 
-          <span className={classes.strength}>
-            {player.level + player.gear}
-            <StrengthIcon className={classes.strengthIcon} />
-          </span>
-        </ListItemText>
-      )}
+        <span className={classes.strength}>
+          {player.level + player.gear}
+          <StrengthIcon className={classes.strengthIcon} />
+        </span>
+      </ListItemText>
     </>
   );
 };
 
 PlayerListItemText.propTypes = {
-  hideStats: PropTypes.bool,
   player: playerShape.isRequired,
-};
-
-PlayerListItemText.defaultProps = {
-  hideStats: false,
 };
 
 PlayerListItemText.displayName = displayName;

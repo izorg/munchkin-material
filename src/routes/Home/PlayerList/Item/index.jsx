@@ -5,7 +5,7 @@ import {
   ListItemSecondaryAction,
 } from '@material-ui/core';
 import { goBack, push } from 'connected-react-router';
-import { ReorderHorizontal } from 'mdi-material-ui';
+import { DragHorizontalVariant as DragIcon } from 'mdi-material-ui';
 import PropTypes from 'prop-types';
 import React, { forwardRef, useCallback, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -158,7 +158,7 @@ const HomePlayerListItem = forwardRef(
           />
         </ListItemAvatar>
 
-        <PlayerListItemText hideStats={editMode} player={player} />
+        <PlayerListItemText player={player} />
 
         {editMode && (
           <ListItemSecondaryAction>
@@ -168,7 +168,7 @@ const HomePlayerListItem = forwardRef(
               edge="end"
               {...dragHandleProps}
             >
-              <ReorderHorizontal />
+              <DragIcon />
             </IconButton>
           </ListItemSecondaryAction>
         )}
