@@ -59,8 +59,8 @@ const onDeviceReady = () => {
     document.getElementById('app'),
   );
 
-  const onBackButton = (e) => {
-    e.preventDefault();
+  const onBackButton = (event) => {
+    event.preventDefault();
 
     if (history.canGo(-1)) {
       history.goBack();

@@ -90,10 +90,7 @@ module.exports = {
 
     new webpack.HashedModuleIdsPlugin(),
 
-    dev &&
-      new ReactRefreshWebpackPlugin({
-        disableRefreshCheck: true,
-      }),
+    dev && new ReactRefreshWebpackPlugin(),
 
     new WebpackNotifierPlugin({
       alwaysNotify: true,

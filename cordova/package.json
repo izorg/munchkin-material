@@ -13,7 +13,8 @@
     ],
     "plugins": {
       "cordova-plugin-firebase-analytics": {
-        "FIREBASE_ANALYTICS_VERSION": "17.2.+"
+        "FIREBASE_ANALYTICS_COLLECTION_ENABLED": "true",
+        "FIREBASE_ANALYTICS_VERSION": "17.4.+"
       },
       "cordova-plugin-headercolor": {},
       "cordova-plugin-insomnia": {},
@@ -36,7 +37,7 @@
   "dependencies": {
     "cordova-android": "8.1.0",
     "cordova-ios": "5.1.1",
-    "cordova-plugin-firebase-analytics": "4.2.0",
+    "cordova-plugin-firebase-analytics": "4.3.0",
     "cordova-plugin-headercolor": "1.0.0",
     "cordova-plugin-insomnia": "4.3.0",
     "cordova-plugin-localization-strings": "3.2.1",
