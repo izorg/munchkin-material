@@ -1,9 +1,7 @@
 import { makeStyles } from '@material-ui/core';
-import { flow, get, isEqual } from 'lodash/fp';
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
-import { createSelector } from 'reselect';
 
 import UndoSnackbar from '../../../components/UndoSnackbar';
 import { updatePlayer } from '../../../ducks/players';
@@ -24,41 +22,12 @@ const useStyles = makeStyles(
   { name: displayName },
 );
 
-const getUndoType = get(['undo', 'type']);
-const getPlayer = get(['undo', 'player']);
-
-const getMessage = createSelector(
-  getUndoType,
-  getPlayer,
-  (type, { name, sex } = {}) => {
-    switch (type) {
-      case UNDO_KILL_PLAYER:
-        return (
-          <FormattedMessage
-            defaultMessage="{name} {sex,select,female{has died} male{has died}}"
-            id="undo.killPlayer"
-            values={{
-              name,
-              sex,
-            }}
-          />
-        );
-
-      default:
-        return null;
-    }
-  },
-);
-
-const getOpen = flow(getUndoType, isEqual(UNDO_KILL_PLAYER));
-
 const PlayerUndo = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
 
-  const message = useSelector(getMessage);
-  const open = useSelector(getOpen);
-  const player = useSelector(getPlayer);
+  const open = useSelector((state) => state.undo?.type === UNDO_KILL_PLAYER);
+  const player = useSelector((state) => state.undo?.player);
   const undo = useSelector((state) => state.undo);
 
   const onClose = (event, reason) => {
@@ -78,7 +47,18 @@ const PlayerUndo = () => {
   return (
     <UndoSnackbar
       className={classes.root}
-      message={message}
+      message={
+        player && (
+          <FormattedMessage
+            defaultMessage="{name} {sex,select,female{has died} male{has died}}"
+            id="undo.killPlayer"
+            values={{
+              name: player.name,
+              sex: player.sex,
+            }}
+          />
+        )
+      }
       onClose={onClose}
       open={open}
     />

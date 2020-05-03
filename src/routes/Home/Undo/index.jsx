@@ -1,9 +1,7 @@
 import { makeStyles } from '@material-ui/core';
-import { flow, get, isEqual } from 'lodash/fp';
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
-import { createSelector } from 'reselect';
 
 import UndoSnackbar from '../../../components/UndoSnackbar';
 import { updatePlayer } from '../../../ducks/players';
@@ -24,34 +22,12 @@ const useStyles = makeStyles(
   { name: displayName },
 );
 
-const getUndoType = get(['undo', 'type']);
-const getPlayers = get(['undo', 'players']);
-
-const getMessage = createSelector(getUndoType, (type) => {
-  switch (type) {
-    case UNDO_RESET_PLAYERS:
-      return (
-        <FormattedMessage
-          defaultMessage="Players have been reset"
-          id="undo.resetPlayers"
-        />
-      );
-
-    default:
-      return null;
-  }
-});
-
-const getOpen = flow(getUndoType, isEqual(UNDO_RESET_PLAYERS));
-
 const HomeUndo = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
 
-  const message = useSelector(getMessage);
-  const open = useSelector(getOpen);
+  const open = useSelector((state) => state.undo?.type === UNDO_RESET_PLAYERS);
   const undo = useSelector((state) => state.undo);
-  const players = useSelector(getPlayers);
 
   const onClose = (event, reason) => {
     if (!undo) {
@@ -61,7 +37,7 @@ const HomeUndo = () => {
     if (reason === 'undo' && undo) {
       dispatch(applyUndo());
 
-      players.forEach((player) => dispatch(updatePlayer(player)));
+      undo.players.forEach((player) => dispatch(updatePlayer(player)));
     } else {
       dispatch(removeUndo());
     }
@@ -70,7 +46,12 @@ const HomeUndo = () => {
   return (
     <UndoSnackbar
       className={classes.root}
-      message={message}
+      message={
+        <FormattedMessage
+          defaultMessage="Players have been reset"
+          id="undo.resetPlayers"
+        />
+      }
       onClose={onClose}
       open={open}
     />
