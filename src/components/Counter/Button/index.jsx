@@ -50,7 +50,7 @@ const CounterButton = ({ disabled, onClick, ...rest }) => {
         }
       }
 
-      if (last || distance >= 3) {
+      if (last || (distance >= 3 && !intervalRef.current)) {
         clearPress();
       }
     },
