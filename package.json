@@ -12,7 +12,7 @@
     "reinstall": "rm -rf node_modules package-lock.json && npm install",
     "screenshots": "cross-env NODE_ENV=test node scripts/screenshots.js",
     "start": "cross-env NODE_ENV=production BUILD=web webpack-dev-server",
-    "stats": "cross-env STATS=true npm run web",
+    "stats": "cross-env STATS=true npm run build:web",
     "test": "jest"
   },
   "dependencies": {
