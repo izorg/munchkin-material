@@ -83,4 +83,7 @@
             <false />
         </edit-config>
     </platform>
+    <platform name="windows">
+      <preference name="windows-target-version" value="10.0" />
+    </platform>
 </widget>

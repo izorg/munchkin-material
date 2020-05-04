@@ -72,6 +72,15 @@ const onDeviceReady = () => {
   document.addEventListener('backbutton', onBackButton, false);
 
   navigator.splashscreen.hide();
+
+  if (cordova.platformId === 'windows') {
+    const { Windows } = window;
+
+    const currentView = Windows.UI.Core.SystemNavigationManager.getForCurrentView();
+
+    currentView.appViewBackButtonVisibility =
+      Windows.UI.Core.AppViewBackButtonVisibility.collapsed;
+  }
 };
 
 document.addEventListener('deviceready', onDeviceReady, false);

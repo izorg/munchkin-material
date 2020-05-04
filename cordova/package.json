@@ -9,7 +9,8 @@
   "cordova": {
     "platforms": [
       "android",
-      "ios"
+      "ios",
+      "windows"
     ],
     "plugins": {
       "cordova-plugin-firebase-analytics": {
@@ -49,6 +50,7 @@
     "cordova-plugin-whitelist": "1.3.4",
     "cordova-plugin-wkwebview-engine": "1.2.1",
     "cordova-support-google-services": "1.4.0",
+    "cordova-windows": "7.0.1",
     "sentry-cordova": "0.17.0"
   }
 }
