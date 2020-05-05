@@ -3,7 +3,6 @@
 /.firebase/
 /.idea/
 /.vscode/
-/config.json
 /coverage/
 /firebase-debug.log
 /screenshots/
