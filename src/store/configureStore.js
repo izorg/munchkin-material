@@ -1,5 +1,4 @@
 import { connectRouter, routerMiddleware } from 'connected-react-router';
-import { pick, throttle } from 'lodash/fp';
 import { applyMiddleware, combineReducers, createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
@@ -34,13 +33,29 @@ const configureStore = ({ history, Sentry }) => {
 
   const store = createStore(createRootReducer(), preloadedState, enhancer);
 
-  store.subscribe(
-    throttle(100, () => {
-      const state = pick(Object.keys(reducers), store.getState());
+  let saveDate = new Date();
+  let saveTimeout = 0;
+  const timeout = 100;
 
-      saveState(state);
-    }),
-  );
+  const saveStoreState = () => {
+    const { router: omitted, ...state } = store.getState();
+
+    saveState(state);
+
+    saveDate = new Date();
+  };
+
+  store.subscribe(() => {
+    if (new Date() - saveDate > timeout) {
+      saveStoreState();
+    } else if (!saveTimeout) {
+      saveTimeout = setTimeout(() => {
+        saveStoreState();
+
+        saveTimeout = 0;
+      }, timeout);
+    }
+  });
 
   /* istanbul ignore if  */
   if (module.hot) {

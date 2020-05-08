@@ -1,4 +1,23 @@
-import { shuffle } from 'lodash/fp';
+// https://github.com/lodash/lodash/blob/master/shuffle.js
+const shuffle = (array) => {
+  const { length } = array;
+
+  let index = 0;
+  const lastIndex = length - 1;
+  const result = [...array];
+
+  while (index < length) {
+    const rand = index + Math.floor(Math.random() * (lastIndex - index + 1));
+    const value = result[rand];
+
+    result[rand] = result[index];
+    result[index] = value;
+
+    index += 1;
+  }
+
+  return result;
+};
 
 export const ADD_PLAYER_TO_LIST = 'app/ADD_PLAYER_TO_LIST';
 export const MOVE_PLAYER = 'app/MOVE_PLAYER';

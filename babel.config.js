@@ -52,10 +52,6 @@ module.exports = {
     [
       'babel-plugin-transform-imports',
       {
-        'lodash/fp': {
-          transform: (importName) => `lodash/fp/${importName}`,
-          preventFullImport: true,
-        },
         'mdi-material-ui': {
           transform: (importName) => `mdi-material-ui/${importName}`,
           preventFullImport: true,
