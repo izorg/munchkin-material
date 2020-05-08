@@ -53,13 +53,11 @@ module.exports = {
       'babel-plugin-transform-imports',
       {
         'lodash/fp': {
-          // eslint-disable-next-line no-template-curly-in-string
-          transform: 'lodash/fp/${member}',
+          transform: (importName) => `lodash/fp/${importName}`,
           preventFullImport: true,
         },
         'mdi-material-ui': {
-          // eslint-disable-next-line no-template-curly-in-string
-          transform: 'mdi-material-ui/${member}',
+          transform: (importName) => `mdi-material-ui/${importName}`,
           preventFullImport: true,
         },
       },
