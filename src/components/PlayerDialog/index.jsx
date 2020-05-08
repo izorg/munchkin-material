@@ -8,21 +8,19 @@ import {
   FormControlLabel,
   FormLabel,
   Grid,
-  Input,
   makeStyles,
   Radio,
   RadioGroup,
   Slide,
+  TextField,
   useMediaQuery,
   useTheme,
 } from '@material-ui/core';
 import { goBack } from 'connected-react-router';
-import { isEqual } from 'lodash/fp';
 import { GenderFemale, GenderMale } from 'mdi-material-ui';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef } from 'react';
 import { defineMessages, FormattedMessage, useIntl } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
-import { createSelector } from 'reselect';
 
 import { addPlayerToList } from '../../ducks/playerList';
 import { addPlayer, updatePlayer } from '../../ducks/players';
@@ -91,82 +89,51 @@ const messages = defineMessages({
 
 let appear = false;
 
-const getPlayerId = (state) => getQuery(state).player;
-
-const getInitialValues = createSelector(
-  getPlayerId,
-  (state) => state.players,
-  (playerId, players) =>
-    playerId
-      ? players[playerId]
-      : {
-          color: getRandomMaterialColor(
-            Object.values(players).map((player) => player.color),
-          ),
-          sex: MALE,
-        },
-);
-
 const PlayerDialog = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const intl = useIntl();
   const theme = useTheme();
 
-  const defaultInitialValues = useSelector(getInitialValues);
-  const [initialValues, setInitialValues] = useState(defaultInitialValues);
+  const nameRef = useRef(null);
 
-  const edit = useSelector((state) => Boolean(getPlayerId(state)));
-  const open = useSelector((state) => getPlayerId(state) !== undefined);
+  const query = useSelector(getQuery);
+  const open = query.player !== undefined;
+  const players = useSelector((state) => state.players);
+
+  const previousPlayerRef = useRef(players[query.player]);
+
+  const editPlayer = useMemo(() => {
+    if (open) {
+      return players[query.player];
+    }
+
+    return previousPlayerRef.current;
+  }, [open]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  useEffect(() => {
+    if (open) {
+      previousPlayerRef.current = players[query.player];
+    }
+  }, [open]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  const randomColor = useMemo(
+    () =>
+      getRandomMaterialColor(
+        Object.values(players).map((player) => player.color),
+      ),
+    [players],
+  );
 
   const fullScreen = useMediaQuery(theme.breakpoints.down('md'), {
     noSsr: true,
   });
 
-  const nameRef = useRef(null);
-  const focusTimeoutRef = useRef(null);
-
-  useEffect(() => {
-    if (open) {
-      setInitialValues(defaultInitialValues);
-    }
-  }, [open]); // eslint-disable-line react-hooks/exhaustive-deps
-
   useEffect(() => {
     appear = true;
-
-    return () => {
-      if (focusTimeoutRef.current) {
-        clearTimeout(focusTimeoutRef.current);
-
-        focusTimeoutRef.current = null;
-      }
-    };
   }, []);
 
-  const handleClose = () => {
-    if (focusTimeoutRef.current) {
-      clearTimeout(focusTimeoutRef.current);
-
-      focusTimeoutRef.current = null;
-    }
-
-    dispatch(goBack());
-  };
-
-  const handleEntered = () => {
-    if (!edit && ios && window.cordova) {
-      focusTimeoutRef.current = setTimeout(() => {
-        const node = nameRef.current;
-
-        focusTimeoutRef.current = null;
-
-        if (node) {
-          node.focus();
-        }
-      }, 100);
-    }
-  };
+  const handleClose = () => dispatch(goBack());
 
   const onSubmit = (event) => {
     event.preventDefault();
@@ -179,32 +146,40 @@ const PlayerDialog = () => {
       sex: form.querySelector('input[name="sex"]:checked').value, // to support Android 4.4
     };
 
-    const playerValues = {
-      color: initialValues.color,
-      name: initialValues.name,
-      sex: initialValues.sex,
-    };
+    if (!values.name.trim()) {
+      handleClose();
 
-    if (!isEqual(values, playerValues)) {
-      if (values.name.trim()) {
-        const player = createPlayer({
-          ...initialValues,
-          ...values,
-        });
-
-        if (initialValues.id) {
-          dispatch(updatePlayer(player));
-        } else {
-          dispatch(addPlayer(player));
-          dispatch(addPlayerToList(player.id));
-        }
-      }
+      return;
     }
 
-    dispatch(goBack());
+    if (editPlayer) {
+      const equal = Object.keys(values).every(
+        (key) => values[key] === editPlayer[key],
+      );
+
+      if (equal) {
+        handleClose();
+
+        return;
+      }
+
+      dispatch(
+        updatePlayer({
+          ...editPlayer,
+          ...values,
+        }),
+      );
+    } else {
+      const newPlayer = createPlayer(values);
+
+      dispatch(addPlayer(newPlayer));
+      dispatch(addPlayerToList(newPlayer.id));
+    }
+
+    handleClose();
   };
 
-  const title = edit ? (
+  const title = editPlayer ? (
     <FormattedMessage
       defaultMessage="Edit munchkin"
       id="player.form.titleEdit"
@@ -221,7 +196,6 @@ const PlayerDialog = () => {
       fullScreen={fullScreen}
       hideBackdrop={fullScreen}
       onClose={handleClose}
-      onEntered={handleEntered}
       open={open}
       PaperProps={{
         component: 'form',
@@ -238,15 +212,15 @@ const PlayerDialog = () => {
         {fullScreen ? <AppBar onCancel={handleClose} title={title} /> : title}
       </DialogTitle>
       <DialogContent className={classes.content}>
-        <FormControl fullWidth margin="normal">
-          <Input
-            autoFocus={!edit && (!ios || !window.cordova)}
-            defaultValue={initialValues.name}
-            inputRef={nameRef}
-            name="name"
-            placeholder={intl.formatMessage(messages.label)}
-          />
-        </FormControl>
+        <TextField
+          autoFocus={!editPlayer}
+          defaultValue={editPlayer?.name}
+          fullWidth
+          inputRef={nameRef}
+          label={intl.formatMessage(messages.label)}
+          margin="normal"
+          name="name"
+        />
 
         <Grid container>
           <Grid item xs={6}>
@@ -254,7 +228,7 @@ const PlayerDialog = () => {
               <FormLabel component="legend">
                 <FormattedMessage defaultMessage="Sex" id="player.form.sex" />
               </FormLabel>
-              <RadioGroup defaultValue={initialValues.sex} name="sex">
+              <RadioGroup defaultValue={editPlayer?.sex || MALE} name="sex">
                 <FormControlLabel
                   control={<Radio color="primary" />}
                   label={<GenderMale className={classes.icon} />}
@@ -277,7 +251,10 @@ const PlayerDialog = () => {
                   id="player.form.color"
                 />
               </FormLabel>
-              <ColorPicker defaultValue={initialValues.color} name="color" />
+              <ColorPicker
+                defaultValue={editPlayer?.color || randomColor}
+                name="color"
+              />
             </FormControl>
           </Grid>
         </Grid>
