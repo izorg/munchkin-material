@@ -1,6 +1,6 @@
 {
   "name": "munchkin-cordova",
-  "version": "10.5.2",
+  "version": "10.5.3",
   "scripts": {
     "build:android": "cordova build android --release",
     "reinstall": "rm -rf node_modules platforms plugins package-lock.json && npm install && cordova prepare && cordova plugin add sentry-cordova",
