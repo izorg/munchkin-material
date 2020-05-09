@@ -8,7 +8,7 @@
     "dev": "cross-env NODE_ENV=development BUILD=web webpack-dev-server",
     "i18n:download": "node -r dotenv/config scripts/i18n/download.mjs",
     "i18n:translate": "cross-env NODE_ENV=i18n babel src --out-dir temp && node scripts/i18n/translate.js && rimraf temp messages",
-    "lint": "eslint . --ext .mjs,.js,.json,.jsx",
+    "lint": "eslint . --ext .js,.json,.jsx,.mjs",
     "reinstall": "rm -rf node_modules package-lock.json && npm install",
     "screenshots": "cross-env NODE_ENV=test node scripts/screenshots.js",
     "start": "cross-env NODE_ENV=production BUILD=web webpack-dev-server",

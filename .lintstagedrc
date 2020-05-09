@@ -1,6 +1,6 @@
 {
-  "**/*.{js,json,jsx}": [
-    "eslint --ext .js,.json,.jsx --fix",
+  "**/*.{js,json,jsx,mjs}": [
+    "eslint --ext .js,.json,.jsx,.mjs --fix",
     "git add"
   ],
   "**/*.{html,md,yml}": [
