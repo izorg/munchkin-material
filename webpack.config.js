@@ -3,6 +3,8 @@ const path = require('path');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackTagsPlugin = require('html-webpack-tags-plugin');
 const webpack = require('webpack');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const WebpackNotifierPlugin = require('webpack-notifier');
@@ -70,6 +72,43 @@ module.exports = {
           },
         ],
       },
+      {
+        test: /\.html$/,
+        use: [
+          {
+            loader: 'html-loader',
+          },
+        ],
+      },
+      {
+        test: /\.css$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+            },
+          },
+          {
+            loader: 'extract-loader',
+          },
+          {
+            loader: 'css-loader',
+          },
+        ],
+      },
+      {
+        test: /\.woff2?$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'fonts',
+            },
+          },
+        ],
+      },
     ],
   },
 
@@ -78,17 +117,25 @@ module.exports = {
       verbose: false,
     }),
 
-    new CopyPlugin(
-      [
-        { from: 'src/static/fonts', to: 'fonts' },
-        web && { from: 'src/static/images', to: 'images' },
-        web && { from: 'src/static/manifest.json', to: 'manifest.json' },
-        web && { from: 'src/static/web.html', to: 'index.html' },
-        cordova && { from: 'src/static/cordova.html', to: 'index.html' },
-      ].filter(Boolean),
-    ),
+    web &&
+      new CopyPlugin([
+        {
+          context: 'src/static',
+          from: '**/*',
+        },
+      ]),
 
     new webpack.HashedModuleIdsPlugin(),
+
+    new HtmlWebpackPlugin({
+      template: cordova ? 'src/cordova.html' : 'src/pwa.html',
+    }),
+
+    cordova &&
+      new HtmlWebpackTagsPlugin({
+        append: false,
+        tags: ['cordova.js'],
+      }),
 
     dev && new ReactRefreshWebpackPlugin(),
 

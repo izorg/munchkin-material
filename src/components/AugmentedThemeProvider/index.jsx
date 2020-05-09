@@ -1,5 +1,6 @@
 import {
   createMuiTheme,
+  CssBaseline,
   ThemeProvider,
   useMediaQuery,
 } from '@material-ui/core';
@@ -13,8 +14,6 @@ import { getDirection } from '../../i18n';
 import baseTheme from '../../styles/baseTheme';
 import themes from '../../styles/themes';
 import { getQuery } from '../../utils/location';
-
-import GlobalCss from './GlobalCss';
 
 const displayName = 'AugmentedThemeProvider';
 
@@ -52,7 +51,7 @@ const AugmentedThemeProvider = ({ children }) => {
 
   return (
     <ThemeProvider theme={theme}>
-      <GlobalCss />
+      <CssBaseline />
       {children}
     </ThemeProvider>
   );
