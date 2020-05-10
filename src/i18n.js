@@ -96,10 +96,7 @@ export const getLocale = () => {
 
   for (const language of languages) {
     const currentLocale = supportedLocales.find(
-      (locale) =>
-        locale === language ||
-        (locale.length === 2 &&
-          `${locale}-${locale.toUpperCase()}` === language),
+      (locale) => locale === language || locale === language.substring(0, 2),
     );
 
     if (currentLocale) {

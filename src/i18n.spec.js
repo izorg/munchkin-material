@@ -1,11 +1,11 @@
 import { getLocale } from './i18n';
 
-describe('getLocale', () => {
+describe('getLocale()', () => {
   test('should get ru locale', () => {
     Object.defineProperty(window.navigator, 'languages', {
       configurable: true,
       get() {
-        return ['ru', 'ru-RU', 'en-US', 'en'];
+        return ['ru'];
       },
     });
 
@@ -27,7 +27,7 @@ describe('getLocale', () => {
     Object.defineProperty(window.navigator, 'languages', {
       configurable: true,
       get() {
-        return ['pt-PT', 'pt-BR', 'ru-RU', 'en-US'];
+        return ['pt-PT', 'pt-BR'];
       },
     });
 
@@ -38,10 +38,21 @@ describe('getLocale', () => {
     Object.defineProperty(window.navigator, 'languages', {
       configurable: true,
       get() {
-        return ['pt-BR', 'pt', 'en-US', 'en'];
+        return ['pt-BR', 'pt'];
       },
     });
 
     expect(getLocale()).toBe('pt-BR');
+  });
+
+  test('should get en locale from en-US languages', () => {
+    Object.defineProperty(window.navigator, 'languages', {
+      configurable: true,
+      get() {
+        return ['en-US'];
+      },
+    });
+
+    expect(getLocale()).toBe('en');
   });
 });
