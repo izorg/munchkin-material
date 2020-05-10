@@ -1,42 +1,82 @@
+import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { IntlProvider } from 'react-intl';
 import { useSelector } from 'react-redux';
 
-import { getDirection, getLocale, getMessages, loadLocale } from '../../i18n';
+import { getDirection, getLocale, loadMessages } from '../../i18n';
 
 const displayName = 'LocaleProvider';
 
 const defaultLocale = getLocale();
 
-const LocaleProvider = (props) => {
-  const localeProp = useSelector((state) => state.app.locale) || defaultLocale;
+const LocaleProvider = ({ children }) => {
+  const locale = useSelector((state) => state.app.locale) || defaultLocale;
 
-  const [{ locale, messages }, setState] = useState({
-    locale: localeProp,
-    messages: getMessages(localeProp),
+  const [state, setState] = useState({
+    error: undefined,
+    loading: true,
+    locale,
+    messages: undefined,
   });
 
   useEffect(() => {
+    let active = true;
+
     (async () => {
-      const loadedMessages = await loadLocale(localeProp);
+      let messages;
 
-      setState({
-        locale: localeProp,
-        messages: loadedMessages,
-      });
+      try {
+        messages = await loadMessages(locale);
+      } catch (error) {
+        if (active) {
+          setState({
+            error,
+            loading: false,
+            locale,
+            messages: undefined,
+          });
+        }
+
+        return;
+      }
+
+      if (active) {
+        setState({
+          error: undefined,
+          loading: false,
+          locale,
+          messages,
+        });
+      }
     })();
-  }, [localeProp]);
 
-  useEffect(() => {
-    document.querySelector('html').lang = locale;
-    document.querySelector('body').dir = getDirection(locale);
+    return () => {
+      active = false;
+    };
   }, [locale]);
 
-  if (!messages) {
+  useEffect(() => {
+    document.querySelector('html').lang = state.locale;
+    document.querySelector('body').dir = getDirection(state.locale);
+  }, [state]);
+
+  if (state.error) {
+    throw state.error;
+  }
+
+  if (state.loading) {
     return null;
   }
 
-  return <IntlProvider {...props} locale={locale} messages={messages} />;
+  return (
+    <IntlProvider locale={state.locale} messages={state.messages}>
+      {children}
+    </IntlProvider>
+  );
+};
+
+LocaleProvider.propTypes = {
+  children: PropTypes.node.isRequired,
 };
 
 LocaleProvider.displayName = displayName;

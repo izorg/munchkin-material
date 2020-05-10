@@ -110,17 +110,8 @@ export const getLocale = () => {
   return EN;
 };
 
-let allMessages = {};
-
-export const getMessages = (locale) => allMessages[locale];
-
-export const loadLocale = async (locale) => {
+export const loadMessages = async (locale) => {
   const { default: messages } = await loaders[locale]();
-
-  allMessages = {
-    ...allMessages,
-    [locale]: messages,
-  };
 
   return messages;
 };
