@@ -76,6 +76,17 @@ module.exports = {
         use: [
           {
             loader: 'html-loader',
+            options: {
+              attributes: {
+                list: [
+                  {
+                    tag: 'link',
+                    attribute: 'href',
+                    type: 'src',
+                  },
+                ],
+              },
+            },
           },
         ],
       },
