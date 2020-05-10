@@ -12,6 +12,8 @@ import ThemeItem from './ThemeItem';
 import TranslateItem from './TranslateItem';
 import VersionItem from './VersionItem';
 
+const displayName = 'MenuList';
+
 const MenuList = () => (
   <List component="div">
     <ThemeItem />
@@ -27,6 +29,6 @@ const MenuList = () => (
   </List>
 );
 
-MenuList.displayName = 'MenuList';
+MenuList.displayName = displayName;
 
 export default MenuList;
