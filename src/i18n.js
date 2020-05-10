@@ -85,36 +85,29 @@ const loaders = {
     import(/* webpackChunkName: "locales/uk" */ '../languages/uk.json'),
 };
 
-const defaultLocale = EN;
-const supportedLocales = Object.keys(loaders);
-
-const LANGUAGE_LENGTH = 2;
-
 export const getDirection = (locale) => ([HE].includes(locale) ? 'rtl' : 'ltr');
 
+const supportedLocales = Object.keys(loaders);
+
 export const getLocale = () => {
-  const languages =
-    navigator.languages && navigator.languages.length
-      ? navigator.languages
-      : [navigator.language];
+  const languages = navigator?.languages?.length
+    ? navigator.languages
+    : [navigator.language];
 
-  let locale;
+  for (const language of languages) {
+    const currentLocale = supportedLocales.find(
+      (locale) =>
+        locale === language ||
+        (locale.length === 2 &&
+          `${locale}-${locale.toUpperCase()}` === language),
+    );
 
-  languages.forEach((language) => {
-    if (locale) {
-      return;
+    if (currentLocale) {
+      return currentLocale;
     }
+  }
 
-    locale = supportedLocales.find((supportedLocale) => {
-      return (
-        supportedLocale === language ||
-        (supportedLocale.length === LANGUAGE_LENGTH &&
-          `${supportedLocale}-${supportedLocale.toUpperCase()}` === language)
-      );
-    });
-  });
-
-  return locale || defaultLocale;
+  return EN;
 };
 
 let allMessages = {};

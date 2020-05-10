@@ -1,6 +1,6 @@
 import { getLocale } from './i18n';
 
-describe('i18n', () => {
+describe('getLocale', () => {
   test('should get ru locale', () => {
     Object.defineProperty(window.navigator, 'languages', {
       configurable: true,
