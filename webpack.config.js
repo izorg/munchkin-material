@@ -153,11 +153,6 @@ module.exports = {
       alwaysNotify: true,
     }),
 
-    cordova &&
-      new webpack.optimize.LimitChunkCountPlugin({
-        maxChunks: 1,
-      }),
-
     !dev && web && new GenerateSW(),
 
     process.env.STATS &&
