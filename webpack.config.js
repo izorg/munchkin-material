@@ -34,7 +34,6 @@ module.exports = {
   entry,
 
   output: {
-    chunkFilename: dev || cordova ? 'js/[name].js' : 'js/[name].[chunkhash].js',
     filename: 'js/[name].js',
     path: outputPath,
     publicPath: web ? '/' : '',
