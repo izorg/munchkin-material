@@ -1,9 +1,9 @@
 const { version } = require('./package');
 
+const dev = process.env.NODE_ENV === 'development';
 const prod = process.env.NODE_ENV === 'production';
 const i18n = process.env.NODE_ENV === 'i18n';
 const test = process.env.NODE_ENV === 'test';
-const modules = test ? 'auto' : false;
 
 module.exports = {
   presets: [
@@ -12,14 +12,14 @@ module.exports = {
       {
         corejs: 3,
         loose: true,
-        modules,
+        modules: test ? 'auto' : false,
         useBuiltIns: 'usage',
       },
     ],
     [
       '@babel/preset-react',
       {
-        development: !prod,
+        development: dev,
       },
     ],
   ],
@@ -28,7 +28,7 @@ module.exports = {
       '@babel/plugin-transform-runtime',
       {
         helpers: false,
-        useESModules: modules,
+        useESModules: !test,
       },
     ],
     i18n && [

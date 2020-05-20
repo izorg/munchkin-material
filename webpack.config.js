@@ -128,12 +128,14 @@ module.exports = {
     }),
 
     web &&
-      new CopyPlugin([
-        {
-          context: 'src/static',
-          from: '**/*',
-        },
-      ]),
+      new CopyPlugin({
+        patterns: [
+          {
+            context: 'src/static',
+            from: '**/*',
+          },
+        ],
+      }),
 
     new webpack.HashedModuleIdsPlugin(),
 
