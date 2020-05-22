@@ -85,5 +85,14 @@
     </platform>
     <platform name="windows">
       <preference name="windows-target-version" value="10.0" />
+      <icon src="res/windows/storelogo.png" target="StoreLogo" />
+      <icon src="res/windows/smalllogo.png" target="Square30x30Logo" />
+      <icon src="res/windows/Square44x44Logo.png" target="Square44x44Logo" />
+      <icon src="res/windows/Square70x70Logo.png" target="Square70x70Logo" />
+      <icon src="res/windows/Square71x71Logo.png" target="Square71x71Logo" />
+      <icon src="res/windows/Square150x150Logo.png" target="Square150x150Logo" />
+      <icon src="res/windows/Square310x310Logo.png" target="Square310x310Logo" />
+      <icon src="res/windows/Wide310x150Logo.png" target="Wide310x150Logo" />
+      <splash src="res/windows/splashscreen.png" target="SplashScreen"/>
     </platform>
 </widget>
