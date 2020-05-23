@@ -5,6 +5,7 @@ import monsters from './ducks/monsters';
 import playerList from './ducks/playerList';
 import players from './ducks/players';
 import theme from './ducks/theme';
+import ui from './ducks/ui';
 import undo from './ducks/undo';
 
 export default {
@@ -15,5 +16,6 @@ export default {
   playerList,
   players,
   theme,
+  ui,
   undo,
 };

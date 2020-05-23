@@ -1,5 +1,3 @@
-import dice from './dice';
-import menu from './menu';
-import versions from './versions';
+import ui from './ui';
 
-export default [dice, menu, versions];
+export default [ui];

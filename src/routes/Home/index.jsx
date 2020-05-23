@@ -9,6 +9,7 @@ import MenuDrawer from '../../components/menu/Drawer';
 import MenuSidebar from '../../components/menu/Sidebar';
 import Nobody from '../../components/Nobody';
 import ThemeDialog from '../../components/theme/Dialog';
+import { menuCollapsedSelector } from '../../ducks/ui';
 
 import AppBar from './AppBar';
 import PlayerAddButton from './PlayerAddButton';
@@ -126,7 +127,7 @@ const Home = () => {
     );
   }
 
-  const menuCollapsed = useSelector((state) => state.app.menuCollapsed);
+  const menuCollapsed = useSelector(menuCollapsedSelector);
 
   return (
     <>

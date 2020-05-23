@@ -3,6 +3,7 @@ import deepmerge from 'deepmerge';
 import React, { useMemo } from 'react';
 import { useSelector } from 'react-redux';
 
+import { menuCollapsedSelector } from '../../../ducks/ui';
 import List from '../List';
 
 const displayName = 'MenuSidebar';
@@ -10,7 +11,7 @@ const displayName = 'MenuSidebar';
 const MenuSidebar = () => {
   const theme = useTheme();
 
-  const collapsed = useSelector((state) => state.app.menuCollapsed);
+  const collapsed = useSelector(menuCollapsedSelector);
 
   const sidebarTheme = useMemo(() => {
     const transition = theme.transitions.create(['border-radius', 'padding'], {
