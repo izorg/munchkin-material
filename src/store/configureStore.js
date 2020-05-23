@@ -26,7 +26,7 @@ const configureStore = ({ Sentry }) => {
   const timeout = 100;
 
   const saveStoreState = () => {
-    const { router: omitted, ...state } = store.getState();
+    const state = store.getState();
 
     saveState(state);
 
