@@ -28,6 +28,17 @@ export default ({ direction, type }) => {
           maxHeight: 'calc(100% - 32px)',
         },
       },
+
+      MuiSpeedDialAction: {
+        fab: {
+          color: undefined,
+          backgroundColor: undefined,
+
+          '&:hover': {
+            backgroundColor: undefined,
+          },
+        },
+      },
     },
 
     palette: {

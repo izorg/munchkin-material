@@ -1,12 +1,6 @@
-import {
-  Backdrop,
-  makeStyles,
-  ThemeProvider,
-  useTheme,
-} from '@material-ui/core';
+import { Backdrop, makeStyles } from '@material-ui/core';
 import { SpeedDial, SpeedDialAction, SpeedDialIcon } from '@material-ui/lab';
 import clsx from 'clsx';
-import deepmerge from 'deepmerge';
 import { AccountPlus, EmoticonDevilOutline } from 'mdi-material-ui';
 import React, { memo } from 'react';
 import { FormattedMessage } from 'react-intl';
@@ -57,7 +51,6 @@ const CombatHelperButton = ({ className, ...rest }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const history = useHistory();
-  const theme = useTheme();
 
   const helper = useSelector(getHelper);
   const query = useLocationQuery();
@@ -73,76 +66,58 @@ const CombatHelperButton = ({ className, ...rest }) => {
 
   return (
     <>
-      {open && <Backdrop className={classes.backdrop} onClick={onBack} open />}
+      <Backdrop className={classes.backdrop} onClick={onBack} open={open} />
 
-      <ThemeProvider
-        theme={deepmerge(theme, {
-          overrides: {
-            MuiSpeedDialAction: {
-              fab: {
-                color: theme.palette.primary.contrastText,
-                backgroundColor: theme.palette.primary.main,
-
-                '&:hover': {
-                  backgroundColor: theme.palette.primary.dark,
-
-                  '@media (hover: none)': {
-                    backgroundColor: theme.palette.primary.main,
-                  },
-                },
-              },
-            },
-          },
-        })}
+      <SpeedDial
+        ariaLabel=" "
+        className={clsx(classes.container, className)}
+        FabProps={{
+          color: open ? 'default' : 'primary',
+        }}
+        icon={helper ? <SpeedDialIcon /> : <EmoticonDevilOutline />}
+        onClick={() => {
+          if (open) {
+            onBack();
+          } else if (helper) {
+            onAdd();
+          } else {
+            onMonsterAdd();
+          }
+        }}
+        open={open}
+        TransitionProps={{
+          appear: false,
+        }}
+        {...rest}
       >
-        <SpeedDial
-          ariaLabel=" "
-          className={clsx(classes.container, className)}
+        <SpeedDialAction
           FabProps={{
-            color: open ? 'default' : 'primary',
+            color: 'primary',
           }}
-          icon={helper ? <SpeedDialIcon /> : <EmoticonDevilOutline />}
-          onClick={() => {
-            if (open) {
-              onBack();
-            } else if (helper) {
-              onAdd();
-            } else {
-              onMonsterAdd();
-            }
+          icon={<EmoticonDevilOutline />}
+          onClick={(event) => {
+            event.stopPropagation();
+            onMonsterAdd();
+            onBack();
           }}
-          open={open}
-          TransitionProps={{
-            appear: false,
+          tooltipTitle={
+            <FormattedMessage
+              defaultMessage="Monster"
+              id="combat.add.monster"
+            />
+          }
+        />
+        <SpeedDialAction
+          FabProps={{
+            color: 'primary',
           }}
-          {...rest}
-        >
-          <SpeedDialAction
-            icon={<EmoticonDevilOutline />}
-            onClick={(event) => {
-              event.stopPropagation();
-              onMonsterAdd();
-              onBack();
-            }}
-            tooltipTitle={
-              <FormattedMessage
-                defaultMessage="Monster"
-                id="combat.add.monster"
-              />
-            }
-          />
-          <SpeedDialAction
-            icon={<AccountPlus />}
-            onClick={onHelperClick}
-            tooltipTitle={
-              <FormattedMessage
-                defaultMessage="Helper"
-                id="combat.add.helper"
-              />
-            }
-          />
-        </SpeedDial>
-      </ThemeProvider>
+          icon={<AccountPlus />}
+          onClick={onHelperClick}
+          tooltipTitle={
+            <FormattedMessage defaultMessage="Helper" id="combat.add.helper" />
+          }
+        />
+      </SpeedDial>
     </>
   );
 };
