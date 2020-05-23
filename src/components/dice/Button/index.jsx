@@ -1,9 +1,9 @@
 import { Tooltip } from '@material-ui/core';
-import { push } from 'connected-react-router';
 import { DiceMultiple } from 'mdi-material-ui';
 import React from 'react';
 import { defineMessages, useIntl } from 'react-intl';
 import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 import { throwDice } from '../../../ducks/dice';
 import { stringifyQuery } from '../../../utils/location';
@@ -19,12 +19,13 @@ const messages = defineMessages({
 });
 
 const DiceIconButton = (props) => {
-  const intl = useIntl();
   const dispatch = useDispatch();
+  const history = useHistory();
+  const intl = useIntl();
 
   const onClick = () => {
     dispatch(throwDice());
-    dispatch(push({ search: stringifyQuery({ dice: null }) }));
+    history.push({ search: stringifyQuery({ dice: null }) });
   };
 
   return (

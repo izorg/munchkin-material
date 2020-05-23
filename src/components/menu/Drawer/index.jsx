@@ -4,16 +4,14 @@ import {
   useMediaQuery,
   useTheme,
 } from '@material-ui/core';
-import { goBack, push } from 'connected-react-router';
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useRouteMatch } from 'react-router-dom';
+import { useHistory, useRouteMatch } from 'react-router-dom';
 
 import { EDIT } from '../../../routes/Home/modes';
-import { getQuery, stringifyQuery } from '../../../utils/location';
+import { stringifyQuery, useLocationQuery } from '../../../utils/location';
 import { ios } from '../../../utils/platforms';
 import MenuList from '../List';
-import openSelector from '../openSelector';
+import useMenuOpen from '../useMenuOpen';
 
 const displayName = 'MenuDrawer';
 
@@ -33,12 +31,12 @@ const useStyles = makeStyles(
 );
 
 const MenuDrawer = () => {
-  const dispatch = useDispatch();
+  const history = useHistory();
   const theme = useTheme();
 
   const classes = useStyles();
 
-  const query = useSelector(getQuery);
+  const query = useLocationQuery();
   const match = useRouteMatch('/');
   const wide = useMediaQuery(theme.breakpoints.up('md'), {
     noSsr: true,
@@ -48,19 +46,17 @@ const MenuDrawer = () => {
     wide ||
     !match.isExact ||
     !Object.keys(query).every((key) => [EDIT].includes(key));
-  const open = useSelector(openSelector);
+  const open = useMenuOpen();
 
-  const onClose = () => open && dispatch(goBack());
+  const onClose = () => open && history.goBack();
 
   const onOpen = () =>
-    dispatch(
-      push({
-        search: stringifyQuery({
-          ...query,
-          menu: null,
-        }),
+    history.push({
+      search: stringifyQuery({
+        ...query,
+        menu: null,
       }),
-    );
+    });
 
   return (
     <SwipeableDrawer

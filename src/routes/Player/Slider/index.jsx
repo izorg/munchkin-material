@@ -1,8 +1,8 @@
 import { makeStyles, Paper, useTheme } from '@material-ui/core';
-import { replace } from 'connected-react-router';
 import PropTypes from 'prop-types';
 import React, { useCallback, useMemo, useRef } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import SwipeableViews from 'react-swipeable-views';
 import { mod } from 'react-swipeable-views-core';
 import { bindKeyboard, virtualize } from 'react-swipeable-views-utils';
@@ -95,7 +95,7 @@ const useStyles = makeStyles(
 
 const PlayerSlider = ({ playerId }) => {
   const classes = useStyles();
-  const dispatch = useDispatch();
+  const history = useHistory();
   const { direction } = useTheme();
 
   const indexRef = useRef(0);
@@ -126,9 +126,9 @@ const PlayerSlider = ({ playerId }) => {
     (index) => {
       indexRef.current = index;
 
-      dispatch(replace(`/player/${playerList[getPlayerIndex(index)]}`));
+      history.replace(`/player/${playerList[getPlayerIndex(index)]}`);
     },
-    [dispatch, getPlayerIndex, playerList],
+    [getPlayerIndex, history, playerList],
   );
 
   // eslint-disable-next-line react/prop-types

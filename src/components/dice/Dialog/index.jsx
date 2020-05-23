@@ -1,12 +1,12 @@
 import { ButtonBase, Dialog, makeStyles } from '@material-ui/core';
-import { goBack } from 'connected-react-router';
 import { Dice1, Dice2, Dice3, Dice4, Dice5, Dice6 } from 'mdi-material-ui';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { TransitionGroup } from 'react-transition-group';
 
 import { throwDice } from '../../../ducks/dice';
-import { getQuery } from '../../../utils/location';
+import { useLocationQuery } from '../../../utils/location';
 import DiceTransition from '../Transition';
 
 const displayName = 'DiceDialog';
@@ -53,11 +53,12 @@ const diceComponent = {
 const DiceDialog = (props) => {
   const classes = useStyles();
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const [attempt, setAttempt] = useState(0);
 
   const dice = useSelector((state) => state.dice);
-  const open = useSelector(getQuery).dice !== undefined;
+  const open = useLocationQuery().dice !== undefined;
 
   const Dice = diceComponent[dice];
 
@@ -67,7 +68,7 @@ const DiceDialog = (props) => {
     setAttempt(attempt + 1);
   };
 
-  const onDialogClose = () => dispatch(goBack());
+  const onDialogClose = () => history.goBack();
 
   return (
     <Dialog {...props} onClose={onDialogClose} open={open}>

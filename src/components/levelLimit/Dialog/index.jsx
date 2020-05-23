@@ -8,10 +8,10 @@ import {
   Radio,
   RadioGroup,
 } from '@material-ui/core';
-import { goBack } from 'connected-react-router';
 import React, { useState } from 'react';
 import { useIntl } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { createSelector } from 'reselect';
 
 import { setEpic, setLevelLimit } from '../../../ducks/app';
@@ -20,7 +20,7 @@ import {
   MAX_LEVEL,
   MIN_LEVEL,
 } from '../../../utils/levelLimit';
-import { getQuery } from '../../../utils/location';
+import { useLocationQuery } from '../../../utils/location';
 import CancelButton from '../../CancelButton';
 import SubmitButton from '../../SubmitButton';
 import levelLimitMessages from '../messages';
@@ -56,19 +56,19 @@ const getDefaultValue = createSelector(
   },
 );
 
-const getOpen = (state) => getQuery(state).levelLimit !== undefined;
-
 const LevelLimitDialog = (props) => {
   const classes = useStyles();
   const dispatch = useDispatch();
+  const history = useHistory();
   const intl = useIntl();
 
   const defaultValue = useSelector(getDefaultValue);
   const [value, setValue] = useState(defaultValue);
 
-  const open = useSelector(getOpen);
+  const query = useLocationQuery();
+  const open = query.levelLimit !== undefined;
 
-  const onClose = () => dispatch(goBack());
+  const onClose = () => history.goBack();
 
   const onChange = (event, levelLimit) => {
     setValue(levelLimit);
@@ -96,7 +96,7 @@ const LevelLimitDialog = (props) => {
         break;
     }
 
-    dispatch(goBack());
+    history.goBack();
   };
 
   return (

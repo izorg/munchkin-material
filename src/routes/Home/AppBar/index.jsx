@@ -1,10 +1,10 @@
 import { Tooltip } from '@material-ui/core';
-import { goBack, push } from 'connected-react-router';
 import { Check, Close, Delete, FlagCheckered, Pencil } from 'mdi-material-ui';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { defineMessages, FormattedMessage, useIntl } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 import DiceButton from '../../../components/dice/Button';
 import Title from '../../../components/Title';
@@ -13,7 +13,7 @@ import TopIconButton from '../../../components/TopIconButton';
 import { setCombatPlayerBonus } from '../../../ducks/combat';
 import { removePlayerFromList } from '../../../ducks/playerList';
 import { removePlayer } from '../../../ducks/players';
-import { getQuery, stringifyQuery } from '../../../utils/location';
+import { stringifyQuery, useLocationQuery } from '../../../utils/location';
 import { EDIT, MULTI } from '../modes';
 
 import MenuButton from './MenuButton';
@@ -32,27 +32,29 @@ const messages = defineMessages({
 const HomeAppBar = ({ empty, singleMode }) => {
   const dispatch = useDispatch();
   const intl = useIntl();
-  const query = useSelector(getQuery);
+  const history = useHistory();
+
+  const query = useLocationQuery();
 
   const editMode = query[EDIT] !== undefined;
   const multiMode = query[MULTI] !== undefined;
 
   const selectedPlayerIds = useSelector((state) => state.app.selectedPlayerIds);
 
-  const onMultiSelectDeactivate = () => dispatch(goBack());
+  const onMultiSelectDeactivate = () => history.goBack();
 
   const onPlayersDelete = (selected) => {
     selected.forEach((id) => {
       dispatch(removePlayerFromList(id));
       dispatch(removePlayer(id));
     });
-    dispatch(goBack());
+    history.goBack();
   };
 
   const onToggleEditClick = () =>
     editMode
-      ? dispatch(goBack())
-      : dispatch(push({ search: stringifyQuery({ [EDIT]: null }) }));
+      ? history.goBack()
+      : history.push({ search: stringifyQuery({ [EDIT]: null }) });
 
   const onTurnFinish = () => dispatch(setCombatPlayerBonus(0));
 

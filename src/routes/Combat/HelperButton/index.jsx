@@ -6,17 +6,17 @@ import {
 } from '@material-ui/core';
 import { SpeedDial, SpeedDialAction, SpeedDialIcon } from '@material-ui/lab';
 import clsx from 'clsx';
-import { goBack, push, replace } from 'connected-react-router';
 import deepmerge from 'deepmerge';
 import { AccountPlus, EmoticonDevilOutline } from 'mdi-material-ui';
 import React, { memo } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { createSelector } from 'reselect';
 
 import { addMonster } from '../../../ducks/monsters';
 import createMonster from '../../../utils/createMonster';
-import { getQuery } from '../../../utils/location';
+import { useLocationQuery } from '../../../utils/location';
 
 const displayName = 'CombatHelperButton';
 
@@ -53,21 +53,21 @@ const getHelper = createSelector(
   (helperId, playerList) => !helperId && playerList.length > 1,
 );
 
-const getOpen = (state) => getQuery(state).add === null;
-
 const CombatHelperButton = ({ className, ...rest }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
+  const history = useHistory();
   const theme = useTheme();
 
   const helper = useSelector(getHelper);
-  const open = useSelector(getOpen);
+  const query = useLocationQuery();
+  const open = query.add === null;
 
-  const onAdd = () => dispatch(push(`?add`));
-  const onBack = () => dispatch(goBack());
+  const onAdd = () => history.push(`?add`);
+  const onBack = () => history.goBack();
   const onHelperClick = (event) => {
     event.stopPropagation();
-    dispatch(replace(`?add=helper`));
+    history.replace(`?add=helper`);
   };
   const onMonsterAdd = () => dispatch(addMonster(createMonster()));
 

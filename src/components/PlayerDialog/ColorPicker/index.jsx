@@ -1,10 +1,9 @@
 import { Hidden, makeStyles } from '@material-ui/core';
-import { goBack, push } from 'connected-react-router';
 import PropTypes from 'prop-types';
 import React, { useEffect, useRef, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
-import { getQuery, stringifyQuery } from '../../../utils/location';
+import { stringifyQuery, useLocationQuery } from '../../../utils/location';
 import noop from '../../../utils/noop';
 
 import Color from './Color';
@@ -31,7 +30,7 @@ const ColorPicker = ({
   value: valueProp,
 }) => {
   const classes = useStyles();
-  const dispatch = useDispatch();
+  const history = useHistory();
 
   const anchorEl = useRef(null);
   const ignoreNextBlur = useRef(false);
@@ -44,20 +43,19 @@ const ColorPicker = ({
     }
   }, [valueProp]);
 
-  const query = useSelector(getQuery);
+  const query = useLocationQuery();
 
   const open = query.color === null;
 
   const onOpen = () =>
-    dispatch(
-      push({
-        search: stringifyQuery({
-          ...query,
-          color: null,
-        }),
+    history.push({
+      search: stringifyQuery({
+        ...query,
+        color: null,
       }),
-    );
-  const onClose = () => dispatch(goBack());
+    });
+
+  const onClose = () => history.goBack();
 
   return (
     <>

@@ -1,9 +1,8 @@
 import { ListItemIcon } from '@material-ui/core';
-import { goBack } from 'connected-react-router';
 import { ShareVariant } from 'mdi-material-ui';
 import React from 'react';
 import { defineMessages, useIntl } from 'react-intl';
-import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 import ListItem from '../Item';
 import ListItemText from '../ItemText';
@@ -23,7 +22,7 @@ const messages = defineMessages({
 });
 
 const ShareItem = (props) => {
-  const dispatch = useDispatch();
+  const history = useHistory();
   const intl = useIntl();
 
   const {
@@ -46,7 +45,7 @@ const ShareItem = (props) => {
         title: intl.formatMessage(messages.share),
         url: shareLink,
       });
-      dispatch(goBack());
+      history.goBack();
     } catch (error) {
       // cancel share
     }

@@ -1,10 +1,10 @@
 import './polyfills';
 
-import { ConnectedRouter } from 'connected-react-router';
 import { createMemoryHistory } from 'history';
 import React from 'react';
 import { render } from 'react-dom';
 import { Provider as ReduxProvider } from 'react-redux';
+import { Router } from 'react-router-dom';
 
 import AppContainer from './components/AppContainer';
 import AugmentedStylesProvider from './components/AugmentedStylesProvider';
@@ -34,14 +34,13 @@ const onDeviceReady = () => {
   const history = createMemoryHistory();
 
   const store = configureStore({
-    history,
     Sentry,
   });
 
   render(
     <AppContainer Sentry={Sentry}>
       <ReduxProvider store={store}>
-        <ConnectedRouter history={history}>
+        <Router history={history}>
           <LocaleProvider>
             <WakeLockProvider>
               <FullVersionProvider>
@@ -53,7 +52,7 @@ const onDeviceReady = () => {
               </FullVersionProvider>
             </WakeLockProvider>
           </LocaleProvider>
-        </ConnectedRouter>
+        </Router>
       </ReduxProvider>
     </AppContainer>,
     document.getElementById('app'),

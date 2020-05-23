@@ -1,8 +1,8 @@
-import { push } from 'connected-react-router';
 import { SwordCross } from 'mdi-material-ui';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 import DialogFab from '../../../components/DialogFab';
 import { useFullVersion } from '../../../components/FullVersionProvider';
@@ -16,6 +16,7 @@ const CombatButton = ({ playerId, ...rest }) => {
   const { cordova } = window;
 
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const combatFinished = useSelector((state) => state.app.combatFinished);
   const combatPlayerId = useSelector((state) => state.combat.playerId);
@@ -36,7 +37,7 @@ const CombatButton = ({ playerId, ...rest }) => {
       dispatch(addMonster(createMonster()));
     }
 
-    dispatch(push(`/player/${playerId}/combat`));
+    history.push(`/player/${playerId}/combat`);
   };
 
   return (

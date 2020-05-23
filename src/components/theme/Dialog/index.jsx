@@ -9,15 +9,14 @@ import {
   Radio,
   RadioGroup,
 } from '@material-ui/core';
-import { goBack, replace } from 'connected-react-router';
-import React from 'react';
+import React, { useMemo } from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
-import { createSelector } from 'reselect';
+import { useHistory } from 'react-router-dom';
 
 import { setTheme } from '../../../ducks/theme';
 import themes from '../../../styles/themes';
-import { getQuery, stringifyQuery } from '../../../utils/location';
+import { stringifyQuery, useLocationQuery } from '../../../utils/location';
 import CancelButton from '../../CancelButton';
 import { useFullVersion } from '../../FullVersionProvider';
 import SubmitButton from '../../SubmitButton';
@@ -34,39 +33,32 @@ const useStyles = makeStyles(
   { name: displayName },
 );
 
-const getOpen = (state) => getQuery(state).theme !== undefined;
-
-const getTheme = createSelector(
-  (state) => getQuery(state).theme,
-  (state) => state.theme,
-  (previewTheme, theme) => ({
-    ...theme,
-    ...previewTheme,
-  }),
-);
-
 const ThemeDialog = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
+  const history = useHistory();
   const intl = useIntl();
 
   const { buyFullVersion, fullVersion } = useFullVersion();
 
   const themeId = useSelector((state) => state.theme.id);
 
-  const open = useSelector(getOpen);
-  const query = useSelector(getQuery);
-  const theme = useSelector(getTheme);
+  const query = useLocationQuery();
+  const queryTheme = query.theme;
+  const stateTheme = useSelector((state) => state.theme);
+  const open = queryTheme !== undefined;
+  const theme = useMemo(() => ({ ...stateTheme, ...queryTheme }), [
+    queryTheme,
+    stateTheme,
+  ]);
 
   const onChange = (selectedTheme) =>
-    dispatch(
-      replace({
-        search: stringifyQuery({
-          ...query,
-          theme: selectedTheme,
-        }),
+    history.replace({
+      search: stringifyQuery({
+        ...query,
+        theme: selectedTheme,
       }),
-    );
+    });
 
   const onThemeIdChange = (event, id) => {
     onChange({
@@ -99,10 +91,10 @@ const ThemeDialog = () => {
         type: theme.type || undefined,
       }),
     );
-    dispatch(goBack());
+    history.goBack();
   };
 
-  const onClose = () => dispatch(goBack());
+  const onClose = () => history.goBack();
 
   const typeValue = theme.type || '';
 

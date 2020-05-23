@@ -1,7 +1,7 @@
-import { goBack } from 'connected-react-router';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 import BackButton from '../../../components/BackButton';
 import DiceButton from '../../../components/dice/Button';
@@ -13,7 +13,7 @@ import KillPlayerButton from './KillPlayerButton';
 const displayName = 'PlayerAppBar';
 
 const PlayerAppBar = ({ playerId }) => {
-  const dispatch = useDispatch();
+  const history = useHistory();
 
   const players = useSelector((state) => state.players);
   const title = players[playerId].name;
@@ -22,7 +22,7 @@ const PlayerAppBar = ({ playerId }) => {
     <TopAppBar>
       <BackButton
         data-screenshots="player-back-button"
-        onClick={() => dispatch(goBack())}
+        onClick={() => history.goBack()}
       />
 
       <Title>{title}</Title>

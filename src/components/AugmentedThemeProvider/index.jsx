@@ -13,7 +13,7 @@ import { useSelector } from 'react-redux';
 import { getDirection } from '../../i18n';
 import baseTheme from '../../styles/baseTheme';
 import themes from '../../styles/themes';
-import { getQuery } from '../../utils/location';
+import { useLocationQuery } from '../../utils/location';
 
 const displayName = 'AugmentedThemeProvider';
 
@@ -21,7 +21,8 @@ const AugmentedThemeProvider = ({ children }) => {
   const { locale } = useIntl();
   const direction = getDirection(locale);
 
-  const queryTheme = useSelector((state) => getQuery(state).theme || null);
+  const query = useLocationQuery();
+  const queryTheme = query.theme || null;
   const currentTheme = useSelector((state) => state.theme);
 
   const dark = useMediaQuery('(prefers-color-scheme: dark)', {

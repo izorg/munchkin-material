@@ -1,8 +1,7 @@
-import { push } from 'connected-react-router';
 import { Plus } from 'mdi-material-ui';
 import React from 'react';
 import { defineMessages, useIntl } from 'react-intl';
-import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 import DialogFab from '../../../components/DialogFab';
 
@@ -16,10 +15,10 @@ const messages = defineMessages({
 });
 
 const PlayerAddButton = (props) => {
-  const dispatch = useDispatch();
+  const history = useHistory();
   const intl = useIntl();
 
-  const onClick = () => dispatch(push('?player'));
+  const onClick = () => history.push('?player');
 
   return (
     <DialogFab

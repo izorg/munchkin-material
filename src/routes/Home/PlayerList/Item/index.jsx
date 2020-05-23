@@ -5,17 +5,17 @@ import {
   ListItemSecondaryAction,
   useForkRef,
 } from '@material-ui/core';
-import { goBack, push } from 'connected-react-router';
 import { DragHorizontalVariant as DragIcon } from 'mdi-material-ui';
 import PropTypes from 'prop-types';
 import React, { forwardRef, useCallback, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { useDrag } from 'react-use-gesture';
 
 import PlayerAvatar from '../../../../components/PlayerAvatar';
 import PlayerListItemText from '../../../../components/PlayerListItemText';
 import { togglePlayer, unselectAllPlayers } from '../../../../ducks/app';
-import { getQuery, stringifyQuery } from '../../../../utils/location';
+import { stringifyQuery, useLocationQuery } from '../../../../utils/location';
 import { EDIT, MULTI } from '../../modes';
 
 const displayName = 'HomePlayerListItem';
@@ -23,6 +23,7 @@ const displayName = 'HomePlayerListItem';
 const HomePlayerListItem = forwardRef(
   ({ dragHandleProps, playerId, ...rest }, ref) => {
     const dispatch = useDispatch();
+    const history = useHistory();
 
     const itemRef = useRef(null);
     const avatarRef = useRef(null);
@@ -31,7 +32,7 @@ const HomePlayerListItem = forwardRef(
 
     const handleRef = useForkRef(itemRef, ref);
 
-    const query = useSelector(getQuery);
+    const query = useLocationQuery();
     const editMode = query[EDIT] !== undefined;
     const multiMode = query[MULTI] !== undefined;
 
@@ -46,13 +47,12 @@ const HomePlayerListItem = forwardRef(
     const onMultiSelectActivate = () => {
       dispatch(unselectAllPlayers());
       dispatch(togglePlayer(playerId));
-      dispatch(
-        push({
-          search: stringifyQuery({
-            [MULTI]: null,
-          }),
+
+      history.push({
+        search: stringifyQuery({
+          [MULTI]: null,
         }),
-      );
+      });
     };
 
     const onClick = (event) => {
@@ -65,14 +65,12 @@ const HomePlayerListItem = forwardRef(
       }
 
       if (editMode) {
-        dispatch(
-          push({
-            search: stringifyQuery({
-              ...query,
-              player: playerId,
-            }),
+        history.push({
+          search: stringifyQuery({
+            ...query,
+            player: playerId,
           }),
-        );
+        });
       } else if (multiMode) {
         dispatch(togglePlayer(playerId));
 
@@ -80,7 +78,7 @@ const HomePlayerListItem = forwardRef(
           selectedPlayerIds.length === 1 &&
           selectedPlayerIds[0] === playerId
         ) {
-          dispatch(goBack());
+          history.goBack();
         }
       } else if (
         avatarRef.current &&
@@ -88,7 +86,7 @@ const HomePlayerListItem = forwardRef(
       ) {
         onMultiSelectActivate();
       } else {
-        dispatch(push(`/player/${playerId}`));
+        history.push(`/player/${playerId}`);
       }
     };
 

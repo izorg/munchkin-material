@@ -1,8 +1,7 @@
 import { ListItemIcon } from '@material-ui/core';
-import { goBack } from 'connected-react-router';
 import { CellphoneArrowDown, InformationOutline } from 'mdi-material-ui';
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 import { useWorkbox } from '../../../WorkboxProvider';
 import ListItem from '../Item';
@@ -11,13 +10,13 @@ import ListItemText from '../ItemText';
 const displayName = 'VersionItem';
 
 const VersionItem = (props) => {
-  const dispatch = useDispatch();
+  const history = useHistory();
 
   const { applyUpdate, update } = useWorkbox();
 
   const onClick = () => {
     if (update) {
-      dispatch(goBack());
+      history.goBack();
       applyUpdate();
     }
   };

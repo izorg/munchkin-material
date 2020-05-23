@@ -5,7 +5,7 @@ import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { movePlayer } from '../../../ducks/playerList';
-import { getQuery } from '../../../utils/location';
+import { useLocationQuery } from '../../../utils/location';
 import { EDIT } from '../modes';
 
 import Item from './Item';
@@ -34,7 +34,7 @@ const HomePlayerList = (props) => {
   const dispatch = useDispatch();
   const theme = useTheme();
 
-  const query = useSelector(getQuery);
+  const query = useLocationQuery();
   const playerList = useSelector((state) => state.playerList);
 
   const handleDragEnd = useCallback(

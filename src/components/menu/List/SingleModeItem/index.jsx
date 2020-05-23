@@ -1,14 +1,14 @@
 import { ListItemIcon, makeStyles, Switch } from '@material-ui/core';
 import clsx from 'clsx';
-import { getLocation, goBack } from 'connected-react-router';
 import { Account, AccountMultiple } from 'mdi-material-ui';
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory, useLocation } from 'react-router-dom';
 
 import { setSingleMode } from '../../../../ducks/app';
 import { useFullVersion } from '../../../FullVersionProvider';
-import openSelector from '../../openSelector';
+import useMenuOpen from '../../useMenuOpen';
 import ListItem from '../Item';
 import ListItemText from '../ItemText';
 
@@ -27,10 +27,11 @@ const useStyles = makeStyles(
 const SingleModeItem = ({ className }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
+  const history = useHistory();
+  const { pathname } = useLocation();
 
   const singleMode = useSelector((state) => state.app.singleMode);
-  const open = useSelector(openSelector);
-  const { pathname } = useSelector(getLocation);
+  const open = useMenuOpen();
 
   const { buyFullVersion, fullVersion } = useFullVersion();
 
@@ -48,7 +49,7 @@ const SingleModeItem = ({ className }) => {
     dispatch(setSingleMode(isSingleMode));
 
     if (needBack) {
-      dispatch(goBack());
+      history.goBack();
     }
   };
 

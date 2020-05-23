@@ -1,8 +1,8 @@
-import { goBack } from 'connected-react-router';
 import { FlagCheckered } from 'mdi-material-ui';
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 import BackButton from '../../../components/BackButton';
 import DiceIconButton from '../../../components/dice/Button';
@@ -15,12 +15,13 @@ const displayName = 'CombatAppBar';
 
 const CombatAppBar = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
 
-  const onBack = () => dispatch(goBack());
+  const onBack = () => history.goBack();
 
   const onFinish = () => {
     dispatch(finishCombat());
-    dispatch(goBack());
+    history.goBack();
   };
 
   return (

@@ -1,4 +1,3 @@
-import { connectRouter, routerMiddleware } from 'connected-react-router';
 import { applyMiddleware, combineReducers, createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
@@ -9,26 +8,15 @@ import { loadState, saveState } from './localStorage';
 import errorReporter from './middlewares/errorReporter';
 import logger from './middlewares/logger';
 
-const configureStore = ({ history, Sentry }) => {
+const configureStore = ({ Sentry }) => {
   const composeEnhancers = composeWithDevTools({ trace: true });
 
-  const router = connectRouter(history);
-
-  const createRootReducer = () =>
-    combineReducers({
-      router,
-      ...reducers,
-    });
+  const createRootReducer = () => combineReducers(reducers);
 
   const preloadedState = loadState();
 
   const enhancer = composeEnhancers(
-    applyMiddleware(
-      errorReporter(Sentry),
-      routerMiddleware(history),
-      thunk,
-      logger(Sentry),
-    ),
+    applyMiddleware(errorReporter(Sentry), thunk, logger(Sentry)),
   );
 
   const store = createStore(createRootReducer(), preloadedState, enhancer);

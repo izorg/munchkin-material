@@ -1,9 +1,8 @@
 import { ListItemIcon } from '@material-ui/core';
-import { goBack } from 'connected-react-router';
 import { Star } from 'mdi-material-ui';
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
-import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 import ListItem from '../Item';
 import ListItemText from '../ItemText';
@@ -24,7 +23,7 @@ const getRateLink = (platformId) => {
 };
 
 const RateItem = (props) => {
-  const dispatch = useDispatch();
+  const history = useHistory();
 
   const rateLink = getRateLink(window.cordova?.platformId);
 
@@ -32,7 +31,7 @@ const RateItem = (props) => {
     return null;
   }
 
-  const onClick = () => dispatch(goBack());
+  const onClick = () => history.goBack();
 
   return (
     <ListItem

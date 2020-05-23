@@ -1,10 +1,10 @@
 import { ListItemIcon, makeStyles } from '@material-ui/core';
 import clsx from 'clsx';
-import { push, replace } from 'connected-react-router';
 import { SwapVertical } from 'mdi-material-ui';
 import React from 'react';
 import { useIntl } from 'react-intl';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 import {
   MAX_EPIC_LEVEL,
@@ -13,7 +13,7 @@ import {
 } from '../../../../utils/levelLimit';
 import { stringifyQuery } from '../../../../utils/location';
 import levelLimitMessages from '../../../levelLimit/messages';
-import openSelector from '../../openSelector';
+import useMenuOpen from '../../useMenuOpen';
 import ListItem from '../Item';
 import ListItemText from '../ItemText';
 
@@ -31,20 +31,20 @@ const useStyles = makeStyles(
 
 const LevelLimitItem = ({ className, ...rest }) => {
   const classes = useStyles();
-  const dispatch = useDispatch();
+  const history = useHistory();
   const intl = useIntl();
 
   const epic = useSelector((state) => state.app.epic);
   const levelLimit = useSelector((state) => state.app.levelLimit);
-  const open = useSelector(openSelector);
+  const open = useMenuOpen();
 
   const onClick = () => {
     const location = { search: stringifyQuery({ levelLimit: null }) };
 
     if (open) {
-      dispatch(replace(location));
+      history.replace(location);
     } else {
-      dispatch(push(location));
+      history.push(location);
     }
   };
 

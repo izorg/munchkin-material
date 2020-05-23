@@ -1,13 +1,13 @@
 import './polyfills';
 
 import * as Sentry from '@sentry/browser';
-import { ConnectedRouter } from 'connected-react-router';
 import 'firebase/analytics';
 import firebase from 'firebase/app';
 import { createBrowserHistory } from 'history';
 import React from 'react';
 import { render } from 'react-dom';
 import { Provider as ReduxProvider } from 'react-redux';
+import { Router } from 'react-router-dom';
 
 import AppContainer from './components/AppContainer';
 import AugmentedStylesProvider from './components/AugmentedStylesProvider';
@@ -40,7 +40,6 @@ if (process.env.NODE_ENV === 'production') {
 const history = createBrowserHistory();
 
 const store = configureStore({
-  history,
   Sentry,
 });
 
@@ -51,7 +50,7 @@ if (process.env.NODE_ENV === 'development') {
 render(
   <AppContainer Sentry={Sentry}>
     <ReduxProvider store={store}>
-      <ConnectedRouter history={history}>
+      <Router history={history}>
         <WorkboxProvider>
           <LocaleProvider>
             <AugmentedStylesProvider>
@@ -61,7 +60,7 @@ render(
             </AugmentedStylesProvider>
           </LocaleProvider>
         </WorkboxProvider>
-      </ConnectedRouter>
+      </Router>
     </ReduxProvider>
   </AppContainer>,
   document.getElementById('app'),

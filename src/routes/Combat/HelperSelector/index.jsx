@@ -7,15 +7,15 @@ import {
   ListItemAvatar,
   makeStyles,
 } from '@material-ui/core';
-import { goBack } from 'connected-react-router';
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 import PlayerAvatar from '../../../components/PlayerAvatar';
 import PlayerListItemText from '../../../components/PlayerListItemText';
 import { setCombatHelper } from '../../../ducks/combat';
-import { getQuery } from '../../../utils/location';
+import { useLocationQuery } from '../../../utils/location';
 
 const displayName = 'HelperSelector';
 
@@ -35,6 +35,7 @@ const useStyles = makeStyles(
 const HelperSelector = (props) => {
   const classes = useStyles();
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const helpers = useSelector((state) =>
     state.playerList
@@ -42,13 +43,14 @@ const HelperSelector = (props) => {
       .map((id) => state.players[id]),
   );
 
-  const open = useSelector((state) => getQuery(state).add === 'helper');
+  const query = useLocationQuery();
+  const open = query.add === 'helper';
 
-  const onClose = () => dispatch(goBack());
+  const onClose = () => history.goBack();
 
   const onSelect = (id) => {
     dispatch(setCombatHelper(id));
-    dispatch(goBack());
+    history.goBack();
   };
 
   return (
