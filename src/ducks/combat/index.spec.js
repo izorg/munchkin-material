@@ -2,6 +2,7 @@ import { v4 as uuid } from 'uuid';
 
 import createMonster from '../../utils/createMonster';
 import { ADD_MONSTER, REMOVE_MONSTER } from '../monsters/actionTypes';
+import { REMOVE_PLAYER } from '../players/actionTypes';
 
 import {
   SET_COMBAT_HELPER,
@@ -89,6 +90,23 @@ describe('Combat reducer', () => {
 
     expect(combat.playerId).toBe(playerId);
     expect(combat.monsters).toEqual([monster.id]);
+  });
+
+  test('should remove helper on related player remove', () => {
+    const helperId = uuid();
+
+    const state = { helperBonus: 2, helperId };
+
+    expect(reducer(state, { type: REMOVE_PLAYER, id: helperId })).toEqual({
+      helperBonus: 0,
+      helperId: null,
+    });
+  });
+
+  test('should ignore combat unrelated player removal', () => {
+    const state = { helperBonus: 2, helperId: uuid() };
+
+    expect(reducer(state, { type: REMOVE_PLAYER, id: uuid() })).toBe(state);
   });
 
   test('should ignore unknown action', () => {
