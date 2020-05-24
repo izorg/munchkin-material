@@ -63,8 +63,7 @@ const FullVersionProvider = ({ children }) => {
     // store.verbosity = store.DEBUG;
 
     store.error((error) => {
-      // eslint-disable-next-line no-console
-      console.log(`ERROR ${error.code}: ${error.message}`);
+      console.error(`ERROR ${error.code}: ${error.message}`);
     });
 
     store.register({
