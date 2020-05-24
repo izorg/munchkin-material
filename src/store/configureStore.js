@@ -2,11 +2,10 @@ import { applyMiddleware, combineReducers, createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 
-import reducers from '../reducers';
-
 import { loadState, saveState } from './localStorage';
 import errorReporter from './middlewares/errorReporter';
 import logger from './middlewares/logger';
+import reducers from './reducers';
 
 const configureStore = ({ Sentry }) => {
   const composeEnhancers = composeWithDevTools({ trace: true });
@@ -47,7 +46,7 @@ const configureStore = ({ Sentry }) => {
 
   /* istanbul ignore if  */
   if (module.hot) {
-    module.hot.accept('../reducers', () =>
+    module.hot.accept('./reducers', () =>
       store.replaceReducer(createRootReducer()),
     );
   }
