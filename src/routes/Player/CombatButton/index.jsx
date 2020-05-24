@@ -4,8 +4,8 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
-import DialogFab from '../../../components/DialogFab';
 import { useFullVersion } from '../../../components/FullVersionProvider';
+import ScreenFab from '../../../components/ScreenFab';
 import { startCombat } from '../../../ducks/combat';
 import { addMonster } from '../../../ducks/monsters';
 import createMonster from '../../../utils/createMonster';
@@ -41,13 +41,13 @@ const CombatButton = ({ playerId, ...rest }) => {
   };
 
   return (
-    <DialogFab
+    <ScreenFab
       data-screenshots="combat-button"
       onClick={() => goToCombat()}
       {...rest}
     >
       <SwordCross />
-    </DialogFab>
+    </ScreenFab>
   );
 };
 

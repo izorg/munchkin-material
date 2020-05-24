@@ -2,7 +2,7 @@ import { Fab, makeStyles } from '@material-ui/core';
 import clsx from 'clsx';
 import React, { forwardRef } from 'react';
 
-const displayName = 'DialogFab';
+const displayName = 'ScreenFab';
 
 const useStyles = makeStyles(
   (theme) => ({
@@ -25,7 +25,7 @@ const useStyles = makeStyles(
   { name: displayName },
 );
 
-const DialogFab = forwardRef(({ className, ...rest }, ref) => {
+const ScreenFab = forwardRef(({ className, ...rest }, ref) => {
   const classes = useStyles();
 
   return (
@@ -38,6 +38,6 @@ const DialogFab = forwardRef(({ className, ...rest }, ref) => {
   );
 });
 
-DialogFab.displayName = displayName;
+ScreenFab.displayName = displayName;
 
-export default DialogFab;
+export default ScreenFab;

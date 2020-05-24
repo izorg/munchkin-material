@@ -3,7 +3,7 @@ import React from 'react';
 import { defineMessages, useIntl } from 'react-intl';
 import { useHistory } from 'react-router-dom';
 
-import DialogFab from '../../../components/DialogFab';
+import ScreenFab from '../../../components/ScreenFab';
 
 const displayName = 'PlayerAddButton';
 
@@ -21,13 +21,13 @@ const PlayerAddButton = (props) => {
   const onClick = () => history.push('?player');
 
   return (
-    <DialogFab
+    <ScreenFab
       aria-label={intl.formatMessage(messages.label)}
       onClick={onClick}
       {...props}
     >
       <Plus />
-    </DialogFab>
+    </ScreenFab>
   );
 };
 
