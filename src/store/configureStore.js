@@ -25,7 +25,7 @@ const configureStore = ({ Sentry }) => {
   const timeout = 100;
 
   const saveStoreState = () => {
-    const state = store.getState();
+    const { update, ...state } = store.getState();
 
     saveState(state);
 

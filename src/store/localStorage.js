@@ -5,31 +5,27 @@ import migrations from './migrations';
 const key = 'redux';
 
 export const loadState = () => {
+  let serializedState;
+
   try {
-    const serializedState = localStorage.getItem(key);
-
-    if (serializedState === null) {
-      return undefined;
-    }
-
-    return compose(...migrations)(JSON.parse(serializedState));
+    serializedState = localStorage.getItem(key);
   } catch (error) {
-    // eslint-disable-next-line no-console
     console.warn("Can't load state from localStorage");
 
     return undefined;
   }
+
+  if (serializedState === null) {
+    return undefined;
+  }
+
+  return compose(...migrations)(JSON.parse(serializedState));
 };
 
 export const saveState = (state) => {
   try {
-    const { update, ...savedState } = state;
-
-    const serializedState = JSON.stringify(savedState);
-
-    localStorage.setItem(key, serializedState);
+    localStorage.setItem(key, JSON.stringify(state));
   } catch (error) {
-    // eslint-disable-next-line no-console
     console.warn("Can't save state to localStorage");
   }
 };

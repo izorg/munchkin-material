@@ -34,7 +34,7 @@
       }
     ],
     "jsx-a11y/no-autofocus": ["error", { "ignoreNonDOM": true }],
-    "no-console": "error",
+    "no-console": ["error", { "allow": ["error", "warn"] }],
     "no-unused-vars": [
       "error",
       {
