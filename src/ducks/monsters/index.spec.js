@@ -85,11 +85,14 @@ describe('Monsters reducer', () => {
   });
 
   test('starts combat', () => {
+    const monster = createMonster();
+
     const monsters = reducer(undefined, {
       type: START_COMBAT,
+      monster,
     });
 
-    expect(monsters).toEqual({});
+    expect(monsters).toEqual({ [monster.id]: monster });
   });
 
   test('updates monster', () => {

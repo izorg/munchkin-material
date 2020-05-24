@@ -79,13 +79,16 @@ describe('Combat reducer', () => {
 
   test('starts combat', () => {
     const playerId = 10;
+    const monster = createMonster();
 
     const combat = reducer(undefined, {
       type: START_COMBAT,
+      monster,
       playerId,
     });
 
     expect(combat.playerId).toBe(playerId);
+    expect(combat.monsters).toEqual([monster.id]);
   });
 
   test('should ignore unknown action', () => {
@@ -124,11 +127,14 @@ describe('Combat actions', () => {
   });
 
   test('should create an action to start a combat', () => {
-    const action = {
-      type: START_COMBAT,
-      playerId: uuid(),
-    };
+    const playerId = uuid();
 
-    expect(startCombat(action.playerId)).toEqual(action);
+    const { monster, ...action } = startCombat(playerId);
+
+    expect(action).toEqual({
+      type: START_COMBAT,
+      playerId,
+    });
+    expect(typeof monster).toBe('object');
   });
 });

@@ -7,8 +7,6 @@ import { useHistory } from 'react-router-dom';
 import { useFullVersion } from '../../../components/FullVersionProvider';
 import ScreenFab from '../../../components/ScreenFab';
 import { startCombat } from '../../../ducks/combat';
-import { addMonster } from '../../../ducks/monsters';
-import createMonster from '../../../utils/createMonster';
 
 const displayName = 'CombatButton';
 
@@ -34,7 +32,6 @@ const CombatButton = ({ playerId, ...rest }) => {
       }
 
       dispatch(startCombat(playerId));
-      dispatch(addMonster(createMonster()));
     }
 
     history.push(`/player/${playerId}/combat`);

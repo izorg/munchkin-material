@@ -107,7 +107,9 @@ const reducer = (state = initialState, action) => {
     }
 
     case START_COMBAT:
-      return initialState;
+      return {
+        [action.monster.id]: action.monster,
+      };
 
     case UPDATE_MONSTER: {
       const { id } = action.monster;

@@ -1,3 +1,4 @@
+import createMonster from '../../utils/createMonster';
 import { ADD_MONSTER, REMOVE_MONSTER } from '../monsters/actionTypes';
 import { REMOVE_PLAYER } from '../players/actionTypes';
 
@@ -25,6 +26,7 @@ export const setCombatPlayerBonus = (bonus) => ({
 
 export const startCombat = (playerId) => ({
   type: START_COMBAT,
+  monster: createMonster(),
   playerId,
 });
 
@@ -86,6 +88,7 @@ const reducer = (state = initialState, action) => {
     case START_COMBAT:
       return {
         ...initialState,
+        monsters: [action.monster.id],
         playerId: action.playerId,
       };
 
