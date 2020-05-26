@@ -9,7 +9,7 @@ import DiceIconButton from '../../../components/dice/Button';
 import Title from '../../../components/Title';
 import TopAppBar from '../../../components/TopAppBar';
 import TopIconButton from '../../../components/TopIconButton';
-import { finishCombat } from '../../../ducks/app';
+import { finishCombat } from '../../../ducks/combat';
 
 const displayName = 'CombatAppBar';
 

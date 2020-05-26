@@ -16,7 +16,7 @@ const CombatButton = ({ playerId, ...rest }) => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const combatFinished = useSelector((state) => state.app.combatFinished);
+  const combatFinished = useSelector((state) => state.combat.finished);
   const combatPlayerId = useSelector((state) => state.combat.playerId);
 
   const { buyFullVersion, fullVersion } = useFullVersion();

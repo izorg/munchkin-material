@@ -3,11 +3,16 @@ import { ADD_MONSTER, REMOVE_MONSTER } from '../monsters/actionTypes';
 import { REMOVE_PLAYER } from '../players/actionTypes';
 
 import {
+  FINISH_COMBAT,
   SET_COMBAT_HELPER,
   SET_COMBAT_HELPER_BONUS,
   SET_COMBAT_PLAYER_BONUS,
   START_COMBAT,
 } from './actionTypes';
+
+export const finishCombat = () => ({
+  type: FINISH_COMBAT,
+});
 
 export const setCombatHelper = (id) => ({
   type: SET_COMBAT_HELPER,
@@ -31,6 +36,7 @@ export const startCombat = (playerId) => ({
 });
 
 export const initialState = {
+  finished: false,
   helperBonus: 0,
   helperId: null,
   monsters: [],
@@ -44,6 +50,12 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         monsters: [...state.monsters, action.monster.id],
+      };
+
+    case FINISH_COMBAT:
+      return {
+        ...state,
+        finished: true,
       };
 
     case REMOVE_MONSTER: {
@@ -88,6 +100,7 @@ const reducer = (state = initialState, action) => {
     case START_COMBAT:
       return {
         ...initialState,
+        finished: false,
         monsters: [action.monster.id],
         playerId: action.playerId,
       };

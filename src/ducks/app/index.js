@@ -1,9 +1,7 @@
 import createPlayer from '../../utils/createPlayer';
 import { startCombat } from '../combat';
-import { START_COMBAT } from '../combat/actionTypes';
 import { addPlayer } from '../players';
 
-export const FINISH_COMBAT = 'app/FINISH_COMBAT';
 export const SET_EPIC = 'app/SET_EPIC';
 export const SET_FULL_VERSION = 'app/SET_FULL_VERSION';
 export const SET_KEEP_AWAKE = 'app/SET_KEEP_AWAKE';
@@ -13,10 +11,6 @@ export const SET_SINGLE_MODE = 'app/SET_SINGLE_MODE';
 export const SET_SINGLE_MODE_PLAYER = 'app/SET_SINGLE_MODE_PLAYER';
 export const TOGGLE_PLAYER = 'app/TOGGLE_PLAYER';
 export const UNSELECT_ALL_PLAYERS = 'app/UNSELECT_ALL_PLAYERS';
-
-export const finishCombat = () => ({
-  type: FINISH_COMBAT,
-});
 
 export const setEpic = (epic = true) => ({
   type: SET_EPIC,
@@ -78,7 +72,6 @@ export const unselectAllPlayers = () => ({
 });
 
 const initialState = {
-  combatFinished: false,
   epic: false,
   fullVersion: false,
   keepAwake: false,
@@ -91,12 +84,6 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case FINISH_COMBAT:
-      return {
-        ...state,
-        combatFinished: true,
-      };
-
     case SET_EPIC:
       return {
         ...state,
@@ -141,13 +128,6 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         singleModePlayerId: action.id,
-      };
-    }
-
-    case START_COMBAT: {
-      return {
-        ...state,
-        combatFinished: false,
       };
     }
 
