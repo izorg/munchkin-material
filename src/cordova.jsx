@@ -15,10 +15,12 @@ import ReduxProvider from './components/ReduxProvider';
 import Root from './components/Root';
 import WakeLockProvider from './components/WakeLockProvider';
 
-const onDeviceReady = () => {
+const onDeviceReady = async () => {
   const { cordova } = window;
 
-  if (process.env.NODE_ENV === 'production') {
+  const debug = await new Promise(cordova.plugins.IsDebug.getIsDebug);
+
+  if (process.env.NODE_ENV === 'production' && !debug) {
     Sentry.init({
       dsn: 'https://14fc03bd8f6249ddbd3917a950656dcc@sentry.io/1423183',
       environment: process.env.NODE_ENV,
