@@ -4,7 +4,6 @@ import * as Sentry from '@sentry/browser';
 import { createMemoryHistory } from 'history';
 import React from 'react';
 import { render } from 'react-dom';
-import { Provider as ReduxProvider } from 'react-redux';
 import { Router } from 'react-router-dom';
 
 import AppContainer from './components/AppContainer';
@@ -12,25 +11,26 @@ import AugmentedStylesProvider from './components/AugmentedStylesProvider';
 import AugmentedThemeProvider from './components/AugmentedThemeProvider';
 import FullVersionProvider from './components/FullVersionProvider';
 import LocaleProvider from './components/LocaleProvider';
+import ReduxProvider from './components/ReduxProvider';
 import Root from './components/Root';
 import WakeLockProvider from './components/WakeLockProvider';
-import configureStore from './store/configureStore';
 
 const onDeviceReady = () => {
   const { cordova } = window;
 
-  Sentry.init({
-    dsn: 'https://14fc03bd8f6249ddbd3917a950656dcc@sentry.io/1423183',
-    environment: process.env.NODE_ENV,
-    release: VERSION,
-  });
+  if (process.env.NODE_ENV === 'production') {
+    Sentry.init({
+      dsn: 'https://14fc03bd8f6249ddbd3917a950656dcc@sentry.io/1423183',
+      environment: process.env.NODE_ENV,
+      release: VERSION,
+    });
+  }
 
   const history = createMemoryHistory();
-  const store = configureStore();
 
   render(
     <AppContainer Sentry={Sentry}>
-      <ReduxProvider store={store}>
+      <ReduxProvider>
         <Router history={history}>
           <LocaleProvider>
             <WakeLockProvider>

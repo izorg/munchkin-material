@@ -6,16 +6,15 @@ import firebase from 'firebase/app';
 import { createBrowserHistory } from 'history';
 import React from 'react';
 import { render } from 'react-dom';
-import { Provider as ReduxProvider } from 'react-redux';
 import { Router } from 'react-router-dom';
 
 import AppContainer from './components/AppContainer';
 import AugmentedStylesProvider from './components/AugmentedStylesProvider';
 import AugmentedThemeProvider from './components/AugmentedThemeProvider';
 import LocaleProvider from './components/LocaleProvider';
+import ReduxProvider from './components/ReduxProvider';
 import Root from './components/Root';
 import WorkboxProvider from './components/WorkboxProvider';
-import configureStore from './store/configureStore';
 
 if (process.env.NODE_ENV === 'production') {
   Sentry.init({
@@ -38,15 +37,10 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 const history = createBrowserHistory();
-const store = configureStore();
-
-if (process.env.NODE_ENV === 'development') {
-  window.store = store;
-}
 
 render(
   <AppContainer Sentry={Sentry}>
-    <ReduxProvider store={store}>
+    <ReduxProvider>
       <Router history={history}>
         <WorkboxProvider>
           <LocaleProvider>
