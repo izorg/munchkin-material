@@ -40,7 +40,7 @@ module.exports = {
   },
 
   resolve: {
-    extensions: ['.js', '.json', '.jsx'],
+    extensions: ['.mjs', '.jsx', '.js', '.json'],
   },
 
   module: {
@@ -52,20 +52,19 @@ module.exports = {
           {
             loader: 'babel-loader',
             options: {
-              babelrc: false,
-              cacheDirectory: true,
+              cacheDirectory: dev,
             },
           },
         ],
       },
       {
-        test: /\.jsx?$/,
+        test: /\.m?jsx?$/,
         exclude: /node_modules/,
         use: [
           {
             loader: 'babel-loader',
             options: {
-              cacheDirectory: true,
+              cacheDirectory: dev,
               plugins: [dev && 'react-refresh/babel'].filter(Boolean),
             },
           },
