@@ -1,5 +1,6 @@
 import './polyfills';
 
+import * as Sentry from '@sentry/browser';
 import { createMemoryHistory } from 'history';
 import React from 'react';
 import { render } from 'react-dom';
@@ -18,24 +19,14 @@ import configureStore from './store/configureStore';
 const onDeviceReady = () => {
   const { cordova } = window;
 
-  const Sentry = cordova.require('sentry-cordova.Sentry');
-
   Sentry.init({
     dsn: 'https://14fc03bd8f6249ddbd3917a950656dcc@sentry.io/1423183',
     environment: process.env.NODE_ENV,
-  });
-
-  Sentry.configureScope((scope) => {
-    scope.setExtras({
-      version: VERSION,
-    });
+    release: VERSION,
   });
 
   const history = createMemoryHistory();
-
-  const store = configureStore({
-    Sentry,
-  });
+  const store = configureStore();
 
   render(
     <AppContainer Sentry={Sentry}>

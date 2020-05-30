@@ -1,4 +1,6 @@
-const errorReporter = (Sentry) => (store) => (next) => (action) => {
+import * as Sentry from '@sentry/browser';
+
+const errorReporter = (store) => (next) => (action) => {
   try {
     return next(action);
   } catch (error) {

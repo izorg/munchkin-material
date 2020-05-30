@@ -38,10 +38,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 const history = createBrowserHistory();
-
-const store = configureStore({
-  Sentry,
-});
+const store = configureStore();
 
 if (process.env.NODE_ENV === 'development') {
   window.store = store;

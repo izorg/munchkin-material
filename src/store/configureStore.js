@@ -7,7 +7,7 @@ import errorReporter from './middlewares/errorReporter';
 import logger from './middlewares/logger';
 import reducers from './reducers';
 
-const configureStore = ({ Sentry }) => {
+const configureStore = () => {
   const composeEnhancers = composeWithDevTools({ trace: true });
 
   const createRootReducer = () => combineReducers(reducers);
@@ -15,7 +15,7 @@ const configureStore = ({ Sentry }) => {
   const preloadedState = loadState();
 
   const enhancer = composeEnhancers(
-    applyMiddleware(errorReporter(Sentry), thunk, logger(Sentry)),
+    applyMiddleware(errorReporter, thunk, logger),
   );
 
   const store = createStore(createRootReducer(), preloadedState, enhancer);

@@ -14,10 +14,19 @@ script:
   - npm run lint
   - npm run test
   - npm run build:web
-  - export SENTRY_PROJECT=munchkin-web
+  - npm run build:cordova
+
   - VERSION=`node ./scripts/version.js`
+
+  - export SENTRY_PROJECT=munchkin-web
   - sentry-cli releases new "$VERSION"
   - sentry-cli releases files "$VERSION" upload-sourcemaps web
+  - sentry-cli releases set-commits "$VERSION" --auto
+  - sentry-cli releases deploys "$VERSION" new -e "production"
+
+  - export SENTRY_PROJECT=munchkin-cordova
+  - sentry-cli releases new "$VERSION"
+  - sentry-cli releases files "$VERSION" upload-sourcemaps cordova/www
   - sentry-cli releases set-commits "$VERSION" --auto
   - sentry-cli releases deploys "$VERSION" new -e "production"
 

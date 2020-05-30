@@ -1,4 +1,6 @@
-const logger = (Sentry) => () => (next) => (action) => {
+import * as Sentry from '@sentry/browser';
+
+const logger = () => (next) => (action) => {
   const { type, ...rest } = action;
 
   Sentry.addBreadcrumb({
