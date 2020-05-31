@@ -1,6 +1,5 @@
 import './polyfills';
 
-import * as Sentry from '@sentry/browser';
 import 'firebase/analytics';
 import firebase from 'firebase/app';
 import { createBrowserHistory } from 'history';
@@ -36,7 +35,7 @@ if (process.env.NODE_ENV === 'production') {
 const history = createBrowserHistory();
 
 render(
-  <AppContainer Sentry={Sentry}>
+  <AppContainer>
     <ReduxProvider>
       <Router history={history}>
         <WorkboxProvider>

@@ -1,6 +1,5 @@
 import './polyfills';
 
-import * as Sentry from '@sentry/browser';
 import { createMemoryHistory } from 'history';
 import React from 'react';
 import { render } from 'react-dom';
@@ -28,7 +27,7 @@ const onDeviceReady = async () => {
   const history = createMemoryHistory();
 
   render(
-    <AppContainer Sentry={Sentry}>
+    <AppContainer>
       <ReduxProvider>
         <Router history={history}>
           <LocaleProvider>
