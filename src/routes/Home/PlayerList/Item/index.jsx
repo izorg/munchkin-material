@@ -16,6 +16,7 @@ import PlayerAvatar from '../../../../components/PlayerAvatar';
 import PlayerListItemText from '../../../../components/PlayerListItemText';
 import { togglePlayer, unselectAllPlayers } from '../../../../ducks/app';
 import { stringifyQuery, useLocationQuery } from '../../../../utils/location';
+import { ios } from '../../../../utils/platforms';
 import { EDIT, MULTI } from '../../modes';
 
 const displayName = 'HomePlayerListItem';
@@ -128,12 +129,13 @@ const HomePlayerListItem = forwardRef(
         }
 
         if (tap) {
-          event.preventDefault();
-
           if (elapsedTime < 500) {
             clearPress();
 
             onClick(event);
+          } else if (ios) {
+            // Fix hold action on old Safari (<= 12) versions
+            event.preventDefault();
           }
         }
       },
