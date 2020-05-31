@@ -19,6 +19,7 @@ const useStyles = makeStyles(
       display: 'flex',
       flexDirection: 'column',
       height: '100%',
+      outline: 'none',
     },
   },
   { name: displayName },
