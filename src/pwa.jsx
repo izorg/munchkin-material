@@ -5,16 +5,17 @@ import firebase from 'firebase/app';
 import { createBrowserHistory } from 'history';
 import React from 'react';
 import { render } from 'react-dom';
+import { Provider } from 'react-redux';
 import { Router } from 'react-router-dom';
 
 import AppContainer from './components/AppContainer';
 import AugmentedStylesProvider from './components/AugmentedStylesProvider';
 import AugmentedThemeProvider from './components/AugmentedThemeProvider';
 import LocaleProvider from './components/LocaleProvider';
-import ReduxProvider from './components/ReduxProvider';
 import Root from './components/Root';
 import WorkboxProvider from './components/WorkboxProvider';
 import sentry from './sentry';
+import configureStore from './store/configureStore';
 
 if (process.env.NODE_ENV === 'production') {
   sentry('https://41e93153dfb94d9db3ed8a2cbc7228a9@sentry.io/253536');
@@ -32,11 +33,17 @@ if (process.env.NODE_ENV === 'production') {
   firebase.analytics();
 }
 
+const store = configureStore();
+
+if (process.env.NODE_ENV === 'development') {
+  window.store = store;
+}
+
 const history = createBrowserHistory();
 
 render(
-  <AppContainer>
-    <ReduxProvider>
+  <Provider store={store}>
+    <AppContainer store={store}>
       <Router history={history}>
         <WorkboxProvider>
           <LocaleProvider>
@@ -48,7 +55,7 @@ render(
           </LocaleProvider>
         </WorkboxProvider>
       </Router>
-    </ReduxProvider>
-  </AppContainer>,
+    </AppContainer>
+  </Provider>,
   document.getElementById('app'),
 );
