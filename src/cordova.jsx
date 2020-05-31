@@ -1,5 +1,6 @@
 import './polyfills';
 
+import * as Sentry from '@sentry/browser';
 import { createMemoryHistory } from 'history';
 import React from 'react';
 import { render } from 'react-dom';
@@ -28,6 +29,22 @@ const onDeviceReady = async () => {
   const store = configureStore();
 
   const history = createMemoryHistory();
+
+  let from = `${history.location.pathname}${history.location.search}`;
+
+  history.listen((location) => {
+    const to = `${location.pathname}${location.search}`;
+
+    Sentry.addBreadcrumb({
+      category: 'navigation',
+      data: {
+        from,
+        to,
+      },
+    });
+
+    from = to;
+  });
 
   render(
     <Provider store={store}>
