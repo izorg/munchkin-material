@@ -15,13 +15,10 @@ import LocaleProvider from './components/LocaleProvider';
 import ReduxProvider from './components/ReduxProvider';
 import Root from './components/Root';
 import WorkboxProvider from './components/WorkboxProvider';
+import sentry from './sentry';
 
 if (process.env.NODE_ENV === 'production') {
-  Sentry.init({
-    dsn: 'https://41e93153dfb94d9db3ed8a2cbc7228a9@sentry.io/253536',
-    environment: process.env.NODE_ENV,
-    release: VERSION,
-  });
+  sentry('https://41e93153dfb94d9db3ed8a2cbc7228a9@sentry.io/253536');
 
   firebase.initializeApp({
     apiKey: 'AIzaSyAwIA0iUuTMsyEOumkpDODkhXtpaMwDq_U',

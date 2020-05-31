@@ -14,6 +14,7 @@ import LocaleProvider from './components/LocaleProvider';
 import ReduxProvider from './components/ReduxProvider';
 import Root from './components/Root';
 import WakeLockProvider from './components/WakeLockProvider';
+import sentry from './sentry';
 
 const onDeviceReady = async () => {
   const { cordova } = window;
@@ -21,11 +22,7 @@ const onDeviceReady = async () => {
   const debug = await new Promise(cordova.plugins.IsDebug.getIsDebug);
 
   if (process.env.NODE_ENV === 'production' && !debug) {
-    Sentry.init({
-      dsn: 'https://14fc03bd8f6249ddbd3917a950656dcc@sentry.io/1423183',
-      environment: process.env.NODE_ENV,
-      release: VERSION,
-    });
+    sentry('https://14fc03bd8f6249ddbd3917a950656dcc@sentry.io/1423183');
   }
 
   const history = createMemoryHistory();
