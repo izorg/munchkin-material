@@ -23,6 +23,7 @@
       },
       "cordova-plugin-headercolor": {},
       "cordova-plugin-insomnia": {},
+      "cordova-plugin-ionic-keyboard": {},
       "cordova-plugin-is-debug": {},
       "cordova-plugin-localization-strings": {
         "TRANSLATION_PATH": "translations/app/"
@@ -46,6 +47,7 @@
     "cordova-plugin-firebase-crash": "2.2.0",
     "cordova-plugin-headercolor": "1.0.0",
     "cordova-plugin-insomnia": "4.3.0",
+    "cordova-plugin-ionic-keyboard": "2.2.0",
     "cordova-plugin-is-debug": "1.0.0",
     "cordova-plugin-localization-strings": "3.2.1",
     "cordova-plugin-purchase": "10.2.0",
