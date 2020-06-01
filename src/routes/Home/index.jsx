@@ -2,7 +2,6 @@ import { makeStyles, Paper, Zoom } from '@material-ui/core';
 import clsx from 'clsx';
 import React, { useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
 
 import LevelLimitDialog from '../../components/levelLimit/Dialog';
 import MenuDrawer from '../../components/menu/Drawer';
@@ -113,7 +112,6 @@ const Home = () => {
   let content;
 
   const singleMode = useSelector((state) => state.app.singleMode);
-  const { mode } = useParams();
 
   if (singleMode) {
     content = <SinglePlayer />;
@@ -122,7 +120,7 @@ const Home = () => {
   } else {
     content = (
       <div ref={contentRef} className={classes.content}>
-        <PlayerList className={classes.list} mode={mode} />
+        <PlayerList className={classes.list} />
       </div>
     );
   }
@@ -148,7 +146,7 @@ const Home = () => {
         </main>
       </div>
 
-      <Zoom appear={false} in={!mode && !singleMode}>
+      <Zoom appear={false} in={!singleMode}>
         <PlayerAddButton />
       </Zoom>
 
