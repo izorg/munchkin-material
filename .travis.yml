@@ -19,16 +19,16 @@ script:
   - VERSION=`node ./scripts/version.js`
 
   - export SENTRY_PROJECT=munchkin-web
-  - sentry-cli releases new "$VERSION"
-  - sentry-cli releases files "$VERSION" upload-sourcemaps web
-  - sentry-cli releases set-commits "$VERSION" --auto
-  - sentry-cli releases deploys "$VERSION" new -e "production"
+  - sentry-cli releases new "$VERSION-web"
+  - sentry-cli releases files "$VERSION-web" upload-sourcemaps web
+  - sentry-cli releases set-commits "$VERSION-web" --auto
+  - sentry-cli releases deploys "$VERSION-web" new -e "production"
 
   - export SENTRY_PROJECT=munchkin-cordova
-  - sentry-cli releases new "$VERSION"
-  - sentry-cli releases files "$VERSION" upload-sourcemaps cordova/www
-  - sentry-cli releases set-commits "$VERSION" --auto
-  - sentry-cli releases deploys "$VERSION" new -e "production"
+  - sentry-cli releases new "$VERSION-cordova"
+  - sentry-cli releases files "$VERSION-cordova" upload-sourcemaps cordova/www
+  - sentry-cli releases set-commits "$VERSION-cordova" --auto
+  - sentry-cli releases deploys "$VERSION-cordova" new -e "production"
 
 deploy:
   - provider: firebase
