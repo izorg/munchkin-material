@@ -23,7 +23,10 @@ const onDeviceReady = async () => {
   const debug = await new Promise(cordova.plugins.IsDebug.getIsDebug);
 
   if (process.env.NODE_ENV === 'production' && !debug) {
-    sentry('https://14fc03bd8f6249ddbd3917a950656dcc@sentry.io/1423183');
+    sentry(
+      'cordova',
+      'https://14fc03bd8f6249ddbd3917a950656dcc@sentry.io/1423183',
+    );
   }
 
   const store = configureStore();

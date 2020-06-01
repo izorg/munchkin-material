@@ -1,7 +1,7 @@
 import * as Sentry from '@sentry/browser';
 import { ExtraErrorData } from '@sentry/integrations';
 
-const sentry = (dsn) => {
+const sentry = (build, dsn) => {
   Sentry.init({
     dsn,
     environment: process.env.NODE_ENV,
@@ -11,7 +11,7 @@ const sentry = (dsn) => {
       }),
     ],
     normalizeDepth: 11,
-    release: VERSION,
+    release: `${VERSION}-${build}`,
   });
 };
 

@@ -18,7 +18,7 @@ import sentry from './sentry';
 import configureStore from './store/configureStore';
 
 if (process.env.NODE_ENV === 'production') {
-  sentry('https://41e93153dfb94d9db3ed8a2cbc7228a9@sentry.io/253536');
+  sentry('web', 'https://41e93153dfb94d9db3ed8a2cbc7228a9@sentry.io/253536');
 
   firebase.initializeApp({
     apiKey: 'AIzaSyAwIA0iUuTMsyEOumkpDODkhXtpaMwDq_U',
