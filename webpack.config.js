@@ -5,7 +5,6 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackTagsPlugin = require('html-webpack-tags-plugin');
-const webpack = require('webpack');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const WebpackNotifierPlugin = require('webpack-notifier');
 const { GenerateSW } = require('workbox-webpack-plugin');
@@ -135,8 +134,6 @@ module.exports = {
           },
         ],
       }),
-
-    new webpack.HashedModuleIdsPlugin(),
 
     new HtmlWebpackPlugin({
       template: cordova ? 'src/cordova.html' : 'src/pwa.html',
