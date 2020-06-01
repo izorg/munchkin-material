@@ -7,7 +7,7 @@ import {
   useTheme,
 } from '@material-ui/core';
 import PropTypes from 'prop-types';
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import { ios } from '../../utils/platforms';
 
@@ -25,26 +25,20 @@ const useStyles = makeStyles(
   { name: displayName },
 );
 
-let timeout = 0;
-
-const ScreenModal = ({ children, open }) => {
+const ScreenModal = ({ children, open, TransitionProps }) => {
   const classes = useStyles();
   const theme = useTheme();
 
   const matches = useMediaQuery(theme.breakpoints.down('md'), { noSsr: true });
   const TransitionComponent = matches && ios ? Slide : Fade;
 
-  useEffect(() => {
-    timeout = undefined;
-  }, []);
-
   return (
-    <Modal closeAfterTransition disablePortal hideBackdrop open={open}>
+    <Modal closeAfterTransition hideBackdrop open={open}>
       <TransitionComponent
         appear
         direction={matches && ios ? 'left' : undefined}
         in={open}
-        timeout={timeout}
+        {...TransitionProps}
       >
         <div className={classes.root}>{children}</div>
       </TransitionComponent>
@@ -55,6 +49,7 @@ const ScreenModal = ({ children, open }) => {
 ScreenModal.propTypes = {
   children: PropTypes.node.isRequired,
   open: PropTypes.bool.isRequired,
+  TransitionProps: PropTypes.object,
 };
 
 ScreenModal.displayName = displayName;

@@ -1,12 +1,14 @@
 import { makeStyles, Paper, Zoom } from '@material-ui/core';
 import clsx from 'clsx';
-import React, { useEffect, useRef } from 'react';
+import React, { lazy, Suspense, useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
+import { Route } from 'react-router-dom';
 
 import LevelLimitDialog from '../../components/levelLimit/Dialog';
 import MenuDrawer from '../../components/menu/Drawer';
 import MenuSidebar from '../../components/menu/Sidebar';
 import Nobody from '../../components/Nobody';
+import ScreenModal from '../../components/ScreenModal';
 import ThemeDialog from '../../components/theme/Dialog';
 import { menuCollapsedSelector } from '../../ducks/ui';
 
@@ -15,6 +17,14 @@ import PlayerAddButton from './PlayerAddButton';
 import PlayerList from './PlayerList';
 import SinglePlayer from './SinglePlayer';
 import Undo from './Undo';
+
+const Player = lazy(() =>
+  import(
+    /* webpackChunkName: "player" */
+    /* webpackPrefetch: true */
+    '../Player'
+  ),
+);
 
 const displayName = 'Home';
 
@@ -155,6 +165,16 @@ const Home = () => {
       <ThemeDialog />
 
       <Undo />
+
+      <Route path="/player/:id">
+        {({ match }) => (
+          <ScreenModal open={Boolean(match)}>
+            <Suspense fallback={null}>
+              <Player />
+            </Suspense>
+          </ScreenModal>
+        )}
+      </Route>
     </>
   );
 };

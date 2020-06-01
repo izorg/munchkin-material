@@ -1,15 +1,24 @@
 import { makeStyles } from '@material-ui/core';
-import React, { useRef } from 'react';
+import React, { lazy, Suspense, useRef } from 'react';
 import { useSelector } from 'react-redux';
-import { Redirect, useParams } from 'react-router-dom';
+import { Redirect, Route, useParams } from 'react-router-dom';
 
 import PlayerContext from '../../components/PlayerContext';
+import ScreenModal from '../../components/ScreenModal';
 
 import AppBar from './AppBar';
 import CombatButton from './CombatButton';
 import PlayerList from './List';
 import Slider from './Slider';
 import Undo from './Undo';
+
+const Combat = lazy(() =>
+  import(
+    /* webpackChunkName: "combat" */
+    /* webpackPrefetch: true */
+    '../Combat'
+  ),
+);
 
 const displayName = 'Player';
 
@@ -104,12 +113,17 @@ const Player = () => {
       </div>
       <CombatButton playerId={playerRef.current} />
       <Undo />
+      <Route path="/player/:id/combat">
+        {({ match }) => (
+          <ScreenModal open={Boolean(match)}>
+            <Suspense fallback={null}>
+              <Combat />
+            </Suspense>
+          </ScreenModal>
+        )}
+      </Route>
     </PlayerContext.Provider>
   );
-};
-
-Player.defaultProps = {
-  match: null,
 };
 
 Player.displayName = displayName;
