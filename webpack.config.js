@@ -45,7 +45,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.m?js$/,
         include: /node_modules\/(react-intl|react-use-gesture)/,
         use: [
           {
