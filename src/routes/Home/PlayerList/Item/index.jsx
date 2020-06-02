@@ -133,8 +133,8 @@ const HomePlayerListItem = forwardRef(
          * on touch devices. On cordova pressing hardware back button exits app
          */
         if (tap) {
-          // detect emulated mouse event on touch devices
-          if (elapsedTime === 0) {
+          // detect emulated mouse event on touch devices (<= 10 for Android 4.4)
+          if (elapsedTime <= 10) {
             return;
           }
 
