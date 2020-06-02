@@ -6,7 +6,7 @@ import {
 } from '@material-ui/core';
 import deepmerge from 'deepmerge';
 import PropTypes from 'prop-types';
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { useIntl } from 'react-intl';
 import { useSelector } from 'react-redux';
 
@@ -49,6 +49,14 @@ const AugmentedThemeProvider = ({ children }) => {
       ]),
     );
   }, [currentTheme, dark, direction, queryTheme]);
+
+  useEffect(() => {
+    const { Keyboard } = window;
+
+    if (Keyboard && Keyboard.setKeyboardStyle) {
+      Keyboard.setKeyboardStyle(theme.palette.type); // cordova ios
+    }
+  }, [theme.palette.type]);
 
   return (
     <ThemeProvider theme={theme}>
