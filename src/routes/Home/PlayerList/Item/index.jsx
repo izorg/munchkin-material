@@ -128,7 +128,16 @@ const HomePlayerListItem = forwardRef(
           clearPress();
         }
 
+        /*
+         * Not possible to use preventDefault to prevent mouse event emulation
+         * on touch devices. On cordova pressing hardware back button exits app
+         */
         if (tap) {
+          // detect emulated mouse event on touch devices
+          if (elapsedTime === 0) {
+            return;
+          }
+
           if (elapsedTime < 500) {
             clearPress();
 
