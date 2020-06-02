@@ -203,6 +203,9 @@ const PlayerDialog = () => {
         name: 'player',
         onSubmit,
       }}
+      style={{
+        position: 'absolute',
+      }}
       TransitionComponent={fullScreen && ios ? Slide : Fade}
       TransitionProps={{
         appear,

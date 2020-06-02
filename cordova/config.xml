@@ -55,6 +55,7 @@
         <preference name="deployment-target" value="10.0" />
         <preference name="DisallowOverscroll" value="true" />
         <preference name="KeyboardDisplayRequiresUserAction" value="false" />
+        <preference name="KeyboardResizeMode" value="body" />
         <preference name="StatusBarBackgroundColor" value="#000000" />
         <preference name="StatusBarOverlaysWebView" value="false" />
         <preference name="SuppressesLongPressGesture" value="true" />
