@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 import themes from '../../../../styles/themes';
-import { stringifyQuery } from '../../../../utils/location';
+import { parseSearch, stringifyQuery } from '../../../../utils/location';
 import themeMessages from '../../../theme/messages';
 import useMenuOpen from '../../useMenuOpen';
 import ListItem from '../Item';
@@ -36,7 +36,12 @@ const ThemeItem = ({ className, ...rest }) => {
   const open = useMenuOpen();
 
   const onClick = () => {
-    const location = { search: stringifyQuery({ theme: null }) };
+    const location = {
+      search: stringifyQuery({
+        ...parseSearch(history.location.search),
+        theme: null,
+      }),
+    };
 
     if (open) {
       history.replace(location);

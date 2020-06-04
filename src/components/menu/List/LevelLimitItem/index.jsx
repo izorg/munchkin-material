@@ -11,7 +11,7 @@ import {
   MAX_LEVEL,
   MIN_LEVEL,
 } from '../../../../utils/levelLimit';
-import { stringifyQuery } from '../../../../utils/location';
+import { parseSearch, stringifyQuery } from '../../../../utils/location';
 import levelLimitMessages from '../../../levelLimit/messages';
 import useMenuOpen from '../../useMenuOpen';
 import ListItem from '../Item';
@@ -39,7 +39,12 @@ const LevelLimitItem = ({ className, ...rest }) => {
   const open = useMenuOpen();
 
   const onClick = () => {
-    const location = { search: stringifyQuery({ levelLimit: null }) };
+    const location = {
+      search: stringifyQuery({
+        ...parseSearch(history.location.search),
+        levelLimit: null,
+      }),
+    };
 
     if (open) {
       history.replace(location);
