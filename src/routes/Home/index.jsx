@@ -58,6 +58,7 @@ const useStyles = makeStyles(
         duration: theme.transitions.duration.short,
       }),
       width: theme.spacing(40),
+      zIndex: 1,
 
       [theme.breakpoints.up('md')]: {
         display: 'block',
@@ -75,23 +76,15 @@ const useStyles = makeStyles(
           ? theme.palette.background.default
           : theme.palette.background.paper,
       flex: 1,
-      height: '100%',
       overflowY: 'auto',
-      paddingBottom: 48,
       WebkitOverflowScrolling: 'touch',
-
-      [theme.breakpoints.up('sm')]: {
-        backgroundColor: 'transparent',
-        paddingBottom: 0,
-      },
     },
 
     list: {
+      paddingBottom: 56,
+
       [theme.breakpoints.up('sm')]: {
-        backgroundColor: theme.palette.background.paper,
-        boxShadow: theme.shadows[2],
-        margin: '0 auto',
-        width: 400,
+        paddingBottom: 64,
       },
     },
   }),

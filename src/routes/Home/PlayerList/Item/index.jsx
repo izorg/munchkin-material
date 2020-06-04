@@ -3,6 +3,7 @@ import {
   ListItem,
   ListItemAvatar,
   ListItemSecondaryAction,
+  makeStyles,
   useForkRef,
 } from '@material-ui/core';
 import { DragHorizontalVariant as DragIcon } from 'mdi-material-ui';
@@ -21,8 +22,33 @@ import { EDIT, MULTI } from '../../modes';
 
 const displayName = 'HomePlayerListItem';
 
+const useStyles = makeStyles(
+  () => ({
+    gutters: {
+      '@supports (padding: max(0px))': {
+        paddingLeft: `max(16px, env(safe-area-inset-left))`,
+        paddingRight: `max(16px, env(safe-area-inset-right))`,
+      },
+    },
+
+    secondaryAction: {
+      '@supports (padding: max(0px))': {
+        paddingRight: `calc(32px + max(16px, env(safe-area-inset-right)))`,
+      },
+    },
+
+    secondaryActionRoot: {
+      '@supports (padding: max(0px))': {
+        right: 'max(16px, env(safe-area-inset-right))',
+      },
+    },
+  }),
+  { name: displayName },
+);
+
 const HomePlayerListItem = forwardRef(
   ({ dragHandleProps, playerId, ...rest }, ref) => {
+    const classes = useStyles();
     const dispatch = useDispatch();
     const history = useHistory();
 
@@ -170,6 +196,10 @@ const HomePlayerListItem = forwardRef(
       <ListItem
         ref={handleRef}
         button
+        classes={{
+          gutters: classes.gutters,
+          secondaryAction: classes.secondaryAction,
+        }}
         component={editMode ? 'div' : 'li'}
         data-screenshots="player-list-item"
         {...rest}
@@ -187,7 +217,11 @@ const HomePlayerListItem = forwardRef(
         <PlayerListItemText player={player} />
 
         {editMode && (
-          <ListItemSecondaryAction>
+          <ListItemSecondaryAction
+            classes={{
+              root: classes.secondaryActionRoot,
+            }}
+          >
             <IconButton
               ref={reorderRef}
               disableRipple

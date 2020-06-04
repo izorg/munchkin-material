@@ -51,7 +51,12 @@ const HomePlayerList = (props) => {
       <DragDropContext onDragEnd={handleDragEnd}>
         <Droppable droppableId="player-list">
           {({ droppableProps, innerRef: droppableRef, placeholder }) => (
-            <List {...props} {...droppableProps} ref={droppableRef}>
+            <List
+              {...props}
+              {...droppableProps}
+              ref={droppableRef}
+              disablePadding
+            >
               {playerList.map((playerId, index) => (
                 <Draggable
                   key={playerId}
@@ -122,7 +127,7 @@ const HomePlayerList = (props) => {
   }
 
   return (
-    <List {...props}>
+    <List {...props} disablePadding>
       {playerList.map((playerId) => (
         <Item key={playerId} playerId={playerId} />
       ))}
