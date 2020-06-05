@@ -1,10 +1,12 @@
 import {
   makeStyles,
   SwipeableDrawer,
+  ThemeProvider,
   useMediaQuery,
   useTheme,
 } from '@material-ui/core';
-import React from 'react';
+import deepmerge from 'deepmerge';
+import React, { useMemo } from 'react';
 import { useHistory, useRouteMatch } from 'react-router-dom';
 
 import { EDIT } from '../../../routes/Home/modes';
@@ -23,7 +25,6 @@ const useStyles = makeStyles(
 
       '@supports (padding: env(safe-area-inset-left))': {
         maxWidth: 'calc(320px + env(safe-area-inset-left))',
-        paddingLeft: 'env(safe-area-inset-left)',
       },
     },
   }),
@@ -58,16 +59,35 @@ const MenuDrawer = () => {
       }),
     });
 
+  const drawerTheme = useMemo(
+    () =>
+      deepmerge(theme, {
+        overrides: {
+          MenuListItem: {
+            gutters: {
+              '@supports (padding: max(0px))': {
+                paddingLeft: `max(16px, env(safe-area-inset-left))`,
+                paddingRight: `max(16px, env(safe-area-inset-right))`,
+              },
+            },
+          },
+        },
+      }),
+    [theme],
+  );
+
   return (
-    <SwipeableDrawer
-      disableSwipeToOpen={disableSwipeToOpen}
-      onClose={onClose}
-      onOpen={onOpen}
-      open={open}
-      PaperProps={{ className: classes.paper }}
-    >
-      <MenuList />
-    </SwipeableDrawer>
+    <ThemeProvider theme={drawerTheme}>
+      <SwipeableDrawer
+        disableSwipeToOpen={disableSwipeToOpen}
+        onClose={onClose}
+        onOpen={onOpen}
+        open={open}
+        PaperProps={{ className: classes.paper }}
+      >
+        <MenuList />
+      </SwipeableDrawer>
+    </ThemeProvider>
   );
 };
 
