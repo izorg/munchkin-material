@@ -14,6 +14,7 @@ import { getDirection } from '../../i18n';
 import baseTheme from '../../styles/baseTheme';
 import themes from '../../styles/themes';
 import { useLocationQuery } from '../../utils/location';
+import { ios } from '../../utils/platforms';
 
 const displayName = 'AugmentedThemeProvider';
 
@@ -53,7 +54,12 @@ const AugmentedThemeProvider = ({ children }) => {
   useEffect(() => {
     const { Keyboard } = window;
 
-    if (Keyboard && Keyboard.setKeyboardStyle) {
+    if (
+      Keyboard &&
+      Keyboard.setKeyboardStyle &&
+      ios &&
+      !navigator.userAgent.includes('OS 10_')
+    ) {
       Keyboard.setKeyboardStyle(theme.palette.type); // cordova ios
     }
   }, [theme.palette.type]);
