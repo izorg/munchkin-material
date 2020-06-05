@@ -39,6 +39,10 @@ const displayName = 'PlayerDialog';
 
 const useStyles = makeStyles(
   (theme) => ({
+    root: {
+      height: 'inherit', // scrolling body in cordova for small screen height
+    },
+
     dialog: {
       backgroundColor:
         theme.palette.type === 'dark'
@@ -193,6 +197,7 @@ const PlayerDialog = () => {
     <Dialog
       classes={{
         paper: classes.dialog,
+        root: classes.root,
       }}
       fullScreen={fullScreen}
       hideBackdrop={fullScreen}
@@ -202,9 +207,6 @@ const PlayerDialog = () => {
         component: 'form',
         name: 'player',
         onSubmit,
-      }}
-      style={{
-        position: 'absolute',
       }}
       TransitionComponent={fullScreen && ios ? Slide : Fade}
       TransitionProps={{
