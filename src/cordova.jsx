@@ -18,11 +18,9 @@ import sentry from './sentry';
 import configureStore from './store/configureStore';
 
 const onDeviceReady = async () => {
-  const { cordova } = window;
+  const { BuildInfo, cordova } = window;
 
-  const debug = await new Promise(cordova.plugins.IsDebug.getIsDebug);
-
-  if (process.env.NODE_ENV === 'production' && !debug) {
+  if (process.env.NODE_ENV === 'production' && !BuildInfo.debug) {
     sentry(
       'cordova',
       'https://14fc03bd8f6249ddbd3917a950656dcc@sentry.io/1423183',
