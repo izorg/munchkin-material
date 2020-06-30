@@ -24,9 +24,11 @@
     <preference name="SplashScreenBackgroundColor" value="#FFFFFF" />
     <platform name="android">
         <allow-intent href="market:*" />
-        <preference name="android-minSdkVersion" value="19" />
-        <preference name="android-targetSdkVersion" value="29" />
+        <preference name="AndroidXEnabled" value="true" />
+        <preference name="GradlePluginGoogleServicesEnabled" value="true" />
         <preference name="HeaderColor" value="#795548" />
+        <preference name="android-minSdkVersion" value="22" />
+        <preference name="android-targetSdkVersion" value="30" />
         <resource-file src="google-services.json" target="app/google-services.json" />
         <icon density="ldpi" background="res/android/mipmap-ldpi/icon_background.png" foreground="res/android/mipmap-ldpi/icon_foreground.png" src="res/android/mipmap-ldpi/icon.png" />
         <icon density="mdpi" background="res/android/mipmap-mdpi/icon_background.png" foreground="res/android/mipmap-mdpi/icon_foreground.png" src="res/android/mipmap-mdpi/icon.png" />
@@ -48,18 +50,13 @@
     <platform name="ios">
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
-        <feature name="CDVWKWebViewEngine">
-            <param name="ios-package" value="CDVWKWebViewEngine" />
-        </feature>
-        <preference name="CordovaWebViewEngine" value="CDVWKWebViewEngine" />
-        <preference name="deployment-target" value="10.0" />
+        <preference name="deployment-target" value="11.0" />
         <preference name="DisallowOverscroll" value="true" />
         <preference name="KeyboardDisplayRequiresUserAction" value="false" />
         <preference name="KeyboardResizeMode" value="body" />
         <preference name="StatusBarBackgroundColor" value="#000000" />
         <preference name="StatusBarOverlaysWebView" value="false" />
         <preference name="SuppressesLongPressGesture" value="true" />
-        <preference name="WKWebViewOnly" value="true" />
         <resource-file src="GoogleService-Info.plist" />
         <icon height="29" src="res/ios/icon-29.png" width="29" />
         <icon height="40" src="res/ios/icon-40.png" width="40" />
