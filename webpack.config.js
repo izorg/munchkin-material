@@ -26,21 +26,27 @@ if (dev) {
 }
 
 module.exports = {
-  mode: process.env.NODE_ENV,
+  devServer: {
+    compress: true,
+    contentBase: outputPath,
+    historyApiFallback: true,
+    host: '0.0.0.0',
+    hot: dev,
+    inline: dev,
+    overlay: true,
+    port: 3000,
+    stats: {
+      colors: true,
+      progress: true,
+    },
+    watchContentBase: true,
+  },
 
   devtool: 'source-map',
 
   entry,
 
-  output: {
-    filename: 'js/[name].js',
-    path: outputPath,
-    publicPath: web ? '/' : '',
-  },
-
-  resolve: {
-    extensions: ['.mjs', '.jsx', '.js', '.json'],
-  },
+  mode: process.env.NODE_ENV,
 
   module: {
     rules: [
@@ -120,6 +126,12 @@ module.exports = {
     ],
   },
 
+  output: {
+    filename: 'js/[name].js',
+    path: outputPath,
+    publicPath: web ? '/' : '',
+  },
+
   plugins: [
     new CleanWebpackPlugin({
       verbose: false,
@@ -161,19 +173,7 @@ module.exports = {
       }),
   ].filter(Boolean),
 
-  devServer: {
-    compress: true,
-    contentBase: outputPath,
-    historyApiFallback: true,
-    host: '0.0.0.0',
-    hot: dev,
-    inline: dev,
-    overlay: true,
-    port: 3000,
-    stats: {
-      colors: true,
-      progress: true,
-    },
-    watchContentBase: true,
+  resolve: {
+    extensions: ['.mjs', '.jsx', '.js', '.json'],
   },
 };
