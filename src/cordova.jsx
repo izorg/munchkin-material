@@ -3,7 +3,6 @@ import './polyfills';
 import { createMemoryHistory } from 'history';
 import React from 'react';
 import { render } from 'react-dom';
-import { Provider } from 'react-redux';
 import { Router } from 'react-router-dom';
 
 import App from './components/App';
@@ -12,16 +11,14 @@ import AugmentedThemeProvider from './components/AugmentedThemeProvider';
 import CordovaHelper from './components/CordovaHelper';
 import FullVersionProvider from './components/FullVersionProvider';
 import LocaleProvider from './components/LocaleProvider';
+import ReduxProvider from './components/ReduxProvider';
 import SentryHelper from './components/SentryHelper';
 import WakeLockProvider from './components/WakeLockProvider';
-import configureStore from './store/configureStore';
-
-const store = configureStore();
 
 const history = createMemoryHistory();
 
 render(
-  <Provider store={store}>
+  <ReduxProvider>
     <Router history={history}>
       <CordovaHelper>
         <SentryHelper forceNavigationBreadcrumbs>
@@ -39,6 +36,6 @@ render(
         </SentryHelper>
       </CordovaHelper>
     </Router>
-  </Provider>,
+  </ReduxProvider>,
   document.getElementById('root'),
 );

@@ -1,4 +1,4 @@
-import { setLocale } from '../ducks/app';
+import { setLocale as setAppLocale } from '../ducks/app';
 import { addPlayerToList, removePlayerFromList } from '../ducks/playerList';
 import { addPlayer, removePlayer } from '../ducks/players';
 import { getLocale } from '../i18n';
@@ -6,9 +6,15 @@ import '../pwa';
 
 import players from './players';
 
-const { dispatch } = window.store;
+const setLocale = (locale) => {
+  const { dispatch } = window.reduxStore;
+
+  dispatch(setAppLocale(locale));
+};
 
 const setTestData = () => {
+  const { dispatch } = window.reduxStore;
+
   const { app, playerList } = window.store.getState();
 
   playerList.forEach((id) => {
@@ -25,8 +31,6 @@ const setTestData = () => {
 };
 
 window.munchkinDev = {
-  setLocale: (locale) => {
-    dispatch(setLocale(locale));
-  },
+  setLocale,
   setTestData,
 };
