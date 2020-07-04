@@ -9,10 +9,10 @@ import { Provider } from 'react-redux';
 import { Router } from 'react-router-dom';
 
 import App from './components/App';
-import AppContainer from './components/AppContainer';
 import AugmentedStylesProvider from './components/AugmentedStylesProvider';
 import AugmentedThemeProvider from './components/AugmentedThemeProvider';
 import LocaleProvider from './components/LocaleProvider';
+import SentryHelper from './components/SentryHelper';
 import WorkboxProvider from './components/WorkboxProvider';
 import sentry from './sentry';
 import configureStore from './store/configureStore';
@@ -43,8 +43,8 @@ const history = createBrowserHistory();
 
 render(
   <Provider store={store}>
-    <AppContainer store={store}>
-      <Router history={history}>
+    <Router history={history}>
+      <SentryHelper>
         <WorkboxProvider>
           <LocaleProvider>
             <AugmentedStylesProvider>
@@ -54,8 +54,8 @@ render(
             </AugmentedStylesProvider>
           </LocaleProvider>
         </WorkboxProvider>
-      </Router>
-    </AppContainer>
+      </SentryHelper>
+    </Router>
   </Provider>,
   document.getElementById('root'),
 );

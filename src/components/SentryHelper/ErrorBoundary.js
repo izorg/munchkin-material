@@ -2,9 +2,9 @@ import * as Sentry from '@sentry/react';
 import PropTypes from 'prop-types';
 import { Component } from 'react';
 
-const displayName = 'AppContainer';
+const displayName = 'ErrorBoundary';
 
-class AppContainer extends Component {
+class ErrorBoundary extends Component {
   componentDidCatch(error, errorInfo) {
     const { store } = this.props;
 
@@ -24,13 +24,13 @@ class AppContainer extends Component {
   }
 }
 
-AppContainer.propTypes = {
+ErrorBoundary.propTypes = {
   children: PropTypes.node.isRequired,
   store: PropTypes.shape({
     getState: PropTypes.func.isRequired,
   }).isRequired,
 };
 
-AppContainer.displayName = displayName;
+ErrorBoundary.displayName = displayName;
 
-export default AppContainer;
+export default ErrorBoundary;

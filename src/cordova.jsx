@@ -1,6 +1,5 @@
 import './polyfills';
 
-import * as Sentry from '@sentry/react';
 import { createMemoryHistory } from 'history';
 import React from 'react';
 import { render } from 'react-dom';
@@ -8,11 +7,11 @@ import { Provider } from 'react-redux';
 import { Router } from 'react-router-dom';
 
 import App from './components/App';
-import AppContainer from './components/AppContainer';
 import AugmentedStylesProvider from './components/AugmentedStylesProvider';
 import AugmentedThemeProvider from './components/AugmentedThemeProvider';
 import FullVersionProvider from './components/FullVersionProvider';
 import LocaleProvider from './components/LocaleProvider';
+import SentryHelper from './components/SentryHelper';
 import WakeLockProvider from './components/WakeLockProvider';
 import sentry from './sentry';
 import configureStore from './store/configureStore';
@@ -31,26 +30,10 @@ const onDeviceReady = async () => {
 
   const history = createMemoryHistory();
 
-  let from = `${history.location.pathname}${history.location.search}`;
-
-  history.listen((location) => {
-    const to = `${location.pathname}${location.search}`;
-
-    Sentry.addBreadcrumb({
-      category: 'navigation',
-      data: {
-        from,
-        to,
-      },
-    });
-
-    from = to;
-  });
-
   render(
     <Provider store={store}>
-      <AppContainer store={store}>
-        <Router history={history}>
+      <Router history={history}>
+        <SentryHelper>
           <LocaleProvider>
             <WakeLockProvider>
               <FullVersionProvider>
@@ -62,8 +45,8 @@ const onDeviceReady = async () => {
               </FullVersionProvider>
             </WakeLockProvider>
           </LocaleProvider>
-        </Router>
-      </AppContainer>
+        </SentryHelper>
+      </Router>
     </Provider>,
     document.getElementById('root'),
   );
