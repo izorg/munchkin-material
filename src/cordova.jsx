@@ -9,31 +9,22 @@ import { Router } from 'react-router-dom';
 import App from './components/App';
 import AugmentedStylesProvider from './components/AugmentedStylesProvider';
 import AugmentedThemeProvider from './components/AugmentedThemeProvider';
+import CordovaHelper from './components/CordovaHelper';
 import FullVersionProvider from './components/FullVersionProvider';
 import LocaleProvider from './components/LocaleProvider';
 import SentryHelper from './components/SentryHelper';
 import WakeLockProvider from './components/WakeLockProvider';
-import sentry from './sentry';
 import configureStore from './store/configureStore';
 
-const onDeviceReady = async () => {
-  const { BuildInfo, cordova } = window;
+const store = configureStore();
 
-  if (process.env.NODE_ENV === 'production' && !BuildInfo.debug) {
-    sentry(
-      'cordova',
-      'https://14fc03bd8f6249ddbd3917a950656dcc@sentry.io/1423183',
-    );
-  }
+const history = createMemoryHistory();
 
-  const store = configureStore();
-
-  const history = createMemoryHistory();
-
-  render(
-    <Provider store={store}>
-      <Router history={history}>
-        <SentryHelper>
+render(
+  <Provider store={store}>
+    <Router history={history}>
+      <CordovaHelper>
+        <SentryHelper forceNavigationBreadcrumbs>
           <LocaleProvider>
             <WakeLockProvider>
               <FullVersionProvider>
@@ -46,33 +37,8 @@ const onDeviceReady = async () => {
             </WakeLockProvider>
           </LocaleProvider>
         </SentryHelper>
-      </Router>
-    </Provider>,
-    document.getElementById('root'),
-  );
-
-  const onBackButton = (event) => {
-    event.preventDefault();
-
-    if (history.canGo(-1)) {
-      history.goBack();
-    } else {
-      navigator.app.exitApp();
-    }
-  };
-
-  document.addEventListener('backbutton', onBackButton, false);
-
-  navigator.splashscreen.hide();
-
-  if (cordova.platformId === 'windows') {
-    const { Windows } = window;
-
-    const currentView = Windows.UI.Core.SystemNavigationManager.getForCurrentView();
-
-    currentView.appViewBackButtonVisibility =
-      Windows.UI.Core.AppViewBackButtonVisibility.collapsed;
-  }
-};
-
-document.addEventListener('deviceready', onDeviceReady, false);
+      </CordovaHelper>
+    </Router>
+  </Provider>,
+  document.getElementById('root'),
+);
