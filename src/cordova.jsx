@@ -1,6 +1,6 @@
 import './polyfills';
 
-import * as Sentry from '@sentry/browser';
+import * as Sentry from '@sentry/react';
 import { createMemoryHistory } from 'history';
 import React from 'react';
 import { render } from 'react-dom';

@@ -1,4 +1,4 @@
-import * as Sentry from '@sentry/browser';
+import * as Sentry from '@sentry/react';
 
 const errorReporter = (store) => (next) => (action) => {
   try {

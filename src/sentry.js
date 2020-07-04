@@ -1,5 +1,5 @@
-import * as Sentry from '@sentry/browser';
 import { ExtraErrorData, RewriteFrames } from '@sentry/integrations';
+import * as Sentry from '@sentry/react';
 
 const sentry = (build, dsn) => {
   let integrations = [

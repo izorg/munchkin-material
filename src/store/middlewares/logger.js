@@ -1,4 +1,4 @@
-import * as Sentry from '@sentry/browser';
+import * as Sentry from '@sentry/react';
 
 const logger = () => (next) => (action) => {
   const { type, ...rest } = action;
