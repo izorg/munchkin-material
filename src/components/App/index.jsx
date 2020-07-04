@@ -20,9 +20,9 @@ const PlayerDialog = lazy(() =>
   ),
 );
 
-const displayName = 'Root';
+const displayName = 'App';
 
-const Root = () => (
+const App = () => (
   <>
     <Route path="/">
       {() => (
@@ -42,6 +42,6 @@ const Root = () => (
   </>
 );
 
-Root.displayName = displayName;
+App.displayName = displayName;
 
-export default Root;
+export default App;

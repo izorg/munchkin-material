@@ -29,7 +29,7 @@ body {
   }
 }
 
-#app {
+#root {
   height: 100%;
   position: relative;
 }

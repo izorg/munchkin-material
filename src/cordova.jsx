@@ -7,12 +7,12 @@ import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { Router } from 'react-router-dom';
 
+import App from './components/App';
 import AppContainer from './components/AppContainer';
 import AugmentedStylesProvider from './components/AugmentedStylesProvider';
 import AugmentedThemeProvider from './components/AugmentedThemeProvider';
 import FullVersionProvider from './components/FullVersionProvider';
 import LocaleProvider from './components/LocaleProvider';
-import Root from './components/Root';
 import WakeLockProvider from './components/WakeLockProvider';
 import sentry from './sentry';
 import configureStore from './store/configureStore';
@@ -56,7 +56,7 @@ const onDeviceReady = async () => {
               <FullVersionProvider>
                 <AugmentedStylesProvider>
                   <AugmentedThemeProvider>
-                    <Root />
+                    <App />
                   </AugmentedThemeProvider>
                 </AugmentedStylesProvider>
               </FullVersionProvider>
@@ -65,7 +65,7 @@ const onDeviceReady = async () => {
         </Router>
       </AppContainer>
     </Provider>,
-    document.getElementById('app'),
+    document.getElementById('root'),
   );
 
   const onBackButton = (event) => {
