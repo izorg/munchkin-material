@@ -2,10 +2,9 @@ import './polyfills';
 
 import 'firebase/analytics';
 import firebase from 'firebase/app';
-import { createBrowserHistory } from 'history';
 import React from 'react';
 import { render } from 'react-dom';
-import { Router } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 
 import App from './components/App';
 import AugmentedStylesProvider from './components/AugmentedStylesProvider';
@@ -32,11 +31,9 @@ if (process.env.NODE_ENV === 'production') {
   firebase.analytics();
 }
 
-const history = createBrowserHistory();
-
 render(
-  <ReduxProvider>
-    <Router history={history}>
+  <BrowserRouter>
+    <ReduxProvider>
       <SentryHelper>
         <WorkboxProvider>
           <LocaleProvider>
@@ -48,7 +45,7 @@ render(
           </LocaleProvider>
         </WorkboxProvider>
       </SentryHelper>
-    </Router>
-  </ReduxProvider>,
+    </ReduxProvider>
+  </BrowserRouter>,
   document.getElementById('root'),
 );

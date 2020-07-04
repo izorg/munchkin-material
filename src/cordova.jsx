@@ -1,9 +1,8 @@
 import './polyfills';
 
-import { createMemoryHistory } from 'history';
 import React from 'react';
 import { render } from 'react-dom';
-import { Router } from 'react-router-dom';
+import { MemoryRouter } from 'react-router-dom';
 
 import App from './components/App';
 import AugmentedStylesProvider from './components/AugmentedStylesProvider';
@@ -15,11 +14,9 @@ import ReduxProvider from './components/ReduxProvider';
 import SentryHelper from './components/SentryHelper';
 import WakeLockProvider from './components/WakeLockProvider';
 
-const history = createMemoryHistory();
-
 render(
-  <ReduxProvider>
-    <Router history={history}>
+  <MemoryRouter>
+    <ReduxProvider>
       <CordovaHelper>
         <SentryHelper forceNavigationBreadcrumbs>
           <LocaleProvider>
@@ -35,7 +32,7 @@ render(
           </LocaleProvider>
         </SentryHelper>
       </CordovaHelper>
-    </Router>
-  </ReduxProvider>,
+    </ReduxProvider>
+  </MemoryRouter>,
   document.getElementById('root'),
 );
