@@ -8,13 +8,13 @@ import ErrorBoundary from './ErrorBoundary';
 
 const displayName = 'SentryHelper';
 
-const SentryHelper = ({ children, forceNavigationBreadcrumbs }) => {
+const SentryHelper = ({ children }) => {
   const location = useLocation();
   const fromRef = useRef(`${location.pathname}${location.search}`);
   const store = useStore();
 
   useEffect(() => {
-    if (!forceNavigationBreadcrumbs) {
+    if (!window.cordova) {
       return;
     }
 
@@ -32,18 +32,13 @@ const SentryHelper = ({ children, forceNavigationBreadcrumbs }) => {
     }
 
     fromRef.current = to;
-  }, [forceNavigationBreadcrumbs, location.pathname, location.search]);
+  }, [location.pathname, location.search]);
 
   return <ErrorBoundary store={store}>{children}</ErrorBoundary>;
 };
 
 SentryHelper.propTypes = {
   children: PropTypes.node.isRequired,
-  forceNavigationBreadcrumbs: PropTypes.bool,
-};
-
-SentryHelper.defaultProps = {
-  forceNavigationBreadcrumbs: false,
 };
 
 SentryHelper.displayName = displayName;

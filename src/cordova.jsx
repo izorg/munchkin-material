@@ -18,7 +18,7 @@ render(
   <MemoryRouter>
     <ReduxProvider>
       <CordovaHelper>
-        <SentryHelper forceNavigationBreadcrumbs>
+        <SentryHelper>
           <LocaleProvider>
             <WakeLockProvider>
               <FullVersionProvider>
