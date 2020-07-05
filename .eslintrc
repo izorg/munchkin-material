@@ -43,6 +43,7 @@
         "vars": "all"
       }
     ],
+    "react-hooks/exhaustive-deps": "error",
     "react/jsx-sort-default-props": "error",
     "react/jsx-sort-props": [
       "error",
@@ -51,11 +52,10 @@
         "reservedFirst": true
       }
     ],
-    "react/jsx-props-no-spreading": "off",
     "react/prop-types": [
       "error",
       {
-        "ignore": ["classes", "className", "style", "theme"]
+        "ignore": ["className", "style"]
       }
     ],
     "react/sort-prop-types": [
@@ -76,7 +76,7 @@
   "settings": {
     "import/resolver": {
       "node": {
-        "extensions": [".mjs", ".js", ".jsx", ".json"]
+        "extensions": [".mjs", ".jsx", ".js", ".json"]
       }
     },
     "react": {
