@@ -11,7 +11,6 @@ import {
 import React, { useState } from 'react';
 import { useIntl } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 import { createSelector } from 'reselect';
 
 import { setEpic, setLevelLimit } from '../../../ducks/app';
@@ -20,7 +19,7 @@ import {
   MAX_LEVEL,
   MIN_LEVEL,
 } from '../../../utils/levelLimit';
-import { useLocationQuery } from '../../../utils/location';
+import { useGoBack, useLocationQuery } from '../../../utils/location';
 import CancelButton from '../../CancelButton';
 import SubmitButton from '../../SubmitButton';
 import levelLimitMessages from '../messages';
@@ -60,7 +59,6 @@ const LevelLimitDialog = (props) => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const intl = useIntl();
-  const navigate = useNavigate();
 
   const defaultValue = useSelector(getDefaultValue);
   const [value, setValue] = useState(defaultValue);
@@ -68,7 +66,8 @@ const LevelLimitDialog = (props) => {
   const query = useLocationQuery();
   const open = query.levelLimit !== undefined;
 
-  const onClose = () => navigate(-1);
+  const goBack = useGoBack();
+  const onClose = () => goBack();
 
   const onChange = (event, levelLimit) => {
     setValue(levelLimit);
@@ -96,7 +95,7 @@ const LevelLimitDialog = (props) => {
         break;
     }
 
-    navigate(-1);
+    goBack();
   };
 
   return (

@@ -2,8 +2,8 @@ import { ListItemIcon } from '@material-ui/core';
 import { Star } from 'mdi-material-ui';
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
-import { useNavigate } from 'react-router-dom';
 
+import { useGoBack } from '../../../../utils/location';
 import ListItem from '../Item';
 import ListItemText from '../ItemText';
 
@@ -23,7 +23,7 @@ const getRateLink = (platformId) => {
 };
 
 const RateItem = (props) => {
-  const navigate = useNavigate();
+  const goBack = useGoBack();
 
   const rateLink = getRateLink(window.cordova?.platformId);
 
@@ -31,7 +31,7 @@ const RateItem = (props) => {
     return null;
   }
 
-  const onClick = () => navigate(-1);
+  const onClick = () => goBack();
 
   return (
     <ListItem

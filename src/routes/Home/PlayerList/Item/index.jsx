@@ -16,7 +16,11 @@ import { useDrag } from 'react-use-gesture';
 import PlayerAvatar from '../../../../components/PlayerAvatar';
 import PlayerListItemText from '../../../../components/PlayerListItemText';
 import { togglePlayer, unselectAllPlayers } from '../../../../ducks/app';
-import { stringifyQuery, useLocationQuery } from '../../../../utils/location';
+import {
+  stringifyQuery,
+  useGoBack,
+  useLocationQuery,
+} from '../../../../utils/location';
 import { ios } from '../../../../utils/platforms';
 import { EDIT, MULTI } from '../../modes';
 
@@ -61,6 +65,7 @@ const HomePlayerListItem = forwardRef(
 
     const handleRef = useForkRef(itemRef, ref);
 
+    const goBack = useGoBack();
     const query = useLocationQuery();
     const editMode = query[EDIT] !== undefined;
     const multiMode = query[MULTI] !== undefined;
@@ -109,7 +114,7 @@ const HomePlayerListItem = forwardRef(
           selectedPlayerIds.length === 1 &&
           selectedPlayerIds[0] === playerId
         ) {
-          navigate(-1);
+          goBack();
         }
       } else if (
         avatarRef.current &&

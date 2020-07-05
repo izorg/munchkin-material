@@ -2,8 +2,8 @@ import { ListItemIcon } from '@material-ui/core';
 import { ShareVariant } from 'mdi-material-ui';
 import React from 'react';
 import { defineMessages, useIntl } from 'react-intl';
-import { useNavigate } from 'react-router-dom';
 
+import { useGoBack } from '../../../../utils/location';
 import ListItem from '../Item';
 import ListItemText from '../ItemText';
 
@@ -22,8 +22,9 @@ const messages = defineMessages({
 });
 
 const ShareItem = (props) => {
-  const navigate = useNavigate();
   const intl = useIntl();
+
+  const goBack = useGoBack();
 
   const {
     cordova,
@@ -45,7 +46,7 @@ const ShareItem = (props) => {
         title: intl.formatMessage(messages.share),
         url: shareLink,
       });
-      navigate(-1);
+      goBack();
     } catch (error) {
       // cancel share
     }

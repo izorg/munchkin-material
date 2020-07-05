@@ -13,7 +13,11 @@ import TopIconButton from '../../../components/TopIconButton';
 import { setCombatPlayerBonus } from '../../../ducks/combat';
 import { removePlayerFromList } from '../../../ducks/playerList';
 import { removePlayer } from '../../../ducks/players';
-import { stringifyQuery, useLocationQuery } from '../../../utils/location';
+import {
+  stringifyQuery,
+  useGoBack,
+  useLocationQuery,
+} from '../../../utils/location';
 import { EDIT, MULTI } from '../modes';
 
 import MenuButton from './MenuButton';
@@ -35,6 +39,7 @@ const HomeAppBar = ({ empty, singleMode }) => {
   const location = useLocation();
   const navigate = useNavigate();
 
+  const goBack = useGoBack();
   const query = useLocationQuery();
 
   const editMode = query[EDIT] !== undefined;
@@ -42,19 +47,19 @@ const HomeAppBar = ({ empty, singleMode }) => {
 
   const selectedPlayerIds = useSelector((state) => state.app.selectedPlayerIds);
 
-  const onMultiSelectDeactivate = () => navigate(-1);
+  const onMultiSelectDeactivate = () => goBack();
 
   const onPlayersDelete = (selected) => {
     selected.forEach((id) => {
       dispatch(removePlayerFromList(id));
       dispatch(removePlayer(id));
     });
-    navigate(-1);
+    goBack();
   };
 
   const onToggleEditClick = () =>
     editMode
-      ? navigate(-1)
+      ? goBack()
       : navigate({
           ...location,
           search: stringifyQuery({ [EDIT]: null }),

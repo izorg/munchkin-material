@@ -20,13 +20,12 @@ import { GenderFemale, GenderMale } from 'mdi-material-ui';
 import React, { useEffect, useMemo, useRef } from 'react';
 import { defineMessages, FormattedMessage, useIntl } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 
 import { addPlayerToList } from '../../ducks/playerList';
 import { addPlayer, updatePlayer } from '../../ducks/players';
 import createPlayer from '../../utils/createPlayer';
 import getRandomMaterialColor from '../../utils/getRandomMaterialColor';
-import { useLocationQuery } from '../../utils/location';
+import { useGoBack, useLocationQuery } from '../../utils/location';
 import { ios } from '../../utils/platforms';
 import { FEMALE, MALE } from '../../utils/sex';
 import CancelButton from '../CancelButton';
@@ -96,12 +95,12 @@ let appear = false;
 const PlayerDialog = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const intl = useIntl();
   const theme = useTheme();
 
   const nameRef = useRef(null);
 
+  const goBack = useGoBack();
   const query = useLocationQuery();
   const open = query.player !== undefined;
   const players = useSelector((state) => state.players);
@@ -138,7 +137,7 @@ const PlayerDialog = () => {
     appear = true;
   }, []);
 
-  const handleClose = () => navigate(-1);
+  const handleClose = () => goBack();
 
   const onSubmit = (event) => {
     event.preventDefault();

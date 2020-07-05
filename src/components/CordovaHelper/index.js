@@ -1,15 +1,17 @@
 import { useEffect, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 import sentry from '../../sentry';
+import { useGoBack } from '../../utils/location';
 
 const displayName = 'CordovaHelper';
 
 const CordovaHelper = ({ children }) => {
   const location = useLocation();
-  const navigate = useNavigate();
 
   const [deviceReady, setDeviceReady] = useState(false);
+
+  const goBack = useGoBack();
 
   useEffect(() => {
     const onDeviceReady = () => {
@@ -51,7 +53,7 @@ const CordovaHelper = ({ children }) => {
       if (location.pathname === '/' && !location.search) {
         navigator.app.exitApp();
       } else {
-        navigate(-1);
+        goBack();
       }
     };
 
@@ -60,7 +62,7 @@ const CordovaHelper = ({ children }) => {
     return () => {
       document.removeEventListener('backbutton', onBackButton);
     };
-  }, [deviceReady, location.pathname, location.search, navigate]);
+  }, [deviceReady, goBack, location.pathname, location.search]);
 
   if (deviceReady) {
     return children;

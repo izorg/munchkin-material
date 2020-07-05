@@ -10,12 +10,11 @@ import {
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 
 import PlayerAvatar from '../../../components/PlayerAvatar';
 import PlayerListItemText from '../../../components/PlayerListItemText';
 import { setCombatHelper } from '../../../ducks/combat';
-import { useLocationQuery } from '../../../utils/location';
+import { useGoBack, useLocationQuery } from '../../../utils/location';
 
 const displayName = 'HelperSelector';
 
@@ -35,7 +34,8 @@ const useStyles = makeStyles(
 const HelperSelector = (props) => {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+
+  const goBack = useGoBack();
 
   const helpers = useSelector((state) =>
     state.playerList
@@ -46,11 +46,11 @@ const HelperSelector = (props) => {
   const query = useLocationQuery();
   const open = query.add === 'helper';
 
-  const onClose = () => navigate(-1);
+  const onClose = () => goBack();
 
   const onSelect = (id) => {
     dispatch(setCombatHelper(id));
-    navigate(-1);
+    goBack();
   };
 
   return (

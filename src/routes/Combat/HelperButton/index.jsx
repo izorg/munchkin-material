@@ -10,7 +10,7 @@ import { createSelector } from 'reselect';
 
 import { addMonster } from '../../../ducks/monsters';
 import createMonster from '../../../utils/createMonster';
-import { useLocationQuery } from '../../../utils/location';
+import { useGoBack, useLocationQuery } from '../../../utils/location';
 
 const displayName = 'CombatHelperButton';
 
@@ -52,12 +52,13 @@ const CombatHelperButton = ({ className, ...rest }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const goBack = useGoBack();
   const helper = useSelector(getHelper);
   const query = useLocationQuery();
   const open = query.add === null;
 
   const onAdd = () => navigate(`?add`);
-  const onBack = () => navigate(-1);
+  const onBack = () => goBack();
   const onHelperClick = (event) => {
     event.stopPropagation();
     navigate(`?add=helper`, { replace: true });

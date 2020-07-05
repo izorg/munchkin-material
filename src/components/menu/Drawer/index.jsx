@@ -10,7 +10,11 @@ import React, { useMemo } from 'react';
 import { useLocation, useMatch, useNavigate } from 'react-router-dom';
 
 import { EDIT } from '../../../routes/Home/modes';
-import { stringifyQuery, useLocationQuery } from '../../../utils/location';
+import {
+  stringifyQuery,
+  useGoBack,
+  useLocationQuery,
+} from '../../../utils/location';
 import { ios } from '../../../utils/platforms';
 import MenuList from '../List';
 import useMenuOpen from '../useMenuOpen';
@@ -38,6 +42,7 @@ const MenuDrawer = () => {
 
   const classes = useStyles();
 
+  const goBack = useGoBack();
   const query = useLocationQuery();
   const match = useMatch('/');
   const wide = useMediaQuery(theme.breakpoints.up('md'), {
@@ -50,7 +55,7 @@ const MenuDrawer = () => {
     !Object.keys(query).every((key) => [EDIT].includes(key));
   const open = useMenuOpen();
 
-  const onClose = () => open && navigate(-1);
+  const onClose = () => open && goBack();
 
   const onOpen = () =>
     navigate({

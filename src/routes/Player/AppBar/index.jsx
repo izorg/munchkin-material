@@ -1,19 +1,19 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 
 import BackButton from '../../../components/BackButton';
 import DiceButton from '../../../components/dice/Button';
 import Title from '../../../components/Title';
 import TopAppBar from '../../../components/TopAppBar';
+import { useGoBack } from '../../../utils/location';
 
 import KillPlayerButton from './KillPlayerButton';
 
 const displayName = 'PlayerAppBar';
 
 const PlayerAppBar = ({ playerId }) => {
-  const navigate = useNavigate();
+  const goBack = useGoBack();
 
   const players = useSelector((state) => state.players);
   const title = players[playerId].name;
@@ -22,7 +22,7 @@ const PlayerAppBar = ({ playerId }) => {
     <TopAppBar>
       <BackButton
         data-screenshots="player-back-button"
-        onClick={() => navigate(-1)}
+        onClick={() => goBack()}
       />
 
       <Title>{title}</Title>

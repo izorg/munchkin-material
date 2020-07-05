@@ -3,7 +3,11 @@ import PropTypes from 'prop-types';
 import React, { useEffect, useRef, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-import { stringifyQuery, useLocationQuery } from '../../../utils/location';
+import {
+  stringifyQuery,
+  useGoBack,
+  useLocationQuery,
+} from '../../../utils/location';
 import noop from '../../../utils/noop';
 
 import Color from './Color';
@@ -45,6 +49,7 @@ const ColorPicker = ({
     }
   }, [valueProp]);
 
+  const goBack = useGoBack();
   const query = useLocationQuery();
 
   const open = query.color === null;
@@ -58,7 +63,7 @@ const ColorPicker = ({
       }),
     });
 
-  const onClose = () => navigate(-1);
+  const onClose = () => goBack();
 
   return (
     <>

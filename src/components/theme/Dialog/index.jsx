@@ -16,7 +16,11 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 import { setTheme } from '../../../ducks/theme';
 import themes from '../../../styles/themes';
-import { stringifyQuery, useLocationQuery } from '../../../utils/location';
+import {
+  stringifyQuery,
+  useGoBack,
+  useLocationQuery,
+} from '../../../utils/location';
 import CancelButton from '../../CancelButton';
 import { useFullVersion } from '../../FullVersionProvider';
 import SubmitButton from '../../SubmitButton';
@@ -42,6 +46,7 @@ const ThemeDialog = () => {
   const classes = useStyles();
 
   const { buyFullVersion, fullVersion } = useFullVersion();
+  const goBack = useGoBack();
 
   const themeId = useSelector((state) => state.theme.id);
 
@@ -97,10 +102,10 @@ const ThemeDialog = () => {
         type: theme.type || undefined,
       }),
     );
-    navigate(-1);
+    goBack();
   };
 
-  const onClose = () => navigate(-1);
+  const onClose = () => goBack();
 
   const typeValue = theme.type || '';
 
