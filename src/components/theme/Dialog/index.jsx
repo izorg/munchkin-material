@@ -12,7 +12,7 @@ import {
 import React, { useMemo } from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import { setTheme } from '../../../ducks/theme';
 import themes from '../../../styles/themes';
@@ -34,10 +34,12 @@ const useStyles = makeStyles(
 );
 
 const ThemeDialog = () => {
-  const classes = useStyles();
   const dispatch = useDispatch();
-  const history = useHistory();
   const intl = useIntl();
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const classes = useStyles();
 
   const { buyFullVersion, fullVersion } = useFullVersion();
 
@@ -53,12 +55,16 @@ const ThemeDialog = () => {
   ]);
 
   const onChange = (selectedTheme) =>
-    history.replace({
-      search: stringifyQuery({
-        ...query,
-        theme: selectedTheme,
-      }),
-    });
+    navigate(
+      {
+        ...location,
+        search: stringifyQuery({
+          ...query,
+          theme: selectedTheme,
+        }),
+      },
+      { replace: true },
+    );
 
   const onThemeIdChange = (event, id) => {
     onChange({
@@ -91,10 +97,10 @@ const ThemeDialog = () => {
         type: theme.type || undefined,
       }),
     );
-    history.goBack();
+    navigate(-1);
   };
 
-  const onClose = () => history.goBack();
+  const onClose = () => navigate(-1);
 
   const typeValue = theme.type || '';
 

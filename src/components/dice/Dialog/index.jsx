@@ -2,7 +2,7 @@ import { ButtonBase, Dialog, makeStyles } from '@material-ui/core';
 import { Dice1, Dice2, Dice3, Dice4, Dice5, Dice6 } from 'mdi-material-ui';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { TransitionGroup } from 'react-transition-group';
 
 import { throwDice } from '../../../ducks/dice';
@@ -53,7 +53,7 @@ const diceComponent = {
 const DiceDialog = (props) => {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const [attempt, setAttempt] = useState(0);
 
@@ -68,7 +68,7 @@ const DiceDialog = (props) => {
     setAttempt(attempt + 1);
   };
 
-  const onDialogClose = () => history.goBack();
+  const onDialogClose = () => navigate(-1);
 
   return (
     <Dialog {...props} onClose={onDialogClose} open={open}>

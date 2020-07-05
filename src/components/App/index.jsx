@@ -1,5 +1,4 @@
 import React, { lazy, Suspense } from 'react';
-import { Route } from 'react-router-dom';
 
 import Home from '../../routes/Home';
 import ScreenModal from '../ScreenModal';
@@ -24,13 +23,9 @@ const displayName = 'App';
 
 const App = () => (
   <>
-    <Route path="/">
-      {() => (
-        <ScreenModal open TransitionProps={{ appear: false }}>
-          <Home />
-        </ScreenModal>
-      )}
-    </Route>
+    <ScreenModal open TransitionProps={{ appear: false }}>
+      <Home />
+    </ScreenModal>
 
     <Suspense fallback={null}>
       <DiceDialog />

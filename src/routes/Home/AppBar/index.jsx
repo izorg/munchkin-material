@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { defineMessages, FormattedMessage, useIntl } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import DiceButton from '../../../components/dice/Button';
 import Title from '../../../components/Title';
@@ -32,7 +32,8 @@ const messages = defineMessages({
 const HomeAppBar = ({ empty, singleMode }) => {
   const dispatch = useDispatch();
   const intl = useIntl();
-  const history = useHistory();
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const query = useLocationQuery();
 
@@ -41,20 +42,23 @@ const HomeAppBar = ({ empty, singleMode }) => {
 
   const selectedPlayerIds = useSelector((state) => state.app.selectedPlayerIds);
 
-  const onMultiSelectDeactivate = () => history.goBack();
+  const onMultiSelectDeactivate = () => navigate(-1);
 
   const onPlayersDelete = (selected) => {
     selected.forEach((id) => {
       dispatch(removePlayerFromList(id));
       dispatch(removePlayer(id));
     });
-    history.goBack();
+    navigate(-1);
   };
 
   const onToggleEditClick = () =>
     editMode
-      ? history.goBack()
-      : history.push({ search: stringifyQuery({ [EDIT]: null }) });
+      ? navigate(-1)
+      : navigate({
+          ...location,
+          search: stringifyQuery({ [EDIT]: null }),
+        });
 
   const onTurnFinish = () => dispatch(setCombatPlayerBonus(0));
 

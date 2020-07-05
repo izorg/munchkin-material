@@ -14,4 +14,7 @@ export const useLocationQuery = () => {
 };
 
 export const stringifyQuery = (query) =>
-  stringify(query, { strictNullHandling: true });
+  stringify(query, {
+    addQueryPrefix: true,
+    strictNullHandling: true,
+  });

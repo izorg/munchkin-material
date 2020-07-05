@@ -2,7 +2,7 @@ import { makeStyles, Paper, Zoom } from '@material-ui/core';
 import clsx from 'clsx';
 import React, { lazy, Suspense, useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
-import { Route } from 'react-router-dom';
+import { useMatch } from 'react-router-dom';
 
 import LevelLimitDialog from '../../components/levelLimit/Dialog';
 import MenuDrawer from '../../components/menu/Drawer';
@@ -130,6 +130,11 @@ const Home = () => {
 
   const menuCollapsed = useSelector(menuCollapsedSelector);
 
+  const playerMatch = useMatch({
+    path: '/player/:id',
+    end: false,
+  });
+
   return (
     <>
       <div className={clsx(classes.root, { [classes.single]: singleMode })}>
@@ -159,15 +164,11 @@ const Home = () => {
 
       <Undo />
 
-      <Route path="/player/:id">
-        {({ match }) => (
-          <ScreenModal open={Boolean(match)}>
-            <Suspense fallback={null}>
-              <Player />
-            </Suspense>
-          </ScreenModal>
-        )}
-      </Route>
+      <ScreenModal open={Boolean(playerMatch)}>
+        <Suspense fallback={null}>
+          <Player playerId={playerMatch?.params.id} />
+        </Suspense>
+      </ScreenModal>
     </>
   );
 };

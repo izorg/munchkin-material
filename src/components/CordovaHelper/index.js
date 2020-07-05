@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import sentry from '../../sentry';
 
 const displayName = 'CordovaHelper';
 
 const CordovaHelper = ({ children }) => {
-  const history = useHistory();
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const [deviceReady, setDeviceReady] = useState(false);
 
@@ -29,23 +30,37 @@ const CordovaHelper = ({ children }) => {
           Windows.UI.Core.AppViewBackButtonVisibility.collapsed;
       }
 
-      const onBackButton = (event) => {
-        event.preventDefault();
-
-        if (history.canGo(-1)) {
-          history.goBack();
-        } else {
-          navigator.app.exitApp();
-        }
-      };
-
-      document.addEventListener('backbutton', onBackButton, false);
-
       setDeviceReady(true);
     };
 
     document.addEventListener('deviceready', onDeviceReady, false);
-  }, [history]);
+
+    return () => {
+      document.removeEventListener('deviceready', onDeviceReady);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!deviceReady) {
+      return;
+    }
+
+    const onBackButton = (event) => {
+      event.preventDefault();
+
+      if (location.pathname === '/' && !location.search) {
+        navigator.app.exitApp();
+      } else {
+        navigate(-1);
+      }
+    };
+
+    document.addEventListener('backbutton', onBackButton, false);
+
+    return () => {
+      document.removeEventListener('backbutton', onBackButton);
+    };
+  }, [deviceReady, location.pathname, location.search, navigate]);
 
   if (deviceReady) {
     return children;

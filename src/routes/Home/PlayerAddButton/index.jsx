@@ -1,7 +1,7 @@
 import { Plus } from 'mdi-material-ui';
 import React from 'react';
 import { defineMessages, useIntl } from 'react-intl';
-import { useHistory } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import ScreenFab from '../../../components/ScreenFab';
 import { parseSearch, stringifyQuery } from '../../../utils/location';
@@ -16,13 +16,15 @@ const messages = defineMessages({
 });
 
 const PlayerAddButton = (props) => {
-  const history = useHistory();
+  const location = useLocation();
+  const navigate = useNavigate();
   const intl = useIntl();
 
   const onClick = () => {
-    const query = parseSearch(history.location.search);
+    const query = parseSearch(location.search);
 
-    history.push({
+    navigate({
+      ...location,
       search: stringifyQuery({
         ...query,
         player: null,

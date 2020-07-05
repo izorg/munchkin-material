@@ -3,7 +3,7 @@ import { DiceMultiple } from 'mdi-material-ui';
 import React from 'react';
 import { defineMessages, useIntl } from 'react-intl';
 import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import { throwDice } from '../../../ducks/dice';
 import { stringifyQuery } from '../../../utils/location';
@@ -20,12 +20,16 @@ const messages = defineMessages({
 
 const DiceIconButton = (props) => {
   const dispatch = useDispatch();
-  const history = useHistory();
   const intl = useIntl();
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const onClick = () => {
     dispatch(throwDice());
-    history.push({ search: stringifyQuery({ dice: null }) });
+    navigate({
+      ...location,
+      search: stringifyQuery({ dice: null }),
+    });
   };
 
   return (

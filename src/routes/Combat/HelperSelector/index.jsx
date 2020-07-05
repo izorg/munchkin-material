@@ -10,7 +10,7 @@ import {
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import PlayerAvatar from '../../../components/PlayerAvatar';
 import PlayerListItemText from '../../../components/PlayerListItemText';
@@ -35,7 +35,7 @@ const useStyles = makeStyles(
 const HelperSelector = (props) => {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const helpers = useSelector((state) =>
     state.playerList
@@ -46,11 +46,11 @@ const HelperSelector = (props) => {
   const query = useLocationQuery();
   const open = query.add === 'helper';
 
-  const onClose = () => history.goBack();
+  const onClose = () => navigate(-1);
 
   const onSelect = (id) => {
     dispatch(setCombatHelper(id));
-    history.goBack();
+    navigate(-1);
   };
 
   return (

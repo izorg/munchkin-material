@@ -1,7 +1,8 @@
 import { makeStyles } from '@material-ui/core';
+import PropTypes from 'prop-types';
 import React, { lazy, Suspense, useRef } from 'react';
 import { useSelector } from 'react-redux';
-import { Redirect, Route, useParams } from 'react-router-dom';
+import { Navigate, useMatch } from 'react-router-dom';
 
 import PlayerContext from '../../components/PlayerContext';
 import ScreenModal from '../../components/ScreenModal';
@@ -78,15 +79,18 @@ const useStyles = makeStyles(
   { name: displayName },
 );
 
-const Player = () => {
+const Player = ({ playerId }) => {
   const classes = useStyles();
   const playerRef = useRef();
   const playerList = useSelector((state) => state.playerList);
 
-  const { id: playerId } = useParams();
+  const combatMatch = useMatch({
+    path: '/player/:id/combat',
+    end: false,
+  });
 
   if (playerId && !playerList.includes(playerId)) {
-    return <Redirect to="/" />;
+    return <Navigate to="/" />;
   }
 
   if (playerId) {
@@ -94,7 +98,7 @@ const Player = () => {
   }
 
   if (!playerRef.current) {
-    return <Redirect to="/" />;
+    return <Navigate to="/" />;
   }
 
   return (
@@ -113,17 +117,22 @@ const Player = () => {
       </div>
       <CombatButton playerId={playerRef.current} />
       <Undo />
-      <Route path="/player/:id/combat">
-        {({ match }) => (
-          <ScreenModal open={Boolean(match)}>
-            <Suspense fallback={null}>
-              <Combat />
-            </Suspense>
-          </ScreenModal>
-        )}
-      </Route>
+
+      <ScreenModal open={Boolean(combatMatch)}>
+        <Suspense fallback={null}>
+          <Combat />
+        </Suspense>
+      </ScreenModal>
     </PlayerContext.Provider>
   );
+};
+
+Player.propTypes = {
+  playerId: PropTypes.string,
+};
+
+Player.defaultProps = {
+  playerId: null,
 };
 
 Player.displayName = displayName;

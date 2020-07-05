@@ -2,7 +2,7 @@ import { SwordCross } from 'mdi-material-ui';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { useFullVersion } from '../../../components/FullVersionProvider';
 import ScreenFab from '../../../components/ScreenFab';
@@ -14,7 +14,7 @@ const CombatButton = ({ playerId, ...rest }) => {
   const { cordova } = window;
 
   const dispatch = useDispatch();
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const combatFinished = useSelector((state) => state.combat.finished);
   const combatPlayerId = useSelector((state) => state.combat.playerId);
@@ -34,7 +34,7 @@ const CombatButton = ({ playerId, ...rest }) => {
       dispatch(startCombat(playerId));
     }
 
-    history.push(`/player/${playerId}/combat`);
+    navigate(`/player/${playerId}/combat`);
   };
 
   return (

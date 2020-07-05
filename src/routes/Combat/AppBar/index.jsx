@@ -2,7 +2,7 @@ import { FlagCheckered } from 'mdi-material-ui';
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import BackButton from '../../../components/BackButton';
 import DiceIconButton from '../../../components/dice/Button';
@@ -15,13 +15,13 @@ const displayName = 'CombatAppBar';
 
 const CombatAppBar = () => {
   const dispatch = useDispatch();
-  const history = useHistory();
+  const navigate = useNavigate();
 
-  const onBack = () => history.goBack();
+  const onBack = () => navigate(-1);
 
   const onFinish = () => {
     dispatch(finishCombat());
-    history.goBack();
+    navigate(-1);
   };
 
   return (

@@ -3,7 +3,7 @@ import { Menu } from 'mdi-material-ui';
 import React from 'react';
 import { defineMessages, useIntl } from 'react-intl';
 import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import TopIconButton from '../../../../components/TopIconButton';
 import { toggleMenu } from '../../../../ducks/ui';
@@ -20,17 +20,19 @@ const messages = defineMessages({
 
 const MenuButton = (props) => {
   const dispatch = useDispatch();
-  const history = useHistory();
   const intl = useIntl();
+  const location = useLocation();
+  const navigate = useNavigate();
   const theme = useTheme();
 
   const query = useLocationQuery();
-  const mathes = useMediaQuery(theme.breakpoints.up('md'), { noSsr: true });
+  const mdUp = useMediaQuery(theme.breakpoints.up('md'), { noSsr: true });
 
   const onClick = () =>
-    mathes
+    mdUp
       ? dispatch(toggleMenu())
-      : history.push({
+      : navigate({
+          ...location,
           search: stringifyQuery({
             ...query,
             menu: null,

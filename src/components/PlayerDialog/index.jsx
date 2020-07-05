@@ -20,7 +20,7 @@ import { GenderFemale, GenderMale } from 'mdi-material-ui';
 import React, { useEffect, useMemo, useRef } from 'react';
 import { defineMessages, FormattedMessage, useIntl } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { addPlayerToList } from '../../ducks/playerList';
 import { addPlayer, updatePlayer } from '../../ducks/players';
@@ -96,7 +96,7 @@ let appear = false;
 const PlayerDialog = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const history = useHistory();
+  const navigate = useNavigate();
   const intl = useIntl();
   const theme = useTheme();
 
@@ -138,7 +138,7 @@ const PlayerDialog = () => {
     appear = true;
   }, []);
 
-  const handleClose = () => history.goBack();
+  const handleClose = () => navigate(-1);
 
   const onSubmit = (event) => {
     event.preventDefault();

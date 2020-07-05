@@ -4,7 +4,7 @@ import { SwapVertical } from 'mdi-material-ui';
 import React from 'react';
 import { useIntl } from 'react-intl';
 import { useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import {
   MAX_EPIC_LEVEL,
@@ -31,25 +31,27 @@ const useStyles = makeStyles(
 
 const LevelLimitItem = ({ className, ...rest }) => {
   const classes = useStyles();
-  const history = useHistory();
   const intl = useIntl();
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const epic = useSelector((state) => state.app.epic);
   const levelLimit = useSelector((state) => state.app.levelLimit);
   const open = useMenuOpen();
 
   const onClick = () => {
-    const location = {
+    const to = {
+      ...location,
       search: stringifyQuery({
-        ...parseSearch(history.location.search),
+        ...parseSearch(location.search),
         levelLimit: null,
       }),
     };
 
     if (open) {
-      history.replace(location);
+      navigate(to, { replace: true });
     } else {
-      history.push(location);
+      navigate(to);
     }
   };
 

@@ -2,7 +2,7 @@ import { ListItemIcon } from '@material-ui/core';
 import { ShareVariant } from 'mdi-material-ui';
 import React from 'react';
 import { defineMessages, useIntl } from 'react-intl';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import ListItem from '../Item';
 import ListItemText from '../ItemText';
@@ -22,7 +22,7 @@ const messages = defineMessages({
 });
 
 const ShareItem = (props) => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const intl = useIntl();
 
   const {
@@ -45,7 +45,7 @@ const ShareItem = (props) => {
         title: intl.formatMessage(messages.share),
         url: shareLink,
       });
-      history.goBack();
+      navigate(-1);
     } catch (error) {
       // cancel share
     }

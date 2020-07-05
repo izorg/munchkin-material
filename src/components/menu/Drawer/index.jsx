@@ -7,7 +7,7 @@ import {
 } from '@material-ui/core';
 import deepmerge from 'deepmerge';
 import React, { useMemo } from 'react';
-import { useHistory, useRouteMatch } from 'react-router-dom';
+import { useLocation, useMatch, useNavigate } from 'react-router-dom';
 
 import { EDIT } from '../../../routes/Home/modes';
 import { stringifyQuery, useLocationQuery } from '../../../utils/location';
@@ -32,27 +32,29 @@ const useStyles = makeStyles(
 );
 
 const MenuDrawer = () => {
-  const history = useHistory();
+  const location = useLocation();
+  const navigate = useNavigate();
   const theme = useTheme();
 
   const classes = useStyles();
 
   const query = useLocationQuery();
-  const match = useRouteMatch('/');
+  const match = useMatch('/');
   const wide = useMediaQuery(theme.breakpoints.up('md'), {
     noSsr: true,
   });
   const disableSwipeToOpen =
     ios ||
     wide ||
-    !match.isExact ||
+    !match ||
     !Object.keys(query).every((key) => [EDIT].includes(key));
   const open = useMenuOpen();
 
-  const onClose = () => open && history.goBack();
+  const onClose = () => open && navigate(-1);
 
   const onOpen = () =>
-    history.push({
+    navigate({
+      ...location,
       search: stringifyQuery({
         ...query,
         menu: null,

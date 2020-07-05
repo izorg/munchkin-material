@@ -1,7 +1,7 @@
 import { ListItemIcon } from '@material-ui/core';
 import { CellphoneArrowDown, InformationOutline } from 'mdi-material-ui';
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { useWorkbox } from '../../../WorkboxProvider';
 import ListItem from '../Item';
@@ -10,13 +10,13 @@ import ListItemText from '../ItemText';
 const displayName = 'VersionItem';
 
 const VersionItem = (props) => {
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const { applyUpdate, update } = useWorkbox();
 
   const onClick = () => {
     if (update) {
-      history.goBack();
+      navigate(-1);
       applyUpdate();
     }
   };

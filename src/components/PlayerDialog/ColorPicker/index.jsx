@@ -1,7 +1,7 @@
 import { Hidden, makeStyles } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import React, { useEffect, useRef, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import { stringifyQuery, useLocationQuery } from '../../../utils/location';
 import noop from '../../../utils/noop';
@@ -29,8 +29,10 @@ const ColorPicker = ({
   onFocus,
   value: valueProp,
 }) => {
+  const location = useLocation();
+  const navigate = useNavigate();
+
   const classes = useStyles();
-  const history = useHistory();
 
   const anchorEl = useRef(null);
   const ignoreNextBlur = useRef(false);
@@ -48,14 +50,15 @@ const ColorPicker = ({
   const open = query.color === null;
 
   const onOpen = () =>
-    history.push({
+    navigate({
+      ...location,
       search: stringifyQuery({
         ...query,
         color: null,
       }),
     });
 
-  const onClose = () => history.goBack();
+  const onClose = () => navigate(-1);
 
   return (
     <>

@@ -4,7 +4,7 @@ import { Palette } from 'mdi-material-ui';
 import React from 'react';
 import { useIntl } from 'react-intl';
 import { useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import themes from '../../../../styles/themes';
 import { parseSearch, stringifyQuery } from '../../../../utils/location';
@@ -27,8 +27,9 @@ const useStyles = makeStyles(
 
 const ThemeItem = ({ className, ...rest }) => {
   const classes = useStyles();
-  const history = useHistory();
   const intl = useIntl();
+  const location = useLocation();
+  const navigate = useNavigate();
   const theme = useTheme();
 
   const themeKey = useSelector((state) => state.theme.id);
@@ -36,17 +37,18 @@ const ThemeItem = ({ className, ...rest }) => {
   const open = useMenuOpen();
 
   const onClick = () => {
-    const location = {
+    const to = {
+      ...location,
       search: stringifyQuery({
-        ...parseSearch(history.location.search),
+        ...parseSearch(location.search),
         theme: null,
       }),
     };
 
     if (open) {
-      history.replace(location);
+      navigate(to, { replace: true });
     } else {
-      history.push(location);
+      navigate(to);
     }
   };
 

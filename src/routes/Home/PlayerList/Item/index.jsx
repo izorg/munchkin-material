@@ -10,7 +10,7 @@ import { DragHorizontalVariant as DragIcon } from 'mdi-material-ui';
 import PropTypes from 'prop-types';
 import React, { forwardRef, useCallback, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useDrag } from 'react-use-gesture';
 
 import PlayerAvatar from '../../../../components/PlayerAvatar';
@@ -48,9 +48,11 @@ const useStyles = makeStyles(
 
 const HomePlayerListItem = forwardRef(
   ({ dragHandleProps, playerId, ...rest }, ref) => {
-    const classes = useStyles();
     const dispatch = useDispatch();
-    const history = useHistory();
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    const classes = useStyles();
 
     const itemRef = useRef(null);
     const avatarRef = useRef(null);
@@ -75,7 +77,8 @@ const HomePlayerListItem = forwardRef(
       dispatch(unselectAllPlayers());
       dispatch(togglePlayer(playerId));
 
-      history.push({
+      navigate({
+        ...location,
         search: stringifyQuery({
           [MULTI]: null,
         }),
@@ -92,7 +95,8 @@ const HomePlayerListItem = forwardRef(
       }
 
       if (editMode) {
-        history.push({
+        navigate({
+          ...location,
           search: stringifyQuery({
             ...query,
             player: playerId,
@@ -105,7 +109,7 @@ const HomePlayerListItem = forwardRef(
           selectedPlayerIds.length === 1 &&
           selectedPlayerIds[0] === playerId
         ) {
-          history.goBack();
+          navigate(-1);
         }
       } else if (
         avatarRef.current &&
@@ -113,7 +117,7 @@ const HomePlayerListItem = forwardRef(
       ) {
         onMultiSelectActivate();
       } else {
-        history.push(`/player/${playerId}`);
+        navigate(`/player/${playerId}`);
       }
     };
 

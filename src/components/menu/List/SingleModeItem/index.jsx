@@ -4,7 +4,7 @@ import { Account, AccountMultiple } from 'mdi-material-ui';
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import { setSingleMode } from '../../../../ducks/app';
 import { useFullVersion } from '../../../FullVersionProvider';
@@ -27,8 +27,8 @@ const useStyles = makeStyles(
 const SingleModeItem = ({ className }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const history = useHistory();
   const { pathname } = useLocation();
+  const navigate = useNavigate();
 
   const singleMode = useSelector((state) => state.app.singleMode);
   const open = useMenuOpen();
@@ -49,7 +49,7 @@ const SingleModeItem = ({ className }) => {
     dispatch(setSingleMode(isSingleMode));
 
     if (needBack) {
-      history.goBack();
+      navigate(-1);
     }
   };
 

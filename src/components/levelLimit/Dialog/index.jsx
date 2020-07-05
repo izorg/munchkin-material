@@ -11,7 +11,7 @@ import {
 import React, { useState } from 'react';
 import { useIntl } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { createSelector } from 'reselect';
 
 import { setEpic, setLevelLimit } from '../../../ducks/app';
@@ -59,8 +59,8 @@ const getDefaultValue = createSelector(
 const LevelLimitDialog = (props) => {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const history = useHistory();
   const intl = useIntl();
+  const navigate = useNavigate();
 
   const defaultValue = useSelector(getDefaultValue);
   const [value, setValue] = useState(defaultValue);
@@ -68,7 +68,7 @@ const LevelLimitDialog = (props) => {
   const query = useLocationQuery();
   const open = query.levelLimit !== undefined;
 
-  const onClose = () => history.goBack();
+  const onClose = () => navigate(-1);
 
   const onChange = (event, levelLimit) => {
     setValue(levelLimit);
@@ -96,7 +96,7 @@ const LevelLimitDialog = (props) => {
         break;
     }
 
-    history.goBack();
+    navigate(-1);
   };
 
   return (
