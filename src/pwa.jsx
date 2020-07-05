@@ -16,7 +16,7 @@ import WorkboxProvider from './components/WorkboxProvider';
 import sentry from './sentry';
 
 if (process.env.NODE_ENV === 'production') {
-  sentry('web', 'https://41e93153dfb94d9db3ed8a2cbc7228a9@sentry.io/253536');
+  sentry('https://41e93153dfb94d9db3ed8a2cbc7228a9@sentry.io/253536');
 
   firebase.initializeApp({
     apiKey: 'AIzaSyAwIA0iUuTMsyEOumkpDODkhXtpaMwDq_U',

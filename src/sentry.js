@@ -1,14 +1,14 @@
 import { ExtraErrorData, RewriteFrames } from '@sentry/integrations';
 import * as Sentry from '@sentry/react';
 
-const sentry = (build, dsn) => {
+const sentry = (dsn) => {
   let integrations = [
     new ExtraErrorData({
       depth: 10,
     }),
   ];
 
-  if (build === 'cordova') {
+  if (window.cordova) {
     integrations = [
       ...integrations,
       new RewriteFrames({
@@ -20,6 +20,8 @@ const sentry = (build, dsn) => {
       }),
     ];
   }
+
+  const build = window.cordova ? 'cordova' : 'web';
 
   Sentry.init({
     dsn,

@@ -15,10 +15,7 @@ const CordovaHelper = ({ children }) => {
       const { BuildInfo } = window;
 
       if (process.env.NODE_ENV === 'production' && !BuildInfo.debug) {
-        sentry(
-          'cordova',
-          'https://14fc03bd8f6249ddbd3917a950656dcc@sentry.io/1423183',
-        );
+        sentry('https://14fc03bd8f6249ddbd3917a950656dcc@sentry.io/1423183');
       }
 
       navigator.splashscreen.hide();
