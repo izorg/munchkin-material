@@ -1,25 +1,25 @@
-import { makeStyles, Paper, useTheme } from '@material-ui/core';
+import { makeStyles, useTheme } from '@material-ui/core';
 import PropTypes from 'prop-types';
-import React, { useCallback, useMemo, useRef } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import SwipeableViews from 'react-swipeable-views';
-import { mod } from 'react-swipeable-views-core';
-import { bindKeyboard, virtualize } from 'react-swipeable-views-utils';
+import { animated, useSpring } from 'react-spring';
+import { useDrag } from 'react-use-gesture';
 
 import PlayerStats from './Stats';
 
 const displayName = 'PlayerSlider';
 
-const PlayerSwipeableViews = bindKeyboard(virtualize(SwipeableViews));
-
 const useStyles = makeStyles(
   (theme) => ({
     root: {
-      [theme.breakpoints.up('sm')]: {
-        paddingLeft: theme.spacing(8),
-        paddingRight: theme.spacing(8),
-      },
+      overflowX: 'hidden',
+      width: '100%',
+    },
+
+    container: {
+      display: 'flex',
+      height: '100%',
     },
 
     slide: {
@@ -29,85 +29,46 @@ const useStyles = makeStyles(
     itemContainer: {
       alignItems: 'center',
       display: 'flex',
-      flex: 1,
-      flexDirection: 'column',
-      justifyContent: 'center',
-
-      [theme.breakpoints.up('sm')]: {
-        padding: theme.spacing(1, 2),
-      },
-    },
-
-    item: {
-      backgroundColor:
-        theme.palette.type === 'dark'
-          ? theme.palette.background.default
-          : theme.palette.background.paper,
-      display: 'flex',
-      flexGrow: 1,
-      height: '100%',
-      justifyContent: 'center',
-      padding: theme.spacing(2),
+      flexShrink: 0,
+      padding: theme.spacing(2, 2, 7),
       width: '100%',
-
-      '@media (orientation: portrait)': {
-        paddingBottom: theme.spacing(7),
-      },
 
       '@media (min-height: 720px)': {
         paddingBottom: theme.spacing(2),
       },
-
-      [theme.breakpoints.up('sm')]: {
-        backgroundColor: theme.palette.background.paper,
-        boxShadow: theme.shadows[1],
-        paddingLeft: theme.spacing(3),
-        paddingRight: theme.spacing(3),
-
-        '@media (orientation: portrait)': {
-          maxHeight: 480,
-          paddingBottom: theme.spacing(2),
-        },
-
-        '@media (orientation: landscape)': {
-          flex: 'none',
-          height: 'auto',
-        },
-      },
     },
 
     stats: {
-      flex: 1,
-
-      [theme.breakpoints.up('sm')]: {
-        '@media (orientation: portrait)': {
-          maxWidth: 300,
-        },
-
-        '@media (orientation: landscape)': {
-          maxWidth: 400,
-        },
-      },
+      height: '100%',
+      margin: [[0, 'auto']],
+      maxHeight: 600,
+      maxWidth: 600,
     },
   }),
   { name: displayName },
 );
 
-const PlayerSlider = ({ playerId }) => {
+const PlayerSlider = ({ playerId: playerIdProp }) => {
   const classes = useStyles();
   const navigate = useNavigate();
   const { direction } = useTheme();
 
-  const indexRef = useRef(0);
+  const rtl = direction === 'rtl';
+
+  const animateRef = useRef(false);
+
+  const [playerId, setPlayerId] = useState(playerIdProp);
+
+  useEffect(() => {
+    if (!animateRef.current) {
+      setPlayerId(playerIdProp);
+    }
+  }, [playerIdProp]);
 
   const playerList = useSelector((state) => state.playerList);
   const playerCount = playerList.length;
 
-  const currentIndex = useMemo(() => {
-    const playerIndex = playerList.indexOf(playerId);
-
-    return indexRef.current - mod(indexRef.current, playerCount) + playerIndex;
-  }, [playerCount, playerId, playerList]);
+  const currentIndex = playerList.indexOf(playerId);
 
   const getPlayerIndex = useCallback(
     (index) => {
@@ -122,53 +83,86 @@ const PlayerSlider = ({ playerId }) => {
     [playerCount],
   );
 
-  const handleChangeIndex = useCallback(
-    (index) => {
-      indexRef.current = index;
+  const ref = useRef();
 
-      navigate(`/player/${playerList[getPlayerIndex(index)]}`, {
-        replace: true,
-      });
+  const initialValue = rtl ? 100 : -100;
+  const [{ x }, set] = useSpring(() => ({
+    x: initialValue,
+    config: {
+      tension: 300,
+      friction: 30,
     },
-    [getPlayerIndex, navigate, playerList],
-  );
+  }));
 
-  // eslint-disable-next-line react/prop-types
-  const slideRenderer = ({ key, index }) => {
-    const playerIndex = getPlayerIndex(index);
-    const slidePlayerId = playerList[playerIndex];
+  const bind = useDrag(async (state) => {
+    const { last, movement, swipe } = state;
 
-    return (
-      <div key={key} className={classes.itemContainer}>
-        <Paper className={classes.item} elevation={0}>
-          <PlayerStats className={classes.stats} playerId={slidePlayerId} />
-        </Paper>
-      </div>
-    );
-  };
+    if (animateRef.current === true) {
+      return;
+    }
+
+    const percent = movement[0] / ref.current.offsetWidth;
+
+    const delta = percent * 100;
+
+    set({
+      x: initialValue + delta,
+    });
+
+    if (last) {
+      if (swipe[0] !== 0 || Math.abs(percent) >= 0.5) {
+        let nextPlayerId;
+        let value;
+
+        if (swipe[0] === -1 || percent < -0.5) {
+          nextPlayerId =
+            playerList[getPlayerIndex(currentIndex + (rtl ? -1 : 1))];
+          value = rtl ? 0 : -200;
+        }
+
+        if (swipe[0] === 1 || percent > 0.5) {
+          nextPlayerId =
+            playerList[getPlayerIndex(currentIndex - (rtl ? -1 : 1))];
+          value = rtl ? 200 : 0;
+        }
+
+        animateRef.current = true;
+        navigate(`/player/${nextPlayerId}`, {
+          replace: true,
+        });
+        await set({ x: value });
+        await set({ x: initialValue, immediate: true });
+        animateRef.current = false;
+
+        setPlayerId(nextPlayerId);
+      } else {
+        await set({ x: initialValue });
+      }
+    }
+  });
 
   return (
-    <PlayerSwipeableViews
-      axis={direction === 'rtl' ? 'x-reverse' : 'x'}
-      className={classes.root}
-      containerStyle={{
-        flex: '1 0 auto',
-      }}
-      index={currentIndex}
-      onChangeIndex={handleChangeIndex}
-      overscanSlideAfter={1}
-      overscanSlideBefore={2}
-      slideClassName={classes.slide}
-      slideRenderer={slideRenderer}
-      slideStyle={{
-        direction,
-      }}
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        width: '100%',
-      }}
-    />
+    <div ref={ref} className={classes.root}>
+      <animated.div
+        key={playerId}
+        className={classes.container}
+        {...bind()}
+        style={{
+          transform: x.to((value) => `translateX(${value}%)`),
+        }}
+      >
+        {[currentIndex - 1, currentIndex, currentIndex + 1].map((index) => {
+          const playerIndex = getPlayerIndex(index);
+          const playerId = playerList[playerIndex];
+
+          return (
+            <div key={playerId} className={classes.itemContainer}>
+              <PlayerStats className={classes.stats} playerId={playerId} />
+            </div>
+          );
+        })}
+      </animated.div>
+    </div>
   );
 };
 
