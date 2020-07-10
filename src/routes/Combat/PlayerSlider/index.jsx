@@ -8,9 +8,8 @@ import {
 import clsx from 'clsx';
 import { CloseCircle } from 'mdi-material-ui';
 import PropTypes from 'prop-types';
-import React, { memo, useEffect, useRef, useState } from 'react';
+import React, { memo, useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
-import SwipeableViews from 'react-swipeable-views';
 
 import { setCombatHelper, setCombatHelperBonus } from '../../../ducks/combat';
 
@@ -21,29 +20,55 @@ const displayName = 'CombatPlayerSlider';
 const useStyles = makeStyles(
   (theme) => ({
     players: {
-      alignItems: 'flex-start',
-      display: 'flex',
-      position: 'relative',
+      scrollBehavior: 'smooth',
+      scrollbarWidth: 'none',
+      MsOverflowStyle: 'none',
+
+      '&::-webkit-scrollbar': {
+        display: 'none',
+      },
+
+      '@media (orientation: portrait)': {
+        overflowX: 'auto',
+        overflowY: 'hidden',
+      },
 
       '@media (orientation: landscape)': {
-        alignItems: 'center',
-        overflow: 'hidden',
+        alignSelf: 'center',
+        flexDirection: 'column',
+        maxHeight: '100%',
+        overflowX: 'hidden',
+        overflowY: 'auto',
       },
     },
 
-    remove: {
-      bottom: 8,
-      height: 36,
-      padding: 6,
-      position: 'absolute',
-      right: 8,
-      width: 36,
+    container: {
+      alignItems: 'flex-start',
+      display: 'flex',
+    },
+
+    itemContainer: {
+      flexShrink: 0,
+      width: '100%',
+
+      '@media (orientation: portrait)': {
+        padding: theme.spacing(0, 3),
+
+        '& + &': {
+          marginLeft: theme.spacing(-4),
+        },
+      },
+
+      '@media (orientation: landscape)': {
+        padding: theme.spacing(2, 2),
+      },
     },
 
     paper: {
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'center',
+      position: 'relative',
 
       [`${theme.breakpoints.up('sm')} and (orientation: portrait)`]: {
         marginTop: 8,
@@ -53,6 +78,15 @@ const useStyles = makeStyles(
         height: '100%',
       },
     },
+
+    remove: {
+      bottom: 0,
+      height: 36,
+      padding: 6,
+      position: 'absolute',
+      right: 0,
+      width: 36,
+    },
   }),
   { name: 'CombatPlayerSlider' },
 );
@@ -60,100 +94,61 @@ const useStyles = makeStyles(
 const CombatPlayerSlider = ({ className, helperId, playerId }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
+  const ref = useRef();
+  const lastHelperRef = useRef(helperId);
   const { direction } = useTheme();
 
-  const portrait = useMediaQuery('(orientation: portrait)', {
+  const landscape = useMediaQuery('(orientation: landscape)', {
     noSsr: true,
   });
 
-  const initialRender = useRef(true);
-
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  useEffect(() => {
-    if (!initialRender.current && helperId) {
-      setCurrentIndex(1);
-    }
-
-    initialRender.current = false;
-  }, [helperId]);
-
-  const onChangeIndex = (index) => {
-    setCurrentIndex(index);
+  const handleHelperRemove = () => {
+    dispatch(setCombatHelper(null));
+    dispatch(setCombatHelperBonus(0));
   };
 
-  const players = [
-    <Paper key={playerId} className={classes.paper}>
-      <Player playerId={playerId} />
-    </Paper>,
-  ];
+  useEffect(() => {
+    if (helperId && helperId !== lastHelperRef.current) {
+      const node = ref.current;
 
-  if (helperId) {
-    const handleHelperRemove = () => {
-      setCurrentIndex(0);
+      if (landscape) {
+        node.scrollTop = node.scrollHeight - node.offsetHeight;
+      } else {
+        node.scrollLeft =
+          direction === 'rtl' ? 0 : node.scrollWidth - node.offsetWidth;
+      }
 
-      dispatch(setCombatHelper(null));
-      dispatch(setCombatHelperBonus(0));
-    };
+      lastHelperRef.current = helperId;
+    }
 
-    players.push(
-      <Paper key={helperId} className={classes.paper}>
-        <Player playerId={helperId} />
-
-        <IconButton className={classes.remove} onClick={handleHelperRemove}>
-          <CloseCircle />
-        </IconButton>
-      </Paper>,
-    );
-  }
+    if (!helperId) {
+      lastHelperRef.current = undefined;
+    }
+  }, [direction, helperId, landscape]);
 
   return (
-    <div className={clsx(classes.players, className)}>
-      {portrait ? (
-        <SwipeableViews
-          axis={direction === 'rtl' ? 'x-reverse' : 'x'}
-          enableMouseEvents
-          index={currentIndex}
-          onChangeIndex={onChangeIndex}
-          slideStyle={{
-            direction,
-            padding: '0 8px 8px',
-            position: 'relative',
-          }}
-          style={{
-            flex: 1,
-            padding: '0 16px',
-          }}
-        >
-          {players}
-        </SwipeableViews>
-      ) : (
-        <SwipeableViews
-          axis="y"
-          containerStyle={{
-            height: 224, // real phone counter value round float
-            width: '100%',
-          }}
-          enableMouseEvents
-          ignoreNativeScroll
-          index={currentIndex}
-          onChangeIndex={onChangeIndex}
-          slideStyle={{
-            direction,
-            height: 224,
-            padding: 8,
-            position: 'relative',
-          }}
-          style={{
-            alignItems: 'center',
-            display: 'flex',
-            overflowY: 'visible',
-            width: '100%',
-          }}
-        >
-          {players}
-        </SwipeableViews>
-      )}
+    <div ref={ref} className={clsx(classes.players, className)}>
+      <div className={classes.container}>
+        <div className={classes.itemContainer}>
+          <Paper className={classes.paper}>
+            <Player playerId={playerId} />
+          </Paper>
+        </div>
+        {helperId && (
+          <div className={classes.itemContainer}>
+            <Paper key={helperId} className={classes.paper}>
+              <Player playerId={helperId} />
+
+              <IconButton
+                className={classes.remove}
+                onClick={handleHelperRemove}
+              >
+                <CloseCircle />
+              </IconButton>
+            </Paper>
+          </div>
+        )}
+      </div>
     </div>
   );
 };
