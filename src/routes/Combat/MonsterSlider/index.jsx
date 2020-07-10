@@ -58,7 +58,7 @@ const useStyles = makeStyles(
       },
     },
   }),
-  { name: 'CombatMonsterSlider' },
+  { name: displayName },
 );
 
 const CombatMonsterSlider = ({ className }) => {

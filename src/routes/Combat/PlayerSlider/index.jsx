@@ -92,7 +92,7 @@ const useStyles = makeStyles(
       width: 36,
     },
   }),
-  { name: 'CombatPlayerSlider' },
+  { name: displayName },
 );
 
 const CombatPlayerSlider = ({ className, helperId, playerId }) => {
