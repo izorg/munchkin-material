@@ -36,7 +36,6 @@ const useStyles = makeStyles(
 
       '@media (orientation: landscape)': {
         alignSelf: 'center',
-        flexDirection: 'column',
         maxHeight: '100%',
         overflowX: 'hidden',
         overflowY: 'auto',
@@ -46,6 +45,10 @@ const useStyles = makeStyles(
     container: {
       alignItems: 'flex-start',
       display: 'flex',
+
+      '@media (orientation: landscape)': {
+        flexDirection: 'column',
+      },
     },
 
     itemContainer: {
@@ -140,14 +143,18 @@ const CombatPlayerSlider = ({ className, helperId, playerId }) => {
 
     if (first) {
       node.style.scrollBehavior = 'auto';
-      scrollRef.current = node.scrollLeft;
+      scrollRef.current = landscape ? node.scrollTop : node.scrollLeft;
     }
 
     if (last) {
       node.style.scrollBehavior = '';
     }
 
-    node.scrollLeft = scrollRef.current - movement[0] * 1.5;
+    if (landscape) {
+      node.scrollTop = scrollRef.current - movement[1] * 1.5;
+    } else {
+      node.scrollLeft = scrollRef.current - movement[0] * 1.5;
+    }
   });
 
   return (
