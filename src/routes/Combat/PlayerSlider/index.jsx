@@ -10,6 +10,7 @@ import { CloseCircle } from 'mdi-material-ui';
 import PropTypes from 'prop-types';
 import React, { memo, useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
+import { useDrag } from 'react-use-gesture';
 
 import { setCombatHelper, setCombatHelperBonus } from '../../../ducks/combat';
 
@@ -126,8 +127,31 @@ const CombatPlayerSlider = ({ className, helperId, playerId }) => {
     }
   }, [direction, helperId, landscape]);
 
+  const scrollRef = useRef();
+
+  const bind = useDrag((state) => {
+    const { first, event, last, movement } = state;
+
+    if (!event.type.startsWith('mouse')) {
+      return;
+    }
+
+    const node = ref.current;
+
+    if (first) {
+      node.style.scrollBehavior = 'auto';
+      scrollRef.current = node.scrollLeft;
+    }
+
+    if (last) {
+      node.style.scrollBehavior = '';
+    }
+
+    node.scrollLeft = scrollRef.current - movement[0] * 1.5;
+  });
+
   return (
-    <div ref={ref} className={clsx(classes.players, className)}>
+    <div ref={ref} className={clsx(classes.players, className)} {...bind()}>
       <div className={classes.container}>
         <div className={classes.itemContainer}>
           <Paper className={classes.paper}>
