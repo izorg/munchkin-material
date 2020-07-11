@@ -7,10 +7,10 @@ import {
 } from '@material-ui/core';
 import clsx from 'clsx';
 import { CloseCircle } from 'mdi-material-ui';
-import React, { memo, useEffect, useRef, useState } from 'react';
+import React, { memo, useEffect, useRef } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
-import SwipeableViews from 'react-swipeable-views';
+import { useDrag } from 'react-use-gesture';
 
 import { removeMonster } from '../../../ducks/monsters';
 
@@ -21,26 +21,54 @@ const displayName = 'CombatMonsterSlider';
 const useStyles = makeStyles(
   (theme) => ({
     monsters: {
-      alignItems: 'flex-end',
-      display: 'flex',
-      position: 'relative',
+      scrollBehavior: 'smooth',
+      scrollbarWidth: 'none',
+      MsOverflowStyle: 'none',
+
+      '&::-webkit-scrollbar': {
+        display: 'none',
+      },
+
+      '@media (orientation: portrait)': {
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'flex-end',
+        overflowX: 'auto',
+        overflowY: 'hidden',
+        paddingBottom: theme.spacing(7),
+      },
 
       '@media (orientation: landscape)': {
-        alignItems: 'center',
-        overflow: 'hidden',
+        alignSelf: 'center',
+        maxHeight: '100%',
+        overflowX: 'hidden',
+        overflowY: 'auto',
       },
     },
 
-    remove: {
-      position: 'absolute !important',
-      right: 8,
-      top: 8,
+    container: {
+      alignItems: 'flex-end',
+      display: 'flex',
 
       '@media (orientation: landscape)': {
-        bottom: 8,
-        left: 8,
-        right: 'auto',
-        top: 'auto',
+        flexDirection: 'column',
+      },
+    },
+
+    itemContainer: {
+      flexShrink: 0,
+      width: '100%',
+
+      '@media (orientation: portrait)': {
+        padding: theme.spacing(0, 6),
+
+        '& + &': {
+          marginLeft: theme.spacing(-10),
+        },
+      },
+
+      '@media (orientation: landscape)': {
+        padding: theme.spacing(2, 2),
       },
     },
 
@@ -48,6 +76,7 @@ const useStyles = makeStyles(
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'center',
+      position: 'relative',
 
       [`${theme.breakpoints.up('sm')} and (orientation: portrait)`]: {
         marginBottom: 8,
@@ -57,6 +86,20 @@ const useStyles = makeStyles(
         height: '100%',
       },
     },
+
+    remove: {
+      position: 'absolute',
+
+      '@media (orientation: portrait)': {
+        right: 0,
+        top: 0,
+      },
+
+      '@media (orientation: landscape)': {
+        bottom: 0,
+        left: 0,
+      },
+    },
   }),
   { name: displayName },
 );
@@ -64,113 +107,102 @@ const useStyles = makeStyles(
 const CombatMonsterSlider = ({ className }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
+  const ref = useRef();
   const { direction } = useTheme();
 
-  const portrait = useMediaQuery('(orientation: portrait)', {
+  const landscape = useMediaQuery('(orientation: landscape)', {
     noSsr: true,
   });
 
   const monsters = useSelector((state) => state.combat.monsters);
 
-  const [index, setIndex] = useState(0);
   const monsterCount = useRef(monsters.length);
 
   useEffect(() => {
     if (monsters.length > monsterCount.current) {
-      setIndex(monsters.length - 1);
+      /**
+       * @type {HTMLDivElement}
+       */
+      const node = ref.current;
+
+      if (landscape) {
+        node.scrollTop = node.scrollHeight - node.offsetHeight;
+      } else {
+        node.scrollLeft =
+          direction === 'rtl' ? 0 : node.scrollWidth - node.offsetWidth;
+      }
     }
 
     monsterCount.current = monsters.length;
-  }, [monsters]);
+  }, [direction, landscape, monsters]);
 
   const handleRemove = (monsterId) => {
-    const monsterIndex = monsters.indexOf(monsterId);
-
-    if (monsterIndex > 0) {
-      setIndex(monsterIndex - 1);
-    }
-
     dispatch(removeMonster(monsterId));
   };
 
-  const views = monsters.map((id, monsterIndex) => (
-    <Paper key={id} className={classes.paper}>
-      <Monster
-        monsterId={id}
-        title={
-          <FormattedMessage
-            defaultMessage="Monster {number}"
-            id="combat.monster"
-            values={{
-              number: monsterIndex + 1,
-            }}
-          />
-        }
-      />
+  const scrollRef = useRef();
 
-      {monsters.length > 1 && monsterIndex === index && (
-        <IconButton
-          className={classes.remove}
-          onClick={() => handleRemove(id)}
-          style={{
-            width: 36,
-            height: 36,
-            padding: 6,
-          }}
-        >
-          <CloseCircle />
-        </IconButton>
-      )}
-    </Paper>
-  ));
+  const bind = useDrag((state) => {
+    const { first, event, last, movement } = state;
+
+    if (!event.type.startsWith('mouse')) {
+      return;
+    }
+
+    const node = ref.current;
+
+    if (first) {
+      node.style.scrollBehavior = 'auto';
+      scrollRef.current = landscape ? node.scrollTop : node.scrollLeft;
+    }
+
+    if (last) {
+      node.style.scrollBehavior = '';
+    }
+
+    if (landscape) {
+      node.scrollTop = scrollRef.current - movement[1] * 1.5;
+    } else {
+      node.scrollLeft = scrollRef.current - movement[0] * 1.5;
+    }
+  });
 
   return (
-    <div className={clsx(classes.monsters, className)}>
-      {portrait ? (
-        <SwipeableViews
-          axis={direction === 'rtl' ? 'x-reverse' : 'x'}
-          enableMouseEvents
-          index={index}
-          onChangeIndex={(value) => setIndex(value)}
-          slideStyle={{
-            direction,
-            padding: '8px 8px 0',
-            position: 'relative',
-          }}
-          style={{
-            flex: 1,
-            padding: '0 48px',
-          }}
-        >
-          {views}
-        </SwipeableViews>
-      ) : (
-        <SwipeableViews
-          axis="y"
-          containerStyle={{
-            height: 224,
-            width: '100%',
-          }}
-          enableMouseEvents
-          ignoreNativeScroll
-          index={index}
-          onChangeIndex={(value) => setIndex(value)}
-          slideStyle={{
-            direction,
-            height: 224,
-            padding: 8,
-            position: 'relative',
-          }}
-          style={{
-            alignItems: 'center',
-            display: 'flex',
-            overflowY: 'visible',
-            width: '100%',
-          }}
-        >
-          {views}
-        </SwipeableViews>
-      )}
+    <div ref={ref} className={clsx(classes.monsters, className)} {...bind()}>
+      <div className={classes.container}>
+        {monsters.map((id, monsterIndex) => (
+          <div key={id} className={classes.itemContainer}>
+            <Paper className={classes.paper}>
+              <Monster
+                monsterId={id}
+                title={
+                  <FormattedMessage
+                    defaultMessage="Monster {number}"
+                    id="combat.monster"
+                    values={{
+                      number: monsterIndex + 1,
+                    }}
+                  />
+                }
+              />
+
+              {monsters.length > 1 && (
+                <IconButton
+                  className={classes.remove}
+                  onClick={() => handleRemove(id)}
+                  style={{
+                    width: 36,
+                    height: 36,
+                    padding: 6,
+                  }}
+                >
+                  <CloseCircle />
+                </IconButton>
+              )}
+            </Paper>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
