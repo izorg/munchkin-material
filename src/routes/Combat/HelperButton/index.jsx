@@ -5,7 +5,7 @@ import { AccountPlus, EmoticonDevilOutline } from 'mdi-material-ui';
 import React, { memo } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { createSelector } from 'reselect';
 
 import { addMonster } from '../../../ducks/monsters';
@@ -48,20 +48,32 @@ const getHelper = createSelector(
 );
 
 const CombatHelperButton = ({ className, ...rest }) => {
-  const classes = useStyles();
   const dispatch = useDispatch();
+  const location = useLocation();
   const navigate = useNavigate();
+
+  const classes = useStyles();
 
   const goBack = useGoBack();
   const helper = useSelector(getHelper);
   const query = useLocationQuery();
   const open = query.add === null;
 
-  const onAdd = () => navigate(`?add`);
+  const onAdd = () =>
+    navigate({
+      ...location,
+      search: `?add`,
+    });
   const onBack = () => goBack();
   const onHelperClick = (event) => {
     event.stopPropagation();
-    navigate(`?add=helper`, { replace: true });
+    navigate(
+      {
+        ...location,
+        search: `?add=helper`,
+      },
+      { replace: true },
+    );
   };
   const onMonsterAdd = () => dispatch(addMonster(createMonster()));
 
