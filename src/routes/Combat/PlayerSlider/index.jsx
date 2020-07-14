@@ -10,6 +10,7 @@ import { CloseCircle } from 'mdi-material-ui';
 import PropTypes from 'prop-types';
 import React, { memo, useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
+import { animated, useSpring } from 'react-spring';
 import { useDrag } from 'react-use-gesture';
 
 import { setCombatHelper, setCombatHelperBonus } from '../../../ducks/combat';
@@ -21,29 +22,18 @@ const displayName = 'CombatPlayerSlider';
 const useStyles = makeStyles(
   (theme) => ({
     players: {
-      scrollBehavior: 'smooth',
-      scrollbarWidth: 'none',
-      MsOverflowStyle: 'none',
-
-      '&::-webkit-scrollbar': {
-        display: 'none',
-      },
+      overflow: 'hidden',
 
       '@media (orientation: portrait)': {
-        overflowX: 'auto',
-        overflowY: 'hidden',
+        maxWidth: '100%',
       },
 
       '@media (orientation: landscape)': {
-        alignSelf: 'center',
         maxHeight: '100%',
-        overflowX: 'hidden',
-        overflowY: 'auto',
       },
     },
 
     container: {
-      alignItems: 'flex-start',
       display: 'flex',
 
       '@media (orientation: landscape)': {
@@ -53,18 +43,21 @@ const useStyles = makeStyles(
 
     itemContainer: {
       flexShrink: 0,
-      width: '100%',
 
       '@media (orientation: portrait)': {
-        padding: theme.spacing(0, 3),
+        padding: theme.spacing(1, 2),
 
         '& + &': {
-          marginLeft: theme.spacing(-4),
+          paddingLeft: 0,
         },
       },
 
       '@media (orientation: landscape)': {
-        padding: theme.spacing(2, 2),
+        padding: theme.spacing(2, 1),
+
+        '& + &': {
+          paddingTop: 0,
+        },
       },
     },
 
@@ -72,24 +65,22 @@ const useStyles = makeStyles(
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'center',
+      marginLeft: 'auto',
       position: 'relative',
 
-      [`${theme.breakpoints.up('sm')} and (orientation: portrait)`]: {
-        marginTop: 8,
+      '@media (orientation: portrait)': {
+        width: 280,
       },
 
       '@media (orientation: landscape)': {
-        height: '100%',
+        maxWidth: 320,
       },
     },
 
     remove: {
-      height: 36,
-      left: 0,
-      padding: 6,
       position: 'absolute',
+      right: 0,
       top: 0,
-      width: 36,
     },
   }),
   { name: displayName },
@@ -111,55 +102,113 @@ const CombatPlayerSlider = ({ className, helperId, playerId }) => {
     dispatch(setCombatHelperBonus(0));
   };
 
-  useEffect(() => {
-    if (helperId && helperId !== lastHelperRef.current) {
-      const node = ref.current;
+  const startRef = useRef({ x: 0, y: 0 });
 
-      if (landscape) {
-        node.scrollTop = node.scrollHeight - node.offsetHeight;
-      } else {
-        node.scrollLeft =
-          direction === 'rtl' ? 0 : node.scrollWidth - node.offsetWidth;
-      }
+  const [{ x, y }, set] = useSpring(() => ({
+    ...startRef.current,
+    config: {
+      tension: 1000,
+      friction: 50,
+    },
+  }));
 
-      lastHelperRef.current = helperId;
-    }
-
-    if (!helperId) {
-      lastHelperRef.current = undefined;
-    }
-  }, [direction, helperId, landscape]);
-
-  const scrollRef = useRef();
-
-  const bind = useDrag((state) => {
-    const { first, event, last, movement } = state;
-
-    if (!event.type.startsWith('mouse')) {
-      return;
-    }
-
-    const node = ref.current;
+  const bind = useDrag(async (state) => {
+    const { first, movement } = state;
 
     if (first) {
-      node.style.scrollBehavior = 'auto';
-      scrollRef.current = landscape ? node.scrollTop : node.scrollLeft;
+      startRef.current = { x: x.get(), y: y.get() };
     }
 
-    if (last) {
-      node.style.scrollBehavior = '';
+    let value =
+      startRef.current[landscape ? 'y' : 'x'] +
+      movement[landscape ? 1 : 0] * 1.2;
+
+    /**
+     * @type {HTMLDivElement}
+     */
+    const node = ref.current;
+
+    const max =
+      direction === 'rtl' ? node.scrollWidth - node.parentNode.offsetWidth : 0;
+    const min = landscape
+      ? -node.scrollHeight + node.parentNode.offsetHeight
+      : direction === 'rtl'
+      ? 0
+      : -node.scrollWidth + node.parentNode.offsetWidth;
+
+    if (value > max) {
+      value = max;
     }
 
-    if (landscape) {
-      node.scrollTop = scrollRef.current - movement[1] * 1.5;
-    } else {
-      node.scrollLeft = scrollRef.current - movement[0] * 1.5;
+    if (value < min) {
+      value = min;
     }
+
+    await set({
+      [landscape ? 'y' : 'x']: value,
+    });
   });
 
+  useEffect(() => {
+    set({ [landscape ? 'x' : 'y']: 0, immediate: true });
+  }, [landscape, set]);
+
+  useEffect(() => {
+    set({ x: 0, immediate: true });
+  }, [direction, set]);
+
+  useEffect(() => {
+    /**
+     * @type {HTMLDivElement}
+     */
+    const node = ref.current;
+
+    const max =
+      direction === 'rtl' ? node.scrollWidth - node.parentNode.offsetWidth : 0;
+    const min = landscape
+      ? -node.scrollHeight + node.parentNode.offsetHeight
+      : direction === 'rtl'
+      ? 0
+      : -node.scrollWidth + node.parentNode.offsetWidth;
+
+    if (helperId && !lastHelperRef.current) {
+      if (landscape) {
+        set({
+          y: min,
+        });
+      } else {
+        set({
+          x: direction === 'rtl' ? max : min,
+        });
+      }
+    }
+
+    if (!helperId && lastHelperRef.current) {
+      if (landscape) {
+        if (y.get() < min) {
+          set({ y: min });
+        }
+      } else {
+        if (direction === 'ltr' && x.get() < min) {
+          set({ x: min });
+        }
+
+        if (direction === 'rtl' && x.get() > max) {
+          set({ x: max });
+        }
+      }
+    }
+
+    lastHelperRef.current = helperId;
+  }, [direction, helperId, landscape, set, x, y]);
+
   return (
-    <div ref={ref} className={clsx(classes.players, className)} {...bind()}>
-      <div className={classes.container}>
+    <div
+      className={clsx(classes.players, className)}
+      touch-action="none"
+      {...bind()}
+    >
+      <animated.div ref={ref} className={classes.container} style={{ x, y }}>
         <div className={classes.itemContainer}>
           <Paper className={classes.paper}>
             <Player playerId={playerId} />
@@ -179,7 +228,7 @@ const CombatPlayerSlider = ({ className, helperId, playerId }) => {
             </Paper>
           </div>
         )}
-      </div>
+      </animated.div>
     </div>
   );
 };

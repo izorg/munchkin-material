@@ -52,7 +52,7 @@ const useStyles = makeStyles(
     sex: {
       padding: 6,
       position: 'absolute',
-      right: 0,
+      left: 0,
       top: 0,
     },
   }),
