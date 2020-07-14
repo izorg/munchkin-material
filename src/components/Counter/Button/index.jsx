@@ -6,7 +6,6 @@ import { useDrag } from 'react-use-gesture';
 const displayName = 'CounterButton';
 
 const CounterButton = ({ disabled, onClick, ...rest }) => {
-  const ref = useRef();
   const timeoutRef = useRef(0);
   const intervalRef = useRef(0);
 
@@ -55,16 +54,11 @@ const CounterButton = ({ disabled, onClick, ...rest }) => {
       }
     },
     {
-      domTarget: ref,
       eventOptions: {
         passive: false,
       },
     },
   );
-
-  useEffect(() => {
-    bind();
-  }, [bind]);
 
   const onKeyDown = ({ key }) => {
     if (key === ' ' || key === 'Enter') {
@@ -73,7 +67,12 @@ const CounterButton = ({ disabled, onClick, ...rest }) => {
   };
 
   return (
-    <IconButton ref={ref} disabled={disabled} {...rest} onKeyDown={onKeyDown} />
+    <IconButton
+      disabled={disabled}
+      {...rest}
+      onKeyDown={onKeyDown}
+      {...bind()}
+    />
   );
 };
 

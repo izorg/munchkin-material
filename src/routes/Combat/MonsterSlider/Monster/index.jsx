@@ -16,14 +16,15 @@ import Counter from '../../Counter';
 const displayName = 'CombatMonster';
 
 const useStyles = makeStyles(
-  {
+  (theme) => ({
     monster: {
-      padding: [[8, 8, 32, 8]],
+      padding: theme.spacing(1),
       textAlign: 'center',
     },
 
     name: {
       margin: '0 0 16px',
+      padding: '0 24px',
     },
 
     stats: {
@@ -36,7 +37,7 @@ const useStyles = makeStyles(
       flex: 1,
       overflow: 'hidden',
     },
-  },
+  }),
   { name: displayName },
 );
 

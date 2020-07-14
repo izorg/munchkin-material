@@ -8,7 +8,7 @@ import {
 } from '@material-ui/core';
 import { DragHorizontalVariant as DragIcon } from 'mdi-material-ui';
 import PropTypes from 'prop-types';
-import React, { forwardRef, useCallback, useEffect, useRef } from 'react';
+import React, { forwardRef, useCallback, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useDrag } from 'react-use-gesture';
@@ -184,16 +184,11 @@ const HomePlayerListItem = forwardRef(
         }
       },
       {
-        domTarget: itemRef,
         eventOptions: {
           passive: false,
         },
       },
     );
-
-    useEffect(() => {
-      bind();
-    }, [bind]);
 
     const onKeyDown = (event) => {
       if (event.key === 'Enter') {
@@ -211,8 +206,10 @@ const HomePlayerListItem = forwardRef(
         }}
         component={editMode ? 'div' : 'li'}
         data-screenshots="player-list-item"
+        touch-action="none"
         {...rest}
         onKeyDown={onKeyDown}
+        {...bind()}
       >
         <ListItemAvatar>
           <PlayerAvatar

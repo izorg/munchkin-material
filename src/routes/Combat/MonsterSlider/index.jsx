@@ -10,6 +10,7 @@ import { CloseCircle } from 'mdi-material-ui';
 import React, { memo, useEffect, useRef } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
+import { animated, useSpring } from 'react-spring';
 import { useDrag } from 'react-use-gesture';
 
 import { removeMonster } from '../../../ducks/monsters';
@@ -21,33 +22,18 @@ const displayName = 'CombatMonsterSlider';
 const useStyles = makeStyles(
   (theme) => ({
     monsters: {
-      scrollBehavior: 'smooth',
-      scrollbarWidth: 'none',
-      MsOverflowStyle: 'none',
-
-      '&::-webkit-scrollbar': {
-        display: 'none',
-      },
+      overflow: 'hidden',
 
       '@media (orientation: portrait)': {
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'flex-end',
-        overflowX: 'auto',
-        overflowY: 'hidden',
-        paddingBottom: theme.spacing(7),
+        maxWidth: '100%',
       },
 
       '@media (orientation: landscape)': {
-        alignSelf: 'center',
         maxHeight: '100%',
-        overflowX: 'hidden',
-        overflowY: 'auto',
       },
     },
 
     container: {
-      alignItems: 'flex-end',
       display: 'flex',
 
       '@media (orientation: landscape)': {
@@ -57,18 +43,21 @@ const useStyles = makeStyles(
 
     itemContainer: {
       flexShrink: 0,
-      width: '100%',
 
       '@media (orientation: portrait)': {
-        padding: theme.spacing(0, 6),
+        padding: theme.spacing(1, 2),
 
         '& + &': {
-          marginLeft: theme.spacing(-10),
+          paddingLeft: 0,
         },
       },
 
       '@media (orientation: landscape)': {
-        padding: theme.spacing(2, 2),
+        padding: theme.spacing(2, 1),
+
+        '& + &': {
+          paddingTop: 0,
+        },
       },
     },
 
@@ -78,27 +67,19 @@ const useStyles = makeStyles(
       justifyContent: 'center',
       position: 'relative',
 
-      [`${theme.breakpoints.up('sm')} and (orientation: portrait)`]: {
-        marginBottom: 8,
+      '@media (orientation: portrait)': {
+        width: 280,
       },
 
       '@media (orientation: landscape)': {
-        height: '100%',
+        maxWidth: 280,
       },
     },
 
     remove: {
       position: 'absolute',
-
-      '@media (orientation: portrait)': {
-        right: 0,
-        top: 0,
-      },
-
-      '@media (orientation: landscape)': {
-        bottom: 0,
-        left: 0,
-      },
+      right: 0,
+      top: 0,
     },
   }),
   { name: displayName },
@@ -114,62 +95,121 @@ const CombatMonsterSlider = ({ className }) => {
     noSsr: true,
   });
 
+  const handleRemove = (monsterId) => {
+    dispatch(removeMonster(monsterId));
+  };
+
+  const startRef = useRef({ x: 0, y: 0 });
+
+  const [{ x, y }, set] = useSpring(() => ({
+    ...startRef.current,
+    config: {
+      tension: 1000,
+      friction: 50,
+    },
+  }));
+
+  const bind = useDrag(async (state) => {
+    const { first, movement } = state;
+
+    if (first) {
+      startRef.current = { x: x.get(), y: y.get() };
+    }
+
+    let value =
+      startRef.current[landscape ? 'y' : 'x'] +
+      movement[landscape ? 1 : 0] * 1.2;
+
+    /**
+     * @type {HTMLDivElement}
+     */
+    const node = ref.current;
+
+    const max =
+      direction === 'rtl' ? node.scrollWidth - node.parentNode.offsetWidth : 0;
+    const min = landscape
+      ? -node.scrollHeight + node.parentNode.offsetHeight
+      : direction === 'rtl'
+      ? 0
+      : -node.scrollWidth + node.parentNode.offsetWidth;
+
+    if (value > max) {
+      value = max;
+    }
+
+    if (value < min) {
+      value = min;
+    }
+
+    await set({
+      [landscape ? 'y' : 'x']: value,
+    });
+  });
+
+  useEffect(() => {
+    set({ [landscape ? 'x' : 'y']: 0, immediate: true });
+  }, [landscape, set]);
+
+  useEffect(() => {
+    set({ x: 0, immediate: true });
+  }, [direction, set]);
+
   const monsters = useSelector((state) => state.combat.monsters);
 
   const monsterCount = useRef(monsters.length);
 
   useEffect(() => {
-    if (monsters.length > monsterCount.current) {
-      /**
-       * @type {HTMLDivElement}
-       */
-      const node = ref.current;
+    /**
+     * @type {HTMLDivElement}
+     */
+    const node = ref.current;
 
+    const max =
+      direction === 'rtl' ? node.scrollWidth - node.parentNode.offsetWidth : 0;
+    const min = landscape
+      ? -node.scrollHeight + node.parentNode.offsetHeight
+      : direction === 'rtl'
+      ? 0
+      : -node.scrollWidth + node.parentNode.offsetWidth;
+
+    if (monsters.length > monsterCount.current) {
       if (landscape) {
-        node.scrollTop = node.scrollHeight - node.offsetHeight;
+        set({
+          y: min,
+        });
       } else {
-        node.scrollLeft =
-          direction === 'rtl' ? 0 : node.scrollWidth - node.offsetWidth;
+        set({
+          x: direction === 'rtl' ? max : min,
+        });
+      }
+    }
+
+    if (monsters.length < monsterCount.current) {
+      if (landscape) {
+        if (y.get() < min) {
+          set({ y: min });
+        }
+      } else {
+        if (direction === 'ltr' && x.get() < min) {
+          set({ x: min });
+        }
+
+        if (direction === 'rtl' && x.get() > max) {
+          set({ x: max });
+        }
       }
     }
 
     monsterCount.current = monsters.length;
-  }, [direction, landscape, monsters]);
-
-  const handleRemove = (monsterId) => {
-    dispatch(removeMonster(monsterId));
-  };
-
-  const scrollRef = useRef();
-
-  const bind = useDrag((state) => {
-    const { first, event, last, movement } = state;
-
-    if (!event.type.startsWith('mouse')) {
-      return;
-    }
-
-    const node = ref.current;
-
-    if (first) {
-      node.style.scrollBehavior = 'auto';
-      scrollRef.current = landscape ? node.scrollTop : node.scrollLeft;
-    }
-
-    if (last) {
-      node.style.scrollBehavior = '';
-    }
-
-    if (landscape) {
-      node.scrollTop = scrollRef.current - movement[1] * 1.5;
-    } else {
-      node.scrollLeft = scrollRef.current - movement[0] * 1.5;
-    }
-  });
+  }, [direction, landscape, monsters.length, set, x, y]);
 
   return (
-    <div ref={ref} className={clsx(classes.monsters, className)} {...bind()}>
-      <div className={classes.container}>
+    <div
+      className={clsx(classes.monsters, className)}
+      touch-action="none"
+      {...bind()}
+    >
+      <animated.div ref={ref} className={classes.container} style={{ x, y }}>
         {monsters.map((id, monsterIndex) => (
           <div key={id} className={classes.itemContainer}>
             <Paper className={classes.paper}>
@@ -202,7 +242,7 @@ const CombatMonsterSlider = ({ className }) => {
             </Paper>
           </div>
         ))}
-      </div>
+      </animated.div>
     </div>
   );
 };

@@ -26,9 +26,9 @@ import Counter from '../../Counter';
 const displayName = 'CombatPlayer';
 
 const useStyles = makeStyles(
-  {
+  (theme) => ({
     player: {
-      padding: [[8, 8, 32, 8]],
+      padding: theme.spacing(1),
       position: 'relative',
       textAlign: 'center',
     },
@@ -55,7 +55,7 @@ const useStyles = makeStyles(
       right: 0,
       top: 0,
     },
-  },
+  }),
   { name: 'CombatPlayer' },
 );
 

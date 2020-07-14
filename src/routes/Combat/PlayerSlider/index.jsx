@@ -84,11 +84,11 @@ const useStyles = makeStyles(
     },
 
     remove: {
-      bottom: 0,
       height: 36,
+      left: 0,
       padding: 6,
       position: 'absolute',
-      right: 0,
+      top: 0,
       width: 36,
     },
   }),

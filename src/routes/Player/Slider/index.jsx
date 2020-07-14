@@ -150,6 +150,7 @@ const PlayerSlider = ({ playerId: playerIdProp }) => {
         style={{
           transform: x.to((value) => `translateX(${value}%)`),
         }}
+        touch-action="none"
       >
         {[currentIndex - 1, currentIndex, currentIndex + 1].map((index) => {
           const playerIndex = getPlayerIndex(index);

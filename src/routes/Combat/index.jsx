@@ -23,6 +23,7 @@ const useStyles = makeStyles(
     },
 
     content: {
+      alignItems: 'center',
       display: 'flex',
       flex: 1,
       flexDirection: 'column',
@@ -64,8 +65,6 @@ const useStyles = makeStyles(
     },
 
     total: {
-      alignSelf: 'center',
-      padding: theme.spacing(1),
       textAlign: 'center',
     },
 
