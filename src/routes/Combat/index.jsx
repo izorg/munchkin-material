@@ -28,7 +28,6 @@ const useStyles = makeStyles(
       flex: 1,
       flexDirection: 'column',
       justifyContent: 'center',
-      padding: 0,
 
       '@supports (padding: env(safe-area-inset-left))': {
         paddingLeft: 'env(safe-area-inset-left)',
@@ -37,37 +36,22 @@ const useStyles = makeStyles(
 
       '@media (orientation: portrait)': {
         overflowY: 'auto',
+        paddingBottom: theme.spacing(7),
       },
 
       '@media (orientation: landscape)': {
         flexDirection: 'row',
         overflow: 'hidden',
       },
-
-      // [`${theme.breakpoints.up('sm')} and (orientation: portrait)`]: {
-      //   justifyContent: 'center',
-      // },
     },
 
     players: {
-      // flex: 1,
-      //
-      // [`${theme.breakpoints.up('sm')} and (orientation: portrait)`]: {
-      //   flex: 'none',
-      // },
-
       '@media (orientation: landscape)': {
         flex: 1,
       },
     },
 
     monsters: {
-      // flex: 1,
-      //
-      // [`${theme.breakpoints.up('sm')} and (orientation: portrait)`]: {
-      //   flex: 'none',
-      // },
-
       '@media (orientation: landscape)': {
         flex: 1,
       },

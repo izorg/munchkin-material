@@ -35,7 +35,6 @@ const useStyles = makeStyles(
 
     container: {
       display: 'flex',
-
       '@media (orientation: landscape)': {
         flexDirection: 'column',
       },
