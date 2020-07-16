@@ -23,6 +23,7 @@ const useStyles = makeStyles(
   (theme) => ({
     players: {
       overflow: 'hidden',
+      touchAction: 'none',
 
       '@media (orientation: portrait)': {
         maxWidth: '100%',
@@ -78,9 +79,12 @@ const useStyles = makeStyles(
     },
 
     remove: {
+      height: 36,
+      padding: 6,
       position: 'absolute',
       right: 0,
       top: 0,
+      width: 36,
     },
   }),
   { name: displayName },
@@ -110,6 +114,7 @@ const CombatPlayerSlider = ({ className, helperId, playerId }) => {
       tension: 1000,
       friction: 50,
     },
+    filterTaps: true,
   }));
 
   const bind = useDrag(async (state) => {

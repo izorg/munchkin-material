@@ -20,6 +20,7 @@ const useStyles = makeStyles(
     container: {
       display: 'flex',
       height: '100%',
+      touchAction: 'none',
     },
 
     slide: {
@@ -89,9 +90,10 @@ const PlayerSlider = ({ playerId: playerIdProp }) => {
   const [{ x }, set] = useSpring(() => ({
     x: initialValue,
     config: {
-      tension: 300,
-      friction: 30,
+      tension: 500,
+      friction: 50,
     },
+    filterTaps: true,
   }));
 
   const bind = useDrag(async (state) => {

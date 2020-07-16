@@ -23,6 +23,7 @@ const useStyles = makeStyles(
   (theme) => ({
     monsters: {
       overflow: 'hidden',
+      touchAction: 'none',
 
       '@media (orientation: portrait)': {
         maxWidth: '100%',
@@ -76,9 +77,12 @@ const useStyles = makeStyles(
     },
 
     remove: {
+      height: 36,
+      padding: 6,
       position: 'absolute',
       right: 0,
       top: 0,
+      width: 36,
     },
   }),
   { name: displayName },
@@ -106,6 +110,7 @@ const CombatMonsterSlider = ({ className }) => {
       tension: 1000,
       friction: 50,
     },
+    filterTaps: true,
   }));
 
   const bind = useDrag(async (state) => {
@@ -229,11 +234,6 @@ const CombatMonsterSlider = ({ className }) => {
                 <IconButton
                   className={classes.remove}
                   onClick={() => handleRemove(id)}
-                  style={{
-                    width: 36,
-                    height: 36,
-                    padding: 6,
-                  }}
                 >
                   <CloseCircle />
                 </IconButton>

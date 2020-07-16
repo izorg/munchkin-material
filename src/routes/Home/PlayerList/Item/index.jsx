@@ -28,6 +28,10 @@ const displayName = 'HomePlayerListItem';
 
 const useStyles = makeStyles(
   () => ({
+    root: {
+      touchAction: 'none',
+    },
+
     gutters: {
       '@supports (padding: max(0px))': {
         paddingLeft: `max(16px, env(safe-area-inset-left))`,
@@ -201,6 +205,7 @@ const HomePlayerListItem = forwardRef(
         ref={handleRef}
         button
         classes={{
+          root: classes.root,
           gutters: classes.gutters,
           secondaryAction: classes.secondaryAction,
         }}
