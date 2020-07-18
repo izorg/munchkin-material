@@ -52,7 +52,7 @@ module.exports = {
     rules: [
       {
         test: /\.m?js$/,
-        include: /node_modules\/(react-intl|react-use-gesture)/,
+        include: /node_modules\/(@react-spring|react-intl|react-use-gesture)/,
         use: [
           {
             loader: 'babel-loader',
