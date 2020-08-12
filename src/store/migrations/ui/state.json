@@ -1,5 +1,6 @@
 {
   "app": {
-    "menuCollapsed": false
+    "menuCollapsed": false,
+    "selectedPlayerIds": ["1"]
   }
 }

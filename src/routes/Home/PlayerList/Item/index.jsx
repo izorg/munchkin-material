@@ -15,7 +15,7 @@ import { useDrag } from 'react-use-gesture';
 
 import PlayerAvatar from '../../../../components/PlayerAvatar';
 import PlayerListItemText from '../../../../components/PlayerListItemText';
-import { togglePlayer, unselectAllPlayers } from '../../../../ducks/app';
+import { togglePlayer, unselectAllPlayers } from '../../../../ducks/ui';
 import {
   stringifyQuery,
   useGoBack,
@@ -75,7 +75,7 @@ const HomePlayerListItem = forwardRef(
     const multiMode = query[MULTI] !== undefined;
 
     const selectedPlayerIds = useSelector(
-      (state) => state.app.selectedPlayerIds,
+      (state) => state.ui.selectedPlayerIds,
     );
     const selected = multiMode && selectedPlayerIds.includes(playerId);
 

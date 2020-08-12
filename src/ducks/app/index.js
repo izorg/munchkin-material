@@ -9,8 +9,6 @@ export const SET_LOCALE = 'app/SET_LOCALE';
 export const SET_LEVEL_LIMIT = 'app/SET_LEVEL_LIMIT';
 export const SET_SINGLE_MODE = 'app/SET_SINGLE_MODE';
 export const SET_SINGLE_MODE_PLAYER = 'app/SET_SINGLE_MODE_PLAYER';
-export const TOGGLE_PLAYER = 'app/TOGGLE_PLAYER';
-export const UNSELECT_ALL_PLAYERS = 'app/UNSELECT_ALL_PLAYERS';
 
 export const setEpic = (epic = true) => ({
   type: SET_EPIC,
@@ -62,22 +60,12 @@ export const setSingleMode = (singleMode) => async (dispatch, getState) => {
   });
 };
 
-export const togglePlayer = (id) => ({
-  type: TOGGLE_PLAYER,
-  id,
-});
-
-export const unselectAllPlayers = () => ({
-  type: UNSELECT_ALL_PLAYERS,
-});
-
 const initialState = {
   epic: false,
   fullVersion: false,
   keepAwake: false,
   levelLimit: false,
   locale: undefined,
-  selectedPlayerIds: [],
   singleMode: false,
   singleModePlayerId: undefined,
 };
@@ -128,33 +116,6 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         singleModePlayerId: action.id,
-      };
-    }
-
-    case TOGGLE_PLAYER: {
-      const { id } = action;
-
-      if (state.selectedPlayerIds.includes(id)) {
-        return {
-          ...state,
-          selectedPlayerIds: state.selectedPlayerIds.filter(
-            (selectedId) => selectedId !== id,
-          ),
-        };
-      }
-
-      return {
-        ...state,
-        selectedPlayerIds: [...state.selectedPlayerIds, id],
-      };
-    }
-
-    case UNSELECT_ALL_PLAYERS: {
-      const { selectedPlayerIds } = initialState;
-
-      return {
-        ...state,
-        selectedPlayerIds,
       };
     }
 

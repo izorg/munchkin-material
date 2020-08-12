@@ -2,21 +2,34 @@ import { initialState } from '../../../ducks/ui';
 
 export default (state) => {
   const {
-    app: { menuCollapsed, ...app },
-    ui,
+    app: { menuCollapsed, selectedPlayerIds, ...app },
   } = state;
 
+  let migratedState = state;
+
   if (menuCollapsed !== undefined) {
-    return {
-      ...state,
+    migratedState = {
+      ...migratedState,
       app,
       ui: {
         ...initialState,
-        ...ui,
+        ...migratedState.ui,
         menuCollapsed,
       },
     };
   }
 
-  return state;
+  if (selectedPlayerIds !== undefined) {
+    migratedState = {
+      ...migratedState,
+      app,
+      ui: {
+        ...initialState,
+        ...migratedState.ui,
+        selectedPlayerIds,
+      },
+    };
+  }
+
+  return migratedState;
 };
