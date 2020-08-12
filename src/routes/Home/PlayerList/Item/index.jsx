@@ -249,12 +249,10 @@ const HomePlayerListItem = forwardRef(
 );
 
 HomePlayerListItem.propTypes = {
-  dragHandleProps: PropTypes.object, // eslint-disable-line react/forbid-prop-types
+  dragHandleProps: PropTypes.shape({
+    onDragStart: PropTypes.func.isRequired,
+  }),
   playerId: PropTypes.string.isRequired,
-};
-
-HomePlayerListItem.defaultProps = {
-  dragHandleProps: undefined,
 };
 
 HomePlayerListItem.displayName = displayName;
