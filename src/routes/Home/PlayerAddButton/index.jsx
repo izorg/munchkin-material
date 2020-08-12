@@ -1,5 +1,5 @@
 import { Plus } from 'mdi-material-ui';
-import React from 'react';
+import React, { forwardRef } from 'react';
 import { defineMessages, useIntl } from 'react-intl';
 import { useLocation, useNavigate } from 'react-router-dom';
 
@@ -15,7 +15,7 @@ const messages = defineMessages({
   },
 });
 
-const PlayerAddButton = (props) => {
+const PlayerAddButton = forwardRef((props, ref) => {
   const location = useLocation();
   const navigate = useNavigate();
   const intl = useIntl();
@@ -34,6 +34,7 @@ const PlayerAddButton = (props) => {
 
   return (
     <ScreenFab
+      ref={ref}
       aria-label={intl.formatMessage(messages.label)}
       onClick={onClick}
       {...props}
@@ -41,7 +42,7 @@ const PlayerAddButton = (props) => {
       <Plus />
     </ScreenFab>
   );
-};
+});
 
 PlayerAddButton.displayName = displayName;
 
