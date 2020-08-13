@@ -50,7 +50,7 @@
     "cordova-plugin-ionic-keyboard": "2.2.0",
     "cordova-plugin-localization-strings": "3.2.1",
     "cordova-plugin-purchase": "10.2.0",
-    "cordova-plugin-splashscreen": "5.0.4",
+    "cordova-plugin-splashscreen": "6.0.0",
     "cordova-plugin-statusbar": "2.4.3",
     "cordova-plugin-vibration": "3.1.1",
     "cordova-plugin-web-share": "1.2.0",
