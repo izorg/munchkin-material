@@ -101,8 +101,8 @@ const PlayerStats = ({ className, playerId }) => {
   const intl = useIntl();
 
   const player = useSelector((state) => state.players[playerId]);
-  const levelLimit = useSelector((state) => state.app.levelLimit);
-  const epic = useSelector((state) => state.app.epic);
+  const levelLimit = useSelector((state) => state.settings.levelLimit);
+  const epic = useSelector((state) => state.settings.epic);
 
   const levelDecrementDisabled = isLevelDecrementDisabled(
     player.level,

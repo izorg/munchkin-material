@@ -67,8 +67,8 @@ const CombatPlayer = ({ playerId }) => {
   const players = useSelector((state) => state.players);
   const { gear, id, level, name, sex } = players[playerId];
 
-  const levelLimit = useSelector((state) => state.app.levelLimit);
-  const epic = useSelector((state) => state.app.epic);
+  const levelLimit = useSelector((state) => state.settings.levelLimit);
+  const epic = useSelector((state) => state.settings.epic);
 
   const levelDecrementDisabled = isLevelDecrementDisabled(level, levelLimit);
   const levelIncrementDisabled = isLevelIncrementDisabled(

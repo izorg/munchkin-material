@@ -7,7 +7,7 @@ import React, {
 } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { setKeepAwake } from '../../ducks/app';
+import { setKeepAwake } from '../../ducks/settings';
 
 const displayName = 'WakeLockProvider';
 
@@ -26,7 +26,7 @@ const WakeLockProvider = ({ children }) => {
 
   const insomnia = window.plugins?.insomnia;
   const wakeLockSupport = !!insomnia;
-  const wakeLock = useSelector((state) => state.app.keepAwake);
+  const wakeLock = useSelector((state) => state.settings.keepAwake);
 
   const setWakeLock = useCallback(
     /**

@@ -13,7 +13,7 @@ import { useIntl } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
 import { createSelector } from 'reselect';
 
-import { setEpic, setLevelLimit } from '../../../ducks/app';
+import { setEpic, setLevelLimit } from '../../../ducks/settings';
 import {
   MAX_EPIC_LEVEL,
   MAX_LEVEL,
@@ -40,8 +40,8 @@ const useStyles = makeStyles(
 );
 
 const getDefaultValue = createSelector(
-  (state) => state.app.levelLimit,
-  (state) => state.app.epic,
+  (state) => state.settings.levelLimit,
+  (state) => state.settings.epic,
   (levelLimit, epic) => {
     if (levelLimit) {
       if (epic) {

@@ -6,7 +6,7 @@ import { FormattedMessage } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 
-import { setSingleMode } from '../../../../ducks/app';
+import { setSingleMode } from '../../../../ducks/settings';
 import { useGoBack } from '../../../../utils/location';
 import { useFullVersion } from '../../../FullVersionProvider';
 import useMenuOpen from '../../useMenuOpen';
@@ -31,7 +31,7 @@ const SingleModeItem = ({ className }) => {
   const { pathname } = useLocation();
 
   const goBack = useGoBack();
-  const singleMode = useSelector((state) => state.app.singleMode);
+  const singleMode = useSelector((state) => state.settings.singleMode);
   const open = useMenuOpen();
 
   const { buyFullVersion, fullVersion } = useFullVersion();

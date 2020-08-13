@@ -99,12 +99,12 @@ const SinglePlayer = () => {
   const intl = useIntl();
 
   const player = useSelector(
-    (state) => state.players[state.app.singleModePlayerId],
+    (state) => state.players[state.settings.singleModePlayerId],
   );
   const bonus = useSelector((state) => state.combat.playerBonus);
 
-  const levelLimit = useSelector((state) => state.app.levelLimit);
-  const epic = useSelector((state) => state.app.epic);
+  const levelLimit = useSelector((state) => state.settings.levelLimit);
+  const epic = useSelector((state) => state.settings.epic);
 
   const levelDecrementDisabled = isLevelDecrementDisabled(
     player.level,

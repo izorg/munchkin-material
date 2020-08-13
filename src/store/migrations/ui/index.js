@@ -1,6 +1,10 @@
 import { initialState } from '../../../ducks/ui';
 
 export default (state) => {
+  if (!state.app) {
+    return state;
+  }
+
   const {
     app: { menuCollapsed, selectedPlayerIds, ...app },
   } = state;

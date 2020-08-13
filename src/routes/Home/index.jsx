@@ -114,7 +114,7 @@ const Home = () => {
 
   let content;
 
-  const singleMode = useSelector((state) => state.app.singleMode);
+  const singleMode = useSelector((state) => state.settings.singleMode);
 
   if (singleMode) {
     content = <SinglePlayer />;

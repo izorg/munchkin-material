@@ -7,7 +7,7 @@ import React, {
 } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { setFullVersion } from '../../ducks/app';
+import { setFullVersion } from '../../ducks/settings';
 
 const FULL_VERSION_ID = 'full_version';
 
@@ -27,7 +27,7 @@ const FullVersionProvider = ({ children }) => {
 
   const dispatch = useDispatch();
 
-  const fullVersion = useSelector((state) => state.app.fullVersion);
+  const fullVersion = useSelector((state) => state.settings.fullVersion);
 
   const buyFullVersion = useCallback(
     () =>
