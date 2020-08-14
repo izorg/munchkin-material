@@ -23,7 +23,7 @@
     "clsx": "1.1.1",
     "core-js": "3.6.5",
     "deepmerge": "4.2.2",
-    "firebase": "7.17.2",
+    "firebase": "7.18.0",
     "history": "5.0.0",
     "jss": "10.3.0",
     "jss-rtl": "0.3.0",
