@@ -28,7 +28,16 @@ const MenuSidebar = () => {
                 paddingRight: theme.spacing(2),
                 transition,
               }
-            : theme.mixins.gutters({ transition }),
+            : {
+                paddingLeft: theme.spacing(2),
+                paddingRight: theme.spacing(2),
+                transition,
+
+                [theme.breakpoints.up('sm')]: {
+                  paddingLeft: theme.spacing(3),
+                  paddingRight: theme.spacing(3),
+                },
+              },
         },
       },
     });

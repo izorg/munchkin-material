@@ -23,7 +23,7 @@ const messages = defineMessages({
 
 const onReset = () => (dispatch, getState) => {
   const {
-    app: { singleMode },
+    settings: { singleMode },
   } = getState();
 
   if (singleMode) {

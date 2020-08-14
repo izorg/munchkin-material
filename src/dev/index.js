@@ -15,14 +15,14 @@ const setLocale = (locale) => {
 const setTestData = () => {
   const { dispatch } = window.reduxStore;
 
-  const { app, playerList } = window.store.getState();
+  const { playerList, settings } = window.store.getState();
 
   playerList.forEach((id) => {
     dispatch(removePlayerFromList(id));
     dispatch(removePlayer(id));
   });
 
-  const locale = app.locale || getLocale();
+  const locale = settings.locale || getLocale();
 
   players[locale].forEach((data) => {
     dispatch(addPlayer(data.player));

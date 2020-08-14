@@ -16,8 +16,8 @@
     "test": "jest"
   },
   "dependencies": {
-    "@material-ui/core": "5.0.0-alpha.5",
-    "@material-ui/lab": "5.0.0-alpha.5",
+    "@material-ui/core": "5.0.0-alpha.6",
+    "@material-ui/lab": "5.0.0-alpha.6",
     "@sentry/integrations": "5.21.1",
     "@sentry/react": "5.21.1",
     "clsx": "1.1.1",
