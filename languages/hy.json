@@ -1,388 +1,56 @@
 {
-  "button.cancel": [
-    {
-      "type": 0,
-      "value": "Չեղարկել"
-    }
-  ],
-  "button.submit": [
-    {
-      "type": 0,
-      "value": "Լավ"
-    }
-  ],
-  "colorPicker.dialog.title": [
-    {
-      "type": 0,
-      "value": "Ընտրեք գույնը"
-    }
-  ],
-  "combat": [
-    {
-      "type": 0,
-      "value": "Կռիվ"
-    }
-  ],
-  "combat.add.helper": [
-    {
-      "type": 0,
-      "value": "Օգնական"
-    }
-  ],
-  "combat.add.monster": [
-    {
-      "type": 0,
-      "value": "Հրեշ"
-    }
-  ],
-  "combat.helperSelector.title": [
-    {
-      "type": 0,
-      "value": "Ընտրեք օգնական"
-    }
-  ],
-  "combat.monster": [
-    {
-      "type": 0,
-      "value": "Հրեշ "
-    },
-    {
-      "type": 1,
-      "value": "number"
-    }
-  ],
-  "counter.gear": [
-    {
-      "type": 0,
-      "value": "Սարք"
-    }
-  ],
-  "counter.level": [
-    {
-      "type": 0,
-      "value": "Մակարդակ"
-    }
-  ],
-  "counter.modifier": [
-    {
-      "type": 0,
-      "value": "Հզորացնող"
-    }
-  ],
-  "counter.strength": [
-    {
-      "type": 0,
-      "value": "Հզորություն"
-    }
-  ],
-  "dice": [
-    {
-      "type": 0,
-      "value": "Զառ"
-    }
-  ],
-  "home.single.title": [
-    {
-      "type": 0,
-      "value": "Մանչկին"
-    }
-  ],
-  "kill": [
-    {
-      "type": 0,
-      "value": "Սպանել"
-    }
-  ],
-  "levelLimit.epic": [
-    {
-      "type": 0,
-      "value": "Էպիկական Մանչկին ("
-    },
-    {
-      "type": 1,
-      "value": "minLevel"
-    },
-    {
-      "type": 0,
-      "value": " - "
-    },
-    {
-      "type": 1,
-      "value": "maxLevel"
-    },
-    {
-      "type": 0,
-      "value": ")"
-    }
-  ],
-  "levelLimit.label": [
-    {
-      "type": 0,
-      "value": "Մակարդակի սահման"
-    }
-  ],
-  "levelLimit.munchkin": [
-    {
-      "type": 0,
-      "value": "Մանչկին ("
-    },
-    {
-      "type": 1,
-      "value": "minLevel"
-    },
-    {
-      "type": 0,
-      "value": " - "
-    },
-    {
-      "type": 1,
-      "value": "maxLevel"
-    },
-    {
-      "type": 0,
-      "value": ")"
-    }
-  ],
-  "levelLimit.none": [
-    {
-      "type": 0,
-      "value": "Անսահման"
-    }
-  ],
-  "mainButton.label": [
-    {
-      "type": 0,
-      "value": "Ավելացնել"
-    }
-  ],
-  "menu": [
-    {
-      "type": 0,
-      "value": "Մենյու"
-    }
-  ],
-  "menu.keepAwake": [
-    {
-      "type": 0,
-      "value": "Պահել արթուն"
-    }
-  ],
-  "menu.privacyPolicy": [
-    {
-      "type": 0,
-      "value": "Գաղտնիության քաղաքականություն"
-    }
-  ],
-  "menu.rateApp": [
-    {
-      "type": 0,
-      "value": "Գնահատեք ծրագիրը"
-    }
-  ],
-  "menu.restorePurchases": [
-    {
-      "type": 0,
-      "value": "Վերականգնել գնումները"
-    }
-  ],
-  "menu.share": [
-    {
-      "type": 0,
-      "value": "Տարածել"
-    }
-  ],
-  "menu.singleMode": [
-    {
-      "type": 0,
-      "value": "Միայնակ ռեժիմ"
-    }
-  ],
-  "menu.translate": [
-    {
-      "type": 0,
-      "value": "Թարգմանել"
-    }
-  ],
-  "player.form.color": [
-    {
-      "type": 0,
-      "value": "Գույն"
-    }
-  ],
-  "player.form.namePlaceholder": [
-    {
-      "type": 0,
-      "value": "Անուն"
-    }
-  ],
-  "player.form.save": [
-    {
-      "type": 0,
-      "value": "Պահել"
-    }
-  ],
-  "player.form.sex": [
-    {
-      "type": 0,
-      "value": "Սեռ"
-    }
-  ],
-  "player.form.title": [
-    {
-      "type": 0,
-      "value": "Նոր մանչկին"
-    }
-  ],
-  "player.form.titleEdit": [
-    {
-      "type": 0,
-      "value": "Փոխել մանչկինին"
-    }
-  ],
-  "player.list.edit": [
-    {
-      "type": 0,
-      "value": "Փոխել"
-    }
-  ],
-  "player.list.empty": [
-    {
-      "type": 0,
-      "value": "Ցուցակում խաղացող չկա"
-    }
-  ],
-  "player.list.reset": [
-    {
-      "type": 0,
-      "value": "Վերականգնել"
-    }
-  ],
-  "player.list.shuffle": [
-    {
-      "type": 0,
-      "value": "Խառնել խաղացողներին"
-    }
-  ],
-  "player.list.title": [
-    {
-      "type": 0,
-      "value": "Մանչկիններ"
-    }
-  ],
-  "share.text": [
-    {
-      "type": 0,
-      "value": "Հասարակ բայց հզոր Մանչկինի մակարդակ հաշվող"
-    }
-  ],
-  "theme": [
-    {
-      "type": 0,
-      "value": "Գույներ"
-    }
-  ],
-  "theme.name.apocalypse": [
-    {
-      "type": 0,
-      "value": "Ապոկալիպս"
-    }
-  ],
-  "theme.name.booty": [
-    {
-      "type": 0,
-      "value": "Բութի"
-    }
-  ],
-  "theme.name.cthulhu": [
-    {
-      "type": 0,
-      "value": "Կթուլու"
-    }
-  ],
-  "theme.name.legends": [
-    {
-      "type": 0,
-      "value": "Լեգենդներ"
-    }
-  ],
-  "theme.name.munchkin": [
-    {
-      "type": 0,
-      "value": "Մանչկին"
-    }
-  ],
-  "theme.name.star": [
-    {
-      "type": 0,
-      "value": "Աստղ"
-    }
-  ],
-  "theme.name.super": [
-    {
-      "type": 0,
-      "value": "Սուպեր"
-    }
-  ],
-  "themeDialog.auto": [
-    {
-      "type": 0,
-      "value": "Ըամակարգի կանխադիաժ թեման"
-    }
-  ],
-  "themeDialog.dark": [
-    {
-      "type": 0,
-      "value": "Սուգ"
-    }
-  ],
-  "themeDialog.light": [
-    {
-      "type": 0,
-      "value": "Բաց"
-    }
-  ],
-  "undo": [
-    {
-      "type": 0,
-      "value": "Ետ գնալ"
-    }
-  ],
-  "undo.killPlayer": [
-    {
-      "type": 1,
-      "value": "name"
-    },
-    {
-      "type": 0,
-      "value": " "
-    },
-    {
-      "options": {
-        "female": {
-          "value": [
-            {
-              "type": 0,
-              "value": "ն մահացավ"
-            }
-          ]
-        },
-        "male": {
-          "value": [
-            {
-              "type": 0,
-              "value": "ն մահացավ"
-            }
-          ]
-        }
-      },
-      "type": 5,
-      "value": "sex"
-    }
-  ],
-  "undo.resetPlayers": [
-    {
-      "type": 0,
-      "value": "Խաղացողները վերականգնվեցին"
-    }
-  ]
+  "button.cancel": "Չեղարկել",
+  "button.submit": "Լավ",
+  "colorPicker.dialog.title": "Ընտրեք գույնը",
+  "combat": "Կռիվ",
+  "combat.add.helper": "Օգնական",
+  "combat.add.monster": "Հրեշ",
+  "combat.helperSelector.title": "Ընտրեք օգնական",
+  "combat.monster": "Հրեշ {number}",
+  "counter.gear": "Սարք",
+  "counter.level": "Մակարդակ",
+  "counter.modifier": "Հզորացնող",
+  "counter.strength": "Հզորություն",
+  "dice": "Զառ",
+  "home.single.title": "Մանչկին",
+  "kill": "Սպանել",
+  "levelLimit.epic": "Էպիկական Մանչկին ({minLevel} - {maxLevel})",
+  "levelLimit.label": "Մակարդակի սահման",
+  "levelLimit.munchkin": "Մանչկին ({minLevel} - {maxLevel})",
+  "levelLimit.none": "Անսահման",
+  "mainButton.label": "Ավելացնել",
+  "menu": "Մենյու",
+  "menu.keepAwake": "Պահել արթուն",
+  "menu.privacyPolicy": "Գաղտնիության քաղաքականություն",
+  "menu.rateApp": "Գնահատեք ծրագիրը",
+  "menu.restorePurchases": "Վերականգնել գնումները",
+  "menu.share": "Տարածել",
+  "menu.singleMode": "Միայնակ ռեժիմ",
+  "menu.translate": "Թարգմանել",
+  "player.form.color": "Գույն",
+  "player.form.namePlaceholder": "Անուն",
+  "player.form.save": "Պահել",
+  "player.form.sex": "Սեռ",
+  "player.form.title": "Նոր մանչկին",
+  "player.form.titleEdit": "Փոխել մանչկինին",
+  "player.list.edit": "Փոխել",
+  "player.list.empty": "Ցուցակում խաղացող չկա",
+  "player.list.reset": "Վերականգնել",
+  "player.list.shuffle": "Խառնել խաղացողներին",
+  "player.list.title": "Մանչկիններ",
+  "share.text": "Հասարակ բայց հզոր Մանչկինի մակարդակ հաշվող",
+  "theme": "Գույներ",
+  "theme.name.apocalypse": "Ապոկալիպս",
+  "theme.name.booty": "Բութի",
+  "theme.name.cthulhu": "Կթուլու",
+  "theme.name.legends": "Լեգենդներ",
+  "theme.name.munchkin": "Մանչկին",
+  "theme.name.star": "Աստղ",
+  "theme.name.super": "Սուպեր",
+  "themeDialog.auto": "Ըամակարգի կանխադիաժ թեման",
+  "themeDialog.dark": "Սուգ",
+  "themeDialog.light": "Բաց",
+  "undo": "Ետ գնալ",
+  "undo.killPlayer": "{name} {sex, select, female {ն մահացավ} male {ն մահացավ}}",
+  "undo.resetPlayers": "Խաղացողները վերականգնվեցին"
 }

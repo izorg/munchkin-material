@@ -1,388 +1,56 @@
 {
-  "button.cancel": [
-    {
-      "type": 0,
-      "value": "Annuler"
-    }
-  ],
-  "button.submit": [
-    {
-      "type": 0,
-      "value": "OK"
-    }
-  ],
-  "colorPicker.dialog.title": [
-    {
-      "type": 0,
-      "value": "Choisir la couleur"
-    }
-  ],
-  "combat": [
-    {
-      "type": 0,
-      "value": "Combat"
-    }
-  ],
-  "combat.add.helper": [
-    {
-      "type": 0,
-      "value": "Assistant"
-    }
-  ],
-  "combat.add.monster": [
-    {
-      "type": 0,
-      "value": "Monstre"
-    }
-  ],
-  "combat.helperSelector.title": [
-    {
-      "type": 0,
-      "value": "Choisissez l'aide"
-    }
-  ],
-  "combat.monster": [
-    {
-      "type": 0,
-      "value": "Monstre "
-    },
-    {
-      "type": 1,
-      "value": "number"
-    }
-  ],
-  "counter.gear": [
-    {
-      "type": 0,
-      "value": "Équipement"
-    }
-  ],
-  "counter.level": [
-    {
-      "type": 0,
-      "value": "Niveau"
-    }
-  ],
-  "counter.modifier": [
-    {
-      "type": 0,
-      "value": "Modificateur"
-    }
-  ],
-  "counter.strength": [
-    {
-      "type": 0,
-      "value": "Force"
-    }
-  ],
-  "dice": [
-    {
-      "type": 0,
-      "value": "Dé"
-    }
-  ],
-  "home.single.title": [
-    {
-      "type": 0,
-      "value": "Munchkin"
-    }
-  ],
-  "kill": [
-    {
-      "type": 0,
-      "value": "Tuer"
-    }
-  ],
-  "levelLimit.epic": [
-    {
-      "type": 0,
-      "value": "Épique Munchkin ("
-    },
-    {
-      "type": 1,
-      "value": "minLevel"
-    },
-    {
-      "type": 0,
-      "value": " - "
-    },
-    {
-      "type": 1,
-      "value": "maxLevel"
-    },
-    {
-      "type": 0,
-      "value": ")"
-    }
-  ],
-  "levelLimit.label": [
-    {
-      "type": 0,
-      "value": "Limite de niveau"
-    }
-  ],
-  "levelLimit.munchkin": [
-    {
-      "type": 0,
-      "value": "Munchkin ("
-    },
-    {
-      "type": 1,
-      "value": "minLevel"
-    },
-    {
-      "type": 0,
-      "value": " - "
-    },
-    {
-      "type": 1,
-      "value": "maxLevel"
-    },
-    {
-      "type": 0,
-      "value": ")"
-    }
-  ],
-  "levelLimit.none": [
-    {
-      "type": 0,
-      "value": "Pas de limite"
-    }
-  ],
-  "mainButton.label": [
-    {
-      "type": 0,
-      "value": "Ajouter"
-    }
-  ],
-  "menu": [
-    {
-      "type": 0,
-      "value": "Menu"
-    }
-  ],
-  "menu.keepAwake": [
-    {
-      "type": 0,
-      "value": "Laisser allumé"
-    }
-  ],
-  "menu.privacyPolicy": [
-    {
-      "type": 0,
-      "value": "Règles de confidentialité"
-    }
-  ],
-  "menu.rateApp": [
-    {
-      "type": 0,
-      "value": "Noter l’app"
-    }
-  ],
-  "menu.restorePurchases": [
-    {
-      "type": 0,
-      "value": "Restaurer les achats"
-    }
-  ],
-  "menu.share": [
-    {
-      "type": 0,
-      "value": "Partager"
-    }
-  ],
-  "menu.singleMode": [
-    {
-      "type": 0,
-      "value": "Mode solo"
-    }
-  ],
-  "menu.translate": [
-    {
-      "type": 0,
-      "value": "Traduire"
-    }
-  ],
-  "player.form.color": [
-    {
-      "type": 0,
-      "value": "Couleur"
-    }
-  ],
-  "player.form.namePlaceholder": [
-    {
-      "type": 0,
-      "value": "Nom"
-    }
-  ],
-  "player.form.save": [
-    {
-      "type": 0,
-      "value": "Sauver"
-    }
-  ],
-  "player.form.sex": [
-    {
-      "type": 0,
-      "value": "Sexe"
-    }
-  ],
-  "player.form.title": [
-    {
-      "type": 0,
-      "value": "Nouveau munchkin"
-    }
-  ],
-  "player.form.titleEdit": [
-    {
-      "type": 0,
-      "value": "Modifier munchkin"
-    }
-  ],
-  "player.list.edit": [
-    {
-      "type": 0,
-      "value": "Modifier"
-    }
-  ],
-  "player.list.empty": [
-    {
-      "type": 0,
-      "value": "Aucun joueur dans la liste"
-    }
-  ],
-  "player.list.reset": [
-    {
-      "type": 0,
-      "value": "Réinitialiser"
-    }
-  ],
-  "player.list.shuffle": [
-    {
-      "type": 0,
-      "value": "Mélangez les joueurs"
-    }
-  ],
-  "player.list.title": [
-    {
-      "type": 0,
-      "value": "Munchkins"
-    }
-  ],
-  "share.text": [
-    {
-      "type": 0,
-      "value": "Compteur de niveau Munchkin simple mais puissant"
-    }
-  ],
-  "theme": [
-    {
-      "type": 0,
-      "value": "Thème"
-    }
-  ],
-  "theme.name.apocalypse": [
-    {
-      "type": 0,
-      "value": "Apocalypse"
-    }
-  ],
-  "theme.name.booty": [
-    {
-      "type": 0,
-      "value": "Butin"
-    }
-  ],
-  "theme.name.cthulhu": [
-    {
-      "type": 0,
-      "value": "Cthulhu"
-    }
-  ],
-  "theme.name.legends": [
-    {
-      "type": 0,
-      "value": "Légendes"
-    }
-  ],
-  "theme.name.munchkin": [
-    {
-      "type": 0,
-      "value": "Munchkin"
-    }
-  ],
-  "theme.name.star": [
-    {
-      "type": 0,
-      "value": "Star"
-    }
-  ],
-  "theme.name.super": [
-    {
-      "type": 0,
-      "value": "Super"
-    }
-  ],
-  "themeDialog.auto": [
-    {
-      "type": 0,
-      "value": "Thème par défaut du système"
-    }
-  ],
-  "themeDialog.dark": [
-    {
-      "type": 0,
-      "value": "Mode sombre"
-    }
-  ],
-  "themeDialog.light": [
-    {
-      "type": 0,
-      "value": "Mode clair"
-    }
-  ],
-  "undo": [
-    {
-      "type": 0,
-      "value": "Annuler"
-    }
-  ],
-  "undo.killPlayer": [
-    {
-      "type": 1,
-      "value": "name"
-    },
-    {
-      "type": 0,
-      "value": " "
-    },
-    {
-      "options": {
-        "female": {
-          "value": [
-            {
-              "type": 0,
-              "value": "est morte"
-            }
-          ]
-        },
-        "male": {
-          "value": [
-            {
-              "type": 0,
-              "value": "est mort"
-            }
-          ]
-        }
-      },
-      "type": 5,
-      "value": "sex"
-    }
-  ],
-  "undo.resetPlayers": [
-    {
-      "type": 0,
-      "value": "Les joueurs ont été réinitialisés"
-    }
-  ]
+  "button.cancel": "Annuler",
+  "button.submit": "OK",
+  "colorPicker.dialog.title": "Choisir la couleur",
+  "combat": "Combat",
+  "combat.add.helper": "Assistant",
+  "combat.add.monster": "Monstre",
+  "combat.helperSelector.title": "Choisissez l'aide",
+  "combat.monster": "Monstre {number}",
+  "counter.gear": "Équipement",
+  "counter.level": "Niveau",
+  "counter.modifier": "Modificateur",
+  "counter.strength": "Force",
+  "dice": "Dé",
+  "home.single.title": "Munchkin",
+  "kill": "Tuer",
+  "levelLimit.epic": "Épique Munchkin ({minLevel} - {maxLevel})",
+  "levelLimit.label": "Limite de niveau",
+  "levelLimit.munchkin": "Munchkin ({minLevel} - {maxLevel})",
+  "levelLimit.none": "Pas de limite",
+  "mainButton.label": "Ajouter",
+  "menu": "Menu",
+  "menu.keepAwake": "Laisser allumé",
+  "menu.privacyPolicy": "Règles de confidentialité",
+  "menu.rateApp": "Noter l’app",
+  "menu.restorePurchases": "Restaurer les achats",
+  "menu.share": "Partager",
+  "menu.singleMode": "Mode solo",
+  "menu.translate": "Traduire",
+  "player.form.color": "Couleur",
+  "player.form.namePlaceholder": "Nom",
+  "player.form.save": "Sauver",
+  "player.form.sex": "Sexe",
+  "player.form.title": "Nouveau munchkin",
+  "player.form.titleEdit": "Modifier munchkin",
+  "player.list.edit": "Modifier",
+  "player.list.empty": "Aucun joueur dans la liste",
+  "player.list.reset": "Réinitialiser",
+  "player.list.shuffle": "Mélangez les joueurs",
+  "player.list.title": "Munchkins",
+  "share.text": "Compteur de niveau Munchkin simple mais puissant",
+  "theme": "Thème",
+  "theme.name.apocalypse": "Apocalypse",
+  "theme.name.booty": "Butin",
+  "theme.name.cthulhu": "Cthulhu",
+  "theme.name.legends": "Légendes",
+  "theme.name.munchkin": "Munchkin",
+  "theme.name.star": "Star",
+  "theme.name.super": "Super",
+  "themeDialog.auto": "Thème par défaut du système",
+  "themeDialog.dark": "Mode sombre",
+  "themeDialog.light": "Mode clair",
+  "undo": "Annuler",
+  "undo.killPlayer": "{name} {sex, select, female {est morte} male {est mort}}",
+  "undo.resetPlayers": "Les joueurs ont été réinitialisés"
 }

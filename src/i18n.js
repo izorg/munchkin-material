@@ -24,127 +24,127 @@ const loaders = {
   [CS]: () =>
     import(
       /* webpackChunkName: "locales/cs" */
-      '../languages/cs.json'
+      '../languages/compiled/cs.json'
     ),
 
   [DA]: () =>
     import(
       /* webpackChunkName: "locales/da" */
-      '../languages/da.json'
+      '../languages/compiled/da.json'
     ),
 
   [DE]: () =>
     import(
       /* webpackChunkName: "locales/de" */
-      '../languages/de.json'
+      '../languages/compiled/de.json'
     ),
 
   [EL]: () =>
     import(
       /* webpackChunkName: "locales/el" */
-      '../languages/el.json'
+      '../languages/compiled/el.json'
     ),
 
   [EN]: () =>
     import(
       /* webpackChunkName: "locales/en" */
-      '../languages/en.json'
+      '../languages/compiled/en.json'
     ),
 
   [ES]: () =>
     import(
       /* webpackChunkName: "locales/es" */
-      '../languages/es.json'
+      '../languages/compiled/es.json'
     ),
 
   [FI]: () =>
     import(
       /* webpackChunkName: "locales/fi" */
-      '../languages/fi.json'
+      '../languages/compiled/fi.json'
     ),
 
   [FR]: () =>
     import(
       /* webpackChunkName: "locales/fr" */
-      '../languages/fr.json'
+      '../languages/compiled/fr.json'
     ),
 
   [HE]: () =>
     import(
       /* webpackChunkName: "locales/he" */
-      '../languages/he.json'
+      '../languages/compiled/he.json'
     ),
 
   [HU]: () =>
     import(
       /* webpackChunkName: "locales/hu" */
-      '../languages/hu.json'
+      '../languages/compiled/hu.json'
     ),
 
   [HY]: () =>
     import(
       /* webpackChunkName: "locales/hy" */
-      '../languages/hy.json'
+      '../languages/compiled/hy.json'
     ),
 
   [IT]: () =>
     import(
       /* webpackChunkName: "locales/it" */
-      '../languages/it.json'
+      '../languages/compiled/it.json'
     ),
 
   [NB]: () =>
     import(
       /* webpackChunkName: "locales/nb" */
-      '../languages/nb.json'
+      '../languages/compiled/nb.json'
     ),
 
   [NL]: () =>
     import(
       /* webpackChunkName: "locales/nl" */
-      '../languages/nl.json'
+      '../languages/compiled/nl.json'
     ),
 
   [PL]: () =>
     import(
       /* webpackChunkName: "locales/pl" */
-      '../languages/pl.json'
+      '../languages/compiled/pl.json'
     ),
 
   [PT_BR]: () =>
     import(
       /* webpackChunkName: "locales/pt-br" */
-      '../languages/pt-BR.json'
+      '../languages/compiled/pt-BR.json'
     ),
 
   [PT]: () =>
     import(
       /* webpackChunkName: "locales/pt" */
-      '../languages/pt.json'
+      '../languages/compiled/pt.json'
     ),
 
   [RU]: () =>
     import(
       /* webpackChunkName: "locales/ru" */
-      '../languages/ru.json'
+      '../languages/compiled/ru.json'
     ),
 
   [SK]: () =>
     import(
       /* webpackChunkName: "locales/sk" */
-      '../languages/sk.json'
+      '../languages/compiled/sk.json'
     ),
 
   [TR]: () =>
     import(
       /* webpackChunkName: "locales/tr" */
-      '../languages/tr.json'
+      '../languages/compiled/tr.json'
     ),
 
   [UK]: () =>
     import(
       /* webpackChunkName: "locales/uk" */
-      '../languages/uk.json'
+      '../languages/compiled/uk.json'
     ),
 };
 

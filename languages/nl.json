@@ -1,388 +1,56 @@
 {
-  "button.cancel": [
-    {
-      "type": 0,
-      "value": "Annuleer"
-    }
-  ],
-  "button.submit": [
-    {
-      "type": 0,
-      "value": "Ok"
-    }
-  ],
-  "colorPicker.dialog.title": [
-    {
-      "type": 0,
-      "value": "Kies een kleur"
-    }
-  ],
-  "combat": [
-    {
-      "type": 0,
-      "value": "Strijden"
-    }
-  ],
-  "combat.add.helper": [
-    {
-      "type": 0,
-      "value": "Helper"
-    }
-  ],
-  "combat.add.monster": [
-    {
-      "type": 0,
-      "value": "Monster"
-    }
-  ],
-  "combat.helperSelector.title": [
-    {
-      "type": 0,
-      "value": "Kies helper"
-    }
-  ],
-  "combat.monster": [
-    {
-      "type": 0,
-      "value": "Monster "
-    },
-    {
-      "type": 1,
-      "value": "number"
-    }
-  ],
-  "counter.gear": [
-    {
-      "type": 0,
-      "value": "Uitrusting"
-    }
-  ],
-  "counter.level": [
-    {
-      "type": 0,
-      "value": "Niveau"
-    }
-  ],
-  "counter.modifier": [
-    {
-      "type": 0,
-      "value": "Wijziger"
-    }
-  ],
-  "counter.strength": [
-    {
-      "type": 0,
-      "value": "Sterkte"
-    }
-  ],
-  "dice": [
-    {
-      "type": 0,
-      "value": "Dobbelsteen"
-    }
-  ],
-  "home.single.title": [
-    {
-      "type": 0,
-      "value": "Munchkin"
-    }
-  ],
-  "kill": [
-    {
-      "type": 0,
-      "value": "Dood"
-    }
-  ],
-  "levelLimit.epic": [
-    {
-      "type": 0,
-      "value": "Uitzonderlijk Munchkin ("
-    },
-    {
-      "type": 1,
-      "value": "minLevel"
-    },
-    {
-      "type": 0,
-      "value": " - "
-    },
-    {
-      "type": 1,
-      "value": "maxLevel"
-    },
-    {
-      "type": 0,
-      "value": ")"
-    }
-  ],
-  "levelLimit.label": [
-    {
-      "type": 0,
-      "value": "Niveau limiet"
-    }
-  ],
-  "levelLimit.munchkin": [
-    {
-      "type": 0,
-      "value": "Munchkin ("
-    },
-    {
-      "type": 1,
-      "value": "minLevel"
-    },
-    {
-      "type": 0,
-      "value": " - "
-    },
-    {
-      "type": 1,
-      "value": "maxLevel"
-    },
-    {
-      "type": 0,
-      "value": ")"
-    }
-  ],
-  "levelLimit.none": [
-    {
-      "type": 0,
-      "value": "Geen limiet"
-    }
-  ],
-  "mainButton.label": [
-    {
-      "type": 0,
-      "value": "Toevoegen"
-    }
-  ],
-  "menu": [
-    {
-      "type": 0,
-      "value": "Menu"
-    }
-  ],
-  "menu.keepAwake": [
-    {
-      "type": 0,
-      "value": "Actief houden"
-    }
-  ],
-  "menu.privacyPolicy": [
-    {
-      "type": 0,
-      "value": "Privacybeleid"
-    }
-  ],
-  "menu.rateApp": [
-    {
-      "type": 0,
-      "value": "Waardeer deze app"
-    }
-  ],
-  "menu.restorePurchases": [
-    {
-      "type": 0,
-      "value": "Herstel aankopen"
-    }
-  ],
-  "menu.share": [
-    {
-      "type": 0,
-      "value": "Deel"
-    }
-  ],
-  "menu.singleMode": [
-    {
-      "type": 0,
-      "value": "Enkeling mode"
-    }
-  ],
-  "menu.translate": [
-    {
-      "type": 0,
-      "value": "Vertaal"
-    }
-  ],
-  "player.form.color": [
-    {
-      "type": 0,
-      "value": "Kleur"
-    }
-  ],
-  "player.form.namePlaceholder": [
-    {
-      "type": 0,
-      "value": "Naam"
-    }
-  ],
-  "player.form.save": [
-    {
-      "type": 0,
-      "value": "Bewaar"
-    }
-  ],
-  "player.form.sex": [
-    {
-      "type": 0,
-      "value": "Geslacht"
-    }
-  ],
-  "player.form.title": [
-    {
-      "type": 0,
-      "value": "Nieuwe munchkin"
-    }
-  ],
-  "player.form.titleEdit": [
-    {
-      "type": 0,
-      "value": "Wijzig munchkin"
-    }
-  ],
-  "player.list.edit": [
-    {
-      "type": 0,
-      "value": "Wijzig"
-    }
-  ],
-  "player.list.empty": [
-    {
-      "type": 0,
-      "value": "Geen spelers in de lijst"
-    }
-  ],
-  "player.list.reset": [
-    {
-      "type": 0,
-      "value": "Reset"
-    }
-  ],
-  "player.list.shuffle": [
-    {
-      "type": 0,
-      "value": "Schudden spelers"
-    }
-  ],
-  "player.list.title": [
-    {
-      "type": 0,
-      "value": "Munchkins"
-    }
-  ],
-  "share.text": [
-    {
-      "type": 0,
-      "value": "Eenvoudige maar krachtige Munchkin-niveau-teller"
-    }
-  ],
-  "theme": [
-    {
-      "type": 0,
-      "value": "Thema"
-    }
-  ],
-  "theme.name.apocalypse": [
-    {
-      "type": 0,
-      "value": "Apocalyps"
-    }
-  ],
-  "theme.name.booty": [
-    {
-      "type": 0,
-      "value": "Buit"
-    }
-  ],
-  "theme.name.cthulhu": [
-    {
-      "type": 0,
-      "value": "Cthulhu"
-    }
-  ],
-  "theme.name.legends": [
-    {
-      "type": 0,
-      "value": "Legends"
-    }
-  ],
-  "theme.name.munchkin": [
-    {
-      "type": 0,
-      "value": "Munchkin"
-    }
-  ],
-  "theme.name.star": [
-    {
-      "type": 0,
-      "value": "Ster"
-    }
-  ],
-  "theme.name.super": [
-    {
-      "type": 0,
-      "value": "Super"
-    }
-  ],
-  "themeDialog.auto": [
-    {
-      "type": 0,
-      "value": "Systeemstandaard"
-    }
-  ],
-  "themeDialog.dark": [
-    {
-      "type": 0,
-      "value": "Donker"
-    }
-  ],
-  "themeDialog.light": [
-    {
-      "type": 0,
-      "value": "Licht"
-    }
-  ],
-  "undo": [
-    {
-      "type": 0,
-      "value": "Undo"
-    }
-  ],
-  "undo.killPlayer": [
-    {
-      "type": 1,
-      "value": "name"
-    },
-    {
-      "type": 0,
-      "value": " "
-    },
-    {
-      "options": {
-        "female": {
-          "value": [
-            {
-              "type": 0,
-              "value": "is gestorven"
-            }
-          ]
-        },
-        "male": {
-          "value": [
-            {
-              "type": 0,
-              "value": "is gestorven"
-            }
-          ]
-        }
-      },
-      "type": 5,
-      "value": "sex"
-    }
-  ],
-  "undo.resetPlayers": [
-    {
-      "type": 0,
-      "value": "Spelerslijst is opgekuist"
-    }
-  ]
+  "button.cancel": "Annuleer",
+  "button.submit": "Ok",
+  "colorPicker.dialog.title": "Kies een kleur",
+  "combat": "Strijden",
+  "combat.add.helper": "Helper",
+  "combat.add.monster": "Monster",
+  "combat.helperSelector.title": "Kies helper",
+  "combat.monster": "Monster {number}",
+  "counter.gear": "Uitrusting",
+  "counter.level": "Niveau",
+  "counter.modifier": "Wijziger",
+  "counter.strength": "Sterkte",
+  "dice": "Dobbelsteen",
+  "home.single.title": "Munchkin",
+  "kill": "Dood",
+  "levelLimit.epic": "Uitzonderlijk Munchkin ({minLevel} - {maxLevel})",
+  "levelLimit.label": "Niveau limiet",
+  "levelLimit.munchkin": "Munchkin ({minLevel} - {maxLevel})",
+  "levelLimit.none": "Geen limiet",
+  "mainButton.label": "Toevoegen",
+  "menu": "Menu",
+  "menu.keepAwake": "Actief houden",
+  "menu.privacyPolicy": "Privacybeleid",
+  "menu.rateApp": "Waardeer deze app",
+  "menu.restorePurchases": "Herstel aankopen",
+  "menu.share": "Deel",
+  "menu.singleMode": "Enkeling mode",
+  "menu.translate": "Vertaal",
+  "player.form.color": "Kleur",
+  "player.form.namePlaceholder": "Naam",
+  "player.form.save": "Bewaar",
+  "player.form.sex": "Geslacht",
+  "player.form.title": "Nieuwe munchkin",
+  "player.form.titleEdit": "Wijzig munchkin",
+  "player.list.edit": "Wijzig",
+  "player.list.empty": "Geen spelers in de lijst",
+  "player.list.reset": "Reset",
+  "player.list.shuffle": "Schudden spelers",
+  "player.list.title": "Munchkins",
+  "share.text": "Eenvoudige maar krachtige Munchkin-niveau-teller",
+  "theme": "Thema",
+  "theme.name.apocalypse": "Apocalyps",
+  "theme.name.booty": "Buit",
+  "theme.name.cthulhu": "Cthulhu",
+  "theme.name.legends": "Legends",
+  "theme.name.munchkin": "Munchkin",
+  "theme.name.star": "Ster",
+  "theme.name.super": "Super",
+  "themeDialog.auto": "Systeemstandaard",
+  "themeDialog.dark": "Donker",
+  "themeDialog.light": "Licht",
+  "undo": "Undo",
+  "undo.killPlayer": "{name} {sex,select,female{is gestorven} male{is gestorven}}",
+  "undo.resetPlayers": "Spelerslijst is opgekuist"
 }
