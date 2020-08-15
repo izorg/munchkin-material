@@ -2,7 +2,6 @@ const { version } = require('./package');
 
 const dev = process.env.NODE_ENV === 'development';
 const prod = process.env.NODE_ENV === 'production';
-const i18n = process.env.NODE_ENV === 'i18n';
 const test = process.env.NODE_ENV === 'test';
 
 module.exports = {
@@ -31,12 +30,7 @@ module.exports = {
         useESModules: !test,
       },
     ],
-    i18n && [
-      'babel-plugin-react-intl',
-      {
-        messagesDir: './messages/',
-      },
-    ],
+    'babel-plugin-react-intl',
     prod && [
       'babel-plugin-react-remove-properties',
       {
