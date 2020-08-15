@@ -1,56 +1,388 @@
 {
-  "button.cancel": "Avbryt",
-  "button.submit": "OK",
-  "colorPicker.dialog.title": "Velg farge",
-  "combat": "Kamp",
-  "combat.add.helper": "Hjelper",
-  "combat.add.monster": "Monster",
-  "combat.helperSelector.title": "Velg hjelper",
-  "combat.monster": "Monster {number}",
-  "counter.gear": "Utstyr",
-  "counter.level": "Nivå",
-  "counter.modifier": "Endre",
-  "counter.strength": "Kampstyrke",
-  "dice": "Terning",
-  "home.single.title": "Munchkin",
-  "kill": "Drep",
-  "levelLimit.epic": "Episk Munchkin ({minLevel} - {maxLevel})",
-  "levelLimit.label": "Nivågrense",
-  "levelLimit.munchkin": "Munchkin ({minLevel} - {maxLevel})",
-  "levelLimit.none": "Ingen grense",
-  "mainButton.label": "Legg til",
-  "menu": "Meny",
-  "menu.keepAwake": "Hold skjermen aktiv",
-  "menu.privacyPolicy": "Personvern",
-  "menu.rateApp": "Vurder appen",
-  "menu.restorePurchases": "Tilbakestill kjøp",
-  "menu.share": "Del",
-  "menu.singleMode": "Alenemodus",
-  "menu.translate": "Oversett",
-  "player.form.color": "Farge",
-  "player.form.namePlaceholder": "Navn",
-  "player.form.save": "Lagre",
-  "player.form.sex": "Kjønn",
-  "player.form.title": "Ny spiller",
-  "player.form.titleEdit": "Endre spiller",
-  "player.list.edit": "Endre",
-  "player.list.empty": "Ingen spillere på listen",
-  "player.list.reset": "Tilbakestill",
-  "player.list.shuffle": "Stokk om spillerene",
-  "player.list.title": "Munchkins",
-  "share.text": "Enkel men genial Munchkin nivåteller",
-  "theme": "Tema",
-  "theme.name.apocalypse": "Apokalypse",
-  "theme.name.booty": "Skatt",
-  "theme.name.cthulhu": "Cthulhu",
-  "theme.name.legends": "Legender",
-  "theme.name.munchkin": "Munchkin",
-  "theme.name.star": "Stjerne",
-  "theme.name.super": "Super",
-  "themeDialog.auto": "Systemstandard",
-  "themeDialog.dark": "Mørkt",
-  "themeDialog.light": "Lyst",
-  "undo": "Angre",
-  "undo.killPlayer": "{name} {sex,select,female{har dødd} male{har dødd}}",
-  "undo.resetPlayers": "Spillere er tilbakestilt"
+  "button.cancel": [
+    {
+      "type": 0,
+      "value": "Avbryt"
+    }
+  ],
+  "button.submit": [
+    {
+      "type": 0,
+      "value": "OK"
+    }
+  ],
+  "colorPicker.dialog.title": [
+    {
+      "type": 0,
+      "value": "Velg farge"
+    }
+  ],
+  "combat": [
+    {
+      "type": 0,
+      "value": "Kamp"
+    }
+  ],
+  "combat.add.helper": [
+    {
+      "type": 0,
+      "value": "Hjelper"
+    }
+  ],
+  "combat.add.monster": [
+    {
+      "type": 0,
+      "value": "Monster"
+    }
+  ],
+  "combat.helperSelector.title": [
+    {
+      "type": 0,
+      "value": "Velg hjelper"
+    }
+  ],
+  "combat.monster": [
+    {
+      "type": 0,
+      "value": "Monster "
+    },
+    {
+      "type": 1,
+      "value": "number"
+    }
+  ],
+  "counter.gear": [
+    {
+      "type": 0,
+      "value": "Utstyr"
+    }
+  ],
+  "counter.level": [
+    {
+      "type": 0,
+      "value": "Nivå"
+    }
+  ],
+  "counter.modifier": [
+    {
+      "type": 0,
+      "value": "Endre"
+    }
+  ],
+  "counter.strength": [
+    {
+      "type": 0,
+      "value": "Kampstyrke"
+    }
+  ],
+  "dice": [
+    {
+      "type": 0,
+      "value": "Terning"
+    }
+  ],
+  "home.single.title": [
+    {
+      "type": 0,
+      "value": "Munchkin"
+    }
+  ],
+  "kill": [
+    {
+      "type": 0,
+      "value": "Drep"
+    }
+  ],
+  "levelLimit.epic": [
+    {
+      "type": 0,
+      "value": "Episk Munchkin ("
+    },
+    {
+      "type": 1,
+      "value": "minLevel"
+    },
+    {
+      "type": 0,
+      "value": " - "
+    },
+    {
+      "type": 1,
+      "value": "maxLevel"
+    },
+    {
+      "type": 0,
+      "value": ")"
+    }
+  ],
+  "levelLimit.label": [
+    {
+      "type": 0,
+      "value": "Nivågrense"
+    }
+  ],
+  "levelLimit.munchkin": [
+    {
+      "type": 0,
+      "value": "Munchkin ("
+    },
+    {
+      "type": 1,
+      "value": "minLevel"
+    },
+    {
+      "type": 0,
+      "value": " - "
+    },
+    {
+      "type": 1,
+      "value": "maxLevel"
+    },
+    {
+      "type": 0,
+      "value": ")"
+    }
+  ],
+  "levelLimit.none": [
+    {
+      "type": 0,
+      "value": "Ingen grense"
+    }
+  ],
+  "mainButton.label": [
+    {
+      "type": 0,
+      "value": "Legg til"
+    }
+  ],
+  "menu": [
+    {
+      "type": 0,
+      "value": "Meny"
+    }
+  ],
+  "menu.keepAwake": [
+    {
+      "type": 0,
+      "value": "Hold skjermen aktiv"
+    }
+  ],
+  "menu.privacyPolicy": [
+    {
+      "type": 0,
+      "value": "Personvern"
+    }
+  ],
+  "menu.rateApp": [
+    {
+      "type": 0,
+      "value": "Vurder appen"
+    }
+  ],
+  "menu.restorePurchases": [
+    {
+      "type": 0,
+      "value": "Tilbakestill kjøp"
+    }
+  ],
+  "menu.share": [
+    {
+      "type": 0,
+      "value": "Del"
+    }
+  ],
+  "menu.singleMode": [
+    {
+      "type": 0,
+      "value": "Alenemodus"
+    }
+  ],
+  "menu.translate": [
+    {
+      "type": 0,
+      "value": "Oversett"
+    }
+  ],
+  "player.form.color": [
+    {
+      "type": 0,
+      "value": "Farge"
+    }
+  ],
+  "player.form.namePlaceholder": [
+    {
+      "type": 0,
+      "value": "Navn"
+    }
+  ],
+  "player.form.save": [
+    {
+      "type": 0,
+      "value": "Lagre"
+    }
+  ],
+  "player.form.sex": [
+    {
+      "type": 0,
+      "value": "Kjønn"
+    }
+  ],
+  "player.form.title": [
+    {
+      "type": 0,
+      "value": "Ny spiller"
+    }
+  ],
+  "player.form.titleEdit": [
+    {
+      "type": 0,
+      "value": "Endre spiller"
+    }
+  ],
+  "player.list.edit": [
+    {
+      "type": 0,
+      "value": "Endre"
+    }
+  ],
+  "player.list.empty": [
+    {
+      "type": 0,
+      "value": "Ingen spillere på listen"
+    }
+  ],
+  "player.list.reset": [
+    {
+      "type": 0,
+      "value": "Tilbakestill"
+    }
+  ],
+  "player.list.shuffle": [
+    {
+      "type": 0,
+      "value": "Stokk om spillerene"
+    }
+  ],
+  "player.list.title": [
+    {
+      "type": 0,
+      "value": "Munchkins"
+    }
+  ],
+  "share.text": [
+    {
+      "type": 0,
+      "value": "Enkel men genial Munchkin nivåteller"
+    }
+  ],
+  "theme": [
+    {
+      "type": 0,
+      "value": "Tema"
+    }
+  ],
+  "theme.name.apocalypse": [
+    {
+      "type": 0,
+      "value": "Apokalypse"
+    }
+  ],
+  "theme.name.booty": [
+    {
+      "type": 0,
+      "value": "Skatt"
+    }
+  ],
+  "theme.name.cthulhu": [
+    {
+      "type": 0,
+      "value": "Cthulhu"
+    }
+  ],
+  "theme.name.legends": [
+    {
+      "type": 0,
+      "value": "Legender"
+    }
+  ],
+  "theme.name.munchkin": [
+    {
+      "type": 0,
+      "value": "Munchkin"
+    }
+  ],
+  "theme.name.star": [
+    {
+      "type": 0,
+      "value": "Stjerne"
+    }
+  ],
+  "theme.name.super": [
+    {
+      "type": 0,
+      "value": "Super"
+    }
+  ],
+  "themeDialog.auto": [
+    {
+      "type": 0,
+      "value": "Systemstandard"
+    }
+  ],
+  "themeDialog.dark": [
+    {
+      "type": 0,
+      "value": "Mørkt"
+    }
+  ],
+  "themeDialog.light": [
+    {
+      "type": 0,
+      "value": "Lyst"
+    }
+  ],
+  "undo": [
+    {
+      "type": 0,
+      "value": "Angre"
+    }
+  ],
+  "undo.killPlayer": [
+    {
+      "type": 1,
+      "value": "name"
+    },
+    {
+      "type": 0,
+      "value": " "
+    },
+    {
+      "options": {
+        "female": {
+          "value": [
+            {
+              "type": 0,
+              "value": "har dødd"
+            }
+          ]
+        },
+        "male": {
+          "value": [
+            {
+              "type": 0,
+              "value": "har dødd"
+            }
+          ]
+        }
+      },
+      "type": 5,
+      "value": "sex"
+    }
+  ],
+  "undo.resetPlayers": [
+    {
+      "type": 0,
+      "value": "Spillere er tilbakestilt"
+    }
+  ]
 }

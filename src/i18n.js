@@ -22,67 +22,130 @@ export const UK = 'uk';
 
 const loaders = {
   [CS]: () =>
-    import(/* webpackChunkName: "locales/cs" */ '../languages/cs.json'),
+    import(
+      /* webpackChunkName: "locales/cs" */
+      '../languages/cs.json'
+    ),
 
   [DA]: () =>
-    import(/* webpackChunkName: "locales/da" */ '../languages/da.json'),
+    import(
+      /* webpackChunkName: "locales/da" */
+      '../languages/da.json'
+    ),
 
   [DE]: () =>
-    import(/* webpackChunkName: "locales/de" */ '../languages/de.json'),
+    import(
+      /* webpackChunkName: "locales/de" */
+      '../languages/de.json'
+    ),
 
   [EL]: () =>
-    import(/* webpackChunkName: "locales/el" */ '../languages/el.json'),
+    import(
+      /* webpackChunkName: "locales/el" */
+      '../languages/el.json'
+    ),
 
   [EN]: () =>
-    import(/* webpackChunkName: "locales/en" */ '../languages/en.json'),
+    import(
+      /* webpackChunkName: "locales/en" */
+      '../languages/en.json'
+    ),
 
   [ES]: () =>
-    import(/* webpackChunkName: "locales/es" */ '../languages/es.json'),
+    import(
+      /* webpackChunkName: "locales/es" */
+      '../languages/es.json'
+    ),
 
   [FI]: () =>
-    import(/* webpackChunkName: "locales/fi" */ '../languages/fi.json'),
+    import(
+      /* webpackChunkName: "locales/fi" */
+      '../languages/fi.json'
+    ),
 
   [FR]: () =>
-    import(/* webpackChunkName: "locales/fr" */ '../languages/fr.json'),
+    import(
+      /* webpackChunkName: "locales/fr" */
+      '../languages/fr.json'
+    ),
 
   [HE]: () =>
-    import(/* webpackChunkName: "locales/he" */ '../languages/he.json'),
+    import(
+      /* webpackChunkName: "locales/he" */
+      '../languages/he.json'
+    ),
 
   [HU]: () =>
-    import(/* webpackChunkName: "locales/hu" */ '../languages/hu.json'),
+    import(
+      /* webpackChunkName: "locales/hu" */
+      '../languages/hu.json'
+    ),
 
   [HY]: () =>
-    import(/* webpackChunkName: "locales/hy" */ '../languages/hy.json'),
+    import(
+      /* webpackChunkName: "locales/hy" */
+      '../languages/hy.json'
+    ),
 
   [IT]: () =>
-    import(/* webpackChunkName: "locales/it" */ '../languages/it.json'),
+    import(
+      /* webpackChunkName: "locales/it" */
+      '../languages/it.json'
+    ),
 
   [NB]: () =>
-    import(/* webpackChunkName: "locales/nb" */ '../languages/nb.json'),
+    import(
+      /* webpackChunkName: "locales/nb" */
+      '../languages/nb.json'
+    ),
 
   [NL]: () =>
-    import(/* webpackChunkName: "locales/nl" */ '../languages/nl.json'),
+    import(
+      /* webpackChunkName: "locales/nl" */
+      '../languages/nl.json'
+    ),
 
   [PL]: () =>
-    import(/* webpackChunkName: "locales/pl" */ '../languages/pl.json'),
+    import(
+      /* webpackChunkName: "locales/pl" */
+      '../languages/pl.json'
+    ),
 
   [PT_BR]: () =>
-    import(/* webpackChunkName: "locales/pt-br" */ '../languages/pt-BR.json'),
+    import(
+      /* webpackChunkName: "locales/pt-br" */
+      '../languages/pt-BR.json'
+    ),
 
   [PT]: () =>
-    import(/* webpackChunkName: "locales/pt" */ '../languages/pt.json'),
+    import(
+      /* webpackChunkName: "locales/pt" */
+      '../languages/pt.json'
+    ),
 
   [RU]: () =>
-    import(/* webpackChunkName: "locales/ru" */ '../languages/ru.json'),
+    import(
+      /* webpackChunkName: "locales/ru" */
+      '../languages/ru.json'
+    ),
 
   [SK]: () =>
-    import(/* webpackChunkName: "locales/sk" */ '../languages/sk.json'),
+    import(
+      /* webpackChunkName: "locales/sk" */
+      '../languages/sk.json'
+    ),
 
   [TR]: () =>
-    import(/* webpackChunkName: "locales/tr" */ '../languages/tr.json'),
+    import(
+      /* webpackChunkName: "locales/tr" */
+      '../languages/tr.json'
+    ),
 
   [UK]: () =>
-    import(/* webpackChunkName: "locales/uk" */ '../languages/uk.json'),
+    import(
+      /* webpackChunkName: "locales/uk" */
+      '../languages/uk.json'
+    ),
 };
 
 export const getDirection = (locale) => ([HE].includes(locale) ? 'rtl' : 'ltr');

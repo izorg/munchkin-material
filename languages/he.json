@@ -1,56 +1,392 @@
 {
-  "button.cancel": "בטל",
-  "button.submit": "אישור",
-  "colorPicker.dialog.title": "בחר צבע",
-  "combat": "קרב",
-  "combat.add.helper": "עוזר",
-  "combat.add.monster": "מפלצת",
-  "combat.helperSelector.title": "בחר עוזר",
-  "combat.monster": "מפלצת {number}",
-  "counter.gear": "ציוד",
-  "counter.level": "דרגה",
-  "counter.modifier": "תוספים",
-  "counter.strength": "עוצמה",
-  "dice": "קוביה",
-  "home.single.title": "מאנצ'קין",
-  "kill": "הרוג",
-  "levelLimit.epic": "מאנצ׳קין אגדי ({minLevel} - {maxLevel})",
-  "levelLimit.label": "רמה מקסימאלית",
-  "levelLimit.munchkin": "מאנצ׳קין ({minLevel} - {maxLevel})",
-  "levelLimit.none": "בלי הגבלה",
-  "mainButton.label": "הוסף",
-  "menu": "תפריט",
-  "menu.keepAwake": "השאר ער",
-  "menu.privacyPolicy": "מדיניות פרטיות",
-  "menu.rateApp": "דרג את האפליקציה",
-  "menu.restorePurchases": "שחזר רכישות",
-  "menu.share": "שתף",
-  "menu.singleMode": "מצב יחיד",
-  "menu.translate": "תרגם",
-  "player.form.color": "צבע",
-  "player.form.namePlaceholder": "שם",
-  "player.form.save": "שמור",
-  "player.form.sex": "מין",
-  "player.form.title": "מאנצ'קין חדש",
-  "player.form.titleEdit": "ערוך את המאנצ'קין",
-  "player.list.edit": "ערוך",
-  "player.list.empty": "אין שחקנים ברשימה",
-  "player.list.reset": "אתחל",
-  "player.list.shuffle": "ערבב שחקנים",
-  "player.list.title": "מאנצ'קינים",
-  "share.text": "מד דרגת הדמות שלך: פשוט אך שימושי",
-  "theme": "ערכת נושא",
-  "theme.name.apocalypse": "אפוקליפסה",
-  "theme.name.booty": "פיראטים",
-  "theme.name.cthulhu": "קת׳ולו",
-  "theme.name.legends": "אגדות",
-  "theme.name.munchkin": "מאנצ'קין",
-  "theme.name.star": "בין כוכבים",
-  "theme.name.super": "סופר",
-  "themeDialog.auto": "ברירת מחדל של המערכת",
-  "themeDialog.dark": "כהה",
-  "themeDialog.light": "בהיר",
-  "undo": "בטל",
-  "undo.killPlayer": " {name} {sex,select,female{נפטרה} male{מת}}",
-  "undo.resetPlayers": "השחקנים אופסו"
+  "button.cancel": [
+    {
+      "type": 0,
+      "value": "בטל"
+    }
+  ],
+  "button.submit": [
+    {
+      "type": 0,
+      "value": "אישור"
+    }
+  ],
+  "colorPicker.dialog.title": [
+    {
+      "type": 0,
+      "value": "בחר צבע"
+    }
+  ],
+  "combat": [
+    {
+      "type": 0,
+      "value": "קרב"
+    }
+  ],
+  "combat.add.helper": [
+    {
+      "type": 0,
+      "value": "עוזר"
+    }
+  ],
+  "combat.add.monster": [
+    {
+      "type": 0,
+      "value": "מפלצת"
+    }
+  ],
+  "combat.helperSelector.title": [
+    {
+      "type": 0,
+      "value": "בחר עוזר"
+    }
+  ],
+  "combat.monster": [
+    {
+      "type": 0,
+      "value": "מפלצת "
+    },
+    {
+      "type": 1,
+      "value": "number"
+    }
+  ],
+  "counter.gear": [
+    {
+      "type": 0,
+      "value": "ציוד"
+    }
+  ],
+  "counter.level": [
+    {
+      "type": 0,
+      "value": "דרגה"
+    }
+  ],
+  "counter.modifier": [
+    {
+      "type": 0,
+      "value": "תוספים"
+    }
+  ],
+  "counter.strength": [
+    {
+      "type": 0,
+      "value": "עוצמה"
+    }
+  ],
+  "dice": [
+    {
+      "type": 0,
+      "value": "קוביה"
+    }
+  ],
+  "home.single.title": [
+    {
+      "type": 0,
+      "value": "מאנצ'קין"
+    }
+  ],
+  "kill": [
+    {
+      "type": 0,
+      "value": "הרוג"
+    }
+  ],
+  "levelLimit.epic": [
+    {
+      "type": 0,
+      "value": "מאנצ׳קין אגדי ("
+    },
+    {
+      "type": 1,
+      "value": "minLevel"
+    },
+    {
+      "type": 0,
+      "value": " - "
+    },
+    {
+      "type": 1,
+      "value": "maxLevel"
+    },
+    {
+      "type": 0,
+      "value": ")"
+    }
+  ],
+  "levelLimit.label": [
+    {
+      "type": 0,
+      "value": "רמה מקסימאלית"
+    }
+  ],
+  "levelLimit.munchkin": [
+    {
+      "type": 0,
+      "value": "מאנצ׳קין ("
+    },
+    {
+      "type": 1,
+      "value": "minLevel"
+    },
+    {
+      "type": 0,
+      "value": " - "
+    },
+    {
+      "type": 1,
+      "value": "maxLevel"
+    },
+    {
+      "type": 0,
+      "value": ")"
+    }
+  ],
+  "levelLimit.none": [
+    {
+      "type": 0,
+      "value": "בלי הגבלה"
+    }
+  ],
+  "mainButton.label": [
+    {
+      "type": 0,
+      "value": "הוסף"
+    }
+  ],
+  "menu": [
+    {
+      "type": 0,
+      "value": "תפריט"
+    }
+  ],
+  "menu.keepAwake": [
+    {
+      "type": 0,
+      "value": "השאר ער"
+    }
+  ],
+  "menu.privacyPolicy": [
+    {
+      "type": 0,
+      "value": "מדיניות פרטיות"
+    }
+  ],
+  "menu.rateApp": [
+    {
+      "type": 0,
+      "value": "דרג את האפליקציה"
+    }
+  ],
+  "menu.restorePurchases": [
+    {
+      "type": 0,
+      "value": "שחזר רכישות"
+    }
+  ],
+  "menu.share": [
+    {
+      "type": 0,
+      "value": "שתף"
+    }
+  ],
+  "menu.singleMode": [
+    {
+      "type": 0,
+      "value": "מצב יחיד"
+    }
+  ],
+  "menu.translate": [
+    {
+      "type": 0,
+      "value": "תרגם"
+    }
+  ],
+  "player.form.color": [
+    {
+      "type": 0,
+      "value": "צבע"
+    }
+  ],
+  "player.form.namePlaceholder": [
+    {
+      "type": 0,
+      "value": "שם"
+    }
+  ],
+  "player.form.save": [
+    {
+      "type": 0,
+      "value": "שמור"
+    }
+  ],
+  "player.form.sex": [
+    {
+      "type": 0,
+      "value": "מין"
+    }
+  ],
+  "player.form.title": [
+    {
+      "type": 0,
+      "value": "מאנצ'קין חדש"
+    }
+  ],
+  "player.form.titleEdit": [
+    {
+      "type": 0,
+      "value": "ערוך את המאנצ'קין"
+    }
+  ],
+  "player.list.edit": [
+    {
+      "type": 0,
+      "value": "ערוך"
+    }
+  ],
+  "player.list.empty": [
+    {
+      "type": 0,
+      "value": "אין שחקנים ברשימה"
+    }
+  ],
+  "player.list.reset": [
+    {
+      "type": 0,
+      "value": "אתחל"
+    }
+  ],
+  "player.list.shuffle": [
+    {
+      "type": 0,
+      "value": "ערבב שחקנים"
+    }
+  ],
+  "player.list.title": [
+    {
+      "type": 0,
+      "value": "מאנצ'קינים"
+    }
+  ],
+  "share.text": [
+    {
+      "type": 0,
+      "value": "מד דרגת הדמות שלך: פשוט אך שימושי"
+    }
+  ],
+  "theme": [
+    {
+      "type": 0,
+      "value": "ערכת נושא"
+    }
+  ],
+  "theme.name.apocalypse": [
+    {
+      "type": 0,
+      "value": "אפוקליפסה"
+    }
+  ],
+  "theme.name.booty": [
+    {
+      "type": 0,
+      "value": "פיראטים"
+    }
+  ],
+  "theme.name.cthulhu": [
+    {
+      "type": 0,
+      "value": "קת׳ולו"
+    }
+  ],
+  "theme.name.legends": [
+    {
+      "type": 0,
+      "value": "אגדות"
+    }
+  ],
+  "theme.name.munchkin": [
+    {
+      "type": 0,
+      "value": "מאנצ'קין"
+    }
+  ],
+  "theme.name.star": [
+    {
+      "type": 0,
+      "value": "בין כוכבים"
+    }
+  ],
+  "theme.name.super": [
+    {
+      "type": 0,
+      "value": "סופר"
+    }
+  ],
+  "themeDialog.auto": [
+    {
+      "type": 0,
+      "value": "ברירת מחדל של המערכת"
+    }
+  ],
+  "themeDialog.dark": [
+    {
+      "type": 0,
+      "value": "כהה"
+    }
+  ],
+  "themeDialog.light": [
+    {
+      "type": 0,
+      "value": "בהיר"
+    }
+  ],
+  "undo": [
+    {
+      "type": 0,
+      "value": "בטל"
+    }
+  ],
+  "undo.killPlayer": [
+    {
+      "type": 0,
+      "value": " "
+    },
+    {
+      "type": 1,
+      "value": "name"
+    },
+    {
+      "type": 0,
+      "value": " "
+    },
+    {
+      "options": {
+        "female": {
+          "value": [
+            {
+              "type": 0,
+              "value": "נפטרה"
+            }
+          ]
+        },
+        "male": {
+          "value": [
+            {
+              "type": 0,
+              "value": "מת"
+            }
+          ]
+        }
+      },
+      "type": 5,
+      "value": "sex"
+    }
+  ],
+  "undo.resetPlayers": [
+    {
+      "type": 0,
+      "value": "השחקנים אופסו"
+    }
+  ]
 }

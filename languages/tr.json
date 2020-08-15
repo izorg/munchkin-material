@@ -1,56 +1,388 @@
 {
-  "button.cancel": "İptal",
-  "button.submit": "Tamam",
-  "colorPicker.dialog.title": "Renk seç",
-  "combat": "Savaş",
-  "combat.add.helper": "Yardımcı",
-  "combat.add.monster": "Canavar",
-  "combat.helperSelector.title": "Yardımcı seç",
-  "combat.monster": "Canavar {number}",
-  "counter.gear": "Eşya",
-  "counter.level": "Seviye",
-  "counter.modifier": "Değiştirici",
-  "counter.strength": "Güç",
-  "dice": "Zar",
-  "home.single.title": "Munchkin",
-  "kill": "Öldür",
-  "levelLimit.epic": "Süper Munchkin. ({minLevel} - {maxLevel})",
-  "levelLimit.label": "Seviye limiti",
-  "levelLimit.munchkin": "Munchkin ({minLevel} - {maxLevel})",
-  "levelLimit.none": "Limit yok",
-  "mainButton.label": "Ekle",
-  "menu": "Menü",
-  "menu.keepAwake": "Uyanık tut",
-  "menu.privacyPolicy": "Gizlilik Politikası",
-  "menu.rateApp": "Uygulamayı değerlendir",
-  "menu.restorePurchases": "Satın alımı iade et",
-  "menu.share": "Paylaş",
-  "menu.singleMode": "Tekli mod",
-  "menu.translate": "Çevir",
-  "player.form.color": "Renk",
-  "player.form.namePlaceholder": "İsim",
-  "player.form.save": "Kaydet",
-  "player.form.sex": "Cinsiyet",
-  "player.form.title": "Yeni munchkin",
-  "player.form.titleEdit": "Munckini düzenle",
-  "player.list.edit": "Düzenle",
-  "player.list.empty": "Listede oyuncu yok",
-  "player.list.reset": "Reset",
-  "player.list.shuffle": "Oyuncuları karıştır",
-  "player.list.title": "Munckinler",
-  "share.text": "Basit ama güçlü Munchkin seviye sayacı",
-  "theme": "Tema",
-  "theme.name.apocalypse": "Kıyamet",
-  "theme.name.booty": "Ganimet",
-  "theme.name.cthulhu": "Cthulhu",
-  "theme.name.legends": "Efsaneler",
-  "theme.name.munchkin": "Munckin",
-  "theme.name.star": "Yıldız",
-  "theme.name.super": "Süper",
-  "themeDialog.auto": "Varsayılan sistem",
-  "themeDialog.dark": "Koyu",
-  "themeDialog.light": "Açık",
-  "undo": "Geri al",
-  "undo.killPlayer": "{name} {sex,select,female{ölen} male{ölen}}",
-  "undo.resetPlayers": "Oyuncular resetlendi"
+  "button.cancel": [
+    {
+      "type": 0,
+      "value": "İptal"
+    }
+  ],
+  "button.submit": [
+    {
+      "type": 0,
+      "value": "Tamam"
+    }
+  ],
+  "colorPicker.dialog.title": [
+    {
+      "type": 0,
+      "value": "Renk seç"
+    }
+  ],
+  "combat": [
+    {
+      "type": 0,
+      "value": "Savaş"
+    }
+  ],
+  "combat.add.helper": [
+    {
+      "type": 0,
+      "value": "Yardımcı"
+    }
+  ],
+  "combat.add.monster": [
+    {
+      "type": 0,
+      "value": "Canavar"
+    }
+  ],
+  "combat.helperSelector.title": [
+    {
+      "type": 0,
+      "value": "Yardımcı seç"
+    }
+  ],
+  "combat.monster": [
+    {
+      "type": 0,
+      "value": "Canavar "
+    },
+    {
+      "type": 1,
+      "value": "number"
+    }
+  ],
+  "counter.gear": [
+    {
+      "type": 0,
+      "value": "Eşya"
+    }
+  ],
+  "counter.level": [
+    {
+      "type": 0,
+      "value": "Seviye"
+    }
+  ],
+  "counter.modifier": [
+    {
+      "type": 0,
+      "value": "Değiştirici"
+    }
+  ],
+  "counter.strength": [
+    {
+      "type": 0,
+      "value": "Güç"
+    }
+  ],
+  "dice": [
+    {
+      "type": 0,
+      "value": "Zar"
+    }
+  ],
+  "home.single.title": [
+    {
+      "type": 0,
+      "value": "Munchkin"
+    }
+  ],
+  "kill": [
+    {
+      "type": 0,
+      "value": "Öldür"
+    }
+  ],
+  "levelLimit.epic": [
+    {
+      "type": 0,
+      "value": "Süper Munchkin. ("
+    },
+    {
+      "type": 1,
+      "value": "minLevel"
+    },
+    {
+      "type": 0,
+      "value": " - "
+    },
+    {
+      "type": 1,
+      "value": "maxLevel"
+    },
+    {
+      "type": 0,
+      "value": ")"
+    }
+  ],
+  "levelLimit.label": [
+    {
+      "type": 0,
+      "value": "Seviye limiti"
+    }
+  ],
+  "levelLimit.munchkin": [
+    {
+      "type": 0,
+      "value": "Munchkin ("
+    },
+    {
+      "type": 1,
+      "value": "minLevel"
+    },
+    {
+      "type": 0,
+      "value": " - "
+    },
+    {
+      "type": 1,
+      "value": "maxLevel"
+    },
+    {
+      "type": 0,
+      "value": ")"
+    }
+  ],
+  "levelLimit.none": [
+    {
+      "type": 0,
+      "value": "Limit yok"
+    }
+  ],
+  "mainButton.label": [
+    {
+      "type": 0,
+      "value": "Ekle"
+    }
+  ],
+  "menu": [
+    {
+      "type": 0,
+      "value": "Menü"
+    }
+  ],
+  "menu.keepAwake": [
+    {
+      "type": 0,
+      "value": "Uyanık tut"
+    }
+  ],
+  "menu.privacyPolicy": [
+    {
+      "type": 0,
+      "value": "Gizlilik Politikası"
+    }
+  ],
+  "menu.rateApp": [
+    {
+      "type": 0,
+      "value": "Uygulamayı değerlendir"
+    }
+  ],
+  "menu.restorePurchases": [
+    {
+      "type": 0,
+      "value": "Satın alımı iade et"
+    }
+  ],
+  "menu.share": [
+    {
+      "type": 0,
+      "value": "Paylaş"
+    }
+  ],
+  "menu.singleMode": [
+    {
+      "type": 0,
+      "value": "Tekli mod"
+    }
+  ],
+  "menu.translate": [
+    {
+      "type": 0,
+      "value": "Çevir"
+    }
+  ],
+  "player.form.color": [
+    {
+      "type": 0,
+      "value": "Renk"
+    }
+  ],
+  "player.form.namePlaceholder": [
+    {
+      "type": 0,
+      "value": "İsim"
+    }
+  ],
+  "player.form.save": [
+    {
+      "type": 0,
+      "value": "Kaydet"
+    }
+  ],
+  "player.form.sex": [
+    {
+      "type": 0,
+      "value": "Cinsiyet"
+    }
+  ],
+  "player.form.title": [
+    {
+      "type": 0,
+      "value": "Yeni munchkin"
+    }
+  ],
+  "player.form.titleEdit": [
+    {
+      "type": 0,
+      "value": "Munckini düzenle"
+    }
+  ],
+  "player.list.edit": [
+    {
+      "type": 0,
+      "value": "Düzenle"
+    }
+  ],
+  "player.list.empty": [
+    {
+      "type": 0,
+      "value": "Listede oyuncu yok"
+    }
+  ],
+  "player.list.reset": [
+    {
+      "type": 0,
+      "value": "Reset"
+    }
+  ],
+  "player.list.shuffle": [
+    {
+      "type": 0,
+      "value": "Oyuncuları karıştır"
+    }
+  ],
+  "player.list.title": [
+    {
+      "type": 0,
+      "value": "Munckinler"
+    }
+  ],
+  "share.text": [
+    {
+      "type": 0,
+      "value": "Basit ama güçlü Munchkin seviye sayacı"
+    }
+  ],
+  "theme": [
+    {
+      "type": 0,
+      "value": "Tema"
+    }
+  ],
+  "theme.name.apocalypse": [
+    {
+      "type": 0,
+      "value": "Kıyamet"
+    }
+  ],
+  "theme.name.booty": [
+    {
+      "type": 0,
+      "value": "Ganimet"
+    }
+  ],
+  "theme.name.cthulhu": [
+    {
+      "type": 0,
+      "value": "Cthulhu"
+    }
+  ],
+  "theme.name.legends": [
+    {
+      "type": 0,
+      "value": "Efsaneler"
+    }
+  ],
+  "theme.name.munchkin": [
+    {
+      "type": 0,
+      "value": "Munckin"
+    }
+  ],
+  "theme.name.star": [
+    {
+      "type": 0,
+      "value": "Yıldız"
+    }
+  ],
+  "theme.name.super": [
+    {
+      "type": 0,
+      "value": "Süper"
+    }
+  ],
+  "themeDialog.auto": [
+    {
+      "type": 0,
+      "value": "Varsayılan sistem"
+    }
+  ],
+  "themeDialog.dark": [
+    {
+      "type": 0,
+      "value": "Koyu"
+    }
+  ],
+  "themeDialog.light": [
+    {
+      "type": 0,
+      "value": "Açık"
+    }
+  ],
+  "undo": [
+    {
+      "type": 0,
+      "value": "Geri al"
+    }
+  ],
+  "undo.killPlayer": [
+    {
+      "type": 1,
+      "value": "name"
+    },
+    {
+      "type": 0,
+      "value": " "
+    },
+    {
+      "options": {
+        "female": {
+          "value": [
+            {
+              "type": 0,
+              "value": "ölen"
+            }
+          ]
+        },
+        "male": {
+          "value": [
+            {
+              "type": 0,
+              "value": "ölen"
+            }
+          ]
+        }
+      },
+      "type": 5,
+      "value": "sex"
+    }
+  ],
+  "undo.resetPlayers": [
+    {
+      "type": 0,
+      "value": "Oyuncular resetlendi"
+    }
+  ]
 }

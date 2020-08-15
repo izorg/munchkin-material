@@ -5,6 +5,7 @@
 /.vscode/
 /coverage/
 /firebase-debug.log
+/languages/source/
 /screenshots/
 /web/
 node_modules/
