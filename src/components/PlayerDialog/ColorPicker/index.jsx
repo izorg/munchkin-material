@@ -67,10 +67,10 @@ const ColorPicker = ({
 
   return (
     <>
+      <input name={name} type="hidden" value={value} />
       <Color
         ref={anchorEl}
         className={classes.color}
-        name={name}
         onBlur={(event) => {
           if (ignoreNextBlur.current === true) {
             // The parent components are relying on the bubbling of the event.
