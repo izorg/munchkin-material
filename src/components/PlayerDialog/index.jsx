@@ -98,8 +98,6 @@ const PlayerDialog = () => {
   const intl = useIntl();
   const theme = useTheme();
 
-  const nameRef = useRef(null);
-
   const goBack = useGoBack();
   const query = useLocationQuery();
   const open = query.player !== undefined;
@@ -217,7 +215,6 @@ const PlayerDialog = () => {
           autoFocus={!editPlayer}
           defaultValue={editPlayer?.name}
           fullWidth
-          inputRef={nameRef}
           label={intl.formatMessage(messages.label)}
           margin="normal"
           name="name"
