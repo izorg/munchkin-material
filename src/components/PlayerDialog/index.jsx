@@ -142,13 +142,9 @@ const PlayerDialog = () => {
   const onSubmit = (event) => {
     event.preventDefault();
 
-    const form = event.target;
+    const formData = new FormData(event.target);
 
-    const values = {
-      color: form.color.value,
-      name: form.name.value,
-      sex: form.querySelector('input[name="sex"]:checked').value, // to support Android 4.4
-    };
+    const values = Object.fromEntries(formData);
 
     if (!values.name.trim()) {
       handleClose();
