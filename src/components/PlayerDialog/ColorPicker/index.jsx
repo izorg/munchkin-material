@@ -1,4 +1,4 @@
-import { Hidden, makeStyles } from '@material-ui/core';
+import { Hidden, makeStyles, useFormControl } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import React, { useEffect, useRef, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -35,6 +35,7 @@ const ColorPicker = ({
 }) => {
   const location = useLocation();
   const navigate = useNavigate();
+  const muiFormControl = useFormControl();
 
   const classes = useStyles();
 
@@ -79,6 +80,10 @@ const ColorPicker = ({
             ignoreNextBlur.current = false;
           } else {
             onBlur(event);
+
+            if (muiFormControl && muiFormControl.onBlur) {
+              muiFormControl.onBlur(event);
+            }
           }
         }}
         onClick={() => {
@@ -86,7 +91,13 @@ const ColorPicker = ({
 
           onOpen();
         }}
-        onFocus={onFocus}
+        onFocus={(event) => {
+          onFocus(event);
+
+          if (muiFormControl && muiFormControl.onFocus) {
+            muiFormControl.onFocus(event);
+          }
+        }}
         onKeyDown={(event) => {
           if ([' ', 'Enter'].includes(event.key)) {
             ignoreNextBlur.current = true;
