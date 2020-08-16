@@ -183,11 +183,8 @@ const screenshots = async () => {
     recursive: true,
   });
 
-  // eslint-disable-next-line no-restricted-syntax,no-unused-vars
   for (const locale of locales) {
-    // eslint-disable-next-line no-restricted-syntax,no-unused-vars
     for (const size of Object.keys(sizes)) {
-      // eslint-disable-next-line no-await-in-loop
       await getScreenshots({ locale, size });
     }
   }
