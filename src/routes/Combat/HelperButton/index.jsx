@@ -6,7 +6,6 @@ import React, { memo } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { createSelector } from 'reselect';
 
 import { addMonster } from '../../../ducks/monsters';
 import createMonster from '../../../utils/createMonster';
@@ -41,12 +40,6 @@ const useStyles = makeStyles(
   { name: displayName },
 );
 
-const getHelper = createSelector(
-  (state) => state.combat.helperId,
-  (state) => state.playerList,
-  (helperId, playerList) => !helperId && playerList.length > 1,
-);
-
 const CombatHelperButton = ({ className, ...rest }) => {
   const dispatch = useDispatch();
   const location = useLocation();
@@ -55,7 +48,9 @@ const CombatHelperButton = ({ className, ...rest }) => {
   const classes = useStyles();
 
   const goBack = useGoBack();
-  const helper = useSelector(getHelper);
+  const helperId = useSelector((state) => state.combat.helperId);
+  const hasOtherPlayers = useSelector((state) => state.playerList.length > 1);
+  const helper = !helperId && hasOtherPlayers;
   const query = useLocationQuery();
   const open = query.add === null;
 

@@ -11,7 +11,6 @@ import {
 import React, { useState } from 'react';
 import { useIntl } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
-import { createSelector } from 'reselect';
 
 import { setEpic, setLevelLimit } from '../../../ducks/settings';
 import {
@@ -39,28 +38,18 @@ const useStyles = makeStyles(
   { name: displayName },
 );
 
-const getDefaultValue = createSelector(
-  (state) => state.settings.levelLimit,
-  (state) => state.settings.epic,
-  (levelLimit, epic) => {
-    if (levelLimit) {
-      if (epic) {
-        return EPIC_MUNCHKIN_LIMIT;
-      }
-
-      return DEFAULT_MUNCHKIN_LIMIT;
-    }
-
-    return NO_LIMIT;
-  },
-);
-
 const LevelLimitDialog = (props) => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const intl = useIntl();
 
-  const defaultValue = useSelector(getDefaultValue);
+  const levelLimit = useSelector((state) => state.settings.levelLimit);
+  const epic = useSelector((state) => state.settings.epic);
+  const defaultValue = levelLimit
+    ? epic
+      ? EPIC_MUNCHKIN_LIMIT
+      : DEFAULT_MUNCHKIN_LIMIT
+    : NO_LIMIT;
   const [value, setValue] = useState(defaultValue);
 
   const query = useLocationQuery();
