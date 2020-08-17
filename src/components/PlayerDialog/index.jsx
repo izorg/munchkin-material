@@ -111,13 +111,13 @@ const PlayerDialog = () => {
     }
 
     return previousPlayerRef.current;
-  }, [open]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [open, players, query.player]);
 
   useEffect(() => {
     if (open) {
       previousPlayerRef.current = players[query.player];
     }
-  }, [open]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [open, players, query.player]);
 
   const randomColor = useMemo(
     () =>
