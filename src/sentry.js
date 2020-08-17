@@ -1,16 +1,11 @@
-import { ExtraErrorData, RewriteFrames } from '@sentry/integrations';
+import { RewriteFrames } from '@sentry/integrations';
 import * as Sentry from '@sentry/react';
 
 const sentry = (dsn) => {
-  let integrations = [
-    new ExtraErrorData({
-      depth: 10,
-    }),
-  ];
+  const integrations = [];
 
   if (window.cordova) {
-    integrations = [
-      ...integrations,
+    integrations.push(
       new RewriteFrames({
         iteratee: (frame) => {
           frame.filename = frame.filename.replace(/^.*\/www\//, '/');
@@ -18,7 +13,7 @@ const sentry = (dsn) => {
           return frame;
         },
       }),
-    ];
+    );
   }
 
   const build = window.cordova ? 'cordova' : 'web';
@@ -27,7 +22,7 @@ const sentry = (dsn) => {
     dsn,
     environment: process.env.NODE_ENV,
     integrations,
-    normalizeDepth: 11,
+    normalizeDepth: 10,
     release: `${VERSION}-${build}`,
   });
 };

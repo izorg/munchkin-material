@@ -1,9 +1,9 @@
+import * as Sentry from '@sentry/react';
 import { applyMiddleware, combineReducers, createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 
 import { loadState, saveState } from './localStorage';
-import errorReporter from './middlewares/errorReporter';
 import logger from './middlewares/logger';
 import reducers from './reducers';
 
@@ -14,8 +14,11 @@ const configureStore = () => {
 
   const preloadedState = loadState();
 
+  const sentryReduxEnhancer = Sentry.createReduxEnhancer();
+
   const enhancer = composeEnhancers(
-    applyMiddleware(errorReporter, thunk, logger),
+    applyMiddleware(thunk, logger),
+    sentryReduxEnhancer,
   );
 
   const store = createStore(createRootReducer(), preloadedState, enhancer);
