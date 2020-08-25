@@ -159,7 +159,7 @@ const PlayerSlider = ({ playerId: playerIdProp }) => {
           const playerId = playerList[playerIndex];
 
           return (
-            <div key={playerId} className={classes.itemContainer}>
+            <div key={`${playerId}-${index}`} className={classes.itemContainer}>
               <PlayerStats className={classes.stats} playerId={playerId} />
             </div>
           );
