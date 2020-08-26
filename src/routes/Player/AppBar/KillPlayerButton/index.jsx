@@ -37,19 +37,21 @@ const KillPlayerButton = ({ playerId, ...props }) => {
   const players = useSelector((state) => state.players);
   const disabled = players[playerId].gear === 0;
 
-  return (
-    <Tooltip title={intl.formatMessage(messages.kill)}>
-      <span>
-        <TopIconButton
-          disabled={disabled}
-          onClick={() => dispatch(onKill(playerId))}
-          {...props}
-        >
-          <Skull />
-        </TopIconButton>
-      </span>
-    </Tooltip>
+  const button = (
+    <TopIconButton
+      disabled={disabled}
+      onClick={() => dispatch(onKill(playerId))}
+      {...props}
+    >
+      <Skull />
+    </TopIconButton>
   );
+
+  if (disabled) {
+    return button;
+  }
+
+  return <Tooltip title={intl.formatMessage(messages.kill)}>{button}</Tooltip>;
 };
 
 KillPlayerButton.propTypes = {
