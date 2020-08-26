@@ -1,6 +1,7 @@
 import {
   Button,
   Fade,
+  makeStyles,
   Snackbar,
   useMediaQuery,
   useTheme,
@@ -11,8 +12,22 @@ import { FormattedMessage } from 'react-intl';
 
 const displayName = 'UndoSnackbar';
 
-const UndoSnackbar = ({ className, message, onClose, open }) => {
+const useStyles = makeStyles(
+  (theme) => ({
+    snackbar: {
+      bottom: theme.spacing(11),
+
+      [theme.breakpoints.up('sm')]: {
+        bottom: theme.spacing(3.5),
+      },
+    },
+  }),
+  { name: displayName },
+);
+
+const UndoSnackbar = ({ message, onClose, open }) => {
   const theme = useTheme();
+  const classes = useStyles();
 
   const messageRef = useRef(message);
 
@@ -29,7 +44,7 @@ const UndoSnackbar = ({ className, message, onClose, open }) => {
           <FormattedMessage defaultMessage="Undo" id="undo" />
         </Button>
       }
-      className={className}
+      className={classes.snackbar}
       message={messageRef.current}
       onClose={onClose}
       open={open}

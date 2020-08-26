@@ -1,4 +1,3 @@
-import { makeStyles } from '@material-ui/core';
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
@@ -9,21 +8,7 @@ import { applyUndo, removeUndo, UNDO_KILL_PLAYER } from '../../../ducks/undo';
 
 const displayName = 'PlayerUndo';
 
-const useStyles = makeStyles(
-  (theme) => ({
-    root: {
-      bottom: theme.spacing(11),
-
-      [theme.breakpoints.up('sm')]: {
-        bottom: theme.spacing(3.5),
-      },
-    },
-  }),
-  { name: displayName },
-);
-
 const PlayerUndo = () => {
-  const classes = useStyles();
   const dispatch = useDispatch();
 
   const open = useSelector((state) => state.undo?.type === UNDO_KILL_PLAYER);
@@ -46,7 +31,6 @@ const PlayerUndo = () => {
 
   return (
     <UndoSnackbar
-      className={classes.root}
       message={
         player && (
           <FormattedMessage
