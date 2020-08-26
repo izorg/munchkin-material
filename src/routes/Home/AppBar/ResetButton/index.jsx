@@ -2,7 +2,7 @@ import { Tooltip } from '@material-ui/core';
 import { BackupRestore } from 'mdi-material-ui';
 import React from 'react';
 import { defineMessages, useIntl } from 'react-intl';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import TopIconButton from '../../../../components/TopIconButton';
 import {
@@ -78,17 +78,43 @@ const ResetButton = (props) => {
   const dispatch = useDispatch();
   const intl = useIntl();
 
-  return (
-    <Tooltip title={intl.formatMessage(messages.reset)}>
-      <TopIconButton
-        color="inherit"
-        onClick={() => dispatch(onReset())}
-        {...props}
-      >
-        <BackupRestore />
-      </TopIconButton>
-    </Tooltip>
+  const disabled = useSelector((state) => {
+    const {
+      combat: { playerBonus, playerId },
+      playerList,
+      players,
+      settings: { singleMode },
+    } = state;
+
+    if (singleMode) {
+      const player = players[playerId];
+
+      return player.level === 1 && player.gear === 0 && playerBonus === 0;
+    }
+
+    return playerList.every((id) => {
+      const player = players[id];
+
+      return player.level === 1 && player.gear === 0;
+    });
+  });
+
+  const button = (
+    <TopIconButton
+      color="inherit"
+      disabled={disabled}
+      onClick={() => dispatch(onReset())}
+      {...props}
+    >
+      <BackupRestore />
+    </TopIconButton>
   );
+
+  if (disabled) {
+    return button;
+  }
+
+  return <Tooltip title={intl.formatMessage(messages.reset)}>{button}</Tooltip>;
 };
 
 ResetButton.displayName = displayName;
