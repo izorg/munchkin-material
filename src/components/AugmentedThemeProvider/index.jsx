@@ -54,12 +54,7 @@ const AugmentedThemeProvider = ({ children }) => {
   useEffect(() => {
     const { Keyboard } = window;
 
-    if (
-      Keyboard &&
-      Keyboard.setKeyboardStyle &&
-      ios &&
-      !navigator.userAgent.includes('OS 10_')
-    ) {
+    if (Keyboard && Keyboard.setKeyboardStyle && ios) {
       Keyboard.setKeyboardStyle(theme.palette.type); // cordova ios
     }
   }, [theme.palette.type]);
