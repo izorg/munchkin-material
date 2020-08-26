@@ -109,10 +109,12 @@ const Player = ({ playerId }) => {
           <div className={classes.sliderContent}>
             <Slider playerId={playerRef.current} />
           </div>
-          <PlayerList
-            className={classes.playerList}
-            selectedPlayerId={playerRef.current}
-          />
+          {playerList.length > 1 && (
+            <PlayerList
+              className={classes.playerList}
+              selectedPlayerId={playerRef.current}
+            />
+          )}
         </div>
       </div>
       <CombatButton playerId={playerRef.current} />
