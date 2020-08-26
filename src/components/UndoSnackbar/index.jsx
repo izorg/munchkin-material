@@ -6,26 +6,21 @@ import {
   useTheme,
 } from '@material-ui/core';
 import PropTypes from 'prop-types';
-import React, { useEffect, useState } from 'react';
+import React, { useRef } from 'react';
 import { FormattedMessage } from 'react-intl';
 
 const displayName = 'UndoSnackbar';
 
-const UndoSnackbar = ({ children, message, onClose, ...rest }) => {
+const UndoSnackbar = ({ className, message, onClose, open }) => {
   const theme = useTheme();
 
-  const [state, setState] = useState({ children, message });
+  const messageRef = useRef(message);
+
+  if (open) {
+    messageRef.current = message;
+  }
 
   const matches = useMediaQuery(theme.breakpoints.down('sm'), { noSsr: true });
-
-  useEffect(() => {
-    if (children || message) {
-      setState({
-        children,
-        message,
-      });
-    }
-  }, [children, message]);
 
   return (
     <Snackbar
@@ -34,23 +29,19 @@ const UndoSnackbar = ({ children, message, onClose, ...rest }) => {
           <FormattedMessage defaultMessage="Undo" id="undo" />
         </Button>
       }
+      className={className}
+      message={messageRef.current}
       onClose={onClose}
+      open={open}
       TransitionComponent={matches ? Fade : undefined}
-      {...rest}
-      {...state}
     />
   );
 };
 
 UndoSnackbar.propTypes = {
-  children: PropTypes.node,
   message: PropTypes.node,
   onClose: PropTypes.func.isRequired,
-};
-
-UndoSnackbar.defaultProps = {
-  children: undefined,
-  message: undefined,
+  open: PropTypes.bool,
 };
 
 UndoSnackbar.displayName = displayName;
