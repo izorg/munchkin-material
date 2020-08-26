@@ -1,37 +1,17 @@
 import {
   Button,
   Fade,
-  makeStyles,
   Snackbar,
   useMediaQuery,
   useTheme,
 } from '@material-ui/core';
-import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { FormattedMessage } from 'react-intl';
 
 const displayName = 'UndoSnackbar';
 
-const useStyles = makeStyles(
-  (theme) => ({
-    root: {
-      '@supports (padding: max(0px))': {
-        left: `max(${theme.spacing(1)}px, env(safe-area-inset-right))`,
-        right: `max(${theme.spacing(1)}px, env(safe-area-inset-right))`,
-
-        [`${theme.breakpoints.up('sm')}`]: {
-          left: `max(${theme.spacing(3)}px, env(safe-area-inset-right))`,
-          right: `max(${theme.spacing(3)}px, env(safe-area-inset-right))`,
-        },
-      },
-    },
-  }),
-  { name: displayName },
-);
-
-const UndoSnackbar = ({ children, className, message, onClose, ...rest }) => {
-  const classes = useStyles();
+const UndoSnackbar = ({ children, message, onClose, ...rest }) => {
   const theme = useTheme();
 
   const [state, setState] = useState({ children, message });
@@ -54,12 +34,6 @@ const UndoSnackbar = ({ children, className, message, onClose, ...rest }) => {
           <FormattedMessage defaultMessage="Undo" id="undo" />
         </Button>
       }
-      anchorOrigin={{
-        horizontal: theme.direction === 'rtl' ? 'right' : 'left',
-        vertical: 'bottom',
-      }}
-      className={clsx(classes.root, className)}
-      ContentProps={{ className: classes.content }}
       onClose={onClose}
       TransitionComponent={matches ? Fade : undefined}
       {...rest}

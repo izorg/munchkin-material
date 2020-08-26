@@ -29,6 +29,24 @@ export default ({ direction, type }) => {
         },
       },
 
+      MuiSnackbar: {
+        root: {
+          '@supports (padding: max(0px))': {
+            left: 'max(8px, env(safe-area-inset-right))',
+            right: 'max(8px, env(safe-area-inset-right))',
+          },
+        },
+
+        anchorOriginBottomLeft: {
+          '@supports (padding: max(0px))': {
+            [breakpoints.up('sm')]: {
+              left: 'max(24px, env(safe-area-inset-right))',
+              right: 'max(24px, env(safe-area-inset-right))',
+            },
+          },
+        },
+      },
+
       MuiSpeedDialAction: {
         fab: {
           color: undefined,
