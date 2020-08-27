@@ -1,10 +1,10 @@
 import { makeStyles, useTheme } from '@material-ui/core';
+import clsx from 'clsx';
+import { motion, useAnimation } from 'framer-motion';
 import PropTypes from 'prop-types';
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { animated, useSpring } from 'react-spring';
-import { useDrag } from 'react-use-gesture';
 
 import PlayerStats from './Stats';
 
@@ -18,9 +18,8 @@ const useStyles = makeStyles(
     },
 
     container: {
-      display: 'flex',
       height: '100%',
-      touchAction: 'none',
+      position: 'relative',
     },
 
     slide: {
@@ -30,13 +29,25 @@ const useStyles = makeStyles(
     itemContainer: {
       alignItems: 'center',
       display: 'flex',
-      flexShrink: 0,
+      height: '100%',
       padding: theme.spacing(2, 2, 7),
       width: '100%',
 
       '@media (min-height: 720px)': {
         paddingBottom: theme.spacing(2),
       },
+    },
+
+    previousItemContainer: {
+      left: '-100%',
+      position: 'absolute',
+      top: 0,
+    },
+
+    nextItemContainer: {
+      left: '100%',
+      position: 'absolute',
+      top: 0,
     },
 
     stats: {
@@ -49,22 +60,12 @@ const useStyles = makeStyles(
   { name: displayName },
 );
 
-const PlayerSlider = ({ playerId: playerIdProp }) => {
+const PlayerSlider = ({ playerId }) => {
   const classes = useStyles();
   const navigate = useNavigate();
   const { direction } = useTheme();
 
   const rtl = direction === 'rtl';
-
-  const animateRef = useRef(false);
-
-  const [playerId, setPlayerId] = useState(playerIdProp);
-
-  useEffect(() => {
-    if (!animateRef.current) {
-      setPlayerId(playerIdProp);
-    }
-  }, [playerIdProp]);
 
   const playerList = useSelector((state) => state.playerList);
   const playerCount = playerList.length;
@@ -84,87 +85,81 @@ const PlayerSlider = ({ playerId: playerIdProp }) => {
     [playerCount],
   );
 
+  /**
+   * @type {React.MutableRefObject<HTMLDivElement>}
+   */
   const ref = useRef();
 
-  const initialValue = rtl ? 100 : -100;
-  const [{ x }, set] = useSpring(() => ({
-    x: initialValue,
-    config: {
-      tension: 500,
-      friction: 50,
-    },
-    filterTaps: true,
-  }));
+  const controls = useAnimation();
 
-  const bind = useDrag(async (state) => {
-    const { last, movement, swipe } = state;
+  const onDragEnd = async (event, info) => {
+    const offset = info.offset.x;
+    const velocity = info.velocity.x;
 
-    if (animateRef.current === true) {
-      return;
+    let direction = 0;
+
+    if (Math.abs(velocity) >= 500) {
+      direction = velocity > 0 ? 1 : -1;
+    } else if (Math.abs(offset) >= ref.current.offsetWidth / 2) {
+      direction = offset > 0 ? 1 : -1;
     }
 
-    const percent = movement[0] / ref.current.offsetWidth;
+    if (direction) {
+      const playerDirection = rtl ? direction : -direction;
 
-    const delta = percent * 100;
+      const nextPlayerId =
+        playerList[getPlayerIndex(currentIndex + playerDirection)];
 
-    set({
-      x: initialValue + delta,
-    });
+      navigate(`/player/${nextPlayerId}`, {
+        replace: true,
+      });
 
-    if (last) {
-      if (swipe[0] !== 0 || Math.abs(percent) >= 0.5) {
-        let nextPlayerId;
-        let value;
+      controls.set({
+        x: ref.current.offsetWidth * -direction + offset,
+      });
 
-        if (swipe[0] === -1 || percent < -0.5) {
-          nextPlayerId =
-            playerList[getPlayerIndex(currentIndex + (rtl ? -1 : 1))];
-          value = rtl ? 0 : -200;
-        }
-
-        if (swipe[0] === 1 || percent > 0.5) {
-          nextPlayerId =
-            playerList[getPlayerIndex(currentIndex - (rtl ? -1 : 1))];
-          value = rtl ? 200 : 0;
-        }
-
-        animateRef.current = true;
-        navigate(`/player/${nextPlayerId}`, {
-          replace: true,
-        });
-        await set({ x: value });
-        await set({ x: initialValue, immediate: true });
-        animateRef.current = false;
-
-        setPlayerId(nextPlayerId);
-      } else {
-        await set({ x: initialValue });
-      }
+      await controls.start(
+        {
+          x: 0,
+        },
+        {
+          mass: 0.1,
+          type: 'spring',
+          velocity,
+        },
+      );
     }
-  });
+  };
 
   return (
     <div ref={ref} className={classes.root}>
-      <animated.div
+      <motion.div
         key={playerId}
+        animate={controls}
         className={classes.container}
-        {...bind()}
-        style={{
-          transform: x.to((value) => `translateX(${value}%)`),
-        }}
-        touch-action="none"
+        drag={playerList.length > 1 ? 'x' : false}
+        dragConstraints={ref}
+        dragElastic={1}
+        onDragEnd={onDragEnd}
       >
         {[currentIndex - 1, currentIndex, currentIndex + 1].map((index) => {
           const playerIndex = getPlayerIndex(index);
           const playerId = playerList[playerIndex];
 
           return (
-            <div key={`${playerId}-${index}`} className={classes.itemContainer}>
+            <div
+              key={`${playerId}-${index}`}
+              className={clsx(
+                classes.itemContainer,
+                index === currentIndex - 1 && classes.previousItemContainer,
+                index === currentIndex + 1 && classes.nextItemContainer,
+              )}
+            >
               <PlayerStats className={classes.stats} playerId={playerId} />
             </div>
           );
         })}
-      </animated.div>
+      </motion.div>
     </div>
   );
 };
