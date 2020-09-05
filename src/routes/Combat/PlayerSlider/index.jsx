@@ -6,12 +6,11 @@ import {
   useTheme,
 } from '@material-ui/core';
 import clsx from 'clsx';
+import { motion, useAnimation, useMotionValue } from 'framer-motion';
 import { CloseCircle } from 'mdi-material-ui';
 import PropTypes from 'prop-types';
 import React, { memo, useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
-import { animated, useSpring } from 'react-spring';
-import { useDrag } from 'react-use-gesture';
 
 import { setCombatHelper, setCombatHelperBonus } from '../../../ducks/combat';
 
@@ -22,20 +21,26 @@ const displayName = 'CombatPlayerSlider';
 const useStyles = makeStyles(
   (theme) => ({
     players: {
+      display: 'flex',
       overflow: 'hidden',
-      touchAction: 'none',
 
       '@media (orientation: portrait)': {
-        maxWidth: '100%',
+        width: '100%',
       },
 
       '@media (orientation: landscape)': {
-        maxHeight: '100%',
+        flexDirection: 'column',
+        height: '100%',
       },
+    },
+
+    flex: {
+      flex: 1,
     },
 
     container: {
       display: 'flex',
+      padding: theme.spacing(1),
 
       '@media (orientation: landscape)': {
         flexDirection: 'column',
@@ -44,22 +49,7 @@ const useStyles = makeStyles(
 
     itemContainer: {
       flexShrink: 0,
-
-      '@media (orientation: portrait)': {
-        padding: theme.spacing(1, 2),
-
-        '& + &': {
-          paddingLeft: 0,
-        },
-      },
-
-      '@media (orientation: landscape)': {
-        padding: theme.spacing(2, 1),
-
-        '& + &': {
-          paddingTop: 0,
-        },
-      },
+      padding: theme.spacing(1),
     },
 
     paper: {
@@ -93,127 +83,175 @@ const useStyles = makeStyles(
 const CombatPlayerSlider = ({ className, helperId, playerId }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
+
+  /**
+   * @type {React.MutableRefObject<HTMLDivElement>}
+   */
   const ref = useRef();
-  const lastHelperRef = useRef(helperId);
+
+  /**
+   * @type {React.MutableRefObject<HTMLDivElement>}
+   */
+  const containerRef = useRef();
+
   const { direction } = useTheme();
 
   const landscape = useMediaQuery('(orientation: landscape)', {
     noSsr: true,
   });
 
+  const animate = useAnimation();
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  const onDrag = () => {
+    const parent = ref.current;
+    const child = containerRef.current;
+
+    if (landscape) {
+      if (child.offsetHeight <= parent.offsetHeight) {
+        y.set(0);
+      }
+    } else {
+      if (child.offsetWidth <= parent.offsetWidth) {
+        x.set(0);
+      }
+    }
+  };
+
+  const modifyTarget = (target) => {
+    const parent = ref.current;
+    const child = containerRef.current;
+
+    if (landscape) {
+      if (child.offsetHeight <= parent.offsetHeight) {
+        return 0;
+      }
+
+      const min = parent.offsetHeight - child.offsetHeight;
+      const max = 0;
+
+      if (target < min) {
+        return min;
+      }
+
+      if (target > max) {
+        return max;
+      }
+    } else {
+      if (child.offsetWidth <= parent.offsetWidth) {
+        return 0;
+      }
+
+      const min =
+        direction === 'rtl' ? 0 : parent.offsetWidth - child.offsetWidth;
+      const max =
+        direction === 'rtl' ? child.offsetWidth - parent.offsetWidth : 0;
+
+      if (target < min) {
+        return min;
+      }
+
+      if (target > max) {
+        return max;
+      }
+    }
+
+    return target;
+  };
+
+  const playerCount = helperId ? 2 : 1;
+  const playerCountRef = useRef(playerCount);
+
+  useEffect(() => {
+    const parent = ref.current;
+    const child = containerRef.current;
+    const transitionOverride = { type: 'tween' };
+
+    if (landscape) {
+      if (playerCount > playerCountRef.current) {
+        if (child.offsetHeight > parent.offsetHeight) {
+          animate.start(
+            { y: parent.offsetHeight - child.offsetHeight },
+            transitionOverride,
+          );
+        }
+      }
+
+      if (playerCount < playerCountRef.current) {
+        if (child.offsetHeight <= parent.offsetHeight) {
+          y.set(0);
+        } else if (y.get() < parent.offsetHeight - child.offsetHeight) {
+          animate.start(
+            { y: parent.offsetHeight - child.offsetHeight },
+            transitionOverride,
+          );
+        }
+      }
+    } else {
+      if (playerCount > playerCountRef.current) {
+        if (child.offsetWidth > parent.offsetWidth) {
+          let shift = parent.offsetWidth - child.offsetWidth;
+
+          if (direction === 'rtl') {
+            shift = -shift;
+          }
+
+          animate.start({ x: shift }, transitionOverride);
+        }
+      }
+
+      if (playerCount < playerCountRef.current) {
+        if (child.offsetWidth <= parent.offsetWidth) {
+          x.set(0);
+        } else {
+          if (direction === 'rtl') {
+            if (x.get() > child.offsetWidth - parent.offsetWidth) {
+              animate.start(
+                { x: child.offsetWidth - parent.offsetWidth },
+                transitionOverride,
+              );
+            }
+          } else {
+            if (x.get() < parent.offsetWidth - child.offsetWidth) {
+              animate.start(
+                { x: parent.offsetWidth - child.offsetWidth },
+                transitionOverride,
+              );
+            }
+          }
+        }
+      }
+    }
+
+    if (playerCount === playerCountRef.current) {
+      x.set(0);
+      y.set(0);
+    }
+
+    playerCountRef.current = playerCount;
+  }, [animate, direction, landscape, playerCount, x, y]);
+
   const handleHelperRemove = () => {
     dispatch(setCombatHelper(null));
     dispatch(setCombatHelperBonus(0));
   };
 
-  const startRef = useRef({ x: 0, y: 0 });
-
-  const [{ x, y }, set] = useSpring(() => ({
-    ...startRef.current,
-    config: {
-      tension: 1000,
-      friction: 50,
-    },
-    filterTaps: true,
-  }));
-
-  const bind = useDrag(async (state) => {
-    const { first, movement } = state;
-
-    if (first) {
-      startRef.current = { x: x.get(), y: y.get() };
-    }
-
-    let value =
-      startRef.current[landscape ? 'y' : 'x'] +
-      movement[landscape ? 1 : 0] * 1.2;
-
-    /**
-     * @type {HTMLDivElement}
-     */
-    const node = ref.current;
-
-    const max =
-      direction === 'rtl' ? node.scrollWidth - node.parentNode.offsetWidth : 0;
-    const min = landscape
-      ? -node.scrollHeight + node.parentNode.offsetHeight
-      : direction === 'rtl'
-      ? 0
-      : -node.scrollWidth + node.parentNode.offsetWidth;
-
-    if (value > max) {
-      value = max;
-    }
-
-    if (value < min) {
-      value = min;
-    }
-
-    await set({
-      [landscape ? 'y' : 'x']: value,
-    });
-  });
-
-  useEffect(() => {
-    set({ [landscape ? 'x' : 'y']: 0, immediate: true });
-  }, [landscape, set]);
-
-  useEffect(() => {
-    set({ x: 0, immediate: true });
-  }, [direction, set]);
-
-  useEffect(() => {
-    /**
-     * @type {HTMLDivElement}
-     */
-    const node = ref.current;
-
-    const max =
-      direction === 'rtl' ? node.scrollWidth - node.parentNode.offsetWidth : 0;
-    const min = landscape
-      ? -node.scrollHeight + node.parentNode.offsetHeight
-      : direction === 'rtl'
-      ? 0
-      : -node.scrollWidth + node.parentNode.offsetWidth;
-
-    if (helperId && !lastHelperRef.current) {
-      if (landscape) {
-        set({
-          y: min,
-        });
-      } else {
-        set({
-          x: direction === 'rtl' ? max : min,
-        });
-      }
-    }
-
-    if (!helperId && lastHelperRef.current) {
-      if (landscape) {
-        if (y.get() < min) {
-          set({ y: min });
-        }
-      } else {
-        if (direction === 'ltr' && x.get() < min) {
-          set({ x: min });
-        }
-
-        if (direction === 'rtl' && x.get() > max) {
-          set({ x: max });
-        }
-      }
-    }
-
-    lastHelperRef.current = helperId;
-  }, [direction, helperId, landscape, set, x, y]);
-
   return (
-    <div
-      className={clsx(classes.players, className)}
-      touch-action="none"
-      {...bind()}
-    >
-      <animated.div ref={ref} className={classes.container} style={{ x, y }}>
+    <div ref={ref} className={clsx(classes.players, className)}>
+      <div className={classes.flex} />
+      <motion.div
+        ref={containerRef}
+        animate={animate}
+        className={classes.container}
+        drag={landscape ? 'y' : 'x'}
+        dragTransition={{
+          modifyTarget,
+          timeConstant: 300,
+        }}
+        onDrag={onDrag}
+        style={{ x, y }}
+      >
         <div className={classes.itemContainer}>
           <Paper className={classes.paper}>
             <Player playerId={playerId} />
@@ -233,7 +271,8 @@ const CombatPlayerSlider = ({ className, helperId, playerId }) => {
             </Paper>
           </div>
         )}
-      </animated.div>
+      </motion.div>
+      <div className={classes.flex} />
     </div>
   );
 };
