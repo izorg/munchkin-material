@@ -1,7 +1,7 @@
 import { IconButton } from '@material-ui/core';
+import { motion } from 'framer-motion';
 import PropTypes from 'prop-types';
 import React, { useCallback, useEffect, useRef } from 'react';
-import { useDrag } from 'react-use-gesture';
 
 const displayName = 'CounterButton';
 
@@ -24,41 +24,27 @@ const CounterButton = ({ disabled, onClick, ...rest }) => {
   }, []);
 
   useEffect(() => () => clearPress(), [clearPress]);
+
   useEffect(() => {
     if (disabled) {
       clearPress();
     }
   }, [clearPress, disabled]);
 
-  const bind = useDrag(
-    (state) => {
-      const { distance, event, first, last, tap } = state;
+  const onTapStart = () => {
+    timeoutRef.current = setTimeout(() => {
+      onClick();
+      intervalRef.current = setInterval(() => onClick(), 250);
+    }, 500);
+  };
 
-      if (first) {
-        event.preventDefault();
+  const onTap = () => {
+    if (!intervalRef.current && !disabled) {
+      onClick();
+    }
 
-        timeoutRef.current = setTimeout(() => {
-          onClick();
-          intervalRef.current = setInterval(() => onClick(), 250);
-        }, 500);
-      }
-
-      if (tap) {
-        if (!intervalRef.current && !disabled) {
-          onClick();
-        }
-      }
-
-      if (last || (distance >= 3 && !intervalRef.current)) {
-        clearPress();
-      }
-    },
-    {
-      eventOptions: {
-        passive: false,
-      },
-    },
-  );
+    clearPress();
+  };
 
   const onKeyDown = ({ key }) => {
     if (key === ' ' || key === 'Enter') {
@@ -68,10 +54,14 @@ const CounterButton = ({ disabled, onClick, ...rest }) => {
 
   return (
     <IconButton
+      component={motion.button}
       disabled={disabled}
       {...rest}
       onKeyDown={onKeyDown}
-      {...bind()}
+      onPanStart={clearPress}
+      onTap={onTap}
+      onTapCancel={clearPress}
+      onTapStart={onTapStart}
     />
   );
 };
