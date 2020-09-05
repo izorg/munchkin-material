@@ -6,12 +6,12 @@ import {
   makeStyles,
   useForkRef,
 } from '@material-ui/core';
+import { motion } from 'framer-motion';
 import { DragHorizontalVariant as DragIcon } from 'mdi-material-ui';
 import PropTypes from 'prop-types';
 import React, { forwardRef, useCallback, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { useDrag } from 'react-use-gesture';
 
 import PlayerAvatar from '../../../../components/PlayerAvatar';
 import PlayerListItemText from '../../../../components/PlayerListItemText';
@@ -21,17 +21,12 @@ import {
   useGoBack,
   useLocationQuery,
 } from '../../../../utils/location';
-import { ios } from '../../../../utils/platforms';
 import { EDIT, MULTI } from '../../modes';
 
 const displayName = 'HomePlayerListItem';
 
 const useStyles = makeStyles(
   () => ({
-    root: {
-      touchAction: 'none',
-    },
-
     gutters: {
       '@supports (padding: max(0px))': {
         paddingLeft: `max(16px, env(safe-area-inset-left))`,
@@ -63,8 +58,17 @@ const HomePlayerListItem = forwardRef(
     const classes = useStyles();
 
     const itemRef = useRef(null);
-    const avatarRef = useRef(null);
-    const reorderRef = useRef(null);
+
+    /**
+     * @type {React.MutableRefObject<HTMLDivElement|undefined>}
+     */
+    const avatarRef = useRef();
+
+    /**
+     * @type {React.MutableRefObject<HTMLButtonElement|undefined>}
+     */
+    const reorderRef = useRef();
+
     const pressTimeoutRef = useRef(0);
 
     const handleRef = useForkRef(itemRef, ref);
@@ -138,61 +142,36 @@ const HomePlayerListItem = forwardRef(
       }
     }, []);
 
-    const bind = useDrag(
-      (state) => {
-        const { distance, elapsedTime, event, first, tap } = state;
+    const startTapTimeRef = useRef(new Date());
 
-        const { target } = event;
+    const onTapStart = (event) => {
+      startTapTimeRef.current = new Date();
 
-        if (first) {
-          pressTimeoutRef.current = setTimeout(() => {
-            pressTimeoutRef.current = 0;
+      pressTimeoutRef.current = setTimeout(() => {
+        pressTimeoutRef.current = 0;
 
-            const avatarNode = avatarRef.current;
+        const avatarNode = avatarRef.current;
 
-            if (
-              !(editMode || multiMode) &&
-              (!avatarNode || !avatarNode.contains(target))
-            ) {
-              if (navigator.vibrate) {
-                navigator.vibrate(20);
-              }
-
-              onMultiSelectActivate();
-            }
-          }, 500);
-        }
-
-        if (!first && distance >= 3) {
-          clearPress();
-        }
-
-        /*
-         * Not possible to use preventDefault to prevent mouse event emulation
-         * on touch devices. On cordova pressing hardware back button exits app
-         */
-        if (tap) {
-          // detect emulated mouse event on touch devices (<= 10 for Android 4.4)
-          if (elapsedTime <= 10) {
-            return;
+        if (
+          !(editMode || multiMode) &&
+          (!avatarNode || !avatarNode.contains(event.target))
+        ) {
+          if (navigator.vibrate) {
+            navigator.vibrate(20);
           }
 
-          if (elapsedTime < 500) {
-            clearPress();
-
-            onClick(event);
-          } else if (ios) {
-            // Fix hold action on old Safari (<= 12) versions
-            event.preventDefault();
-          }
+          onMultiSelectActivate();
         }
-      },
-      {
-        eventOptions: {
-          passive: false,
-        },
-      },
-    );
+      }, 500);
+    };
+
+    const onTap = (event) => {
+      if (new Date() - startTapTimeRef.current < 500) {
+        onClick(event);
+      }
+
+      clearPress();
+    };
 
     const onKeyDown = (event) => {
       if (event.key === 'Enter') {
@@ -205,16 +184,17 @@ const HomePlayerListItem = forwardRef(
         ref={handleRef}
         button
         classes={{
-          root: classes.root,
           gutters: classes.gutters,
           secondaryAction: classes.secondaryAction,
         }}
-        component={editMode ? 'div' : 'li'}
+        component={editMode ? motion.div : motion.li}
         data-screenshots="player-list-item"
-        touch-action="none"
         {...rest}
         onKeyDown={onKeyDown}
-        {...bind()}
+        onPanStart={clearPress}
+        onTap={onTap}
+        onTapCancel={clearPress}
+        onTapStart={onTapStart}
       >
         <ListItemAvatar>
           <PlayerAvatar
