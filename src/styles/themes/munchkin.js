@@ -11,10 +11,12 @@ export const messages = defineMessages({
 });
 
 export const theme = {
-  overrides: {
+  components: {
     MuiAvatar: {
-      colorDefault: {
-        backgroundColor: brown[500],
+      styleOverrides: {
+        colorDefault: {
+          backgroundColor: brown[500],
+        },
       },
     },
   },

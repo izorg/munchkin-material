@@ -12,29 +12,35 @@ export const messages = defineMessages({
 });
 
 export const theme = {
-  overrides: {
+  components: {
     MuiAppBar: {
-      colorPrimary: {
-        backgroundColor: grey[200],
-        color: common.black,
+      styleOverrides: {
+        colorPrimary: {
+          backgroundColor: grey[200],
+          color: common.black,
+        },
       },
     },
 
     MuiAvatar: {
-      colorDefault: {
-        backgroundColor: grey[500],
+      styleOverrides: {
+        colorDefault: {
+          backgroundColor: grey[500],
+        },
       },
     },
 
     MuiButton: {
-      containedPrimary: {
-        color: common.black,
-        backgroundColor: grey[200],
-        '&:hover': {
-          backgroundColor: grey[400],
-          // Reset on touch devices, it doesn't add specificity
-          '@media (hover: none)': {
-            backgroundColor: grey[200],
+      styleOverrides: {
+        containedPrimary: {
+          color: common.black,
+          backgroundColor: grey[200],
+          '&:hover': {
+            backgroundColor: grey[400],
+            // Reset on touch devices, it doesn't add specificity
+            '@media (hover: none)': {
+              backgroundColor: grey[200],
+            },
           },
         },
       },

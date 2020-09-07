@@ -19,25 +19,27 @@ const MenuSidebar = () => {
     });
 
     return deepmerge(theme, {
-      overrides: {
+      components: {
         MenuListItem: {
-          gutters: collapsed
-            ? {
-                borderRadius: theme.shape.borderRadius,
-                paddingLeft: theme.spacing(2),
-                paddingRight: theme.spacing(2),
-                transition,
-              }
-            : {
-                paddingLeft: theme.spacing(2),
-                paddingRight: theme.spacing(2),
-                transition,
+          styleOverrides: {
+            gutters: collapsed
+              ? {
+                  borderRadius: theme.shape.borderRadius,
+                  paddingLeft: theme.spacing(2),
+                  paddingRight: theme.spacing(2),
+                  transition,
+                }
+              : {
+                  paddingLeft: theme.spacing(2),
+                  paddingRight: theme.spacing(2),
+                  transition,
 
-                [theme.breakpoints.up('sm')]: {
-                  paddingLeft: theme.spacing(3),
-                  paddingRight: theme.spacing(3),
+                  [theme.breakpoints.up('sm')]: {
+                    paddingLeft: theme.spacing(3),
+                    paddingRight: theme.spacing(3),
+                  },
                 },
-              },
+          },
         },
       },
     });

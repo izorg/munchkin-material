@@ -10,6 +10,49 @@ export default ({ direction, type }) => {
   const palette = createPalette({ type });
 
   let theme = {
+    components: {
+      MuiDialog: {
+        styleOverrides: {
+          paperScrollPaper: {
+            maxHeight: 'calc(100% - 32px)',
+          },
+        },
+      },
+
+      MuiSnackbar: {
+        styleOverrides: {
+          root: {
+            '@supports (padding: max(0px))': {
+              left: 'max(8px, env(safe-area-inset-right))',
+              right: 'max(8px, env(safe-area-inset-right))',
+            },
+          },
+
+          anchorOriginBottomLeft: {
+            '@supports (padding: max(0px))': {
+              [breakpoints.up('sm')]: {
+                left: 'max(24px, env(safe-area-inset-right))',
+                right: 'max(24px, env(safe-area-inset-right))',
+              },
+            },
+          },
+        },
+      },
+
+      MuiSpeedDialAction: {
+        styleOverrides: {
+          fab: {
+            color: undefined,
+            backgroundColor: undefined,
+
+            '&:hover': {
+              backgroundColor: undefined,
+            },
+          },
+        },
+      },
+    },
+
     direction,
 
     mixins: {
@@ -18,43 +61,6 @@ export default ({ direction, type }) => {
 
         [breakpoints.up('md')]: {
           minHeight: 64,
-        },
-      },
-    },
-
-    overrides: {
-      MuiDialog: {
-        paperScrollPaper: {
-          maxHeight: 'calc(100% - 32px)',
-        },
-      },
-
-      MuiSnackbar: {
-        root: {
-          '@supports (padding: max(0px))': {
-            left: 'max(8px, env(safe-area-inset-right))',
-            right: 'max(8px, env(safe-area-inset-right))',
-          },
-        },
-
-        anchorOriginBottomLeft: {
-          '@supports (padding: max(0px))': {
-            [breakpoints.up('sm')]: {
-              left: 'max(24px, env(safe-area-inset-right))',
-              right: 'max(24px, env(safe-area-inset-right))',
-            },
-          },
-        },
-      },
-
-      MuiSpeedDialAction: {
-        fab: {
-          color: undefined,
-          backgroundColor: undefined,
-
-          '&:hover': {
-            backgroundColor: undefined,
-          },
         },
       },
     },
@@ -72,10 +78,12 @@ export default ({ direction, type }) => {
 
   if (type === 'light') {
     theme = deepmerge(theme, {
-      overrides: {
+      components: {
         MuiIconButton: {
-          root: {
-            color: palette.text.primary,
+          styleOverrides: {
+            root: {
+              color: palette.text.primary,
+            },
           },
         },
       },
@@ -84,16 +92,18 @@ export default ({ direction, type }) => {
 
   if (type === 'dark') {
     theme = deepmerge(theme, {
-      overrides: {
+      components: {
         MuiPaper: {
-          elevation1: {
-            backgroundColor: fade(palette.common.white, 0.05),
-            boxShadow: 'none',
-          },
+          styleOverrides: {
+            elevation1: {
+              backgroundColor: fade(palette.common.white, 0.05),
+              boxShadow: 'none',
+            },
 
-          elevation2: {
-            backgroundColor: fade(palette.common.white, 0.07),
-            boxShadow: 'none',
+            elevation2: {
+              backgroundColor: fade(palette.common.white, 0.07),
+              boxShadow: 'none',
+            },
           },
         },
       },

@@ -69,12 +69,14 @@ const MenuDrawer = () => {
   const drawerTheme = useMemo(
     () =>
       deepmerge(theme, {
-        overrides: {
+        components: {
           MenuListItem: {
-            gutters: {
-              '@supports (padding: max(0px))': {
-                paddingLeft: `max(16px, env(safe-area-inset-left))`,
-                paddingRight: `max(16px, env(safe-area-inset-right))`,
+            styleOverrides: {
+              gutters: {
+                '@supports (padding: max(0px))': {
+                  paddingLeft: `max(16px, env(safe-area-inset-left))`,
+                  paddingRight: `max(16px, env(safe-area-inset-right))`,
+                },
               },
             },
           },
