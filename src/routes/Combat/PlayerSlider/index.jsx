@@ -40,6 +40,7 @@ const useStyles = makeStyles(
 
     container: {
       display: 'flex',
+      flexShrink: 0,
       padding: theme.spacing(1),
 
       '@media (orientation: landscape)': {

@@ -40,6 +40,7 @@ const useStyles = makeStyles(
 
     container: {
       display: 'flex',
+      flexShrink: 0,
       padding: theme.spacing(1),
 
       '@media (orientation: landscape)': {
@@ -224,6 +225,7 @@ const CombatMonsterSlider = ({ className }) => {
     }
 
     if (monsters.length === monsterCount.current) {
+      animate.stop();
       x.set(0);
       y.set(0);
     }
