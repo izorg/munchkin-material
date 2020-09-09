@@ -1,17 +1,13 @@
 import * as Sentry from '@sentry/react';
 import PropTypes from 'prop-types';
 import React, { useEffect, useRef } from 'react';
-import { useStore } from 'react-redux';
 import { useLocation } from 'react-router-dom';
-
-import ErrorBoundary from './ErrorBoundary';
 
 const displayName = 'SentryHelper';
 
 const SentryHelper = ({ children }) => {
   const location = useLocation();
   const fromRef = useRef(`${location.pathname}${location.search}`);
-  const store = useStore();
 
   useEffect(() => {
     if (!window.cordova) {
@@ -34,7 +30,9 @@ const SentryHelper = ({ children }) => {
     fromRef.current = to;
   }, [location.pathname, location.search]);
 
-  return <ErrorBoundary store={store}>{children}</ErrorBoundary>;
+  return (
+    <Sentry.ErrorBoundary fallback={null}>{children}</Sentry.ErrorBoundary>
+  );
 };
 
 SentryHelper.propTypes = {
