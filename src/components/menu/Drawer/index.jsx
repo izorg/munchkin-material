@@ -88,6 +88,7 @@ const MenuDrawer = () => {
   return (
     <ThemeProvider theme={drawerTheme}>
       <SwipeableDrawer
+        data-screenshot="drawer-menu"
         disableSwipeToOpen={disableSwipeToOpen}
         onClose={onClose}
         onOpen={onOpen}
