@@ -4,6 +4,7 @@ import React, {
   useCallback,
   useContext,
   useEffect,
+  useRef,
 } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -25,8 +26,9 @@ const WakeLockProvider = ({ children }) => {
   const dispatch = useDispatch();
 
   const insomnia = window.plugins?.insomnia;
-  const wakeLockSupport = !!insomnia;
+  const wakeLockSupport = !!insomnia || 'wakeLock' in navigator;
   const wakeLock = useSelector((state) => state.settings.keepAwake);
+  const wakeLockRef = useRef(null);
 
   const setWakeLock = useCallback(
     /**
@@ -48,9 +50,26 @@ const WakeLockProvider = ({ children }) => {
     }
 
     if (wakeLock) {
-      insomnia.keepAwake();
+      if (insomnia) {
+        insomnia.keepAwake();
+      } else {
+        navigator.wakeLock
+          .request('screen')
+          .then((wakeLockSentinel) => {
+            wakeLockRef.current = wakeLockSentinel;
+          })
+          .catch(() => setKeepAwake(false));
+      }
     } else {
-      insomnia.allowSleepAgain();
+      if (insomnia) {
+        insomnia.allowSleepAgain();
+      } else {
+        if (wakeLockRef.current) {
+          wakeLockRef.current.release().then(() => {
+            wakeLockRef.current = null;
+          });
+        }
+      }
     }
   }, [insomnia, wakeLock, wakeLockSupport]);
 
@@ -64,7 +83,7 @@ const WakeLockProvider = ({ children }) => {
 };
 
 WakeLockProvider.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
 };
 
 WakeLockProvider.displayName = displayName;

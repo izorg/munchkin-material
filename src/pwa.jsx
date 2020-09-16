@@ -12,6 +12,7 @@ import AugmentedThemeProvider from './components/AugmentedThemeProvider';
 import LocaleProvider from './components/LocaleProvider';
 import ReduxProvider from './components/ReduxProvider';
 import SentryHelper from './components/SentryHelper';
+import WakeLockProvider from './components/WakeLockProvider';
 import WorkboxProvider from './components/WorkboxProvider';
 import sentry from './sentry';
 
@@ -37,11 +38,13 @@ render(
       <SentryHelper>
         <WorkboxProvider>
           <LocaleProvider>
-            <AugmentedStylesProvider>
-              <AugmentedThemeProvider>
-                <App />
-              </AugmentedThemeProvider>
-            </AugmentedStylesProvider>
+            <WakeLockProvider>
+              <AugmentedStylesProvider>
+                <AugmentedThemeProvider>
+                  <App />
+                </AugmentedThemeProvider>
+              </AugmentedStylesProvider>
+            </WakeLockProvider>
           </LocaleProvider>
         </WorkboxProvider>
       </SentryHelper>
