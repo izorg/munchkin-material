@@ -17,7 +17,7 @@ const useStyles = makeStyles(
         right: theme.spacing(3),
 
         '@supports (padding: max(0px))': {
-          right: `max(${theme.spacing(3)}px, env(safe-area-inset-right))`,
+          right: `max(${theme.spacing(3)}, env(safe-area-inset-right))`,
         },
       },
     },

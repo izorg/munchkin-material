@@ -9,7 +9,7 @@ const useStyles = makeStyles(
   (theme) => ({
     nobody: {
       alignItems: 'center',
-      color: theme.palette.text.hint,
+      color: theme.palette.text.secondary,
       display: 'flex',
       flex: 1,
       flexDirection: 'column',

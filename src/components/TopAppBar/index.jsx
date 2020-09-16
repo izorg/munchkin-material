@@ -18,8 +18,8 @@ const useStyles = makeStyles(
       paddingRight: theme.spacing(2),
 
       '@supports (padding: max(0px))': {
-        paddingLeft: `max(${theme.spacing(2)}px, env(safe-area-inset-left))`,
-        paddingRight: `max(${theme.spacing(2)}px, env(safe-area-inset-right))`,
+        paddingLeft: `max(${theme.spacing(2)}, env(safe-area-inset-left))`,
+        paddingRight: `max(${theme.spacing(2)}, env(safe-area-inset-right))`,
       },
 
       [theme.breakpoints.up('sm')]: {
@@ -27,10 +27,8 @@ const useStyles = makeStyles(
         paddingRight: theme.spacing(3),
 
         '@supports (padding: max(0px))': {
-          paddingLeft: `max(${theme.spacing(3)}px, env(safe-area-inset-left))`,
-          paddingRight: `max(${theme.spacing(
-            3,
-          )}px, env(safe-area-inset-right))`,
+          paddingLeft: `max(${theme.spacing(3)}, env(safe-area-inset-left))`,
+          paddingRight: `max(${theme.spacing(3)}, env(safe-area-inset-right))`,
         },
       },
     },
