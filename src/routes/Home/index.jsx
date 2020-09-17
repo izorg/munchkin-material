@@ -10,7 +10,6 @@ import MenuSidebar from '../../components/menu/Sidebar';
 import Nobody from '../../components/Nobody';
 import ScreenModal from '../../components/ScreenModal';
 import ThemeDialog from '../../components/theme/Dialog';
-import { menuCollapsedSelector } from '../../ducks/ui';
 
 import AppBar from './AppBar';
 import PlayerAddButton from './PlayerAddButton';
@@ -128,7 +127,7 @@ const Home = () => {
     );
   }
 
-  const menuCollapsed = useSelector(menuCollapsedSelector);
+  const menuCollapsed = useSelector((state) => state.ui.menuCollapsed);
 
   const playerMatch = useMatch({
     path: '/player/:id',

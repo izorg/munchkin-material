@@ -20,8 +20,6 @@ export const initialState = {
   selectedPlayerIds: [],
 };
 
-export const menuCollapsedSelector = (state) => state.ui.menuCollapsed;
-
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case TOGGLE_MENU:
