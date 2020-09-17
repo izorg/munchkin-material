@@ -83,43 +83,35 @@ const useStyles = makeStyles(
   { name: displayName },
 );
 
-const combatSelector = (state) => {
-  const {
-    helperBonus,
-    helperId,
-    monsters,
-    playerBonus,
-    playerId,
-  } = state.combat;
-
-  const player = state.players[playerId];
-  const helper = state.players[helperId];
-
-  const playerStrength = player.level + player.gear + playerBonus;
-  const helperStrength = helper ? helper.level + helper.gear + helperBonus : 0;
-
-  const combinedMonsterStrength = monsters
-    .map((id) => state.monsters[id])
-    .reduce((strength, monster) => strength + monster.level + monster.bonus, 0);
-
-  return {
-    combinedMonsterStrength,
-    combinedPlayerStrength: playerStrength + helperStrength,
-    helperId,
-    playerId,
-  };
-};
-
 const Combat = () => {
   const classes = useStyles();
   const { direction } = useTheme();
 
-  const {
-    combinedMonsterStrength,
-    combinedPlayerStrength,
-    helperId,
-    playerId,
-  } = useSelector(combatSelector);
+  const playerId = useSelector((state) => state.combat.playerId);
+  const helperId = useSelector((state) => state.combat.helperId);
+
+  const combinedMonsterStrength = useSelector((state) =>
+    state.combat.monsters
+      .map((id) => state.monsters[id])
+      .reduce(
+        (strength, monster) => strength + monster.level + monster.bonus,
+        0,
+      ),
+  );
+
+  const combinedPlayerStrength = useSelector((state) => {
+    const { helperBonus, helperId, playerBonus, playerId } = state.combat;
+
+    const player = state.players[playerId];
+    const helper = state.players[helperId];
+
+    const playerStrength = player.level + player.gear + playerBonus;
+    const helperStrength = helper
+      ? helper.level + helper.gear + helperBonus
+      : 0;
+
+    return playerStrength + helperStrength;
+  });
 
   return (
     <>
