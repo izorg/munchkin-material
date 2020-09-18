@@ -37,11 +37,13 @@ const HelperSelector = (props) => {
 
   const goBack = useGoBack();
 
-  const helpers = useSelector((state) =>
-    state.playerList
-      .filter((id) => id !== state.combat.playerId)
-      .map((id) => state.players[id]),
-  );
+  const helpers = useSelector((state) => {
+    const { combat, playerList, players } = state;
+
+    return playerList
+      .filter((id) => id !== combat.playerId)
+      .map((id) => players[id]);
+  });
 
   const query = useLocationQuery();
   const open = query.add === 'helper';

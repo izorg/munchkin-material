@@ -23,13 +23,14 @@ const messages = defineMessages({
 
 const onReset = () => (dispatch, getState) => {
   const {
+    combat,
+    playerList,
+    players,
     settings: { singleMode },
   } = getState();
 
   if (singleMode) {
-    const {
-      combat: { playerId: id },
-    } = getState();
+    const { playerId: id } = combat;
 
     dispatch(
       updatePlayer({
@@ -40,8 +41,6 @@ const onReset = () => (dispatch, getState) => {
     );
     dispatch(setCombatPlayerBonus(0));
   } else {
-    const { playerList, players } = getState();
-
     const undo = [];
 
     playerList.forEach((id) => {

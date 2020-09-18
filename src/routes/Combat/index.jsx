@@ -90,20 +90,25 @@ const Combat = () => {
   const playerId = useSelector((state) => state.combat.playerId);
   const helperId = useSelector((state) => state.combat.helperId);
 
-  const combinedMonsterStrength = useSelector((state) =>
-    state.combat.monsters
-      .map((id) => state.monsters[id])
+  const combinedMonsterStrength = useSelector((state) => {
+    const { combat, monsters } = state;
+
+    return combat.monsters
+      .map((id) => monsters[id])
       .reduce(
         (strength, monster) => strength + monster.level + monster.bonus,
         0,
-      ),
-  );
+      );
+  });
 
   const combinedPlayerStrength = useSelector((state) => {
-    const { helperBonus, helperId, playerBonus, playerId } = state.combat;
+    const {
+      combat: { helperBonus, helperId, playerBonus, playerId },
+      players,
+    } = state;
 
-    const player = state.players[playerId];
-    const helper = state.players[helperId];
+    const player = players[playerId];
+    const helper = players[helperId];
 
     const playerStrength = player.level + player.gear + playerBonus;
     const helperStrength = helper

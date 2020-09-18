@@ -12,7 +12,7 @@ const defaultLocale = getLocale();
 const LocaleProvider = ({ children }) => {
   const locale = useSelector((state) => state.settings.locale) || defaultLocale;
 
-  const [state, setState] = useState({
+  const [localeState, setLocaleState] = useState({
     error: undefined,
     loading: true,
     locale,
@@ -29,7 +29,7 @@ const LocaleProvider = ({ children }) => {
         messages = await loadMessages(locale);
       } catch (error) {
         if (active) {
-          setState({
+          setLocaleState({
             error,
             loading: false,
             locale,
@@ -41,7 +41,7 @@ const LocaleProvider = ({ children }) => {
       }
 
       if (active) {
-        setState({
+        setLocaleState({
           error: undefined,
           loading: false,
           locale,
@@ -56,20 +56,20 @@ const LocaleProvider = ({ children }) => {
   }, [locale]);
 
   useEffect(() => {
-    document.querySelector('html').lang = state.locale;
-    document.querySelector('body').dir = getDirection(state.locale);
-  }, [state]);
+    document.querySelector('html').lang = localeState.locale;
+    document.querySelector('body').dir = getDirection(localeState.locale);
+  }, [localeState]);
 
-  if (state.error) {
-    throw state.error;
+  if (localeState.error) {
+    throw localeState.error;
   }
 
-  if (state.loading) {
+  if (localeState.loading) {
     return null;
   }
 
   return (
-    <IntlProvider locale={state.locale} messages={state.messages}>
+    <IntlProvider locale={localeState.locale} messages={localeState.messages}>
       {children}
     </IntlProvider>
   );
