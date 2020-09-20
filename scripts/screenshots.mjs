@@ -33,11 +33,6 @@ const browserDevices = {
       },
     },
   }),
-  // webkit: Object.entries({
-  //   iPhone6Plus: devices['iPhone 6 Plus'],
-  //   iPhone11ProMax: devices['iPhone 11 Pro Max'],
-  //   iPadPro11: devices['iPad Pro 11'],
-  // }),
 };
 
 const dir = 'screenshots';
