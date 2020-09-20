@@ -87,11 +87,11 @@ const Combat = () => {
   const classes = useStyles();
   const { direction } = useTheme();
 
-  const playerId = useSelector((state) => state.combat.playerId);
-  const helperId = useSelector((state) => state.combat.helperId);
+  const playerId = useSelector((state) => state.present.combat.playerId);
+  const helperId = useSelector((state) => state.present.combat.helperId);
 
   const combinedMonsterStrength = useSelector((state) => {
-    const { combat, monsters } = state;
+    const { combat, monsters } = state.present;
 
     return combat.monsters
       .map((id) => monsters[id])
@@ -105,7 +105,7 @@ const Combat = () => {
     const {
       combat: { helperBonus, helperId, playerBonus, playerId },
       players,
-    } = state;
+    } = state.present;
 
     const player = players[playerId];
     const helper = players[helperId];

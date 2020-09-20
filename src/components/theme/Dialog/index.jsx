@@ -48,11 +48,11 @@ const ThemeDialog = () => {
   const { buyFullVersion, fullVersion } = useFullVersion();
   const goBack = useGoBack();
 
-  const themeId = useSelector((state) => state.theme.id);
+  const themeId = useSelector((state) => state.present.theme.id);
 
   const query = useLocationQuery();
   const queryTheme = query.theme;
-  const stateTheme = useSelector((state) => state.theme);
+  const stateTheme = useSelector((state) => state.present.theme);
   const open = queryTheme !== undefined;
   const theme = useMemo(() => ({ ...stateTheme, ...queryTheme }), [
     queryTheme,

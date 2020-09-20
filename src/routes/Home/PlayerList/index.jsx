@@ -35,7 +35,7 @@ const HomePlayerList = (props) => {
   const theme = useTheme();
 
   const query = useLocationQuery();
-  const playerList = useSelector((state) => state.playerList);
+  const playerList = useSelector((state) => state.present.playerList);
 
   const handleDragEnd = useCallback(
     ({ destination, source }) => {

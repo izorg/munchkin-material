@@ -24,7 +24,7 @@ const AugmentedThemeProvider = ({ children }) => {
 
   const query = useLocationQuery();
   const queryTheme = query.theme || null;
-  const currentTheme = useSelector((state) => state.theme);
+  const currentTheme = useSelector((state) => state.present.theme);
 
   const dark = useMediaQuery('(prefers-color-scheme: dark)', {
     noSsr: true,

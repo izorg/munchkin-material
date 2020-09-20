@@ -3,14 +3,11 @@ import { BackupRestore } from 'mdi-material-ui';
 import React from 'react';
 import { defineMessages, useIntl } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
+import { ActionCreators } from 'redux-undo';
 
 import TopIconButton from '../../../../components/TopIconButton';
-import {
-  setCombatHelperBonus,
-  setCombatPlayerBonus,
-} from '../../../../ducks/combat';
-import { updatePlayer } from '../../../../ducks/players';
-import { setUndo, UNDO_RESET_PLAYERS } from '../../../../ducks/undo';
+import { useUndoMessage } from '../../../../components/UndoProvider';
+import { resetPlayers } from '../../../../ducks/players';
 
 const displayName = 'ResetButton';
 
@@ -19,59 +16,12 @@ const messages = defineMessages({
     id: 'player.list.reset',
     defaultMessage: 'Reset',
   },
+
+  undo: {
+    id: 'undo.resetPlayers',
+    defaultMessage: 'Players have been reset',
+  },
 });
-
-const onReset = () => (dispatch, getState) => {
-  const {
-    combat,
-    playerList,
-    players,
-    settings: { singleMode },
-  } = getState();
-
-  if (singleMode) {
-    const { playerId: id } = combat;
-
-    dispatch(
-      updatePlayer({
-        gear: 0,
-        id,
-        level: 1,
-      }),
-    );
-    dispatch(setCombatPlayerBonus(0));
-  } else {
-    const undo = [];
-
-    playerList.forEach((id) => {
-      const player = players[id];
-
-      if (player.level !== 1 || player.gear !== 0) {
-        undo.push(player);
-
-        dispatch(
-          updatePlayer({
-            gear: 0,
-            id,
-            level: 1,
-          }),
-        );
-      }
-    });
-
-    dispatch(setCombatPlayerBonus(0));
-    dispatch(setCombatHelperBonus(0));
-
-    if (undo.length) {
-      dispatch(
-        setUndo({
-          type: UNDO_RESET_PLAYERS,
-          players: undo,
-        }),
-      );
-    }
-  }
-};
 
 const ResetButton = (props) => {
   const dispatch = useDispatch();
@@ -83,7 +33,7 @@ const ResetButton = (props) => {
       playerList,
       players,
       settings: { singleMode },
-    } = state;
+    } = state.present;
 
     if (singleMode) {
       const player = players[playerId];
@@ -98,11 +48,32 @@ const ResetButton = (props) => {
     });
   });
 
+  const [, setUndoMessage] = useUndoMessage();
+
+  const onClick = () =>
+    dispatch((_, getState) => {
+      const {
+        combat,
+        playerList,
+        settings: { singleMode },
+      } = getState().present;
+
+      if (singleMode) {
+        const { playerId: id } = combat;
+
+        dispatch(resetPlayers([id]));
+        dispatch(ActionCreators.clearHistory());
+      } else {
+        setUndoMessage(intl.formatMessage(messages.undo));
+        dispatch(resetPlayers(playerList));
+      }
+    });
+
   const button = (
     <TopIconButton
       color="inherit"
       disabled={disabled}
-      onClick={() => dispatch(onReset())}
+      onClick={onClick}
       {...props}
     >
       <BackupRestore />

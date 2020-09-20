@@ -55,7 +55,7 @@ const DiceDialog = (props) => {
 
   const [attempt, setAttempt] = useState(0);
 
-  const dice = useSelector((state) => state.dice);
+  const dice = useSelector((state) => state.present.dice);
   const open = useLocationQuery().dice !== undefined;
   const goBack = useGoBack();
 

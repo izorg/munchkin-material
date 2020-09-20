@@ -6,8 +6,8 @@ import { defineMessages, useIntl } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
 
 import TopIconButton from '../../../../components/TopIconButton';
+import { useUndoMessage } from '../../../../components/UndoProvider';
 import { killPlayer } from '../../../../ducks/players';
-import { setUndo, UNDO_KILL_PLAYER } from '../../../../ducks/undo';
 
 const displayName = 'KillPlayerButton';
 
@@ -16,33 +16,36 @@ const messages = defineMessages({
     id: 'kill',
     defaultMessage: 'Kill',
   },
+
+  undo: {
+    id: 'undo.killPlayer',
+    defaultMessage: '{name} {sex,select,female{has died} male{has died}}',
+  },
 });
-
-const onKill = (playerId) => (dispatch, getState) => {
-  const player = getState().players[playerId];
-
-  dispatch(killPlayer(playerId));
-  dispatch(
-    setUndo({
-      type: UNDO_KILL_PLAYER,
-      player,
-    }),
-  );
-};
 
 const KillPlayerButton = ({ playerId, ...props }) => {
   const dispatch = useDispatch();
   const intl = useIntl();
 
-  const players = useSelector((state) => state.players);
+  const [, setMessage] = useUndoMessage();
+
+  const players = useSelector((state) => state.present.players);
   const disabled = players[playerId].gear === 0;
 
+  const onClick = () => {
+    const player = players[playerId];
+
+    setMessage(
+      intl.formatMessage(messages.undo, {
+        name: player.name,
+        sex: player.sex,
+      }),
+    );
+    dispatch(killPlayer(playerId));
+  };
+
   const button = (
-    <TopIconButton
-      disabled={disabled}
-      onClick={() => dispatch(onKill(playerId))}
-      {...props}
-    >
+    <TopIconButton disabled={disabled} onClick={onClick} {...props}>
       <Skull />
     </TopIconButton>
   );

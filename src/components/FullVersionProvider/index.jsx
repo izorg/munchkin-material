@@ -27,7 +27,9 @@ const FullVersionProvider = ({ children }) => {
 
   const dispatch = useDispatch();
 
-  const fullVersion = useSelector((state) => state.settings.fullVersion);
+  const fullVersion = useSelector(
+    (state) => state.present.settings.fullVersion,
+  );
 
   const buyFullVersion = useCallback(
     () =>

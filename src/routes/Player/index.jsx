@@ -11,7 +11,6 @@ import AppBar from './AppBar';
 import CombatButton from './CombatButton';
 import PlayerList from './List';
 import Slider from './Slider';
-import Undo from './Undo';
 
 const Combat = lazy(() =>
   import(
@@ -82,7 +81,7 @@ const useStyles = makeStyles(
 const Player = ({ playerId }) => {
   const classes = useStyles();
   const playerRef = useRef();
-  const playerList = useSelector((state) => state.playerList);
+  const playerList = useSelector((state) => state.present.playerList);
 
   const combatMatch = useMatch({
     path: '/player/:id/combat',
@@ -118,7 +117,6 @@ const Player = ({ playerId }) => {
         </div>
       </div>
       <CombatButton playerId={playerRef.current} />
-      <Undo />
 
       <ScreenModal open={Boolean(combatMatch)}>
         <Suspense fallback={null}>

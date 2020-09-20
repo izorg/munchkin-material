@@ -6,7 +6,6 @@ import players from '../ducks/players';
 import settings from '../ducks/settings';
 import theme from '../ducks/theme';
 import ui from '../ducks/ui';
-import undo from '../ducks/undo';
 
 export default {
   combat,
@@ -17,5 +16,4 @@ export default {
   settings,
   theme,
   ui,
-  undo,
 };

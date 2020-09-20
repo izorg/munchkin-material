@@ -43,8 +43,8 @@ const LevelLimitDialog = (props) => {
   const dispatch = useDispatch();
   const intl = useIntl();
 
-  const levelLimit = useSelector((state) => state.settings.levelLimit);
-  const epic = useSelector((state) => state.settings.epic);
+  const levelLimit = useSelector((state) => state.present.settings.levelLimit);
+  const epic = useSelector((state) => state.present.settings.epic);
   const defaultValue = levelLimit
     ? epic
       ? EPIC_MUNCHKIN_LIMIT

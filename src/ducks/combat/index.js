@@ -1,6 +1,6 @@
 import createMonster from '../../utils/createMonster';
 import { ADD_MONSTER, REMOVE_MONSTER } from '../monsters/actionTypes';
-import { REMOVE_PLAYER } from '../players/actionTypes';
+import { REMOVE_PLAYER, RESET_PLAYERS } from '../players/actionTypes';
 
 import {
   FINISH_COMBAT,
@@ -78,6 +78,26 @@ const reducer = (state = initialState, action) => {
       }
 
       return state;
+
+    case RESET_PLAYERS: {
+      let reset = state;
+
+      if (action.playerList.includes(state.playerId)) {
+        reset = {
+          ...reset,
+          playerBonus: 0,
+        };
+      }
+
+      if (action.playerList.includes(state.helperId)) {
+        reset = {
+          ...reset,
+          helperBonus: 0,
+        };
+      }
+
+      return reset;
+    }
 
     case SET_COMBAT_PLAYER_BONUS:
       return {

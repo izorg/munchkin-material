@@ -35,8 +35,8 @@ const LevelLimitItem = ({ className, ...rest }) => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const epic = useSelector((state) => state.settings.epic);
-  const levelLimit = useSelector((state) => state.settings.levelLimit);
+  const epic = useSelector((state) => state.present.settings.epic);
+  const levelLimit = useSelector((state) => state.present.settings.levelLimit);
   const open = useMenuOpen();
 
   const onClick = () => {

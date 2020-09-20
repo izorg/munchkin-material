@@ -2,6 +2,8 @@ import React, { lazy, Suspense } from 'react';
 
 import Home from '../../routes/Home';
 import ScreenModal from '../ScreenModal';
+import UndoProvider from '../UndoProvider';
+import UndoSnackbar from '../UndoSnackbar';
 
 const DiceDialog = lazy(() =>
   import(
@@ -22,7 +24,7 @@ const PlayerDialog = lazy(() =>
 const displayName = 'App';
 
 const App = () => (
-  <>
+  <UndoProvider>
     <ScreenModal open TransitionProps={{ appear: false }}>
       <Home />
     </ScreenModal>
@@ -34,7 +36,9 @@ const App = () => (
     <Suspense fallback={null}>
       <PlayerDialog />
     </Suspense>
-  </>
+
+    <UndoSnackbar />
+  </UndoProvider>
 );
 
 App.displayName = displayName;

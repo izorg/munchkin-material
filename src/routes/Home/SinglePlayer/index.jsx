@@ -99,12 +99,12 @@ const SinglePlayer = () => {
   const intl = useIntl();
 
   const player = useSelector(
-    (state) => state.players[state.settings.singleModePlayerId],
+    (state) => state.present.players[state.present.settings.singleModePlayerId],
   );
-  const bonus = useSelector((state) => state.combat.playerBonus);
+  const bonus = useSelector((state) => state.present.combat.playerBonus);
 
-  const levelLimit = useSelector((state) => state.settings.levelLimit);
-  const epic = useSelector((state) => state.settings.epic);
+  const levelLimit = useSelector((state) => state.present.settings.levelLimit);
+  const epic = useSelector((state) => state.present.settings.epic);
 
   const levelDecrementDisabled = isLevelDecrementDisabled(
     player.level,
@@ -119,7 +119,9 @@ const SinglePlayer = () => {
   const onBonusDecrement = useCallback(
     () =>
       dispatch((_, getState) =>
-        dispatch(setCombatPlayerBonus(getState().combat.playerBonus - 1)),
+        dispatch(
+          setCombatPlayerBonus(getState().present.combat.playerBonus - 1),
+        ),
       ),
     [dispatch],
   );
@@ -127,7 +129,9 @@ const SinglePlayer = () => {
   const onBonusIncrement = useCallback(
     () =>
       dispatch((_, getState) =>
-        dispatch(setCombatPlayerBonus(getState().combat.playerBonus + 1)),
+        dispatch(
+          setCombatPlayerBonus(getState().present.combat.playerBonus + 1),
+        ),
       ),
     [dispatch],
   );

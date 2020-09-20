@@ -15,7 +15,7 @@ const setLocale = (locale) => {
 const setTestData = () => {
   const { dispatch } = window.reduxStore;
 
-  const { playerList, settings } = window.reduxStore.getState();
+  const { playerList, settings } = window.reduxStore.getState().present;
 
   playerList.forEach((id) => {
     dispatch(removePlayerFromList(id));

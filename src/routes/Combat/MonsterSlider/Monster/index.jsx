@@ -46,7 +46,7 @@ const CombatMonster = ({ monsterId, title }) => {
   const dispatch = useDispatch();
   const intl = useIntl();
 
-  const monsters = useSelector((state) => state.monsters);
+  const monsters = useSelector((state) => state.present.monsters);
 
   const { bonus, id, level } = monsters[monsterId];
 

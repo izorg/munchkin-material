@@ -79,11 +79,11 @@ const HomePlayerListItem = forwardRef(
     const multiMode = query[MULTI] !== undefined;
 
     const selectedPlayerIds = useSelector(
-      (state) => state.ui.selectedPlayerIds,
+      (state) => state.present.ui.selectedPlayerIds,
     );
     const selected = multiMode && selectedPlayerIds.includes(playerId);
 
-    const players = useSelector((state) => state.players);
+    const players = useSelector((state) => state.present.players);
     const player = players[playerId];
 
     const onMultiSelectActivate = () => {

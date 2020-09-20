@@ -15,7 +15,6 @@ import AppBar from './AppBar';
 import PlayerAddButton from './PlayerAddButton';
 import PlayerList from './PlayerList';
 import SinglePlayer from './SinglePlayer';
-import Undo from './Undo';
 
 const Player = lazy(() =>
   import(
@@ -95,7 +94,7 @@ const Home = () => {
 
   const classes = useStyles();
 
-  const playerList = useSelector((state) => state.playerList);
+  const playerList = useSelector((state) => state.present.playerList);
   const playerCount = playerList.length;
   const empty = playerCount === 0;
 
@@ -113,7 +112,7 @@ const Home = () => {
 
   let content;
 
-  const singleMode = useSelector((state) => state.settings.singleMode);
+  const singleMode = useSelector((state) => state.present.settings.singleMode);
 
   if (singleMode) {
     content = <SinglePlayer />;
@@ -127,7 +126,7 @@ const Home = () => {
     );
   }
 
-  const menuCollapsed = useSelector((state) => state.ui.menuCollapsed);
+  const menuCollapsed = useSelector((state) => state.present.ui.menuCollapsed);
 
   const playerMatch = useMatch({
     path: '/player/:id',
@@ -160,8 +159,6 @@ const Home = () => {
       <MenuDrawer />
       <LevelLimitDialog />
       <ThemeDialog />
-
-      <Undo />
 
       <ScreenModal open={Boolean(playerMatch)}>
         <Suspense fallback={null}>

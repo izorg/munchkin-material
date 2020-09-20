@@ -32,7 +32,7 @@ const ThemeItem = ({ className, ...rest }) => {
   const navigate = useNavigate();
   const theme = useTheme();
 
-  const themeKey = useSelector((state) => state.theme.id);
+  const themeKey = useSelector((state) => state.present.theme.id);
 
   const open = useMenuOpen();
 

@@ -37,7 +37,7 @@ export const setLocale = (locale) => ({
 
 export const setSingleMode = (singleMode) => async (dispatch, getState) => {
   if (singleMode) {
-    let { singleModePlayerId } = getState().settings;
+    let { singleModePlayerId } = getState().present.settings;
 
     if (!singleModePlayerId) {
       const player = createPlayer();

@@ -101,7 +101,7 @@ const PlayerDialog = () => {
   const goBack = useGoBack();
   const query = useLocationQuery();
   const open = query.player !== undefined;
-  const players = useSelector((state) => state.players);
+  const players = useSelector((state) => state.present.players);
 
   const previousPlayerRef = useRef(players[query.player]);
 

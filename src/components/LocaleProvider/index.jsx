@@ -10,7 +10,8 @@ const displayName = 'LocaleProvider';
 const defaultLocale = getLocale();
 
 const LocaleProvider = ({ children }) => {
-  const locale = useSelector((state) => state.settings.locale) || defaultLocale;
+  const locale =
+    useSelector((state) => state.present.settings.locale) || defaultLocale;
 
   const [localeState, setLocaleState] = useState({
     error: undefined,

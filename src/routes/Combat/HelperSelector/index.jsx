@@ -38,7 +38,7 @@ const HelperSelector = (props) => {
   const goBack = useGoBack();
 
   const helpers = useSelector((state) => {
-    const { combat, playerList, players } = state;
+    const { combat, playerList, players } = state.present;
 
     return playerList
       .filter((id) => id !== combat.playerId)

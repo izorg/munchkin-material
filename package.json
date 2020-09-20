@@ -43,6 +43,7 @@
     "redux-devtools-extension": "2.13.8",
     "redux-logger": "3.0.6",
     "redux-thunk": "2.3.0",
+    "redux-undo": "1.0.1",
     "reselect": "4.0.0",
     "uuid": "8.3.0",
     "workbox-window": "5.1.4"

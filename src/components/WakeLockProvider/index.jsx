@@ -27,7 +27,7 @@ const WakeLockProvider = ({ children }) => {
 
   const insomnia = window.plugins?.insomnia;
   const wakeLockSupport = !!insomnia || 'wakeLock' in navigator;
-  const wakeLock = useSelector((state) => state.settings.keepAwake);
+  const wakeLock = useSelector((state) => state.present.settings.keepAwake);
   const wakeLockRef = useRef(null);
 
   const setWakeLock = useCallback(

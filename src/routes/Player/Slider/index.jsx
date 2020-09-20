@@ -67,7 +67,7 @@ const PlayerSlider = ({ playerId }) => {
 
   const rtl = direction === 'rtl';
 
-  const playerList = useSelector((state) => state.playerList);
+  const playerList = useSelector((state) => state.present.playerList);
   const playerCount = playerList.length;
 
   const currentIndex = playerList.indexOf(playerId);

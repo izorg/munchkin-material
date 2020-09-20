@@ -45,7 +45,9 @@ const HomeAppBar = ({ empty, singleMode }) => {
   const editMode = query[EDIT] !== undefined;
   const multiMode = query[MULTI] !== undefined;
 
-  const selectedPlayerIds = useSelector((state) => state.ui.selectedPlayerIds);
+  const selectedPlayerIds = useSelector(
+    (state) => state.present.ui.selectedPlayerIds,
+  );
 
   const onMultiSelectDeactivate = () => goBack();
 

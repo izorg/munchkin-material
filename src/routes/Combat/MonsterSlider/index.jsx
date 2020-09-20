@@ -100,7 +100,7 @@ const CombatMonsterSlider = ({ className }) => {
     noSsr: true,
   });
 
-  const monsters = useSelector((state) => state.combat.monsters);
+  const monsters = useSelector((state) => state.present.combat.monsters);
   const monsterCount = useRef(monsters.length);
 
   const animate = useAnimation();

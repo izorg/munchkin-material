@@ -6,9 +6,12 @@ import {
   useMediaQuery,
   useTheme,
 } from '@material-ui/core';
-import PropTypes from 'prop-types';
-import React, { useRef } from 'react';
+import React, { useEffect } from 'react';
 import { FormattedMessage } from 'react-intl';
+import { useDispatch, useSelector } from 'react-redux';
+import { ActionCreators } from 'redux-undo';
+
+import { useUndoMessage } from '../UndoProvider';
 
 const displayName = 'UndoSnackbar';
 
@@ -25,17 +28,30 @@ const useStyles = makeStyles(
   { name: displayName },
 );
 
-const UndoSnackbar = ({ message, onClose, open }) => {
+const UndoSnackbar = () => {
+  const dispatch = useDispatch();
   const theme = useTheme();
   const classes = useStyles();
 
-  const messageRef = useRef(message);
+  const smDown = useMediaQuery(theme.breakpoints.down('sm'), { noSsr: true });
 
-  if (open) {
-    messageRef.current = message;
-  }
+  const open = useSelector((state) => state.past.length > 0);
 
-  const matches = useMediaQuery(theme.breakpoints.down('sm'), { noSsr: true });
+  const onClose = (event, reason) => {
+    if (reason === 'undo') {
+      dispatch(ActionCreators.undo());
+    }
+
+    dispatch(ActionCreators.clearHistory());
+  };
+
+  const [message, setMessage] = useUndoMessage();
+
+  useEffect(() => {
+    if (open && !message) {
+      console.warn('No message for undo snackbar');
+    }
+  }, [message, open]);
 
   return (
     <Snackbar
@@ -45,18 +61,15 @@ const UndoSnackbar = ({ message, onClose, open }) => {
         </Button>
       }
       className={classes.snackbar}
-      message={messageRef.current}
+      message={message}
       onClose={onClose}
       open={open}
-      TransitionComponent={matches ? Fade : undefined}
+      TransitionComponent={smDown ? Fade : undefined}
+      TransitionProps={{
+        onExited: () => setMessage(null),
+      }}
     />
   );
-};
-
-UndoSnackbar.propTypes = {
-  message: PropTypes.node,
-  onClose: PropTypes.func.isRequired,
-  open: PropTypes.bool,
 };
 
 UndoSnackbar.displayName = displayName;

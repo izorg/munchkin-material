@@ -10,7 +10,7 @@ const displayName = 'MenuSidebar';
 const MenuSidebar = () => {
   const theme = useTheme();
 
-  const collapsed = useSelector((state) => state.ui.menuCollapsed);
+  const collapsed = useSelector((state) => state.present.ui.menuCollapsed);
 
   const sidebarTheme = useMemo(() => {
     const transition = theme.transitions.create(['border-radius', 'padding'], {

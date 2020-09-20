@@ -8,8 +8,8 @@ import Item from './Item';
 const displayName = 'PlayerList';
 
 const PlayerList = ({ selectedPlayerId, ...props }) => {
-  const playerList = useSelector((state) => state.playerList);
-  const players = useSelector((state) => state.players);
+  const playerList = useSelector((state) => state.present.playerList);
+  const players = useSelector((state) => state.present.players);
 
   return (
     <List

@@ -64,11 +64,11 @@ const CombatPlayer = ({ playerId }) => {
   const dispatch = useDispatch();
   const intl = useIntl();
 
-  const players = useSelector((state) => state.players);
+  const players = useSelector((state) => state.present.players);
   const { gear, id, level, name, sex } = players[playerId];
 
-  const levelLimit = useSelector((state) => state.settings.levelLimit);
-  const epic = useSelector((state) => state.settings.epic);
+  const levelLimit = useSelector((state) => state.present.settings.levelLimit);
+  const epic = useSelector((state) => state.present.settings.epic);
 
   const levelDecrementDisabled = isLevelDecrementDisabled(level, levelLimit);
   const levelIncrementDisabled = isLevelIncrementDisabled(
@@ -77,7 +77,7 @@ const CombatPlayer = ({ playerId }) => {
     epic,
   );
 
-  const combat = useSelector((state) => state.combat);
+  const combat = useSelector((state) => state.present.combat);
   const bonus =
     playerId === combat.helperId ? combat.helperBonus : combat.playerBonus;
 
@@ -86,7 +86,7 @@ const CombatPlayer = ({ playerId }) => {
       dispatch((_, getState) => {
         const {
           combat: { helperBonus, helperId, playerBonus },
-        } = getState();
+        } = getState().present;
 
         const currentBonus = playerId === helperId ? helperBonus : playerBonus;
 

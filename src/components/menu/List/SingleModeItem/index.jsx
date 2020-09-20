@@ -31,7 +31,7 @@ const SingleModeItem = ({ className }) => {
   const { pathname } = useLocation();
 
   const goBack = useGoBack();
-  const singleMode = useSelector((state) => state.settings.singleMode);
+  const singleMode = useSelector((state) => state.present.settings.singleMode);
   const open = useMenuOpen();
 
   const { buyFullVersion, fullVersion } = useFullVersion();

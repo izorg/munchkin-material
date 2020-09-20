@@ -15,7 +15,7 @@ const displayName = 'PlayerAppBar';
 const PlayerAppBar = ({ playerId }) => {
   const goBack = useGoBack();
 
-  const players = useSelector((state) => state.players);
+  const players = useSelector((state) => state.present.players);
   const title = players[playerId].name;
 
   return (

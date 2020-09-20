@@ -16,8 +16,8 @@ const CombatButton = ({ playerId, ...rest }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const combatFinished = useSelector((state) => state.combat.finished);
-  const combatPlayerId = useSelector((state) => state.combat.playerId);
+  const combatFinished = useSelector((state) => state.present.combat.finished);
+  const combatPlayerId = useSelector((state) => state.present.combat.playerId);
 
   const { buyFullVersion, fullVersion } = useFullVersion();
 

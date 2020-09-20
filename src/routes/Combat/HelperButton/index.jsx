@@ -48,8 +48,10 @@ const CombatHelperButton = ({ className, ...rest }) => {
   const classes = useStyles();
 
   const goBack = useGoBack();
-  const helperId = useSelector((state) => state.combat.helperId);
-  const hasOtherPlayers = useSelector((state) => state.playerList.length > 1);
+  const helperId = useSelector((state) => state.present.combat.helperId);
+  const hasOtherPlayers = useSelector(
+    (state) => state.present.playerList.length > 1,
+  );
   const helper = !helperId && hasOtherPlayers;
   const query = useLocationQuery();
   const open = query.add === null;
