@@ -23,7 +23,25 @@ const AugmentedThemeProvider = ({ children }) => {
   const direction = getDirection(locale);
 
   const query = useLocationQuery();
-  const queryTheme = query.theme || null;
+  const queryTheme = useMemo(() => {
+    if (!query.theme) {
+      return null;
+    }
+
+    const result = { ...query.theme };
+
+    if (query.theme) {
+      if (query.theme.pureBlack === 'false') {
+        result.pureBlack = false;
+      }
+
+      if (query.theme.pureBlack === 'true') {
+        result.pureBlack = true;
+      }
+    }
+
+    return result;
+  }, [query.theme]);
   const currentTheme = useSelector((state) => state.present.theme);
 
   const dark = useMediaQuery('(prefers-color-scheme: dark)', {
@@ -36,7 +54,7 @@ const AugmentedThemeProvider = ({ children }) => {
       ...queryTheme,
     };
 
-    let { type } = previewTheme;
+    let { pureBlack, type } = previewTheme;
 
     if (!type && window.matchMedia('(prefers-color-scheme)').matches) {
       type = dark ? 'dark' : 'light';
@@ -44,7 +62,7 @@ const AugmentedThemeProvider = ({ children }) => {
 
     return createMuiTheme(
       deepmerge.all([
-        baseTheme({ direction, type }),
+        baseTheme({ direction, pureBlack, type }),
         themes[previewTheme.id].theme,
         { palette: { type } },
       ]),

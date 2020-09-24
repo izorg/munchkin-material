@@ -7,13 +7,13 @@ export const setTheme = (theme) => ({
   theme,
 });
 
-const type =
-  window.matchMedia && window.matchMedia('(prefers-color-scheme)').matches
-    ? undefined
-    : 'light';
+const type = window.matchMedia('(prefers-color-scheme)').matches
+  ? undefined
+  : 'light';
 
 const initialState = {
   id,
+  pureBlack: false,
   type,
 };
 

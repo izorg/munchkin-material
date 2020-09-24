@@ -6,7 +6,7 @@ import deepmerge from 'deepmerge';
 
 const breakpoints = createBreakpoints({});
 
-export default ({ direction, type }) => {
+export default ({ direction, pureBlack, type }) => {
   const palette = createPalette({ type });
 
   let theme = {
@@ -110,7 +110,7 @@ export default ({ direction, type }) => {
 
       palette: {
         background: {
-          default: '#121212',
+          default: pureBlack ? '#000000' : '#121212',
         },
       },
     });

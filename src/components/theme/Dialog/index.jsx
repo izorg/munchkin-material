@@ -1,4 +1,5 @@
 import {
+  Checkbox,
   Dialog,
   DialogActions,
   DialogContent,
@@ -54,12 +55,31 @@ const ThemeDialog = () => {
   const queryTheme = query.theme;
   const stateTheme = useSelector((state) => state.present.theme);
   const open = queryTheme !== undefined;
-  const theme = useMemo(() => ({ ...stateTheme, ...queryTheme }), [
-    queryTheme,
-    stateTheme,
-  ]);
 
-  const onChange = (selectedTheme) =>
+  const theme = useMemo(() => {
+    let result = stateTheme;
+
+    if (queryTheme) {
+      result = {
+        ...result,
+        ...queryTheme,
+      };
+
+      if ('pureBlack' in queryTheme) {
+        if (queryTheme.pureBlack === 'false') {
+          result.pureBlack = false;
+        }
+
+        if (queryTheme.pureBlack === 'true') {
+          result.pureBlack = true;
+        }
+      }
+    }
+
+    return result;
+  }, [queryTheme, stateTheme]);
+
+  const onChange = (selectedTheme) => {
     navigate(
       {
         ...location,
@@ -70,6 +90,7 @@ const ThemeDialog = () => {
       },
       { replace: true },
     );
+  };
 
   const onThemeIdChange = (event, id) => {
     onChange({
@@ -82,6 +103,13 @@ const ThemeDialog = () => {
     onChange({
       ...theme,
       type,
+    });
+  };
+
+  const onThemePureBlackChange = (event) => {
+    onChange({
+      ...theme,
+      pureBlack: event.target.checked,
     });
   };
 
@@ -102,6 +130,7 @@ const ThemeDialog = () => {
         type: theme.type || undefined,
       }),
     );
+
     goBack();
   };
 
@@ -145,6 +174,22 @@ const ThemeDialog = () => {
             value="dark"
           />
         </RadioGroup>
+        <FormControlLabel
+          control={
+            <Checkbox
+              checked={theme.pureBlack}
+              color="primary"
+              name="pureBlack"
+              onChange={onThemePureBlackChange}
+            />
+          }
+          label={
+            <FormattedMessage
+              defaultMessage="Pure black"
+              id="themeDialog.pureBlack"
+            />
+          }
+        />
         <Divider />
         <RadioGroup name="id" onChange={onThemeIdChange} value={theme.id}>
           {Object.values(themes)

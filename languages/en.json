@@ -50,6 +50,7 @@
   "themeDialog.auto": "System Default",
   "themeDialog.dark": "Dark",
   "themeDialog.light": "Light",
+  "themeDialog.pureBlack": "Pure black",
   "undo": "Undo",
   "undo.killPlayer": "{name} {sex,select,female{has died} male{has died}}",
   "undo.resetPlayers": "Players have been reset"
