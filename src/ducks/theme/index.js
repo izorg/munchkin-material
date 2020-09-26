@@ -7,9 +7,10 @@ export const setTheme = (theme) => ({
   theme,
 });
 
-const type = window.matchMedia('(prefers-color-scheme)').matches
-  ? undefined
-  : 'light';
+const type =
+  'matchMedia' in window && window.matchMedia('(prefers-color-scheme)').matches
+    ? undefined
+    : 'light';
 
 const initialState = {
   id,
