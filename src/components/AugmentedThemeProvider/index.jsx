@@ -1,9 +1,4 @@
-import {
-  createMuiTheme,
-  CssBaseline,
-  ThemeProvider,
-  useMediaQuery,
-} from '@material-ui/core';
+import { createMuiTheme, CssBaseline, ThemeProvider } from '@material-ui/core';
 import deepmerge from 'deepmerge';
 import PropTypes from 'prop-types';
 import React, { useEffect, useMemo } from 'react';
@@ -15,12 +10,15 @@ import baseTheme from '../../styles/baseTheme';
 import themes from '../../styles/themes';
 import { useLocationQuery } from '../../utils/location';
 import { ios } from '../../utils/platforms';
+import { useSystemPaletteType } from '../SystemPaletteTypeProvider';
 
 const displayName = 'AugmentedThemeProvider';
 
 const AugmentedThemeProvider = ({ children }) => {
   const { locale } = useIntl();
   const direction = getDirection(locale);
+
+  const systemType = useSystemPaletteType();
 
   const query = useLocationQuery();
   const queryTheme = useMemo(() => {
@@ -44,10 +42,6 @@ const AugmentedThemeProvider = ({ children }) => {
   }, [query.theme]);
   const currentTheme = useSelector((state) => state.present.theme);
 
-  const dark = useMediaQuery('(prefers-color-scheme: dark)', {
-    noSsr: true,
-  });
-
   const theme = useMemo(() => {
     const previewTheme = {
       ...currentTheme,
@@ -56,8 +50,8 @@ const AugmentedThemeProvider = ({ children }) => {
 
     let { pureBlack, type } = previewTheme;
 
-    if (!type && window.matchMedia('(prefers-color-scheme)').matches) {
-      type = dark ? 'dark' : 'light';
+    if (!type) {
+      type = systemType;
     }
 
     return createMuiTheme(
@@ -67,7 +61,7 @@ const AugmentedThemeProvider = ({ children }) => {
         { palette: { type } },
       ]),
     );
-  }, [currentTheme, dark, direction, queryTheme]);
+  }, [currentTheme, direction, queryTheme, systemType]);
 
   useEffect(() => {
     const { Keyboard } = window;

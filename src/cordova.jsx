@@ -12,6 +12,7 @@ import FullVersionProvider from './components/FullVersionProvider';
 import LocaleProvider from './components/LocaleProvider';
 import ReduxProvider from './components/ReduxProvider';
 import SentryHelper from './components/SentryHelper';
+import SystemPaletteTypeProvider from './components/SystemPaletteTypeProvider';
 import WakeLockProvider from './components/WakeLockProvider';
 
 render(
@@ -22,11 +23,13 @@ render(
           <LocaleProvider>
             <WakeLockProvider>
               <FullVersionProvider>
-                <AugmentedStylesProvider>
-                  <AugmentedThemeProvider>
-                    <App />
-                  </AugmentedThemeProvider>
-                </AugmentedStylesProvider>
+                <SystemPaletteTypeProvider>
+                  <AugmentedStylesProvider>
+                    <AugmentedThemeProvider>
+                      <App />
+                    </AugmentedThemeProvider>
+                  </AugmentedStylesProvider>
+                </SystemPaletteTypeProvider>
               </FullVersionProvider>
             </WakeLockProvider>
           </LocaleProvider>

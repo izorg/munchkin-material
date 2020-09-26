@@ -25,6 +25,7 @@ import {
 import CancelButton from '../../CancelButton';
 import { useFullVersion } from '../../FullVersionProvider';
 import SubmitButton from '../../SubmitButton';
+import { useSystemPaletteType } from '../../SystemPaletteTypeProvider';
 import themeMessages from '../messages';
 
 const displayName = 'ThemeDialog';
@@ -48,6 +49,7 @@ const ThemeDialog = () => {
 
   const { buyFullVersion, fullVersion } = useFullVersion();
   const goBack = useGoBack();
+  const systemType = useSystemPaletteType();
 
   const themeId = useSelector((state) => state.present.theme.id);
 
@@ -147,7 +149,7 @@ const ThemeDialog = () => {
       <DialogTitle>{intl.formatMessage(themeMessages.label)}</DialogTitle>
       <DialogContent className={classes.content}>
         <RadioGroup name="type" onChange={onThemeTypeChange} value={typeValue}>
-          {window.matchMedia('(prefers-color-scheme)').matches && (
+          {systemType && (
             <FormControlLabel
               control={<Radio color="primary" />}
               label={
