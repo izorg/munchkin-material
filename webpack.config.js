@@ -51,18 +51,6 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.m?js$/,
-        include: /node_modules\/(react-intl)/,
-        use: [
-          {
-            loader: 'babel-loader',
-            options: {
-              cacheDirectory: dev,
-            },
-          },
-        ],
-      },
-      {
         test: /\.m?jsx?$/,
         exclude: /node_modules/,
         use: [

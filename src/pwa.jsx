@@ -1,7 +1,5 @@
 import './polyfills';
 
-import 'firebase/analytics';
-import firebase from 'firebase/app';
 import React from 'react';
 import { render } from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
@@ -19,19 +17,11 @@ import sentry from './sentry';
 
 if (process.env.NODE_ENV === 'production') {
   sentry('https://41e93153dfb94d9db3ed8a2cbc7228a9@sentry.io/253536');
-
-  firebase.initializeApp({
-    apiKey: 'AIzaSyAwIA0iUuTMsyEOumkpDODkhXtpaMwDq_U',
-    appId: '1:996090838746:web:502ca5d05189215f',
-    authDomain: 'izorg-munchkin.firebaseapp.com',
-    databaseURL: 'https://izorg-munchkin.firebaseio.com',
-    measurementId: 'G-PXJHCTHZLJ',
-    messagingSenderId: '996090838746',
-    projectId: 'izorg-munchkin',
-    storageBucket: 'izorg-munchkin.appspot.com',
-  });
-  firebase.analytics();
 }
+
+import(/* webpackChunkName: "firebase" */ './firebase').catch(() => {
+  // ignore firebase init errors
+});
 
 render(
   <BrowserRouter>
