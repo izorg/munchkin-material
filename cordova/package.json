@@ -5,6 +5,7 @@
     "build:android": "cordova build android --release",
     "build:ios": "cordova build ios --release",
     "reinstall": "rm -rf node_modules platforms plugins package-lock.json && npm install && cordova prepare android && cordova prepare ios",
+    "remove:sourcemaps": "rm -rf www/**/*.map",
     "run:android": "cordova run android",
     "run:ios": "cordova run ios"
   },
