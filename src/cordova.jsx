@@ -5,7 +5,7 @@ import { render } from 'react-dom';
 import { MemoryRouter } from 'react-router-dom';
 
 import App from './components/App';
-import CordovaHelper from './components/CordovaHelper';
+import CordovaProvider from './components/CordovaProvider';
 import FullVersionProvider from './components/FullVersionProvider';
 import ReduxProvider from './components/ReduxProvider';
 import SentryHelper from './components/SentryHelper';
@@ -13,13 +13,13 @@ import SentryHelper from './components/SentryHelper';
 render(
   <MemoryRouter>
     <ReduxProvider>
-      <CordovaHelper>
+      <CordovaProvider>
         <SentryHelper>
           <FullVersionProvider>
             <App />
           </FullVersionProvider>
         </SentryHelper>
-      </CordovaHelper>
+      </CordovaProvider>
     </ReduxProvider>
   </MemoryRouter>,
   document.getElementById('root'),

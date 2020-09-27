@@ -1,15 +1,20 @@
-import { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import sentry from '../../sentry';
 import { useGoBack } from '../../utils/location';
 
-const displayName = 'CordovaHelper';
+const displayName = 'CordovaProvider';
 
-const CordovaHelper = ({ children }) => {
+const CordovaContext = createContext(null);
+
+export const useCordova = () => useContext(CordovaContext);
+
+const CordovaProvider = ({ children }) => {
   const location = useLocation();
 
-  const [deviceReady, setDeviceReady] = useState(false);
+  const [cordova, setCordova] = useState(false);
 
   const goBack = useGoBack();
 
@@ -32,7 +37,7 @@ const CordovaHelper = ({ children }) => {
           Windows.UI.Core.AppViewBackButtonVisibility.collapsed;
       }
 
-      setDeviceReady(true);
+      setCordova(window.cordova);
     };
 
     document.addEventListener('deviceready', onDeviceReady, false);
@@ -43,7 +48,7 @@ const CordovaHelper = ({ children }) => {
   }, []);
 
   useEffect(() => {
-    if (!deviceReady) {
+    if (!cordova) {
       return;
     }
 
@@ -62,15 +67,23 @@ const CordovaHelper = ({ children }) => {
     return () => {
       document.removeEventListener('backbutton', onBackButton);
     };
-  }, [deviceReady, goBack, location.pathname, location.search]);
+  }, [cordova, goBack, location.pathname, location.search]);
 
-  if (deviceReady) {
-    return children;
+  if (!cordova) {
+    return null;
   }
 
-  return null;
+  return (
+    <CordovaContext.Provider value={cordova}>
+      {children}
+    </CordovaContext.Provider>
+  );
 };
 
-CordovaHelper.displayName = displayName;
+CordovaProvider.propTypes = {
+  children: PropTypes.node,
+};
 
-export default CordovaHelper;
+CordovaProvider.displayName = displayName;
+
+export default CordovaProvider;
