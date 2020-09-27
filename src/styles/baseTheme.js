@@ -76,7 +76,7 @@ export default ({ direction, pureBlack, type }) => {
     },
   };
 
-  if (type === 'light') {
+  if (palette.type === 'light') {
     theme = deepmerge(theme, {
       components: {
         MuiIconButton: {
@@ -90,7 +90,7 @@ export default ({ direction, pureBlack, type }) => {
     });
   }
 
-  if (type === 'dark') {
+  if (palette.type === 'dark') {
     theme = deepmerge(theme, {
       components: {
         MuiPaper: {

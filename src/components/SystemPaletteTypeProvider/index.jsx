@@ -15,7 +15,7 @@ const SystemPaletteTypeProvider = ({ children }) => {
     'cordova' in window && window.cordova.platformId === 'android';
 
   const [ready, setReady] = useState(() => !useCordova);
-  const [cordovaType, setCordovaType] = useState(null);
+  const [cordovaType, setCordovaType] = useState();
 
   useEffect(() => {
     if (!useCordova) {
