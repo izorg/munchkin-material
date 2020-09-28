@@ -6,7 +6,6 @@ import { BrowserRouter } from 'react-router-dom';
 
 import App from './components/App';
 import ReduxProvider from './components/ReduxProvider';
-import SentryHelper from './components/SentryHelper';
 import WorkboxProvider from './components/WorkboxProvider';
 import sentry from './sentry';
 
@@ -21,11 +20,9 @@ import(/* webpackChunkName: "firebase" */ './firebase').catch(() => {
 render(
   <BrowserRouter>
     <ReduxProvider>
-      <SentryHelper>
-        <WorkboxProvider>
-          <App />
-        </WorkboxProvider>
-      </SentryHelper>
+      <WorkboxProvider>
+        <App />
+      </WorkboxProvider>
     </ReduxProvider>
   </BrowserRouter>,
   document.getElementById('root'),

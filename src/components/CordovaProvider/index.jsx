@@ -14,7 +14,7 @@ export const useCordova = () => useContext(CordovaContext);
 const CordovaProvider = ({ children }) => {
   const location = useLocation();
 
-  const [cordova, setCordova] = useState(false);
+  const [cordova, setCordova] = useState(null);
 
   const goBack = useGoBack();
 

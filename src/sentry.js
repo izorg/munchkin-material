@@ -4,7 +4,7 @@ import * as Sentry from '@sentry/react';
 const sentry = (dsn) => {
   const integrations = [];
 
-  if (window.cordova) {
+  if ('cordova' in window) {
     integrations.push(
       new RewriteFrames({
         iteratee: (frame) => {
@@ -16,7 +16,7 @@ const sentry = (dsn) => {
     );
   }
 
-  const build = window.cordova ? 'cordova' : 'web';
+  const build = 'cordova' in window ? 'cordova' : 'web';
 
   Sentry.init({
     dsn,

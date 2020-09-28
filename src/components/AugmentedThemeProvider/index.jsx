@@ -80,7 +80,7 @@ const AugmentedThemeProvider = ({ children }) => {
 };
 
 AugmentedThemeProvider.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
 };
 
 AugmentedThemeProvider.displayName = displayName;

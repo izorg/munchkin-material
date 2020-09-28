@@ -12,23 +12,21 @@ const displayName = 'AugmentedStylesProvider';
 const AugmentedStylesProvider = ({ children }) => {
   const { locale } = useIntl();
   const direction = getDirection(locale);
+  const enabled = direction === 'rtl';
 
   const jss = useMemo(
     () =>
       create({
-        plugins: [
-          ...jssPreset().plugins,
-          rtl({ enabled: direction === 'rtl' }),
-        ],
+        plugins: [...jssPreset().plugins, rtl({ enabled })],
       }),
-    [direction],
+    [enabled],
   );
 
   return <StylesProvider jss={jss}>{children}</StylesProvider>;
 };
 
 AugmentedStylesProvider.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
 };
 
 AugmentedStylesProvider.displayName = displayName;

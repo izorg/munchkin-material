@@ -8,17 +8,16 @@ import App from './components/App';
 import CordovaProvider from './components/CordovaProvider';
 import FullVersionProvider from './components/FullVersionProvider';
 import ReduxProvider from './components/ReduxProvider';
-import SentryHelper from './components/SentryHelper';
+import SentryNavigationBreadcrumbs from './components/SentryNavigationBreadcrumbs';
 
 render(
   <MemoryRouter>
+    <SentryNavigationBreadcrumbs />
     <ReduxProvider>
       <CordovaProvider>
-        <SentryHelper>
-          <FullVersionProvider>
-            <App />
-          </FullVersionProvider>
-        </SentryHelper>
+        <FullVersionProvider>
+          <App />
+        </FullVersionProvider>
       </CordovaProvider>
     </ReduxProvider>
   </MemoryRouter>,
