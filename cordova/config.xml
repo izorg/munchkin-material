@@ -58,19 +58,29 @@
         <preference name="StatusBarOverlaysWebView" value="false" />
         <preference name="SuppressesLongPressGesture" value="true" />
         <resource-file src="GoogleService-Info.plist" />
+        <icon height="20" src="res/ios/icon-20.png" width="20" />
         <icon height="29" src="res/ios/icon-29.png" width="29" />
         <icon height="40" src="res/ios/icon-40.png" width="40" />
+        <icon height="48" src="res/ios/icon-48.png" width="48" />
         <icon height="50" src="res/ios/icon-50.png" width="50" />
+        <icon height="55" src="res/ios/icon-55.png" width="55" />
+        <icon height="57" src="res/ios/icon-57.png" width="57" />
         <icon height="58" src="res/ios/icon-58.png" width="58" />
         <icon height="60" src="res/ios/icon-60.png" width="60" />
+        <icon height="72" src="res/ios/icon-72.png" width="72" />
         <icon height="76" src="res/ios/icon-76.png" width="76" />
         <icon height="80" src="res/ios/icon-80.png" width="80" />
         <icon height="87" src="res/ios/icon-87.png" width="87" />
+        <icon height="88" src="res/ios/icon-88.png" width="88" />
         <icon height="100" src="res/ios/icon-100.png" width="100" />
+        <icon height="114" src="res/ios/icon-114.png" width="114" />
         <icon height="120" src="res/ios/icon-120.png" width="120" />
+        <icon height="144" src="res/ios/icon-144.png" width="144" />
         <icon height="152" src="res/ios/icon-152.png" width="152" />
         <icon height="167" src="res/ios/icon-167.png" width="167" />
+        <icon height="172" src="res/ios/icon-172.png" width="172" />
         <icon height="180" src="res/ios/icon-180.png" width="180" />
+        <icon height="196" src="res/ios/icon-196.png" width="196" />
         <icon height="1024" src="res/ios/icon-1024.png" width="1024" />
         <splash src="res/ios/Default@2x~universal~anyany.png" />
         <splash src="res/ios/Default@3x~universal~anyany.png" />
