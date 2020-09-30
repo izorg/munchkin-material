@@ -27,10 +27,10 @@ const browserDevices = {
       viewport: {
         width: 1024,
         height: 1366,
-        deviceScaleFactor: 2,
-        isMobile: true,
-        hasTouch: true,
       },
+      deviceScaleFactor: 2,
+      isMobile: true,
+      hasTouch: true,
     },
   }),
 };
