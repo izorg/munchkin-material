@@ -15,7 +15,7 @@ import WorkboxProvider from './components/WorkboxProvider';
 import sentry from './sentry';
 
 if (process.env.NODE_ENV === 'production') {
-  sentry('https://41e93153dfb94d9db3ed8a2cbc7228a9@sentry.io/253536');
+  sentry();
 }
 
 import(/* webpackChunkName: "firebase" */ './firebase').catch(() => {
