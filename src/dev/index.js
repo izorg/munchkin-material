@@ -2,7 +2,7 @@ import { addPlayerToList, removePlayerFromList } from '../ducks/playerList';
 import { addPlayer, removePlayer } from '../ducks/players';
 import { setLocale as setAppLocale } from '../ducks/settings';
 import { getLocale } from '../i18n';
-import '../pwa';
+import '../web';
 
 import players from './players';
 

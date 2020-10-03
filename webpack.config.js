@@ -18,7 +18,7 @@ const outputPath = path.resolve(__dirname, cordova ? 'cordova/www' : 'web');
 let entry = './src/cordova.jsx';
 
 if (web) {
-  entry = './src/pwa.jsx';
+  entry = './src/web.jsx';
 }
 
 if (dev) {
@@ -136,7 +136,7 @@ module.exports = {
       }),
 
     new HtmlWebpackPlugin({
-      template: cordova ? 'src/cordova.html' : 'src/pwa.html',
+      template: cordova ? 'src/cordova.html' : 'src/web.html',
     }),
 
     cordova &&
