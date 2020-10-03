@@ -9,11 +9,9 @@ const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const WebpackNotifierPlugin = require('webpack-notifier');
 const { GenerateSW } = require('workbox-webpack-plugin');
 
-const { BUILD, NODE_ENV, STATS } = process.env;
-
-const dev = NODE_ENV === 'development';
-const cordova = BUILD === 'cordova';
-const web = BUILD === 'web';
+const dev = process.env.NODE_ENV === 'development';
+const cordova = process.env.BUILD === 'cordova';
+const web = process.env.BUILD === 'web';
 
 const outputPath = path.resolve(__dirname, cordova ? 'cordova/www' : 'web');
 
@@ -44,11 +42,11 @@ module.exports = {
     watchContentBase: true,
   },
 
-  devtool: 'source-map',
+  devtool: cordova ? 'inline-source-map' : 'source-map',
 
   entry,
 
-  mode: NODE_ENV,
+  mode: process.env.NODE_ENV,
 
   module: {
     rules: [
@@ -155,7 +153,7 @@ module.exports = {
 
     !dev && web && new GenerateSW(),
 
-    STATS &&
+    process.env.STATS &&
       new BundleAnalyzerPlugin({
         analyzerHost: 'localhost',
         analyzerPort: 3001,

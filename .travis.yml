@@ -26,7 +26,6 @@ script:
 
   - export SENTRY_PROJECT=munchkin-cordova
   - sentry-cli releases new "$VERSION-cordova"
-  - sentry-cli releases files "$VERSION-cordova" upload-sourcemaps cordova/www --rewrite --url-prefix=""
   - sentry-cli releases set-commits "$VERSION-cordova" --auto
   - sentry-cli releases deploys "$VERSION-cordova" new -e "production"
 

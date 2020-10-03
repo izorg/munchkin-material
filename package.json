@@ -2,8 +2,8 @@
   "name": "munchkin-web",
   "version": "12.2.2",
   "scripts": {
-    "build:cordova": "cross-env NODE_ENV=production BUILD=cordova CORDOVA=true webpack",
-    "build:web": "cross-env NODE_ENV=production BUILD=web PWA=true webpack",
+    "build:cordova": "cross-env NODE_ENV=production BUILD=cordova webpack",
+    "build:web": "cross-env NODE_ENV=production BUILD=web webpack",
     "clean": "rm -rf coverage dist messages node_modules/.cache screenshots web",
     "dev": "cross-env NODE_ENV=development BUILD=web webpack-dev-server",
     "i18n:compile": "node -r dotenv/config scripts/i18n/download.mjs",
@@ -18,7 +18,6 @@
   "dependencies": {
     "@material-ui/core": "5.0.0-alpha.10",
     "@material-ui/lab": "5.0.0-alpha.10",
-    "@sentry/integrations": "5.24.2",
     "@sentry/react": "5.24.2",
     "clsx": "1.1.1",
     "core-js": "3.6.5",
