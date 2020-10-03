@@ -26,7 +26,6 @@
         <preference name="AndroidXEnabled" value="true" />
         <preference name="GradlePluginGoogleServicesEnabled" value="true" />
         <preference name="HeaderColor" value="#795548" />
-        <preference name="SplashScreenBackgroundColor" value="#FFFFFF" />
         <preference name="android-minSdkVersion" value="22" />
         <preference name="android-targetSdkVersion" value="30" />
         <resource-file src="google-services.json" target="app/google-services.json" />
@@ -38,6 +37,8 @@
         <icon density="xxxhdpi" background="res/android/mipmap-xxxhdpi/icon_background.png" foreground="res/android/mipmap-xxxhdpi/icon_foreground.png" src="res/android/mipmap-xxxhdpi/icon.png" />
         <splash density="land-xhdpi" src="res/android/splash-land-xhdpi.png" />
         <splash density="port-xhdpi" src="res/android/splash-port-xhdpi.png" />
+        <splash density="land-night-xhdpi" src="res/android/splash-land-night-xhdpi.png" />
+        <splash density="port-night-xhdpi" src="res/android/splash-port-night-xhdpi.png" />
         <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application">
             <application android:roundIcon="@mipmap/ic_launcher" />
         </edit-config>
