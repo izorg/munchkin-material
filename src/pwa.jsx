@@ -5,7 +5,12 @@ import { render } from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 
 import App from './components/App';
+import AugmentedStylesProvider from './components/AugmentedStylesProvider';
+import AugmentedThemeProvider from './components/AugmentedThemeProvider';
+import LocaleProvider from './components/LocaleProvider';
 import ReduxProvider from './components/ReduxProvider';
+import SystemPaletteTypeProvider from './components/SystemPaletteTypeProvider';
+import WakeLockProvider from './components/WakeLockProvider';
 import WorkboxProvider from './components/WorkboxProvider';
 import sentry from './sentry';
 
@@ -21,7 +26,17 @@ render(
   <BrowserRouter>
     <ReduxProvider>
       <WorkboxProvider>
-        <App />
+        <WakeLockProvider>
+          <LocaleProvider>
+            <SystemPaletteTypeProvider>
+              <AugmentedStylesProvider>
+                <AugmentedThemeProvider>
+                  <App />
+                </AugmentedThemeProvider>
+              </AugmentedStylesProvider>
+            </SystemPaletteTypeProvider>
+          </LocaleProvider>
+        </WakeLockProvider>
       </WorkboxProvider>
     </ReduxProvider>
   </BrowserRouter>,

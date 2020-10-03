@@ -26,8 +26,6 @@ const CordovaProvider = ({ children }) => {
         sentry('https://14fc03bd8f6249ddbd3917a950656dcc@sentry.io/1423183');
       }
 
-      navigator.splashscreen.hide();
-
       if (window.cordova.platformId === 'windows') {
         const { Windows } = window;
 
