@@ -52,13 +52,8 @@ const FullVersionProvider = ({ children }) => {
   );
 
   useEffect(() => {
-    if (!cordova) {
-      dispatch(setFullVersion(true));
-
-      return;
-    }
-
     if (!store) {
+      console.warn('Store not available');
       return;
     }
 
