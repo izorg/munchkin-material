@@ -1,12 +1,12 @@
-import * as Sentry from '@sentry/react';
+import { addBreadcrumb, Severity } from '@sentry/react';
 
 const logger = () => (next) => (action) => {
   const { type, ...rest } = action;
 
-  Sentry.addBreadcrumb({
+  addBreadcrumb({
     category: 'redux.action',
     data: rest,
-    level: Sentry.Severity.Info,
+    level: Severity.Info,
     message: type,
   });
 

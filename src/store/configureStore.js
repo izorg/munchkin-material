@@ -1,4 +1,4 @@
-import * as Sentry from '@sentry/react';
+import { createReduxEnhancer } from '@sentry/react';
 import { applyMiddleware, combineReducers, createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
@@ -22,7 +22,7 @@ const configureStore = () => {
 
   const preloadedState = loadState();
 
-  const sentryReduxEnhancer = Sentry.createReduxEnhancer();
+  const sentryReduxEnhancer = createReduxEnhancer();
 
   const enhancer = composeEnhancers(
     applyMiddleware(thunk, logger),

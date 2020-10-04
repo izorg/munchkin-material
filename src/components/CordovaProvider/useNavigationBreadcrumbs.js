@@ -1,4 +1,4 @@
-import * as Sentry from '@sentry/react';
+import { addBreadcrumb } from '@sentry/react';
 import { useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 
@@ -15,7 +15,7 @@ const useNavigationBreadcrumbs = () => {
       return;
     }
 
-    Sentry.addBreadcrumb({
+    addBreadcrumb({
       category: 'navigation',
       data: {
         from,
