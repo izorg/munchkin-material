@@ -11,15 +11,13 @@ import CordovaProvider from './components/CordovaProvider';
 import FullVersionProvider from './components/FullVersionProvider';
 import LocaleProvider from './components/LocaleProvider';
 import ReduxProvider from './components/ReduxProvider';
-import SentryNavigationBreadcrumbs from './components/SentryNavigationBreadcrumbs';
 import SystemPaletteTypeProvider from './components/SystemPaletteTypeProvider';
 import WakeLockProvider from './components/WakeLockProvider';
 
 render(
   <MemoryRouter>
-    <SentryNavigationBreadcrumbs />
-    <ReduxProvider>
-      <CordovaProvider>
+    <CordovaProvider>
+      <ReduxProvider>
         <FullVersionProvider>
           <WakeLockProvider>
             <LocaleProvider>
@@ -33,8 +31,8 @@ render(
             </LocaleProvider>
           </WakeLockProvider>
         </FullVersionProvider>
-      </CordovaProvider>
-    </ReduxProvider>
+      </ReduxProvider>
+    </CordovaProvider>
   </MemoryRouter>,
   document.getElementById('root'),
 );

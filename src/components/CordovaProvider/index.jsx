@@ -5,6 +5,8 @@ import { useLocation } from 'react-router-dom';
 import sentry from '../../sentry';
 import { useGoBack } from '../../utils/location';
 
+import useNavigationBreadcrumbs from './useNavigationBreadcrumbs';
+
 const displayName = 'CordovaProvider';
 
 const CordovaContext = createContext(null);
@@ -66,6 +68,8 @@ const CordovaProvider = ({ children }) => {
       document.removeEventListener('backbutton', onBackButton);
     };
   }, [cordova, goBack, location.pathname, location.search]);
+
+  useNavigationBreadcrumbs();
 
   if (!cordova) {
     return null;
