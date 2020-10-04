@@ -7,7 +7,6 @@ import undoable, { includeAction } from 'redux-undo';
 import { KILL_PLAYER, RESET_PLAYERS } from '../ducks/players/actionTypes';
 
 import { loadState, saveState } from './localStorage';
-import logger from './middlewares/logger';
 import reducers from './reducers';
 
 const configureStore = () => {
@@ -25,7 +24,7 @@ const configureStore = () => {
   const sentryReduxEnhancer = createReduxEnhancer();
 
   const enhancer = composeEnhancers(
-    applyMiddleware(thunk, logger),
+    applyMiddleware(thunk),
     sentryReduxEnhancer,
   );
 
