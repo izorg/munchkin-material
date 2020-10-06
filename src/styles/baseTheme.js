@@ -6,8 +6,8 @@ import deepmerge from 'deepmerge';
 
 const breakpoints = createBreakpoints({});
 
-export default ({ direction, pureBlack, type }) => {
-  const palette = createPalette({ type });
+export default ({ direction, mode, pureBlack }) => {
+  const palette = createPalette({ mode });
 
   let theme = {
     components: {
@@ -76,7 +76,7 @@ export default ({ direction, pureBlack, type }) => {
     },
   };
 
-  if (palette.type === 'light') {
+  if (palette.mode === 'light') {
     theme = deepmerge(theme, {
       components: {
         MuiIconButton: {
@@ -90,7 +90,7 @@ export default ({ direction, pureBlack, type }) => {
     });
   }
 
-  if (palette.type === 'dark') {
+  if (palette.mode === 'dark') {
     theme = deepmerge(theme, {
       components: {
         MuiPaper: {

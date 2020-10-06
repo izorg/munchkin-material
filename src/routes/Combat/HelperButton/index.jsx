@@ -17,7 +17,7 @@ const useStyles = makeStyles(
   (theme) => ({
     backdrop: {
       backgroundColor:
-        theme.palette.type === 'light' ? 'rgba(250, 250, 250, .9)' : undefined,
+        theme.palette.mode === 'light' ? 'rgba(250, 250, 250, .9)' : undefined,
       zIndex: 1,
     },
 

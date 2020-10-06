@@ -36,7 +36,7 @@ const useStyles = makeStyles(
 
     single: {
       backgroundColor:
-        theme.palette.type === 'dark'
+        theme.palette.mode === 'dark'
           ? theme.palette.background.default
           : theme.palette.background.paper,
     },
@@ -70,7 +70,7 @@ const useStyles = makeStyles(
 
     content: {
       backgroundColor:
-        theme.palette.type === 'dark'
+        theme.palette.mode === 'dark'
           ? theme.palette.background.default
           : theme.palette.background.paper,
       flex: 1,

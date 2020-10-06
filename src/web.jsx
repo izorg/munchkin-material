@@ -9,7 +9,7 @@ import AugmentedStylesProvider from './components/AugmentedStylesProvider';
 import AugmentedThemeProvider from './components/AugmentedThemeProvider';
 import LocaleProvider from './components/LocaleProvider';
 import ReduxProvider from './components/ReduxProvider';
-import SystemPaletteTypeProvider from './components/SystemPaletteTypeProvider';
+import SystemPaletteModeProvider from './components/SystemPaletteModeProvider';
 import WakeLockProvider from './components/WakeLockProvider';
 import WorkboxProvider from './components/WorkboxProvider';
 import sentry from './sentry';
@@ -28,13 +28,13 @@ render(
       <WorkboxProvider>
         <WakeLockProvider>
           <LocaleProvider>
-            <SystemPaletteTypeProvider>
+            <SystemPaletteModeProvider>
               <AugmentedStylesProvider>
                 <AugmentedThemeProvider>
                   <App />
                 </AugmentedThemeProvider>
               </AugmentedStylesProvider>
-            </SystemPaletteTypeProvider>
+            </SystemPaletteModeProvider>
           </LocaleProvider>
         </WakeLockProvider>
       </WorkboxProvider>

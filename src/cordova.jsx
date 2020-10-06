@@ -11,7 +11,7 @@ import CordovaProvider from './components/CordovaProvider';
 import FullVersionProvider from './components/FullVersionProvider';
 import LocaleProvider from './components/LocaleProvider';
 import ReduxProvider from './components/ReduxProvider';
-import SystemPaletteTypeProvider from './components/SystemPaletteTypeProvider';
+import SystemPaletteModeProvider from './components/SystemPaletteModeProvider';
 import WakeLockProvider from './components/WakeLockProvider';
 
 render(
@@ -21,13 +21,13 @@ render(
         <FullVersionProvider>
           <WakeLockProvider>
             <LocaleProvider>
-              <SystemPaletteTypeProvider>
+              <SystemPaletteModeProvider>
                 <AugmentedStylesProvider>
                   <AugmentedThemeProvider>
                     <App />
                   </AugmentedThemeProvider>
                 </AugmentedStylesProvider>
-              </SystemPaletteTypeProvider>
+              </SystemPaletteModeProvider>
             </LocaleProvider>
           </WakeLockProvider>
         </FullVersionProvider>

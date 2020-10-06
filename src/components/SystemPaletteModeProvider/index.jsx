@@ -2,20 +2,20 @@ import { useMediaQuery } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import React, { createContext, useContext, useEffect, useState } from 'react';
 
-const displayName = 'SystemPaletteTypeProvider';
+const displayName = 'SystemPaletteModeProvider';
 
 const SystemPaletteTypeContext = createContext();
 
-export const useSystemPaletteType = () => useContext(SystemPaletteTypeContext);
+export const useSystemPaletteMode = () => useContext(SystemPaletteTypeContext);
 
-const SystemPaletteTypeProvider = ({ children }) => {
+const SystemPaletteModeProvider = ({ children }) => {
   const cssSupport = window.matchMedia('(prefers-color-scheme)').matches;
 
   const useCordova =
     'cordova' in window && window.cordova.platformId === 'android';
 
   const [ready, setReady] = useState(() => !useCordova);
-  const [cordovaType, setCordovaType] = useState();
+  const [cordovaMode, setCordovaMode] = useState();
 
   useEffect(() => {
     if (!useCordova) {
@@ -29,7 +29,7 @@ const SystemPaletteTypeProvider = ({ children }) => {
     ThemeDetection.isAvailable(({ value: available }) => {
       if (available) {
         ThemeDetection.isDarkModeEnabled(({ value: darkMode }) => {
-          setCordovaType(darkMode ? 'dark' : 'light');
+          setCordovaMode(darkMode ? 'dark' : 'light');
           setReady(true);
         }, onError);
       } else {
@@ -49,7 +49,7 @@ const SystemPaletteTypeProvider = ({ children }) => {
   let value;
 
   if (useCordova) {
-    value = cordovaType;
+    value = cordovaMode;
   } else if (cssSupport) {
     value = dark ? 'dark' : 'light';
   }
@@ -61,10 +61,10 @@ const SystemPaletteTypeProvider = ({ children }) => {
   );
 };
 
-SystemPaletteTypeProvider.propTypes = {
+SystemPaletteModeProvider.propTypes = {
   children: PropTypes.node,
 };
 
-SystemPaletteTypeProvider.displayName = displayName;
+SystemPaletteModeProvider.displayName = displayName;
 
-export default SystemPaletteTypeProvider;
+export default SystemPaletteModeProvider;

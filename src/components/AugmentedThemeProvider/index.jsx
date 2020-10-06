@@ -10,7 +10,7 @@ import baseTheme from '../../styles/baseTheme';
 import themes from '../../styles/themes';
 import { useLocationQuery } from '../../utils/location';
 import { ios } from '../../utils/platforms';
-import { useSystemPaletteType } from '../SystemPaletteTypeProvider';
+import { useSystemPaletteMode } from '../SystemPaletteModeProvider';
 
 const displayName = 'AugmentedThemeProvider';
 
@@ -18,7 +18,7 @@ const AugmentedThemeProvider = ({ children }) => {
   const { locale } = useIntl();
   const direction = getDirection(locale);
 
-  const systemType = useSystemPaletteType();
+  const systemPaletteMode = useSystemPaletteMode();
 
   const query = useLocationQuery();
   const queryTheme = useMemo(() => {
@@ -48,28 +48,28 @@ const AugmentedThemeProvider = ({ children }) => {
       ...queryTheme,
     };
 
-    let { pureBlack, type } = previewTheme;
+    let { mode, pureBlack } = previewTheme;
 
-    if (!type) {
-      type = systemType;
+    if (!mode) {
+      mode = systemPaletteMode;
     }
 
     return createMuiTheme(
       deepmerge.all([
-        baseTheme({ direction, pureBlack, type }),
+        baseTheme({ direction, mode, pureBlack }),
         themes[previewTheme.id].theme,
-        { palette: { type } },
+        { palette: { mode } },
       ]),
     );
-  }, [currentTheme, direction, queryTheme, systemType]);
+  }, [currentTheme, direction, queryTheme, systemPaletteMode]);
 
   useEffect(() => {
     const { Keyboard } = window;
 
     if (Keyboard && Keyboard.setKeyboardStyle && ios) {
-      Keyboard.setKeyboardStyle(theme.palette.type); // cordova ios
+      Keyboard.setKeyboardStyle(theme.palette.mode); // cordova ios
     }
-  }, [theme.palette.type]);
+  }, [theme.palette.mode]);
 
   return (
     <ThemeProvider theme={theme}>

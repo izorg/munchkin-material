@@ -33,7 +33,7 @@ const UndoSnackbar = () => {
   const theme = useTheme();
   const classes = useStyles();
 
-  const smDown = useMediaQuery(theme.breakpoints.down('sm'), { noSsr: true });
+  const mdDown = useMediaQuery(theme.breakpoints.down('md'), { noSsr: true });
 
   const open = useSelector((state) => state.past.length > 0);
 
@@ -64,7 +64,7 @@ const UndoSnackbar = () => {
       message={message}
       onClose={onClose}
       open={open}
-      TransitionComponent={smDown ? Fade : undefined}
+      TransitionComponent={mdDown ? Fade : undefined}
       TransitionProps={{
         onExited: () => setMessage(null),
       }}

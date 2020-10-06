@@ -29,14 +29,15 @@ const ScreenModal = ({ children, open, TransitionProps }) => {
   const classes = useStyles();
   const theme = useTheme();
 
-  const matches = useMediaQuery(theme.breakpoints.down('md'), { noSsr: true });
-  const TransitionComponent = matches && ios ? Slide : Fade;
+  const slide =
+    useMediaQuery(theme.breakpoints.down('lg'), { noSsr: true }) && ios;
+  const TransitionComponent = slide ? Slide : Fade;
 
   return (
     <Modal closeAfterTransition hideBackdrop open={open}>
       <TransitionComponent
         appear
-        direction={matches && ios ? 'left' : undefined}
+        direction={slide ? 'left' : undefined}
         in={open}
         {...TransitionProps}
       >

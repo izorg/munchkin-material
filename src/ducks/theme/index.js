@@ -7,15 +7,15 @@ export const setTheme = (theme) => ({
   theme,
 });
 
-const type =
+const mode =
   'matchMedia' in window && window.matchMedia('(prefers-color-scheme)').matches
     ? undefined
     : 'light';
 
 const initialState = {
   id,
+  mode,
   pureBlack: false,
-  type,
 };
 
 const reducer = (state = initialState, action) => {

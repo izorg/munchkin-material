@@ -25,7 +25,7 @@ import {
 import CancelButton from '../../CancelButton';
 import { useFullVersion } from '../../FullVersionProvider';
 import SubmitButton from '../../SubmitButton';
-import { useSystemPaletteType } from '../../SystemPaletteTypeProvider';
+import { useSystemPaletteMode } from '../../SystemPaletteModeProvider';
 import themeMessages from '../messages';
 
 const displayName = 'ThemeDialog';
@@ -49,13 +49,12 @@ const ThemeDialog = () => {
 
   const { buyFullVersion, fullVersion } = useFullVersion();
   const goBack = useGoBack();
-  const systemType = useSystemPaletteType();
-
-  const themeId = useSelector((state) => state.present.theme.id);
+  const systemPaletteMode = useSystemPaletteMode();
 
   const query = useLocationQuery();
   const queryTheme = query.theme;
   const stateTheme = useSelector((state) => state.present.theme);
+  const themeId = stateTheme.id;
   const open = queryTheme !== undefined;
 
   const theme = useMemo(() => {
@@ -101,10 +100,10 @@ const ThemeDialog = () => {
     });
   };
 
-  const onThemeTypeChange = (event, type) => {
+  const onThemeModeChange = (event, mode) => {
     onChange({
       ...theme,
-      type,
+      mode,
     });
   };
 
@@ -129,7 +128,7 @@ const ThemeDialog = () => {
     dispatch(
       setTheme({
         ...theme,
-        type: theme.type || undefined,
+        mode: theme.mode || undefined,
       }),
     );
 
@@ -138,7 +137,7 @@ const ThemeDialog = () => {
 
   const onClose = () => goBack();
 
-  const typeValue = theme.type || '';
+  const modeValue = theme.mode || '';
 
   return (
     <Dialog
@@ -148,8 +147,8 @@ const ThemeDialog = () => {
     >
       <DialogTitle>{intl.formatMessage(themeMessages.label)}</DialogTitle>
       <DialogContent className={classes.content}>
-        <RadioGroup name="type" onChange={onThemeTypeChange} value={typeValue}>
-          {systemType && (
+        <RadioGroup name="mode" onChange={onThemeModeChange} value={modeValue}>
+          {systemPaletteMode && (
             <FormControlLabel
               control={<Radio color="primary" />}
               label={

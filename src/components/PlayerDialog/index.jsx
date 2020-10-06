@@ -44,7 +44,7 @@ const useStyles = makeStyles(
 
     dialog: {
       backgroundColor:
-        theme.palette.type === 'dark'
+        theme.palette.mode === 'dark'
           ? theme.palette.background.default
           : theme.palette.background.paper,
       minWidth: 320,
@@ -55,7 +55,7 @@ const useStyles = makeStyles(
     },
 
     title: {
-      [theme.breakpoints.down('md')]: {
+      [theme.breakpoints.down('lg')]: {
         padding: 0,
       },
     },
@@ -127,7 +127,7 @@ const PlayerDialog = () => {
     [players],
   );
 
-  const fullScreen = useMediaQuery(theme.breakpoints.down('md'), {
+  const fullScreen = useMediaQuery(theme.breakpoints.down('lg'), {
     noSsr: true,
   });
 
