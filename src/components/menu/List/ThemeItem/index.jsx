@@ -41,6 +41,7 @@ const ThemeItem = ({ className, ...rest }) => {
       ...location,
       search: stringifyQuery({
         ...parseSearch(location.search),
+        menu: undefined,
         theme: null,
       }),
     };

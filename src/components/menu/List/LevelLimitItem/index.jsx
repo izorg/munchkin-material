@@ -45,6 +45,7 @@ const LevelLimitItem = ({ className, ...rest }) => {
       search: stringifyQuery({
         ...parseSearch(location.search),
         levelLimit: null,
+        menu: undefined,
       }),
     };
 
