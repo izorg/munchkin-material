@@ -72,7 +72,8 @@ export default ({ direction, mode, pureBlack }) => {
     },
 
     typography: {
-      fontFamily: '"Roboto", "San Francisco", "Helvetica", "Arial", sans-serif',
+      fontFamily:
+        'system-ui, -apple-system, "Roboto", "San Francisco", "Helvetica", "Arial", sans-serif',
     },
   };
 
