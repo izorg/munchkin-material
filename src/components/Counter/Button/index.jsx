@@ -31,19 +31,36 @@ const CounterButton = ({ disabled, onClick, ...rest }) => {
     }
   }, [clearPress, disabled]);
 
-  const onTapStart = () => {
+  const startPointRef = useRef({ x: 0, y: 0 });
+
+  const onTapStart = (event, info) => {
+    startPointRef.current = info.point;
+
     timeoutRef.current = setTimeout(() => {
       onClick();
       intervalRef.current = setInterval(() => onClick(), 250);
     }, 500);
   };
 
-  const onTap = () => {
+  const onTap = (event, info) => {
+    clearPress();
+
+    if (event.type === 'pointercancel') {
+      return;
+    }
+
+    const delta = Math.sqrt(
+      Math.pow(info.point.x - startPointRef.current.x, 2) +
+        Math.pow(info.point.y - startPointRef.current.y, 2),
+    );
+
+    if (delta > 3) {
+      return;
+    }
+
     if (!intervalRef.current && !disabled) {
       onClick();
     }
-
-    clearPress();
   };
 
   const onKeyDown = ({ key }) => {

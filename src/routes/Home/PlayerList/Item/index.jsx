@@ -142,9 +142,11 @@ const HomePlayerListItem = forwardRef(
       }
     }, []);
 
+    const startPointRef = useRef({ x: 0, y: 0 });
     const startTapTimeRef = useRef(new Date());
 
-    const onTapStart = (event) => {
+    const onTapStart = (event, info) => {
+      startPointRef.current = info.point;
       startTapTimeRef.current = new Date();
 
       pressTimeoutRef.current = setTimeout(() => {
@@ -165,12 +167,25 @@ const HomePlayerListItem = forwardRef(
       }, 500);
     };
 
-    const onTap = (event) => {
+    const onTap = (event, info) => {
+      clearPress();
+
+      if (event.type === 'pointercancel') {
+        return;
+      }
+
+      const delta = Math.sqrt(
+        Math.pow(info.point.x - startPointRef.current.x, 2) +
+          Math.pow(info.point.y - startPointRef.current.y, 2),
+      );
+
+      if (delta > 3) {
+        return;
+      }
+
       if (new Date() - startTapTimeRef.current < 500) {
         onClick(event);
       }
-
-      clearPress();
     };
 
     const onKeyDown = (event) => {
