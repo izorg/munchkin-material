@@ -117,7 +117,7 @@ const ColorPicker = ({
           value={value}
         />
       </Hidden>
-      <Hidden xsDown>
+      <Hidden smDown>
         <Popover
           anchorEl={() => anchorEl.current}
           onClose={onClose}
