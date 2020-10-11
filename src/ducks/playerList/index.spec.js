@@ -1,7 +1,6 @@
 import {
   ADD_PLAYER_TO_LIST,
   MOVE_PLAYER,
-  REMOVE_PLAYER_FROM_LIST,
   SHUFFLE_PLAYERS,
 } from './actionTypes';
 
@@ -32,15 +31,6 @@ describe('Player List reducer', () => {
     });
 
     expect(playerList).toStrictEqual([2, 3, 1]);
-  });
-
-  test('should remove player', () => {
-    const playerList = reducer([1, 2, 3], {
-      type: REMOVE_PLAYER_FROM_LIST,
-      id: 2,
-    });
-
-    expect(playerList[1]).toStrictEqual(3);
   });
 
   test('should shuffle players', () => {

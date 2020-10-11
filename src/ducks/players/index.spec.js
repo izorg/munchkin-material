@@ -10,7 +10,6 @@ import {
   INCREMENT_PLAYER_GEAR,
   INCREMENT_PLAYER_LEVEL,
   KILL_PLAYER,
-  REMOVE_PLAYER,
   TOGGLE_PLAYER_SEX,
   UPDATE_PLAYER,
 } from './actionTypes';
@@ -24,7 +23,6 @@ import reducer, {
   initialState,
   killPlayer,
   playerReducer,
-  removePlayer,
   togglePlayerSex,
   updatePlayer,
 } from './index';
@@ -94,21 +92,6 @@ describe('Players reducer', () => {
 
     expect(players[id].gear).toBe(0);
     expect(players[id].level).toBe(6);
-  });
-
-  test('removes player', () => {
-    const player = createPlayer();
-    const { id } = player;
-
-    const players = reducer(
-      { [player.id]: player },
-      {
-        type: REMOVE_PLAYER,
-        id,
-      },
-    );
-
-    expect(players[id]).toBeUndefined();
   });
 
   test('toggles sex', () => {
@@ -230,17 +213,6 @@ describe('Players actions', () => {
     };
 
     expect(killPlayer(player.id)).toStrictEqual(expectedAction);
-  });
-
-  test('should create an action to remove player', () => {
-    const player = createPlayer();
-
-    const expectedAction = {
-      type: REMOVE_PLAYER,
-      id: player.id,
-    };
-
-    expect(removePlayer(player.id)).toStrictEqual(expectedAction);
   });
 
   test('should create an action to toggle player sex', () => {

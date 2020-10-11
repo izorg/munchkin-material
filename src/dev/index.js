@@ -1,5 +1,5 @@
-import { addPlayerToList, removePlayerFromList } from '../ducks/playerList';
-import { addPlayer, removePlayer } from '../ducks/players';
+import { addPlayerToList, removePlayers } from '../ducks/playerList';
+import { addPlayer } from '../ducks/players';
 import { setLocale as setAppLocale } from '../ducks/settings';
 import { getLocale } from '../i18n';
 import '../web';
@@ -17,10 +17,7 @@ const setTestData = () => {
 
   const { playerList, settings } = window.reduxStore.getState().present;
 
-  playerList.forEach((id) => {
-    dispatch(removePlayerFromList(id));
-    dispatch(removePlayer(id));
-  });
+  dispatch(removePlayers(playerList));
 
   const locale = settings.locale || getLocale();
 

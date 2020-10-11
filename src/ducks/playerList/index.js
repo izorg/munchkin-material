@@ -2,7 +2,7 @@
 import {
   ADD_PLAYER_TO_LIST,
   MOVE_PLAYER,
-  REMOVE_PLAYER_FROM_LIST,
+  REMOVE_PLAYERS,
   SHUFFLE_PLAYERS,
 } from './actionTypes';
 
@@ -37,9 +37,9 @@ export const movePlayer = (oldPosition, newPosition) => ({
   newPosition,
 });
 
-export const removePlayerFromList = (id) => ({
-  type: REMOVE_PLAYER_FROM_LIST,
-  id,
+export const removePlayers = (playerList) => ({
+  type: REMOVE_PLAYERS,
+  playerList,
 });
 
 export const shufflePlayers = () => ({
@@ -69,11 +69,8 @@ const reducer = (state = initialState, action) => {
       ];
     }
 
-    case REMOVE_PLAYER_FROM_LIST: {
-      const index = state.indexOf(action.id);
-
-      return [...state.slice(0, index), ...state.slice(index + 1)];
-    }
+    case REMOVE_PLAYERS:
+      return state.filter((id) => !action.playerList.includes(id));
 
     case SHUFFLE_PLAYERS: {
       return shuffle(state);

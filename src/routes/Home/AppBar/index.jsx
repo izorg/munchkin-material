@@ -11,8 +11,7 @@ import Title from '../../../components/Title';
 import TopAppBar from '../../../components/TopAppBar';
 import TopIconButton from '../../../components/TopIconButton';
 import { setCombatPlayerBonus } from '../../../ducks/combat';
-import { removePlayerFromList } from '../../../ducks/playerList';
-import { removePlayer } from '../../../ducks/players';
+import { removePlayers } from '../../../ducks/playerList';
 import {
   stringifyQuery,
   useGoBack,
@@ -52,10 +51,7 @@ const HomeAppBar = ({ empty, singleMode }) => {
   const onMultiSelectDeactivate = () => goBack();
 
   const onPlayersDelete = (selected) => {
-    selected.forEach((id) => {
-      dispatch(removePlayerFromList(id));
-      dispatch(removePlayer(id));
-    });
+    dispatch(removePlayers(selected));
     goBack();
   };
 

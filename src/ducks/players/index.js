@@ -1,4 +1,5 @@
 import toggleSex from '../../utils/toggleSex';
+import { REMOVE_PLAYERS } from '../playerList/actionTypes';
 
 import {
   ADD_PLAYER,
@@ -7,7 +8,6 @@ import {
   INCREMENT_PLAYER_GEAR,
   INCREMENT_PLAYER_LEVEL,
   KILL_PLAYER,
-  REMOVE_PLAYER,
   RESET_PLAYERS,
   TOGGLE_PLAYER_SEX,
   UPDATE_PLAYER,
@@ -40,11 +40,6 @@ export const incrementPlayerLevel = (id) => ({
 
 export const killPlayer = (id) => ({
   type: KILL_PLAYER,
-  id,
-});
-
-export const removePlayer = (id) => ({
-  type: REMOVE_PLAYER,
   id,
 });
 
@@ -137,11 +132,10 @@ const reducer = (state = initialState, action = {}) => {
       };
     }
 
-    case REMOVE_PLAYER: {
-      const { [action.id]: removed, ...rest } = state;
-
-      return rest;
-    }
+    case REMOVE_PLAYERS:
+      return Object.fromEntries(
+        Object.entries(state).filter(([id]) => !action.playerList.includes(id)),
+      );
 
     case RESET_PLAYERS: {
       // return Object.fromEntries(

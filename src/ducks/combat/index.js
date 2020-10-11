@@ -1,6 +1,7 @@
 import createMonster from '../../utils/createMonster';
 import { ADD_MONSTER, REMOVE_MONSTER } from '../monsters/actionTypes';
-import { REMOVE_PLAYER, RESET_PLAYERS } from '../players/actionTypes';
+import { REMOVE_PLAYERS } from '../playerList/actionTypes';
+import { RESET_PLAYERS } from '../players/actionTypes';
 
 import {
   FINISH_COMBAT,
@@ -68,8 +69,8 @@ const reducer = (state = initialState, action) => {
       };
     }
 
-    case REMOVE_PLAYER:
-      if (action.id === state.helperId) {
+    case REMOVE_PLAYERS:
+      if (action.playerList.includes(state.helperId)) {
         return {
           ...state,
           helperBonus: 0,
