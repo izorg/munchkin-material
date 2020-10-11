@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "build:android": "cordova build android --release",
-    "build:ios": "cordova build ios --release",
+    "build:ios": "cordova build ios --debug",
     "reinstall": "rm -rf node_modules platforms plugins package-lock.json && npm install && cordova prepare android && cordova prepare ios",
     "remove:sourcemaps": "rm -rf www/**/*.map",
     "run:android": "cordova run android",
@@ -57,7 +57,7 @@
     "cordova-plugin-purchase": "10.3.0",
     "cordova-plugin-splashscreen": "6.0.0",
     "cordova-plugin-statusbar": "2.4.3",
-    "cordova-plugin-theme-detection": "1.2.1",
+    "cordova-plugin-theme-detection": "1.3.0",
     "cordova-plugin-vibration": "3.1.1",
     "cordova-plugin-web-share": "1.2.0",
     "cordova-plugin-whitelist": "1.3.4",

@@ -1,5 +1,7 @@
 import { Backdrop, makeStyles } from '@material-ui/core';
-import { SpeedDial, SpeedDialAction, SpeedDialIcon } from '@material-ui/lab';
+import SpeedDial from '@material-ui/core/SpeedDial';
+import SpeedDialAction from '@material-ui/core/SpeedDialAction';
+import SpeedDialIcon from '@material-ui/core/SpeedDialIcon';
 import clsx from 'clsx';
 import { AccountPlus, EmoticonDevilOutline } from 'mdi-material-ui';
 import React, { memo } from 'react';
