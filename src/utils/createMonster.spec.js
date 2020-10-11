@@ -19,6 +19,6 @@ describe('createMonster', () => {
 
     const monster = createMonster(data);
 
-    expect(monster).toEqual(data);
+    expect(monster).toStrictEqual(data);
   });
 });

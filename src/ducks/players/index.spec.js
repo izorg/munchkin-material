@@ -154,7 +154,7 @@ describe('Players reducer', () => {
   });
 
   test('tests default behavior', () => {
-    expect(reducer()).toEqual(initialState);
+    expect(reducer()).toStrictEqual(initialState);
   });
 
   test('should ignore unknown action', () => {
@@ -174,7 +174,7 @@ describe('Players actions', () => {
       player,
     };
 
-    expect(addPlayer(player)).toEqual(expectedAction);
+    expect(addPlayer(player)).toStrictEqual(expectedAction);
   });
 
   test('should create an action to decrement player gear', () => {
@@ -185,7 +185,7 @@ describe('Players actions', () => {
       id: player.id,
     };
 
-    expect(decrementPlayerGear(player.id)).toEqual(expectedAction);
+    expect(decrementPlayerGear(player.id)).toStrictEqual(expectedAction);
   });
 
   test('should create an action to decrement player level', () => {
@@ -196,7 +196,7 @@ describe('Players actions', () => {
       id: player.id,
     };
 
-    expect(decrementPlayerLevel(player.id)).toEqual(expectedAction);
+    expect(decrementPlayerLevel(player.id)).toStrictEqual(expectedAction);
   });
 
   test('should create an action to increment player gear', () => {
@@ -207,7 +207,7 @@ describe('Players actions', () => {
       id: player.id,
     };
 
-    expect(incrementPlayerGear(player.id)).toEqual(expectedAction);
+    expect(incrementPlayerGear(player.id)).toStrictEqual(expectedAction);
   });
 
   test('should create an action to increment player level', () => {
@@ -218,7 +218,7 @@ describe('Players actions', () => {
       id: player.id,
     };
 
-    expect(incrementPlayerLevel(player.id)).toEqual(expectedAction);
+    expect(incrementPlayerLevel(player.id)).toStrictEqual(expectedAction);
   });
 
   test('should create an action to kill player', () => {
@@ -229,7 +229,7 @@ describe('Players actions', () => {
       id: player.id,
     };
 
-    expect(killPlayer(player.id)).toEqual(expectedAction);
+    expect(killPlayer(player.id)).toStrictEqual(expectedAction);
   });
 
   test('should create an action to remove player', () => {
@@ -240,7 +240,7 @@ describe('Players actions', () => {
       id: player.id,
     };
 
-    expect(removePlayer(player.id)).toEqual(expectedAction);
+    expect(removePlayer(player.id)).toStrictEqual(expectedAction);
   });
 
   test('should create an action to toggle player sex', () => {
@@ -251,7 +251,7 @@ describe('Players actions', () => {
       id: player.id,
     };
 
-    expect(togglePlayerSex(player.id)).toEqual(expectedAction);
+    expect(togglePlayerSex(player.id)).toStrictEqual(expectedAction);
   });
 
   test('should create an action to update a player', () => {
@@ -262,6 +262,6 @@ describe('Players actions', () => {
       player,
     };
 
-    expect(updatePlayer(player)).toEqual(expectedAction);
+    expect(updatePlayer(player)).toStrictEqual(expectedAction);
   });
 });

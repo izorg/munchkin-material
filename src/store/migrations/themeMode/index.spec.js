@@ -2,7 +2,7 @@ import state from './state.json';
 
 import migrate from './index';
 
-test('Theme property type should be renamed to mode', () => {
+test('theme property type should be renamed to mode', () => {
   const {
     theme: { mode },
   } = migrate(state);

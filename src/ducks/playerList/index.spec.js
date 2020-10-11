@@ -12,14 +12,14 @@ describe('Player List reducer', () => {
       id: 1,
     });
 
-    expect(playerList[0]).toEqual(1);
+    expect(playerList[0]).toStrictEqual(1);
 
     playerList = reducer(playerList, {
       type: ADD_PLAYER_TO_LIST,
       id: 2,
     });
 
-    expect(playerList[1]).toEqual(2);
+    expect(playerList[1]).toStrictEqual(2);
   });
 
   test('should move player', () => {
@@ -29,7 +29,7 @@ describe('Player List reducer', () => {
       newPosition: 2,
     });
 
-    expect(playerList).toEqual([2, 3, 1]);
+    expect(playerList).toStrictEqual([2, 3, 1]);
   });
 
   test('should remove player', () => {
@@ -38,7 +38,7 @@ describe('Player List reducer', () => {
       id: 2,
     });
 
-    expect(playerList[1]).toEqual(3);
+    expect(playerList[1]).toStrictEqual(3);
   });
 
   test('should shuffle players', () => {

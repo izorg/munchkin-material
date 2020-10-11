@@ -8,7 +8,7 @@
   "extends": [
     "eslint:recommended",
     "plugin:import/recommended",
-    "plugin:jest/recommended",
+    "plugin:jest/all",
     "plugin:json/recommended",
     "plugin:jsx-a11y/recommended",
     "plugin:prettier/recommended",
@@ -33,6 +33,10 @@
         "newlines-between": "always"
       }
     ],
+    "jest/consistent-test-it": ["error", { "withinDescribe": "test" }],
+    "jest/lowercase-name": ["error", { "ignoreTopLevelDescribe": true }],
+    "jest/prefer-expect-assertions": "off",
+    "jest/require-top-level-describe": "off",
     "jsx-a11y/no-autofocus": ["error", { "ignoreNonDOM": true }],
     "no-console": ["error", { "allow": ["error", "warn"] }],
     "no-unused-vars": [

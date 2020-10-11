@@ -89,7 +89,7 @@ describe('Combat reducer', () => {
     });
 
     expect(combat.playerId).toBe(playerId);
-    expect(combat.monsters).toEqual([monster.id]);
+    expect(combat.monsters).toStrictEqual([monster.id]);
   });
 
   test('should remove helper on related player remove', () => {
@@ -97,10 +97,12 @@ describe('Combat reducer', () => {
 
     const state = { helperBonus: 2, helperId };
 
-    expect(reducer(state, { type: REMOVE_PLAYER, id: helperId })).toEqual({
-      helperBonus: 0,
-      helperId: null,
-    });
+    expect(reducer(state, { type: REMOVE_PLAYER, id: helperId })).toStrictEqual(
+      {
+        helperBonus: 0,
+        helperId: null,
+      },
+    );
   });
 
   test('should ignore combat unrelated player removal', () => {
@@ -123,7 +125,7 @@ describe('Combat actions', () => {
       id: uuid(),
     };
 
-    expect(setCombatHelper(action.id)).toEqual(action);
+    expect(setCombatHelper(action.id)).toStrictEqual(action);
   });
 
   test('should create an action to set helper bonus', () => {
@@ -132,7 +134,7 @@ describe('Combat actions', () => {
       bonus: 2,
     };
 
-    expect(setCombatHelperBonus(action.bonus)).toEqual(action);
+    expect(setCombatHelperBonus(action.bonus)).toStrictEqual(action);
   });
 
   test('should create an action to set player bonus', () => {
@@ -141,7 +143,7 @@ describe('Combat actions', () => {
       bonus: 2,
     };
 
-    expect(setCombatPlayerBonus(action.bonus)).toEqual(action);
+    expect(setCombatPlayerBonus(action.bonus)).toStrictEqual(action);
   });
 
   test('should create an action to start a combat', () => {
@@ -149,7 +151,7 @@ describe('Combat actions', () => {
 
     const { monster, ...action } = startCombat(playerId);
 
-    expect(action).toEqual({
+    expect(action).toStrictEqual({
       type: START_COMBAT,
       playerId,
     });

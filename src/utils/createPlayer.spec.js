@@ -22,6 +22,6 @@ describe('createPlayer', () => {
 
     const player = createPlayer(data);
 
-    expect(player).toEqual(data);
+    expect(player).toStrictEqual(data);
   });
 });

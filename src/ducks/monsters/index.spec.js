@@ -92,7 +92,7 @@ describe('Monsters reducer', () => {
       monster,
     });
 
-    expect(monsters).toEqual({ [monster.id]: monster });
+    expect(monsters).toStrictEqual({ [monster.id]: monster });
   });
 
   test('updates monster', () => {
@@ -131,7 +131,7 @@ describe('Monsters actions', () => {
       monster,
     };
 
-    expect(addMonster(monster)).toEqual(expectedAction);
+    expect(addMonster(monster)).toStrictEqual(expectedAction);
   });
 
   test('decrement monster bonus', () => {
@@ -143,7 +143,7 @@ describe('Monsters actions', () => {
       id,
     };
 
-    expect(decrementMonsterBonus(id)).toEqual(expectedAction);
+    expect(decrementMonsterBonus(id)).toStrictEqual(expectedAction);
   });
 
   test('should create an action to decrement monster level', () => {
@@ -155,7 +155,7 @@ describe('Monsters actions', () => {
       id,
     };
 
-    expect(decrementMonsterLevel(id)).toEqual(expectedAction);
+    expect(decrementMonsterLevel(id)).toStrictEqual(expectedAction);
   });
 
   test('should create an action to increment monster bonus', () => {
@@ -167,7 +167,7 @@ describe('Monsters actions', () => {
       id,
     };
 
-    expect(incrementMonsterBonus(id)).toEqual(expectedAction);
+    expect(incrementMonsterBonus(id)).toStrictEqual(expectedAction);
   });
 
   test('should create an action to increment monster level', () => {
@@ -179,7 +179,7 @@ describe('Monsters actions', () => {
       id,
     };
 
-    expect(incrementMonsterLevel(id)).toEqual(expectedAction);
+    expect(incrementMonsterLevel(id)).toStrictEqual(expectedAction);
   });
 
   test('should create an action to remove the monster by id', () => {
@@ -191,6 +191,6 @@ describe('Monsters actions', () => {
       id,
     };
 
-    expect(removeMonster(id)).toEqual(expectedAction);
+    expect(removeMonster(id)).toStrictEqual(expectedAction);
   });
 });
