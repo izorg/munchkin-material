@@ -8,7 +8,6 @@ import {
   useGoBack,
   useLocationQuery,
 } from '../../../utils/location';
-import noop from '../../../utils/noop';
 
 import Color from './Color';
 import Dialog from './Dialog';
@@ -79,7 +78,9 @@ const ColorPicker = ({
 
             ignoreNextBlur.current = false;
           } else {
-            onBlur(event);
+            if (onBlur) {
+              onBlur(event);
+            }
 
             if (muiFormControl && muiFormControl.onBlur) {
               muiFormControl.onBlur(event);
@@ -92,7 +93,9 @@ const ColorPicker = ({
           onOpen();
         }}
         onFocus={(event) => {
-          onFocus(event);
+          if (onFocus) {
+            onFocus(event);
+          }
 
           if (muiFormControl && muiFormControl.onFocus) {
             muiFormControl.onFocus(event);
@@ -110,7 +113,11 @@ const ColorPicker = ({
           onClose={onClose}
           onSelect={(color) => {
             setValue(color);
-            onChange(color);
+
+            if (onChange) {
+              onChange(color);
+            }
+
             onClose();
           }}
           open={open}
@@ -123,7 +130,11 @@ const ColorPicker = ({
           onClose={onClose}
           onSelect={(color) => {
             setValue(color);
-            onChange(color);
+
+            if (onChange) {
+              onChange(color);
+            }
+
             onClose();
           }}
           open={open}
@@ -141,14 +152,6 @@ ColorPicker.propTypes = {
   onChange: PropTypes.func,
   onFocus: PropTypes.func,
   value: PropTypes.string,
-};
-
-ColorPicker.defaultProps = {
-  defaultValue: undefined,
-  onBlur: noop,
-  onChange: noop,
-  onFocus: noop,
-  value: '',
 };
 
 ColorPicker.displayName = displayName;

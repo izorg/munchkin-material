@@ -2,7 +2,6 @@ import { Check } from 'mdi-material-ui';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import noop from '../../../utils/noop';
 import BackButton from '../../BackButton';
 import Title from '../../Title';
 import TopAppBar from '../../TopAppBar';
@@ -25,11 +24,6 @@ const PlayerDialogAppBar = ({ onCancel, title }) => (
 PlayerDialogAppBar.propTypes = {
   onCancel: PropTypes.func,
   title: PropTypes.node,
-};
-
-PlayerDialogAppBar.defaultProps = {
-  onCancel: noop,
-  title: null,
 };
 
 PlayerDialogAppBar.displayName = displayName;
