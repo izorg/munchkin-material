@@ -1,5 +1,5 @@
 import orange from '@material-ui/core/colors/orange';
-import { fade } from '@material-ui/core/styles/colorManipulator';
+import { alpha } from '@material-ui/core/styles/colorManipulator';
 import createBreakpoints from '@material-ui/core/styles/createBreakpoints';
 import createPalette from '@material-ui/core/styles/createPalette';
 import deepmerge from 'deepmerge';
@@ -97,12 +97,12 @@ export default ({ direction, mode, pureBlack }) => {
         MuiPaper: {
           styleOverrides: {
             elevation1: {
-              backgroundColor: fade(palette.common.white, 0.05),
+              backgroundColor: alpha(palette.common.white, 0.05),
               boxShadow: 'none',
             },
 
             elevation2: {
-              backgroundColor: fade(palette.common.white, 0.07),
+              backgroundColor: alpha(palette.common.white, 0.07),
               boxShadow: 'none',
             },
           },
