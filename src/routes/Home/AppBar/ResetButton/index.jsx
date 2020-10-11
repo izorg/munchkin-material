@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { ActionCreators } from 'redux-undo';
 
 import TopIconButton from '../../../../components/TopIconButton';
-import { useUndoMessage } from '../../../../components/UndoProvider';
+import { useUndo } from '../../../../components/UndoProvider';
 import { resetPlayers } from '../../../../ducks/players';
 
 const displayName = 'ResetButton';
@@ -48,7 +48,7 @@ const ResetButton = (props) => {
     });
   });
 
-  const [, setUndoMessage] = useUndoMessage();
+  const { setMessage } = useUndo();
 
   const onClick = () =>
     dispatch((_, getState) => {
@@ -64,7 +64,7 @@ const ResetButton = (props) => {
         dispatch(resetPlayers([id]));
         dispatch(ActionCreators.clearHistory());
       } else {
-        setUndoMessage(intl.formatMessage(messages.undo));
+        setMessage(intl.formatMessage(messages.undo));
         dispatch(resetPlayers(playerList));
       }
     });

@@ -11,7 +11,7 @@ import { FormattedMessage } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
 import { ActionCreators } from 'redux-undo';
 
-import { useUndoMessage } from '../UndoProvider';
+import { useUndo } from '../UndoProvider';
 
 const displayName = 'UndoSnackbar';
 
@@ -45,7 +45,7 @@ const UndoSnackbar = () => {
     dispatch(ActionCreators.clearHistory());
   };
 
-  const [message, setMessage] = useUndoMessage();
+  const { message, setMessage } = useUndo();
 
   useEffect(() => {
     if (open && !message) {

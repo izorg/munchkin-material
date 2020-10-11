@@ -6,7 +6,7 @@ import { defineMessages, useIntl } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
 
 import TopIconButton from '../../../../components/TopIconButton';
-import { useUndoMessage } from '../../../../components/UndoProvider';
+import { useUndo } from '../../../../components/UndoProvider';
 import { killPlayer } from '../../../../ducks/players';
 
 const displayName = 'KillPlayerButton';
@@ -27,7 +27,7 @@ const KillPlayerButton = ({ playerId, ...props }) => {
   const dispatch = useDispatch();
   const intl = useIntl();
 
-  const [, setMessage] = useUndoMessage();
+  const { setMessage } = useUndo();
 
   const players = useSelector((state) => state.present.players);
   const disabled = players[playerId].gear === 0;

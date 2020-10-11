@@ -1,18 +1,16 @@
 import PropTypes from 'prop-types';
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useMemo, useState } from 'react';
 
-const UndoContext = createContext();
+const UndoContext = createContext({});
 
-export const useUndoMessage = () => useContext(UndoContext);
+export const useUndo = () => useContext(UndoContext);
 
 const UndoProvider = ({ children }) => {
   const [message, setMessage] = useState(null);
 
-  return (
-    <UndoContext.Provider value={[message, setMessage]}>
-      {children}
-    </UndoContext.Provider>
-  );
+  const value = useMemo(() => ({ message, setMessage }), [message]);
+
+  return <UndoContext.Provider value={value}>{children}</UndoContext.Provider>;
 };
 
 UndoProvider.propTypes = {
