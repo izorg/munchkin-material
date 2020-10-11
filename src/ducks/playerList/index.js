@@ -1,4 +1,11 @@
 // https://github.com/lodash/lodash/blob/master/shuffle.js
+import {
+  ADD_PLAYER_TO_LIST,
+  MOVE_PLAYER,
+  REMOVE_PLAYER_FROM_LIST,
+  SHUFFLE_PLAYERS,
+} from './actionTypes';
+
 const shuffle = (array) => {
   const { length } = array;
 
@@ -18,11 +25,6 @@ const shuffle = (array) => {
 
   return result;
 };
-
-export const ADD_PLAYER_TO_LIST = 'app/ADD_PLAYER_TO_LIST';
-export const MOVE_PLAYER = 'app/MOVE_PLAYER';
-export const REMOVE_PLAYER_FROM_LIST = 'app/REMOVE_PLAYER_FROM_LIST';
-export const SHUFFLE_PLAYERS = 'playerList/SHUFFLE_PLAYERS';
 
 export const addPlayerToList = (id) => ({
   type: ADD_PLAYER_TO_LIST,

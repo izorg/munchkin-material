@@ -1,9 +1,11 @@
-import reducer, {
+import {
   ADD_PLAYER_TO_LIST,
   MOVE_PLAYER,
   REMOVE_PLAYER_FROM_LIST,
   SHUFFLE_PLAYERS,
-} from './index';
+} from './actionTypes';
+
+import reducer from './index';
 
 describe('Player List reducer', () => {
   test('should add player', () => {
