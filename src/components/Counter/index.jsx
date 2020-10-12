@@ -35,11 +35,20 @@ export const counterMessages = defineMessages({
 const useStyles = makeStyles(
   (theme) => ({
     counter: {
-      textAlign: 'center',
+      alignItems: 'center',
+      display: 'flex',
+      flexDirection: 'column',
     },
 
     title: {
       fontSize: 24,
+    },
+
+    buttons: {
+      display: 'flex',
+      justifyContent: 'space-around',
+      maxWidth: '120px',
+      width: '100%',
     },
 
     button: {
@@ -78,23 +87,25 @@ const Counter = ({
 
       <div className={classes.value}>{value}</div>
 
-      <Button
-        className={classes.button}
-        data-screenshots="decrement-button"
-        disabled={decrementDisabled}
-        onClick={onDecrement}
-      >
-        <DecrementIcon className={classes.icon} />
-      </Button>
+      <div className={classes.buttons}>
+        <Button
+          className={classes.button}
+          data-screenshots="decrement-button"
+          disabled={decrementDisabled}
+          onClick={onDecrement}
+        >
+          <DecrementIcon className={classes.icon} />
+        </Button>
 
-      <Button
-        className={classes.button}
-        data-screenshots="increment-button"
-        disabled={incrementDisabled}
-        onClick={onIncrement}
-      >
-        <IncrementIcon className={classes.icon} />
-      </Button>
+        <Button
+          className={classes.button}
+          data-screenshots="increment-button"
+          disabled={incrementDisabled}
+          onClick={onIncrement}
+        >
+          <IncrementIcon className={classes.icon} />
+        </Button>
+      </div>
     </div>
   );
 };

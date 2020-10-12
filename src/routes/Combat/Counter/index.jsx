@@ -12,7 +12,9 @@ const displayName = 'CombatCounter';
 const useStyles = makeStyles(
   (theme) => ({
     counter: {
-      textAlign: 'center',
+      alignItems: 'center',
+      display: 'flex',
+      flexDirection: 'column',
     },
 
     title: {
@@ -21,6 +23,13 @@ const useStyles = makeStyles(
       '@media (orientation: portrait) and (min-width: 360px) and (min-height: 600px)': {
         fontSize: 20,
       },
+    },
+
+    buttons: {
+      display: 'flex',
+      justifyContent: 'space-around',
+      maxWidth: '90px',
+      width: '100%',
     },
 
     button: {
@@ -67,21 +76,23 @@ const CombatCounter = ({
 
       <div className={classes.value}>{value}</div>
 
-      <CounterButton
-        className={classes.button}
-        disabled={decrementDisabled}
-        onClick={onDecrement}
-      >
-        <MenuDown className={classes.icon} />
-      </CounterButton>
+      <div className={classes.buttons}>
+        <CounterButton
+          className={classes.button}
+          disabled={decrementDisabled}
+          onClick={onDecrement}
+        >
+          <MenuDown className={classes.icon} />
+        </CounterButton>
 
-      <CounterButton
-        className={classes.button}
-        disabled={incrementDisabled}
-        onClick={onIncrement}
-      >
-        <MenuUp className={classes.icon} />
-      </CounterButton>
+        <CounterButton
+          className={classes.button}
+          disabled={incrementDisabled}
+          onClick={onIncrement}
+        >
+          <MenuUp className={classes.icon} />
+        </CounterButton>
+      </div>
     </div>
   );
 };
