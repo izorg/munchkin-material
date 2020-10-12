@@ -50,6 +50,7 @@
   "themeDialog.auto": "Predeterminado del sistema",
   "themeDialog.dark": "Oscuro",
   "themeDialog.light": "Claro",
+  "themeDialog.pureBlack": "Muy oscuro",
   "undo": "Deshacer",
   "undo.killPlayer": "{name} {sex, select, female {ha muerto} male {ha muerto}}",
   "undo.resetPlayers": "Los jugadores han sido restablecidos"
