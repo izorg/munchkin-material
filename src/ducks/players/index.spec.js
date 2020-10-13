@@ -137,7 +137,7 @@ describe('Players reducer', () => {
   });
 
   test('tests default behavior', () => {
-    expect(reducer()).toStrictEqual(initialState);
+    expect(reducer(undefined, {})).toStrictEqual(initialState);
   });
 
   test('should ignore unknown action', () => {
