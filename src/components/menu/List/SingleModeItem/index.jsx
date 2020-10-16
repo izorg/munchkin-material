@@ -1,7 +1,6 @@
 import { ListItemIcon, makeStyles, Switch } from '@material-ui/core';
 import clsx from 'clsx';
 import { Account, AccountMultiple } from 'mdi-material-ui';
-import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';

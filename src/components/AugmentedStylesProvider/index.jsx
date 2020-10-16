@@ -2,7 +2,7 @@ import { jssPreset, StylesProvider } from '@material-ui/core';
 import { create } from 'jss';
 import rtl from 'jss-rtl';
 import PropTypes from 'prop-types';
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 import { useIntl } from 'react-intl';
 
 import { getDirection } from '../../i18n';

@@ -1,6 +1,6 @@
 import { ButtonBase, Dialog, makeStyles } from '@material-ui/core';
 import { Dice1, Dice2, Dice3, Dice4, Dice5, Dice6 } from 'mdi-material-ui';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { TransitionGroup } from 'react-transition-group';
 

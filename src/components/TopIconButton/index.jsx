@@ -1,5 +1,5 @@
 import { IconButton, makeStyles } from '@material-ui/core';
-import React, { forwardRef } from 'react';
+import { forwardRef } from 'react';
 
 const displayName = 'TopIconButton';
 

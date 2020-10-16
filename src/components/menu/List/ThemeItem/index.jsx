@@ -1,7 +1,6 @@
 import { ListItemIcon, makeStyles, useTheme } from '@material-ui/core';
 import clsx from 'clsx';
 import { Palette } from 'mdi-material-ui';
-import React from 'react';
 import { useIntl } from 'react-intl';
 import { useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';

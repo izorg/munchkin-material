@@ -1,5 +1,4 @@
 import { GenderFemale, GenderMale } from 'mdi-material-ui';
-import React from 'react';
 
 import { sexProp } from '../../utils/propTypes';
 import { FEMALE, MALE } from '../../utils/sex';

@@ -5,7 +5,6 @@ import {
   ChevronLeft,
   ChevronRight,
 } from 'mdi-material-ui';
-import React from 'react';
 
 import { ios } from '../../utils/platforms';
 import TopIconButton from '../TopIconButton';

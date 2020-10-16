@@ -1,5 +1,5 @@
 import { Plus } from 'mdi-material-ui';
-import React, { forwardRef } from 'react';
+import { forwardRef } from 'react';
 import { defineMessages, useIntl } from 'react-intl';
 import { useLocation, useNavigate } from 'react-router-dom';
 

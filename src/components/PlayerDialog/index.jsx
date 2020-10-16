@@ -17,7 +17,7 @@ import {
   useTheme,
 } from '@material-ui/core';
 import { GenderFemale, GenderMale } from 'mdi-material-ui';
-import React, { useEffect, useMemo, useRef } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
 import { defineMessages, FormattedMessage, useIntl } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
 

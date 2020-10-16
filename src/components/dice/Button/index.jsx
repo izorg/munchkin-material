@@ -1,6 +1,5 @@
 import { Tooltip } from '@material-ui/core';
 import { DiceMultiple } from 'mdi-material-ui';
-import React from 'react';
 import { defineMessages, useIntl } from 'react-intl';
 import { useDispatch } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';

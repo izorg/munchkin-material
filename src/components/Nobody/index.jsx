@@ -1,6 +1,5 @@
 import { makeStyles, Typography } from '@material-ui/core';
 import { AccountCircle } from 'mdi-material-ui';
-import React from 'react';
 import { FormattedMessage } from 'react-intl';
 
 const displayName = 'Nobody';

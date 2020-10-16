@@ -1,7 +1,6 @@
 import { Tooltip } from '@material-ui/core';
 import { Check, Close, Delete, FlagCheckered, Pencil } from 'mdi-material-ui';
 import PropTypes from 'prop-types';
-import React from 'react';
 import { defineMessages, FormattedMessage, useIntl } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';

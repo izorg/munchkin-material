@@ -1,4 +1,4 @@
-import React, { lazy, Suspense, useEffect } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 
 import Home from '../../routes/Home';
 import ScreenModal from '../ScreenModal';

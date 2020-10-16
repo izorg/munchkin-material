@@ -1,6 +1,6 @@
 import { Hidden, makeStyles, useFormControl } from '@material-ui/core';
 import PropTypes from 'prop-types';
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import {

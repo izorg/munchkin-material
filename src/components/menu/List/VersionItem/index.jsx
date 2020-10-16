@@ -1,6 +1,5 @@
 import { ListItemIcon } from '@material-ui/core';
 import { CellphoneArrowDown, InformationOutline } from 'mdi-material-ui';
-import React from 'react';
 
 import { useGoBack } from '../../../../utils/location';
 import { useWorkbox } from '../../../WorkboxProvider';

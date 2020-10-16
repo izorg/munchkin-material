@@ -7,7 +7,6 @@ import {
   ListItemAvatar,
   makeStyles,
 } from '@material-ui/core';
-import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
 

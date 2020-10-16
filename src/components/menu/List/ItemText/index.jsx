@@ -1,6 +1,5 @@
 import { ListItemText, makeStyles } from '@material-ui/core';
 import clsx from 'clsx';
-import React from 'react';
 
 const displayName = 'MenuListItemText';
 

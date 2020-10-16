@@ -8,7 +8,7 @@ import {
   Radio,
   RadioGroup,
 } from '@material-ui/core';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useIntl } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
 

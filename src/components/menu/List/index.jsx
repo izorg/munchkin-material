@@ -1,5 +1,4 @@
 import { List } from '@material-ui/core';
-import React from 'react';
 
 import InsomniaItem from './InsomniaItem';
 import LevelLimitItem from './LevelLimitItem';

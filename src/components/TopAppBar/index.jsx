@@ -1,6 +1,5 @@
 import { AppBar, makeStyles, Toolbar } from '@material-ui/core';
 import PropTypes from 'prop-types';
-import React from 'react';
 
 const displayName = 'TopAppBar';
 

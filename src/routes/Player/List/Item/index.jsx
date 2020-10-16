@@ -1,5 +1,4 @@
 import { ListItem, ListItemAvatar } from '@material-ui/core';
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import PlayerAvatar from '../../../../components/PlayerAvatar';

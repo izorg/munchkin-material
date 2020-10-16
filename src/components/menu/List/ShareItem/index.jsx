@@ -1,6 +1,5 @@
 import { ListItemIcon } from '@material-ui/core';
 import { ShareVariant } from 'mdi-material-ui';
-import React from 'react';
 import { defineMessages, useIntl } from 'react-intl';
 
 import { useGoBack } from '../../../../utils/location';

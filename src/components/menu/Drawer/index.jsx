@@ -6,7 +6,7 @@ import {
   useTheme,
 } from '@material-ui/core';
 import deepmerge from 'deepmerge';
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 import { useLocation, useMatch, useNavigate } from 'react-router-dom';
 
 import { EDIT } from '../../../routes/Home/modes';

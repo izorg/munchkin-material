@@ -1,7 +1,7 @@
 import { IconButton } from '@material-ui/core';
 import { motion } from 'framer-motion';
 import PropTypes from 'prop-types';
-import React, { useCallback, useEffect, useRef } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 
 const displayName = 'CounterButton';
 

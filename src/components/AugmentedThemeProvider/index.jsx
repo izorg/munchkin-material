@@ -1,7 +1,7 @@
 import { createMuiTheme, CssBaseline, ThemeProvider } from '@material-ui/core';
 import deepmerge from 'deepmerge';
 import PropTypes from 'prop-types';
-import React, { useEffect, useMemo } from 'react';
+import { useEffect, useMemo } from 'react';
 import { useIntl } from 'react-intl';
 import { useSelector } from 'react-redux';
 

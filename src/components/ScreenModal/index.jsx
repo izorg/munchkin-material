@@ -7,7 +7,6 @@ import {
   useTheme,
 } from '@material-ui/core';
 import PropTypes from 'prop-types';
-import React from 'react';
 
 import { ios } from '../../utils/platforms';
 

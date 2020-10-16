@@ -2,7 +2,7 @@ import { Avatar, ButtonBase, makeStyles } from '@material-ui/core';
 import clsx from 'clsx';
 import { Check } from 'mdi-material-ui';
 import PropTypes from 'prop-types';
-import React, { forwardRef } from 'react';
+import { forwardRef } from 'react';
 
 const displayName = 'Color';
 

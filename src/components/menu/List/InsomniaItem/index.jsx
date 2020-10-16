@@ -1,7 +1,6 @@
 import { ListItemIcon, makeStyles, Switch } from '@material-ui/core';
 import clsx from 'clsx';
 import { Lightbulb, LightbulbOutline } from 'mdi-material-ui';
-import React from 'react';
 import { FormattedMessage } from 'react-intl';
 
 import { useWakeLock } from '../../../WakeLockProvider';

@@ -4,7 +4,7 @@ import SpeedDialAction from '@material-ui/core/SpeedDialAction';
 import SpeedDialIcon from '@material-ui/core/SpeedDialIcon';
 import clsx from 'clsx';
 import { AccountPlus, EmoticonDevilOutline } from 'mdi-material-ui';
-import React, { memo } from 'react';
+import { memo } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';

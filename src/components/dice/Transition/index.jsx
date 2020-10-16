@@ -1,5 +1,4 @@
 import { makeStyles } from '@material-ui/core';
-import React from 'react';
 import { CSSTransition } from 'react-transition-group';
 
 const displayName = 'DiceTransition';

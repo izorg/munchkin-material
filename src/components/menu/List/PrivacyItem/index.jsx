@@ -1,6 +1,5 @@
 import { ListItemIcon } from '@material-ui/core';
 import { ShieldAccount } from 'mdi-material-ui';
-import React from 'react';
 import { FormattedMessage } from 'react-intl';
 
 import ListItem from '../Item';

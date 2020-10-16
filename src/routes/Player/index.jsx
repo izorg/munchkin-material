@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core';
 import PropTypes from 'prop-types';
-import React, { lazy, Suspense, useRef } from 'react';
+import { lazy, Suspense, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { Navigate, useMatch } from 'react-router-dom';
 

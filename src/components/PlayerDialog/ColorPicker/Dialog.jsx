@@ -5,7 +5,6 @@ import {
   makeStyles,
 } from '@material-ui/core';
 import PropTypes from 'prop-types';
-import React from 'react';
 import { FormattedMessage } from 'react-intl';
 
 import availableColors from '../../../utils/availableColors';

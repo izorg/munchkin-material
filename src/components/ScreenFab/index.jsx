@@ -1,6 +1,6 @@
 import { Fab, makeStyles } from '@material-ui/core';
 import clsx from 'clsx';
-import React, { forwardRef } from 'react';
+import { forwardRef } from 'react';
 
 const displayName = 'ScreenFab';
 

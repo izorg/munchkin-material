@@ -1,5 +1,4 @@
 import { FlagCheckered } from 'mdi-material-ui';
-import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { useDispatch } from 'react-redux';
 

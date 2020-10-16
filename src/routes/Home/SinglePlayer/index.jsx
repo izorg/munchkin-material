@@ -1,5 +1,5 @@
 import { IconButton, makeStyles } from '@material-ui/core';
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 import { useIntl } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
 

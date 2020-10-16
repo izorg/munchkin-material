@@ -1,6 +1,5 @@
 import { makeStyles, Typography, useTheme } from '@material-ui/core';
 import clsx from 'clsx';
-import React from 'react';
 import { useSelector } from 'react-redux';
 
 import AppBar from './AppBar';

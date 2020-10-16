@@ -5,7 +5,6 @@ import {
   MenuUp as IncrementIcon,
 } from 'mdi-material-ui';
 import PropTypes from 'prop-types';
-import React from 'react';
 import { defineMessages } from 'react-intl';
 
 import Button from './Button';

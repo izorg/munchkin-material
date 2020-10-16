@@ -1,5 +1,4 @@
 import { Button } from '@material-ui/core';
-import React from 'react';
 import { FormattedMessage } from 'react-intl';
 
 const displayName = 'SubmitButton';

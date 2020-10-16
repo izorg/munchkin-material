@@ -1,6 +1,5 @@
 import { Tooltip, useMediaQuery, useTheme } from '@material-ui/core';
 import { Menu } from 'mdi-material-ui';
-import React from 'react';
 import { defineMessages, useIntl } from 'react-intl';
 import { useDispatch } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';

@@ -1,7 +1,6 @@
 import { Tooltip } from '@material-ui/core';
 import { Skull } from 'mdi-material-ui';
 import PropTypes from 'prop-types';
-import React from 'react';
 import { defineMessages, useIntl } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
 

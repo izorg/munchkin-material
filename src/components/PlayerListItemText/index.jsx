@@ -1,6 +1,5 @@
 import { ListItemText, makeStyles } from '@material-ui/core';
 import { ChevronUp as LevelIcon, Sword as StrengthIcon } from 'mdi-material-ui';
-import React from 'react';
 
 import { playerShape } from '../../utils/propTypes';
 import Sex from '../Sex';

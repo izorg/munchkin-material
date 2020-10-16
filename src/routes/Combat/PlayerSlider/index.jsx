@@ -9,7 +9,7 @@ import clsx from 'clsx';
 import { motion, useAnimation, useMotionValue } from 'framer-motion';
 import { CloseCircle } from 'mdi-material-ui';
 import PropTypes from 'prop-types';
-import React, { memo, useEffect, useRef } from 'react';
+import { memo, useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { setCombatHelper, setCombatHelperBonus } from '../../../ducks/combat';

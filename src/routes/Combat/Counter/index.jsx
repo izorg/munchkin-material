@@ -2,7 +2,6 @@ import { makeStyles } from '@material-ui/core';
 import clsx from 'clsx';
 import { MenuDown, MenuUp } from 'mdi-material-ui';
 import PropTypes from 'prop-types';
-import React from 'react';
 
 import CounterButton from '../../../components/Counter/Button';
 import CounterLabel from '../../../components/Counter/Label';

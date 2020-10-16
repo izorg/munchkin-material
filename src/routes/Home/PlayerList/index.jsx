@@ -1,6 +1,6 @@
 import { List, makeStyles, useTheme } from '@material-ui/core';
 import clsx from 'clsx';
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 import { useDispatch, useSelector } from 'react-redux';
 

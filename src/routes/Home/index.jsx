@@ -1,6 +1,6 @@
 import { makeStyles, Paper, Zoom } from '@material-ui/core';
 import clsx from 'clsx';
-import React, { lazy, Suspense, useEffect, useRef } from 'react';
+import { lazy, Suspense, useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { useMatch } from 'react-router-dom';
 

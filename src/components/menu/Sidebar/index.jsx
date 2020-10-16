@@ -1,6 +1,6 @@
 import { ThemeProvider, useTheme } from '@material-ui/core';
 import deepmerge from 'deepmerge';
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 import { useSelector } from 'react-redux';
 
 import List from '../List';

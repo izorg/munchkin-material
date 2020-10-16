@@ -1,7 +1,7 @@
 import { Avatar } from '@material-ui/core';
 import { Check } from 'mdi-material-ui';
 import PropTypes from 'prop-types';
-import React, { forwardRef } from 'react';
+import { forwardRef } from 'react';
 
 import { colorType } from '../../utils/propTypes';
 
