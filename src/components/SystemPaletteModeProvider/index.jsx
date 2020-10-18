@@ -8,6 +8,27 @@ const SystemPaletteTypeContext = createContext();
 
 export const useSystemPaletteMode = () => useContext(SystemPaletteTypeContext);
 
+const getAndroidSystemPaletteMode = () =>
+  new Promise((resolve) => {
+    const { ThemeDetection } = window.cordova.plugins;
+
+    ThemeDetection.isAvailable(
+      ({ value: available }) => {
+        if (available) {
+          ThemeDetection.isDarkModeEnabled(
+            ({ value: darkMode }) => {
+              resolve(darkMode ? 'dark' : 'light');
+            },
+            () => resolve(),
+          );
+        } else {
+          resolve();
+        }
+      },
+      () => resolve(),
+    );
+  });
+
 const SystemPaletteModeProvider = ({ children }) => {
   const cssSupport = window.matchMedia('(prefers-color-scheme)').matches;
 
@@ -22,20 +43,17 @@ const SystemPaletteModeProvider = ({ children }) => {
       return;
     }
 
-    const { ThemeDetection } = window.cordova.plugins;
+    getAndroidSystemPaletteMode()
+      .then(setCordovaMode)
+      .finally(() => setReady(true));
 
-    const onError = () => setReady(true);
+    const onResume = () => {
+      getAndroidSystemPaletteMode().then(setCordovaMode);
+    };
 
-    ThemeDetection.isAvailable(({ value: available }) => {
-      if (available) {
-        ThemeDetection.isDarkModeEnabled(({ value: darkMode }) => {
-          setCordovaMode(darkMode ? 'dark' : 'light');
-          setReady(true);
-        }, onError);
-      } else {
-        setReady(true);
-      }
-    }, onError);
+    document.addEventListener('resume', onResume);
+
+    return () => document.removeEventListener('resume', onResume);
   }, [useCordova]);
 
   const dark = useMediaQuery('(prefers-color-scheme: dark)', {
