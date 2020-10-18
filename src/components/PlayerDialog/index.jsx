@@ -192,6 +192,7 @@ const PlayerDialog = () => {
         paper: classes.dialog,
         root: classes.root,
       }}
+      disableRestoreFocus
       fullScreen={fullScreen}
       hideBackdrop={fullScreen}
       onClose={handleClose}
