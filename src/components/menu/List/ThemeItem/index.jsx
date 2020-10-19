@@ -5,7 +5,7 @@ import { useIntl } from 'react-intl';
 import { useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-import themes from '../../../../styles/themes';
+import themes from '../../../../theme/colors';
 import { parseSearch, stringifyQuery } from '../../../../utils/location';
 import themeMessages from '../../../theme/messages';
 import useMenuOpen from '../../useMenuOpen';

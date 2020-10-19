@@ -6,8 +6,8 @@ import { useIntl } from 'react-intl';
 import { useSelector } from 'react-redux';
 
 import { getDirection } from '../../i18n';
-import baseTheme from '../../styles/baseTheme';
-import themes from '../../styles/themes';
+import themes from '../../theme/colors';
+import getThemeOptions from '../../theme/getThemeOptions';
 import { useLocationQuery } from '../../utils/location';
 import { ios } from '../../utils/platforms';
 import { useSystemPaletteMode } from '../SystemPaletteModeProvider';
@@ -56,7 +56,7 @@ const AugmentedThemeProvider = ({ children }) => {
 
     return createMuiTheme(
       deepmerge(
-        baseTheme({ direction, mode, pureBlack }),
+        getThemeOptions({ direction, mode, pureBlack }),
         themes[previewTheme.id].theme,
       ),
     );

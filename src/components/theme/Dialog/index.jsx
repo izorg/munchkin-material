@@ -16,7 +16,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import { setTheme } from '../../../ducks/theme';
-import themes from '../../../styles/themes';
+import themes from '../../../theme/colors';
 import {
   stringifyQuery,
   useGoBack,

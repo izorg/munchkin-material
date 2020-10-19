@@ -7,7 +7,7 @@ import deepmerge from 'deepmerge';
 
 const breakpoints = createBreakpoints({});
 
-export default ({ direction, mode = 'light', pureBlack }) => {
+const getThemeOptions = ({ direction, mode = 'light', pureBlack }) => {
   let theme = {
     components: {
       MuiDialog: {
@@ -119,3 +119,5 @@ export default ({ direction, mode = 'light', pureBlack }) => {
 
   return theme;
 };
+
+export default getThemeOptions;
