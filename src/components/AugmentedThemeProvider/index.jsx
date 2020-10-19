@@ -55,11 +55,10 @@ const AugmentedThemeProvider = ({ children }) => {
     }
 
     return createMuiTheme(
-      deepmerge.all([
+      deepmerge(
         baseTheme({ direction, mode, pureBlack }),
         themes[previewTheme.id].theme,
-        { palette: { mode } },
-      ]),
+      ),
     );
   }, [currentTheme, direction, queryTheme, systemPaletteMode]);
 

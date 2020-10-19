@@ -1,14 +1,13 @@
+import common from '@material-ui/core/colors/common';
 import orange from '@material-ui/core/colors/orange';
 import { alpha } from '@material-ui/core/styles/colorManipulator';
 import createBreakpoints from '@material-ui/core/styles/createBreakpoints';
-import createPalette from '@material-ui/core/styles/createPalette';
+import { light } from '@material-ui/core/styles/createPalette';
 import deepmerge from 'deepmerge';
 
 const breakpoints = createBreakpoints({});
 
-export default ({ direction, mode, pureBlack }) => {
-  const palette = createPalette({ mode });
-
+export default ({ direction, mode = 'light', pureBlack }) => {
   let theme = {
     components: {
       MuiDialog: {
@@ -66,6 +65,7 @@ export default ({ direction, mode, pureBlack }) => {
     },
 
     palette: {
+      mode,
       secondary: {
         main: orange.A400,
       },
@@ -77,13 +77,13 @@ export default ({ direction, mode, pureBlack }) => {
     },
   };
 
-  if (palette.mode === 'light') {
+  if (mode === 'light') {
     theme = deepmerge(theme, {
       components: {
         MuiIconButton: {
           styleOverrides: {
             root: {
-              color: palette.text.primary,
+              color: light.text.primary,
             },
           },
         },
@@ -91,18 +91,18 @@ export default ({ direction, mode, pureBlack }) => {
     });
   }
 
-  if (palette.mode === 'dark') {
+  if (mode === 'dark') {
     theme = deepmerge(theme, {
       components: {
         MuiPaper: {
           styleOverrides: {
             elevation1: {
-              backgroundColor: alpha(palette.common.white, 0.05),
+              backgroundColor: alpha(common.white, 0.05),
               boxShadow: 'none',
             },
 
             elevation2: {
-              backgroundColor: alpha(palette.common.white, 0.07),
+              backgroundColor: alpha(common.white, 0.07),
               boxShadow: 'none',
             },
           },
