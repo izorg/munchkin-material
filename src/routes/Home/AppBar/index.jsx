@@ -81,7 +81,7 @@ const HomeAppBar = ({ empty, singleMode }) => {
   }
 
   return (
-    <TopAppBar color={multiMode ? 'default' : 'primary'}>
+    <TopAppBar>
       {multiMode ? (
         <TopIconButton edge="start" onClick={onMultiSelectDeactivate}>
           <Close />
