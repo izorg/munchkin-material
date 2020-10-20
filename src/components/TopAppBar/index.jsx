@@ -1,4 +1,4 @@
-import { AppBar, makeStyles, Toolbar } from '@material-ui/core';
+import { AppBar, makeStyles, Toolbar, useTheme } from '@material-ui/core';
 import PropTypes from 'prop-types';
 
 const displayName = 'TopAppBar';
@@ -35,17 +35,19 @@ const useStyles = makeStyles(
   { name: displayName },
 );
 
-const TopAppBar = ({ children, ...props }) => {
+const TopAppBar = ({ children }) => {
   const classes = useStyles();
+  const theme = useTheme();
+
+  const color = theme.palette.mode === 'dark' ? 'default' : 'primary';
 
   return (
     <AppBar
       classes={{
         root: classes.root,
       }}
-      color="primary"
+      color={color}
       position="static"
-      {...props}
     >
       <Toolbar classes={{ gutters: classes.gutters }}>{children}</Toolbar>
     </AppBar>
@@ -54,10 +56,6 @@ const TopAppBar = ({ children, ...props }) => {
 
 TopAppBar.propTypes = {
   children: PropTypes.node,
-};
-
-TopAppBar.defaultProps = {
-  children: null,
 };
 
 TopAppBar.displayName = displayName;
