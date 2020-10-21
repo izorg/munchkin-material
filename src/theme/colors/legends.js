@@ -1,5 +1,6 @@
 import common from '@material-ui/core/colors/common';
 import grey from '@material-ui/core/colors/grey';
+import { light } from '@material-ui/core/styles/createPalette';
 import { defineMessages } from 'react-intl';
 
 export const key = 'legends';
@@ -17,7 +18,7 @@ export const theme = {
       styleOverrides: {
         colorPrimary: {
           backgroundColor: grey[200],
-          color: common.black,
+          color: light.text.primary,
         },
       },
     },
