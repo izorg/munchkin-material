@@ -22,9 +22,7 @@ const CordovaProvider = ({ children }) => {
 
   useEffect(() => {
     const onDeviceReady = () => {
-      const { BuildInfo } = window;
-
-      if (process.env.NODE_ENV === 'production' && !BuildInfo.debug) {
+      if (process.env.NODE_ENV === 'production' && !window.BuildInfo.debug) {
         sentry();
       }
 

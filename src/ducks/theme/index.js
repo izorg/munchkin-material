@@ -7,14 +7,9 @@ export const setTheme = (theme) => ({
   theme,
 });
 
-const mode =
-  'matchMedia' in window && window.matchMedia('(prefers-color-scheme)').matches
-    ? undefined
-    : 'light';
-
 const initialState = {
   id,
-  mode,
+  mode: undefined,
   pureBlack: false,
 };
 

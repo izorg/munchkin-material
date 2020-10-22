@@ -31,6 +31,17 @@ const useStyles = makeStyles(
         },
       },
     },
+
+    toolbar: {
+      '@supports (min-height: calc(env(safe-area-inset-top)))': {
+        minHeight: 'calc(56px + env(safe-area-inset-top))',
+        paddingTop: 'env(safe-area-inset-top)',
+
+        [theme.breakpoints.up('sm')]: {
+          minHeight: 'calc(64px + env(safe-area-inset-top))',
+        },
+      },
+    },
   }),
   { name: displayName },
 );
@@ -49,7 +60,14 @@ const TopAppBar = ({ children }) => {
       color={color}
       position="static"
     >
-      <Toolbar classes={{ gutters: classes.gutters }}>{children}</Toolbar>
+      <Toolbar
+        classes={{
+          gutters: classes.gutters,
+        }}
+        className={classes.toolbar}
+      >
+        {children}
+      </Toolbar>
     </AppBar>
   );
 };

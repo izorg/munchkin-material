@@ -29,6 +29,7 @@ const useStyles = makeStyles(
 
       '@supports (padding: env(safe-area-inset-left))': {
         maxWidth: 'calc(320px + env(safe-area-inset-left))',
+        paddingTop: 'env(safe-area-inset-top)',
       },
     },
   }),

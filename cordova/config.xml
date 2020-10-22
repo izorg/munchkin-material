@@ -59,8 +59,7 @@
         <preference name="DisallowOverscroll" value="true" />
         <preference name="KeyboardDisplayRequiresUserAction" value="false" />
         <preference name="KeyboardResizeMode" value="body" />
-        <preference name="StatusBarBackgroundColor" value="#000000" />
-        <preference name="StatusBarOverlaysWebView" value="false" />
+        <preference name="StatusBarOverlaysWebView" value="true" />
         <preference name="SuppressesLongPressGesture" value="true" />
         <resource-file src="GoogleService-Info.plist" />
         <icon height="20" src="res/ios/icon-20.png" width="20" />

@@ -1,4 +1,5 @@
 import { createMuiTheme, CssBaseline, ThemeProvider } from '@material-ui/core';
+import { dark, light } from '@material-ui/core/styles/createPalette';
 import deepmerge from 'deepmerge';
 import PropTypes from 'prop-types';
 import { useEffect, useMemo } from 'react';
@@ -10,12 +11,15 @@ import themes from '../../theme/colors';
 import getThemeOptions from '../../theme/getThemeOptions';
 import { useLocationQuery } from '../../utils/location';
 import { ios } from '../../utils/platforms';
+import { useCordova } from '../CordovaProvider';
 import { useSystemPaletteMode } from '../SystemPaletteModeProvider';
 
 const displayName = 'AugmentedThemeProvider';
 
 const AugmentedThemeProvider = ({ children }) => {
   const { locale } = useIntl();
+
+  const cordova = useCordova();
   const direction = getDirection(locale);
 
   const systemPaletteMode = useSystemPaletteMode();
@@ -69,6 +73,37 @@ const AugmentedThemeProvider = ({ children }) => {
       Keyboard.setKeyboardStyle(theme.palette.mode); // cordova ios
     }
   }, [theme.palette.mode]);
+
+  useEffect(() => {
+    const { StatusBar } = window;
+
+    if (!StatusBar || cordova?.platformId !== 'ios') {
+      return;
+    }
+
+    const text =
+      theme.components.MuiAppBar?.styleOverrides.colorPrimary.color ||
+      theme.palette.primary.contrastText;
+
+    if (theme.palette.mode === 'dark') {
+      StatusBar.styleLightContent();
+    } else {
+      if (text === light.text.primary) {
+        StatusBar.styleDefault();
+      }
+
+      if (text === dark.text.primary) {
+        StatusBar.styleLightContent();
+      }
+    }
+  }, [
+    cordova?.platformId,
+    theme.components.MuiAppBar?.styleOverrides.colorPrimary.color,
+    theme.palette.mode,
+    theme.palette.primary.contrastText,
+  ]);
+
+  useEffect(() => {}, []);
 
   return (
     <ThemeProvider theme={theme}>

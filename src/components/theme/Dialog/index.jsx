@@ -25,7 +25,6 @@ import {
 import CancelButton from '../../CancelButton';
 import { useFullVersion } from '../../FullVersionProvider';
 import SubmitButton from '../../SubmitButton';
-import { useSystemPaletteMode } from '../../SystemPaletteModeProvider';
 import themeMessages from '../messages';
 
 const displayName = 'ThemeDialog';
@@ -49,7 +48,6 @@ const ThemeDialog = () => {
 
   const { buyFullVersion, fullVersion } = useFullVersion();
   const goBack = useGoBack();
-  const systemPaletteMode = useSystemPaletteMode();
 
   const query = useLocationQuery();
   const queryTheme = query.theme;
@@ -148,18 +146,16 @@ const ThemeDialog = () => {
       <DialogTitle>{intl.formatMessage(themeMessages.label)}</DialogTitle>
       <DialogContent className={classes.content}>
         <RadioGroup name="mode" onChange={onThemeModeChange} value={modeValue}>
-          {systemPaletteMode && (
-            <FormControlLabel
-              control={<Radio color="primary" />}
-              label={
-                <FormattedMessage
-                  defaultMessage="System Default"
-                  id="themeDialog.auto"
-                />
-              }
-              value=""
-            />
-          )}
+          <FormControlLabel
+            control={<Radio color="primary" />}
+            label={
+              <FormattedMessage
+                defaultMessage="System Default"
+                id="themeDialog.auto"
+              />
+            }
+            value=""
+          />
           <FormControlLabel
             control={<Radio color="primary" />}
             label={
