@@ -1,10 +1,8 @@
 import { promises as fs } from 'fs';
 import path from 'path';
 
-import transitions from '@material-ui/core/styles/transitions.js';
+import { duration } from '@material-ui/core/styles/transitions.js';
 import { chromium, devices } from 'playwright';
-
-const { duration } = transitions;
 
 const CS = 'cs';
 const EN = 'en';
