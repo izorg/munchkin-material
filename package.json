@@ -59,6 +59,7 @@
     "@formatjs/cli": "2.13.3",
     "@pmmmwh/react-refresh-webpack-plugin": "0.4.2",
     "@sentry/cli": "1.58.0",
+    "@types/cordova": "0.0.34",
     "@types/jest": "26.0.15",
     "axios": "0.21.0",
     "babel-eslint": "10.1.0",

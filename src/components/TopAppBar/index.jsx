@@ -5,13 +5,6 @@ const displayName = 'TopAppBar';
 
 const useStyles = makeStyles(
   (theme) => ({
-    root: {
-      transition: theme.transitions.create(['background-color'], {
-        duration: theme.transitions.duration.short,
-        easing: theme.transitions.easing.sharp,
-      }),
-    },
-
     gutters: {
       paddingLeft: theme.spacing(2),
       paddingRight: theme.spacing(2),
@@ -53,13 +46,7 @@ const TopAppBar = ({ children }) => {
   const color = theme.palette.mode === 'dark' ? 'default' : 'primary';
 
   return (
-    <AppBar
-      classes={{
-        root: classes.root,
-      }}
-      color={color}
-      position="static"
-    >
+    <AppBar color={color} position="static">
       <Toolbar
         classes={{
           gutters: classes.gutters,
