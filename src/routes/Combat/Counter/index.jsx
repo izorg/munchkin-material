@@ -18,6 +18,8 @@ const useStyles = makeStyles(
 
     title: {
       fontSize: 16,
+      textAlign: 'center',
+      width: '100%',
 
       '@media (orientation: portrait) and (min-width: 360px) and (min-height: 600px)': {
         fontSize: 20,
