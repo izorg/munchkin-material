@@ -18,7 +18,6 @@ import SinglePlayer from './SinglePlayer';
 
 const Player = lazy(() =>
   import(
-    /* webpackChunkName: "player" */
     /* webpackPrefetch: true */
     '../Player'
   ),

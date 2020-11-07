@@ -14,7 +14,6 @@ import Slider from './Slider';
 
 const Combat = lazy(() =>
   import(
-    /* webpackChunkName: "combat" */
     /* webpackPrefetch: true */
     '../Combat'
   ),

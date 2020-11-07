@@ -7,7 +7,6 @@ import UndoSnackbar from '../UndoSnackbar';
 
 const DiceDialog = lazy(() =>
   import(
-    /* webpackChunkName: "dice" */
     /* webpackPrefetch: true */
     '../dice/Dialog'
   ),
@@ -15,7 +14,6 @@ const DiceDialog = lazy(() =>
 
 const PlayerDialog = lazy(() =>
   import(
-    /* webpackChunkName: "player-dialog" */
     /* webpackPrefetch: true */
     '../PlayerDialog'
   ),

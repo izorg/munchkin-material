@@ -17,7 +17,7 @@ if (process.env.NODE_ENV === 'production') {
   sentry();
 }
 
-import(/* webpackChunkName: "firebase" */ './firebase').catch(() => {
+import('./firebase').catch(() => {
   // ignore firebase init errors
 });
 

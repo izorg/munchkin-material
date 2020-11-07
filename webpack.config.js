@@ -114,6 +114,11 @@ module.exports = {
     ],
   },
 
+  optimization: {
+    chunkIds: process.env.STATS || dev ? 'named' : 'deterministic',
+    moduleIds: process.env.STATS || dev ? 'named' : 'deterministic',
+  },
+
   output: {
     filename: 'js/[name].js',
     path: outputPath,
