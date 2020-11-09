@@ -1,5 +1,4 @@
 import toggleSex from '../../utils/toggleSex';
-import { REMOVE_PLAYERS } from '../playerList/actionTypes';
 
 import {
   ADD_PLAYER,
@@ -8,6 +7,7 @@ import {
   INCREMENT_PLAYER_GEAR,
   INCREMENT_PLAYER_LEVEL,
   KILL_PLAYER,
+  REMOVE_PLAYERS,
   RESET_PLAYERS,
   TOGGLE_PLAYER_SEX,
   UPDATE_PLAYER,
@@ -41,6 +41,11 @@ export const incrementPlayerLevel = (id) => ({
 export const killPlayer = (id) => ({
   type: KILL_PLAYER,
   id,
+});
+
+export const removePlayers = (playerList) => ({
+  type: REMOVE_PLAYERS,
+  playerList,
 });
 
 export const resetPlayers = (playerList) => ({

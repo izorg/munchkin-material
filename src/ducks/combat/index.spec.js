@@ -2,7 +2,7 @@ import { v4 as uuid } from 'uuid';
 
 import createMonster from '../../utils/createMonster';
 import { ADD_MONSTER, REMOVE_MONSTER } from '../monsters/actionTypes';
-import { REMOVE_PLAYERS } from '../playerList/actionTypes';
+import { REMOVE_PLAYERS } from '../players/actionTypes';
 
 import {
   SET_COMBAT_HELPER,

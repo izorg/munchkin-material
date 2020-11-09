@@ -1,5 +1,5 @@
-import { addPlayerToList, removePlayers } from '../ducks/playerList';
-import { addPlayer } from '../ducks/players';
+import { addPlayerToList } from '../ducks/playerList';
+import { addPlayer, removePlayers } from '../ducks/players';
 import { setLocale as setAppLocale } from '../ducks/settings';
 import { getLocale } from '../i18n';
 import '../web';

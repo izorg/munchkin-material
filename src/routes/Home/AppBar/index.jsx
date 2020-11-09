@@ -10,7 +10,7 @@ import Title from '../../../components/Title';
 import TopAppBar from '../../../components/TopAppBar';
 import TopIconButton from '../../../components/TopIconButton';
 import { setCombatPlayerBonus } from '../../../ducks/combat';
-import { removePlayers } from '../../../ducks/playerList';
+import { removePlayers } from '../../../ducks/players';
 import {
   stringifyQuery,
   useGoBack,
