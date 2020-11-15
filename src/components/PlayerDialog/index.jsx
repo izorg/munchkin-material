@@ -218,6 +218,7 @@ const PlayerDialog = () => {
           label={intl.formatMessage(messages.label)}
           margin="normal"
           name="name"
+          variant="standard"
         />
 
         <Grid container>

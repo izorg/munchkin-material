@@ -70,6 +70,14 @@
         "sortShapeProp": true
       }
     ],
+    "sort-keys": [
+      "warn",
+      "asc",
+      {
+        "caseSensitive": false,
+        "natural": true
+      }
+    ],
     "sort-imports": [
       "error",
       {

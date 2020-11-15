@@ -28,18 +28,17 @@ if (dev) {
 module.exports = {
   devServer: {
     compress: true,
-    contentBase: outputPath,
     historyApiFallback: true,
     host: '0.0.0.0',
     hot: dev,
     inline: dev,
     overlay: true,
     port: 3000,
+    publicPath: '/',
     stats: {
       colors: true,
       progress: true,
     },
-    watchContentBase: true,
   },
 
   devtool: cordova ? 'inline-source-map' : 'source-map',
@@ -51,8 +50,8 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.m?jsx?$/,
         exclude: /node_modules/,
+        test: /\.m?jsx?$/,
         use: [
           {
             loader: 'babel-loader',
@@ -72,8 +71,8 @@ module.exports = {
               attributes: {
                 list: [
                   {
-                    tag: 'link',
                     attribute: 'href',
+                    tag: 'link',
                     type: 'src',
                   },
                 ],
@@ -169,4 +168,6 @@ module.exports = {
   resolve: {
     extensions: ['.mjs', '.jsx', '.js', '.json'],
   },
+
+  target: 'web',
 };

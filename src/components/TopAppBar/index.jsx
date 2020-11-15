@@ -5,6 +5,10 @@ const displayName = 'TopAppBar';
 
 const useStyles = makeStyles(
   (theme) => ({
+    appBar: {
+      zIndex: theme.zIndex.appBar,
+    },
+
     gutters: {
       paddingLeft: theme.spacing(2),
       paddingRight: theme.spacing(2),
@@ -46,7 +50,7 @@ const TopAppBar = ({ children }) => {
   const color = theme.palette.mode === 'dark' ? 'default' : 'primary';
 
   return (
-    <AppBar color={color} position="static">
+    <AppBar className={classes.appBar} color={color} position="static">
       <Toolbar
         classes={{
           gutters: classes.gutters,
