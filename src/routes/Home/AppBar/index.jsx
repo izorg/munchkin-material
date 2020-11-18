@@ -9,6 +9,7 @@ import DiceButton from '../../../components/dice/Button';
 import Title from '../../../components/Title';
 import TopAppBar from '../../../components/TopAppBar';
 import TopIconButton from '../../../components/TopIconButton';
+import { useUndo } from '../../../components/UndoProvider';
 import { setCombatPlayerBonus } from '../../../ducks/combat';
 import { removePlayers } from '../../../ducks/players';
 import {
@@ -26,8 +27,8 @@ const displayName = 'HomeAppBar';
 
 const messages = defineMessages({
   edit: {
-    id: 'player.list.edit',
     defaultMessage: 'Edit',
+    id: 'player.list.edit',
   },
 });
 
@@ -39,6 +40,7 @@ const HomeAppBar = ({ empty, singleMode }) => {
 
   const goBack = useGoBack();
   const query = useLocationQuery();
+  const { setMessage } = useUndo();
 
   const editMode = query[EDIT] !== undefined;
   const multiMode = query[MULTI] !== undefined;
@@ -52,6 +54,15 @@ const HomeAppBar = ({ empty, singleMode }) => {
   const onPlayersDelete = (selected) => {
     dispatch(removePlayers(selected));
     goBack();
+
+    setMessage(
+      <FormattedMessage
+        defaultMessage="{count, plural, one {Player has} other {Players have}} been removed"
+        values={{
+          count: selected.length,
+        }}
+      />,
+    );
   };
 
   const onToggleEditClick = () =>

@@ -1,4 +1,5 @@
 {
+  "8ca09": "",
   "button.cancel": "Ακύρωση",
   "button.submit": "ΟΚ",
   "colorPicker.dialog.title": "Διάλεξε χρώμα",
@@ -50,6 +51,7 @@
   "themeDialog.auto": "Προεπιλογή συστήματος",
   "themeDialog.dark": "Σκούρο",
   "themeDialog.light": "Φως",
+  "themeDialog.pureBlack": "",
   "undo": "Αναίρεση",
   "undo.killPlayer": "{name} {sex, select, female {έχει πεθάνει} male {έχει πεθάνει}}",
   "undo.resetPlayers": "Οι παίκτες έχουν επαναφερθεί"

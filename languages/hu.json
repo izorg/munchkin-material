@@ -1,4 +1,5 @@
 {
+  "8ca09": "",
   "button.cancel": "Mégse",
   "button.submit": "OK",
   "colorPicker.dialog.title": "Szín választás",
@@ -50,6 +51,7 @@
   "themeDialog.auto": "Alapértelmezett",
   "themeDialog.dark": "Sötét",
   "themeDialog.light": "Világos",
+  "themeDialog.pureBlack": "",
   "undo": "Visszavonás",
   "undo.killPlayer": "{name} {sex, select, female {meghalt} male {meghalt}}",
   "undo.resetPlayers": "Játékosok alaphelyzetbe állítva"

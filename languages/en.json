@@ -1,4 +1,5 @@
 {
+  "8ca09": "{count, plural, one {Player has} other {Players have}} been removed",
   "button.cancel": "Cancel",
   "button.submit": "OK",
   "colorPicker.dialog.title": "Choose color",

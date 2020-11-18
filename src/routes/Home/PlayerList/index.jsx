@@ -14,15 +14,15 @@ const displayName = 'HomePlayerList';
 
 const useStyles = makeStyles(
   {
-    dragging: {
-      '& [data-react-beautiful-dnd-draggable="0"]': {
-        transition: 'transform 0.2s cubic-bezier(0.2, 0, 0, 1)',
-      },
-    },
-
     drag: {
       '&:hover': {
         backgroundColor: 'transparent',
+      },
+    },
+
+    dragging: {
+      '& [data-react-beautiful-dnd-draggable="0"]': {
+        transition: 'transform 0.2s cubic-bezier(0.2, 0, 0, 1)',
       },
     },
   },
@@ -52,10 +52,10 @@ const HomePlayerList = (props) => {
         <Droppable droppableId="player-list">
           {({ droppableProps, innerRef: droppableRef, placeholder }) => (
             <List
-              {...props}
-              {...droppableProps}
               ref={droppableRef}
               disablePadding
+              {...props}
+              {...droppableProps}
             >
               {playerList.map((playerId, index) => (
                 <Draggable
@@ -127,7 +127,7 @@ const HomePlayerList = (props) => {
   }
 
   return (
-    <List {...props} disablePadding>
+    <List disablePadding {...props}>
       {playerList.map((playerId) => (
         <Item key={playerId} playerId={playerId} />
       ))}

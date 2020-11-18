@@ -4,7 +4,11 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import undoable, { includeAction } from 'redux-undo';
 
-import { KILL_PLAYER, RESET_PLAYERS } from '../ducks/players/actionTypes';
+import {
+  KILL_PLAYER,
+  REMOVE_PLAYERS,
+  RESET_PLAYERS,
+} from '../ducks/players/actionTypes';
 
 import { loadState, saveState } from './localStorage';
 import reducers from './reducers';
@@ -14,7 +18,7 @@ const configureStore = () => {
 
   const createRootReducer = () =>
     undoable(combineReducers(reducers), {
-      filter: includeAction([KILL_PLAYER, RESET_PLAYERS]),
+      filter: includeAction([KILL_PLAYER, REMOVE_PLAYERS, RESET_PLAYERS]),
       limit: 1,
       syncFilter: true,
     });

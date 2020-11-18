@@ -1,4 +1,5 @@
 {
+  "8ca09": "",
   "button.cancel": "Скасувати",
   "button.submit": "OK",
   "colorPicker.dialog.title": "Оберіть колір",
@@ -50,6 +51,7 @@
   "themeDialog.auto": "За умовчанням системи",
   "themeDialog.dark": "Темна",
   "themeDialog.light": "Світла",
+  "themeDialog.pureBlack": "",
   "undo": "Відмінити",
   "undo.killPlayer": "{name} {sex, select, female {померла} male {помер}}",
   "undo.resetPlayers": "Гравці були скинуті"

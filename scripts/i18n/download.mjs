@@ -36,8 +36,8 @@ const writeTranslation = async (code, data) => {
         .post('/projects/export', {
           id: projectId,
           language,
-          type: 'key_value_json',
           order: 'terms',
+          type: 'key_value_json',
         })
         .then(({ data }) => data.result.url);
 

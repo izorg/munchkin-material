@@ -1,4 +1,5 @@
 {
+  "8ca09": "",
   "button.cancel": "İptal",
   "button.submit": "Tamam",
   "colorPicker.dialog.title": "Renk seç",
@@ -50,6 +51,7 @@
   "themeDialog.auto": "Varsayılan sistem",
   "themeDialog.dark": "Koyu",
   "themeDialog.light": "Açık",
+  "themeDialog.pureBlack": "",
   "undo": "Geri al",
   "undo.killPlayer": "{name} {sex,select,female{ölen} male{ölen}}",
   "undo.resetPlayers": "Oyuncular resetlendi"

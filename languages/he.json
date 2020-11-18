@@ -1,4 +1,5 @@
 {
+  "8ca09": "",
   "button.cancel": "בטל",
   "button.submit": "אישור",
   "colorPicker.dialog.title": "בחר צבע",
@@ -50,6 +51,7 @@
   "themeDialog.auto": "ברירת מחדל של המערכת",
   "themeDialog.dark": "כהה",
   "themeDialog.light": "בהיר",
+  "themeDialog.pureBlack": "",
   "undo": "בטל",
   "undo.killPlayer": " {name} {sex,select,female{נפטרה} male{מת}}",
   "undo.resetPlayers": "השחקנים אופסו"

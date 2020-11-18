@@ -1,4 +1,5 @@
 {
+  "8ca09": "",
   "button.cancel": "Peruuta",
   "button.submit": "OK",
   "colorPicker.dialog.title": "Valitse väri",
@@ -50,6 +51,7 @@
   "themeDialog.auto": "Järjestelmän oletus",
   "themeDialog.dark": "Tumma",
   "themeDialog.light": "Kirkas",
+  "themeDialog.pureBlack": "",
   "undo": "Peruuta",
   "undo.killPlayer": "{name} {sex,select,female{on kuollut} male{on kuollut}}",
   "undo.resetPlayers": "Pelaajat on tyhjätty"

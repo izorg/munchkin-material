@@ -1,4 +1,5 @@
 {
+  "8ca09": "",
   "button.cancel": "Cancelar",
   "button.submit": "OK",
   "colorPicker.dialog.title": "Escolher cor",
@@ -50,6 +51,7 @@
   "themeDialog.auto": "Padrão do sistema",
   "themeDialog.dark": "Escuro",
   "themeDialog.light": "Claro",
+  "themeDialog.pureBlack": "",
   "undo": "Desfazer",
   "undo.killPlayer": "{name} {sex, select, female {morreu} male {morreu}}",
   "undo.resetPlayers": "Jogadores resetados"

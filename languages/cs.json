@@ -1,4 +1,5 @@
 {
+  "8ca09": "",
   "button.cancel": "Zrušit",
   "button.submit": "OK",
   "colorPicker.dialog.title": "Vyberte barvu",
@@ -50,6 +51,7 @@
   "themeDialog.auto": "Výchozí nastavení systému",
   "themeDialog.dark": "Tmavý",
   "themeDialog.light": "Světlý",
+  "themeDialog.pureBlack": "",
   "undo": "Zpět",
   "undo.killPlayer": "{name} {sex,select,female{zemřela} male{zemřel}}",
   "undo.resetPlayers": "Hráči byli resetováni"

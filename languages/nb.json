@@ -1,4 +1,5 @@
 {
+  "8ca09": "",
   "button.cancel": "Avbryt",
   "button.submit": "OK",
   "colorPicker.dialog.title": "Velg farge",
@@ -50,6 +51,7 @@
   "themeDialog.auto": "Systemstandard",
   "themeDialog.dark": "Mørkt",
   "themeDialog.light": "Lyst",
+  "themeDialog.pureBlack": "",
   "undo": "Angre",
   "undo.killPlayer": "{name} {sex,select,female{har dødd} male{har dødd}}",
   "undo.resetPlayers": "Spillere er tilbakestilt"

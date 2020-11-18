@@ -1,6 +1,6 @@
 import { makeStyles, Paper, Zoom } from '@material-ui/core';
 import clsx from 'clsx';
-import { lazy, Suspense, useEffect, useRef } from 'react';
+import { lazy, Suspense } from 'react';
 import { useSelector } from 'react-redux';
 import { useMatch } from 'react-router-dom';
 
@@ -27,17 +27,19 @@ const displayName = 'Home';
 
 const useStyles = makeStyles(
   (theme) => ({
-    root: {
-      display: 'flex',
-      flexDirection: 'column',
-      height: '100%',
-    },
-
-    single: {
+    list: {
       backgroundColor:
         theme.palette.mode === 'dark'
           ? theme.palette.background.default
           : theme.palette.background.paper,
+      flex: 1,
+      overflowY: 'auto',
+      paddingBottom: 56,
+      WebkitOverflowScrolling: 'touch',
+
+      [theme.breakpoints.up('sm')]: {
+        paddingBottom: 64,
+      },
     },
 
     main: {
@@ -67,47 +69,28 @@ const useStyles = makeStyles(
       width: theme.spacing(9),
     },
 
-    content: {
+    root: {
+      display: 'flex',
+      flexDirection: 'column',
+      height: '100%',
+    },
+
+    single: {
       backgroundColor:
         theme.palette.mode === 'dark'
           ? theme.palette.background.default
           : theme.palette.background.paper,
-      flex: 1,
-      overflowY: 'auto',
-      WebkitOverflowScrolling: 'touch',
-    },
-
-    list: {
-      paddingBottom: 56,
-
-      [theme.breakpoints.up('sm')]: {
-        paddingBottom: 64,
-      },
     },
   }),
   { name: displayName },
 );
 
 const Home = () => {
-  const contentRef = useRef();
-
   const classes = useStyles();
 
   const playerList = useSelector((state) => state.present.playerList);
   const playerCount = playerList.length;
   const empty = playerCount === 0;
-
-  const playerCountRef = useRef(playerCount);
-
-  useEffect(() => {
-    const node = contentRef.current;
-
-    if (playerCount > playerCountRef.current) {
-      node.scrollTop = node.scrollHeight;
-    }
-
-    playerCountRef.current = playerCount;
-  }, [playerCount]);
 
   let content;
 
@@ -118,18 +101,14 @@ const Home = () => {
   } else if (empty) {
     content = <Nobody />;
   } else {
-    content = (
-      <div ref={contentRef} className={classes.content}>
-        <PlayerList className={classes.list} />
-      </div>
-    );
+    content = <PlayerList className={classes.list} />;
   }
 
   const menuCollapsed = useSelector((state) => state.present.ui.menuCollapsed);
 
   const playerMatch = useMatch({
-    path: '/player/:id',
     end: false,
+    path: '/player/:id',
   });
 
   return (
