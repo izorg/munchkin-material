@@ -6,7 +6,6 @@ const CopyPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackTagsPlugin = require('html-webpack-tags-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
-const WebpackNotifierPlugin = require('webpack-notifier');
 const { GenerateSW } = require('workbox-webpack-plugin');
 
 const dev = process.env.NODE_ENV === 'development';
@@ -150,10 +149,6 @@ module.exports = {
       }),
 
     dev && new ReactRefreshWebpackPlugin(),
-
-    new WebpackNotifierPlugin({
-      alwaysNotify: true,
-    }),
 
     !dev && web && new GenerateSW(),
 
