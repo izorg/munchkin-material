@@ -27,12 +27,14 @@ const CordovaProvider = ({ children }) => {
       }
 
       if (window.cordova.platformId === 'windows') {
-        const { Windows } = window;
+        setTimeout(() => {
+          const { Windows } = window;
 
-        const currentView = Windows.UI.Core.SystemNavigationManager.getForCurrentView();
+          const currentView = Windows.UI.Core.SystemNavigationManager.getForCurrentView();
 
-        currentView.appViewBackButtonVisibility =
-          Windows.UI.Core.AppViewBackButtonVisibility.collapsed;
+          currentView.appViewBackButtonVisibility =
+            Windows.UI.Core.AppViewBackButtonVisibility.collapsed;
+        });
       }
 
       setCordova(window.cordova);
