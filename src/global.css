@@ -17,6 +17,7 @@ body {
   -webkit-touch-callout: none;
   background-color: #fafafa;
   height: 100%;
+  margin: 0;
   overflow: hidden;
   position: relative;
   user-select: none;
