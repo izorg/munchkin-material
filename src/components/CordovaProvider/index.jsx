@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { createContext, useContext, useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
 
+import history from '../../components/CordovaRouter/history';
 import sentry from '../../sentry';
 import { useGoBack } from '../../utils/location';
 
@@ -14,8 +14,6 @@ const CordovaContext = createContext(null);
 export const useCordova = () => useContext(CordovaContext);
 
 const CordovaProvider = ({ children }) => {
-  const location = useLocation();
-
   const [cordova, setCordova] = useState(null);
 
   const goBack = useGoBack();
@@ -24,17 +22,6 @@ const CordovaProvider = ({ children }) => {
     const onDeviceReady = () => {
       if (process.env.NODE_ENV === 'production' && !window.BuildInfo.debug) {
         sentry();
-      }
-
-      if (window.cordova.platformId === 'windows') {
-        setTimeout(() => {
-          const { Windows } = window;
-
-          const currentView = Windows.UI.Core.SystemNavigationManager.getForCurrentView();
-
-          currentView.appViewBackButtonVisibility =
-            Windows.UI.Core.AppViewBackButtonVisibility.collapsed;
-        });
       }
 
       setCordova(window.cordova);
@@ -55,7 +42,7 @@ const CordovaProvider = ({ children }) => {
     const onBackButton = (event) => {
       event.preventDefault();
 
-      if (location.pathname === '/' && !location.search) {
+      if (history.location.pathname === '/' && !history.location.search) {
         navigator.app.exitApp();
       } else {
         goBack();
@@ -64,10 +51,19 @@ const CordovaProvider = ({ children }) => {
 
     document.addEventListener('backbutton', onBackButton, false);
 
+    if (window.cordova.platformId === 'windows') {
+      const { Windows } = window;
+
+      const currentView = Windows.UI.Core.SystemNavigationManager.getForCurrentView();
+
+      currentView.appViewBackButtonVisibility =
+        Windows.UI.Core.AppViewBackButtonVisibility.collapsed;
+    }
+
     return () => {
       document.removeEventListener('backbutton', onBackButton);
     };
-  }, [cordova, goBack, location.pathname, location.search]);
+  }, [cordova, goBack]);
 
   useNavigationBreadcrumbs();
 

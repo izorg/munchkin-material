@@ -1,12 +1,12 @@
 import './polyfills';
 
 import { render } from 'react-dom';
-import { MemoryRouter } from 'react-router-dom';
 
 import App from './components/App';
 import AugmentedStylesProvider from './components/AugmentedStylesProvider';
 import AugmentedThemeProvider from './components/AugmentedThemeProvider';
 import CordovaProvider from './components/CordovaProvider';
+import CordovaRouter from './components/CordovaRouter';
 import FullVersionProvider from './components/FullVersionProvider';
 import LocaleProvider from './components/LocaleProvider';
 import ReduxProvider from './components/ReduxProvider';
@@ -14,7 +14,7 @@ import SystemPaletteModeProvider from './components/SystemPaletteModeProvider';
 import WakeLockProvider from './components/WakeLockProvider';
 
 render(
-  <MemoryRouter>
+  <CordovaRouter>
     <CordovaProvider>
       <ReduxProvider>
         <FullVersionProvider>
@@ -32,6 +32,6 @@ render(
         </FullVersionProvider>
       </ReduxProvider>
     </CordovaProvider>
-  </MemoryRouter>,
+  </CordovaRouter>,
   document.getElementById('root'),
 );
