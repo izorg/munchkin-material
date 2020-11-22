@@ -1,4 +1,5 @@
 {
+  "8ca09": "{count, plural, one {Spieler wurde} other {Spieler wurden}} entfernt",
   "button.cancel": "Abbrechen",
   "button.submit": "OK",
   "colorPicker.dialog.title": "Wähle eine Farbe",
