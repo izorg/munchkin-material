@@ -60,6 +60,7 @@ const UndoSnackbar = () => {
           <FormattedMessage defaultMessage="Undo" id="undo" />
         </Button>
       }
+      autoHideDuration={8000}
       className={classes.snackbar}
       message={message}
       onClose={onClose}
