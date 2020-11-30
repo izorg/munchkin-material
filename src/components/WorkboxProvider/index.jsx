@@ -37,7 +37,7 @@ const WorkboxProvider = ({ children }) => {
         window.location.reload();
       });
 
-      workbox.messageSW({ type: 'SKIP_WAITING' });
+      workbox.messageSkipWaiting();
     }
   }, [workbox]);
 

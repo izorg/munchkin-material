@@ -24,6 +24,8 @@ if (dev) {
   entry = './src/dev/index.js';
 }
 
+const ids = process.env.STATS || dev ? 'named' : 'deterministic';
+
 module.exports = {
   devServer: {
     compress: true,
@@ -113,8 +115,8 @@ module.exports = {
   },
 
   optimization: {
-    chunkIds: process.env.STATS || dev ? 'named' : 'deterministic',
-    moduleIds: process.env.STATS || dev ? 'named' : 'deterministic',
+    chunkIds: ids,
+    moduleIds: ids,
   },
 
   output: {
