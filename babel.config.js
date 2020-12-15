@@ -31,15 +31,6 @@ module.exports = {
         VERSION: version,
       },
     ],
-    [
-      'babel-plugin-transform-imports',
-      {
-        'mdi-material-ui': {
-          preventFullImport: true,
-          transform: (importName) => `mdi-material-ui/${importName}`,
-        },
-      },
-    ],
     prod && 'babel-plugin-transform-react-remove-prop-types',
   ].filter(Boolean),
   presets: [
