@@ -51,6 +51,7 @@
   "themeDialog.auto": "Systemstandard",
   "themeDialog.dark": "Mørk",
   "themeDialog.light": "Lyst",
+  "themeDialog.pureBlack": "",
   "undo": "Fortryd",
   "undo.killPlayer": "{name} {sex, select, female {er død} male {er død}}",
   "undo.resetPlayers": "Spillere er blevet nulstillet"
