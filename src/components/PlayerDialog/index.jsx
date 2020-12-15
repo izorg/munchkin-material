@@ -127,9 +127,7 @@ const PlayerDialog = () => {
     [players],
   );
 
-  const fullScreen = useMediaQuery(theme.breakpoints.down('lg'), {
-    noSsr: true,
-  });
+  const fullScreen = useMediaQuery(theme.breakpoints.down('lg'));
 
   useEffect(() => {
     appear = true;

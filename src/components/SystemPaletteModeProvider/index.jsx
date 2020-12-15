@@ -56,9 +56,7 @@ const SystemPaletteModeProvider = ({ children }) => {
     return () => document.removeEventListener('resume', onResume);
   }, [useCordova]);
 
-  const dark = useMediaQuery('(prefers-color-scheme: dark)', {
-    noSsr: true,
-  });
+  const dark = useMediaQuery('(prefers-color-scheme: dark)');
 
   if (!ready) {
     return null;

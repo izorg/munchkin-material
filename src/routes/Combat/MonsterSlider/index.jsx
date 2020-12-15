@@ -96,9 +96,7 @@ const CombatMonsterSlider = ({ className }) => {
 
   const { direction } = useTheme();
 
-  const landscape = useMediaQuery('(orientation: landscape)', {
-    noSsr: true,
-  });
+  const landscape = useMediaQuery('(orientation: landscape)');
 
   const monsters = useSelector((state) => state.present.combat.monsters);
   const monsterCount = useRef(monsters.length);

@@ -28,8 +28,7 @@ const ScreenModal = ({ children, open, TransitionProps }) => {
   const classes = useStyles();
   const theme = useTheme();
 
-  const slide =
-    useMediaQuery(theme.breakpoints.down('lg'), { noSsr: true }) && ios;
+  const slide = useMediaQuery(theme.breakpoints.down('lg')) && ios;
   const TransitionComponent = slide ? Slide : Fade;
 
   return (

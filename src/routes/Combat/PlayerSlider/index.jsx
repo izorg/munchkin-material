@@ -97,9 +97,7 @@ const CombatPlayerSlider = ({ className, helperId, playerId }) => {
 
   const { direction } = useTheme();
 
-  const landscape = useMediaQuery('(orientation: landscape)', {
-    noSsr: true,
-  });
+  const landscape = useMediaQuery('(orientation: landscape)');
 
   const animate = useAnimation();
   const x = useMotionValue(0);

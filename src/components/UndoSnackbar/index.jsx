@@ -33,7 +33,7 @@ const UndoSnackbar = () => {
   const theme = useTheme();
   const classes = useStyles();
 
-  const mdDown = useMediaQuery(theme.breakpoints.down('md'), { noSsr: true });
+  const mdDown = useMediaQuery(theme.breakpoints.down('md'));
 
   const open = useSelector((state) => state.past.length > 0);
 

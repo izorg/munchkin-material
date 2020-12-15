@@ -25,7 +25,7 @@ const MenuButton = (props) => {
   const theme = useTheme();
 
   const query = useLocationQuery();
-  const mdUp = useMediaQuery(theme.breakpoints.up('md'), { noSsr: true });
+  const mdUp = useMediaQuery(theme.breakpoints.up('md'));
 
   const onClick = () =>
     mdUp

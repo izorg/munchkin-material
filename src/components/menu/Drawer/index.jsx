@@ -46,9 +46,7 @@ const MenuDrawer = () => {
   const goBack = useGoBack();
   const query = useLocationQuery();
   const match = useMatch('/');
-  const wide = useMediaQuery(theme.breakpoints.up('md'), {
-    noSsr: true,
-  });
+  const wide = useMediaQuery(theme.breakpoints.up('md'));
   const disableSwipeToOpen =
     ios ||
     wide ||

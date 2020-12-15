@@ -20,13 +20,6 @@ const getThemeOptions = ({ direction, mode = 'light', pureBlack }) => {
 
       MuiSnackbar: {
         styleOverrides: {
-          root: {
-            '@supports (padding: max(0px))': {
-              left: 'max(8px, env(safe-area-inset-right))',
-              right: 'max(8px, env(safe-area-inset-right))',
-            },
-          },
-
           anchorOriginBottomLeft: {
             '@supports (padding: max(0px))': {
               [breakpoints.up('sm')]: {
@@ -35,19 +28,33 @@ const getThemeOptions = ({ direction, mode = 'light', pureBlack }) => {
               },
             },
           },
+
+          root: {
+            '@supports (padding: max(0px))': {
+              left: 'max(8px, env(safe-area-inset-right))',
+              right: 'max(8px, env(safe-area-inset-right))',
+            },
+          },
         },
       },
 
       MuiSpeedDialAction: {
         styleOverrides: {
           fab: {
-            color: undefined,
             backgroundColor: undefined,
+            color: undefined,
 
+            // eslint-disable-next-line sort-keys
             '&:hover': {
               backgroundColor: undefined,
             },
           },
+        },
+      },
+
+      MuiUseMediaQuery: {
+        defaultProps: {
+          noSsr: true,
         },
       },
     },
