@@ -31,14 +31,11 @@ module.exports = {
     compress: true,
     historyApiFallback: true,
     host: '0.0.0.0',
-    hot: dev,
-    inline: dev,
     overlay: true,
     port: 3000,
     publicPath: '/',
-    stats: {
-      colors: true,
-      progress: true,
+    static: {
+      watch: false, // https://github.com/webpack/webpack-dev-server/issues/2893
     },
   },
 
@@ -165,6 +162,4 @@ module.exports = {
   resolve: {
     extensions: ['.mjs', '.jsx', '.js', '.json'],
   },
-
-  target: 'web',
 };
