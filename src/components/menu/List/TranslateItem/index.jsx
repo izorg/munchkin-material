@@ -12,6 +12,7 @@ const TranslateItem = (props) => (
     button
     component="a"
     href="https://poeditor.com/join/project/ZMBvWu9xIw"
+    rel="noopener noreferrer"
     target="_blank"
     {...props}
   >

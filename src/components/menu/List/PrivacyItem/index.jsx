@@ -17,6 +17,7 @@ const PrivacyItem = (props) => {
       button
       component="a"
       href="https://allmunchkins.com/privacy"
+      rel="noopener noreferrer"
       target="_blank"
       {...props}
     >
