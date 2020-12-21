@@ -33,7 +33,6 @@ module.exports = {
     host: '0.0.0.0',
     overlay: true,
     port: 3000,
-    publicPath: '/',
     static: {
       watch: false, // https://github.com/webpack/webpack-dev-server/issues/2893
     },
