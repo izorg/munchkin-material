@@ -51,7 +51,7 @@
   "themeDialog.auto": "Padrão do sistema",
   "themeDialog.dark": "Escuro",
   "themeDialog.light": "Claro",
-  "themeDialog.pureBlack": "",
+  "themeDialog.pureBlack": "Totalmente escuro",
   "undo": "Desfazer",
   "undo.killPlayer": "{name} {sex, select, female {morreu} male {morreu}}",
   "undo.resetPlayers": "Jogadores resetados"
