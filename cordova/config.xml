@@ -96,6 +96,8 @@
     </platform>
     <platform name="windows">
       <preference name="SplashScreenBackgroundColor" value="#FFFFFF" />
+      <preference name="WindowsStoreIdentityName" value="8543ViacheslavZavoruev.LevelCounterforMunchkin" />
+      <preference name="WindowsStoreDisplayName" value="Level Counter for Munchkin" />
       <preference name="windows-target-version" value="10.0" />
       <icon src="res/windows/StoreLogo.png" target="StoreLogo" />
       <icon src="res/windows/Square30x30Logo.png" target="Square30x30Logo" />
