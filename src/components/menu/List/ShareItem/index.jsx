@@ -34,7 +34,7 @@ const ShareItem = (props) => {
     ? 'https://allmunchkins.com'
     : `${protocol}//${host}${pathname}`;
 
-  if (!navigator.share) {
+  if (!navigator.share || cordova?.platformId === 'windows') {
     return null;
   }
 
