@@ -1,7 +1,7 @@
 import { promises as fs } from 'fs';
 import path from 'path';
 
-import { duration } from '@material-ui/core/styles/transitions.js';
+import { duration } from '@material-ui/core/node/styles/transitions.js';
 import { chromium, devices } from 'playwright';
 
 const CS = 'cs';
@@ -10,25 +10,32 @@ const HE = 'he';
 const RU = 'ru';
 const UK = 'uk';
 
-const appUrl = `http://localhost:3000`;
+const appUrl = 'http://localhost:3000';
 
 const browsers = Object.entries({ chromium });
 
 const browserDevices = {
   chromium: Object.entries({
+    iPadPro: {
+      deviceScaleFactor: 2,
+      hasTouch: true,
+      isMobile: true,
+      viewport: {
+        height: 1366,
+        width: 1024,
+      },
+    },
+    iPhone6Plus: devices['iPhone 6 Plus'],
+    iPhone11ProMax: devices['iPhone 11 Pro Max'],
     Nexus5: devices['Nexus 5'],
     Nexus7: devices['Nexus 7'],
     Nexus10: devices['Nexus 10'],
-    iPhone6Plus: devices['iPhone 6 Plus'],
-    iPhone11ProMax: devices['iPhone 11 Pro Max'],
-    iPadPro: {
-      viewport: {
-        width: 1024,
-        height: 1366,
-      },
+    windows: {
       deviceScaleFactor: 2,
-      isMobile: true,
-      hasTouch: true,
+      viewport: {
+        height: 768,
+        width: 1366,
+      },
     },
   }),
 };
@@ -58,7 +65,7 @@ const getScreenshots = async (browserType, device, locale, deviceName) => {
   const context = await browser.newContext(device);
   const page = await context.newPage();
 
-  page.setDefaultTimeout(1000);
+  page.setDefaultTimeout(2000);
   page.setDefaultNavigationTimeout(5000);
 
   let count = 0;
@@ -111,7 +118,7 @@ const getScreenshots = async (browserType, device, locale, deviceName) => {
   await delay(duration.enteringScreen * 2);
   count += 1;
 
-  if (deviceName === 'iPadPro') {
+  if (deviceName === 'iPadPro' || deviceName === 'windows') {
     await page.click('[data-screenshots="single-mode-item"]');
   } else {
     await page.click('[data-screenshots="menu"]');
