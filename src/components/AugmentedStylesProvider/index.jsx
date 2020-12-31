@@ -1,4 +1,8 @@
-import { jssPreset, StylesProvider } from '@material-ui/core';
+import { StylesProvider } from '@material-ui/core';
+import {
+  jssPreset,
+  StylesProvider as JssStylesProvider,
+} from '@material-ui/styles';
 import { create } from 'jss';
 import rtl from 'jss-rtl';
 import PropTypes from 'prop-types';
@@ -22,7 +26,11 @@ const AugmentedStylesProvider = ({ children }) => {
     [enabled],
   );
 
-  return <StylesProvider jss={jss}>{children}</StylesProvider>;
+  return (
+    <StylesProvider injectFirst>
+      <JssStylesProvider jss={jss}>{children}</JssStylesProvider>
+    </StylesProvider>
+  );
 };
 
 AugmentedStylesProvider.propTypes = {
