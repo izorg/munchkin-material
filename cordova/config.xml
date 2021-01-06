@@ -26,7 +26,6 @@
         <preference name="GradlePluginGoogleServicesEnabled" value="true" />
         <preference name="HeaderColor" value="#795548" />
         <preference name="android-minSdkVersion" value="22" />
-        <preference name="android-targetSdkVersion" value="30" />
         <resource-file src="google-services.json" target="app/google-services.json" />
         <icon density="ldpi" background="res/android/mipmap-ldpi/icon_background.png" foreground="res/android/mipmap-ldpi/icon_foreground.png" src="res/android/mipmap-ldpi/icon.png" />
         <icon density="mdpi" background="res/android/mipmap-mdpi/icon_background.png" foreground="res/android/mipmap-mdpi/icon_foreground.png" src="res/android/mipmap-mdpi/icon.png" />
