@@ -1,5 +1,6 @@
 /.gradle/
 /build.json
+/keystore.jks
 /platforms/
 /plugins/
 /sentry.properties
