@@ -3,6 +3,6 @@
     "app_name": "Munchkin"
   },
   "config_ios": {
-    "CFBundleDisplayName": "Seviye sayacı"
+    "CFBundleDisplayName": "Munchkin"
   }
 }

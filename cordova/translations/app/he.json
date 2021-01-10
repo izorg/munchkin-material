@@ -4,9 +4,9 @@
     "ios": ["he"]
   },
   "config_android": {
-    "app_name": "מאנצ'קין"
+    "app_name": "מנצ׳קין"
   },
   "config_ios": {
-    "CFBundleDisplayName": "מדד רמת"
+    "CFBundleDisplayName": "מנצ׳קין"
   }
 }

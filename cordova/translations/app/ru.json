@@ -3,6 +3,6 @@
     "app_name": "Манчкин"
   },
   "config_ios": {
-    "CFBundleDisplayName": "Счётчик"
+    "CFBundleDisplayName": "Манчкин"
   }
 }

@@ -1,5 +1,5 @@
 {
-  "config_ios" : {
-    "CFBundleDisplayName": "Počítadlo úrovní"
+  "config_ios": {
+    "CFBundleDisplayName": "Munchkin"
   }
 }

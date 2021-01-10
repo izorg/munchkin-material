@@ -3,7 +3,7 @@
     "ios": ["pt-BR"],
     "android": ["pt-rBR"]
   },
-  "config_ios" : {
-    "CFBundleDisplayName": "Contador"
+  "config_ios": {
+    "CFBundleDisplayName": "Munchkin"
   }
 }
