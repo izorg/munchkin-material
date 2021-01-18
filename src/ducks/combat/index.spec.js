@@ -23,8 +23,8 @@ describe('Combat reducer', () => {
     const monster = createMonster();
 
     const combat = reducer(undefined, {
-      type: ADD_MONSTER,
       monster,
+      type: ADD_MONSTER,
     });
 
     expect(combat.monsters[0]).toBe(monster.id);
@@ -37,8 +37,8 @@ describe('Combat reducer', () => {
     const combat = reducer(
       { monsters: [id] },
       {
-        type: REMOVE_MONSTER,
         id,
+        type: REMOVE_MONSTER,
       },
     );
 
@@ -49,8 +49,8 @@ describe('Combat reducer', () => {
     const bonus = -3;
 
     const combat = reducer(undefined, {
-      type: SET_COMBAT_PLAYER_BONUS,
       bonus,
+      type: SET_COMBAT_PLAYER_BONUS,
     });
 
     expect(combat.playerBonus).toBe(bonus);
@@ -60,8 +60,8 @@ describe('Combat reducer', () => {
     const bonus = 3;
 
     const combat = reducer(undefined, {
-      type: SET_COMBAT_HELPER_BONUS,
       bonus,
+      type: SET_COMBAT_HELPER_BONUS,
     });
 
     expect(combat.helperBonus).toBe(bonus);
@@ -71,8 +71,8 @@ describe('Combat reducer', () => {
     const id = 1;
 
     const combat = reducer(undefined, {
-      type: SET_COMBAT_HELPER,
       id,
+      type: SET_COMBAT_HELPER,
     });
 
     expect(combat.helperId).toBe(id);
@@ -83,9 +83,9 @@ describe('Combat reducer', () => {
     const monster = createMonster();
 
     const combat = reducer(undefined, {
-      type: START_COMBAT,
       monster,
       playerId,
+      type: START_COMBAT,
     });
 
     expect(combat.playerId).toBe(playerId);
@@ -98,7 +98,7 @@ describe('Combat reducer', () => {
     const state = { helperBonus: 2, helperId };
 
     expect(
-      reducer(state, { type: REMOVE_PLAYERS, playerList: [helperId] }),
+      reducer(state, { playerList: [helperId], type: REMOVE_PLAYERS }),
     ).toStrictEqual({
       helperBonus: 0,
       helperId: null,
@@ -108,7 +108,7 @@ describe('Combat reducer', () => {
   test('should ignore combat unrelated player removal', () => {
     const state = { helperBonus: 2, helperId: uuid() };
 
-    expect(reducer(state, { type: REMOVE_PLAYERS, playerList: [uuid()] })).toBe(
+    expect(reducer(state, { playerList: [uuid()], type: REMOVE_PLAYERS })).toBe(
       state,
     );
   });
@@ -123,8 +123,8 @@ describe('Combat reducer', () => {
 describe('Combat actions', () => {
   test('should create an action to set helper', () => {
     const action = {
-      type: SET_COMBAT_HELPER,
       id: uuid(),
+      type: SET_COMBAT_HELPER,
     };
 
     expect(setCombatHelper(action.id)).toStrictEqual(action);
@@ -132,8 +132,8 @@ describe('Combat actions', () => {
 
   test('should create an action to set helper bonus', () => {
     const action = {
-      type: SET_COMBAT_HELPER_BONUS,
       bonus: 2,
+      type: SET_COMBAT_HELPER_BONUS,
     };
 
     expect(setCombatHelperBonus(action.bonus)).toStrictEqual(action);
@@ -141,8 +141,8 @@ describe('Combat actions', () => {
 
   test('should create an action to set player bonus', () => {
     const action = {
-      type: SET_COMBAT_PLAYER_BONUS,
       bonus: 2,
+      type: SET_COMBAT_PLAYER_BONUS,
     };
 
     expect(setCombatPlayerBonus(action.bonus)).toStrictEqual(action);
@@ -154,8 +154,8 @@ describe('Combat actions', () => {
     const { monster, ...action } = startCombat(playerId);
 
     expect(action).toStrictEqual({
-      type: START_COMBAT,
       playerId,
+      type: START_COMBAT,
     });
     expect(typeof monster).toBe('object');
   });

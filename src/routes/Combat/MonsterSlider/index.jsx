@@ -19,6 +19,7 @@ import Monster from './Monster';
 const displayName = 'CombatMonsterSlider';
 
 const useStyles = makeStyles(
+  /* eslint-disable sort-keys */
   (theme) => ({
     monsters: {
       display: 'flex',
@@ -77,6 +78,7 @@ const useStyles = makeStyles(
       width: 36,
     },
   }),
+  /* eslint-enable */
   { name: displayName },
 );
 

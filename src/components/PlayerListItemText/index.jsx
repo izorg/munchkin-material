@@ -7,6 +7,7 @@ import Sex from '../Sex';
 const displayName = 'PlayerListItemText';
 
 const useStyles = makeStyles(
+  /* eslint-disable sort-keys */
   (theme) => ({
     main: {
       display: 'flex',
@@ -53,6 +54,7 @@ const useStyles = makeStyles(
       fontWeight: theme.typography.fontWeightRegular,
     },
   }),
+  /* eslint-enable */
   { name: displayName },
 );
 

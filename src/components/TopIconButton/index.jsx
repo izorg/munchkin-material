@@ -4,6 +4,7 @@ import { forwardRef } from 'react';
 const displayName = 'TopIconButton';
 
 const useStyles = makeStyles(
+  /* eslint-disable sort-keys */
   (theme) => ({
     root: {
       padding: 8,
@@ -31,6 +32,7 @@ const useStyles = makeStyles(
       },
     },
   }),
+  /* eslint-enable */
   { name: displayName },
 );
 

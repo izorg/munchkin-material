@@ -9,6 +9,7 @@ import CounterLabel from '../../../components/Counter/Label';
 const displayName = 'CombatCounter';
 
 const useStyles = makeStyles(
+  /* eslint-disable sort-keys */
   (theme) => ({
     counter: {
       alignItems: 'center',
@@ -57,6 +58,7 @@ const useStyles = makeStyles(
       lineHeight: theme.typography.h4.lineHeight,
     },
   }),
+  /* eslint-enable */
   { name: displayName },
 );
 

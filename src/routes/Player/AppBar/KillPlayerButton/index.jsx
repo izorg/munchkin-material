@@ -12,13 +12,13 @@ const displayName = 'KillPlayerButton';
 
 const messages = defineMessages({
   kill: {
-    id: 'kill',
     defaultMessage: 'Kill',
+    id: 'kill',
   },
 
   undo: {
-    id: 'undo.killPlayer',
     defaultMessage: '{name} {sex,select,female{has died} male{has died}}',
+    id: 'undo.killPlayer',
   },
 });
 

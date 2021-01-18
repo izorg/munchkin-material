@@ -11,28 +11,28 @@ export const SET_SINGLE_MODE = 'app/SET_SINGLE_MODE';
 export const SET_SINGLE_MODE_PLAYER = 'app/SET_SINGLE_MODE_PLAYER';
 
 export const setEpic = (epic = true) => ({
-  type: SET_EPIC,
   epic,
+  type: SET_EPIC,
 });
 
 export const setFullVersion = (fullVersion = true) => ({
-  type: SET_FULL_VERSION,
   fullVersion,
+  type: SET_FULL_VERSION,
 });
 
 export const setKeepAwake = (keepAwake) => ({
-  type: SET_KEEP_AWAKE,
   keepAwake,
+  type: SET_KEEP_AWAKE,
 });
 
 export const setLevelLimit = (levelLimit = true) => ({
-  type: SET_LEVEL_LIMIT,
   levelLimit,
+  type: SET_LEVEL_LIMIT,
 });
 
 export const setLocale = (locale) => ({
-  type: SET_LOCALE,
   locale,
+  type: SET_LOCALE,
 });
 
 export const setSingleMode = (singleMode) => async (dispatch, getState) => {
@@ -44,8 +44,8 @@ export const setSingleMode = (singleMode) => async (dispatch, getState) => {
 
       dispatch(addPlayer(player));
       dispatch({
-        type: SET_SINGLE_MODE_PLAYER,
         id: player.id,
+        type: SET_SINGLE_MODE_PLAYER,
       });
 
       singleModePlayerId = player.id;
@@ -55,8 +55,8 @@ export const setSingleMode = (singleMode) => async (dispatch, getState) => {
   }
 
   dispatch({
-    type: SET_SINGLE_MODE,
     singleMode,
+    type: SET_SINGLE_MODE,
   });
 };
 

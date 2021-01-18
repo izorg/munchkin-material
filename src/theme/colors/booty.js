@@ -5,8 +5,8 @@ export const key = 'booty';
 
 export const messages = defineMessages({
   name: {
-    id: 'theme.name.booty',
     defaultMessage: 'Booty',
+    id: 'theme.name.booty',
   },
 });
 

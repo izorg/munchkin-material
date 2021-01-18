@@ -15,24 +15,24 @@ export const finishCombat = () => ({
 });
 
 export const setCombatHelper = (id) => ({
-  type: SET_COMBAT_HELPER,
   id,
+  type: SET_COMBAT_HELPER,
 });
 
 export const setCombatHelperBonus = (bonus) => ({
-  type: SET_COMBAT_HELPER_BONUS,
   bonus,
+  type: SET_COMBAT_HELPER_BONUS,
 });
 
 export const setCombatPlayerBonus = (bonus) => ({
-  type: SET_COMBAT_PLAYER_BONUS,
   bonus,
+  type: SET_COMBAT_PLAYER_BONUS,
 });
 
 export const startCombat = (playerId) => ({
-  type: START_COMBAT,
   monster: createMonster(),
   playerId,
+  type: START_COMBAT,
 });
 
 export const initialState = {

@@ -7,8 +7,8 @@ const useStyles = makeStyles(
     loading: {
       alignItems: 'center',
       display: 'flex',
-      height: '100%',
       flex: 1,
+      height: '100%',
       justifyContent: 'center',
       width: '100%',
     },

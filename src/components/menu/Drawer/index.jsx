@@ -22,6 +22,7 @@ import useMenuOpen from '../useMenuOpen';
 const displayName = 'MenuDrawer';
 
 const useStyles = makeStyles(
+  /* eslint-disable sort-keys */
   () => ({
     paper: {
       maxWidth: 320,
@@ -33,6 +34,7 @@ const useStyles = makeStyles(
       },
     },
   }),
+  /* eslint-enable */
   { name: displayName },
 );
 

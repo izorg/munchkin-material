@@ -26,8 +26,8 @@ describe('Monsters reducer', () => {
     const monster = createMonster();
 
     const monsters = reducer(undefined, {
-      type: ADD_MONSTER,
       monster,
+      type: ADD_MONSTER,
     });
 
     expect(monsters[monster.id]).toBe(monster);
@@ -40,30 +40,30 @@ describe('Monsters reducer', () => {
     let monsters = reducer(
       { [id]: monster },
       {
-        type: INCREMENT_MONSTER_LEVEL,
         id,
+        type: INCREMENT_MONSTER_LEVEL,
       },
     );
 
     expect(monsters[id].level).toBe(2);
 
     monsters = reducer(monsters, {
-      type: DECREMENT_MONSTER_LEVEL,
       id,
+      type: DECREMENT_MONSTER_LEVEL,
     });
 
     expect(monsters[id].level).toBe(1);
 
     monsters = reducer(monsters, {
-      type: INCREMENT_MONSTER_BONUS,
       id,
+      type: INCREMENT_MONSTER_BONUS,
     });
 
     expect(monsters[id].bonus).toBe(1);
 
     monsters = reducer(monsters, {
-      type: DECREMENT_MONSTER_BONUS,
       id,
+      type: DECREMENT_MONSTER_BONUS,
     });
 
     expect(monsters[id].bonus).toBe(0);
@@ -76,8 +76,8 @@ describe('Monsters reducer', () => {
     const monsters = reducer(
       { [monster.id]: monster },
       {
-        type: REMOVE_MONSTER,
         id,
+        type: REMOVE_MONSTER,
       },
     );
 
@@ -88,8 +88,8 @@ describe('Monsters reducer', () => {
     const monster = createMonster();
 
     const monsters = reducer(undefined, {
-      type: START_COMBAT,
       monster,
+      type: START_COMBAT,
     });
 
     expect(monsters).toStrictEqual({ [monster.id]: monster });
@@ -103,11 +103,11 @@ describe('Monsters reducer', () => {
     const monsters = reducer(
       { [monster.id]: monster },
       {
-        type: UPDATE_MONSTER,
         monster: {
           id,
           level,
         },
+        type: UPDATE_MONSTER,
       },
     );
 
@@ -127,8 +127,8 @@ describe('Monsters actions', () => {
     const monster = createMonster();
 
     const expectedAction = {
-      type: ADD_MONSTER,
       monster,
+      type: ADD_MONSTER,
     };
 
     expect(addMonster(monster)).toStrictEqual(expectedAction);
@@ -139,8 +139,8 @@ describe('Monsters actions', () => {
     const { id } = monster;
 
     const expectedAction = {
-      type: DECREMENT_MONSTER_BONUS,
       id,
+      type: DECREMENT_MONSTER_BONUS,
     };
 
     expect(decrementMonsterBonus(id)).toStrictEqual(expectedAction);
@@ -151,8 +151,8 @@ describe('Monsters actions', () => {
     const { id } = monster;
 
     const expectedAction = {
-      type: DECREMENT_MONSTER_LEVEL,
       id,
+      type: DECREMENT_MONSTER_LEVEL,
     };
 
     expect(decrementMonsterLevel(id)).toStrictEqual(expectedAction);
@@ -163,8 +163,8 @@ describe('Monsters actions', () => {
     const { id } = monster;
 
     const expectedAction = {
-      type: INCREMENT_MONSTER_BONUS,
       id,
+      type: INCREMENT_MONSTER_BONUS,
     };
 
     expect(incrementMonsterBonus(id)).toStrictEqual(expectedAction);
@@ -175,8 +175,8 @@ describe('Monsters actions', () => {
     const { id } = monster;
 
     const expectedAction = {
-      type: INCREMENT_MONSTER_LEVEL,
       id,
+      type: INCREMENT_MONSTER_LEVEL,
     };
 
     expect(incrementMonsterLevel(id)).toStrictEqual(expectedAction);
@@ -187,8 +187,8 @@ describe('Monsters actions', () => {
     const { id } = monster;
 
     const expectedAction = {
-      type: REMOVE_MONSTER,
       id,
+      type: REMOVE_MONSTER,
     };
 
     expect(removeMonster(id)).toStrictEqual(expectedAction);

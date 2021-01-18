@@ -51,9 +51,9 @@ const loaders = {
 
   [PL]: () => import('../languages/pl.json'),
 
-  [PT_BR]: () => import('../languages/pt-BR.json'),
-
   [PT]: () => import('../languages/pt.json'),
+
+  [PT_BR]: () => import('../languages/pt-BR.json'),
 
   [RU]: () => import('../languages/ru.json'),
 

@@ -10,8 +10,8 @@ const displayName = 'ShuffleButton';
 
 const messages = defineMessages({
   shuffle: {
-    id: 'player.list.shuffle',
     defaultMessage: 'Shuffle players',
+    id: 'player.list.shuffle',
   },
 });
 

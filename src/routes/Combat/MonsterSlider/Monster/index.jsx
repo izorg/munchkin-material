@@ -16,6 +16,7 @@ import Counter from '../../Counter';
 const displayName = 'CombatMonster';
 
 const useStyles = makeStyles(
+  /* eslint-disable sort-keys */
   (theme) => ({
     monster: {
       padding: theme.spacing(1),
@@ -38,6 +39,7 @@ const useStyles = makeStyles(
       overflow: 'hidden',
     },
   }),
+  /* eslint-enable */
   { name: displayName },
 );
 

@@ -16,6 +16,7 @@ import { useGoBack, useLocationQuery } from '../../../utils/location';
 const displayName = 'CombatHelperButton';
 
 const useStyles = makeStyles(
+  /* eslint-disable sort-keys */
   (theme) => ({
     backdrop: {
       backgroundColor:
@@ -39,6 +40,7 @@ const useStyles = makeStyles(
       },
     },
   }),
+  /* eslint-enable */
   { name: displayName },
 );
 

@@ -22,6 +22,7 @@ const Combat = lazy(() =>
 const displayName = 'Player';
 
 const useStyles = makeStyles(
+  /* eslint-disable sort-keys */
   (theme) => ({
     root: {
       backgroundColor: theme.palette.background.default,
@@ -74,6 +75,7 @@ const useStyles = makeStyles(
       },
     },
   }),
+  /* eslint-enable */
   { name: displayName },
 );
 
@@ -83,8 +85,8 @@ const Player = ({ playerId }) => {
   const playerList = useSelector((state) => state.present.playerList);
 
   const combatMatch = useMatch({
-    path: '/player/:id/combat',
     end: false,
+    path: '/player/:id/combat',
   });
 
   if (playerId && !playerList.includes(playerId)) {

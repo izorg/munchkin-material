@@ -62,9 +62,9 @@ export default {
       player: createPlayer({
         color: '#03A9F4',
         gear: 10,
-        sex: FEMALE,
         level: 7,
         name: 'Hillary Clinton',
+        sex: FEMALE,
       }),
     },
   ],
@@ -117,9 +117,9 @@ export default {
       player: createPlayer({
         color: '#E91E63',
         gear: 7,
-        sex: FEMALE,
         level: 8,
         name: 'Василиса Премудрая',
+        sex: FEMALE,
       }),
     },
   ],

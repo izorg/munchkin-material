@@ -5,6 +5,7 @@ import { forwardRef } from 'react';
 const displayName = 'ScreenFab';
 
 const useStyles = makeStyles(
+  /* eslint-disable sort-keys */
   (theme) => ({
     root: {
       bottom: theme.spacing(2),
@@ -22,6 +23,7 @@ const useStyles = makeStyles(
       },
     },
   }),
+  /* eslint-enable */
   { name: displayName },
 );
 

@@ -12,8 +12,8 @@ const displayName = 'DiceIconButton';
 
 const messages = defineMessages({
   dice: {
-    id: 'dice',
     defaultMessage: 'Dice',
+    id: 'dice',
   },
 });
 

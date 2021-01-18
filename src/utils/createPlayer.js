@@ -4,8 +4,8 @@ import { MALE } from './sex';
 
 export const defaultData = {
   gear: 0,
-  sex: MALE,
   level: 1,
+  sex: MALE,
 };
 
 const createPlayer = (data) => ({

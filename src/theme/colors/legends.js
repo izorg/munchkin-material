@@ -7,12 +7,13 @@ export const key = 'legends';
 
 export const messages = defineMessages({
   name: {
-    id: 'theme.name.legends',
     defaultMessage: 'Legends',
+    id: 'theme.name.legends',
   },
 });
 
 export const theme = {
+  /* eslint-disable sort-keys */
   components: {
     MuiAppBar: {
       styleOverrides: {
@@ -53,4 +54,5 @@ export const theme = {
       main: grey[700],
     },
   },
+  /* eslint-enable */
 };

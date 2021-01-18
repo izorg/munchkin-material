@@ -3,8 +3,8 @@ import { key as id } from '../../theme/colors/munchkin';
 export const SET_THEME = 'theme/SET';
 
 export const setTheme = (theme) => ({
-  type: SET_THEME,
   theme,
+  type: SET_THEME,
 });
 
 const initialState = {

@@ -5,8 +5,8 @@ export const key = 'apocalypse';
 
 export const messages = defineMessages({
   name: {
-    id: 'theme.name.apocalypse',
     defaultMessage: 'Apocalypse',
+    id: 'theme.name.apocalypse',
   },
 });
 

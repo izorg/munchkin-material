@@ -11,6 +11,7 @@ import PlayerStats from './Stats';
 const displayName = 'PlayerSlider';
 
 const useStyles = makeStyles(
+  /* eslint-disable sort-keys */
   (theme) => ({
     root: {
       overflowX: 'hidden',
@@ -57,6 +58,7 @@ const useStyles = makeStyles(
       maxWidth: 600,
     },
   }),
+  /* eslint-enable */
   { name: displayName },
 );
 

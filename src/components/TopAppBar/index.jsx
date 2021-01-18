@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 const displayName = 'TopAppBar';
 
 const useStyles = makeStyles(
+  /* eslint-disable sort-keys */
   (theme) => ({
     appBar: {
       zIndex: theme.zIndex.appBar,
@@ -40,6 +41,7 @@ const useStyles = makeStyles(
       },
     },
   }),
+  /* eslint-enable */
   { name: displayName },
 );
 

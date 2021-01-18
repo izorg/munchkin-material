@@ -34,8 +34,8 @@ describe('Players reducer', () => {
     });
 
     const players = reducer(undefined, {
-      type: ADD_PLAYER,
       player,
+      type: ADD_PLAYER,
     });
 
     expect(players[player.id]).toBe(player);
@@ -48,30 +48,30 @@ describe('Players reducer', () => {
     let players = reducer(
       { [id]: player },
       {
-        type: INCREMENT_PLAYER_LEVEL,
         id,
+        type: INCREMENT_PLAYER_LEVEL,
       },
     );
 
     expect(players[id].level).toBe(2);
 
     players = reducer(players, {
-      type: DECREMENT_PLAYER_LEVEL,
       id,
+      type: DECREMENT_PLAYER_LEVEL,
     });
 
     expect(players[id].level).toBe(1);
 
     players = reducer(players, {
-      type: INCREMENT_PLAYER_GEAR,
       id,
+      type: INCREMENT_PLAYER_GEAR,
     });
 
     expect(players[id].gear).toBe(1);
 
     players = reducer(players, {
-      type: DECREMENT_PLAYER_GEAR,
       id,
+      type: DECREMENT_PLAYER_GEAR,
     });
 
     expect(players[id].gear).toBe(0);
@@ -80,13 +80,13 @@ describe('Players reducer', () => {
   test('kill player', () => {
     const id = uuid();
 
-    const player = createPlayer({ id, gear: 12, level: 6 });
+    const player = createPlayer({ gear: 12, id, level: 6 });
 
     const players = reducer(
       { [player.id]: player },
       {
-        type: KILL_PLAYER,
         id,
+        type: KILL_PLAYER,
       },
     );
 
@@ -102,16 +102,16 @@ describe('Players reducer', () => {
     let players = reducer(
       { [player.id]: player },
       {
-        type: TOGGLE_PLAYER_SEX,
         id,
+        type: TOGGLE_PLAYER_SEX,
       },
     );
 
     expect(players[id].sex).toBe(FEMALE);
 
     players = reducer(players, {
-      type: TOGGLE_PLAYER_SEX,
       id,
+      type: TOGGLE_PLAYER_SEX,
     });
 
     expect(players[id].sex).toBe(MALE);
@@ -125,11 +125,11 @@ describe('Players reducer', () => {
     const players = reducer(
       { [player.id]: player },
       {
-        type: UPDATE_PLAYER,
         player: {
           id,
           name: 'Lol',
         },
+        type: UPDATE_PLAYER,
       },
     );
 
@@ -153,8 +153,8 @@ describe('Players actions', () => {
     const player = createPlayer();
 
     const expectedAction = {
-      type: ADD_PLAYER,
       player,
+      type: ADD_PLAYER,
     };
 
     expect(addPlayer(player)).toStrictEqual(expectedAction);
@@ -164,8 +164,8 @@ describe('Players actions', () => {
     const player = createPlayer();
 
     const expectedAction = {
-      type: DECREMENT_PLAYER_GEAR,
       id: player.id,
+      type: DECREMENT_PLAYER_GEAR,
     };
 
     expect(decrementPlayerGear(player.id)).toStrictEqual(expectedAction);
@@ -175,8 +175,8 @@ describe('Players actions', () => {
     const player = createPlayer();
 
     const expectedAction = {
-      type: DECREMENT_PLAYER_LEVEL,
       id: player.id,
+      type: DECREMENT_PLAYER_LEVEL,
     };
 
     expect(decrementPlayerLevel(player.id)).toStrictEqual(expectedAction);
@@ -186,8 +186,8 @@ describe('Players actions', () => {
     const player = createPlayer();
 
     const expectedAction = {
-      type: INCREMENT_PLAYER_GEAR,
       id: player.id,
+      type: INCREMENT_PLAYER_GEAR,
     };
 
     expect(incrementPlayerGear(player.id)).toStrictEqual(expectedAction);
@@ -197,8 +197,8 @@ describe('Players actions', () => {
     const player = createPlayer();
 
     const expectedAction = {
-      type: INCREMENT_PLAYER_LEVEL,
       id: player.id,
+      type: INCREMENT_PLAYER_LEVEL,
     };
 
     expect(incrementPlayerLevel(player.id)).toStrictEqual(expectedAction);
@@ -208,8 +208,8 @@ describe('Players actions', () => {
     const player = createPlayer();
 
     const expectedAction = {
-      type: KILL_PLAYER,
       id: player.id,
+      type: KILL_PLAYER,
     };
 
     expect(killPlayer(player.id)).toStrictEqual(expectedAction);
@@ -219,8 +219,8 @@ describe('Players actions', () => {
     const player = createPlayer();
 
     const expectedAction = {
-      type: TOGGLE_PLAYER_SEX,
       id: player.id,
+      type: TOGGLE_PLAYER_SEX,
     };
 
     expect(togglePlayerSex(player.id)).toStrictEqual(expectedAction);
@@ -230,8 +230,8 @@ describe('Players actions', () => {
     const player = createPlayer();
 
     const expectedAction = {
-      type: UPDATE_PLAYER,
       player,
+      type: UPDATE_PLAYER,
     };
 
     expect(updatePlayer(player)).toStrictEqual(expectedAction);

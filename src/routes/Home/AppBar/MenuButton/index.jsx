@@ -12,8 +12,8 @@ const displayName = 'MenuButton';
 
 const messages = defineMessages({
   menu: {
-    id: 'menu',
     defaultMessage: 'Menu',
+    id: 'menu',
   },
 });
 

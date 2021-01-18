@@ -11,6 +11,7 @@ import PlayerSlider from './PlayerSlider';
 const displayName = 'Combat';
 
 const useStyles = makeStyles(
+  /* eslint-disable sort-keys */
   (theme) => ({
     root: {
       backgroundColor: theme.palette.background.default,
@@ -79,6 +80,7 @@ const useStyles = makeStyles(
       margin: theme.spacing(0, 0.5),
     },
   }),
+  /* eslint-enable */
   { name: displayName },
 );
 

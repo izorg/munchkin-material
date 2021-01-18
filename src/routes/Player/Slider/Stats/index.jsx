@@ -23,6 +23,7 @@ import {
 const displayName = 'PlayerStats';
 
 const useStyles = makeStyles(
+  /* eslint-disable sort-keys */
   (theme) => ({
     stats: {
       display: 'flex',
@@ -92,6 +93,7 @@ const useStyles = makeStyles(
       },
     },
   }),
+  /* eslint-enable */
   { name: displayName },
 );
 

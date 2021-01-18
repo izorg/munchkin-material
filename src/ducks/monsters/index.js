@@ -11,33 +11,33 @@ import {
 } from './actionTypes';
 
 export const addMonster = (monster) => ({
-  type: ADD_MONSTER,
   monster,
+  type: ADD_MONSTER,
 });
 
 export const decrementMonsterBonus = (id) => ({
-  type: DECREMENT_MONSTER_BONUS,
   id,
+  type: DECREMENT_MONSTER_BONUS,
 });
 
 export const decrementMonsterLevel = (id) => ({
-  type: DECREMENT_MONSTER_LEVEL,
   id,
+  type: DECREMENT_MONSTER_LEVEL,
 });
 
 export const incrementMonsterBonus = (id) => ({
-  type: INCREMENT_MONSTER_BONUS,
   id,
+  type: INCREMENT_MONSTER_BONUS,
 });
 
 export const incrementMonsterLevel = (id) => ({
-  type: INCREMENT_MONSTER_LEVEL,
   id,
+  type: INCREMENT_MONSTER_LEVEL,
 });
 
 export const removeMonster = (id) => ({
-  type: REMOVE_MONSTER,
   id,
+  type: REMOVE_MONSTER,
 });
 
 export const monsterReducer = (state, action) => {

@@ -14,53 +14,53 @@ import {
 } from './actionTypes';
 
 export const addPlayer = (player) => ({
-  type: ADD_PLAYER,
   player,
+  type: ADD_PLAYER,
 });
 
 export const decrementPlayerGear = (id) => ({
-  type: DECREMENT_PLAYER_GEAR,
   id,
+  type: DECREMENT_PLAYER_GEAR,
 });
 
 export const decrementPlayerLevel = (id) => ({
-  type: DECREMENT_PLAYER_LEVEL,
   id,
+  type: DECREMENT_PLAYER_LEVEL,
 });
 
 export const incrementPlayerGear = (id) => ({
-  type: INCREMENT_PLAYER_GEAR,
   id,
+  type: INCREMENT_PLAYER_GEAR,
 });
 
 export const incrementPlayerLevel = (id) => ({
-  type: INCREMENT_PLAYER_LEVEL,
   id,
+  type: INCREMENT_PLAYER_LEVEL,
 });
 
 export const killPlayer = (id) => ({
-  type: KILL_PLAYER,
   id,
+  type: KILL_PLAYER,
 });
 
 export const removePlayers = (playerList) => ({
-  type: REMOVE_PLAYERS,
   playerList,
+  type: REMOVE_PLAYERS,
 });
 
 export const resetPlayers = (playerList) => ({
-  type: RESET_PLAYERS,
   playerList,
+  type: RESET_PLAYERS,
 });
 
 export const togglePlayerSex = (id) => ({
-  type: TOGGLE_PLAYER_SEX,
   id,
+  type: TOGGLE_PLAYER_SEX,
 });
 
 export const updatePlayer = (player) => ({
-  type: UPDATE_PLAYER,
   player,
+  type: UPDATE_PLAYER,
 });
 
 export const playerReducer = (state, action) => {

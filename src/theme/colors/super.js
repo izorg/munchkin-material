@@ -5,8 +5,8 @@ export const key = 'super';
 
 export const messages = defineMessages({
   name: {
-    id: 'theme.name.super',
     defaultMessage: 'Super',
+    id: 'theme.name.super',
   },
 });
 

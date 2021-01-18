@@ -14,24 +14,25 @@ const displayName = 'Counter';
 
 export const counterMessages = defineMessages({
   gear: {
-    id: 'counter.gear',
     defaultMessage: 'Gear',
+    id: 'counter.gear',
   },
   level: {
-    id: 'counter.level',
     defaultMessage: 'Level',
+    id: 'counter.level',
   },
   modifier: {
-    id: 'counter.modifier',
     defaultMessage: 'Modifier',
+    id: 'counter.modifier',
   },
   strength: {
-    id: 'counter.strength',
     defaultMessage: 'Strength',
+    id: 'counter.strength',
   },
 });
 
 const useStyles = makeStyles(
+  /* eslint-disable sort-keys */
   (theme) => ({
     counter: {
       alignItems: 'center',
@@ -67,6 +68,7 @@ const useStyles = makeStyles(
       fontSize: 36,
     },
   }),
+  /* eslint-enable */
   { name: displayName },
 );
 

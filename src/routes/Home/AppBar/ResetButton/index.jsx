@@ -12,13 +12,13 @@ const displayName = 'ResetButton';
 
 const messages = defineMessages({
   reset: {
-    id: 'player.list.reset',
     defaultMessage: 'Reset',
+    id: 'player.list.reset',
   },
 
   undo: {
-    id: 'undo.resetPlayers',
     defaultMessage: 'Players have been reset',
+    id: 'undo.resetPlayers',
   },
 });
 

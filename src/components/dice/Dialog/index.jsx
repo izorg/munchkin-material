@@ -13,6 +13,7 @@ const displayName = 'DiceDialog';
 const diceSize = 120;
 
 const useStyles = makeStyles(
+  /* eslint-disable sort-keys */
   (theme) => ({
     button: {
       color: theme.palette.text.primary,
@@ -37,6 +38,7 @@ const useStyles = makeStyles(
       fontSize: 'inherit',
     },
   }),
+  /* eslint-enable */
   { name: displayName },
 );
 

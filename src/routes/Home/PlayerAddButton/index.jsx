@@ -10,8 +10,8 @@ const displayName = 'PlayerAddButton';
 
 const messages = defineMessages({
   label: {
-    id: 'mainButton.label',
     defaultMessage: 'Add',
+    id: 'mainButton.label',
   },
 });
 

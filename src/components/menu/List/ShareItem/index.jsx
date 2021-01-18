@@ -10,13 +10,13 @@ const displayName = 'ShareItem';
 
 const messages = defineMessages({
   share: {
-    id: 'menu.share',
     defaultMessage: 'Share',
+    id: 'menu.share',
   },
 
   text: {
-    id: 'share.text',
     defaultMessage: 'Simple but powerful Munchkin level counter',
+    id: 'share.text',
   },
 });
 

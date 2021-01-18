@@ -5,8 +5,8 @@ export const key = 'munchkin';
 
 export const messages = defineMessages({
   name: {
-    id: 'theme.name.munchkin',
     defaultMessage: 'Munchkin',
+    id: 'theme.name.munchkin',
   },
 });
 

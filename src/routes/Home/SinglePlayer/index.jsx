@@ -22,6 +22,7 @@ import {
 const displayName = 'SinglePlayer';
 
 const useStyles = makeStyles(
+  /* eslint-disable sort-keys */
   (theme) => ({
     content: {
       alignSelf: 'center',
@@ -90,6 +91,7 @@ const useStyles = makeStyles(
       fontSize: 'inherit',
     },
   }),
+  /* eslint-enable */
   { name: displayName },
 );
 

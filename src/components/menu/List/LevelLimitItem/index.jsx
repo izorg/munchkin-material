@@ -65,8 +65,8 @@ const LevelLimitItem = ({ className, ...rest }) => {
       });
     } else {
       secondary = intl.formatMessage(levelLimitMessages.munchkin, {
-        minLevel: MIN_LEVEL,
         maxLevel: MAX_LEVEL,
+        minLevel: MIN_LEVEL,
       });
     }
   }

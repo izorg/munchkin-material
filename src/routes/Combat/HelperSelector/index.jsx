@@ -18,6 +18,7 @@ import { useGoBack, useLocationQuery } from '../../../utils/location';
 const displayName = 'HelperSelector';
 
 const useStyles = makeStyles(
+  /* eslint-disable sort-keys */
   (theme) => ({
     dialogPaper: {
       margin: theme.spacing(2),
@@ -27,6 +28,7 @@ const useStyles = makeStyles(
       padding: 0,
     },
   }),
+  /* eslint-enable */
   { name: displayName },
 );
 

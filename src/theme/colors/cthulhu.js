@@ -5,8 +5,8 @@ export const key = 'cthulhu';
 
 export const messages = defineMessages({
   name: {
-    id: 'theme.name.cthulhu',
     defaultMessage: 'Cthulhu',
+    id: 'theme.name.cthulhu',
   },
 });
 

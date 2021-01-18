@@ -7,8 +7,8 @@ export const toggleMenu = () => ({
 });
 
 export const togglePlayer = (id) => ({
-  type: TOGGLE_PLAYER,
   id,
+  type: TOGGLE_PLAYER,
 });
 
 export const unselectAllPlayers = () => ({

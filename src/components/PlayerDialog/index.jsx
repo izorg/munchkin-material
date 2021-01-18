@@ -37,6 +37,7 @@ import ColorPicker from './ColorPicker';
 const displayName = 'PlayerDialog';
 
 const useStyles = makeStyles(
+  /* eslint-disable sort-keys */
   (theme) => ({
     root: {
       height: 'inherit', // scrolling body in cordova for small screen height
@@ -80,13 +81,14 @@ const useStyles = makeStyles(
       verticalAlign: 'middle',
     },
   }),
+  /* eslint-enable */
   { name: displayName },
 );
 
 const messages = defineMessages({
   label: {
-    id: 'player.form.namePlaceholder',
     defaultMessage: 'Name',
+    id: 'player.form.namePlaceholder',
   },
 });
 

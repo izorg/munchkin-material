@@ -1,8 +1,8 @@
 export const THROW_DICE = 'dice/THROW';
 
 export const throwDice = () => ({
-  type: THROW_DICE,
   dice: Math.floor(Math.random() * 6) + 1,
+  type: THROW_DICE,
 });
 
 const initialState = null;

@@ -113,8 +113,8 @@ const LevelLimitDialog = (props) => {
               />
             }
             label={intl.formatMessage(levelLimitMessages.munchkin, {
-              minLevel: MIN_LEVEL,
               maxLevel: MAX_LEVEL,
+              minLevel: MIN_LEVEL,
             })}
             value={DEFAULT_MUNCHKIN_LIMIT}
           />

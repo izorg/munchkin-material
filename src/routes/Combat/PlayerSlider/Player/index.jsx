@@ -26,6 +26,7 @@ import Counter from '../../Counter';
 const displayName = 'CombatPlayer';
 
 const useStyles = makeStyles(
+  /* eslint-disable sort-keys */
   (theme) => ({
     player: {
       padding: theme.spacing(1),
@@ -56,6 +57,7 @@ const useStyles = makeStyles(
       top: 0,
     },
   }),
+  /* eslint-enable */
   { name: 'CombatPlayer' },
 );
 

@@ -1,20 +1,20 @@
 import { defineMessages } from 'react-intl';
 
 export default defineMessages({
-  label: {
-    id: 'levelLimit.label',
-    defaultMessage: 'Level limit',
+  epic: {
+    defaultMessage: 'Epic Munchkin ({minLevel} - {maxLevel})',
+    id: 'levelLimit.epic',
   },
-  none: {
-    id: 'levelLimit.none',
-    defaultMessage: 'No limit',
+  label: {
+    defaultMessage: 'Level limit',
+    id: 'levelLimit.label',
   },
   munchkin: {
-    id: 'levelLimit.munchkin',
     defaultMessage: 'Munchkin ({minLevel} - {maxLevel})',
+    id: 'levelLimit.munchkin',
   },
-  epic: {
-    id: 'levelLimit.epic',
-    defaultMessage: 'Epic Munchkin ({minLevel} - {maxLevel})',
+  none: {
+    defaultMessage: 'No limit',
+    id: 'levelLimit.none',
   },
 });

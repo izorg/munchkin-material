@@ -19,6 +19,7 @@ import Player from './Player';
 const displayName = 'CombatPlayerSlider';
 
 const useStyles = makeStyles(
+  /* eslint-disable sort-keys */
   (theme) => ({
     players: {
       display: 'flex',
@@ -78,6 +79,7 @@ const useStyles = makeStyles(
       width: 36,
     },
   }),
+  /* eslint-enable */
   { name: displayName },
 );
 

@@ -28,14 +28,14 @@ const shuffle = (array) => {
 };
 
 export const addPlayerToList = (id) => ({
-  type: ADD_PLAYER_TO_LIST,
   id,
+  type: ADD_PLAYER_TO_LIST,
 });
 
 export const movePlayer = (oldPosition, newPosition) => ({
-  type: MOVE_PLAYER,
-  oldPosition,
   newPosition,
+  oldPosition,
+  type: MOVE_PLAYER,
 });
 
 export const shufflePlayers = () => ({

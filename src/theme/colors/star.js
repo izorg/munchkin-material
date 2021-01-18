@@ -5,8 +5,8 @@ export const key = 'star';
 
 export const messages = defineMessages({
   name: {
-    id: 'theme.name.star',
     defaultMessage: 'Star',
+    id: 'theme.name.star',
   },
 });
 
