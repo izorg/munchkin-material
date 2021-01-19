@@ -1,5 +1,5 @@
-import { makeStyles } from '@material-ui/core';
-import clsx from 'clsx';
+import { css } from '@emotion/react';
+import { useTheme } from '@material-ui/core';
 import { useIntl } from 'react-intl';
 
 import { EN, RU } from '../../../i18n';
@@ -8,26 +8,25 @@ const displayName = 'CounterLabel';
 
 const munchkinFontSupportedLocales = [EN, RU];
 
-const useStyles = makeStyles(
-  (theme) => ({
-    label: {
-      fontFamily: ({ locale }) =>
-        munchkinFontSupportedLocales.includes(locale)
-          ? `"Munchkin", ${theme.typography.fontFamily}`
-          : theme.typography.fontFamily,
-      overflow: 'hidden',
-      textOverflow: 'ellipsis',
-      whiteSpace: 'nowrap',
-    },
-  }),
-  { name: displayName },
-);
-
-const CounterLabel = ({ className, ...props }) => {
+const CounterLabel = (props) => {
   const { locale } = useIntl();
-  const classes = useStyles({ locale });
+  const theme = useTheme();
 
-  return <div className={clsx(classes.label, className)} {...props} />;
+  const fontFamily = munchkinFontSupportedLocales.includes(locale)
+    ? `"Munchkin", ${theme.typography.fontFamily}`
+    : theme.typography.fontFamily;
+
+  return (
+    <div
+      css={css`
+        font-family: ${fontFamily};
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      `}
+      {...props}
+    />
+  );
 };
 
 CounterLabel.displayName = displayName;

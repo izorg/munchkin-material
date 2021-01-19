@@ -16,6 +16,8 @@
     "test": "jest"
   },
   "dependencies": {
+    "@emotion/cache": "11.1.3",
+    "@emotion/react": "11.1.4",
     "@material-ui/core": "5.0.0-alpha.23",
     "@material-ui/styles": "5.0.0-alpha.23",
     "@sentry/react": "5.30.0",
@@ -45,6 +47,7 @@
     "redux-thunk": "2.3.0",
     "redux-undo": "1.0.1",
     "reselect": "4.0.0",
+    "stylis-plugin-rtl": "2.0.1",
     "uuid": "8.3.2",
     "workbox-window": "6.0.2"
   },
@@ -55,7 +58,7 @@
     "@babel/preset-env": "7.12.11",
     "@babel/preset-react": "7.12.10",
     "@babel/runtime": "7.12.5",
-    "@emotion/react": "11.1.4",
+    "@emotion/babel-plugin": "11.1.2",
     "@emotion/styled": "11.0.0",
     "@formatjs/cli": "3.0.1",
     "@pmmmwh/react-refresh-webpack-plugin": "0.4.3",

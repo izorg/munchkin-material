@@ -13,6 +13,7 @@ module.exports = {
         useESModules: !test,
       },
     ],
+    ['@emotion/babel-plugin'],
     [
       'babel-plugin-react-intl',
       {
@@ -47,6 +48,7 @@ module.exports = {
       '@babel/preset-react',
       {
         development: dev,
+        importSource: '@emotion/react',
         runtime: 'automatic',
       },
     ],
