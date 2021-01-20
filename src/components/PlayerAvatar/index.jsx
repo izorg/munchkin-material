@@ -14,6 +14,7 @@ const PlayerAvatar = forwardRef(
     if (!selected && color) {
       style = {
         ...style,
+
         backgroundColor: color,
       };
     }
