@@ -10,6 +10,7 @@ import rtl from 'jss-rtl';
 import PropTypes from 'prop-types';
 import { useMemo } from 'react';
 import { useIntl } from 'react-intl';
+import { prefixer } from 'stylis';
 import rtlPlugin from 'stylis-plugin-rtl';
 
 import { getDirection } from '../../i18n';
@@ -19,12 +20,13 @@ const displayName = 'AugmentedStylesProvider';
 const ltrCache = createCache({
   key: 'ltr',
   prepend: true,
+  stylisPlugins: [prefixer],
 });
 
 const rtlCache = createCache({
   key: 'rtl',
   prepend: true,
-  stylisPlugins: [rtlPlugin],
+  stylisPlugins: [prefixer, rtlPlugin],
 });
 
 const AugmentedStylesProvider = ({ children }) => {

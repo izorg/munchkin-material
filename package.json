@@ -49,6 +49,7 @@
     "redux-thunk": "2.3.0",
     "redux-undo": "1.0.1",
     "reselect": "4.0.0",
+    "stylis": "4.0.6",
     "stylis-plugin-rtl": "2.0.1",
     "uuid": "8.3.2",
     "workbox-window": "6.0.2"
