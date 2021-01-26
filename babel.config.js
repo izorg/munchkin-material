@@ -9,7 +9,6 @@ module.exports = {
     [
       '@babel/plugin-transform-runtime',
       {
-        helpers: false,
         useESModules: !test,
       },
     ],
@@ -38,7 +37,10 @@ module.exports = {
     [
       '@babel/preset-env',
       {
-        corejs: 3,
+        corejs: {
+          proposals: true,
+          version: 3,
+        },
         loose: true,
         modules: test ? 'auto' : false,
         useBuiltIns: 'usage',
