@@ -3,6 +3,7 @@ import { REMOVE_PLAYERS } from '../players/actionTypes';
 import {
   ADD_PLAYER_TO_LIST,
   MOVE_PLAYER,
+  SET_PLAYER_LIST,
   SHUFFLE_PLAYERS,
 } from './actionTypes';
 
@@ -38,6 +39,11 @@ export const movePlayer = (oldPosition, newPosition) => ({
   type: MOVE_PLAYER,
 });
 
+export const setPlayerList = (list) => ({
+  list,
+  type: SET_PLAYER_LIST,
+});
+
 export const shufflePlayers = () => ({
   type: SHUFFLE_PLAYERS,
 });
@@ -67,6 +73,9 @@ const reducer = (state = initialState, action) => {
 
     case REMOVE_PLAYERS:
       return state.filter((id) => !action.playerList.includes(id));
+
+    case SET_PLAYER_LIST:
+      return action.list;
 
     case SHUFFLE_PLAYERS: {
       return shuffle(state);

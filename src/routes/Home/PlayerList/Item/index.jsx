@@ -230,6 +230,7 @@ const HomePlayerListItem = forwardRef(
           >
             <IconButton
               ref={reorderRef}
+              className="handler"
               disableRipple
               edge="end"
               {...dragHandleProps}

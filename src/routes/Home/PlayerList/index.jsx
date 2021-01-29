@@ -14,6 +14,12 @@ const displayName = 'HomePlayerList';
 
 const useStyles = makeStyles(
   {
+    // '@global': {
+    //   '.sortable-ghost': {
+    //     visibility: 'hidden',
+    //   },
+    // },
+
     drag: {
       '&:hover': {
         backgroundColor: 'transparent',
@@ -28,6 +34,15 @@ const useStyles = makeStyles(
   },
   { name: displayName },
 );
+
+// const SortableList = forwardRef((props, ref) => {
+//   return (
+//     <List ref={ref} disablePadding {...props}>
+//       {/* eslint-disable-next-line react/prop-types */}
+//       {props.children}
+//     </List>
+//   );
+// });
 
 const HomePlayerList = (props) => {
   const classes = useStyles();
@@ -125,6 +140,25 @@ const HomePlayerList = (props) => {
       </DragDropContext>
     );
   }
+
+  // return (
+  //   <ReactSortable
+  //     animation="300"
+  //     handle=".handler"
+  //     list={list}
+  //     setList={(newList) => {
+  //       if (newList.some((item, index) => item.id !== playerList[index])) {
+  //         dispatch(setPlayerList(newList.map((item) => item.id)));
+  //       }
+  //     }}
+  //     tag={SortableList}
+  //     {...props}
+  //   >
+  //     {playerList.map((playerId) => (
+  //       <Item key={playerId} playerId={playerId} />
+  //     ))}
+  //   </ReactSortable>
+  // );
 
   return (
     <List disablePadding {...props}>
