@@ -31,11 +31,15 @@ const useStyles = makeStyles(
     },
 
     toolbar: {
+      [theme.breakpoints.up('md')]: {
+        minHeight: 64,
+      },
+
       '@supports (min-height: calc(env(safe-area-inset-top)))': {
         minHeight: 'calc(56px + env(safe-area-inset-top))',
         paddingTop: 'env(safe-area-inset-top)',
 
-        [theme.breakpoints.up('sm')]: {
+        [theme.breakpoints.up('md')]: {
           minHeight: 'calc(64px + env(safe-area-inset-top))',
         },
       },
