@@ -1,15 +1,15 @@
-import { Avatar, ButtonBase, makeStyles } from '@material-ui/core';
-import clsx from 'clsx';
-import { Check } from 'mdi-material-ui';
-import PropTypes from 'prop-types';
-import { forwardRef } from 'react';
+import { Avatar, ButtonBase, makeStyles } from "@material-ui/core";
+import clsx from "clsx";
+import { Check } from "mdi-material-ui";
+import PropTypes from "prop-types";
+import { forwardRef } from "react";
 
-const displayName = 'Color';
+const displayName = "Color";
 
 const useStyles = makeStyles(
   {
     button: {
-      borderRadius: '50%',
+      borderRadius: "50%",
       height: 48,
       padding: 0,
       width: 48,
@@ -17,11 +17,11 @@ const useStyles = makeStyles(
 
     color: {
       height: 36,
-      margin: '0 auto',
+      margin: "0 auto",
       width: 36,
     },
   },
-  { name: displayName },
+  { name: displayName }
 );
 
 const Color = forwardRef(({ className, selected, value, ...props }, ref) => {

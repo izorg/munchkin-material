@@ -1,13 +1,13 @@
-import { ListItemIcon } from '@material-ui/core';
-import { CellphoneArrowDown, InformationOutline } from 'mdi-material-ui';
+import { ListItemIcon } from "@material-ui/core";
+import { CellphoneArrowDown, InformationOutline } from "mdi-material-ui";
 
-import { useGoBack } from '../../../../utils/location';
-import { useWorkbox } from '../../../WorkboxProvider';
-import useMenuOpen from '../../useMenuOpen';
-import ListItem from '../Item';
-import ListItemText from '../ItemText';
+import { useGoBack } from "../../../../utils/location";
+import { useWorkbox } from "../../../WorkboxProvider";
+import useMenuOpen from "../../useMenuOpen";
+import ListItem from "../Item";
+import ListItemText from "../ItemText";
 
-const displayName = 'VersionItem';
+const displayName = "VersionItem";
 
 const VersionItem = (props) => {
   const goBack = useGoBack();

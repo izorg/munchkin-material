@@ -1,4 +1,4 @@
-export const THROW_DICE = 'dice/THROW';
+export const THROW_DICE = "dice/THROW";
 
 export const throwDice = () => ({
   dice: Math.floor(Math.random() * 6) + 1,

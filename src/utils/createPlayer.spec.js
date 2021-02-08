@@ -1,10 +1,10 @@
-import { v4 as uuid } from 'uuid';
+import { v4 as uuid } from "uuid";
 
-import createPlayer, { defaultData } from './createPlayer';
-import { FEMALE } from './sex';
+import createPlayer, { defaultData } from "./createPlayer";
+import { FEMALE } from "./sex";
 
-describe('createPlayer', () => {
-  test('should create a new player', () => {
+describe("createPlayer", () => {
+  test("should create a new player", () => {
     const player = createPlayer();
 
     expect(player.gear).toBe(defaultData.gear);
@@ -12,7 +12,7 @@ describe('createPlayer', () => {
     expect(player.level).toBe(defaultData.level);
   });
 
-  test('should create a player with initial data', () => {
+  test("should create a player with initial data", () => {
     const data = {
       gear: 3,
       id: uuid(),

@@ -1,47 +1,47 @@
-import { Backdrop, makeStyles } from '@material-ui/core';
-import SpeedDial from '@material-ui/core/SpeedDial';
-import SpeedDialAction from '@material-ui/core/SpeedDialAction';
-import SpeedDialIcon from '@material-ui/core/SpeedDialIcon';
-import clsx from 'clsx';
-import { AccountPlus, EmoticonDevilOutline } from 'mdi-material-ui';
-import { memo } from 'react';
-import { FormattedMessage } from 'react-intl';
-import { useDispatch, useSelector } from 'react-redux';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Backdrop, makeStyles } from "@material-ui/core";
+import SpeedDial from "@material-ui/core/SpeedDial";
+import SpeedDialAction from "@material-ui/core/SpeedDialAction";
+import SpeedDialIcon from "@material-ui/core/SpeedDialIcon";
+import clsx from "clsx";
+import { AccountPlus, EmoticonDevilOutline } from "mdi-material-ui";
+import { memo } from "react";
+import { FormattedMessage } from "react-intl";
+import { useDispatch, useSelector } from "react-redux";
+import { useLocation, useNavigate } from "react-router-dom";
 
-import { addMonster } from '../../../ducks/monsters';
-import createMonster from '../../../utils/createMonster';
-import { useGoBack, useLocationQuery } from '../../../utils/location';
+import { addMonster } from "../../../ducks/monsters";
+import createMonster from "../../../utils/createMonster";
+import { useGoBack, useLocationQuery } from "../../../utils/location";
 
-const displayName = 'CombatHelperButton';
+const displayName = "CombatHelperButton";
 
 const useStyles = makeStyles(
   /* eslint-disable sort-keys */
   (theme) => ({
     backdrop: {
       backgroundColor:
-        theme.palette.mode === 'light' ? 'rgba(250, 250, 250, .9)' : undefined,
+        theme.palette.mode === "light" ? "rgba(250, 250, 250, .9)" : undefined,
       zIndex: 1,
     },
 
     container: {
       bottom: theme.spacing(2),
-      position: 'fixed',
+      position: "fixed",
       right: theme.spacing(2),
       zIndex: 2,
 
-      [theme.breakpoints.up('sm')]: {
+      [theme.breakpoints.up("sm")]: {
         bottom: theme.spacing(3),
         right: theme.spacing(3),
 
-        '@supports (padding: max(0px))': {
+        "@supports (padding: max(0px))": {
           right: `max(${theme.spacing(3)}, env(safe-area-inset-right))`,
         },
       },
     },
   }),
   /* eslint-enable */
-  { name: displayName },
+  { name: displayName }
 );
 
 const CombatHelperButton = ({ className, ...rest }) => {
@@ -54,7 +54,7 @@ const CombatHelperButton = ({ className, ...rest }) => {
   const goBack = useGoBack();
   const helperId = useSelector((state) => state.present.combat.helperId);
   const hasOtherPlayers = useSelector(
-    (state) => state.present.playerList.length > 1,
+    (state) => state.present.playerList.length > 1
   );
   const helper = !helperId && hasOtherPlayers;
   const query = useLocationQuery();
@@ -73,7 +73,7 @@ const CombatHelperButton = ({ className, ...rest }) => {
         ...location,
         search: `?add=helper`,
       },
-      { replace: true },
+      { replace: true }
     );
   };
   const onMonsterAdd = () => dispatch(addMonster(createMonster()));
@@ -86,7 +86,7 @@ const CombatHelperButton = ({ className, ...rest }) => {
         ariaLabel=" "
         className={clsx(classes.container, className)}
         FabProps={{
-          color: open ? 'default' : 'primary',
+          color: open ? "default" : "primary",
         }}
         icon={helper ? <SpeedDialIcon /> : <EmoticonDevilOutline />}
         onClick={() => {
@@ -106,7 +106,7 @@ const CombatHelperButton = ({ className, ...rest }) => {
       >
         <SpeedDialAction
           FabProps={{
-            color: 'primary',
+            color: "primary",
           }}
           icon={<EmoticonDevilOutline />}
           onClick={(event) => {
@@ -123,7 +123,7 @@ const CombatHelperButton = ({ className, ...rest }) => {
         />
         <SpeedDialAction
           FabProps={{
-            color: 'primary',
+            color: "primary",
           }}
           icon={<AccountPlus />}
           onClick={onHelperClick}

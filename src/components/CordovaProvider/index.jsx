@@ -1,13 +1,13 @@
-import PropTypes from 'prop-types';
-import { createContext, useContext, useEffect, useState } from 'react';
+import PropTypes from "prop-types";
+import { createContext, useContext, useEffect, useState } from "react";
 
-import history from '../../components/CordovaRouter/history';
-import sentry from '../../sentry';
-import { useGoBack } from '../../utils/location';
+import history from "../../components/CordovaRouter/history";
+import sentry from "../../sentry";
+import { useGoBack } from "../../utils/location";
 
-import useNavigationBreadcrumbs from './useNavigationBreadcrumbs';
+import useNavigationBreadcrumbs from "./useNavigationBreadcrumbs";
 
-const displayName = 'CordovaProvider';
+const displayName = "CordovaProvider";
 
 const CordovaContext = createContext(null);
 
@@ -20,17 +20,17 @@ const CordovaProvider = ({ children }) => {
 
   useEffect(() => {
     const onDeviceReady = () => {
-      if (process.env.NODE_ENV === 'production' && !window.BuildInfo.debug) {
+      if (process.env.NODE_ENV === "production" && !window.BuildInfo.debug) {
         sentry();
       }
 
       setCordova(window.cordova);
     };
 
-    document.addEventListener('deviceready', onDeviceReady, false);
+    document.addEventListener("deviceready", onDeviceReady, false);
 
     return () => {
-      document.removeEventListener('deviceready', onDeviceReady);
+      document.removeEventListener("deviceready", onDeviceReady);
     };
   }, []);
 
@@ -42,16 +42,16 @@ const CordovaProvider = ({ children }) => {
     const onBackButton = (event) => {
       event.preventDefault();
 
-      if (history.location.pathname === '/' && !history.location.search) {
+      if (history.location.pathname === "/" && !history.location.search) {
         navigator.app.exitApp();
       } else {
         goBack();
       }
     };
 
-    document.addEventListener('backbutton', onBackButton, false);
+    document.addEventListener("backbutton", onBackButton, false);
 
-    if (window.cordova.platformId === 'windows') {
+    if (window.cordova.platformId === "windows") {
       const { Windows } = window;
 
       const currentView = Windows.UI.Core.SystemNavigationManager.getForCurrentView();
@@ -61,7 +61,7 @@ const CordovaProvider = ({ children }) => {
     }
 
     return () => {
-      document.removeEventListener('backbutton', onBackButton);
+      document.removeEventListener("backbutton", onBackButton);
     };
   }, [cordova, goBack]);
 

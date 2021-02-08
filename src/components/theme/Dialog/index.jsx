@@ -9,25 +9,25 @@ import {
   makeStyles,
   Radio,
   RadioGroup,
-} from '@material-ui/core';
-import { useMemo } from 'react';
-import { FormattedMessage, useIntl } from 'react-intl';
-import { useDispatch, useSelector } from 'react-redux';
-import { useLocation, useNavigate } from 'react-router-dom';
+} from "@material-ui/core";
+import { useMemo } from "react";
+import { FormattedMessage, useIntl } from "react-intl";
+import { useDispatch, useSelector } from "react-redux";
+import { useLocation, useNavigate } from "react-router-dom";
 
-import { setTheme } from '../../../ducks/theme';
-import themes from '../../../theme/colors';
+import { setTheme } from "../../../ducks/theme";
+import themes from "../../../theme/colors";
 import {
   stringifyQuery,
   useGoBack,
   useLocationQuery,
-} from '../../../utils/location';
-import CancelButton from '../../CancelButton';
-import { useFullVersion } from '../../FullVersionProvider';
-import SubmitButton from '../../SubmitButton';
-import themeMessages from '../messages';
+} from "../../../utils/location";
+import CancelButton from "../../CancelButton";
+import { useFullVersion } from "../../FullVersionProvider";
+import SubmitButton from "../../SubmitButton";
+import themeMessages from "../messages";
 
-const displayName = 'ThemeDialog';
+const displayName = "ThemeDialog";
 
 const useStyles = makeStyles(
   {
@@ -35,7 +35,7 @@ const useStyles = makeStyles(
       paddingBottom: 1,
     },
   },
-  { name: displayName },
+  { name: displayName }
 );
 
 const ThemeDialog = () => {
@@ -64,12 +64,12 @@ const ThemeDialog = () => {
         ...queryTheme,
       };
 
-      if ('pureBlack' in queryTheme) {
-        if (queryTheme.pureBlack === 'false') {
+      if ("pureBlack" in queryTheme) {
+        if (queryTheme.pureBlack === "false") {
           result.pureBlack = false;
         }
 
-        if (queryTheme.pureBlack === 'true') {
+        if (queryTheme.pureBlack === "true") {
           result.pureBlack = true;
         }
       }
@@ -87,7 +87,7 @@ const ThemeDialog = () => {
           theme: selectedTheme,
         }),
       },
-      { replace: true },
+      { replace: true }
     );
   };
 
@@ -127,7 +127,7 @@ const ThemeDialog = () => {
       setTheme({
         ...theme,
         mode: theme.mode || undefined,
-      }),
+      })
     );
 
     goBack();
@@ -135,13 +135,13 @@ const ThemeDialog = () => {
 
   const onClose = () => goBack();
 
-  const modeValue = theme.mode || '';
+  const modeValue = theme.mode || "";
 
   return (
     <Dialog
       onClose={onClose}
       open={open}
-      PaperProps={{ component: 'form', onSubmit }}
+      PaperProps={{ component: "form", onSubmit }}
     >
       <DialogTitle>{intl.formatMessage(themeMessages.label)}</DialogTitle>
       <DialogContent className={classes.content}>

@@ -1,7 +1,7 @@
-import { IconButton, makeStyles } from '@material-ui/core';
-import { forwardRef } from 'react';
+import { IconButton, makeStyles } from "@material-ui/core";
+import { forwardRef } from "react";
 
-const displayName = 'TopIconButton';
+const displayName = "TopIconButton";
 
 const useStyles = makeStyles(
   /* eslint-disable sort-keys */
@@ -9,7 +9,7 @@ const useStyles = makeStyles(
     root: {
       padding: 8,
 
-      [theme.breakpoints.up('md')]: {
+      [theme.breakpoints.up("md")]: {
         padding: 12,
       },
     },
@@ -17,7 +17,7 @@ const useStyles = makeStyles(
     edgeStart: {
       marginLeft: -8,
 
-      [theme.breakpoints.up('md')]: {
+      [theme.breakpoints.up("md")]: {
         marginLeft: -12,
       },
     },
@@ -26,14 +26,14 @@ const useStyles = makeStyles(
       marginLeft: 16,
       marginRight: -8,
 
-      [theme.breakpoints.up('md')]: {
+      [theme.breakpoints.up("md")]: {
         marginLeft: 12,
         marginRight: -12,
       },
     },
   }),
   /* eslint-enable */
-  { name: displayName },
+  { name: displayName }
 );
 
 const TopIconButton = forwardRef((props, ref) => {

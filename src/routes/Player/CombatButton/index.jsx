@@ -1,13 +1,13 @@
-import { SwordCross } from 'mdi-material-ui';
-import PropTypes from 'prop-types';
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { SwordCross } from "mdi-material-ui";
+import PropTypes from "prop-types";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
-import { useFullVersion } from '../../../components/FullVersionProvider';
-import ScreenFab from '../../../components/ScreenFab';
-import { startCombat } from '../../../ducks/combat';
+import { useFullVersion } from "../../../components/FullVersionProvider";
+import ScreenFab from "../../../components/ScreenFab";
+import { startCombat } from "../../../ducks/combat";
 
-const displayName = 'CombatButton';
+const displayName = "CombatButton";
 
 const CombatButton = ({ playerId, ...rest }) => {
   const { cordova } = window;
@@ -22,7 +22,7 @@ const CombatButton = ({ playerId, ...rest }) => {
 
   const goToCombat = async () => {
     if (combatFinished || playerId !== combatPlayerId) {
-      if (!fullVersion && cordova?.platformId !== 'ios') {
+      if (!fullVersion && cordova?.platformId !== "ios") {
         try {
           await buyFullVersion();
         } catch (error) {

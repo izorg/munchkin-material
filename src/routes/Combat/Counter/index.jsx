@@ -1,54 +1,54 @@
-import { makeStyles } from '@material-ui/core';
-import clsx from 'clsx';
-import { MenuDown, MenuUp } from 'mdi-material-ui';
-import PropTypes from 'prop-types';
+import { makeStyles } from "@material-ui/core";
+import clsx from "clsx";
+import { MenuDown, MenuUp } from "mdi-material-ui";
+import PropTypes from "prop-types";
 
-import CounterButton from '../../../components/Counter/Button';
-import CounterLabel from '../../../components/Counter/Label';
+import CounterButton from "../../../components/Counter/Button";
+import CounterLabel from "../../../components/Counter/Label";
 
-const displayName = 'CombatCounter';
+const displayName = "CombatCounter";
 
 const useStyles = makeStyles(
   /* eslint-disable sort-keys */
   (theme) => ({
     counter: {
-      alignItems: 'center',
-      display: 'flex',
-      flexDirection: 'column',
+      alignItems: "center",
+      display: "flex",
+      flexDirection: "column",
     },
 
     title: {
       fontSize: 16,
-      textAlign: 'center',
-      width: '100%',
+      textAlign: "center",
+      width: "100%",
 
-      '@media (orientation: portrait) and (min-width: 360px) and (min-height: 600px)': {
+      "@media (orientation: portrait) and (min-width: 360px) and (min-height: 600px)": {
         fontSize: 20,
       },
     },
 
     buttons: {
-      display: 'flex',
-      justifyContent: 'space-around',
-      maxWidth: '90px',
-      width: '100%',
+      display: "flex",
+      justifyContent: "space-around",
+      maxWidth: "90px",
+      width: "100%",
     },
 
     button: {
       fontSize: 36,
       padding: 0,
 
-      '@media (orientation: landscape)': {
+      "@media (orientation: landscape)": {
         fontSize: 32,
 
-        [theme.breakpoints.up('sm')]: {
+        [theme.breakpoints.up("sm")]: {
           fontSize: 36,
         },
       },
     },
 
     icon: {
-      fontSize: 'inherit',
+      fontSize: "inherit",
     },
 
     value: {
@@ -59,7 +59,7 @@ const useStyles = makeStyles(
     },
   }),
   /* eslint-enable */
-  { name: displayName },
+  { name: displayName }
 );
 
 const CombatCounter = ({

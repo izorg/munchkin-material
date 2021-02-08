@@ -7,27 +7,27 @@ import {
   makeStyles,
   Radio,
   RadioGroup,
-} from '@material-ui/core';
-import { useState } from 'react';
-import { useIntl } from 'react-intl';
-import { useDispatch, useSelector } from 'react-redux';
+} from "@material-ui/core";
+import { useState } from "react";
+import { useIntl } from "react-intl";
+import { useDispatch, useSelector } from "react-redux";
 
-import { setEpic, setLevelLimit } from '../../../ducks/settings';
+import { setEpic, setLevelLimit } from "../../../ducks/settings";
 import {
   MAX_EPIC_LEVEL,
   MAX_LEVEL,
   MIN_LEVEL,
-} from '../../../utils/levelLimit';
-import { useGoBack, useLocationQuery } from '../../../utils/location';
-import CancelButton from '../../CancelButton';
-import SubmitButton from '../../SubmitButton';
-import levelLimitMessages from '../messages';
+} from "../../../utils/levelLimit";
+import { useGoBack, useLocationQuery } from "../../../utils/location";
+import CancelButton from "../../CancelButton";
+import SubmitButton from "../../SubmitButton";
+import levelLimitMessages from "../messages";
 
-const displayName = 'LevelLimitDialog';
+const displayName = "LevelLimitDialog";
 
-export const DEFAULT_MUNCHKIN_LIMIT = 'default';
-export const EPIC_MUNCHKIN_LIMIT = 'epic';
-export const NO_LIMIT = 'no-limit';
+export const DEFAULT_MUNCHKIN_LIMIT = "default";
+export const EPIC_MUNCHKIN_LIMIT = "epic";
+export const NO_LIMIT = "no-limit";
 
 const useStyles = makeStyles(
   {
@@ -35,7 +35,7 @@ const useStyles = makeStyles(
       paddingBottom: 1,
     },
   },
-  { name: displayName },
+  { name: displayName }
 );
 
 const LevelLimitDialog = (props) => {
@@ -92,7 +92,7 @@ const LevelLimitDialog = (props) => {
       onClose={onClose}
       open={open}
       PaperProps={{
-        component: 'form',
+        component: "form",
         onSubmit,
       }}
       {...props}

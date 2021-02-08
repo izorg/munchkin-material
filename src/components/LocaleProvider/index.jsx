@@ -1,11 +1,11 @@
-import PropTypes from 'prop-types';
-import { useEffect, useState } from 'react';
-import { IntlProvider } from 'react-intl';
-import { useSelector } from 'react-redux';
+import PropTypes from "prop-types";
+import { useEffect, useState } from "react";
+import { IntlProvider } from "react-intl";
+import { useSelector } from "react-redux";
 
-import { getDirection, getLocale, loadMessages } from '../../i18n';
+import { getDirection, getLocale, loadMessages } from "../../i18n";
 
-const displayName = 'LocaleProvider';
+const displayName = "LocaleProvider";
 
 const defaultLocale = getLocale();
 
@@ -57,8 +57,8 @@ const LocaleProvider = ({ children }) => {
   }, [locale]);
 
   useEffect(() => {
-    document.querySelector('html').lang = localeState.locale;
-    document.querySelector('body').dir = getDirection(localeState.locale);
+    document.querySelector("html").lang = localeState.locale;
+    document.querySelector("body").dir = getDirection(localeState.locale);
   }, [localeState]);
 
   if (localeState.error) {

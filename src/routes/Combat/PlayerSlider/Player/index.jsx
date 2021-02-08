@@ -1,64 +1,64 @@
-import { IconButton, makeStyles, Typography } from '@material-ui/core';
-import PropTypes from 'prop-types';
-import { useCallback } from 'react';
-import { useIntl } from 'react-intl';
-import { useDispatch, useSelector } from 'react-redux';
+import { IconButton, makeStyles, Typography } from "@material-ui/core";
+import PropTypes from "prop-types";
+import { useCallback } from "react";
+import { useIntl } from "react-intl";
+import { useDispatch, useSelector } from "react-redux";
 
-import { counterMessages } from '../../../../components/Counter';
-import Sex from '../../../../components/Sex';
+import { counterMessages } from "../../../../components/Counter";
+import Sex from "../../../../components/Sex";
 import {
   setCombatHelperBonus,
   setCombatPlayerBonus,
-} from '../../../../ducks/combat';
+} from "../../../../ducks/combat";
 import {
   decrementPlayerGear,
   decrementPlayerLevel,
   incrementPlayerGear,
   incrementPlayerLevel,
   togglePlayerSex,
-} from '../../../../ducks/players';
+} from "../../../../ducks/players";
 import {
   isLevelDecrementDisabled,
   isLevelIncrementDisabled,
-} from '../../../../utils/levelLimit';
-import Counter from '../../Counter';
+} from "../../../../utils/levelLimit";
+import Counter from "../../Counter";
 
-const displayName = 'CombatPlayer';
+const displayName = "CombatPlayer";
 
 const useStyles = makeStyles(
   /* eslint-disable sort-keys */
   (theme) => ({
     player: {
       padding: theme.spacing(1),
-      position: 'relative',
-      textAlign: 'center',
+      position: "relative",
+      textAlign: "center",
     },
 
     name: {
-      margin: '0 0 16px',
-      padding: '0 24px',
+      margin: "0 0 16px",
+      padding: "0 24px",
     },
 
     stats: {
-      display: 'flex',
-      margin: '0 auto',
+      display: "flex",
+      margin: "0 auto",
       maxWidth: 420,
     },
 
     item: {
       flex: 1,
-      overflow: 'hidden',
+      overflow: "hidden",
     },
 
     sex: {
       padding: 6,
-      position: 'absolute',
+      position: "absolute",
       left: 0,
       top: 0,
     },
   }),
   /* eslint-enable */
-  { name: 'CombatPlayer' },
+  { name: "CombatPlayer" }
 );
 
 const CombatPlayer = ({ playerId }) => {
@@ -76,7 +76,7 @@ const CombatPlayer = ({ playerId }) => {
   const levelIncrementDisabled = isLevelIncrementDisabled(
     level,
     levelLimit,
-    epic,
+    epic
   );
 
   const combat = useSelector((state) => state.present.combat);
@@ -95,11 +95,11 @@ const CombatPlayer = ({ playerId }) => {
         dispatch(
           playerId === helperId
             ? setCombatHelperBonus(currentBonus + value)
-            : setCombatPlayerBonus(currentBonus + value),
+            : setCombatPlayerBonus(currentBonus + value)
         );
       });
     },
-    [dispatch, playerId],
+    [dispatch, playerId]
   );
 
   const onBonusDecrement = useCallback(() => onBonusChange(-1), [
@@ -109,22 +109,22 @@ const CombatPlayer = ({ playerId }) => {
 
   const onPlayerLevelDecrement = useCallback(
     () => dispatch(decrementPlayerLevel(id)),
-    [dispatch, id],
+    [dispatch, id]
   );
 
   const onPlayerLevelIncrement = useCallback(
     () => dispatch(incrementPlayerLevel(id)),
-    [dispatch, id],
+    [dispatch, id]
   );
 
   const onPlayerGearDecrement = useCallback(
     () => dispatch(decrementPlayerGear(id)),
-    [dispatch, id],
+    [dispatch, id]
   );
 
   const onPlayerGearIncrement = useCallback(
     () => dispatch(incrementPlayerGear(id)),
-    [dispatch, id],
+    [dispatch, id]
   );
 
   return (

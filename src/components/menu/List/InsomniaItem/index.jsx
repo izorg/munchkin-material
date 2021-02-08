@@ -1,13 +1,13 @@
-import { ListItemIcon, makeStyles, Switch } from '@material-ui/core';
-import clsx from 'clsx';
-import { Lightbulb, LightbulbOutline } from 'mdi-material-ui';
-import { FormattedMessage } from 'react-intl';
+import { ListItemIcon, makeStyles, Switch } from "@material-ui/core";
+import clsx from "clsx";
+import { Lightbulb, LightbulbOutline } from "mdi-material-ui";
+import { FormattedMessage } from "react-intl";
 
-import { useWakeLock } from '../../../WakeLockProvider';
-import ListItem from '../Item';
-import ListItemText from '../ItemText';
+import { useWakeLock } from "../../../WakeLockProvider";
+import ListItem from "../Item";
+import ListItemText from "../ItemText";
 
-const displayName = 'InsomniaItem';
+const displayName = "InsomniaItem";
 
 const useStyles = makeStyles(
   {
@@ -16,7 +16,7 @@ const useStyles = makeStyles(
       paddingTop: 9,
     },
   },
-  { name: displayName },
+  { name: displayName }
 );
 
 const InsomniaItem = ({ className }) => {

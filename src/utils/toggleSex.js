@@ -1,4 +1,4 @@
-import { FEMALE, MALE } from './sex';
+import { FEMALE, MALE } from "./sex";
 
 const toggleSex = (sex) => {
   switch (sex) {

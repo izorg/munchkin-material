@@ -1,10 +1,10 @@
-import { List, Paper } from '@material-ui/core';
-import PropTypes from 'prop-types';
-import { useSelector } from 'react-redux';
+import { List, Paper } from "@material-ui/core";
+import PropTypes from "prop-types";
+import { useSelector } from "react-redux";
 
-import Item from './Item';
+import Item from "./Item";
 
-const displayName = 'PlayerList';
+const displayName = "PlayerList";
 
 const PlayerList = ({ selectedPlayerId, ...props }) => {
   const playerList = useSelector((state) => state.present.playerList);

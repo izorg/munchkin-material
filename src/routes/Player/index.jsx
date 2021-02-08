@@ -1,82 +1,82 @@
-import { makeStyles } from '@material-ui/core';
-import PropTypes from 'prop-types';
-import { lazy, Suspense, useRef } from 'react';
-import { useSelector } from 'react-redux';
-import { Navigate, useMatch } from 'react-router-dom';
+import { makeStyles } from "@material-ui/core";
+import PropTypes from "prop-types";
+import { lazy, Suspense, useRef } from "react";
+import { useSelector } from "react-redux";
+import { Navigate, useMatch } from "react-router-dom";
 
-import PlayerContext from '../../components/PlayerContext';
-import ScreenModal from '../../components/ScreenModal';
+import PlayerContext from "../../components/PlayerContext";
+import ScreenModal from "../../components/ScreenModal";
 
-import AppBar from './AppBar';
-import CombatButton from './CombatButton';
-import PlayerList from './List';
-import Slider from './Slider';
+import AppBar from "./AppBar";
+import CombatButton from "./CombatButton";
+import PlayerList from "./List";
+import Slider from "./Slider";
 
 const Combat = lazy(() =>
   import(
     /* webpackPrefetch: true */
-    '../Combat'
-  ),
+    "../Combat"
+  )
 );
 
-const displayName = 'Player';
+const displayName = "Player";
 
 const useStyles = makeStyles(
   /* eslint-disable sort-keys */
   (theme) => ({
     root: {
       backgroundColor: theme.palette.background.default,
-      display: 'flex',
+      display: "flex",
       flex: 1,
-      flexDirection: 'column',
-      overflow: 'hidden',
+      flexDirection: "column",
+      overflow: "hidden",
     },
 
     content: {
-      display: 'flex',
+      display: "flex",
       flex: 1,
-      flexDirection: 'column',
-      overflowY: 'auto',
+      flexDirection: "column",
+      overflowY: "auto",
 
-      [theme.breakpoints.up('md')]: {
-        flexDirection: 'row-reverse',
+      [theme.breakpoints.up("md")]: {
+        flexDirection: "row-reverse",
       },
     },
 
     sliderContent: {
-      display: 'flex',
-      flex: '1 0 auto',
+      display: "flex",
+      flex: "1 0 auto",
 
-      [theme.breakpoints.up('md')]: {
+      [theme.breakpoints.up("md")]: {
         flexShrink: 1,
-        overflow: 'hidden',
+        overflow: "hidden",
       },
     },
 
     playerList: {
-      display: 'none',
-      flex: '0 1 auto',
-      overflowY: 'auto',
+      display: "none",
+      flex: "0 1 auto",
+      overflowY: "auto",
       paddingBottom: theme.spacing(7),
 
-      '@media (min-height: 720px)': {
-        display: 'block',
+      "@media (min-height: 720px)": {
+        display: "block",
       },
 
-      [theme.breakpoints.up('sm')]: {
+      [theme.breakpoints.up("sm")]: {
         paddingBottom: theme.spacing(8),
       },
 
-      [theme.breakpoints.up('md')]: {
-        display: 'block',
-        flex: 'none',
+      [theme.breakpoints.up("md")]: {
+        display: "block",
+        flex: "none",
         paddingBottom: theme.spacing(1),
         width: theme.spacing(50),
       },
     },
   }),
   /* eslint-enable */
-  { name: displayName },
+  { name: displayName }
 );
 
 const Player = ({ playerId }) => {
@@ -86,7 +86,7 @@ const Player = ({ playerId }) => {
 
   const combatMatch = useMatch({
     end: false,
-    path: '/player/:id/combat',
+    path: "/player/:id/combat",
   });
 
   if (playerId && !playerList.includes(playerId)) {

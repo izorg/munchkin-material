@@ -1,46 +1,46 @@
-import { makeStyles, Typography } from '@material-ui/core';
-import PropTypes from 'prop-types';
-import { useCallback } from 'react';
-import { useIntl } from 'react-intl';
-import { useDispatch, useSelector } from 'react-redux';
+import { makeStyles, Typography } from "@material-ui/core";
+import PropTypes from "prop-types";
+import { useCallback } from "react";
+import { useIntl } from "react-intl";
+import { useDispatch, useSelector } from "react-redux";
 
-import { counterMessages } from '../../../../components/Counter';
+import { counterMessages } from "../../../../components/Counter";
 import {
   decrementMonsterBonus,
   decrementMonsterLevel,
   incrementMonsterBonus,
   incrementMonsterLevel,
-} from '../../../../ducks/monsters';
-import Counter from '../../Counter';
+} from "../../../../ducks/monsters";
+import Counter from "../../Counter";
 
-const displayName = 'CombatMonster';
+const displayName = "CombatMonster";
 
 const useStyles = makeStyles(
   /* eslint-disable sort-keys */
   (theme) => ({
     monster: {
       padding: theme.spacing(1),
-      textAlign: 'center',
+      textAlign: "center",
     },
 
     name: {
-      margin: '0 0 16px',
-      padding: '0 24px',
+      margin: "0 0 16px",
+      padding: "0 24px",
     },
 
     stats: {
-      display: 'flex',
-      margin: '0 auto',
+      display: "flex",
+      margin: "0 auto",
       maxWidth: 280,
     },
 
     item: {
       flex: 1,
-      overflow: 'hidden',
+      overflow: "hidden",
     },
   }),
   /* eslint-enable */
-  { name: displayName },
+  { name: displayName }
 );
 
 const CombatMonster = ({ monsterId, title }) => {
@@ -54,22 +54,22 @@ const CombatMonster = ({ monsterId, title }) => {
 
   const omMonsterLevelDecrement = useCallback(
     () => dispatch(decrementMonsterLevel(id)),
-    [dispatch, id],
+    [dispatch, id]
   );
 
   const omMonsterLevelIncrement = useCallback(
     () => dispatch(incrementMonsterLevel(id)),
-    [dispatch, id],
+    [dispatch, id]
   );
 
   const onMonsterBonusDecrement = useCallback(
     () => dispatch(decrementMonsterBonus(id)),
-    [dispatch, id],
+    [dispatch, id]
   );
 
   const onMonsterBonusIncrement = useCallback(
     () => dispatch(incrementMonsterBonus(id)),
-    [dispatch, id],
+    [dispatch, id]
   );
 
   return (

@@ -1,8 +1,8 @@
-import { darken, rgbToHex } from '@material-ui/core';
-import { dark, light } from '@material-ui/core/styles/createPalette';
-import { useEffect } from 'react';
+import { darken, rgbToHex } from "@material-ui/core";
+import { dark, light } from "@material-ui/core/styles/createPalette";
+import { useEffect } from "react";
 
-import { useCordova } from '../CordovaProvider';
+import { useCordova } from "../CordovaProvider";
 
 const useStatusBar = (theme) => {
   const cordova = useCordova();
@@ -18,7 +18,7 @@ const useStatusBar = (theme) => {
       theme.components.MuiAppBar?.styleOverrides.colorPrimary.color ||
       theme.palette.primary.contrastText;
 
-    if (theme.palette.mode === 'dark') {
+    if (theme.palette.mode === "dark") {
       StatusBar.styleLightContent();
     } else {
       if (text === light.text.primary) {
@@ -30,12 +30,12 @@ const useStatusBar = (theme) => {
       }
     }
 
-    if (cordova?.platformId === 'android') {
+    if (cordova?.platformId === "android") {
       let background =
         theme.components.MuiAppBar?.styleOverrides.colorPrimary
           .backgroundColor || theme.palette.primary.main;
 
-      if (theme.palette.mode === 'dark') {
+      if (theme.palette.mode === "dark") {
         background = theme.palette.grey[900];
       }
 

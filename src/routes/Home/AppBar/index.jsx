@@ -1,34 +1,34 @@
-import { Tooltip } from '@material-ui/core';
-import { Check, Close, Delete, FlagCheckered, Pencil } from 'mdi-material-ui';
-import PropTypes from 'prop-types';
-import { defineMessages, FormattedMessage, useIntl } from 'react-intl';
-import { useDispatch, useSelector } from 'react-redux';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Tooltip } from "@material-ui/core";
+import { Check, Close, Delete, FlagCheckered, Pencil } from "mdi-material-ui";
+import PropTypes from "prop-types";
+import { defineMessages, FormattedMessage, useIntl } from "react-intl";
+import { useDispatch, useSelector } from "react-redux";
+import { useLocation, useNavigate } from "react-router-dom";
 
-import DiceButton from '../../../components/dice/Button';
-import Title from '../../../components/Title';
-import TopAppBar from '../../../components/TopAppBar';
-import TopIconButton from '../../../components/TopIconButton';
-import { useUndo } from '../../../components/UndoProvider';
-import { setCombatPlayerBonus } from '../../../ducks/combat';
-import { removePlayers } from '../../../ducks/players';
+import DiceButton from "../../../components/dice/Button";
+import Title from "../../../components/Title";
+import TopAppBar from "../../../components/TopAppBar";
+import TopIconButton from "../../../components/TopIconButton";
+import { useUndo } from "../../../components/UndoProvider";
+import { setCombatPlayerBonus } from "../../../ducks/combat";
+import { removePlayers } from "../../../ducks/players";
 import {
   stringifyQuery,
   useGoBack,
   useLocationQuery,
-} from '../../../utils/location';
-import { EDIT, MULTI } from '../modes';
+} from "../../../utils/location";
+import { EDIT, MULTI } from "../modes";
 
-import MenuButton from './MenuButton';
-import ResetButton from './ResetButton';
-import ShuffleButton from './ShuffleButton';
+import MenuButton from "./MenuButton";
+import ResetButton from "./ResetButton";
+import ShuffleButton from "./ShuffleButton";
 
-const displayName = 'HomeAppBar';
+const displayName = "HomeAppBar";
 
 const messages = defineMessages({
   edit: {
-    defaultMessage: 'Edit',
-    id: 'player.list.edit',
+    defaultMessage: "Edit",
+    id: "player.list.edit",
   },
 });
 
@@ -46,7 +46,7 @@ const HomeAppBar = ({ empty, singleMode }) => {
   const multiMode = query[MULTI] !== undefined;
 
   const selectedPlayerIds = useSelector(
-    (state) => state.present.ui.selectedPlayerIds,
+    (state) => state.present.ui.selectedPlayerIds
   );
 
   const onMultiSelectDeactivate = () => goBack();
@@ -61,7 +61,7 @@ const HomeAppBar = ({ empty, singleMode }) => {
         values={{
           count: selected.length,
         }}
-      />,
+      />
     );
   };
 

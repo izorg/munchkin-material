@@ -1,23 +1,23 @@
-import { makeStyles, useTheme } from '@material-ui/core';
+import { makeStyles, useTheme } from "@material-ui/core";
 import {
   ArrowLeft,
   ArrowRight,
   ChevronLeft,
   ChevronRight,
-} from 'mdi-material-ui';
+} from "mdi-material-ui";
 
-import { ios } from '../../utils/platforms';
-import TopIconButton from '../TopIconButton';
+import { ios } from "../../utils/platforms";
+import TopIconButton from "../TopIconButton";
 
-const displayName = 'BackButton';
+const displayName = "BackButton";
 
 const useStyles = makeStyles(
   {
     iosIcon: {
-      transform: 'scale(1.5)',
+      transform: "scale(1.5)",
     },
   },
-  { name: displayName },
+  { name: displayName }
 );
 
 const BackButton = (props) => {
@@ -28,13 +28,13 @@ const BackButton = (props) => {
 
   if (ios) {
     icon =
-      direction === 'rtl' ? (
+      direction === "rtl" ? (
         <ChevronRight className={classes.iosIcon} />
       ) : (
         <ChevronLeft className={classes.iosIcon} />
       );
   } else {
-    icon = direction === 'rtl' ? <ArrowRight /> : <ArrowLeft />;
+    icon = direction === "rtl" ? <ArrowRight /> : <ArrowLeft />;
   }
 
   return (

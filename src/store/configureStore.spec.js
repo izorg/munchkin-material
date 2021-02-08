@@ -1,8 +1,8 @@
-import { createMemoryHistory } from 'history';
+import { createMemoryHistory } from "history";
 
-import configureStore from './configureStore';
+import configureStore from "./configureStore";
 
-test('should be created', () => {
+test("should be created", () => {
   const store = configureStore({ history: createMemoryHistory() });
 
   expect(store).toBeTruthy();

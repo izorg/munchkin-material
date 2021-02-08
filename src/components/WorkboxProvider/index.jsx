@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import {
   createContext,
   useCallback,
@@ -6,26 +6,26 @@ import {
   useEffect,
   useMemo,
   useState,
-} from 'react';
-import { Workbox } from 'workbox-window';
+} from "react";
+import { Workbox } from "workbox-window";
 
 const WorkboxContext = createContext({
   applyUpdate: () => {
-    throw new Error('No <WorkboxProvider />');
+    throw new Error("No <WorkboxProvider />");
   },
   update: false,
 });
 
 export const useWorkbox = () => useContext(WorkboxContext);
 
-const displayName = 'WorkboxProvider';
+const displayName = "WorkboxProvider";
 
 const WorkboxProvider = ({ children }) => {
   const [update, setUpdate] = useState(false);
 
   const workbox = useMemo(() => {
-    if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
-      return new Workbox('/service-worker.js');
+    if (process.env.NODE_ENV === "production" && "serviceWorker" in navigator) {
+      return new Workbox("/service-worker.js");
     }
 
     return undefined;
@@ -33,7 +33,7 @@ const WorkboxProvider = ({ children }) => {
 
   const applyUpdate = useCallback(() => {
     if (workbox) {
-      workbox.addEventListener('controlling', () => {
+      workbox.addEventListener("controlling", () => {
         window.location.reload();
       });
 
@@ -43,7 +43,7 @@ const WorkboxProvider = ({ children }) => {
 
   useEffect(() => {
     if (workbox) {
-      workbox.addEventListener('waiting', () => {
+      workbox.addEventListener("waiting", () => {
         setUpdate(true);
       });
 

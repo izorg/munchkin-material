@@ -4,38 +4,38 @@ import {
   ThemeProvider,
   useMediaQuery,
   useTheme,
-} from '@material-ui/core';
-import deepmerge from 'deepmerge';
-import { useMemo } from 'react';
-import { useLocation, useMatch, useNavigate } from 'react-router-dom';
+} from "@material-ui/core";
+import deepmerge from "deepmerge";
+import { useMemo } from "react";
+import { useLocation, useMatch, useNavigate } from "react-router-dom";
 
-import { EDIT } from '../../../routes/Home/modes';
+import { EDIT } from "../../../routes/Home/modes";
 import {
   stringifyQuery,
   useGoBack,
   useLocationQuery,
-} from '../../../utils/location';
-import { ios } from '../../../utils/platforms';
-import MenuList from '../List';
-import useMenuOpen from '../useMenuOpen';
+} from "../../../utils/location";
+import { ios } from "../../../utils/platforms";
+import MenuList from "../List";
+import useMenuOpen from "../useMenuOpen";
 
-const displayName = 'MenuDrawer';
+const displayName = "MenuDrawer";
 
 const useStyles = makeStyles(
   /* eslint-disable sort-keys */
   () => ({
     paper: {
       maxWidth: 320,
-      width: 'calc(100% - 56px)', // use % instead of vw for Android 4.4
+      width: "calc(100% - 56px)", // use % instead of vw for Android 4.4
 
-      '@supports (padding: env(safe-area-inset-left))': {
-        maxWidth: 'calc(320px + env(safe-area-inset-left))',
-        paddingTop: 'env(safe-area-inset-top)',
+      "@supports (padding: env(safe-area-inset-left))": {
+        maxWidth: "calc(320px + env(safe-area-inset-left))",
+        paddingTop: "env(safe-area-inset-top)",
       },
     },
   }),
   /* eslint-enable */
-  { name: displayName },
+  { name: displayName }
 );
 
 const MenuDrawer = () => {
@@ -47,8 +47,8 @@ const MenuDrawer = () => {
 
   const goBack = useGoBack();
   const query = useLocationQuery();
-  const match = useMatch('/');
-  const wide = useMediaQuery(theme.breakpoints.up('md'));
+  const match = useMatch("/");
+  const wide = useMediaQuery(theme.breakpoints.up("md"));
   const disableSwipeToOpen =
     ios ||
     wide ||
@@ -74,7 +74,7 @@ const MenuDrawer = () => {
           MenuListItem: {
             styleOverrides: {
               gutters: {
-                '@supports (padding: max(0px))': {
+                "@supports (padding: max(0px))": {
                   paddingLeft: `max(16px, env(safe-area-inset-left))`,
                   paddingRight: `max(16px, env(safe-area-inset-right))`,
                 },
@@ -83,7 +83,7 @@ const MenuDrawer = () => {
           },
         },
       }),
-    [theme],
+    [theme]
   );
 
   return (

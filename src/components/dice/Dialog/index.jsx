@@ -1,14 +1,14 @@
-import { ButtonBase, Dialog, makeStyles } from '@material-ui/core';
-import { Dice1, Dice2, Dice3, Dice4, Dice5, Dice6 } from 'mdi-material-ui';
-import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { TransitionGroup } from 'react-transition-group';
+import { ButtonBase, Dialog, makeStyles } from "@material-ui/core";
+import { Dice1, Dice2, Dice3, Dice4, Dice5, Dice6 } from "mdi-material-ui";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { TransitionGroup } from "react-transition-group";
 
-import { throwDice } from '../../../ducks/dice';
-import { useGoBack, useLocationQuery } from '../../../utils/location';
-import DiceTransition from '../Transition';
+import { throwDice } from "../../../ducks/dice";
+import { useGoBack, useLocationQuery } from "../../../utils/location";
+import DiceTransition from "../Transition";
 
-const displayName = 'DiceDialog';
+const displayName = "DiceDialog";
 
 const diceSize = 120;
 
@@ -17,29 +17,29 @@ const useStyles = makeStyles(
   (theme) => ({
     button: {
       color: theme.palette.text.primary,
-      display: 'block',
+      display: "block",
       fontSize: diceSize,
       height: diceSize,
       padding: 0,
-      position: 'relative',
+      position: "relative",
       width: diceSize,
     },
 
     iconWrapper: {
-      height: '100%',
+      height: "100%",
       left: 0,
-      position: 'absolute',
+      position: "absolute",
       top: 0,
-      width: '100%',
+      width: "100%",
     },
 
     icon: {
-      display: 'block',
-      fontSize: 'inherit',
+      display: "block",
+      fontSize: "inherit",
     },
   }),
   /* eslint-enable */
-  { name: displayName },
+  { name: displayName }
 );
 
 const diceComponent = {

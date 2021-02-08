@@ -1,17 +1,17 @@
-import { Plus } from 'mdi-material-ui';
-import { forwardRef } from 'react';
-import { defineMessages, useIntl } from 'react-intl';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Plus } from "mdi-material-ui";
+import { forwardRef } from "react";
+import { defineMessages, useIntl } from "react-intl";
+import { useLocation, useNavigate } from "react-router-dom";
 
-import ScreenFab from '../../../components/ScreenFab';
-import { parseSearch, stringifyQuery } from '../../../utils/location';
+import ScreenFab from "../../../components/ScreenFab";
+import { parseSearch, stringifyQuery } from "../../../utils/location";
 
-const displayName = 'PlayerAddButton';
+const displayName = "PlayerAddButton";
 
 const messages = defineMessages({
   label: {
-    defaultMessage: 'Add',
-    id: 'mainButton.label',
+    defaultMessage: "Add",
+    id: "mainButton.label",
   },
 });
 

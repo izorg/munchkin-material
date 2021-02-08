@@ -1,57 +1,57 @@
-import { IconButton, makeStyles } from '@material-ui/core';
-import clsx from 'clsx';
-import PropTypes from 'prop-types';
-import { useCallback } from 'react';
-import { useIntl } from 'react-intl';
-import { useDispatch, useSelector } from 'react-redux';
+import { IconButton, makeStyles } from "@material-ui/core";
+import clsx from "clsx";
+import PropTypes from "prop-types";
+import { useCallback } from "react";
+import { useIntl } from "react-intl";
+import { useDispatch, useSelector } from "react-redux";
 
-import Counter, { counterMessages } from '../../../../components/Counter';
-import CounterLabel from '../../../../components/Counter/Label';
-import Sex from '../../../../components/Sex';
+import Counter, { counterMessages } from "../../../../components/Counter";
+import CounterLabel from "../../../../components/Counter/Label";
+import Sex from "../../../../components/Sex";
 import {
   decrementPlayerGear,
   decrementPlayerLevel,
   incrementPlayerGear,
   incrementPlayerLevel,
   togglePlayerSex,
-} from '../../../../ducks/players';
+} from "../../../../ducks/players";
 import {
   isLevelDecrementDisabled,
   isLevelIncrementDisabled,
-} from '../../../../utils/levelLimit';
+} from "../../../../utils/levelLimit";
 
-const displayName = 'PlayerStats';
+const displayName = "PlayerStats";
 
 const useStyles = makeStyles(
   /* eslint-disable sort-keys */
   (theme) => ({
     stats: {
-      display: 'flex',
-      flexDirection: 'column-reverse',
-      width: '100%',
+      display: "flex",
+      flexDirection: "column-reverse",
+      width: "100%",
     },
 
     mainContainer: {
-      display: 'flex',
-      flexDirection: 'column',
-      flex: '1',
-      justifyContent: 'center',
+      display: "flex",
+      flexDirection: "column",
+      flex: "1",
+      justifyContent: "center",
     },
 
     counters: {
-      flex: '1',
-      display: 'flex',
+      flex: "1",
+      display: "flex",
     },
 
     counterContainer: {
-      display: 'flex',
-      flexDirection: 'column',
-      flex: '1 1 50%',
-      justifyContent: 'center',
+      display: "flex",
+      flexDirection: "column",
+      flex: "1 1 50%",
+      justifyContent: "center",
     },
 
     strengthCounter: {
-      textAlign: 'center',
+      textAlign: "center",
     },
 
     strengthTitle: {
@@ -63,7 +63,7 @@ const useStyles = makeStyles(
       fontFamily: `"Munchkin", ${theme.typography.fontFamily}`,
       fontSize: 36,
 
-      '@media (orientation: portrait)': {
+      "@media (orientation: portrait)": {
         fontSize: 72, // 36px * 2
         lineHeight: theme.typography.body2.lineHeight / 2, // 1.43 / 2
         marginTop: 32,
@@ -74,18 +74,18 @@ const useStyles = makeStyles(
       fontSize: 32,
       padding: 8,
 
-      '@media (orientation: portrait)': {
+      "@media (orientation: portrait)": {
         marginTop: 16,
       },
     },
 
     sexIcon: {
-      fontSize: 'inherit',
+      fontSize: "inherit",
     },
 
-    '@media (orientation: landscape)': {
+    "@media (orientation: landscape)": {
       stats: {
-        flexDirection: 'row',
+        flexDirection: "row",
       },
 
       counters: {
@@ -94,7 +94,7 @@ const useStyles = makeStyles(
     },
   }),
   /* eslint-enable */
-  { name: displayName },
+  { name: displayName }
 );
 
 const PlayerStats = ({ className, playerId }) => {
@@ -108,30 +108,30 @@ const PlayerStats = ({ className, playerId }) => {
 
   const levelDecrementDisabled = isLevelDecrementDisabled(
     player.level,
-    levelLimit,
+    levelLimit
   );
 
   const levelIncrementDisabled = isLevelIncrementDisabled(
     player.level,
     levelLimit,
-    epic,
+    epic
   );
 
   const onGearDecrement = useCallback(
     () => dispatch(decrementPlayerGear(playerId)),
-    [dispatch, playerId],
+    [dispatch, playerId]
   );
   const onGearIncrement = useCallback(
     () => dispatch(incrementPlayerGear(playerId)),
-    [dispatch, playerId],
+    [dispatch, playerId]
   );
   const onLevelDecrement = useCallback(
     () => dispatch(decrementPlayerLevel(playerId)),
-    [dispatch, playerId],
+    [dispatch, playerId]
   );
   const onLevelIncrement = useCallback(
     () => dispatch(incrementPlayerLevel(playerId)),
-    [dispatch, playerId],
+    [dispatch, playerId]
   );
   const onSexToggle = useCallback(() => dispatch(togglePlayerSex(playerId)), [
     dispatch,

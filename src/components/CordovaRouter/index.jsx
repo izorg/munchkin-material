@@ -1,10 +1,10 @@
-import PropTypes from 'prop-types';
-import { useLayoutEffect, useReducer } from 'react';
-import { Router } from 'react-router-dom';
+import PropTypes from "prop-types";
+import { useLayoutEffect, useReducer } from "react";
+import { Router } from "react-router-dom";
 
-const displayName = 'CordovaRouter';
+const displayName = "CordovaRouter";
 
-import history from './history';
+import history from "./history";
 
 const CordovaRouter = ({ children }) => {
   let [state, dispatch] = useReducer((_, action) => action, {

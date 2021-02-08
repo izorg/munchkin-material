@@ -1,20 +1,20 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import {
   createContext,
   useCallback,
   useContext,
   useEffect,
   useRef,
-} from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+} from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-import { setKeepAwake } from '../../ducks/settings';
+import { setKeepAwake } from "../../ducks/settings";
 
-const displayName = 'WakeLockProvider';
+const displayName = "WakeLockProvider";
 
 const WakeLockContext = createContext({
   setWakeLock: () => {
-    throw new Error('No <WakeLockProvider />');
+    throw new Error("No <WakeLockProvider />");
   },
   wakeLock: false,
   wakeLockSupport: false,
@@ -26,7 +26,7 @@ const WakeLockProvider = ({ children }) => {
   const dispatch = useDispatch();
 
   const insomnia = window.plugins?.insomnia;
-  const wakeLockSupport = !!insomnia || 'wakeLock' in navigator;
+  const wakeLockSupport = !!insomnia || "wakeLock" in navigator;
   const wakeLock = useSelector((state) => state.present.settings.keepAwake);
   const wakeLockRef = useRef(null);
 
@@ -36,12 +36,12 @@ const WakeLockProvider = ({ children }) => {
      */
     (value) => {
       if (!wakeLockSupport) {
-        throw new Error('Calling setWakeLock() without wakeLockSupport');
+        throw new Error("Calling setWakeLock() without wakeLockSupport");
       }
 
       dispatch(setKeepAwake(value));
     },
-    [dispatch, wakeLockSupport],
+    [dispatch, wakeLockSupport]
   );
 
   useEffect(() => {
@@ -54,7 +54,7 @@ const WakeLockProvider = ({ children }) => {
         insomnia.keepAwake();
       } else {
         navigator.wakeLock
-          .request('screen')
+          .request("screen")
           .then((wakeLockSentinel) => {
             wakeLockRef.current = wakeLockSentinel;
           })

@@ -5,48 +5,48 @@ import {
   ListItemSecondaryAction,
   makeStyles,
   useForkRef,
-} from '@material-ui/core';
-import { motion } from 'framer-motion';
-import { DragHorizontalVariant as DragIcon } from 'mdi-material-ui';
-import PropTypes from 'prop-types';
-import { forwardRef, useCallback, useRef } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useLocation, useNavigate } from 'react-router-dom';
+} from "@material-ui/core";
+import { motion } from "framer-motion";
+import { DragHorizontalVariant as DragIcon } from "mdi-material-ui";
+import PropTypes from "prop-types";
+import { forwardRef, useCallback, useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useLocation, useNavigate } from "react-router-dom";
 
-import PlayerAvatar from '../../../../components/PlayerAvatar';
-import PlayerListItemText from '../../../../components/PlayerListItemText';
-import { togglePlayer, unselectAllPlayers } from '../../../../ducks/ui';
+import PlayerAvatar from "../../../../components/PlayerAvatar";
+import PlayerListItemText from "../../../../components/PlayerListItemText";
+import { togglePlayer, unselectAllPlayers } from "../../../../ducks/ui";
 import {
   stringifyQuery,
   useGoBack,
   useLocationQuery,
-} from '../../../../utils/location';
-import { EDIT, MULTI } from '../../modes';
+} from "../../../../utils/location";
+import { EDIT, MULTI } from "../../modes";
 
-const displayName = 'HomePlayerListItem';
+const displayName = "HomePlayerListItem";
 
 const useStyles = makeStyles(
   () => ({
     gutters: {
-      '@supports (padding: max(0px))': {
+      "@supports (padding: max(0px))": {
         paddingLeft: `max(16px, env(safe-area-inset-left))`,
         paddingRight: `max(16px, env(safe-area-inset-right))`,
       },
     },
 
     secondaryAction: {
-      '@supports (padding: max(0px))': {
+      "@supports (padding: max(0px))": {
         paddingRight: `calc(32px + max(16px, env(safe-area-inset-right)))`,
       },
     },
 
     secondaryActionRoot: {
-      '@supports (padding: max(0px))': {
-        right: 'max(16px, env(safe-area-inset-right))',
+      "@supports (padding: max(0px))": {
+        right: "max(16px, env(safe-area-inset-right))",
       },
     },
   }),
-  { name: displayName },
+  { name: displayName }
 );
 
 const HomePlayerListItem = forwardRef(
@@ -79,7 +79,7 @@ const HomePlayerListItem = forwardRef(
     const multiMode = query[MULTI] !== undefined;
 
     const selectedPlayerIds = useSelector(
-      (state) => state.present.ui.selectedPlayerIds,
+      (state) => state.present.ui.selectedPlayerIds
     );
     const selected = multiMode && selectedPlayerIds.includes(playerId);
 
@@ -170,13 +170,13 @@ const HomePlayerListItem = forwardRef(
     const onTap = (event, info) => {
       clearPress();
 
-      if (event.type === 'pointercancel') {
+      if (event.type === "pointercancel") {
         return;
       }
 
       const delta = Math.sqrt(
         Math.pow(info.point.x - startPointRef.current.x, 2) +
-          Math.pow(info.point.y - startPointRef.current.y, 2),
+          Math.pow(info.point.y - startPointRef.current.y, 2)
       );
 
       if (delta > 3) {
@@ -189,7 +189,7 @@ const HomePlayerListItem = forwardRef(
     };
 
     const onKeyDown = (event) => {
-      if (event.key === 'Enter') {
+      if (event.key === "Enter") {
         onClick(event);
       }
     };
@@ -241,7 +241,7 @@ const HomePlayerListItem = forwardRef(
         )}
       </ListItem>
     );
-  },
+  }
 );
 
 HomePlayerListItem.propTypes = {

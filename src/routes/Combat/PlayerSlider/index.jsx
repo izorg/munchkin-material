@@ -4,34 +4,34 @@ import {
   Paper,
   useMediaQuery,
   useTheme,
-} from '@material-ui/core';
-import clsx from 'clsx';
-import { motion, useAnimation, useMotionValue } from 'framer-motion';
-import { CloseCircle } from 'mdi-material-ui';
-import PropTypes from 'prop-types';
-import { memo, useEffect, useRef } from 'react';
-import { useDispatch } from 'react-redux';
+} from "@material-ui/core";
+import clsx from "clsx";
+import { motion, useAnimation, useMotionValue } from "framer-motion";
+import { CloseCircle } from "mdi-material-ui";
+import PropTypes from "prop-types";
+import { memo, useEffect, useRef } from "react";
+import { useDispatch } from "react-redux";
 
-import { setCombatHelper, setCombatHelperBonus } from '../../../ducks/combat';
+import { setCombatHelper, setCombatHelperBonus } from "../../../ducks/combat";
 
-import Player from './Player';
+import Player from "./Player";
 
-const displayName = 'CombatPlayerSlider';
+const displayName = "CombatPlayerSlider";
 
 const useStyles = makeStyles(
   /* eslint-disable sort-keys */
   (theme) => ({
     players: {
-      display: 'flex',
-      overflow: 'hidden',
+      display: "flex",
+      overflow: "hidden",
 
-      '@media (orientation: portrait)': {
-        width: '100%',
+      "@media (orientation: portrait)": {
+        width: "100%",
       },
 
-      '@media (orientation: landscape)': {
-        flexDirection: 'column',
-        height: '100%',
+      "@media (orientation: landscape)": {
+        flexDirection: "column",
+        height: "100%",
       },
     },
 
@@ -40,12 +40,12 @@ const useStyles = makeStyles(
     },
 
     container: {
-      display: 'flex',
+      display: "flex",
       flexShrink: 0,
       padding: theme.spacing(1),
 
-      '@media (orientation: landscape)': {
-        flexDirection: 'column',
+      "@media (orientation: landscape)": {
+        flexDirection: "column",
       },
     },
 
@@ -55,17 +55,17 @@ const useStyles = makeStyles(
     },
 
     paper: {
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'center',
-      marginLeft: 'auto',
-      position: 'relative',
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center",
+      marginLeft: "auto",
+      position: "relative",
 
-      '@media (orientation: portrait)': {
+      "@media (orientation: portrait)": {
         width: 280,
       },
 
-      '@media (orientation: landscape)': {
+      "@media (orientation: landscape)": {
         maxWidth: 320,
       },
     },
@@ -73,14 +73,14 @@ const useStyles = makeStyles(
     remove: {
       height: 36,
       padding: 6,
-      position: 'absolute',
+      position: "absolute",
       right: 0,
       top: 0,
       width: 36,
     },
   }),
   /* eslint-enable */
-  { name: displayName },
+  { name: displayName }
 );
 
 const CombatPlayerSlider = ({ className, helperId, playerId }) => {
@@ -99,7 +99,7 @@ const CombatPlayerSlider = ({ className, helperId, playerId }) => {
 
   const { direction } = useTheme();
 
-  const landscape = useMediaQuery('(orientation: landscape)');
+  const landscape = useMediaQuery("(orientation: landscape)");
 
   const animate = useAnimation();
   const x = useMotionValue(0);
@@ -145,9 +145,9 @@ const CombatPlayerSlider = ({ className, helperId, playerId }) => {
       }
 
       const min =
-        direction === 'rtl' ? 0 : parent.offsetWidth - child.offsetWidth;
+        direction === "rtl" ? 0 : parent.offsetWidth - child.offsetWidth;
       const max =
-        direction === 'rtl' ? child.offsetWidth - parent.offsetWidth : 0;
+        direction === "rtl" ? child.offsetWidth - parent.offsetWidth : 0;
 
       if (target < min) {
         return min;
@@ -167,14 +167,14 @@ const CombatPlayerSlider = ({ className, helperId, playerId }) => {
   useEffect(() => {
     const parent = ref.current;
     const child = containerRef.current;
-    const transitionOverride = { type: 'tween' };
+    const transitionOverride = { type: "tween" };
 
     if (landscape) {
       if (playerCount > playerCountRef.current) {
         if (child.offsetHeight > parent.offsetHeight) {
           animate.start(
             { y: parent.offsetHeight - child.offsetHeight },
-            transitionOverride,
+            transitionOverride
           );
         }
       }
@@ -185,7 +185,7 @@ const CombatPlayerSlider = ({ className, helperId, playerId }) => {
         } else if (y.get() < parent.offsetHeight - child.offsetHeight) {
           animate.start(
             { y: parent.offsetHeight - child.offsetHeight },
-            transitionOverride,
+            transitionOverride
           );
         }
       }
@@ -194,7 +194,7 @@ const CombatPlayerSlider = ({ className, helperId, playerId }) => {
         if (child.offsetWidth > parent.offsetWidth) {
           let shift = parent.offsetWidth - child.offsetWidth;
 
-          if (direction === 'rtl') {
+          if (direction === "rtl") {
             shift = -shift;
           }
 
@@ -206,18 +206,18 @@ const CombatPlayerSlider = ({ className, helperId, playerId }) => {
         if (child.offsetWidth <= parent.offsetWidth) {
           x.set(0);
         } else {
-          if (direction === 'rtl') {
+          if (direction === "rtl") {
             if (x.get() > child.offsetWidth - parent.offsetWidth) {
               animate.start(
                 { x: child.offsetWidth - parent.offsetWidth },
-                transitionOverride,
+                transitionOverride
               );
             }
           } else {
             if (x.get() < parent.offsetWidth - child.offsetWidth) {
               animate.start(
                 { x: parent.offsetWidth - child.offsetWidth },
-                transitionOverride,
+                transitionOverride
               );
             }
           }
@@ -245,7 +245,7 @@ const CombatPlayerSlider = ({ className, helperId, playerId }) => {
         ref={containerRef}
         animate={animate}
         className={classes.container}
-        drag={landscape ? 'y' : 'x'}
+        drag={landscape ? "y" : "x"}
         dragTransition={{
           modifyTarget,
           timeConstant: 300,

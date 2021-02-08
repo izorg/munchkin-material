@@ -1,16 +1,16 @@
-import PropTypes from 'prop-types';
-import { createContext, useCallback, useContext, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import PropTypes from "prop-types";
+import { createContext, useCallback, useContext, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-import { setFullVersion } from '../../ducks/settings';
+import { setFullVersion } from "../../ducks/settings";
 
-const FULL_VERSION_ID = 'full_version';
+const FULL_VERSION_ID = "full_version";
 
-const displayName = 'FullVersionProvider';
+const displayName = "FullVersionProvider";
 
 const FullVersionContext = createContext({
   buyFullVersion: () => {
-    throw new Error('No <FullVersionProvider />');
+    throw new Error("No <FullVersionProvider />");
   },
   fullVersion: true,
 });
@@ -23,7 +23,7 @@ const FullVersionProvider = ({ children }) => {
   const dispatch = useDispatch();
 
   const fullVersion = useSelector(
-    (state) => state.present.settings.fullVersion,
+    (state) => state.present.settings.fullVersion
   );
 
   const buyFullVersion = useCallback(
@@ -43,12 +43,12 @@ const FullVersionProvider = ({ children }) => {
 
         store.order(product);
       }),
-    [dispatch, store],
+    [dispatch, store]
   );
 
   useEffect(() => {
     if (!store) {
-      console.warn('Store not available');
+      console.warn("Store not available");
       return;
     }
 

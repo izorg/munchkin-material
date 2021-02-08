@@ -1,11 +1,11 @@
-import { REMOVE_PLAYERS } from '../players/actionTypes';
+import { REMOVE_PLAYERS } from "../players/actionTypes";
 
 import {
   ADD_PLAYER_TO_LIST,
   MOVE_PLAYER,
   SET_PLAYER_LIST,
   SHUFFLE_PLAYERS,
-} from './actionTypes';
+} from "./actionTypes";
 
 // https://github.com/lodash/lodash/blob/master/shuffle.js
 const shuffle = (array) => {

@@ -1,12 +1,12 @@
-import { ActionCreators } from 'redux-undo';
+import { ActionCreators } from "redux-undo";
 
-import { addPlayerToList } from '../ducks/playerList';
-import { addPlayer, removePlayers } from '../ducks/players';
-import { setLocale as setAppLocale } from '../ducks/settings';
-import { getLocale } from '../i18n';
-import '../web';
+import { addPlayerToList } from "../ducks/playerList";
+import { addPlayer, removePlayers } from "../ducks/players";
+import { setLocale as setAppLocale } from "../ducks/settings";
+import { getLocale } from "../i18n";
+import "../web";
 
-import players from './players';
+import players from "./players";
 
 const setLocale = (locale) => {
   const { dispatch } = window.reduxStore;

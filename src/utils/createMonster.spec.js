@@ -1,16 +1,16 @@
-import { v4 as uuid } from 'uuid';
+import { v4 as uuid } from "uuid";
 
-import createMonster, { defaultData } from './createMonster';
+import createMonster, { defaultData } from "./createMonster";
 
-describe('createMonster', () => {
-  test('should create a new monster', () => {
+describe("createMonster", () => {
+  test("should create a new monster", () => {
     const monster = createMonster();
 
     expect(monster.bonus).toBe(defaultData.bonus);
     expect(monster.level).toBe(defaultData.level);
   });
 
-  test('should create a monster with initial data', () => {
+  test("should create a monster with initial data", () => {
     const data = {
       bonus: 3,
       id: uuid(),

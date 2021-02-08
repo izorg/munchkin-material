@@ -1,14 +1,14 @@
-import { Button } from '@material-ui/core';
-import { FormattedMessage } from 'react-intl';
+import { Button } from "@material-ui/core";
+import { FormattedMessage } from "react-intl";
 
-const displayName = 'SubmitButton';
+const displayName = "SubmitButton";
 
 const SubmitButton = (props) => <Button {...props} />;
 
 SubmitButton.defaultProps = {
   children: <FormattedMessage defaultMessage="OK" id="button.submit" />,
-  color: 'primary',
-  type: 'submit',
+  color: "primary",
+  type: "submit",
 };
 
 SubmitButton.displayName = displayName;

@@ -1,20 +1,20 @@
-import { createMuiTheme, CssBaseline, ThemeProvider } from '@material-ui/core';
-import deepmerge from 'deepmerge';
-import PropTypes from 'prop-types';
-import { useEffect, useMemo } from 'react';
-import { useIntl } from 'react-intl';
-import { useSelector } from 'react-redux';
+import { createMuiTheme, CssBaseline, ThemeProvider } from "@material-ui/core";
+import deepmerge from "deepmerge";
+import PropTypes from "prop-types";
+import { useEffect, useMemo } from "react";
+import { useIntl } from "react-intl";
+import { useSelector } from "react-redux";
 
-import { getDirection } from '../../i18n';
-import themes from '../../theme/colors';
-import getThemeOptions from '../../theme/getThemeOptions';
-import { useLocationQuery } from '../../utils/location';
-import { ios } from '../../utils/platforms';
-import { useSystemPaletteMode } from '../SystemPaletteModeProvider';
+import { getDirection } from "../../i18n";
+import themes from "../../theme/colors";
+import getThemeOptions from "../../theme/getThemeOptions";
+import { useLocationQuery } from "../../utils/location";
+import { ios } from "../../utils/platforms";
+import { useSystemPaletteMode } from "../SystemPaletteModeProvider";
 
-import useStatusBar from './useStatusBar';
+import useStatusBar from "./useStatusBar";
 
-const displayName = 'AugmentedThemeProvider';
+const displayName = "AugmentedThemeProvider";
 
 const AugmentedThemeProvider = ({ children }) => {
   const { locale } = useIntl();
@@ -32,11 +32,11 @@ const AugmentedThemeProvider = ({ children }) => {
     const result = { ...query.theme };
 
     if (query.theme) {
-      if (query.theme.pureBlack === 'false') {
+      if (query.theme.pureBlack === "false") {
         result.pureBlack = false;
       }
 
-      if (query.theme.pureBlack === 'true') {
+      if (query.theme.pureBlack === "true") {
         result.pureBlack = true;
       }
     }
@@ -60,8 +60,8 @@ const AugmentedThemeProvider = ({ children }) => {
     return createMuiTheme(
       deepmerge(
         getThemeOptions({ direction, mode, pureBlack }),
-        themes[previewTheme.id].theme,
-      ),
+        themes[previewTheme.id].theme
+      )
     );
   }, [currentTheme, direction, queryTheme, systemPaletteMode]);
 

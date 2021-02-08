@@ -1,4 +1,4 @@
-import { initialState } from '../../../ducks/ui';
+import { initialState } from "../../../ducks/ui";
 
 export default (state) => {
   if (!state.app) {

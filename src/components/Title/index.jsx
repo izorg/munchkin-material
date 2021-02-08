@@ -1,7 +1,7 @@
-import { makeStyles, Typography } from '@material-ui/core';
-import clsx from 'clsx';
+import { makeStyles, Typography } from "@material-ui/core";
+import clsx from "clsx";
 
-const displayName = 'Title';
+const displayName = "Title";
 
 const useStyles = makeStyles(
   (theme) => ({
@@ -9,12 +9,12 @@ const useStyles = makeStyles(
       flex: 1,
       paddingLeft: 24,
 
-      [theme.breakpoints.up('md')]: {
+      [theme.breakpoints.up("md")]: {
         paddingLeft: 20,
       },
     },
   }),
-  { name: displayName },
+  { name: displayName }
 );
 
 const Title = ({ className, ...props }) => {

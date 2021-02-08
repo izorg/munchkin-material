@@ -1,4 +1,4 @@
-import { colors } from '@material-ui/core';
+import { colors } from "@material-ui/core";
 
 const { brown, common, ...rest } = colors;
 

@@ -1,15 +1,15 @@
-import PropTypes from 'prop-types';
-import { useSelector } from 'react-redux';
+import PropTypes from "prop-types";
+import { useSelector } from "react-redux";
 
-import BackButton from '../../../components/BackButton';
-import DiceButton from '../../../components/dice/Button';
-import Title from '../../../components/Title';
-import TopAppBar from '../../../components/TopAppBar';
-import { useGoBack } from '../../../utils/location';
+import BackButton from "../../../components/BackButton";
+import DiceButton from "../../../components/dice/Button";
+import Title from "../../../components/Title";
+import TopAppBar from "../../../components/TopAppBar";
+import { useGoBack } from "../../../utils/location";
 
-import KillPlayerButton from './KillPlayerButton';
+import KillPlayerButton from "./KillPlayerButton";
 
-const displayName = 'PlayerAppBar';
+const displayName = "PlayerAppBar";
 
 const PlayerAppBar = ({ playerId }) => {
   const goBack = useGoBack();

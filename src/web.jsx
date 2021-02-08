@@ -1,23 +1,23 @@
-import './polyfills';
+import "./polyfills";
 
-import { render } from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
+import { render } from "react-dom";
+import { BrowserRouter } from "react-router-dom";
 
-import App from './components/App';
-import AugmentedStylesProvider from './components/AugmentedStylesProvider';
-import AugmentedThemeProvider from './components/AugmentedThemeProvider';
-import LocaleProvider from './components/LocaleProvider';
-import ReduxProvider from './components/ReduxProvider';
-import SystemPaletteModeProvider from './components/SystemPaletteModeProvider';
-import WakeLockProvider from './components/WakeLockProvider';
-import WorkboxProvider from './components/WorkboxProvider';
-import sentry from './sentry';
+import App from "./components/App";
+import AugmentedStylesProvider from "./components/AugmentedStylesProvider";
+import AugmentedThemeProvider from "./components/AugmentedThemeProvider";
+import LocaleProvider from "./components/LocaleProvider";
+import ReduxProvider from "./components/ReduxProvider";
+import SystemPaletteModeProvider from "./components/SystemPaletteModeProvider";
+import WakeLockProvider from "./components/WakeLockProvider";
+import WorkboxProvider from "./components/WorkboxProvider";
+import sentry from "./sentry";
 
-if (process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === "production") {
   sentry();
 }
 
-import('./firebase').catch(() => {
+import("./firebase").catch(() => {
   // ignore firebase init errors
 });
 
@@ -39,5 +39,5 @@ render(
       </WorkboxProvider>
     </ReduxProvider>
   </BrowserRouter>,
-  document.getElementById('root'),
+  document.getElementById("root")
 );

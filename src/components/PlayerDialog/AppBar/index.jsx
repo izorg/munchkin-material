@@ -1,12 +1,12 @@
-import { Check } from 'mdi-material-ui';
-import PropTypes from 'prop-types';
+import { Check } from "mdi-material-ui";
+import PropTypes from "prop-types";
 
-import BackButton from '../../BackButton';
-import Title from '../../Title';
-import TopAppBar from '../../TopAppBar';
-import TopIconButton from '../../TopIconButton';
+import BackButton from "../../BackButton";
+import Title from "../../Title";
+import TopAppBar from "../../TopAppBar";
+import TopIconButton from "../../TopIconButton";
 
-const displayName = 'PlayerDialogAppBar';
+const displayName = "PlayerDialogAppBar";
 
 const PlayerDialogAppBar = ({ onCancel, title }) => (
   <TopAppBar>

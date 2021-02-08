@@ -1,8 +1,8 @@
-import state from './state.json';
+import state from "./state.json";
 
-import migrate from './index';
+import migrate from "./index";
 
-test('combat migration should move combatFinished value from app to comabt reducer', () => {
+test("combat migration should move combatFinished value from app to comabt reducer", () => {
   const { app, combat } = migrate(state);
 
   expect(app.combatFinished).toBeUndefined();

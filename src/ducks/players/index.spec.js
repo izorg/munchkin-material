@@ -1,7 +1,7 @@
-import { v4 as uuid } from 'uuid';
+import { v4 as uuid } from "uuid";
 
-import createPlayer from '../../utils/createPlayer';
-import { FEMALE, MALE } from '../../utils/sex';
+import createPlayer from "../../utils/createPlayer";
+import { FEMALE, MALE } from "../../utils/sex";
 
 import {
   ADD_PLAYER,
@@ -12,7 +12,7 @@ import {
   KILL_PLAYER,
   TOGGLE_PLAYER_SEX,
   UPDATE_PLAYER,
-} from './actionTypes';
+} from "./actionTypes";
 
 import reducer, {
   addPlayer,
@@ -25,12 +25,12 @@ import reducer, {
   playerReducer,
   togglePlayerSex,
   updatePlayer,
-} from './index';
+} from "./index";
 
-describe('Players reducer', () => {
-  test('adds player', () => {
+describe("Players reducer", () => {
+  test("adds player", () => {
     const player = createPlayer({
-      name: 'Munchkin',
+      name: "Munchkin",
     });
 
     const players = reducer(undefined, {
@@ -41,7 +41,7 @@ describe('Players reducer', () => {
     expect(players[player.id]).toBe(player);
   });
 
-  test('increments/decrements player level/gear', () => {
+  test("increments/decrements player level/gear", () => {
     const player = createPlayer();
     const { id } = player;
 
@@ -50,7 +50,7 @@ describe('Players reducer', () => {
       {
         id,
         type: INCREMENT_PLAYER_LEVEL,
-      },
+      }
     );
 
     expect(players[id].level).toBe(2);
@@ -77,7 +77,7 @@ describe('Players reducer', () => {
     expect(players[id].gear).toBe(0);
   });
 
-  test('kill player', () => {
+  test("kill player", () => {
     const id = uuid();
 
     const player = createPlayer({ gear: 12, id, level: 6 });
@@ -87,14 +87,14 @@ describe('Players reducer', () => {
       {
         id,
         type: KILL_PLAYER,
-      },
+      }
     );
 
     expect(players[id].gear).toBe(0);
     expect(players[id].level).toBe(6);
   });
 
-  test('toggles sex', () => {
+  test("toggles sex", () => {
     const id = uuid();
 
     const player = createPlayer({ id, sex: MALE });
@@ -104,7 +104,7 @@ describe('Players reducer', () => {
       {
         id,
         type: TOGGLE_PLAYER_SEX,
-      },
+      }
     );
 
     expect(players[id].sex).toBe(FEMALE);
@@ -117,7 +117,7 @@ describe('Players reducer', () => {
     expect(players[id].sex).toBe(MALE);
   });
 
-  test('updates player data', () => {
+  test("updates player data", () => {
     const id = uuid();
 
     const player = createPlayer({ id });
@@ -127,20 +127,20 @@ describe('Players reducer', () => {
       {
         player: {
           id,
-          name: 'Lol',
+          name: "Lol",
         },
         type: UPDATE_PLAYER,
-      },
+      }
     );
 
-    expect(players[id].name).toBe('Lol');
+    expect(players[id].name).toBe("Lol");
   });
 
-  test('tests default behavior', () => {
+  test("tests default behavior", () => {
     expect(reducer(undefined, {})).toStrictEqual(initialState);
   });
 
-  test('should ignore unknown action', () => {
+  test("should ignore unknown action", () => {
     const state = {};
 
     expect(reducer(state, {})).toBe(state);
@@ -148,8 +148,8 @@ describe('Players reducer', () => {
   });
 });
 
-describe('Players actions', () => {
-  test('should create an action to add a player', () => {
+describe("Players actions", () => {
+  test("should create an action to add a player", () => {
     const player = createPlayer();
 
     const expectedAction = {
@@ -160,7 +160,7 @@ describe('Players actions', () => {
     expect(addPlayer(player)).toStrictEqual(expectedAction);
   });
 
-  test('should create an action to decrement player gear', () => {
+  test("should create an action to decrement player gear", () => {
     const player = createPlayer();
 
     const expectedAction = {
@@ -171,7 +171,7 @@ describe('Players actions', () => {
     expect(decrementPlayerGear(player.id)).toStrictEqual(expectedAction);
   });
 
-  test('should create an action to decrement player level', () => {
+  test("should create an action to decrement player level", () => {
     const player = createPlayer();
 
     const expectedAction = {
@@ -182,7 +182,7 @@ describe('Players actions', () => {
     expect(decrementPlayerLevel(player.id)).toStrictEqual(expectedAction);
   });
 
-  test('should create an action to increment player gear', () => {
+  test("should create an action to increment player gear", () => {
     const player = createPlayer();
 
     const expectedAction = {
@@ -193,7 +193,7 @@ describe('Players actions', () => {
     expect(incrementPlayerGear(player.id)).toStrictEqual(expectedAction);
   });
 
-  test('should create an action to increment player level', () => {
+  test("should create an action to increment player level", () => {
     const player = createPlayer();
 
     const expectedAction = {
@@ -204,7 +204,7 @@ describe('Players actions', () => {
     expect(incrementPlayerLevel(player.id)).toStrictEqual(expectedAction);
   });
 
-  test('should create an action to kill player', () => {
+  test("should create an action to kill player", () => {
     const player = createPlayer();
 
     const expectedAction = {
@@ -215,7 +215,7 @@ describe('Players actions', () => {
     expect(killPlayer(player.id)).toStrictEqual(expectedAction);
   });
 
-  test('should create an action to toggle player sex', () => {
+  test("should create an action to toggle player sex", () => {
     const player = createPlayer();
 
     const expectedAction = {
@@ -226,7 +226,7 @@ describe('Players actions', () => {
     expect(togglePlayerSex(player.id)).toStrictEqual(expectedAction);
   });
 
-  test('should create an action to update a player', () => {
+  test("should create an action to update a player", () => {
     const player = createPlayer();
 
     const expectedAction = {

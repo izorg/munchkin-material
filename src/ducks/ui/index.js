@@ -1,6 +1,6 @@
-export const TOGGLE_MENU = 'ui/TOGGLE_MENU';
-export const TOGGLE_PLAYER = 'ui/TOGGLE_PLAYER';
-export const UNSELECT_ALL_PLAYERS = 'ui/UNSELECT_ALL_PLAYERS';
+export const TOGGLE_MENU = "ui/TOGGLE_MENU";
+export const TOGGLE_PLAYER = "ui/TOGGLE_PLAYER";
+export const UNSELECT_ALL_PLAYERS = "ui/UNSELECT_ALL_PLAYERS";
 
 export const toggleMenu = () => ({
   type: TOGGLE_MENU,
@@ -35,7 +35,7 @@ const reducer = (state = initialState, action) => {
         return {
           ...state,
           selectedPlayerIds: state.selectedPlayerIds.filter(
-            (selectedId) => selectedId !== id,
+            (selectedId) => selectedId !== id
           ),
         };
       }

@@ -1,19 +1,19 @@
-import { Tooltip, useMediaQuery, useTheme } from '@material-ui/core';
-import { Menu } from 'mdi-material-ui';
-import { defineMessages, useIntl } from 'react-intl';
-import { useDispatch } from 'react-redux';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Tooltip, useMediaQuery, useTheme } from "@material-ui/core";
+import { Menu } from "mdi-material-ui";
+import { defineMessages, useIntl } from "react-intl";
+import { useDispatch } from "react-redux";
+import { useLocation, useNavigate } from "react-router-dom";
 
-import TopIconButton from '../../../../components/TopIconButton';
-import { toggleMenu } from '../../../../ducks/ui';
-import { stringifyQuery, useLocationQuery } from '../../../../utils/location';
+import TopIconButton from "../../../../components/TopIconButton";
+import { toggleMenu } from "../../../../ducks/ui";
+import { stringifyQuery, useLocationQuery } from "../../../../utils/location";
 
-const displayName = 'MenuButton';
+const displayName = "MenuButton";
 
 const messages = defineMessages({
   menu: {
-    defaultMessage: 'Menu',
-    id: 'menu',
+    defaultMessage: "Menu",
+    id: "menu",
   },
 });
 
@@ -25,7 +25,7 @@ const MenuButton = (props) => {
   const theme = useTheme();
 
   const query = useLocationQuery();
-  const mdUp = useMediaQuery(theme.breakpoints.up('md'));
+  const mdUp = useMediaQuery(theme.breakpoints.up("md"));
 
   const onClick = () =>
     mdUp

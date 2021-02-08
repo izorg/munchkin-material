@@ -1,11 +1,11 @@
-import { Avatar } from '@material-ui/core';
-import { Check } from 'mdi-material-ui';
-import PropTypes from 'prop-types';
-import { forwardRef } from 'react';
+import { Avatar } from "@material-ui/core";
+import { Check } from "mdi-material-ui";
+import PropTypes from "prop-types";
+import { forwardRef } from "react";
 
-import { colorType } from '../../utils/propTypes';
+import { colorType } from "../../utils/propTypes";
 
-const displayName = 'PlayerAvatar';
+const displayName = "PlayerAvatar";
 
 const PlayerAvatar = forwardRef(
   ({ color, name, selected, style: styleProp, ...props }, ref) => {
@@ -24,7 +24,7 @@ const PlayerAvatar = forwardRef(
         {selected ? <Check /> : Array.from(name)[0].toUpperCase()}
       </Avatar>
     );
-  },
+  }
 );
 
 PlayerAvatar.propTypes = {

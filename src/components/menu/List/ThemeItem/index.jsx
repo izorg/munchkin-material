@@ -1,18 +1,18 @@
-import { ListItemIcon, makeStyles, useTheme } from '@material-ui/core';
-import clsx from 'clsx';
-import { Palette } from 'mdi-material-ui';
-import { useIntl } from 'react-intl';
-import { useSelector } from 'react-redux';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { ListItemIcon, makeStyles, useTheme } from "@material-ui/core";
+import clsx from "clsx";
+import { Palette } from "mdi-material-ui";
+import { useIntl } from "react-intl";
+import { useSelector } from "react-redux";
+import { useLocation, useNavigate } from "react-router-dom";
 
-import themes from '../../../../theme/colors';
-import { parseSearch, stringifyQuery } from '../../../../utils/location';
-import themeMessages from '../../../theme/messages';
-import useMenuOpen from '../../useMenuOpen';
-import ListItem from '../Item';
-import ListItemText from '../ItemText';
+import themes from "../../../../theme/colors";
+import { parseSearch, stringifyQuery } from "../../../../utils/location";
+import themeMessages from "../../../theme/messages";
+import useMenuOpen from "../../useMenuOpen";
+import ListItem from "../Item";
+import ListItemText from "../ItemText";
 
-const displayName = 'ThemeItem';
+const displayName = "ThemeItem";
 
 const useStyles = makeStyles(
   {
@@ -21,7 +21,7 @@ const useStyles = makeStyles(
       paddingTop: 0,
     },
   },
-  { name: displayName },
+  { name: displayName }
 );
 
 const ThemeItem = ({ className, ...rest }) => {

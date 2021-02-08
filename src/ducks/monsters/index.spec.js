@@ -1,5 +1,5 @@
-import createMonster from '../../utils/createMonster';
-import { START_COMBAT } from '../combat/actionTypes';
+import createMonster from "../../utils/createMonster";
+import { START_COMBAT } from "../combat/actionTypes";
 
 import {
   ADD_MONSTER,
@@ -9,7 +9,7 @@ import {
   INCREMENT_MONSTER_LEVEL,
   REMOVE_MONSTER,
   UPDATE_MONSTER,
-} from './actionTypes';
+} from "./actionTypes";
 
 import reducer, {
   addMonster,
@@ -19,10 +19,10 @@ import reducer, {
   incrementMonsterLevel,
   monsterReducer,
   removeMonster,
-} from './index';
+} from "./index";
 
-describe('Monsters reducer', () => {
-  test('adds monster', () => {
+describe("Monsters reducer", () => {
+  test("adds monster", () => {
     const monster = createMonster();
 
     const monsters = reducer(undefined, {
@@ -33,7 +33,7 @@ describe('Monsters reducer', () => {
     expect(monsters[monster.id]).toBe(monster);
   });
 
-  test('decrements/increments bonus/level', () => {
+  test("decrements/increments bonus/level", () => {
     const monster = createMonster();
     const { id } = monster;
 
@@ -42,7 +42,7 @@ describe('Monsters reducer', () => {
       {
         id,
         type: INCREMENT_MONSTER_LEVEL,
-      },
+      }
     );
 
     expect(monsters[id].level).toBe(2);
@@ -69,7 +69,7 @@ describe('Monsters reducer', () => {
     expect(monsters[id].bonus).toBe(0);
   });
 
-  test('removes monster', () => {
+  test("removes monster", () => {
     const monster = createMonster();
     const { id } = monster;
 
@@ -78,13 +78,13 @@ describe('Monsters reducer', () => {
       {
         id,
         type: REMOVE_MONSTER,
-      },
+      }
     );
 
     expect(monsters[id]).toBeUndefined();
   });
 
-  test('starts combat', () => {
+  test("starts combat", () => {
     const monster = createMonster();
 
     const monsters = reducer(undefined, {
@@ -95,7 +95,7 @@ describe('Monsters reducer', () => {
     expect(monsters).toStrictEqual({ [monster.id]: monster });
   });
 
-  test('updates monster', () => {
+  test("updates monster", () => {
     const monster = createMonster();
     const { id } = monster;
     const level = 12;
@@ -108,13 +108,13 @@ describe('Monsters reducer', () => {
           level,
         },
         type: UPDATE_MONSTER,
-      },
+      }
     );
 
     expect(monsters[id].level).toBe(level);
   });
 
-  test('should ignore unknown action', () => {
+  test("should ignore unknown action", () => {
     const state = {};
 
     expect(reducer(state, {})).toBe(state);
@@ -122,8 +122,8 @@ describe('Monsters reducer', () => {
   });
 });
 
-describe('Monsters actions', () => {
-  test('add a monster', () => {
+describe("Monsters actions", () => {
+  test("add a monster", () => {
     const monster = createMonster();
 
     const expectedAction = {
@@ -134,7 +134,7 @@ describe('Monsters actions', () => {
     expect(addMonster(monster)).toStrictEqual(expectedAction);
   });
 
-  test('decrement monster bonus', () => {
+  test("decrement monster bonus", () => {
     const monster = createMonster();
     const { id } = monster;
 
@@ -146,7 +146,7 @@ describe('Monsters actions', () => {
     expect(decrementMonsterBonus(id)).toStrictEqual(expectedAction);
   });
 
-  test('should create an action to decrement monster level', () => {
+  test("should create an action to decrement monster level", () => {
     const monster = createMonster();
     const { id } = monster;
 
@@ -158,7 +158,7 @@ describe('Monsters actions', () => {
     expect(decrementMonsterLevel(id)).toStrictEqual(expectedAction);
   });
 
-  test('should create an action to increment monster bonus', () => {
+  test("should create an action to increment monster bonus", () => {
     const monster = createMonster();
     const { id } = monster;
 
@@ -170,7 +170,7 @@ describe('Monsters actions', () => {
     expect(incrementMonsterBonus(id)).toStrictEqual(expectedAction);
   });
 
-  test('should create an action to increment monster level', () => {
+  test("should create an action to increment monster level", () => {
     const monster = createMonster();
     const { id } = monster;
 
@@ -182,7 +182,7 @@ describe('Monsters actions', () => {
     expect(incrementMonsterLevel(id)).toStrictEqual(expectedAction);
   });
 
-  test('should create an action to remove the monster by id', () => {
+  test("should create an action to remove the monster by id", () => {
     const monster = createMonster();
     const { id } = monster;
 

@@ -1,12 +1,12 @@
-import yellow from '@material-ui/core/colors/yellow';
-import { defineMessages } from 'react-intl';
+import yellow from "@material-ui/core/colors/yellow";
+import { defineMessages } from "react-intl";
 
-export const key = 'super';
+export const key = "super";
 
 export const messages = defineMessages({
   name: {
-    defaultMessage: 'Super',
-    id: 'theme.name.super',
+    defaultMessage: "Super",
+    id: "theme.name.super",
   },
 });
 

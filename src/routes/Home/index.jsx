@@ -1,66 +1,66 @@
-import { makeStyles, Paper, Zoom } from '@material-ui/core';
-import clsx from 'clsx';
-import { lazy, Suspense } from 'react';
-import { useSelector } from 'react-redux';
-import { useMatch } from 'react-router-dom';
+import { makeStyles, Paper, Zoom } from "@material-ui/core";
+import clsx from "clsx";
+import { lazy, Suspense } from "react";
+import { useSelector } from "react-redux";
+import { useMatch } from "react-router-dom";
 
-import LevelLimitDialog from '../../components/levelLimit/Dialog';
-import MenuDrawer from '../../components/menu/Drawer';
-import MenuSidebar from '../../components/menu/Sidebar';
-import Nobody from '../../components/Nobody';
-import ScreenModal from '../../components/ScreenModal';
-import ThemeDialog from '../../components/theme/Dialog';
+import LevelLimitDialog from "../../components/levelLimit/Dialog";
+import MenuDrawer from "../../components/menu/Drawer";
+import MenuSidebar from "../../components/menu/Sidebar";
+import Nobody from "../../components/Nobody";
+import ScreenModal from "../../components/ScreenModal";
+import ThemeDialog from "../../components/theme/Dialog";
 
-import AppBar from './AppBar';
-import PlayerAddButton from './PlayerAddButton';
-import PlayerList from './PlayerList';
-import SinglePlayer from './SinglePlayer';
+import AppBar from "./AppBar";
+import PlayerAddButton from "./PlayerAddButton";
+import PlayerList from "./PlayerList";
+import SinglePlayer from "./SinglePlayer";
 
 const Player = lazy(() =>
   import(
     /* webpackPrefetch: true */
-    '../Player'
-  ),
+    "../Player"
+  )
 );
 
-const displayName = 'Home';
+const displayName = "Home";
 
 const useStyles = makeStyles(
   (theme) => ({
     list: {
       backgroundColor:
-        theme.palette.mode === 'dark'
+        theme.palette.mode === "dark"
           ? theme.palette.background.default
           : theme.palette.background.paper,
       flex: 1,
-      overflowY: 'auto',
+      overflowY: "auto",
       paddingBottom: 56,
-      WebkitOverflowScrolling: 'touch',
+      WebkitOverflowScrolling: "touch",
 
-      [theme.breakpoints.up('sm')]: {
+      [theme.breakpoints.up("sm")]: {
         paddingBottom: 64,
       },
     },
 
     main: {
-      display: 'flex',
+      display: "flex",
       flex: 1,
-      height: '100%',
-      overflow: 'hidden',
+      height: "100%",
+      overflow: "hidden",
     },
 
     menu: {
-      display: 'none',
-      overflowX: 'hidden',
+      display: "none",
+      overflowX: "hidden",
       padding: 0,
-      transition: theme.transitions.create(['padding', 'width'], {
+      transition: theme.transitions.create(["padding", "width"], {
         duration: theme.transitions.duration.short,
       }),
       width: theme.spacing(40),
       zIndex: 1,
 
-      [theme.breakpoints.up('md')]: {
-        display: 'block',
+      [theme.breakpoints.up("md")]: {
+        display: "block",
       },
     },
 
@@ -70,19 +70,19 @@ const useStyles = makeStyles(
     },
 
     root: {
-      display: 'flex',
-      flexDirection: 'column',
-      height: '100%',
+      display: "flex",
+      flexDirection: "column",
+      height: "100%",
     },
 
     single: {
       backgroundColor:
-        theme.palette.mode === 'dark'
+        theme.palette.mode === "dark"
           ? theme.palette.background.default
           : theme.palette.background.paper,
     },
   }),
-  { name: displayName },
+  { name: displayName }
 );
 
 const Home = () => {
@@ -108,7 +108,7 @@ const Home = () => {
 
   const playerMatch = useMatch({
     end: false,
-    path: '/player/:id',
+    path: "/player/:id",
   });
 
   return (
@@ -119,7 +119,7 @@ const Home = () => {
           <Paper
             className={clsx(
               classes.menu,
-              menuCollapsed && classes.menuCollapsed,
+              menuCollapsed && classes.menuCollapsed
             )}
             data-screenshot="sidebar-menu"
             square

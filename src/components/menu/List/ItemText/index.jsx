@@ -1,16 +1,16 @@
-import { ListItemText, makeStyles } from '@material-ui/core';
-import clsx from 'clsx';
+import { ListItemText, makeStyles } from "@material-ui/core";
+import clsx from "clsx";
 
-const displayName = 'MenuListItemText';
+const displayName = "MenuListItemText";
 
 const useStyles = makeStyles(
   {
     text: {
-      overflow: 'hidden',
-      textOverflow: 'ellipsis',
+      overflow: "hidden",
+      textOverflow: "ellipsis",
     },
   },
-  { name: displayName },
+  { name: displayName }
 );
 
 const MenuListItemText = ({ className, ...props }) => {

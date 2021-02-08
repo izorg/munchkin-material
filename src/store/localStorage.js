@@ -1,8 +1,8 @@
-import { compose } from 'redux';
+import { compose } from "redux";
 
-import migrations from './migrations';
+import migrations from "./migrations";
 
-const key = 'redux';
+const key = "redux";
 
 export const loadState = () => {
   let serializedState;

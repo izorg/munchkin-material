@@ -1,17 +1,17 @@
-import { createReduxEnhancer } from '@sentry/react';
-import { applyMiddleware, combineReducers, createStore } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
-import thunk from 'redux-thunk';
-import undoable, { includeAction } from 'redux-undo';
+import { createReduxEnhancer } from "@sentry/react";
+import { applyMiddleware, combineReducers, createStore } from "redux";
+import { composeWithDevTools } from "redux-devtools-extension";
+import thunk from "redux-thunk";
+import undoable, { includeAction } from "redux-undo";
 
 import {
   KILL_PLAYER,
   REMOVE_PLAYERS,
   RESET_PLAYERS,
-} from '../ducks/players/actionTypes';
+} from "../ducks/players/actionTypes";
 
-import { loadState, saveState } from './localStorage';
-import reducers from './reducers';
+import { loadState, saveState } from "./localStorage";
+import reducers from "./reducers";
 
 const configureStore = () => {
   const composeEnhancers = composeWithDevTools({ trace: true });
@@ -29,7 +29,7 @@ const configureStore = () => {
 
   const enhancer = composeEnhancers(
     applyMiddleware(thunk),
-    sentryReduxEnhancer,
+    sentryReduxEnhancer
   );
 
   const store = createStore(createRootReducer(), preloadedState, enhancer);
@@ -60,8 +60,8 @@ const configureStore = () => {
 
   /* istanbul ignore if  */
   if (module.hot) {
-    module.hot.accept('./reducers', () =>
-      store.replaceReducer(createRootReducer()),
+    module.hot.accept("./reducers", () =>
+      store.replaceReducer(createRootReducer())
     );
   }
 

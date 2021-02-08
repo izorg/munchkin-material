@@ -1,16 +1,16 @@
-import { FlagCheckered } from 'mdi-material-ui';
-import { FormattedMessage } from 'react-intl';
-import { useDispatch } from 'react-redux';
+import { FlagCheckered } from "mdi-material-ui";
+import { FormattedMessage } from "react-intl";
+import { useDispatch } from "react-redux";
 
-import BackButton from '../../../components/BackButton';
-import DiceIconButton from '../../../components/dice/Button';
-import Title from '../../../components/Title';
-import TopAppBar from '../../../components/TopAppBar';
-import TopIconButton from '../../../components/TopIconButton';
-import { finishCombat } from '../../../ducks/combat';
-import { useGoBack } from '../../../utils/location';
+import BackButton from "../../../components/BackButton";
+import DiceIconButton from "../../../components/dice/Button";
+import Title from "../../../components/Title";
+import TopAppBar from "../../../components/TopAppBar";
+import TopIconButton from "../../../components/TopIconButton";
+import { finishCombat } from "../../../ducks/combat";
+import { useGoBack } from "../../../utils/location";
 
-const displayName = 'CombatAppBar';
+const displayName = "CombatAppBar";
 
 const CombatAppBar = () => {
   const dispatch = useDispatch();

@@ -1,4 +1,4 @@
-import { useLocationQuery } from '../../utils/location';
+import { useLocationQuery } from "../../utils/location";
 
 const useMenuOpen = () => useLocationQuery().menu === null;
 

@@ -1,11 +1,11 @@
-import { ListItem, ListItemAvatar } from '@material-ui/core';
-import { useNavigate } from 'react-router-dom';
+import { ListItem, ListItemAvatar } from "@material-ui/core";
+import { useNavigate } from "react-router-dom";
 
-import PlayerAvatar from '../../../../components/PlayerAvatar';
-import PlayerListItemText from '../../../../components/PlayerListItemText';
-import { playerShape } from '../../../../utils/propTypes';
+import PlayerAvatar from "../../../../components/PlayerAvatar";
+import PlayerListItemText from "../../../../components/PlayerListItemText";
+import { playerShape } from "../../../../utils/propTypes";
 
-const displayName = 'PlayerListItem';
+const displayName = "PlayerListItem";
 
 const PlayerListItem = ({ player, ...props }) => {
   const navigate = useNavigate();

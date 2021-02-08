@@ -1,18 +1,18 @@
-import { ListItemIcon, makeStyles, Switch } from '@material-ui/core';
-import clsx from 'clsx';
-import { Account, AccountMultiple } from 'mdi-material-ui';
-import { FormattedMessage } from 'react-intl';
-import { useDispatch, useSelector } from 'react-redux';
-import { useLocation } from 'react-router-dom';
+import { ListItemIcon, makeStyles, Switch } from "@material-ui/core";
+import clsx from "clsx";
+import { Account, AccountMultiple } from "mdi-material-ui";
+import { FormattedMessage } from "react-intl";
+import { useDispatch, useSelector } from "react-redux";
+import { useLocation } from "react-router-dom";
 
-import { setSingleMode } from '../../../../ducks/settings';
-import { useGoBack } from '../../../../utils/location';
-import { useFullVersion } from '../../../FullVersionProvider';
-import useMenuOpen from '../../useMenuOpen';
-import ListItem from '../Item';
-import ListItemText from '../ItemText';
+import { setSingleMode } from "../../../../ducks/settings";
+import { useGoBack } from "../../../../utils/location";
+import { useFullVersion } from "../../../FullVersionProvider";
+import useMenuOpen from "../../useMenuOpen";
+import ListItem from "../Item";
+import ListItemText from "../ItemText";
 
-const displayName = 'SingleModeItem';
+const displayName = "SingleModeItem";
 
 const useStyles = makeStyles(
   {
@@ -21,7 +21,7 @@ const useStyles = makeStyles(
       paddingTop: 9,
     },
   },
-  { name: displayName },
+  { name: displayName }
 );
 
 const SingleModeItem = ({ className }) => {
@@ -36,7 +36,7 @@ const SingleModeItem = ({ className }) => {
   const { buyFullVersion, fullVersion } = useFullVersion();
 
   const onChange = async (isSingleMode) => {
-    const needBack = open || pathname !== '/';
+    const needBack = open || pathname !== "/";
 
     if (isSingleMode && !fullVersion) {
       try {

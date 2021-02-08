@@ -1,12 +1,12 @@
-import orange from '@material-ui/core/colors/orange';
-import { defineMessages } from 'react-intl';
+import orange from "@material-ui/core/colors/orange";
+import { defineMessages } from "react-intl";
 
-export const key = 'apocalypse';
+export const key = "apocalypse";
 
 export const messages = defineMessages({
   name: {
-    defaultMessage: 'Apocalypse',
-    id: 'theme.name.apocalypse',
+    defaultMessage: "Apocalypse",
+    id: "theme.name.apocalypse",
   },
 });
 

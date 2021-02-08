@@ -1,65 +1,65 @@
-import { makeStyles, useTheme } from '@material-ui/core';
-import clsx from 'clsx';
-import { motion, useAnimation } from 'framer-motion';
-import PropTypes from 'prop-types';
-import { useCallback, useRef } from 'react';
-import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { makeStyles, useTheme } from "@material-ui/core";
+import clsx from "clsx";
+import { motion, useAnimation } from "framer-motion";
+import PropTypes from "prop-types";
+import { useCallback, useRef } from "react";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
-import PlayerStats from './Stats';
+import PlayerStats from "./Stats";
 
-const displayName = 'PlayerSlider';
+const displayName = "PlayerSlider";
 
 const useStyles = makeStyles(
   /* eslint-disable sort-keys */
   (theme) => ({
     root: {
-      overflowX: 'hidden',
-      width: '100%',
+      overflowX: "hidden",
+      width: "100%",
     },
 
     container: {
-      height: '100%',
-      position: 'relative',
+      height: "100%",
+      position: "relative",
     },
 
     slide: {
-      display: 'flex',
+      display: "flex",
     },
 
     itemContainer: {
-      alignItems: 'center',
-      display: 'flex',
-      height: '100%',
+      alignItems: "center",
+      display: "flex",
+      height: "100%",
       padding: theme.spacing(2, 2, 7),
-      width: '100%',
+      width: "100%",
 
-      '@media (min-height: 720px)': {
+      "@media (min-height: 720px)": {
         paddingBottom: theme.spacing(2),
       },
     },
 
     previousItemContainer: {
-      left: '-100%',
-      position: 'absolute',
+      left: "-100%",
+      position: "absolute",
       top: 0,
     },
 
     nextItemContainer: {
-      left: '100%',
-      position: 'absolute',
+      left: "100%",
+      position: "absolute",
       top: 0,
     },
 
     stats: {
-      height: '100%',
-      margin: [[0, 'auto']],
+      height: "100%",
+      margin: [[0, "auto"]],
       maxHeight: 600,
       maxWidth: 600,
     },
   }),
   /* eslint-enable */
-  { name: displayName },
+  { name: displayName }
 );
 
 const PlayerSlider = ({ playerId }) => {
@@ -67,7 +67,7 @@ const PlayerSlider = ({ playerId }) => {
   const navigate = useNavigate();
   const { direction } = useTheme();
 
-  const rtl = direction === 'rtl';
+  const rtl = direction === "rtl";
 
   const playerList = useSelector((state) => state.present.playerList);
   const playerCount = playerList.length;
@@ -84,7 +84,7 @@ const PlayerSlider = ({ playerId }) => {
 
       return playerIndex;
     },
-    [playerCount],
+    [playerCount]
   );
 
   /**
@@ -126,9 +126,9 @@ const PlayerSlider = ({ playerId }) => {
         },
         {
           mass: 0.1,
-          type: 'spring',
+          type: "spring",
           velocity,
-        },
+        }
       );
     }
   };
@@ -139,7 +139,7 @@ const PlayerSlider = ({ playerId }) => {
         key={playerId}
         animate={controls}
         className={classes.container}
-        drag={playerList.length > 1 ? 'x' : false}
+        drag={playerList.length > 1 ? "x" : false}
         dragConstraints={ref}
         dragElastic={1}
         onDragEnd={onDragEnd}
@@ -154,7 +154,7 @@ const PlayerSlider = ({ playerId }) => {
               className={clsx(
                 classes.itemContainer,
                 index === currentIndex - 1 && classes.previousItemContainer,
-                index === currentIndex + 1 && classes.nextItemContainer,
+                index === currentIndex + 1 && classes.nextItemContainer
               )}
             >
               <PlayerStats className={classes.stats} playerId={playerId} />

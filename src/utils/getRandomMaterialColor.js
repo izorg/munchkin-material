@@ -1,8 +1,8 @@
-import availableColors from './availableColors';
+import availableColors from "./availableColors";
 
 const getRandomMaterialColor = (excluded = []) => {
   let preferredColors = availableColors.filter(
-    (color) => !excluded.includes(color),
+    (color) => !excluded.includes(color)
   );
 
   if (!preferredColors.length) {

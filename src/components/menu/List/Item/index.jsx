@@ -1,12 +1,12 @@
-import { ListItem, makeStyles } from '@material-ui/core';
+import { ListItem, makeStyles } from "@material-ui/core";
 
-const displayName = 'MenuListItem';
+const displayName = "MenuListItem";
 
 const useStyles = makeStyles(
   {
     gutters: {},
   },
-  { name: displayName },
+  { name: displayName }
 );
 
 const MenuListItem = (props) => {

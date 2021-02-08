@@ -1,6 +1,6 @@
-import { parse, stringify } from 'qs';
-import { useCallback } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { parse, stringify } from "qs";
+import { useCallback } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export const parseSearch = (search) =>
   parse(search, {

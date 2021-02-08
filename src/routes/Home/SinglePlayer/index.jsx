@@ -1,65 +1,65 @@
-import { IconButton, makeStyles } from '@material-ui/core';
-import { useCallback } from 'react';
-import { useIntl } from 'react-intl';
-import { useDispatch, useSelector } from 'react-redux';
+import { IconButton, makeStyles } from "@material-ui/core";
+import { useCallback } from "react";
+import { useIntl } from "react-intl";
+import { useDispatch, useSelector } from "react-redux";
 
-import Counter, { counterMessages } from '../../../components/Counter';
-import CounterLabel from '../../../components/Counter/Label';
-import Sex from '../../../components/Sex';
-import { setCombatPlayerBonus } from '../../../ducks/combat';
+import Counter, { counterMessages } from "../../../components/Counter";
+import CounterLabel from "../../../components/Counter/Label";
+import Sex from "../../../components/Sex";
+import { setCombatPlayerBonus } from "../../../ducks/combat";
 import {
   decrementPlayerGear,
   decrementPlayerLevel,
   incrementPlayerGear,
   incrementPlayerLevel,
   togglePlayerSex,
-} from '../../../ducks/players';
+} from "../../../ducks/players";
 import {
   isLevelDecrementDisabled,
   isLevelIncrementDisabled,
-} from '../../../utils/levelLimit';
+} from "../../../utils/levelLimit";
 
-const displayName = 'SinglePlayer';
+const displayName = "SinglePlayer";
 
 const useStyles = makeStyles(
   /* eslint-disable sort-keys */
   (theme) => ({
     content: {
-      alignSelf: 'center',
-      display: 'flex',
+      alignSelf: "center",
+      display: "flex",
       flex: 1,
-      flexDirection: 'column-reverse',
-      height: '100%',
-      margin: '0 auto',
+      flexDirection: "column-reverse",
+      height: "100%",
+      margin: "0 auto",
       maxHeight: 600,
       maxWidth: 800,
 
-      '@media (orientation: landscape)': {
-        flexDirection: 'row',
+      "@media (orientation: landscape)": {
+        flexDirection: "row",
       },
     },
 
     counters: {
-      alignItems: 'center',
-      display: 'flex',
+      alignItems: "center",
+      display: "flex",
       flex: 1,
 
-      '@media (orientation: landscape)': {
+      "@media (orientation: landscape)": {
         flex: 3,
       },
     },
 
     counter: {
       flex: 1,
-      overflow: 'hidden',
+      overflow: "hidden",
     },
 
     strengthCounter: {
-      alignItems: 'center',
-      display: 'flex',
-      flexDirection: 'column',
+      alignItems: "center",
+      display: "flex",
+      flexDirection: "column",
       flex: 1,
-      justifyContent: 'center',
+      justifyContent: "center",
     },
 
     strengthTitle: {
@@ -71,7 +71,7 @@ const useStyles = makeStyles(
       fontFamily: `"Munchkin", ${theme.typography.fontFamily}`,
       fontSize: 36,
 
-      '@media (orientation: portrait)': {
+      "@media (orientation: portrait)": {
         fontSize: 72, // 36px * 2
         lineHeight: theme.typography.body2.lineHeight / 2, // 1.43 / 2
         marginTop: 32,
@@ -82,17 +82,17 @@ const useStyles = makeStyles(
       fontSize: 32,
       padding: 8,
 
-      '@media (orientation: portrait)': {
+      "@media (orientation: portrait)": {
         marginTop: 16,
       },
     },
 
     sexIcon: {
-      fontSize: 'inherit',
+      fontSize: "inherit",
     },
   }),
   /* eslint-enable */
-  { name: displayName },
+  { name: displayName }
 );
 
 const SinglePlayer = () => {
@@ -101,7 +101,7 @@ const SinglePlayer = () => {
   const intl = useIntl();
 
   const player = useSelector(
-    (state) => state.present.players[state.present.settings.singleModePlayerId],
+    (state) => state.present.players[state.present.settings.singleModePlayerId]
   );
   const bonus = useSelector((state) => state.present.combat.playerBonus);
 
@@ -110,52 +110,52 @@ const SinglePlayer = () => {
 
   const levelDecrementDisabled = isLevelDecrementDisabled(
     player.level,
-    levelLimit,
+    levelLimit
   );
   const levelIncrementDisabled = isLevelIncrementDisabled(
     player.level,
     levelLimit,
-    epic,
+    epic
   );
 
   const onBonusDecrement = useCallback(
     () =>
       dispatch((_, getState) =>
         dispatch(
-          setCombatPlayerBonus(getState().present.combat.playerBonus - 1),
-        ),
+          setCombatPlayerBonus(getState().present.combat.playerBonus - 1)
+        )
       ),
-    [dispatch],
+    [dispatch]
   );
 
   const onBonusIncrement = useCallback(
     () =>
       dispatch((_, getState) =>
         dispatch(
-          setCombatPlayerBonus(getState().present.combat.playerBonus + 1),
-        ),
+          setCombatPlayerBonus(getState().present.combat.playerBonus + 1)
+        )
       ),
-    [dispatch],
+    [dispatch]
   );
 
   const onLevelDecrement = useCallback(
     () => dispatch(decrementPlayerLevel(player.id)),
-    [dispatch, player.id],
+    [dispatch, player.id]
   );
 
   const onLevelIncrement = useCallback(
     () => dispatch(incrementPlayerLevel(player.id)),
-    [dispatch, player.id],
+    [dispatch, player.id]
   );
 
   const onGearDecrement = useCallback(
     () => dispatch(decrementPlayerGear(player.id)),
-    [dispatch, player.id],
+    [dispatch, player.id]
   );
 
   const onGearIncrement = useCallback(
     () => dispatch(incrementPlayerGear(player.id)),
-    [dispatch, player.id],
+    [dispatch, player.id]
   );
 
   const onSexToggle = useCallback(() => dispatch(togglePlayerSex(player.id)), [

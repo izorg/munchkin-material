@@ -3,25 +3,25 @@ import {
   DialogContent,
   DialogTitle,
   makeStyles,
-} from '@material-ui/core';
-import PropTypes from 'prop-types';
-import { FormattedMessage } from 'react-intl';
+} from "@material-ui/core";
+import PropTypes from "prop-types";
+import { FormattedMessage } from "react-intl";
 
-import availableColors from '../../../utils/availableColors';
-import { colorType } from '../../../utils/propTypes';
+import availableColors from "../../../utils/availableColors";
+import { colorType } from "../../../utils/propTypes";
 
-import Color from './Color';
+import Color from "./Color";
 
-const displayName = 'ColorPickerDialog';
+const displayName = "ColorPickerDialog";
 
 const useStyles = makeStyles(
   (theme) => ({
     content: {
       padding: theme.spacing(0, 1, 2),
-      textAlign: 'center',
+      textAlign: "center",
     },
   }),
-  { name: displayName },
+  { name: displayName }
 );
 
 const ColorPickerDialog = ({ onSelect, value, ...props }) => {

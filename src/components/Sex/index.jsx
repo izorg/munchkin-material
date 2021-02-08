@@ -1,9 +1,9 @@
-import { GenderFemale, GenderMale } from 'mdi-material-ui';
+import { GenderFemale, GenderMale } from "mdi-material-ui";
 
-import { sexProp } from '../../utils/propTypes';
-import { FEMALE, MALE } from '../../utils/sex';
+import { sexProp } from "../../utils/propTypes";
+import { FEMALE, MALE } from "../../utils/sex";
 
-const displayName = 'Sex';
+const displayName = "Sex";
 
 const Sex = ({ sex, ...props }) => {
   switch (sex) {
@@ -28,6 +28,6 @@ Sex.defaultProps = {
 
 Sex.displayName = displayName;
 
-Sex.muiName = 'SvgIcon';
+Sex.muiName = "SvgIcon";
 
 export default Sex;

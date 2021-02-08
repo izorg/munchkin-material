@@ -1,24 +1,24 @@
-import { Tooltip } from '@material-ui/core';
-import { BackupRestore } from 'mdi-material-ui';
-import { defineMessages, useIntl } from 'react-intl';
-import { useDispatch, useSelector } from 'react-redux';
-import { ActionCreators } from 'redux-undo';
+import { Tooltip } from "@material-ui/core";
+import { BackupRestore } from "mdi-material-ui";
+import { defineMessages, useIntl } from "react-intl";
+import { useDispatch, useSelector } from "react-redux";
+import { ActionCreators } from "redux-undo";
 
-import TopIconButton from '../../../../components/TopIconButton';
-import { useUndo } from '../../../../components/UndoProvider';
-import { resetPlayers } from '../../../../ducks/players';
+import TopIconButton from "../../../../components/TopIconButton";
+import { useUndo } from "../../../../components/UndoProvider";
+import { resetPlayers } from "../../../../ducks/players";
 
-const displayName = 'ResetButton';
+const displayName = "ResetButton";
 
 const messages = defineMessages({
   reset: {
-    defaultMessage: 'Reset',
-    id: 'player.list.reset',
+    defaultMessage: "Reset",
+    id: "player.list.reset",
   },
 
   undo: {
-    defaultMessage: 'Players have been reset',
-    id: 'undo.resetPlayers',
+    defaultMessage: "Players have been reset",
+    id: "undo.resetPlayers",
   },
 });
 

@@ -1,8 +1,8 @@
-import { useMediaQuery } from '@material-ui/core';
-import PropTypes from 'prop-types';
-import { createContext, useContext, useEffect, useState } from 'react';
+import { useMediaQuery } from "@material-ui/core";
+import PropTypes from "prop-types";
+import { createContext, useContext, useEffect, useState } from "react";
 
-const displayName = 'SystemPaletteModeProvider';
+const displayName = "SystemPaletteModeProvider";
 
 const SystemPaletteTypeContext = createContext();
 
@@ -17,23 +17,23 @@ const getAndroidSystemPaletteMode = () =>
         if (available) {
           ThemeDetection.isDarkModeEnabled(
             ({ value: darkMode }) => {
-              resolve(darkMode ? 'dark' : 'light');
+              resolve(darkMode ? "dark" : "light");
             },
-            () => resolve(),
+            () => resolve()
           );
         } else {
           resolve();
         }
       },
-      () => resolve(),
+      () => resolve()
     );
   });
 
 const SystemPaletteModeProvider = ({ children }) => {
-  const cssSupport = window.matchMedia('(prefers-color-scheme)').matches;
+  const cssSupport = window.matchMedia("(prefers-color-scheme)").matches;
 
   const useCordova =
-    'cordova' in window && window.cordova.platformId === 'android';
+    "cordova" in window && window.cordova.platformId === "android";
 
   const [ready, setReady] = useState(() => !useCordova);
   const [cordovaMode, setCordovaMode] = useState();
@@ -51,12 +51,12 @@ const SystemPaletteModeProvider = ({ children }) => {
       getAndroidSystemPaletteMode().then(setCordovaMode);
     };
 
-    document.addEventListener('resume', onResume);
+    document.addEventListener("resume", onResume);
 
-    return () => document.removeEventListener('resume', onResume);
+    return () => document.removeEventListener("resume", onResume);
   }, [useCordova]);
 
-  const dark = useMediaQuery('(prefers-color-scheme: dark)');
+  const dark = useMediaQuery("(prefers-color-scheme: dark)");
 
   if (!ready) {
     return null;
@@ -67,7 +67,7 @@ const SystemPaletteModeProvider = ({ children }) => {
   if (useCordova) {
     value = cordovaMode;
   } else if (cssSupport) {
-    value = dark ? 'dark' : 'light';
+    value = dark ? "dark" : "light";
   }
 
   return (

@@ -1,3 +1,3 @@
-const { version } = require('../package');
+const { version } = require("../package");
 
 console.log(version);

@@ -1,6 +1,6 @@
-import { key as id } from '../../theme/colors/munchkin';
+import { key as id } from "../../theme/colors/munchkin";
 
-export const SET_THEME = 'theme/SET';
+export const SET_THEME = "theme/SET";
 
 export const setTheme = (theme) => ({
   theme,

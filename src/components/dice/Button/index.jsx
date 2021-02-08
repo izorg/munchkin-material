@@ -1,19 +1,19 @@
-import { Tooltip } from '@material-ui/core';
-import { DiceMultiple } from 'mdi-material-ui';
-import { defineMessages, useIntl } from 'react-intl';
-import { useDispatch } from 'react-redux';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Tooltip } from "@material-ui/core";
+import { DiceMultiple } from "mdi-material-ui";
+import { defineMessages, useIntl } from "react-intl";
+import { useDispatch } from "react-redux";
+import { useLocation, useNavigate } from "react-router-dom";
 
-import { throwDice } from '../../../ducks/dice';
-import { stringifyQuery } from '../../../utils/location';
-import TopIconButton from '../../TopIconButton';
+import { throwDice } from "../../../ducks/dice";
+import { stringifyQuery } from "../../../utils/location";
+import TopIconButton from "../../TopIconButton";
 
-const displayName = 'DiceIconButton';
+const displayName = "DiceIconButton";
 
 const messages = defineMessages({
   dice: {
-    defaultMessage: 'Dice',
-    id: 'dice',
+    defaultMessage: "Dice",
+    id: "dice",
   },
 });
 

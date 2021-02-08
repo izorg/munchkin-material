@@ -1,19 +1,19 @@
-import common from '@material-ui/core/colors/common';
-import orange from '@material-ui/core/colors/orange';
-import { alpha } from '@material-ui/core/styles/colorManipulator';
-import createBreakpoints from '@material-ui/core/styles/createBreakpoints';
-import { light } from '@material-ui/core/styles/createPalette';
-import deepmerge from 'deepmerge';
+import common from "@material-ui/core/colors/common";
+import orange from "@material-ui/core/colors/orange";
+import { alpha } from "@material-ui/core/styles/colorManipulator";
+import createBreakpoints from "@material-ui/core/styles/createBreakpoints";
+import { light } from "@material-ui/core/styles/createPalette";
+import deepmerge from "deepmerge";
 
 const breakpoints = createBreakpoints({});
 
-const getThemeOptions = ({ direction, mode = 'light', pureBlack }) => {
+const getThemeOptions = ({ direction, mode = "light", pureBlack }) => {
   let theme = {
     components: {
       MuiDialog: {
         styleOverrides: {
           paperScrollPaper: {
-            maxHeight: 'calc(100% - 32px)',
+            maxHeight: "calc(100% - 32px)",
           },
         },
       },
@@ -21,18 +21,18 @@ const getThemeOptions = ({ direction, mode = 'light', pureBlack }) => {
       MuiSnackbar: {
         styleOverrides: {
           anchorOriginBottomLeft: {
-            '@supports (padding: max(0px))': {
-              [breakpoints.up('sm')]: {
-                left: 'max(24px, env(safe-area-inset-right))',
-                right: 'max(24px, env(safe-area-inset-right))',
+            "@supports (padding: max(0px))": {
+              [breakpoints.up("sm")]: {
+                left: "max(24px, env(safe-area-inset-right))",
+                right: "max(24px, env(safe-area-inset-right))",
               },
             },
           },
 
           root: {
-            '@supports (padding: max(0px))': {
-              left: 'max(8px, env(safe-area-inset-right))',
-              right: 'max(8px, env(safe-area-inset-right))',
+            "@supports (padding: max(0px))": {
+              left: "max(8px, env(safe-area-inset-right))",
+              right: "max(8px, env(safe-area-inset-right))",
             },
           },
         },
@@ -45,7 +45,7 @@ const getThemeOptions = ({ direction, mode = 'light', pureBlack }) => {
             color: undefined,
 
             // eslint-disable-next-line sort-keys
-            '&:hover': {
+            "&:hover": {
               backgroundColor: undefined,
             },
           },
@@ -65,7 +65,7 @@ const getThemeOptions = ({ direction, mode = 'light', pureBlack }) => {
       toolbar: {
         minHeight: 56,
 
-        [breakpoints.up('md')]: {
+        [breakpoints.up("md")]: {
           minHeight: 64,
         },
       },
@@ -84,7 +84,7 @@ const getThemeOptions = ({ direction, mode = 'light', pureBlack }) => {
     },
   };
 
-  if (mode === 'light') {
+  if (mode === "light") {
     theme = deepmerge(theme, {
       components: {
         MuiIconButton: {
@@ -98,19 +98,19 @@ const getThemeOptions = ({ direction, mode = 'light', pureBlack }) => {
     });
   }
 
-  if (mode === 'dark') {
+  if (mode === "dark") {
     theme = deepmerge(theme, {
       components: {
         MuiPaper: {
           styleOverrides: {
             elevation1: {
               backgroundColor: alpha(common.white, 0.05),
-              boxShadow: 'none',
+              boxShadow: "none",
             },
 
             elevation2: {
               backgroundColor: alpha(common.white, 0.07),
-              boxShadow: 'none',
+              boxShadow: "none",
             },
           },
         },
@@ -118,7 +118,7 @@ const getThemeOptions = ({ direction, mode = 'light', pureBlack }) => {
 
       palette: {
         background: {
-          default: pureBlack ? '#000000' : '#121212',
+          default: pureBlack ? "#000000" : "#121212",
         },
       },
     });

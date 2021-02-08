@@ -1,16 +1,16 @@
-import { List, makeStyles, useTheme } from '@material-ui/core';
-import clsx from 'clsx';
-import { useCallback } from 'react';
-import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
-import { useDispatch, useSelector } from 'react-redux';
+import { List, makeStyles, useTheme } from "@material-ui/core";
+import clsx from "clsx";
+import { useCallback } from "react";
+import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
+import { useDispatch, useSelector } from "react-redux";
 
-import { movePlayer } from '../../../ducks/playerList';
-import { useLocationQuery } from '../../../utils/location';
-import { EDIT } from '../modes';
+import { movePlayer } from "../../../ducks/playerList";
+import { useLocationQuery } from "../../../utils/location";
+import { EDIT } from "../modes";
 
-import Item from './Item';
+import Item from "./Item";
 
-const displayName = 'HomePlayerList';
+const displayName = "HomePlayerList";
 
 const useStyles = makeStyles(
   {
@@ -21,18 +21,18 @@ const useStyles = makeStyles(
     // },
 
     drag: {
-      '&:hover': {
-        backgroundColor: 'transparent',
+      "&:hover": {
+        backgroundColor: "transparent",
       },
     },
 
     dragging: {
       '& [data-react-beautiful-dnd-draggable="0"]': {
-        transition: 'transform 0.2s cubic-bezier(0.2, 0, 0, 1)',
+        transition: "transform 0.2s cubic-bezier(0.2, 0, 0, 1)",
       },
     },
   },
-  { name: displayName },
+  { name: displayName }
 );
 
 // const SortableList = forwardRef((props, ref) => {
@@ -58,7 +58,7 @@ const HomePlayerList = (props) => {
         dispatch(movePlayer(source.index, destination.index));
       }
     },
-    [dispatch],
+    [dispatch]
   );
 
   if (query[EDIT] !== undefined) {
@@ -81,23 +81,23 @@ const HomePlayerList = (props) => {
                 >
                   {(
                     { draggableProps, dragHandleProps, innerRef: draggableRef },
-                    { isDragging },
+                    { isDragging }
                   ) => {
                     let style = { ...draggableProps.style };
 
                     if (isDragging) {
                       const transition = theme.transitions.create(
-                        'box-shadow',
+                        "box-shadow",
                         {
                           duration: theme.transitions.duration.standard,
-                        },
+                        }
                       );
 
                       style = {
                         ...style,
                         backgroundColor: theme.palette.background.paper,
                         boxShadow: theme.shadows[3],
-                        pointerEvents: 'auto',
+                        pointerEvents: "auto",
                         transition: style.transition
                           ? `${style.transition}, ${transition}`
                           : transition,
@@ -108,7 +108,7 @@ const HomePlayerList = (props) => {
                     if (style.transform) {
                       const transform = style.transform.replace(
                         /translate\(([0-9.-]+px), ([0-9.-]+px)\)/,
-                        'translate(0, $2)',
+                        "translate(0, $2)"
                       );
 
                       style = {

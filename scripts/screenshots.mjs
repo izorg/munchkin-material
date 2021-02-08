@@ -1,16 +1,16 @@
-import { promises as fs } from 'fs';
-import path from 'path';
+import { promises as fs } from "fs";
+import path from "path";
 
-import { duration } from '@material-ui/core/node/styles/transitions.js';
-import { chromium, devices } from 'playwright';
+import { duration } from "@material-ui/core/node/styles/transitions.js";
+import { chromium, devices } from "playwright";
 
-const CS = 'cs';
-const EN = 'en';
-const HE = 'he';
-const RU = 'ru';
-const UK = 'uk';
+const CS = "cs";
+const EN = "en";
+const HE = "he";
+const RU = "ru";
+const UK = "uk";
 
-const appUrl = 'http://localhost:3000';
+const appUrl = "http://localhost:3000";
 
 const browsers = Object.entries({ chromium });
 
@@ -25,11 +25,11 @@ const browserDevices = {
         width: 1024,
       },
     },
-    iPhone6Plus: devices['iPhone 6 Plus'],
-    iPhone11ProMax: devices['iPhone 11 Pro Max'],
-    Nexus5: devices['Nexus 5'],
-    Nexus7: devices['Nexus 7'],
-    Nexus10: devices['Nexus 10'],
+    iPhone6Plus: devices["iPhone 6 Plus"],
+    iPhone11ProMax: devices["iPhone 11 Pro Max"],
+    Nexus5: devices["Nexus 5"],
+    Nexus7: devices["Nexus 7"],
+    Nexus10: devices["Nexus 10"],
     windows: {
       deviceScaleFactor: 2,
       viewport: {
@@ -40,7 +40,7 @@ const browserDevices = {
   }),
 };
 
-const dir = 'screenshots';
+const dir = "screenshots";
 
 const delay = (timeout) =>
   new Promise((resolve) => setTimeout(resolve, timeout));
@@ -72,7 +72,7 @@ const getScreenshots = async (browserType, device, locale, deviceName) => {
 
   // Home
   count += 1;
-  await page.goto(appUrl, { waitUntil: 'networkidle' });
+  await page.goto(appUrl, { waitUntil: "networkidle" });
   await page.evaluate((testLocale) => {
     window.munchkinDev.setLocale(testLocale);
     window.munchkinDev.setTestData();
@@ -80,7 +80,7 @@ const getScreenshots = async (browserType, device, locale, deviceName) => {
   await page.screenshot({
     path: path.join(screenshotDir, `${count}-home.png`),
   });
-  console.log('📸 home');
+  console.log("📸 home");
 
   // Player
   count += 1;
@@ -89,7 +89,7 @@ const getScreenshots = async (browserType, device, locale, deviceName) => {
   await page.screenshot({
     path: path.join(screenshotDir, `${count}-player.png`),
   });
-  console.log('📸 player');
+  console.log("📸 player");
 
   // Dice
   count += 1;
@@ -98,10 +98,10 @@ const getScreenshots = async (browserType, device, locale, deviceName) => {
   await page.screenshot({
     path: path.join(screenshotDir, `${count}-dice.png`),
   });
-  console.log('📸 dice');
+  console.log("📸 dice");
 
   // Combat
-  await page.keyboard.down('Escape');
+  await page.keyboard.down("Escape");
   await delay(duration.enteringScreen);
   count += 1;
   await page.click('[data-screenshots="combat-button"]');
@@ -109,7 +109,7 @@ const getScreenshots = async (browserType, device, locale, deviceName) => {
   await page.screenshot({
     path: path.join(screenshotDir, `${count}-combat.png`),
   });
-  console.log('📸 combat');
+  console.log("📸 combat");
 
   // Single mode
   await page.click('[data-screenshots="combat-back-button"]');
@@ -118,7 +118,7 @@ const getScreenshots = async (browserType, device, locale, deviceName) => {
   await delay(duration.enteringScreen * 2);
   count += 1;
 
-  if (deviceName === 'iPadPro' || deviceName === 'windows') {
+  if (deviceName === "iPadPro" || deviceName === "windows") {
     await page.click('[data-screenshots="single-mode-item"]');
   } else {
     await page.click('[data-screenshots="menu"]');
@@ -130,29 +130,29 @@ const getScreenshots = async (browserType, device, locale, deviceName) => {
   await Promise.all(
     range(0, 3).map(async () =>
       page.click(
-        '[data-screenshots="level-counter"] [data-screenshots="increment-button"]',
-      ),
-    ),
+        '[data-screenshots="level-counter"] [data-screenshots="increment-button"]'
+      )
+    )
   );
   await Promise.all(
     range(0, 8).map(async () =>
       page.click(
-        '[data-screenshots="gear-counter"] [data-screenshots="increment-button"]',
-      ),
-    ),
+        '[data-screenshots="gear-counter"] [data-screenshots="increment-button"]'
+      )
+    )
   );
   await Promise.all(
     range(0, 3).map(async () =>
       page.click(
-        '[data-screenshots="modifier-counter"] [data-screenshots="decrement-button"]',
-      ),
-    ),
+        '[data-screenshots="modifier-counter"] [data-screenshots="decrement-button"]'
+      )
+    )
   );
   await delay(duration.enteringScreen);
   await page.screenshot({
     path: path.join(screenshotDir, `${count}-single.png`),
   });
-  console.log('📸 single');
+  console.log("📸 single");
 
   await browser.close();
 };

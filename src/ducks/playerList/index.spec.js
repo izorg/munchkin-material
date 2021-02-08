@@ -2,12 +2,12 @@ import {
   ADD_PLAYER_TO_LIST,
   MOVE_PLAYER,
   SHUFFLE_PLAYERS,
-} from './actionTypes';
+} from "./actionTypes";
 
-import reducer from './index';
+import reducer from "./index";
 
-describe('Player List reducer', () => {
-  test('should add player', () => {
+describe("Player List reducer", () => {
+  test("should add player", () => {
     let playerList = reducer(undefined, {
       id: 1,
       type: ADD_PLAYER_TO_LIST,
@@ -23,7 +23,7 @@ describe('Player List reducer', () => {
     expect(playerList[1]).toStrictEqual(2);
   });
 
-  test('should move player', () => {
+  test("should move player", () => {
     const playerList = reducer([1, 2, 3], {
       newPosition: 2,
       oldPosition: 0,
@@ -33,7 +33,7 @@ describe('Player List reducer', () => {
     expect(playerList).toStrictEqual([2, 3, 1]);
   });
 
-  test('should shuffle players', () => {
+  test("should shuffle players", () => {
     const state = [1, 2, 3];
 
     const playerList = reducer([1, 2, 3], {

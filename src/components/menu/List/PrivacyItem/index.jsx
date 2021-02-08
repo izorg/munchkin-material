@@ -1,11 +1,11 @@
-import { ListItemIcon } from '@material-ui/core';
-import { ShieldAccount } from 'mdi-material-ui';
-import { FormattedMessage } from 'react-intl';
+import { ListItemIcon } from "@material-ui/core";
+import { ShieldAccount } from "mdi-material-ui";
+import { FormattedMessage } from "react-intl";
 
-import ListItem from '../Item';
-import ListItemText from '../ItemText';
+import ListItem from "../Item";
+import ListItemText from "../ItemText";
 
-const displayName = 'PrivacyItem';
+const displayName = "PrivacyItem";
 
 const PrivacyItem = (props) => {
   if (!window.cordova) {

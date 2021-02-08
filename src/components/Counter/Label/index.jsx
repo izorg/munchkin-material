@@ -1,10 +1,10 @@
-import { css } from '@emotion/react';
-import { useTheme } from '@material-ui/core';
-import { useIntl } from 'react-intl';
+import { css } from "@emotion/react";
+import { useTheme } from "@material-ui/core";
+import { useIntl } from "react-intl";
 
-import { EN, RU } from '../../../i18n';
+import { EN, RU } from "../../../i18n";
 
-const displayName = 'CounterLabel';
+const displayName = "CounterLabel";
 
 const munchkinFontSupportedLocales = [EN, RU];
 

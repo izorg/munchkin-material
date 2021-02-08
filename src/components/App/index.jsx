@@ -1,25 +1,25 @@
-import { lazy, Suspense, useEffect } from 'react';
+import { lazy, Suspense, useEffect } from "react";
 
-import Home from '../../routes/Home';
-import ScreenModal from '../ScreenModal';
-import UndoProvider from '../UndoProvider';
-import UndoSnackbar from '../UndoSnackbar';
+import Home from "../../routes/Home";
+import ScreenModal from "../ScreenModal";
+import UndoProvider from "../UndoProvider";
+import UndoSnackbar from "../UndoSnackbar";
 
 const DiceDialog = lazy(() =>
   import(
     /* webpackPrefetch: true */
-    '../dice/Dialog'
-  ),
+    "../dice/Dialog"
+  )
 );
 
 const PlayerDialog = lazy(() =>
   import(
     /* webpackPrefetch: true */
-    '../PlayerDialog'
-  ),
+    "../PlayerDialog"
+  )
 );
 
-const displayName = 'App';
+const displayName = "App";
 
 const App = () => {
   useEffect(() => {

@@ -1,33 +1,33 @@
-import { makeStyles } from '@material-ui/core';
-import clsx from 'clsx';
+import { makeStyles } from "@material-ui/core";
+import clsx from "clsx";
 import {
   MenuDown as DecrementIcon,
   MenuUp as IncrementIcon,
-} from 'mdi-material-ui';
-import PropTypes from 'prop-types';
-import { defineMessages } from 'react-intl';
+} from "mdi-material-ui";
+import PropTypes from "prop-types";
+import { defineMessages } from "react-intl";
 
-import Button from './Button';
-import CounterLabel from './Label';
+import Button from "./Button";
+import CounterLabel from "./Label";
 
-const displayName = 'Counter';
+const displayName = "Counter";
 
 export const counterMessages = defineMessages({
   gear: {
-    defaultMessage: 'Gear',
-    id: 'counter.gear',
+    defaultMessage: "Gear",
+    id: "counter.gear",
   },
   level: {
-    defaultMessage: 'Level',
-    id: 'counter.level',
+    defaultMessage: "Level",
+    id: "counter.level",
   },
   modifier: {
-    defaultMessage: 'Modifier',
-    id: 'counter.modifier',
+    defaultMessage: "Modifier",
+    id: "counter.modifier",
   },
   strength: {
-    defaultMessage: 'Strength',
-    id: 'counter.strength',
+    defaultMessage: "Strength",
+    id: "counter.strength",
   },
 });
 
@@ -35,22 +35,22 @@ const useStyles = makeStyles(
   /* eslint-disable sort-keys */
   (theme) => ({
     counter: {
-      alignItems: 'center',
-      display: 'flex',
-      flexDirection: 'column',
+      alignItems: "center",
+      display: "flex",
+      flexDirection: "column",
     },
 
     title: {
       fontSize: 24,
-      textAlign: 'center',
-      width: '100%',
+      textAlign: "center",
+      width: "100%",
     },
 
     buttons: {
-      display: 'flex',
-      justifyContent: 'space-around',
-      maxWidth: '120px',
-      width: '100%',
+      display: "flex",
+      justifyContent: "space-around",
+      maxWidth: "120px",
+      width: "100%",
     },
 
     button: {
@@ -59,7 +59,7 @@ const useStyles = makeStyles(
     },
 
     icon: {
-      fontSize: 'inherit',
+      fontSize: "inherit",
     },
 
     value: {
@@ -69,7 +69,7 @@ const useStyles = makeStyles(
     },
   }),
   /* eslint-enable */
-  { name: displayName },
+  { name: displayName }
 );
 
 const Counter = ({

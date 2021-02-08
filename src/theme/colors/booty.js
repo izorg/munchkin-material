@@ -1,12 +1,12 @@
-import red from '@material-ui/core/colors/red';
-import { defineMessages } from 'react-intl';
+import red from "@material-ui/core/colors/red";
+import { defineMessages } from "react-intl";
 
-export const key = 'booty';
+export const key = "booty";
 
 export const messages = defineMessages({
   name: {
-    defaultMessage: 'Booty',
-    id: 'theme.name.booty',
+    defaultMessage: "Booty",
+    id: "theme.name.booty",
   },
 });
 

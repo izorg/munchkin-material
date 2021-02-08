@@ -1,12 +1,12 @@
-import lightGreen from '@material-ui/core/colors/lightGreen';
-import { defineMessages } from 'react-intl';
+import lightGreen from "@material-ui/core/colors/lightGreen";
+import { defineMessages } from "react-intl";
 
-export const key = 'cthulhu';
+export const key = "cthulhu";
 
 export const messages = defineMessages({
   name: {
-    defaultMessage: 'Cthulhu',
-    id: 'theme.name.cthulhu',
+    defaultMessage: "Cthulhu",
+    id: "theme.name.cthulhu",
   },
 });
 

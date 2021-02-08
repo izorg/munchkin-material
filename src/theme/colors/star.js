@@ -1,12 +1,12 @@
-import lightBlue from '@material-ui/core/colors/lightBlue';
-import { defineMessages } from 'react-intl';
+import lightBlue from "@material-ui/core/colors/lightBlue";
+import { defineMessages } from "react-intl";
 
-export const key = 'star';
+export const key = "star";
 
 export const messages = defineMessages({
   name: {
-    defaultMessage: 'Star',
-    id: 'theme.name.star',
+    defaultMessage: "Star",
+    id: "theme.name.star",
   },
 });
 

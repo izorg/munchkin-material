@@ -1,22 +1,22 @@
-import { ListItemIcon, makeStyles } from '@material-ui/core';
-import clsx from 'clsx';
-import { SwapVertical } from 'mdi-material-ui';
-import { useIntl } from 'react-intl';
-import { useSelector } from 'react-redux';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { ListItemIcon, makeStyles } from "@material-ui/core";
+import clsx from "clsx";
+import { SwapVertical } from "mdi-material-ui";
+import { useIntl } from "react-intl";
+import { useSelector } from "react-redux";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import {
   MAX_EPIC_LEVEL,
   MAX_LEVEL,
   MIN_LEVEL,
-} from '../../../../utils/levelLimit';
-import { parseSearch, stringifyQuery } from '../../../../utils/location';
-import levelLimitMessages from '../../../levelLimit/messages';
-import useMenuOpen from '../../useMenuOpen';
-import ListItem from '../Item';
-import ListItemText from '../ItemText';
+} from "../../../../utils/levelLimit";
+import { parseSearch, stringifyQuery } from "../../../../utils/location";
+import levelLimitMessages from "../../../levelLimit/messages";
+import useMenuOpen from "../../useMenuOpen";
+import ListItem from "../Item";
+import ListItemText from "../ItemText";
 
-const displayName = 'LevelLimitItem';
+const displayName = "LevelLimitItem";
 
 const useStyles = makeStyles(
   {
@@ -25,7 +25,7 @@ const useStyles = makeStyles(
       paddingTop: 0,
     },
   },
-  { name: displayName },
+  { name: displayName }
 );
 
 const LevelLimitItem = ({ className, ...rest }) => {

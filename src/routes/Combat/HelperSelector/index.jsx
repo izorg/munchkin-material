@@ -6,16 +6,16 @@ import {
   ListItem,
   ListItemAvatar,
   makeStyles,
-} from '@material-ui/core';
-import { FormattedMessage } from 'react-intl';
-import { useDispatch, useSelector } from 'react-redux';
+} from "@material-ui/core";
+import { FormattedMessage } from "react-intl";
+import { useDispatch, useSelector } from "react-redux";
 
-import PlayerAvatar from '../../../components/PlayerAvatar';
-import PlayerListItemText from '../../../components/PlayerListItemText';
-import { setCombatHelper } from '../../../ducks/combat';
-import { useGoBack, useLocationQuery } from '../../../utils/location';
+import PlayerAvatar from "../../../components/PlayerAvatar";
+import PlayerListItemText from "../../../components/PlayerListItemText";
+import { setCombatHelper } from "../../../ducks/combat";
+import { useGoBack, useLocationQuery } from "../../../utils/location";
 
-const displayName = 'HelperSelector';
+const displayName = "HelperSelector";
 
 const useStyles = makeStyles(
   /* eslint-disable sort-keys */
@@ -29,7 +29,7 @@ const useStyles = makeStyles(
     },
   }),
   /* eslint-enable */
-  { name: displayName },
+  { name: displayName }
 );
 
 const HelperSelector = (props) => {
@@ -47,7 +47,7 @@ const HelperSelector = (props) => {
   });
 
   const query = useLocationQuery();
-  const open = query.add === 'helper';
+  const open = query.add === "helper";
 
   const onClose = () => goBack();
 

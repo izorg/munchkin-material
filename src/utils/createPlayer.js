@@ -1,6 +1,6 @@
-import { v4 as uuid } from 'uuid';
+import { v4 as uuid } from "uuid";
 
-import { MALE } from './sex';
+import { MALE } from "./sex";
 
 export const defaultData = {
   gear: 0,

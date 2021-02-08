@@ -1,11 +1,11 @@
-import { ListItemIcon } from '@material-ui/core';
-import { Translate } from 'mdi-material-ui';
-import { FormattedMessage } from 'react-intl';
+import { ListItemIcon } from "@material-ui/core";
+import { Translate } from "mdi-material-ui";
+import { FormattedMessage } from "react-intl";
 
-import ListItem from '../Item';
-import ListItemText from '../ItemText';
+import ListItem from "../Item";
+import ListItemText from "../ItemText";
 
-const displayName = 'TranslateItem';
+const displayName = "TranslateItem";
 
 const TranslateItem = (props) => (
   <ListItem

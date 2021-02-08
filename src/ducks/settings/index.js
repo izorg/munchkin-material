@@ -1,14 +1,14 @@
-import createPlayer from '../../utils/createPlayer';
-import { startCombat } from '../combat';
-import { addPlayer } from '../players';
+import createPlayer from "../../utils/createPlayer";
+import { startCombat } from "../combat";
+import { addPlayer } from "../players";
 
-export const SET_EPIC = 'app/SET_EPIC';
-export const SET_FULL_VERSION = 'app/SET_FULL_VERSION';
-export const SET_KEEP_AWAKE = 'app/SET_KEEP_AWAKE';
-export const SET_LOCALE = 'app/SET_LOCALE';
-export const SET_LEVEL_LIMIT = 'app/SET_LEVEL_LIMIT';
-export const SET_SINGLE_MODE = 'app/SET_SINGLE_MODE';
-export const SET_SINGLE_MODE_PLAYER = 'app/SET_SINGLE_MODE_PLAYER';
+export const SET_EPIC = "app/SET_EPIC";
+export const SET_FULL_VERSION = "app/SET_FULL_VERSION";
+export const SET_KEEP_AWAKE = "app/SET_KEEP_AWAKE";
+export const SET_LOCALE = "app/SET_LOCALE";
+export const SET_LEVEL_LIMIT = "app/SET_LEVEL_LIMIT";
+export const SET_SINGLE_MODE = "app/SET_SINGLE_MODE";
+export const SET_SINGLE_MODE_PLAYER = "app/SET_SINGLE_MODE_PLAYER";
 
 export const setEpic = (epic = true) => ({
   epic,

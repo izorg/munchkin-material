@@ -5,37 +5,37 @@ import {
   Slide,
   useMediaQuery,
   useTheme,
-} from '@material-ui/core';
-import PropTypes from 'prop-types';
+} from "@material-ui/core";
+import PropTypes from "prop-types";
 
-import { ios } from '../../utils/platforms';
+import { ios } from "../../utils/platforms";
 
-const displayName = 'ScreenModal';
+const displayName = "ScreenModal";
 
 const useStyles = makeStyles(
   {
     root: {
-      display: 'flex',
-      flexDirection: 'column',
-      height: '100%',
-      outline: 'none',
+      display: "flex",
+      flexDirection: "column",
+      height: "100%",
+      outline: "none",
     },
   },
-  { name: displayName },
+  { name: displayName }
 );
 
 const ScreenModal = ({ children, open, TransitionProps }) => {
   const classes = useStyles();
   const theme = useTheme();
 
-  const slide = useMediaQuery(theme.breakpoints.down('lg')) && ios;
+  const slide = useMediaQuery(theme.breakpoints.down("lg")) && ios;
   const TransitionComponent = slide ? Slide : Fade;
 
   return (
     <Modal closeAfterTransition hideBackdrop open={open}>
       <TransitionComponent
         appear
-        direction={slide ? 'left' : undefined}
+        direction={slide ? "left" : undefined}
         in={open}
         {...TransitionProps}
       >

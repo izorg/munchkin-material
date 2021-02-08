@@ -4,34 +4,34 @@ import {
   Paper,
   useMediaQuery,
   useTheme,
-} from '@material-ui/core';
-import clsx from 'clsx';
-import { motion, useAnimation, useMotionValue } from 'framer-motion';
-import { CloseCircle } from 'mdi-material-ui';
-import { memo, useEffect, useRef } from 'react';
-import { FormattedMessage } from 'react-intl';
-import { useDispatch, useSelector } from 'react-redux';
+} from "@material-ui/core";
+import clsx from "clsx";
+import { motion, useAnimation, useMotionValue } from "framer-motion";
+import { CloseCircle } from "mdi-material-ui";
+import { memo, useEffect, useRef } from "react";
+import { FormattedMessage } from "react-intl";
+import { useDispatch, useSelector } from "react-redux";
 
-import { removeMonster } from '../../../ducks/monsters';
+import { removeMonster } from "../../../ducks/monsters";
 
-import Monster from './Monster';
+import Monster from "./Monster";
 
-const displayName = 'CombatMonsterSlider';
+const displayName = "CombatMonsterSlider";
 
 const useStyles = makeStyles(
   /* eslint-disable sort-keys */
   (theme) => ({
     monsters: {
-      display: 'flex',
-      overflow: 'hidden',
+      display: "flex",
+      overflow: "hidden",
 
-      '@media (orientation: portrait)': {
-        width: '100%',
+      "@media (orientation: portrait)": {
+        width: "100%",
       },
 
-      '@media (orientation: landscape)': {
-        flexDirection: 'column',
-        height: '100%',
+      "@media (orientation: landscape)": {
+        flexDirection: "column",
+        height: "100%",
       },
     },
 
@@ -40,12 +40,12 @@ const useStyles = makeStyles(
     },
 
     container: {
-      display: 'flex',
+      display: "flex",
       flexShrink: 0,
       padding: theme.spacing(1),
 
-      '@media (orientation: landscape)': {
-        flexDirection: 'column',
+      "@media (orientation: landscape)": {
+        flexDirection: "column",
       },
     },
 
@@ -55,16 +55,16 @@ const useStyles = makeStyles(
     },
 
     paper: {
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'center',
-      position: 'relative',
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center",
+      position: "relative",
 
-      '@media (orientation: portrait)': {
+      "@media (orientation: portrait)": {
         width: 280,
       },
 
-      '@media (orientation: landscape)': {
+      "@media (orientation: landscape)": {
         maxWidth: 280,
       },
     },
@@ -72,14 +72,14 @@ const useStyles = makeStyles(
     remove: {
       height: 36,
       padding: 6,
-      position: 'absolute',
+      position: "absolute",
       right: 0,
       top: 0,
       width: 36,
     },
   }),
   /* eslint-enable */
-  { name: displayName },
+  { name: displayName }
 );
 
 const CombatMonsterSlider = ({ className }) => {
@@ -98,7 +98,7 @@ const CombatMonsterSlider = ({ className }) => {
 
   const { direction } = useTheme();
 
-  const landscape = useMediaQuery('(orientation: landscape)');
+  const landscape = useMediaQuery("(orientation: landscape)");
 
   const monsters = useSelector((state) => state.present.combat.monsters);
   const monsterCount = useRef(monsters.length);
@@ -147,9 +147,9 @@ const CombatMonsterSlider = ({ className }) => {
       }
 
       const min =
-        direction === 'rtl' ? 0 : parent.offsetWidth - child.offsetWidth;
+        direction === "rtl" ? 0 : parent.offsetWidth - child.offsetWidth;
       const max =
-        direction === 'rtl' ? child.offsetWidth - parent.offsetWidth : 0;
+        direction === "rtl" ? child.offsetWidth - parent.offsetWidth : 0;
 
       if (target < min) {
         return min;
@@ -166,14 +166,14 @@ const CombatMonsterSlider = ({ className }) => {
   useEffect(() => {
     const parent = ref.current;
     const child = containerRef.current;
-    const transitionOverride = { type: 'tween' };
+    const transitionOverride = { type: "tween" };
 
     if (landscape) {
       if (monsters.length > monsterCount.current) {
         if (child.offsetHeight > parent.offsetHeight) {
           animate.start(
             { y: parent.offsetHeight - child.offsetHeight },
-            transitionOverride,
+            transitionOverride
           );
         }
       }
@@ -184,7 +184,7 @@ const CombatMonsterSlider = ({ className }) => {
         } else if (y.get() < parent.offsetHeight - child.offsetHeight) {
           animate.start(
             { y: parent.offsetHeight - child.offsetHeight },
-            transitionOverride,
+            transitionOverride
           );
         }
       }
@@ -193,7 +193,7 @@ const CombatMonsterSlider = ({ className }) => {
         if (child.offsetWidth > parent.offsetWidth) {
           let shift = parent.offsetWidth - child.offsetWidth;
 
-          if (direction === 'rtl') {
+          if (direction === "rtl") {
             shift = -shift;
           }
 
@@ -205,18 +205,18 @@ const CombatMonsterSlider = ({ className }) => {
         if (child.offsetWidth <= parent.offsetWidth) {
           x.set(0);
         } else {
-          if (direction === 'rtl') {
+          if (direction === "rtl") {
             if (x.get() > child.offsetWidth - parent.offsetWidth) {
               animate.start(
                 { x: child.offsetWidth - parent.offsetWidth },
-                transitionOverride,
+                transitionOverride
               );
             }
           } else {
             if (x.get() < parent.offsetWidth - child.offsetWidth) {
               animate.start(
                 { x: parent.offsetWidth - child.offsetWidth },
-                transitionOverride,
+                transitionOverride
               );
             }
           }
@@ -244,7 +244,7 @@ const CombatMonsterSlider = ({ className }) => {
         ref={containerRef}
         animate={animate}
         className={classes.container}
-        drag={landscape ? 'y' : 'x'}
+        drag={landscape ? "y" : "x"}
         dragTransition={{
           modifyTarget,
           timeConstant: 300,

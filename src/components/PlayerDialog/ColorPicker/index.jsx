@@ -1,19 +1,19 @@
-import { Hidden, makeStyles, useFormControl } from '@material-ui/core';
-import PropTypes from 'prop-types';
-import { useEffect, useRef, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Hidden, makeStyles, useFormControl } from "@material-ui/core";
+import PropTypes from "prop-types";
+import { useEffect, useRef, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import {
   stringifyQuery,
   useGoBack,
   useLocationQuery,
-} from '../../../utils/location';
+} from "../../../utils/location";
 
-import Color from './Color';
-import Dialog from './Dialog';
-import Popover from './Popover';
+import Color from "./Color";
+import Dialog from "./Dialog";
+import Popover from "./Popover";
 
-const displayName = 'ColorPicker';
+const displayName = "ColorPicker";
 
 const useStyles = makeStyles(
   {
@@ -21,7 +21,7 @@ const useStyles = makeStyles(
       marginLeft: -6,
     },
   },
-  { name: displayName },
+  { name: displayName }
 );
 
 const ColorPicker = ({
@@ -102,7 +102,7 @@ const ColorPicker = ({
           }
         }}
         onKeyDown={(event) => {
-          if ([' ', 'Enter'].includes(event.key)) {
+          if ([" ", "Enter"].includes(event.key)) {
             ignoreNextBlur.current = true;
           }
         }}

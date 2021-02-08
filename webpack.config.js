@@ -1,36 +1,36 @@
-const path = require('path');
+const path = require("path");
 
-const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const CopyPlugin = require('copy-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const HtmlWebpackTagsPlugin = require('html-webpack-tags-plugin');
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
-const { GenerateSW } = require('workbox-webpack-plugin');
+const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const HtmlWebpackTagsPlugin = require("html-webpack-tags-plugin");
+const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
+const { GenerateSW } = require("workbox-webpack-plugin");
 
-const dev = process.env.NODE_ENV === 'development';
-const cordova = process.env.BUILD === 'cordova';
-const web = process.env.BUILD === 'web';
+const dev = process.env.NODE_ENV === "development";
+const cordova = process.env.BUILD === "cordova";
+const web = process.env.BUILD === "web";
 
-const outputPath = path.resolve(__dirname, cordova ? 'cordova/www' : 'web');
+const outputPath = path.resolve(__dirname, cordova ? "cordova/www" : "web");
 
-let entry = './src/cordova.jsx';
+let entry = "./src/cordova.jsx";
 
 if (web) {
-  entry = './src/web.jsx';
+  entry = "./src/web.jsx";
 }
 
 if (dev) {
-  entry = './src/dev/index.js';
+  entry = "./src/dev/index.js";
 }
 
-const ids = process.env.STATS || dev ? 'named' : 'deterministic';
+const ids = process.env.STATS || dev ? "named" : "deterministic";
 
 module.exports = {
   devServer: {
     compress: true,
     historyApiFallback: true,
-    host: '0.0.0.0',
+    host: "0.0.0.0",
     overlay: true,
     port: 3000,
     static: {
@@ -38,7 +38,7 @@ module.exports = {
     },
   },
 
-  devtool: cordova ? 'inline-source-map' : 'source-map',
+  devtool: cordova ? "inline-source-map" : "source-map",
 
   entry,
 
@@ -51,10 +51,10 @@ module.exports = {
         test: /\.m?jsx?$/,
         use: [
           {
-            loader: 'babel-loader',
+            loader: "babel-loader",
             options: {
               cacheDirectory: dev,
-              plugins: [dev && 'react-refresh/babel'].filter(Boolean),
+              plugins: [dev && "react-refresh/babel"].filter(Boolean),
             },
           },
         ],
@@ -63,14 +63,14 @@ module.exports = {
         test: /\.html$/,
         use: [
           {
-            loader: 'html-loader',
+            loader: "html-loader",
             options: {
               attributes: {
                 list: [
                   {
-                    attribute: 'href',
-                    tag: 'link',
-                    type: 'src',
+                    attribute: "href",
+                    tag: "link",
+                    type: "src",
                   },
                 ],
               },
@@ -82,16 +82,16 @@ module.exports = {
         test: /\.css$/,
         use: [
           {
-            loader: 'file-loader',
+            loader: "file-loader",
             options: {
-              name: '[name].[ext]',
+              name: "[name].[ext]",
             },
           },
           {
-            loader: 'extract-loader',
+            loader: "extract-loader",
           },
           {
-            loader: 'css-loader',
+            loader: "css-loader",
           },
         ],
       },
@@ -99,10 +99,10 @@ module.exports = {
         test: /\.woff2?$/,
         use: [
           {
-            loader: 'file-loader',
+            loader: "file-loader",
             options: {
-              name: '[name].[ext]',
-              outputPath: 'fonts',
+              name: "[name].[ext]",
+              outputPath: "fonts",
             },
           },
         ],
@@ -116,9 +116,9 @@ module.exports = {
   },
 
   output: {
-    filename: 'js/[name].js',
+    filename: "js/[name].js",
     path: outputPath,
-    publicPath: web ? '/' : '',
+    publicPath: web ? "/" : "",
   },
 
   plugins: [
@@ -130,20 +130,20 @@ module.exports = {
       new CopyPlugin({
         patterns: [
           {
-            context: 'src/static',
-            from: '**/*',
+            context: "src/static",
+            from: "**/*",
           },
         ],
       }),
 
     new HtmlWebpackPlugin({
-      template: cordova ? 'src/cordova.html' : 'src/web.html',
+      template: cordova ? "src/cordova.html" : "src/web.html",
     }),
 
     cordova &&
       new HtmlWebpackTagsPlugin({
         append: false,
-        tags: ['cordova.js'],
+        tags: ["cordova.js"],
       }),
 
     dev && new ReactRefreshWebpackPlugin(),
@@ -152,13 +152,13 @@ module.exports = {
 
     process.env.STATS &&
       new BundleAnalyzerPlugin({
-        analyzerHost: 'localhost',
+        analyzerHost: "localhost",
         analyzerPort: 3001,
-        defaultSizes: 'gzip',
+        defaultSizes: "gzip",
       }),
   ].filter(Boolean),
 
   resolve: {
-    extensions: ['.mjs', '.jsx', '.js', '.json'],
+    extensions: [".mjs", ".jsx", ".js", ".json"],
   },
 };

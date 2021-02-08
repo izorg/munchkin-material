@@ -15,80 +15,80 @@ import {
   TextField,
   useMediaQuery,
   useTheme,
-} from '@material-ui/core';
-import { GenderFemale, GenderMale } from 'mdi-material-ui';
-import { useEffect, useMemo, useRef } from 'react';
-import { defineMessages, FormattedMessage, useIntl } from 'react-intl';
-import { useDispatch, useSelector } from 'react-redux';
+} from "@material-ui/core";
+import { GenderFemale, GenderMale } from "mdi-material-ui";
+import { useEffect, useMemo, useRef } from "react";
+import { defineMessages, FormattedMessage, useIntl } from "react-intl";
+import { useDispatch, useSelector } from "react-redux";
 
-import { addPlayerToList } from '../../ducks/playerList';
-import { addPlayer, updatePlayer } from '../../ducks/players';
-import createPlayer from '../../utils/createPlayer';
-import getRandomMaterialColor from '../../utils/getRandomMaterialColor';
-import { useGoBack, useLocationQuery } from '../../utils/location';
-import { ios } from '../../utils/platforms';
-import { FEMALE, MALE } from '../../utils/sex';
-import CancelButton from '../CancelButton';
-import SubmitButton from '../SubmitButton';
+import { addPlayerToList } from "../../ducks/playerList";
+import { addPlayer, updatePlayer } from "../../ducks/players";
+import createPlayer from "../../utils/createPlayer";
+import getRandomMaterialColor from "../../utils/getRandomMaterialColor";
+import { useGoBack, useLocationQuery } from "../../utils/location";
+import { ios } from "../../utils/platforms";
+import { FEMALE, MALE } from "../../utils/sex";
+import CancelButton from "../CancelButton";
+import SubmitButton from "../SubmitButton";
 
-import AppBar from './AppBar';
-import ColorPicker from './ColorPicker';
+import AppBar from "./AppBar";
+import ColorPicker from "./ColorPicker";
 
-const displayName = 'PlayerDialog';
+const displayName = "PlayerDialog";
 
 const useStyles = makeStyles(
   /* eslint-disable sort-keys */
   (theme) => ({
     root: {
-      height: 'inherit', // scrolling body in cordova for small screen height
+      height: "inherit", // scrolling body in cordova for small screen height
     },
 
     dialog: {
       backgroundColor:
-        theme.palette.mode === 'dark'
+        theme.palette.mode === "dark"
           ? theme.palette.background.default
           : theme.palette.background.paper,
       minWidth: 320,
 
-      [theme.breakpoints.up('lg')]: {
+      [theme.breakpoints.up("lg")]: {
         backgroundColor: theme.palette.background.paper,
       },
     },
 
     title: {
-      [theme.breakpoints.down('lg')]: {
+      [theme.breakpoints.down("lg")]: {
         padding: 0,
       },
     },
 
     content: {
-      '@supports (padding: max(0px))': {
-        paddingLeft: 'max(24px, env(safe-area-inset-left))',
-        paddingRight: 'max(24px, env(safe-area-inset-right))',
+      "@supports (padding: max(0px))": {
+        paddingLeft: "max(24px, env(safe-area-inset-left))",
+        paddingRight: "max(24px, env(safe-area-inset-right))",
       },
 
-      [theme.breakpoints.up('md')]: {
-        alignSelf: 'center',
+      [theme.breakpoints.up("md")]: {
+        alignSelf: "center",
         width: 600,
       },
 
-      [theme.breakpoints.up('lg')]: {
-        width: '100%',
+      [theme.breakpoints.up("lg")]: {
+        width: "100%",
       },
     },
 
     icon: {
-      verticalAlign: 'middle',
+      verticalAlign: "middle",
     },
   }),
   /* eslint-enable */
-  { name: displayName },
+  { name: displayName }
 );
 
 const messages = defineMessages({
   label: {
-    defaultMessage: 'Name',
-    id: 'player.form.namePlaceholder',
+    defaultMessage: "Name",
+    id: "player.form.namePlaceholder",
   },
 });
 
@@ -124,12 +124,12 @@ const PlayerDialog = () => {
   const randomColor = useMemo(
     () =>
       getRandomMaterialColor(
-        Object.values(players).map((player) => player.color),
+        Object.values(players).map((player) => player.color)
       ),
-    [players],
+    [players]
   );
 
-  const fullScreen = useMediaQuery(theme.breakpoints.down('lg'));
+  const fullScreen = useMediaQuery(theme.breakpoints.down("lg"));
 
   useEffect(() => {
     appear = true;
@@ -152,7 +152,7 @@ const PlayerDialog = () => {
 
     if (editPlayer) {
       const equal = Object.keys(values).every(
-        (key) => values[key] === editPlayer[key],
+        (key) => values[key] === editPlayer[key]
       );
 
       if (equal) {
@@ -165,7 +165,7 @@ const PlayerDialog = () => {
         updatePlayer({
           ...editPlayer,
           ...values,
-        }),
+        })
       );
     } else {
       const newPlayer = createPlayer(values);
@@ -198,13 +198,13 @@ const PlayerDialog = () => {
       onClose={handleClose}
       open={open}
       PaperProps={{
-        component: 'form',
+        component: "form",
         onSubmit,
       }}
       TransitionComponent={fullScreen && ios ? Slide : Fade}
       TransitionProps={{
         appear,
-        direction: 'up',
+        direction: "up",
       }}
     >
       <DialogTitle className={classes.title}>

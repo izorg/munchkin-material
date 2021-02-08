@@ -1,19 +1,19 @@
-import { CircularProgress, makeStyles } from '@material-ui/core';
+import { CircularProgress, makeStyles } from "@material-ui/core";
 
-const displayName = 'Loading';
+const displayName = "Loading";
 
 const useStyles = makeStyles(
   {
     loading: {
-      alignItems: 'center',
-      display: 'flex',
+      alignItems: "center",
+      display: "flex",
       flex: 1,
-      height: '100%',
-      justifyContent: 'center',
-      width: '100%',
+      height: "100%",
+      justifyContent: "center",
+      width: "100%",
     },
   },
-  { name: displayName },
+  { name: displayName }
 );
 
 const Loading = () => {

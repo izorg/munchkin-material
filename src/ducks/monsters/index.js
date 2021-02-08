@@ -1,4 +1,4 @@
-import { START_COMBAT } from '../combat/actionTypes';
+import { START_COMBAT } from "../combat/actionTypes";
 
 import {
   ADD_MONSTER,
@@ -8,7 +8,7 @@ import {
   INCREMENT_MONSTER_LEVEL,
   REMOVE_MONSTER,
   UPDATE_MONSTER,
-} from './actionTypes';
+} from "./actionTypes";
 
 export const addMonster = (monster) => ({
   monster,

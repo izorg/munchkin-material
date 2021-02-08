@@ -1,9 +1,9 @@
-import { IconButton } from '@material-ui/core';
-import { motion } from 'framer-motion';
-import PropTypes from 'prop-types';
-import { useCallback, useEffect, useRef } from 'react';
+import { IconButton } from "@material-ui/core";
+import { motion } from "framer-motion";
+import PropTypes from "prop-types";
+import { useCallback, useEffect, useRef } from "react";
 
-const displayName = 'CounterButton';
+const displayName = "CounterButton";
 
 const CounterButton = ({ disabled, onClick, ...rest }) => {
   const timeoutRef = useRef(0);
@@ -45,13 +45,13 @@ const CounterButton = ({ disabled, onClick, ...rest }) => {
   const onTap = (event, info) => {
     clearPress();
 
-    if (event.type === 'pointercancel') {
+    if (event.type === "pointercancel") {
       return;
     }
 
     const delta = Math.sqrt(
       Math.pow(info.point.x - startPointRef.current.x, 2) +
-        Math.pow(info.point.y - startPointRef.current.y, 2),
+        Math.pow(info.point.y - startPointRef.current.y, 2)
     );
 
     if (delta > 3) {
@@ -64,7 +64,7 @@ const CounterButton = ({ disabled, onClick, ...rest }) => {
   };
 
   const onKeyDown = ({ key }) => {
-    if (key === ' ' || key === 'Enter') {
+    if (key === " " || key === "Enter") {
       onClick();
     }
   };

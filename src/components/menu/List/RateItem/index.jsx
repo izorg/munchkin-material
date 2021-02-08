@@ -1,20 +1,20 @@
-import { ListItemIcon } from '@material-ui/core';
-import { Star } from 'mdi-material-ui';
-import { FormattedMessage } from 'react-intl';
+import { ListItemIcon } from "@material-ui/core";
+import { Star } from "mdi-material-ui";
+import { FormattedMessage } from "react-intl";
 
-import { useGoBack } from '../../../../utils/location';
-import ListItem from '../Item';
-import ListItemText from '../ItemText';
+import { useGoBack } from "../../../../utils/location";
+import ListItem from "../Item";
+import ListItemText from "../ItemText";
 
-const displayName = 'RateItem';
+const displayName = "RateItem";
 
 const getRateLink = (platformId) => {
   switch (platformId) {
-    case 'android':
-      return 'market://details?id=com.izorg.munchkin';
+    case "android":
+      return "market://details?id=com.izorg.munchkin";
 
-    case 'ios':
-      return 'itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=1448937097';
+    case "ios":
+      return "itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=1448937097";
 
     default:
       return null;

@@ -1,4 +1,4 @@
-import toggleSex from '../../utils/toggleSex';
+import toggleSex from "../../utils/toggleSex";
 
 import {
   ADD_PLAYER,
@@ -11,7 +11,7 @@ import {
   RESET_PLAYERS,
   TOGGLE_PLAYER_SEX,
   UPDATE_PLAYER,
-} from './actionTypes';
+} from "./actionTypes";
 
 export const addPlayer = (player) => ({
   player,
@@ -139,7 +139,7 @@ const reducer = (state = initialState, action) => {
 
     case REMOVE_PLAYERS:
       return Object.fromEntries(
-        Object.entries(state).filter(([id]) => !action.playerList.includes(id)),
+        Object.entries(state).filter(([id]) => !action.playerList.includes(id))
       );
 
     case RESET_PLAYERS: {

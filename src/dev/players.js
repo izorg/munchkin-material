@@ -1,8 +1,8 @@
-import { cyan, green, orange, yellow } from '@material-ui/core/colors';
+import { cyan, green, orange, yellow } from "@material-ui/core/colors";
 
-import { CS, EN, HE, RU, UK } from '../i18n';
-import createPlayer from '../utils/createPlayer';
-import { FEMALE } from '../utils/sex';
+import { CS, EN, HE, RU, UK } from "../i18n";
+import createPlayer from "../utils/createPlayer";
+import { FEMALE } from "../utils/sex";
 
 export default {
   [CS]: [
@@ -11,7 +11,7 @@ export default {
         color: yellow[500],
         gear: 9,
         level: 5,
-        name: 'Vladimír',
+        name: "Vladimír",
       }),
     },
     {
@@ -19,7 +19,7 @@ export default {
         color: green[500],
         gear: 10,
         level: 6,
-        name: 'Otakar',
+        name: "Otakar",
       }),
     },
     {
@@ -27,7 +27,7 @@ export default {
         color: cyan[500],
         gear: 6,
         level: 2,
-        name: 'Zdeněk',
+        name: "Zdeněk",
       }),
     },
     {
@@ -35,7 +35,7 @@ export default {
         color: orange[500],
         gear: 8,
         level: 4,
-        name: 'Zuzana',
+        name: "Zuzana",
         sex: FEMALE,
       }),
     },
@@ -44,26 +44,26 @@ export default {
   [EN]: [
     {
       player: createPlayer({
-        color: '#607D8B',
+        color: "#607D8B",
         gear: 13,
         level: 3,
-        name: 'Barack Obama',
+        name: "Barack Obama",
       }),
     },
     {
       player: createPlayer({
-        color: '#FFC107',
+        color: "#FFC107",
         gear: 20,
         level: 5,
-        name: 'Donald Trump',
+        name: "Donald Trump",
       }),
     },
     {
       player: createPlayer({
-        color: '#03A9F4',
+        color: "#03A9F4",
         gear: 10,
         level: 7,
-        name: 'Hillary Clinton',
+        name: "Hillary Clinton",
         sex: FEMALE,
       }),
     },
@@ -72,26 +72,26 @@ export default {
   [HE]: [
     {
       player: createPlayer({
-        color: '#607D8B',
+        color: "#607D8B",
         gear: 13,
         level: 3,
-        name: '‏בנימין נתניהו‏‎',
+        name: "‏בנימין נתניהו‏‎",
       }),
     },
     {
       player: createPlayer({
-        color: '#FFC107',
+        color: "#FFC107",
         gear: 20,
         level: 5,
-        name: 'אהוד אולמרט‏‎',
+        name: "אהוד אולמרט‏‎",
       }),
     },
     {
       player: createPlayer({
-        color: '#03A9F4',
+        color: "#03A9F4",
         gear: 10,
         level: 7,
-        name: 'אריאל שרון‏',
+        name: "אריאל שרון‏",
       }),
     },
   ],
@@ -99,26 +99,26 @@ export default {
   [RU]: [
     {
       player: createPlayer({
-        color: '#F44336',
+        color: "#F44336",
         gear: 30,
         level: 3,
-        name: 'Илья Муромец',
+        name: "Илья Муромец",
       }),
     },
     {
       player: createPlayer({
-        color: '#009688',
+        color: "#009688",
         gear: 13,
         level: 6,
-        name: 'Соловей Разбойник',
+        name: "Соловей Разбойник",
       }),
     },
     {
       player: createPlayer({
-        color: '#E91E63',
+        color: "#E91E63",
         gear: 7,
         level: 8,
-        name: 'Василиса Премудрая',
+        name: "Василиса Премудрая",
         sex: FEMALE,
       }),
     },
@@ -130,7 +130,7 @@ export default {
         color: green[500],
         gear: 10,
         level: 6,
-        name: 'Зеленський',
+        name: "Зеленський",
       }),
     },
     {
@@ -138,7 +138,7 @@ export default {
         color: yellow[500],
         gear: 9,
         level: 5,
-        name: 'Порошенко',
+        name: "Порошенко",
       }),
     },
     {
@@ -146,7 +146,7 @@ export default {
         color: orange[500],
         gear: 8,
         level: 4,
-        name: 'Янукович',
+        name: "Янукович",
       }),
     },
     {
@@ -154,7 +154,7 @@ export default {
         color: cyan[500],
         gear: 6,
         level: 2,
-        name: 'Кучма',
+        name: "Кучма",
       }),
     },
   ],

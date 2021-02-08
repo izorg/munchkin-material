@@ -1,47 +1,47 @@
-import { ListItemText, makeStyles } from '@material-ui/core';
-import { ChevronUp as LevelIcon, Sword as StrengthIcon } from 'mdi-material-ui';
+import { ListItemText, makeStyles } from "@material-ui/core";
+import { ChevronUp as LevelIcon, Sword as StrengthIcon } from "mdi-material-ui";
 
-import { playerShape } from '../../utils/propTypes';
-import Sex from '../Sex';
+import { playerShape } from "../../utils/propTypes";
+import Sex from "../Sex";
 
-const displayName = 'PlayerListItemText';
+const displayName = "PlayerListItemText";
 
 const useStyles = makeStyles(
   /* eslint-disable sort-keys */
   (theme) => ({
     main: {
-      display: 'flex',
-      flexDirection: 'column',
+      display: "flex",
+      flexDirection: "column",
     },
 
     name: {
       flex: 1,
-      overflow: 'hidden',
-      textOverflow: 'ellipsis',
-      whiteSpace: 'nowrap',
+      overflow: "hidden",
+      textOverflow: "ellipsis",
+      whiteSpace: "nowrap",
     },
 
     level: {
-      alignItems: 'center',
-      display: 'inline-flex',
-      justifyContent: 'flex-end',
+      alignItems: "center",
+      display: "inline-flex",
+      justifyContent: "flex-end",
       width: 50,
     },
 
     strength: {
-      alignItems: 'center',
-      display: 'inline-flex',
-      justifyContent: 'flex-end',
+      alignItems: "center",
+      display: "inline-flex",
+      justifyContent: "flex-end",
       width: 60,
     },
 
     strengthIcon: {
-      fontSize: '1.2em',
+      fontSize: "1.2em",
       marginLeft: 4,
     },
 
     sex: {
-      fontSize: '1em',
+      fontSize: "1em",
     },
 
     stats: {
@@ -55,7 +55,7 @@ const useStyles = makeStyles(
     },
   }),
   /* eslint-enable */
-  { name: displayName },
+  { name: displayName }
 );
 
 const PlayerListItemText = ({ player }) => {
@@ -73,7 +73,7 @@ const PlayerListItemText = ({ player }) => {
         className={classes.stats}
         primaryTypographyProps={{
           className: classes.statsPrimary,
-          variant: 'h6',
+          variant: "h6",
         }}
       >
         <span className={classes.level}>
