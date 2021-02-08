@@ -74,8 +74,12 @@ export const getLocale = () => {
     : [navigator.language];
 
   for (const language of languages) {
+    if (supportedLocales.includes(language)) {
+      return language;
+    }
+
     const currentLocale = supportedLocales.find(
-      (locale) => locale === language || locale === language.substring(0, 2)
+      (locale) => locale === language.substring(0, 2)
     );
 
     if (currentLocale) {
