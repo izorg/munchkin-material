@@ -1,6 +1,7 @@
 {
   "**/*.{js,json,jsx,mjs}": [
     "eslint --ext .js,.json,.jsx,.mjs --fix --max-warnings=0",
+    "prettier --write",
     "git add"
   ],
   "**/*.{html,md,yml}": [
