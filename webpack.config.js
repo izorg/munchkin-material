@@ -65,14 +65,9 @@ module.exports = {
           {
             loader: "html-loader",
             options: {
-              attributes: {
-                list: [
-                  {
-                    attribute: "href",
-                    tag: "link",
-                    type: "src",
-                  },
-                ],
+              esModule: false,
+              sources: {
+                urlFilter: (attribute, value) => !value.startsWith("/"),
               },
             },
           },

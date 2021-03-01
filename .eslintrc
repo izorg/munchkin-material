@@ -13,11 +13,10 @@
     "plugin:jsx-a11y/recommended",
     "plugin:prettier/recommended",
     "plugin:react-hooks/recommended",
-    "plugin:react/recommended",
-    "prettier/react"
+    "plugin:react/recommended"
   ],
   "globals": {
-    "VERSION": true
+    "VERSION": "readonly"
   },
   "parser": "babel-eslint",
   "rules": {
@@ -29,7 +28,6 @@
           "caseInsensitive": true,
           "order": "asc"
         },
-        "groups": ["builtin", "external", "parent", "sibling", "index"],
         "newlines-between": "always"
       }
     ],

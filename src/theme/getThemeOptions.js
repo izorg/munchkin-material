@@ -2,7 +2,6 @@ import common from "@material-ui/core/colors/common";
 import orange from "@material-ui/core/colors/orange";
 import { alpha } from "@material-ui/core/styles/colorManipulator";
 import createBreakpoints from "@material-ui/core/styles/createBreakpoints";
-import { light } from "@material-ui/core/styles/createPalette";
 import deepmerge from "deepmerge";
 
 const breakpoints = createBreakpoints({});
@@ -88,10 +87,8 @@ const getThemeOptions = ({ direction, mode = "light", pureBlack }) => {
     theme = deepmerge(theme, {
       components: {
         MuiIconButton: {
-          styleOverrides: {
-            root: {
-              color: light.text.primary,
-            },
+          defaultProps: {
+            color: "inherit",
           },
         },
       },
