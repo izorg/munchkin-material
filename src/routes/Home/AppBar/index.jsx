@@ -9,14 +9,13 @@ import DiceButton from "../../../components/dice/Button";
 import Title from "../../../components/Title";
 import TopAppBar from "../../../components/TopAppBar";
 import TopIconButton from "../../../components/TopIconButton";
-import { useUndo } from "../../../components/UndoProvider";
 import { setCombatPlayerBonus } from "../../../ducks/combat";
-import { removePlayers } from "../../../ducks/players";
 import {
   stringifyQuery,
   useGoBack,
   useLocationQuery,
 } from "../../../utils/location";
+import useDeletePlayers from "../../../utils/useDeletePlayers";
 import { EDIT, MULTI } from "../modes";
 
 import MenuButton from "./MenuButton";
@@ -38,9 +37,9 @@ const HomeAppBar = ({ empty, singleMode }) => {
   const location = useLocation();
   const navigate = useNavigate();
 
+  const deletePlayers = useDeletePlayers();
   const goBack = useGoBack();
   const query = useLocationQuery();
-  const { setMessage } = useUndo();
 
   const editMode = query[EDIT] !== undefined;
   const multiMode = query[MULTI] !== undefined;
@@ -52,17 +51,8 @@ const HomeAppBar = ({ empty, singleMode }) => {
   const onMultiSelectDeactivate = () => goBack();
 
   const onPlayersDelete = (selected) => {
-    dispatch(removePlayers(selected));
+    deletePlayers(selected);
     goBack();
-
-    setMessage(
-      <FormattedMessage
-        defaultMessage="{count, plural, one {Player has} other {Players have}} been removed"
-        values={{
-          count: selected.length,
-        }}
-      />
-    );
   };
 
   const onToggleEditClick = () =>

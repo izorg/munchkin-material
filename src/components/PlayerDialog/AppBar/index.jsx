@@ -1,4 +1,4 @@
-import { Check } from "mdi-material-ui";
+import { Check, Delete } from "mdi-material-ui";
 import PropTypes from "prop-types";
 
 import BackButton from "../../BackButton";
@@ -8,20 +8,29 @@ import TopIconButton from "../../TopIconButton";
 
 const displayName = "PlayerDialogAppBar";
 
-const PlayerDialogAppBar = ({ onCancel, title }) => (
-  <TopAppBar>
-    <BackButton onClick={onCancel} />
+const PlayerDialogAppBar = ({ onCancel, onDelete, title }) => {
+  return (
+    <TopAppBar>
+      <BackButton onClick={onCancel} />
 
-    <Title>{title}</Title>
+      <Title>{title}</Title>
 
-    <TopIconButton color="inherit" edge="end" type="submit">
-      <Check />
-    </TopIconButton>
-  </TopAppBar>
-);
+      {onDelete && (
+        <TopIconButton color="inherit" edge="end" onClick={onDelete}>
+          <Delete />
+        </TopIconButton>
+      )}
+
+      <TopIconButton color="inherit" edge="end" type="submit">
+        <Check />
+      </TopIconButton>
+    </TopAppBar>
+  );
+};
 
 PlayerDialogAppBar.propTypes = {
   onCancel: PropTypes.func,
+  onDelete: PropTypes.func,
   title: PropTypes.node,
 };
 

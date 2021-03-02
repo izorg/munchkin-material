@@ -8,15 +8,17 @@ import {
   FormControlLabel,
   FormLabel,
   Grid,
+  IconButton,
   makeStyles,
   Radio,
   RadioGroup,
   Slide,
   TextField,
+  Typography,
   useMediaQuery,
   useTheme,
 } from "@material-ui/core";
-import { GenderFemale, GenderMale } from "mdi-material-ui";
+import { Delete, GenderFemale, GenderMale } from "mdi-material-ui";
 import { useEffect, useMemo, useRef } from "react";
 import { defineMessages, FormattedMessage, useIntl } from "react-intl";
 import { useDispatch, useSelector } from "react-redux";
@@ -28,6 +30,7 @@ import getRandomMaterialColor from "../../utils/getRandomMaterialColor";
 import { useGoBack, useLocationQuery } from "../../utils/location";
 import { ios } from "../../utils/platforms";
 import { FEMALE, MALE } from "../../utils/sex";
+import useDeletePlayers from "../../utils/useDeletePlayers";
 import CancelButton from "../CancelButton";
 import SubmitButton from "../SubmitButton";
 
@@ -56,9 +59,19 @@ const useStyles = makeStyles(
     },
 
     title: {
+      alignItems: "center",
+      display: "flex",
+      justifyContent: "space-between",
+
       [theme.breakpoints.down("lg")]: {
+        display: "block",
         padding: 0,
       },
+    },
+
+    deleteIconButton: {
+      marginLeft: 8,
+      padding: 4,
     },
 
     content: {
@@ -70,10 +83,6 @@ const useStyles = makeStyles(
       [theme.breakpoints.up("md")]: {
         alignSelf: "center",
         width: 600,
-      },
-
-      [theme.breakpoints.up("lg")]: {
-        width: "100%",
       },
     },
 
@@ -100,6 +109,7 @@ const PlayerDialog = () => {
   const intl = useIntl();
   const theme = useTheme();
 
+  const deletePlayers = useDeletePlayers();
   const goBack = useGoBack();
   const query = useLocationQuery();
   const open = query.player !== undefined;
@@ -136,6 +146,13 @@ const PlayerDialog = () => {
   }, []);
 
   const handleClose = () => goBack();
+
+  const handleDelete = editPlayer
+    ? () => {
+        deletePlayers([editPlayer.id]);
+        goBack();
+      }
+    : undefined;
 
   const onSubmit = (event) => {
     event.preventDefault();
@@ -207,8 +224,29 @@ const PlayerDialog = () => {
         direction: "up",
       }}
     >
-      <DialogTitle className={classes.title}>
-        {fullScreen ? <AppBar onCancel={handleClose} title={title} /> : title}
+      <DialogTitle className={classes.title} disableTypography={!fullScreen}>
+        {fullScreen ? (
+          <AppBar
+            onCancel={handleClose}
+            onDelete={handleDelete}
+            title={title}
+          />
+        ) : (
+          <>
+            <Typography component="h2" noWrap variant="h6">
+              {title}
+            </Typography>
+            {handleDelete && (
+              <IconButton
+                className={classes.deleteIconButton}
+                edge="end"
+                onClick={handleDelete}
+              >
+                <Delete />
+              </IconButton>
+            )}
+          </>
+        )}
       </DialogTitle>
       <DialogContent className={classes.content}>
         <TextField
