@@ -1,5 +1,5 @@
-import { makeStyles, useTheme } from "@material-ui/core";
-import clsx from "clsx";
+import { css } from "@emotion/react";
+import { useTheme } from "@material-ui/core";
 import { motion, useAnimation } from "framer-motion";
 import PropTypes from "prop-types";
 import { useCallback, useRef } from "react";
@@ -10,62 +10,10 @@ import PlayerStats from "./Stats";
 
 const displayName = "PlayerSlider";
 
-const useStyles = makeStyles(
-  /* eslint-disable sort-keys */
-  (theme) => ({
-    root: {
-      overflowX: "hidden",
-      width: "100%",
-    },
-
-    container: {
-      height: "100%",
-      position: "relative",
-    },
-
-    slide: {
-      display: "flex",
-    },
-
-    itemContainer: {
-      alignItems: "center",
-      display: "flex",
-      height: "100%",
-      padding: theme.spacing(2, 2, 7),
-      width: "100%",
-
-      "@media (min-height: 720px)": {
-        paddingBottom: theme.spacing(2),
-      },
-    },
-
-    previousItemContainer: {
-      left: "-100%",
-      position: "absolute",
-      top: 0,
-    },
-
-    nextItemContainer: {
-      left: "100%",
-      position: "absolute",
-      top: 0,
-    },
-
-    stats: {
-      height: "100%",
-      margin: [[0, "auto"]],
-      maxHeight: 600,
-      maxWidth: 600,
-    },
-  }),
-  /* eslint-enable */
-  { name: displayName }
-);
-
 const PlayerSlider = ({ playerId }) => {
-  const classes = useStyles();
   const navigate = useNavigate();
-  const { direction } = useTheme();
+  const theme = useTheme();
+  const { direction } = theme;
 
   const rtl = direction === "rtl";
 
@@ -134,10 +82,19 @@ const PlayerSlider = ({ playerId }) => {
   };
 
   return (
-    <div ref={ref} className={classes.root}>
+    <div
+      ref={ref}
+      css={css`
+        overflow-x: hidden;
+        width: 100%;
+      `}
+    >
       <motion.div
         animate={controls}
-        className={classes.container}
+        css={css`
+          height: 100%;
+          position: relative;
+        `}
         drag={playerList.length > 1 ? "x" : false}
         dragConstraints={ref}
         dragElastic={1}
@@ -150,13 +107,41 @@ const PlayerSlider = ({ playerId }) => {
           return (
             <div
               key={`${playerId}-${index}`}
-              className={clsx(
-                classes.itemContainer,
-                index === currentIndex - 1 && classes.previousItemContainer,
-                index === currentIndex + 1 && classes.nextItemContainer
-              )}
+              css={[
+                css`
+                  align-items: center;
+                  display: flex;
+                  height: 100%;
+                  padding: ${theme.spacing(2, 2, 7)};
+                  width: 100%;
+
+                  @media (min-height: 720px) {
+                    padding-bottom: ${theme.spacing(2)};
+                  }
+                `,
+                index === currentIndex - 1 &&
+                  css`
+                    left: -100%;
+                    position: absolute;
+                    top: 0;
+                  `,
+                index === currentIndex + 1 &&
+                  css`
+                    left: 100%;
+                    position: absolute;
+                    top: 0;
+                  `,
+              ]}
             >
-              <PlayerStats className={classes.stats} playerId={playerId} />
+              <PlayerStats
+                css={css`
+                  height: 100%;
+                  margin: 0 auto;
+                  max-height: 600px;
+                  max-width: 600px;
+                `}
+                playerId={playerId}
+              />
             </div>
           );
         })}
