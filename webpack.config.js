@@ -14,13 +14,19 @@ const web = process.env.BUILD === "web";
 
 const outputPath = path.resolve(__dirname, cordova ? "cordova/www" : "web");
 
+let devtool = "source-map";
 let entry = "./src/cordova.jsx";
+
+if (cordova) {
+  devtool = "inline-source-map";
+}
 
 if (web) {
   entry = "./src/web.jsx";
 }
 
 if (dev) {
+  devtool = "eval-source-map";
   entry = "./src/dev/index.js";
 }
 
@@ -38,7 +44,7 @@ module.exports = {
     },
   },
 
-  devtool: cordova ? "inline-source-map" : "source-map",
+  devtool,
 
   entry,
 
