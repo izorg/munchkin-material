@@ -19,7 +19,9 @@
     "VERSION": "readonly"
   },
   "parser": "babel-eslint",
+  "plugins": ["@emotion"],
   "rules": {
+    "@emotion/syntax-preference": ["error", "string"],
     "import/no-extraneous-dependencies": "error",
     "import/order": [
       "error",
