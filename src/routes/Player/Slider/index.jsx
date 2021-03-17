@@ -136,7 +136,6 @@ const PlayerSlider = ({ playerId }) => {
   return (
     <div ref={ref} className={classes.root}>
       <motion.div
-        key={playerId}
         animate={controls}
         className={classes.container}
         drag={playerList.length > 1 ? "x" : false}
