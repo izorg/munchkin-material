@@ -4,6 +4,8 @@ import { alpha } from "@material-ui/core/styles/colorManipulator";
 import createBreakpoints from "@material-ui/core/styles/createBreakpoints";
 import deepmerge from "deepmerge";
 
+import { ios } from "../utils/platforms";
+
 const breakpoints = createBreakpoints({});
 
 const getThemeOptions = ({ direction, mode = "light", pureBlack }) => {
@@ -48,6 +50,12 @@ const getThemeOptions = ({ direction, mode = "light", pureBlack }) => {
               backgroundColor: undefined,
             },
           },
+        },
+      },
+
+      MuiTooltip: {
+        defaultProps: {
+          disableTouchListener: ios,
         },
       },
 
