@@ -1,6 +1,5 @@
 const { version } = require("./package");
 
-const dev = process.env.NODE_ENV === "development";
 const prod = process.env.NODE_ENV === "production";
 const test = process.env.NODE_ENV === "test";
 
@@ -49,7 +48,6 @@ module.exports = {
     [
       "@babel/preset-react",
       {
-        development: dev,
         importSource: "@emotion/react",
         runtime: "automatic",
       },
