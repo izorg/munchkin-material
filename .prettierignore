@@ -1,3 +1,4 @@
-cordova/
+/cordova/
+/web/
 package-lock.json
 package.json
