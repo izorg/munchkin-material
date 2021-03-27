@@ -1,1 +1,5 @@
+[production]
 safari 11
+
+[test]
+current node
