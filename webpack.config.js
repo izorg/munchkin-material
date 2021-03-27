@@ -34,14 +34,13 @@ const ids = process.env.STATS || dev ? "named" : "deterministic";
 
 module.exports = {
   devServer: {
+    client: {
+      overlay: true,
+    },
     compress: true,
     historyApiFallback: true,
     host: "0.0.0.0",
-    overlay: true,
     port: 3000,
-    static: {
-      watch: false, // https://github.com/webpack/webpack-dev-server/issues/2893
-    },
   },
 
   devtool,
@@ -133,6 +132,10 @@ module.exports = {
           {
             context: "src/static",
             from: "**/*",
+          },
+          {
+            from: "languages",
+            to: "languages",
           },
         ],
       }),
