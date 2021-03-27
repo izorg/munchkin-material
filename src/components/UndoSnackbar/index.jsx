@@ -1,7 +1,7 @@
+import { css } from "@emotion/react";
 import {
   Button,
   Fade,
-  makeStyles,
   Snackbar,
   useMediaQuery,
   useTheme,
@@ -15,23 +15,9 @@ import { useUndo } from "../UndoProvider";
 
 const displayName = "UndoSnackbar";
 
-const useStyles = makeStyles(
-  (theme) => ({
-    snackbar: {
-      bottom: theme.spacing(11),
-
-      [theme.breakpoints.up("sm")]: {
-        bottom: theme.spacing(3.5),
-      },
-    },
-  }),
-  { name: displayName }
-);
-
 const UndoSnackbar = () => {
   const dispatch = useDispatch();
   const theme = useTheme();
-  const classes = useStyles();
 
   const mdDown = useMediaQuery(theme.breakpoints.down("md"));
 
@@ -61,7 +47,13 @@ const UndoSnackbar = () => {
         </Button>
       }
       autoHideDuration={8000}
-      className={classes.snackbar}
+      css={css`
+        bottom: ${theme.spacing(11)};
+
+        ${theme.breakpoints.up("sm")} {
+          bottom: ${theme.spacing(3.5)};
+        }
+      `}
       message={message}
       onClose={onClose}
       open={open}
