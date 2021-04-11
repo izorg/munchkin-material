@@ -15,7 +15,7 @@ script:
   - npm run test
   - npm run build:web
 
-  - VERSION=`node ./scripts/version.js`
+  - VERSION=`node ./scripts/version.mjs`
 
   - sentry-cli releases new "$VERSION"
   - sentry-cli releases files "$VERSION" upload-sourcemaps web
