@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { createContext, useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import history from "../../components/CordovaRouter/history";
 import sentry from "../../sentry";
@@ -9,10 +9,6 @@ import hideWindowsBackButton from "./hideWindowsBackButton";
 import useNavigationBreadcrumbs from "./useNavigationBreadcrumbs";
 
 const displayName = "CordovaProvider";
-
-const CordovaContext = createContext(null);
-
-export const useCordova = () => useContext(CordovaContext);
 
 const CordovaProvider = ({ children }) => {
   const [cordova, setCordova] = useState(null);
@@ -67,11 +63,7 @@ const CordovaProvider = ({ children }) => {
     return null;
   }
 
-  return (
-    <CordovaContext.Provider value={cordova}>
-      {children}
-    </CordovaContext.Provider>
-  );
+  return children;
 };
 
 CordovaProvider.propTypes = {

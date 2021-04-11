@@ -2,11 +2,7 @@ import { darken, rgbToHex } from "@material-ui/core";
 import { dark, light } from "@material-ui/core/styles/createPalette";
 import { useEffect } from "react";
 
-import { useCordova } from "../CordovaProvider";
-
 const useStatusBar = (theme) => {
-  const cordova = useCordova();
-
   useEffect(() => {
     const { StatusBar } = window;
 
@@ -30,7 +26,7 @@ const useStatusBar = (theme) => {
       }
     }
 
-    if (cordova?.platformId === "android") {
+    if ("cordova" in window && window.cordova.platformId === "android") {
       let background =
         theme.components.MuiAppBar?.styleOverrides.colorPrimary
           .backgroundColor || theme.palette.primary.main;
@@ -42,7 +38,6 @@ const useStatusBar = (theme) => {
       StatusBar.backgroundColorByHexString(rgbToHex(darken(background, 0.5)));
     }
   }, [
-    cordova?.platformId,
     theme.components.MuiAppBar?.styleOverrides.colorPrimary.backgroundColor,
     theme.components.MuiAppBar?.styleOverrides.colorPrimary.color,
     theme.palette.grey,
