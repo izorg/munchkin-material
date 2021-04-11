@@ -5,6 +5,7 @@ import history from "../../components/CordovaRouter/history";
 import sentry from "../../sentry";
 import { useGoBack } from "../../utils/location";
 
+import hideWindowsBackButton from "./hideWindowsBackButton";
 import useNavigationBreadcrumbs from "./useNavigationBreadcrumbs";
 
 const displayName = "CordovaProvider";
@@ -52,12 +53,7 @@ const CordovaProvider = ({ children }) => {
     document.addEventListener("backbutton", onBackButton, false);
 
     if (window.cordova.platformId === "windows") {
-      const { Windows } = window;
-
-      const currentView = Windows.UI.Core.SystemNavigationManager.getForCurrentView();
-
-      currentView.appViewBackButtonVisibility =
-        Windows.UI.Core.AppViewBackButtonVisibility.collapsed;
+      hideWindowsBackButton();
     }
 
     return () => {
