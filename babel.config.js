@@ -36,7 +36,6 @@ module.exports = {
     [
       "@babel/preset-env",
       {
-        browserslistEnv: test ? "test" : "production",
         corejs: {
           proposals: true,
           version: 3,
