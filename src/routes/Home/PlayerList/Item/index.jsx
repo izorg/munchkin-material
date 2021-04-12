@@ -21,6 +21,7 @@ import {
   useGoBack,
   useLocationQuery,
 } from "../../../../utils/location";
+import { ios } from "../../../../utils/platforms";
 import { EDIT, MULTI } from "../../modes";
 
 const displayName = "HomePlayerListItem";
@@ -158,7 +159,7 @@ const HomePlayerListItem = forwardRef(
           !(editMode || multiMode) &&
           (!avatarNode || !avatarNode.contains(event.target))
         ) {
-          if (navigator.vibrate) {
+          if (navigator.vibrate && !ios) {
             navigator.vibrate(20);
           }
 
