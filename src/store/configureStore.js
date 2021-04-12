@@ -34,6 +34,10 @@ const configureStore = () => {
 
   const store = createStore(createRootReducer(), preloadedState, enhancer);
 
+  if (process.env.NODE_ENV === "development") {
+    window.reduxStore = store;
+  }
+
   let saveDate = new Date();
   let saveTimeout = 0;
   const timeout = 100;

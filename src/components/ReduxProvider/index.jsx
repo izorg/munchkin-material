@@ -9,10 +9,6 @@ const displayName = "ReduxProvider";
 const ReduxProvider = ({ children }) => {
   const store = useMemo(() => configureStore(), []);
 
-  if (process.env.NODE_ENV === "development") {
-    window.reduxStore = store;
-  }
-
   return <Provider store={store}>{children}</Provider>;
 };
 
