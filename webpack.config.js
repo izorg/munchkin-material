@@ -22,7 +22,11 @@ if (cordova) {
 }
 
 if (web) {
-  entry = "./src/web.jsx";
+  entry = ["./src/web.jsx"];
+
+  if (!dev) {
+    entry.unshift("./src/sentry.js");
+  }
 }
 
 if (dev) {

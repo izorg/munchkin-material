@@ -9,11 +9,6 @@ import ReduxProvider from "./components/ReduxProvider";
 import SystemPaletteModeProvider from "./components/SystemPaletteModeProvider";
 import WakeLockProvider from "./components/WakeLockProvider";
 import WorkboxProvider from "./components/WorkboxProvider";
-import sentry from "./sentry";
-
-if (process.env.NODE_ENV === "production") {
-  sentry();
-}
 
 import("./firebase").catch(() => {
   // ignore firebase init errors

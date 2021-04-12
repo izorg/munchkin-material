@@ -2,7 +2,6 @@ import PropTypes from "prop-types";
 import { useEffect } from "react";
 
 import history from "../../components/CordovaRouter/history";
-import sentry from "../../sentry";
 import AsyncResource from "../../utils/AsyncResource";
 import { useGoBack } from "../../utils/location";
 
@@ -16,15 +15,15 @@ const cordovaResource = new AsyncResource(
     document.addEventListener(
       "deviceready",
       () => {
-        if (process.env.NODE_ENV === "production" && !window.BuildInfo.debug) {
-          sentry();
-        }
-
         resolve();
       },
       false
     )
-  )
+  ).then(async () => {
+    if (process.env.NODE_ENV === "production" && !window.BuildInfo.debug) {
+      await import("../../sentry");
+    }
+  })
 );
 
 const CordovaProvider = ({ children }) => {
