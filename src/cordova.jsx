@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { render } from "react-dom";
 
 import App from "./components/App";
@@ -13,23 +14,25 @@ import WakeLockProvider from "./components/WakeLockProvider";
 
 render(
   <CordovaRouter>
-    <CordovaProvider>
-      <ReduxProvider>
-        <FullVersionProvider>
-          <WakeLockProvider>
-            <LocaleProvider>
-              <SystemPaletteModeProvider>
-                <AugmentedStylesProvider>
-                  <AugmentedThemeProvider>
-                    <App />
-                  </AugmentedThemeProvider>
-                </AugmentedStylesProvider>
-              </SystemPaletteModeProvider>
-            </LocaleProvider>
-          </WakeLockProvider>
-        </FullVersionProvider>
-      </ReduxProvider>
-    </CordovaProvider>
+    <ReduxProvider>
+      <Suspense fallback={null}>
+        <CordovaProvider>
+          <FullVersionProvider>
+            <WakeLockProvider>
+              <LocaleProvider>
+                <SystemPaletteModeProvider>
+                  <AugmentedStylesProvider>
+                    <AugmentedThemeProvider>
+                      <App />
+                    </AugmentedThemeProvider>
+                  </AugmentedStylesProvider>
+                </SystemPaletteModeProvider>
+              </LocaleProvider>
+            </WakeLockProvider>
+          </FullVersionProvider>
+        </CordovaProvider>
+      </Suspense>
+    </ReduxProvider>
   </CordovaRouter>,
   document.getElementById("root")
 );
