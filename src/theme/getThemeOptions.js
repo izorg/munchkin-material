@@ -55,6 +55,7 @@ const getThemeOptions = ({ direction, mode = "light", pureBlack }) => {
 
       MuiTooltip: {
         defaultProps: {
+          disableHoverListener: ios,
           disableTouchListener: ios,
         },
       },
