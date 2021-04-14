@@ -71,59 +71,9 @@ export const getLocale = () => {
 };
 
 export const loadMessages = async (locale) => {
-  if ("cordova" in window) {
-    const fs = await new Promise((resolve, reject) => {
-      window.requestFileSystem(
-        window.LocalFileSystem.PERSISTENT,
-        0,
-        resolve,
-        reject
-      );
-    });
+  const publicPath = "cordova" in window ? "" : "/";
 
-    // eslint-disable-next-line no-console
-    console.log("=== fs ===", fs);
+  const res = await fetch(`${publicPath}languages/${locale}.json`);
 
-    const dirEntry = await new Promise((resolve, reject) => {
-      window.resolveLocalFileSystemURL(
-        window.cordova.file.applicationDirectory,
-        resolve,
-        reject
-      );
-    });
-
-    // eslint-disable-next-line no-console
-    console.log("=== dirEntry ===", dirEntry);
-
-    const fileEntry = await new Promise((resolve, reject) => {
-      dirEntry.getFile(
-        `www/languages/${locale}.json`,
-        { create: false, exclusive: false },
-        resolve,
-        reject
-      );
-    });
-
-    // eslint-disable-next-line no-console
-    console.log("=== fileEntry ===", fileEntry);
-
-    const text = await new Promise((resolve, reject) => {
-      fileEntry.file((file) => {
-        const reader = new FileReader();
-
-        reader.onloadend = () => resolve(reader.result);
-
-        reader.readAsText(file);
-      }, reject);
-    });
-
-    // eslint-disable-next-line no-console
-    console.log("=== messsages ===", JSON.parse(text));
-
-    return JSON.parse(text);
-  } else {
-    const res = await fetch(`/languages/${locale}.json`);
-
-    return await res.json();
-  }
+  return await res.json();
 };

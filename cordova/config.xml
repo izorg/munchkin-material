@@ -53,6 +53,8 @@
     <platform name="ios">
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
+        <preference name="scheme" value="app" />
+        <preference name="hostname" value="localhost" />
         <preference name="deployment-target" value="11.2" />
         <preference name="DisallowOverscroll" value="true" />
         <preference name="KeyboardDisplayRequiresUserAction" value="false" />
