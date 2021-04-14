@@ -1,3 +1,5 @@
+import fetch from "cross-fetch";
+
 export const CS = "cs";
 export const DA = "da";
 export const DE = "de";
@@ -20,53 +22,31 @@ export const SK = "sk";
 export const TR = "tr";
 export const UK = "uk";
 
-const loaders = {
-  [CS]: () => import("../languages/cs.json"),
-
-  [DA]: () => import("../languages/da.json"),
-
-  [DE]: () => import("../languages/de.json"),
-
-  [EL]: () => import("../languages/el.json"),
-
-  [EN]: () => import("../languages/en.json"),
-
-  [ES]: () => import("../languages/es.json"),
-
-  [FI]: () => import("../languages/fi.json"),
-
-  [FR]: () => import("../languages/fr.json"),
-
-  [HE]: () => import("../languages/he.json"),
-
-  [HU]: () => import("../languages/hu.json"),
-
-  [HY]: () => import("../languages/hy.json"),
-
-  [IT]: () => import("../languages/it.json"),
-
-  [NB]: () => import("../languages/nb.json"),
-
-  [NL]: () => import("../languages/nl.json"),
-
-  [PL]: () => import("../languages/pl.json"),
-
-  [PT]: () => import("../languages/pt.json"),
-
-  [PT_BR]: () => import("../languages/pt-BR.json"),
-
-  [RU]: () => import("../languages/ru.json"),
-
-  [SK]: () => import("../languages/sk.json"),
-
-  [TR]: () => import("../languages/tr.json"),
-
-  [UK]: () => import("../languages/uk.json"),
-};
-
 export const getDirection = (locale) => ([HE].includes(locale) ? "rtl" : "ltr");
 
-const supportedLocales = Object.keys(loaders);
+const supportedLocales = [
+  CS,
+  DA,
+  DE,
+  EL,
+  EN,
+  ES,
+  FI,
+  FR,
+  HE,
+  HU,
+  HY,
+  IT,
+  NB,
+  NL,
+  PL,
+  PT,
+  PT_BR,
+  RU,
+  SK,
+  TR,
+  UK,
+];
 
 export const getLocale = () => {
   const languages = navigator?.languages?.length
@@ -91,7 +71,59 @@ export const getLocale = () => {
 };
 
 export const loadMessages = async (locale) => {
-  const { default: messages } = await loaders[locale]();
+  if ("cordova" in window) {
+    const fs = await new Promise((resolve, reject) => {
+      window.requestFileSystem(
+        window.LocalFileSystem.PERSISTENT,
+        0,
+        resolve,
+        reject
+      );
+    });
 
-  return messages;
+    // eslint-disable-next-line no-console
+    console.log("=== fs ===", fs);
+
+    const dirEntry = await new Promise((resolve, reject) => {
+      window.resolveLocalFileSystemURL(
+        window.cordova.file.applicationDirectory,
+        resolve,
+        reject
+      );
+    });
+
+    // eslint-disable-next-line no-console
+    console.log("=== dirEntry ===", dirEntry);
+
+    const fileEntry = await new Promise((resolve, reject) => {
+      dirEntry.getFile(
+        `www/languages/${locale}.json`,
+        { create: false, exclusive: false },
+        resolve,
+        reject
+      );
+    });
+
+    // eslint-disable-next-line no-console
+    console.log("=== fileEntry ===", fileEntry);
+
+    const text = await new Promise((resolve, reject) => {
+      fileEntry.file((file) => {
+        const reader = new FileReader();
+
+        reader.onloadend = () => resolve(reader.result);
+
+        reader.readAsText(file);
+      }, reject);
+    });
+
+    // eslint-disable-next-line no-console
+    console.log("=== messsages ===", JSON.parse(text));
+
+    return JSON.parse(text);
+  } else {
+    const res = await fetch(`/languages/${locale}.json`);
+
+    return await res.json();
+  }
 };
