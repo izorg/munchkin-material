@@ -1,7 +1,7 @@
 /.idea/
 /.vscode/
-/cordova/**
-!/cordova/package-lock.json
-!/cordova/package.json
+/cordova/platforms/
+/cordova/plugins/
+/cordova/www/
 /coverage/
 /web/
