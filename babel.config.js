@@ -1,5 +1,3 @@
-const { version } = require("./package");
-
 const prod = process.env.NODE_ENV === "production";
 const test = process.env.NODE_ENV === "test";
 
@@ -22,12 +20,6 @@ module.exports = {
       "babel-plugin-react-remove-properties",
       {
         properties: ["data-screenshots"],
-      },
-    ],
-    [
-      "babel-plugin-transform-define",
-      {
-        VERSION: version,
       },
     ],
     prod && "babel-plugin-transform-react-remove-prop-types",

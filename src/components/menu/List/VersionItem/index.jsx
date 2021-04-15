@@ -2,6 +2,7 @@ import { ListItemIcon } from "@material-ui/core";
 import { CellphoneArrowDown, InformationOutline } from "mdi-material-ui";
 
 import { useGoBack } from "../../../../utils/location";
+import version from "../../../../utils/version";
 import { useWorkbox } from "../../../WorkboxProvider";
 import useMenuOpen from "../../useMenuOpen";
 import ListItem from "../Item";
@@ -30,7 +31,7 @@ const VersionItem = (props) => {
       <ListItemIcon>
         {update ? <CellphoneArrowDown /> : <InformationOutline />}
       </ListItemIcon>
-      <ListItemText primary={VERSION} />
+      <ListItemText primary={version} />
     </ListItem>
   );
 };

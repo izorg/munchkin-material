@@ -15,9 +15,6 @@
     "plugin:react-hooks/recommended",
     "plugin:react/recommended"
   ],
-  "globals": {
-    "VERSION": "readonly"
-  },
   "parser": "babel-eslint",
   "plugins": ["@emotion"],
   "rules": {
