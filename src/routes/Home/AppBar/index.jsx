@@ -1,41 +1,26 @@
-import { Tooltip } from "@material-ui/core";
-import { Check, Close, Delete, FlagCheckered, Pencil } from "mdi-material-ui";
+import { Close, Delete, FlagCheckered } from "mdi-material-ui";
 import PropTypes from "prop-types";
-import { defineMessages, FormattedMessage, useIntl } from "react-intl";
+import { FormattedMessage } from "react-intl";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation, useNavigate } from "react-router-dom";
 
 import DiceButton from "../../../components/dice/Button";
 import Title from "../../../components/Title";
 import TopAppBar from "../../../components/TopAppBar";
 import TopIconButton from "../../../components/TopIconButton";
 import { setCombatPlayerBonus } from "../../../ducks/combat";
-import {
-  stringifyQuery,
-  useGoBack,
-  useLocationQuery,
-} from "../../../utils/location";
+import { useGoBack, useLocationQuery } from "../../../utils/location";
 import useDeletePlayers from "../../../utils/useDeletePlayers";
 import { EDIT, MULTI } from "../modes";
 
+import EditButton from "./EditButton";
 import MenuButton from "./MenuButton";
 import ResetButton from "./ResetButton";
 import ShuffleButton from "./ShuffleButton";
 
 const displayName = "HomeAppBar";
 
-const messages = defineMessages({
-  edit: {
-    defaultMessage: "Edit",
-    id: "player.list.edit",
-  },
-});
-
 const HomeAppBar = ({ empty, singleMode }) => {
   const dispatch = useDispatch();
-  const intl = useIntl();
-  const location = useLocation();
-  const navigate = useNavigate();
 
   const deletePlayers = useDeletePlayers();
   const goBack = useGoBack();
@@ -55,17 +40,7 @@ const HomeAppBar = ({ empty, singleMode }) => {
     goBack();
   };
 
-  const onToggleEditClick = () =>
-    editMode
-      ? goBack()
-      : navigate({
-          ...location,
-          search: stringifyQuery({ [EDIT]: null }),
-        });
-
   const onTurnFinish = () => dispatch(setCombatPlayerBonus(0));
-
-  const editTitle = intl.formatMessage(messages.edit);
 
   let title = (
     <FormattedMessage defaultMessage="Munchkins" id="player.list.title" />
@@ -101,17 +76,7 @@ const HomeAppBar = ({ empty, singleMode }) => {
 
       {editMode && <ShuffleButton edge="end" />}
 
-      {!empty && !multiMode && !singleMode && (
-        <Tooltip title={editTitle}>
-          <TopIconButton
-            aria-label={editTitle}
-            edge="end"
-            onClick={() => onToggleEditClick()}
-          >
-            {editMode ? <Check /> : <Pencil />}
-          </TopIconButton>
-        </Tooltip>
-      )}
+      {!empty && !multiMode && !singleMode && <EditButton />}
 
       {multiMode && (
         <TopIconButton
