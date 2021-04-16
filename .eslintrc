@@ -8,7 +8,7 @@
   "extends": [
     "eslint:recommended",
     "plugin:import/recommended",
-    "plugin:jest/all",
+    "plugin:jest/recommended",
     "plugin:json/recommended",
     "plugin:jsx-a11y/recommended",
     "plugin:prettier/recommended",
@@ -19,7 +19,6 @@
   "plugins": ["@emotion"],
   "rules": {
     "@emotion/syntax-preference": ["error", "string"],
-    "import/no-extraneous-dependencies": "error",
     "import/order": [
       "error",
       {
@@ -30,10 +29,6 @@
         "newlines-between": "always"
       }
     ],
-    "jest/consistent-test-it": ["error", { "withinDescribe": "test" }],
-    "jest/lowercase-name": ["error", { "ignoreTopLevelDescribe": true }],
-    "jest/prefer-expect-assertions": "off",
-    "jest/require-top-level-describe": "off",
     "jsx-a11y/no-autofocus": ["error", { "ignoreNonDOM": true }],
     "no-console": ["error", { "allow": ["error", "warn"] }],
     "no-unused-vars": [
@@ -44,7 +39,6 @@
         "vars": "all"
       }
     ],
-    "react-hooks/exhaustive-deps": "error",
     "react/jsx-sort-default-props": "error",
     "react/jsx-sort-props": [
       "error",
