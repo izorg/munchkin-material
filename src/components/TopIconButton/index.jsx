@@ -1,47 +1,42 @@
-import { IconButton, makeStyles } from "@material-ui/core";
+import { css } from "@emotion/react";
+import { IconButton, useMediaQuery, useTheme } from "@material-ui/core";
+import PropTypes from "prop-types";
 import { forwardRef } from "react";
 
-const displayName = "TopIconButton";
-
-const useStyles = makeStyles(
-  /* eslint-disable sort-keys */
-  (theme) => ({
-    root: {
-      padding: 8,
-
-      [theme.breakpoints.up("md")]: {
-        padding: 12,
-      },
-    },
-
-    edgeStart: {
-      marginLeft: -8,
-
-      [theme.breakpoints.up("md")]: {
-        marginLeft: -12,
-      },
-    },
-
-    edgeEnd: {
-      marginLeft: 16,
-      marginRight: -8,
-
-      [theme.breakpoints.up("md")]: {
-        marginLeft: 12,
-        marginRight: -12,
-      },
-    },
-  }),
-  /* eslint-enable */
-  { name: displayName }
-);
-
 const TopIconButton = forwardRef((props, ref) => {
-  const classes = useStyles();
+  const theme = useTheme();
 
-  return <IconButton ref={ref} classes={classes} color="inherit" {...props} />;
+  const upMd = useMediaQuery(theme.breakpoints.up("md"));
+
+  const { edge } = props;
+
+  return (
+    <IconButton
+      ref={ref}
+      color="inherit"
+      css={[
+        css`
+          padding: ${upMd ? 12 : 8}px;
+        `,
+        edge === "start" &&
+          css`
+            margin-left: ${upMd ? -12 : -8}px;
+          `,
+        edge === "end" &&
+          css`
+            margin-left: ${upMd ? 12 : 16}px;
+            margin-right: ${upMd ? -12 : -8}px;
+          `,
+      ]}
+      {...props}
+    />
+  );
 });
 
-TopIconButton.displayName = displayName;
+TopIconButton.propTypes = {
+  edge: PropTypes.oneOf([false, "start", "end"]),
+};
+
+TopIconButton.displayName = "TopIconButton";
 
 export default TopIconButton;
