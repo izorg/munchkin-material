@@ -23,6 +23,7 @@ jobs:
       - name: Install
         env:
           HUSKY: 0
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
         run: npm ci
 
       - name: Lint
