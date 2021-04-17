@@ -15,13 +15,6 @@ script:
   - npm run test
   - npm run build:web
 
-  - VERSION=`node ./scripts/version.mjs`
-
-  - sentry-cli releases new "$VERSION"
-  - sentry-cli releases files "$VERSION" upload-sourcemaps web
-  - sentry-cli releases set-commits "$VERSION" --auto
-  - sentry-cli releases deploys "$VERSION" new -e "production"
-
 deploy:
   - provider: firebase
     token:

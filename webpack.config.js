@@ -1,6 +1,7 @@
 const path = require("path");
 
 const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
+const SentryWebpackPlugin = require("@sentry/webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
@@ -8,8 +9,10 @@ const HtmlWebpackTagsPlugin = require("html-webpack-tags-plugin");
 const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
 const { GenerateSW } = require("workbox-webpack-plugin");
 
-const dev = process.env.NODE_ENV === "development";
+const { version } = require("./package.json");
+
 const cordova = process.env.BUILD === "cordova";
+const dev = process.env.NODE_ENV === "development";
 const web = process.env.BUILD === "web";
 
 const outputPath = path.resolve(__dirname, cordova ? "cordova/www" : "web");
@@ -156,6 +159,17 @@ module.exports = {
     dev && new ReactRefreshWebpackPlugin(),
 
     !dev && web && new GenerateSW(),
+
+    process.env.CI === "true" &&
+      new SentryWebpackPlugin({
+        deploy: {
+          env: "production",
+        },
+        include: outputPath,
+        org: "viacheslav",
+        project: "munchkin",
+        release: version,
+      }),
 
     process.env.STATS &&
       new BundleAnalyzerPlugin({
