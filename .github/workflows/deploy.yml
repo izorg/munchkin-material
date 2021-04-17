@@ -1,0 +1,44 @@
+name: Deploy
+
+on:
+  push:
+    tags:
+      - v*
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Read .nvmrc
+        id: nvmrc
+        run: echo "##[set-output name=NODE_VERSION;]$(cat .nvmrc)" # https://github.com/actions/setup-node/issues/32#issuecomment-525791142
+
+      - uses: actions/setup-node@v2-beta
+        with:
+          node-version: "${{ steps.nvmrc.outputs.NODE_VERSION }}"
+
+      - name: Install
+        env:
+          HUSKY: 0
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Test
+        run: npm run test
+
+      - name: Build
+        env:
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+        run: npm run build:web
+
+      - uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          channelId: live
+          firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_IZORG_MUNCHKIN }}"
+          projectId: izorg-munchkin
+          repoToken: "${{ secrets.GITHUB_TOKEN }}"
