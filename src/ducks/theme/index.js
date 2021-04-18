@@ -1,30 +1,24 @@
+import { createSlice } from "@reduxjs/toolkit";
+
 import { key as id } from "../../theme/colors/munchkin";
 
-export const SET_THEME = "theme/SET";
-
-export const setTheme = (theme) => ({
-  theme,
-  type: SET_THEME,
-});
-
-const initialState = {
+export const initialState = {
   id,
   mode: undefined,
   pureBlack: false,
 };
 
-const reducer = (state = initialState, action) => {
-  switch (action.type) {
-    case SET_THEME: {
-      return {
-        ...state,
-        ...action.theme,
-      };
-    }
+const themeSlice = createSlice({
+  initialState,
+  name: "theme",
+  reducers: {
+    setTheme: (state, action) => ({
+      ...state,
+      ...action.payload,
+    }),
+  },
+});
 
-    default:
-      return state;
-  }
-};
+export const { setTheme } = themeSlice.actions;
 
-export default reducer;
+export default themeSlice.reducer;
