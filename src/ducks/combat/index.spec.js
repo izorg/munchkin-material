@@ -4,13 +4,6 @@ import createMonster from "../../utils/createMonster";
 import { ADD_MONSTER, REMOVE_MONSTER } from "../monsters/actionTypes";
 import { REMOVE_PLAYERS } from "../players/actionTypes";
 
-import {
-  SET_COMBAT_HELPER,
-  SET_COMBAT_HELPER_BONUS,
-  SET_COMBAT_PLAYER_BONUS,
-  START_COMBAT,
-} from "./actionTypes";
-
 import reducer, {
   setCombatHelper,
   setCombatHelperBonus,
@@ -48,10 +41,7 @@ describe("Combat reducer", () => {
   test("sets player bonus", () => {
     const bonus = -3;
 
-    const combat = reducer(undefined, {
-      bonus,
-      type: SET_COMBAT_PLAYER_BONUS,
-    });
+    const combat = reducer(undefined, setCombatPlayerBonus(bonus));
 
     expect(combat.playerBonus).toBe(bonus);
   });
@@ -59,10 +49,7 @@ describe("Combat reducer", () => {
   test("sets helper bonus", () => {
     const bonus = 3;
 
-    const combat = reducer(undefined, {
-      bonus,
-      type: SET_COMBAT_HELPER_BONUS,
-    });
+    const combat = reducer(undefined, setCombatHelperBonus(bonus));
 
     expect(combat.helperBonus).toBe(bonus);
   });
@@ -70,26 +57,18 @@ describe("Combat reducer", () => {
   test("sets helper id", () => {
     const id = 1;
 
-    const combat = reducer(undefined, {
-      id,
-      type: SET_COMBAT_HELPER,
-    });
+    const combat = reducer(undefined, setCombatHelper(id));
 
     expect(combat.helperId).toBe(id);
   });
 
   test("starts combat", () => {
     const playerId = 10;
-    const monster = createMonster();
 
-    const combat = reducer(undefined, {
-      monster,
-      playerId,
-      type: START_COMBAT,
-    });
+    const combat = reducer(undefined, startCombat(playerId));
 
     expect(combat.playerId).toBe(playerId);
-    expect(combat.monsters).toStrictEqual([monster.id]);
+    expect(combat.monsters).toHaveLength(1);
   });
 
   test("should remove helper on related player remove", () => {
@@ -117,46 +96,5 @@ describe("Combat reducer", () => {
     const state = {};
 
     expect(reducer(state, {})).toBe(state);
-  });
-});
-
-describe("Combat actions", () => {
-  test("should create an action to set helper", () => {
-    const action = {
-      id: uuid(),
-      type: SET_COMBAT_HELPER,
-    };
-
-    expect(setCombatHelper(action.id)).toStrictEqual(action);
-  });
-
-  test("should create an action to set helper bonus", () => {
-    const action = {
-      bonus: 2,
-      type: SET_COMBAT_HELPER_BONUS,
-    };
-
-    expect(setCombatHelperBonus(action.bonus)).toStrictEqual(action);
-  });
-
-  test("should create an action to set player bonus", () => {
-    const action = {
-      bonus: 2,
-      type: SET_COMBAT_PLAYER_BONUS,
-    };
-
-    expect(setCombatPlayerBonus(action.bonus)).toStrictEqual(action);
-  });
-
-  test("should create an action to start a combat", () => {
-    const playerId = uuid();
-
-    const { monster, ...action } = startCombat(playerId);
-
-    expect(action).toStrictEqual({
-      playerId,
-      type: START_COMBAT,
-    });
-    expect(typeof monster).toBe("object");
   });
 });

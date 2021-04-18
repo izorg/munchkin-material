@@ -7,7 +7,6 @@ import {
   INCREMENT_MONSTER_BONUS,
   INCREMENT_MONSTER_LEVEL,
   REMOVE_MONSTER,
-  UPDATE_MONSTER,
 } from "./actionTypes";
 
 export const addMonster = (monster) => ({
@@ -66,12 +65,6 @@ export const monsterReducer = (state, action) => {
         level: state.level + 1,
       };
 
-    case UPDATE_MONSTER:
-      return {
-        ...state,
-        ...action.monster,
-      };
-
     default:
       return state;
   }
@@ -110,16 +103,6 @@ const reducer = (state = initialState, action) => {
       return {
         [action.monster.id]: action.monster,
       };
-
-    case UPDATE_MONSTER: {
-      const { id } = action.monster;
-      const monster = monsterReducer(state[id], action);
-
-      return {
-        ...state,
-        [id]: monster,
-      };
-    }
 
     default:
       return state;
