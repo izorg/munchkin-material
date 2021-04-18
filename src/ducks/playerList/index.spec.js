@@ -1,44 +1,29 @@
-import {
-  ADD_PLAYER_TO_LIST,
-  MOVE_PLAYER,
-  SHUFFLE_PLAYERS,
-} from "./actionTypes";
-
-import reducer from "./index";
+import reducer, {
+  addPlayerToList,
+  initialState,
+  movePlayer,
+  shufflePlayers,
+} from "./index";
 
 describe("Player List reducer", () => {
   test("should add player", () => {
-    let playerList = reducer(undefined, {
-      id: 1,
-      type: ADD_PLAYER_TO_LIST,
-    });
+    const id = "1";
 
-    expect(playerList[0]).toStrictEqual(1);
+    const state = reducer(initialState, addPlayerToList(id));
 
-    playerList = reducer(playerList, {
-      id: 2,
-      type: ADD_PLAYER_TO_LIST,
-    });
-
-    expect(playerList[1]).toStrictEqual(2);
+    expect(state).toStrictEqual([id]);
   });
 
   test("should move player", () => {
-    const playerList = reducer([1, 2, 3], {
-      newPosition: 2,
-      oldPosition: 0,
-      type: MOVE_PLAYER,
-    });
+    const state = reducer([1, 2, 3], movePlayer(0, 2));
 
-    expect(playerList).toStrictEqual([2, 3, 1]);
+    expect(state).toStrictEqual([2, 3, 1]);
   });
 
   test("should shuffle players", () => {
     const state = [1, 2, 3];
 
-    const playerList = reducer([1, 2, 3], {
-      type: SHUFFLE_PLAYERS,
-    });
+    const playerList = reducer([1, 2, 3], shufflePlayers());
 
     expect(playerList).not.toBe(state);
     expect(playerList).toHaveLength(state.length);
