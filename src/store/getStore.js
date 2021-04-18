@@ -1,7 +1,6 @@
+import { configureStore } from "@reduxjs/toolkit";
 import { createReduxEnhancer } from "@sentry/react";
-import { applyMiddleware, combineReducers, createStore } from "redux";
-import { composeWithDevTools } from "redux-devtools-extension";
-import thunk from "redux-thunk";
+import { combineReducers } from "redux";
 import undoable, { includeAction } from "redux-undo";
 
 import {
@@ -14,8 +13,6 @@ import { loadState, saveState } from "./localStorage";
 import reducers from "./reducers";
 
 const getStore = () => {
-  const composeEnhancers = composeWithDevTools({ trace: true });
-
   const createRootReducer = () =>
     undoable(combineReducers(reducers), {
       filter: includeAction([KILL_PLAYER, REMOVE_PLAYERS, RESET_PLAYERS]),
@@ -27,12 +24,12 @@ const getStore = () => {
 
   const sentryReduxEnhancer = createReduxEnhancer();
 
-  const enhancer = composeEnhancers(
-    applyMiddleware(thunk),
-    sentryReduxEnhancer
-  );
-
-  const store = createStore(createRootReducer(), preloadedState, enhancer);
+  const store = configureStore({
+    devTools: process.env.NODE_ENV === "development",
+    enhancers: [sentryReduxEnhancer],
+    preloadedState,
+    reducer: createRootReducer(),
+  });
 
   if (process.env.NODE_ENV === "development") {
     window.reduxStore = store;

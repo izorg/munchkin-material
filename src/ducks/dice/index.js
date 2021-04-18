@@ -1,22 +1,18 @@
-export const THROW_DICE = "dice/THROW";
+import { createSlice } from "@reduxjs/toolkit";
 
-export const throwDice = () => ({
-  dice: Math.floor(Math.random() * 6) + 1,
-  type: THROW_DICE,
+export const diceSlice = createSlice({
+  initialState: null,
+  name: "dice",
+  reducers: {
+    throwDice: {
+      prepare: () => ({
+        payload: Math.floor(Math.random() * 6) + 1,
+      }),
+      reducer: (state, action) => action.payload,
+    },
+  },
 });
 
-const initialState = null;
+export const { throwDice } = diceSlice.actions;
 
-const reducer = (state = initialState, action) => {
-  switch (action.type) {
-    case THROW_DICE: {
-      return action.dice;
-    }
-
-    /* istanbul ignore next  */
-    default:
-      return state;
-  }
-};
-
-export default reducer;
+export default diceSlice.reducer;
