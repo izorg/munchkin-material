@@ -1,35 +1,21 @@
-export const TOGGLE_MENU = "ui/TOGGLE_MENU";
-export const TOGGLE_PLAYER = "ui/TOGGLE_PLAYER";
-export const UNSELECT_ALL_PLAYERS = "ui/UNSELECT_ALL_PLAYERS";
-
-export const toggleMenu = () => ({
-  type: TOGGLE_MENU,
-});
-
-export const togglePlayer = (id) => ({
-  id,
-  type: TOGGLE_PLAYER,
-});
-
-export const unselectAllPlayers = () => ({
-  type: UNSELECT_ALL_PLAYERS,
-});
+import { createSlice } from "@reduxjs/toolkit";
 
 export const initialState = {
   menuCollapsed: true,
   selectedPlayerIds: [],
 };
 
-const reducer = (state = initialState, action) => {
-  switch (action.type) {
-    case TOGGLE_MENU:
-      return {
-        ...state,
-        menuCollapsed: !state.menuCollapsed,
-      };
+const uiSlice = createSlice({
+  initialState,
+  name: "ui",
+  reducers: {
+    toggleMenu: (state) => ({
+      ...state,
+      menuCollapsed: !state.menuCollapsed,
+    }),
 
-    case TOGGLE_PLAYER: {
-      const { id } = action;
+    togglePlayer: (state, action) => {
+      const { payload: id } = action;
 
       if (state.selectedPlayerIds.includes(id)) {
         return {
@@ -44,18 +30,15 @@ const reducer = (state = initialState, action) => {
         ...state,
         selectedPlayerIds: [...state.selectedPlayerIds, id],
       };
-    }
+    },
 
-    case UNSELECT_ALL_PLAYERS: {
-      return {
-        ...state,
-        selectedPlayerIds: [],
-      };
-    }
+    unselectAllPlayers: (state) => ({
+      ...state,
+      selectedPlayerIds: [],
+    }),
+  },
+});
 
-    default:
-      return state;
-  }
-};
+export const { toggleMenu, togglePlayer, unselectAllPlayers } = uiSlice.actions;
 
-export default reducer;
+export default uiSlice.reducer;
