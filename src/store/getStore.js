@@ -13,7 +13,7 @@ import {
 import { loadState, saveState } from "./localStorage";
 import reducers from "./reducers";
 
-const configureStore = () => {
+const getStore = () => {
   const composeEnhancers = composeWithDevTools({ trace: true });
 
   const createRootReducer = () =>
@@ -72,4 +72,4 @@ const configureStore = () => {
   return store;
 };
 
-export default configureStore;
+export default getStore;
