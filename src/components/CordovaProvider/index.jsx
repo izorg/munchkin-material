@@ -20,7 +20,7 @@ const cordovaResource = new AsyncResource(
       false
     )
   ).then(async () => {
-    if (process.env.NODE_ENV === "production" && !window.BuildInfo.debug) {
+    if (!window.BuildInfo.debug) {
       await import("../../sentry");
     }
   })
