@@ -10,13 +10,13 @@ jobs:
     name: Deploy
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v2.3.4
 
       - name: Read .nvmrc
         id: nvmrc
         run: echo "##[set-output name=NODE_VERSION;]$(cat .nvmrc)" # https://github.com/actions/setup-node/issues/32#issuecomment-525791142
 
-      - uses: actions/setup-node@v2-beta
+      - uses: actions/setup-node@v2.1.5
         with:
           node-version: "${{ steps.nvmrc.outputs.NODE_VERSION }}"
 
@@ -32,12 +32,13 @@ jobs:
       - name: Test
         run: npm run test
 
-      - name: Build
+      - name: Build 🔨
         env:
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
         run: npm run build:web
 
-      - uses: FirebaseExtended/action-hosting-deploy@v0
+      - name: Deploy 🚀
+        uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           channelId: live
           firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_IZORG_MUNCHKIN }}"
