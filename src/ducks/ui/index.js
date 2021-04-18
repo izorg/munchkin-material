@@ -47,11 +47,9 @@ const reducer = (state = initialState, action) => {
     }
 
     case UNSELECT_ALL_PLAYERS: {
-      const { selectedPlayerIds } = initialState;
-
       return {
         ...state,
-        selectedPlayerIds,
+        selectedPlayerIds: [],
       };
     }
 

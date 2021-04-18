@@ -1,7 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+export const initialState = null;
+
 export const diceSlice = createSlice({
-  initialState: null,
+  initialState,
   name: "dice",
   reducers: {
     throwDice: {
