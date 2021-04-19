@@ -13,6 +13,7 @@ const { version } = require("./package.json");
 
 const cordova = process.env.BUILD === "cordova";
 const dev = process.env.NODE_ENV === "development";
+const prod = process.env.NODE_ENV === "production";
 const web = process.env.BUILD === "web";
 
 const outputPath = path.resolve(__dirname, cordova ? "cordova/www" : "web");
@@ -66,7 +67,36 @@ module.exports = {
             loader: "babel-loader",
             options: {
               cacheDirectory: dev,
-              plugins: [dev && "react-refresh/babel"].filter(Boolean),
+              plugins: [
+                [
+                  "@babel/plugin-transform-runtime",
+                  {
+                    useESModules: true,
+                  },
+                ],
+                prod && [
+                  "babel-plugin-react-remove-properties",
+                  {
+                    properties: ["data-screenshots"],
+                  },
+                ],
+                prod && "babel-plugin-transform-react-remove-prop-types",
+                dev && "react-refresh/babel",
+              ].filter(Boolean),
+              presets: [
+                [
+                  "@babel/preset-env",
+                  {
+                    corejs: {
+                      proposals: true,
+                      version: 3,
+                    },
+                    loose: true,
+                    modules: false,
+                    useBuiltIns: "usage",
+                  },
+                ],
+              ],
             },
           },
         ],
