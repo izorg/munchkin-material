@@ -1,10 +1,12 @@
 import { v4 as uuid } from "uuid";
 
 import createMonster from "../../utils/createMonster";
-import { ADD_MONSTER, REMOVE_MONSTER } from "../monsters/actionTypes";
-import { REMOVE_PLAYERS } from "../players/actionTypes";
+import { addMonster, removeMonster } from "../monsters";
+import { removePlayers } from "../players";
 
 import reducer, {
+  finishCombat,
+  initialState,
   setCombatHelper,
   setCombatHelperBonus,
   setCombatPlayerBonus,
@@ -13,27 +15,22 @@ import reducer, {
 
 describe("Combat reducer", () => {
   test("adds monster", () => {
-    const monster = createMonster();
+    const combat = reducer(undefined, addMonster(createMonster()));
 
-    const combat = reducer(undefined, {
-      monster,
-      type: ADD_MONSTER,
-    });
+    expect(combat.monsters).toHaveLength(1);
+  });
 
-    expect(combat.monsters[0]).toBe(monster.id);
+  test("should finish combat", () => {
+    const state = reducer(initialState, finishCombat());
+
+    expect(state.finished).toBe(true);
   });
 
   test("removes monster", () => {
     const monster = createMonster();
     const { id } = monster;
 
-    const combat = reducer(
-      { monsters: [id] },
-      {
-        id,
-        type: REMOVE_MONSTER,
-      }
-    );
+    const combat = reducer({ monsters: [id] }, removeMonster(id));
 
     expect(combat.monsters).toHaveLength(0);
   });
@@ -76,9 +73,7 @@ describe("Combat reducer", () => {
 
     const state = { helperBonus: 2, helperId };
 
-    expect(
-      reducer(state, { playerList: [helperId], type: REMOVE_PLAYERS })
-    ).toStrictEqual({
+    expect(reducer(state, removePlayers([helperId]))).toStrictEqual({
       helperBonus: 0,
       helperId: null,
     });
@@ -87,9 +82,7 @@ describe("Combat reducer", () => {
   test("should ignore combat unrelated player removal", () => {
     const state = { helperBonus: 2, helperId: uuid() };
 
-    expect(reducer(state, { playerList: [uuid()], type: REMOVE_PLAYERS })).toBe(
-      state
-    );
+    expect(reducer(state, removePlayers([uuid()]))).toBe(state);
   });
 
   test("should ignore unknown action", () => {

@@ -3,11 +3,7 @@ import { createReduxEnhancer } from "@sentry/react";
 import { combineReducers } from "redux";
 import undoable, { includeAction } from "redux-undo";
 
-import {
-  KILL_PLAYER,
-  REMOVE_PLAYERS,
-  RESET_PLAYERS,
-} from "../ducks/players/actionTypes";
+import { killPlayer, removePlayers, resetPlayers } from "../ducks/players";
 
 import { loadState, saveState } from "./localStorage";
 import reducers from "./reducers";
@@ -15,7 +11,11 @@ import reducers from "./reducers";
 const getStore = () => {
   const createRootReducer = () =>
     undoable(combineReducers(reducers), {
-      filter: includeAction([KILL_PLAYER, REMOVE_PLAYERS, RESET_PLAYERS]),
+      filter: includeAction([
+        killPlayer.type,
+        removePlayers.type,
+        resetPlayers.type,
+      ]),
       limit: 1,
       syncFilter: true,
     });

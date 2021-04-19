@@ -1,15 +1,16 @@
 import createMonster from "../../utils/createMonster";
-import { START_COMBAT } from "../combat/actionTypes";
+import { startCombat } from "../combat";
 
-import reducer, {
+import {
   addMonster,
   decrementMonsterBonus,
   decrementMonsterLevel,
   incrementMonsterBonus,
   incrementMonsterLevel,
-  monsterReducer,
   removeMonster,
-} from "./index";
+} from "./actions";
+
+import reducer, { monsterReducer } from "./index";
 
 describe("Monsters reducer", () => {
   test("adds monster", () => {
@@ -51,14 +52,9 @@ describe("Monsters reducer", () => {
   });
 
   test("starts combat", () => {
-    const monster = createMonster();
+    const monsters = reducer(undefined, startCombat("1"));
 
-    const monsters = reducer(undefined, {
-      monster,
-      type: START_COMBAT,
-    });
-
-    expect(monsters).toStrictEqual({ [monster.id]: monster });
+    expect(Object.values(monsters)).toHaveLength(1);
   });
 
   test("should ignore unknown action", () => {
