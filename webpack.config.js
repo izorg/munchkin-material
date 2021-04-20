@@ -61,7 +61,7 @@ module.exports = {
     rules: [
       {
         exclude: /node_modules/,
-        test: /\.jsx?$/,
+        test: /\.[jt]sx?$/,
         use: [
           {
             loader: "babel-loader",
@@ -210,6 +210,6 @@ module.exports = {
   ].filter(Boolean),
 
   resolve: {
-    extensions: [".mjs", ".jsx", ".js", ".json"],
+    extensions: [".mjs", ".tsx", ".ts", ".jsx", ".js", ".json"],
   },
 };

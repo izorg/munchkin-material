@@ -11,11 +11,28 @@
     "plugin:jest/recommended",
     "plugin:json/recommended",
     "plugin:jsx-a11y/recommended",
-    "plugin:prettier/recommended",
     "plugin:react-hooks/recommended",
-    "plugin:react/recommended"
+    "plugin:react/recommended",
+    "plugin:prettier/recommended" // Make sure to put it last, so it gets the chance to override other configs
   ],
-  "parser": "babel-eslint",
+  "overrides": [
+    {
+      "files": ["**/*.{ts,tsx}"],
+      "extends": [
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@typescript-eslint/recommended-requiring-type-checking",
+        "plugin:import/typescript",
+        "plugin:prettier/recommended" // Make sure to put it last, so it gets the chance to override other configs
+      ],
+      "parserOptions": {
+        "project": "./tsconfig.json"
+      },
+      "rules": {
+        "@typescript-eslint/restrict-template-expressions": "error"
+      }
+    }
+  ],
+  "parser": "@typescript-eslint/parser",
   "plugins": ["@emotion"],
   "rules": {
     "@emotion/syntax-preference": ["error", "string"],
@@ -80,7 +97,7 @@
   "settings": {
     "import/resolver": {
       "node": {
-        "extensions": [".mjs", ".jsx", ".js", ".json"]
+        "extensions": [".mjs", ".tsx", ".ts", ".jsx", ".js", ".json"]
       }
     },
     "react": {

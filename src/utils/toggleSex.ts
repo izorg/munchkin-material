@@ -1,6 +1,8 @@
 import { FEMALE, MALE } from "./sex";
 
-const toggleSex = (sex) => {
+type Sex = "female" | "male";
+
+const toggleSex = (sex: Sex): Sex => {
   switch (sex) {
     case FEMALE:
       return MALE;
