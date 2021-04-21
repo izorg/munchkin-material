@@ -1,6 +1,6 @@
 {
   "**/*.{js,json,jsx,mjs,ts,tsx}": [
-    "eslint --ext .js,.json,.jsx,.mjs --fix --max-warnings=0"
+    "eslint --ext .js,.json,.jsx,.mjs --fix --max-warnings 0"
   ],
   "**/*.{html,md,yml}": [
     "prettier --write"
