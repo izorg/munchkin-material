@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 
 import availableColors from "./availableColors";
-import { FEMALE, MALE } from "./sex";
+import { Sex } from "./types";
 
 export const colorType = PropTypes.oneOf(availableColors);
 
@@ -9,7 +9,7 @@ export const playerShape = PropTypes.shape({
   gear: PropTypes.number.isRequired,
   id: PropTypes.string.isRequired,
   level: PropTypes.number.isRequired,
-  name: PropTypes.string,
+  name: PropTypes.string.isRequired,
 });
 
-export const sexProp = PropTypes.oneOf([FEMALE, MALE]);
+export const sexProp = PropTypes.oneOf([Sex.Female, Sex.Male]);

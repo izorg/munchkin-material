@@ -1,14 +1,14 @@
 import { v4 as uuid } from "uuid";
 
-import { MALE } from "./sex";
+import { Player, Sex } from "./types";
 
 export const defaultData = {
   gear: 0,
   level: 1,
-  sex: MALE,
+  sex: Sex.Male,
 };
 
-const createPlayer = (data) => ({
+const createPlayer = (data?: Partial<Player>): Player => ({
   id: uuid(),
   ...defaultData,
   ...data,

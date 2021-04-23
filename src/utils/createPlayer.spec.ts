@@ -1,7 +1,7 @@
 import { v4 as uuid } from "uuid";
 
 import createPlayer, { defaultData } from "./createPlayer";
-import { FEMALE } from "./sex";
+import { Sex } from "./types";
 
 describe("createPlayer", () => {
   test("should create a new player", () => {
@@ -17,7 +17,7 @@ describe("createPlayer", () => {
       gear: 3,
       id: uuid(),
       level: 10,
-      sex: FEMALE,
+      sex: Sex.Female,
     };
 
     const player = createPlayer(data);

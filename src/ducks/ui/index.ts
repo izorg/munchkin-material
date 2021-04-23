@@ -1,6 +1,11 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-export const initialState = {
+type UiInitialState = {
+  menuCollapsed: boolean;
+  selectedPlayerIds: string[];
+};
+
+export const initialState: UiInitialState = {
   menuCollapsed: true,
   selectedPlayerIds: [],
 };
@@ -14,7 +19,7 @@ const uiSlice = createSlice({
       menuCollapsed: !state.menuCollapsed,
     }),
 
-    togglePlayer: (state, action) => {
+    togglePlayer: (state, action: PayloadAction<string>) => {
       const { payload: id } = action;
 
       if (state.selectedPlayerIds.includes(id)) {
