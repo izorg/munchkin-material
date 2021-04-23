@@ -22,12 +22,6 @@ Sex.propTypes = {
   sex: sexProp,
 };
 
-Sex.defaultProps = {
-  sex: undefined,
-};
-
 Sex.displayName = displayName;
-
-Sex.muiName = "SvgIcon";
 
 export default Sex;

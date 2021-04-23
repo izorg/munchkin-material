@@ -33,6 +33,4 @@ MenuListItemText.propTypes = {
 
 MenuListItemText.displayName = displayName;
 
-MenuListItemText.muiName = displayName;
-
 export default MenuListItemText;

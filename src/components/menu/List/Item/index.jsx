@@ -17,6 +17,4 @@ const MenuListItem = (props) => {
 
 MenuListItem.displayName = displayName;
 
-MenuListItem.muiName = displayName;
-
 export default MenuListItem;
