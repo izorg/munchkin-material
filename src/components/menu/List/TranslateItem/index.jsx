@@ -7,14 +7,13 @@ import ListItemText from "../ItemText";
 
 const displayName = "TranslateItem";
 
-const TranslateItem = (props) => (
+const TranslateItem = () => (
   <ListItem
     button
     component="a"
     href="https://poeditor.com/join/project/ZMBvWu9xIw"
     rel="noopener noreferrer"
     target="_blank"
-    {...props}
   >
     <ListItemIcon>
       <Translate />

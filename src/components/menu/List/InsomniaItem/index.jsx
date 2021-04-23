@@ -1,7 +1,5 @@
 import { ListItemIcon, makeStyles, Switch } from "@material-ui/core";
-import clsx from "clsx";
 import { Lightbulb, LightbulbOutline } from "mdi-material-ui";
-import PropTypes from "prop-types";
 import { FormattedMessage } from "react-intl";
 
 import { useWakeLock } from "../../../WakeLockProvider";
@@ -20,7 +18,7 @@ const useStyles = makeStyles(
   { name: displayName }
 );
 
-const InsomniaItem = ({ className }) => {
+const InsomniaItem = () => {
   const classes = useStyles();
 
   const { setWakeLock, wakeLock, wakeLockSupport } = useWakeLock();
@@ -32,7 +30,7 @@ const InsomniaItem = ({ className }) => {
   return (
     <ListItem
       button
-      className={clsx(classes.root, className)}
+      className={classes.root}
       onClick={() => setWakeLock(!wakeLock)}
     >
       <ListItemIcon>
@@ -52,10 +50,6 @@ const InsomniaItem = ({ className }) => {
       />
     </ListItem>
   );
-};
-
-InsomniaItem.propTypes = {
-  className: PropTypes.string,
 };
 
 InsomniaItem.displayName = displayName;

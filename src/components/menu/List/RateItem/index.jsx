@@ -21,7 +21,7 @@ const getRateLink = (platformId) => {
   }
 };
 
-const RateItem = (props) => {
+const RateItem = () => {
   const goBack = useGoBack();
 
   const rateLink = getRateLink(window.cordova?.platformId);
@@ -39,7 +39,6 @@ const RateItem = (props) => {
       href={rateLink}
       onClick={onClick}
       target="_blank"
-      {...props}
     >
       <ListItemIcon>
         <Star />

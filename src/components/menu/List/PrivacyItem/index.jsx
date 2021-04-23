@@ -7,7 +7,7 @@ import ListItemText from "../ItemText";
 
 const displayName = "PrivacyItem";
 
-const PrivacyItem = (props) => {
+const PrivacyItem = () => {
   if (!window.cordova) {
     return null;
   }
@@ -19,7 +19,6 @@ const PrivacyItem = (props) => {
       href="https://allmunchkins.com/privacy"
       rel="noopener noreferrer"
       target="_blank"
-      {...props}
     >
       <ListItemIcon>
         <ShieldAccount />

@@ -1,7 +1,5 @@
 import { ListItemIcon, makeStyles, Switch } from "@material-ui/core";
-import clsx from "clsx";
 import { Account, AccountMultiple } from "mdi-material-ui";
-import PropTypes from "prop-types";
 import { FormattedMessage } from "react-intl";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
@@ -25,7 +23,7 @@ const useStyles = makeStyles(
   { name: displayName }
 );
 
-const SingleModeItem = ({ className }) => {
+const SingleModeItem = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const { pathname } = useLocation();
@@ -57,7 +55,7 @@ const SingleModeItem = ({ className }) => {
   return (
     <ListItem
       button
-      className={clsx(classes.root, className)}
+      className={classes.root}
       data-screenshots="single-mode-item"
       onClick={() => onChange(!singleMode)}
     >
@@ -79,10 +77,6 @@ const SingleModeItem = ({ className }) => {
       />
     </ListItem>
   );
-};
-
-SingleModeItem.propTypes = {
-  className: PropTypes.string,
 };
 
 SingleModeItem.displayName = displayName;

@@ -1,7 +1,5 @@
 import { ListItemIcon, makeStyles, useTheme } from "@material-ui/core";
-import clsx from "clsx";
 import { Palette } from "mdi-material-ui";
-import PropTypes from "prop-types";
 import { useIntl } from "react-intl";
 import { useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -25,7 +23,7 @@ const useStyles = makeStyles(
   { name: displayName }
 );
 
-const ThemeItem = ({ className, ...rest }) => {
+const ThemeItem = () => {
   const classes = useStyles();
   const intl = useIntl();
   const location = useLocation();
@@ -54,12 +52,7 @@ const ThemeItem = ({ className, ...rest }) => {
   };
 
   return (
-    <ListItem
-      button
-      className={clsx(className, classes.root)}
-      onClick={onClick}
-      {...rest}
-    >
+    <ListItem button className={classes.root} onClick={onClick}>
       <ListItemIcon>
         <Palette style={{ color: theme.palette.primary.main }} />
       </ListItemIcon>
@@ -69,10 +62,6 @@ const ThemeItem = ({ className, ...rest }) => {
       />
     </ListItem>
   );
-};
-
-ThemeItem.propTypes = {
-  className: PropTypes.string,
 };
 
 ThemeItem.displayName = displayName;

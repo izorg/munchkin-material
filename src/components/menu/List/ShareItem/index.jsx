@@ -20,7 +20,7 @@ const messages = defineMessages({
   },
 });
 
-const ShareItem = (props) => {
+const ShareItem = () => {
   const intl = useIntl();
 
   const goBack = useGoBack();
@@ -52,7 +52,7 @@ const ShareItem = (props) => {
   };
 
   return (
-    <ListItem button onClick={onClick} {...props}>
+    <ListItem button onClick={onClick}>
       <ListItemIcon>
         <ShareVariant />
       </ListItemIcon>

@@ -10,7 +10,7 @@ import ListItemText from "../ItemText";
 
 const displayName = "VersionItem";
 
-const VersionItem = (props) => {
+const VersionItem = () => {
   const goBack = useGoBack();
   const menuOpen = useMenuOpen();
 
@@ -27,7 +27,7 @@ const VersionItem = (props) => {
   };
 
   return (
-    <ListItem button onClick={onClick} {...props}>
+    <ListItem button onClick={onClick}>
       <ListItemIcon>
         {update ? <CellphoneArrowDown /> : <InformationOutline />}
       </ListItemIcon>
