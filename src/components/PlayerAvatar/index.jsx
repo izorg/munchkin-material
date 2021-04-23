@@ -31,6 +31,7 @@ PlayerAvatar.propTypes = {
   color: colorType.isRequired,
   name: PropTypes.string.isRequired,
   selected: PropTypes.bool,
+  style: PropTypes.object,
 };
 
 PlayerAvatar.defaultProps = {

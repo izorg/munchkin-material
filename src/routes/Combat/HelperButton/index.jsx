@@ -4,6 +4,7 @@ import SpeedDialAction from "@material-ui/core/SpeedDialAction";
 import SpeedDialIcon from "@material-ui/core/SpeedDialIcon";
 import clsx from "clsx";
 import { AccountPlus, EmoticonDevilOutline } from "mdi-material-ui";
+import PropTypes from "prop-types";
 import { memo } from "react";
 import { FormattedMessage } from "react-intl";
 import { useDispatch, useSelector } from "react-redux";
@@ -134,6 +135,10 @@ const CombatHelperButton = ({ className, ...rest }) => {
       </SpeedDial>
     </>
   );
+};
+
+CombatHelperButton.propTypes = {
+  className: PropTypes.string,
 };
 
 CombatHelperButton.displayName = displayName;

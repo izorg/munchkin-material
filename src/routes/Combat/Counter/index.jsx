@@ -101,6 +101,7 @@ const CombatCounter = ({
 };
 
 CombatCounter.propTypes = {
+  className: PropTypes.string,
   decrementDisabled: PropTypes.bool,
   incrementDisabled: PropTypes.bool,
   onDecrement: PropTypes.func.isRequired,

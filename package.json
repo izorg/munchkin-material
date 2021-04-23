@@ -6,7 +6,7 @@
     "build:web": "cross-env NODE_ENV=production BUILD=web webpack",
     "clean": "rm -rf coverage dist messages node_modules/.cache screenshots web",
     "dev": "cross-env NODE_ENV=development BUILD=web webpack serve",
-    "eslint": "eslint . --ext .js,.json,.jsx,.mjs,.ts,.tsx --max-warnings 0",
+    "eslint": "eslint . --cache --ext .js,.json,.jsx,.mjs,.ts,.tsx --max-warnings 0",
     "i18n:compile": "node -r dotenv/config scripts/i18n/download.mjs && prettier --write languages",
     "i18n:extract": "formatjs extract --id-interpolation-pattern [contenthash:5] --out-file messages.json \"src/**/*.{js,jsx}\" && formatjs compile --out-file languages/en.json messages.json && rm messages.json && prettier --write languages/en.json",
     "lint": "npm run eslint && npm run stylelint",

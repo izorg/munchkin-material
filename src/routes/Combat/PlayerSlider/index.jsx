@@ -279,6 +279,7 @@ const CombatPlayerSlider = ({ className, helperId, playerId }) => {
 };
 
 CombatPlayerSlider.propTypes = {
+  className: PropTypes.string,
   helperId: PropTypes.string,
   playerId: PropTypes.string.isRequired,
 };

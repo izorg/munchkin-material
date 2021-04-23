@@ -1,5 +1,6 @@
 import { ListItemText, makeStyles } from "@material-ui/core";
 import clsx from "clsx";
+import PropTypes from "prop-types";
 
 const displayName = "MenuListItemText";
 
@@ -24,6 +25,10 @@ const MenuListItemText = ({ className, ...props }) => {
       {...props}
     />
   );
+};
+
+MenuListItemText.propTypes = {
+  className: PropTypes.string,
 };
 
 MenuListItemText.displayName = displayName;

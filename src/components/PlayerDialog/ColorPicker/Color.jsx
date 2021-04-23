@@ -44,6 +44,7 @@ const Color = forwardRef(({ className, selected, value, ...props }, ref) => {
 });
 
 Color.propTypes = {
+  className: PropTypes.string,
   selected: PropTypes.bool,
   value: PropTypes.string.isRequired,
 };

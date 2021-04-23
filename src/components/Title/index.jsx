@@ -1,5 +1,6 @@
 import { makeStyles, Typography } from "@material-ui/core";
 import clsx from "clsx";
+import PropTypes from "prop-types";
 
 const displayName = "Title";
 
@@ -29,6 +30,10 @@ const Title = ({ className, ...props }) => {
       {...props}
     />
   );
+};
+
+Title.propTypes = {
+  className: PropTypes.string,
 };
 
 Title.displayName = displayName;

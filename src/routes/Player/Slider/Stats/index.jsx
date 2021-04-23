@@ -183,6 +183,7 @@ const PlayerStats = ({ className, playerId }) => {
 };
 
 PlayerStats.propTypes = {
+  className: PropTypes.string,
   playerId: PropTypes.string.isRequired,
 };
 

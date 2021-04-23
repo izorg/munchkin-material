@@ -1,5 +1,6 @@
 import { Fab, makeStyles } from "@material-ui/core";
 import clsx from "clsx";
+import PropTypes from "prop-types";
 import { forwardRef } from "react";
 
 const displayName = "ScreenFab";
@@ -39,6 +40,10 @@ const ScreenFab = forwardRef(({ className, ...rest }, ref) => {
     />
   );
 });
+
+ScreenFab.propTypes = {
+  className: PropTypes.string,
+};
 
 ScreenFab.displayName = displayName;
 

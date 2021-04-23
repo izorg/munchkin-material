@@ -1,6 +1,7 @@
 import { ListItemIcon, makeStyles, useTheme } from "@material-ui/core";
 import clsx from "clsx";
 import { Palette } from "mdi-material-ui";
+import PropTypes from "prop-types";
 import { useIntl } from "react-intl";
 import { useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -68,6 +69,10 @@ const ThemeItem = ({ className, ...rest }) => {
       />
     </ListItem>
   );
+};
+
+ThemeItem.propTypes = {
+  className: PropTypes.string,
 };
 
 ThemeItem.displayName = displayName;

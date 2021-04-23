@@ -1,6 +1,7 @@
 import { ListItemIcon, makeStyles } from "@material-ui/core";
 import clsx from "clsx";
 import { SwapVertical } from "mdi-material-ui";
+import PropTypes from "prop-types";
 import { useIntl } from "react-intl";
 import { useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -89,6 +90,10 @@ const LevelLimitItem = ({ className, ...rest }) => {
       />
     </ListItem>
   );
+};
+
+LevelLimitItem.propTypes = {
+  className: PropTypes.string,
 };
 
 LevelLimitItem.displayName = displayName;
