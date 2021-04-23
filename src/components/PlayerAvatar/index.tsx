@@ -1,14 +1,19 @@
 import { Avatar } from "@material-ui/core";
 import { Check } from "mdi-material-ui";
 import PropTypes from "prop-types";
-import { forwardRef } from "react";
+import { CSSProperties, forwardRef } from "react";
 
 import { colorType } from "../../utils/propTypes";
 
-const displayName = "PlayerAvatar";
+type PlayerAvatarProps = {
+  color: string;
+  name: string;
+  selected?: boolean;
+  style?: CSSProperties;
+};
 
-const PlayerAvatar = forwardRef(
-  ({ color, name, selected, style: styleProp, ...props }, ref) => {
+const PlayerAvatar = forwardRef<HTMLDivElement, PlayerAvatarProps>(
+  ({ color, name, selected = false, style: styleProp, ...props }, ref) => {
     let style = styleProp;
 
     if (!selected && color) {
@@ -34,10 +39,6 @@ PlayerAvatar.propTypes = {
   style: PropTypes.object,
 };
 
-PlayerAvatar.defaultProps = {
-  selected: false,
-};
-
-PlayerAvatar.displayName = displayName;
+PlayerAvatar.displayName = "PlayerAvatar";
 
 export default PlayerAvatar;
