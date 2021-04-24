@@ -1,12 +1,9 @@
 import {
   makeStyles,
   SwipeableDrawer,
-  ThemeProvider,
   useMediaQuery,
   useTheme,
 } from "@material-ui/core";
-import deepmerge from "deepmerge";
-import { useMemo } from "react";
 import { useLocation, useMatch, useNavigate } from "react-router-dom";
 
 import { EDIT } from "../../../routes/Home/modes";
@@ -17,6 +14,7 @@ import {
 } from "../../../utils/location";
 import { ios } from "../../../utils/platforms";
 import MenuList from "../List";
+import MenuTypeProvider from "../MenuTypeProvider";
 import useMenuOpen from "../useMenuOpen";
 
 const displayName = "MenuDrawer";
@@ -67,27 +65,8 @@ const MenuDrawer = () => {
       }),
     });
 
-  const drawerTheme = useMemo(
-    () =>
-      deepmerge(theme, {
-        components: {
-          MenuListItem: {
-            styleOverrides: {
-              gutters: {
-                "@supports (padding: max(0px))": {
-                  paddingLeft: `max(16px, env(safe-area-inset-left))`,
-                  paddingRight: `max(16px, env(safe-area-inset-right))`,
-                },
-              },
-            },
-          },
-        },
-      }),
-    [theme]
-  );
-
   return (
-    <ThemeProvider theme={drawerTheme}>
+    <MenuTypeProvider type="drawer">
       <SwipeableDrawer
         data-screenshot="drawer-menu"
         disableSwipeToOpen={disableSwipeToOpen}
@@ -98,7 +77,7 @@ const MenuDrawer = () => {
       >
         <MenuList />
       </SwipeableDrawer>
-    </ThemeProvider>
+    </MenuTypeProvider>
   );
 };
 
