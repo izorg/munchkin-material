@@ -191,8 +191,8 @@ const ThemeDialog = () => {
         <RadioGroup name="id" onChange={onThemeIdChange} value={theme.id}>
           {Object.values(themes)
             .sort((t1, t2) => {
-              const a = intl.formatMessage(t1.messages.name);
-              const b = intl.formatMessage(t2.messages.name);
+              const a = t1.name(intl);
+              const b = t2.name(intl);
 
               if (a < b) {
                 return -1;
@@ -210,7 +210,7 @@ const ThemeDialog = () => {
                 control={
                   <Radio autoFocus={option.key === theme.id} color="primary" />
                 }
-                label={intl.formatMessage(option.messages.name)}
+                label={option.name(intl)}
                 value={option.key}
               />
             ))}

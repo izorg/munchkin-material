@@ -3,12 +3,14 @@ import { defineMessages } from "react-intl";
 
 export const key = "munchkin";
 
-export const messages = defineMessages({
+const messages = defineMessages({
   name: {
     defaultMessage: "Munchkin",
     id: "theme.name.munchkin",
   },
 });
+
+export const name = messages.name;
 
 export const theme = {
   components: {

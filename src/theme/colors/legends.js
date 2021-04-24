@@ -5,15 +5,16 @@ import { defineMessages } from "react-intl";
 
 export const key = "legends";
 
-export const messages = defineMessages({
+const messages = defineMessages({
   name: {
     defaultMessage: "Legends",
     id: "theme.name.legends",
   },
 });
 
+export const name = messages.name;
+
 export const theme = {
-  /* eslint-disable sort-keys */
   components: {
     MuiAppBar: {
       styleOverrides: {
@@ -35,6 +36,7 @@ export const theme = {
     MuiButton: {
       styleOverrides: {
         containedPrimary: {
+          /* eslint-disable sort-keys */
           color: common.black,
           backgroundColor: grey[200],
           "&:hover": {
@@ -44,6 +46,7 @@ export const theme = {
               backgroundColor: grey[200],
             },
           },
+          /* eslint-enable */
         },
       },
     },
@@ -54,5 +57,4 @@ export const theme = {
       main: grey[700],
     },
   },
-  /* eslint-enable */
 };

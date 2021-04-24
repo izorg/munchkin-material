@@ -3,12 +3,14 @@ import { defineMessages } from "react-intl";
 
 export const key = "super";
 
-export const messages = defineMessages({
+const messages = defineMessages({
   name: {
     defaultMessage: "Super",
     id: "theme.name.super",
   },
 });
+
+export const name = messages.name;
 
 export const theme = {
   components: {

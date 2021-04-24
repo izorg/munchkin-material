@@ -3,12 +3,14 @@ import { defineMessages } from "react-intl";
 
 export const key = "booty";
 
-export const messages = defineMessages({
+const messages = defineMessages({
   name: {
     defaultMessage: "Booty",
     id: "theme.name.booty",
   },
 });
+
+export const name = messages.name;
 
 export const theme = {
   components: {

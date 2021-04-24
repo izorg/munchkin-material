@@ -58,7 +58,7 @@ const ThemeItem = () => {
       </ListItemIcon>
       <ListItemText
         primary={intl.formatMessage(themeMessages.label)}
-        secondary={intl.formatMessage(themes[themeKey].messages.name)}
+        secondary={themes[themeKey].name(intl)}
       />
     </ListItem>
   );

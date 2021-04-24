@@ -6,12 +6,14 @@ import * as munchkin from "./munchkin";
 import * as star from "./star";
 import * as superMunchkin from "./super";
 
-export default {
-  [apocalypse.key]: apocalypse,
-  [booty.key]: booty,
-  [cthulhu.key]: cthulhu,
-  [legends.key]: legends,
-  [munchkin.key]: munchkin,
-  [star.key]: star,
-  [superMunchkin.key]: superMunchkin,
-};
+export default Object.fromEntries(
+  [apocalypse, booty, cthulhu, legends, munchkin, star, superMunchkin].map(
+    (theme) => [
+      theme.key,
+      {
+        ...theme,
+        name: (intl) => intl.formatMessage(theme.name),
+      },
+    ]
+  )
+);
