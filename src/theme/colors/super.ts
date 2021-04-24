@@ -1,23 +1,24 @@
-import red from "@material-ui/core/colors/red";
+import { ThemeOptions } from "@material-ui/core";
+import yellow from "@material-ui/core/colors/yellow";
 import { defineMessages } from "react-intl";
 
-export const key = "booty";
+export const key = "super";
 
 const messages = defineMessages({
   name: {
-    defaultMessage: "Booty",
-    id: "theme.name.booty",
+    defaultMessage: "Super",
+    id: "theme.name.super",
   },
 });
 
 export const name = messages.name;
 
-export const theme = {
+export const theme: ThemeOptions = {
   components: {
     MuiAvatar: {
       styleOverrides: {
         colorDefault: {
-          backgroundColor: red[700],
+          backgroundColor: yellow[600],
         },
       },
     },
@@ -25,7 +26,7 @@ export const theme = {
 
   palette: {
     primary: {
-      main: red[700],
+      main: yellow[600],
     },
   },
 };

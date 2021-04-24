@@ -1,3 +1,4 @@
+import { ThemeOptions } from "@material-ui/core";
 import lightGreen from "@material-ui/core/colors/lightGreen";
 import { defineMessages } from "react-intl";
 
@@ -12,7 +13,7 @@ const messages = defineMessages({
 
 export const name = messages.name;
 
-export const theme = {
+export const theme: ThemeOptions = {
   components: {
     MuiAvatar: {
       styleOverrides: {

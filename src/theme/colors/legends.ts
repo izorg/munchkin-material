@@ -1,3 +1,4 @@
+import { ThemeOptions } from "@material-ui/core";
 import common from "@material-ui/core/colors/common";
 import grey from "@material-ui/core/colors/grey";
 import { light } from "@material-ui/core/styles/createPalette";
@@ -14,7 +15,7 @@ const messages = defineMessages({
 
 export const name = messages.name;
 
-export const theme = {
+export const theme: ThemeOptions = {
   components: {
     MuiAppBar: {
       styleOverrides: {
