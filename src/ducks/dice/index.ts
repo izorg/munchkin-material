@@ -1,16 +1,16 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export const initialState = null;
 
 export const diceSlice = createSlice({
-  initialState,
+  initialState: initialState as null | number,
   name: "dice",
   reducers: {
     throwDice: {
       prepare: () => ({
         payload: Math.floor(Math.random() * 6) + 1,
       }),
-      reducer: (state, action) => action.payload,
+      reducer: (state, action: PayloadAction<number>) => action.payload,
     },
   },
 });

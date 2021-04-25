@@ -1,3 +1,4 @@
+import { ThemeOptions } from "@material-ui/core";
 import common from "@material-ui/core/colors/common";
 import orange from "@material-ui/core/colors/orange";
 import { alpha } from "@material-ui/core/styles/colorManipulator";
@@ -8,7 +9,15 @@ import { ios } from "../utils/platforms";
 
 const breakpoints = createBreakpoints({});
 
-const getThemeOptions = ({ direction, mode = "light", pureBlack }) => {
+const getThemeOptions = ({
+  direction,
+  mode = "light",
+  pureBlack,
+}: {
+  direction: "ltr" | "rtl";
+  mode: "light" | "dark";
+  pureBlack: boolean;
+}): ThemeOptions => {
   let theme = {
     components: {
       MuiDialog: {

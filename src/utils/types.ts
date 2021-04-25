@@ -8,6 +8,7 @@ export type Player = {
   gear: number;
   id: string;
   level: number;
+  name: string;
   sex: Sex;
 };
 

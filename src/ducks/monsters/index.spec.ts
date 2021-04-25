@@ -10,7 +10,7 @@ import {
   removeMonster,
 } from "./actions";
 
-import reducer, { monsterReducer } from "./index";
+import reducer from "./index";
 
 describe("Monsters reducer", () => {
   test("adds monster", () => {
@@ -55,12 +55,5 @@ describe("Monsters reducer", () => {
     const monsters = reducer(undefined, startCombat("1"));
 
     expect(Object.values(monsters)).toHaveLength(1);
-  });
-
-  test("should ignore unknown action", () => {
-    const state = {};
-
-    expect(reducer(state, {})).toBe(state);
-    expect(monsterReducer(state, {})).toBe(state);
   });
 });

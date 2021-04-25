@@ -1,6 +1,7 @@
 import { createReducer, isAnyOf } from "@reduxjs/toolkit";
 
 import toggleSex from "../../utils/toggleSex";
+import { Player } from "../../utils/types";
 
 import {
   addPlayer,
@@ -15,7 +16,17 @@ import {
   updatePlayer,
 } from "./actions";
 
-export const playerReducer = (state, action) => {
+export const playerReducer = (
+  state: Player,
+  action: ReturnType<
+    | typeof decrementPlayerGear
+    | typeof decrementPlayerLevel
+    | typeof incrementPlayerGear
+    | typeof incrementPlayerLevel
+    | typeof killPlayer
+    | typeof togglePlayerSex
+  >
+): Player => {
   switch (action.type) {
     case decrementPlayerGear.type:
       return {
@@ -53,18 +64,12 @@ export const playerReducer = (state, action) => {
         sex: toggleSex(state.sex),
       };
 
-    case updatePlayer.type:
-      return {
-        ...state,
-        ...action.payload,
-      };
-
     default:
       return state;
   }
 };
 
-export const initialState = {};
+export const initialState: Record<string, Player> = {};
 
 const playersReducer = createReducer(initialState, (builder) =>
   builder
@@ -93,11 +98,13 @@ const playersReducer = createReducer(initialState, (builder) =>
     )
     .addCase(updatePlayer, (state, action) => {
       const { id } = action.payload;
-      const player = playerReducer(state[id], action);
 
       return {
         ...state,
-        [id]: player,
+        [id]: {
+          ...state[id],
+          ...action.payload,
+        },
       };
     })
     .addMatcher(

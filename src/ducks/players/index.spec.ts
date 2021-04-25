@@ -2,6 +2,7 @@ import { v4 as uuid } from "uuid";
 
 import createPlayer from "../../utils/createPlayer";
 import { FEMALE, MALE } from "../../utils/sex";
+import { Sex } from "../../utils/types";
 
 import reducer, {
   addPlayer,
@@ -9,9 +10,7 @@ import reducer, {
   decrementPlayerLevel,
   incrementPlayerGear,
   incrementPlayerLevel,
-  initialState,
   killPlayer,
-  playerReducer,
   togglePlayerSex,
   updatePlayer,
 } from "./index";
@@ -62,7 +61,7 @@ describe("Players reducer", () => {
   test("toggles sex", () => {
     const id = uuid();
 
-    const player = createPlayer({ id, sex: MALE });
+    const player = createPlayer({ id, sex: Sex.Male });
 
     let players = reducer({ [player.id]: player }, togglePlayerSex(id));
 
@@ -87,16 +86,5 @@ describe("Players reducer", () => {
     );
 
     expect(players[id].name).toBe("Lol");
-  });
-
-  test("tests default behavior", () => {
-    expect(reducer(undefined, {})).toStrictEqual(initialState);
-  });
-
-  test("should ignore unknown action", () => {
-    const state = {};
-
-    expect(reducer(state, {})).toBe(state);
-    expect(playerReducer(state, {})).toBe(state);
   });
 });

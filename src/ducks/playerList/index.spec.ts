@@ -15,15 +15,15 @@ describe("Player List reducer", () => {
   });
 
   test("should move player", () => {
-    const state = reducer([1, 2, 3], movePlayer(0, 2));
+    const state = reducer(["1", "2", "3"], movePlayer(0, 2));
 
-    expect(state).toStrictEqual([2, 3, 1]);
+    expect(state).toStrictEqual(["2", "3", "1"]);
   });
 
   test("should shuffle players", () => {
-    const state = [1, 2, 3];
+    const state = ["1", "2", "3"];
 
-    const playerList = reducer([1, 2, 3], shufflePlayers());
+    const playerList = reducer(["1", "2", "3"], shufflePlayers());
 
     expect(playerList).not.toBe(state);
     expect(playerList).toHaveLength(state.length);

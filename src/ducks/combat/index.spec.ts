@@ -30,7 +30,10 @@ describe("Combat reducer", () => {
     const monster = createMonster();
     const { id } = monster;
 
-    const combat = reducer({ monsters: [id] }, removeMonster(id));
+    const combat = reducer(
+      { ...initialState, monsters: [id] },
+      removeMonster(id)
+    );
 
     expect(combat.monsters).toHaveLength(0);
   });
@@ -52,7 +55,7 @@ describe("Combat reducer", () => {
   });
 
   test("sets helper id", () => {
-    const id = 1;
+    const id = "1";
 
     const combat = reducer(undefined, setCombatHelper(id));
 
@@ -71,23 +74,18 @@ describe("Combat reducer", () => {
   test("should remove helper on related player remove", () => {
     const helperId = uuid();
 
-    const state = { helperBonus: 2, helperId };
+    const state = { ...initialState, helperBonus: 2, helperId };
 
     expect(reducer(state, removePlayers([helperId]))).toStrictEqual({
+      ...initialState,
       helperBonus: 0,
       helperId: null,
     });
   });
 
   test("should ignore combat unrelated player removal", () => {
-    const state = { helperBonus: 2, helperId: uuid() };
+    const state = { ...initialState, helperBonus: 2, helperId: uuid() };
 
     expect(reducer(state, removePlayers([uuid()]))).toBe(state);
-  });
-
-  test("should ignore unknown action", () => {
-    const state = {};
-
-    expect(reducer(state, {})).toBe(state);
   });
 });

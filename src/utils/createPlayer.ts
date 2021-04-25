@@ -5,6 +5,7 @@ import { Player, Sex } from "./types";
 export const defaultData = {
   gear: 0,
   level: 1,
+  name: "",
   sex: Sex.Male,
 };
 

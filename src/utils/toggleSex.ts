@@ -1,14 +1,12 @@
-import { FEMALE, MALE } from "./sex";
-
-type Sex = "female" | "male";
+import { Sex } from "./types";
 
 const toggleSex = (sex: Sex): Sex => {
   switch (sex) {
-    case FEMALE:
-      return MALE;
+    case Sex.Female:
+      return Sex.Male;
 
-    case MALE:
-      return FEMALE;
+    case Sex.Male:
+      return Sex.Female;
 
     default:
       return sex;

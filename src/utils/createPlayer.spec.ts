@@ -17,6 +17,7 @@ describe("createPlayer", () => {
       gear: 3,
       id: uuid(),
       level: 10,
+      name: "",
       sex: Sex.Female,
     };
 

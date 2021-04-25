@@ -11,7 +11,16 @@ import {
   startCombat,
 } from "./actions";
 
-export const initialState = {
+type InitialState = {
+  finished: boolean;
+  helperBonus: number;
+  helperId: null | string;
+  monsters: string[];
+  playerBonus: number;
+  playerId: null | string;
+};
+
+export const initialState: InitialState = {
   finished: false,
   helperBonus: 0,
   helperId: null,
@@ -52,7 +61,7 @@ const combatReducer = createReducer(initialState, (builder) =>
       };
     })
     .addCase(removePlayers, (state, action) => {
-      if (action.payload.includes(state.helperId)) {
+      if (state.helperId && action.payload.includes(state.helperId)) {
         return {
           ...state,
           helperBonus: 0,

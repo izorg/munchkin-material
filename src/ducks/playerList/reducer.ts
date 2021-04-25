@@ -5,7 +5,7 @@ import { removePlayers } from "../players";
 import { addPlayerToList, movePlayer, shufflePlayers } from "./actions";
 
 // https://github.com/lodash/lodash/blob/master/shuffle.js
-const shuffle = (array) => {
+const shuffle = (array: string[]): string[] => {
   const { length } = array;
 
   let index = 0;
@@ -25,7 +25,7 @@ const shuffle = (array) => {
   return result;
 };
 
-export const initialState = [];
+export const initialState: string[] = [];
 
 const playerListReducer = createReducer(initialState, (builder) =>
   builder

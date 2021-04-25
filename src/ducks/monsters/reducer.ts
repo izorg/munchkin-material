@@ -1,5 +1,6 @@
-import { createReducer, isAnyOf } from "@reduxjs/toolkit";
+import { createReducer, isAnyOf, PayloadAction } from "@reduxjs/toolkit";
 
+import { Monster } from "../../utils/types";
 import { startCombat } from "../combat";
 
 import {
@@ -11,7 +12,10 @@ import {
   removeMonster,
 } from "./actions";
 
-export const monsterReducer = (state, action) => {
+export const monsterReducer = (
+  state: Monster,
+  action: PayloadAction<string>
+): Monster => {
   switch (action.type) {
     case decrementMonsterBonus.type:
       return {
@@ -42,7 +46,7 @@ export const monsterReducer = (state, action) => {
   }
 };
 
-export const initialState = {};
+export const initialState: Record<string, Monster> = {};
 
 const monstersReducer = createReducer(initialState, (builder) =>
   builder
@@ -51,9 +55,11 @@ const monstersReducer = createReducer(initialState, (builder) =>
       [action.payload.id]: action.payload,
     }))
     .addCase(removeMonster, (state, action) => {
-      const { [action.payload]: removed, ...rest } = state;
+      const copy = { ...state };
 
-      return rest;
+      delete copy[action.payload];
+
+      return copy;
     })
     .addCase(startCombat, (state, action) => ({
       [action.payload.monster.id]: action.payload.monster,
