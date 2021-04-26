@@ -1,16 +1,13 @@
 import PropTypes from "prop-types";
-import { useMemo } from "react";
 import { Provider } from "react-redux";
 
-import getStore from "../../store/getStore";
+import store from "../../store";
 
 const displayName = "ReduxProvider";
 
-const ReduxProvider = ({ children }) => {
-  const store = useMemo(() => getStore(), []);
-
-  return <Provider store={store}>{children}</Provider>;
-};
+const ReduxProvider = ({ children }) => (
+  <Provider store={store}>{children}</Provider>
+);
 
 ReduxProvider.propTypes = {
   children: PropTypes.node.isRequired,

@@ -1,10 +1,10 @@
 import { key as id } from "../../theme/colors/munchkin";
 
-import reducer, { initialState, setTheme } from "./index";
+import reducer, { initialState, setTheme, ThemeState } from "./index";
 
 describe("Theme reducer", () => {
   test("should apply theme", () => {
-    const payload = {
+    const payload: ThemeState = {
       id,
       mode: "dark",
       pureBlack: true,
