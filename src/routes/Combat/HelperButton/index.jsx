@@ -1,10 +1,9 @@
-import { Backdrop, makeStyles } from "@material-ui/core";
+import { css } from "@emotion/react";
+import { Backdrop, useTheme } from "@material-ui/core";
 import SpeedDial from "@material-ui/core/SpeedDial";
 import SpeedDialAction from "@material-ui/core/SpeedDialAction";
 import SpeedDialIcon from "@material-ui/core/SpeedDialIcon";
-import clsx from "clsx";
 import { AccountPlus, EmoticonDevilOutline } from "mdi-material-ui";
-import PropTypes from "prop-types";
 import { memo } from "react";
 import { FormattedMessage } from "react-intl";
 import { useDispatch, useSelector } from "react-redux";
@@ -14,43 +13,11 @@ import { addMonster } from "../../../ducks/monsters";
 import createMonster from "../../../utils/createMonster";
 import { useGoBack, useLocationQuery } from "../../../utils/location";
 
-const displayName = "CombatHelperButton";
-
-const useStyles = makeStyles(
-  /* eslint-disable sort-keys */
-  (theme) => ({
-    backdrop: {
-      backgroundColor:
-        theme.palette.mode === "light" ? "rgba(250, 250, 250, .9)" : undefined,
-      zIndex: 1,
-    },
-
-    container: {
-      bottom: theme.spacing(2),
-      position: "fixed",
-      right: theme.spacing(2),
-      zIndex: 2,
-
-      [theme.breakpoints.up("sm")]: {
-        bottom: theme.spacing(3),
-        right: theme.spacing(3),
-
-        "@supports (padding: max(0px))": {
-          right: `max(${theme.spacing(3)}, env(safe-area-inset-right))`,
-        },
-      },
-    },
-  }),
-  /* eslint-enable */
-  { name: displayName }
-);
-
-const CombatHelperButton = ({ className, ...rest }) => {
+const CombatHelperButton = () => {
   const dispatch = useDispatch();
   const location = useLocation();
   const navigate = useNavigate();
-
-  const classes = useStyles();
+  const theme = useTheme();
 
   const goBack = useGoBack();
   const helperId = useSelector((state) => state.present.combat.helperId);
@@ -81,11 +48,34 @@ const CombatHelperButton = ({ className, ...rest }) => {
 
   return (
     <>
-      <Backdrop className={classes.backdrop} onClick={onBack} open={open} />
+      <Backdrop
+        css={css`
+          background-color: ${theme.palette.mode === "light"
+            ? "rgba(250, 250, 250, .9)"
+            : undefined};
+          z-index: 1;
+        `}
+        onClick={onBack}
+        open={open}
+      />
 
       <SpeedDial
         ariaLabel=" "
-        className={clsx(classes.container, className)}
+        css={css`
+          bottom: ${theme.spacing(2)};
+          position: fixed;
+          right: ${theme.spacing(2)};
+          z-index: 2;
+
+          ${theme.breakpoints.up("sm")} {
+            bottom: ${theme.spacing(3)};
+            right: ${theme.spacing(3)};
+
+            @supports (padding: max(0px)) {
+              right: max(${theme.spacing(3)}, env(safe-area-inset-right));
+            }
+          }
+        `}
         FabProps={{
           color: open ? "default" : "primary",
         }}
@@ -103,7 +93,6 @@ const CombatHelperButton = ({ className, ...rest }) => {
         TransitionProps={{
           appear: false,
         }}
-        {...rest}
       >
         <SpeedDialAction
           FabProps={{
@@ -136,11 +125,5 @@ const CombatHelperButton = ({ className, ...rest }) => {
     </>
   );
 };
-
-CombatHelperButton.propTypes = {
-  className: PropTypes.string,
-};
-
-CombatHelperButton.displayName = displayName;
 
 export default memo(CombatHelperButton);
