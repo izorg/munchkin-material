@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
+import type store from "../../store";
 import createPlayer from "../../utils/createPlayer";
 import { startCombat } from "../combat";
 import { addPlayer } from "../players";
@@ -77,35 +78,24 @@ export const {
 } = settingsSlice.actions;
 
 export const setSingleMode = (singleMode: boolean) => (
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-  dispatch,
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-  getState
+  dispatch: typeof store.dispatch,
+  getState: typeof store.getState
 ): void => {
   if (singleMode) {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access,@typescript-eslint/no-unsafe-assignment
     let { singleModePlayerId } = getState().present.settings;
 
     if (!singleModePlayerId) {
       const player = createPlayer();
 
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-call
       dispatch(addPlayer(player));
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-call
       dispatch(settingsSlice.actions.setSingleModePlayer(player.id));
 
       singleModePlayerId = player.id;
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
     dispatch(startCombat(singleModePlayerId));
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-call
   dispatch(settingsSlice.actions.setSingleMode(singleMode));
 };
 

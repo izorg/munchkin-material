@@ -7,9 +7,6 @@ const toggleSex = (sex: Sex): Sex => {
 
     case Sex.Male:
       return Sex.Female;
-
-    default:
-      return sex;
   }
 };
 

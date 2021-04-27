@@ -1,6 +1,9 @@
-import { configureStore } from "@reduxjs/toolkit";
+import {
+  combineReducers,
+  configureStore,
+  StoreEnhancer,
+} from "@reduxjs/toolkit";
 import { createReduxEnhancer } from "@sentry/react";
-import { combineReducers } from "redux";
 import undoable, { includeAction } from "redux-undo";
 
 import { killPlayer, removePlayers, resetPlayers } from "../ducks/players";
@@ -19,14 +22,24 @@ const createRootReducer = () =>
     syncFilter: true,
   });
 
-const preloadedState = loadState();
+type StoreState = ReturnType<ReturnType<typeof createRootReducer>>;
 
-const sentryReduxEnhancer = createReduxEnhancer();
+export type StorePresentState = ReturnType<
+  ReturnType<typeof createRootReducer>
+>["present"];
+
+const preloadedState = loadState() as StoreState["present"];
+
+const sentryReduxEnhancer = createReduxEnhancer() as StoreEnhancer;
 
 const store = configureStore({
   devTools: process.env.NODE_ENV === "development",
   enhancers: [sentryReduxEnhancer],
-  preloadedState,
+  preloadedState: {
+    future: [],
+    past: [],
+    present: preloadedState,
+  },
   reducer: createRootReducer(),
 });
 
@@ -34,7 +47,7 @@ if (process.env.NODE_ENV === "development") {
   window.reduxStore = store;
 }
 
-let saveDate = new Date();
+let saveDate = Date.now();
 let saveTimeout = 0;
 const timeout = 100;
 
@@ -43,14 +56,14 @@ const saveStoreState = () => {
 
   saveState(state);
 
-  saveDate = new Date();
+  saveDate = Date.now();
 };
 
 store.subscribe(() => {
-  if (new Date() - saveDate > timeout) {
+  if (Date.now() - saveDate > timeout) {
     saveStoreState();
   } else if (!saveTimeout) {
-    saveTimeout = setTimeout(() => {
+    saveTimeout = window.setTimeout(() => {
       saveStoreState();
 
       saveTimeout = 0;
@@ -58,11 +71,8 @@ store.subscribe(() => {
   }
 });
 
-/* istanbul ignore if  */
-if (module.hot) {
-  module.hot.accept("./reducers", () =>
-    store.replaceReducer(createRootReducer())
-  );
-}
+(module as __WebpackModuleApi.Module).hot?.accept("./reducers", () =>
+  store.replaceReducer(createRootReducer())
+);
 
 export default store;

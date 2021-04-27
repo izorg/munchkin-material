@@ -2,9 +2,11 @@ import { compose } from "redux";
 
 import migrations from "./migrations";
 
+import { StorePresentState } from "./index";
+
 const key = "redux";
 
-export const loadState = () => {
+export const loadState = (): StorePresentState | undefined => {
   let serializedState;
 
   try {
@@ -19,10 +21,12 @@ export const loadState = () => {
     return undefined;
   }
 
-  return compose(...migrations)(JSON.parse(serializedState));
+  return compose(...migrations)(
+    JSON.parse(serializedState)
+  ) as StorePresentState;
 };
 
-export const saveState = (state) => {
+export const saveState = (state: StorePresentState): void => {
   try {
     localStorage.setItem(key, JSON.stringify(state));
   } catch (error) {
