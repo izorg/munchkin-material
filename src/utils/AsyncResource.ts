@@ -1,8 +1,12 @@
-class AsyncResource {
-  constructor(promise) {
+class AsyncResource<Data> {
+  data?: Data;
+  error?: Error;
+  promise: Promise<void>;
+  status: "error" | "pending" | "success";
+
+  constructor(promise: Promise<Data>) {
     this.data = undefined;
     this.error = undefined;
-    this.promise = null;
     this.status = "pending";
 
     this.promise = promise
@@ -10,20 +14,21 @@ class AsyncResource {
         this.status = "success";
         this.data = data;
       })
-      .catch((error) => {
+      .catch((error: Error) => {
         this.status = "error";
         this.error = error;
       });
   }
 
-  read() {
+  read(): Data {
     switch (this.status) {
       case "error":
         throw this.error;
       case "pending":
         throw this.promise;
-      default:
-        return this.data;
+      default: {
+        return this.data as Data;
+      }
     }
   }
 }

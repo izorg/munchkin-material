@@ -4,6 +4,7 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "jsxImportSource": "@emotion/react",
+    "module": "ESNext",
     "moduleResolution": "Node",
     "noEmit": true,
     "resolveJsonModule": true,

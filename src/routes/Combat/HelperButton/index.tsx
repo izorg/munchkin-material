@@ -4,14 +4,15 @@ import SpeedDial from "@material-ui/core/SpeedDial";
 import SpeedDialAction from "@material-ui/core/SpeedDialAction";
 import SpeedDialIcon from "@material-ui/core/SpeedDialIcon";
 import { AccountPlus, EmoticonDevilOutline } from "mdi-material-ui";
-import { memo } from "react";
+import { memo, MouseEvent } from "react";
 import { FormattedMessage } from "react-intl";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import { addMonster } from "../../../ducks/monsters";
 import createMonster from "../../../utils/createMonster";
 import { useGoBack, useLocationQuery } from "../../../utils/location";
+import usePresentSelector from "../../../utils/usePresentSelector";
 
 const CombatHelperButton = () => {
   const dispatch = useDispatch();
@@ -20,9 +21,9 @@ const CombatHelperButton = () => {
   const theme = useTheme();
 
   const goBack = useGoBack();
-  const helperId = useSelector((state) => state.present.combat.helperId);
-  const hasOtherPlayers = useSelector(
-    (state) => state.present.playerList.length > 1
+  const helperId = usePresentSelector((state) => state.combat.helperId);
+  const hasOtherPlayers = usePresentSelector(
+    (state) => state.playerList.length > 1
   );
   const helper = !helperId && hasOtherPlayers;
   const query = useLocationQuery();
@@ -34,7 +35,7 @@ const CombatHelperButton = () => {
       search: `?add`,
     });
   const onBack = () => goBack();
-  const onHelperClick = (event) => {
+  const onHelperClick = (event: MouseEvent) => {
     event.stopPropagation();
     navigate(
       {

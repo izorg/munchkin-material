@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { useUndo } from "../components/UndoProvider";
 import { removePlayers } from "../ducks/players";
 
-const useDeletePlayers = () => {
+const useDeletePlayers = (): ((players: string[]) => void) => {
   const dispatch = useDispatch();
   const { setMessage } = useUndo();
 

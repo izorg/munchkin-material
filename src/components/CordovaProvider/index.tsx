@@ -1,9 +1,9 @@
 import PropTypes from "prop-types";
-import { useEffect } from "react";
+import { FC, PropsWithChildren, useEffect } from "react";
 
-import history from "../../components/CordovaRouter/history";
 import AsyncResource from "../../utils/AsyncResource";
 import { useGoBack } from "../../utils/location";
+import history from "../CordovaRouter/history";
 
 import hideWindowsBackButton from "./hideWindowsBackButton";
 import useNavigationBreadcrumbs from "./useNavigationBreadcrumbs";
@@ -11,32 +11,34 @@ import useNavigationBreadcrumbs from "./useNavigationBreadcrumbs";
 const displayName = "CordovaProvider";
 
 const cordovaResource = new AsyncResource(
-  new Promise((resolve) =>
+  new Promise<void>((resolve) =>
     document.addEventListener(
       "deviceready",
       () => {
+        if (!window.BuildInfo.debug) {
+          void import("../../sentry").then(() => resolve());
+
+          return;
+        }
+
         resolve();
       },
       false
     )
-  ).then(async () => {
-    if (!window.BuildInfo.debug) {
-      await import("../../sentry");
-    }
-  })
+  )
 );
 
-const CordovaProvider = ({ children }) => {
+const CordovaProvider: FC<PropsWithChildren<void>> = ({ children }) => {
   cordovaResource.read();
 
   const goBack = useGoBack();
 
   useEffect(() => {
-    const onBackButton = (event) => {
+    const onBackButton = (event: Event) => {
       event.preventDefault();
 
       if (history.location.pathname === "/" && !history.location.search) {
-        navigator.app.exitApp();
+        window.navigator.app.exitApp();
       } else {
         goBack();
       }
@@ -55,7 +57,7 @@ const CordovaProvider = ({ children }) => {
 
   useNavigationBreadcrumbs();
 
-  return children;
+  return <>{children}</>;
 };
 
 CordovaProvider.propTypes = {

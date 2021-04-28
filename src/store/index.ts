@@ -22,13 +22,13 @@ const createRootReducer = () =>
     syncFilter: true,
   });
 
-type StoreState = ReturnType<ReturnType<typeof createRootReducer>>;
+export type StoreState = ReturnType<ReturnType<typeof createRootReducer>>;
 
-export type StorePresentState = ReturnType<
+export type PresentState = ReturnType<
   ReturnType<typeof createRootReducer>
 >["present"];
 
-const preloadedState = loadState() as StoreState["present"];
+const preloadedState = loadState() as PresentState;
 
 const sentryReduxEnhancer = createReduxEnhancer() as StoreEnhancer;
 
