@@ -1,4 +1,5 @@
 import fetch from "cross-fetch";
+import { IntlConfig } from "react-intl";
 
 export const CS = "cs";
 export const DA = "da";
@@ -22,7 +23,8 @@ export const SK = "sk";
 export const TR = "tr";
 export const UK = "uk";
 
-export const getDirection = (locale) => ([HE].includes(locale) ? "rtl" : "ltr");
+export const getDirection = (locale: string): "ltr" | "rtl" =>
+  [HE].includes(locale) ? "rtl" : "ltr";
 
 const supportedLocales = [
   CS,
@@ -48,7 +50,7 @@ const supportedLocales = [
   UK,
 ];
 
-export const getLocale = () => {
+export const getLocale = (): string => {
   const languages = navigator?.languages?.length
     ? navigator.languages
     : [navigator.language];
@@ -70,10 +72,12 @@ export const getLocale = () => {
   return EN;
 };
 
-export const loadMessages = async (locale) => {
+export const loadMessages = async (
+  locale: string
+): Promise<IntlConfig["messages"]> => {
   const publicPath = "cordova" in window ? "" : "/";
 
   const res = await fetch(`${publicPath}languages/${locale}.json`);
 
-  return await res.json();
+  return (await res.json()) as IntlConfig["messages"];
 };

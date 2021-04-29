@@ -1,11 +1,13 @@
 import { ButtonBase, Dialog, makeStyles } from "@material-ui/core";
+import { DialogProps } from "@material-ui/core/Dialog/Dialog";
 import { Dice1, Dice2, Dice3, Dice4, Dice5, Dice6 } from "mdi-material-ui";
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { TransitionGroup } from "react-transition-group";
 
 import { throwDice } from "../../../ducks/dice";
 import { useGoBack, useLocationQuery } from "../../../utils/location";
+import usePresentSelector from "../../../utils/usePresentSelector";
 import DiceTransition from "../Transition";
 
 const displayName = "DiceDialog";
@@ -51,15 +53,19 @@ const diceComponent = {
   6: Dice6,
 };
 
-const DiceDialog = (props) => {
+const DiceDialog = (props: Partial<DialogProps>): JSX.Element | null => {
   const classes = useStyles();
   const dispatch = useDispatch();
 
   const [attempt, setAttempt] = useState(0);
 
-  const dice = useSelector((state) => state.present.dice);
+  const dice = usePresentSelector((state) => state.dice);
   const open = useLocationQuery().dice !== undefined;
   const goBack = useGoBack();
+
+  if (dice === null) {
+    return null;
+  }
 
   const Dice = diceComponent[dice];
 
@@ -80,18 +86,18 @@ const DiceDialog = (props) => {
         disableRipple
         onClick={onDiceClick}
       >
-        {dice && (
+        {dice ? (
           <DiceTransition key={attempt}>
             <span className={classes.iconWrapper}>
               <Dice className={classes.icon} />
             </span>
           </DiceTransition>
+        ) : (
+          <></>
         )}
       </TransitionGroup>
     </Dialog>
   );
 };
-
-DiceDialog.displayName = displayName;
 
 export default DiceDialog;

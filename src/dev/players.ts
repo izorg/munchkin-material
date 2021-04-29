@@ -2,7 +2,7 @@ import { cyan, green, orange, yellow } from "@material-ui/core/colors";
 
 import { CS, EN, HE, RU, UK } from "../i18n";
 import createPlayer from "../utils/createPlayer";
-import { FEMALE } from "../utils/sex";
+import { Sex } from "../utils/types";
 
 export default {
   [CS]: [
@@ -36,7 +36,7 @@ export default {
         gear: 8,
         level: 4,
         name: "Zuzana",
-        sex: FEMALE,
+        sex: Sex.Female,
       }),
     },
   ],
@@ -64,7 +64,7 @@ export default {
         gear: 10,
         level: 7,
         name: "Hillary Clinton",
-        sex: FEMALE,
+        sex: Sex.Female,
       }),
     },
   ],
@@ -119,7 +119,7 @@ export default {
         gear: 7,
         level: 8,
         name: "Василиса Премудрая",
-        sex: FEMALE,
+        sex: Sex.Female,
       }),
     },
   ],

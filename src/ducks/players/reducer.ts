@@ -63,9 +63,6 @@ export const playerReducer = (
         ...state,
         sex: toggleSex(state.sex),
       };
-
-    default:
-      return state;
   }
 };
 

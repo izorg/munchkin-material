@@ -3,6 +3,7 @@
 /.eslintcache
 /.firebase/
 /.idea/
+/.stylelintcache
 /.vscode/
 /coverage/
 /firebase-debug.log

@@ -35,11 +35,13 @@ const sentryReduxEnhancer = createReduxEnhancer() as StoreEnhancer;
 const store = configureStore({
   devTools: process.env.NODE_ENV === "development",
   enhancers: [sentryReduxEnhancer],
-  preloadedState: {
-    future: [],
-    past: [],
-    present: preloadedState,
-  },
+  preloadedState: preloadedState
+    ? {
+        future: [],
+        past: [],
+        present: preloadedState,
+      }
+    : undefined,
   reducer: createRootReducer(),
 });
 
