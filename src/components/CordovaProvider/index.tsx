@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { FC, PropsWithChildren, useEffect } from "react";
+import { FC, useEffect } from "react";
 
 import AsyncResource from "../../utils/AsyncResource";
 import { useGoBack } from "../../utils/location";
@@ -28,7 +28,7 @@ const cordovaResource = new AsyncResource(
   )
 );
 
-const CordovaProvider: FC<PropsWithChildren<void>> = ({ children }) => {
+const CordovaProvider: FC = ({ children }) => {
   cordovaResource.read();
 
   const goBack = useGoBack();

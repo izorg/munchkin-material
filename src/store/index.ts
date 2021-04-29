@@ -24,24 +24,20 @@ const createRootReducer = () =>
 
 export type StoreState = ReturnType<ReturnType<typeof createRootReducer>>;
 
-export type PresentState = ReturnType<
-  ReturnType<typeof createRootReducer>
->["present"];
+export type PresentState = StoreState["present"];
 
-const preloadedState = loadState() as PresentState;
+const preloadedPresentState = loadState();
 
 const sentryReduxEnhancer = createReduxEnhancer() as StoreEnhancer;
 
 const store = configureStore({
   devTools: process.env.NODE_ENV === "development",
   enhancers: [sentryReduxEnhancer],
-  preloadedState: preloadedState
-    ? {
-        future: [],
-        past: [],
-        present: preloadedState,
-      }
-    : undefined,
+  preloadedState: preloadedPresentState && {
+    future: [],
+    past: [],
+    present: preloadedPresentState,
+  },
   reducer: createRootReducer(),
 });
 
