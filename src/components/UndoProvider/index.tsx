@@ -2,7 +2,6 @@ import PropTypes from "prop-types";
 import {
   createContext,
   FC,
-  PropsWithChildren,
   ReactNode,
   useContext,
   useMemo,
@@ -26,7 +25,7 @@ export const useUndo = (): UndoContext => {
   return context;
 };
 
-const UndoProvider: FC<PropsWithChildren<void>> = ({ children }) => {
+const UndoProvider: FC = ({ children }) => {
   const [message, setMessage] = useState<ReactNode>(null);
 
   const value = useMemo(() => ({ message, setMessage }), [message]);

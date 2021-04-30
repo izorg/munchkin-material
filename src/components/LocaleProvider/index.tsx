@@ -1,40 +1,51 @@
 import PropTypes from "prop-types";
-import { useEffect, useState } from "react";
-import { IntlProvider } from "react-intl";
-import { useSelector } from "react-redux";
+import { FC, useEffect, useState } from "react";
+import { IntlConfig, IntlProvider } from "react-intl";
 
 import { getDirection, getLocale, loadMessages } from "../../i18n";
-
-const displayName = "LocaleProvider";
+import usePresentSelector from "../../utils/usePresentSelector";
 
 const defaultLocale = getLocale();
 
-const LocaleProvider = ({ children }) => {
-  const locale =
-    useSelector((state) => state.present.settings.locale) || defaultLocale;
+type LocalState = {
+  locale: string;
+} & (
+  | {
+      loading: true;
+    }
+  | {
+      error: Error;
+      loading: false;
+    }
+  | {
+      loading: false;
+      messages: IntlConfig["messages"];
+    }
+);
 
-  const [localeState, setLocaleState] = useState({
-    error: undefined,
+const LocaleProvider: FC = ({ children }) => {
+  const locale =
+    usePresentSelector((state) => state.settings.locale) || defaultLocale;
+
+  const [localeState, setLocaleState] = useState<LocalState>({
     loading: true,
     locale,
-    messages: undefined,
   });
 
   useEffect(() => {
     let active = true;
 
-    (async () => {
+    void (async () => {
       let messages;
 
       try {
         messages = await loadMessages(locale);
       } catch (error) {
-        if (active) {
+        if (active && error instanceof Error) {
           setLocaleState({
             error,
             loading: false,
             locale,
-            messages: undefined,
           });
         }
 
@@ -43,7 +54,6 @@ const LocaleProvider = ({ children }) => {
 
       if (active) {
         setLocaleState({
-          error: undefined,
           loading: false,
           locale,
           messages,
@@ -57,11 +67,11 @@ const LocaleProvider = ({ children }) => {
   }, [locale]);
 
   useEffect(() => {
-    document.querySelector("html").lang = localeState.locale;
-    document.querySelector("body").dir = getDirection(localeState.locale);
+    document.documentElement.lang = localeState.locale;
+    document.body.dir = getDirection(localeState.locale);
   }, [localeState]);
 
-  if (localeState.error) {
+  if ("error" in localeState) {
     throw localeState.error;
   }
 
@@ -77,9 +87,7 @@ const LocaleProvider = ({ children }) => {
 };
 
 LocaleProvider.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
 };
-
-LocaleProvider.displayName = displayName;
 
 export default LocaleProvider;
