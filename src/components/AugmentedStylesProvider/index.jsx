@@ -1,14 +1,7 @@
 import createCache from "@emotion/cache";
 import { CacheProvider } from "@emotion/react";
 import { StylesProvider } from "@material-ui/core";
-import {
-  jssPreset,
-  StylesProvider as JssStylesProvider,
-} from "@material-ui/styles";
-import { create } from "jss";
-import rtl from "jss-rtl";
 import PropTypes from "prop-types";
-import { useMemo } from "react";
 import { useIntl } from "react-intl";
 import { prefixer } from "stylis";
 import rtlPlugin from "stylis-plugin-rtl";
@@ -32,20 +25,11 @@ const rtlCache = createCache({
 const AugmentedStylesProvider = ({ children }) => {
   const { locale } = useIntl();
   const direction = getDirection(locale);
-  const enabled = direction === "rtl";
-
-  const jss = useMemo(
-    () =>
-      create({
-        plugins: [...jssPreset().plugins, rtl({ enabled })],
-      }),
-    [enabled]
-  );
 
   return (
     <StylesProvider injectFirst>
       <CacheProvider value={direction === "rtl" ? rtlCache : ltrCache}>
-        <JssStylesProvider jss={jss}>{children}</JssStylesProvider>
+        {children}
       </CacheProvider>
     </StylesProvider>
   );

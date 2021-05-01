@@ -1,4 +1,5 @@
-import { ListItemIcon, makeStyles, Switch } from "@material-ui/core";
+import { css } from "@emotion/react";
+import { ListItemIcon, Switch } from "@material-ui/core";
 import { Account, AccountMultiple } from "mdi-material-ui";
 import { FormattedMessage } from "react-intl";
 import { useDispatch, useSelector } from "react-redux";
@@ -11,20 +12,7 @@ import useMenuOpen from "../../useMenuOpen";
 import ListItem from "../Item";
 import ListItemText from "../ItemText";
 
-const displayName = "SingleModeItem";
-
-const useStyles = makeStyles(
-  {
-    root: {
-      paddingBottom: 9,
-      paddingTop: 9,
-    },
-  },
-  { name: displayName }
-);
-
 const SingleModeItem = () => {
-  const classes = useStyles();
   const dispatch = useDispatch();
   const { pathname } = useLocation();
 
@@ -55,7 +43,10 @@ const SingleModeItem = () => {
   return (
     <ListItem
       button
-      className={classes.root}
+      css={css`
+        padding-bottom: 9px;
+        padding-top: 9px;
+      `}
       data-screenshots="single-mode-item"
       onClick={() => onChange(!singleMode)}
     >
@@ -78,7 +69,5 @@ const SingleModeItem = () => {
     </ListItem>
   );
 };
-
-SingleModeItem.displayName = displayName;
 
 export default SingleModeItem;

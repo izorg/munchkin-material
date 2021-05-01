@@ -1,4 +1,5 @@
-import { makeStyles, Popover } from "@material-ui/core";
+import { ClassNames } from "@emotion/react";
+import { Popover } from "@material-ui/core";
 import PropTypes from "prop-types";
 
 import availableColors from "../../../utils/availableColors";
@@ -8,31 +9,29 @@ import Color from "./Color";
 
 const displayName = "ColorPickerPopover";
 
-const useStyles = makeStyles(
-  {
-    paper: {
-      maxWidth: 288, // 6 * 48 = 288
-    },
-  },
-  { name: displayName }
+const ColorPickerPopover = ({ onSelect, value, ...props }) => (
+  <ClassNames>
+    {({ css }) => (
+      <Popover
+        classes={{
+          paper: css`
+            max-width: 288px; /* 6 * 48 = 288 */
+          `,
+        }}
+        {...props}
+      >
+        {availableColors.map((color) => (
+          <Color
+            key={color}
+            onClick={() => onSelect(color)}
+            selected={value === color}
+            value={color}
+          />
+        ))}
+      </Popover>
+    )}
+  </ClassNames>
 );
-
-const ColorPickerPopover = ({ onSelect, value, ...props }) => {
-  const classes = useStyles();
-
-  return (
-    <Popover classes={{ paper: classes.paper }} {...props}>
-      {availableColors.map((color) => (
-        <Color
-          key={color}
-          onClick={() => onSelect(color)}
-          selected={value === color}
-          value={color}
-        />
-      ))}
-    </Popover>
-  );
-};
 
 ColorPickerPopover.propTypes = {
   onSelect: PropTypes.func.isRequired,

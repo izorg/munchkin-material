@@ -1,42 +1,34 @@
-import { Avatar, ButtonBase, makeStyles } from "@material-ui/core";
-import clsx from "clsx";
+import { css } from "@emotion/react";
+import { Avatar, ButtonBase } from "@material-ui/core";
 import { Check } from "mdi-material-ui";
 import PropTypes from "prop-types";
 import { forwardRef } from "react";
 
 const displayName = "Color";
 
-const useStyles = makeStyles(
-  {
-    button: {
-      borderRadius: "50%",
-      height: 48,
-      padding: 0,
-      width: 48,
-    },
-
-    color: {
-      height: 36,
-      margin: "0 auto",
-      width: 36,
-    },
-  },
-  { name: displayName }
-);
-
-const Color = forwardRef(({ className, selected, value, ...props }, ref) => {
-  const classes = useStyles();
-
+const Color = forwardRef(({ selected, value, ...props }, ref) => {
   return (
     <ButtonBase
       ref={ref}
       centerRipple
-      className={clsx(classes.button, className)}
+      css={css`
+        border-radius: 50%;
+        height: 48px;
+        padding: 0;
+        width: 48px;
+      `}
       focusRipple
       value={value}
       {...props}
     >
-      <Avatar className={classes.color} style={{ backgroundColor: value }}>
+      <Avatar
+        css={css`
+          height: 36px;
+          margin: 0 auto;
+          width: 36px;
+        `}
+        style={{ backgroundColor: value }}
+      >
         {selected && <Check />}
       </Avatar>
     </ButtonBase>
@@ -44,7 +36,6 @@ const Color = forwardRef(({ className, selected, value, ...props }, ref) => {
 });
 
 Color.propTypes = {
-  className: PropTypes.string,
   selected: PropTypes.bool,
   value: PropTypes.string.isRequired,
 };

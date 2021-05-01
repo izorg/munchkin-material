@@ -1,5 +1,5 @@
-import { makeStyles, Paper, Zoom } from "@material-ui/core";
-import clsx from "clsx";
+import { css } from "@emotion/react";
+import { Paper, useTheme, Zoom } from "@material-ui/core";
 import { lazy, Suspense } from "react";
 import { useSelector } from "react-redux";
 import { useMatch } from "react-router-dom";
@@ -25,68 +25,8 @@ const Player = lazy(() =>
 
 const displayName = "Home";
 
-const useStyles = makeStyles(
-  (theme) => ({
-    list: {
-      backgroundColor:
-        theme.palette.mode === "dark"
-          ? theme.palette.background.default
-          : theme.palette.background.paper,
-      flex: 1,
-      overflowY: "auto",
-      paddingBottom: 56,
-      WebkitOverflowScrolling: "touch",
-
-      [theme.breakpoints.up("sm")]: {
-        paddingBottom: 64,
-      },
-    },
-
-    main: {
-      display: "flex",
-      flex: 1,
-      height: "100%",
-      overflow: "hidden",
-    },
-
-    menu: {
-      display: "none",
-      overflowX: "hidden",
-      padding: 0,
-      transition: theme.transitions.create(["padding", "width"], {
-        duration: theme.transitions.duration.short,
-      }),
-      width: theme.spacing(40),
-      zIndex: 1,
-
-      [theme.breakpoints.up("md")]: {
-        display: "block",
-      },
-    },
-
-    menuCollapsed: {
-      padding: theme.spacing(0, 1),
-      width: theme.spacing(9),
-    },
-
-    root: {
-      display: "flex",
-      flexDirection: "column",
-      height: "100%",
-    },
-
-    single: {
-      backgroundColor:
-        theme.palette.mode === "dark"
-          ? theme.palette.background.default
-          : theme.palette.background.paper,
-    },
-  }),
-  { name: displayName }
-);
-
 const Home = () => {
-  const classes = useStyles();
+  const theme = useTheme();
 
   const playerList = useSelector((state) => state.present.playerList);
   const playerCount = playerList.length;
@@ -101,7 +41,23 @@ const Home = () => {
   } else if (empty) {
     content = <Nobody />;
   } else {
-    content = <PlayerList className={classes.list} />;
+    content = (
+      <PlayerList
+        css={css`
+          background-color: ${theme.palette.mode === "dark"
+            ? theme.palette.background.default
+            : theme.palette.background.paper};
+          flex: 1;
+          -webkit-overflow-scrolling: touch;
+          overflow-y: auto;
+          padding-bottom: 56px;
+
+          ${theme.breakpoints.up("sm")} {
+            padding-bottom: 64px;
+          }
+        `}
+      />
+    );
   }
 
   const menuCollapsed = useSelector((state) => state.present.ui.menuCollapsed);
@@ -113,14 +69,52 @@ const Home = () => {
 
   return (
     <>
-      <div className={clsx(classes.root, { [classes.single]: singleMode })}>
+      <div
+        css={[
+          css`
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+          `,
+          singleMode &&
+            css`
+              background-color: ${theme.palette.mode === "dark"
+                ? theme.palette.background.default
+                : theme.palette.background.paper};
+            `,
+        ]}
+      >
         <AppBar empty={empty} singleMode={singleMode} />
-        <main className={classes.main}>
+        <main
+          css={css`
+            display: flex;
+            flex: 1;
+            height: 100%;
+            overflow: hidden;
+          `}
+        >
           <Paper
-            className={clsx(
-              classes.menu,
-              menuCollapsed && classes.menuCollapsed
-            )}
+            css={[
+              css`
+                display: none;
+                overflow-x: hidden;
+                padding: 0;
+                transition: ${theme.transitions.create(["padding", "width"], {
+                  duration: theme.transitions.duration.short,
+                })};
+                width: ${theme.spacing(40)};
+                z-index: 1;
+
+                ${theme.breakpoints.up("md")} {
+                  display: block;
+                }
+              `,
+              menuCollapsed &&
+                css`
+                  padding: ${theme.spacing(0, 1)};
+                  width: ${theme.spacing(9)};
+                `,
+            ]}
             data-screenshot="sidebar-menu"
             square
           >

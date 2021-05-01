@@ -1,9 +1,9 @@
+import { ClassNames } from "@emotion/react";
 import {
   IconButton,
   ListItem,
   ListItemAvatar,
   ListItemSecondaryAction,
-  makeStyles,
   useForkRef,
 } from "@material-ui/core";
 import { motion } from "framer-motion";
@@ -26,37 +26,11 @@ import { EDIT, MULTI } from "../../modes";
 
 const displayName = "HomePlayerListItem";
 
-const useStyles = makeStyles(
-  () => ({
-    gutters: {
-      "@supports (padding: max(0px))": {
-        paddingLeft: `max(16px, env(safe-area-inset-left))`,
-        paddingRight: `max(16px, env(safe-area-inset-right))`,
-      },
-    },
-
-    secondaryAction: {
-      "@supports (padding: max(0px))": {
-        paddingRight: `calc(32px + max(16px, env(safe-area-inset-right)))`,
-      },
-    },
-
-    secondaryActionRoot: {
-      "@supports (padding: max(0px))": {
-        right: "max(16px, env(safe-area-inset-right))",
-      },
-    },
-  }),
-  { name: displayName }
-);
-
 const HomePlayerListItem = forwardRef(
   ({ dragHandleProps, playerId, ...rest }, ref) => {
     const dispatch = useDispatch();
     const location = useLocation();
     const navigate = useNavigate();
-
-    const classes = useStyles();
 
     const itemRef = useRef(null);
 
@@ -196,51 +170,70 @@ const HomePlayerListItem = forwardRef(
     };
 
     return (
-      <ListItem
-        ref={handleRef}
-        button
-        classes={{
-          gutters: classes.gutters,
-          secondaryAction: classes.secondaryAction,
-        }}
-        component={editMode ? motion.div : motion.li}
-        data-screenshots="player-list-item"
-        {...rest}
-        onKeyDown={onKeyDown}
-        onPanStart={clearPress}
-        onTap={onTap}
-        onTapCancel={clearPress}
-        onTapStart={onTapStart}
-      >
-        <ListItemAvatar>
-          <PlayerAvatar
-            ref={avatarRef}
-            color={player.color}
-            name={player.name}
-            selected={multiMode && selected}
-          />
-        </ListItemAvatar>
-
-        <PlayerListItemText player={player} />
-
-        {editMode && (
-          <ListItemSecondaryAction
+      <ClassNames>
+        {({ css }) => (
+          <ListItem
+            ref={handleRef}
+            button
             classes={{
-              root: classes.secondaryActionRoot,
+              gutters: css`
+                @supports (padding: max(0px)) {
+                  padding-left: max(16px, env(safe-area-inset-left));
+                  padding-right: max(16px, env(safe-area-inset-right));
+                }
+              `,
+              secondaryAction: css`
+                @supports (padding: max(0px)) {
+                  padding-right: calc(
+                    32px + max(16px, env(safe-area-inset-right))
+                  );
+                }
+              `,
             }}
+            component={editMode ? motion.div : motion.li}
+            data-screenshots="player-list-item"
+            {...rest}
+            onKeyDown={onKeyDown}
+            onPanStart={clearPress}
+            onTap={onTap}
+            onTapCancel={clearPress}
+            onTapStart={onTapStart}
           >
-            <IconButton
-              ref={reorderRef}
-              className="handler"
-              disableRipple
-              edge="end"
-              {...dragHandleProps}
-            >
-              <DragIcon />
-            </IconButton>
-          </ListItemSecondaryAction>
+            <ListItemAvatar>
+              <PlayerAvatar
+                ref={avatarRef}
+                color={player.color}
+                name={player.name}
+                selected={multiMode && selected}
+              />
+            </ListItemAvatar>
+
+            <PlayerListItemText player={player} />
+
+            {editMode && (
+              <ListItemSecondaryAction
+                classes={{
+                  root: css`
+                    @supports (padding: max(0px)) {
+                      right: max(16px, env(safe-area-inset-right));
+                    }
+                  `,
+                }}
+              >
+                <IconButton
+                  ref={reorderRef}
+                  className="handler"
+                  disableRipple
+                  edge="end"
+                  {...dragHandleProps}
+                >
+                  <DragIcon />
+                </IconButton>
+              </ListItemSecondaryAction>
+            )}
+          </ListItem>
         )}
-      </ListItem>
+      </ClassNames>
     );
   }
 );

@@ -1,5 +1,6 @@
 import "formdata-polyfill"; // for iOS Safari <= 12
 
+import { ClassNames, css } from "@emotion/react";
 import {
   Dialog,
   DialogActions,
@@ -11,7 +12,6 @@ import {
   FormLabel,
   Grid,
   IconButton,
-  makeStyles,
   Radio,
   RadioGroup,
   Slide,
@@ -39,63 +39,6 @@ import SubmitButton from "../SubmitButton";
 import AppBar from "./AppBar";
 import ColorPicker from "./ColorPicker";
 
-const displayName = "PlayerDialog";
-
-const useStyles = makeStyles(
-  /* eslint-disable sort-keys */
-  (theme) => ({
-    root: {
-      height: "inherit", // scrolling body in cordova for small screen height
-    },
-
-    dialog: {
-      backgroundColor:
-        theme.palette.mode === "dark"
-          ? theme.palette.background.default
-          : theme.palette.background.paper,
-      minWidth: 320,
-
-      [theme.breakpoints.up("lg")]: {
-        backgroundColor: theme.palette.background.paper,
-      },
-    },
-
-    title: {
-      alignItems: "center",
-      display: "flex",
-      justifyContent: "space-between",
-
-      [theme.breakpoints.down("lg")]: {
-        display: "block",
-        padding: 0,
-      },
-    },
-
-    deleteIconButton: {
-      marginLeft: 8,
-      padding: 4,
-    },
-
-    content: {
-      "@supports (padding: max(0px))": {
-        paddingLeft: "max(24px, env(safe-area-inset-left))",
-        paddingRight: "max(24px, env(safe-area-inset-right))",
-      },
-
-      [theme.breakpoints.up("md")]: {
-        alignSelf: "center",
-        width: 600,
-      },
-    },
-
-    icon: {
-      verticalAlign: "middle",
-    },
-  }),
-  /* eslint-enable */
-  { name: displayName }
-);
-
 const messages = defineMessages({
   label: {
     defaultMessage: "Name",
@@ -106,7 +49,6 @@ const messages = defineMessages({
 let appear = false;
 
 const PlayerDialog = () => {
-  const classes = useStyles();
   const dispatch = useDispatch();
   const intl = useIntl();
   const theme = useTheme();
@@ -205,111 +147,159 @@ const PlayerDialog = () => {
     <FormattedMessage defaultMessage="New munchkin" id="player.form.title" />
   );
 
+  const titleCss = css`
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+
+    ${theme.breakpoints.down("lg")} {
+      display: block;
+      padding: 0;
+    }
+  `;
+
+  const deleteIconButtonCss = css`
+    margin-left: 8px;
+    padding: 4px;
+  `;
+
+  const contentCss = css`
+    @supports (padding: max(0px)) {
+      padding-left: max(24px, env(safe-area-inset-left));
+      padding-right: max(24px, env(safe-area-inset-right));
+    }
+
+    ${theme.breakpoints.up("md")} {
+      align-self: center;
+      width: 600px;
+    }
+  `;
+
+  const iconCss = css`
+    vertical-align: middle;
+  `;
+
   return (
-    <Dialog
-      classes={{
-        paper: classes.dialog,
-        root: classes.root,
-      }}
-      disableRestoreFocus
-      fullScreen={fullScreen}
-      hideBackdrop={fullScreen}
-      onClose={handleClose}
-      open={open}
-      PaperProps={{
-        component: "form",
-        onSubmit,
-      }}
-      TransitionComponent={fullScreen && ios ? Slide : Fade}
-      TransitionProps={{
-        appear,
-        direction: "up",
-      }}
-    >
-      <DialogTitle className={classes.title} disableTypography={!fullScreen}>
-        {fullScreen ? (
-          <AppBar
-            onCancel={handleClose}
-            onDelete={handleDelete}
-            title={title}
-          />
-        ) : (
-          <>
-            <Typography component="h2" noWrap variant="h6">
-              {title}
-            </Typography>
-            {handleDelete && (
-              <IconButton
-                className={classes.deleteIconButton}
-                edge="end"
-                onClick={handleDelete}
-              >
-                <Delete />
-              </IconButton>
-            )}
-          </>
-        )}
-      </DialogTitle>
-      <DialogContent className={classes.content}>
-        <TextField
-          autoFocus={!editPlayer}
-          defaultValue={editPlayer?.name}
-          fullWidth
-          label={intl.formatMessage(messages.label)}
-          margin="normal"
-          name="name"
-          variant="standard"
-        />
+    <ClassNames>
+      {({ css }) => (
+        <Dialog
+          classes={{
+            paper: css`
+              background-color: ${theme.palette.mode === "dark"
+                ? theme.palette.background.default
+                : theme.palette.background.paper};
+              min-width: 320px;
 
-        <Grid container>
-          <Grid item xs={6}>
-            <FormControl component="fieldset" margin="normal">
-              <FormLabel component="legend">
-                <FormattedMessage defaultMessage="Sex" id="player.form.sex" />
-              </FormLabel>
-              <RadioGroup defaultValue={editPlayer?.sex || MALE} name="sex">
-                <FormControlLabel
-                  control={<Radio color="primary" />}
-                  label={<GenderMale className={classes.icon} />}
-                  value={MALE}
-                />
-                <FormControlLabel
-                  control={<Radio color="primary" />}
-                  label={<GenderFemale className={classes.icon} />}
-                  value={FEMALE}
-                />
-              </RadioGroup>
-            </FormControl>
-          </Grid>
-
-          <Grid item xs={6}>
-            <FormControl margin="normal">
-              <FormLabel>
-                <FormattedMessage
-                  defaultMessage="Color"
-                  id="player.form.color"
-                />
-              </FormLabel>
-              <ColorPicker
-                defaultValue={editPlayer?.color || randomColor}
-                name="color"
+              ${theme.breakpoints.up("lg")} {
+                background-color: ${theme.palette.background.paper};
+              }
+            `,
+            root: css`
+              height: inherit; /* scrolling body in cordova for small screen height */
+            `,
+          }}
+          disableRestoreFocus
+          fullScreen={fullScreen}
+          hideBackdrop={fullScreen}
+          onClose={handleClose}
+          open={open}
+          PaperProps={{
+            component: "form",
+            onSubmit,
+          }}
+          TransitionComponent={fullScreen && ios ? Slide : Fade}
+          TransitionProps={{
+            appear,
+            direction: "up",
+          }}
+        >
+          <DialogTitle css={titleCss} disableTypography={!fullScreen}>
+            {fullScreen ? (
+              <AppBar
+                onCancel={handleClose}
+                onDelete={handleDelete}
+                title={title}
               />
-            </FormControl>
-          </Grid>
-        </Grid>
-      </DialogContent>
-      {!fullScreen && (
-        <DialogActions>
-          <CancelButton onClick={handleClose} />
-          <SubmitButton>
-            <FormattedMessage defaultMessage="Save" id="player.form.save" />
-          </SubmitButton>
-        </DialogActions>
+            ) : (
+              <>
+                <Typography component="h2" noWrap variant="h6">
+                  {title}
+                </Typography>
+                {handleDelete && (
+                  <IconButton
+                    css={deleteIconButtonCss}
+                    edge="end"
+                    onClick={handleDelete}
+                  >
+                    <Delete />
+                  </IconButton>
+                )}
+              </>
+            )}
+          </DialogTitle>
+          <DialogContent css={contentCss}>
+            <TextField
+              autoFocus={!editPlayer}
+              defaultValue={editPlayer?.name}
+              fullWidth
+              label={intl.formatMessage(messages.label)}
+              margin="normal"
+              name="name"
+              variant="standard"
+            />
+
+            <Grid container>
+              <Grid item xs={6}>
+                <FormControl component="fieldset" margin="normal">
+                  <FormLabel component="legend">
+                    <FormattedMessage
+                      defaultMessage="Sex"
+                      id="player.form.sex"
+                    />
+                  </FormLabel>
+                  <RadioGroup defaultValue={editPlayer?.sex || MALE} name="sex">
+                    <FormControlLabel
+                      control={<Radio color="primary" />}
+                      label={<GenderMale css={iconCss} />}
+                      value={MALE}
+                    />
+                    <FormControlLabel
+                      control={<Radio color="primary" />}
+                      label={<GenderFemale css={iconCss} />}
+                      value={FEMALE}
+                    />
+                  </RadioGroup>
+                </FormControl>
+              </Grid>
+
+              <Grid item xs={6}>
+                <FormControl margin="normal">
+                  <FormLabel>
+                    <FormattedMessage
+                      defaultMessage="Color"
+                      id="player.form.color"
+                    />
+                  </FormLabel>
+                  <ColorPicker
+                    defaultValue={editPlayer?.color || randomColor}
+                    name="color"
+                  />
+                </FormControl>
+              </Grid>
+            </Grid>
+          </DialogContent>
+          {!fullScreen && (
+            <DialogActions>
+              <CancelButton onClick={handleClose} />
+              <SubmitButton>
+                <FormattedMessage defaultMessage="Save" id="player.form.save" />
+              </SubmitButton>
+            </DialogActions>
+          )}
+        </Dialog>
       )}
-    </Dialog>
+    </ClassNames>
   );
 };
-
-PlayerDialog.displayName = displayName;
 
 export default PlayerDialog;

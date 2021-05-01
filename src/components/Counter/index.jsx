@@ -1,5 +1,5 @@
-import { makeStyles } from "@material-ui/core";
-import clsx from "clsx";
+import { css } from "@emotion/react";
+import { useTheme } from "@material-ui/core";
 import {
   MenuDown as DecrementIcon,
   MenuUp as IncrementIcon,
@@ -9,8 +9,6 @@ import { defineMessages } from "react-intl";
 
 import Button from "./Button";
 import CounterLabel from "./Label";
-
-const displayName = "Counter";
 
 export const counterMessages = defineMessages({
   gear: {
@@ -31,47 +29,6 @@ export const counterMessages = defineMessages({
   },
 });
 
-const useStyles = makeStyles(
-  /* eslint-disable sort-keys */
-  (theme) => ({
-    counter: {
-      alignItems: "center",
-      display: "flex",
-      flexDirection: "column",
-    },
-
-    title: {
-      fontSize: 24,
-      textAlign: "center",
-      width: "100%",
-    },
-
-    buttons: {
-      display: "flex",
-      justifyContent: "space-around",
-      maxWidth: "120px",
-      width: "100%",
-    },
-
-    button: {
-      fontSize: 48,
-      padding: 0,
-    },
-
-    icon: {
-      fontSize: "inherit",
-    },
-
-    value: {
-      color: theme.palette.text.primary,
-      fontFamily: `"Munchkin", ${theme.typography.fontFamily}`,
-      fontSize: 36,
-    },
-  }),
-  /* eslint-enable */
-  { name: displayName }
-);
-
 const Counter = ({
   className,
   decrementDisabled,
@@ -82,31 +39,76 @@ const Counter = ({
   value,
   ...props
 }) => {
-  const classes = useStyles();
+  const theme = useTheme();
 
   return (
-    <div className={clsx(className, classes.counter)} {...props}>
-      <CounterLabel className={classes.title}>{title}</CounterLabel>
+    <div
+      className={className}
+      css={css`
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+      `}
+      {...props}
+    >
+      <CounterLabel
+        css={css`
+          font-size: 24px;
+          text-align: center;
+          width: 100%;
+        `}
+      >
+        {title}
+      </CounterLabel>
 
-      <div className={classes.value}>{value}</div>
+      <div
+        css={css`
+          color: ${theme.palette.text.primary};
+          font-family: "Munchkin", ${theme.typography.fontFamily};
+          font-size: 36px;
+        `}
+      >
+        {value}
+      </div>
 
-      <div className={classes.buttons}>
+      <div
+        css={css`
+          display: flex;
+          justify-content: space-around;
+          max-width: 120px;
+          width: 100%;
+        `}
+      >
         <Button
-          className={classes.button}
+          css={css`
+            font-size: 48px;
+            padding: 0;
+          `}
           data-screenshots="decrement-button"
           disabled={decrementDisabled}
           onClick={onDecrement}
         >
-          <DecrementIcon className={classes.icon} />
+          <DecrementIcon
+            css={css`
+              font-size: inherit;
+            `}
+          />
         </Button>
 
         <Button
-          className={classes.button}
+          css={css`
+            font-size: 48px;
+            padding: 0;
+          `}
           data-screenshots="increment-button"
           disabled={incrementDisabled}
           onClick={onIncrement}
         >
-          <IncrementIcon className={classes.icon} />
+          <IncrementIcon
+            css={css`
+              font-size: inherit;
+            `}
+          />
         </Button>
       </div>
     </div>
@@ -127,7 +129,5 @@ Counter.defaultProps = {
   decrementDisabled: false,
   incrementDisabled: false,
 };
-
-Counter.displayName = displayName;
 
 export default Counter;

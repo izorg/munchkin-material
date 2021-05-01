@@ -1,31 +1,12 @@
-import {
-  Fade,
-  makeStyles,
-  Modal,
-  Slide,
-  useMediaQuery,
-  useTheme,
-} from "@material-ui/core";
+import { css } from "@emotion/react";
+import { Fade, Modal, Slide, useMediaQuery, useTheme } from "@material-ui/core";
 import PropTypes from "prop-types";
 
 import { ios } from "../../utils/platforms";
 
 const displayName = "ScreenModal";
 
-const useStyles = makeStyles(
-  {
-    root: {
-      display: "flex",
-      flexDirection: "column",
-      height: "100%",
-      outline: "none",
-    },
-  },
-  { name: displayName }
-);
-
 const ScreenModal = ({ children, open, TransitionProps }) => {
-  const classes = useStyles();
   const theme = useTheme();
 
   const slide = useMediaQuery(theme.breakpoints.down("lg")) && ios;
@@ -39,7 +20,16 @@ const ScreenModal = ({ children, open, TransitionProps }) => {
         in={open}
         {...TransitionProps}
       >
-        <div className={classes.root}>{children}</div>
+        <div
+          css={css`
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            outline: none;
+          `}
+        >
+          {children}
+        </div>
       </TransitionComponent>
     </Modal>
   );

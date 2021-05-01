@@ -1,8 +1,9 @@
+import { css } from "@emotion/react";
 import {
   Dialog,
   DialogContent,
   DialogTitle,
-  makeStyles,
+  useTheme,
 } from "@material-ui/core";
 import PropTypes from "prop-types";
 import { FormattedMessage } from "react-intl";
@@ -12,20 +13,8 @@ import { colorType } from "../../../utils/propTypes";
 
 import Color from "./Color";
 
-const displayName = "ColorPickerDialog";
-
-const useStyles = makeStyles(
-  (theme) => ({
-    content: {
-      padding: theme.spacing(0, 1, 2),
-      textAlign: "center",
-    },
-  }),
-  { name: displayName }
-);
-
 const ColorPickerDialog = ({ onSelect, value, ...props }) => {
-  const classes = useStyles();
+  const theme = useTheme();
 
   return (
     <Dialog {...props}>
@@ -35,7 +24,12 @@ const ColorPickerDialog = ({ onSelect, value, ...props }) => {
           id="colorPicker.dialog.title"
         />
       </DialogTitle>
-      <DialogContent className={classes.content}>
+      <DialogContent
+        css={css`
+          padding: ${theme.spacing(0, 1, 2)};
+          text-align: center;
+        `}
+      >
         {availableColors.map((color) => (
           <Color
             key={color}
@@ -53,7 +47,5 @@ ColorPickerDialog.propTypes = {
   onSelect: PropTypes.func.isRequired,
   value: colorType.isRequired,
 };
-
-ColorPickerDialog.displayName = displayName;
 
 export default ColorPickerDialog;

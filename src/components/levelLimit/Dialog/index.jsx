@@ -1,10 +1,10 @@
+import { css } from "@emotion/react";
 import {
   Dialog,
   DialogActions,
   DialogContent,
   DialogTitle,
   FormControlLabel,
-  makeStyles,
   Radio,
   RadioGroup,
 } from "@material-ui/core";
@@ -29,17 +29,7 @@ export const DEFAULT_MUNCHKIN_LIMIT = "default";
 export const EPIC_MUNCHKIN_LIMIT = "epic";
 export const NO_LIMIT = "no-limit";
 
-const useStyles = makeStyles(
-  {
-    content: {
-      paddingBottom: 1,
-    },
-  },
-  { name: displayName }
-);
-
 const LevelLimitDialog = (props) => {
-  const classes = useStyles();
   const dispatch = useDispatch();
   const intl = useIntl();
 
@@ -98,7 +88,11 @@ const LevelLimitDialog = (props) => {
       {...props}
     >
       <DialogTitle>{intl.formatMessage(levelLimitMessages.label)}</DialogTitle>
-      <DialogContent className={classes.content}>
+      <DialogContent
+        css={css`
+          padding-bottom: 1px;
+        `}
+      >
         <RadioGroup name="levelLimit" onChange={onChange} value={value}>
           <FormControlLabel
             control={<Radio autoFocus={value === NO_LIMIT} color="primary" />}

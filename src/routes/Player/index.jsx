@@ -1,4 +1,5 @@
-import { makeStyles } from "@material-ui/core";
+import { css } from "@emotion/react";
+import { useTheme } from "@material-ui/core";
 import PropTypes from "prop-types";
 import { lazy, Suspense, useRef } from "react";
 import { useSelector } from "react-redux";
@@ -19,68 +20,9 @@ const Combat = lazy(() =>
   )
 );
 
-const displayName = "Player";
-
-const useStyles = makeStyles(
-  /* eslint-disable sort-keys */
-  (theme) => ({
-    root: {
-      backgroundColor: theme.palette.background.default,
-      display: "flex",
-      flex: 1,
-      flexDirection: "column",
-      overflow: "hidden",
-    },
-
-    content: {
-      display: "flex",
-      flex: 1,
-      flexDirection: "column",
-      overflowY: "auto",
-
-      [theme.breakpoints.up("md")]: {
-        flexDirection: "row-reverse",
-      },
-    },
-
-    sliderContent: {
-      display: "flex",
-      flex: "1 0 auto",
-
-      [theme.breakpoints.up("md")]: {
-        flexShrink: 1,
-        overflow: "hidden",
-      },
-    },
-
-    playerList: {
-      display: "none",
-      flex: "0 1 auto",
-      overflowY: "auto",
-      paddingBottom: theme.spacing(7),
-
-      "@media (min-height: 720px)": {
-        display: "block",
-      },
-
-      [theme.breakpoints.up("sm")]: {
-        paddingBottom: theme.spacing(8),
-      },
-
-      [theme.breakpoints.up("md")]: {
-        display: "block",
-        flex: "none",
-        paddingBottom: theme.spacing(1),
-        width: theme.spacing(50),
-      },
-    },
-  }),
-  /* eslint-enable */
-  { name: displayName }
-);
-
 const Player = ({ playerId }) => {
-  const classes = useStyles();
+  const theme = useTheme();
+
   const playerRef = useRef();
   const playerList = useSelector((state) => state.present.playerList);
 
@@ -103,15 +45,64 @@ const Player = ({ playerId }) => {
 
   return (
     <PlayerContext.Provider value={playerRef.current}>
-      <div className={classes.root}>
+      <div
+        css={css`
+          background-color: ${theme.palette.background.default};
+          display: flex;
+          flex: 1;
+          flex-direction: column;
+          overflow: hidden;
+        `}
+      >
         <AppBar playerId={playerRef.current} />
-        <div className={classes.content}>
-          <div className={classes.sliderContent}>
+        <div
+          css={css`
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+            overflow-y: auto;
+
+            ${theme.breakpoints.up("md")} {
+              flex-direction: row-reverse;
+            }
+          `}
+        >
+          <div
+            css={css`
+              display: flex;
+              flex: 1 0 auto;
+
+              ${theme.breakpoints.up("md")} {
+                flex-shrink: 1;
+                overflow: hidden;
+              }
+            `}
+          >
             <Slider playerId={playerRef.current} />
           </div>
           {playerList.length > 1 && (
             <PlayerList
-              className={classes.playerList}
+              css={css`
+                display: none;
+                flex: 0 1 auto;
+                overflow-y: auto;
+                padding-bottom: ${theme.spacing(7)};
+
+                @media (min-height: 720px) {
+                  display: block;
+                }
+
+                ${theme.breakpoints.up("sm")} {
+                  padding-bottom: ${theme.spacing(8)};
+                }
+
+                ${theme.breakpoints.up("md")} {
+                  display: block;
+                  flex: none;
+                  padding-bottom: ${theme.spacing(1)};
+                  width: ${theme.spacing(50)};
+                }
+              `}
               selectedPlayerId={playerRef.current}
             />
           )}
@@ -135,7 +126,5 @@ Player.propTypes = {
 Player.defaultProps = {
   playerId: null,
 };
-
-Player.displayName = displayName;
 
 export default Player;

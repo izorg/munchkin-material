@@ -1,4 +1,5 @@
-import { IconButton, makeStyles } from "@material-ui/core";
+import { css } from "@emotion/react";
+import { IconButton, useTheme } from "@material-ui/core";
 import { useCallback } from "react";
 import { useIntl } from "react-intl";
 import { useDispatch, useSelector } from "react-redux";
@@ -19,86 +20,10 @@ import {
   isLevelIncrementDisabled,
 } from "../../../utils/levelLimit";
 
-const displayName = "SinglePlayer";
-
-const useStyles = makeStyles(
-  /* eslint-disable sort-keys */
-  (theme) => ({
-    content: {
-      alignSelf: "center",
-      display: "flex",
-      flex: 1,
-      flexDirection: "column-reverse",
-      height: "100%",
-      margin: "0 auto",
-      maxHeight: 600,
-      maxWidth: 800,
-
-      "@media (orientation: landscape)": {
-        flexDirection: "row",
-      },
-    },
-
-    counters: {
-      alignItems: "center",
-      display: "flex",
-      flex: 1,
-
-      "@media (orientation: landscape)": {
-        flex: 3,
-      },
-    },
-
-    counter: {
-      flex: 1,
-      overflow: "hidden",
-    },
-
-    strengthCounter: {
-      alignItems: "center",
-      display: "flex",
-      flexDirection: "column",
-      flex: 1,
-      justifyContent: "center",
-    },
-
-    strengthTitle: {
-      fontSize: 24,
-    },
-
-    strengthValue: {
-      color: theme.palette.text.primary,
-      fontFamily: `"Munchkin", ${theme.typography.fontFamily}`,
-      fontSize: 36,
-
-      "@media (orientation: portrait)": {
-        fontSize: 72, // 36px * 2
-        lineHeight: theme.typography.body2.lineHeight / 2, // 1.43 / 2
-        marginTop: 32,
-      },
-    },
-
-    sex: {
-      fontSize: 32,
-      padding: 8,
-
-      "@media (orientation: portrait)": {
-        marginTop: 16,
-      },
-    },
-
-    sexIcon: {
-      fontSize: "inherit",
-    },
-  }),
-  /* eslint-enable */
-  { name: displayName }
-);
-
 const SinglePlayer = () => {
-  const classes = useStyles();
   const dispatch = useDispatch();
   const intl = useIntl();
+  const theme = useTheme();
 
   const player = useSelector(
     (state) => state.present.players[state.present.settings.singleModePlayerId]
@@ -163,11 +88,41 @@ const SinglePlayer = () => {
     player.id,
   ]);
 
+  const counterCss = css`
+    flex: 1;
+    overflow: hidden;
+  `;
+
   return (
-    <div className={classes.content}>
-      <div className={classes.counters}>
+    <div
+      css={css`
+        align-self: center;
+        display: flex;
+        flex: 1;
+        flex-direction: column-reverse;
+        height: 100%;
+        margin: 0 auto;
+        max-height: 600px;
+        max-width: 800px;
+
+        @media (orientation: landscape) {
+          flex-direction: row;
+        }
+      `}
+    >
+      <div
+        css={css`
+          align-items: center;
+          display: flex;
+          flex: 1;
+
+          @media (orientation: landscape) {
+            flex: 3;
+          }
+        `}
+      >
         <Counter
-          className={classes.counter}
+          css={counterCss}
           data-screenshots="level-counter"
           decrementDisabled={levelDecrementDisabled}
           incrementDisabled={levelIncrementDisabled}
@@ -177,7 +132,7 @@ const SinglePlayer = () => {
           value={player.level}
         />
         <Counter
-          className={classes.counter}
+          css={counterCss}
           data-screenshots="gear-counter"
           onDecrement={onGearDecrement}
           onIncrement={onGearIncrement}
@@ -185,7 +140,7 @@ const SinglePlayer = () => {
           value={player.gear}
         />
         <Counter
-          className={classes.counter}
+          css={counterCss}
           data-screenshots="modifier-counter"
           onDecrement={onBonusDecrement}
           onIncrement={onBonusIncrement}
@@ -193,23 +148,62 @@ const SinglePlayer = () => {
           value={bonus}
         />
       </div>
-      <div className={classes.strengthCounter}>
-        <CounterLabel className={classes.strengthTitle}>
+      <div
+        css={css`
+          align-items: center;
+          display: flex;
+          flex: 1;
+          flex-direction: column;
+          justify-content: center;
+        `}
+      >
+        <CounterLabel
+          css={css`
+            font-size: 24px;
+          `}
+        >
           {intl.formatMessage(counterMessages.strength)}
         </CounterLabel>
 
-        <div className={classes.strengthValue}>
+        <div
+          css={css`
+            color: ${theme.palette.text.primary};
+            font-family: "Munchkin", ${theme.typography.fontFamily};
+            font-size: 36px;
+
+            @media (orientation: portrait) {
+              font-size: 72px; /* 36px * 2 */
+              line-height: ${theme.typography.body2.lineHeight /
+              2}; /* 1.43 / 2 */
+
+              margin-top: 32px;
+            }
+          `}
+        >
           {player.level + player.gear + bonus}
         </div>
 
-        <IconButton className={classes.sex} onClick={onSexToggle}>
-          <Sex className={classes.sexIcon} sex={player.sex} />
+        <IconButton
+          css={css`
+            font-size: 32px;
+            padding: 8px;
+
+            @media (orientation: portrait) {
+              margin-top: 16px;
+            }
+          `}
+          onClick={onSexToggle}
+        >
+          <Sex
+            css={css`
+              font-size: inherit;
+            `}
+            sex={player.sex}
+          />
         </IconButton>
       </div>
     </div>
   );
 };
-
-SinglePlayer.displayName = displayName;
 
 export default SinglePlayer;

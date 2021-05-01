@@ -1,36 +1,32 @@
-import { makeStyles, Typography } from "@material-ui/core";
+import { css } from "@emotion/react";
+import { Typography, useTheme } from "@material-ui/core";
 import { AccountCircle } from "mdi-material-ui";
 import { FormattedMessage } from "react-intl";
 
 const displayName = "Nobody";
 
-const useStyles = makeStyles(
-  (theme) => ({
-    nobody: {
-      alignItems: "center",
-      color: theme.palette.text.secondary,
-      display: "flex",
-      flex: 1,
-      flexDirection: "column",
-      justifyContent: "center",
-    },
-
-    nobodyIcon: {
-      height: 96,
-      marginBottom: theme.spacing(2),
-      opacity: 0.2,
-      width: 96,
-    },
-  }),
-  { name: displayName }
-);
-
 const Nobody = () => {
-  const classes = useStyles();
+  const theme = useTheme();
 
   return (
-    <div className={classes.nobody}>
-      <AccountCircle className={classes.nobodyIcon} />
+    <div
+      css={css`
+        align-items: center;
+        color: ${theme.palette.text.secondary};
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        justify-content: center;
+      `}
+    >
+      <AccountCircle
+        css={css`
+          height: 96px;
+          margin-bottom: ${theme.spacing(2)};
+          opacity: 0.2;
+          width: 96px;
+        `}
+      />
       <Typography
         align="center"
         color="inherit"

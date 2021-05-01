@@ -1,4 +1,5 @@
-import { Hidden, makeStyles, useFormControl } from "@material-ui/core";
+import { css } from "@emotion/react";
+import { Hidden, useFormControl } from "@material-ui/core";
 import PropTypes from "prop-types";
 import { useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -13,17 +14,6 @@ import Color from "./Color";
 import Dialog from "./Dialog";
 import Popover from "./Popover";
 
-const displayName = "ColorPicker";
-
-const useStyles = makeStyles(
-  {
-    color: {
-      marginLeft: -6,
-    },
-  },
-  { name: displayName }
-);
-
 const ColorPicker = ({
   defaultValue,
   name,
@@ -35,8 +25,6 @@ const ColorPicker = ({
   const location = useLocation();
   const navigate = useNavigate();
   const muiFormControl = useFormControl();
-
-  const classes = useStyles();
 
   const anchorEl = useRef(null);
   const ignoreNextBlur = useRef(false);
@@ -70,7 +58,9 @@ const ColorPicker = ({
       <input name={name} type="hidden" value={value} />
       <Color
         ref={anchorEl}
-        className={classes.color}
+        css={css`
+          margin-left: -6px;
+        `}
         onBlur={(event) => {
           if (ignoreNextBlur.current === true) {
             // The parent components are relying on the bubbling of the event.
@@ -153,7 +143,5 @@ ColorPicker.propTypes = {
   onFocus: PropTypes.func,
   value: PropTypes.string,
 };
-
-ColorPicker.displayName = displayName;
 
 export default ColorPicker;

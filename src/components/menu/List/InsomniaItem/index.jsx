@@ -1,4 +1,5 @@
-import { ListItemIcon, makeStyles, Switch } from "@material-ui/core";
+import { css } from "@emotion/react";
+import { ListItemIcon, Switch } from "@material-ui/core";
 import { Lightbulb, LightbulbOutline } from "mdi-material-ui";
 import { FormattedMessage } from "react-intl";
 
@@ -6,21 +7,7 @@ import { useWakeLock } from "../../../WakeLockProvider";
 import ListItem from "../Item";
 import ListItemText from "../ItemText";
 
-const displayName = "InsomniaItem";
-
-const useStyles = makeStyles(
-  {
-    root: {
-      paddingBottom: 9,
-      paddingTop: 9,
-    },
-  },
-  { name: displayName }
-);
-
 const InsomniaItem = () => {
-  const classes = useStyles();
-
   const { setWakeLock, wakeLock, wakeLockSupport } = useWakeLock();
 
   if (!wakeLockSupport) {
@@ -30,7 +17,10 @@ const InsomniaItem = () => {
   return (
     <ListItem
       button
-      className={classes.root}
+      css={css`
+        padding-bottom: 9px;
+        padding-top: 9px;
+      `}
       onClick={() => setWakeLock(!wakeLock)}
     >
       <ListItemIcon>
@@ -51,7 +41,5 @@ const InsomniaItem = () => {
     </ListItem>
   );
 };
-
-InsomniaItem.displayName = displayName;
 
 export default InsomniaItem;

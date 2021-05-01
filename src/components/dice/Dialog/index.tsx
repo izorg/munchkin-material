@@ -1,5 +1,5 @@
-import { ButtonBase, Dialog, makeStyles } from "@material-ui/core";
-import { DialogProps } from "@material-ui/core/Dialog/Dialog";
+import { css } from "@emotion/react";
+import { ButtonBase, Dialog, DialogProps, useTheme } from "@material-ui/core";
 import { Dice1, Dice2, Dice3, Dice4, Dice5, Dice6 } from "mdi-material-ui";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
@@ -10,39 +10,7 @@ import { useGoBack, useLocationQuery } from "../../../utils/location";
 import usePresentSelector from "../../../utils/usePresentSelector";
 import DiceTransition from "../Transition";
 
-const displayName = "DiceDialog";
-
 const diceSize = 120;
-
-const useStyles = makeStyles(
-  /* eslint-disable sort-keys */
-  (theme) => ({
-    button: {
-      color: theme.palette.text.primary,
-      display: "block",
-      fontSize: diceSize,
-      height: diceSize,
-      padding: 0,
-      position: "relative",
-      width: diceSize,
-    },
-
-    iconWrapper: {
-      height: "100%",
-      left: 0,
-      position: "absolute",
-      top: 0,
-      width: "100%",
-    },
-
-    icon: {
-      display: "block",
-      fontSize: "inherit",
-    },
-  }),
-  /* eslint-enable */
-  { name: displayName }
-);
 
 const diceComponent = {
   1: Dice1,
@@ -54,8 +22,8 @@ const diceComponent = {
 };
 
 const DiceDialog = (props: Partial<DialogProps>): JSX.Element | null => {
-  const classes = useStyles();
   const dispatch = useDispatch();
+  const theme = useTheme();
 
   const [attempt, setAttempt] = useState(0);
 
@@ -81,20 +49,37 @@ const DiceDialog = (props: Partial<DialogProps>): JSX.Element | null => {
     <Dialog {...props} onClose={onDialogClose} open={open}>
       <TransitionGroup
         autoFocus
-        className={classes.button}
         component={ButtonBase}
+        css={css`
+          color: ${theme.palette.text.primary};
+          display: block;
+          font-size: ${diceSize}px;
+          height: ${diceSize}px;
+          padding: 0;
+          position: relative;
+          width: ${diceSize}px;
+        `}
         disableRipple
         onClick={onDiceClick}
       >
-        {dice ? (
-          <DiceTransition key={attempt}>
-            <span className={classes.iconWrapper}>
-              <Dice className={classes.icon} />
-            </span>
-          </DiceTransition>
-        ) : (
-          <></>
-        )}
+        <DiceTransition key={attempt}>
+          <span
+            css={css`
+              height: 100%;
+              left: 0;
+              position: absolute;
+              top: 0;
+              width: 100%;
+            `}
+          >
+            <Dice
+              css={css`
+                display: block;
+                font-size: inherit;
+              `}
+            />
+          </span>
+        </DiceTransition>
       </TransitionGroup>
     </Dialog>
   );

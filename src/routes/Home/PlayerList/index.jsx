@@ -1,5 +1,5 @@
-import { List, makeStyles, useTheme } from "@material-ui/core";
-import clsx from "clsx";
+import { css } from "@emotion/react";
+import { List, useTheme } from "@material-ui/core";
 import { useCallback } from "react";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,42 +10,7 @@ import { EDIT } from "../modes";
 
 import Item from "./Item";
 
-const displayName = "HomePlayerList";
-
-const useStyles = makeStyles(
-  {
-    // '@global': {
-    //   '.sortable-ghost': {
-    //     visibility: 'hidden',
-    //   },
-    // },
-
-    drag: {
-      "&:hover": {
-        backgroundColor: "transparent",
-      },
-    },
-
-    dragging: {
-      '& [data-react-beautiful-dnd-draggable="0"]': {
-        transition: "transform 0.2s cubic-bezier(0.2, 0, 0, 1)",
-      },
-    },
-  },
-  { name: displayName }
-);
-
-// const SortableList = forwardRef((props, ref) => {
-//   return (
-//     <List ref={ref} disablePadding {...props}>
-//       {/* eslint-disable-next-line react/prop-types */}
-//       {props.children}
-//     </List>
-//   );
-// });
-
 const HomePlayerList = (props) => {
-  const classes = useStyles();
   const dispatch = useDispatch();
   const theme = useTheme();
 
@@ -121,11 +86,18 @@ const HomePlayerList = (props) => {
                     return (
                       <Item
                         ref={draggableRef}
-                        className={clsx({ [classes.drag]: isDragging })}
                         ContainerProps={{
                           ...draggableProps,
                           style,
                         }}
+                        css={
+                          isDragging &&
+                          css`
+                            &:hover {
+                              background-color: transparent;
+                            }
+                          `
+                        }
                         dragHandleProps={dragHandleProps}
                         playerId={playerId}
                       />
@@ -141,25 +113,6 @@ const HomePlayerList = (props) => {
     );
   }
 
-  // return (
-  //   <ReactSortable
-  //     animation="300"
-  //     handle=".handler"
-  //     list={list}
-  //     setList={(newList) => {
-  //       if (newList.some((item, index) => item.id !== playerList[index])) {
-  //         dispatch(setPlayerList(newList.map((item) => item.id)));
-  //       }
-  //     }}
-  //     tag={SortableList}
-  //     {...props}
-  //   >
-  //     {playerList.map((playerId) => (
-  //       <Item key={playerId} playerId={playerId} />
-  //     ))}
-  //   </ReactSortable>
-  // );
-
   return (
     <List disablePadding {...props}>
       {playerList.map((playerId) => (
@@ -168,7 +121,5 @@ const HomePlayerList = (props) => {
     </List>
   );
 };
-
-HomePlayerList.displayName = displayName;
 
 export default HomePlayerList;

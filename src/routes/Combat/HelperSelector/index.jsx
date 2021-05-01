@@ -1,3 +1,4 @@
+import { ClassNames, css } from "@emotion/react";
 import {
   Dialog,
   DialogContent,
@@ -5,7 +6,7 @@ import {
   List,
   ListItem,
   ListItemAvatar,
-  makeStyles,
+  useTheme,
 } from "@material-ui/core";
 import { FormattedMessage } from "react-intl";
 import { useDispatch, useSelector } from "react-redux";
@@ -15,26 +16,9 @@ import PlayerListItemText from "../../../components/PlayerListItemText";
 import { setCombatHelper } from "../../../ducks/combat";
 import { useGoBack, useLocationQuery } from "../../../utils/location";
 
-const displayName = "HelperSelector";
-
-const useStyles = makeStyles(
-  /* eslint-disable sort-keys */
-  (theme) => ({
-    dialogPaper: {
-      margin: theme.spacing(2),
-    },
-
-    content: {
-      padding: 0,
-    },
-  }),
-  /* eslint-enable */
-  { name: displayName }
-);
-
 const HelperSelector = (props) => {
-  const classes = useStyles();
   const dispatch = useDispatch();
+  const theme = useTheme();
 
   const goBack = useGoBack();
 
@@ -56,41 +40,49 @@ const HelperSelector = (props) => {
     goBack();
   };
 
+  const contentCss = css`
+    padding: 0;
+  `;
+
   return (
-    <Dialog
-      classes={{
-        paper: classes.dialogPaper,
-      }}
-      onClose={onClose}
-      open={open}
-      {...props}
-    >
-      <DialogTitle>
-        <FormattedMessage
-          defaultMessage="Choose helper"
-          id="combat.helperSelector.title"
-        />
-      </DialogTitle>
-      <DialogContent className={classes.content}>
-        <List>
-          {helpers.map((helper) => (
-            <ListItem
-              key={helper.id.toString()}
-              button
-              onClick={() => onSelect(helper.id)}
-            >
-              <ListItemAvatar>
-                <PlayerAvatar color={helper.color} name={helper.name} />
-              </ListItemAvatar>
-              <PlayerListItemText player={helper} />
-            </ListItem>
-          ))}
-        </List>
-      </DialogContent>
-    </Dialog>
+    <ClassNames>
+      {({ css }) => (
+        <Dialog
+          classes={{
+            paper: css`
+              margin: ${theme.spacing(2)};
+            `,
+          }}
+          onClose={onClose}
+          open={open}
+          {...props}
+        >
+          <DialogTitle>
+            <FormattedMessage
+              defaultMessage="Choose helper"
+              id="combat.helperSelector.title"
+            />
+          </DialogTitle>
+          <DialogContent css={contentCss}>
+            <List>
+              {helpers.map((helper) => (
+                <ListItem
+                  key={helper.id.toString()}
+                  button
+                  onClick={() => onSelect(helper.id)}
+                >
+                  <ListItemAvatar>
+                    <PlayerAvatar color={helper.color} name={helper.name} />
+                  </ListItemAvatar>
+                  <PlayerListItemText player={helper} />
+                </ListItem>
+              ))}
+            </List>
+          </DialogContent>
+        </Dialog>
+      )}
+    </ClassNames>
   );
 };
-
-HelperSelector.displayName = displayName;
 
 export default HelperSelector;

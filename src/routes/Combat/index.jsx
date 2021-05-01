@@ -1,5 +1,5 @@
-import { makeStyles, Typography, useTheme } from "@material-ui/core";
-import clsx from "clsx";
+import { css } from "@emotion/react";
+import { Typography, useTheme } from "@material-ui/core";
 import { useSelector } from "react-redux";
 
 import AppBar from "./AppBar";
@@ -8,85 +8,10 @@ import HelperSelector from "./HelperSelector";
 import MonsterSlider from "./MonsterSlider";
 import PlayerSlider from "./PlayerSlider";
 
-const displayName = "Combat";
-
-const useStyles = makeStyles(
-  /* eslint-disable sort-keys */
-  (theme) => ({
-    root: {
-      backgroundColor: theme.palette.background.default,
-      display: "flex",
-      flex: 1,
-      flexDirection: "column",
-      overflow: "hidden",
-      zIndex: 1,
-    },
-
-    content: {
-      alignItems: "center",
-      display: "flex",
-      flex: 1,
-      flexDirection: "column",
-      justifyContent: "center",
-
-      "@supports (padding: env(safe-area-inset-left))": {
-        paddingLeft: "env(safe-area-inset-left)",
-        paddingRight: "env(safe-area-inset-right)",
-      },
-
-      "@media (orientation: portrait)": {
-        overflowY: "auto",
-        paddingBottom: theme.spacing(7),
-      },
-
-      "@media (orientation: landscape)": {
-        flexDirection: "row",
-        overflow: "hidden",
-      },
-    },
-
-    players: {
-      "@media (orientation: landscape)": {
-        flex: 1,
-      },
-    },
-
-    monsters: {
-      "@media (orientation: landscape)": {
-        flex: 1,
-      },
-    },
-
-    total: {
-      textAlign: "center",
-    },
-
-    value: {
-      display: "inline-block",
-      fontFamily: `"Munchkin", ${theme.typography.fontFamily}`,
-      fontSize: "inherit",
-      minWidth: 50,
-    },
-
-    combinedPlayerStrength: {
-      textAlign: "right",
-    },
-
-    combinedMonsterStrength: {
-      textAlign: "left",
-    },
-
-    versus: {
-      margin: theme.spacing(0, 0.5),
-    },
-  }),
-  /* eslint-enable */
-  { name: displayName }
-);
-
 const Combat = () => {
-  const classes = useStyles();
-  const { direction } = useTheme();
+  const theme = useTheme();
+
+  const { direction } = theme;
 
   const playerId = useSelector((state) => state.present.combat.playerId);
   const helperId = useSelector((state) => state.present.combat.helperId);
@@ -119,34 +44,103 @@ const Combat = () => {
     return playerStrength + helperStrength;
   });
 
+  const valueCss = css`
+    display: inline-block;
+    font-family: "Munchkin", ${theme.typography.fontFamily};
+    font-size: inherit;
+    min-width: 50px;
+  `;
+
   return (
     <>
-      <div className={classes.root}>
+      <div
+        css={css`
+          background-color: ${theme.palette.background.default};
+          display: flex;
+          flex: 1;
+          flex-direction: column;
+          overflow: hidden;
+          z-index: 1;
+        `}
+      >
         <AppBar />
-        <div className={classes.content}>
+        <div
+          css={css`
+            align-items: center;
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+            justify-content: center;
+
+            @supports (padding: env(safe-area-inset-left)) {
+              padding-left: env(safe-area-inset-left);
+              padding-right: env(safe-area-inset-right);
+            }
+
+            @media (orientation: portrait) {
+              overflow-y: auto;
+              padding-bottom: ${theme.spacing(7)};
+            }
+
+            @media (orientation: landscape) {
+              flex-direction: row;
+              overflow: hidden;
+            }
+          `}
+        >
           <PlayerSlider
-            className={classes.players}
+            css={css`
+              @media (orientation: landscape) {
+                flex: 1;
+              }
+            `}
             helperId={helperId}
             playerId={playerId}
           />
 
-          <Typography className={classes.total} component="div" variant="h4">
+          <Typography
+            component="div"
+            css={css`
+              text-align: center;
+            `}
+            variant="h4"
+          >
             <sup
-              className={clsx(classes.value, classes.combinedPlayerStrength)}
+              css={[
+                valueCss,
+                css`
+                  text-align: right;
+                `,
+              ]}
             >
               {combinedPlayerStrength}
             </sup>
-            <span className={classes.versus}>
+            <span
+              css={css`
+                margin: ${theme.spacing(0, 0.5)};
+              `}
+            >
               {direction === "rtl" ? "\\" : "/"}
             </span>
             <sub
-              className={clsx(classes.value, classes.combinedMonsterStrength)}
+              css={[
+                valueCss,
+                css`
+                  text-align: left;
+                `,
+              ]}
             >
               {combinedMonsterStrength}
             </sub>
           </Typography>
 
-          <MonsterSlider className={classes.monsters} />
+          <MonsterSlider
+            css={css`
+              @media (orientation: landscape) {
+                flex: 1;
+              }
+            `}
+          />
         </div>
       </div>
 
@@ -156,7 +150,5 @@ const Combat = () => {
     </>
   );
 };
-
-Combat.displayName = displayName;
 
 export default Combat;

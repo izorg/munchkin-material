@@ -1,11 +1,5 @@
-import {
-  IconButton,
-  makeStyles,
-  Paper,
-  useMediaQuery,
-  useTheme,
-} from "@material-ui/core";
-import clsx from "clsx";
+import { css } from "@emotion/react";
+import { IconButton, Paper, useMediaQuery, useTheme } from "@material-ui/core";
 import { motion, useAnimation, useMotionValue } from "framer-motion";
 import { CloseCircle } from "mdi-material-ui";
 import PropTypes from "prop-types";
@@ -18,74 +12,9 @@ import Player from "./Player";
 
 const displayName = "CombatPlayerSlider";
 
-const useStyles = makeStyles(
-  /* eslint-disable sort-keys */
-  (theme) => ({
-    players: {
-      display: "flex",
-      overflow: "hidden",
-
-      "@media (orientation: portrait)": {
-        width: "100%",
-      },
-
-      "@media (orientation: landscape)": {
-        flexDirection: "column",
-        height: "100%",
-      },
-    },
-
-    flex: {
-      flex: 1,
-    },
-
-    container: {
-      display: "flex",
-      flexShrink: 0,
-      padding: theme.spacing(1),
-
-      "@media (orientation: landscape)": {
-        flexDirection: "column",
-      },
-    },
-
-    itemContainer: {
-      flexShrink: 0,
-      padding: theme.spacing(1),
-    },
-
-    paper: {
-      display: "flex",
-      flexDirection: "column",
-      justifyContent: "center",
-      marginLeft: "auto",
-      position: "relative",
-
-      "@media (orientation: portrait)": {
-        width: 280,
-      },
-
-      "@media (orientation: landscape)": {
-        maxWidth: 320,
-      },
-    },
-
-    remove: {
-      height: 36,
-      padding: 6,
-      position: "absolute",
-      right: 0,
-      top: 0,
-      width: 36,
-    },
-  }),
-  /* eslint-enable */
-  { name: displayName }
-);
-
 const CombatPlayerSlider = ({ className, helperId, playerId }) => {
-  const classes = useStyles();
   const dispatch = useDispatch();
+  const theme = useTheme();
 
   /**
    * @type {React.MutableRefObject<HTMLDivElement>}
@@ -97,7 +26,7 @@ const CombatPlayerSlider = ({ className, helperId, playerId }) => {
    */
   const containerRef = useRef();
 
-  const { direction } = useTheme();
+  const { direction } = theme;
 
   const landscape = useMediaQuery("(orientation: landscape)");
 
@@ -238,13 +167,62 @@ const CombatPlayerSlider = ({ className, helperId, playerId }) => {
     dispatch(setCombatHelperBonus(0));
   };
 
+  const itemContainerCss = css`
+    flex-shrink: 0;
+    padding: ${theme.spacing(1)};
+  `;
+
+  const paperCss = css`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: auto;
+    position: relative;
+
+    @media (orientation: portrait) {
+      width: 280px;
+    }
+
+    @media (orientation: landscape) {
+      max-width: 320px;
+    }
+  `;
+
   return (
-    <div ref={ref} className={clsx(classes.players, className)}>
-      <div className={classes.flex} />
+    <div
+      ref={ref}
+      className={className}
+      css={css`
+        display: flex;
+        overflow: hidden;
+
+        @media (orientation: portrait) {
+          width: 100%;
+        }
+
+        @media (orientation: landscape) {
+          flex-direction: column;
+          height: 100%;
+        }
+      `}
+    >
+      <div
+        css={css`
+          flex: 1;
+        `}
+      />
       <motion.div
         ref={containerRef}
         animate={animate}
-        className={classes.container}
+        css={css`
+          display: flex;
+          flex-shrink: 0;
+          padding: ${theme.spacing(1)};
+
+          @media (orientation: landscape) {
+            flex-direction: column;
+          }
+        `}
         drag={landscape ? "y" : "x"}
         dragTransition={{
           modifyTarget,
@@ -253,18 +231,25 @@ const CombatPlayerSlider = ({ className, helperId, playerId }) => {
         onDrag={onDrag}
         style={{ x, y }}
       >
-        <div className={classes.itemContainer}>
-          <Paper className={classes.paper}>
+        <div css={itemContainerCss}>
+          <Paper css={paperCss}>
             <Player playerId={playerId} />
           </Paper>
         </div>
         {helperId && (
-          <div className={classes.itemContainer}>
-            <Paper key={helperId} className={classes.paper}>
+          <div css={itemContainerCss}>
+            <Paper key={helperId} css={paperCss}>
               <Player playerId={helperId} />
 
               <IconButton
-                className={classes.remove}
+                css={css`
+                  height: 36px;
+                  padding: 6px;
+                  position: absolute;
+                  right: 0;
+                  top: 0;
+                  width: 36px;
+                `}
                 onClick={handleHelperRemove}
               >
                 <CloseCircle />
@@ -273,7 +258,11 @@ const CombatPlayerSlider = ({ className, helperId, playerId }) => {
           </div>
         )}
       </motion.div>
-      <div className={classes.flex} />
+      <div
+        css={css`
+          flex: 1;
+        `}
+      />
     </div>
   );
 };

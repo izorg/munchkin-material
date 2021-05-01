@@ -1,4 +1,5 @@
-import { IconButton, makeStyles, Typography } from "@material-ui/core";
+import { css } from "@emotion/react";
+import { IconButton, Typography, useTheme } from "@material-ui/core";
 import PropTypes from "prop-types";
 import { useCallback } from "react";
 import { useIntl } from "react-intl";
@@ -25,46 +26,10 @@ import Counter from "../../Counter";
 
 const displayName = "CombatPlayer";
 
-const useStyles = makeStyles(
-  /* eslint-disable sort-keys */
-  (theme) => ({
-    player: {
-      padding: theme.spacing(1),
-      position: "relative",
-      textAlign: "center",
-    },
-
-    name: {
-      margin: "0 0 16px",
-      padding: "0 24px",
-    },
-
-    stats: {
-      display: "flex",
-      margin: "0 auto",
-      maxWidth: 420,
-    },
-
-    item: {
-      flex: 1,
-      overflow: "hidden",
-    },
-
-    sex: {
-      padding: 6,
-      position: "absolute",
-      left: 0,
-      top: 0,
-    },
-  }),
-  /* eslint-enable */
-  { name: "CombatPlayer" }
-);
-
 const CombatPlayer = ({ playerId }) => {
-  const classes = useStyles();
   const dispatch = useDispatch();
   const intl = useIntl();
+  const theme = useTheme();
 
   const players = useSelector((state) => state.present.players);
   const { gear, id, level, name, sex } = players[playerId];
@@ -127,27 +92,52 @@ const CombatPlayer = ({ playerId }) => {
     [dispatch, id]
   );
 
+  const itemCss = css`
+    flex: 1;
+    overflow: hidden;
+  `;
+
   return (
-    <div className={classes.player}>
+    <div
+      css={css`
+        padding: ${theme.spacing(1)};
+        position: relative;
+        text-align: center;
+      `}
+    >
       <Typography
         align="center"
-        className={classes.name}
         component="div"
+        css={css`
+          margin: 0 0 16px;
+          padding: 0 24px;
+        `}
         noWrap
       >
         {name}
       </Typography>
 
       <IconButton
-        className={classes.sex}
+        css={css`
+          left: 0;
+          padding: 6px;
+          position: absolute;
+          top: 0;
+        `}
         onClick={() => dispatch(togglePlayerSex(id))}
       >
         <Sex sex={sex} />
       </IconButton>
 
-      <div className={classes.stats}>
+      <div
+        css={css`
+          display: flex;
+          margin: 0 auto;
+          max-width: 420px;
+        `}
+      >
         <Counter
-          className={classes.item}
+          css={itemCss}
           decrementDisabled={levelDecrementDisabled}
           incrementDisabled={levelIncrementDisabled}
           onDecrement={onPlayerLevelDecrement}
@@ -156,14 +146,14 @@ const CombatPlayer = ({ playerId }) => {
           value={level}
         />
         <Counter
-          className={classes.item}
+          css={itemCss}
           onDecrement={onPlayerGearDecrement}
           onIncrement={onPlayerGearIncrement}
           title={intl.formatMessage(counterMessages.gear)}
           value={gear}
         />
         <Counter
-          className={classes.item}
+          css={itemCss}
           onDecrement={onBonusDecrement}
           onIncrement={onBonusIncrement}
           title={intl.formatMessage(counterMessages.modifier)}

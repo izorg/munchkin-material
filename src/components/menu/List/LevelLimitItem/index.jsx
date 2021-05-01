@@ -1,4 +1,5 @@
-import { ListItemIcon, makeStyles } from "@material-ui/core";
+import { css } from "@emotion/react";
+import { ListItemIcon } from "@material-ui/core";
 import { SwapVertical } from "mdi-material-ui";
 import { useIntl } from "react-intl";
 import { useSelector } from "react-redux";
@@ -15,20 +16,7 @@ import useMenuOpen from "../../useMenuOpen";
 import ListItem from "../Item";
 import ListItemText from "../ItemText";
 
-const displayName = "LevelLimitItem";
-
-const useStyles = makeStyles(
-  {
-    root: {
-      paddingBottom: 0,
-      paddingTop: 0,
-    },
-  },
-  { name: displayName }
-);
-
 const LevelLimitItem = () => {
-  const classes = useStyles();
   const intl = useIntl();
   const location = useLocation();
   const navigate = useNavigate();
@@ -71,7 +59,14 @@ const LevelLimitItem = () => {
   }
 
   return (
-    <ListItem button className={classes.root} onClick={onClick}>
+    <ListItem
+      button
+      css={css`
+        padding-bottom: 0;
+        padding-top: 0;
+      `}
+      onClick={onClick}
+    >
       <ListItemIcon>
         <SwapVertical />
       </ListItemIcon>
@@ -84,7 +79,5 @@ const LevelLimitItem = () => {
     </ListItem>
   );
 };
-
-LevelLimitItem.displayName = displayName;
 
 export default LevelLimitItem;

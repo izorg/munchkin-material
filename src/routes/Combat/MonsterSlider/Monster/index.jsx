@@ -1,4 +1,5 @@
-import { makeStyles, Typography } from "@material-ui/core";
+import { css } from "@emotion/react";
+import { Typography, useTheme } from "@material-ui/core";
 import PropTypes from "prop-types";
 import { useCallback } from "react";
 import { useIntl } from "react-intl";
@@ -13,40 +14,10 @@ import {
 } from "../../../../ducks/monsters";
 import Counter from "../../Counter";
 
-const displayName = "CombatMonster";
-
-const useStyles = makeStyles(
-  /* eslint-disable sort-keys */
-  (theme) => ({
-    monster: {
-      padding: theme.spacing(1),
-      textAlign: "center",
-    },
-
-    name: {
-      margin: "0 0 16px",
-      padding: "0 24px",
-    },
-
-    stats: {
-      display: "flex",
-      margin: "0 auto",
-      maxWidth: 280,
-    },
-
-    item: {
-      flex: 1,
-      overflow: "hidden",
-    },
-  }),
-  /* eslint-enable */
-  { name: displayName }
-);
-
 const CombatMonster = ({ monsterId, title }) => {
-  const classes = useStyles();
   const dispatch = useDispatch();
   const intl = useIntl();
+  const theme = useTheme();
 
   const monsters = useSelector((state) => state.present.monsters);
 
@@ -72,27 +43,46 @@ const CombatMonster = ({ monsterId, title }) => {
     [dispatch, id]
   );
 
+  const itemCss = css`
+    flex: 1;
+    overflow: hidden;
+  `;
+
   return (
-    <div className={classes.monster}>
+    <div
+      css={css`
+        padding: ${theme.spacing(1)};
+        text-align: center;
+      `}
+    >
       <Typography
         align="center"
-        className={classes.name}
         component="div"
+        css={css`
+          margin: 0 0 16px;
+          padding: 0 24px;
+        `}
         noWrap
       >
         {title}
       </Typography>
 
-      <div className={classes.stats}>
+      <div
+        css={css`
+          display: flex;
+          margin: 0 auto;
+          max-width: 280px;
+        `}
+      >
         <Counter
-          className={classes.item}
+          css={itemCss}
           onDecrement={omMonsterLevelDecrement}
           onIncrement={omMonsterLevelIncrement}
           title={intl.formatMessage(counterMessages.level)}
           value={level}
         />
         <Counter
-          className={classes.item}
+          css={itemCss}
           onDecrement={onMonsterBonusDecrement}
           onIncrement={onMonsterBonusIncrement}
           title={intl.formatMessage(counterMessages.modifier)}
@@ -107,7 +97,5 @@ CombatMonster.propTypes = {
   monsterId: PropTypes.string.isRequired,
   title: PropTypes.node.isRequired,
 };
-
-CombatMonster.displayName = displayName;
 
 export default CombatMonster;

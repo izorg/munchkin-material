@@ -1,4 +1,5 @@
-import { makeStyles, useTheme } from "@material-ui/core";
+import { css } from "@emotion/react";
+import { useTheme } from "@material-ui/core";
 import {
   ArrowLeft,
   ArrowRight,
@@ -11,28 +12,21 @@ import TopIconButton from "../TopIconButton";
 
 const displayName = "BackButton";
 
-const useStyles = makeStyles(
-  {
-    iosIcon: {
-      transform: "scale(1.5)",
-    },
-  },
-  { name: displayName }
-);
-
 const BackButton = (props) => {
-  const classes = useStyles();
   const { direction } = useTheme();
 
   let icon;
 
   if (ios) {
-    icon =
-      direction === "rtl" ? (
-        <ChevronRight className={classes.iosIcon} />
-      ) : (
-        <ChevronLeft className={classes.iosIcon} />
-      );
+    const Icon = direction === "rtl" ? ChevronRight : ChevronLeft;
+
+    icon = (
+      <Icon
+        css={css`
+          transform: scale(1.5);
+        `}
+      />
+    );
   } else {
     icon = direction === "rtl" ? <ArrowRight /> : <ArrowLeft />;
   }

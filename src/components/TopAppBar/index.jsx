@@ -1,71 +1,78 @@
-import { AppBar, makeStyles, Toolbar, useTheme } from "@material-ui/core";
+import { ClassNames, css } from "@emotion/react";
+import { AppBar, Toolbar, useTheme } from "@material-ui/core";
 import PropTypes from "prop-types";
 
 const displayName = "TopAppBar";
 
-const useStyles = makeStyles(
-  /* eslint-disable sort-keys */
-  (theme) => ({
-    appBar: {
-      zIndex: theme.zIndex.appBar,
-    },
-
-    gutters: {
-      paddingLeft: theme.spacing(2),
-      paddingRight: theme.spacing(2),
-
-      "@supports (padding: max(0px))": {
-        paddingLeft: `max(${theme.spacing(2)}, env(safe-area-inset-left))`,
-        paddingRight: `max(${theme.spacing(2)}, env(safe-area-inset-right))`,
-      },
-
-      [theme.breakpoints.up("sm")]: {
-        paddingLeft: theme.spacing(3),
-        paddingRight: theme.spacing(3),
-
-        "@supports (padding: max(0px))": {
-          paddingLeft: `max(${theme.spacing(3)}, env(safe-area-inset-left))`,
-          paddingRight: `max(${theme.spacing(3)}, env(safe-area-inset-right))`,
-        },
-      },
-    },
-
-    toolbar: {
-      [theme.breakpoints.up("md")]: {
-        minHeight: 64,
-      },
-
-      "@supports (min-height: calc(env(safe-area-inset-top)))": {
-        minHeight: "calc(56px + env(safe-area-inset-top))",
-        paddingTop: "env(safe-area-inset-top)",
-
-        [theme.breakpoints.up("md")]: {
-          minHeight: "calc(64px + env(safe-area-inset-top))",
-        },
-      },
-    },
-  }),
-  /* eslint-enable */
-  { name: displayName }
-);
-
 const TopAppBar = ({ children }) => {
-  const classes = useStyles();
   const theme = useTheme();
 
   const color = theme.palette.mode === "dark" ? "default" : "primary";
 
+  const appBarCss = css`
+    z-index: ${theme.zIndex.appBar};
+  `;
+
+  const toolbarCss = css`
+    ${theme.breakpoints.up("md")} {
+      min-height: 64px;
+    }
+
+    @supports (min-height: calc(env(safe-area-inset-top))) {
+      min-height: calc(56px + env(safe-area-inset-top));
+      padding-top: env(safe-area-inset-top);
+
+      ${theme.breakpoints.up("md")} {
+        min-height: calc(64px + env(safe-area-inset-top));
+      }
+    }
+  `;
+
   return (
-    <AppBar className={classes.appBar} color={color} position="static">
-      <Toolbar
-        classes={{
-          gutters: classes.gutters,
-        }}
-        className={classes.toolbar}
-      >
-        {children}
-      </Toolbar>
-    </AppBar>
+    <ClassNames>
+      {({ css }) => (
+        <AppBar color={color} css={appBarCss} position="static">
+          <Toolbar
+            classes={{
+              gutters: css`
+                padding-left: ${theme.spacing(2)};
+                padding-right: ${theme.spacing(2)};
+
+                @supports (padding: max(0px)) {
+                  padding-left: max(
+                    ${theme.spacing(2)},
+                    env(safe-area-inset-left)
+                  );
+                  padding-right: max(
+                    ${theme.spacing(2)},
+                    env(safe-area-inset-right)
+                  );
+                }
+
+                ${theme.breakpoints.up("sm")} {
+                  padding-left: ${theme.spacing(3)};
+                  padding-right: ${theme.spacing(3)};
+
+                  @supports (padding: max(0px)) {
+                    padding-left: max(
+                      ${theme.spacing(3)},
+                      env(safe-area-inset-left)
+                    );
+                    padding-right: max(
+                      ${theme.spacing(3)},
+                      env(safe-area-inset-right)
+                    );
+                  }
+                }
+              `,
+            }}
+            css={toolbarCss}
+          >
+            {children}
+          </Toolbar>
+        </AppBar>
+      )}
+    </ClassNames>
   );
 };
 

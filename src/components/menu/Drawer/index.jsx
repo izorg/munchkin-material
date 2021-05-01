@@ -1,9 +1,5 @@
-import {
-  makeStyles,
-  SwipeableDrawer,
-  useMediaQuery,
-  useTheme,
-} from "@material-ui/core";
+import { ClassNames } from "@emotion/react";
+import { SwipeableDrawer, useMediaQuery, useTheme } from "@material-ui/core";
 import { useLocation, useMatch, useNavigate } from "react-router-dom";
 
 import { EDIT } from "../../../routes/Home/modes";
@@ -19,29 +15,10 @@ import useMenuOpen from "../useMenuOpen";
 
 const displayName = "MenuDrawer";
 
-const useStyles = makeStyles(
-  /* eslint-disable sort-keys */
-  () => ({
-    paper: {
-      maxWidth: 320,
-      width: "calc(100% - 56px)", // use % instead of vw for Android 4.4
-
-      "@supports (padding: env(safe-area-inset-left))": {
-        maxWidth: "calc(320px + env(safe-area-inset-left))",
-        paddingTop: "env(safe-area-inset-top)",
-      },
-    },
-  }),
-  /* eslint-enable */
-  { name: displayName }
-);
-
 const MenuDrawer = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const theme = useTheme();
-
-  const classes = useStyles();
 
   const goBack = useGoBack();
   const query = useLocationQuery();
@@ -67,16 +44,32 @@ const MenuDrawer = () => {
 
   return (
     <MenuTypeProvider type="drawer">
-      <SwipeableDrawer
-        data-screenshot="drawer-menu"
-        disableSwipeToOpen={disableSwipeToOpen}
-        onClose={onClose}
-        onOpen={onOpen}
-        open={open}
-        PaperProps={{ className: classes.paper }}
-      >
-        <MenuList />
-      </SwipeableDrawer>
+      <ClassNames>
+        {({ css }) => (
+          <SwipeableDrawer
+            data-screenshot="drawer-menu"
+            disableSwipeToOpen={disableSwipeToOpen}
+            onClose={onClose}
+            onOpen={onOpen}
+            open={open}
+            PaperProps={{
+              className: css`
+                max-width: 320px;
+                width: calc(
+                  100% - 56px /* use % instead of vw for Android 4.4 */
+                );
+
+                @supports (padding: env(safe-area-inset-left)) {
+                  max-width: calc(320px + env(safe-area-inset-left));
+                  padding-top: env(safe-area-inset-top);
+                }
+              `,
+            }}
+          >
+            <MenuList />
+          </SwipeableDrawer>
+        )}
+      </ClassNames>
     </MenuTypeProvider>
   );
 };

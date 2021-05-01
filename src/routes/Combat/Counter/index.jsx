@@ -1,66 +1,10 @@
-import { makeStyles } from "@material-ui/core";
-import clsx from "clsx";
+import { css } from "@emotion/react";
+import { useTheme } from "@material-ui/core";
 import { MenuDown, MenuUp } from "mdi-material-ui";
 import PropTypes from "prop-types";
 
 import CounterButton from "../../../components/Counter/Button";
 import CounterLabel from "../../../components/Counter/Label";
-
-const displayName = "CombatCounter";
-
-const useStyles = makeStyles(
-  /* eslint-disable sort-keys */
-  (theme) => ({
-    counter: {
-      alignItems: "center",
-      display: "flex",
-      flexDirection: "column",
-    },
-
-    title: {
-      fontSize: 16,
-      textAlign: "center",
-      width: "100%",
-
-      "@media (orientation: portrait) and (min-width: 360px) and (min-height: 600px)": {
-        fontSize: 20,
-      },
-    },
-
-    buttons: {
-      display: "flex",
-      justifyContent: "space-around",
-      maxWidth: "90px",
-      width: "100%",
-    },
-
-    button: {
-      fontSize: 36,
-      padding: 0,
-
-      "@media (orientation: landscape)": {
-        fontSize: 32,
-
-        [theme.breakpoints.up("sm")]: {
-          fontSize: 36,
-        },
-      },
-    },
-
-    icon: {
-      fontSize: "inherit",
-    },
-
-    value: {
-      color: theme.palette.text.primary,
-      fontFamily: `"Munchkin", ${theme.typography.fontFamily}`,
-      fontSize: theme.typography.h4.fontSize,
-      lineHeight: theme.typography.h4.lineHeight,
-    },
-  }),
-  /* eslint-enable */
-  { name: displayName }
-);
 
 const CombatCounter = ({
   className,
@@ -71,29 +15,81 @@ const CombatCounter = ({
   title,
   value,
 }) => {
-  const classes = useStyles();
+  const theme = useTheme();
+
+  const buttonCss = css`
+    font-size: 36px;
+    padding: 0;
+
+    @media (orientation: landscape) {
+      font-size: 32px;
+
+      ${theme.breakpoints.up("sm")} {
+        font-size: 36px;
+      }
+    }
+  `;
+
+  const iconCss = css`
+    font-size: inherit;
+  `;
 
   return (
-    <div className={clsx(className, classes.counter)}>
-      <CounterLabel className={classes.title}>{title}</CounterLabel>
+    <div
+      className={className}
+      css={css`
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+      `}
+    >
+      <CounterLabel
+        css={css`
+          font-size: 16px;
+          text-align: center;
+          width: 100%;
 
-      <div className={classes.value}>{value}</div>
+          "@media (orientation: portrait) and (min-width: 360px) and (min-height: 600px)": {
+            font-size: 20px;
+          }
+        `}
+      >
+        {title}
+      </CounterLabel>
 
-      <div className={classes.buttons}>
+      <div
+        css={css`
+          color: ${theme.palette.text.primary};
+          font-family: "Munchkin", ${theme.typography.fontFamily};
+          font-size: ${theme.typography.h4.fontSize};
+          line-height: ${theme.typography.h4.lineHeight};
+        `}
+      >
+        {value}
+      </div>
+
+      <div
+        css={css`
+          display: flex;
+          justify-content: space-around;
+          max-width: 90px;
+          width: 100%;
+        `}
+      >
         <CounterButton
-          className={classes.button}
+          css={buttonCss}
           disabled={decrementDisabled}
           onClick={onDecrement}
         >
-          <MenuDown className={classes.icon} />
+          <MenuDown css={iconCss} />
         </CounterButton>
 
         <CounterButton
-          className={classes.button}
+          css={buttonCss}
           disabled={incrementDisabled}
           onClick={onIncrement}
         >
-          <MenuUp className={classes.icon} />
+          <MenuUp css={iconCss} />
         </CounterButton>
       </div>
     </div>
@@ -114,7 +110,5 @@ CombatCounter.defaultProps = {
   decrementDisabled: false,
   incrementDisabled: false,
 };
-
-CombatCounter.displayName = displayName;
 
 export default CombatCounter;

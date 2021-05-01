@@ -1,36 +1,16 @@
-import { ListItemText, makeStyles } from "@material-ui/core";
-import clsx from "clsx";
-import PropTypes from "prop-types";
+import { css } from "@emotion/react";
+import { ListItemText } from "@material-ui/core";
 
-const displayName = "MenuListItemText";
-
-const useStyles = makeStyles(
-  {
-    text: {
-      overflow: "hidden",
-      textOverflow: "ellipsis",
-    },
-  },
-  { name: displayName }
+const MenuListItemText = (props) => (
+  <ListItemText
+    css={css`
+      overflow: hidden;
+      text-overflow: ellipsis;
+    `}
+    primaryTypographyProps={{ noWrap: true }}
+    secondaryTypographyProps={{ noWrap: true }}
+    {...props}
+  />
 );
-
-const MenuListItemText = ({ className, ...props }) => {
-  const classes = useStyles();
-
-  return (
-    <ListItemText
-      className={clsx(classes.text, className)}
-      primaryTypographyProps={{ noWrap: true }}
-      secondaryTypographyProps={{ noWrap: true }}
-      {...props}
-    />
-  );
-};
-
-MenuListItemText.propTypes = {
-  className: PropTypes.string,
-};
-
-MenuListItemText.displayName = displayName;
 
 export default MenuListItemText;

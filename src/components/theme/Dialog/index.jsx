@@ -1,3 +1,4 @@
+import { css } from "@emotion/react";
 import {
   Checkbox,
   Dialog,
@@ -6,7 +7,6 @@ import {
   DialogTitle,
   Divider,
   FormControlLabel,
-  makeStyles,
   Radio,
   RadioGroup,
 } from "@material-ui/core";
@@ -27,24 +27,11 @@ import { useFullVersion } from "../../FullVersionProvider";
 import SubmitButton from "../../SubmitButton";
 import themeMessages from "../messages";
 
-const displayName = "ThemeDialog";
-
-const useStyles = makeStyles(
-  {
-    content: {
-      paddingBottom: 1,
-    },
-  },
-  { name: displayName }
-);
-
 const ThemeDialog = () => {
   const dispatch = useDispatch();
   const intl = useIntl();
   const location = useLocation();
   const navigate = useNavigate();
-
-  const classes = useStyles();
 
   const { buyFullVersion, fullVersion } = useFullVersion();
   const goBack = useGoBack();
@@ -144,7 +131,11 @@ const ThemeDialog = () => {
       PaperProps={{ component: "form", onSubmit }}
     >
       <DialogTitle>{intl.formatMessage(themeMessages.label)}</DialogTitle>
-      <DialogContent className={classes.content}>
+      <DialogContent
+        css={css`
+          padding-bottom: 1px;
+        `}
+      >
         <RadioGroup name="mode" onChange={onThemeModeChange} value={modeValue}>
           <FormControlLabel
             control={<Radio color="primary" />}
@@ -223,7 +214,5 @@ const ThemeDialog = () => {
     </Dialog>
   );
 };
-
-ThemeDialog.displayName = displayName;
 
 export default ThemeDialog;
