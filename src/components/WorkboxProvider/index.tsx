@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import {
   createContext,
+  FC,
   useCallback,
   useContext,
   useEffect,
@@ -9,18 +10,21 @@ import {
 } from "react";
 import { Workbox } from "workbox-window";
 
-const WorkboxContext = createContext({
+type WorkboxContext = {
+  applyUpdate: () => void;
+  update: boolean;
+};
+
+const Context = createContext<WorkboxContext>({
   applyUpdate: () => {
     throw new Error("No <WorkboxProvider />");
   },
   update: false,
 });
 
-export const useWorkbox = () => useContext(WorkboxContext);
+export const useWorkbox = (): WorkboxContext => useContext(Context);
 
-const displayName = "WorkboxProvider";
-
-const WorkboxProvider = ({ children }) => {
+const WorkboxProvider: FC = ({ children }) => {
   const [update, setUpdate] = useState(false);
 
   const workbox = useMemo(() => {
@@ -47,21 +51,19 @@ const WorkboxProvider = ({ children }) => {
         setUpdate(true);
       });
 
-      workbox.register();
+      void workbox.register();
     }
   }, [workbox]);
 
   return (
-    <WorkboxContext.Provider value={{ applyUpdate, update }}>
+    <Context.Provider value={{ applyUpdate, update }}>
       {children}
-    </WorkboxContext.Provider>
+    </Context.Provider>
   );
 };
 
 WorkboxProvider.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
 };
-
-WorkboxProvider.displayName = displayName;
 
 export default WorkboxProvider;
