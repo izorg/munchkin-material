@@ -1,18 +1,15 @@
 import PropTypes from "prop-types";
+import type { FC } from "react";
 import { Provider } from "react-redux";
 
 import store from "../../store";
 
-const displayName = "ReduxProvider";
-
-const ReduxProvider = ({ children }) => (
+const ReduxProvider: FC = ({ children }) => (
   <Provider store={store}>{children}</Provider>
 );
 
 ReduxProvider.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
 };
-
-ReduxProvider.displayName = displayName;
 
 export default ReduxProvider;
