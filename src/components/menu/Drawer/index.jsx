@@ -55,9 +55,7 @@ const MenuDrawer = () => {
             PaperProps={{
               className: css`
                 max-width: 320px;
-                width: calc(
-                  100% - 56px /* use % instead of vw for Android 4.4 */
-                );
+                width: calc(100vw - 56px);
 
                 @supports (padding: env(safe-area-inset-left)) {
                   max-width: calc(320px + env(safe-area-inset-left));
