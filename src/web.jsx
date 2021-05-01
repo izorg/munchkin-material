@@ -1,5 +1,6 @@
 import "./sentry";
 
+import { captureException } from "@sentry/react";
 import { render } from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 
@@ -12,9 +13,7 @@ import SystemPaletteModeProvider from "./components/SystemPaletteModeProvider";
 import WakeLockProvider from "./components/WakeLockProvider";
 import WorkboxProvider from "./components/WorkboxProvider";
 
-import("./firebase").catch(() => {
-  // ignore firebase init errors
-});
+import("./firebase").catch((error) => captureException(error));
 
 render(
   <BrowserRouter>
