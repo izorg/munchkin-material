@@ -3,10 +3,9 @@ import { ShareVariant } from "mdi-material-ui";
 import { defineMessages, useIntl } from "react-intl";
 
 import { useGoBack } from "../../../../utils/location";
+import useMenuOpen from "../../useMenuOpen";
 import ListItem from "../Item";
 import ListItemText from "../ItemText";
-
-const displayName = "ShareItem";
 
 const messages = defineMessages({
   share: {
@@ -20,21 +19,20 @@ const messages = defineMessages({
   },
 });
 
-const ShareItem = () => {
+const ShareItem = (): JSX.Element | null => {
   const intl = useIntl();
 
   const goBack = useGoBack();
+  const open = useMenuOpen();
 
   const {
     cordova,
-    location: { host, pathname, protocol },
+    location: { origin },
   } = window;
 
-  const shareLink = cordova
-    ? "https://allmunchkins.com"
-    : `${protocol}//${host}${pathname}`;
+  const shareLink = cordova ? "https://allmunchkins.com" : origin;
 
-  if (!navigator.share || cordova?.platformId === "windows") {
+  if (!navigator.share) {
     return null;
   }
 
@@ -45,9 +43,12 @@ const ShareItem = () => {
         title: intl.formatMessage(messages.share),
         url: shareLink,
       });
-      goBack();
     } catch (error) {
-      // cancel share
+      return;
+    }
+
+    if (open) {
+      goBack();
     }
   };
 
@@ -60,7 +61,5 @@ const ShareItem = () => {
     </ListItem>
   );
 };
-
-ShareItem.displayName = displayName;
 
 export default ShareItem;

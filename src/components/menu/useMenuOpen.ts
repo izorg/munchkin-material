@@ -1,5 +1,5 @@
 import { useLocationQuery } from "../../utils/location";
 
-const useMenuOpen = () => useLocationQuery().menu === null;
+const useMenuOpen = (): boolean => useLocationQuery().menu === null;
 
 export default useMenuOpen;

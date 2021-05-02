@@ -1,13 +1,16 @@
 import { css } from "@emotion/react";
-import { ListItem, useTheme } from "@material-ui/core";
-import { useSelector } from "react-redux";
+import { ListItem, ListItemProps, useTheme } from "@material-ui/core";
+import type { ElementType } from "react";
 
+import usePresentSelector from "../../../../utils/usePresentSelector";
 import { useMenuType } from "../../MenuTypeProvider";
 
-const MenuListItem = (props) => {
+const MenuListItem = <D extends ElementType>(
+  props: ListItemProps<D>
+): JSX.Element => {
   const theme = useTheme();
 
-  const collapsed = useSelector((state) => state.present.ui.menuCollapsed);
+  const collapsed = usePresentSelector((state) => state.ui.menuCollapsed);
   const menuType = useMenuType();
 
   let styles;
