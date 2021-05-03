@@ -15,6 +15,7 @@
       "windows"
     ],
     "plugins": {
+      "cordova-plugin-android-dark-mode-support": {},
       "cordova-plugin-buildinfo": {},
       "cordova-plugin-firebase-analytics": {
         "FIREBASE_ANALYTICS_COLLECTION_ENABLED": "true",
@@ -35,7 +36,6 @@
       },
       "cordova-plugin-splashscreen": {},
       "cordova-plugin-statusbar": {},
-      "cordova-plugin-theme-detection": {},
       "cordova-plugin-vibration": {},
       "cordova-plugin-web-share": {},
       "cordova-plugin-whitelist": {},
@@ -46,6 +46,7 @@
     "cordova-android": "9.1.0",
     "cordova-ios": "6.2.0",
     "cordova-plugin-add-swift-support": "2.0.2",
+    "cordova-plugin-android-dark-mode-support": "1.0.0",
     "cordova-plugin-buildinfo": "4.0.0",
     "cordova-plugin-firebase-analytics": "5.0.0",
     "cordova-plugin-firebase-crash": "3.0.0",
@@ -56,7 +57,6 @@
     "cordova-plugin-purchase": "10.5.3",
     "cordova-plugin-splashscreen": "6.0.0",
     "cordova-plugin-statusbar": "2.4.3",
-    "cordova-plugin-theme-detection": "1.3.0",
     "cordova-plugin-vibration": "3.1.1",
     "cordova-plugin-web-share": "1.2.0",
     "cordova-plugin-whitelist": "1.3.4",

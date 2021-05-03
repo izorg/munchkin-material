@@ -1,4 +1,9 @@
-import { createMuiTheme, CssBaseline, ThemeProvider } from "@material-ui/core";
+import {
+  createMuiTheme,
+  CssBaseline,
+  ThemeProvider,
+  useMediaQuery,
+} from "@material-ui/core";
 import deepmerge from "deepmerge";
 import PropTypes from "prop-types";
 import { useEffect, useMemo } from "react";
@@ -10,7 +15,6 @@ import themes from "../../theme/colors";
 import getThemeOptions from "../../theme/getThemeOptions";
 import { useLocationQuery } from "../../utils/location";
 import { ios } from "../../utils/platforms";
-import { useSystemPaletteMode } from "../SystemPaletteModeProvider";
 
 import useStatusBar from "./useStatusBar";
 
@@ -21,7 +25,9 @@ const AugmentedThemeProvider = ({ children }) => {
 
   const direction = getDirection(locale);
 
-  const systemPaletteMode = useSystemPaletteMode();
+  const systemPaletteMode = useMediaQuery("(prefers-color-scheme: dark)")
+    ? "dark"
+    : "light";
 
   const query = useLocationQuery();
   const queryTheme = useMemo(() => {

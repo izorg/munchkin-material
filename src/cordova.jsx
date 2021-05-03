@@ -9,7 +9,6 @@ import CordovaRouter from "./components/CordovaRouter";
 import FullVersionProvider from "./components/FullVersionProvider";
 import LocaleProvider from "./components/LocaleProvider";
 import ReduxProvider from "./components/ReduxProvider";
-import SystemPaletteModeProvider from "./components/SystemPaletteModeProvider";
 import WakeLockProvider from "./components/WakeLockProvider";
 
 render(
@@ -20,13 +19,11 @@ render(
           <FullVersionProvider>
             <WakeLockProvider>
               <LocaleProvider>
-                <SystemPaletteModeProvider>
-                  <AugmentedStylesProvider>
-                    <AugmentedThemeProvider>
-                      <App />
-                    </AugmentedThemeProvider>
-                  </AugmentedStylesProvider>
-                </SystemPaletteModeProvider>
+                <AugmentedStylesProvider>
+                  <AugmentedThemeProvider>
+                    <App />
+                  </AugmentedThemeProvider>
+                </AugmentedStylesProvider>
               </LocaleProvider>
             </WakeLockProvider>
           </FullVersionProvider>

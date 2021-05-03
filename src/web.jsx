@@ -9,7 +9,6 @@ import AugmentedStylesProvider from "./components/AugmentedStylesProvider";
 import AugmentedThemeProvider from "./components/AugmentedThemeProvider";
 import LocaleProvider from "./components/LocaleProvider";
 import ReduxProvider from "./components/ReduxProvider";
-import SystemPaletteModeProvider from "./components/SystemPaletteModeProvider";
 import WakeLockProvider from "./components/WakeLockProvider";
 import WorkboxProvider from "./components/WorkboxProvider";
 
@@ -21,13 +20,11 @@ render(
       <WorkboxProvider>
         <WakeLockProvider>
           <LocaleProvider>
-            <SystemPaletteModeProvider>
-              <AugmentedStylesProvider>
-                <AugmentedThemeProvider>
-                  <App />
-                </AugmentedThemeProvider>
-              </AugmentedStylesProvider>
-            </SystemPaletteModeProvider>
+            <AugmentedStylesProvider>
+              <AugmentedThemeProvider>
+                <App />
+              </AugmentedThemeProvider>
+            </AugmentedStylesProvider>
           </LocaleProvider>
         </WakeLockProvider>
       </WorkboxProvider>
