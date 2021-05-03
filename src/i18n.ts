@@ -74,7 +74,21 @@ export const getLocale = (): string => {
 export const loadMessages = async (
   locale: string
 ): Promise<IntlConfig["messages"]> => {
-  const publicPath = "cordova" in window ? "" : "/";
+  let publicPath = "/";
+
+  let { fetch } = window;
+
+  if ("cordova" in window) {
+    publicPath = "";
+
+    if (window.cordova.platformId === "windows") {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      fetch = ((await import("whatwg-fetch")) as {
+        fetch: typeof fetch;
+      }).fetch;
+    }
+  }
 
   const res = await fetch(`${publicPath}languages/${locale}.json`);
 
