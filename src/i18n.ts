@@ -1,4 +1,3 @@
-import fetch from "cross-fetch";
 import { IntlConfig } from "react-intl";
 
 export const CS = "cs";
