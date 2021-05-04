@@ -1,4 +1,5 @@
 import type { Direction, PaletteMode, ThemeOptions } from "@material-ui/core";
+import common from "@material-ui/core/colors/common";
 import orange from "@material-ui/core/colors/orange";
 import createBreakpoints from "@material-ui/core/styles/createBreakpoints";
 import deepmerge from "deepmerge";
@@ -111,11 +112,12 @@ const getThemeOptions = ({
     });
   }
 
-  if (mode === "dark") {
+  if (mode === "dark" && pureBlack) {
     theme = deepmerge(theme, {
       palette: {
         background: {
-          default: pureBlack ? "#000000" : "#121212",
+          default: common.black,
+          paper: common.black,
         },
       },
     });

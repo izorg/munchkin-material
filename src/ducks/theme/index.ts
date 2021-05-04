@@ -1,10 +1,11 @@
+import type { PaletteMode } from "@material-ui/core";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 import { key as id } from "../../theme/colors/munchkin";
 
 export type ThemeState = {
   id: string;
-  mode?: "light" | "dark";
+  mode?: PaletteMode;
   pureBlack: boolean;
 };
 
