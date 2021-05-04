@@ -1,3 +1,5 @@
+import "./fetch";
+
 import { Suspense } from "react";
 import { render } from "react-dom";
 
