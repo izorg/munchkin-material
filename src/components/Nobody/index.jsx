@@ -12,6 +12,7 @@ const Nobody = () => {
     <div
       css={css`
         align-items: center;
+        background-color: ${theme.palette.background.default};
         color: ${theme.palette.text.secondary};
         display: flex;
         flex: 1;
@@ -27,12 +28,7 @@ const Nobody = () => {
           width: 96px;
         `}
       />
-      <Typography
-        align="center"
-        color="inherit"
-        component="div"
-        variant="subtitle1"
-      >
+      <Typography align="center" component="div" variant="subtitle1">
         <FormattedMessage
           defaultMessage="No players in the list"
           id="player.list.empty"

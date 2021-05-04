@@ -44,9 +44,6 @@ const Home = () => {
     content = (
       <PlayerList
         css={css`
-          background-color: ${theme.palette.mode === "dark"
-            ? theme.palette.background.default
-            : theme.palette.background.paper};
           flex: 1;
           -webkit-overflow-scrolling: touch;
           overflow-y: auto;
@@ -70,19 +67,12 @@ const Home = () => {
   return (
     <>
       <div
-        css={[
-          css`
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-          `,
-          singleMode &&
-            css`
-              background-color: ${theme.palette.mode === "dark"
-                ? theme.palette.background.default
-                : theme.palette.background.paper};
-            `,
-        ]}
+        css={css`
+          background-color: ${theme.palette.background.default};
+          display: flex;
+          flex-direction: column;
+          height: 100%;
+        `}
       >
         <AppBar empty={empty} singleMode={singleMode} />
         <main
