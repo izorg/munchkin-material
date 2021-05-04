@@ -1,12 +1,13 @@
 import { css } from "@emotion/react";
 import { Typography, useTheme } from "@material-ui/core";
+import PropTypes from "prop-types";
+import type { FC } from "react";
 
-const Title = (props) => {
+const Title: FC = ({ children }) => {
   const theme = useTheme();
 
   return (
     <Typography
-      color="inherit"
       css={css`
         flex: 1;
         padding-left: 24px;
@@ -17,9 +18,14 @@ const Title = (props) => {
       `}
       noWrap
       variant="h6"
-      {...props}
-    />
+    >
+      {children}
+    </Typography>
   );
+};
+
+Title.propTypes = {
+  children: PropTypes.node,
 };
 
 export default Title;
