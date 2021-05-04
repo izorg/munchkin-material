@@ -1,7 +1,5 @@
-import { ThemeOptions } from "@material-ui/core";
-import common from "@material-ui/core/colors/common";
+import type { Direction, PaletteMode, ThemeOptions } from "@material-ui/core";
 import orange from "@material-ui/core/colors/orange";
-import { alpha } from "@material-ui/core/styles/colorManipulator";
 import createBreakpoints from "@material-ui/core/styles/createBreakpoints";
 import deepmerge from "deepmerge";
 
@@ -14,8 +12,8 @@ const getThemeOptions = ({
   mode = "light",
   pureBlack,
 }: {
-  direction: "ltr" | "rtl";
-  mode: "light" | "dark";
+  direction: Direction;
+  mode: PaletteMode;
   pureBlack: boolean;
 }): ThemeOptions => {
   let theme = {
@@ -115,22 +113,6 @@ const getThemeOptions = ({
 
   if (mode === "dark") {
     theme = deepmerge(theme, {
-      components: {
-        MuiPaper: {
-          styleOverrides: {
-            elevation1: {
-              backgroundColor: alpha(common.white, 0.05),
-              boxShadow: "none",
-            },
-
-            elevation2: {
-              backgroundColor: alpha(common.white, 0.07),
-              boxShadow: "none",
-            },
-          },
-        },
-      },
-
       palette: {
         background: {
           default: pureBlack ? "#000000" : "#121212",
