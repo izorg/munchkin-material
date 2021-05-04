@@ -16,12 +16,12 @@ const PlayerDialogAppBar = ({ onCancel, onDelete, title }) => {
       <Title>{title}</Title>
 
       {onDelete && (
-        <TopIconButton color="inherit" edge="end" onClick={onDelete}>
+        <TopIconButton edge="end" onClick={onDelete}>
           <Delete />
         </TopIconButton>
       )}
 
-      <TopIconButton color="inherit" edge="end" type="submit">
+      <TopIconButton edge="end" type="submit">
         <Check />
       </TopIconButton>
     </TopAppBar>

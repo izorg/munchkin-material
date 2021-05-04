@@ -32,7 +32,7 @@ const BackButton = (props) => {
   }
 
   return (
-    <TopIconButton color="inherit" edge="start" {...props}>
+    <TopIconButton edge="start" {...props}>
       {icon}
     </TopIconButton>
   );

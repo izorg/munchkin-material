@@ -31,9 +31,9 @@ const CombatAppBar = () => {
         <FormattedMessage defaultMessage="Combat" id="combat" />
       </Title>
 
-      <DiceIconButton color="inherit" edge="end" />
+      <DiceIconButton edge="end" />
 
-      <TopIconButton color="inherit" edge="end" onClick={onFinish}>
+      <TopIconButton edge="end" onClick={onFinish}>
         <FlagCheckered />
       </TopIconButton>
     </TopAppBar>

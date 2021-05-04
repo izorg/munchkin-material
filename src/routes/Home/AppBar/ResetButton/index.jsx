@@ -69,12 +69,7 @@ const ResetButton = (props) => {
     });
 
   const button = (
-    <TopIconButton
-      color="inherit"
-      disabled={disabled}
-      onClick={onClick}
-      {...props}
-    >
+    <TopIconButton disabled={disabled} onClick={onClick} {...props}>
       <BackupRestore />
     </TopIconButton>
   );

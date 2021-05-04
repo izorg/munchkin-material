@@ -13,7 +13,6 @@ const TopIconButton = forwardRef((props, ref) => {
   return (
     <IconButton
       ref={ref}
-      color="inherit"
       css={[
         css`
           padding: ${upMd ? 12 : 8}px;
