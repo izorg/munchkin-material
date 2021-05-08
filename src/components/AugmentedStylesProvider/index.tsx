@@ -1,4 +1,4 @@
-import createCache from "@emotion/cache";
+import createCache, { StylisPlugin } from "@emotion/cache";
 import { CacheProvider } from "@emotion/react";
 import { StylesProvider } from "@material-ui/core";
 import PropTypes from "prop-types";
@@ -12,17 +12,13 @@ import { getDirection } from "../../i18n";
 const ltrCache = createCache({
   key: "ltr",
   prepend: true,
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  stylisPlugins: [prefixer],
+  stylisPlugins: [prefixer as StylisPlugin],
 });
 
 const rtlCache = createCache({
   key: "rtl",
   prepend: true,
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  stylisPlugins: [prefixer, rtlPlugin],
+  stylisPlugins: [prefixer as StylisPlugin, rtlPlugin as StylisPlugin],
 });
 
 const AugmentedStylesProvider: FC = ({ children }) => {

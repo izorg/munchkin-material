@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import Counter, { counterMessages } from "../../../../components/Counter";
 import CounterLabel from "../../../../components/Counter/Label";
-import Sex from "../../../../components/Sex";
+import SexIcon from "../../../../components/Sex";
 import {
   decrementPlayerGear,
   decrementPlayerLevel,
@@ -160,7 +160,7 @@ const PlayerStats = ({ className, playerId }) => {
             `}
             onClick={() => onSexToggle(player.id)}
           >
-            <Sex
+            <SexIcon
               css={css`
                 font-size: inherit;
               `}

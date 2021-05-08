@@ -1,3 +1,5 @@
+import type { AvailableColor } from "./availableColors";
+
 export type Monster = {
   bonus: number;
   id: string;
@@ -5,7 +7,7 @@ export type Monster = {
 };
 
 export type Player = {
-  color?: string;
+  color?: AvailableColor;
   gear: number;
   id: string;
   level: number;

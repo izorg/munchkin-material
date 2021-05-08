@@ -44,6 +44,8 @@ export default {
   [EN]: [
     {
       player: createPlayer({
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         color: "#607D8B",
         gear: 13,
         level: 3,
@@ -52,6 +54,8 @@ export default {
     },
     {
       player: createPlayer({
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         color: "#FFC107",
         gear: 20,
         level: 5,
@@ -60,6 +64,8 @@ export default {
     },
     {
       player: createPlayer({
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         color: "#03A9F4",
         gear: 10,
         level: 7,
@@ -72,6 +78,8 @@ export default {
   [HE]: [
     {
       player: createPlayer({
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         color: "#607D8B",
         gear: 13,
         level: 3,
@@ -80,6 +88,8 @@ export default {
     },
     {
       player: createPlayer({
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         color: "#FFC107",
         gear: 20,
         level: 5,
@@ -88,6 +98,8 @@ export default {
     },
     {
       player: createPlayer({
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         color: "#03A9F4",
         gear: 10,
         level: 7,
@@ -99,6 +111,8 @@ export default {
   [RU]: [
     {
       player: createPlayer({
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         color: "#F44336",
         gear: 30,
         level: 3,
@@ -115,6 +129,8 @@ export default {
     },
     {
       player: createPlayer({
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         color: "#E91E63",
         gear: 7,
         level: 8,

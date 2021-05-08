@@ -42,4 +42,8 @@ const availableColors = [
   yellow,
 ].map((color) => color[500]);
 
+export type AvailableColors = typeof availableColors;
+
+export type AvailableColor = AvailableColors[number];
+
 export default availableColors;

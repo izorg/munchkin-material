@@ -6,7 +6,7 @@ import { useIntl } from "react-intl";
 import { useDispatch, useSelector } from "react-redux";
 
 import { counterMessages } from "../../../../components/Counter";
-import Sex from "../../../../components/Sex";
+import SexIcon from "../../../../components/Sex";
 import {
   setCombatHelperBonus,
   setCombatPlayerBonus,
@@ -126,7 +126,7 @@ const CombatPlayer = ({ playerId }) => {
         `}
         onClick={() => dispatch(togglePlayerSex(id))}
       >
-        <Sex sex={sex} />
+        <SexIcon sex={sex} />
       </IconButton>
 
       <div

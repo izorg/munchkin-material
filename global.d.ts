@@ -5,6 +5,15 @@ declare global {
     BuildInfo: {
       debug: boolean;
     };
+    Keyboard?: {
+      setKeyboardStyle: (color: string) => void;
+    };
+    plugins?: {
+      insomnia?: {
+        keepAwake: () => void;
+        allowSleepAgain: () => void;
+      };
+    };
     reduxStore: EnhancedStore;
   }
 

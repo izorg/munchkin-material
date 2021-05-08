@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import Counter, { counterMessages } from "../../../components/Counter";
 import CounterLabel from "../../../components/Counter/Label";
-import Sex from "../../../components/Sex";
+import SexIcon from "../../../components/Sex";
 import { setCombatPlayerBonus } from "../../../ducks/combat";
 import {
   decrementPlayerGear,
@@ -194,7 +194,7 @@ const SinglePlayer = () => {
           `}
           onClick={onSexToggle}
         >
-          <Sex
+          <SexIcon
             css={css`
               font-size: inherit;
             `}
