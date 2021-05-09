@@ -83,10 +83,10 @@ const SinglePlayer = () => {
     [dispatch, player.id]
   );
 
-  const onSexToggle = useCallback(() => dispatch(togglePlayerSex(player.id)), [
-    dispatch,
-    player.id,
-  ]);
+  const onSexToggle = useCallback(
+    () => dispatch(togglePlayerSex(player.id)),
+    [dispatch, player.id]
+  );
 
   const counterCss = css`
     flex: 1;

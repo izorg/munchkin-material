@@ -2,9 +2,8 @@ import { createAction } from "@reduxjs/toolkit";
 
 import { Player } from "../../utils/types";
 
-export const addPlayer = createAction<Player, "players/addPlayer">(
-  "players/addPlayer"
-);
+export const addPlayer =
+  createAction<Player, "players/addPlayer">("players/addPlayer");
 
 export const decrementPlayerGear = createAction<
   string,
@@ -26,9 +25,8 @@ export const incrementPlayerLevel = createAction<
   "player/incrementPlayerLevel"
 >("player/incrementPlayerLevel");
 
-export const killPlayer = createAction<string, "player/killPlayer">(
-  "player/killPlayer"
-);
+export const killPlayer =
+  createAction<string, "player/killPlayer">("player/killPlayer");
 
 export const removePlayers = createAction<string[], "players/removePlayers">(
   "players/removePlayers"

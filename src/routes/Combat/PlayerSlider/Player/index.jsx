@@ -67,9 +67,10 @@ const CombatPlayer = ({ playerId }) => {
     [dispatch, playerId]
   );
 
-  const onBonusDecrement = useCallback(() => onBonusChange(-1), [
-    onBonusChange,
-  ]);
+  const onBonusDecrement = useCallback(
+    () => onBonusChange(-1),
+    [onBonusChange]
+  );
   const onBonusIncrement = useCallback(() => onBonusChange(1), [onBonusChange]);
 
   const onPlayerLevelDecrement = useCallback(

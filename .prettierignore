@@ -1,4 +1,5 @@
 /cordova/
+/coverage/
 /web/
 package-lock.json
 package.json

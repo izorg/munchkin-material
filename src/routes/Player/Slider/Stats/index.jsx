@@ -56,10 +56,10 @@ const PlayerStats = ({ className, playerId }) => {
     () => dispatch(incrementPlayerLevel(playerId)),
     [dispatch, playerId]
   );
-  const onSexToggle = useCallback(() => dispatch(togglePlayerSex(playerId)), [
-    dispatch,
-    playerId,
-  ]);
+  const onSexToggle = useCallback(
+    () => dispatch(togglePlayerSex(playerId)),
+    [dispatch, playerId]
+  );
 
   const counterContainerCss = css`
     display: flex;

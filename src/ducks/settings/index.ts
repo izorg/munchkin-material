@@ -77,26 +77,25 @@ export const {
   setLocale,
 } = settingsSlice.actions;
 
-export const setSingleMode = (singleMode: boolean) => (
-  dispatch: typeof store.dispatch,
-  getState: typeof store.getState
-): void => {
-  if (singleMode) {
-    let { singleModePlayerId } = getState().present.settings;
+export const setSingleMode =
+  (singleMode: boolean) =>
+  (dispatch: typeof store.dispatch, getState: typeof store.getState): void => {
+    if (singleMode) {
+      let { singleModePlayerId } = getState().present.settings;
 
-    if (!singleModePlayerId) {
-      const player = createPlayer();
+      if (!singleModePlayerId) {
+        const player = createPlayer();
 
-      dispatch(addPlayer(player));
-      dispatch(settingsSlice.actions.setSingleModePlayer(player.id));
+        dispatch(addPlayer(player));
+        dispatch(settingsSlice.actions.setSingleModePlayer(player.id));
 
-      singleModePlayerId = player.id;
+        singleModePlayerId = player.id;
+      }
+
+      dispatch(startCombat(singleModePlayerId));
     }
 
-    dispatch(startCombat(singleModePlayerId));
-  }
-
-  dispatch(settingsSlice.actions.setSingleMode(singleMode));
-};
+    dispatch(settingsSlice.actions.setSingleMode(singleMode));
+  };
 
 export default settingsSlice.reducer;
