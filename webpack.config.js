@@ -56,44 +56,84 @@ module.exports = {
   module: {
     rules: [
       {
-        exclude: /node_modules/,
-        test: /\.[jt]sx?$/,
-        use: [
+        oneOf: [
           {
-            loader: "babel-loader",
-            options: {
-              cacheDirectory: dev,
-              plugins: [
-                [
-                  "@babel/plugin-transform-runtime",
-                  {
-                    useESModules: true,
-                  },
-                ],
-                prod && [
-                  "babel-plugin-react-remove-properties",
-                  {
-                    properties: ["data-screenshots"],
-                  },
-                ],
-                prod && "babel-plugin-transform-react-remove-prop-types",
-                dev && "react-refresh/babel",
-              ].filter(Boolean),
-              presets: [
-                [
-                  "@babel/preset-env",
-                  {
-                    corejs: {
-                      proposals: true,
-                      version: 3,
-                    },
-                    loose: true,
-                    modules: false,
-                    useBuiltIns: "usage",
-                  },
-                ],
-              ],
-            },
+            exclude: /node_modules/,
+            test: /\.[jt]sx?$/,
+            use: [
+              {
+                loader: "babel-loader",
+                options: {
+                  cacheDirectory: dev,
+                  plugins: [
+                    [
+                      "@babel/plugin-transform-runtime",
+                      {
+                        useESModules: true,
+                      },
+                    ],
+                    prod && [
+                      "babel-plugin-react-remove-properties",
+                      {
+                        properties: ["data-screenshots"],
+                      },
+                    ],
+                    prod && "babel-plugin-transform-react-remove-prop-types",
+                    dev && "react-refresh/babel",
+                  ].filter(Boolean),
+                  presets: [
+                    [
+                      "@babel/preset-env",
+                      {
+                        corejs: {
+                          proposals: true,
+                          version: 3,
+                        },
+                        loose: true,
+                        modules: false,
+                        useBuiltIns: "usage",
+                      },
+                    ],
+                  ],
+                },
+              },
+            ],
+          },
+          {
+            exclude: [
+              /@babel(?:\/|\\{1,2})runtime/,
+              // https://stackoverflow.com/questions/57361439/how-to-exclude-core-js-using-usebuiltins-usage
+              /\bcore-js\b/,
+              /\bwebpack\/buildin\b/,
+            ],
+            test: /\.js$/,
+            use: [
+              {
+                loader: "babel-loader",
+                options: {
+                  babelrc: false,
+                  cacheDirectory: dev,
+                  compact: false,
+                  configFile: false,
+                  presets: [
+                    [
+                      "@babel/preset-env",
+                      {
+                        corejs: {
+                          proposals: true,
+                          version: 3,
+                        },
+                        exclude: ["transform-typeof-symbol"],
+                        loose: true,
+                        modules: false,
+                        useBuiltIns: "usage",
+                      },
+                    ],
+                  ],
+                  sourceType: "unambiguous",
+                },
+              },
+            ],
           },
         ],
       },

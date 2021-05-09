@@ -3,6 +3,7 @@
 safari 11
 
 [production]
+chrome 51
 safari 11
 
 [test]
