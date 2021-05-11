@@ -24,7 +24,7 @@ const displayName = "AugmentedThemeProvider";
 
 type ParsedQsTheme = {
   id?: string;
-  mode?: PaletteMode;
+  mode?: PaletteMode | "";
   pureBlack?: "false" | "true";
 };
 
@@ -48,7 +48,7 @@ const AugmentedThemeProvider: FC = ({ children }) => {
 
     const result: Partial<ThemeState> = {
       id: parsedQsTheme.id,
-      mode: parsedQsTheme.mode,
+      mode: parsedQsTheme.mode || undefined,
     };
 
     if (parsedQsTheme.pureBlack) {
