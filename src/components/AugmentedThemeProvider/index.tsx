@@ -1,5 +1,5 @@
 import {
-  createMuiTheme,
+  createTheme,
   CssBaseline,
   PaletteMode,
   ThemeProvider,
@@ -74,7 +74,7 @@ const AugmentedThemeProvider: FC = ({ children }) => {
 
     const { mode = systemPaletteMode, pureBlack } = previewTheme;
 
-    return createMuiTheme(
+    return createTheme(
       deepmerge(
         getThemeOptions({ direction, mode, pureBlack }),
         themes[previewTheme.id].theme

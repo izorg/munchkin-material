@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import { Hidden, useFormControl } from "@material-ui/core";
+import { Theme, useFormControl, useMediaQuery } from "@material-ui/core";
 import PropTypes from "prop-types";
 import {
   FC,
@@ -69,6 +69,8 @@ const ColorPicker: FC<ColorPickerProps> = ({
 
   const onClose = () => goBack();
 
+  const smUp = useMediaQuery((theme: Theme) => theme.breakpoints.up("sm"));
+
   return (
     <>
       <input name={name} type="hidden" value={value} />
@@ -114,23 +116,7 @@ const ColorPicker: FC<ColorPickerProps> = ({
         }}
         value={value}
       />
-      <Hidden smUp>
-        <Dialog
-          onClose={onClose}
-          onSelect={(color: string) => {
-            setValue(color);
-
-            if (onChange) {
-              onChange(color);
-            }
-
-            onClose();
-          }}
-          open={open}
-          value={value}
-        />
-      </Hidden>
-      <Hidden smDown>
+      {smUp ? (
         <Popover
           anchorEl={() => {
             if (!anchorEl.current) {
@@ -152,7 +138,22 @@ const ColorPicker: FC<ColorPickerProps> = ({
           open={open}
           value={value}
         />
-      </Hidden>
+      ) : (
+        <Dialog
+          onClose={onClose}
+          onSelect={(color: string) => {
+            setValue(color);
+
+            if (onChange) {
+              onChange(color);
+            }
+
+            onClose();
+          }}
+          open={open}
+          value={value}
+        />
+      )}
     </>
   );
 };
