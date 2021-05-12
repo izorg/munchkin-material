@@ -2,10 +2,11 @@ import { css } from "@emotion/react";
 import { List, useTheme } from "@material-ui/core";
 import { useCallback } from "react";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import { movePlayer } from "../../../ducks/playerList";
 import { useLocationQuery } from "../../../utils/location";
+import usePresentSelector from "../../../utils/usePresentSelector";
 import { EDIT } from "../modes";
 
 import Item from "./Item";
@@ -15,7 +16,7 @@ const HomePlayerList = (props) => {
   const theme = useTheme();
 
   const query = useLocationQuery();
-  const playerList = useSelector((state) => state.present.playerList);
+  const playerList = usePresentSelector((state) => state.playerList);
 
   const handleDragEnd = useCallback(
     ({ destination, source }) => {

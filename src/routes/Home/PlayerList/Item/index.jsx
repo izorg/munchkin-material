@@ -79,11 +79,7 @@ const HomePlayerListItem = forwardRef(
     };
 
     const onClick = (event) => {
-      if (
-        editMode &&
-        reorderRef.current &&
-        reorderRef.current.contains(event.target)
-      ) {
+      if (editMode && reorderRef.current?.contains(event.target)) {
         return;
       }
 
@@ -104,10 +100,7 @@ const HomePlayerListItem = forwardRef(
         ) {
           goBack();
         }
-      } else if (
-        avatarRef.current &&
-        avatarRef.current.contains(event.target)
-      ) {
+      } else if (avatarRef.current?.contains(event.target)) {
         onMultiSelectActivate();
       } else {
         navigate(`/player/${playerId}`);
@@ -123,11 +116,11 @@ const HomePlayerListItem = forwardRef(
     }, []);
 
     const startPointRef = useRef({ x: 0, y: 0 });
-    const startTapTimeRef = useRef(new Date());
+    const startTapTimeRef = useRef(Date.now());
 
     const onTapStart = (event, info) => {
       startPointRef.current = info.point;
-      startTapTimeRef.current = new Date();
+      startTapTimeRef.current = Date.now();
 
       pressTimeoutRef.current = setTimeout(() => {
         pressTimeoutRef.current = 0;
@@ -159,11 +152,12 @@ const HomePlayerListItem = forwardRef(
           Math.pow(info.point.y - startPointRef.current.y, 2)
       );
 
+      // happens when mouse down, move and up on the same item
       if (delta > 3) {
         return;
       }
 
-      if (new Date() - startTapTimeRef.current < 500) {
+      if (Date.now() - startTapTimeRef.current < 500) {
         onClick(event);
       }
     };
