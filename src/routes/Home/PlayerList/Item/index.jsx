@@ -1,16 +1,16 @@
-import { ClassNames } from "@emotion/react";
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
 import {
   IconButton,
   ListItem,
   ListItemAvatar,
   ListItemSecondaryAction,
-  useForkRef,
 } from "@material-ui/core";
 import { motion } from "framer-motion";
 import { DragHorizontalVariant as DragIcon } from "mdi-material-ui";
 import PropTypes from "prop-types";
 import { forwardRef, useCallback, useRef } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import PlayerAvatar from "../../../../components/PlayerAvatar";
@@ -22,7 +22,16 @@ import {
   useLocationQuery,
 } from "../../../../utils/location";
 import { ios } from "../../../../utils/platforms";
+import usePresentSelector from "../../../../utils/usePresentSelector";
 import { EDIT, MULTI } from "../../modes";
+
+const StyledListItemSecondaryAction = styled(ListItemSecondaryAction)`
+  @supports (right: max(0px)) {
+    right: max(16px, env(safe-area-inset-right));
+  }
+`;
+
+StyledListItemSecondaryAction.muiName = ListItemSecondaryAction.muiName;
 
 const displayName = "HomePlayerListItem";
 
@@ -31,8 +40,6 @@ const HomePlayerListItem = forwardRef(
     const dispatch = useDispatch();
     const location = useLocation();
     const navigate = useNavigate();
-
-    const itemRef = useRef(null);
 
     /**
      * @type {React.MutableRefObject<HTMLDivElement|undefined>}
@@ -46,19 +53,17 @@ const HomePlayerListItem = forwardRef(
 
     const pressTimeoutRef = useRef(0);
 
-    const handleRef = useForkRef(itemRef, ref);
-
     const goBack = useGoBack();
     const query = useLocationQuery();
     const editMode = query[EDIT] !== undefined;
     const multiMode = query[MULTI] !== undefined;
 
-    const selectedPlayerIds = useSelector(
-      (state) => state.present.ui.selectedPlayerIds
+    const selectedPlayerIds = usePresentSelector(
+      (state) => state.ui.selectedPlayerIds
     );
     const selected = multiMode && selectedPlayerIds.includes(playerId);
 
-    const players = useSelector((state) => state.present.players);
+    const players = usePresentSelector((state) => state.players);
     const player = players[playerId];
 
     const onMultiSelectActivate = () => {
@@ -170,70 +175,58 @@ const HomePlayerListItem = forwardRef(
     };
 
     return (
-      <ClassNames>
-        {({ css }) => (
-          <ListItem
-            ref={handleRef}
-            button
-            classes={{
-              gutters: css`
-                @supports (padding: max(0px)) {
-                  padding-left: max(16px, env(safe-area-inset-left));
-                  padding-right: max(16px, env(safe-area-inset-right));
-                }
-              `,
-              secondaryAction: css`
-                @supports (padding: max(0px)) {
-                  padding-right: calc(
-                    32px + max(16px, env(safe-area-inset-right))
-                  );
-                }
-              `,
-            }}
-            component={editMode ? motion.div : motion.li}
-            data-screenshots="player-list-item"
-            {...rest}
-            onKeyDown={onKeyDown}
-            onPanStart={clearPress}
-            onTap={onTap}
-            onTapCancel={clearPress}
-            onTapStart={onTapStart}
-          >
-            <ListItemAvatar>
-              <PlayerAvatar
-                ref={avatarRef}
-                color={player.color}
-                name={player.name}
-                selected={multiMode && selected}
-              />
-            </ListItemAvatar>
+      <ListItem
+        ref={ref}
+        button
+        component={editMode ? motion.div : motion.li}
+        css={[
+          css`
+            @supports (padding: max(0px)) {
+              padding-left: max(16px, env(safe-area-inset-left));
+              padding-right: max(16px, env(safe-area-inset-right));
+            }
+          `,
+          editMode &&
+            css`
+              @supports (padding: max(0px)) {
+                padding-right: calc(
+                  32px + max(16px, env(safe-area-inset-right))
+                );
+              }
+            `,
+        ]}
+        data-screenshots="player-list-item"
+        {...rest}
+        onKeyDown={onKeyDown}
+        onPanStart={clearPress}
+        onTap={onTap}
+        onTapCancel={clearPress}
+        onTapStart={onTapStart}
+      >
+        <ListItemAvatar>
+          <PlayerAvatar
+            ref={avatarRef}
+            color={player.color}
+            name={player.name}
+            selected={multiMode && selected}
+          />
+        </ListItemAvatar>
 
-            <PlayerListItemText player={player} />
+        <PlayerListItemText player={player} />
 
-            {editMode && (
-              <ListItemSecondaryAction
-                classes={{
-                  root: css`
-                    @supports (padding: max(0px)) {
-                      right: max(16px, env(safe-area-inset-right));
-                    }
-                  `,
-                }}
-              >
-                <IconButton
-                  ref={reorderRef}
-                  className="handler"
-                  disableRipple
-                  edge="end"
-                  {...dragHandleProps}
-                >
-                  <DragIcon />
-                </IconButton>
-              </ListItemSecondaryAction>
-            )}
-          </ListItem>
+        {editMode && (
+          <StyledListItemSecondaryAction>
+            <IconButton
+              ref={reorderRef}
+              disableRipple
+              edge="end"
+              {...dragHandleProps}
+            >
+              <DragIcon />
+            </IconButton>
+          </StyledListItemSecondaryAction>
         )}
-      </ClassNames>
+      </ListItem>
     );
   }
 );
