@@ -118,13 +118,7 @@ const ColorPicker: FC<ColorPickerProps> = ({
       />
       {smUp ? (
         <Popover
-          anchorEl={() => {
-            if (!anchorEl.current) {
-              throw new Error("No anchorEl for <Popover />");
-            }
-
-            return anchorEl.current;
-          }}
+          anchorEl={() => anchorEl.current as HTMLButtonElement}
           onClose={onClose}
           onSelect={(color) => {
             setValue(color);
