@@ -39,12 +39,7 @@ const HomePlayerList = (props) => {
               {...droppableProps}
             >
               {playerList.map((playerId, index) => (
-                <Draggable
-                  key={playerId}
-                  disableInteractiveElementBlocking
-                  draggableId={playerId}
-                  index={index}
-                >
+                <Draggable key={playerId} draggableId={playerId} index={index}>
                   {(
                     { draggableProps, dragHandleProps, innerRef: draggableRef },
                     { isDragging }
