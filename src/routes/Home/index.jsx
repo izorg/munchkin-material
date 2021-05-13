@@ -42,18 +42,23 @@ const Home = () => {
     content = <Nobody />;
   } else {
     content = (
-      <PlayerList
+      <div
         css={css`
           flex: 1;
           -webkit-overflow-scrolling: touch;
           overflow-y: auto;
-          padding-bottom: 56px;
-
-          ${theme.breakpoints.up("sm")} {
-            padding-bottom: 64px;
-          }
         `}
-      />
+      >
+        <PlayerList
+          css={css`
+            padding-bottom: 56px;
+
+            ${theme.breakpoints.up("sm")} {
+              padding-bottom: 64px;
+            }
+          `}
+        />
+      </div>
     );
   }
 
