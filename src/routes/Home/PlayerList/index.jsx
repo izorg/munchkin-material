@@ -1,5 +1,6 @@
 import { css } from "@emotion/react";
-import { List, useTheme } from "@material-ui/core";
+import { List, Paper } from "@material-ui/core";
+import { motion } from "framer-motion";
 import { useCallback } from "react";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import { useDispatch } from "react-redux";
@@ -13,7 +14,6 @@ import Item from "./Item";
 
 const HomePlayerList = (props) => {
   const dispatch = useDispatch();
-  const theme = useTheme();
 
   const query = useLocationQuery();
   const playerList = usePresentSelector((state) => state.playerList);
@@ -47,21 +47,10 @@ const HomePlayerList = (props) => {
                     let style = { ...draggableProps.style };
 
                     if (isDragging) {
-                      const transition = theme.transitions.create(
-                        "box-shadow",
-                        {
-                          duration: theme.transitions.duration.standard,
-                        }
-                      );
-
                       style = {
                         ...style,
-                        backgroundColor: theme.palette.background.paper,
-                        boxShadow: theme.shadows[3],
                         pointerEvents: "auto",
-                        transition: style.transition
-                          ? `${style.transition}, ${transition}`
-                          : transition,
+                        transition: undefined,
                         zIndex: 1,
                       };
                     }
@@ -82,8 +71,12 @@ const HomePlayerList = (props) => {
                     return (
                       <Item
                         ref={draggableRef}
+                        ContainerComponent={Paper}
                         ContainerProps={{
                           ...draggableProps,
+                          component: motion.li,
+                          elevation: isDragging ? 1 : 0,
+                          square: true,
                           style,
                         }}
                         css={

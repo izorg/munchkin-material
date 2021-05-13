@@ -42,14 +42,14 @@ const HomePlayerListItem = forwardRef(
     const navigate = useNavigate();
 
     /**
-     * @type {React.MutableRefObject<HTMLDivElement|undefined>}
+     * @type {React.RefObject<HTMLDivElement>}
      */
-    const avatarRef = useRef();
+    const avatarRef = useRef(null);
 
     /**
-     * @type {React.MutableRefObject<HTMLButtonElement|undefined>}
+     * @type {React.RefObject<HTMLButtonElement>}
      */
-    const reorderRef = useRef();
+    const reorderRef = useRef(null);
 
     const pressTimeoutRef = useRef(0);
 
