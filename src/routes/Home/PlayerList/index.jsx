@@ -49,8 +49,6 @@ const HomePlayerList = (props) => {
                     if (isDragging) {
                       style = {
                         ...style,
-                        pointerEvents: "auto",
-                        transition: undefined,
                         zIndex: 1,
                       };
                     }
