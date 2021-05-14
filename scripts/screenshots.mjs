@@ -1,7 +1,7 @@
 import { promises as fs } from "fs";
 import path from "path";
 
-import { duration } from "@material-ui/core/node/styles/transitions.js";
+import { duration } from "@material-ui/core/node/styles/createTransitions.js";
 import { chromium, devices } from "playwright";
 
 const CS = "cs";
