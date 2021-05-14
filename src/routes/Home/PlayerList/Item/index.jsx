@@ -212,6 +212,7 @@ const HomePlayerListItem = forwardRef(
           <StyledListItemSecondaryAction>
             <IconButton
               ref={reorderRef}
+              className="handle"
               component="span"
               disableRipple
               edge="end"
