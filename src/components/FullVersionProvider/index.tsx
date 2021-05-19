@@ -31,6 +31,10 @@ const FullVersionProvider: FC = ({ children }) => {
   const buyFullVersion = useCallback(
     () =>
       new Promise<void>((resolve, reject) => {
+        if (!store) {
+          return reject();
+        }
+
         store.once(FULL_VERSION_ID).owned(() => {
           dispatch(setFullVersion(true));
 

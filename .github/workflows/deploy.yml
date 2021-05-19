@@ -26,9 +26,6 @@ jobs:
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
         run: npm ci
 
-      - name: Install Cordova
-        run: cd cordova && npm ci && cd ..
-
       - name: Lint
         run: |
           npm run tsc
