@@ -24,7 +24,10 @@ jobs:
         env:
           HUSKY: 0
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
-        run: npm ci && cd cordova && npm ci && cd ..
+        run: npm ci
+
+      - name: Install Cordova
+        run: cd cordova && npm ci && cd ..
 
       - name: Lint
         run: |
