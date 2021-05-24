@@ -1,6 +1,5 @@
 import createCache, { StylisPlugin } from "@emotion/cache";
 import { CacheProvider } from "@emotion/react";
-import { StylesProvider } from "@material-ui/core";
 import PropTypes from "prop-types";
 import type { FC } from "react";
 import { useIntl } from "react-intl";
@@ -26,11 +25,7 @@ const AugmentedStylesProvider: FC = ({ children }) => {
   const direction = getDirection(locale);
   const cache = direction === "rtl" ? rtlCache : ltrCache;
 
-  return (
-    <StylesProvider injectFirst>
-      <CacheProvider value={cache}>{children}</CacheProvider>
-    </StylesProvider>
-  );
+  return <CacheProvider value={cache}>{children}</CacheProvider>;
 };
 
 AugmentedStylesProvider.propTypes = {
