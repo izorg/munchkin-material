@@ -4,6 +4,6 @@
     "android": ["pt-rBR"]
   },
   "config_ios": {
-    "CFBundleDisplayName": "Munchkin"
+    "CFBundleDisplayName": "Level Counter"
   }
 }
