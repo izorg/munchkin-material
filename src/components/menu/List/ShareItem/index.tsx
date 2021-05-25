@@ -14,7 +14,7 @@ const messages = defineMessages({
   },
 
   text: {
-    defaultMessage: "Simple but powerful Munchkin level counter",
+    defaultMessage: "Simple but powerful level counter for card games",
     id: "share.text",
   },
 });

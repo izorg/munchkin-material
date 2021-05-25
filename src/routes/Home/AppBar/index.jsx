@@ -43,7 +43,7 @@ const HomeAppBar = ({ empty, singleMode }) => {
   const onTurnFinish = () => dispatch(setCombatPlayerBonus(0));
 
   let title = (
-    <FormattedMessage defaultMessage="Munchkins" id="player.list.title" />
+    <FormattedMessage defaultMessage="Players" id="player.list.title" />
   );
 
   if (multiMode) {
@@ -51,9 +51,7 @@ const HomeAppBar = ({ empty, singleMode }) => {
   }
 
   if (singleMode) {
-    title = (
-      <FormattedMessage defaultMessage="Munchkin" id="home.single.title" />
-    );
+    title = <FormattedMessage defaultMessage="Player" id="home.single.title" />;
   }
 
   return (

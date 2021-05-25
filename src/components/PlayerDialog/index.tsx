@@ -155,12 +155,9 @@ const PlayerDialog = (): JSX.Element => {
   };
 
   const title = editPlayer ? (
-    <FormattedMessage
-      defaultMessage="Edit munchkin"
-      id="player.form.titleEdit"
-    />
+    <FormattedMessage defaultMessage="Edit player" id="player.form.titleEdit" />
   ) : (
-    <FormattedMessage defaultMessage="New munchkin" id="player.form.title" />
+    <FormattedMessage defaultMessage="New player" id="player.form.title" />
   );
 
   const titleCss = css`
