@@ -1,12 +1,9 @@
 import type { Direction, PaletteMode, ThemeOptions } from "@material-ui/core";
 import common from "@material-ui/core/colors/common";
 import orange from "@material-ui/core/colors/orange";
-import createBreakpoints from "@material-ui/core/styles/createBreakpoints";
 import deepmerge from "deepmerge";
 
 import { ios } from "../utils/platforms";
-
-const breakpoints = createBreakpoints({});
 
 const getThemeOptions = ({
   direction,
@@ -31,7 +28,7 @@ const getThemeOptions = ({
         styleOverrides: {
           anchorOriginBottomLeft: {
             "@supports (padding: max(0px))": {
-              [breakpoints.up("sm")]: {
+              "@media (min-width:600px)": {
                 left: "max(24px, env(safe-area-inset-right))",
                 right: "max(24px, env(safe-area-inset-right))",
               },
@@ -81,7 +78,8 @@ const getThemeOptions = ({
       toolbar: {
         minHeight: 56,
 
-        [breakpoints.up("md")]: {
+        // eslint-disable-next-line sort-keys
+        "@media (min-width:960px)": {
           minHeight: 64,
         },
       },

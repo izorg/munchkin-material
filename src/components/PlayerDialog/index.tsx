@@ -230,7 +230,7 @@ const PlayerDialog = (): JSX.Element => {
             direction: "up",
           }}
         >
-          <DialogTitle css={titleCss} disableTypography={!fullScreen}>
+          <DialogTitle css={titleCss}>
             {fullScreen ? (
               <AppBar
                 onCancel={handleClose}
@@ -239,7 +239,7 @@ const PlayerDialog = (): JSX.Element => {
               />
             ) : (
               <>
-                <Typography component="h2" noWrap variant="h6">
+                <Typography component="span" noWrap variant="h6">
                   {title}
                 </Typography>
                 {handleDelete && (

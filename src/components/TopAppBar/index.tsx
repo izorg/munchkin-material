@@ -6,11 +6,8 @@ import type { FC } from "react";
 const TopAppBar: FC = ({ children }) => {
   const theme = useTheme();
 
-  const color = theme.palette.mode === "dark" ? "default" : "primary";
-
   return (
     <AppBar
-      color={color}
       css={css`
         z-index: ${theme.zIndex.appBar};
       `}
