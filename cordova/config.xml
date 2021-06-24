@@ -2,9 +2,9 @@
 <widget id="com.izorg.munchkin" version="13.0.1"
         xmlns="http://www.w3.org/ns/widgets"
         xmlns:android="http://schemas.android.com/apk/res/android">
-    <name>Level Counter</name>
+    <name>Munchkin</name>
     <description>
-        Simple but powerful level counter
+        Simple but powerful Level Counter for Munchkin
     </description>
     <author email="izorgster@gmail.com" href="https://allmunchkins.com">
         Viacheslav Zavoruev

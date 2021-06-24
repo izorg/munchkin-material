@@ -1,8 +1,8 @@
 {
   "config_android": {
-    "app_name": "Level Counter"
+    "app_name": "Munchkin"
   },
   "config_ios": {
-    "CFBundleDisplayName": "Level Counter"
+    "CFBundleDisplayName": "Munchkin"
   }
 }
