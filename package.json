@@ -15,7 +15,7 @@
     "screenshots": "cross-env NODE_ENV=test node scripts/screenshots.mjs",
     "start": "cross-env NODE_ENV=production BUILD=web webpack-dev-server",
     "stats": "cross-env STATS=true npm run build:web",
-    "stylelint": "stylelint --cache=\"**/*.{css,jsx}\"",
+    "stylelint": "stylelint --cache \"**/*.{css,jsx}\"",
     "test": "jest",
     "tsc": "tsc"
   },
