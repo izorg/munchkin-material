@@ -33,7 +33,7 @@
     }
   ],
   "parser": "@typescript-eslint/parser",
-  "plugins": ["@emotion"],
+  "plugins": ["@emotion", "only-error"],
   "rules": {
     "@emotion/syntax-preference": ["error", "string"],
     "import/order": [
