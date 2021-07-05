@@ -45,6 +45,9 @@ const MenuDrawer = (): JSX.Element => {
       <ClassNames>
         {({ css }) => (
           <SwipeableDrawer
+            className={css`
+              z-index: ${theme.zIndex.modal};
+            `}
             data-screenshot="drawer-menu"
             disableSwipeToOpen={disableSwipeToOpen}
             onClose={onClose}

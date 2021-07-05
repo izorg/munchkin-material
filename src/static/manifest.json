@@ -29,7 +29,7 @@
       "purpose": "maskable"
     }
   ],
-  "name": "Munchkin Level Counter",
+  "name": "Level Counter for Munchkin",
   "orientation": "any",
   "short_name": "Munchkin",
   "start_url": "/",
