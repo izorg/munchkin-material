@@ -4,8 +4,8 @@ import {
   DialogContent,
   DialogTitle,
   List,
-  ListItem,
   ListItemAvatar,
+  ListItemButton,
   useTheme,
 } from "@material-ui/core";
 import { FormattedMessage } from "react-intl";
@@ -66,16 +66,15 @@ const HelperSelector = (props) => {
           <DialogContent css={contentCss}>
             <List>
               {helpers.map((helper) => (
-                <ListItem
+                <ListItemButton
                   key={helper.id.toString()}
-                  button
                   onClick={() => onSelect(helper.id)}
                 >
                   <ListItemAvatar>
                     <PlayerAvatar color={helper.color} name={helper.name} />
                   </ListItemAvatar>
                   <PlayerListItemText player={helper} />
-                </ListItem>
+                </ListItemButton>
               ))}
             </List>
           </DialogContent>

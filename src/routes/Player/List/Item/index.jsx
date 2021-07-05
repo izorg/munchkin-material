@@ -1,4 +1,4 @@
-import { ListItem, ListItemAvatar } from "@material-ui/core";
+import { ListItemAvatar, ListItemButton } from "@material-ui/core";
 import { useNavigate } from "react-router-dom";
 
 import PlayerAvatar from "../../../../components/PlayerAvatar";
@@ -11,8 +11,7 @@ const PlayerListItem = ({ player, ...props }) => {
   const navigate = useNavigate();
 
   return (
-    <ListItem
-      button
+    <ListItemButton
       onClick={() => navigate(`/player/${player.id}`, { replace: true })}
       {...props}
     >
@@ -20,7 +19,7 @@ const PlayerListItem = ({ player, ...props }) => {
         <PlayerAvatar color={player.color} name={player.name} />
       </ListItemAvatar>
       <PlayerListItemText player={player} />
-    </ListItem>
+    </ListItemButton>
   );
 };
 
