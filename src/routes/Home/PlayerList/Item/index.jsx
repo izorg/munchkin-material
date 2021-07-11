@@ -1,3 +1,5 @@
+import { useSortable } from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
 import { css } from "@emotion/react";
 import { mdiDragHorizontalVariant as dragIcon } from "@mdi/js";
 import {
@@ -9,7 +11,7 @@ import {
 } from "@mui/material";
 import { motion } from "framer-motion";
 import PropTypes from "prop-types";
-import { forwardRef, useCallback, useRef } from "react";
+import { useCallback, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 
@@ -22,10 +24,9 @@ import useEditMode from "../../../../utils/useEditMode";
 import useMultiMode from "../../../../utils/useMultiMode";
 import usePresentSelector from "../../../../utils/usePresentSelector";
 
-const HomePlayerListItem = forwardRef(function HomePlayerListItem(
-  { dragHandleProps, playerId, ...rest },
-  ref
-) {
+const HomePlayerListItem = (props) => {
+  const { dragHandleProps, playerId, ...rest } = props;
+
   const dispatch = useDispatch();
   const location = useLocation();
   const navigate = useNavigate();
@@ -139,9 +140,22 @@ const HomePlayerListItem = forwardRef(function HomePlayerListItem(
     }
   };
 
+  const { attributes, listeners, setNodeRef, transform, transition } =
+    useSortable({
+      disabled: !editMode,
+      id: playerId,
+    });
+
+  const style = {
+    transform: CSS.Transform.toString(transform),
+    transition,
+  };
+
   return (
     <ListItem
-      ref={ref}
+      {...rest}
+      {...attributes}
+      ref={setNodeRef}
       css={
         editMode &&
         css`
@@ -158,21 +172,16 @@ const HomePlayerListItem = forwardRef(function HomePlayerListItem(
       }
       data-screenshots="player-list-item"
       disablePadding
-      {...rest}
       secondaryAction={
         editMode && (
-          <IconButton
-            component="span"
-            disableRipple
-            edge="end"
-            {...dragHandleProps}
-          >
+          <IconButton component="span" disableRipple edge="end" {...listeners}>
             <SvgIcon>
               <path d={dragIcon} />
             </SvgIcon>
           </IconButton>
         )
       }
+      style={style}
     >
       <ListItemButton
         component={motion.div}
@@ -203,7 +212,7 @@ const HomePlayerListItem = forwardRef(function HomePlayerListItem(
       </ListItemButton>
     </ListItem>
   );
-});
+};
 
 HomePlayerListItem.propTypes = {
   dragHandleProps: PropTypes.shape({

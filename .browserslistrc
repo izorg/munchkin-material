@@ -1,9 +1,9 @@
 [development]
-safari 11
+ios 13.4
 
 [production]
 chrome 51
-safari 11
+ios 13.4
 
 [test]
 current node
