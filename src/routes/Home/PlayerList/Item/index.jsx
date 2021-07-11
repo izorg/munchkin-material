@@ -1,14 +1,15 @@
-import { css } from "@emotion/react";
+import { useSortable } from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
 import {
   IconButton,
   ListItem,
   ListItemAvatar,
-  ListItemSecondaryAction,
+  ListItemButton,
 } from "@material-ui/core";
 import { motion } from "framer-motion";
 import { DragHorizontalVariant as DragIcon } from "mdi-material-ui";
 import PropTypes from "prop-types";
-import { forwardRef, useCallback, useRef } from "react";
+import { useCallback, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 
@@ -26,168 +27,200 @@ import { EDIT, MULTI } from "../../modes";
 
 const displayName = "HomePlayerListItem";
 
-const HomePlayerListItem = forwardRef(
-  ({ dragHandleProps, playerId, ...rest }, ref) => {
-    const dispatch = useDispatch();
-    const location = useLocation();
-    const navigate = useNavigate();
+const HomePlayerListItem = ({ id, playerId, ...rest }) => {
+  const dispatch = useDispatch();
+  const location = useLocation();
+  const navigate = useNavigate();
 
-    /**
-     * @type {React.RefObject<HTMLDivElement>}
-     */
-    const avatarRef = useRef(null);
+  /**
+   * @type {React.RefObject<HTMLDivElement>}
+   */
+  const avatarRef = useRef(null);
 
-    /**
-     * @type {React.RefObject<HTMLButtonElement>}
-     */
-    const reorderRef = useRef(null);
+  /**
+   * @type {React.RefObject<HTMLButtonElement>}
+   */
+  const reorderRef = useRef(null);
 
-    const pressTimeoutRef = useRef(0);
+  const pressTimeoutRef = useRef(0);
 
-    const goBack = useGoBack();
-    const query = useLocationQuery();
-    const editMode = query[EDIT] !== undefined;
-    const multiMode = query[MULTI] !== undefined;
+  const goBack = useGoBack();
+  const query = useLocationQuery();
+  const editMode = query[EDIT] !== undefined;
+  const multiMode = query[MULTI] !== undefined;
 
-    const selectedPlayerIds = usePresentSelector(
-      (state) => state.ui.selectedPlayerIds
-    );
-    const selected = multiMode && selectedPlayerIds.includes(playerId);
+  const selectedPlayerIds = usePresentSelector(
+    (state) => state.ui.selectedPlayerIds
+  );
+  const selected = multiMode && selectedPlayerIds.includes(playerId);
 
-    const players = usePresentSelector((state) => state.players);
-    const player = players[playerId];
+  const players = usePresentSelector((state) => state.players);
+  const player = players[playerId];
 
-    const onMultiSelectActivate = () => {
-      dispatch(unselectAllPlayers());
-      dispatch(togglePlayer(playerId));
+  const onMultiSelectActivate = () => {
+    dispatch(unselectAllPlayers());
+    dispatch(togglePlayer(playerId));
 
+    navigate({
+      ...location,
+      search: stringifyQuery({
+        [MULTI]: null,
+      }),
+    });
+  };
+
+  const onClick = (event) => {
+    if (editMode && reorderRef.current?.contains(event.target)) {
+      return;
+    }
+
+    if (editMode) {
       navigate({
         ...location,
         search: stringifyQuery({
-          [MULTI]: null,
+          ...query,
+          player: playerId,
         }),
       });
-    };
+    } else if (multiMode) {
+      dispatch(togglePlayer(playerId));
 
-    const onClick = (event) => {
-      if (editMode && reorderRef.current?.contains(event.target)) {
-        return;
+      if (selectedPlayerIds.length === 1 && selectedPlayerIds[0] === playerId) {
+        goBack();
       }
+    } else if (avatarRef.current?.contains(event.target)) {
+      onMultiSelectActivate();
+    } else {
+      navigate(`/player/${playerId}`);
+    }
+  };
 
-      if (editMode) {
-        navigate({
-          ...location,
-          search: stringifyQuery({
-            ...query,
-            player: playerId,
-          }),
-        });
-      } else if (multiMode) {
-        dispatch(togglePlayer(playerId));
+  const clearPress = useCallback(() => {
+    if (pressTimeoutRef.current) {
+      clearTimeout(pressTimeoutRef.current);
 
-        if (
-          selectedPlayerIds.length === 1 &&
-          selectedPlayerIds[0] === playerId
-        ) {
-          goBack();
+      pressTimeoutRef.current = 0;
+    }
+  }, []);
+
+  const startPointRef = useRef({ x: 0, y: 0 });
+  const startTapTimeRef = useRef(Date.now());
+
+  const onTapStart = (event, info) => {
+    startPointRef.current = info.point;
+    startTapTimeRef.current = Date.now();
+
+    pressTimeoutRef.current = setTimeout(() => {
+      pressTimeoutRef.current = 0;
+
+      const avatarNode = avatarRef.current;
+
+      if (
+        !(editMode || multiMode) &&
+        (!avatarNode || !avatarNode.contains(event.target))
+      ) {
+        if (navigator.vibrate && !ios) {
+          navigator.vibrate(20);
         }
-      } else if (avatarRef.current?.contains(event.target)) {
+
         onMultiSelectActivate();
-      } else {
-        navigate(`/player/${playerId}`);
       }
+    }, 500);
+  };
+
+  const onTap = (event, info) => {
+    clearPress();
+
+    if (event.type === "pointercancel") {
+      return;
+    }
+
+    const delta = Math.sqrt(
+      Math.pow(info.point.x - startPointRef.current.x, 2) +
+        Math.pow(info.point.y - startPointRef.current.y, 2)
+    );
+
+    // happens when mouse down, move and up on the same item
+    if (delta > 3) {
+      return;
+    }
+
+    if (Date.now() - startTapTimeRef.current < 500) {
+      onClick(event);
+    }
+  };
+
+  const onKeyDown = (event) => {
+    if (event.key === "Enter") {
+      onClick(event);
+    }
+  };
+
+  const { attributes, listeners, setNodeRef, transform, transition } =
+    useSortable({ id });
+
+  const style = {
+    transform: CSS.Transform.toString(transform),
+    transition,
+  };
+
+  let listItemButtonProps = {};
+
+  if (id !== "overlay") {
+    listItemButtonProps = {
+      component: motion.div,
+      onKeyDown: onKeyDown,
+      onPanStart: clearPress,
+      onTap: onTap,
+      onTapCancel: clearPress,
+      onTapStart: onTapStart,
     };
+  }
 
-    const clearPress = useCallback(() => {
-      if (pressTimeoutRef.current) {
-        clearTimeout(pressTimeoutRef.current);
-
-        pressTimeoutRef.current = 0;
+  return (
+    <ListItem
+      // css={[
+      //   css`
+      //     @supports (padding: max(0px)) {
+      //       padding-left: max(16px, env(safe-area-inset-left));
+      //       padding-right: max(16px, env(safe-area-inset-right));
+      //     }
+      //   `,
+      //   editMode &&
+      //     css`
+      //       @supports (padding: max(0px)) {
+      //         padding-right: calc(32px + max(16px, env(safe-area-inset-right)));
+      //       }
+      //     `,
+      // ]}
+      data-screenshots="player-list-item"
+      {...rest}
+      ref={setNodeRef}
+      secondaryAction={
+        editMode ? (
+          // <ListItemSecondaryAction
+          //   sx={{
+          //     "@supports (right: max(0px))": {
+          //       right: "max(16px, env(safe-area-inset-right))",
+          //     },
+          //   }}
+          // >
+          <IconButton
+            ref={reorderRef}
+            component="span"
+            disableRipple
+            edge="end"
+            {...listeners}
+          >
+            <DragIcon />
+          </IconButton>
+        ) : // </ListItemSecondaryAction>
+        undefined
       }
-    }, []);
-
-    const startPointRef = useRef({ x: 0, y: 0 });
-    const startTapTimeRef = useRef(Date.now());
-
-    const onTapStart = (event, info) => {
-      startPointRef.current = info.point;
-      startTapTimeRef.current = Date.now();
-
-      pressTimeoutRef.current = setTimeout(() => {
-        pressTimeoutRef.current = 0;
-
-        const avatarNode = avatarRef.current;
-
-        if (
-          !(editMode || multiMode) &&
-          (!avatarNode || !avatarNode.contains(event.target))
-        ) {
-          if (navigator.vibrate && !ios) {
-            navigator.vibrate(20);
-          }
-
-          onMultiSelectActivate();
-        }
-      }, 500);
-    };
-
-    const onTap = (event, info) => {
-      clearPress();
-
-      if (event.type === "pointercancel") {
-        return;
-      }
-
-      const delta = Math.sqrt(
-        Math.pow(info.point.x - startPointRef.current.x, 2) +
-          Math.pow(info.point.y - startPointRef.current.y, 2)
-      );
-
-      // happens when mouse down, move and up on the same item
-      if (delta > 3) {
-        return;
-      }
-
-      if (Date.now() - startTapTimeRef.current < 500) {
-        onClick(event);
-      }
-    };
-
-    const onKeyDown = (event) => {
-      if (event.key === "Enter") {
-        onClick(event);
-      }
-    };
-
-    return (
-      <ListItem
-        ref={ref}
-        button
-        component={editMode ? motion.div : motion.li}
-        css={[
-          css`
-            @supports (padding: max(0px)) {
-              padding-left: max(16px, env(safe-area-inset-left));
-              padding-right: max(16px, env(safe-area-inset-right));
-            }
-          `,
-          editMode &&
-            css`
-              @supports (padding: max(0px)) {
-                padding-right: calc(
-                  32px + max(16px, env(safe-area-inset-right))
-                );
-              }
-            `,
-        ]}
-        data-screenshots="player-list-item"
-        {...rest}
-        onKeyDown={onKeyDown}
-        onPanStart={clearPress}
-        onTap={onTap}
-        onTapCancel={clearPress}
-        onTapStart={onTapStart}
-      >
+      {...attributes}
+      style={style}
+    >
+      <ListItemButton {...listItemButtonProps}>
         <ListItemAvatar>
           <PlayerAvatar
             ref={avatarRef}
@@ -198,35 +231,13 @@ const HomePlayerListItem = forwardRef(
         </ListItemAvatar>
 
         <PlayerListItemText player={player} />
-
-        {editMode && (
-          <ListItemSecondaryAction
-            sx={{
-              "@supports (right: max(0px))": {
-                right: "max(16px, env(safe-area-inset-right))",
-              },
-            }}
-          >
-            <IconButton
-              ref={reorderRef}
-              component="span"
-              disableRipple
-              edge="end"
-              {...dragHandleProps}
-            >
-              <DragIcon />
-            </IconButton>
-          </ListItemSecondaryAction>
-        )}
-      </ListItem>
-    );
-  }
-);
+      </ListItemButton>
+    </ListItem>
+  );
+};
 
 HomePlayerListItem.propTypes = {
-  dragHandleProps: PropTypes.shape({
-    onDragStart: PropTypes.func.isRequired,
-  }),
+  id: PropTypes.string.isRequired,
   playerId: PropTypes.string.isRequired,
 };
 
