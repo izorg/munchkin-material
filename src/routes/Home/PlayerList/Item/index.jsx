@@ -1,5 +1,4 @@
 import { css } from "@emotion/react";
-import styled from "@emotion/styled";
 import {
   IconButton,
   ListItem,
@@ -24,14 +23,6 @@ import {
 import { ios } from "../../../../utils/platforms";
 import usePresentSelector from "../../../../utils/usePresentSelector";
 import { EDIT, MULTI } from "../../modes";
-
-const StyledListItemSecondaryAction = styled(ListItemSecondaryAction)`
-  @supports (right: max(0px)) {
-    right: max(16px, env(safe-area-inset-right));
-  }
-`;
-
-StyledListItemSecondaryAction.muiName = ListItemSecondaryAction.muiName;
 
 const displayName = "HomePlayerListItem";
 
@@ -209,7 +200,13 @@ const HomePlayerListItem = forwardRef(
         <PlayerListItemText player={player} />
 
         {editMode && (
-          <StyledListItemSecondaryAction>
+          <ListItemSecondaryAction
+            sx={{
+              "@supports (right: max(0px))": {
+                right: "max(16px, env(safe-area-inset-right))",
+              },
+            }}
+          >
             <IconButton
               ref={reorderRef}
               component="span"
@@ -219,7 +216,7 @@ const HomePlayerListItem = forwardRef(
             >
               <DragIcon />
             </IconButton>
-          </StyledListItemSecondaryAction>
+          </ListItemSecondaryAction>
         )}
       </ListItem>
     );
