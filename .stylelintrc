@@ -4,6 +4,7 @@
     "stylelint-order"
   ],
   "rules": {
+    "function-name-case": null,
     "order/properties-alphabetical-order": true
   }
 }
