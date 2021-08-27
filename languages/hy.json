@@ -51,6 +51,6 @@
   "themeDialog.dark": "Սուգ",
   "themeDialog.light": "Բաց",
   "undo": "Ետ գնալ",
-  "undo.killPlayer": "{name} {sex, select, female {ն մահացավ} male {ն մահացավ}}",
+  "undo.killPlayer": "{name} {sex, select, female {ն մահացավ} male {ն մահացավ} other {}}",
   "undo.resetPlayers": "Խաղացողները վերականգնվեցին"
 }

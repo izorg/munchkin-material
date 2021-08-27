@@ -51,6 +51,6 @@
   "themeDialog.dark": "Tmavý",
   "themeDialog.light": "Svetlý",
   "undo": "Späť",
-  "undo.killPlayer": "{name} {sex,select,female{zomrela} male{zomrel}}",
+  "undo.killPlayer": "{name} {sex,select,female{zomrela} male{zomrel} other {}}",
   "undo.resetPlayers": "Hráči boli resetovaní"
 }

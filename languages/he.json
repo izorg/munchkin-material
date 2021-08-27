@@ -53,6 +53,6 @@
   "themeDialog.light": "בהיר",
   "themeDialog.pureBlack": "",
   "undo": "בטל",
-  "undo.killPlayer": " {name} {sex,select,female{נפטרה} male{מת}}",
+  "undo.killPlayer": " {name} {sex,select,female{נפטרה} male{מת} other {}}",
   "undo.resetPlayers": "השחקנים אופסו"
 }

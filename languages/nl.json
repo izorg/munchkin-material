@@ -53,6 +53,6 @@
   "themeDialog.light": "Licht",
   "themeDialog.pureBlack": "",
   "undo": "Undo",
-  "undo.killPlayer": "{name} {sex,select,female{is gestorven} male{is gestorven}}",
+  "undo.killPlayer": "{name} {sex,select,female{is gestorven} male{is gestorven} other {}}",
   "undo.resetPlayers": "Spelerslijst is opgekuist"
 }

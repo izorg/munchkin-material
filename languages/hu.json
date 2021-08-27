@@ -53,6 +53,6 @@
   "themeDialog.light": "Világos",
   "themeDialog.pureBlack": "",
   "undo": "Visszavonás",
-  "undo.killPlayer": "{name} {sex, select, female {meghalt} male {meghalt}}",
+  "undo.killPlayer": "{name} {sex, select, female {meghalt} male {meghalt} other {}}",
   "undo.resetPlayers": "Játékosok alaphelyzetbe állítva"
 }

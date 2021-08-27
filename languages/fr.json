@@ -52,6 +52,6 @@
   "themeDialog.dark": "Mode sombre",
   "themeDialog.light": "Mode clair",
   "undo": "Annuler",
-  "undo.killPlayer": "{name} {sex, select, female {est morte} male {est mort}}",
+  "undo.killPlayer": "{name} {sex, select, female {est morte} male {est mort} other {}}",
   "undo.resetPlayers": "Les joueurs ont été réinitialisés"
 }

@@ -53,6 +53,6 @@
   "themeDialog.light": "Φως",
   "themeDialog.pureBlack": "",
   "undo": "Αναίρεση",
-  "undo.killPlayer": "{name} {sex, select, female {έχει πεθάνει} male {έχει πεθάνει}}",
+  "undo.killPlayer": "{name} {sex, select, female {έχει πεθάνει} male {έχει πεθάνει} other {}}",
   "undo.resetPlayers": "Οι παίκτες έχουν επαναφερθεί"
 }

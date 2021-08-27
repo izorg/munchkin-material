@@ -53,6 +53,6 @@
   "themeDialog.light": "Kirkas",
   "themeDialog.pureBlack": "",
   "undo": "Peruuta",
-  "undo.killPlayer": "{name} {sex,select,female{on kuollut} male{on kuollut}}",
+  "undo.killPlayer": "{name} {sex,select,female{on kuollut} male{on kuollut} other {}}",
   "undo.resetPlayers": "Pelaajat on tyhjätty"
 }

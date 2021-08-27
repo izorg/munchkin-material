@@ -53,6 +53,6 @@
   "themeDialog.light": "Hell",
   "themeDialog.pureBlack": "Reines Schwarz",
   "undo": "Rückgängig machen",
-  "undo.killPlayer": "{name} {sex, select, female {ist gestorben} male {ist gestorben}}",
+  "undo.killPlayer": "{name} {sex, select, female {ist gestorben} male {ist gestorben} other {}}",
   "undo.resetPlayers": "Die Spieler wurden zurückgesetzt"
 }

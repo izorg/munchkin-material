@@ -53,6 +53,6 @@
   "themeDialog.light": "Jasny",
   "themeDialog.pureBlack": "",
   "undo": "Cofnij",
-  "undo.killPlayer": "{name} {sex, select, female {umarła} male {umarł}}",
+  "undo.killPlayer": "{name} {sex, select, female {umarła} male {umarł} other {}}",
   "undo.resetPlayers": "Gracze zostali zresetowani"
 }

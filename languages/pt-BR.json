@@ -53,6 +53,6 @@
   "themeDialog.light": "Claro",
   "themeDialog.pureBlack": "Totalmente escuro",
   "undo": "Desfazer",
-  "undo.killPlayer": "{name} {sex, select, female {morreu} male {morreu}}",
+  "undo.killPlayer": "{name} {sex, select, female {morreu} male {morreu} other {}}",
   "undo.resetPlayers": "Jogadores resetados"
 }

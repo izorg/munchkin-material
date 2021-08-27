@@ -53,6 +53,6 @@
   "themeDialog.light": "Claro",
   "themeDialog.pureBlack": "",
   "undo": "Desfazer",
-  "undo.killPlayer": "{name} {sex,select,female{morreu} male{morreu}}",
-  "undo.resetPlayers": "{name} {sex,select,female{has died} homem {has died}}"
+  "undo.killPlayer": "{name} {sex, select, female{morreu} male{morreu}}",
+  "undo.resetPlayers": "{name} {sex, select, female{has died} homem {has died} other {}}"
 }
