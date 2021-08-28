@@ -30,7 +30,6 @@
     "core-js": "3.16.3",
     "deepmerge": "4.2.2",
     "firebase": "9.0.0",
-    "formdata-polyfill": "3.0.20",
     "framer-motion": "4.1.17",
     "history": "5.0.1",
     "mdi-material-ui": "6.22.1",
