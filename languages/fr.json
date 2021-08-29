@@ -1,5 +1,4 @@
 {
-  "RNhilS": "{count, plural, one {Le joueur a été supprimé} other {Les joueurs ont été supprimés}}",
   "button.cancel": "Annuler",
   "button.submit": "OK",
   "colorPicker.dialog.title": "Choisir la couleur",
@@ -52,6 +51,7 @@
   "themeDialog.dark": "Mode sombre",
   "themeDialog.light": "Mode clair",
   "undo": "Annuler",
+  "undo.deletePlayers": "{count, plural, one {Le joueur a été supprimé} other {Les joueurs ont été supprimés}}",
   "undo.killPlayer": "{name} {sex, select, female {est morte} male {est mort} other {}}",
   "undo.resetPlayers": "Les joueurs ont été réinitialisés"
 }

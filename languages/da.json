@@ -1,5 +1,4 @@
 {
-  "RNhilS": "{count, plural, one {Spilleren er} other {Spillere er blevet}} fjernet",
   "button.cancel": "Afbryd",
   "button.submit": "OK",
   "colorPicker.dialog.title": "Vælg farve",
@@ -53,6 +52,7 @@
   "themeDialog.light": "Lyst",
   "themeDialog.pureBlack": "",
   "undo": "Fortryd",
+  "undo.deletePlayers": "{count, plural, one {Spilleren er} other {Spillere er blevet}} fjernet",
   "undo.killPlayer": "{name} {sex, select, female {er død} male {er død} other {}}",
   "undo.resetPlayers": "Spillere er blevet nulstillet"
 }

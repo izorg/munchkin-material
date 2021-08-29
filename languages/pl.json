@@ -1,5 +1,4 @@
 {
-  "RNhilS": "{count, plural, one {Gracz został usunięty} other {Gracze zostali usunięci}}",
   "button.cancel": "Anuluj",
   "button.submit": "OK",
   "colorPicker.dialog.title": "Wybierz kolor",
@@ -53,6 +52,7 @@
   "themeDialog.light": "Jasny",
   "themeDialog.pureBlack": "",
   "undo": "Cofnij",
+  "undo.deletePlayers": "{count, plural, one {Gracz został usunięty} other {Gracze zostali usunięci}}",
   "undo.killPlayer": "{name} {sex, select, female {umarła} male {umarł} other {}}",
   "undo.resetPlayers": "Gracze zostali zresetowani"
 }

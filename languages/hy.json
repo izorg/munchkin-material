@@ -1,5 +1,4 @@
 {
-  "RNhilS": "",
   "button.cancel": "Չեղարկել",
   "button.submit": "Լավ",
   "colorPicker.dialog.title": "Ընտրեք գույնը",
@@ -52,6 +51,7 @@
   "themeDialog.dark": "Սուգ",
   "themeDialog.light": "Բաց",
   "undo": "Ետ գնալ",
+  "undo.deletePlayers": "",
   "undo.killPlayer": "{name} {sex, select, female {ն մահացավ} male {ն մահացավ} other {}}",
   "undo.resetPlayers": "Խաղացողները վերականգնվեցին"
 }

@@ -1,5 +1,4 @@
 {
-  "RNhilS": "{count, plural, one {Hráč byl odstraněn} other {Hráči byli odebráni}}",
   "button.cancel": "Zrušit",
   "button.submit": "OK",
   "colorPicker.dialog.title": "Vyberte barvu",
@@ -53,6 +52,7 @@
   "themeDialog.light": "Světlý",
   "themeDialog.pureBlack": "",
   "undo": "Zpět",
+  "undo.deletePlayers": "{count, plural, one {Hráč byl odstraněn} other {Hráči byli odebráni}}",
   "undo.killPlayer": "{name} {sex, select, female{zemřela} male{zemřel} other {}}",
   "undo.resetPlayers": "Hráči byli resetováni"
 }

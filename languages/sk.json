@@ -1,5 +1,4 @@
 {
-  "RNhilS": "",
   "button.cancel": "Zrušiť",
   "button.submit": "OK",
   "colorPicker.dialog.title": "Vyberte farbu",
@@ -52,6 +51,7 @@
   "themeDialog.dark": "Tmavý",
   "themeDialog.light": "Svetlý",
   "undo": "Späť",
+  "undo.deletePlayers": "",
   "undo.killPlayer": "{name} {sex, select, female{zomrela} male{zomrel} other {}}",
   "undo.resetPlayers": "Hráči boli resetovaní"
 }

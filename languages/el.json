@@ -1,5 +1,4 @@
 {
-  "RNhilS": "",
   "button.cancel": "Ακύρωση",
   "button.submit": "ΟΚ",
   "colorPicker.dialog.title": "Διάλεξε χρώμα",
@@ -53,6 +52,7 @@
   "themeDialog.light": "Φως",
   "themeDialog.pureBlack": "",
   "undo": "Αναίρεση",
+  "undo.deletePlayers": "",
   "undo.killPlayer": "{name} {sex, select, female {έχει πεθάνει} male {έχει πεθάνει} other {}}",
   "undo.resetPlayers": "Οι παίκτες έχουν επαναφερθεί"
 }

@@ -16,6 +16,7 @@ const useDeletePlayers = (): ((players: string[]) => void) => {
       setMessage(
         <FormattedMessage
           defaultMessage="{count, plural, one {Player has} other {Players have}} been removed"
+          id="undo.deletePlayers"
           values={{
             count: players.length,
           }}

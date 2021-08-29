@@ -1,5 +1,4 @@
 {
-  "RNhilS": "",
   "button.cancel": "Cancelar",
   "button.submit": "OK",
   "colorPicker.dialog.title": "Escolher cor",
@@ -53,6 +52,7 @@
   "themeDialog.light": "Claro",
   "themeDialog.pureBlack": "",
   "undo": "Desfazer",
+  "undo.deletePlayers": "",
   "undo.killPlayer": "{name} {sex, select, female{morreu} male{morreu}}",
   "undo.resetPlayers": "{name} {sex, select, female{has died} homem {has died} other {}}"
 }

@@ -1,13 +1,5 @@
 module.exports = {
-  plugins: [
-    "@emotion/babel-plugin",
-    [
-      "babel-plugin-react-intl",
-      {
-        idInterpolationPattern: "[sha512:contenthash:base64:6]",
-      },
-    ],
-  ],
+  plugins: ["@emotion/babel-plugin", "babel-plugin-react-intl"],
   presets: [
     "@babel/preset-env",
     [

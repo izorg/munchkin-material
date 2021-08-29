@@ -1,5 +1,4 @@
 {
-  "RNhilS": "",
   "button.cancel": "İptal",
   "button.submit": "Tamam",
   "colorPicker.dialog.title": "Renk seç",
@@ -53,6 +52,7 @@
   "themeDialog.light": "Açık",
   "themeDialog.pureBlack": "",
   "undo": "Geri al",
+  "undo.deletePlayers": "",
   "undo.killPlayer": "{name} {sex, select, female{ölen} male{ölen} other {}}",
   "undo.resetPlayers": "Oyuncular resetlendi"
 }

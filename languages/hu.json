@@ -1,5 +1,4 @@
 {
-  "RNhilS": "",
   "button.cancel": "Mégse",
   "button.submit": "OK",
   "colorPicker.dialog.title": "Szín választás",
@@ -53,6 +52,7 @@
   "themeDialog.light": "Világos",
   "themeDialog.pureBlack": "",
   "undo": "Visszavonás",
+  "undo.deletePlayers": "",
   "undo.killPlayer": "{name} {sex, select, female {meghalt} male {meghalt} other {}}",
   "undo.resetPlayers": "Játékosok alaphelyzetbe állítva"
 }
