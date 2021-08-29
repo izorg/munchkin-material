@@ -17,7 +17,8 @@ const messages = defineMessages({
   },
 
   undo: {
-    defaultMessage: "{name} {sex,select,female{has died} male{has died}}",
+    defaultMessage:
+      "{name} {sex, select, female {has died} male {has died} other {}}",
     id: "undo.killPlayer",
   },
 });

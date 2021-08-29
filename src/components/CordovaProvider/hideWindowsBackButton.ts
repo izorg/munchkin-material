@@ -1,4 +1,4 @@
-const hideWindowsBackButton = () => {
+const hideWindowsBackButton = (): void => {
   const { Windows } = window;
 
   const currentView =

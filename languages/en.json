@@ -1,5 +1,5 @@
 {
-  "8ca09": "{count, plural, one {Player has} other {Players have}} been removed",
+  "RNhilS": "{count, plural, one {Player has} other {Players have}} been removed",
   "button.cancel": "Cancel",
   "button.submit": "OK",
   "colorPicker.dialog.title": "Choose color",
@@ -39,7 +39,7 @@
   "player.list.reset": "Reset",
   "player.list.shuffle": "Shuffle players",
   "player.list.title": "Munchkins",
-  "share.text": "Simple but powerful Munchkin level counter",
+  "share.text": "Simple but powerful Level Counter for Munchkin",
   "theme": "Theme",
   "theme.name.apocalypse": "Apocalypse",
   "theme.name.booty": "Booty",
@@ -53,6 +53,6 @@
   "themeDialog.light": "Light",
   "themeDialog.pureBlack": "Pure black",
   "undo": "Undo",
-  "undo.killPlayer": "{name} {sex, select, female{has died} male{has died} other {}}",
+  "undo.killPlayer": "{name} {sex, select, female {has died} male {has died} other {}}",
   "undo.resetPlayers": "Players have been reset"
 }

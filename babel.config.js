@@ -4,7 +4,7 @@ module.exports = {
     [
       "babel-plugin-react-intl",
       {
-        idInterpolationPattern: "[contenthash:5]",
+        idInterpolationPattern: "[sha512:contenthash:base64:6]",
       },
     ],
   ],

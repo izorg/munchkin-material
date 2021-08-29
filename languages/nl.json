@@ -1,5 +1,5 @@
 {
-  "8ca09": "",
+  "RNhilS": "",
   "button.cancel": "Annuleer",
   "button.submit": "Ok",
   "colorPicker.dialog.title": "Kies een kleur",
@@ -53,6 +53,6 @@
   "themeDialog.light": "Licht",
   "themeDialog.pureBlack": "",
   "undo": "Undo",
-  "undo.killPlayer": "{name} {sex,select,female{is gestorven} male{is gestorven} other {}}",
+  "undo.killPlayer": "{name} {sex, select, female{is gestorven} male{is gestorven} other {}}",
   "undo.resetPlayers": "Spelerslijst is opgekuist"
 }

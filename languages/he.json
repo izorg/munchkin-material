@@ -1,5 +1,5 @@
 {
-  "8ca09": "",
+  "RNhilS": "",
   "button.cancel": "בטל",
   "button.submit": "אישור",
   "colorPicker.dialog.title": "בחר צבע",
@@ -53,6 +53,6 @@
   "themeDialog.light": "בהיר",
   "themeDialog.pureBlack": "",
   "undo": "בטל",
-  "undo.killPlayer": " {name} {sex,select,female{נפטרה} male{מת} other {}}",
+  "undo.killPlayer": "{name} {sex, select, female{נפטרה} male{מת} other {}}",
   "undo.resetPlayers": "השחקנים אופסו"
 }
