@@ -165,6 +165,9 @@ module.exports = {
           },
           {
             loader: "css-loader",
+            options: {
+              esModule: false,
+            },
           },
         ],
       },
