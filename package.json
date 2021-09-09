@@ -28,7 +28,7 @@
     "@reduxjs/toolkit": "1.6.1",
     "@sentry/react": "6.12.0",
     "clsx": "1.1.1",
-    "core-js": "3.17.2",
+    "core-js": "3.17.3",
     "deepmerge": "4.2.2",
     "firebase": "9.0.1",
     "framer-motion": "4.1.17",
@@ -49,7 +49,7 @@
     "stylis-plugin-rtl": "2.1.0",
     "uuid": "8.3.2",
     "whatwg-fetch": "3.6.2",
-    "workbox-window": "6.2.4"
+    "workbox-window": "6.3.0"
   },
   "devDependencies": {
     "@babel/cli": "7.15.4",
@@ -105,7 +105,7 @@
     "jest": "27.1.1",
     "lint-staged": "11.1.2",
     "playwright": "1.14.1",
-    "prettier": "2.3.2",
+    "prettier": "2.4.0",
     "react-refresh": "0.10.0",
     "stylelint": "13.13.1",
     "stylelint-config-prettier": "8.0.2",
@@ -117,6 +117,6 @@
     "webpack-bundle-analyzer": "4.4.2",
     "webpack-cli": "4.8.0",
     "webpack-dev-server": "4.1.1",
-    "workbox-webpack-plugin": "6.2.4"
+    "workbox-webpack-plugin": "6.3.0"
   }
 }
