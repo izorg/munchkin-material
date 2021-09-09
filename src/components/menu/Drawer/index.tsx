@@ -1,5 +1,5 @@
 import { ClassNames } from "@emotion/react";
-import { SwipeableDrawer, useMediaQuery, useTheme } from "@material-ui/core";
+import { SwipeableDrawer, useMediaQuery, useTheme } from "@mui/material";
 import { useLocation, useMatch, useNavigate } from "react-router-dom";
 
 import { EDIT } from "../../../routes/Home/modes";

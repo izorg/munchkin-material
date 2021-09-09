@@ -1,12 +1,12 @@
 import { css } from "@emotion/react";
+import { mdiCloseCircle } from "@mdi/js";
 import {
   IconButton,
   Paper,
   SvgIcon,
   useMediaQuery,
   useTheme,
-} from "@material-ui/core";
-import { mdiCloseCircle } from "@mdi/js";
+} from "@mui/material";
 import { motion, useAnimation, useMotionValue } from "framer-motion";
 import PropTypes from "prop-types";
 import { memo, useEffect, useRef } from "react";

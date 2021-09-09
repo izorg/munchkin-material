@@ -1,5 +1,5 @@
-import { ListItemIcon, SvgIcon } from "@material-ui/core";
 import { mdiCellphoneArrowDown, mdiInformationOutline } from "@mdi/js";
+import { ListItemIcon, SvgIcon } from "@mui/material";
 
 import { useGoBack } from "../../../../utils/location";
 import version from "../../../../utils/version";

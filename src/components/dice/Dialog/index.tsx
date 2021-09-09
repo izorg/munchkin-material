@@ -1,12 +1,5 @@
 import { css } from "@emotion/react";
 import {
-  ButtonBase,
-  Dialog,
-  DialogProps,
-  SvgIcon,
-  useTheme,
-} from "@material-ui/core";
-import {
   mdiDice1,
   mdiDice2,
   mdiDice3,
@@ -14,6 +7,13 @@ import {
   mdiDice5,
   mdiDice6,
 } from "@mdi/js";
+import {
+  ButtonBase,
+  Dialog,
+  DialogProps,
+  SvgIcon,
+  useTheme,
+} from "@mui/material";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { TransitionGroup } from "react-transition-group";

@@ -1,5 +1,5 @@
-import { ThemeOptions } from "@material-ui/core";
-import orange from "@material-ui/core/colors/orange";
+import { ThemeOptions } from "@mui/material";
+import orange from "@mui/material/colors/orange";
 import { defineMessages } from "react-intl";
 
 export const key = "apocalypse";

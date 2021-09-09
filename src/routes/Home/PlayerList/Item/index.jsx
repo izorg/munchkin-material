@@ -1,12 +1,12 @@
 import { css } from "@emotion/react";
+import { mdiDragHorizontalVariant as dragIcon } from "@mdi/js";
 import {
   IconButton,
   ListItem,
   ListItemAvatar,
   ListItemSecondaryAction,
   SvgIcon,
-} from "@material-ui/core";
-import { mdiDragHorizontalVariant as dragIcon } from "@mdi/js";
+} from "@mui/material";
 import { motion } from "framer-motion";
 import PropTypes from "prop-types";
 import { forwardRef, useCallback, useRef } from "react";

@@ -1,5 +1,5 @@
-import { darken, rgbToHex, Theme } from "@material-ui/core";
-import { dark, light } from "@material-ui/core/styles/createPalette";
+import { darken, rgbToHex, Theme } from "@mui/material";
+import { dark, light } from "@mui/material/styles/createPalette";
 import { useEffect } from "react";
 
 const useStatusBar = (theme: Theme): void => {

@@ -1,5 +1,5 @@
-import { ThemeOptions } from "@material-ui/core";
-import lightBlue from "@material-ui/core/colors/lightBlue";
+import { ThemeOptions } from "@mui/material";
+import lightBlue from "@mui/material/colors/lightBlue";
 import { defineMessages } from "react-intl";
 
 export const key = "star";

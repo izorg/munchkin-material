@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import { Theme, useFormControl, useMediaQuery } from "@material-ui/core";
+import { Theme, useFormControl, useMediaQuery } from "@mui/material";
 import PropTypes from "prop-types";
 import {
   FC,

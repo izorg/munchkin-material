@@ -5,7 +5,7 @@ import {
   DialogProps,
   DialogTitle,
   useTheme,
-} from "@material-ui/core";
+} from "@mui/material";
 import PropTypes from "prop-types";
 import type { FC } from "react";
 import { FormattedMessage } from "react-intl";

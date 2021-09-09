@@ -1,5 +1,5 @@
-import { Avatar, SvgIcon } from "@material-ui/core";
 import { mdiCheck } from "@mdi/js";
+import { Avatar, SvgIcon } from "@mui/material";
 import PropTypes from "prop-types";
 import { CSSProperties, forwardRef } from "react";
 

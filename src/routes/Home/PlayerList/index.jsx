@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import { List, Paper } from "@material-ui/core";
+import { List, Paper } from "@mui/material";
 import { motion } from "framer-motion";
 import { useCallback } from "react";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";

@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import { AppBar, Toolbar, useTheme } from "@material-ui/core";
+import { AppBar, Toolbar, useTheme } from "@mui/material";
 import PropTypes from "prop-types";
 import type { FC } from "react";
 

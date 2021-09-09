@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import { useTheme } from "@material-ui/core";
+import { useTheme } from "@mui/material";
 import PropTypes from "prop-types";
 import { lazy, Suspense, useRef } from "react";
 import { useSelector } from "react-redux";

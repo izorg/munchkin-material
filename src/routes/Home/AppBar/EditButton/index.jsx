@@ -1,5 +1,5 @@
-import { SvgIcon, Tooltip } from "@material-ui/core";
 import { mdiCheck, mdiPencil } from "@mdi/js";
+import { SvgIcon, Tooltip } from "@mui/material";
 import { useIntl } from "react-intl";
 import { useNavigate } from "react-router-dom";
 

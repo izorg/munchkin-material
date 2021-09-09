@@ -1,11 +1,6 @@
 import { css } from "@emotion/react";
-import {
-  Avatar,
-  ButtonBase,
-  ButtonBaseProps,
-  SvgIcon,
-} from "@material-ui/core";
 import { mdiCheck } from "@mdi/js";
+import { Avatar, ButtonBase, ButtonBaseProps, SvgIcon } from "@mui/material";
 import PropTypes from "prop-types";
 import { forwardRef } from "react";
 

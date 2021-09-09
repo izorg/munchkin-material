@@ -1,5 +1,5 @@
-import { SvgIcon, Tooltip } from "@material-ui/core";
 import { mdiBackupRestore } from "@mdi/js";
+import { SvgIcon, Tooltip } from "@mui/material";
 import { defineMessages, useIntl } from "react-intl";
 import { useDispatch, useSelector } from "react-redux";
 import { ActionCreators } from "redux-undo";

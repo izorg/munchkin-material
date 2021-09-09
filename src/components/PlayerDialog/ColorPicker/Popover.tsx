@@ -1,5 +1,5 @@
 import { ClassNames } from "@emotion/react";
-import { Popover, PopoverProps } from "@material-ui/core";
+import { Popover, PopoverProps } from "@mui/material";
 import PropTypes from "prop-types";
 import type { FC } from "react";
 

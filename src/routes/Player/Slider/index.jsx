@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import { useTheme } from "@material-ui/core";
+import { useTheme } from "@mui/material";
 import { motion, useAnimation } from "framer-motion";
 import PropTypes from "prop-types";
 import { useCallback, useRef } from "react";

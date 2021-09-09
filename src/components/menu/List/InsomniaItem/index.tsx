@@ -1,6 +1,6 @@
 import { css } from "@emotion/react";
-import { ListItemIcon, SvgIcon, Switch } from "@material-ui/core";
 import { mdiLightbulb, mdiLightbulbOutline } from "@mdi/js";
+import { ListItemIcon, SvgIcon, Switch } from "@mui/material";
 import { FormattedMessage } from "react-intl";
 
 import { useWakeLock } from "../../../WakeLockProvider";

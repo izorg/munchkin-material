@@ -1,5 +1,5 @@
-import { SvgIcon, SvgIconProps } from "@material-ui/core";
 import { mdiGenderFemale, mdiGenderMale } from "@mdi/js";
+import { SvgIcon, SvgIconProps } from "@mui/material";
 import { FC } from "react";
 
 import { sexProp } from "../../utils/propTypes";

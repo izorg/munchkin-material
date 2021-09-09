@@ -1,6 +1,6 @@
 import { css } from "@emotion/react";
-import { Fade, Modal, Slide, useMediaQuery, useTheme } from "@material-ui/core";
-import { TransitionProps } from "@material-ui/core/transitions/transition";
+import { Fade, Modal, Slide, useMediaQuery, useTheme } from "@mui/material";
+import type { TransitionProps } from "@mui/material/transitions";
 import PropTypes from "prop-types";
 import type { FC, PropsWithChildren } from "react";
 

@@ -1,5 +1,5 @@
-import { SvgIcon, Tooltip, useMediaQuery, useTheme } from "@material-ui/core";
 import { mdiMenu } from "@mdi/js";
+import { SvgIcon, Tooltip, useMediaQuery, useTheme } from "@mui/material";
 import { defineMessages, useIntl } from "react-intl";
 import { useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";

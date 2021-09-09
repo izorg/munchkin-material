@@ -1,12 +1,11 @@
 import { css } from "@emotion/react";
-import { SvgIcon, useTheme } from "@material-ui/core";
-import { IconButtonProps } from "@material-ui/core/IconButton/IconButton";
 import {
   mdiArrowLeft,
   mdiArrowRight,
   mdiChevronLeft,
   mdiChevronRight,
 } from "@mdi/js";
+import { IconButtonProps, SvgIcon, useTheme } from "@mui/material";
 
 import { ios } from "../../utils/platforms";
 import TopIconButton from "../TopIconButton";

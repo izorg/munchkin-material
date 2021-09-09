@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import { ListItemText, ListItemTextProps } from "@material-ui/core";
+import { ListItemText, ListItemTextProps } from "@mui/material";
 
 const MenuListItemText = (props: ListItemTextProps): JSX.Element => (
   <ListItemText

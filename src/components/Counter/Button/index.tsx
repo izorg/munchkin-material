@@ -1,5 +1,4 @@
-import { IconButton } from "@material-ui/core";
-import { IconButtonProps } from "@material-ui/core/IconButton/IconButton";
+import { IconButton, IconButtonProps } from "@mui/material";
 import { motion, TapInfo } from "framer-motion";
 import PropTypes from "prop-types";
 import { FC, KeyboardEvent, useCallback, useEffect, useRef } from "react";

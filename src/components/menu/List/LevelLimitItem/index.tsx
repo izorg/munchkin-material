@@ -1,6 +1,6 @@
 import { css } from "@emotion/react";
-import { ListItemIcon, SvgIcon } from "@material-ui/core";
 import { mdiSwapVertical } from "@mdi/js";
+import { ListItemIcon, SvgIcon } from "@mui/material";
 import { useIntl } from "react-intl";
 import { useLocation, useNavigate } from "react-router-dom";
 

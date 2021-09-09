@@ -6,7 +6,7 @@ import {
   SnackbarCloseReason,
   useMediaQuery,
   useTheme,
-} from "@material-ui/core";
+} from "@mui/material";
 import { SyntheticEvent, useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { useDispatch, useSelector } from "react-redux";

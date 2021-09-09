@@ -1,5 +1,5 @@
 import { ClassNames } from "@emotion/react";
-import { useTheme } from "@material-ui/core";
+import { useTheme } from "@mui/material";
 import { CSSTransition } from "react-transition-group";
 import type { CSSTransitionProps } from "react-transition-group/CSSTransition";
 

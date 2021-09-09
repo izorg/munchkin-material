@@ -1,5 +1,5 @@
-import { SvgIcon, Tooltip } from "@material-ui/core";
 import { mdiSkull } from "@mdi/js";
+import { SvgIcon, Tooltip } from "@mui/material";
 import PropTypes from "prop-types";
 import { defineMessages, useIntl } from "react-intl";
 import { useDispatch, useSelector } from "react-redux";

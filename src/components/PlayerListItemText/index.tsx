@@ -1,6 +1,6 @@
 import { ClassNames, css } from "@emotion/react";
-import { ListItemText, SvgIcon, useTheme } from "@material-ui/core";
 import { mdiChevronUp as levelIcon, mdiSword as strengthIcon } from "@mdi/js";
+import { ListItemText, SvgIcon, useTheme } from "@mui/material";
 import type { FC } from "react";
 
 import { playerShape } from "../../utils/propTypes";

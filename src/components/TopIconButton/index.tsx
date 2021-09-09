@@ -4,7 +4,7 @@ import {
   IconButtonProps,
   useMediaQuery,
   useTheme,
-} from "@material-ui/core";
+} from "@mui/material";
 import PropTypes from "prop-types";
 import { forwardRef } from "react";
 

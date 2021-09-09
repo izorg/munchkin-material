@@ -1,4 +1,5 @@
 import { ClassNames, css } from "@emotion/react";
+import { mdiDelete, mdiGenderFemale, mdiGenderMale } from "@mdi/js";
 import {
   Dialog,
   DialogActions,
@@ -18,8 +19,7 @@ import {
   Typography,
   useMediaQuery,
   useTheme,
-} from "@material-ui/core";
-import { mdiDelete, mdiGenderFemale, mdiGenderMale } from "@mdi/js";
+} from "@mui/material";
 import { FormEvent, useEffect, useMemo, useRef } from "react";
 import { defineMessages, FormattedMessage, useIntl } from "react-intl";
 import { useDispatch } from "react-redux";

@@ -1,5 +1,5 @@
-import { ListItemIcon, SvgIcon } from "@material-ui/core";
 import { mdiTranslate } from "@mdi/js";
+import { ListItemIcon, SvgIcon } from "@mui/material";
 import { FormattedMessage } from "react-intl";
 
 import ListItem from "../Item";

@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import { useTheme } from "@material-ui/core";
+import { useTheme } from "@mui/material";
 import type { HTMLAttributes, PropsWithChildren } from "react";
 import { useIntl } from "react-intl";
 

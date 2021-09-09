@@ -1,5 +1,5 @@
-import { SvgIcon } from "@material-ui/core";
 import { mdiSwordCross } from "@mdi/js";
+import { SvgIcon } from "@mui/material";
 import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";

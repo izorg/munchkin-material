@@ -1,5 +1,5 @@
-import { ThemeOptions } from "@material-ui/core";
-import red from "@material-ui/core/colors/red";
+import { ThemeOptions } from "@mui/material";
+import red from "@mui/material/colors/red";
 import { defineMessages } from "react-intl";
 
 export const key = "booty";

@@ -1,4 +1,5 @@
 import { css } from "@emotion/react";
+import { mdiAccountPlus, mdiEmoticonDevilOutline } from "@mdi/js";
 import {
   Backdrop,
   SpeedDial,
@@ -6,8 +7,7 @@ import {
   SpeedDialIcon,
   SvgIcon,
   useTheme,
-} from "@material-ui/core";
-import { mdiAccountPlus, mdiEmoticonDevilOutline } from "@mdi/js";
+} from "@mui/material";
 import { memo, MouseEvent } from "react";
 import { FormattedMessage } from "react-intl";
 import { useDispatch } from "react-redux";

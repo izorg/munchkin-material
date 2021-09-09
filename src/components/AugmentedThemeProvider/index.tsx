@@ -4,7 +4,7 @@ import {
   PaletteMode,
   ThemeProvider,
   useMediaQuery,
-} from "@material-ui/core";
+} from "@mui/material";
 import deepmerge from "deepmerge";
 import PropTypes from "prop-types";
 import { FC, useEffect, useMemo } from "react";

@@ -1,7 +1,7 @@
-import { ThemeOptions } from "@material-ui/core";
-import common from "@material-ui/core/colors/common";
-import grey from "@material-ui/core/colors/grey";
-import { light } from "@material-ui/core/styles/createPalette";
+import { ThemeOptions } from "@mui/material";
+import common from "@mui/material/colors/common";
+import grey from "@mui/material/colors/grey";
+import { light } from "@mui/material/styles/createPalette";
 import { defineMessages } from "react-intl";
 
 export const key = "legends";

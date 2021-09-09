@@ -1,4 +1,4 @@
-import { List, Paper } from "@material-ui/core";
+import { List, Paper } from "@mui/material";
 import PropTypes from "prop-types";
 import { useSelector } from "react-redux";
 

@@ -1,5 +1,5 @@
-import { SvgIcon } from "@material-ui/core";
 import { mdiClose, mdiDelete, mdiFlagCheckered } from "@mdi/js";
+import { SvgIcon } from "@mui/material";
 import PropTypes from "prop-types";
 import { FormattedMessage } from "react-intl";
 import { useDispatch, useSelector } from "react-redux";

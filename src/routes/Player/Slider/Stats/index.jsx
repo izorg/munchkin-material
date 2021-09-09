@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import { IconButton, useTheme } from "@material-ui/core";
+import { IconButton, useTheme } from "@mui/material";
 import PropTypes from "prop-types";
 import { useCallback } from "react";
 import { useIntl } from "react-intl";

@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import { ListItem, ListItemProps, useTheme } from "@material-ui/core";
+import { ListItem, ListItemProps, useTheme } from "@mui/material";
 import type { ElementType } from "react";
 
 import usePresentSelector from "../../../../utils/usePresentSelector";

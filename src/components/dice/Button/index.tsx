@@ -1,6 +1,5 @@
-import { SvgIcon, Tooltip } from "@material-ui/core";
-import { IconButtonProps } from "@material-ui/core/IconButton/IconButton";
 import { mdiDiceMultiple } from "@mdi/js";
+import { IconButtonProps, SvgIcon, Tooltip } from "@mui/material";
 import { defineMessages, useIntl } from "react-intl";
 import { useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";

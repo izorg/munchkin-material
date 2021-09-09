@@ -1,4 +1,4 @@
-import { ListItemAvatar, ListItemButton } from "@material-ui/core";
+import { ListItemAvatar, ListItemButton } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 import PlayerAvatar from "../../../../components/PlayerAvatar";

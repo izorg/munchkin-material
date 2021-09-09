@@ -7,7 +7,7 @@ import {
   FormControlLabel,
   Radio,
   RadioGroup,
-} from "@material-ui/core";
+} from "@mui/material";
 import { ChangeEvent, FormEvent, useState } from "react";
 import { useIntl } from "react-intl";
 import { useDispatch } from "react-redux";

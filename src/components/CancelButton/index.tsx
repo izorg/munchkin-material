@@ -1,4 +1,4 @@
-import { Button, ButtonProps } from "@material-ui/core";
+import { Button, ButtonProps } from "@mui/material";
 import { FormattedMessage } from "react-intl";
 
 const CancelButton = (props: ButtonProps): JSX.Element => <Button {...props} />;

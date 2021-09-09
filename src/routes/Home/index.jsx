@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import { Paper, useTheme, Zoom } from "@material-ui/core";
+import { Paper, useTheme, Zoom } from "@mui/material";
 import { lazy, Suspense } from "react";
 import { useSelector } from "react-redux";
 import { useMatch } from "react-router-dom";

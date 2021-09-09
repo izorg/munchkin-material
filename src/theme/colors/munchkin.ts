@@ -1,5 +1,5 @@
-import { ThemeOptions } from "@material-ui/core";
-import brown from "@material-ui/core/colors/brown";
+import { ThemeOptions } from "@mui/material";
+import brown from "@mui/material/colors/brown";
 import { defineMessages } from "react-intl";
 
 export const key = "munchkin";

@@ -1,5 +1,5 @@
-import { SvgIcon } from "@material-ui/core";
 import { mdiCheck, mdiDelete } from "@mdi/js";
+import { SvgIcon } from "@mui/material";
 import PropTypes from "prop-types";
 import type { FC, ReactNode } from "react";
 

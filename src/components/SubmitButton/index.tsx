@@ -1,4 +1,4 @@
-import { Button, ButtonProps } from "@material-ui/core";
+import { Button, ButtonProps } from "@mui/material";
 import { FormattedMessage } from "react-intl";
 
 const SubmitButton = (props: ButtonProps): JSX.Element => <Button {...props} />;

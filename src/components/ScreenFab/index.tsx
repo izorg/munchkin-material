@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import { Fab, FabProps, useTheme } from "@material-ui/core";
+import { Fab, FabProps, useTheme } from "@mui/material";
 import { forwardRef } from "react";
 
 const displayName = "ScreenFab";

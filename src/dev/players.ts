@@ -1,4 +1,4 @@
-import { cyan, green, orange, yellow } from "@material-ui/core/colors";
+import { cyan, green, orange, yellow } from "@mui/material/colors";
 
 import { CS, EN, HE, RU, UK } from "../i18n";
 import createPlayer from "../utils/createPlayer";

@@ -1,6 +1,6 @@
 import { css } from "@emotion/react";
-import { SvgIcon, useTheme } from "@material-ui/core";
 import { mdiMenuDown, mdiMenuUp } from "@mdi/js";
+import { SvgIcon, useTheme } from "@mui/material";
 import PropTypes from "prop-types";
 
 import CounterButton from "../../../components/Counter/Button";
