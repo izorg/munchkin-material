@@ -1,12 +1,12 @@
 import { css } from "@emotion/react";
-import { useTheme } from "@material-ui/core";
+import { SvgIcon, useTheme } from "@material-ui/core";
 import { IconButtonProps } from "@material-ui/core/IconButton/IconButton";
 import {
-  ArrowLeft,
-  ArrowRight,
-  ChevronLeft,
-  ChevronRight,
-} from "mdi-material-ui";
+  mdiArrowLeft,
+  mdiArrowRight,
+  mdiChevronLeft,
+  mdiChevronRight,
+} from "@mdi/js";
 
 import { ios } from "../../utils/platforms";
 import TopIconButton from "../TopIconButton";
@@ -17,17 +17,21 @@ const BackButton = (props: IconButtonProps): JSX.Element => {
   let icon;
 
   if (ios) {
-    const Icon = direction === "rtl" ? ChevronRight : ChevronLeft;
-
     icon = (
-      <Icon
+      <SvgIcon
         css={css`
           transform: scale(1.5);
         `}
-      />
+      >
+        <path d={direction === "rtl" ? mdiChevronRight : mdiChevronLeft} />
+      </SvgIcon>
     );
   } else {
-    icon = direction === "rtl" ? <ArrowRight /> : <ArrowLeft />;
+    icon = (
+      <SvgIcon>
+        <path d={direction === "rtl" ? mdiArrowRight : mdiArrowLeft} />
+      </SvgIcon>
+    );
   }
 
   return (

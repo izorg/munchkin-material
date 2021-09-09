@@ -1,6 +1,6 @@
 import { css } from "@emotion/react";
-import { ListItemIcon, Switch } from "@material-ui/core";
-import { Lightbulb, LightbulbOutline } from "mdi-material-ui";
+import { ListItemIcon, SvgIcon, Switch } from "@material-ui/core";
+import { mdiLightbulb, mdiLightbulbOutline } from "@mdi/js";
 import { FormattedMessage } from "react-intl";
 
 import { useWakeLock } from "../../../WakeLockProvider";
@@ -24,7 +24,9 @@ const InsomniaItem = (): JSX.Element | null => {
       onClick={() => setWakeLock(!wakeLock)}
     >
       <ListItemIcon>
-        {wakeLock ? <Lightbulb /> : <LightbulbOutline />}
+        <SvgIcon>
+          <path d={wakeLock ? mdiLightbulb : mdiLightbulbOutline} />
+        </SvgIcon>
       </ListItemIcon>
       <ListItemText
         primary={

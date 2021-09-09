@@ -1,5 +1,5 @@
-import { ListItemIcon } from "@material-ui/core";
-import { ShareVariant } from "mdi-material-ui";
+import { ListItemIcon, SvgIcon } from "@material-ui/core";
+import { mdiShareVariant } from "@mdi/js";
 import { defineMessages, useIntl } from "react-intl";
 
 import { useGoBack } from "../../../../utils/location";
@@ -55,7 +55,9 @@ const ShareItem = (): JSX.Element | null => {
   return (
     <ListItem button onClick={onClick}>
       <ListItemIcon>
-        <ShareVariant />
+        <SvgIcon>
+          <path d={mdiShareVariant} />
+        </SvgIcon>
       </ListItemIcon>
       <ListItemText primary={intl.formatMessage(messages.share)} />
     </ListItem>

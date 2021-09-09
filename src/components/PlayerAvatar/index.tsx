@@ -1,5 +1,5 @@
-import { Avatar } from "@material-ui/core";
-import { Check } from "mdi-material-ui";
+import { Avatar, SvgIcon } from "@material-ui/core";
+import { mdiCheck } from "@mdi/js";
 import PropTypes from "prop-types";
 import { CSSProperties, forwardRef } from "react";
 
@@ -26,7 +26,13 @@ const PlayerAvatar = forwardRef<HTMLDivElement, PlayerAvatarProps>(
 
     return (
       <Avatar ref={ref} style={style} {...props}>
-        {selected ? <Check /> : Array.from(name)[0].toUpperCase()}
+        {selected ? (
+          <SvgIcon>
+            <path d={mdiCheck} />
+          </SvgIcon>
+        ) : (
+          Array.from(name)[0].toUpperCase()
+        )}
       </Avatar>
     );
   }

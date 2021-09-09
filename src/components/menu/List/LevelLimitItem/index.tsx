@@ -1,6 +1,6 @@
 import { css } from "@emotion/react";
-import { ListItemIcon } from "@material-ui/core";
-import { SwapVertical } from "mdi-material-ui";
+import { ListItemIcon, SvgIcon } from "@material-ui/core";
+import { mdiSwapVertical } from "@mdi/js";
 import { useIntl } from "react-intl";
 import { useLocation, useNavigate } from "react-router-dom";
 
@@ -68,7 +68,9 @@ const LevelLimitItem = (): JSX.Element => {
       onClick={onClick}
     >
       <ListItemIcon>
-        <SwapVertical />
+        <SvgIcon>
+          <path d={mdiSwapVertical} />
+        </SvgIcon>
       </ListItemIcon>
       <ListItemText
         primary={intl.formatMessage(levelLimitMessages.label)}

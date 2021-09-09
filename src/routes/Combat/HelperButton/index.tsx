@@ -4,9 +4,10 @@ import {
   SpeedDial,
   SpeedDialAction,
   SpeedDialIcon,
+  SvgIcon,
   useTheme,
 } from "@material-ui/core";
-import { AccountPlus, EmoticonDevilOutline } from "mdi-material-ui";
+import { mdiAccountPlus, mdiEmoticonDevilOutline } from "@mdi/js";
 import { memo, MouseEvent } from "react";
 import { FormattedMessage } from "react-intl";
 import { useDispatch } from "react-redux";
@@ -83,7 +84,15 @@ const CombatHelperButton = () => {
         FabProps={{
           color: open ? "default" : "primary",
         }}
-        icon={helper ? <SpeedDialIcon /> : <EmoticonDevilOutline />}
+        icon={
+          helper ? (
+            <SpeedDialIcon />
+          ) : (
+            <SvgIcon>
+              <path d={mdiEmoticonDevilOutline} />
+            </SvgIcon>
+          )
+        }
         onClick={() => {
           if (open) {
             onBack();
@@ -102,7 +111,11 @@ const CombatHelperButton = () => {
           FabProps={{
             color: "primary",
           }}
-          icon={<EmoticonDevilOutline />}
+          icon={
+            <SvgIcon>
+              <path d={mdiEmoticonDevilOutline} />
+            </SvgIcon>
+          }
           onClick={(event) => {
             event.stopPropagation();
             onMonsterAdd();
@@ -119,7 +132,11 @@ const CombatHelperButton = () => {
           FabProps={{
             color: "primary",
           }}
-          icon={<AccountPlus />}
+          icon={
+            <SvgIcon>
+              <path d={mdiAccountPlus} />
+            </SvgIcon>
+          }
           onClick={onHelperClick}
           tooltipTitle={
             <FormattedMessage defaultMessage="Helper" id="combat.add.helper" />

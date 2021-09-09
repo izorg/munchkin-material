@@ -1,4 +1,5 @@
-import { Check, Delete } from "mdi-material-ui";
+import { SvgIcon } from "@material-ui/core";
+import { mdiCheck, mdiDelete } from "@mdi/js";
 import PropTypes from "prop-types";
 import type { FC, ReactNode } from "react";
 
@@ -25,12 +26,16 @@ const PlayerDialogAppBar: FC<PlayerDialogAppBarProps> = ({
 
     {onDelete && (
       <TopIconButton edge="end" onClick={onDelete}>
-        <Delete />
+        <SvgIcon>
+          <path d={mdiDelete} />
+        </SvgIcon>
       </TopIconButton>
     )}
 
     <TopIconButton edge="end" type="submit">
-      <Check />
+      <SvgIcon>
+        <path d={mdiCheck} />
+      </SvgIcon>
     </TopIconButton>
   </TopAppBar>
 );

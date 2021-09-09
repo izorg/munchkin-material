@@ -1,5 +1,5 @@
-import { ListItemIcon } from "@material-ui/core";
-import { ShieldAccount } from "mdi-material-ui";
+import { ListItemIcon, SvgIcon } from "@material-ui/core";
+import { mdiShieldAccount } from "@mdi/js";
 import { FormattedMessage } from "react-intl";
 
 import ListItem from "../Item";
@@ -19,7 +19,9 @@ const PrivacyItem = (): JSX.Element | null => {
       target="_blank"
     >
       <ListItemIcon>
-        <ShieldAccount />
+        <SvgIcon>
+          <path d={mdiShieldAccount} />
+        </SvgIcon>
       </ListItemIcon>
       <ListItemText
         primary={

@@ -1,6 +1,6 @@
 import { css } from "@emotion/react";
-import { useTheme } from "@material-ui/core";
-import { MenuDown, MenuUp } from "mdi-material-ui";
+import { SvgIcon, useTheme } from "@material-ui/core";
+import { mdiMenuDown, mdiMenuUp } from "@mdi/js";
 import PropTypes from "prop-types";
 
 import CounterButton from "../../../components/Counter/Button";
@@ -81,7 +81,9 @@ const CombatCounter = ({
           disabled={decrementDisabled}
           onClick={onDecrement}
         >
-          <MenuDown css={iconCss} />
+          <SvgIcon css={iconCss}>
+            <path d={mdiMenuDown} />
+          </SvgIcon>
         </CounterButton>
 
         <CounterButton
@@ -89,7 +91,9 @@ const CombatCounter = ({
           disabled={incrementDisabled}
           onClick={onIncrement}
         >
-          <MenuUp css={iconCss} />
+          <SvgIcon css={iconCss}>
+            <path d={mdiMenuUp} />
+          </SvgIcon>
         </CounterButton>
       </div>
     </div>

@@ -4,9 +4,10 @@ import {
   ListItem,
   ListItemAvatar,
   ListItemSecondaryAction,
+  SvgIcon,
 } from "@material-ui/core";
+import { mdiDragHorizontalVariant as dragIcon } from "@mdi/js";
 import { motion } from "framer-motion";
-import { DragHorizontalVariant as DragIcon } from "mdi-material-ui";
 import PropTypes from "prop-types";
 import { forwardRef, useCallback, useRef } from "react";
 import { useDispatch } from "react-redux";
@@ -214,7 +215,9 @@ const HomePlayerListItem = forwardRef(
               edge="end"
               {...dragHandleProps}
             >
-              <DragIcon />
+              <SvgIcon>
+                <path d={dragIcon} />
+              </SvgIcon>
             </IconButton>
           </ListItemSecondaryAction>
         )}

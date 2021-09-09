@@ -1,5 +1,5 @@
-import { Tooltip, useMediaQuery, useTheme } from "@material-ui/core";
-import { Menu } from "mdi-material-ui";
+import { SvgIcon, Tooltip, useMediaQuery, useTheme } from "@material-ui/core";
+import { mdiMenu } from "@mdi/js";
 import { defineMessages, useIntl } from "react-intl";
 import { useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -41,7 +41,9 @@ const MenuButton = (props) => {
   return (
     <Tooltip title={intl.formatMessage(messages.menu)}>
       <TopIconButton data-screenshots="menu" onClick={onClick} {...props}>
-        <Menu />
+        <SvgIcon>
+          <path d={mdiMenu} />
+        </SvgIcon>
       </TopIconButton>
     </Tooltip>
   );

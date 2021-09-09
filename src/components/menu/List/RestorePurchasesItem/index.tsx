@@ -1,5 +1,5 @@
-import { ListItemIcon } from "@material-ui/core";
-import { CloudDownloadOutline } from "mdi-material-ui";
+import { ListItemIcon, SvgIcon } from "@material-ui/core";
+import { mdiCloudDownloadOutline } from "@mdi/js";
 import { FormattedMessage } from "react-intl";
 
 import { useFullVersion } from "../../../FullVersionProvider";
@@ -18,7 +18,9 @@ const RestorePurchasesItem = (): JSX.Element | null => {
   return (
     <ListItem button onClick={() => store?.refresh()}>
       <ListItemIcon>
-        <CloudDownloadOutline />
+        <SvgIcon>
+          <path d={mdiCloudDownloadOutline} />
+        </SvgIcon>
       </ListItemIcon>
       <ListItemText
         primary={

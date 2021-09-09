@@ -1,6 +1,6 @@
 import { ClassNames, css } from "@emotion/react";
-import { ListItemText, useTheme } from "@material-ui/core";
-import { ChevronUp as LevelIcon, Sword as StrengthIcon } from "mdi-material-ui";
+import { ListItemText, SvgIcon, useTheme } from "@material-ui/core";
+import { mdiChevronUp as levelIcon, mdiSword as strengthIcon } from "@mdi/js";
 import type { FC } from "react";
 
 import { playerShape } from "../../utils/propTypes";
@@ -76,12 +76,16 @@ const PlayerListItemText: FC<PlayerListItemTextProps> = ({ player }) => {
           >
             <span css={levelCss}>
               {player.level}
-              <LevelIcon />
+              <SvgIcon>
+                <path d={levelIcon} />
+              </SvgIcon>
             </span>
 
             <span css={strengthCss}>
               {player.level + player.gear}
-              <StrengthIcon css={strengthIconCss} />
+              <SvgIcon css={strengthIconCss}>
+                <path d={strengthIcon} />
+              </SvgIcon>
             </span>
           </ListItemText>
         </>

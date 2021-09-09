@@ -1,9 +1,9 @@
 import { css } from "@emotion/react";
-import { useTheme } from "@material-ui/core";
+import { SvgIcon, useTheme } from "@material-ui/core";
 import {
-  MenuDown as DecrementIcon,
-  MenuUp as IncrementIcon,
-} from "mdi-material-ui";
+  mdiMenuDown as decrementIcon,
+  mdiMenuUp as incrementIcon,
+} from "@mdi/js";
 import PropTypes from "prop-types";
 import type { FC, HTMLAttributes, ReactNode } from "react";
 import { defineMessages } from "react-intl";
@@ -98,11 +98,13 @@ const Counter: FC<CounterProps> = ({
           disabled={decrementDisabled}
           onClick={onDecrement}
         >
-          <DecrementIcon
+          <SvgIcon
             css={css`
               font-size: inherit;
             `}
-          />
+          >
+            <path d={decrementIcon} />
+          </SvgIcon>
         </Button>
 
         <Button
@@ -114,11 +116,13 @@ const Counter: FC<CounterProps> = ({
           disabled={incrementDisabled}
           onClick={onIncrement}
         >
-          <IncrementIcon
+          <SvgIcon
             css={css`
               font-size: inherit;
             `}
-          />
+          >
+            <path d={incrementIcon} />
+          </SvgIcon>
         </Button>
       </div>
     </div>

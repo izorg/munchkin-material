@@ -1,6 +1,19 @@
 import { css } from "@emotion/react";
-import { ButtonBase, Dialog, DialogProps, useTheme } from "@material-ui/core";
-import { Dice1, Dice2, Dice3, Dice4, Dice5, Dice6 } from "mdi-material-ui";
+import {
+  ButtonBase,
+  Dialog,
+  DialogProps,
+  SvgIcon,
+  useTheme,
+} from "@material-ui/core";
+import {
+  mdiDice1,
+  mdiDice2,
+  mdiDice3,
+  mdiDice4,
+  mdiDice5,
+  mdiDice6,
+} from "@mdi/js";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { TransitionGroup } from "react-transition-group";
@@ -12,13 +25,13 @@ import DiceTransition from "../Transition";
 
 const diceSize = 120;
 
-const diceComponent = {
-  1: Dice1,
-  2: Dice2,
-  3: Dice3,
-  4: Dice4,
-  5: Dice5,
-  6: Dice6,
+const diceIcons = {
+  1: mdiDice1,
+  2: mdiDice2,
+  3: mdiDice3,
+  4: mdiDice4,
+  5: mdiDice5,
+  6: mdiDice6,
 };
 
 const DiceDialog = (props: Partial<DialogProps>): JSX.Element | null => {
@@ -35,7 +48,7 @@ const DiceDialog = (props: Partial<DialogProps>): JSX.Element | null => {
     return null;
   }
 
-  const Dice = diceComponent[dice];
+  const diceIcon = diceIcons[dice];
 
   const onDiceClick = () => {
     dispatch(throwDice());
@@ -72,12 +85,14 @@ const DiceDialog = (props: Partial<DialogProps>): JSX.Element | null => {
               width: 100%;
             `}
           >
-            <Dice
+            <SvgIcon
               css={css`
                 display: block;
                 font-size: inherit;
               `}
-            />
+            >
+              <path d={diceIcon} />
+            </SvgIcon>
           </span>
         </DiceTransition>
       </TransitionGroup>

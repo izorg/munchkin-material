@@ -1,5 +1,5 @@
-import { Tooltip } from "@material-ui/core";
-import { Shuffle } from "mdi-material-ui";
+import { SvgIcon, Tooltip } from "@material-ui/core";
+import { mdiShuffle } from "@mdi/js";
 import { defineMessages, useIntl } from "react-intl";
 import { useDispatch } from "react-redux";
 
@@ -22,7 +22,9 @@ const ShuffleButton = (props) => {
   return (
     <Tooltip title={intl.formatMessage(messages.shuffle)}>
       <TopIconButton onClick={() => dispatch(shufflePlayers())} {...props}>
-        <Shuffle />
+        <SvgIcon>
+          <path d={mdiShuffle} />
+        </SvgIcon>
       </TopIconButton>
     </Tooltip>
   );

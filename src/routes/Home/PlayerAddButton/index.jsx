@@ -1,4 +1,5 @@
-import { Plus } from "mdi-material-ui";
+import { SvgIcon } from "@material-ui/core";
+import { mdiPlus } from "@mdi/js";
 import { forwardRef } from "react";
 import { defineMessages, useIntl } from "react-intl";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -39,7 +40,9 @@ const PlayerAddButton = forwardRef((props, ref) => {
       onClick={onClick}
       {...props}
     >
-      <Plus />
+      <SvgIcon>
+        <path d={mdiPlus} />
+      </SvgIcon>
     </ScreenFab>
   );
 });

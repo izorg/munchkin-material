@@ -1,5 +1,5 @@
-import { SvgIconProps } from "@material-ui/core";
-import { GenderFemale, GenderMale } from "mdi-material-ui";
+import { SvgIcon, SvgIconProps } from "@material-ui/core";
+import { mdiGenderFemale, mdiGenderMale } from "@mdi/js";
 import { FC } from "react";
 
 import { sexProp } from "../../utils/propTypes";
@@ -12,10 +12,18 @@ type SexProps = SvgIconProps & {
 const SexIcon: FC<SexProps> = ({ sex, ...props }) => {
   switch (sex) {
     case Sex.Female:
-      return <GenderFemale {...props} />;
+      return (
+        <SvgIcon {...props}>
+          <path d={mdiGenderFemale} />
+        </SvgIcon>
+      );
 
     case Sex.Male:
-      return <GenderMale {...props} />;
+      return (
+        <SvgIcon {...props}>
+          <path d={mdiGenderMale} />
+        </SvgIcon>
+      );
 
     default:
       return null;

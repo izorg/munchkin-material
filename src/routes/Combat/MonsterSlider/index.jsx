@@ -1,7 +1,13 @@
 import { css } from "@emotion/react";
-import { IconButton, Paper, useMediaQuery, useTheme } from "@material-ui/core";
+import {
+  IconButton,
+  Paper,
+  SvgIcon,
+  useMediaQuery,
+  useTheme,
+} from "@material-ui/core";
+import { mdiCloseCircle } from "@mdi/js";
 import { motion, useAnimation, useMotionValue } from "framer-motion";
-import { CloseCircle } from "mdi-material-ui";
 import PropTypes from "prop-types";
 import { memo, useEffect, useRef } from "react";
 import { FormattedMessage } from "react-intl";
@@ -258,7 +264,9 @@ const CombatMonsterSlider = ({ className }) => {
                   `}
                   onClick={() => handleRemove(id)}
                 >
-                  <CloseCircle />
+                  <SvgIcon>
+                    <path d={mdiCloseCircle} />
+                  </SvgIcon>
                 </IconButton>
               )}
             </Paper>

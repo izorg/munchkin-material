@@ -1,6 +1,6 @@
 import { css } from "@emotion/react";
-import { Typography, useTheme } from "@material-ui/core";
-import { AccountCircle } from "mdi-material-ui";
+import { SvgIcon, Typography, useTheme } from "@material-ui/core";
+import { mdiAccountCircle } from "@mdi/js";
 import { FormattedMessage } from "react-intl";
 
 const Nobody = (): JSX.Element => {
@@ -18,14 +18,16 @@ const Nobody = (): JSX.Element => {
         justify-content: center;
       `}
     >
-      <AccountCircle
+      <SvgIcon
         css={css`
           height: 96px;
           margin-bottom: ${theme.spacing(2)};
           opacity: 0.2;
           width: 96px;
         `}
-      />
+      >
+        <path d={mdiAccountCircle} />
+      </SvgIcon>
       <Typography align="center" component="div" variant="subtitle1">
         <FormattedMessage
           defaultMessage="No players in the list"

@@ -1,6 +1,6 @@
-import { Tooltip } from "@material-ui/core";
+import { SvgIcon, Tooltip } from "@material-ui/core";
 import { IconButtonProps } from "@material-ui/core/IconButton/IconButton";
-import { DiceMultiple } from "mdi-material-ui";
+import { mdiDiceMultiple } from "@mdi/js";
 import { defineMessages, useIntl } from "react-intl";
 import { useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -35,7 +35,9 @@ const DiceIconButton = (
   return (
     <Tooltip title={intl.formatMessage(messages.dice)}>
       <TopIconButton {...props} onClick={onClick}>
-        <DiceMultiple />
+        <SvgIcon>
+          <path d={mdiDiceMultiple} />
+        </SvgIcon>
       </TopIconButton>
     </Tooltip>
   );

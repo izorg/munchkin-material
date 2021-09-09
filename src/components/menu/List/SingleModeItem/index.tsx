@@ -1,6 +1,6 @@
 import { css } from "@emotion/react";
-import { ListItemIcon, Switch } from "@material-ui/core";
-import { Account, AccountMultiple } from "mdi-material-ui";
+import { ListItemIcon, SvgIcon, Switch } from "@material-ui/core";
+import { mdiAccount, mdiAccountMultiple } from "@mdi/js";
 import { FormattedMessage } from "react-intl";
 import { useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
@@ -52,7 +52,9 @@ const SingleModeItem = (): JSX.Element => {
       onClick={() => onChange(!singleMode)}
     >
       <ListItemIcon>
-        {singleMode ? <Account /> : <AccountMultiple />}
+        <SvgIcon>
+          <path d={singleMode ? mdiAccount : mdiAccountMultiple} />
+        </SvgIcon>
       </ListItemIcon>
       <ListItemText
         primary={

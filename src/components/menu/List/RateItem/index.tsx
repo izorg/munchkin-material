@@ -1,5 +1,5 @@
-import { ListItemIcon } from "@material-ui/core";
-import { Star } from "mdi-material-ui";
+import { ListItemIcon, SvgIcon } from "@material-ui/core";
+import { mdiStar } from "@mdi/js";
 import { FormattedMessage } from "react-intl";
 
 import { useGoBack } from "../../../../utils/location";
@@ -39,7 +39,9 @@ const RateItem = (): JSX.Element | null => {
       target="_blank"
     >
       <ListItemIcon>
-        <Star />
+        <SvgIcon>
+          <path d={mdiStar} />
+        </SvgIcon>
       </ListItemIcon>
       <ListItemText
         primary={

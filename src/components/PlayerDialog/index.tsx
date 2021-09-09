@@ -13,12 +13,13 @@ import {
   Radio,
   RadioGroup,
   Slide,
+  SvgIcon,
   TextField,
   Typography,
   useMediaQuery,
   useTheme,
 } from "@material-ui/core";
-import { Delete, GenderFemale, GenderMale } from "mdi-material-ui";
+import { mdiDelete, mdiGenderFemale, mdiGenderMale } from "@mdi/js";
 import { FormEvent, useEffect, useMemo, useRef } from "react";
 import { defineMessages, FormattedMessage, useIntl } from "react-intl";
 import { useDispatch } from "react-redux";
@@ -249,7 +250,9 @@ const PlayerDialog = (): JSX.Element => {
                     edge="end"
                     onClick={handleDelete}
                   >
-                    <Delete />
+                    <SvgIcon>
+                      <path d={mdiDelete} />
+                    </SvgIcon>
                   </IconButton>
                 )}
               </>
@@ -278,12 +281,20 @@ const PlayerDialog = (): JSX.Element => {
                   <RadioGroup defaultValue={editPlayer?.sex || MALE} name="sex">
                     <FormControlLabel
                       control={<Radio color="primary" />}
-                      label={<GenderMale css={iconCss} />}
+                      label={
+                        <SvgIcon css={iconCss}>
+                          <path d={mdiGenderMale} />
+                        </SvgIcon>
+                      }
                       value={MALE}
                     />
                     <FormControlLabel
                       control={<Radio color="primary" />}
-                      label={<GenderFemale css={iconCss} />}
+                      label={
+                        <SvgIcon css={iconCss}>
+                          <path d={mdiGenderFemale} />
+                        </SvgIcon>
+                      }
                       value={FEMALE}
                     />
                   </RadioGroup>

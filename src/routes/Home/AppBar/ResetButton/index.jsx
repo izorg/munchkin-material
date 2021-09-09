@@ -1,5 +1,5 @@
-import { Tooltip } from "@material-ui/core";
-import { BackupRestore } from "mdi-material-ui";
+import { SvgIcon, Tooltip } from "@material-ui/core";
+import { mdiBackupRestore } from "@mdi/js";
 import { defineMessages, useIntl } from "react-intl";
 import { useDispatch, useSelector } from "react-redux";
 import { ActionCreators } from "redux-undo";
@@ -70,7 +70,9 @@ const ResetButton = (props) => {
 
   const button = (
     <TopIconButton disabled={disabled} onClick={onClick} {...props}>
-      <BackupRestore />
+      <SvgIcon>
+        <path d={mdiBackupRestore} />
+      </SvgIcon>
     </TopIconButton>
   );
 

@@ -1,6 +1,11 @@
 import { css } from "@emotion/react";
-import { Avatar, ButtonBase, ButtonBaseProps } from "@material-ui/core";
-import { Check } from "mdi-material-ui";
+import {
+  Avatar,
+  ButtonBase,
+  ButtonBaseProps,
+  SvgIcon,
+} from "@material-ui/core";
+import { mdiCheck } from "@mdi/js";
 import PropTypes from "prop-types";
 import { forwardRef } from "react";
 
@@ -34,7 +39,11 @@ const Color = forwardRef<HTMLButtonElement, ColorProps>(
         `}
         style={{ backgroundColor: value }}
       >
-        {selected && <Check />}
+        {selected && (
+          <SvgIcon>
+            <path d={mdiCheck} />
+          </SvgIcon>
+        )}
       </Avatar>
     </ButtonBase>
   )

@@ -1,4 +1,5 @@
-import { SwordCross } from "mdi-material-ui";
+import { SvgIcon } from "@material-ui/core";
+import { mdiSwordCross } from "@mdi/js";
 import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -29,7 +30,9 @@ const CombatButton = ({ playerId, ...rest }) => {
       onClick={() => goToCombat()}
       {...rest}
     >
-      <SwordCross />
+      <SvgIcon>
+        <path d={mdiSwordCross} />
+      </SvgIcon>
     </ScreenFab>
   );
 };

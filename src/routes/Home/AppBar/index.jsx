@@ -1,4 +1,5 @@
-import { Close, Delete, FlagCheckered } from "mdi-material-ui";
+import { SvgIcon } from "@material-ui/core";
+import { mdiClose, mdiDelete, mdiFlagCheckered } from "@mdi/js";
 import PropTypes from "prop-types";
 import { FormattedMessage } from "react-intl";
 import { useDispatch, useSelector } from "react-redux";
@@ -60,7 +61,9 @@ const HomeAppBar = ({ empty, singleMode }) => {
     <TopAppBar>
       {multiMode ? (
         <TopIconButton edge="start" onClick={onMultiSelectDeactivate}>
-          <Close />
+          <SvgIcon>
+            <path d={mdiClose} />
+          </SvgIcon>
         </TopIconButton>
       ) : (
         <MenuButton edge="start" />
@@ -83,13 +86,17 @@ const HomeAppBar = ({ empty, singleMode }) => {
           edge="end"
           onClick={() => onPlayersDelete(selectedPlayerIds)}
         >
-          <Delete />
+          <SvgIcon>
+            <path d={mdiDelete} />
+          </SvgIcon>
         </TopIconButton>
       )}
 
       {singleMode && (
         <TopIconButton edge="end" onClick={onTurnFinish}>
-          <FlagCheckered />
+          <SvgIcon>
+            <path d={mdiFlagCheckered} />
+          </SvgIcon>
         </TopIconButton>
       )}
     </TopAppBar>

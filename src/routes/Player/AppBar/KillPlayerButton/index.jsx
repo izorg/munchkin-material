@@ -1,5 +1,5 @@
-import { Tooltip } from "@material-ui/core";
-import { Skull } from "mdi-material-ui";
+import { SvgIcon, Tooltip } from "@material-ui/core";
+import { mdiSkull } from "@mdi/js";
 import PropTypes from "prop-types";
 import { defineMessages, useIntl } from "react-intl";
 import { useDispatch, useSelector } from "react-redux";
@@ -46,7 +46,9 @@ const KillPlayerButton = ({ playerId, ...props }) => {
 
   const button = (
     <TopIconButton disabled={disabled} onClick={onClick} {...props}>
-      <Skull />
+      <SvgIcon>
+        <path d={mdiSkull} />
+      </SvgIcon>
     </TopIconButton>
   );
 

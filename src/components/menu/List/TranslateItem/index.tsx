@@ -1,5 +1,5 @@
-import { ListItemIcon } from "@material-ui/core";
-import { Translate } from "mdi-material-ui";
+import { ListItemIcon, SvgIcon } from "@material-ui/core";
+import { mdiTranslate } from "@mdi/js";
 import { FormattedMessage } from "react-intl";
 
 import ListItem from "../Item";
@@ -14,7 +14,9 @@ const TranslateItem = (): JSX.Element => (
     target="_blank"
   >
     <ListItemIcon>
-      <Translate />
+      <SvgIcon>
+        <path d={mdiTranslate} />
+      </SvgIcon>
     </ListItemIcon>
     <ListItemText
       primary={

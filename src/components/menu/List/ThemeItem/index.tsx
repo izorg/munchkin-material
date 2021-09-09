@@ -1,6 +1,6 @@
 import { css } from "@emotion/react";
-import { ListItemIcon, useTheme } from "@material-ui/core";
-import { Palette } from "mdi-material-ui";
+import { ListItemIcon, SvgIcon, useTheme } from "@material-ui/core";
+import { mdiPalette } from "@mdi/js";
 import { useIntl } from "react-intl";
 import { useLocation, useNavigate } from "react-router-dom";
 
@@ -49,7 +49,9 @@ const ThemeItem = (): JSX.Element => {
       onClick={onClick}
     >
       <ListItemIcon>
-        <Palette style={{ color: theme.palette.primary.main }} />
+        <SvgIcon style={{ color: theme.palette.primary.main }}>
+          <path d={mdiPalette} />
+        </SvgIcon>
       </ListItemIcon>
       <ListItemText
         primary={intl.formatMessage(themeMessages.label)}

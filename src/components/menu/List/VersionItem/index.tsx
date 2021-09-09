@@ -1,5 +1,5 @@
-import { ListItemIcon } from "@material-ui/core";
-import { CellphoneArrowDown, InformationOutline } from "mdi-material-ui";
+import { ListItemIcon, SvgIcon } from "@material-ui/core";
+import { mdiCellphoneArrowDown, mdiInformationOutline } from "@mdi/js";
 
 import { useGoBack } from "../../../../utils/location";
 import version from "../../../../utils/version";
@@ -27,7 +27,9 @@ const VersionItem = (): JSX.Element => {
   return (
     <ListItem button onClick={onClick}>
       <ListItemIcon>
-        {update ? <CellphoneArrowDown /> : <InformationOutline />}
+        <SvgIcon>
+          <path d={update ? mdiCellphoneArrowDown : mdiInformationOutline} />
+        </SvgIcon>
       </ListItemIcon>
       <ListItemText primary={version} />
     </ListItem>

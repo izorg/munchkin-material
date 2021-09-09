@@ -1,5 +1,5 @@
-import { Tooltip } from "@material-ui/core";
-import { Check, Pencil } from "mdi-material-ui";
+import { SvgIcon, Tooltip } from "@material-ui/core";
+import { mdiCheck, mdiPencil } from "@mdi/js";
 import { useIntl } from "react-intl";
 import { useNavigate } from "react-router-dom";
 
@@ -39,7 +39,9 @@ const EditButton = () => {
         edge="end"
         onClick={() => onToggleEditClick()}
       >
-        {editMode ? <Check /> : <Pencil />}
+        <SvgIcon>
+          <path d={editMode ? mdiCheck : mdiPencil} />
+        </SvgIcon>
       </TopIconButton>
     </Tooltip>
   );

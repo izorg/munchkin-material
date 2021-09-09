@@ -1,4 +1,5 @@
-import { FlagCheckered } from "mdi-material-ui";
+import { SvgIcon } from "@material-ui/core";
+import { mdiFlagCheckered } from "@mdi/js";
 import { FormattedMessage } from "react-intl";
 import { useDispatch } from "react-redux";
 
@@ -34,7 +35,9 @@ const CombatAppBar = () => {
       <DiceIconButton edge="end" />
 
       <TopIconButton edge="end" onClick={onFinish}>
-        <FlagCheckered />
+        <SvgIcon>
+          <path d={mdiFlagCheckered} />
+        </SvgIcon>
       </TopIconButton>
     </TopAppBar>
   );
