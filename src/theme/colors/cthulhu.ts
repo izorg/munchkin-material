@@ -1,5 +1,5 @@
-import { ThemeOptions } from "@mui/material";
-import lightGreen from "@mui/material/colors/lightGreen";
+import type { ThemeOptions } from "@mui/material";
+import { lightGreen } from "@mui/material/colors";
 import { defineMessages } from "react-intl";
 
 export const key = "cthulhu";

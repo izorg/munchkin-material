@@ -1,5 +1,5 @@
-import { ThemeOptions } from "@mui/material";
-import yellow from "@mui/material/colors/yellow";
+import type { ThemeOptions } from "@mui/material";
+import { yellow } from "@mui/material/colors";
 import { defineMessages } from "react-intl";
 
 export const key = "super";
