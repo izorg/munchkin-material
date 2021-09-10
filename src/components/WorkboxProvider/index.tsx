@@ -51,7 +51,9 @@ const WorkboxProvider: FC = ({ children }) => {
         setUpdate(true);
       });
 
-      void workbox.register();
+      workbox.register().catch(() => {
+        // ignore YandexBot service worker register fail
+      });
     }
   }, [workbox]);
 
