@@ -1,6 +1,7 @@
 import "./sentry";
 
 import { captureException } from "@sentry/react";
+import { StrictMode } from "react";
 import { render } from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 
@@ -15,20 +16,22 @@ import WorkboxProvider from "./components/WorkboxProvider";
 import("./firebase").catch((error) => captureException(error));
 
 render(
-  <BrowserRouter>
-    <ReduxProvider>
-      <WorkboxProvider>
-        <WakeLockProvider>
-          <LocaleProvider>
-            <AugmentedStylesProvider>
-              <AugmentedThemeProvider>
-                <App />
-              </AugmentedThemeProvider>
-            </AugmentedStylesProvider>
-          </LocaleProvider>
-        </WakeLockProvider>
-      </WorkboxProvider>
-    </ReduxProvider>
-  </BrowserRouter>,
+  <StrictMode>
+    <BrowserRouter>
+      <ReduxProvider>
+        <WorkboxProvider>
+          <WakeLockProvider>
+            <LocaleProvider>
+              <AugmentedStylesProvider>
+                <AugmentedThemeProvider>
+                  <App />
+                </AugmentedThemeProvider>
+              </AugmentedStylesProvider>
+            </LocaleProvider>
+          </WakeLockProvider>
+        </WorkboxProvider>
+      </ReduxProvider>
+    </BrowserRouter>
+  </StrictMode>,
   document.getElementById("root")
 );
