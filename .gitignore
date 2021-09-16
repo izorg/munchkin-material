@@ -2,7 +2,8 @@
 /.env
 /.eslintcache
 /.firebase/
-/.idea/
+/.idea/*
+!/.idea/icon.svg
 /.stylelintcache
 /.vscode/
 /coverage/
