@@ -11,7 +11,8 @@ import TopIconButton from "../../../components/TopIconButton";
 import { setCombatPlayerBonus } from "../../../ducks/combat";
 import { useGoBack, useLocationQuery } from "../../../utils/location";
 import useDeletePlayers from "../../../utils/useDeletePlayers";
-import { EDIT, MULTI } from "../modes";
+import useEditMode from "../../../utils/useEditMode";
+import { MULTI } from "../modes";
 
 import EditButton from "./EditButton";
 import MenuButton from "./MenuButton";
@@ -27,7 +28,7 @@ const HomeAppBar = ({ empty, singleMode }) => {
   const goBack = useGoBack();
   const query = useLocationQuery();
 
-  const editMode = query[EDIT] !== undefined;
+  const { editMode } = useEditMode();
   const multiMode = query[MULTI] !== undefined;
 
   const selectedPlayerIds = useSelector(

@@ -1,31 +1,18 @@
 import { mdiCheck, mdiPencil } from "@mdi/js";
 import { SvgIcon, Tooltip } from "@mui/material";
 import { useIntl } from "react-intl";
-import { useNavigate } from "react-router-dom";
 
 import TopIconButton from "../../../../components/TopIconButton";
-import {
-  stringifyQuery,
-  useGoBack,
-  useLocationQuery,
-} from "../../../../utils/location";
-import { EDIT } from "../../modes";
+import { useGoBack } from "../../../../utils/location";
+import useEditMode from "../../../../utils/useEditMode";
 
 const EditButton = () => {
   const goBack = useGoBack();
   const intl = useIntl();
-  const query = useLocationQuery();
-  const navigate = useNavigate();
 
-  const editMode = query[EDIT] !== undefined;
+  const { editMode, setEditMode } = useEditMode();
 
-  const onToggleEditClick = () =>
-    editMode
-      ? goBack()
-      : navigate({
-          ...location,
-          search: stringifyQuery({ [EDIT]: null }),
-        });
+  const onToggleEditClick = () => (editMode ? goBack() : setEditMode(true));
 
   const editTitle = intl.formatMessage({
     defaultMessage: "Edit",

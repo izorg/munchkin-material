@@ -22,8 +22,9 @@ import {
   useLocationQuery,
 } from "../../../../utils/location";
 import { ios } from "../../../../utils/platforms";
+import useEditMode from "../../../../utils/useEditMode";
 import usePresentSelector from "../../../../utils/usePresentSelector";
-import { EDIT, MULTI } from "../../modes";
+import { MULTI } from "../../modes";
 
 const displayName = "HomePlayerListItem";
 
@@ -47,7 +48,7 @@ const HomePlayerListItem = forwardRef(
 
     const goBack = useGoBack();
     const query = useLocationQuery();
-    const editMode = query[EDIT] !== undefined;
+    const { editMode } = useEditMode();
     const multiMode = query[MULTI] !== undefined;
 
     const selectedPlayerIds = usePresentSelector(

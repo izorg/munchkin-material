@@ -6,16 +6,14 @@ import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import { useDispatch } from "react-redux";
 
 import { movePlayer } from "../../../ducks/playerList";
-import { useLocationQuery } from "../../../utils/location";
+import useEditMode from "../../../utils/useEditMode";
 import usePresentSelector from "../../../utils/usePresentSelector";
-import { EDIT } from "../modes";
 
 import Item from "./Item";
 
 const HomePlayerList = (props) => {
   const dispatch = useDispatch();
 
-  const query = useLocationQuery();
   const playerList = usePresentSelector((state) => state.playerList);
 
   const handleDragEnd = useCallback(
@@ -27,7 +25,9 @@ const HomePlayerList = (props) => {
     [dispatch]
   );
 
-  if (query[EDIT] !== undefined) {
+  const { editMode } = useEditMode();
+
+  if (editMode) {
     return (
       <DragDropContext onDragEnd={handleDragEnd}>
         <Droppable droppableId="player-list">
