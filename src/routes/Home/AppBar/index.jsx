@@ -9,10 +9,10 @@ import Title from "../../../components/Title";
 import TopAppBar from "../../../components/TopAppBar";
 import TopIconButton from "../../../components/TopIconButton";
 import { setCombatPlayerBonus } from "../../../ducks/combat";
-import { useGoBack, useLocationQuery } from "../../../utils/location";
+import { useGoBack } from "../../../utils/location";
 import useDeletePlayers from "../../../utils/useDeletePlayers";
 import useEditMode from "../../../utils/useEditMode";
-import { MULTI } from "../modes";
+import useMultiMode from "../../../utils/useMultiMode";
 
 import EditButton from "./EditButton";
 import MenuButton from "./MenuButton";
@@ -26,10 +26,9 @@ const HomeAppBar = ({ empty, singleMode }) => {
 
   const deletePlayers = useDeletePlayers();
   const goBack = useGoBack();
-  const query = useLocationQuery();
 
   const { editMode } = useEditMode();
-  const multiMode = query[MULTI] !== undefined;
+  const { multiMode } = useMultiMode();
 
   const selectedPlayerIds = useSelector(
     (state) => state.present.ui.selectedPlayerIds

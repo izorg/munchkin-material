@@ -1,11 +1,11 @@
 import { useCallback, useMemo } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
-const name = "edit";
+const key = "multi";
 
-const useEditMode = (): {
-  editMode: boolean;
-  setEditMode: (active: boolean) => void;
+const useMultiMode = (): {
+  multiMode: boolean;
+  setMultiMode: (active: boolean) => void;
 } => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -15,14 +15,14 @@ const useEditMode = (): {
     [location.search]
   );
 
-  const editMode = searchParams.get(name) !== null;
+  const multiMode = searchParams.get(key) !== null;
 
-  const setEditMode = useCallback(
+  const setMultiMode = useCallback(
     (active: boolean) => {
       if (active) {
-        searchParams.set(name, "");
+        searchParams.set(key, "");
       } else {
-        searchParams.delete(name);
+        searchParams.delete(key);
       }
 
       const search = searchParams.toString();
@@ -34,7 +34,7 @@ const useEditMode = (): {
     [navigate, searchParams]
   );
 
-  return { editMode, setEditMode };
+  return { multiMode, setMultiMode };
 };
 
-export default useEditMode;
+export default useMultiMode;

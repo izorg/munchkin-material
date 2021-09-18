@@ -23,8 +23,8 @@ import {
 } from "../../../../utils/location";
 import { ios } from "../../../../utils/platforms";
 import useEditMode from "../../../../utils/useEditMode";
+import useMultiMode from "../../../../utils/useMultiMode";
 import usePresentSelector from "../../../../utils/usePresentSelector";
-import { MULTI } from "../../modes";
 
 const displayName = "HomePlayerListItem";
 
@@ -49,7 +49,7 @@ const HomePlayerListItem = forwardRef(
     const goBack = useGoBack();
     const query = useLocationQuery();
     const { editMode } = useEditMode();
-    const multiMode = query[MULTI] !== undefined;
+    const { multiMode, setMultiMode } = useMultiMode();
 
     const selectedPlayerIds = usePresentSelector(
       (state) => state.ui.selectedPlayerIds
@@ -63,12 +63,7 @@ const HomePlayerListItem = forwardRef(
       dispatch(unselectAllPlayers());
       dispatch(togglePlayer(playerId));
 
-      navigate({
-        ...location,
-        search: stringifyQuery({
-          [MULTI]: null,
-        }),
-      });
+      setMultiMode(true);
     };
 
     const onClick = (event) => {
