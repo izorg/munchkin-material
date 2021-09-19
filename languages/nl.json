@@ -40,6 +40,8 @@
   "player.list.title": "Munchkins",
   "share.text": "Eenvoudige maar krachtige Munchkin-niveau-teller",
   "theme": "Thema",
+  "theme.color": "Kleur",
+  "theme.mode": "Modus",
   "theme.name.apocalypse": "Apocalyps",
   "theme.name.booty": "Buit",
   "theme.name.cthulhu": "Cthulhu",
@@ -50,9 +52,9 @@
   "themeDialog.auto": "Systeemstandaard",
   "themeDialog.dark": "Donker",
   "themeDialog.light": "Licht",
-  "themeDialog.pureBlack": "",
+  "themeDialog.pureBlack": "Puur zwart",
   "undo": "Undo",
-  "undo.deletePlayers": "",
+  "undo.deletePlayers": "{count, plural, one {Speler} other {Spelers}} verwijderd",
   "undo.killPlayer": "{name} {sex, select, female{is gestorven} male{is gestorven} other {}}",
   "undo.resetPlayers": "Spelerslijst is opgekuist"
 }

@@ -40,6 +40,8 @@
   "player.list.title": "Munchkins",
   "share.text": "Enkel men genial Munchkin nivåteller",
   "theme": "Tema",
+  "theme.color": "Farge",
+  "theme.mode": "Modus",
   "theme.name.apocalypse": "Apokalypse",
   "theme.name.booty": "Skatt",
   "theme.name.cthulhu": "Cthulhu",
@@ -50,9 +52,9 @@
   "themeDialog.auto": "Systemstandard",
   "themeDialog.dark": "Mørkt",
   "themeDialog.light": "Lyst",
-  "themeDialog.pureBlack": "",
+  "themeDialog.pureBlack": "Ren svart",
   "undo": "Angre",
-  "undo.deletePlayers": "",
+  "undo.deletePlayers": "{count, plural, one {Spilleren er} other {Spillere}} fjernet",
   "undo.killPlayer": "{name} {sex, select, female{har dødd} male{har dødd} other {}}",
   "undo.resetPlayers": "Spillere er tilbakestilt"
 }

@@ -1,12 +1,13 @@
-import { css } from "@emotion/react";
 import {
+  Box,
   Checkbox,
   Dialog,
   DialogActions,
   DialogContent,
   DialogTitle,
-  Divider,
+  FormControl,
   FormControlLabel,
+  FormLabel,
   Radio,
   RadioGroup,
 } from "@mui/material";
@@ -125,91 +126,122 @@ const ThemeDialog = () => {
   const modeValue = theme.mode || "";
 
   return (
-    <Dialog
-      onClose={onClose}
-      open={open}
-      PaperProps={{ component: "form", onSubmit }}
-    >
+    <Dialog onClose={onClose} open={open}>
       <DialogTitle>{intl.formatMessage(themeMessages.label)}</DialogTitle>
-      <DialogContent
-        css={css`
-          padding-bottom: 1px;
-        `}
-      >
-        <RadioGroup name="mode" onChange={onThemeModeChange} value={modeValue}>
-          <FormControlLabel
-            control={<Radio color="primary" />}
-            label={
-              <FormattedMessage
-                defaultMessage="System Default"
-                id="themeDialog.auto"
-              />
-            }
-            value=""
-          />
-          <FormControlLabel
-            control={<Radio color="primary" />}
-            label={
-              <FormattedMessage defaultMessage="Light" id="themeDialog.light" />
-            }
-            value="light"
-          />
-          <FormControlLabel
-            control={<Radio color="primary" />}
-            label={
-              <FormattedMessage defaultMessage="Dark" id="themeDialog.dark" />
-            }
-            value="dark"
-          />
-        </RadioGroup>
-        <FormControlLabel
-          control={
-            <Checkbox
-              checked={theme.pureBlack}
-              color="primary"
-              name="pureBlack"
-              onChange={onThemePureBlackChange}
-            />
-          }
-          label={
-            <FormattedMessage
-              defaultMessage="Pure black"
-              id="themeDialog.pureBlack"
-            />
-          }
-        />
-        <Divider />
-        <RadioGroup name="id" onChange={onThemeIdChange} value={theme.id}>
-          {Object.values(themes)
-            .sort((t1, t2) => {
-              const a = t1.name(intl);
-              const b = t2.name(intl);
-
-              if (a < b) {
-                return -1;
-              }
-
-              if (a > b) {
-                return 1;
-              }
-
-              return 0;
-            })
-            .map((option) => (
+      <DialogContent>
+        <Box
+          component="form"
+          id="theme-setup"
+          onSubmit={onSubmit}
+          sx={{
+            marginLeft: -2,
+            marginTop: -2,
+          }}
+        >
+          <FormControl
+            component="fieldset"
+            sx={{
+              marginLeft: 2,
+              marginTop: 2,
+            }}
+          >
+            <FormLabel component="legend">
+              <FormattedMessage defaultMessage="Mode" id="theme.mode" />
+            </FormLabel>
+            <RadioGroup
+              name="mode"
+              onChange={onThemeModeChange}
+              value={modeValue}
+            >
               <FormControlLabel
-                key={option.key}
-                control={
-                  <Radio autoFocus={option.key === theme.id} color="primary" />
+                control={<Radio color="primary" />}
+                label={
+                  <FormattedMessage
+                    defaultMessage="System Default"
+                    id="themeDialog.auto"
+                  />
                 }
-                label={option.name(intl)}
-                value={option.key}
+                value=""
               />
-            ))}
-        </RadioGroup>
+              <FormControlLabel
+                control={<Radio color="primary" />}
+                label={
+                  <FormattedMessage
+                    defaultMessage="Light"
+                    id="themeDialog.light"
+                  />
+                }
+                value="light"
+              />
+              <FormControlLabel
+                control={<Radio color="primary" />}
+                label={
+                  <FormattedMessage
+                    defaultMessage="Dark"
+                    id="themeDialog.dark"
+                  />
+                }
+                value="dark"
+              />
+            </RadioGroup>
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={theme.pureBlack}
+                  color="primary"
+                  name="pureBlack"
+                  onChange={onThemePureBlackChange}
+                />
+              }
+              label={
+                <FormattedMessage
+                  defaultMessage="Pure black"
+                  id="themeDialog.pureBlack"
+                />
+              }
+            />
+          </FormControl>
+          <FormControl
+            component="fieldset"
+            sx={{
+              marginLeft: 2,
+              marginTop: 2,
+            }}
+          >
+            <FormLabel component="legend">
+              <FormattedMessage defaultMessage="Color" id="theme.color" />
+            </FormLabel>
+            <RadioGroup name="id" onChange={onThemeIdChange} value={theme.id}>
+              {Object.values(themes)
+                .sort((t1, t2) => {
+                  const a = t1.name(intl);
+                  const b = t2.name(intl);
+
+                  if (a < b) {
+                    return -1;
+                  }
+
+                  if (a > b) {
+                    return 1;
+                  }
+
+                  return 0;
+                })
+                .map((option) => (
+                  <FormControlLabel
+                    key={option.key}
+                    control={<Radio color="primary" />}
+                    label={option.name(intl)}
+                    value={option.key}
+                  />
+                ))}
+            </RadioGroup>
+          </FormControl>
+        </Box>
       </DialogContent>
       <DialogActions>
         <CancelButton onClick={onClose} />
-        <SubmitButton />
+        <SubmitButton form="theme-setup" />
       </DialogActions>
     </Dialog>
   );

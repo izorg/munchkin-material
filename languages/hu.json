@@ -40,6 +40,8 @@
   "player.list.title": "Munchkin-ok",
   "share.text": "Egyszerű, de hatékony Munchkin szint számláló",
   "theme": "Téma",
+  "theme.color": "Szín",
+  "theme.mode": "Mód",
   "theme.name.apocalypse": "Apokalipszis",
   "theme.name.booty": "Booty",
   "theme.name.cthulhu": "Cthulhu",
@@ -52,7 +54,7 @@
   "themeDialog.light": "Világos",
   "themeDialog.pureBlack": "",
   "undo": "Visszavonás",
-  "undo.deletePlayers": "",
+  "undo.deletePlayers": "{count, plural, one {Játékos} other {A játékosok}} eltávolítva",
   "undo.killPlayer": "{name} {sex, select, female {meghalt} male {meghalt} other {}}",
   "undo.resetPlayers": "Játékosok alaphelyzetbe állítva"
 }

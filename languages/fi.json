@@ -40,6 +40,8 @@
   "player.list.title": "Munchkin:t",
   "share.text": "Yksinkertainen mutta tehokas Munchkin tason laskia",
   "theme": "Teema",
+  "theme.color": "Väri",
+  "theme.mode": "Tila",
   "theme.name.apocalypse": "Maailmanloppu",
   "theme.name.booty": "Saalis",
   "theme.name.cthulhu": "Cthulhu",
@@ -52,7 +54,7 @@
   "themeDialog.light": "Kirkas",
   "themeDialog.pureBlack": "",
   "undo": "Peruuta",
-  "undo.deletePlayers": "",
+  "undo.deletePlayers": "{count, plural, one {Pelaaja} other {Pelaajat}} poistettu",
   "undo.killPlayer": "{name} {sex, select, female{on kuollut} male{on kuollut} other {}}",
   "undo.resetPlayers": "Pelaajat on tyhjätty"
 }

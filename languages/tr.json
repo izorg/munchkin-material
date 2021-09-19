@@ -40,6 +40,8 @@
   "player.list.title": "Munckinler",
   "share.text": "Basit ama güçlü Munchkin seviye sayacı",
   "theme": "Tema",
+  "theme.color": "Renk",
+  "theme.mode": "Mod",
   "theme.name.apocalypse": "Kıyamet",
   "theme.name.booty": "Ganimet",
   "theme.name.cthulhu": "Cthulhu",
@@ -50,9 +52,9 @@
   "themeDialog.auto": "Varsayılan sistem",
   "themeDialog.dark": "Koyu",
   "themeDialog.light": "Açık",
-  "themeDialog.pureBlack": "",
+  "themeDialog.pureBlack": "Doğal siyah",
   "undo": "Geri al",
-  "undo.deletePlayers": "",
+  "undo.deletePlayers": "{count, plural, one {Oyuncu kaldırıldı} other {Kaldırılan oyuncular}}",
   "undo.killPlayer": "{name} {sex, select, female{ölen} male{ölen} other {}}",
   "undo.resetPlayers": "Oyuncular resetlendi"
 }

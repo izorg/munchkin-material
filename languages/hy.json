@@ -40,6 +40,8 @@
   "player.list.title": "Մանչկիններ",
   "share.text": "Հասարակ բայց հզոր Մանչկինի մակարդակ հաշվող",
   "theme": "Գույներ",
+  "theme.color": "Գույն",
+  "theme.mode": "Ռեժիմ",
   "theme.name.apocalypse": "Ապոկալիպս",
   "theme.name.booty": "Բութի",
   "theme.name.cthulhu": "Կթուլու",
@@ -50,8 +52,9 @@
   "themeDialog.auto": "Ըամակարգի կանխադիաժ թեման",
   "themeDialog.dark": "Սուգ",
   "themeDialog.light": "Բաց",
+  "themeDialog.pureBlack": "Մաքուր սև",
   "undo": "Ետ գնալ",
-  "undo.deletePlayers": "",
+  "undo.deletePlayers": "{count, plural, one {Խաղացողը հեռացվեց} other {Խաղացողները հեռացվեցին}}",
   "undo.killPlayer": "{name} {sex, select, female {ն մահացավ} male {ն մահացավ} other {}}",
   "undo.resetPlayers": "Խաղացողները վերականգնվեցին"
 }
