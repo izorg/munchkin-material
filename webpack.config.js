@@ -9,7 +9,7 @@ const HtmlWebpackTagsPlugin = require("html-webpack-tags-plugin");
 const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
 const { GenerateSW } = require("workbox-webpack-plugin");
 
-const { version } = require("./package.json");
+const { dependencies, version } = require("./package.json");
 
 const cordova = process.env.BUILD === "cordova";
 const dev = process.env.NODE_ENV === "development";
@@ -87,7 +87,7 @@ module.exports = {
                       {
                         corejs: {
                           proposals: true,
-                          version: 3,
+                          version: dependencies["core-js"],
                         },
                         loose: true,
                         modules: false,
@@ -121,7 +121,7 @@ module.exports = {
                       {
                         corejs: {
                           proposals: true,
-                          version: 3,
+                          version: dependencies["core-js"],
                         },
                         exclude: ["transform-typeof-symbol"],
                         loose: true,
