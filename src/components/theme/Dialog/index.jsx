@@ -13,20 +13,18 @@ import {
 } from "@mui/material";
 import { useMemo } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import { setTheme } from "../../../ducks/theme";
 import themes from "../../../theme/colors";
-import {
-  stringifyQuery,
-  useGoBack,
-  useLocationQuery,
-} from "../../../utils/location";
+import { useGoBack } from "../../../utils/location";
+import usePresentSelector from "../../../utils/usePresentSelector";
 import CancelButton from "../../CancelButton";
 import { useFullVersion } from "../../FullVersionProvider";
 import SubmitButton from "../../SubmitButton";
 import themeMessages from "../messages";
+import usePreviewTheme from "../usePreviewTheme";
 
 const ThemeDialog = () => {
   const dispatch = useDispatch();
@@ -37,65 +35,41 @@ const ThemeDialog = () => {
   const { buyFullVersion, fullVersion } = useFullVersion();
   const goBack = useGoBack();
 
-  const query = useLocationQuery();
-  const queryTheme = query.theme;
-  const stateTheme = useSelector((state) => state.present.theme);
-  const themeId = stateTheme.id;
-  const open = queryTheme !== undefined;
+  const currentThemeId = usePresentSelector((state) => state.theme.id);
 
-  const theme = useMemo(() => {
-    let result = stateTheme;
+  const open = useMemo(
+    () => new URLSearchParams(location.search).get("theme") !== null,
+    [location.search]
+  );
 
-    if (queryTheme) {
-      result = {
-        ...result,
-        ...queryTheme,
-      };
+  const previewTheme = usePreviewTheme();
 
-      if ("pureBlack" in queryTheme) {
-        if (queryTheme.pureBlack === "false") {
-          result.pureBlack = false;
-        }
+  const onChange = (partialTheme) => {
+    const searchParams = new URLSearchParams(location.search);
 
-        if (queryTheme.pureBlack === "true") {
-          result.pureBlack = true;
-        }
-      }
-    }
-
-    return result;
-  }, [queryTheme, stateTheme]);
-
-  const onChange = (selectedTheme) => {
-    navigate(
-      {
-        ...location,
-        search: stringifyQuery({
-          ...query,
-          theme: selectedTheme,
-        }),
-      },
-      { replace: true }
+    Object.entries(partialTheme).forEach(([key, value]) =>
+      searchParams.set(key, value)
     );
+
+    const search = `?${searchParams.toString()}`;
+
+    navigate({ search }, { replace: true });
   };
 
   const onThemeIdChange = (event, id) => {
     onChange({
-      ...theme,
       id,
     });
   };
 
   const onThemeModeChange = (event, mode) => {
     onChange({
-      ...theme,
       mode,
     });
   };
 
   const onThemePureBlackChange = (event) => {
     onChange({
-      ...theme,
       pureBlack: event.target.checked,
     });
   };
@@ -103,7 +77,7 @@ const ThemeDialog = () => {
   const onSubmit = async (event) => {
     event.preventDefault();
 
-    if (theme.id !== themeId && !fullVersion) {
+    if (previewTheme.id !== currentThemeId && !fullVersion) {
       try {
         await buyFullVersion();
       } catch (error) {
@@ -111,19 +85,12 @@ const ThemeDialog = () => {
       }
     }
 
-    dispatch(
-      setTheme({
-        ...theme,
-        mode: theme.mode || undefined,
-      })
-    );
+    dispatch(setTheme(previewTheme));
 
     goBack();
   };
 
   const onClose = () => goBack();
-
-  const modeValue = theme.mode || "";
 
   return (
     <Dialog onClose={onClose} open={open}>
@@ -151,7 +118,7 @@ const ThemeDialog = () => {
             <RadioGroup
               name="mode"
               onChange={onThemeModeChange}
-              value={modeValue}
+              value={previewTheme.mode || "auto"}
             >
               <FormControlLabel
                 control={<Radio color="primary" />}
@@ -161,7 +128,7 @@ const ThemeDialog = () => {
                     id="themeDialog.auto"
                   />
                 }
-                value=""
+                value="auto"
               />
               <FormControlLabel
                 control={<Radio color="primary" />}
@@ -187,7 +154,7 @@ const ThemeDialog = () => {
             <FormControlLabel
               control={
                 <Checkbox
-                  checked={theme.pureBlack}
+                  checked={previewTheme.pureBlack}
                   color="primary"
                   name="pureBlack"
                   onChange={onThemePureBlackChange}
@@ -211,7 +178,11 @@ const ThemeDialog = () => {
             <FormLabel component="legend">
               <FormattedMessage defaultMessage="Color" id="theme.color" />
             </FormLabel>
-            <RadioGroup name="id" onChange={onThemeIdChange} value={theme.id}>
+            <RadioGroup
+              name="id"
+              onChange={onThemeIdChange}
+              value={previewTheme.id}
+            >
               {Object.values(themes)
                 .sort((t1, t2) => {
                   const a = t1.name(intl);

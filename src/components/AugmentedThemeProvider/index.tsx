@@ -1,7 +1,6 @@
 import {
   createTheme,
   CssBaseline,
-  PaletteMode,
   ThemeProvider,
   useMediaQuery,
 } from "@mui/material";
@@ -10,23 +9,15 @@ import PropTypes from "prop-types";
 import { FC, useEffect, useMemo } from "react";
 import { useIntl } from "react-intl";
 
-import { ThemeState } from "../../ducks/theme";
 import { getDirection } from "../../i18n";
 import themes from "../../theme/colors";
 import getThemeOptions from "../../theme/getThemeOptions";
-import { useLocationQuery } from "../../utils/location";
 import { ios } from "../../utils/platforms";
-import usePresentSelector from "../../utils/usePresentSelector";
+import usePreviewTheme from "../theme/usePreviewTheme";
 
 import useStatusBar from "./useStatusBar";
 
 const displayName = "AugmentedThemeProvider";
-
-type ParsedQsTheme = {
-  id?: string;
-  mode?: PaletteMode | "";
-  pureBlack?: "false" | "true";
-};
 
 const AugmentedThemeProvider: FC = ({ children }) => {
   const { locale } = useIntl();
@@ -37,41 +28,9 @@ const AugmentedThemeProvider: FC = ({ children }) => {
     ? "dark"
     : "light";
 
-  const query = useLocationQuery();
-
-  const parsedQsTheme = query.theme as ParsedQsTheme | undefined;
-
-  const queryTheme = useMemo(() => {
-    if (!parsedQsTheme) {
-      return null;
-    }
-
-    const result: Partial<ThemeState> = {
-      id: parsedQsTheme.id,
-      mode: parsedQsTheme.mode || undefined,
-    };
-
-    if (parsedQsTheme.pureBlack) {
-      if (parsedQsTheme.pureBlack === "false") {
-        result.pureBlack = false;
-      }
-
-      if (parsedQsTheme.pureBlack === "true") {
-        result.pureBlack = true;
-      }
-    }
-
-    return result;
-  }, [parsedQsTheme]);
-
-  const currentTheme = usePresentSelector((state) => state.theme);
+  const previewTheme = usePreviewTheme();
 
   const theme = useMemo(() => {
-    const previewTheme = {
-      ...currentTheme,
-      ...queryTheme,
-    };
-
     const { mode = systemPaletteMode, pureBlack } = previewTheme;
 
     return createTheme(
@@ -80,7 +39,7 @@ const AugmentedThemeProvider: FC = ({ children }) => {
         themes[previewTheme.id].theme
       )
     );
-  }, [currentTheme, direction, queryTheme, systemPaletteMode]);
+  }, [direction, previewTheme, systemPaletteMode]);
 
   useEffect(() => {
     const { Keyboard } = window;
