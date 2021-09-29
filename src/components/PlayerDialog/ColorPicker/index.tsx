@@ -11,11 +11,7 @@ import {
 } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
-import {
-  stringifyQuery,
-  useGoBack,
-  useLocationQuery,
-} from "../../../utils/location";
+import { useGoBack } from "../../../utils/location";
 
 import Color from "./Color";
 import Dialog from "./Dialog";
@@ -54,18 +50,18 @@ const ColorPicker: FC<ColorPickerProps> = ({
   }, [valueProp]);
 
   const goBack = useGoBack();
-  const query = useLocationQuery();
 
-  const open = query.color === null;
+  const open = new URLSearchParams(location.search).get("color") !== null;
 
-  const onOpen = () =>
+  const onOpen = () => {
+    const searchParams = new URLSearchParams(location.search);
+
+    searchParams.set("color", "");
+
     navigate({
-      ...location,
-      search: stringifyQuery({
-        ...query,
-        color: null,
-      }),
+      search: `?${searchParams.toString()}`,
     });
+  };
 
   const onClose = () => goBack();
 

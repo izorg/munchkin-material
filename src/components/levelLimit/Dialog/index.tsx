@@ -18,7 +18,7 @@ import {
   MAX_LEVEL,
   MIN_LEVEL,
 } from "../../../utils/levelLimit";
-import { useGoBack, useLocationQuery } from "../../../utils/location";
+import { useGoBack } from "../../../utils/location";
 import usePresentSelector from "../../../utils/usePresentSelector";
 import CancelButton from "../../CancelButton";
 import SubmitButton from "../../SubmitButton";
@@ -41,8 +41,7 @@ const LevelLimitDialog = (): JSX.Element => {
     : NO_LIMIT;
   const [value, setValue] = useState(defaultValue);
 
-  const query = useLocationQuery();
-  const open = query.levelLimit !== undefined;
+  const open = new URLSearchParams(location.search).get("levelLimit") !== null;
 
   const goBack = useGoBack();
   const onClose = () => goBack();

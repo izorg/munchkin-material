@@ -15,7 +15,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 import { addMonster } from "../../../ducks/monsters";
 import createMonster from "../../../utils/createMonster";
-import { useGoBack, useLocationQuery } from "../../../utils/location";
+import { useGoBack } from "../../../utils/location";
 import usePresentSelector from "../../../utils/usePresentSelector";
 
 const CombatHelperButton = () => {
@@ -30,21 +30,28 @@ const CombatHelperButton = () => {
     (state) => state.playerList.length > 1
   );
   const helper = !helperId && hasOtherPlayers;
-  const query = useLocationQuery();
-  const open = query.add === null;
+  const open = new URLSearchParams(location.search).get("add") !== null;
 
-  const onAdd = () =>
+  const onAdd = () => {
+    const searchParams = new URLSearchParams(location.search);
+
+    searchParams.set("add", "");
+
     navigate({
-      ...location,
-      search: `?add`,
+      search: `?${searchParams.toString()}`,
     });
+  };
   const onBack = () => goBack();
   const onHelperClick = (event: MouseEvent) => {
     event.stopPropagation();
+
+    const searchParams = new URLSearchParams(location.search);
+
+    searchParams.set("add", "helper");
+
     navigate(
       {
-        ...location,
-        search: `?add=helper`,
+        search: `?${searchParams.toString()}`,
       },
       { replace: true }
     );

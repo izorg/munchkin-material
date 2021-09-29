@@ -5,7 +5,6 @@ import { useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import { throwDice } from "../../../ducks/dice";
-import { stringifyQuery } from "../../../utils/location";
 import TopIconButton from "../../TopIconButton";
 
 const messages = defineMessages({
@@ -25,9 +24,13 @@ const DiceIconButton = (
 
   const onClick = () => {
     dispatch(throwDice());
+
+    const searchParams = new URLSearchParams(location.search);
+
+    searchParams.set("dice", "");
+
     navigate({
-      ...location,
-      search: stringifyQuery({ dice: null }),
+      search: `?${searchParams.toString()}`,
     });
   };
 

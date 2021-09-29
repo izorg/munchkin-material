@@ -2,11 +2,7 @@ import { ClassNames } from "@emotion/react";
 import { SwipeableDrawer, useMediaQuery, useTheme } from "@mui/material";
 import { useLocation, useMatch, useNavigate } from "react-router-dom";
 
-import {
-  stringifyQuery,
-  useGoBack,
-  useLocationQuery,
-} from "../../../utils/location";
+import { useGoBack } from "../../../utils/location";
 import { ios } from "../../../utils/platforms";
 import useEditMode from "../../../utils/useEditMode";
 import MenuList from "../List";
@@ -20,23 +16,25 @@ const MenuDrawer = (): JSX.Element => {
 
   const { editMode } = useEditMode();
   const goBack = useGoBack();
-  const query = useLocationQuery();
+  const searchParams = new URLSearchParams(location.search);
   const match = useMatch("/");
   const wide = useMediaQuery(theme.breakpoints.up("md"));
   const disableSwipeToOpen =
-    ios || wide || !match || (editMode && Object.keys(query).length > 1);
+    ios ||
+    wide ||
+    !match ||
+    (editMode && Array.from(searchParams.keys()).length > 1);
   const open = useMenuOpen();
 
   const onClose = () => open && goBack();
 
-  const onOpen = () =>
+  const onOpen = () => {
+    searchParams.set("menu", "");
+
     navigate({
-      ...location,
-      search: stringifyQuery({
-        ...query,
-        menu: null,
-      }),
+      search: `?${searchParams.toString()}`,
     });
+  };
 
   return (
     <MenuTypeProvider type={MenuType.Drawer}>

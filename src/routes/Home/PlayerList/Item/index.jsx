@@ -16,11 +16,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import PlayerAvatar from "../../../../components/PlayerAvatar";
 import PlayerListItemText from "../../../../components/PlayerListItemText";
 import { togglePlayer, unselectAllPlayers } from "../../../../ducks/ui";
-import {
-  stringifyQuery,
-  useGoBack,
-  useLocationQuery,
-} from "../../../../utils/location";
+import { useGoBack } from "../../../../utils/location";
 import { ios } from "../../../../utils/platforms";
 import useEditMode from "../../../../utils/useEditMode";
 import useMultiMode from "../../../../utils/useMultiMode";
@@ -47,7 +43,6 @@ const HomePlayerListItem = forwardRef(
     const pressTimeoutRef = useRef(0);
 
     const goBack = useGoBack();
-    const query = useLocationQuery();
     const { editMode } = useEditMode();
     const { multiMode, setMultiMode } = useMultiMode();
 
@@ -72,12 +67,12 @@ const HomePlayerListItem = forwardRef(
       }
 
       if (editMode) {
+        const searchParams = new URLSearchParams(location.search);
+
+        searchParams.set("player", playerId);
+
         navigate({
-          ...location,
-          search: stringifyQuery({
-            ...query,
-            player: playerId,
-          }),
+          search: `?${searchParams.toString()}`,
         });
       } else if (multiMode) {
         dispatch(togglePlayer(playerId));

@@ -10,14 +10,16 @@ import {
 } from "@mui/material";
 import { FormattedMessage } from "react-intl";
 import { useDispatch, useSelector } from "react-redux";
+import { useLocation } from "react-router-dom";
 
 import PlayerAvatar from "../../../components/PlayerAvatar";
 import PlayerListItemText from "../../../components/PlayerListItemText";
 import { setCombatHelper } from "../../../ducks/combat";
-import { useGoBack, useLocationQuery } from "../../../utils/location";
+import { useGoBack } from "../../../utils/location";
 
 const HelperSelector = (props) => {
   const dispatch = useDispatch();
+  const location = useLocation();
   const theme = useTheme();
 
   const goBack = useGoBack();
@@ -30,8 +32,7 @@ const HelperSelector = (props) => {
       .map((id) => players[id]);
   });
 
-  const query = useLocationQuery();
-  const open = query.add === "helper";
+  const open = new URLSearchParams(location.search).get("add") === "helper";
 
   const onClose = () => goBack();
 

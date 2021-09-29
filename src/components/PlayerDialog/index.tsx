@@ -23,13 +23,14 @@ import {
 import { FormEvent, useEffect, useMemo, useRef } from "react";
 import { defineMessages, FormattedMessage, useIntl } from "react-intl";
 import { useDispatch } from "react-redux";
+import { useLocation } from "react-router-dom";
 
 import { addPlayerToList } from "../../ducks/playerList";
 import { addPlayer, updatePlayer } from "../../ducks/players";
 import availableColors from "../../utils/availableColors";
 import createPlayer from "../../utils/createPlayer";
 import getRandomMaterialColor from "../../utils/getRandomMaterialColor";
-import { useGoBack, useLocationQuery } from "../../utils/location";
+import { useGoBack } from "../../utils/location";
 import { ios } from "../../utils/platforms";
 import { FEMALE, MALE } from "../../utils/sex";
 import { Player } from "../../utils/types";
@@ -53,15 +54,19 @@ let appear = false;
 const PlayerDialog = (): JSX.Element => {
   const dispatch = useDispatch();
   const intl = useIntl();
+  const location = useLocation();
   const theme = useTheme();
 
   const deletePlayers = useDeletePlayers();
   const goBack = useGoBack();
-  const query = useLocationQuery();
-  const open = query.player !== undefined;
+  const searchParams = useMemo(
+    () => new URLSearchParams(location.search),
+    [location.search]
+  );
+  const open = searchParams.get("player") !== null;
   const players = usePresentSelector((state) => state.players);
 
-  const queryPlayer = query.player as string | null;
+  const queryPlayer = searchParams.get("player");
 
   const previousPlayerRef = useRef(
     queryPlayer ? players[queryPlayer] : undefined

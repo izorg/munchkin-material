@@ -9,7 +9,6 @@ import {
   MAX_LEVEL,
   MIN_LEVEL,
 } from "../../../../utils/levelLimit";
-import { parseSearch, stringifyQuery } from "../../../../utils/location";
 import usePresentSelector from "../../../../utils/usePresentSelector";
 import levelLimitMessages from "../../../levelLimit/messages";
 import useMenuOpen from "../../useMenuOpen";
@@ -26,13 +25,13 @@ const LevelLimitItem = (): JSX.Element => {
   const open = useMenuOpen();
 
   const onClick = () => {
+    const searchParams = new URLSearchParams(location.search);
+
+    searchParams.set("levelLimit", "");
+    searchParams.delete("menu");
+
     const to = {
-      ...location,
-      search: stringifyQuery({
-        ...parseSearch(location.search),
-        levelLimit: null,
-        menu: undefined,
-      }),
+      search: `?${searchParams.toString()}`,
     };
 
     if (open) {

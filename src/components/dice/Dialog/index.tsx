@@ -16,10 +16,11 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { useLocation } from "react-router-dom";
 import { TransitionGroup } from "react-transition-group";
 
 import { throwDice } from "../../../ducks/dice";
-import { useGoBack, useLocationQuery } from "../../../utils/location";
+import { useGoBack } from "../../../utils/location";
 import usePresentSelector from "../../../utils/usePresentSelector";
 import DiceTransition from "../Transition";
 
@@ -36,12 +37,13 @@ const diceIcons = {
 
 const DiceDialog = (props: Partial<DialogProps>): JSX.Element | null => {
   const dispatch = useDispatch();
+  const location = useLocation();
   const theme = useTheme();
 
   const [attempt, setAttempt] = useState(0);
 
   const dice = usePresentSelector((state) => state.dice);
-  const open = useLocationQuery().dice !== undefined;
+  const open = new URLSearchParams(location.search).get("dice") !== null;
   const goBack = useGoBack();
 
   if (dice === null) {
