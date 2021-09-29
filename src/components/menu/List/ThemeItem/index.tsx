@@ -5,7 +5,6 @@ import { useIntl } from "react-intl";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import themes from "../../../../theme/colors";
-import { parseSearch, stringifyQuery } from "../../../../utils/location";
 import usePresentSelector from "../../../../utils/usePresentSelector";
 import themeMessages from "../../../theme/messages";
 import useMenuOpen from "../../useMenuOpen";
@@ -23,13 +22,13 @@ const ThemeItem = (): JSX.Element => {
   const open = useMenuOpen();
 
   const onClick = () => {
+    const searchParams = new URLSearchParams(location.search);
+
+    searchParams.delete("menu");
+    searchParams.set("theme", "");
+
     const to = {
-      ...location,
-      search: stringifyQuery({
-        ...parseSearch(location.search),
-        menu: undefined,
-        theme: null,
-      }),
+      search: `?${searchParams.toString()}`,
     };
 
     if (open) {
