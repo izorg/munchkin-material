@@ -1,22 +1,24 @@
 import { mdiSwordCross } from "@mdi/js";
-import { SvgIcon } from "@mui/material";
+import { FabProps, SvgIcon } from "@mui/material";
 import PropTypes from "prop-types";
-import { useDispatch, useSelector } from "react-redux";
+import type { VFC } from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import ScreenFab from "../../../components/ScreenFab";
 import { startCombat } from "../../../ducks/combat";
+import usePresentSelector from "../../../utils/usePresentSelector";
 
-const displayName = "CombatButton";
+type CombatButtonProps = { playerId: string } & FabProps;
 
-const CombatButton = ({ playerId, ...rest }) => {
+const CombatButton: VFC<CombatButtonProps> = ({ playerId, ...rest }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const combatFinished = useSelector((state) => state.present.combat.finished);
-  const combatPlayerId = useSelector((state) => state.present.combat.playerId);
+  const combatFinished = usePresentSelector((state) => state.combat.finished);
+  const combatPlayerId = usePresentSelector((state) => state.combat.playerId);
 
-  const goToCombat = async () => {
+  const goToCombat = () => {
     if (combatFinished || playerId !== combatPlayerId) {
       dispatch(startCombat(playerId));
     }
@@ -40,7 +42,5 @@ const CombatButton = ({ playerId, ...rest }) => {
 CombatButton.propTypes = {
   playerId: PropTypes.string.isRequired,
 };
-
-CombatButton.displayName = displayName;
 
 export default CombatButton;

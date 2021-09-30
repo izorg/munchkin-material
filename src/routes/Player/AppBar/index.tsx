@@ -1,20 +1,21 @@
 import PropTypes from "prop-types";
-import { useSelector } from "react-redux";
+import type { VFC } from "react";
 
 import BackButton from "../../../components/BackButton";
 import DiceButton from "../../../components/dice/Button";
 import Title from "../../../components/Title";
 import TopAppBar from "../../../components/TopAppBar";
 import { useGoBack } from "../../../utils/location";
+import usePresentSelector from "../../../utils/usePresentSelector";
 
 import KillPlayerButton from "./KillPlayerButton";
 
-const displayName = "PlayerAppBar";
+type PlayerAppBarProps = { playerId: string };
 
-const PlayerAppBar = ({ playerId }) => {
+const PlayerAppBar: VFC<PlayerAppBarProps> = ({ playerId }) => {
   const goBack = useGoBack();
 
-  const players = useSelector((state) => state.present.players);
+  const players = usePresentSelector((state) => state.players);
   const title = players[playerId].name;
 
   return (
@@ -35,7 +36,5 @@ const PlayerAppBar = ({ playerId }) => {
 PlayerAppBar.propTypes = {
   playerId: PropTypes.string.isRequired,
 };
-
-PlayerAppBar.displayName = displayName;
 
 export default PlayerAppBar;
