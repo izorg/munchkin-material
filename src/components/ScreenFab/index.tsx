@@ -1,10 +1,11 @@
 import { css } from "@emotion/react";
 import { Fab, FabProps, useTheme } from "@mui/material";
-import { forwardRef } from "react";
+import { forwardRef, ForwardRefRenderFunction } from "react";
 
-const displayName = "ScreenFab";
-
-const ScreenFab = forwardRef<HTMLButtonElement, FabProps>((props, ref) => {
+const ScreenFab: ForwardRefRenderFunction<HTMLButtonElement, FabProps> = (
+  props,
+  ref
+) => {
   const theme = useTheme();
 
   return (
@@ -29,8 +30,6 @@ const ScreenFab = forwardRef<HTMLButtonElement, FabProps>((props, ref) => {
       {...props}
     />
   );
-});
+};
 
-ScreenFab.displayName = displayName;
-
-export default ScreenFab;
+export default forwardRef(ScreenFab);
