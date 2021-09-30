@@ -8,10 +8,11 @@ import {
   FormControl,
   FormControlLabel,
   FormLabel,
+  PaletteMode,
   Radio,
   RadioGroup,
 } from "@mui/material";
-import { useMemo } from "react";
+import { ChangeEvent, SyntheticEvent, useMemo } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -26,7 +27,13 @@ import SubmitButton from "../../SubmitButton";
 import themeMessages from "../messages";
 import usePreviewTheme from "../usePreviewTheme";
 
-const ThemeDialog = () => {
+type FormValues = {
+  id: string;
+  mode: PaletteMode | "auto";
+  pureBlack: "false" | "true";
+};
+
+const ThemeDialog = (): JSX.Element => {
   const dispatch = useDispatch();
   const intl = useIntl();
   const location = useLocation();
@@ -44,7 +51,7 @@ const ThemeDialog = () => {
 
   const previewTheme = usePreviewTheme();
 
-  const onChange = (partialTheme) => {
+  const onChange = (partialTheme: Partial<FormValues>) => {
     const searchParams = new URLSearchParams(location.search);
 
     Object.entries(partialTheme).forEach(([key, value]) =>
@@ -56,25 +63,31 @@ const ThemeDialog = () => {
     navigate({ search }, { replace: true });
   };
 
-  const onThemeIdChange = (event, id) => {
+  const onThemeIdChange = (
+    event: ChangeEvent<HTMLInputElement>,
+    id: string
+  ) => {
     onChange({
       id,
     });
   };
 
-  const onThemeModeChange = (event, mode) => {
+  const onThemeModeChange = (
+    event: ChangeEvent<HTMLInputElement>,
+    mode: string
+  ) => {
     onChange({
-      mode,
+      mode: mode as FormValues["mode"],
     });
   };
 
-  const onThemePureBlackChange = (event) => {
+  const onThemePureBlackChange = (event: ChangeEvent<HTMLInputElement>) => {
     onChange({
-      pureBlack: event.target.checked,
+      pureBlack: event.target.checked ? "true" : "false",
     });
   };
 
-  const onSubmit = async (event) => {
+  const onSubmit = async (event: SyntheticEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     if (previewTheme.id !== currentThemeId && !fullVersion) {
