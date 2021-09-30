@@ -4,7 +4,7 @@ import {
   IconButton,
   ListItem,
   ListItemAvatar,
-  ListItemSecondaryAction,
+  ListItemButton,
   SvgIcon,
 } from "@mui/material";
 import { motion } from "framer-motion";
@@ -154,51 +154,27 @@ const HomePlayerListItem = forwardRef(
     return (
       <ListItem
         ref={ref}
-        button
-        component={editMode ? motion.div : motion.li}
-        css={[
+        css={
+          editMode &&
           css`
             @supports (padding: max(0px)) {
-              padding-left: max(16px, env(safe-area-inset-left));
-              padding-right: max(16px, env(safe-area-inset-right));
-            }
-          `,
-          editMode &&
-            css`
-              @supports (padding: max(0px)) {
+              & > .MuiListItemButton-root {
                 padding-right: calc(
                   32px + max(16px, env(safe-area-inset-right))
                 );
               }
-            `,
-        ]}
+
+              & > .MuiListItemSecondaryAction-root {
+                right: max(16px, env(safe-area-inset-right));
+              }
+            }
+          `
+        }
         data-screenshots="player-list-item"
+        disablePadding
         {...rest}
-        onKeyDown={onKeyDown}
-        onPanStart={clearPress}
-        onTap={onTap}
-        onTapCancel={clearPress}
-        onTapStart={onTapStart}
-      >
-        <ListItemAvatar>
-          <PlayerAvatar
-            ref={avatarRef}
-            color={player.color}
-            name={player.name}
-            selected={multiMode && selected}
-          />
-        </ListItemAvatar>
-
-        <PlayerListItemText player={player} />
-
-        {editMode && (
-          <ListItemSecondaryAction
-            sx={{
-              "@supports (right: max(0px))": {
-                right: "max(16px, env(safe-area-inset-right))",
-              },
-            }}
-          >
+        secondaryAction={
+          editMode && (
             <IconButton
               ref={reorderRef}
               component="span"
@@ -210,8 +186,36 @@ const HomePlayerListItem = forwardRef(
                 <path d={dragIcon} />
               </SvgIcon>
             </IconButton>
-          </ListItemSecondaryAction>
-        )}
+          )
+        }
+      >
+        <ListItemButton
+          component={motion.div}
+          css={[
+            css`
+              @supports (padding: max(0px)) {
+                padding-left: max(16px, env(safe-area-inset-left));
+                padding-right: max(16px, env(safe-area-inset-right));
+              }
+            `,
+          ]}
+          onKeyDown={onKeyDown}
+          onPanStart={clearPress}
+          onTap={onTap}
+          onTapCancel={clearPress}
+          onTapStart={onTapStart}
+        >
+          <ListItemAvatar>
+            <PlayerAvatar
+              ref={avatarRef}
+              color={player.color}
+              name={player.name}
+              selected={multiMode && selected}
+            />
+          </ListItemAvatar>
+
+          <PlayerListItemText player={player} />
+        </ListItemButton>
       </ListItem>
     );
   }

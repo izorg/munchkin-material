@@ -1,6 +1,5 @@
 import { css } from "@emotion/react";
-import { List, Paper } from "@mui/material";
-import { motion } from "framer-motion";
+import { List, useTheme } from "@mui/material";
 import { useCallback } from "react";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import { useDispatch } from "react-redux";
@@ -13,6 +12,7 @@ import Item from "./Item";
 
 const HomePlayerList = (props) => {
   const dispatch = useDispatch();
+  const theme = useTheme();
 
   const playerList = usePresentSelector((state) => state.playerList);
 
@@ -47,10 +47,7 @@ const HomePlayerList = (props) => {
                     let style = { ...draggableProps.style };
 
                     if (isDragging) {
-                      style = {
-                        ...style,
-                        zIndex: 1,
-                      };
+                      style.zIndex = 1;
                     }
 
                     if (style.transform) {
@@ -59,34 +56,24 @@ const HomePlayerList = (props) => {
                         "translate(0, $2)"
                       );
 
-                      style = {
-                        ...style,
-                        transform,
-                        WebkitTransform: transform,
-                      };
+                      style.transform = transform;
+                      style.WebkitTransform = transform;
                     }
 
                     return (
                       <Item
                         ref={draggableRef}
-                        ContainerComponent={Paper}
-                        ContainerProps={{
-                          ...draggableProps,
-                          component: motion.li,
-                          elevation: isDragging ? 1 : 0,
-                          square: true,
-                          style,
-                        }}
                         css={
                           isDragging &&
                           css`
-                            &:hover {
-                              background-color: transparent;
-                            }
+                            background-color: ${theme.palette.background.paper};
+                            box-shadow: ${theme.shadows[1]};
                           `
                         }
                         dragHandleProps={dragHandleProps}
                         playerId={playerId}
+                        {...draggableProps}
+                        style={style}
                       />
                     );
                   }}
