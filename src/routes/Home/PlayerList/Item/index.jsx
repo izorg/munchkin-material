@@ -22,8 +22,6 @@ import useEditMode from "../../../../utils/useEditMode";
 import useMultiMode from "../../../../utils/useMultiMode";
 import usePresentSelector from "../../../../utils/usePresentSelector";
 
-const displayName = "HomePlayerListItem";
-
 const HomePlayerListItem = forwardRef(
   ({ dragHandleProps, playerId, ...rest }, ref) => {
     const dispatch = useDispatch();
@@ -34,11 +32,6 @@ const HomePlayerListItem = forwardRef(
      * @type {React.RefObject<HTMLDivElement>}
      */
     const avatarRef = useRef(null);
-
-    /**
-     * @type {React.RefObject<HTMLButtonElement>}
-     */
-    const reorderRef = useRef(null);
 
     const pressTimeoutRef = useRef(0);
 
@@ -62,10 +55,6 @@ const HomePlayerListItem = forwardRef(
     };
 
     const onClick = (event) => {
-      if (editMode && reorderRef.current?.contains(event.target)) {
-        return;
-      }
-
       if (editMode) {
         const searchParams = new URLSearchParams(location.search);
 
@@ -176,7 +165,6 @@ const HomePlayerListItem = forwardRef(
         secondaryAction={
           editMode && (
             <IconButton
-              ref={reorderRef}
               component="span"
               disableRipple
               edge="end"
@@ -227,7 +215,5 @@ HomePlayerListItem.propTypes = {
   }),
   playerId: PropTypes.string.isRequired,
 };
-
-HomePlayerListItem.displayName = displayName;
 
 export default HomePlayerListItem;
