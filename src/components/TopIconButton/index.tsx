@@ -9,7 +9,7 @@ import PropTypes from "prop-types";
 import { forwardRef } from "react";
 
 const TopIconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
-  (props, ref) => {
+  function TopIconButton(props, ref) {
     const theme = useTheme();
 
     const upMd = useMediaQuery(theme.breakpoints.up("md"));
@@ -42,7 +42,5 @@ const TopIconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
 TopIconButton.propTypes = {
   edge: PropTypes.oneOf([false, "start", "end"]),
 };
-
-TopIconButton.displayName = "TopIconButton";
 
 export default TopIconButton;

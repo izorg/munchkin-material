@@ -6,8 +6,6 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 import ScreenFab from "../../../components/ScreenFab";
 
-const displayName = "PlayerAddButton";
-
 const messages = defineMessages({
   label: {
     defaultMessage: "Add",
@@ -15,7 +13,7 @@ const messages = defineMessages({
   },
 });
 
-const PlayerAddButton = forwardRef((props, ref) => {
+const PlayerAddButton = forwardRef(function PlayerAddButton(props, ref) {
   const location = useLocation();
   const navigate = useNavigate();
   const intl = useIntl();
@@ -43,7 +41,5 @@ const PlayerAddButton = forwardRef((props, ref) => {
     </ScreenFab>
   );
 });
-
-PlayerAddButton.displayName = displayName;
 
 export default PlayerAddButton;

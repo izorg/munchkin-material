@@ -13,7 +13,10 @@ type PlayerAvatarProps = {
 };
 
 const PlayerAvatar = forwardRef<HTMLDivElement, PlayerAvatarProps>(
-  ({ color, name, selected = false, style: styleProp, ...props }, ref) => {
+  function PlayerAvatar(
+    { color, name, selected = false, style: styleProp, ...props },
+    ref
+  ) {
     let style = styleProp;
 
     if (!selected && color) {
@@ -44,7 +47,5 @@ PlayerAvatar.propTypes = {
   selected: PropTypes.bool,
   style: PropTypes.object,
 };
-
-PlayerAvatar.displayName = "PlayerAvatar";
 
 export default PlayerAvatar;

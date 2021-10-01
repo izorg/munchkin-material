@@ -22,192 +22,188 @@ import useEditMode from "../../../../utils/useEditMode";
 import useMultiMode from "../../../../utils/useMultiMode";
 import usePresentSelector from "../../../../utils/usePresentSelector";
 
-const HomePlayerListItem = forwardRef(
-  ({ dragHandleProps, playerId, ...rest }, ref) => {
-    const dispatch = useDispatch();
-    const location = useLocation();
-    const navigate = useNavigate();
+const HomePlayerListItem = forwardRef(function HomePlayerListItem(
+  { dragHandleProps, playerId, ...rest },
+  ref
+) {
+  const dispatch = useDispatch();
+  const location = useLocation();
+  const navigate = useNavigate();
 
-    /**
-     * @type {React.RefObject<HTMLDivElement>}
-     */
-    const avatarRef = useRef(null);
+  /**
+   * @type {React.RefObject<HTMLDivElement>}
+   */
+  const avatarRef = useRef(null);
 
-    const pressTimeoutRef = useRef(0);
+  const pressTimeoutRef = useRef(0);
 
-    const goBack = useGoBack();
-    const { editMode } = useEditMode();
-    const { multiMode, setMultiMode } = useMultiMode();
+  const goBack = useGoBack();
+  const { editMode } = useEditMode();
+  const { multiMode, setMultiMode } = useMultiMode();
 
-    const selectedPlayerIds = usePresentSelector(
-      (state) => state.ui.selectedPlayerIds
-    );
-    const selected = multiMode && selectedPlayerIds.includes(playerId);
+  const selectedPlayerIds = usePresentSelector(
+    (state) => state.ui.selectedPlayerIds
+  );
+  const selected = multiMode && selectedPlayerIds.includes(playerId);
 
-    const players = usePresentSelector((state) => state.players);
-    const player = players[playerId];
+  const players = usePresentSelector((state) => state.players);
+  const player = players[playerId];
 
-    const onMultiSelectActivate = () => {
-      dispatch(unselectAllPlayers());
+  const onMultiSelectActivate = () => {
+    dispatch(unselectAllPlayers());
+    dispatch(togglePlayer(playerId));
+
+    setMultiMode(true);
+  };
+
+  const onClick = (event) => {
+    if (editMode) {
+      const searchParams = new URLSearchParams(location.search);
+
+      searchParams.set("player", playerId);
+
+      navigate({
+        search: `?${searchParams.toString()}`,
+      });
+    } else if (multiMode) {
       dispatch(togglePlayer(playerId));
 
-      setMultiMode(true);
-    };
+      if (selectedPlayerIds.length === 1 && selectedPlayerIds[0] === playerId) {
+        goBack();
+      }
+    } else if (avatarRef.current?.contains(event.target)) {
+      onMultiSelectActivate();
+    } else {
+      navigate(`/player/${playerId}`);
+    }
+  };
 
-    const onClick = (event) => {
-      if (editMode) {
-        const searchParams = new URLSearchParams(location.search);
+  const clearPress = useCallback(() => {
+    if (pressTimeoutRef.current) {
+      clearTimeout(pressTimeoutRef.current);
 
-        searchParams.set("player", playerId);
+      pressTimeoutRef.current = 0;
+    }
+  }, []);
 
-        navigate({
-          search: `?${searchParams.toString()}`,
-        });
-      } else if (multiMode) {
-        dispatch(togglePlayer(playerId));
+  const startPointRef = useRef({ x: 0, y: 0 });
+  const startTapTimeRef = useRef(Date.now());
 
-        if (
-          selectedPlayerIds.length === 1 &&
-          selectedPlayerIds[0] === playerId
-        ) {
-          goBack();
+  const onTapStart = (event, info) => {
+    startPointRef.current = info.point;
+    startTapTimeRef.current = Date.now();
+
+    pressTimeoutRef.current = setTimeout(() => {
+      pressTimeoutRef.current = 0;
+
+      const avatarNode = avatarRef.current;
+
+      if (
+        !(editMode || multiMode) &&
+        (!avatarNode || !avatarNode.contains(event.target))
+      ) {
+        if (navigator.vibrate && !ios) {
+          navigator.vibrate(20);
         }
-      } else if (avatarRef.current?.contains(event.target)) {
+
         onMultiSelectActivate();
-      } else {
-        navigate(`/player/${playerId}`);
       }
-    };
+    }, 500);
+  };
 
-    const clearPress = useCallback(() => {
-      if (pressTimeoutRef.current) {
-        clearTimeout(pressTimeoutRef.current);
+  const onTap = (event, info) => {
+    clearPress();
 
-        pressTimeoutRef.current = 0;
-      }
-    }, []);
+    if (event.type === "pointercancel") {
+      return;
+    }
 
-    const startPointRef = useRef({ x: 0, y: 0 });
-    const startTapTimeRef = useRef(Date.now());
+    const delta = Math.sqrt(
+      Math.pow(info.point.x - startPointRef.current.x, 2) +
+        Math.pow(info.point.y - startPointRef.current.y, 2)
+    );
 
-    const onTapStart = (event, info) => {
-      startPointRef.current = info.point;
-      startTapTimeRef.current = Date.now();
+    // happens when mouse down, move and up on the same item
+    if (delta > 3) {
+      return;
+    }
 
-      pressTimeoutRef.current = setTimeout(() => {
-        pressTimeoutRef.current = 0;
+    if (Date.now() - startTapTimeRef.current < 500) {
+      onClick(event);
+    }
+  };
 
-        const avatarNode = avatarRef.current;
+  const onKeyDown = (event) => {
+    if (event.key === "Enter") {
+      onClick(event);
+    }
+  };
 
-        if (
-          !(editMode || multiMode) &&
-          (!avatarNode || !avatarNode.contains(event.target))
-        ) {
-          if (navigator.vibrate && !ios) {
-            navigator.vibrate(20);
+  return (
+    <ListItem
+      ref={ref}
+      css={
+        editMode &&
+        css`
+          @supports (padding: max(0px)) {
+            & > .MuiListItemButton-root {
+              padding-right: calc(32px + max(16px, env(safe-area-inset-right)));
+            }
+
+            & > .MuiListItemSecondaryAction-root {
+              right: max(16px, env(safe-area-inset-right));
+            }
           }
-
-          onMultiSelectActivate();
-        }
-      }, 500);
-    };
-
-    const onTap = (event, info) => {
-      clearPress();
-
-      if (event.type === "pointercancel") {
-        return;
+        `
       }
-
-      const delta = Math.sqrt(
-        Math.pow(info.point.x - startPointRef.current.x, 2) +
-          Math.pow(info.point.y - startPointRef.current.y, 2)
-      );
-
-      // happens when mouse down, move and up on the same item
-      if (delta > 3) {
-        return;
+      data-screenshots="player-list-item"
+      disablePadding
+      {...rest}
+      secondaryAction={
+        editMode && (
+          <IconButton
+            component="span"
+            disableRipple
+            edge="end"
+            {...dragHandleProps}
+          >
+            <SvgIcon>
+              <path d={dragIcon} />
+            </SvgIcon>
+          </IconButton>
+        )
       }
-
-      if (Date.now() - startTapTimeRef.current < 500) {
-        onClick(event);
-      }
-    };
-
-    const onKeyDown = (event) => {
-      if (event.key === "Enter") {
-        onClick(event);
-      }
-    };
-
-    return (
-      <ListItem
-        ref={ref}
-        css={
-          editMode &&
+    >
+      <ListItemButton
+        component={motion.div}
+        css={[
           css`
             @supports (padding: max(0px)) {
-              & > .MuiListItemButton-root {
-                padding-right: calc(
-                  32px + max(16px, env(safe-area-inset-right))
-                );
-              }
-
-              & > .MuiListItemSecondaryAction-root {
-                right: max(16px, env(safe-area-inset-right));
-              }
+              padding-left: max(16px, env(safe-area-inset-left));
+              padding-right: max(16px, env(safe-area-inset-right));
             }
-          `
-        }
-        data-screenshots="player-list-item"
-        disablePadding
-        {...rest}
-        secondaryAction={
-          editMode && (
-            <IconButton
-              component="span"
-              disableRipple
-              edge="end"
-              {...dragHandleProps}
-            >
-              <SvgIcon>
-                <path d={dragIcon} />
-              </SvgIcon>
-            </IconButton>
-          )
-        }
+          `,
+        ]}
+        onKeyDown={onKeyDown}
+        onPanStart={clearPress}
+        onTap={onTap}
+        onTapCancel={clearPress}
+        onTapStart={onTapStart}
       >
-        <ListItemButton
-          component={motion.div}
-          css={[
-            css`
-              @supports (padding: max(0px)) {
-                padding-left: max(16px, env(safe-area-inset-left));
-                padding-right: max(16px, env(safe-area-inset-right));
-              }
-            `,
-          ]}
-          onKeyDown={onKeyDown}
-          onPanStart={clearPress}
-          onTap={onTap}
-          onTapCancel={clearPress}
-          onTapStart={onTapStart}
-        >
-          <ListItemAvatar>
-            <PlayerAvatar
-              ref={avatarRef}
-              color={player.color}
-              name={player.name}
-              selected={multiMode && selected}
-            />
-          </ListItemAvatar>
+        <ListItemAvatar>
+          <PlayerAvatar
+            ref={avatarRef}
+            color={player.color}
+            name={player.name}
+            selected={multiMode && selected}
+          />
+        </ListItemAvatar>
 
-          <PlayerListItemText player={player} />
-        </ListItemButton>
-      </ListItem>
-    );
-  }
-);
+        <PlayerListItemText player={player} />
+      </ListItemButton>
+    </ListItem>
+  );
+});
 
 HomePlayerListItem.propTypes = {
   dragHandleProps: PropTypes.shape({

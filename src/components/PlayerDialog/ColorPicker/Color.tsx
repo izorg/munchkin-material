@@ -4,15 +4,16 @@ import { Avatar, ButtonBase, ButtonBaseProps, SvgIcon } from "@mui/material";
 import PropTypes from "prop-types";
 import { forwardRef } from "react";
 
-const displayName = "Color";
-
 type ColorProps = Omit<ButtonBaseProps, "selected" | "value"> & {
   selected?: boolean;
   value?: string;
 };
 
-const Color = forwardRef<HTMLButtonElement, ColorProps>(
-  ({ selected, value, ...props }, ref) => (
+const Color = forwardRef<HTMLButtonElement, ColorProps>(function Color(
+  { selected, value, ...props },
+  ref
+) {
+  return (
     <ButtonBase
       ref={ref}
       centerRipple
@@ -41,8 +42,8 @@ const Color = forwardRef<HTMLButtonElement, ColorProps>(
         )}
       </Avatar>
     </ButtonBase>
-  )
-);
+  );
+});
 
 Color.propTypes = {
   selected: PropTypes.bool,
@@ -52,7 +53,5 @@ Color.propTypes = {
 Color.defaultProps = {
   selected: false,
 };
-
-Color.displayName = displayName;
 
 export default Color;
