@@ -1,9 +1,10 @@
 [development]
-ios 13.4
+ios 11.3
 
 [production]
 chrome 51
-ios 13.4
+edge 18
+ios 11.3
 
 [test]
 current node

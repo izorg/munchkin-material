@@ -56,7 +56,7 @@
         <allow-intent href="itms-apps:*" />
         <preference name="scheme" value="app" />
         <preference name="hostname" value="localhost" />
-        <preference name="deployment-target" value="13.4" />
+        <preference name="deployment-target" value="11.3" />
         <preference name="DisallowOverscroll" value="true" />
         <preference name="KeyboardDisplayRequiresUserAction" value="false" />
         <preference name="KeyboardResizeMode" value="body" />
