@@ -1,22 +1,19 @@
 import { mdiMenu } from "@mdi/js";
-import { SvgIcon, Tooltip, useMediaQuery, useTheme } from "@mui/material";
-import { defineMessages, useIntl } from "react-intl";
+import {
+  IconButtonProps,
+  SvgIcon,
+  Tooltip,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
+import { useIntl } from "react-intl";
 import { useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import TopIconButton from "../../../../components/TopIconButton";
 import { toggleMenu } from "../../../../ducks/ui";
 
-const displayName = "MenuButton";
-
-const messages = defineMessages({
-  menu: {
-    defaultMessage: "Menu",
-    id: "menu",
-  },
-});
-
-const MenuButton = (props) => {
+const MenuButton = (props: IconButtonProps): JSX.Element => {
   const dispatch = useDispatch();
   const intl = useIntl();
   const location = useLocation();
@@ -40,7 +37,12 @@ const MenuButton = (props) => {
   };
 
   return (
-    <Tooltip title={intl.formatMessage(messages.menu)}>
+    <Tooltip
+      title={intl.formatMessage({
+        defaultMessage: "Menu",
+        id: "menu",
+      })}
+    >
       <TopIconButton data-screenshots="menu" onClick={onClick} {...props}>
         <SvgIcon>
           <path d={mdiMenu} />
@@ -49,7 +51,5 @@ const MenuButton = (props) => {
     </Tooltip>
   );
 };
-
-MenuButton.displayName = displayName;
 
 export default MenuButton;

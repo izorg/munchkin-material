@@ -1,13 +1,24 @@
-import { ListItemAvatar, ListItemButton } from "@mui/material";
+import {
+  ListItemAvatar,
+  ListItemButton,
+  ListItemButtonProps,
+} from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 import PlayerAvatar from "../../../../components/PlayerAvatar";
 import PlayerListItemText from "../../../../components/PlayerListItemText";
+import type { AvailableColor } from "../../../../utils/availableColors";
 import { playerShape } from "../../../../utils/propTypes";
+import type { Player } from "../../../../utils/types";
 
 const displayName = "PlayerListItem";
 
-const PlayerListItem = ({ player, ...props }) => {
+type PlayerListItemProps = { player: Player } & ListItemButtonProps;
+
+const PlayerListItem = ({
+  player,
+  ...props
+}: PlayerListItemProps): JSX.Element => {
   const navigate = useNavigate();
 
   return (
@@ -16,7 +27,10 @@ const PlayerListItem = ({ player, ...props }) => {
       {...props}
     >
       <ListItemAvatar>
-        <PlayerAvatar color={player.color} name={player.name} />
+        <PlayerAvatar
+          color={player.color as AvailableColor}
+          name={player.name}
+        />
       </ListItemAvatar>
       <PlayerListItemText player={player} />
     </ListItemButton>

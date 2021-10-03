@@ -3,7 +3,7 @@ import { IconButton, useTheme } from "@mui/material";
 import PropTypes from "prop-types";
 import { useCallback } from "react";
 import { useIntl } from "react-intl";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import Counter, { counterMessages } from "../../../../components/Counter";
 import CounterLabel from "../../../../components/Counter/Label";
@@ -19,15 +19,24 @@ import {
   isLevelDecrementDisabled,
   isLevelIncrementDisabled,
 } from "../../../../utils/levelLimit";
+import usePresentSelector from "../../../../utils/usePresentSelector";
 
-const PlayerStats = ({ className, playerId }) => {
+type PlayerStatsProps = {
+  className?: string;
+  playerId: string;
+};
+
+const PlayerStats = ({
+  className,
+  playerId,
+}: PlayerStatsProps): JSX.Element => {
   const dispatch = useDispatch();
   const intl = useIntl();
   const theme = useTheme();
 
-  const player = useSelector((state) => state.present.players[playerId]);
-  const levelLimit = useSelector((state) => state.present.settings.levelLimit);
-  const epic = useSelector((state) => state.present.settings.epic);
+  const player = usePresentSelector((state) => state.players[playerId]);
+  const levelLimit = usePresentSelector((state) => state.settings.levelLimit);
+  const epic = usePresentSelector((state) => state.settings.epic);
 
   const levelDecrementDisabled = isLevelDecrementDisabled(
     player.level,
@@ -67,6 +76,9 @@ const PlayerStats = ({ className, playerId }) => {
     flex-direction: column;
     justify-content: center;
   `;
+
+  const lineHeight =
+    (theme.typography.body2.lineHeight as number) / 2; /* 1.43 / 2 */
 
   return (
     <div
@@ -139,9 +151,7 @@ const PlayerStats = ({ className, playerId }) => {
 
               @media (orientation: portrait) {
                 font-size: 72px; /* 36px * 2 */
-                line-height: ${theme.typography.body2.lineHeight /
-                2}; /* 1.43 / 2 */
-
+                line-height: ${lineHeight}; /* 1.43 / 2 */
                 margin-top: 32px;
               }
             `}
@@ -158,7 +168,7 @@ const PlayerStats = ({ className, playerId }) => {
                 margin-top: 16px;
               }
             `}
-            onClick={() => onSexToggle(player.id)}
+            onClick={onSexToggle}
           >
             <SexIcon
               css={css`

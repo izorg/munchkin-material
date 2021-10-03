@@ -1,23 +1,27 @@
 import { css } from "@emotion/react";
 import { useTheme } from "@mui/material";
 import { motion, useAnimation } from "framer-motion";
+import { PanInfo } from "framer-motion/types/gestures/PanSession";
 import PropTypes from "prop-types";
 import { useCallback, useRef } from "react";
-import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+
+import usePresentSelector from "../../../utils/usePresentSelector";
 
 import PlayerStats from "./Stats";
 
-const displayName = "PlayerSlider";
+type PlayerSliderProps = {
+  playerId: string;
+};
 
-const PlayerSlider = ({ playerId }) => {
+const PlayerSlider = ({ playerId }: PlayerSliderProps): JSX.Element => {
   const navigate = useNavigate();
   const theme = useTheme();
   const { direction } = theme;
 
   const rtl = direction === "rtl";
 
-  const playerList = useSelector((state) => state.present.playerList);
+  const playerList = usePresentSelector((state) => state.playerList);
   const playerCount = playerList.length;
 
   const currentIndex = playerList.indexOf(playerId);
@@ -35,14 +39,18 @@ const PlayerSlider = ({ playerId }) => {
     [playerCount]
   );
 
-  /**
-   * @type {React.MutableRefObject<HTMLDivElement>}
-   */
-  const ref = useRef();
+  const ref = useRef<HTMLDivElement>(null);
 
   const controls = useAnimation();
 
-  const onDragEnd = async (event, info) => {
+  const onDragEnd = async (
+    event: MouseEvent | TouchEvent | PointerEvent,
+    info: PanInfo
+  ) => {
+    if (!ref.current) {
+      return;
+    }
+
     const offset = info.offset.x;
     const velocity = info.velocity.x;
 
@@ -153,7 +161,5 @@ const PlayerSlider = ({ playerId }) => {
 PlayerSlider.propTypes = {
   playerId: PropTypes.string.isRequired,
 };
-
-PlayerSlider.displayName = displayName;
 
 export default PlayerSlider;

@@ -1,14 +1,18 @@
-import { List, Paper } from "@mui/material";
+import { List, ListProps, Paper } from "@mui/material";
 import PropTypes from "prop-types";
-import { useSelector } from "react-redux";
+
+import usePresentSelector from "../../../utils/usePresentSelector";
 
 import Item from "./Item";
 
-const displayName = "PlayerList";
+type PlayerListProps = { selectedPlayerId: string } & ListProps;
 
-const PlayerList = ({ selectedPlayerId, ...props }) => {
-  const playerList = useSelector((state) => state.present.playerList);
-  const players = useSelector((state) => state.present.players);
+const PlayerList = ({
+  selectedPlayerId,
+  ...props
+}: PlayerListProps): JSX.Element => {
+  const playerList = usePresentSelector((state) => state.playerList);
+  const players = usePresentSelector((state) => state.players);
 
   return (
     <List
@@ -29,7 +33,5 @@ const PlayerList = ({ selectedPlayerId, ...props }) => {
 PlayerList.propTypes = {
   selectedPlayerId: PropTypes.string.isRequired,
 };
-
-PlayerList.displayName = displayName;
 
 export default PlayerList;

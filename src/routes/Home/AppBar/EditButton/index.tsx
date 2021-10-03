@@ -6,7 +6,7 @@ import TopIconButton from "../../../../components/TopIconButton";
 import { useGoBack } from "../../../../utils/location";
 import useEditMode from "../../../../utils/useEditMode";
 
-const EditButton = () => {
+const EditButton = (): JSX.Element => {
   const goBack = useGoBack();
   const intl = useIntl();
 

@@ -1,26 +1,22 @@
 import { mdiShuffle } from "@mdi/js";
-import { SvgIcon, Tooltip } from "@mui/material";
-import { defineMessages, useIntl } from "react-intl";
+import { IconButtonProps, SvgIcon, Tooltip } from "@mui/material";
+import { useIntl } from "react-intl";
 import { useDispatch } from "react-redux";
 
 import TopIconButton from "../../../../components/TopIconButton";
 import { shufflePlayers } from "../../../../ducks/playerList";
 
-const displayName = "ShuffleButton";
-
-const messages = defineMessages({
-  shuffle: {
-    defaultMessage: "Shuffle players",
-    id: "player.list.shuffle",
-  },
-});
-
-const ShuffleButton = (props) => {
+const ShuffleButton = (props: IconButtonProps): JSX.Element => {
   const dispatch = useDispatch();
   const intl = useIntl();
 
   return (
-    <Tooltip title={intl.formatMessage(messages.shuffle)}>
+    <Tooltip
+      title={intl.formatMessage({
+        defaultMessage: "Shuffle players",
+        id: "player.list.shuffle",
+      })}
+    >
       <TopIconButton onClick={() => dispatch(shufflePlayers())} {...props}>
         <SvgIcon>
           <path d={mdiShuffle} />
@@ -29,7 +25,5 @@ const ShuffleButton = (props) => {
     </Tooltip>
   );
 };
-
-ShuffleButton.displayName = displayName;
 
 export default ShuffleButton;
