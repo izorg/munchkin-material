@@ -1,11 +1,7 @@
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import { css } from "@emotion/react";
-import {
-  mdiChevronDown as downIcon,
-  mdiDragHorizontalVariant as dragIcon,
-  mdiChevronUp as upIcon,
-} from "@mdi/js";
+import { mdiDragHorizontalVariant as dragIcon } from "@mdi/js";
 import {
   IconButton,
   ListItem,
@@ -21,7 +17,6 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 import PlayerAvatar from "../../../../components/PlayerAvatar";
 import PlayerListItemText from "../../../../components/PlayerListItemText";
-import { movePlayer } from "../../../../ducks/playerList";
 import { togglePlayer, unselectAllPlayers } from "../../../../ducks/ui";
 import { useGoBack } from "../../../../utils/location";
 import { ios } from "../../../../utils/platforms";
@@ -52,7 +47,6 @@ const HomePlayerListItem = (props) => {
   );
   const selected = multiMode && selectedPlayerIds.includes(playerId);
 
-  const playerList = usePresentSelector((state) => state.playerList);
   const players = usePresentSelector((state) => state.players);
   const player = players[playerId];
 
@@ -157,9 +151,6 @@ const HomePlayerListItem = (props) => {
     transition,
   };
 
-  const windows =
-    "cordova" in window && window.cordova.platformId === "windows";
-
   return (
     <ListItem
       {...rest}
@@ -182,69 +173,24 @@ const HomePlayerListItem = (props) => {
       data-screenshots="player-list-item"
       disablePadding
       secondaryAction={
-        editMode &&
-        (windows ? (
-          <>
-            <IconButton
-              disabled={playerId === playerList[playerList.length - 1]}
-              disableTouchRipple
-              edge="end"
-              onClick={() => {
-                dispatch(
-                  movePlayer(
-                    playerList.indexOf(playerId),
-                    playerList.indexOf(playerId) + 1
-                  )
-                );
-              }}
-            >
-              <SvgIcon>
-                <path d={downIcon} />
-              </SvgIcon>
-            </IconButton>
-            <IconButton
-              disabled={playerId === playerList[0]}
-              disableTouchRipple
-              edge="end"
-              onClick={() => {
-                dispatch(
-                  movePlayer(
-                    playerList.indexOf(playerId),
-                    playerList.indexOf(playerId) - 1
-                  )
-                );
-              }}
-            >
-              <SvgIcon>
-                <path d={upIcon} />
-              </SvgIcon>
-            </IconButton>
-          </>
-        ) : (
+        editMode && (
           <IconButton component="span" disableRipple edge="end" {...listeners}>
             <SvgIcon>
               <path d={dragIcon} />
             </SvgIcon>
           </IconButton>
-        ))
+        )
       }
       style={style}
     >
       <ListItemButton
         component={motion.div}
-        css={[
-          css`
-            @supports (padding: max(0px)) {
-              padding-left: max(16px, env(safe-area-inset-left));
-              padding-right: max(16px, env(safe-area-inset-right));
-            }
-          `,
-          editMode &&
-            windows &&
-            css`
-              padding-right: 80px !important;
-            `,
-        ]}
+        css={css`
+          @supports (padding: max(0px)) {
+            padding-left: max(16px, env(safe-area-inset-left));
+            padding-right: max(16px, env(safe-area-inset-right));
+          }
+        `}
         onKeyDown={onKeyDown}
         onPanStart={clearPress}
         onTap={onTap}

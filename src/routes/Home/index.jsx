@@ -10,6 +10,7 @@ import MenuSidebar from "../../components/menu/Sidebar";
 import Nobody from "../../components/Nobody";
 import ScreenModal from "../../components/ScreenModal";
 import ThemeDialog from "../../components/theme/Dialog";
+import useEditMode from "../../utils/useEditMode";
 
 import AppBar from "./AppBar";
 import PlayerAddButton from "./PlayerAddButton";
@@ -35,6 +36,7 @@ const Home = () => {
   let content;
 
   const singleMode = useSelector((state) => state.present.settings.singleMode);
+  const { editMode } = useEditMode();
 
   if (singleMode) {
     content = <SinglePlayer />;
@@ -43,11 +45,19 @@ const Home = () => {
   } else {
     content = (
       <div
-        css={css`
-          flex: 1;
-          -webkit-overflow-scrolling: touch;
-          overflow-y: auto;
-        `}
+        css={[
+          css`
+            flex: 1;
+            -webkit-overflow-scrolling: touch;
+            overflow-y: auto;
+          `,
+          editMode &&
+            "cordova" in window &&
+            window.cordova.platformId === "windows" &&
+            css`
+              touch-action: none;
+            `,
+        ]}
       >
         <PlayerList
           css={css`
