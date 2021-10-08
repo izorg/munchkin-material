@@ -11,6 +11,7 @@ import {
 import { ChangeEvent, FormEvent, useState } from "react";
 import { useIntl } from "react-intl";
 import { useDispatch } from "react-redux";
+import { useLocation } from "react-router-dom";
 
 import { setEpic, setLevelLimit } from "../../../ducks/settings";
 import {
@@ -31,6 +32,7 @@ export const NO_LIMIT = "no-limit";
 const LevelLimitDialog = (): JSX.Element => {
   const dispatch = useDispatch();
   const intl = useIntl();
+  const location = useLocation();
 
   const levelLimit = usePresentSelector((state) => state.settings.levelLimit);
   const epic = usePresentSelector((state) => state.settings.epic);
