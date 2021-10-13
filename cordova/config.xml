@@ -62,7 +62,6 @@
         <preference name="KeyboardResizeMode" value="body" />
         <preference name="StatusBarOverlaysWebView" value="true" />
         <preference name="SuppressesLongPressGesture" value="true" />
-        <resource-file src="GoogleService-Info.plist" />
         <icon height="20" src="res/ios/icon-20.png" width="20" />
         <icon height="29" src="res/ios/icon-29.png" width="29" />
         <icon height="40" src="res/ios/icon-40.png" width="40" />

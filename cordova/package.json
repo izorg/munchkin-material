@@ -1,6 +1,5 @@
 {
   "name": "munchkin-cordova",
-  "version": "0.0.0",
   "scripts": {
     "build:android": "cordova build android --release",
     "build:ios": "cordova build ios",
@@ -17,20 +16,10 @@
     "plugins": {
       "cordova-plugin-android-dark-mode-support": {},
       "cordova-plugin-buildinfo": {},
-      "cordova-plugin-firebase-analytics": {
-        "ANALYTICS_COLLECTION_ENABLED": "true",
-        "AUTOMATIC_SCREEN_REPORTING_ENABLED": "true",
-        "ANDROID_FIREBASE_ANALYTICS_VERSION": "19.0.+",
-        "IOS_FIREBASE_ANALYTICS_VERSION": "~> 8.2.0"
-      },
-      "cordova-plugin-firebase-crash": {
-        "FIREBASE_CRASHLYTICS_COLLECTION_ENABLED": "true",
-        "ANDROID_FIREBASE_CRASHLYTICS_VERSION": "18.1.+",
-        "IOS_FIREBASE_CRASHLYTICS_VERSION": "~> 8.2.0"
-      },
       "cordova-plugin-headercolor": {},
       "cordova-plugin-insomnia": {},
       "cordova-plugin-ionic-keyboard": {},
+      "cordova-plugin-firebasex": {},
       "cordova-plugin-localization-strings": {
         "TRANSLATION_PATH": "translations/app/"
       },
@@ -51,8 +40,7 @@
     "cordova-plugin-add-swift-support": "2.0.2",
     "cordova-plugin-android-dark-mode-support": "1.0.0",
     "cordova-plugin-buildinfo": "4.0.0",
-    "cordova-plugin-firebase-analytics": "6.0.1",
-    "cordova-plugin-firebase-crash": "4.0.0",
+    "cordova-plugin-firebasex": "^13.0.1",
     "cordova-plugin-headercolor": "1.0.0",
     "cordova-plugin-insomnia": "4.3.0",
     "cordova-plugin-ionic-keyboard": "2.2.0",
