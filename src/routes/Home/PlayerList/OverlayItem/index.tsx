@@ -11,9 +11,12 @@ import PropTypes from "prop-types";
 
 import PlayerAvatar from "../../../../components/PlayerAvatar";
 import PlayerListItemText from "../../../../components/PlayerListItemText";
+import { AvailableColor } from "../../../../utils/availableColors";
 import usePresentSelector from "../../../../utils/usePresentSelector";
 
-const HomePlayerListOverlayItem = (props) => {
+const HomePlayerListOverlayItem = (props: {
+  playerId: string;
+}): JSX.Element => {
   const { playerId } = props;
 
   const players = usePresentSelector((state) => state.players);
@@ -57,7 +60,10 @@ const HomePlayerListOverlayItem = (props) => {
         ]}
       >
         <ListItemAvatar>
-          <PlayerAvatar color={player.color} name={player.name} />
+          <PlayerAvatar
+            color={player.color as AvailableColor}
+            name={player.name}
+          />
         </ListItemAvatar>
 
         <PlayerListItemText player={player} />

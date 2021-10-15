@@ -1,6 +1,7 @@
 import { css } from "@emotion/react";
 import { Typography, useTheme } from "@mui/material";
-import { useSelector } from "react-redux";
+
+import usePresentSelector from "../../utils/usePresentSelector";
 
 import AppBar from "./AppBar";
 import HelperButton from "./HelperButton";
@@ -8,16 +9,16 @@ import HelperSelector from "./HelperSelector";
 import MonsterSlider from "./MonsterSlider";
 import PlayerSlider from "./PlayerSlider";
 
-const Combat = () => {
+const Combat = (): JSX.Element => {
   const theme = useTheme();
 
   const { direction } = theme;
 
-  const playerId = useSelector((state) => state.present.combat.playerId);
-  const helperId = useSelector((state) => state.present.combat.helperId);
+  const playerId = usePresentSelector((state) => state.combat.playerId);
+  const helperId = usePresentSelector((state) => state.combat.helperId);
 
-  const combinedMonsterStrength = useSelector((state) => {
-    const { combat, monsters } = state.present;
+  const combinedMonsterStrength = usePresentSelector((state) => {
+    const { combat, monsters } = state;
 
     return combat.monsters
       .map((id) => monsters[id])
@@ -27,14 +28,14 @@ const Combat = () => {
       );
   });
 
-  const combinedPlayerStrength = useSelector((state) => {
+  const combinedPlayerStrength = usePresentSelector((state) => {
     const {
       combat: { helperBonus, helperId, playerBonus, playerId },
       players,
-    } = state.present;
+    } = state;
 
-    const player = players[playerId];
-    const helper = players[helperId];
+    const player = players[playerId as string];
+    const helper = players[helperId as string];
 
     const playerStrength = player.level + player.gear + playerBonus;
     const helperStrength = helper
@@ -95,7 +96,7 @@ const Combat = () => {
               }
             `}
             helperId={helperId}
-            playerId={playerId}
+            playerId={playerId as string}
           />
 
           <Typography

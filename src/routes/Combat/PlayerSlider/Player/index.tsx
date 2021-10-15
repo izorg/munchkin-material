@@ -3,7 +3,8 @@ import { IconButton, Typography, useTheme } from "@mui/material";
 import PropTypes from "prop-types";
 import { useCallback } from "react";
 import { useIntl } from "react-intl";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { Action } from "redux";
 
 import { counterMessages } from "../../../../components/Counter";
 import SexIcon from "../../../../components/Sex";
@@ -18,24 +19,30 @@ import {
   incrementPlayerLevel,
   togglePlayerSex,
 } from "../../../../ducks/players";
+import { StoreState } from "../../../../store";
 import {
   isLevelDecrementDisabled,
   isLevelIncrementDisabled,
 } from "../../../../utils/levelLimit";
+import usePresentSelector from "../../../../utils/usePresentSelector";
 import Counter from "../../Counter";
 
 const displayName = "CombatPlayer";
 
-const CombatPlayer = ({ playerId }) => {
+type CombatPlayerProps = {
+  playerId: string;
+};
+
+const CombatPlayer = ({ playerId }: CombatPlayerProps): JSX.Element => {
   const dispatch = useDispatch();
   const intl = useIntl();
   const theme = useTheme();
 
-  const players = useSelector((state) => state.present.players);
+  const players = usePresentSelector((state) => state.players);
   const { gear, id, level, name, sex } = players[playerId];
 
-  const levelLimit = useSelector((state) => state.present.settings.levelLimit);
-  const epic = useSelector((state) => state.present.settings.epic);
+  const levelLimit = usePresentSelector((state) => state.settings.levelLimit);
+  const epic = usePresentSelector((state) => state.settings.epic);
 
   const levelDecrementDisabled = isLevelDecrementDisabled(level, levelLimit);
   const levelIncrementDisabled = isLevelIncrementDisabled(
@@ -44,13 +51,13 @@ const CombatPlayer = ({ playerId }) => {
     epic
   );
 
-  const combat = useSelector((state) => state.present.combat);
+  const combat = usePresentSelector((state) => state.combat);
   const bonus =
     playerId === combat.helperId ? combat.helperBonus : combat.playerBonus;
 
   const onBonusChange = useCallback(
-    (value) => {
-      dispatch((_, getState) => {
+    (value: number) => {
+      dispatch((_: Action, getState: () => StoreState) => {
         const {
           combat: { helperBonus, helperId, playerBonus },
         } = getState().present;

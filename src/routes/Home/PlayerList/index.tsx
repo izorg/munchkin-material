@@ -1,7 +1,9 @@
 import {
   closestCenter,
   DndContext,
+  DragEndEvent,
   DragOverlay,
+  DragStartEvent,
   KeyboardSensor,
   MouseSensor,
   TouchSensor,
@@ -15,7 +17,7 @@ import {
   verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
 import { css } from "@emotion/react";
-import { List, Paper } from "@mui/material";
+import { List, ListProps, Paper } from "@mui/material";
 import { useCallback, useState } from "react";
 import { useDispatch } from "react-redux";
 
@@ -25,22 +27,26 @@ import usePresentSelector from "../../../utils/usePresentSelector";
 import Item from "./Item";
 import OverlayItem from "./OverlayItem";
 
-const HomePlayerList = (props) => {
+const HomePlayerList = (props: ListProps): JSX.Element => {
   const dispatch = useDispatch();
 
   const playerList = usePresentSelector((state) => state.playerList);
 
-  const [activeId, setActiveId] = useState(null);
+  const [activeId, setActiveId] = useState<null | string>(null);
 
-  const handleDragStart = (event) => {
+  const handleDragStart = (event: DragStartEvent) => {
     setActiveId(event.active.id);
   };
 
   const handleDragEnd = useCallback(
-    (event) => {
+    (event: DragEndEvent) => {
       setActiveId(null);
 
       const { active, over } = event;
+
+      if (!over) {
+        return;
+      }
 
       if (active.id !== over.id) {
         const oldIndex = playerList.indexOf(active.id);

@@ -5,21 +5,21 @@ import ScreenModal from "../ScreenModal";
 import UndoProvider from "../UndoProvider";
 import UndoSnackbar from "../UndoSnackbar";
 
-const DiceDialog = lazy(() =>
-  import(
-    /* webpackPrefetch: true */
-    "../dice/Dialog"
-  )
+const DiceDialog = lazy(
+  () =>
+    import(
+      /* webpackPrefetch: true */
+      "../dice/Dialog"
+    )
 );
 
-const PlayerDialog = lazy(() =>
-  import(
-    /* webpackPrefetch: true */
-    "../PlayerDialog"
-  )
+const PlayerDialog = lazy(
+  () =>
+    import(
+      /* webpackPrefetch: true */
+      "../PlayerDialog"
+    )
 );
-
-const displayName = "App";
 
 const App = () => {
   useEffect(() => {
@@ -46,7 +46,5 @@ const App = () => {
     </UndoProvider>
   );
 };
-
-App.displayName = displayName;
 
 export default App;

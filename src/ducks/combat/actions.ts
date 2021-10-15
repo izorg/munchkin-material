@@ -5,7 +5,9 @@ import { Monster } from "../../utils/types";
 
 export const finishCombat = createAction("combat/finishCombat");
 
-export const setCombatHelper = createAction<string>("combat/setCombatHelper");
+export const setCombatHelper = createAction<null | string>(
+  "combat/setCombatHelper"
+);
 
 export const setCombatHelperBonus = createAction<number>(
   "combat/setCombatHelperBonus"

@@ -2,29 +2,34 @@ import { css } from "@emotion/react";
 import { useTheme } from "@mui/material";
 import PropTypes from "prop-types";
 import { lazy, Suspense, useRef } from "react";
-import { useSelector } from "react-redux";
 import { Navigate, useMatch } from "react-router-dom";
 
 import PlayerContext from "../../components/PlayerContext";
 import ScreenModal from "../../components/ScreenModal";
+import usePresentSelector from "../../utils/usePresentSelector";
 
 import AppBar from "./AppBar";
 import CombatButton from "./CombatButton";
 import PlayerList from "./List";
 import Slider from "./Slider";
 
-const Combat = lazy(() =>
-  import(
-    /* webpackPrefetch: true */
-    "../Combat"
-  )
+const Combat = lazy(
+  () =>
+    import(
+      /* webpackPrefetch: true */
+      "../Combat"
+    )
 );
 
-const Player = ({ playerId }) => {
+type PlayerProps = {
+  playerId?: null | string;
+};
+
+const Player = ({ playerId }: PlayerProps): JSX.Element => {
   const theme = useTheme();
 
-  const playerRef = useRef();
-  const playerList = useSelector((state) => state.present.playerList);
+  const playerRef = useRef<string>();
+  const playerList = usePresentSelector((state) => state.playerList);
 
   const combatMatch = useMatch({
     end: false,

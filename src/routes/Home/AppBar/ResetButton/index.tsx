@@ -1,14 +1,15 @@
 import { mdiBackupRestore } from "@mdi/js";
-import { SvgIcon, Tooltip } from "@mui/material";
+import { IconButtonProps, SvgIcon, Tooltip } from "@mui/material";
 import { defineMessages, useIntl } from "react-intl";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { Action } from "redux";
 import { ActionCreators } from "redux-undo";
 
 import TopIconButton from "../../../../components/TopIconButton";
 import { useUndo } from "../../../../components/UndoProvider";
 import { resetPlayers } from "../../../../ducks/players";
-
-const displayName = "ResetButton";
+import { StoreState } from "../../../../store";
+import usePresentSelector from "../../../../utils/usePresentSelector";
 
 const messages = defineMessages({
   reset: {
@@ -22,20 +23,20 @@ const messages = defineMessages({
   },
 });
 
-const ResetButton = (props) => {
+const ResetButton = (props: IconButtonProps): JSX.Element => {
   const dispatch = useDispatch();
   const intl = useIntl();
 
-  const disabled = useSelector((state) => {
+  const disabled = usePresentSelector((state) => {
     const {
       combat: { playerBonus, playerId },
       playerList,
       players,
       settings: { singleMode },
-    } = state.present;
+    } = state;
 
     if (singleMode) {
-      const player = players[playerId];
+      const player = players[playerId as string];
 
       return player.level === 1 && player.gear === 0 && playerBonus === 0;
     }
@@ -50,7 +51,7 @@ const ResetButton = (props) => {
   const { setMessage } = useUndo();
 
   const onClick = () =>
-    dispatch((_, getState) => {
+    dispatch((_: Action, getState: () => StoreState) => {
       const {
         combat,
         playerList,
@@ -60,7 +61,7 @@ const ResetButton = (props) => {
       if (singleMode) {
         const { playerId: id } = combat;
 
-        dispatch(resetPlayers([id]));
+        dispatch(resetPlayers([id as string]));
         dispatch(ActionCreators.clearHistory());
       } else {
         setMessage(intl.formatMessage(messages.undo));
@@ -82,7 +83,5 @@ const ResetButton = (props) => {
 
   return <Tooltip title={intl.formatMessage(messages.reset)}>{button}</Tooltip>;
 };
-
-ResetButton.displayName = displayName;
 
 export default ResetButton;

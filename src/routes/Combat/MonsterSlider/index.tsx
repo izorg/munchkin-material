@@ -11,31 +11,30 @@ import { motion, useAnimation, useMotionValue } from "framer-motion";
 import PropTypes from "prop-types";
 import { memo, useEffect, useRef } from "react";
 import { FormattedMessage } from "react-intl";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import { removeMonster } from "../../../ducks/monsters";
+import usePresentSelector from "../../../utils/usePresentSelector";
 
 import Monster from "./Monster";
 
-const CombatMonsterSlider = ({ className }) => {
+const CombatMonsterSlider = ({
+  className,
+}: {
+  className?: string;
+}): JSX.Element => {
   const dispatch = useDispatch();
   const theme = useTheme();
 
-  /**
-   * @type {React.MutableRefObject<HTMLDivElement>}
-   */
-  const ref = useRef();
+  const ref = useRef<HTMLDivElement>(null);
 
-  /**
-   * @type {React.MutableRefObject<HTMLDivElement>}
-   */
-  const containerRef = useRef();
+  const containerRef = useRef<HTMLDivElement>(null);
 
   const { direction } = theme;
 
   const landscape = useMediaQuery("(orientation: landscape)");
 
-  const monsters = useSelector((state) => state.present.combat.monsters);
+  const monsters = usePresentSelector((state) => state.combat.monsters);
   const monsterCount = useRef(monsters.length);
 
   const animate = useAnimation();
@@ -45,6 +44,10 @@ const CombatMonsterSlider = ({ className }) => {
   const onDrag = () => {
     const parent = ref.current;
     const child = containerRef.current;
+
+    if (!child || !parent) {
+      return;
+    }
 
     if (landscape) {
       if (child.offsetHeight <= parent.offsetHeight) {
@@ -57,9 +60,13 @@ const CombatMonsterSlider = ({ className }) => {
     }
   };
 
-  const modifyTarget = (target) => {
+  const modifyTarget = (target: number) => {
     const parent = ref.current;
     const child = containerRef.current;
+
+    if (!child || !parent) {
+      return 0;
+    }
 
     if (landscape) {
       if (child.offsetHeight <= parent.offsetHeight) {
@@ -103,10 +110,14 @@ const CombatMonsterSlider = ({ className }) => {
     const child = containerRef.current;
     const transitionOverride = { type: "tween" };
 
+    if (!child || !parent) {
+      return;
+    }
+
     if (landscape) {
       if (monsters.length > monsterCount.current) {
         if (child.offsetHeight > parent.offsetHeight) {
-          animate.start(
+          void animate.start(
             { y: parent.offsetHeight - child.offsetHeight },
             transitionOverride
           );
@@ -117,7 +128,7 @@ const CombatMonsterSlider = ({ className }) => {
         if (child.offsetHeight <= parent.offsetHeight) {
           y.set(0);
         } else if (y.get() < parent.offsetHeight - child.offsetHeight) {
-          animate.start(
+          void animate.start(
             { y: parent.offsetHeight - child.offsetHeight },
             transitionOverride
           );
@@ -132,7 +143,7 @@ const CombatMonsterSlider = ({ className }) => {
             shift = -shift;
           }
 
-          animate.start({ x: shift }, transitionOverride);
+          void animate.start({ x: shift }, transitionOverride);
         }
       }
 
@@ -142,14 +153,14 @@ const CombatMonsterSlider = ({ className }) => {
         } else {
           if (direction === "rtl") {
             if (x.get() > child.offsetWidth - parent.offsetWidth) {
-              animate.start(
+              void animate.start(
                 { x: child.offsetWidth - parent.offsetWidth },
                 transitionOverride
               );
             }
           } else {
             if (x.get() < parent.offsetWidth - child.offsetWidth) {
-              animate.start(
+              void animate.start(
                 { x: parent.offsetWidth - child.offsetWidth },
                 transitionOverride
               );
@@ -168,7 +179,7 @@ const CombatMonsterSlider = ({ className }) => {
     monsterCount.current = monsters.length;
   }, [animate, direction, landscape, monsters.length, x, y]);
 
-  const handleRemove = (monsterId) => {
+  const handleRemove = (monsterId: string) => {
     dispatch(removeMonster(monsterId));
   };
 

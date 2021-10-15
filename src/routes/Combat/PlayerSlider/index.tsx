@@ -18,19 +18,21 @@ import Player from "./Player";
 
 const displayName = "CombatPlayerSlider";
 
-const CombatPlayerSlider = ({ className, helperId, playerId }) => {
+type CombatPlayerSliderProps = {
+  className?: string;
+  helperId?: null | string;
+  playerId: string;
+};
+
+const CombatPlayerSlider = (props: CombatPlayerSliderProps): JSX.Element => {
+  const { className, helperId, playerId } = props;
+
   const dispatch = useDispatch();
   const theme = useTheme();
 
-  /**
-   * @type {React.MutableRefObject<HTMLDivElement>}
-   */
-  const ref = useRef();
+  const ref = useRef<HTMLDivElement>(null);
 
-  /**
-   * @type {React.MutableRefObject<HTMLDivElement>}
-   */
-  const containerRef = useRef();
+  const containerRef = useRef<HTMLDivElement>(null);
 
   const { direction } = theme;
 
@@ -44,6 +46,10 @@ const CombatPlayerSlider = ({ className, helperId, playerId }) => {
     const parent = ref.current;
     const child = containerRef.current;
 
+    if (!child || !parent) {
+      return;
+    }
+
     if (landscape) {
       if (child.offsetHeight <= parent.offsetHeight) {
         y.set(0);
@@ -55,9 +61,13 @@ const CombatPlayerSlider = ({ className, helperId, playerId }) => {
     }
   };
 
-  const modifyTarget = (target) => {
+  const modifyTarget = (target: number) => {
     const parent = ref.current;
     const child = containerRef.current;
+
+    if (!child || !parent) {
+      return 0;
+    }
 
     if (landscape) {
       if (child.offsetHeight <= parent.offsetHeight) {
@@ -104,10 +114,14 @@ const CombatPlayerSlider = ({ className, helperId, playerId }) => {
     const child = containerRef.current;
     const transitionOverride = { type: "tween" };
 
+    if (!child || !parent) {
+      return;
+    }
+
     if (landscape) {
       if (playerCount > playerCountRef.current) {
         if (child.offsetHeight > parent.offsetHeight) {
-          animate.start(
+          void animate.start(
             { y: parent.offsetHeight - child.offsetHeight },
             transitionOverride
           );
@@ -118,7 +132,7 @@ const CombatPlayerSlider = ({ className, helperId, playerId }) => {
         if (child.offsetHeight <= parent.offsetHeight) {
           y.set(0);
         } else if (y.get() < parent.offsetHeight - child.offsetHeight) {
-          animate.start(
+          void animate.start(
             { y: parent.offsetHeight - child.offsetHeight },
             transitionOverride
           );
@@ -133,7 +147,7 @@ const CombatPlayerSlider = ({ className, helperId, playerId }) => {
             shift = -shift;
           }
 
-          animate.start({ x: shift }, transitionOverride);
+          void animate.start({ x: shift }, transitionOverride);
         }
       }
 
@@ -143,14 +157,14 @@ const CombatPlayerSlider = ({ className, helperId, playerId }) => {
         } else {
           if (direction === "rtl") {
             if (x.get() > child.offsetWidth - parent.offsetWidth) {
-              animate.start(
+              void animate.start(
                 { x: child.offsetWidth - parent.offsetWidth },
                 transitionOverride
               );
             }
           } else {
             if (x.get() < parent.offsetWidth - child.offsetWidth) {
-              animate.start(
+              void animate.start(
                 { x: parent.offsetWidth - child.offsetWidth },
                 transitionOverride
               );

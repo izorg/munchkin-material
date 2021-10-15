@@ -7,34 +7,37 @@ import {
   ListItem,
   ListItemAvatar,
   ListItemButton,
+  ListItemProps,
   SvgIcon,
 } from "@mui/material";
-import { motion } from "framer-motion";
+import { motion, TapInfo } from "framer-motion";
 import PropTypes from "prop-types";
-import { useCallback, useRef } from "react";
+import { KeyboardEvent, useCallback, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import PlayerAvatar from "../../../../components/PlayerAvatar";
 import PlayerListItemText from "../../../../components/PlayerListItemText";
 import { togglePlayer, unselectAllPlayers } from "../../../../ducks/ui";
+import { AvailableColor } from "../../../../utils/availableColors";
 import { useGoBack } from "../../../../utils/location";
 import { ios } from "../../../../utils/platforms";
 import useEditMode from "../../../../utils/useEditMode";
 import useMultiMode from "../../../../utils/useMultiMode";
 import usePresentSelector from "../../../../utils/usePresentSelector";
 
-const HomePlayerListItem = (props) => {
-  const { dragHandleProps, playerId, ...rest } = props;
+type HomePlayerListItemProps = ListItemProps & {
+  playerId: string;
+};
+
+const HomePlayerListItem = (props: HomePlayerListItemProps) => {
+  const { playerId, ...rest } = props;
 
   const dispatch = useDispatch();
   const location = useLocation();
   const navigate = useNavigate();
 
-  /**
-   * @type {React.RefObject<HTMLDivElement>}
-   */
-  const avatarRef = useRef(null);
+  const avatarRef = useRef<HTMLDivElement>(null);
 
   const pressTimeoutRef = useRef(0);
 
@@ -57,7 +60,9 @@ const HomePlayerListItem = (props) => {
     setMultiMode(true);
   };
 
-  const onClick = (event) => {
+  const onClick = (
+    event: KeyboardEvent | MouseEvent | PointerEvent | TouchEvent
+  ) => {
     if (editMode) {
       const searchParams = new URLSearchParams(location.search);
 
@@ -72,7 +77,7 @@ const HomePlayerListItem = (props) => {
       if (selectedPlayerIds.length === 1 && selectedPlayerIds[0] === playerId) {
         goBack();
       }
-    } else if (avatarRef.current?.contains(event.target)) {
+    } else if (avatarRef.current?.contains(event.target as HTMLElement)) {
       onMultiSelectActivate();
     } else {
       navigate(`/player/${playerId}`);
@@ -90,18 +95,21 @@ const HomePlayerListItem = (props) => {
   const startPointRef = useRef({ x: 0, y: 0 });
   const startTapTimeRef = useRef(Date.now());
 
-  const onTapStart = (event, info) => {
+  const onTapStart = (
+    event: MouseEvent | PointerEvent | TouchEvent,
+    info: TapInfo
+  ) => {
     startPointRef.current = info.point;
     startTapTimeRef.current = Date.now();
 
-    pressTimeoutRef.current = setTimeout(() => {
+    pressTimeoutRef.current = window.setTimeout(() => {
       pressTimeoutRef.current = 0;
 
       const avatarNode = avatarRef.current;
 
       if (
         !(editMode || multiMode) &&
-        (!avatarNode || !avatarNode.contains(event.target))
+        (!avatarNode || !avatarNode.contains(event.target as HTMLElement))
       ) {
         if (navigator.vibrate && !ios) {
           navigator.vibrate(20);
@@ -112,7 +120,10 @@ const HomePlayerListItem = (props) => {
     }, 500);
   };
 
-  const onTap = (event, info) => {
+  const onTap = (
+    event: MouseEvent | PointerEvent | TouchEvent,
+    info: TapInfo
+  ) => {
     clearPress();
 
     if (event.type === "pointercancel") {
@@ -134,7 +145,7 @@ const HomePlayerListItem = (props) => {
     }
   };
 
-  const onKeyDown = (event) => {
+  const onKeyDown = (event: KeyboardEvent) => {
     if (event.key === "Enter") {
       onClick(event);
     }
@@ -200,7 +211,7 @@ const HomePlayerListItem = (props) => {
         <ListItemAvatar>
           <PlayerAvatar
             ref={avatarRef}
-            color={player.color}
+            color={player.color as AvailableColor}
             name={player.name}
             selected={multiMode && selected}
           />
@@ -213,9 +224,6 @@ const HomePlayerListItem = (props) => {
 };
 
 HomePlayerListItem.propTypes = {
-  dragHandleProps: PropTypes.shape({
-    onDragStart: PropTypes.func.isRequired,
-  }),
   playerId: PropTypes.string.isRequired,
 };
 

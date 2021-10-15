@@ -2,7 +2,8 @@ import { css } from "@emotion/react";
 import { IconButton, useTheme } from "@mui/material";
 import { useCallback } from "react";
 import { useIntl } from "react-intl";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { Action } from "redux";
 
 import Counter, { counterMessages } from "../../../components/Counter";
 import CounterLabel from "../../../components/Counter/Label";
@@ -15,23 +16,25 @@ import {
   incrementPlayerLevel,
   togglePlayerSex,
 } from "../../../ducks/players";
+import { StoreState } from "../../../store";
 import {
   isLevelDecrementDisabled,
   isLevelIncrementDisabled,
 } from "../../../utils/levelLimit";
+import usePresentSelector from "../../../utils/usePresentSelector";
 
 const SinglePlayer = () => {
   const dispatch = useDispatch();
   const intl = useIntl();
   const theme = useTheme();
 
-  const player = useSelector(
-    (state) => state.present.players[state.present.settings.singleModePlayerId]
+  const player = usePresentSelector(
+    (state) => state.players[state.settings.singleModePlayerId as string]
   );
-  const bonus = useSelector((state) => state.present.combat.playerBonus);
+  const bonus = usePresentSelector((state) => state.combat.playerBonus);
 
-  const levelLimit = useSelector((state) => state.present.settings.levelLimit);
-  const epic = useSelector((state) => state.present.settings.epic);
+  const levelLimit = usePresentSelector((state) => state.settings.levelLimit);
+  const epic = usePresentSelector((state) => state.settings.epic);
 
   const levelDecrementDisabled = isLevelDecrementDisabled(
     player.level,
@@ -45,7 +48,7 @@ const SinglePlayer = () => {
 
   const onBonusDecrement = useCallback(
     () =>
-      dispatch((_, getState) =>
+      dispatch((_: Action, getState: () => StoreState) =>
         dispatch(
           setCombatPlayerBonus(getState().present.combat.playerBonus - 1)
         )
@@ -55,7 +58,7 @@ const SinglePlayer = () => {
 
   const onBonusIncrement = useCallback(
     () =>
-      dispatch((_, getState) =>
+      dispatch((_: Action, getState: () => StoreState) =>
         dispatch(
           setCombatPlayerBonus(getState().present.combat.playerBonus + 1)
         )
@@ -92,6 +95,8 @@ const SinglePlayer = () => {
     flex: 1;
     overflow: hidden;
   `;
+
+  const lineHeight = (theme.typography.body2.lineHeight as number) / 2;
 
   return (
     <div
@@ -173,9 +178,7 @@ const SinglePlayer = () => {
 
             @media (orientation: portrait) {
               font-size: 72px; /* 36px * 2 */
-              line-height: ${theme.typography.body2.lineHeight /
-              2}; /* 1.43 / 2 */
-
+              line-height: ${lineHeight}; /* 1.43 / 2 */
               margin-top: 32px;
             }
           `}

@@ -1,8 +1,9 @@
 import { mdiClose, mdiDelete, mdiFlagCheckered } from "@mdi/js";
 import { SvgIcon } from "@mui/material";
 import PropTypes from "prop-types";
+import { ReactNode } from "react";
 import { FormattedMessage } from "react-intl";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import DiceButton from "../../../components/dice/Button";
 import Title from "../../../components/Title";
@@ -13,6 +14,7 @@ import { useGoBack } from "../../../utils/location";
 import useDeletePlayers from "../../../utils/useDeletePlayers";
 import useEditMode from "../../../utils/useEditMode";
 import useMultiMode from "../../../utils/useMultiMode";
+import usePresentSelector from "../../../utils/usePresentSelector";
 
 import EditButton from "./EditButton";
 import MenuButton from "./MenuButton";
@@ -21,7 +23,12 @@ import ShuffleButton from "./ShuffleButton";
 
 const displayName = "HomeAppBar";
 
-const HomeAppBar = ({ empty, singleMode }) => {
+type HomeAppBarProps = {
+  empty: boolean;
+  singleMode: boolean;
+};
+
+const HomeAppBar = ({ empty, singleMode }: HomeAppBarProps): JSX.Element => {
   const dispatch = useDispatch();
 
   const deletePlayers = useDeletePlayers();
@@ -30,20 +37,20 @@ const HomeAppBar = ({ empty, singleMode }) => {
   const { editMode } = useEditMode();
   const { multiMode } = useMultiMode();
 
-  const selectedPlayerIds = useSelector(
-    (state) => state.present.ui.selectedPlayerIds
+  const selectedPlayerIds = usePresentSelector(
+    (state) => state.ui.selectedPlayerIds
   );
 
   const onMultiSelectDeactivate = () => goBack();
 
-  const onPlayersDelete = (selected) => {
+  const onPlayersDelete = (selected: string[]) => {
     deletePlayers(selected);
     goBack();
   };
 
   const onTurnFinish = () => dispatch(setCombatPlayerBonus(0));
 
-  let title = (
+  let title: ReactNode = (
     <FormattedMessage defaultMessage="Munchkins" id="player.list.title" />
   );
 

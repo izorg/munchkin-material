@@ -1,7 +1,6 @@
 import { css } from "@emotion/react";
 import { Paper, useTheme, Zoom } from "@mui/material";
 import { lazy, Suspense } from "react";
-import { useSelector } from "react-redux";
 import { useMatch } from "react-router-dom";
 
 import LevelLimitDialog from "../../components/levelLimit/Dialog";
@@ -11,31 +10,31 @@ import Nobody from "../../components/Nobody";
 import ScreenModal from "../../components/ScreenModal";
 import ThemeDialog from "../../components/theme/Dialog";
 import useEditMode from "../../utils/useEditMode";
+import usePresentSelector from "../../utils/usePresentSelector";
 
 import AppBar from "./AppBar";
 import PlayerAddButton from "./PlayerAddButton";
 import PlayerList from "./PlayerList";
 import SinglePlayer from "./SinglePlayer";
 
-const Player = lazy(() =>
-  import(
-    /* webpackPrefetch: true */
-    "../Player"
-  )
+const Player = lazy(
+  () =>
+    import(
+      /* webpackPrefetch: true */
+      "../Player"
+    )
 );
 
-const displayName = "Home";
-
-const Home = () => {
+const Home = (): JSX.Element => {
   const theme = useTheme();
 
-  const playerList = useSelector((state) => state.present.playerList);
+  const playerList = usePresentSelector((state) => state.playerList);
   const playerCount = playerList.length;
   const empty = playerCount === 0;
 
   let content;
 
-  const singleMode = useSelector((state) => state.present.settings.singleMode);
+  const singleMode = usePresentSelector((state) => state.settings.singleMode);
   const { editMode } = useEditMode();
 
   if (singleMode) {
@@ -72,7 +71,7 @@ const Home = () => {
     );
   }
 
-  const menuCollapsed = useSelector((state) => state.present.ui.menuCollapsed);
+  const menuCollapsed = usePresentSelector((state) => state.ui.menuCollapsed);
 
   const playerMatch = useMatch({
     end: false,
@@ -145,7 +144,5 @@ const Home = () => {
     </>
   );
 };
-
-Home.displayName = displayName;
 
 export default Home;

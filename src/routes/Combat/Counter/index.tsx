@@ -2,19 +2,32 @@ import { css } from "@emotion/react";
 import { mdiMenuDown, mdiMenuUp } from "@mdi/js";
 import { SvgIcon, useTheme } from "@mui/material";
 import PropTypes from "prop-types";
+import type { ReactNode } from "react";
 
 import CounterButton from "../../../components/Counter/Button";
 import CounterLabel from "../../../components/Counter/Label";
 
-const CombatCounter = ({
-  className,
-  decrementDisabled,
-  incrementDisabled,
-  onDecrement,
-  onIncrement,
-  title,
-  value,
-}) => {
+type CombatCounterProps = {
+  className?: string;
+  decrementDisabled?: boolean;
+  incrementDisabled?: boolean;
+  onDecrement: () => void;
+  onIncrement: () => void;
+  title: ReactNode;
+  value: number;
+};
+
+const CombatCounter = (props: CombatCounterProps): JSX.Element => {
+  const {
+    className,
+    decrementDisabled,
+    incrementDisabled,
+    onDecrement,
+    onIncrement,
+    title,
+    value,
+  } = props;
+
   const theme = useTheme();
 
   const buttonCss = css`

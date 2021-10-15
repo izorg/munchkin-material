@@ -1,9 +1,9 @@
 import { css } from "@emotion/react";
 import { Typography, useTheme } from "@mui/material";
 import PropTypes from "prop-types";
-import { useCallback } from "react";
+import { ReactNode, useCallback } from "react";
 import { useIntl } from "react-intl";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import { counterMessages } from "../../../../components/Counter";
 import {
@@ -12,14 +12,22 @@ import {
   incrementMonsterBonus,
   incrementMonsterLevel,
 } from "../../../../ducks/monsters";
+import usePresentSelector from "../../../../utils/usePresentSelector";
 import Counter from "../../Counter";
 
-const CombatMonster = ({ monsterId, title }) => {
+type CombatMonsterProps = {
+  monsterId: string;
+  title: ReactNode;
+};
+
+const CombatMonster = (props: CombatMonsterProps): JSX.Element => {
+  const { monsterId, title } = props;
+
   const dispatch = useDispatch();
   const intl = useIntl();
   const theme = useTheme();
 
-  const monsters = useSelector((state) => state.present.monsters);
+  const monsters = usePresentSelector((state) => state.monsters);
 
   const { bonus, id, level } = monsters[monsterId];
 

@@ -2,6 +2,7 @@ import { ClassNames, css } from "@emotion/react";
 import {
   Dialog,
   DialogContent,
+  DialogProps,
   DialogTitle,
   List,
   ListItemAvatar,
@@ -9,23 +10,27 @@ import {
   useTheme,
 } from "@mui/material";
 import { FormattedMessage } from "react-intl";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
 
 import PlayerAvatar from "../../../components/PlayerAvatar";
 import PlayerListItemText from "../../../components/PlayerListItemText";
 import { setCombatHelper } from "../../../ducks/combat";
+import type { AvailableColor } from "../../../utils/availableColors";
 import { useGoBack } from "../../../utils/location";
+import usePresentSelector from "../../../utils/usePresentSelector";
 
-const HelperSelector = (props) => {
+const HelperSelector = (
+  props: Omit<DialogProps, "onClose" | "open">
+): JSX.Element => {
   const dispatch = useDispatch();
   const location = useLocation();
   const theme = useTheme();
 
   const goBack = useGoBack();
 
-  const helpers = useSelector((state) => {
-    const { combat, playerList, players } = state.present;
+  const helpers = usePresentSelector((state) => {
+    const { combat, playerList, players } = state;
 
     return playerList
       .filter((id) => id !== combat.playerId)
@@ -36,7 +41,7 @@ const HelperSelector = (props) => {
 
   const onClose = () => goBack();
 
-  const onSelect = (id) => {
+  const onSelect = (id: string) => {
     dispatch(setCombatHelper(id));
     goBack();
   };
@@ -54,9 +59,9 @@ const HelperSelector = (props) => {
               margin: ${theme.spacing(2)};
             `,
           }}
+          {...props}
           onClose={onClose}
           open={open}
-          {...props}
         >
           <DialogTitle>
             <FormattedMessage
@@ -72,7 +77,10 @@ const HelperSelector = (props) => {
                   onClick={() => onSelect(helper.id)}
                 >
                   <ListItemAvatar>
-                    <PlayerAvatar color={helper.color} name={helper.name} />
+                    <PlayerAvatar
+                      color={helper.color as AvailableColor}
+                      name={helper.name}
+                    />
                   </ListItemAvatar>
                   <PlayerListItemText player={helper} />
                 </ListItemButton>
