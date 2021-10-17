@@ -8,8 +8,6 @@ import history from "../CordovaRouter/history";
 import hideWindowsBackButton from "./hideWindowsBackButton";
 import useNavigationBreadcrumbs from "./useNavigationBreadcrumbs";
 
-const displayName = "CordovaProvider";
-
 const cordovaResource = new AsyncResource(
   new Promise<void>((resolve) =>
     document.addEventListener(
@@ -63,7 +61,5 @@ const CordovaProvider: FC = ({ children }) => {
 CordovaProvider.propTypes = {
   children: PropTypes.node,
 };
-
-CordovaProvider.displayName = displayName;
 
 export default CordovaProvider;

@@ -11,8 +11,6 @@ import type { AvailableColor } from "../../../../utils/availableColors";
 import { playerShape } from "../../../../utils/propTypes";
 import type { Player } from "../../../../utils/types";
 
-const displayName = "PlayerListItem";
-
 type PlayerListItemProps = { player: Player } & ListItemButtonProps;
 
 const PlayerListItem = ({
@@ -40,7 +38,5 @@ const PlayerListItem = ({
 PlayerListItem.propTypes = {
   player: playerShape.isRequired,
 };
-
-PlayerListItem.displayName = displayName;
 
 export default PlayerListItem;

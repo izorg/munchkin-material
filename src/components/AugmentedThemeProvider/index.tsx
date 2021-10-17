@@ -17,8 +17,6 @@ import usePreviewTheme from "../theme/usePreviewTheme";
 
 import useStatusBar from "./useStatusBar";
 
-const displayName = "AugmentedThemeProvider";
-
 const AugmentedThemeProvider: FC = ({ children }) => {
   const { locale } = useIntl();
 
@@ -62,7 +60,5 @@ const AugmentedThemeProvider: FC = ({ children }) => {
 AugmentedThemeProvider.propTypes = {
   children: PropTypes.node,
 };
-
-AugmentedThemeProvider.displayName = displayName;
 
 export default AugmentedThemeProvider;

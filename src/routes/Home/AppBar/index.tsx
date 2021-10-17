@@ -21,8 +21,6 @@ import MenuButton from "./MenuButton";
 import ResetButton from "./ResetButton";
 import ShuffleButton from "./ShuffleButton";
 
-const displayName = "HomeAppBar";
-
 type HomeAppBarProps = {
   empty: boolean;
   singleMode: boolean;
@@ -119,7 +117,5 @@ HomeAppBar.defaultProps = {
   empty: false,
   singleMode: false,
 };
-
-HomeAppBar.displayName = displayName;
 
 export default HomeAppBar;

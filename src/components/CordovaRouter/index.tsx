@@ -3,8 +3,6 @@ import PropTypes from "prop-types";
 import { FC, Reducer, useLayoutEffect, useReducer } from "react";
 import { Router } from "react-router-dom";
 
-const displayName = "CordovaRouter";
-
 import history from "./history";
 
 type State = { action: Action; location: Location };
@@ -30,7 +28,5 @@ const CordovaRouter: FC = ({ children }) => {
 CordovaRouter.propTypes = {
   children: PropTypes.node,
 };
-
-CordovaRouter.displayName = displayName;
 
 export default CordovaRouter;

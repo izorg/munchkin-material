@@ -16,8 +16,6 @@ import { setCombatHelper, setCombatHelperBonus } from "../../../ducks/combat";
 
 import Player from "./Player";
 
-const displayName = "CombatPlayerSlider";
-
 type CombatPlayerSliderProps = {
   className?: string;
   helperId?: null | string;
@@ -298,7 +296,5 @@ CombatPlayerSlider.propTypes = {
 CombatPlayerSlider.defaultProps = {
   helperId: null,
 };
-
-CombatPlayerSlider.displayName = displayName;
 
 export default memo(CombatPlayerSlider);

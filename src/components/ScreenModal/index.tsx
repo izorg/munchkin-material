@@ -6,8 +6,6 @@ import type { FC, PropsWithChildren } from "react";
 
 import { ios } from "../../utils/platforms";
 
-const displayName = "ScreenModal";
-
 type ScreenModalProps = {
   open: boolean;
   TransitionProps?: TransitionProps;
@@ -53,7 +51,5 @@ ScreenModal.propTypes = {
   // @ts-ignore
   TransitionProps: PropTypes.object,
 };
-
-ScreenModal.displayName = displayName;
 
 export default ScreenModal;

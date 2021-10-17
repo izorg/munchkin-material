@@ -27,8 +27,6 @@ import {
 import usePresentSelector from "../../../../utils/usePresentSelector";
 import Counter from "../../Counter";
 
-const displayName = "CombatPlayer";
-
 type CombatPlayerProps = {
   playerId: string;
 };
@@ -175,7 +173,5 @@ const CombatPlayer = ({ playerId }: CombatPlayerProps): JSX.Element => {
 CombatPlayer.propTypes = {
   playerId: PropTypes.string.isRequired,
 };
-
-CombatPlayer.displayName = displayName;
 
 export default CombatPlayer;

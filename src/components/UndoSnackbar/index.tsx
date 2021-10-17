@@ -15,8 +15,6 @@ import { ActionCreators } from "redux-undo";
 import type { StoreState } from "../../store";
 import { useUndo } from "../UndoProvider";
 
-const displayName = "UndoSnackbar";
-
 const UndoSnackbar = (): JSX.Element => {
   const dispatch = useDispatch();
   const theme = useTheme();
@@ -69,7 +67,5 @@ const UndoSnackbar = (): JSX.Element => {
     />
   );
 };
-
-UndoSnackbar.displayName = displayName;
 
 export default UndoSnackbar;
