@@ -1,7 +1,7 @@
 import { mdiCheck, mdiDelete } from "@mdi/js";
 import { SvgIcon } from "@mui/material";
 import PropTypes from "prop-types";
-import type { FC, ReactNode } from "react";
+import type { ReactNode, VFC } from "react";
 
 import BackButton from "../../BackButton";
 import Title from "../../Title";
@@ -14,7 +14,7 @@ type PlayerDialogAppBarProps = {
   title: ReactNode;
 };
 
-const PlayerDialogAppBar: FC<PlayerDialogAppBarProps> = ({
+const PlayerDialogAppBar: VFC<PlayerDialogAppBarProps> = ({
   onCancel,
   onDelete,
   title,
@@ -43,7 +43,7 @@ const PlayerDialogAppBar: FC<PlayerDialogAppBarProps> = ({
 PlayerDialogAppBar.propTypes = {
   onCancel: PropTypes.func,
   onDelete: PropTypes.func,
-  title: PropTypes.node,
+  title: PropTypes.node.isRequired,
 };
 
 export default PlayerDialogAppBar;

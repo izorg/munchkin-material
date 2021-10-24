@@ -73,7 +73,7 @@ const CombatCounter = (props: CombatCounterProps): JSX.Element => {
       <div
         css={css`
           color: ${theme.palette.text.primary};
-          font-family: "Munchkin", ${theme.typography.fontFamily};
+          font-family: Munchkin, ${theme.typography.fontFamily};
           font-size: ${theme.typography.h4.fontSize};
           line-height: ${theme.typography.h4.lineHeight};
         `}

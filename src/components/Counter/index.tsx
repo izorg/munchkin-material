@@ -74,7 +74,7 @@ const Counter: FC<CounterProps> = ({
       <div
         css={css`
           color: ${theme.palette.text.primary};
-          font-family: "Munchkin", ${theme.typography.fontFamily};
+          font-family: Munchkin, ${theme.typography.fontFamily};
           font-size: 36px;
         `}
       >

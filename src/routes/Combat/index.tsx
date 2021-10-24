@@ -47,7 +47,7 @@ const Combat = (): JSX.Element => {
 
   const valueCss = css`
     display: inline-block;
-    font-family: "Munchkin", ${theme.typography.fontFamily};
+    font-family: Munchkin, ${theme.typography.fontFamily};
     font-size: inherit;
     min-width: 50px;
   `;

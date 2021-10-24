@@ -1,16 +1,17 @@
 @font-face {
-  font-family: "Munchkin";
+  font-family: Munchkin;
   font-style: normal;
   font-weight: normal;
-  src: url(./fonts/munchkin.woff2) format("woff2"),
-    url(./fonts/munchkin.woff) format("woff");
+  src: url("./fonts/munchkin.woff2") format("woff2"),
+    url("./fonts/munchkin.woff") format("woff");
 }
 
 html {
   height: 100vh;
   overflow: hidden;
+  /* stylelint-disable-next-line alpha-value-notation,color-function-notation */
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  -webkit-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%; /* stylelint-disable-line property-no-vendor-prefix */
 }
 
 body {
