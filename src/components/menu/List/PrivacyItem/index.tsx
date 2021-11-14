@@ -5,7 +5,7 @@ import { FormattedMessage } from "react-intl";
 import ListItem from "../Item";
 import ListItemText from "../ItemText";
 
-const PrivacyItem = (): JSX.Element | null => {
+const PrivacyItem = () => {
   if (!("cordova" in window)) {
     return null;
   }

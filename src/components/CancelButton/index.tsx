@@ -1,7 +1,7 @@
 import { Button, ButtonProps } from "@mui/material";
 import { FormattedMessage } from "react-intl";
 
-const CancelButton = (props: ButtonProps): JSX.Element => <Button {...props} />;
+const CancelButton = (props: ButtonProps) => <Button {...props} />;
 
 CancelButton.defaultProps = {
   children: <FormattedMessage defaultMessage="Cancel" id="button.cancel" />,

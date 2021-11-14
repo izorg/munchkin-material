@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import TopIconButton from "../../../../components/TopIconButton";
 import { shufflePlayers } from "../../../../ducks/playerList";
 
-const ShuffleButton = (props: IconButtonProps): JSX.Element => {
+const ShuffleButton = (props: IconButtonProps) => {
   const dispatch = useDispatch();
   const intl = useIntl();
 

@@ -1,7 +1,7 @@
 import { css } from "@emotion/react";
 import { CircularProgress } from "@mui/material";
 
-const Loading = (): JSX.Element => (
+const Loading = () => (
   <div
     css={css`
       align-items: center;

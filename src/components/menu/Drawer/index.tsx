@@ -9,7 +9,7 @@ import MenuList from "../List";
 import MenuTypeProvider, { MenuType } from "../MenuTypeProvider";
 import useMenuOpen from "../useMenuOpen";
 
-const MenuDrawer = (): JSX.Element => {
+const MenuDrawer = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const theme = useTheme();

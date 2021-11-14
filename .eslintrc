@@ -17,7 +17,7 @@
   ],
   "overrides": [
     {
-      "files": ["**/*.{ts,tsx}"],
+      "files": ["**/*.ts?(x)"],
       "extends": [
         "plugin:@typescript-eslint/recommended",
         "plugin:@typescript-eslint/recommended-requiring-type-checking",
@@ -29,6 +29,12 @@
       },
       "rules": {
         "@typescript-eslint/restrict-template-expressions": "error"
+      }
+    },
+    {
+      "files": ["scripts/**"],
+      "rules": {
+        "no-console": "off"
       }
     }
   ],

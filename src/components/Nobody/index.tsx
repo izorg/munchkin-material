@@ -3,7 +3,7 @@ import { mdiAccountCircle } from "@mdi/js";
 import { SvgIcon, Typography, useTheme } from "@mui/material";
 import { FormattedMessage } from "react-intl";
 
-const Nobody = (): JSX.Element => {
+const Nobody = () => {
   const theme = useTheme();
 
   return (

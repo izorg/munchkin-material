@@ -6,7 +6,7 @@ import { useFullVersion } from "../../../FullVersionProvider";
 import ListItem from "../Item";
 import ListItemText from "../ItemText";
 
-const RestorePurchasesItem = (): JSX.Element | null => {
+const RestorePurchasesItem = () => {
   const { cordova, store } = window;
 
   const { fullVersion } = useFullVersion();

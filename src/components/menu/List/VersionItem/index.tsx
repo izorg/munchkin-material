@@ -8,7 +8,7 @@ import useMenuOpen from "../../useMenuOpen";
 import ListItem from "../Item";
 import ListItemText from "../ItemText";
 
-const VersionItem = (): JSX.Element => {
+const VersionItem = () => {
   const goBack = useGoBack();
   const menuOpen = useMenuOpen();
 

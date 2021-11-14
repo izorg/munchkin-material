@@ -7,7 +7,7 @@ const addEndListener = (node: HTMLElement, done: () => void): void => {
   node.addEventListener("transitionend", done, false);
 };
 
-const DiceTransition = (props: Partial<CSSTransitionProps>): JSX.Element => {
+const DiceTransition = (props: Partial<CSSTransitionProps>) => {
   const theme = useTheme();
 
   const enterTransition = theme.transitions.create("transform", {

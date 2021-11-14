@@ -19,7 +19,7 @@ const getRateLink = (platformId: string) => {
   }
 };
 
-const RateItem = (): JSX.Element | null => {
+const RateItem = () => {
   const goBack = useGoBack();
 
   const rateLink = getRateLink(window.cordova?.platformId);

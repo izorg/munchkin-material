@@ -1,7 +1,7 @@
 import { Button, ButtonProps } from "@mui/material";
 import { FormattedMessage } from "react-intl";
 
-const SubmitButton = (props: ButtonProps): JSX.Element => <Button {...props} />;
+const SubmitButton = (props: ButtonProps) => <Button {...props} />;
 
 SubmitButton.defaultProps = {
   children: <FormattedMessage defaultMessage="OK" id="button.submit" />,

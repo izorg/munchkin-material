@@ -20,9 +20,7 @@ import type { AvailableColor } from "../../../utils/availableColors";
 import { useGoBack } from "../../../utils/location";
 import usePresentSelector from "../../../utils/usePresentSelector";
 
-const HelperSelector = (
-  props: Omit<DialogProps, "onClose" | "open">
-): JSX.Element => {
+const HelperSelector = (props: Omit<DialogProps, "onClose" | "open">) => {
   const dispatch = useDispatch();
   const location = useLocation();
   const theme = useTheme();

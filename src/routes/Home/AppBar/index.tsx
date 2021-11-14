@@ -26,7 +26,7 @@ type HomeAppBarProps = {
   singleMode: boolean;
 };
 
-const HomeAppBar = ({ empty, singleMode }: HomeAppBarProps): JSX.Element => {
+const HomeAppBar = ({ empty, singleMode }: HomeAppBarProps) => {
   const dispatch = useDispatch();
 
   const deletePlayers = useDeletePlayers();

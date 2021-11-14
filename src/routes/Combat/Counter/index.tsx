@@ -17,7 +17,7 @@ type CombatCounterProps = {
   value: number;
 };
 
-const CombatCounter = (props: CombatCounterProps): JSX.Element => {
+const CombatCounter = (props: CombatCounterProps) => {
   const {
     className,
     decrementDisabled,

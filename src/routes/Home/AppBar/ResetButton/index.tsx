@@ -23,7 +23,7 @@ const messages = defineMessages({
   },
 });
 
-const ResetButton = (props: IconButtonProps): JSX.Element => {
+const ResetButton = (props: IconButtonProps) => {
   const dispatch = useDispatch();
   const intl = useIntl();
 

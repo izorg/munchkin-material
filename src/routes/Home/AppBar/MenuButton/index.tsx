@@ -13,7 +13,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import TopIconButton from "../../../../components/TopIconButton";
 import { toggleMenu } from "../../../../ducks/ui";
 
-const MenuButton = (props: IconButtonProps): JSX.Element => {
+const MenuButton = (props: IconButtonProps) => {
   const dispatch = useDispatch();
   const intl = useIntl();
   const location = useLocation();

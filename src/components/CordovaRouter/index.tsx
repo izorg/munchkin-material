@@ -19,7 +19,11 @@ const CordovaRouter: FC = ({ children }) => {
   useLayoutEffect(() => history.listen(dispatch), []);
 
   return (
-    <Router action={state.action} location={state.location} navigator={history}>
+    <Router
+      location={state.location}
+      navigationType={state.action}
+      navigator={history}
+    >
       {children}
     </Router>
   );

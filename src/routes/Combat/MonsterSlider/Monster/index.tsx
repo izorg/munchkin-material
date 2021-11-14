@@ -20,7 +20,7 @@ type CombatMonsterProps = {
   title: ReactNode;
 };
 
-const CombatMonster = (props: CombatMonsterProps): JSX.Element => {
+const CombatMonster = (props: CombatMonsterProps) => {
   const { monsterId, title } = props;
 
   const dispatch = useDispatch();

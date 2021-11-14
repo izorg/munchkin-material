@@ -14,9 +14,7 @@ const messages = defineMessages({
   },
 });
 
-const DiceIconButton = (
-  props: Omit<IconButtonProps, "onClick">
-): JSX.Element => {
+const DiceIconButton = (props: Omit<IconButtonProps, "onClick">) => {
   const dispatch = useDispatch();
   const intl = useIntl();
   const location = useLocation();

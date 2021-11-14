@@ -51,7 +51,7 @@ const messages = defineMessages({
 
 let appear = false;
 
-const PlayerDialog = (): JSX.Element => {
+const PlayerDialog = () => {
   const dispatch = useDispatch();
   const intl = useIntl();
   const location = useLocation();

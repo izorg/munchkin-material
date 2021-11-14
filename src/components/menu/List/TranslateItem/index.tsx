@@ -5,7 +5,7 @@ import { FormattedMessage } from "react-intl";
 import ListItem from "../Item";
 import ListItemText from "../ItemText";
 
-const TranslateItem = (): JSX.Element => (
+const TranslateItem = () => (
   <ListItem
     button
     component="a"

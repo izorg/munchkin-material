@@ -1,7 +1,7 @@
 import { css } from "@emotion/react";
 import { ListItemText, ListItemTextProps } from "@mui/material";
 
-const MenuListItemText = (props: ListItemTextProps): JSX.Element => (
+const MenuListItemText = (props: ListItemTextProps) => (
   <ListItemText
     css={css`
       overflow: hidden;

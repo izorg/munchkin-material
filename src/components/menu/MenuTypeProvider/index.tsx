@@ -14,10 +14,7 @@ type MenuTypeProviderProps = {
   type: MenuType;
 };
 
-const MenuTypeProvider = ({
-  children,
-  type,
-}: MenuTypeProviderProps): JSX.Element => (
+const MenuTypeProvider = ({ children, type }: MenuTypeProviderProps) => (
   <Context.Provider value={type}>{children}</Context.Provider>
 );
 

@@ -11,7 +11,7 @@ import useMenuOpen from "../../useMenuOpen";
 import ListItem from "../Item";
 import ListItemText from "../ItemText";
 
-const ThemeItem = (): JSX.Element => {
+const ThemeItem = () => {
   const intl = useIntl();
   const location = useLocation();
   const navigate = useNavigate();

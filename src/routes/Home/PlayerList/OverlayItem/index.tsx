@@ -14,9 +14,7 @@ import PlayerListItemText from "../../../../components/PlayerListItemText";
 import { AvailableColor } from "../../../../utils/availableColors";
 import usePresentSelector from "../../../../utils/usePresentSelector";
 
-const HomePlayerListOverlayItem = (props: {
-  playerId: string;
-}): JSX.Element => {
+const HomePlayerListOverlayItem = (props: { playerId: string }) => {
   const { playerId } = props;
 
   const players = usePresentSelector((state) => state.players);

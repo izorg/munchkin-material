@@ -25,7 +25,7 @@ const Player = lazy(
     )
 );
 
-const Home = (): JSX.Element => {
+const Home = () => {
   const theme = useTheme();
 
   const playerList = usePresentSelector((state) => state.playerList);

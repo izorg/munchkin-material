@@ -11,7 +11,7 @@ import TopIconButton from "../../../components/TopIconButton";
 import { finishCombat } from "../../../ducks/combat";
 import { useGoBack } from "../../../utils/location";
 
-const CombatAppBar = (): JSX.Element => {
+const CombatAppBar = () => {
   const dispatch = useDispatch();
 
   const goBack = useGoBack();

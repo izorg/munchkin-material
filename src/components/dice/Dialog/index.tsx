@@ -35,7 +35,7 @@ const diceIcons = {
   6: mdiDice6,
 };
 
-const DiceDialog = (props: Partial<DialogProps>): JSX.Element | null => {
+const DiceDialog = (props: Partial<DialogProps>) => {
   const dispatch = useDispatch();
   const location = useLocation();
   const theme = useTheme();

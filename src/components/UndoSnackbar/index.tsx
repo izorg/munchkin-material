@@ -15,7 +15,7 @@ import { ActionCreators } from "redux-undo";
 import type { StoreState } from "../../store";
 import { useUndo } from "../UndoProvider";
 
-const UndoSnackbar = (): JSX.Element => {
+const UndoSnackbar = () => {
   const dispatch = useDispatch();
   const theme = useTheme();
 

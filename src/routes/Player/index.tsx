@@ -25,7 +25,7 @@ type PlayerProps = {
   playerId?: null | string;
 };
 
-const Player = ({ playerId }: PlayerProps): JSX.Element => {
+const Player = ({ playerId }: PlayerProps) => {
   const theme = useTheme();
 
   const playerRef = useRef<string>();

@@ -33,7 +33,7 @@ type FormValues = {
   pureBlack: "false" | "true";
 };
 
-const ThemeDialog = (): JSX.Element => {
+const ThemeDialog = () => {
   const dispatch = useDispatch();
   const intl = useIntl();
   const location = useLocation();

@@ -7,10 +7,7 @@ import Item from "./Item";
 
 type PlayerListProps = { selectedPlayerId: string } & ListProps;
 
-const PlayerList = ({
-  selectedPlayerId,
-  ...props
-}: PlayerListProps): JSX.Element => {
+const PlayerList = ({ selectedPlayerId, ...props }: PlayerListProps) => {
   const playerList = usePresentSelector((state) => state.playerList);
   const players = usePresentSelector((state) => state.players);
 

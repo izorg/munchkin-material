@@ -13,7 +13,7 @@ import useMenuOpen from "../../useMenuOpen";
 import ListItem from "../Item";
 import ListItemText from "../ItemText";
 
-const SingleModeItem = (): JSX.Element => {
+const SingleModeItem = () => {
   const dispatch = useDispatch();
   const { pathname } = useLocation();
 

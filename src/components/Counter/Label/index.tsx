@@ -9,7 +9,7 @@ const munchkinFontSupportedLocales = [EN, RU];
 
 const CounterLabel = (
   props: PropsWithChildren<HTMLAttributes<HTMLDivElement>>
-): JSX.Element => {
+) => {
   const { locale } = useIntl();
   const theme = useTheme();
 

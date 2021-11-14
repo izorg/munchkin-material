@@ -10,7 +10,7 @@ import SingleModeItem from "./SingleModeItem";
 import ThemeItem from "./ThemeItem";
 import VersionItem from "./VersionItem";
 
-const MenuList = (): JSX.Element => (
+const MenuList = () => (
   <List component="div">
     <ThemeItem />
     <SingleModeItem />

@@ -10,7 +10,7 @@ import { IconButtonProps, SvgIcon, useTheme } from "@mui/material";
 import { ios } from "../../utils/platforms";
 import TopIconButton from "../TopIconButton";
 
-const BackButton = (props: IconButtonProps): JSX.Element => {
+const BackButton = (props: IconButtonProps) => {
   const { direction } = useTheme();
 
   let icon;

@@ -9,7 +9,7 @@ import HelperSelector from "./HelperSelector";
 import MonsterSlider from "./MonsterSlider";
 import PlayerSlider from "./PlayerSlider";
 
-const Combat = (): JSX.Element => {
+const Combat = () => {
   const theme = useTheme();
 
   const { direction } = theme;

@@ -18,11 +18,7 @@ import usePresentSelector from "../../../utils/usePresentSelector";
 
 import Monster from "./Monster";
 
-const CombatMonsterSlider = ({
-  className,
-}: {
-  className?: string;
-}): JSX.Element => {
+const CombatMonsterSlider = ({ className }: { className?: string }) => {
   const dispatch = useDispatch();
   const theme = useTheme();
 

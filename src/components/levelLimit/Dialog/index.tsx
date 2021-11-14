@@ -29,7 +29,7 @@ export const DEFAULT_MUNCHKIN_LIMIT = "default";
 export const EPIC_MUNCHKIN_LIMIT = "epic";
 export const NO_LIMIT = "no-limit";
 
-const LevelLimitDialog = (): JSX.Element => {
+const LevelLimitDialog = () => {
   const dispatch = useDispatch();
   const intl = useIntl();
   const location = useLocation();

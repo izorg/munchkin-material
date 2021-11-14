@@ -13,7 +13,7 @@ type PlayerSliderProps = {
   playerId: string;
 };
 
-const PlayerSlider = ({ playerId }: PlayerSliderProps): JSX.Element => {
+const PlayerSlider = ({ playerId }: PlayerSliderProps) => {
   const navigate = useNavigate();
   const theme = useTheme();
   const { direction } = theme;

@@ -7,7 +7,7 @@ import { useWakeLock } from "../../../WakeLockProvider";
 import ListItem from "../Item";
 import ListItemText from "../ItemText";
 
-const InsomniaItem = (): JSX.Element | null => {
+const InsomniaItem = () => {
   const { setWakeLock, wakeLock, wakeLockSupport } = useWakeLock();
 
   if (!wakeLockSupport) {

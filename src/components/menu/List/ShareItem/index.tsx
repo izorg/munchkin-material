@@ -19,7 +19,7 @@ const messages = defineMessages({
   },
 });
 
-const ShareItem = (): JSX.Element | null => {
+const ShareItem = () => {
   const intl = useIntl();
 
   const goBack = useGoBack();

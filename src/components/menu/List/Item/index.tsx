@@ -5,9 +5,7 @@ import type { ElementType } from "react";
 import usePresentSelector from "../../../../utils/usePresentSelector";
 import { useMenuType } from "../../MenuTypeProvider";
 
-const MenuListItem = <D extends ElementType>(
-  props: ListItemProps<D>
-): JSX.Element => {
+const MenuListItem = <D extends ElementType>(props: ListItemProps<D>) => {
   const theme = useTheme();
 
   const collapsed = usePresentSelector((state) => state.ui.menuCollapsed);

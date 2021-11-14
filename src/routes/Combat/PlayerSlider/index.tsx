@@ -22,7 +22,7 @@ type CombatPlayerSliderProps = {
   playerId: string;
 };
 
-const CombatPlayerSlider = (props: CombatPlayerSliderProps): JSX.Element => {
+const CombatPlayerSlider = (props: CombatPlayerSliderProps) => {
   const { className, helperId, playerId } = props;
 
   const dispatch = useDispatch();

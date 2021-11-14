@@ -27,7 +27,7 @@ import usePresentSelector from "../../../utils/usePresentSelector";
 import Item from "./Item";
 import OverlayItem from "./OverlayItem";
 
-const HomePlayerList = (props: ListProps): JSX.Element => {
+const HomePlayerList = (props: ListProps) => {
   const dispatch = useDispatch();
 
   const playerList = usePresentSelector((state) => state.playerList);

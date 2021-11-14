@@ -31,7 +31,7 @@ type CombatPlayerProps = {
   playerId: string;
 };
 
-const CombatPlayer = ({ playerId }: CombatPlayerProps): JSX.Element => {
+const CombatPlayer = ({ playerId }: CombatPlayerProps) => {
   const dispatch = useDispatch();
   const intl = useIntl();
   const theme = useTheme();

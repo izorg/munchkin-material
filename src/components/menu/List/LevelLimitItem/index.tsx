@@ -15,7 +15,7 @@ import useMenuOpen from "../../useMenuOpen";
 import ListItem from "../Item";
 import ListItemText from "../ItemText";
 
-const LevelLimitItem = (): JSX.Element => {
+const LevelLimitItem = () => {
   const intl = useIntl();
   const location = useLocation();
   const navigate = useNavigate();

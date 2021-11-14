@@ -13,10 +13,7 @@ import type { Player } from "../../../../utils/types";
 
 type PlayerListItemProps = { player: Player } & ListItemButtonProps;
 
-const PlayerListItem = ({
-  player,
-  ...props
-}: PlayerListItemProps): JSX.Element => {
+const PlayerListItem = ({ player, ...props }: PlayerListItemProps) => {
   const navigate = useNavigate();
 
   return (

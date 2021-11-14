@@ -26,10 +26,7 @@ type PlayerStatsProps = {
   playerId: string;
 };
 
-const PlayerStats = ({
-  className,
-  playerId,
-}: PlayerStatsProps): JSX.Element => {
+const PlayerStats = ({ className, playerId }: PlayerStatsProps) => {
   const dispatch = useDispatch();
   const intl = useIntl();
   const theme = useTheme();
