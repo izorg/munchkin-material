@@ -106,7 +106,7 @@ module.exports = {
               /\bcore-js\b/,
               /\bwebpack\/buildin\b/,
             ],
-            test: /\.js$/,
+            test: /\.[cm]?js$/,
             use: [
               {
                 loader: "babel-loader",
@@ -249,6 +249,6 @@ module.exports = {
   ].filter(Boolean),
 
   resolve: {
-    extensions: [".mjs", ".tsx", ".ts", ".jsx", ".js", ".json"],
+    extensions: [".tsx", ".ts", ".jsx", ".js", ".json"],
   },
 };
