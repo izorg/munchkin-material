@@ -39,7 +39,7 @@
     "cordova-plugin-add-swift-support": "2.0.2",
     "cordova-plugin-android-dark-mode-support": "1.0.0",
     "cordova-plugin-buildinfo": "4.0.0",
-    "cordova-plugin-firebasex": "^13.0.1",
+    "cordova-plugin-firebasex": "13.0.1",
     "cordova-plugin-headercolor": "1.0.0",
     "cordova-plugin-insomnia": "4.3.0",
     "cordova-plugin-ionic-keyboard": "2.2.0",
