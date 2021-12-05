@@ -1,8 +1,11 @@
 {
   "**/*.{js,json,jsx,mjs,ts,tsx}": [
-    "eslint --ext=.js,.json,.jsx,.mjs --fix"
+    "eslint --cache --ext=.js,.json,.jsx,.mjs --fix"
   ],
-  "**/*.{html,md,yml}": [
+  "**/*.{css,html,tsx}": [
+    "stylelint --cache --fix"
+  ],
+  "**/*.{md,yml}": [
     "prettier --write"
   ]
 }

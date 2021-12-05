@@ -1,16 +1,8 @@
 {
   "extends": ["stylelint-config-standard", "stylelint-prettier/recommended"],
-  "overrides": [
-    {
-      "customSyntax": "@stylelint/postcss-css-in-js",
-      "files": "**/*.{ts,tsx}"
-    }
-  ],
   "plugins": ["stylelint-order"],
   "rules": {
-    "alpha-value-notation": "number",
     "function-name-case": null,
-    "order/properties-alphabetical-order": true,
-    "selector-class-pattern": null
+    "order/properties-alphabetical-order": true
   }
 }
