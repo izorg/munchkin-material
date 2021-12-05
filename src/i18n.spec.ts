@@ -1,3 +1,7 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import { getLocale } from "./i18n";
 
 describe("getLocale()", () => {
