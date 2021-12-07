@@ -18,22 +18,6 @@ const web = process.env.BUILD === "web";
 
 const outputPath = path.resolve(__dirname, cordova ? "cordova/www" : "web");
 
-let devtool = "source-map";
-let entry = "./src/cordova.tsx";
-
-if (cordova) {
-  devtool = "inline-source-map";
-}
-
-if (web) {
-  entry = ["./src/web.tsx"];
-}
-
-if (dev) {
-  devtool = "eval-source-map";
-  entry = "./src/dev/index.js";
-}
-
 const ids = process.env.STATS || dev ? "named" : "deterministic";
 
 module.exports = {
@@ -47,9 +31,15 @@ module.exports = {
     port: 3000,
   },
 
-  devtool,
+  devtool:
+    (dev && "eval-source-map") ||
+    (cordova && "inline-source-map") ||
+    "source-map",
 
-  entry,
+  entry:
+    (dev && "./src/dev/index.js") ||
+    (web && "./src/web.tsx") ||
+    "./src/cordova.tsx",
 
   mode: process.env.NODE_ENV,
 
