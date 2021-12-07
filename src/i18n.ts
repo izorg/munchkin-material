@@ -71,12 +71,5 @@ export const getLocale = (): string => {
   return EN;
 };
 
-export const loadMessages = async (
-  locale: string
-): Promise<IntlConfig["messages"]> => {
-  const publicPath = "cordova" in window ? "" : "/";
-
-  const res = await fetch(`${publicPath}languages/${locale}.json`);
-
-  return (await res.json()) as IntlConfig["messages"];
-};
+export const loadMessages = (locale: string) =>
+  import(`../languages/${locale}.json`) as Promise<IntlConfig["messages"]>;

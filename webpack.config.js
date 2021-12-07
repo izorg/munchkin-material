@@ -192,18 +192,15 @@ module.exports = {
       verbose: false,
     }),
 
-    new CopyPlugin({
-      patterns: [
-        web && {
-          context: "src/static",
-          from: "**/*",
-        },
-        {
-          from: "languages",
-          to: "languages",
-        },
-      ].filter(Boolean),
-    }),
+    web &&
+      new CopyPlugin({
+        patterns: [
+          {
+            context: "src/static",
+            from: "**/*",
+          },
+        ],
+      }),
 
     new HtmlWebpackPlugin({
       template: cordova ? "src/cordova.html" : "src/web.html",
