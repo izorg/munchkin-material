@@ -1,4 +1,3 @@
-import { css } from "@emotion/react";
 import {
   mdiDice1,
   mdiDice2,
@@ -8,6 +7,7 @@ import {
   mdiDice6,
 } from "@mdi/js";
 import {
+  Box,
   ButtonBase,
   Dialog,
   DialogProps,
@@ -62,42 +62,44 @@ const DiceDialog = (props: Partial<DialogProps>) => {
 
   return (
     <Dialog {...props} onClose={onDialogClose} open={open}>
-      <TransitionGroup
+      <ButtonBase
         autoFocus
-        component={ButtonBase}
-        css={css`
-          color: ${theme.palette.text.primary};
-          display: block;
-          font-size: ${diceSize}px;
-          height: ${diceSize}px;
-          padding: 0;
-          position: relative;
-          width: ${diceSize}px;
-        `}
         disableRipple
         onClick={onDiceClick}
+        sx={{
+          color: theme.palette.text.primary,
+          display: "block",
+          fontSize: diceSize,
+          height: diceSize,
+          padding: 0,
+          position: "relative",
+          width: diceSize,
+        }}
       >
-        <DiceTransition key={attempt}>
-          <span
-            css={css`
-              height: 100%;
-              left: 0;
-              position: absolute;
-              top: 0;
-              width: 100%;
-            `}
-          >
-            <SvgIcon
-              css={css`
-                display: block;
-                font-size: inherit;
-              `}
+        <TransitionGroup component={null}>
+          <DiceTransition key={attempt}>
+            <Box
+              component="span"
+              sx={{
+                height: "100%",
+                left: 0,
+                position: "absolute",
+                top: 0,
+                width: "100%",
+              }}
             >
-              <path d={diceIcon} />
-            </SvgIcon>
-          </span>
-        </DiceTransition>
-      </TransitionGroup>
+              <SvgIcon
+                sx={{
+                  display: "block",
+                  fontSize: "inherit",
+                }}
+              >
+                <path d={diceIcon} />
+              </SvgIcon>
+            </Box>
+          </DiceTransition>
+        </TransitionGroup>
+      </ButtonBase>
     </Dialog>
   );
 };
