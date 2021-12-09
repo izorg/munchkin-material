@@ -35,7 +35,7 @@
     "core-js": "3.19.3",
     "deepmerge": "4.2.2",
     "firebase": "9.6.0",
-    "framer-motion": "5.4.3",
+    "framer-motion": "5.4.4",
     "history": "5.1.0",
     "prop-types": "15.7.2",
     "react": "17.0.2",
