@@ -1,6 +1,5 @@
 import "web-animations-js";
 
-import "./fetch";
 import "./scroll";
 
 import { Suspense } from "react";

@@ -52,7 +52,6 @@
     "stylis-plugin-rtl": "2.1.1",
     "uuid": "8.3.2",
     "web-animations-js": "2.3.2",
-    "whatwg-fetch": "3.6.2",
     "workbox-window": "6.4.2"
   },
   "devDependencies": {
