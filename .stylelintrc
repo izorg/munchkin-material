@@ -1,8 +1,0 @@
-{
-  "extends": ["stylelint-config-standard", "stylelint-prettier/recommended"],
-  "plugins": ["stylelint-order"],
-  "rules": {
-    "function-name-case": null,
-    "order/properties-alphabetical-order": true
-  }
-}
