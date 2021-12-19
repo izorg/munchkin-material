@@ -10,7 +10,7 @@ import {
   Box,
   ButtonBase,
   Dialog,
-  DialogProps,
+  type DialogProps,
   SvgIcon,
   useTheme,
 } from "@mui/material";

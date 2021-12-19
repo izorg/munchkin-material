@@ -1,7 +1,7 @@
-import { createAction, PrepareAction } from "@reduxjs/toolkit";
+import { createAction, type PrepareAction } from "@reduxjs/toolkit";
 
 import createMonster from "../../utils/createMonster";
-import { Monster } from "../../utils/types";
+import { type Monster } from "../../utils/types";
 
 export const finishCombat = createAction("combat/finishCombat");
 

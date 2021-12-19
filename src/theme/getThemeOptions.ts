@@ -1,4 +1,8 @@
-import type { Direction, PaletteMode, ThemeOptions } from "@mui/material";
+import {
+  type Direction,
+  type PaletteMode,
+  type ThemeOptions,
+} from "@mui/material";
 import { common, orange } from "@mui/material/colors";
 import { deepmerge } from "@mui/utils";
 

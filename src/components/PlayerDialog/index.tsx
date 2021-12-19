@@ -20,7 +20,7 @@ import {
   useMediaQuery,
   useTheme,
 } from "@mui/material";
-import { FormEvent, useEffect, useMemo, useRef } from "react";
+import { type FormEvent, useEffect, useMemo, useRef } from "react";
 import { defineMessages, FormattedMessage, useIntl } from "react-intl";
 import { useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
@@ -33,7 +33,7 @@ import getRandomMaterialColor from "../../utils/getRandomMaterialColor";
 import { useGoBack } from "../../utils/location";
 import { ios } from "../../utils/platforms";
 import { FEMALE, MALE } from "../../utils/sex";
-import { Player } from "../../utils/types";
+import { type Player } from "../../utils/types";
 import useDeletePlayers from "../../utils/useDeletePlayers";
 import usePresentSelector from "../../utils/usePresentSelector";
 import CancelButton from "../CancelButton";

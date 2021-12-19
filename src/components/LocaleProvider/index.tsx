@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
-import { FC, useEffect, useState } from "react";
-import { IntlConfig, IntlProvider } from "react-intl";
+import { type FC, useEffect, useState } from "react";
+import { type IntlConfig, IntlProvider } from "react-intl";
 
 import { getDirection, getLocale, loadMessages } from "../../i18n";
 import usePresentSelector from "../../utils/usePresentSelector";

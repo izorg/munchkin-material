@@ -1,4 +1,4 @@
-import type { ThemeOptions } from "@mui/material";
+import { type ThemeOptions } from "@mui/material";
 import { red } from "@mui/material/colors";
 import { defineMessages } from "react-intl";
 

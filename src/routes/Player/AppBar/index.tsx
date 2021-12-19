@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import type { VFC } from "react";
+import { type VFC } from "react";
 
 import BackButton from "../../../components/BackButton";
 import DiceButton from "../../../components/dice/Button";

@@ -1,5 +1,5 @@
 import { mdiPlus } from "@mdi/js";
-import { FabProps, SvgIcon } from "@mui/material";
+import { type FabProps, SvgIcon } from "@mui/material";
 import { forwardRef } from "react";
 import { useIntl } from "react-intl";
 import { useLocation, useNavigate } from "react-router-dom";

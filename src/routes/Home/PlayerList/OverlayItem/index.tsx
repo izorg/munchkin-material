@@ -11,7 +11,7 @@ import PropTypes from "prop-types";
 
 import PlayerAvatar from "../../../../components/PlayerAvatar";
 import PlayerListItemText from "../../../../components/PlayerListItemText";
-import { AvailableColor } from "../../../../utils/availableColors";
+import { type AvailableColor } from "../../../../utils/availableColors";
 import usePresentSelector from "../../../../utils/usePresentSelector";
 
 const HomePlayerListOverlayItem = (props: { playerId: string }) => {

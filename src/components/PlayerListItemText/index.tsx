@@ -1,10 +1,10 @@
 import { ClassNames, css } from "@emotion/react";
 import { mdiChevronUp as levelIcon, mdiSword as strengthIcon } from "@mdi/js";
 import { ListItemText, SvgIcon, useTheme } from "@mui/material";
-import type { FC } from "react";
+import { type FC } from "react";
 
 import { playerShape } from "../../utils/propTypes";
-import { Player } from "../../utils/types";
+import { type Player } from "../../utils/types";
 import SexIcon from "../Sex";
 
 type PlayerListItemTextProps = {

@@ -1,7 +1,7 @@
 import { ClassNames } from "@emotion/react";
-import { Popover, PopoverProps } from "@mui/material";
+import { Popover, type PopoverProps } from "@mui/material";
 import PropTypes from "prop-types";
-import type { FC } from "react";
+import { type FC } from "react";
 
 import availableColors from "../../../utils/availableColors";
 import { colorType } from "../../../utils/propTypes";

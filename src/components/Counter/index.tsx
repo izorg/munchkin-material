@@ -5,7 +5,7 @@ import {
 } from "@mdi/js";
 import { SvgIcon, useTheme } from "@mui/material";
 import PropTypes from "prop-types";
-import type { FC, HTMLAttributes, ReactNode } from "react";
+import { type FC, type HTMLAttributes, type ReactNode } from "react";
 import { defineMessages } from "react-intl";
 
 import Button from "./Button";

@@ -1,5 +1,5 @@
-import type { PaletteMode } from "@mui/material";
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { type PaletteMode } from "@mui/material";
+import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 
 import { key as id } from "../../theme/colors/munchkin";
 

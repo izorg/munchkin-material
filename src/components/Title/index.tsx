@@ -1,7 +1,7 @@
 import { css } from "@emotion/react";
 import { Typography, useTheme } from "@mui/material";
 import PropTypes from "prop-types";
-import type { FC } from "react";
+import { type FC } from "react";
 
 const Title: FC = ({ children }) => {
   const theme = useTheme();

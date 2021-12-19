@@ -2,7 +2,7 @@ import { ClassNames, css } from "@emotion/react";
 import {
   Dialog,
   DialogContent,
-  DialogProps,
+  type DialogProps,
   DialogTitle,
   List,
   ListItemAvatar,
@@ -16,7 +16,7 @@ import { useLocation } from "react-router-dom";
 import PlayerAvatar from "../../../components/PlayerAvatar";
 import PlayerListItemText from "../../../components/PlayerListItemText";
 import { setCombatHelper } from "../../../ducks/combat";
-import type { AvailableColor } from "../../../utils/availableColors";
+import { type AvailableColor } from "../../../utils/availableColors";
 import { useGoBack } from "../../../utils/location";
 import usePresentSelector from "../../../utils/usePresentSelector";
 

@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-import availableColors, { AvailableColor } from "./availableColors";
+import availableColors, { type AvailableColor } from "./availableColors";
 import { Sex } from "./types";
 
 export const colorType = PropTypes.oneOf<AvailableColor>(availableColors);

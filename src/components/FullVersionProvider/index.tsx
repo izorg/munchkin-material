@@ -1,5 +1,11 @@
 import PropTypes from "prop-types";
-import { createContext, FC, useCallback, useContext, useEffect } from "react";
+import {
+  createContext,
+  type FC,
+  useCallback,
+  useContext,
+  useEffect,
+} from "react";
 import { useDispatch } from "react-redux";
 
 import { setFullVersion } from "../../ducks/settings";

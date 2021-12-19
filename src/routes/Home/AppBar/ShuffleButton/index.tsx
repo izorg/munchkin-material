@@ -1,5 +1,5 @@
 import { mdiShuffle } from "@mdi/js";
-import { IconButtonProps, SvgIcon, Tooltip } from "@mui/material";
+import { type IconButtonProps, SvgIcon, Tooltip } from "@mui/material";
 import { useIntl } from "react-intl";
 import { useDispatch } from "react-redux";
 

@@ -5,7 +5,7 @@ import {
   mdiChevronLeft,
   mdiChevronRight,
 } from "@mdi/js";
-import { IconButtonProps, SvgIcon, useTheme } from "@mui/material";
+import { type IconButtonProps, SvgIcon, useTheme } from "@mui/material";
 
 import { ios } from "../../utils/platforms";
 import TopIconButton from "../TopIconButton";

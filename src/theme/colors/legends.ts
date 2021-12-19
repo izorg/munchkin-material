@@ -1,4 +1,4 @@
-import type { ThemeOptions } from "@mui/material";
+import { type ThemeOptions } from "@mui/material";
 import { common, grey } from "@mui/material/colors";
 import { light } from "@mui/material/styles/createPalette";
 import { defineMessages } from "react-intl";

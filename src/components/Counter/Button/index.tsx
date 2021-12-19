@@ -1,7 +1,13 @@
-import { IconButton, IconButtonProps } from "@mui/material";
-import { motion, TapInfo } from "framer-motion";
+import { IconButton, type IconButtonProps } from "@mui/material";
+import { motion, type TapInfo } from "framer-motion";
 import PropTypes from "prop-types";
-import { FC, KeyboardEvent, useCallback, useEffect, useRef } from "react";
+import {
+  type FC,
+  type KeyboardEvent,
+  useCallback,
+  useEffect,
+  useRef,
+} from "react";
 
 type CounterButtonProps = Omit<
   IconButtonProps<typeof motion.button> & { onClick: () => void },

@@ -2,7 +2,7 @@ import {
   Button,
   Fade,
   Snackbar,
-  SnackbarCloseReason,
+  type SnackbarCloseReason,
   useMediaQuery,
   useTheme,
 } from "@mui/material";
@@ -11,7 +11,7 @@ import { FormattedMessage } from "react-intl";
 import { useDispatch, useSelector } from "react-redux";
 import { ActionCreators } from "redux-undo";
 
-import type { StoreState } from "../../store";
+import { type StoreState } from "../../store";
 import { useUndo } from "../UndoProvider";
 
 const UndoSnackbar = () => {

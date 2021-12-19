@@ -1,7 +1,7 @@
 import { mdiClose, mdiDelete, mdiFlagCheckered } from "@mdi/js";
 import { SvgIcon } from "@mui/material";
 import PropTypes from "prop-types";
-import { ReactNode } from "react";
+import { type ReactNode } from "react";
 import { FormattedMessage } from "react-intl";
 import { useDispatch } from "react-redux";
 

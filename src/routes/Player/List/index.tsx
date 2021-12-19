@@ -1,4 +1,4 @@
-import { List, ListProps, Paper } from "@mui/material";
+import { List, type ListProps, Paper } from "@mui/material";
 import PropTypes from "prop-types";
 
 import usePresentSelector from "../../../utils/usePresentSelector";

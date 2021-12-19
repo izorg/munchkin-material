@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import {
   createContext,
-  FC,
+  type FC,
   useCallback,
   useContext,
   useEffect,

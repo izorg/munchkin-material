@@ -1,6 +1,6 @@
 import { css } from "@emotion/react";
 import { useTheme } from "@mui/material";
-import type { HTMLAttributes, PropsWithChildren } from "react";
+import { type HTMLAttributes, type PropsWithChildren } from "react";
 import { useIntl } from "react-intl";
 
 import { EN, RU } from "../../../i18n";

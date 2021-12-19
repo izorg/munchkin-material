@@ -7,19 +7,19 @@ import {
   ListItem,
   ListItemAvatar,
   ListItemButton,
-  ListItemProps,
+  type ListItemProps,
   SvgIcon,
 } from "@mui/material";
-import { motion, TapInfo } from "framer-motion";
+import { motion, type TapInfo } from "framer-motion";
 import PropTypes from "prop-types";
-import { KeyboardEvent, useCallback, useRef } from "react";
+import { type KeyboardEvent, useCallback, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import PlayerAvatar from "../../../../components/PlayerAvatar";
 import PlayerListItemText from "../../../../components/PlayerListItemText";
 import { togglePlayer, unselectAllPlayers } from "../../../../ducks/ui";
-import { AvailableColor } from "../../../../utils/availableColors";
+import { type AvailableColor } from "../../../../utils/availableColors";
 import { useGoBack } from "../../../../utils/location";
 import { ios } from "../../../../utils/platforms";
 import useEditMode from "../../../../utils/useEditMode";

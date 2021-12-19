@@ -1,6 +1,6 @@
-import type { Action, Location } from "history";
+import { type Action, type Location } from "history";
 import PropTypes from "prop-types";
-import { FC, Reducer, useLayoutEffect, useReducer } from "react";
+import { type FC, type Reducer, useLayoutEffect, useReducer } from "react";
 import { Router } from "react-router-dom";
 
 import history from "./history";

@@ -1,6 +1,6 @@
 import { css } from "@emotion/react";
 import { useTheme } from "@mui/material";
-import { motion, PanInfo, useAnimation } from "framer-motion";
+import { motion, type PanInfo, useAnimation } from "framer-motion";
 import PropTypes from "prop-types";
 import { useCallback, useRef } from "react";
 import { useNavigate } from "react-router-dom";

@@ -1,6 +1,6 @@
 import { mdiMenu } from "@mdi/js";
 import {
-  IconButtonProps,
+  type IconButtonProps,
   SvgIcon,
   Tooltip,
   useMediaQuery,

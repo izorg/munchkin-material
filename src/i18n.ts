@@ -1,4 +1,4 @@
-import type { IntlConfig } from "react-intl";
+import { type IntlConfig } from "react-intl";
 
 export const CS = "cs";
 export const DA = "da";

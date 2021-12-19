@@ -1,7 +1,7 @@
-import createCache, { StylisPlugin } from "@emotion/cache";
+import createCache, { type StylisPlugin } from "@emotion/cache";
 import { CacheProvider } from "@emotion/react";
 import PropTypes from "prop-types";
-import type { FC } from "react";
+import { type FC } from "react";
 import { useIntl } from "react-intl";
 import { prefixer } from "stylis";
 import rtlPlugin from "stylis-plugin-rtl";

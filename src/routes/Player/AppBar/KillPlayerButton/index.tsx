@@ -1,7 +1,7 @@
 import { mdiSkull } from "@mdi/js";
-import { IconButtonProps, SvgIcon, Tooltip } from "@mui/material";
+import { type IconButtonProps, SvgIcon, Tooltip } from "@mui/material";
 import PropTypes from "prop-types";
-import type { VFC } from "react";
+import { type VFC } from "react";
 import { useIntl } from "react-intl";
 import { useDispatch } from "react-redux";
 

@@ -1,7 +1,7 @@
 import { mdiCheck, mdiDelete } from "@mdi/js";
 import { SvgIcon } from "@mui/material";
 import PropTypes from "prop-types";
-import type { ReactNode, VFC } from "react";
+import { type ReactNode, type VFC } from "react";
 
 import BackButton from "../../BackButton";
 import Title from "../../Title";

@@ -8,11 +8,11 @@ import {
   FormControl,
   FormControlLabel,
   FormLabel,
-  PaletteMode,
+  type PaletteMode,
   Radio,
   RadioGroup,
 } from "@mui/material";
-import { ChangeEvent, SyntheticEvent, useMemo } from "react";
+import { type ChangeEvent, type SyntheticEvent, useMemo } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";

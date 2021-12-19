@@ -1,6 +1,6 @@
 import { mdiGenderFemale, mdiGenderMale } from "@mdi/js";
-import { SvgIcon, SvgIconProps } from "@mui/material";
-import { FC } from "react";
+import { SvgIcon, type SvgIconProps } from "@mui/material";
+import { type FC } from "react";
 
 import { sexProp } from "../../utils/propTypes";
 import { Sex } from "../../utils/types";

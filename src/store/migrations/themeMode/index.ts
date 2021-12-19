@@ -1,4 +1,4 @@
-import { ThemeState } from "../../../ducks/theme";
+import { type ThemeState } from "../../../ducks/theme";
 
 export type OldThemeState = Omit<ThemeState, "mode"> & {
   type: ThemeState["mode"];

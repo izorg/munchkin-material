@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { useCallback } from "react";
 import { useIntl } from "react-intl";
 import { useDispatch } from "react-redux";
-import { Action } from "redux";
+import { type Action } from "redux";
 
 import { counterMessages } from "../../../../components/Counter";
 import SexIcon from "../../../../components/Sex";
@@ -19,7 +19,7 @@ import {
   incrementPlayerLevel,
   togglePlayerSex,
 } from "../../../../ducks/players";
-import { StoreState } from "../../../../store";
+import { type StoreState } from "../../../../store";
 import {
   isLevelDecrementDisabled,
   isLevelIncrementDisabled,

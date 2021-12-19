@@ -1,7 +1,7 @@
 import { mdiSwordCross } from "@mdi/js";
-import { FabProps, SvgIcon } from "@mui/material";
+import { type FabProps, SvgIcon } from "@mui/material";
 import PropTypes from "prop-types";
-import type { VFC } from "react";
+import { type VFC } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 

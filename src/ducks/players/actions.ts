@@ -1,6 +1,6 @@
 import { createAction } from "@reduxjs/toolkit";
 
-import { Player } from "../../utils/types";
+import { type Player } from "../../utils/types";
 
 export const addPlayer = createAction<Player, "players/addPlayer">(
   "players/addPlayer"

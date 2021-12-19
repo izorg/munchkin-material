@@ -8,7 +8,7 @@ import {
   Radio,
   RadioGroup,
 } from "@mui/material";
-import { ChangeEvent, FormEvent, useState } from "react";
+import { type ChangeEvent, type FormEvent, useState } from "react";
 import { useIntl } from "react-intl";
 import { useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";

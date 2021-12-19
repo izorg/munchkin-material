@@ -1,6 +1,6 @@
-import { createReducer, isAnyOf, PayloadAction } from "@reduxjs/toolkit";
+import { createReducer, isAnyOf, type PayloadAction } from "@reduxjs/toolkit";
 
-import { Monster } from "../../utils/types";
+import { type Monster } from "../../utils/types";
 import { startCombat } from "../combat";
 
 import {

@@ -1,7 +1,7 @@
 import { css } from "@emotion/react";
 import { Typography, useTheme } from "@mui/material";
 import PropTypes from "prop-types";
-import { ReactNode, useCallback } from "react";
+import { type ReactNode, useCallback } from "react";
 import { useIntl } from "react-intl";
 import { useDispatch } from "react-redux";
 

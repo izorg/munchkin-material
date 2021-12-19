@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import { useLocation } from "react-router-dom";
 
-import type { ThemeState } from "../../ducks/theme";
+import { type ThemeState } from "../../ducks/theme";
 import usePresentSelector from "../../utils/usePresentSelector";
 
 const usePreviewTheme = (): ThemeState => {

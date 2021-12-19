@@ -1,4 +1,4 @@
-import type { IntlShape } from "react-intl";
+import { type IntlShape } from "react-intl";
 
 import * as apocalypse from "./apocalypse";
 import * as booty from "./booty";

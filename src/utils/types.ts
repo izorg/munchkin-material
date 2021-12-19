@@ -1,4 +1,4 @@
-import type { AvailableColor } from "./availableColors";
+import { type AvailableColor } from "./availableColors";
 
 export type Monster = {
   bonus: number;

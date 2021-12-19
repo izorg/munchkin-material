@@ -1,7 +1,7 @@
 import {
   combineReducers,
   configureStore,
-  StoreEnhancer,
+  type StoreEnhancer,
 } from "@reduxjs/toolkit";
 import { createReduxEnhancer } from "@sentry/react";
 import undoable, { includeAction } from "redux-undo";

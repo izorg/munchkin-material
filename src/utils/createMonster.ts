@@ -1,6 +1,6 @@
 import { v4 as uuid } from "uuid";
 
-import { Monster } from "./types";
+import { type Monster } from "./types";
 
 export const defaultData = {
   bonus: 0,

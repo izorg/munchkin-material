@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import { Fab, FabProps, useTheme } from "@mui/material";
+import { Fab, type FabProps, useTheme } from "@mui/material";
 import { forwardRef } from "react";
 
 const ScreenFab = forwardRef<HTMLButtonElement, FabProps>(function ScreenFab(

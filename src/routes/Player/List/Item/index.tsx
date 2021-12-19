@@ -1,15 +1,15 @@
 import {
   ListItemAvatar,
   ListItemButton,
-  ListItemButtonProps,
+  type ListItemButtonProps,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 import PlayerAvatar from "../../../../components/PlayerAvatar";
 import PlayerListItemText from "../../../../components/PlayerListItemText";
-import type { AvailableColor } from "../../../../utils/availableColors";
+import { type AvailableColor } from "../../../../utils/availableColors";
 import { playerShape } from "../../../../utils/propTypes";
-import type { Player } from "../../../../utils/types";
+import { type Player } from "../../../../utils/types";
 
 type PlayerListItemProps = { player: Player } & ListItemButtonProps;
 

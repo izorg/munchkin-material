@@ -1,6 +1,6 @@
 import { createAction } from "@reduxjs/toolkit";
 
-import { Monster } from "../../utils/types";
+import { type Monster } from "../../utils/types";
 
 export const addMonster = createAction<Monster>("monsters/addMonster");
 

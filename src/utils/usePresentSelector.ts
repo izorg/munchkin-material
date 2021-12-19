@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 
-import type { PresentState, StoreState } from "../store";
+import { type PresentState, type StoreState } from "../store";
 
 const usePresentSelector = <Data>(
   selector: (state: PresentState) => Data

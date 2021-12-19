@@ -3,7 +3,7 @@ import { IconButton, useTheme } from "@mui/material";
 import { useCallback } from "react";
 import { useIntl } from "react-intl";
 import { useDispatch } from "react-redux";
-import { Action } from "redux";
+import { type Action } from "redux";
 
 import Counter, { counterMessages } from "../../../components/Counter";
 import CounterLabel from "../../../components/Counter/Label";
@@ -16,7 +16,7 @@ import {
   incrementPlayerLevel,
   togglePlayerSex,
 } from "../../../ducks/players";
-import { StoreState } from "../../../store";
+import { type StoreState } from "../../../store";
 import {
   isLevelDecrementDisabled,
   isLevelIncrementDisabled,

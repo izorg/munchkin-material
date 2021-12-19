@@ -2,12 +2,12 @@ import { css } from "@emotion/react";
 import {
   Dialog,
   DialogContent,
-  DialogProps,
+  type DialogProps,
   DialogTitle,
   useTheme,
 } from "@mui/material";
 import PropTypes from "prop-types";
-import type { FC } from "react";
+import { type FC } from "react";
 import { FormattedMessage } from "react-intl";
 
 import availableColors from "../../../utils/availableColors";

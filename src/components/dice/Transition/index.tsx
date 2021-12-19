@@ -1,7 +1,7 @@
 import { ClassNames } from "@emotion/react";
 import { useTheme } from "@mui/material";
 import { CSSTransition } from "react-transition-group";
-import type { CSSTransitionProps } from "react-transition-group/CSSTransition";
+import { type CSSTransitionProps } from "react-transition-group/CSSTransition";
 
 const addEndListener = (node: HTMLElement, done: () => void): void => {
   node.addEventListener("transitionend", done, false);

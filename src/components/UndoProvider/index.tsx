@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
 import {
   createContext,
-  FC,
-  ReactNode,
+  type FC,
+  type ReactNode,
   useContext,
   useMemo,
   useState,

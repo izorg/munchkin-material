@@ -1,9 +1,9 @@
 import {
   closestCenter,
   DndContext,
-  DragEndEvent,
+  type DragEndEvent,
   DragOverlay,
-  DragStartEvent,
+  type DragStartEvent,
   KeyboardSensor,
   MouseSensor,
   TouchSensor,
@@ -17,7 +17,7 @@ import {
   verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
 import { css } from "@emotion/react";
-import { List, ListProps, Paper } from "@mui/material";
+import { List, type ListProps, Paper } from "@mui/material";
 import { useCallback, useState } from "react";
 import { useDispatch } from "react-redux";
 

@@ -1,10 +1,10 @@
 import { css } from "@emotion/react";
-import { Theme, useFormControl, useMediaQuery } from "@mui/material";
+import { type Theme, useFormControl, useMediaQuery } from "@mui/material";
 import PropTypes from "prop-types";
 import {
-  FC,
-  FocusEvent,
-  KeyboardEvent,
+  type FC,
+  type FocusEvent,
+  type KeyboardEvent,
   useEffect,
   useRef,
   useState,

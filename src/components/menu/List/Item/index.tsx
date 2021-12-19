@@ -1,6 +1,6 @@
 import { css } from "@emotion/react";
-import { ListItem, ListItemProps, useTheme } from "@mui/material";
-import type { ElementType } from "react";
+import { ListItem, type ListItemProps, useTheme } from "@mui/material";
+import { type ElementType } from "react";
 
 import usePresentSelector from "../../../../utils/usePresentSelector";
 import { useMenuType } from "../../MenuTypeProvider";

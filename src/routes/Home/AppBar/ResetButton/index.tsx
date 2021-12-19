@@ -1,14 +1,14 @@
 import { mdiBackupRestore } from "@mdi/js";
-import { IconButtonProps, SvgIcon, Tooltip } from "@mui/material";
+import { type IconButtonProps, SvgIcon, Tooltip } from "@mui/material";
 import { defineMessages, useIntl } from "react-intl";
 import { useDispatch } from "react-redux";
-import { Action } from "redux";
+import { type Action } from "redux";
 import { ActionCreators } from "redux-undo";
 
 import TopIconButton from "../../../../components/TopIconButton";
 import { useUndo } from "../../../../components/UndoProvider";
 import { resetPlayers } from "../../../../ducks/players";
-import { StoreState } from "../../../../store";
+import { type StoreState } from "../../../../store";
 import usePresentSelector from "../../../../utils/usePresentSelector";
 
 const messages = defineMessages({

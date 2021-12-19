@@ -2,7 +2,7 @@ import { compose } from "redux";
 
 import migrations from "./migrations";
 
-import { PresentState } from "./index";
+import { type PresentState } from "./index";
 
 const key = "redux";
 

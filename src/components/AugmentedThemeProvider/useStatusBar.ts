@@ -1,4 +1,4 @@
-import { darken, rgbToHex, Theme } from "@mui/material";
+import { darken, rgbToHex, type Theme } from "@mui/material";
 import { dark, light } from "@mui/material/styles/createPalette";
 import { useEffect } from "react";
 

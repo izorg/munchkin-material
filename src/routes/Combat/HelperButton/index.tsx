@@ -8,7 +8,7 @@ import {
   SvgIcon,
   useTheme,
 } from "@mui/material";
-import { memo, MouseEvent } from "react";
+import { memo, type MouseEvent } from "react";
 import { FormattedMessage } from "react-intl";
 import { useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";

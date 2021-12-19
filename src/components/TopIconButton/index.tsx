@@ -1,7 +1,7 @@
 import { css } from "@emotion/react";
 import {
   IconButton,
-  IconButtonProps,
+  type IconButtonProps,
   useMediaQuery,
   useTheme,
 } from "@mui/material";
