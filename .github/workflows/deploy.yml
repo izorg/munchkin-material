@@ -10,15 +10,12 @@ jobs:
     name: Deploy
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2.3.4
+      - uses: actions/checkout@v2.4.0
 
-      - name: Read .nvmrc
-        id: nvmrc
-        run: echo "##[set-output name=NODE_VERSION;]$(cat .nvmrc)" # https://github.com/actions/setup-node/issues/32#issuecomment-525791142
-
-      - uses: actions/setup-node@v2.1.5
+      - uses: actions/setup-node@v2.5.0
         with:
-          node-version: "${{ steps.nvmrc.outputs.NODE_VERSION }}"
+          node-version-file: ".nvmrc"
+          cache: "npm"
 
       - name: Install
         env:

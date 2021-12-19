@@ -8,6 +8,7 @@
 .vscode/
 /coverage/
 /screenshots/
+/tsconfig.tsbuildinfo
 /web/
 firebase-debug.log
 node_modules/
