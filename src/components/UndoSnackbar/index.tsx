@@ -1,4 +1,3 @@
-import { css } from "@emotion/react";
 import {
   Button,
   Fade,
@@ -7,7 +6,7 @@ import {
   useMediaQuery,
   useTheme,
 } from "@mui/material";
-import { SyntheticEvent, useEffect } from "react";
+import { useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { useDispatch, useSelector } from "react-redux";
 import { ActionCreators } from "redux-undo";
@@ -23,10 +22,7 @@ const UndoSnackbar = () => {
 
   const open = useSelector((state: StoreState) => state.past.length > 0);
 
-  const onClose = (
-    event: SyntheticEvent,
-    reason: SnackbarCloseReason | "undo"
-  ) => {
+  const onClose = (event: unknown, reason: SnackbarCloseReason | "undo") => {
     if (reason === "undo") {
       dispatch(ActionCreators.undo());
     }
@@ -50,16 +46,15 @@ const UndoSnackbar = () => {
         </Button>
       }
       autoHideDuration={8000}
-      css={css`
-        bottom: ${theme.spacing(11)};
-
-        ${theme.breakpoints.up("sm")} {
-          bottom: ${theme.spacing(3.5)};
-        }
-      `}
       message={message}
       onClose={onClose}
       open={open}
+      sx={{
+        bottom: {
+          sm: 28,
+          xs: 88,
+        },
+      }}
       TransitionComponent={mdDown ? Fade : undefined}
       TransitionProps={{
         onExited: () => setMessage(null),
