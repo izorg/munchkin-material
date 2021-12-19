@@ -1,4 +1,5 @@
 module.exports = {
+  compact: false,
   plugins: [
     "@babel/plugin-transform-runtime",
     "@emotion/babel-plugin",

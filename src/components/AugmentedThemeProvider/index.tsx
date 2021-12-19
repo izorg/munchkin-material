@@ -4,7 +4,7 @@ import {
   ThemeProvider,
   useMediaQuery,
 } from "@mui/material";
-import deepmerge from "deepmerge";
+import { deepmerge } from "@mui/utils";
 import PropTypes from "prop-types";
 import { FC, useEffect, useMemo } from "react";
 import { useIntl } from "react-intl";

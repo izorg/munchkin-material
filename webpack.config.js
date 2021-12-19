@@ -180,6 +180,6 @@ module.exports = {
   ].filter(Boolean),
 
   resolve: {
-    extensions: [".tsx", ".ts", ".js", ".json"],
+    extensions: [".tsx", ".ts", ".js"],
   },
 };

@@ -1,6 +1,6 @@
 import type { Direction, PaletteMode, ThemeOptions } from "@mui/material";
 import { common, orange } from "@mui/material/colors";
-import deepmerge from "deepmerge";
+import { deepmerge } from "@mui/utils";
 
 import { ios } from "../utils/platforms";
 
