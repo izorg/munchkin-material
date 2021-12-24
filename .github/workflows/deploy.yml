@@ -17,18 +17,18 @@ jobs:
           node-version-file: ".nvmrc"
           cache: "npm"
 
-      - name: Install
+      - name: Install ⬇️
         env:
           HUSKY: 0
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
         run: npm ci
 
-      - name: Lint
+      - name: Lint 🟡
         run: |
           npm run tsc
           npm run lint
 
-      - name: Test
+      - name: Test 🙃
         run: npm run test
 
       - name: Build 🔨
