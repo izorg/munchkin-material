@@ -1,8 +1,5 @@
-import {
-  ListItemAvatar,
-  ListItemButton,
-  type ListItemButtonProps,
-} from "@mui/material";
+import { ListItemAvatar, ListItemButton } from "@mui/material";
+import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 
 import PlayerAvatar from "../../../../components/PlayerAvatar";
@@ -11,15 +8,21 @@ import { type AvailableColor } from "../../../../utils/availableColors";
 import { playerShape } from "../../../../utils/propTypes";
 import { type Player } from "../../../../utils/types";
 
-type PlayerListItemProps = { player: Player } & ListItemButtonProps;
+type PlayerListItemProps = {
+  player: Player;
+  selected: boolean;
+};
 
-const PlayerListItem = ({ player, ...props }: PlayerListItemProps) => {
+const PlayerListItem = (props: PlayerListItemProps) => {
+  const { player, selected } = props;
+
   const navigate = useNavigate();
 
   return (
     <ListItemButton
-      onClick={() => navigate(`/player/${player.id}`, { replace: true })}
-      {...props}
+      component={motion.div}
+      onTap={() => navigate(`/player/${player.id}`, { replace: true })}
+      selected={selected}
     >
       <ListItemAvatar>
         <PlayerAvatar
