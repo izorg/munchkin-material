@@ -1,4 +1,3 @@
-import { ClassNames } from "@emotion/react";
 import { Popover, type PopoverProps } from "@mui/material";
 import PropTypes from "prop-types";
 import { type FC } from "react";
@@ -18,27 +17,23 @@ const ColorPickerPopover: FC<ColorPickerPopoverProps> = ({
   value,
   ...props
 }) => (
-  <ClassNames>
-    {({ css }) => (
-      <Popover
-        classes={{
-          paper: css`
-            max-width: 288px; /* 6 * 48 = 288 */
-          `,
-        }}
-        {...props}
-      >
-        {availableColors.map((color) => (
-          <Color
-            key={color}
-            onClick={() => onSelect(color)}
-            selected={value === color}
-            value={color}
-          />
-        ))}
-      </Popover>
-    )}
-  </ClassNames>
+  <Popover
+    PaperProps={{
+      sx: {
+        maxWidth: 288,
+      },
+    }}
+    {...props}
+  >
+    {availableColors.map((color) => (
+      <Color
+        key={color}
+        onClick={() => onSelect(color)}
+        selected={value === color}
+        value={color}
+      />
+    ))}
+  </Popover>
 );
 
 ColorPickerPopover.propTypes = {

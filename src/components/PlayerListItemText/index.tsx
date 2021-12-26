@@ -1,7 +1,6 @@
-import { ClassNames, css } from "@emotion/react";
 import { mdiChevronUp as levelIcon, mdiSword as strengthIcon } from "@mdi/js";
-import { ListItemText, SvgIcon, useTheme } from "@mui/material";
-import { type FC } from "react";
+import { Box, ListItemText, SvgIcon } from "@mui/material";
+import { type VFC } from "react";
 
 import { playerShape } from "../../utils/propTypes";
 import { type Player } from "../../utils/types";
@@ -11,88 +10,81 @@ type PlayerListItemTextProps = {
   player: Player;
 };
 
-const PlayerListItemText: FC<PlayerListItemTextProps> = ({ player }) => {
-  const theme = useTheme();
+const PlayerListItemText: VFC<PlayerListItemTextProps> = ({ player }) => (
+  <>
+    <ListItemText
+      primary={player.name}
+      primaryTypographyProps={{
+        sx: {
+          flex: 1,
+          overflow: "hidden",
+          textOverflow: "ellipsis",
+          whiteSpace: "nowrap",
+        },
+      }}
+      secondary={
+        <SexIcon
+          sex={player.sex}
+          sx={{
+            fontSize: "1em",
+          }}
+        />
+      }
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+      }}
+    />
+    <ListItemText
+      primaryTypographyProps={{
+        sx: {
+          fontWeight: "regular",
+        },
+        variant: "h6",
+      }}
+      sx={{
+        flexGrow: 0,
+        flexShrink: 0,
+        paddingLeft: 1,
+      }}
+    >
+      <Box
+        component="span"
+        sx={{
+          alignItems: "center",
+          display: "inline-flex",
+          justifyContent: "flex-end",
+          width: 50,
+        }}
+      >
+        {player.level}
+        <SvgIcon>
+          <path d={levelIcon} />
+        </SvgIcon>
+      </Box>
 
-  const mainCss = css`
-    display: flex;
-    flex-direction: column;
-  `;
-
-  const sexCss = css`
-    font-size: 1em;
-  `;
-
-  const levelCss = css`
-    align-items: center;
-    display: inline-flex;
-    justify-content: flex-end;
-    width: 50px;
-  `;
-
-  const strengthCss = css`
-    align-items: center;
-    display: inline-flex;
-    justify-content: flex-end;
-    width: 60px;
-  `;
-
-  const strengthIconCss = css`
-    font-size: 1.2em;
-    margin-left: 4px;
-  `;
-
-  const statsCss = css`
-    flex-grow: 0;
-    flex-shrink: 0;
-    padding-left: ${theme.spacing(1)};
-  `;
-
-  return (
-    <ClassNames>
-      {({ css }) => (
-        <>
-          <ListItemText
-            css={mainCss}
-            primary={player.name}
-            primaryTypographyProps={{
-              className: css`
-                flex: 1;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                white-space: nowrap;
-              `,
-            }}
-            secondary={<SexIcon css={sexCss} sex={player.sex} />}
-          />
-          <ListItemText
-            css={statsCss}
-            primaryTypographyProps={{
-              className: css`
-                font-weight: ${theme.typography.fontWeightRegular};
-              `,
-              variant: "h6",
-            }}
-          >
-            <span css={levelCss}>
-              {player.level}
-              <SvgIcon>
-                <path d={levelIcon} />
-              </SvgIcon>
-            </span>
-
-            <span css={strengthCss}>
-              {player.level + player.gear}
-              <SvgIcon css={strengthIconCss}>
-                <path d={strengthIcon} />
-              </SvgIcon>
-            </span>
-          </ListItemText>
-        </>
-      )}
-    </ClassNames>
-  );
-};
+      <Box
+        component="span"
+        sx={{
+          alignItems: "center",
+          display: "inline-flex",
+          justifyContent: "flex-end",
+          width: 60,
+        }}
+      >
+        {player.level + player.gear}
+        <SvgIcon
+          sx={{
+            fontSize: "1.2em",
+            marginLeft: 0.5,
+          }}
+        >
+          <path d={strengthIcon} />
+        </SvgIcon>
+      </Box>
+    </ListItemText>
+  </>
+);
 
 PlayerListItemText.propTypes = {
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment

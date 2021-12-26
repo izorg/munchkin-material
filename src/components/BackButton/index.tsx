@@ -1,4 +1,3 @@
-import { css } from "@emotion/react";
 import {
   mdiArrowLeft,
   mdiArrowRight,
@@ -18,9 +17,9 @@ const BackButton = (props: IconButtonProps) => {
   if (ios) {
     icon = (
       <SvgIcon
-        css={css`
-          transform: scale(1.5);
-        `}
+        sx={{
+          transform: "scale(1.5)",
+        }}
       >
         <path d={direction === "rtl" ? mdiChevronRight : mdiChevronLeft} />
       </SvgIcon>

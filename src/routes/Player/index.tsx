@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import { useTheme } from "@mui/material";
+import { Box, useTheme } from "@mui/material";
 import PropTypes from "prop-types";
 import { lazy, Suspense, useRef } from "react";
 import { Navigate, useMatch } from "react-router-dom";
@@ -50,14 +50,14 @@ const Player = ({ playerId }: PlayerProps) => {
 
   return (
     <PlayerContext.Provider value={playerRef.current}>
-      <div
-        css={css`
-          background-color: ${theme.palette.background.default};
-          display: flex;
-          flex: 1;
-          flex-direction: column;
-          overflow: hidden;
-        `}
+      <Box
+        sx={{
+          backgroundColor: "background.default",
+          display: "flex",
+          flex: 1,
+          flexDirection: "column",
+          overflow: "hidden",
+        }}
       >
         <AppBar playerId={playerRef.current} />
         <div
@@ -112,7 +112,7 @@ const Player = ({ playerId }: PlayerProps) => {
             />
           )}
         </div>
-      </div>
+      </Box>
       <CombatButton playerId={playerRef.current} />
 
       <ScreenModal open={Boolean(combatMatch)}>

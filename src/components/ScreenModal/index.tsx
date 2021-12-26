@@ -1,5 +1,11 @@
-import { css } from "@emotion/react";
-import { Fade, Modal, Slide, useMediaQuery, useTheme } from "@mui/material";
+import {
+  Box,
+  Fade,
+  Modal,
+  Slide,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
 import { type TransitionProps } from "@mui/material/transitions";
 import PropTypes from "prop-types";
 import { type FC, type PropsWithChildren } from "react";
@@ -29,16 +35,16 @@ const ScreenModal: FC<PropsWithChildren<ScreenModalProps>> = ({
         in={open}
         {...TransitionProps}
       >
-        <div
-          css={css`
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-            outline: none;
-          `}
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            height: "100%",
+            outline: "none",
+          }}
         >
           {children}
-        </div>
+        </Box>
       </TransitionComponent>
     </Modal>
   );
