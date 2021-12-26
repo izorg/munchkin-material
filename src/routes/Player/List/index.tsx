@@ -5,17 +5,14 @@ import usePresentSelector from "../../../utils/usePresentSelector";
 
 import Item from "./Item";
 
-type PlayerListProps = { selectedPlayerId: string } & ListProps;
+type PlayerListProps = { selectedPlayerId: string } & ListProps<typeof Paper>;
 
 const PlayerList = ({ selectedPlayerId, ...props }: PlayerListProps) => {
   const playerList = usePresentSelector((state) => state.playerList);
   const players = usePresentSelector((state) => state.players);
 
   return (
-    <List
-      component={(listProps) => <Paper elevation={2} square {...listProps} />}
-      {...props}
-    >
+    <List component={Paper} elevation={2} square {...props}>
       {playerList.map((playerId) => (
         <Item
           key={playerId}
