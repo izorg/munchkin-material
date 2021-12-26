@@ -87,8 +87,6 @@ const PlayerListItemText: VFC<PlayerListItemTextProps> = ({ player }) => (
 );
 
 PlayerListItemText.propTypes = {
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
   player: playerShape.isRequired,
 };
 

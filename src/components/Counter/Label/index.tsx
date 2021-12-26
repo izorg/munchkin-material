@@ -1,15 +1,11 @@
-import { css } from "@emotion/react";
-import { useTheme } from "@mui/material";
-import { type HTMLAttributes, type PropsWithChildren } from "react";
+import { Box, type BoxProps, useTheme } from "@mui/material";
 import { useIntl } from "react-intl";
 
 import { EN, RU } from "../../../i18n";
 
 const munchkinFontSupportedLocales = [EN, RU];
 
-const CounterLabel = (
-  props: PropsWithChildren<HTMLAttributes<HTMLDivElement>>
-) => {
+const CounterLabel = ({ sx = [], ...props }: BoxProps) => {
   const { locale } = useIntl();
   const theme = useTheme();
 
@@ -18,13 +14,16 @@ const CounterLabel = (
     : theme.typography.fontFamily;
 
   return (
-    <div
-      css={css`
-        font-family: ${fontFamily};
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-      `}
+    <Box
+      sx={[
+        {
+          fontFamily,
+          overflow: "hidden",
+          textOverflow: "ellipsis",
+          whiteSpace: "nowrap",
+        },
+        ...(Array.isArray(sx) ? sx : [sx]),
+      ]}
       {...props}
     />
   );

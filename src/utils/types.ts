@@ -7,7 +7,7 @@ export type Monster = {
 };
 
 export type Player = {
-  color?: AvailableColor;
+  color?: AvailableColor | null;
   gear: number;
   id: string;
   level: number;
