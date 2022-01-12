@@ -1,3 +1,5 @@
+const packageJson = require("./package.json");
+
 module.exports = {
   compact: false,
   plugins: [
@@ -7,6 +9,7 @@ module.exports = {
       "babel-plugin-polyfill-corejs3",
       {
         method: "usage-global",
+        version: packageJson.dependencies["core-js"],
       },
     ],
     "babel-plugin-react-intl",
