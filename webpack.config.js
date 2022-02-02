@@ -5,7 +5,6 @@ const SentryWebpackPlugin = require("@sentry/webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const HtmlWebpackTagsPlugin = require("html-webpack-tags-plugin");
 const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
 const { GenerateSW } = require("workbox-webpack-plugin");
 
@@ -46,12 +45,8 @@ module.exports = {
   module: {
     rules: [
       {
-        exclude: [
-          // https://stackoverflow.com/questions/57361439/how-to-exclude-core-js-using-usebuiltins-usage
-          /\bcore-js\b/,
-          /\bwebpack\/buildin\b/,
-        ],
-        test: /\.([cm]?js|[jt]sx?)$/,
+        exclude: /\b(core-js|webpack\/buildin)\b/, // https://stackoverflow.com/questions/57361439/how-to-exclude-core-js-using-usebuiltins-usage
+        test: /\.([cm]js|[jt]sx?)$/,
         use: [
           {
             loader: "babel-loader",
@@ -149,12 +144,6 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: cordova ? "src/cordova.html" : "src/web.html",
     }),
-
-    cordova &&
-      new HtmlWebpackTagsPlugin({
-        append: false,
-        tags: ["cordova.js"],
-      }),
 
     dev && new ReactRefreshWebpackPlugin(),
 

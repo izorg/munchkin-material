@@ -15,6 +15,12 @@ import LocaleProvider from "./components/LocaleProvider";
 import ReduxProvider from "./components/ReduxProvider";
 import WakeLockProvider from "./components/WakeLockProvider";
 
+const cordovaScript = document.createElement("script");
+
+cordovaScript.setAttribute("src", "cordova.js");
+
+document.querySelector("head")?.appendChild(cordovaScript);
+
 render(
   <CordovaRouter>
     <ReduxProvider>
