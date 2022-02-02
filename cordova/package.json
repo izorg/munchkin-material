@@ -29,8 +29,7 @@
       "cordova-plugin-splashscreen": {},
       "cordova-plugin-statusbar": {},
       "cordova-plugin-vibration": {},
-      "cordova-plugin-web-share": {},
-      "cordova-support-google-services": {}
+      "cordova-plugin-web-share": {}
     }
   },
   "devDependencies": {
@@ -43,13 +42,12 @@
     "cordova-plugin-headercolor": "1.0.0",
     "cordova-plugin-insomnia": "4.3.0",
     "cordova-plugin-ionic-keyboard": "2.2.0",
-    "cordova-plugin-localization-strings": "3.2.1",
-    "cordova-plugin-purchase": "10.6.1",
+    "cordova-plugin-localization-strings": "4.1.1",
+    "cordova-plugin-purchase": "11.0.0",
     "cordova-plugin-splashscreen": "6.0.0",
     "cordova-plugin-statusbar": "3.0.0",
     "cordova-plugin-vibration": "3.1.1",
     "cordova-plugin-web-share": "1.2.0",
-    "cordova-support-google-services": "1.4.1",
     "cordova-windows": "7.0.1"
   }
 }
