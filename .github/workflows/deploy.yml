@@ -28,13 +28,30 @@ jobs:
           npm run tsc
           npm run lint
 
+      - name: Get app version
+        id: version
+        run: echo "##[set-output name=VERSION;]$(node scripts/version.mjs)"
+
       - name: Test 🙃
         run: npm run test
 
       - name: Build 🔨
         env:
+          VERSION: ${{ steps.version.outputs.VERSION }}
+        run: |
+          echo $VERSION
+          npm run build:web
+
+      - name: Create Sentry release
+        uses: getsentry/action-release@v1
+        env:
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
-        run: npm run build:web
+          SENTRY_ORG: ${{ secrets.SENTRY_ORG }}
+          SENTRY_PROJECT: ${{ secrets.SENTRY_PROJECT }}
+        with:
+          environment: production
+          sourcemaps: "./web"
+          version: ${{ steps.version.outputs.VERSION }}
 
       - name: Deploy 🚀
         uses: FirebaseExtended/action-hosting-deploy@v0
