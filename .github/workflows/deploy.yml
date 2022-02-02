@@ -23,24 +23,18 @@ jobs:
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
         run: npm ci
 
-      - name: Lint 🟡
-        run: |
-          npm run tsc
-          npm run lint
-
       - name: Get app version
         id: version
         run: echo "##[set-output name=VERSION;]$(node scripts/version.mjs)"
 
-      - name: Test 🙃
+      - name: Lint
+        run: npm run lint
+
+      - name: Test
         run: npm run test
 
       - name: Build 🔨
-        env:
-          VERSION: ${{ steps.version.outputs.VERSION }}
-        run: |
-          echo $VERSION
-          npm run build:web
+        run: npm run build:web
 
       - name: Create Sentry release
         uses: getsentry/action-release@v1
