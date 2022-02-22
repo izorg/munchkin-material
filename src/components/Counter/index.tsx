@@ -1,11 +1,10 @@
-import { css } from "@emotion/react";
 import {
   mdiMenuDown as decrementIcon,
   mdiMenuUp as incrementIcon,
 } from "@mdi/js";
-import { SvgIcon, useTheme } from "@mui/material";
+import { Box, SvgIcon, type Theme } from "@mui/material";
 import PropTypes from "prop-types";
-import { type FC, type HTMLAttributes, type ReactNode } from "react";
+import { type HTMLAttributes, type ReactNode, type VFC } from "react";
 import { defineMessages } from "react-intl";
 
 import Button from "./Button";
@@ -39,7 +38,7 @@ type CounterProps = Omit<HTMLAttributes<HTMLDivElement>, "title"> & {
   value: number;
 };
 
-const Counter: FC<CounterProps> = ({
+const Counter: VFC<CounterProps> = ({
   className,
   decrementDisabled,
   incrementDisabled,
@@ -49,83 +48,82 @@ const Counter: FC<CounterProps> = ({
   value,
   ...props
 }) => {
-  const theme = useTheme();
-
   return (
-    <div
+    <Box
       className={className}
-      css={css`
-        align-items: center;
-        display: flex;
-        flex-direction: column;
-      `}
+      sx={{
+        alignItems: "center",
+        display: "flex",
+        flexDirection: "column",
+      }}
       {...props}
     >
       <CounterLabel
-        css={css`
-          font-size: 24px;
-          text-align: center;
-          width: 100%;
-        `}
+        sx={{
+          fontSize: "24px",
+          textAlign: "center",
+          width: "100%",
+        }}
       >
         {title}
       </CounterLabel>
 
-      <div
-        css={css`
-          color: ${theme.palette.text.primary};
-          font-family: Munchkin, ${theme.typography.fontFamily};
-          font-size: 36px;
-        `}
+      <Box
+        sx={{
+          color: "text.primary",
+          fontFamily: (theme: Theme) =>
+            `Munchkin, ${String(theme.typography.fontFamily)}`,
+          fontSize: "36px",
+        }}
       >
         {value}
-      </div>
+      </Box>
 
-      <div
-        css={css`
-          display: flex;
-          justify-content: space-around;
-          max-width: 120px;
-          width: 100%;
-        `}
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          maxWidth: "120px",
+          width: "100%",
+        }}
       >
         <Button
-          css={css`
-            font-size: 48px;
-            padding: 0;
-          `}
           data-screenshots="decrement-button"
           disabled={decrementDisabled}
           onClick={onDecrement}
+          sx={{
+            fontSize: "48px",
+            padding: 0,
+          }}
         >
           <SvgIcon
-            css={css`
-              font-size: inherit;
-            `}
+            sx={{
+              fontSize: "inherit",
+            }}
           >
             <path d={decrementIcon} />
           </SvgIcon>
         </Button>
 
         <Button
-          css={css`
-            font-size: 48px;
-            padding: 0;
-          `}
           data-screenshots="increment-button"
           disabled={incrementDisabled}
           onClick={onIncrement}
+          sx={{
+            fontSize: "48px",
+            padding: 0,
+          }}
         >
           <SvgIcon
-            css={css`
-              font-size: inherit;
-            `}
+            sx={{
+              fontSize: "inherit",
+            }}
           >
             <path d={incrementIcon} />
           </SvgIcon>
         </Button>
-      </div>
-    </div>
+      </Box>
+    </Box>
   );
 };
 
