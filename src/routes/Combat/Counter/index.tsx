@@ -1,6 +1,6 @@
-import { css } from "@emotion/react";
 import { mdiMenuDown, mdiMenuUp } from "@mdi/js";
-import { SvgIcon, useTheme } from "@mui/material";
+import { Box, SvgIcon, type Theme } from "@mui/material";
+import { type SxProps } from "@mui/system";
 import PropTypes from "prop-types";
 import { type ReactNode } from "react";
 
@@ -28,88 +28,89 @@ const CombatCounter = (props: CombatCounterProps) => {
     value,
   } = props;
 
-  const theme = useTheme();
+  const buttonSx: SxProps<Theme> = (theme) => ({
+    fontSize: "36px",
+    padding: 0,
 
-  const buttonCss = css`
-    font-size: 36px;
-    padding: 0;
+    // eslint-disable-next-line sort-keys
+    "@media (orientation: landscape)": {
+      fontSize: "32px",
 
-    @media (orientation: landscape) {
-      font-size: 32px;
+      [theme.breakpoints.up("sm")]: {
+        fontSize: "36px",
+      },
+    },
+  });
 
-      ${theme.breakpoints.up("sm")} {
-        font-size: 36px;
-      }
-    }
-  `;
-
-  const iconCss = css`
-    font-size: inherit;
-  `;
+  const iconSx: SxProps = {
+    fontSize: "inherit",
+  };
 
   return (
-    <div
+    <Box
       className={className}
-      css={css`
-        align-items: center;
-        display: flex;
-        flex-direction: column;
-      `}
+      sx={{
+        alignItems: "center",
+        display: "flex",
+        flexDirection: "column",
+      }}
     >
       <CounterLabel
-        css={css`
-          font-size: 16px;
-          text-align: center;
-          width: 100%;
+        sx={{
+          fontSize: "16px",
+          textAlign: "center",
+          width: "100%",
 
-          "@media (orientation: portrait) and (min-width: 360px) and (min-height: 600px)": {
-            font-size: 20px;
-          }
-        `}
+          // eslint-disable-next-line sort-keys
+          "@media (orientation: portrait) and (min-width: 360px) and (min-height: 600px)":
+            {
+              fontSize: "20px",
+            },
+        }}
       >
         {title}
       </CounterLabel>
 
-      <div
-        css={css`
-          color: ${theme.palette.text.primary};
-          font-family: Munchkin, ${theme.typography.fontFamily};
-          font-size: ${theme.typography.h4.fontSize};
-          line-height: ${theme.typography.h4.lineHeight};
-        `}
+      <Box
+        sx={(theme) => ({
+          color: theme.palette.text.primary,
+          fontFamily: `Munchkin, ${theme.typography.fontFamily ?? ""}`,
+          fontSize: theme.typography.h4.fontSize,
+          lineHeight: theme.typography.h4.lineHeight,
+        })}
       >
         {value}
-      </div>
+      </Box>
 
-      <div
-        css={css`
-          display: flex;
-          justify-content: space-around;
-          max-width: 90px;
-          width: 100%;
-        `}
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "space-around",
+          maxWidth: "90px",
+          width: "100%",
+        }}
       >
         <CounterButton
-          css={buttonCss}
           disabled={decrementDisabled}
           onClick={onDecrement}
+          sx={buttonSx}
         >
-          <SvgIcon css={iconCss}>
+          <SvgIcon sx={iconSx}>
             <path d={mdiMenuDown} />
           </SvgIcon>
         </CounterButton>
 
         <CounterButton
-          css={buttonCss}
           disabled={incrementDisabled}
           onClick={onIncrement}
+          sx={buttonSx}
         >
-          <SvgIcon css={iconCss}>
+          <SvgIcon sx={iconSx}>
             <path d={mdiMenuUp} />
           </SvgIcon>
         </CounterButton>
-      </div>
-    </div>
+      </Box>
+    </Box>
   );
 };
 
