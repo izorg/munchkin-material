@@ -87,20 +87,20 @@ const ThemeDialog = () => {
     });
   };
 
-  const onSubmit = async (event: SyntheticEvent<HTMLFormElement>) => {
+  const onSubmit = (event: SyntheticEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     if (previewTheme.id !== currentThemeId && !fullVersion) {
-      try {
-        await buyFullVersion();
-      } catch (error) {
-        return;
-      }
+      void buyFullVersion()
+        .then(() => {
+          dispatch(setTheme(previewTheme));
+
+          goBack();
+        })
+        .catch(() => {
+          // noop
+        });
     }
-
-    dispatch(setTheme(previewTheme));
-
-    goBack();
   };
 
   const onClose = () => goBack();
