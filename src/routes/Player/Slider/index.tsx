@@ -42,7 +42,7 @@ const PlayerSlider = ({ playerId }: PlayerSliderProps) => {
 
   const controls = useAnimation();
 
-  const onDragEnd = (
+  const onDragEnd = async (
     event: MouseEvent | TouchEvent | PointerEvent,
     info: PanInfo
   ) => {
@@ -75,7 +75,7 @@ const PlayerSlider = ({ playerId }: PlayerSliderProps) => {
         x: ref.current.offsetWidth * -direction + offset,
       });
 
-      void controls.start(
+      await controls.start(
         {
           x: 0,
         },
