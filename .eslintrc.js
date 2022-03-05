@@ -7,7 +7,6 @@ module.exports = {
   extends: [
     "eslint:recommended",
     "plugin:import/recommended",
-    "plugin:jest/recommended",
     "plugin:json/recommended",
     "plugin:jsx-a11y/recommended",
     "plugin:react-hooks/recommended",
@@ -41,6 +40,10 @@ module.exports = {
       rules: {
         "no-console": "off",
       },
+    },
+    {
+      extends: ["plugin:jest/recommended"],
+      files: ["**/*.spec.ts"],
     },
   ],
   parser: "@typescript-eslint/parser",
