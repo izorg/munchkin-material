@@ -19,14 +19,6 @@ const getThemeOptions = ({
 }): ThemeOptions => {
   let theme = {
     components: {
-      MuiDialog: {
-        styleOverrides: {
-          paperScrollPaper: {
-            maxHeight: "calc(100% - 32px)",
-          },
-        },
-      },
-
       MuiSnackbar: {
         styleOverrides: {
           anchorOriginBottomLeft: {
