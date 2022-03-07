@@ -1,4 +1,3 @@
-import { ClassNames, css } from "@emotion/react";
 import { mdiDelete, mdiGenderFemale, mdiGenderMale } from "@mdi/js";
 import {
   Dialog,
@@ -167,172 +166,158 @@ const PlayerDialog = () => {
     <FormattedMessage defaultMessage="New munchkin" id="player.form.title" />
   );
 
-  const titleCss = css`
-    align-items: center;
-    display: flex;
-    justify-content: space-between;
-
-    ${theme.breakpoints.down("lg")} {
-      display: block;
-      padding: 0;
-    }
-  `;
-
-  const deleteIconButtonCss = css`
-    margin-left: 8px;
-    padding: 4px;
-  `;
-
-  const contentCss = css`
-    @supports (padding: max(0px)) {
-      padding-left: max(24px, env(safe-area-inset-left));
-      padding-right: max(24px, env(safe-area-inset-right));
-    }
-
-    ${theme.breakpoints.up("md")} {
-      align-self: center;
-      width: 600px;
-    }
-  `;
-
-  const iconCss = css`
-    vertical-align: middle;
-  `;
-
   return (
-    <ClassNames>
-      {({ css }) => (
-        <Dialog
-          classes={{
-            paper: css`
-              background-color: ${theme.palette.mode === "dark"
-                ? theme.palette.background.default
-                : theme.palette.background.paper};
-              min-width: 320px;
+    <Dialog
+      disableRestoreFocus
+      fullScreen={fullScreen}
+      hideBackdrop={fullScreen}
+      onClose={handleClose}
+      open={open}
+      PaperProps={{
+        component: "form",
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        onSubmit,
+        sx: (theme) => ({
+          backgroundColor:
+            theme.palette.mode === "dark"
+              ? theme.palette.background.default
+              : theme.palette.background.paper,
+          minWidth: "320px",
 
-              ${theme.breakpoints.up("lg")} {
-                background-color: ${theme.palette.background.paper};
-              }
-            `,
-            root: css`
-              height: inherit; /* scrolling body in cordova for small screen height */
-            `,
-          }}
-          disableRestoreFocus
-          fullScreen={fullScreen}
-          hideBackdrop={fullScreen}
-          onClose={handleClose}
-          open={open}
-          PaperProps={{
-            component: "form",
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
-            onSubmit,
-          }}
-          TransitionComponent={fullScreen && ios ? Slide : Fade}
-          TransitionProps={{
-            appear,
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
-            direction: "up",
-          }}
-        >
-          <DialogTitle css={titleCss}>
-            {fullScreen ? (
-              <AppBar
-                onCancel={handleClose}
-                onDelete={handleDelete}
-                title={title}
-              />
-            ) : (
-              <>
-                <Typography component="span" noWrap variant="h6">
-                  {title}
-                </Typography>
-                {handleDelete && (
-                  <IconButton
-                    css={deleteIconButtonCss}
-                    edge="end"
-                    onClick={handleDelete}
-                  >
-                    <SvgIcon>
-                      <path d={mdiDelete} />
-                    </SvgIcon>
-                  </IconButton>
-                )}
-              </>
+          [theme.breakpoints.up("lg")]: {
+            backgroundColor: theme.palette.background.paper,
+          },
+        }),
+      }}
+      sx={{
+        height: "inherit", // scrolling body in cordova for small screen height
+      }}
+      TransitionComponent={fullScreen && ios ? Slide : Fade}
+      TransitionProps={{
+        appear,
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        direction: "up",
+      }}
+    >
+      <DialogTitle
+        sx={(theme) => ({
+          alignItems: "center",
+          display: "flex",
+          justifyContent: "space-between",
+
+          [theme.breakpoints.down("lg")]: {
+            display: "block",
+            padding: 0,
+          },
+        })}
+      >
+        {fullScreen ? (
+          <AppBar
+            onCancel={handleClose}
+            onDelete={handleDelete}
+            title={title}
+          />
+        ) : (
+          <>
+            <Typography component="span" noWrap variant="h6">
+              {title}
+            </Typography>
+            {handleDelete && (
+              <IconButton
+                edge="end"
+                onClick={handleDelete}
+                sx={{
+                  marginLeft: "8px",
+                  padding: "4px",
+                }}
+              >
+                <SvgIcon>
+                  <path d={mdiDelete} />
+                </SvgIcon>
+              </IconButton>
             )}
-          </DialogTitle>
-          <DialogContent css={contentCss}>
-            <TextField
-              autoFocus={!editPlayer}
-              defaultValue={editPlayer?.name}
-              fullWidth
-              label={intl.formatMessage(messages.label)}
-              margin="normal"
-              name="name"
-              variant="standard"
-            />
+          </>
+        )}
+      </DialogTitle>
+      <DialogContent
+        sx={(theme) => ({
+          "@supports (padding: max(0px))": {
+            paddingLeft: "max(24px, env(safe-area-inset-left))",
+            paddingRight: "max(24px, env(safe-area-inset-right))",
+          },
 
-            <Grid container>
-              <Grid item xs={6}>
-                <FormControl component="fieldset" margin="normal">
-                  <FormLabel component="legend">
-                    <FormattedMessage
-                      defaultMessage="Sex"
-                      id="player.form.sex"
-                    />
-                  </FormLabel>
-                  <RadioGroup defaultValue={editPlayer?.sex || MALE} name="sex">
-                    <FormControlLabel
-                      control={<Radio color="primary" />}
-                      label={
-                        <SvgIcon css={iconCss}>
-                          <path d={mdiGenderMale} />
-                        </SvgIcon>
-                      }
-                      value={MALE}
-                    />
-                    <FormControlLabel
-                      control={<Radio color="primary" />}
-                      label={
-                        <SvgIcon css={iconCss}>
-                          <path d={mdiGenderFemale} />
-                        </SvgIcon>
-                      }
-                      value={FEMALE}
-                    />
-                  </RadioGroup>
-                </FormControl>
-              </Grid>
+          [theme.breakpoints.up("md")]: {
+            alignSelf: "center",
+            width: "600px",
+          },
+        })}
+      >
+        <TextField
+          autoFocus={!editPlayer}
+          defaultValue={editPlayer?.name}
+          fullWidth
+          label={intl.formatMessage(messages.label)}
+          margin="normal"
+          name="name"
+          variant="standard"
+        />
 
-              <Grid item xs={6}>
-                <FormControl margin="normal">
-                  <FormLabel>
-                    <FormattedMessage
-                      defaultMessage="Color"
-                      id="player.form.color"
-                    />
-                  </FormLabel>
-                  <ColorPicker
-                    defaultValue={editPlayer?.color || randomColor}
-                    name="color"
-                  />
-                </FormControl>
-              </Grid>
-            </Grid>
-          </DialogContent>
-          {!fullScreen && (
-            <DialogActions>
-              <CancelButton onClick={handleClose} />
-              <SubmitButton>
-                <FormattedMessage defaultMessage="Save" id="player.form.save" />
-              </SubmitButton>
-            </DialogActions>
-          )}
-        </Dialog>
+        <Grid container>
+          <Grid item xs={6}>
+            <FormControl component="fieldset" margin="normal">
+              <FormLabel component="legend">
+                <FormattedMessage defaultMessage="Sex" id="player.form.sex" />
+              </FormLabel>
+              <RadioGroup defaultValue={editPlayer?.sex || MALE} name="sex">
+                <FormControlLabel
+                  control={<Radio color="primary" />}
+                  label={
+                    <SvgIcon sx={{ verticalAlign: "middle" }}>
+                      <path d={mdiGenderMale} />
+                    </SvgIcon>
+                  }
+                  value={MALE}
+                />
+                <FormControlLabel
+                  control={<Radio color="primary" />}
+                  label={
+                    <SvgIcon sx={{ verticalAlign: "middle" }}>
+                      <path d={mdiGenderFemale} />
+                    </SvgIcon>
+                  }
+                  value={FEMALE}
+                />
+              </RadioGroup>
+            </FormControl>
+          </Grid>
+
+          <Grid item xs={6}>
+            <FormControl margin="normal">
+              <FormLabel>
+                <FormattedMessage
+                  defaultMessage="Color"
+                  id="player.form.color"
+                />
+              </FormLabel>
+              <ColorPicker
+                defaultValue={editPlayer?.color || randomColor}
+                name="color"
+              />
+            </FormControl>
+          </Grid>
+        </Grid>
+      </DialogContent>
+      {!fullScreen && (
+        <DialogActions>
+          <CancelButton onClick={handleClose} />
+          <SubmitButton>
+            <FormattedMessage defaultMessage="Save" id="player.form.save" />
+          </SubmitButton>
+        </DialogActions>
       )}
-    </ClassNames>
+    </Dialog>
   );
 };
 
