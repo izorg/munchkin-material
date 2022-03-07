@@ -1,24 +1,32 @@
-import { css } from "@emotion/react";
-import { ListItem, type ListItemProps, useTheme } from "@mui/material";
+import {
+  ListItem,
+  type ListItemProps,
+  type SxProps,
+  type Theme,
+  useTheme,
+} from "@mui/material";
 import { type ElementType } from "react";
 
 import usePresentSelector from "../../../../utils/usePresentSelector";
 import { useMenuType } from "../../MenuTypeProvider";
 
-const MenuListItem = <D extends ElementType>(props: ListItemProps<D>) => {
+const MenuListItem = <D extends ElementType>({
+  sx = [],
+  ...props
+}: ListItemProps<D>) => {
   const theme = useTheme();
 
   const collapsed = usePresentSelector((state) => state.ui.menuCollapsed);
   const menuType = useMenuType();
 
-  let styles;
+  let styles: SxProps<Theme> = {};
 
   if (menuType === "drawer") {
-    styles = css`
-      @supports (padding: max(env(safe-area-inset-left))) {
-        padding-left: max(16px, env(safe-area-inset-left));
-      }
-    `;
+    styles = {
+      "@supports (padding: max(env(safe-area-inset-left)))": {
+        paddingLeft: "max(16px, env(safe-area-inset-left))",
+      },
+    };
   }
 
   if (menuType === "sidebar") {
@@ -27,27 +35,29 @@ const MenuListItem = <D extends ElementType>(props: ListItemProps<D>) => {
     });
 
     if (collapsed) {
-      styles = css`
-        border-radius: ${theme.shape.borderRadius}px;
-        padding-left: ${theme.spacing(2)};
-        padding-right: ${theme.spacing(2)};
-        transition: ${transition};
-      `;
+      styles = {
+        borderRadius: `${theme.shape.borderRadius}px`,
+        paddingLeft: theme.spacing(2),
+        paddingRight: theme.spacing(2),
+        transition,
+      };
     } else {
-      styles = css`
-        padding-left: ${theme.spacing(2)};
-        padding-right: ${theme.spacing(2)};
-        transition: ${transition};
+      styles = {
+        paddingLeft: theme.spacing(2),
+        paddingRight: theme.spacing(2),
+        transition,
 
-        ${theme.breakpoints.up("sm")} {
-          padding-left: ${theme.spacing(3)};
-          padding-right: ${theme.spacing(3)};
-        }
-      `;
+        [theme.breakpoints.up("sm")]: {
+          paddingLeft: theme.spacing(3),
+          paddingRight: theme.spacing(3),
+        },
+      };
     }
   }
 
-  return <ListItem css={styles} {...props} />;
+  return (
+    <ListItem {...props} sx={[styles, ...(Array.isArray(sx) ? sx : [sx])]} />
+  );
 };
 
 export default MenuListItem;
