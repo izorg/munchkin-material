@@ -1,14 +1,17 @@
 import { ListItemText, type ListItemTextProps } from "@mui/material";
 
-const MenuListItemText = (props: ListItemTextProps) => (
+const MenuListItemText = ({ sx = [], ...props }: ListItemTextProps) => (
   <ListItemText
     primaryTypographyProps={{ noWrap: true }}
     secondaryTypographyProps={{ noWrap: true }}
-    sx={{
-      overflow: "hidden",
-      textOverflow: "ellipsis",
-    }}
     {...props}
+    sx={[
+      {
+        overflow: "hidden",
+        textOverflow: "ellipsis",
+      },
+      ...(Array.isArray(sx) ? sx : [sx]),
+    ]}
   />
 );
 
