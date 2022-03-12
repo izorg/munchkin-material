@@ -3,28 +3,28 @@ import {
   Fade,
   Modal,
   Slide,
+  type Theme,
   useMediaQuery,
-  useTheme,
 } from "@mui/material";
 import { type TransitionProps } from "@mui/material/transitions";
 import PropTypes from "prop-types";
-import { type FC, type PropsWithChildren } from "react";
+import { type ReactNode, type VFC } from "react";
 
 import { ios } from "../../utils/platforms";
 
 type ScreenModalProps = {
+  children: ReactNode;
   open: boolean;
   TransitionProps?: TransitionProps;
 };
 
-const ScreenModal: FC<PropsWithChildren<ScreenModalProps>> = ({
+const ScreenModal: VFC<ScreenModalProps> = ({
   children,
   open,
   TransitionProps,
 }) => {
-  const theme = useTheme();
-
-  const slide = useMediaQuery(theme.breakpoints.down("lg")) && ios;
+  const slide =
+    useMediaQuery<Theme>((theme) => theme.breakpoints.down("lg")) && ios;
   const TransitionComponent = slide ? Slide : Fade;
 
   return (
@@ -53,8 +53,6 @@ const ScreenModal: FC<PropsWithChildren<ScreenModalProps>> = ({
 ScreenModal.propTypes = {
   children: PropTypes.node.isRequired,
   open: PropTypes.bool.isRequired,
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
   TransitionProps: PropTypes.object,
 };
 
