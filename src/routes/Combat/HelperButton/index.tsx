@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import { mdiAccountPlus, mdiEmoticonDevilOutline } from "@mdi/js";
+import { mdiAccountPlusOutline, mdiEmoticonDevilOutline } from "@mdi/js";
 import {
   Backdrop,
   SpeedDial,
@@ -141,7 +141,7 @@ const CombatHelperButton = () => {
           }}
           icon={
             <SvgIcon>
-              <path d={mdiAccountPlus} />
+              <path d={mdiAccountPlusOutline} />
             </SvgIcon>
           }
           onClick={onHelperClick}

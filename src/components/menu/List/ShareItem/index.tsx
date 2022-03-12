@@ -1,4 +1,4 @@
-import { mdiShareVariant } from "@mdi/js";
+import { mdiShareVariantOutline } from "@mdi/js";
 import { ListItemIcon, SvgIcon } from "@mui/material";
 import { defineMessages, useIntl } from "react-intl";
 
@@ -56,7 +56,7 @@ const ShareItem = () => {
     <ListItem button onClick={onClick}>
       <ListItemIcon>
         <SvgIcon>
-          <path d={mdiShareVariant} />
+          <path d={mdiShareVariantOutline} />
         </SvgIcon>
       </ListItemIcon>
       <ListItemText primary={intl.formatMessage(messages.share)} />

@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import { mdiAccount, mdiAccountMultiple } from "@mdi/js";
+import { mdiAccountMultipleOutline, mdiAccountOutline } from "@mdi/js";
 import { ListItemIcon, SvgIcon, Switch } from "@mui/material";
 import { FormattedMessage } from "react-intl";
 import { useDispatch } from "react-redux";
@@ -53,7 +53,9 @@ const SingleModeItem = () => {
     >
       <ListItemIcon>
         <SvgIcon>
-          <path d={singleMode ? mdiAccount : mdiAccountMultiple} />
+          <path
+            d={singleMode ? mdiAccountOutline : mdiAccountMultipleOutline}
+          />
         </SvgIcon>
       </ListItemIcon>
       <ListItemText

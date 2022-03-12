@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import { mdiPalette } from "@mdi/js";
+import { mdiPaletteOutline } from "@mdi/js";
 import { ListItemIcon, SvgIcon, useTheme } from "@mui/material";
 import { useIntl } from "react-intl";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -49,7 +49,7 @@ const ThemeItem = () => {
     >
       <ListItemIcon>
         <SvgIcon style={{ color: theme.palette.primary.main }}>
-          <path d={mdiPalette} />
+          <path d={mdiPaletteOutline} />
         </SvgIcon>
       </ListItemIcon>
       <ListItemText

@@ -1,4 +1,4 @@
-import { mdiShieldAccount } from "@mdi/js";
+import { mdiShieldAccountOutline } from "@mdi/js";
 import { ListItemIcon, SvgIcon } from "@mui/material";
 import { FormattedMessage } from "react-intl";
 
@@ -20,7 +20,7 @@ const PrivacyItem = () => {
     >
       <ListItemIcon>
         <SvgIcon>
-          <path d={mdiShieldAccount} />
+          <path d={mdiShieldAccountOutline} />
         </SvgIcon>
       </ListItemIcon>
       <ListItemText

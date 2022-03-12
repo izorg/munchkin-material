@@ -1,4 +1,4 @@
-import { mdiCheck, mdiPencil } from "@mdi/js";
+import { mdiCheck, mdiPencilOutline } from "@mdi/js";
 import { SvgIcon, Tooltip } from "@mui/material";
 import { useIntl } from "react-intl";
 
@@ -27,7 +27,7 @@ const EditButton = () => {
         onClick={() => onToggleEditClick()}
       >
         <SvgIcon>
-          <path d={editMode ? mdiCheck : mdiPencil} />
+          <path d={editMode ? mdiCheck : mdiPencilOutline} />
         </SvgIcon>
       </TopIconButton>
     </Tooltip>

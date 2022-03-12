@@ -1,4 +1,4 @@
-import { mdiStar } from "@mdi/js";
+import { mdiStarOutline } from "@mdi/js";
 import { ListItemIcon, SvgIcon } from "@mui/material";
 import { FormattedMessage } from "react-intl";
 
@@ -40,7 +40,7 @@ const RateItem = () => {
     >
       <ListItemIcon>
         <SvgIcon>
-          <path d={mdiStar} />
+          <path d={mdiStarOutline} />
         </SvgIcon>
       </ListItemIcon>
       <ListItemText

@@ -1,4 +1,4 @@
-import { mdiSkull } from "@mdi/js";
+import { mdiSkullOutline } from "@mdi/js";
 import { type IconButtonProps, SvgIcon, Tooltip } from "@mui/material";
 import PropTypes from "prop-types";
 import { type VFC } from "react";
@@ -48,7 +48,7 @@ const KillPlayerButton: VFC<KillPlayerButtonProps> = ({
   const button = (
     <TopIconButton disabled={disabled} onClick={onClick} {...props}>
       <SvgIcon>
-        <path d={mdiSkull} />
+        <path d={mdiSkullOutline} />
       </SvgIcon>
     </TopIconButton>
   );
