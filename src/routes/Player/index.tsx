@@ -1,5 +1,4 @@
-import { css } from "@emotion/react";
-import { Box, useTheme } from "@mui/material";
+import { Box } from "@mui/material";
 import PropTypes from "prop-types";
 import { lazy, Suspense, useRef } from "react";
 import { Navigate, useMatch } from "react-router-dom";
@@ -26,8 +25,6 @@ type PlayerProps = {
 };
 
 const Player = ({ playerId }: PlayerProps) => {
-  const theme = useTheme();
-
   const playerRef = useRef<string>();
   const playerList = usePresentSelector((state) => state.playerList);
 
@@ -60,58 +57,59 @@ const Player = ({ playerId }: PlayerProps) => {
         }}
       >
         <AppBar playerId={playerRef.current} />
-        <div
-          css={css`
-            display: flex;
-            flex: 1;
-            flex-direction: column;
-            overflow-y: auto;
+        <Box
+          sx={(theme) => ({
+            display: "flex",
+            flex: 1,
+            flexDirection: "column",
+            overflowY: "auto",
 
-            ${theme.breakpoints.up("md")} {
-              flex-direction: row-reverse;
-            }
-          `}
+            [theme.breakpoints.up("md")]: {
+              flexDirection: "row-reverse",
+            },
+          })}
         >
-          <div
-            css={css`
-              display: flex;
-              flex: 1 0 auto;
+          <Box
+            sx={(theme) => ({
+              display: "flex",
+              flex: "1 0 auto",
 
-              ${theme.breakpoints.up("md")} {
-                flex-shrink: 1;
-                overflow: hidden;
-              }
-            `}
+              [theme.breakpoints.up("md")]: {
+                flexShrink: 1,
+                overflow: "hidden",
+              },
+            })}
           >
             <Slider playerId={playerRef.current} />
-          </div>
+          </Box>
           {playerList.length > 1 && (
             <PlayerList
-              css={css`
-                display: none;
-                flex: 0 1 auto;
-                overflow-y: auto;
-                padding-bottom: ${theme.spacing(7)};
-
-                @media (min-height: 720px) {
-                  display: block;
-                }
-
-                ${theme.breakpoints.up("sm")} {
-                  padding-bottom: ${theme.spacing(8)};
-                }
-
-                ${theme.breakpoints.up("md")} {
-                  display: block;
-                  flex: none;
-                  padding-bottom: ${theme.spacing(1)};
-                  width: ${theme.spacing(50)};
-                }
-              `}
               selectedPlayerId={playerRef.current}
+              sx={(theme) => ({
+                display: "none",
+                flex: "0 1 auto",
+                overflowY: "auto",
+                paddingBottom: theme.spacing(7),
+
+                // eslint-disable-next-line sort-keys
+                "@media (min-height: 720px)": {
+                  display: "block",
+                },
+
+                [theme.breakpoints.up("sm")]: {
+                  paddingBottom: theme.spacing(8),
+                },
+
+                [theme.breakpoints.up("md")]: {
+                  display: "block",
+                  flex: "none",
+                  paddingBottom: theme.spacing(1),
+                  width: theme.spacing(50),
+                },
+              })}
             />
           )}
-        </div>
+        </Box>
       </Box>
       <CombatButton playerId={playerRef.current} />
 
