@@ -5,7 +5,7 @@ import { lazy, Suspense, useRef } from "react";
 import { Navigate, useMatch } from "react-router-dom";
 
 import PlayerContext from "../../components/PlayerContext";
-import ScreenModal from "../../components/ScreenModal";
+import ScreenDialog from "../../components/ScreenDialog";
 import usePresentSelector from "../../utils/usePresentSelector";
 
 import AppBar from "./AppBar";
@@ -115,11 +115,11 @@ const Player = ({ playerId }: PlayerProps) => {
       </Box>
       <CombatButton playerId={playerRef.current} />
 
-      <ScreenModal open={Boolean(combatMatch)}>
+      <ScreenDialog open={Boolean(combatMatch)}>
         <Suspense fallback={null}>
           <Combat />
         </Suspense>
-      </ScreenModal>
+      </ScreenDialog>
     </PlayerContext.Provider>
   );
 };

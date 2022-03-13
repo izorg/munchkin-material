@@ -1,7 +1,7 @@
 import { lazy, Suspense, useEffect } from "react";
 
 import Home from "../../routes/Home";
-import ScreenModal from "../ScreenModal";
+import ScreenDialog from "../ScreenDialog";
 import UndoProvider from "../UndoProvider";
 import UndoSnackbar from "../UndoSnackbar";
 
@@ -30,9 +30,9 @@ const App = () => {
 
   return (
     <UndoProvider>
-      <ScreenModal open TransitionProps={{ appear: false }}>
+      <ScreenDialog open TransitionProps={{ appear: false }}>
         <Home />
-      </ScreenModal>
+      </ScreenDialog>
 
       <Suspense fallback={null}>
         <DiceDialog />

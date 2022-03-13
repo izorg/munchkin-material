@@ -7,7 +7,7 @@ import LevelLimitDialog from "../../components/levelLimit/Dialog";
 import MenuDrawer from "../../components/menu/Drawer";
 import MenuSidebar from "../../components/menu/Sidebar";
 import Nobody from "../../components/Nobody";
-import ScreenModal from "../../components/ScreenModal";
+import ScreenDialog from "../../components/ScreenDialog";
 import ThemeDialog from "../../components/theme/Dialog";
 import useEditMode from "../../utils/useEditMode";
 import usePresentSelector from "../../utils/usePresentSelector";
@@ -136,11 +136,11 @@ const Home = () => {
       <LevelLimitDialog />
       <ThemeDialog />
 
-      <ScreenModal open={Boolean(playerMatch)}>
+      <ScreenDialog open={Boolean(playerMatch)}>
         <Suspense fallback={null}>
           <Player playerId={playerMatch?.params.id} />
         </Suspense>
-      </ScreenModal>
+      </ScreenDialog>
     </>
   );
 };
