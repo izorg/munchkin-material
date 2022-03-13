@@ -1,4 +1,4 @@
-import { mdiClose, mdiDelete, mdiFlagCheckered } from "@mdi/js";
+import { mdiClose, mdiFlagCheckered, mdiTrashCanOutline } from "@mdi/js";
 import { SvgIcon } from "@mui/material";
 import PropTypes from "prop-types";
 import { type ReactNode } from "react";
@@ -92,7 +92,7 @@ const HomeAppBar = ({ empty, singleMode }: HomeAppBarProps) => {
           onClick={() => onPlayersDelete(selectedPlayerIds)}
         >
           <SvgIcon>
-            <path d={mdiDelete} />
+            <path d={mdiTrashCanOutline} />
           </SvgIcon>
         </TopIconButton>
       )}
