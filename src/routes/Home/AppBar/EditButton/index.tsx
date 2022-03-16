@@ -1,12 +1,13 @@
 import { mdiCheck, mdiPencilOutline } from "@mdi/js";
-import { SvgIcon, Tooltip } from "@mui/material";
+import { type IconButtonProps, SvgIcon, Tooltip } from "@mui/material";
+import { type VFC } from "react";
 import { useIntl } from "react-intl";
 
 import TopIconButton from "../../../../components/TopIconButton";
 import { useGoBack } from "../../../../utils/location";
 import useEditMode from "../../../../utils/useEditMode";
 
-const EditButton = () => {
+const EditButton: VFC<IconButtonProps> = (props) => {
   const goBack = useGoBack();
   const intl = useIntl();
 
@@ -23,8 +24,8 @@ const EditButton = () => {
     <Tooltip title={editTitle}>
       <TopIconButton
         aria-label={editTitle}
-        edge="end"
         onClick={() => onToggleEditClick()}
+        {...props}
       >
         <SvgIcon>
           <path d={editMode ? mdiCheck : mdiPencilOutline} />

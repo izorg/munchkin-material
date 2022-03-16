@@ -1,7 +1,7 @@
 import { mdiClose, mdiFlagCheckered, mdiTrashCanOutline } from "@mdi/js";
 import { SvgIcon } from "@mui/material";
 import PropTypes from "prop-types";
-import { type ReactNode } from "react";
+import { cloneElement, type ReactNode, type VFC } from "react";
 import { FormattedMessage } from "react-intl";
 import { useDispatch } from "react-redux";
 
@@ -26,7 +26,8 @@ type HomeAppBarProps = {
   singleMode: boolean;
 };
 
-const HomeAppBar = ({ empty, singleMode }: HomeAppBarProps) => {
+const HomeAppBar: VFC<HomeAppBarProps> = (props) => {
+  const { empty, singleMode } = props;
   const dispatch = useDispatch();
 
   const deletePlayers = useDeletePlayers();
@@ -62,6 +63,36 @@ const HomeAppBar = ({ empty, singleMode }: HomeAppBarProps) => {
     );
   }
 
+  const buttons = [
+    (singleMode || (!(editMode || multiMode) && !empty)) && (
+      <ResetButton key="reset" />
+    ),
+    (!(editMode || multiMode) || singleMode) && <DiceButton key="dice" />,
+    editMode && <ShuffleButton />,
+    !empty && !multiMode && !singleMode && <EditButton key="edit" />,
+    multiMode && (
+      <TopIconButton
+        key="delete"
+        onClick={() => onPlayersDelete(selectedPlayerIds)}
+      >
+        <SvgIcon>
+          <path d={mdiTrashCanOutline} />
+        </SvgIcon>
+      </TopIconButton>
+    ),
+    singleMode && (
+      <TopIconButton key="finish" onClick={onTurnFinish}>
+        <SvgIcon>
+          <path d={mdiFlagCheckered} />
+        </SvgIcon>
+      </TopIconButton>
+    ),
+  ].filter((item): item is JSX.Element => item !== false);
+
+  buttons[buttons.length - 1] = cloneElement(buttons[buttons.length - 1], {
+    edge: "end",
+  });
+
   return (
     <TopAppBar>
       {multiMode ? (
@@ -76,44 +107,14 @@ const HomeAppBar = ({ empty, singleMode }: HomeAppBarProps) => {
 
       <Title>{title}</Title>
 
-      {(singleMode || (!(editMode || multiMode) && !empty)) && <ResetButton />}
-
-      {(!(editMode || multiMode) || singleMode) && <DiceButton />}
-
-      {editMode && <ShuffleButton />}
-
-      {!empty && !multiMode && !singleMode && <EditButton />}
-
-      {multiMode && (
-        <TopIconButton
-          edge="end"
-          onClick={() => onPlayersDelete(selectedPlayerIds)}
-        >
-          <SvgIcon>
-            <path d={mdiTrashCanOutline} />
-          </SvgIcon>
-        </TopIconButton>
-      )}
-
-      {singleMode && (
-        <TopIconButton edge="end" onClick={onTurnFinish}>
-          <SvgIcon>
-            <path d={mdiFlagCheckered} />
-          </SvgIcon>
-        </TopIconButton>
-      )}
+      {buttons}
     </TopAppBar>
   );
 };
 
 HomeAppBar.propTypes = {
-  empty: PropTypes.bool,
-  singleMode: PropTypes.bool,
-};
-
-HomeAppBar.defaultProps = {
-  empty: false,
-  singleMode: false,
+  empty: PropTypes.bool.isRequired,
+  singleMode: PropTypes.bool.isRequired,
 };
 
 export default HomeAppBar;
