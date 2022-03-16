@@ -76,13 +76,11 @@ const HomeAppBar = ({ empty, singleMode }: HomeAppBarProps) => {
 
       <Title>{title}</Title>
 
-      {(singleMode || (!(editMode || multiMode) && !empty)) && (
-        <ResetButton edge="end" />
-      )}
+      {(singleMode || (!(editMode || multiMode) && !empty)) && <ResetButton />}
 
-      {(!(editMode || multiMode) || singleMode) && <DiceButton edge="end" />}
+      {(!(editMode || multiMode) || singleMode) && <DiceButton />}
 
-      {editMode && <ShuffleButton edge="end" />}
+      {editMode && <ShuffleButton />}
 
       {!empty && !multiMode && !singleMode && <EditButton />}
 

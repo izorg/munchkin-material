@@ -1,37 +1,35 @@
-import { css } from "@emotion/react";
-import {
-  IconButton,
-  type IconButtonProps,
-  useMediaQuery,
-  useTheme,
-} from "@mui/material";
+import { IconButton, type IconButtonProps } from "@mui/material";
 import PropTypes from "prop-types";
 import { forwardRef } from "react";
 
 const TopIconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
   function TopIconButton(props, ref) {
-    const theme = useTheme();
-
-    const upMd = useMediaQuery(theme.breakpoints.up("md"));
-
-    const { edge } = props;
-
     return (
       <IconButton
         ref={ref}
-        css={[
-          css`
-            padding: ${upMd ? 12 : 8}px;
-          `,
-          edge === "start" &&
-            css`
-              margin-left: ${upMd ? -12 : -8}px;
-            `,
-          edge === "end" &&
-            css`
-              margin-left: ${upMd ? 12 : 16}px;
-              margin-right: ${upMd ? -12 : -8}px;
-            `,
+        sx={[
+          {
+            margin: {
+              md: 0,
+              xs: "2px",
+            },
+            padding: {
+              md: "12px",
+              xs: "8px",
+            },
+          },
+          props.edge === "start" && {
+            marginLeft: {
+              md: "-12px",
+              xs: "-8px",
+            },
+          },
+          props.edge === "end" && {
+            marginRight: {
+              md: "-12px",
+              xs: "-8px",
+            },
+          },
         ]}
         {...props}
       />

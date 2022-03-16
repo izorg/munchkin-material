@@ -30,7 +30,7 @@ const CombatAppBar = () => {
         <FormattedMessage defaultMessage="Combat" id="combat" />
       </Title>
 
-      <DiceIconButton edge="end" />
+      <DiceIconButton />
 
       <TopIconButton edge="end" onClick={onFinish}>
         <SvgIcon>

@@ -27,7 +27,7 @@ const PlayerAppBar: VFC<PlayerAppBarProps> = ({ playerId }) => {
 
       <Title>{title}</Title>
 
-      <DiceButton data-screenshots="player-dice-button" edge="end" />
+      <DiceButton data-screenshots="player-dice-button" />
       <KillPlayerButton edge="end" playerId={playerId} />
     </TopAppBar>
   );
