@@ -1,70 +1,57 @@
-import { css } from "@emotion/react";
-import { AppBar, Toolbar, useTheme } from "@mui/material";
+import { AppBar, Toolbar } from "@mui/material";
 import PropTypes from "prop-types";
 import { type FC } from "react";
 
-const TopAppBar: FC = ({ children }) => {
-  const theme = useTheme();
+const TopAppBar: FC = ({ children }) => (
+  <AppBar
+    position="static"
+    sx={{
+      zIndex: "appBar",
+    }}
+  >
+    <Toolbar
+      sx={(theme) => ({
+        paddingLeft: theme.spacing(2),
+        paddingRight: theme.spacing(2),
 
-  return (
-    <AppBar
-      css={css`
-        z-index: ${theme.zIndex.appBar};
-      `}
-      position="static"
+        // eslint-disable-next-line sort-keys
+        "@supports (padding: max(0px))": {
+          paddingLeft: `max(${theme.spacing(2)}, env(safe-area-inset-left))`,
+          paddingRight: `max(${theme.spacing(2)}, env(safe-area-inset-right))`,
+        },
+
+        [theme.breakpoints.up("sm")]: {
+          paddingLeft: theme.spacing(3),
+          paddingRight: theme.spacing(3),
+
+          // eslint-disable-next-line sort-keys
+          "@supports (padding: max(0px))": {
+            paddingLeft: `max(${theme.spacing(3)}, env(safe-area-inset-left))`,
+            paddingRight: `max(${theme.spacing(
+              3
+            )}, env(safe-area-inset-right))`,
+          },
+        },
+
+        [theme.breakpoints.up("md")]: {
+          minHeight: "64px",
+        },
+
+        // eslint-disable-next-line sort-keys
+        "@supports (min-height: calc(env(safe-area-inset-top)))": {
+          minHeight: "calc(56px + env(safe-area-inset-top))",
+          paddingTop: "env(safe-area-inset-top)",
+
+          [theme.breakpoints.up("md")]: {
+            minHeight: "calc(64px + env(safe-area-inset-top))",
+          },
+        },
+      })}
     >
-      <Toolbar
-        css={[
-          css`
-            ${theme.breakpoints.up("md")} {
-              min-height: 64px;
-            }
-
-            @supports (min-height: calc(env(safe-area-inset-top))) {
-              min-height: calc(56px + env(safe-area-inset-top));
-              padding-top: env(safe-area-inset-top);
-
-              ${theme.breakpoints.up("md")} {
-                min-height: calc(64px + env(safe-area-inset-top));
-              }
-            }
-          `,
-          // gutters override
-          css`
-            padding-left: ${theme.spacing(2)};
-            padding-right: ${theme.spacing(2)};
-
-            @supports (padding: max(0px)) {
-              padding-left: max(${theme.spacing(2)}, env(safe-area-inset-left));
-              padding-right: max(
-                ${theme.spacing(2)},
-                env(safe-area-inset-right)
-              );
-            }
-
-            ${theme.breakpoints.up("sm")} {
-              padding-left: ${theme.spacing(3)};
-              padding-right: ${theme.spacing(3)};
-
-              @supports (padding: max(0px)) {
-                padding-left: max(
-                  ${theme.spacing(3)},
-                  env(safe-area-inset-left)
-                );
-                padding-right: max(
-                  ${theme.spacing(3)},
-                  env(safe-area-inset-right)
-                );
-              }
-            }
-          `,
-        ]}
-      >
-        {children}
-      </Toolbar>
-    </AppBar>
-  );
-};
+      {children}
+    </Toolbar>
+  </AppBar>
+);
 
 TopAppBar.propTypes = {
   children: PropTypes.node,
