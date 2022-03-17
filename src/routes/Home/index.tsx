@@ -1,5 +1,4 @@
-import { css } from "@emotion/react";
-import { Paper, useTheme, Zoom } from "@mui/material";
+import { Box, Paper, useTheme, Zoom } from "@mui/material";
 import { lazy, Suspense } from "react";
 import { useMatch } from "react-router-dom";
 
@@ -43,31 +42,29 @@ const Home = () => {
     content = <Nobody />;
   } else {
     content = (
-      <div
-        css={[
-          css`
-            flex: 1;
-            -webkit-overflow-scrolling: touch;
-            overflow-y: auto;
-          `,
+      <Box
+        sx={[
+          {
+            flex: 1,
+            overflowY: "auto",
+            WebkitOverflowScrolling: "touch",
+          },
           editMode &&
             "cordova" in window &&
-            window.cordova.platformId === "windows" &&
-            css`
-              touch-action: none;
-            `,
+            window.cordova.platformId === "windows" && {
+              touchAction: "none",
+            },
         ]}
       >
         <PlayerList
-          css={css`
-            padding-bottom: 56px;
-
-            ${theme.breakpoints.up("sm")} {
-              padding-bottom: 64px;
-            }
-          `}
+          sx={{
+            paddingBottom: {
+              sm: "64px",
+              xs: "56px",
+            },
+          }}
         />
-      </div>
+      </Box>
     );
   }
 
@@ -80,53 +77,53 @@ const Home = () => {
 
   return (
     <>
-      <div
-        css={css`
-          background-color: ${theme.palette.background.default};
-          display: flex;
-          flex-direction: column;
-          height: 100%;
-        `}
+      <Box
+        sx={(theme) => ({
+          backgroundColor: theme.palette.background.default,
+          display: "flex",
+          flexDirection: "column",
+          height: "100%;",
+        })}
       >
         <AppBar empty={empty} singleMode={singleMode} />
-        <main
-          css={css`
-            display: flex;
-            flex: 1;
-            height: 100%;
-            overflow: hidden;
-          `}
+        <Box
+          component="main"
+          sx={{
+            display: "flex",
+            flex: 1,
+            height: "100%",
+            overflow: "hidden",
+          }}
         >
           <Paper
-            css={[
-              css`
-                display: none;
-                overflow-x: hidden;
-                padding: 0;
-                transition: ${theme.transitions.create(["padding", "width"], {
-                  duration: theme.transitions.duration.short,
-                })};
-                width: ${theme.spacing(40)};
-                z-index: 1;
-
-                ${theme.breakpoints.up("md")} {
-                  display: block;
-                }
-              `,
-              menuCollapsed &&
-                css`
-                  padding: ${theme.spacing(0, 1)};
-                  width: ${theme.spacing(9)};
-                `,
-            ]}
             data-screenshot="sidebar-menu"
             square
+            sx={[
+              (theme) => ({
+                display: "none",
+                overflowX: "hidden",
+                padding: 0,
+                transition: theme.transitions.create(["padding", "width"], {
+                  duration: theme.transitions.duration.short,
+                }),
+                width: theme.spacing(40),
+                zIndex: 1,
+
+                [theme.breakpoints.up("md")]: {
+                  display: "block",
+                },
+              }),
+              menuCollapsed && {
+                padding: theme.spacing(0, 1),
+                width: theme.spacing(9),
+              },
+            ]}
           >
             <MenuSidebar />
           </Paper>
           {content}
-        </main>
-      </div>
+        </Box>
+      </Box>
 
       <Zoom appear={false} in={!singleMode}>
         <PlayerAddButton />
