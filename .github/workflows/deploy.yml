@@ -10,9 +10,11 @@ jobs:
     name: Deploy
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2.4.0
+      - name: Checkout 🛎️
+        uses: actions/checkout@v3.0.0
 
-      - uses: actions/setup-node@v2.5.0
+      - name: Setup Node.js
+        uses: actions/setup-node@v3.0.0
         with:
           node-version-file: ".nvmrc"
           cache: "npm"
@@ -37,7 +39,7 @@ jobs:
         run: npm run build:web
 
       - name: Create Sentry release
-        uses: getsentry/action-release@v1
+        uses: getsentry/action-release@v1.1.6
         env:
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
           SENTRY_ORG: ${{ secrets.SENTRY_ORG }}
@@ -51,6 +53,6 @@ jobs:
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           channelId: live
-          firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_IZORG_MUNCHKIN }}"
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_IZORG_MUNCHKIN }}
           projectId: izorg-munchkin
-          repoToken: "${{ secrets.GITHUB_TOKEN }}"
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
