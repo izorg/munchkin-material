@@ -1,6 +1,7 @@
 import { createContext, type ReactNode, useContext } from "react";
 
 export enum MenuType {
+  Dialog = "dialog",
   Drawer = "drawer",
   Sidebar = "sidebar",
 }

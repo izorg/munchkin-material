@@ -24,7 +24,7 @@ const SingleModeItem = () => {
   const { buyFullVersion, fullVersion } = useFullVersion();
 
   const onChange = async (isSingleMode: boolean) => {
-    const needBack = open || pathname !== "/";
+    const needBack = open || (pathname !== "/" && pathname !== "/settings");
 
     if (isSingleMode && !fullVersion) {
       try {

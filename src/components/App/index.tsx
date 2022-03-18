@@ -21,6 +21,14 @@ const PlayerDialog = lazy(
     )
 );
 
+const SettingsDialog = lazy(
+  () =>
+    import(
+      /* webpackPrefetch: true */
+      "../SettingsDialog"
+    )
+);
+
 const App = () => {
   useEffect(() => {
     setTimeout(() => {
@@ -33,6 +41,10 @@ const App = () => {
       <ScreenDialog open TransitionProps={{ appear: false }}>
         <Home />
       </ScreenDialog>
+
+      <Suspense fallback={null}>
+        <SettingsDialog />
+      </Suspense>
 
       <Suspense fallback={null}>
         <DiceDialog />

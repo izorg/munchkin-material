@@ -6,6 +6,7 @@ import { FormattedMessage } from "react-intl";
 import { useDispatch } from "react-redux";
 
 import DiceButton from "../../../components/dice/Button";
+import SettingsIconButton from "../../../components/SettingsIconButton";
 import Title from "../../../components/Title";
 import TopAppBar from "../../../components/TopAppBar";
 import TopIconButton from "../../../components/TopIconButton";
@@ -17,7 +18,6 @@ import useMultiMode from "../../../utils/useMultiMode";
 import usePresentSelector from "../../../utils/usePresentSelector";
 
 import EditButton from "./EditButton";
-import MenuButton from "./MenuButton";
 import ResetButton from "./ResetButton";
 import ShuffleButton from "./ShuffleButton";
 
@@ -64,6 +64,7 @@ const HomeAppBar: VFC<HomeAppBarProps> = (props) => {
   }
 
   const buttons = [
+    !editMode && !multiMode && <SettingsIconButton key="settings" />,
     (singleMode || (!(editMode || multiMode) && !empty)) && (
       <ResetButton key="reset" />
     ),
@@ -95,17 +96,15 @@ const HomeAppBar: VFC<HomeAppBarProps> = (props) => {
 
   return (
     <TopAppBar>
-      {multiMode ? (
+      {multiMode && (
         <TopIconButton edge="start" onClick={onMultiSelectDeactivate}>
           <SvgIcon>
             <path d={mdiClose} />
           </SvgIcon>
         </TopIconButton>
-      ) : (
-        <MenuButton edge="start" />
       )}
 
-      <Title>{title}</Title>
+      <Title sx={[!multiMode && { paddingLeft: { xs: 0 } }]}>{title}</Title>
 
       {buttons}
     </TopAppBar>

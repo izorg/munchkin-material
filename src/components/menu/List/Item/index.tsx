@@ -8,7 +8,7 @@ import {
 import { type ElementType } from "react";
 
 import usePresentSelector from "../../../../utils/usePresentSelector";
-import { useMenuType } from "../../MenuTypeProvider";
+import { MenuType, useMenuType } from "../../MenuTypeProvider";
 
 const MenuListItem = <D extends ElementType>({
   sx = [],
@@ -21,7 +21,16 @@ const MenuListItem = <D extends ElementType>({
 
   let styles: SxProps<Theme> = {};
 
-  if (menuType === "drawer") {
+  if (menuType === MenuType.Dialog) {
+    styles = {
+      "@supports (padding: max(env(safe-area-inset-left)))": {
+        paddingLeft: "max(16px, env(safe-area-inset-left))",
+        paddingRight: "max(16px, env(safe-area-inset-left))",
+      },
+    };
+  }
+
+  if (menuType === MenuType.Drawer) {
     styles = {
       "@supports (padding: max(env(safe-area-inset-left)))": {
         paddingLeft: "max(16px, env(safe-area-inset-left))",
@@ -29,7 +38,7 @@ const MenuListItem = <D extends ElementType>({
     };
   }
 
-  if (menuType === "sidebar") {
+  if (menuType === MenuType.Sidebar) {
     const transition = theme.transitions.create(["border-radius", "padding"], {
       duration: theme.transitions.duration.short,
     });
