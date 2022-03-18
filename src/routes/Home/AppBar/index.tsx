@@ -69,7 +69,7 @@ const HomeAppBar: VFC<HomeAppBarProps> = (props) => {
       <ResetButton key="reset" />
     ),
     (!(editMode || multiMode) || singleMode) && <DiceButton key="dice" />,
-    editMode && <ShuffleButton />,
+    editMode && <ShuffleButton key="shuffle" />,
     !empty && !multiMode && !singleMode && <EditButton key="edit" />,
     multiMode && (
       <TopIconButton
