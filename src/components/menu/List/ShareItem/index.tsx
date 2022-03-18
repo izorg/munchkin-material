@@ -2,8 +2,6 @@ import { mdiShareVariantOutline } from "@mdi/js";
 import { ListItemIcon, SvgIcon } from "@mui/material";
 import { defineMessages, useIntl } from "react-intl";
 
-import { useGoBack } from "../../../../utils/location";
-import useMenuOpen from "../../useMenuOpen";
 import ListItem from "../Item";
 import ListItemText from "../ItemText";
 
@@ -21,9 +19,6 @@ const messages = defineMessages({
 
 const ShareItem = () => {
   const intl = useIntl();
-
-  const goBack = useGoBack();
-  const open = useMenuOpen();
 
   const {
     cordova,
@@ -45,10 +40,6 @@ const ShareItem = () => {
       });
     } catch (error) {
       return;
-    }
-
-    if (open) {
-      goBack();
     }
   };
 

@@ -3,29 +3,21 @@ import { mdiAccountMultipleOutline, mdiAccountOutline } from "@mdi/js";
 import { ListItemIcon, SvgIcon, Switch } from "@mui/material";
 import { FormattedMessage } from "react-intl";
 import { useDispatch } from "react-redux";
-import { useLocation } from "react-router-dom";
 
 import { setSingleMode } from "../../../../ducks/settings";
-import { useGoBack } from "../../../../utils/location";
 import usePresentSelector from "../../../../utils/usePresentSelector";
 import { useFullVersion } from "../../../FullVersionProvider";
-import useMenuOpen from "../../useMenuOpen";
 import ListItem from "../Item";
 import ListItemText from "../ItemText";
 
 const SingleModeItem = () => {
   const dispatch = useDispatch();
-  const { pathname } = useLocation();
 
-  const goBack = useGoBack();
   const singleMode = usePresentSelector((state) => state.settings.singleMode);
-  const open = useMenuOpen();
 
   const { buyFullVersion, fullVersion } = useFullVersion();
 
   const onChange = async (isSingleMode: boolean) => {
-    const needBack = open || (pathname !== "/" && pathname !== "/settings");
-
     if (isSingleMode && !fullVersion) {
       try {
         await buyFullVersion();
@@ -35,10 +27,6 @@ const SingleModeItem = () => {
     }
 
     dispatch(setSingleMode(isSingleMode));
-
-    if (needBack) {
-      goBack();
-    }
   };
 
   return (

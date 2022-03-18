@@ -11,7 +11,6 @@ import {
 } from "../../../../utils/levelLimit";
 import usePresentSelector from "../../../../utils/usePresentSelector";
 import levelLimitMessages from "../../../levelLimit/messages";
-import useMenuOpen from "../../useMenuOpen";
 import ListItem from "../Item";
 import ListItemText from "../ItemText";
 
@@ -22,7 +21,6 @@ const LevelLimitItem = () => {
 
   const epic = usePresentSelector((state) => state.settings.epic);
   const levelLimit = usePresentSelector((state) => state.settings.levelLimit);
-  const open = useMenuOpen();
 
   const onClick = () => {
     const searchParams = new URLSearchParams(location.search);
@@ -34,11 +32,7 @@ const LevelLimitItem = () => {
       search: `?${searchParams.toString()}`,
     };
 
-    if (open) {
-      navigate(to, { replace: true });
-    } else {
-      navigate(to);
-    }
+    navigate(to);
   };
 
   let secondary = intl.formatMessage(levelLimitMessages.none);

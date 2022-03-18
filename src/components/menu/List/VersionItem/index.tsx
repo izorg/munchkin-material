@@ -1,25 +1,16 @@
 import { mdiCellphoneArrowDown, mdiInformationOutline } from "@mdi/js";
 import { ListItemIcon, SvgIcon } from "@mui/material";
 
-import { useGoBack } from "../../../../utils/location";
 import version from "../../../../utils/version";
 import { useWorkbox } from "../../../WorkboxProvider";
-import useMenuOpen from "../../useMenuOpen";
 import ListItem from "../Item";
 import ListItemText from "../ItemText";
 
 const VersionItem = () => {
-  const goBack = useGoBack();
-  const menuOpen = useMenuOpen();
-
   const { applyUpdate, update } = useWorkbox();
 
   const onClick = () => {
     if (update) {
-      if (menuOpen) {
-        goBack();
-      }
-
       applyUpdate();
     }
   };

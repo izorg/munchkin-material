@@ -2,18 +2,11 @@ import { v4 as uuid } from "uuid";
 
 import reducer, {
   initialState,
-  toggleMenu,
   togglePlayer,
   unselectAllPlayers,
 } from "./index";
 
 describe("UI reducer", () => {
-  test("should toggle menu", () => {
-    const state = reducer(initialState, toggleMenu());
-
-    expect(state.menuCollapsed).toBe(!initialState.menuCollapsed);
-  });
-
   test("should include player in selected", () => {
     const id = uuid();
 

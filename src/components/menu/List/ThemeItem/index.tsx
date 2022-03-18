@@ -7,7 +7,6 @@ import { useLocation, useNavigate } from "react-router-dom";
 import themes from "../../../../theme/colors";
 import usePresentSelector from "../../../../utils/usePresentSelector";
 import themeMessages from "../../../theme/messages";
-import useMenuOpen from "../../useMenuOpen";
 import ListItem from "../Item";
 import ListItemText from "../ItemText";
 
@@ -19,8 +18,6 @@ const ThemeItem = () => {
 
   const themeKey = usePresentSelector((state) => state.theme.id);
 
-  const open = useMenuOpen();
-
   const onClick = () => {
     const searchParams = new URLSearchParams(location.search);
 
@@ -31,11 +28,7 @@ const ThemeItem = () => {
       search: `?${searchParams.toString()}`,
     };
 
-    if (open) {
-      navigate(to, { replace: true });
-    } else {
-      navigate(to);
-    }
+    navigate(to);
   };
 
   return (

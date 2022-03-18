@@ -3,7 +3,6 @@ import { lazy, Suspense } from "react";
 import { useMatch } from "react-router-dom";
 
 import LevelLimitDialog from "../../components/levelLimit/Dialog";
-import MenuDrawer from "../../components/menu/Drawer";
 import Nobody from "../../components/Nobody";
 import ScreenDialog from "../../components/ScreenDialog";
 import ThemeDialog from "../../components/theme/Dialog";
@@ -98,7 +97,6 @@ const Home = () => {
         <PlayerAddButton />
       </Zoom>
 
-      <MenuDrawer />
       <LevelLimitDialog />
       <ThemeDialog />
 

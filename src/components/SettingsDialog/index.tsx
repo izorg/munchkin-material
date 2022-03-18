@@ -6,7 +6,6 @@ import { useMatch } from "react-router-dom";
 import { useGoBack } from "../../utils/location";
 import BackButton from "../BackButton";
 import MenuList from "../menu/List";
-import MenuTypeProvider, { MenuType } from "../menu/MenuTypeProvider";
 import ScreenDialog from "../ScreenDialog";
 import Title from "../Title";
 import TopAppBar from "../TopAppBar";
@@ -40,9 +39,7 @@ const SettingsDialog: VFC = () => {
             })}
           </Title>
         </TopAppBar>
-        <MenuTypeProvider type={MenuType.Dialog}>
-          <MenuList />
-        </MenuTypeProvider>
+        <MenuList />
       </Box>
     </ScreenDialog>
   );
