@@ -63,15 +63,19 @@ const HomeAppBar: VFC<HomeAppBarProps> = (props) => {
     );
   }
 
-  const buttons = [
-    !editMode && !multiMode && <SettingsIconButton key="settings" />,
-    (singleMode || (!(editMode || multiMode) && !empty)) && (
-      <ResetButton key="reset" />
-    ),
-    (!(editMode || multiMode) || singleMode) && <DiceButton key="dice" />,
-    editMode && <ShuffleButton key="shuffle" />,
-    !empty && !multiMode && !singleMode && <EditButton key="edit" />,
-    multiMode && (
+  let buttons = [
+    !empty && <ResetButton key="reset" />,
+    !empty && <EditButton key="edit" />,
+    <DiceButton key="dice" />,
+    <SettingsIconButton key="settings" />,
+  ].filter((item): item is JSX.Element => item !== false);
+
+  if (editMode) {
+    buttons = [<ShuffleButton key="shuffle" />, <EditButton key="save" />];
+  }
+
+  if (multiMode) {
+    buttons = [
       <TopIconButton
         key="delete"
         onClick={() => onPlayersDelete(selectedPlayerIds)}
@@ -79,16 +83,22 @@ const HomeAppBar: VFC<HomeAppBarProps> = (props) => {
         <SvgIcon>
           <path d={mdiTrashCanOutline} />
         </SvgIcon>
-      </TopIconButton>
-    ),
-    singleMode && (
+      </TopIconButton>,
+    ];
+  }
+
+  if (singleMode) {
+    buttons = [
+      <ResetButton key="reset" />,
       <TopIconButton key="finish" onClick={onTurnFinish}>
         <SvgIcon>
           <path d={mdiFlagCheckered} />
         </SvgIcon>
-      </TopIconButton>
-    ),
-  ].filter((item): item is JSX.Element => item !== false);
+      </TopIconButton>,
+      <DiceButton key="dice" />,
+      <SettingsIconButton key="settings" />,
+    ];
+  }
 
   buttons[buttons.length - 1] = cloneElement(buttons[buttons.length - 1], {
     edge: "end",
