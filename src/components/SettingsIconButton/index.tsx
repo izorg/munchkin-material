@@ -17,7 +17,11 @@ const SettingsIconButton: VFC<Omit<IconButtonProps, "children">> = (props) => {
         id: "settings",
       })}
     >
-      <TopIconButton {...props} onClick={() => navigate("/settings")}>
+      <TopIconButton
+        {...props}
+        data-screenshots="settings"
+        onClick={() => navigate("/settings")}
+      >
         <SvgIcon>
           <path d={mdiCogOutline} />
         </SvgIcon>

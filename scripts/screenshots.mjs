@@ -31,7 +31,7 @@ const browserDevices = {
     Nexus5: devices["Nexus 5"],
     Nexus7: devices["Nexus 7"],
     Nexus10: devices["Nexus 10"],
-    windows: {
+    Windows: {
       deviceScaleFactor: 2,
       viewport: {
         height: 768,
@@ -59,8 +59,6 @@ const getScreenshots = async (browserType, device, locale, deviceName) => {
   } catch (e) {
     // dir exists
   }
-
-  const menuSelector = '[data-screenshot="drawer-menu"]';
 
   const browser = await browserType.launch({ headless: false });
   const context = await browser.newContext(device);
@@ -119,13 +117,10 @@ const getScreenshots = async (browserType, device, locale, deviceName) => {
   await delay(duration.enteringScreen * 2);
   count += 1;
 
-  if (deviceName === "iPadPro" || deviceName === "windows") {
-    await page.click('[data-screenshots="single-mode-item"]');
-  } else {
-    await page.click('[data-screenshots="menu"]');
-    await delay(duration.enteringScreen);
-    await page.click(`${menuSelector} [data-screenshots="single-mode-item"]`);
-  }
+  await page.click('[data-screenshots="settings"]');
+  await delay(duration.enteringScreen);
+  await page.click(`[data-screenshots="single-mode-item"]`);
+  await page.click('[data-screenshots="back"]');
 
   await delay(duration.leavingScreen);
   await Promise.all(

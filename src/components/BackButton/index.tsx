@@ -33,7 +33,7 @@ const BackButton = (props: IconButtonProps) => {
   }
 
   return (
-    <TopIconButton edge="start" {...props}>
+    <TopIconButton data-screenshots="back" edge="start" {...props}>
       {icon}
     </TopIconButton>
   );
