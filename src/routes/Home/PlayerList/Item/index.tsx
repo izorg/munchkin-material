@@ -1,6 +1,5 @@
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
-import { css } from "@emotion/react";
 import { mdiDragHorizontalVariant as dragIcon } from "@mdi/js";
 import {
   IconButton,
@@ -167,20 +166,6 @@ const HomePlayerListItem = (props: HomePlayerListItemProps) => {
       {...rest}
       {...attributes}
       ref={setNodeRef}
-      css={
-        editMode &&
-        css`
-          @supports (padding: max(0px)) {
-            & > .MuiListItemButton-root {
-              padding-right: calc(32px + max(16px, env(safe-area-inset-right)));
-            }
-
-            & > .MuiListItemSecondaryAction-root {
-              right: max(16px, env(safe-area-inset-right));
-            }
-          }
-        `
-      }
       data-screenshots="player-list-item"
       disablePadding
       secondaryAction={
@@ -193,20 +178,37 @@ const HomePlayerListItem = (props: HomePlayerListItemProps) => {
         )
       }
       style={style}
+      sx={[
+        editMode && {
+          "@supports (padding: max(0px))": {
+            "& > .MuiListItemButton-root": {
+              paddingRight:
+                "calc(32px + max(16px, env(safe-area-inset-right)))",
+            },
+
+            "& > .MuiListItemSecondaryAction-root": {
+              right: "max(16px, env(safe-area-inset-right))",
+            },
+          },
+        },
+      ]}
     >
       <ListItemButton
         component={motion.div}
-        css={css`
-          @supports (padding: max(0px)) {
-            padding-left: max(16px, env(safe-area-inset-left));
-            padding-right: max(16px, env(safe-area-inset-right));
-          }
-        `}
         onKeyDown={onKeyDown}
         onPanStart={clearPress}
         onTap={onTap}
         onTapCancel={clearPress}
         onTapStart={onTapStart}
+        sx={{
+          width: "100%",
+
+          // eslint-disable-next-line sort-keys
+          "@supports (padding: max(0px))": {
+            paddingLeft: "max(16px, env(safe-area-inset-left))",
+            paddingRight: "max(16px, env(safe-area-inset-right))",
+          },
+        }}
       >
         <ListItemAvatar>
           <PlayerAvatar

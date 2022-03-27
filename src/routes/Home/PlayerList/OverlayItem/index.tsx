@@ -1,4 +1,3 @@
-import { css } from "@emotion/react";
 import { mdiDragHorizontalVariant as dragIcon } from "@mdi/js";
 import {
   IconButton,
@@ -23,17 +22,6 @@ const HomePlayerListOverlayItem = (props: { playerId: string }) => {
   return (
     <ListItem
       component="div"
-      css={css`
-        @supports (padding: max(0px)) {
-          & > .MuiListItemButton-root {
-            padding-right: calc(32px + max(16px, env(safe-area-inset-right)));
-          }
-
-          & > .MuiListItemSecondaryAction-root {
-            right: max(16px, env(safe-area-inset-right));
-          }
-        }
-      `}
       disablePadding
       secondaryAction={
         <IconButton component="span" disableRipple edge="end">
@@ -42,20 +30,33 @@ const HomePlayerListOverlayItem = (props: { playerId: string }) => {
           </SvgIcon>
         </IconButton>
       }
+      sx={{
+        "@supports (padding: max(0px))": {
+          "& > .MuiListItemButton-root": {
+            paddingRight: "calc(32px + max(16px, env(safe-area-inset-right)))",
+          },
+
+          "& > .MuiListItemSecondaryAction-root": {
+            right: "max(16px, env(safe-area-inset-right))",
+          },
+        },
+      }}
     >
       <ListItemButton
-        css={[
-          css`
-            @supports (padding: max(0px)) {
-              padding-left: max(16px, env(safe-area-inset-left));
-              padding-right: max(16px, env(safe-area-inset-right));
-            }
+        sx={{
+          width: "100%",
 
-            &:hover {
-              background-color: transparent;
-            }
-          `,
-        ]}
+          // eslint-disable-next-line sort-keys
+          "@supports (padding: max(0px))": {
+            paddingLeft: "max(16px, env(safe-area-inset-left))",
+            paddingRight: "max(16px, env(safe-area-inset-right))",
+          },
+
+          // eslint-disable-next-line sort-keys
+          "&:hover": {
+            backgroundColor: "transparent",
+          },
+        }}
       >
         <ListItemAvatar>
           <PlayerAvatar
