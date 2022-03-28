@@ -10,7 +10,7 @@ import SingleModeItem from "./SingleModeItem";
 import ThemeItem from "./ThemeItem";
 import VersionItem from "./VersionItem";
 
-const MenuList = () => (
+const SettingsList = () => (
   <List component="div">
     <ThemeItem />
     <SingleModeItem />
@@ -24,4 +24,4 @@ const MenuList = () => (
   </List>
 );
 
-export default MenuList;
+export default SettingsList;

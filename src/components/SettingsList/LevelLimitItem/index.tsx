@@ -1,4 +1,3 @@
-import { css } from "@emotion/react";
 import { mdiSwapVertical } from "@mdi/js";
 import { ListItemIcon, SvgIcon } from "@mui/material";
 import { useIntl } from "react-intl";
@@ -8,9 +7,9 @@ import {
   MAX_EPIC_LEVEL,
   MAX_LEVEL,
   MIN_LEVEL,
-} from "../../../../utils/levelLimit";
-import usePresentSelector from "../../../../utils/usePresentSelector";
-import levelLimitMessages from "../../../levelLimit/messages";
+} from "../../../utils/levelLimit";
+import usePresentSelector from "../../../utils/usePresentSelector";
+import levelLimitMessages from "../../levelLimit/messages";
 import ListItem from "../Item";
 import ListItemText from "../ItemText";
 
@@ -54,11 +53,11 @@ const LevelLimitItem = () => {
   return (
     <ListItem
       button
-      css={css`
-        padding-bottom: 0;
-        padding-top: 0;
-      `}
       onClick={onClick}
+      sx={{
+        paddingBottom: 0,
+        paddingTop: 0,
+      }}
     >
       <ListItemIcon>
         <SvgIcon>

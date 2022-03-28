@@ -1,4 +1,3 @@
-import { css } from "@emotion/react";
 import { mdiCheck } from "@mdi/js";
 import {
   Avatar,
@@ -15,30 +14,40 @@ type ColorProps = Omit<ButtonBaseProps, "selected" | "value"> & {
 };
 
 const Color = forwardRef<HTMLButtonElement, ColorProps>(function Color(
-  { selected, value, ...props },
+  props,
   ref
 ) {
+  const {
+    selected,
+    sx = [], // eslint-disable-line react/prop-types
+    value,
+    ...rest
+  } = props;
+
   return (
     <ButtonBase
       ref={ref}
       centerRipple
-      css={css`
-        border-radius: 50%;
-        height: 48px;
-        padding: 0;
-        width: 48px;
-      `}
       focusRipple
+      sx={[
+        {
+          borderRadius: "50%",
+          height: "48px",
+          padding: 0,
+          width: "48px",
+        },
+        ...(Array.isArray(sx) ? sx : [sx]),
+      ]}
       value={value}
-      {...props}
+      {...rest}
     >
       <Avatar
-        css={css`
-          height: 36px;
-          margin: 0 auto;
-          width: 36px;
-        `}
         style={{ backgroundColor: value }}
+        sx={{
+          height: "36px",
+          margin: "0 auto",
+          width: "36px",
+        }}
       >
         {selected && (
           <SvgIcon>

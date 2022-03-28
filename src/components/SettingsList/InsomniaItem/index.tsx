@@ -1,9 +1,8 @@
-import { css } from "@emotion/react";
 import { mdiLightbulb, mdiLightbulbOutline } from "@mdi/js";
 import { ListItemIcon, SvgIcon, Switch } from "@mui/material";
 import { FormattedMessage } from "react-intl";
 
-import { useWakeLock } from "../../../WakeLockProvider";
+import { useWakeLock } from "../../WakeLockProvider";
 import ListItem from "../Item";
 import ListItemText from "../ItemText";
 
@@ -17,11 +16,11 @@ const InsomniaItem = () => {
   return (
     <ListItem
       button
-      css={css`
-        padding-bottom: 9px;
-        padding-top: 9px;
-      `}
       onClick={() => setWakeLock(!wakeLock)}
+      sx={{
+        paddingBottom: "9px",
+        paddingTop: "9px",
+      }}
     >
       <ListItemIcon>
         <SvgIcon>

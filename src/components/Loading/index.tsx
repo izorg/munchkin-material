@@ -1,19 +1,18 @@
-import { css } from "@emotion/react";
-import { CircularProgress } from "@mui/material";
+import { Box, CircularProgress } from "@mui/material";
 
 const Loading = () => (
-  <div
-    css={css`
-      align-items: center;
-      display: flex;
-      flex: 1;
-      height: 100%;
-      justify-content: center;
-      width: 100%;
-    `}
+  <Box
+    sx={{
+      alignItems: "center",
+      display: "flex",
+      flex: 1,
+      height: "100%",
+      justifyContent: "center",
+      width: "100%",
+    }}
   >
     <CircularProgress />
-  </div>
+  </Box>
 );
 
 export default Loading;

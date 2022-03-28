@@ -2,7 +2,7 @@ import { mdiStarOutline } from "@mdi/js";
 import { ListItemIcon, SvgIcon } from "@mui/material";
 import { FormattedMessage } from "react-intl";
 
-import { useGoBack } from "../../../../utils/location";
+import { useGoBack } from "../../../utils/location";
 import ListItem from "../Item";
 import ListItemText from "../ItemText";
 

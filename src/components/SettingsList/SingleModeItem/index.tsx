@@ -1,12 +1,11 @@
-import { css } from "@emotion/react";
 import { mdiAccountMultipleOutline, mdiAccountOutline } from "@mdi/js";
 import { ListItemIcon, SvgIcon, Switch } from "@mui/material";
 import { FormattedMessage } from "react-intl";
 import { useDispatch } from "react-redux";
 
-import { setSingleMode } from "../../../../ducks/settings";
-import usePresentSelector from "../../../../utils/usePresentSelector";
-import { useFullVersion } from "../../../FullVersionProvider";
+import { setSingleMode } from "../../../ducks/settings";
+import usePresentSelector from "../../../utils/usePresentSelector";
+import { useFullVersion } from "../../FullVersionProvider";
 import ListItem from "../Item";
 import ListItemText from "../ItemText";
 
@@ -32,12 +31,12 @@ const SingleModeItem = () => {
   return (
     <ListItem
       button
-      css={css`
-        padding-bottom: 9px;
-        padding-top: 9px;
-      `}
       data-screenshots="single-mode-item"
       onClick={() => onChange(!singleMode)}
+      sx={{
+        paddingBottom: "9px",
+        paddingTop: "9px",
+      }}
     >
       <ListItemIcon>
         <SvgIcon>

@@ -1,4 +1,3 @@
-import { css } from "@emotion/react";
 import {
   Dialog,
   DialogContent,
@@ -36,10 +35,10 @@ const ColorPickerDialog: FC<ColorPickerDialogProps> = ({
         />
       </DialogTitle>
       <DialogContent
-        css={css`
-          padding: ${theme.spacing(0, 1, 2)};
-          text-align: center;
-        `}
+        sx={{
+          padding: theme.spacing(0, 1, 2),
+          textAlign: "center",
+        }}
       >
         {availableColors.map((color) => (
           <Color

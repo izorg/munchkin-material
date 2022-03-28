@@ -1,30 +1,29 @@
-import { css } from "@emotion/react";
 import { mdiAccountCircle } from "@mdi/js";
-import { SvgIcon, Typography, useTheme } from "@mui/material";
+import { Box, SvgIcon, Typography, useTheme } from "@mui/material";
 import { FormattedMessage } from "react-intl";
 
 const Nobody = () => {
   const theme = useTheme();
 
   return (
-    <div
-      css={css`
-        align-items: center;
-        background-color: ${theme.palette.background.default};
-        color: ${theme.palette.text.secondary};
-        display: flex;
-        flex: 1;
-        flex-direction: column;
-        justify-content: center;
-      `}
+    <Box
+      sx={{
+        alignItems: "center",
+        backgroundColor: theme.palette.background.default,
+        color: theme.palette.text.secondary,
+        display: "flex",
+        flex: 1,
+        flexDirection: "column",
+        justifyContent: "center",
+      }}
     >
       <SvgIcon
-        css={css`
-          height: 96px;
-          margin-bottom: ${theme.spacing(2)};
-          opacity: 0.2;
-          width: 96px;
-        `}
+        sx={{
+          height: "96px",
+          marginBottom: theme.spacing(2),
+          opacity: 0.2,
+          width: "96px",
+        }}
       >
         <path d={mdiAccountCircle} />
       </SvgIcon>
@@ -34,7 +33,7 @@ const Nobody = () => {
           id="player.list.empty"
         />
       </Typography>
-    </div>
+    </Box>
   );
 };
 

@@ -1,4 +1,3 @@
-import { css } from "@emotion/react";
 import { type Theme, useFormControl, useMediaQuery } from "@mui/material";
 import PropTypes from "prop-types";
 import {
@@ -72,9 +71,6 @@ const ColorPicker: FC<ColorPickerProps> = ({
       <input name={name} type="hidden" value={value} />
       <Color
         ref={anchorEl}
-        css={css`
-          margin-left: -6px;
-        `}
         onBlur={(event: FocusEvent<HTMLButtonElement>) => {
           if (ignoreNextBlur.current) {
             // The parent components are relying on the bubbling of the event.
@@ -109,6 +105,9 @@ const ColorPicker: FC<ColorPickerProps> = ({
           if ([" ", "Enter"].includes(event.key)) {
             ignoreNextBlur.current = true;
           }
+        }}
+        sx={{
+          marginLeft: "-6px",
         }}
         value={value}
       />

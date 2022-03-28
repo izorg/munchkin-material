@@ -1,12 +1,11 @@
-import { css } from "@emotion/react";
 import { mdiPaletteOutline } from "@mdi/js";
 import { ListItemIcon, SvgIcon, useTheme } from "@mui/material";
 import { useIntl } from "react-intl";
 import { useLocation, useNavigate } from "react-router-dom";
 
-import themes from "../../../../theme/colors";
-import usePresentSelector from "../../../../utils/usePresentSelector";
-import themeMessages from "../../../theme/messages";
+import themes from "../../../theme/colors";
+import usePresentSelector from "../../../utils/usePresentSelector";
+import themeMessages from "../../theme/messages";
 import ListItem from "../Item";
 import ListItemText from "../ItemText";
 
@@ -34,11 +33,11 @@ const ThemeItem = () => {
   return (
     <ListItem
       button
-      css={css`
-        padding-bottom: 0;
-        padding-top: 0;
-      `}
       onClick={onClick}
+      sx={{
+        paddingBottom: 0,
+        paddingTop: 0,
+      }}
     >
       <ListItemIcon>
         <SvgIcon style={{ color: theme.palette.primary.main }}>

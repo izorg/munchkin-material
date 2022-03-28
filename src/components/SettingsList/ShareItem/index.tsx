@@ -1,21 +1,9 @@
 import { mdiShareVariantOutline } from "@mdi/js";
 import { ListItemIcon, SvgIcon } from "@mui/material";
-import { defineMessages, useIntl } from "react-intl";
+import { useIntl } from "react-intl";
 
 import ListItem from "../Item";
 import ListItemText from "../ItemText";
-
-const messages = defineMessages({
-  share: {
-    defaultMessage: "Share",
-    id: "menu.share",
-  },
-
-  text: {
-    defaultMessage: "Simple but powerful Level Counter for Munchkin",
-    id: "share.text",
-  },
-});
 
 const ShareItem = () => {
   const intl = useIntl();
@@ -31,11 +19,19 @@ const ShareItem = () => {
     return null;
   }
 
+  const shareText = intl.formatMessage({
+    defaultMessage: "Share",
+    id: "menu.share",
+  });
+
   const onClick = async () => {
     try {
       await navigator.share({
-        text: intl.formatMessage(messages.text),
-        title: intl.formatMessage(messages.share),
+        text: intl.formatMessage({
+          defaultMessage: "Simple but powerful Level Counter for Munchkin",
+          id: "share.text",
+        }),
+        title: shareText,
         url: shareLink,
       });
     } catch (error) {
@@ -50,7 +46,7 @@ const ShareItem = () => {
           <path d={mdiShareVariantOutline} />
         </SvgIcon>
       </ListItemIcon>
-      <ListItemText primary={intl.formatMessage(messages.share)} />
+      <ListItemText primary={shareText} />
     </ListItem>
   );
 };

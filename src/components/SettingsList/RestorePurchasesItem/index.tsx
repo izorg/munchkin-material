@@ -2,7 +2,7 @@ import { mdiCloudDownloadOutline } from "@mdi/js";
 import { ListItemIcon, SvgIcon } from "@mui/material";
 import { FormattedMessage } from "react-intl";
 
-import { useFullVersion } from "../../../FullVersionProvider";
+import { useFullVersion } from "../../FullVersionProvider";
 import ListItem from "../Item";
 import ListItemText from "../ItemText";
 

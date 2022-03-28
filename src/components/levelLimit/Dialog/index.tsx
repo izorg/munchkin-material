@@ -1,4 +1,3 @@
-import { css } from "@emotion/react";
 import {
   Dialog,
   DialogActions,
@@ -93,9 +92,9 @@ const LevelLimitDialog = () => {
     >
       <DialogTitle>{intl.formatMessage(levelLimitMessages.label)}</DialogTitle>
       <DialogContent
-        css={css`
-          padding-bottom: 1px;
-        `}
+        sx={{
+          paddingBottom: "1px",
+        }}
       >
         <RadioGroup name="levelLimit" onChange={onChange} value={value}>
           <FormControlLabel
