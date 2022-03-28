@@ -27,7 +27,13 @@ const browserDevices = {
       },
     },
     iPhone6Plus: devices["iPhone 6 Plus"],
-    iPhone11ProMax: devices["iPhone 11 Pro Max"],
+    iPhone11ProMax: {
+      ...devices["iPhone 11 Pro Max"],
+      viewport: {
+        height: 896,
+        width: 414,
+      },
+    },
     Nexus5: devices["Nexus 5"],
     Nexus7: devices["Nexus 7"],
     Nexus10: devices["Nexus 10"],
