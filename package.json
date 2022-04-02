@@ -1,6 +1,6 @@
 {
   "name": "munchkin-web",
-  "version": "13.3.2",
+  "version": "13.3.3",
   "scripts": {
     "build:cordova": "cross-env NODE_ENV=production BUILD=cordova webpack",
     "build:web": "cross-env NODE_ENV=production BUILD=web webpack",
