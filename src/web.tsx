@@ -2,7 +2,7 @@ import "./sentry";
 
 import { captureException } from "@sentry/react";
 import { StrictMode } from "react";
-import { render } from "react-dom";
+import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 
 import App from "./components/App";
@@ -15,7 +15,9 @@ import WorkboxProvider from "./components/WorkboxProvider";
 
 import("./firebase").catch((error) => captureException(error));
 
-render(
+const root = createRoot(document.getElementById("root") as HTMLElement);
+
+root.render(
   <StrictMode>
     <BrowserRouter>
       <ReduxProvider>
@@ -32,6 +34,5 @@ render(
         </WorkboxProvider>
       </ReduxProvider>
     </BrowserRouter>
-  </StrictMode>,
-  document.getElementById("root")
+  </StrictMode>
 );

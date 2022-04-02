@@ -3,7 +3,7 @@ import "web-animations-js";
 import "./scroll";
 
 import { Suspense } from "react";
-import { render } from "react-dom";
+import { createRoot } from "react-dom/client";
 
 import App from "./components/App";
 import AugmentedStylesProvider from "./components/AugmentedStylesProvider";
@@ -21,7 +21,9 @@ cordovaScript.setAttribute("src", "cordova.js");
 
 document.querySelector("head")?.appendChild(cordovaScript);
 
-render(
+const root = createRoot(document.getElementById("root") as HTMLElement);
+
+root.render(
   <CordovaRouter>
     <ReduxProvider>
       <Suspense fallback={null}>
@@ -40,6 +42,5 @@ render(
         </CordovaProvider>
       </Suspense>
     </ReduxProvider>
-  </CordovaRouter>,
-  document.getElementById("root")
+  </CordovaRouter>
 );
