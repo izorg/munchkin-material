@@ -1,5 +1,4 @@
-import { css } from "@emotion/react";
-import { IconButton, useTheme } from "@mui/material";
+import { Box, IconButton, useTheme } from "@mui/material";
 import PropTypes from "prop-types";
 import { useCallback } from "react";
 import { useIntl } from "react-intl";
@@ -67,40 +66,42 @@ const PlayerStats = ({ className, playerId }: PlayerStatsProps) => {
     [dispatch, playerId]
   );
 
-  const counterContainerCss = css`
-    display: flex;
-    flex: 1 1 50%;
-    flex-direction: column;
-    justify-content: center;
-  `;
-
   const lineHeight =
     (theme.typography.body2.lineHeight as number) / 2; /* 1.43 / 2 */
 
   return (
-    <div
+    <Box
       className={className}
-      css={css`
-        display: flex;
-        flex-direction: column-reverse;
-        width: 100%;
+      sx={{
+        display: "flex",
+        flexDirection: "column-reverse",
+        width: "100%",
 
-        @media (orientation: landscape) {
-          flex-direction: row;
-        }
-      `}
+        // eslint-disable-next-line sort-keys
+        "@media (orientation: landscape)": {
+          flexDirection: "row",
+        },
+      }}
     >
-      <div
-        css={css`
-          display: flex;
-          flex: 1;
+      <Box
+        sx={{
+          display: "flex",
+          flex: 1,
 
-          @media (orientation: landscape) {
-            flex: 2;
-          }
-        `}
+          // eslint-disable-next-line sort-keys
+          "@media (orientation: landscape)": {
+            flex: 2,
+          },
+        }}
       >
-        <div css={counterContainerCss}>
+        <Box
+          sx={{
+            display: "flex",
+            flex: "1 1 50%",
+            flexDirection: "column",
+            justifyContent: "center",
+          }}
+        >
           <Counter
             decrementDisabled={levelDecrementDisabled}
             incrementDisabled={levelIncrementDisabled}
@@ -109,74 +110,83 @@ const PlayerStats = ({ className, playerId }: PlayerStatsProps) => {
             title={intl.formatMessage(counterMessages.level)}
             value={player.level}
           />
-        </div>
-        <div css={counterContainerCss}>
+        </Box>
+        <Box
+          sx={{
+            display: "flex",
+            flex: "1 1 50%",
+            flexDirection: "column",
+            justifyContent: "center",
+          }}
+        >
           <Counter
             onDecrement={onGearDecrement}
             onIncrement={onGearIncrement}
             title={intl.formatMessage(counterMessages.gear)}
             value={player.gear}
           />
-        </div>
-      </div>
-      <div
-        css={css`
-          display: flex;
-          flex: 1;
-          flex-direction: column;
-          justify-content: center;
-        `}
+        </Box>
+      </Box>
+      <Box
+        sx={{
+          display: "flex",
+          flex: 1,
+          flexDirection: "column",
+          justifyContent: "center",
+        }}
       >
-        <div
-          css={css`
-            text-align: center;
-          `}
+        <Box
+          sx={{
+            textAlign: "center",
+          }}
         >
           <CounterLabel
-            css={css`
-              font-size: 24px;
-            `}
+            sx={{
+              fontSize: "24px",
+            }}
           >
             {intl.formatMessage(counterMessages.strength)}
           </CounterLabel>
 
-          <div
-            css={css`
-              color: ${theme.palette.text.primary};
-              font-family: Munchkin, ${theme.typography.fontFamily};
-              font-size: 36px;
+          <Box
+            sx={(theme) => ({
+              color: theme.palette.text.primary,
+              fontFamily: `Munchkin, ${theme.typography.fontFamily || ""}`,
+              fontSize: "36px",
 
-              @media (orientation: portrait) {
-                font-size: 72px; /* 36px * 2 */
-                line-height: ${lineHeight}; /* 1.43 / 2 */
-                margin-top: 32px;
-              }
-            `}
+              // eslint-disable-next-line sort-keys
+              "@media (orientation: portrait)": {
+                fontSize: "72px" /* 36px * 2 */,
+                lineHeight: lineHeight /* 1.43 / 2 */,
+                marginTop: "32px",
+              },
+            })}
           >
             {player.level + player.gear}
-          </div>
+          </Box>
 
           <IconButton
-            css={css`
-              font-size: 32px;
-              padding: 8px;
-
-              @media (orientation: portrait) {
-                margin-top: 16px;
-              }
-            `}
             onClick={onSexToggle}
+            sx={{
+              fontSize: "32px",
+              padding: "8px",
+
+              // eslint-disable-next-line sort-keys
+              "@media (orientation: portrait)": {
+                marginTop: "16px",
+              },
+            }}
           >
             <SexIcon
-              css={css`
-                font-size: inherit;
-              `}
               sex={player.sex}
+              sx={{
+                fontSize: "inherit",
+              }}
             />
           </IconButton>
-        </div>
-      </div>
-    </div>
+        </Box>
+      </Box>
+    </Box>
   );
 };
 
