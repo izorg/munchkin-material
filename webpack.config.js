@@ -52,6 +52,12 @@ module.exports = {
               cacheDirectory: dev,
               plugins: [
                 prod && [
+                  "babel-plugin-formatjs",
+                  {
+                    removeDefaultMessage: true,
+                  },
+                ],
+                prod && [
                   "babel-plugin-react-remove-properties",
                   {
                     properties: ["data-screenshots"],

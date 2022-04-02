@@ -9,8 +9,7 @@
         "method": "usage-global",
         "version": "3.21"
       }
-    ],
-    "babel-plugin-react-intl"
+    ]
   ],
   "presets": [
     [
