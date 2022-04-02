@@ -22,6 +22,9 @@ const CounterButton: FC<CounterButtonProps> = ({
   const timeoutRef = useRef(0);
   const intervalRef = useRef(0);
 
+  const disabledRef = useRef(disabled);
+  disabledRef.current = disabled;
+
   const clearPress = useCallback(() => {
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current);
@@ -54,7 +57,10 @@ const CounterButton: FC<CounterButtonProps> = ({
 
     timeoutRef.current = window.setTimeout(() => {
       onClick();
-      intervalRef.current = window.setInterval(() => onClick(), 250);
+
+      intervalRef.current = window.setInterval(() => {
+        onClick();
+      }, 250);
     }, 500);
   };
 
@@ -77,7 +83,7 @@ const CounterButton: FC<CounterButtonProps> = ({
       return;
     }
 
-    if (!intervalRef.current && !disabled) {
+    if (!intervalRef.current && !disabledRef.current) {
       onClick();
     }
   };
