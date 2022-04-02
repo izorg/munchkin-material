@@ -11,7 +11,7 @@ import ThemeItem from "./ThemeItem";
 import VersionItem from "./VersionItem";
 
 const SettingsList = () => (
-  <List component="div">
+  <List component="div" disablePadding sx={{ overflowY: "auto" }}>
     <ThemeItem />
     <SingleModeItem />
     <LevelLimitItem />
