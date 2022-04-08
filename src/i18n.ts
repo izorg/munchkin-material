@@ -1,5 +1,3 @@
-import { type IntlConfig } from "react-intl";
-
 export const CS = "cs";
 export const DA = "da";
 export const DE = "de";
@@ -71,5 +69,41 @@ export const getLocale = (): string => {
   return EN;
 };
 
-export const loadMessages = (locale: string) =>
-  import(`../languages/${locale}.json`) as Promise<IntlConfig["messages"]>;
+const loaders: Record<
+  string,
+  () => Promise<{ default: Record<string, string> }>
+> = {
+  [CS]: () => import("../languages/cs.json"),
+  [DA]: () => import("../languages/da.json"),
+  [DE]: () => import("../languages/de.json"),
+  [EL]: () => import("../languages/el.json"),
+  [EN]: () => import("../languages/en.json"),
+  [ES]: () => import("../languages/es.json"),
+  [FI]: () => import("../languages/fi.json"),
+  [FR]: () => import("../languages/fr.json"),
+  [HE]: () => import("../languages/he.json"),
+  [HU]: () => import("../languages/hu.json"),
+  [HY]: () => import("../languages/hy.json"),
+  [IT]: () => import("../languages/it.json"),
+  [NB]: () => import("../languages/nb.json"),
+  [NL]: () => import("../languages/nl.json"),
+  [PL]: () => import("../languages/pl.json"),
+  [PT]: () => import("../languages/pt.json"),
+  [PT_BR]: () => import("../languages/pt-BR.json"),
+  [RU]: () => import("../languages/ru.json"),
+  [SK]: () => import("../languages/sk.json"),
+  [TR]: () => import("../languages/tr.json"),
+  [UK]: () => import("../languages/uk.json"),
+};
+
+export const loadMessages = async (locale: string) => {
+  const loader = loaders[locale];
+
+  if (!loader) {
+    throw new Error(`Locale ${locale} is not supported`);
+  }
+
+  const { default: messages } = await loader();
+
+  return messages;
+};
