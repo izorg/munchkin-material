@@ -16,7 +16,7 @@ import {
   incrementPlayerLevel,
   togglePlayerSex,
 } from "../../../ducks/players";
-import { type StoreState } from "../../../store";
+import { type RootState } from "../../../store";
 import {
   isLevelDecrementDisabled,
   isLevelIncrementDisabled,
@@ -48,7 +48,7 @@ const SinglePlayer = () => {
 
   const onBonusDecrement = useCallback(
     () =>
-      dispatch((_: Action, getState: () => StoreState) =>
+      dispatch((_: Action, getState: () => RootState) =>
         dispatch(
           setCombatPlayerBonus(getState().present.combat.playerBonus - 1)
         )
@@ -58,7 +58,7 @@ const SinglePlayer = () => {
 
   const onBonusIncrement = useCallback(
     () =>
-      dispatch((_: Action, getState: () => StoreState) =>
+      dispatch((_: Action, getState: () => RootState) =>
         dispatch(
           setCombatPlayerBonus(getState().present.combat.playerBonus + 1)
         )

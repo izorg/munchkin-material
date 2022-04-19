@@ -1,21 +1,14 @@
 import { mdiDiceMultiple } from "@mdi/js";
 import { type IconButtonProps, SvgIcon, Tooltip } from "@mui/material";
-import { defineMessages, useIntl } from "react-intl";
-import { useDispatch } from "react-redux";
+import { useIntl } from "react-intl";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import { throwDice } from "../../../ducks/dice";
+import { useAppDispatch } from "../../../store";
 import TopIconButton from "../../TopIconButton";
 
-const messages = defineMessages({
-  dice: {
-    defaultMessage: "Dice",
-    id: "dice",
-  },
-});
-
 const DiceIconButton = (props: Omit<IconButtonProps, "onClick">) => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const intl = useIntl();
   const location = useLocation();
   const navigate = useNavigate();
@@ -33,7 +26,12 @@ const DiceIconButton = (props: Omit<IconButtonProps, "onClick">) => {
   };
 
   return (
-    <Tooltip title={intl.formatMessage(messages.dice)}>
+    <Tooltip
+      title={intl.formatMessage({
+        defaultMessage: "Dice",
+        id: "dice",
+      })}
+    >
       <TopIconButton {...props} onClick={onClick}>
         <SvgIcon>
           <path d={mdiDiceMultiple} />

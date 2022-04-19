@@ -1,12 +1,15 @@
-import { compose } from "redux";
+import { compose, type StateFromReducersMapObject } from "redux";
 
 import migrations from "./migrations";
-
-import { type PresentState } from "./index";
+import type reducers from "./reducers";
 
 const key = "redux";
 
-export const loadState = (): PresentState | undefined => {
+type State = StateFromReducersMapObject<typeof reducers>;
+
+export const loadState = ():
+  | StateFromReducersMapObject<typeof reducers>
+  | undefined => {
   let serializedState;
 
   try {
@@ -21,10 +24,10 @@ export const loadState = (): PresentState | undefined => {
     return undefined;
   }
 
-  return compose(...migrations)(JSON.parse(serializedState)) as PresentState;
+  return compose(...migrations)(JSON.parse(serializedState)) as State;
 };
 
-export const saveState = (state: PresentState): void => {
+export const saveState = (state: State): void => {
   try {
     localStorage.setItem(key, JSON.stringify(state));
   } catch (error) {

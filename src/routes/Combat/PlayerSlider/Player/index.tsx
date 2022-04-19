@@ -19,7 +19,7 @@ import {
   incrementPlayerLevel,
   togglePlayerSex,
 } from "../../../../ducks/players";
-import { type StoreState } from "../../../../store";
+import { type RootState } from "../../../../store";
 import {
   isLevelDecrementDisabled,
   isLevelIncrementDisabled,
@@ -55,7 +55,7 @@ const CombatPlayer = ({ playerId }: CombatPlayerProps) => {
 
   const onBonusChange = useCallback(
     (value: number) => {
-      dispatch((_: Action, getState: () => StoreState) => {
+      dispatch((_: Action, getState: () => RootState) => {
         const {
           combat: { helperBonus, helperId, playerBonus },
         } = getState().present;

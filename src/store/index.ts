@@ -4,6 +4,11 @@ import {
   type StoreEnhancer,
 } from "@reduxjs/toolkit";
 import { createReduxEnhancer } from "@sentry/react";
+import {
+  type TypedUseSelectorHook,
+  useDispatch,
+  useSelector,
+} from "react-redux";
 import undoable, { includeAction } from "redux-undo";
 
 import { killPlayer, removePlayers, resetPlayers } from "../ducks/players";
@@ -22,10 +27,6 @@ const createRootReducer = () =>
     syncFilter: true,
   });
 
-export type StoreState = ReturnType<ReturnType<typeof createRootReducer>>;
-
-export type PresentState = StoreState["present"];
-
 const preloadedPresentState = loadState();
 
 const sentryReduxEnhancer = createReduxEnhancer() as StoreEnhancer;
@@ -40,6 +41,16 @@ const store = configureStore({
   },
   reducer: createRootReducer(),
 });
+
+export type AppDispatch = typeof store.dispatch;
+
+export type RootState = ReturnType<typeof store.getState>;
+
+export type PresentState = RootState["present"];
+
+export const useAppDispatch = () => useDispatch<AppDispatch>();
+
+export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 
 if (process.env.NODE_ENV === "development") {
   window.reduxStore = store;

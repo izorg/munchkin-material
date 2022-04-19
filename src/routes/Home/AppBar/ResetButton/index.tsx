@@ -1,6 +1,6 @@
 import { mdiBackupRestore } from "@mdi/js";
 import { type IconButtonProps, SvgIcon, Tooltip } from "@mui/material";
-import { defineMessages, useIntl } from "react-intl";
+import { useIntl } from "react-intl";
 import { useDispatch } from "react-redux";
 import { type Action } from "redux";
 import { ActionCreators } from "redux-undo";
@@ -8,20 +8,8 @@ import { ActionCreators } from "redux-undo";
 import TopIconButton from "../../../../components/TopIconButton";
 import { useUndo } from "../../../../components/UndoProvider";
 import { resetPlayers } from "../../../../ducks/players";
-import { type StoreState } from "../../../../store";
+import { type RootState } from "../../../../store";
 import usePresentSelector from "../../../../utils/usePresentSelector";
-
-const messages = defineMessages({
-  reset: {
-    defaultMessage: "Reset",
-    id: "player.list.reset",
-  },
-
-  undo: {
-    defaultMessage: "Players have been reset",
-    id: "undo.resetPlayers",
-  },
-});
 
 const ResetButton = (props: IconButtonProps) => {
   const dispatch = useDispatch();
@@ -51,7 +39,7 @@ const ResetButton = (props: IconButtonProps) => {
   const { setMessage } = useUndo();
 
   const onClick = () =>
-    dispatch((_: Action, getState: () => StoreState) => {
+    dispatch((_: Action, getState: () => RootState) => {
       const {
         combat,
         playerList,
@@ -64,7 +52,12 @@ const ResetButton = (props: IconButtonProps) => {
         dispatch(resetPlayers([id as string]));
         dispatch(ActionCreators.clearHistory());
       } else {
-        setMessage(intl.formatMessage(messages.undo));
+        setMessage(
+          intl.formatMessage({
+            defaultMessage: "Players have been reset",
+            id: "undo.resetPlayers",
+          })
+        );
         dispatch(resetPlayers(playerList));
       }
     });
@@ -81,7 +74,16 @@ const ResetButton = (props: IconButtonProps) => {
     return button;
   }
 
-  return <Tooltip title={intl.formatMessage(messages.reset)}>{button}</Tooltip>;
+  return (
+    <Tooltip
+      title={intl.formatMessage({
+        defaultMessage: "Reset",
+        id: "player.list.reset",
+      })}
+    >
+      {button}
+    </Tooltip>
+  );
 };
 
 export default ResetButton;

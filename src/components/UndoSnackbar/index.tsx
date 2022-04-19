@@ -11,7 +11,7 @@ import { FormattedMessage } from "react-intl";
 import { useDispatch, useSelector } from "react-redux";
 import { ActionCreators } from "redux-undo";
 
-import { type StoreState } from "../../store";
+import { type RootState } from "../../store";
 import { useUndo } from "../UndoProvider";
 
 const UndoSnackbar = () => {
@@ -20,7 +20,7 @@ const UndoSnackbar = () => {
 
   const mdDown = useMediaQuery(theme.breakpoints.down("md"));
 
-  const open = useSelector((state: StoreState) => state.past.length > 0);
+  const open = useSelector((state: RootState) => state.past.length > 0);
 
   const onClose = (event: unknown, reason: SnackbarCloseReason | "undo") => {
     if (reason === "undo") {
