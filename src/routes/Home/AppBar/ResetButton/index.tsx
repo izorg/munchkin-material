@@ -1,18 +1,16 @@
 import { mdiBackupRestore } from "@mdi/js";
 import { type IconButtonProps, SvgIcon, Tooltip } from "@mui/material";
 import { useIntl } from "react-intl";
-import { useDispatch } from "react-redux";
-import { type Action } from "redux";
 import { ActionCreators } from "redux-undo";
 
 import TopIconButton from "../../../../components/TopIconButton";
 import { useUndo } from "../../../../components/UndoProvider";
 import { resetPlayers } from "../../../../ducks/players";
-import { type RootState } from "../../../../store";
+import { useAppDispatch } from "../../../../store";
 import usePresentSelector from "../../../../utils/usePresentSelector";
 
 const ResetButton = (props: IconButtonProps) => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const intl = useIntl();
 
   const disabled = usePresentSelector((state) => {
@@ -39,7 +37,7 @@ const ResetButton = (props: IconButtonProps) => {
   const { setMessage } = useUndo();
 
   const onClick = () =>
-    dispatch((_: Action, getState: () => RootState) => {
+    dispatch((_, getState) => {
       const {
         combat,
         playerList,

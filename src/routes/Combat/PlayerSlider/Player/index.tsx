@@ -3,8 +3,6 @@ import { IconButton, Typography, useTheme } from "@mui/material";
 import PropTypes from "prop-types";
 import { useCallback } from "react";
 import { useIntl } from "react-intl";
-import { useDispatch } from "react-redux";
-import { type Action } from "redux";
 
 import { counterMessages } from "../../../../components/Counter";
 import SexIcon from "../../../../components/Sex";
@@ -19,7 +17,7 @@ import {
   incrementPlayerLevel,
   togglePlayerSex,
 } from "../../../../ducks/players";
-import { type RootState } from "../../../../store";
+import { useAppDispatch } from "../../../../store";
 import {
   isLevelDecrementDisabled,
   isLevelIncrementDisabled,
@@ -32,7 +30,7 @@ type CombatPlayerProps = {
 };
 
 const CombatPlayer = ({ playerId }: CombatPlayerProps) => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const intl = useIntl();
   const theme = useTheme();
 
@@ -55,7 +53,7 @@ const CombatPlayer = ({ playerId }: CombatPlayerProps) => {
 
   const onBonusChange = useCallback(
     (value: number) => {
-      dispatch((_: Action, getState: () => RootState) => {
+      dispatch((_, getState) => {
         const {
           combat: { helperBonus, helperId, playerBonus },
         } = getState().present;

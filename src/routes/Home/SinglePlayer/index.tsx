@@ -2,8 +2,6 @@ import { css } from "@emotion/react";
 import { IconButton, useTheme } from "@mui/material";
 import { useCallback } from "react";
 import { useIntl } from "react-intl";
-import { useDispatch } from "react-redux";
-import { type Action } from "redux";
 
 import Counter, { counterMessages } from "../../../components/Counter";
 import CounterLabel from "../../../components/Counter/Label";
@@ -16,7 +14,7 @@ import {
   incrementPlayerLevel,
   togglePlayerSex,
 } from "../../../ducks/players";
-import { type RootState } from "../../../store";
+import { useAppDispatch } from "../../../store";
 import {
   isLevelDecrementDisabled,
   isLevelIncrementDisabled,
@@ -24,7 +22,7 @@ import {
 import usePresentSelector from "../../../utils/usePresentSelector";
 
 const SinglePlayer = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const intl = useIntl();
   const theme = useTheme();
 
@@ -48,7 +46,7 @@ const SinglePlayer = () => {
 
   const onBonusDecrement = useCallback(
     () =>
-      dispatch((_: Action, getState: () => RootState) =>
+      dispatch((_, getState) =>
         dispatch(
           setCombatPlayerBonus(getState().present.combat.playerBonus - 1)
         )
@@ -58,7 +56,7 @@ const SinglePlayer = () => {
 
   const onBonusIncrement = useCallback(
     () =>
-      dispatch((_: Action, getState: () => RootState) =>
+      dispatch((_, getState) =>
         dispatch(
           setCombatPlayerBonus(getState().present.combat.playerBonus + 1)
         )

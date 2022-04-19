@@ -1,16 +1,16 @@
 import { mdiAccountMultipleOutline, mdiAccountOutline } from "@mdi/js";
 import { ListItemIcon, SvgIcon, Switch } from "@mui/material";
 import { FormattedMessage } from "react-intl";
-import { useDispatch } from "react-redux";
 
 import { setSingleMode } from "../../../ducks/settings";
+import { useAppDispatch } from "../../../store";
 import usePresentSelector from "../../../utils/usePresentSelector";
 import { useFullVersion } from "../../FullVersionProvider";
 import ListItem from "../Item";
 import ListItemText from "../ItemText";
 
 const SingleModeItem = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const singleMode = usePresentSelector((state) => state.settings.singleMode);
 
