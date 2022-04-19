@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import {
   createContext,
   type FC,
+  type ReactNode,
   useCallback,
   useContext,
   useEffect,
@@ -24,7 +25,11 @@ const Context = createContext<WorkboxContext>({
 
 export const useWorkbox = (): WorkboxContext => useContext(Context);
 
-const WorkboxProvider: FC = ({ children }) => {
+type WorkboxProviderProps = {
+  children?: ReactNode;
+};
+
+const WorkboxProvider: FC<WorkboxProviderProps> = ({ children }) => {
   const [update, setUpdate] = useState(false);
 
   const workbox = useMemo(() => {

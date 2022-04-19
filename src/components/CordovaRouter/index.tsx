@@ -1,13 +1,23 @@
 import { type Action, type Location } from "history";
 import PropTypes from "prop-types";
-import { type FC, type Reducer, useLayoutEffect, useReducer } from "react";
+import {
+  type FC,
+  type ReactNode,
+  type Reducer,
+  useLayoutEffect,
+  useReducer,
+} from "react";
 import { Router } from "react-router-dom";
 
 import history from "./history";
 
 type State = { action: Action; location: Location };
 
-const CordovaRouter: FC = ({ children }) => {
+type CordovaRouterProps = {
+  children?: ReactNode;
+};
+
+const CordovaRouter: FC<CordovaRouterProps> = ({ children }) => {
   const [state, dispatch] = useReducer<Reducer<State, State>>(
     (_, action) => action,
     {

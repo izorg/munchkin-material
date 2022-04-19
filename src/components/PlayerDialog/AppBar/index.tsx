@@ -1,7 +1,7 @@
 import { mdiCheck, mdiDelete } from "@mdi/js";
 import { SvgIcon } from "@mui/material";
 import PropTypes from "prop-types";
-import { type ReactNode, type VFC } from "react";
+import { type FC, type ReactNode } from "react";
 
 import BackButton from "../../BackButton";
 import Title from "../../Title";
@@ -14,7 +14,7 @@ type PlayerDialogAppBarProps = {
   title: ReactNode;
 };
 
-const PlayerDialogAppBar: VFC<PlayerDialogAppBarProps> = ({
+const PlayerDialogAppBar: FC<PlayerDialogAppBarProps> = ({
   onCancel,
   onDelete,
   title,

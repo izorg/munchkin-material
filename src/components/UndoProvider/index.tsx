@@ -25,7 +25,11 @@ export const useUndo = (): UndoContext => {
   return context;
 };
 
-const UndoProvider: FC = ({ children }) => {
+type UndoProviderProps = {
+  children?: ReactNode;
+};
+
+const UndoProvider: FC<UndoProviderProps> = ({ children }) => {
   const [message, setMessage] = useState<ReactNode>(null);
 
   const value = useMemo(() => ({ message, setMessage }), [message]);

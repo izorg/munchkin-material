@@ -1,8 +1,12 @@
 import { AppBar, Toolbar } from "@mui/material";
 import PropTypes from "prop-types";
-import { type FC } from "react";
+import { type FC, type ReactNode } from "react";
 
-const TopAppBar: FC = ({ children }) => (
+type TopAppBarProps = {
+  children?: ReactNode;
+};
+
+const TopAppBar: FC<TopAppBarProps> = ({ children }) => (
   <AppBar
     position="static"
     sx={{

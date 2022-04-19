@@ -26,7 +26,7 @@ const PlayerSlider = ({ playerId }: PlayerSliderProps) => {
   const currentIndex = playerList.indexOf(playerId);
 
   const getPlayerIndex = useCallback(
-    (index) => {
+    (index: number) => {
       let playerIndex = index % playerCount;
 
       if (playerIndex < 0) {

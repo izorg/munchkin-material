@@ -20,7 +20,7 @@ import {
   useTheme,
 } from "@mui/material";
 import { type FormEvent, useEffect, useMemo, useRef } from "react";
-import { defineMessages, FormattedMessage, useIntl } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 import { useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
 
@@ -40,13 +40,6 @@ import SubmitButton from "../SubmitButton";
 
 import AppBar from "./AppBar";
 import ColorPicker from "./ColorPicker";
-
-const messages = defineMessages({
-  label: {
-    defaultMessage: "Name",
-    id: "player.form.namePlaceholder",
-  },
-});
 
 let appear = false;
 
@@ -258,10 +251,12 @@ const PlayerDialog = () => {
           autoFocus={!editPlayer}
           defaultValue={editPlayer?.name}
           fullWidth
-          label={intl.formatMessage(messages.label)}
+          label={intl.formatMessage({
+            defaultMessage: "Name",
+            id: "player.form.namePlaceholder",
+          })}
           margin="normal"
           name="name"
-          variant="standard"
         />
 
         <Grid container>
