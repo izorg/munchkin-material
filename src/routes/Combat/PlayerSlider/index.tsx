@@ -1,8 +1,11 @@
 import { css } from "@emotion/react";
 import { mdiCloseCircle } from "@mdi/js";
 import {
+  Box,
+  type BoxProps,
   IconButton,
   Paper,
+  styled,
   SvgIcon,
   useMediaQuery,
   useTheme,
@@ -16,14 +19,17 @@ import { setCombatHelper, setCombatHelperBonus } from "../../../ducks/combat";
 
 import Player from "./Player";
 
-type CombatPlayerSliderProps = {
-  className?: string;
+const Filler = styled("div", { label: "Filler" })({
+  flex: 1,
+});
+
+type CombatPlayerSliderProps = BoxProps & {
   helperId?: null | string;
   playerId: string;
 };
 
 const CombatPlayerSlider = (props: CombatPlayerSliderProps) => {
-  const { className, helperId, playerId } = props;
+  const { helperId, playerId, sx = [], ...rest } = props;
 
   const dispatch = useDispatch();
   const theme = useTheme();
@@ -207,28 +213,29 @@ const CombatPlayerSlider = (props: CombatPlayerSliderProps) => {
   `;
 
   return (
-    <div
+    <Box
+      {...rest}
       ref={ref}
-      className={className}
-      css={css`
-        display: flex;
-        overflow: hidden;
+      sx={[
+        {
+          display: "flex",
+          overflow: "hidden",
 
-        @media (orientation: portrait) {
-          width: 100%;
-        }
+          // eslint-disable-next-line sort-keys
+          "@media(orientation: portrait)": {
+            width: "100%",
+          },
 
-        @media (orientation: landscape) {
-          flex-direction: column;
-          height: 100%;
-        }
-      `}
+          // eslint-disable-next-line sort-keys
+          "@media (orientation: landscape)": {
+            flexDirection: "column",
+            height: "100%",
+          },
+        },
+        ...(Array.isArray(sx) ? sx : [sx]),
+      ]}
     >
-      <div
-        css={css`
-          flex: 1;
-        `}
-      />
+      <Filler />
       <motion.div
         ref={containerRef}
         animate={animate}
@@ -278,12 +285,8 @@ const CombatPlayerSlider = (props: CombatPlayerSliderProps) => {
           </div>
         )}
       </motion.div>
-      <div
-        css={css`
-          flex: 1;
-        `}
-      />
-    </div>
+      <Filler />
+    </Box>
   );
 };
 

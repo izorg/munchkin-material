@@ -3,6 +3,7 @@ import { mdiCloseCircle } from "@mdi/js";
 import {
   IconButton,
   Paper,
+  styled,
   SvgIcon,
   useMediaQuery,
   useTheme,
@@ -17,6 +18,10 @@ import { removeMonster } from "../../../ducks/monsters";
 import usePresentSelector from "../../../utils/usePresentSelector";
 
 import Monster from "./Monster";
+
+const Filler = styled("div", { label: "Filler" })({
+  flex: 1,
+});
 
 const CombatMonsterSlider = ({ className }: { className?: string }) => {
   const dispatch = useDispatch();
@@ -197,11 +202,7 @@ const CombatMonsterSlider = ({ className }: { className?: string }) => {
         }
       `}
     >
-      <div
-        css={css`
-          flex: 1;
-        `}
-      />
+      <Filler />
       <motion.div
         ref={containerRef}
         animate={animate}
@@ -280,11 +281,7 @@ const CombatMonsterSlider = ({ className }: { className?: string }) => {
           </div>
         ))}
       </motion.div>
-      <div
-        css={css`
-          flex: 1;
-        `}
-      />
+      <Filler />
     </div>
   );
 };

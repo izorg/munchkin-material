@@ -71,7 +71,6 @@
   "parser": "@typescript-eslint/parser",
   "plugins": ["@emotion", "only-error"],
   "rules": {
-    "@emotion/syntax-preference": ["error", "string"],
     "import/order": [
       "error",
       {

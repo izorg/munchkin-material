@@ -161,9 +161,9 @@ const SinglePlayer = () => {
         `}
       >
         <CounterLabel
-          css={css`
-            font-size: 24px;
-          `}
+          sx={{
+            fontSize: "24px",
+          }}
         >
           {intl.formatMessage(counterMessages.strength)}
         </CounterLabel>
@@ -196,10 +196,10 @@ const SinglePlayer = () => {
           onClick={onSexToggle}
         >
           <SexIcon
-            css={css`
-              font-size: inherit;
-            `}
             sex={player.sex}
+            sx={{
+              fontSize: "inherit",
+            }}
           />
         </IconButton>
       </div>

@@ -90,22 +90,16 @@ const Combat = () => {
           `}
         >
           <PlayerSlider
-            css={css`
-              @media (orientation: landscape) {
-                flex: 1;
-              }
-            `}
             helperId={helperId}
             playerId={playerId as string}
+            sx={{
+              "@media (orientation: landscape)": {
+                flex: 1,
+              },
+            }}
           />
 
-          <Typography
-            component="div"
-            css={css`
-              text-align: center;
-            `}
-            variant="h4"
-          >
+          <Typography align="center" component="div" variant="h4">
             <sup
               css={[
                 valueCss,
