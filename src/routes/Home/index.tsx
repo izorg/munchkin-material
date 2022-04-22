@@ -1,5 +1,4 @@
 import { Box, Zoom } from "@mui/material";
-import { lazy, Suspense } from "react";
 import { useMatch } from "react-router-dom";
 
 import LevelLimitDialog from "../../components/levelLimit/Dialog";
@@ -8,19 +7,12 @@ import ScreenDialog from "../../components/ScreenDialog";
 import ThemeDialog from "../../components/theme/Dialog";
 import useEditMode from "../../utils/useEditMode";
 import usePresentSelector from "../../utils/usePresentSelector";
+import Player from "../Player";
 
 import AppBar from "./AppBar";
 import PlayerAddButton from "./PlayerAddButton";
 import PlayerList from "./PlayerList";
 import SinglePlayer from "./SinglePlayer";
-
-const Player = lazy(
-  () =>
-    import(
-      /* webpackPrefetch: true */
-      "../Player"
-    )
-);
 
 const Home = () => {
   const playerList = usePresentSelector((state) => state.playerList);
@@ -71,26 +63,17 @@ const Home = () => {
 
   return (
     <>
+      <AppBar empty={empty} singleMode={singleMode} />
       <Box
+        component="main"
         sx={{
-          backgroundColor: "background.default",
           display: "flex",
-          flexDirection: "column",
-          height: "100%;",
+          flex: 1,
+          height: "100%",
+          overflow: "hidden",
         }}
       >
-        <AppBar empty={empty} singleMode={singleMode} />
-        <Box
-          component="main"
-          sx={{
-            display: "flex",
-            flex: 1,
-            height: "100%",
-            overflow: "hidden",
-          }}
-        >
-          {content}
-        </Box>
+        {content}
       </Box>
 
       <Zoom appear={false} in={!singleMode}>
@@ -101,9 +84,7 @@ const Home = () => {
       <ThemeDialog />
 
       <ScreenDialog open={Boolean(playerMatch)}>
-        <Suspense fallback={null}>
-          <Player playerId={playerMatch?.params.id} />
-        </Suspense>
+        <Player playerId={playerMatch?.params.id} />
       </ScreenDialog>
     </>
   );

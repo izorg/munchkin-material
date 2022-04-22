@@ -8,9 +8,6 @@ const ScreenDialog = (props: DialogProps) => (
     hideBackdrop
     PaperProps={{
       elevation: 0,
-      sx: {
-        backgroundColor: "transparent",
-      },
       ...props.PaperProps,
     }}
     TransitionComponent={TransitionComponent}
