@@ -25,7 +25,7 @@ const PlayerDialogAppBar: FC<PlayerDialogAppBarProps> = ({
     <Title>{title}</Title>
 
     {onDelete && (
-      <TopIconButton edge="end" onClick={onDelete}>
+      <TopIconButton onClick={onDelete}>
         <SvgIcon>
           <path d={mdiDelete} />
         </SvgIcon>
