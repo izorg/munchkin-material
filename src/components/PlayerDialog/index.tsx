@@ -20,7 +20,7 @@ import {
   useTheme,
 } from "@mui/material";
 import { type FormEvent, useEffect, useMemo, useRef } from "react";
-import { FormattedMessage, useIntl } from "react-intl";
+import { useIntl } from "react-intl";
 import { useLocation } from "react-router-dom";
 
 import { addPlayerToList } from "../../ducks/playerList";
@@ -150,14 +150,15 @@ const PlayerDialog = () => {
     handleClose();
   };
 
-  const title = editPlayer ? (
-    <FormattedMessage
-      defaultMessage="Edit munchkin"
-      id="player.form.titleEdit"
-    />
-  ) : (
-    <FormattedMessage defaultMessage="New munchkin" id="player.form.title" />
-  );
+  const title = editPlayer
+    ? intl.formatMessage({
+        defaultMessage: "Edit munchkin",
+        id: "player.form.titleEdit",
+      })
+    : intl.formatMessage({
+        defaultMessage: "New munchkin",
+        id: "player.form.title",
+      });
 
   return (
     <Dialog
@@ -263,7 +264,10 @@ const PlayerDialog = () => {
           <Grid item xs={6}>
             <FormControl component="fieldset" margin="normal">
               <FormLabel component="legend">
-                <FormattedMessage defaultMessage="Sex" id="player.form.sex" />
+                {intl.formatMessage({
+                  defaultMessage: "Sex",
+                  id: "player.form.sex",
+                })}
               </FormLabel>
               <RadioGroup defaultValue={editPlayer?.sex || MALE} name="sex">
                 <FormControlLabel
@@ -291,10 +295,10 @@ const PlayerDialog = () => {
           <Grid item xs={6}>
             <FormControl margin="normal">
               <FormLabel>
-                <FormattedMessage
-                  defaultMessage="Color"
-                  id="player.form.color"
-                />
+                {intl.formatMessage({
+                  defaultMessage: "Color",
+                  id: "player.form.color",
+                })}
               </FormLabel>
               <ColorPicker
                 defaultValue={editPlayer?.color || randomColor}
@@ -308,7 +312,10 @@ const PlayerDialog = () => {
         <DialogActions>
           <CancelButton onClick={handleClose} />
           <SubmitButton>
-            <FormattedMessage defaultMessage="Save" id="player.form.save" />
+            {intl.formatMessage({
+              defaultMessage: "Save",
+              id: "player.form.save",
+            })}
           </SubmitButton>
         </DialogActions>
       )}
