@@ -12,12 +12,12 @@ import {
 import { motion, type TapInfo } from "framer-motion";
 import PropTypes from "prop-types";
 import { type KeyboardEvent, useCallback, useRef } from "react";
-import { useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import PlayerAvatar from "../../../../components/PlayerAvatar";
 import PlayerListItemText from "../../../../components/PlayerListItemText";
 import { togglePlayer, unselectAllPlayers } from "../../../../ducks/ui";
+import { useAppDispatch } from "../../../../store";
 import { type AvailableColor } from "../../../../utils/availableColors";
 import { useGoBack } from "../../../../utils/location";
 import { ios } from "../../../../utils/platforms";
@@ -32,7 +32,7 @@ type HomePlayerListItemProps = ListItemProps & {
 const HomePlayerListItem = (props: HomePlayerListItemProps) => {
   const { playerId, ...rest } = props;
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const location = useLocation();
   const navigate = useNavigate();
 

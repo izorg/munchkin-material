@@ -8,9 +8,9 @@ import {
   useEffect,
   useRef,
 } from "react";
-import { useDispatch } from "react-redux";
 
 import { setKeepAwake } from "../../ducks/settings";
+import { useAppDispatch } from "../../store";
 import usePresentSelector from "../../utils/usePresentSelector";
 
 type WakeLockContext = {
@@ -34,7 +34,7 @@ type WakeLockProviderProps = {
 };
 
 const WakeLockProvider: FC<WakeLockProviderProps> = ({ children }) => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const insomnia = window.plugins?.insomnia;
   const wakeLockSupport = !!insomnia || "wakeLock" in navigator;

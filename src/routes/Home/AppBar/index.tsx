@@ -3,7 +3,6 @@ import { SvgIcon } from "@mui/material";
 import PropTypes from "prop-types";
 import { cloneElement, type ReactNode, type VFC } from "react";
 import { FormattedMessage } from "react-intl";
-import { useDispatch } from "react-redux";
 
 import DiceButton from "../../../components/dice/Button";
 import SettingsIconButton from "../../../components/SettingsIconButton";
@@ -11,6 +10,7 @@ import Title from "../../../components/Title";
 import TopAppBar from "../../../components/TopAppBar";
 import TopIconButton from "../../../components/TopIconButton";
 import { setCombatPlayerBonus } from "../../../ducks/combat";
+import { useAppDispatch } from "../../../store";
 import { useGoBack } from "../../../utils/location";
 import useDeletePlayers from "../../../utils/useDeletePlayers";
 import useEditMode from "../../../utils/useEditMode";
@@ -28,7 +28,7 @@ type HomeAppBarProps = {
 
 const HomeAppBar: VFC<HomeAppBarProps> = (props) => {
   const { empty, singleMode } = props;
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const deletePlayers = useDeletePlayers();
   const goBack = useGoBack();

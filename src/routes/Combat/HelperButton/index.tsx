@@ -10,16 +10,16 @@ import {
 } from "@mui/material";
 import { memo, type MouseEvent } from "react";
 import { FormattedMessage } from "react-intl";
-import { useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import { addMonster } from "../../../ducks/monsters";
+import { useAppDispatch } from "../../../store";
 import createMonster from "../../../utils/createMonster";
 import { useGoBack } from "../../../utils/location";
 import usePresentSelector from "../../../utils/usePresentSelector";
 
 const CombatHelperButton = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const location = useLocation();
   const navigate = useNavigate();
   const theme = useTheme();

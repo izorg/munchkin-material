@@ -12,9 +12,9 @@ import { motion, useAnimation, useMotionValue } from "framer-motion";
 import PropTypes from "prop-types";
 import { memo, useEffect, useRef } from "react";
 import { FormattedMessage } from "react-intl";
-import { useDispatch } from "react-redux";
 
 import { removeMonster } from "../../../ducks/monsters";
+import { useAppDispatch } from "../../../store";
 import usePresentSelector from "../../../utils/usePresentSelector";
 
 import Monster from "./Monster";
@@ -24,7 +24,7 @@ const Filler = styled("div", { label: "Filler" })({
 });
 
 const CombatMonsterSlider = ({ className }: { className?: string }) => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const theme = useTheme();
 
   const ref = useRef<HTMLDivElement>(null);

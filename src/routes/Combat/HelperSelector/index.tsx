@@ -10,18 +10,18 @@ import {
   useTheme,
 } from "@mui/material";
 import { FormattedMessage } from "react-intl";
-import { useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
 
 import PlayerAvatar from "../../../components/PlayerAvatar";
 import PlayerListItemText from "../../../components/PlayerListItemText";
 import { setCombatHelper } from "../../../ducks/combat";
+import { useAppDispatch } from "../../../store";
 import { type AvailableColor } from "../../../utils/availableColors";
 import { useGoBack } from "../../../utils/location";
 import usePresentSelector from "../../../utils/usePresentSelector";
 
 const HelperSelector = (props: Omit<DialogProps, "onClose" | "open">) => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const location = useLocation();
   const theme = useTheme();
 

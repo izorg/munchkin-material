@@ -7,9 +7,9 @@ import {
   useContext,
   useEffect,
 } from "react";
-import { useDispatch } from "react-redux";
 
 import { setFullVersion } from "../../ducks/settings";
+import { useAppDispatch } from "../../store";
 import usePresentSelector from "../../utils/usePresentSelector";
 
 const FULL_VERSION_ID = "full_version";
@@ -35,7 +35,7 @@ type FullVersionProviderProps = {
 const FullVersionProvider: FC<FullVersionProviderProps> = ({ children }) => {
   const { cordova, store } = window;
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const fullVersion = usePresentSelector((state) => state.settings.fullVersion);
 

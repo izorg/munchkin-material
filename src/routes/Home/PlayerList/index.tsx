@@ -19,16 +19,16 @@ import {
 import { css } from "@emotion/react";
 import { List, type ListProps, Paper } from "@mui/material";
 import { useCallback, useState } from "react";
-import { useDispatch } from "react-redux";
 
 import { movePlayer } from "../../../ducks/playerList";
+import { useAppDispatch } from "../../../store";
 import usePresentSelector from "../../../utils/usePresentSelector";
 
 import Item from "./Item";
 import OverlayItem from "./OverlayItem";
 
 const HomePlayerList = (props: ListProps) => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const playerList = usePresentSelector((state) => state.playerList);
 

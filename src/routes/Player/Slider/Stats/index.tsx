@@ -2,7 +2,6 @@ import { Box, IconButton, useTheme } from "@mui/material";
 import PropTypes from "prop-types";
 import { useCallback } from "react";
 import { useIntl } from "react-intl";
-import { useDispatch } from "react-redux";
 
 import Counter, { counterMessages } from "../../../../components/Counter";
 import CounterLabel from "../../../../components/Counter/Label";
@@ -14,6 +13,7 @@ import {
   incrementPlayerLevel,
   togglePlayerSex,
 } from "../../../../ducks/players";
+import { useAppDispatch } from "../../../../store";
 import {
   isLevelDecrementDisabled,
   isLevelIncrementDisabled,
@@ -26,7 +26,7 @@ type PlayerStatsProps = {
 };
 
 const PlayerStats = ({ className, playerId }: PlayerStatsProps) => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const intl = useIntl();
   const theme = useTheme();
 

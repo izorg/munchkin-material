@@ -13,9 +13,9 @@ import {
 import { motion, useAnimation, useMotionValue } from "framer-motion";
 import PropTypes from "prop-types";
 import { memo, useEffect, useRef } from "react";
-import { useDispatch } from "react-redux";
 
 import { setCombatHelper, setCombatHelperBonus } from "../../../ducks/combat";
+import { useAppDispatch } from "../../../store";
 
 import Player from "./Player";
 
@@ -31,7 +31,7 @@ type CombatPlayerSliderProps = BoxProps & {
 const CombatPlayerSlider = (props: CombatPlayerSliderProps) => {
   const { helperId, playerId, sx = [], ...rest } = props;
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const theme = useTheme();
 
   const ref = useRef<HTMLDivElement>(null);

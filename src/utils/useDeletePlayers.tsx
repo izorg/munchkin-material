@@ -1,12 +1,12 @@
 import { useCallback } from "react";
 import { FormattedMessage } from "react-intl";
-import { useDispatch } from "react-redux";
 
 import { useUndo } from "../components/UndoProvider";
 import { removePlayers } from "../ducks/players";
+import { useAppDispatch } from "../store";
 
 const useDeletePlayers = (): ((players: string[]) => void) => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const { setMessage } = useUndo();
 
   return useCallback(

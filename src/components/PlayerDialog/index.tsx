@@ -21,11 +21,11 @@ import {
 } from "@mui/material";
 import { type FormEvent, useEffect, useMemo, useRef } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
-import { useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
 
 import { addPlayerToList } from "../../ducks/playerList";
 import { addPlayer, updatePlayer } from "../../ducks/players";
+import { useAppDispatch } from "../../store";
 import availableColors from "../../utils/availableColors";
 import createPlayer from "../../utils/createPlayer";
 import getRandomMaterialColor from "../../utils/getRandomMaterialColor";
@@ -44,7 +44,7 @@ import ColorPicker from "./ColorPicker";
 let appear = false;
 
 const PlayerDialog = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const intl = useIntl();
   const location = useLocation();
   const theme = useTheme();

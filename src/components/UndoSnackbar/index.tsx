@@ -8,14 +8,14 @@ import {
 } from "@mui/material";
 import { useEffect } from "react";
 import { FormattedMessage } from "react-intl";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { ActionCreators } from "redux-undo";
 
-import { type RootState } from "../../store";
+import { type RootState, useAppDispatch } from "../../store";
 import { useUndo } from "../UndoProvider";
 
 const UndoSnackbar = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const theme = useTheme();
 
   const mdDown = useMediaQuery(theme.breakpoints.down("md"));

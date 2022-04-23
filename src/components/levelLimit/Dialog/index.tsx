@@ -9,10 +9,10 @@ import {
 } from "@mui/material";
 import { type ChangeEvent, type FormEvent, useState } from "react";
 import { useIntl } from "react-intl";
-import { useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
 
 import { setEpic, setLevelLimit } from "../../../ducks/settings";
+import { useAppDispatch } from "../../../store";
 import {
   MAX_EPIC_LEVEL,
   MAX_LEVEL,
@@ -29,7 +29,7 @@ export const EPIC_MUNCHKIN_LIMIT = "epic";
 export const NO_LIMIT = "no-limit";
 
 const LevelLimitDialog = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const intl = useIntl();
   const location = useLocation();
 

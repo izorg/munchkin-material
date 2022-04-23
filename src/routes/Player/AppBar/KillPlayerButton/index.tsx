@@ -3,11 +3,11 @@ import { type IconButtonProps, SvgIcon, Tooltip } from "@mui/material";
 import PropTypes from "prop-types";
 import { type VFC } from "react";
 import { useIntl } from "react-intl";
-import { useDispatch } from "react-redux";
 
 import TopIconButton from "../../../../components/TopIconButton";
 import { useUndo } from "../../../../components/UndoProvider";
 import { killPlayer } from "../../../../ducks/players";
+import { useAppDispatch } from "../../../../store";
 import usePresentSelector from "../../../../utils/usePresentSelector";
 
 type KillPlayerButtonProps = {
@@ -18,7 +18,7 @@ const KillPlayerButton: VFC<KillPlayerButtonProps> = ({
   playerId,
   ...props
 }) => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const intl = useIntl();
 
   const { setMessage } = useUndo();

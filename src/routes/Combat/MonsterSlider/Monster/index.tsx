@@ -3,7 +3,6 @@ import { Typography, useTheme } from "@mui/material";
 import PropTypes from "prop-types";
 import { type ReactNode, useCallback } from "react";
 import { useIntl } from "react-intl";
-import { useDispatch } from "react-redux";
 
 import { counterMessages } from "../../../../components/Counter";
 import {
@@ -12,6 +11,7 @@ import {
   incrementMonsterBonus,
   incrementMonsterLevel,
 } from "../../../../ducks/monsters";
+import { useAppDispatch } from "../../../../store";
 import usePresentSelector from "../../../../utils/usePresentSelector";
 import Counter from "../../Counter";
 
@@ -23,7 +23,7 @@ type CombatMonsterProps = {
 const CombatMonster = (props: CombatMonsterProps) => {
   const { monsterId, title } = props;
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const intl = useIntl();
   const theme = useTheme();
 

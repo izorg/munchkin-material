@@ -15,11 +15,11 @@ import {
   useTheme,
 } from "@mui/material";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { TransitionGroup } from "react-transition-group";
 
 import { throwDice } from "../../../ducks/dice";
+import { useAppDispatch } from "../../../store";
 import { useGoBack } from "../../../utils/location";
 import usePresentSelector from "../../../utils/usePresentSelector";
 import DiceTransition from "../Transition";
@@ -36,7 +36,7 @@ const diceIcons = {
 };
 
 const DiceDialog = (props: Partial<DialogProps>) => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const location = useLocation();
   const theme = useTheme();
 

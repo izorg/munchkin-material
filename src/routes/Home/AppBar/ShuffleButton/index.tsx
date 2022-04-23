@@ -1,13 +1,13 @@
 import { mdiShuffle } from "@mdi/js";
 import { type IconButtonProps, SvgIcon, Tooltip } from "@mui/material";
 import { useIntl } from "react-intl";
-import { useDispatch } from "react-redux";
 
 import TopIconButton from "../../../../components/TopIconButton";
 import { shufflePlayers } from "../../../../ducks/playerList";
+import { useAppDispatch } from "../../../../store";
 
 const ShuffleButton = (props: IconButtonProps) => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const intl = useIntl();
 
   return (

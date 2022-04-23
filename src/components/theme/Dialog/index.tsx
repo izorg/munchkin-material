@@ -14,10 +14,10 @@ import {
 } from "@mui/material";
 import { type ChangeEvent, type SyntheticEvent, useMemo } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
-import { useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import { setTheme } from "../../../ducks/theme";
+import { useAppDispatch } from "../../../store";
 import themes from "../../../theme/colors";
 import { useGoBack } from "../../../utils/location";
 import usePresentSelector from "../../../utils/usePresentSelector";
@@ -34,7 +34,7 @@ type FormValues = {
 };
 
 const ThemeDialog = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const intl = useIntl();
   const location = useLocation();
   const navigate = useNavigate();
