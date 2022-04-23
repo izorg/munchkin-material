@@ -5,7 +5,7 @@ import { useIntl } from "react-intl";
 
 import Counter, { counterMessages } from "../../../components/Counter";
 import CounterLabel from "../../../components/Counter/Label";
-import SexIcon from "../../../components/Sex";
+import SexIcon from "../../../components/SexIcon";
 import { setCombatPlayerBonus } from "../../../ducks/combat";
 import {
   decrementPlayerGear,

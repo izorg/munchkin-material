@@ -4,7 +4,7 @@ import { type VFC } from "react";
 
 import { playerShape } from "../../utils/propTypes";
 import { type Player } from "../../utils/types";
-import SexIcon from "../Sex";
+import SexIcon from "../SexIcon";
 
 type PlayerListItemTextProps = {
   player: Player;

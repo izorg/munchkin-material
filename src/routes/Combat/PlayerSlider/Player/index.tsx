@@ -5,7 +5,7 @@ import { useCallback } from "react";
 import { useIntl } from "react-intl";
 
 import { counterMessages } from "../../../../components/Counter";
-import SexIcon from "../../../../components/Sex";
+import SexIcon from "../../../../components/SexIcon";
 import {
   setCombatHelperBonus,
   setCombatPlayerBonus,
