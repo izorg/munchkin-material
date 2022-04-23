@@ -15,9 +15,9 @@ import {
   Slide,
   SvgIcon,
   TextField,
+  type Theme,
   Typography,
   useMediaQuery,
-  useTheme,
 } from "@mui/material";
 import { type FormEvent, useEffect, useMemo, useRef } from "react";
 import { useIntl } from "react-intl";
@@ -47,7 +47,6 @@ const PlayerDialog = () => {
   const dispatch = useAppDispatch();
   const intl = useIntl();
   const location = useLocation();
-  const theme = useTheme();
 
   const deletePlayers = useDeletePlayers();
   const goBack = useGoBack();
@@ -93,7 +92,9 @@ const PlayerDialog = () => {
     [players]
   );
 
-  const fullScreen = useMediaQuery(theme.breakpoints.down("lg"));
+  const fullScreen = useMediaQuery<Theme>((theme) =>
+    theme.breakpoints.down("lg")
+  );
 
   useEffect(() => {
     appear = true;
