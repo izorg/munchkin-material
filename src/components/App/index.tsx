@@ -1,6 +1,6 @@
 import { lazy, Suspense, useEffect } from "react";
 
-import Home from "../../routes/Home";
+import Home from "../Home";
 import ScreenDialog from "../ScreenDialog";
 import UndoProvider from "../UndoProvider";
 import UndoSnackbar from "../UndoSnackbar";
