@@ -1,7 +1,8 @@
+import { type TypedUseSelectorHook } from "react-redux";
+
 import { type PresentState, useAppSelector } from "../store";
 
-const usePresentSelector = <Data>(
-  selector: (state: PresentState) => Data
-): Data => useAppSelector((state) => selector(state.present));
+const usePresentSelector: TypedUseSelectorHook<PresentState> = (selector) =>
+  useAppSelector((state) => selector(state.present));
 
 export default usePresentSelector;
