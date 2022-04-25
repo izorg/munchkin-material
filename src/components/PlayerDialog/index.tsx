@@ -31,6 +31,7 @@ import createPlayer from "../../utils/createPlayer";
 import getRandomMaterialColor from "../../utils/getRandomMaterialColor";
 import { useGoBack } from "../../utils/location";
 import { ios } from "../../utils/platforms";
+import shallowEqual from "../../utils/shallowEqual";
 import { type Player, Sex } from "../../utils/types";
 import useDeletePlayers from "../../utils/useDeletePlayers";
 import usePresentSelector from "../../utils/usePresentSelector";
@@ -113,38 +114,32 @@ const PlayerDialog = () => {
 
     const formData = new FormData(event.target as HTMLFormElement);
 
-    const values: Partial<Player> = Object.fromEntries(formData);
+    const formValues: Partial<Player> = Object.fromEntries(formData);
 
-    if (!values.name?.trim()) {
+    if (!formValues.name?.trim()) {
       handleClose();
 
       return;
     }
 
     if (editPlayer) {
-      const equal = Object.keys(values).every(
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        (key) => values[key] === editPlayer[key]
-      );
+      const player: Player = {
+        ...editPlayer,
+        ...formValues,
+      };
 
-      if (equal) {
+      if (shallowEqual(editPlayer, player)) {
         handleClose();
 
         return;
       }
 
-      dispatch(
-        updatePlayer({
-          ...editPlayer,
-          ...values,
-        })
-      );
+      dispatch(updatePlayer(player));
     } else {
-      const newPlayer = createPlayer(values);
+      const player = createPlayer(formValues);
 
-      dispatch(addPlayer(newPlayer));
-      dispatch(addPlayerToList(newPlayer.id));
+      dispatch(addPlayer(player));
+      dispatch(addPlayerToList(player.id));
     }
 
     handleClose();
