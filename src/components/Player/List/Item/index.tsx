@@ -23,6 +23,12 @@ const PlayerListItem = (props: PlayerListItemProps) => {
       component={motion.div}
       onTap={() => navigate(`/player/${player.id}`, { replace: true })}
       selected={selected}
+      sx={{
+        "@supports (padding: max(0px))": {
+          paddingLeft: "max(16px, env(safe-area-inset-left))",
+          paddingRight: "max(16px, env(safe-area-inset-right))",
+        },
+      }}
     >
       <ListItemAvatar>
         <PlayerAvatar
