@@ -44,7 +44,6 @@
     "react-router-dom": "6.3.0",
     "react-transition-group": "4.4.2",
     "redux": "4.2.0",
-    "redux-logger": "3.0.6",
     "redux-undo": "1.0.1",
     "smoothscroll-polyfill": "0.4.4",
     "stylis": "4.1.1",
