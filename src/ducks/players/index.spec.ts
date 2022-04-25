@@ -1,7 +1,6 @@
 import { v4 as uuid } from "uuid";
 
 import createPlayer from "../../utils/createPlayer";
-import { FEMALE, MALE } from "../../utils/sex";
 import { Sex } from "../../utils/types";
 
 import reducer, {
@@ -65,11 +64,11 @@ describe("Players reducer", () => {
 
     let players = reducer({ [player.id]: player }, togglePlayerSex(id));
 
-    expect(players[id].sex).toBe(FEMALE);
+    expect(players[id].sex).toBe(Sex.Female);
 
     players = reducer(players, togglePlayerSex(id));
 
-    expect(players[id].sex).toBe(MALE);
+    expect(players[id].sex).toBe(Sex.Male);
   });
 
   test("updates player data", () => {

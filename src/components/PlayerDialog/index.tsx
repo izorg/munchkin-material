@@ -31,8 +31,7 @@ import createPlayer from "../../utils/createPlayer";
 import getRandomMaterialColor from "../../utils/getRandomMaterialColor";
 import { useGoBack } from "../../utils/location";
 import { ios } from "../../utils/platforms";
-import { FEMALE, MALE } from "../../utils/sex";
-import { type Player } from "../../utils/types";
+import { type Player, Sex } from "../../utils/types";
 import useDeletePlayers from "../../utils/useDeletePlayers";
 import usePresentSelector from "../../utils/usePresentSelector";
 import CancelButton from "../CancelButton";
@@ -270,7 +269,7 @@ const PlayerDialog = () => {
                   id: "player.form.sex",
                 })}
               </FormLabel>
-              <RadioGroup defaultValue={editPlayer?.sex || MALE} name="sex">
+              <RadioGroup defaultValue={editPlayer?.sex || Sex.Male} name="sex">
                 <FormControlLabel
                   control={<Radio color="primary" />}
                   label={
@@ -278,7 +277,7 @@ const PlayerDialog = () => {
                       <path d={mdiGenderMale} />
                     </SvgIcon>
                   }
-                  value={MALE}
+                  value={Sex.Male}
                 />
                 <FormControlLabel
                   control={<Radio color="primary" />}
@@ -287,7 +286,7 @@ const PlayerDialog = () => {
                       <path d={mdiGenderFemale} />
                     </SvgIcon>
                   }
-                  value={FEMALE}
+                  value={Sex.Female}
                 />
               </RadioGroup>
             </FormControl>
