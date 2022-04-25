@@ -4,12 +4,12 @@ import "./scroll";
 
 import { Suspense } from "react";
 import { createRoot } from "react-dom/client";
+import { MemoryRouter } from "react-router-dom";
 
 import App from "./components/App";
 import AugmentedStylesProvider from "./components/AugmentedStylesProvider";
 import AugmentedThemeProvider from "./components/AugmentedThemeProvider";
 import CordovaProvider from "./components/CordovaProvider";
-import CordovaRouter from "./components/CordovaRouter";
 import FullVersionProvider from "./components/FullVersionProvider";
 import LocaleProvider from "./components/LocaleProvider";
 import ReduxProvider from "./components/ReduxProvider";
@@ -24,7 +24,7 @@ document.querySelector("head")?.appendChild(cordovaScript);
 const root = createRoot(document.getElementById("root") as HTMLElement);
 
 root.render(
-  <CordovaRouter>
+  <MemoryRouter>
     <ReduxProvider>
       <Suspense fallback={null}>
         <CordovaProvider>
@@ -42,5 +42,5 @@ root.render(
         </CordovaProvider>
       </Suspense>
     </ReduxProvider>
-  </CordovaRouter>
+  </MemoryRouter>
 );
