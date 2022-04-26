@@ -1,5 +1,7 @@
-import { mdiDelete, mdiGenderFemale, mdiGenderMale } from "@mdi/js";
+import { mdiGenderFemale, mdiGenderMale } from "@mdi/js";
 import {
+  Box,
+  Button,
   Dialog,
   DialogActions,
   DialogContent,
@@ -9,7 +11,6 @@ import {
   FormControlLabel,
   FormLabel,
   Grid,
-  IconButton,
   Radio,
   RadioGroup,
   Slide,
@@ -210,20 +211,6 @@ const PlayerDialog = () => {
             <Typography component="span" noWrap variant="h6">
               {title}
             </Typography>
-            {handleDelete && (
-              <IconButton
-                edge="end"
-                onClick={handleDelete}
-                sx={{
-                  marginLeft: "8px",
-                  padding: "4px",
-                }}
-              >
-                <SvgIcon>
-                  <path d={mdiDelete} />
-                </SvgIcon>
-              </IconButton>
-            )}
           </>
         )}
       </DialogTitle>
@@ -307,6 +294,17 @@ const PlayerDialog = () => {
       </DialogContent>
       {!fullScreen && (
         <DialogActions>
+          {editPlayer && (
+            <>
+              <Button onClick={handleDelete} sx={{ marginLeft: 1 }}>
+                {intl.formatMessage({
+                  defaultMessage: "Delete",
+                  id: "player.form.delete",
+                })}
+              </Button>
+              <Box flex={1} />
+            </>
+          )}
           <CancelButton onClick={handleClose} />
           <SubmitButton form={formId}>
             {intl.formatMessage({
