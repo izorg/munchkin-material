@@ -40,6 +40,7 @@ import SubmitButton from "../SubmitButton";
 
 import AppBar from "./AppBar";
 import ColorPicker from "./ColorPicker";
+import formId from "./formId";
 
 let appear = false;
 
@@ -163,10 +164,6 @@ const PlayerDialog = () => {
       onClose={handleClose}
       open={open}
       PaperProps={{
-        component: "form",
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        onSubmit,
         sx: (theme) => ({
           backgroundColor:
             theme.palette.mode === "dark"
@@ -243,70 +240,75 @@ const PlayerDialog = () => {
           },
         })}
       >
-        <TextField
-          autoFocus={!editPlayer}
-          defaultValue={editPlayer?.name}
-          fullWidth
-          label={intl.formatMessage({
-            defaultMessage: "Name",
-            id: "player.form.namePlaceholder",
-          })}
-          margin="normal"
-          name="name"
-        />
+        <form id={formId} onSubmit={onSubmit}>
+          <TextField
+            autoFocus={!editPlayer}
+            defaultValue={editPlayer?.name}
+            fullWidth
+            label={intl.formatMessage({
+              defaultMessage: "Name",
+              id: "player.form.namePlaceholder",
+            })}
+            margin="normal"
+            name="name"
+          />
 
-        <Grid container>
-          <Grid item xs={6}>
-            <FormControl component="fieldset" margin="normal">
-              <FormLabel component="legend">
-                {intl.formatMessage({
-                  defaultMessage: "Sex",
-                  id: "player.form.sex",
-                })}
-              </FormLabel>
-              <RadioGroup defaultValue={editPlayer?.sex || Sex.Male} name="sex">
-                <FormControlLabel
-                  control={<Radio color="primary" />}
-                  label={
-                    <SvgIcon sx={{ verticalAlign: "middle" }}>
-                      <path d={mdiGenderMale} />
-                    </SvgIcon>
-                  }
-                  value={Sex.Male}
-                />
-                <FormControlLabel
-                  control={<Radio color="primary" />}
-                  label={
-                    <SvgIcon sx={{ verticalAlign: "middle" }}>
-                      <path d={mdiGenderFemale} />
-                    </SvgIcon>
-                  }
-                  value={Sex.Female}
-                />
-              </RadioGroup>
-            </FormControl>
-          </Grid>
+          <Grid container>
+            <Grid item xs={6}>
+              <FormControl component="fieldset" margin="normal">
+                <FormLabel component="legend">
+                  {intl.formatMessage({
+                    defaultMessage: "Sex",
+                    id: "player.form.sex",
+                  })}
+                </FormLabel>
+                <RadioGroup
+                  defaultValue={editPlayer?.sex || Sex.Male}
+                  name="sex"
+                >
+                  <FormControlLabel
+                    control={<Radio color="primary" />}
+                    label={
+                      <SvgIcon sx={{ verticalAlign: "middle" }}>
+                        <path d={mdiGenderMale} />
+                      </SvgIcon>
+                    }
+                    value={Sex.Male}
+                  />
+                  <FormControlLabel
+                    control={<Radio color="primary" />}
+                    label={
+                      <SvgIcon sx={{ verticalAlign: "middle" }}>
+                        <path d={mdiGenderFemale} />
+                      </SvgIcon>
+                    }
+                    value={Sex.Female}
+                  />
+                </RadioGroup>
+              </FormControl>
+            </Grid>
 
-          <Grid item xs={6}>
-            <FormControl margin="normal">
-              <FormLabel>
-                {intl.formatMessage({
-                  defaultMessage: "Color",
-                  id: "player.form.color",
-                })}
-              </FormLabel>
-              <ColorPicker
-                defaultValue={editPlayer?.color || randomColor}
-                name="color"
-              />
-            </FormControl>
+            <Grid item xs={6}>
+              <FormControl margin="normal">
+                <FormLabel>
+                  {intl.formatMessage({
+                    defaultMessage: "Color",
+                    id: "player.form.color",
+                  })}
+                </FormLabel>
+                <ColorPicker
+                  defaultValue={editPlayer?.color || randomColor}
+                  name="color"
+                />
+              </FormControl>
+            </Grid>
           </Grid>
-        </Grid>
+        </form>
       </DialogContent>
       {!fullScreen && (
         <DialogActions>
           <CancelButton onClick={handleClose} />
-          <SubmitButton>
+          <SubmitButton form={formId}>
             {intl.formatMessage({
               defaultMessage: "Save",
               id: "player.form.save",

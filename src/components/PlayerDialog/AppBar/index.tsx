@@ -7,6 +7,7 @@ import BackButton from "../../BackButton";
 import Title from "../../Title";
 import TopAppBar from "../../TopAppBar";
 import TopIconButton from "../../TopIconButton";
+import formId from "../formId";
 
 type PlayerDialogAppBarProps = {
   onCancel?: () => void;
@@ -32,7 +33,7 @@ const PlayerDialogAppBar: FC<PlayerDialogAppBarProps> = ({
       </TopIconButton>
     )}
 
-    <TopIconButton edge="end" type="submit">
+    <TopIconButton edge="end" form={formId} type="submit">
       <SvgIcon>
         <path d={mdiCheck} />
       </SvgIcon>
