@@ -12,7 +12,7 @@ const PlayerList = ({ selectedPlayerId, ...props }: PlayerListProps) => {
   const players = usePresentSelector((state) => state.players);
 
   return (
-    <List component={Paper} elevation={2} square {...props}>
+    <List component={Paper} disablePadding elevation={2} square {...props}>
       {playerList.map((playerId) => (
         <Item
           key={playerId}
