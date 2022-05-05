@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import {
   createContext,
   type FC,
-  type ReactNode,
+  type PropsWithChildren,
   useCallback,
   useContext,
   useEffect,
@@ -29,11 +29,7 @@ const Context = createContext<WakeLockContext>({
 
 export const useWakeLock = (): WakeLockContext => useContext(Context);
 
-type WakeLockProviderProps = {
-  children?: ReactNode;
-};
-
-const WakeLockProvider: FC<WakeLockProviderProps> = ({ children }) => {
+const WakeLockProvider: FC<PropsWithChildren<unknown>> = ({ children }) => {
   const dispatch = useAppDispatch();
 
   const insomnia = window.plugins?.insomnia;

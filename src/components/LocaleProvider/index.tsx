@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { type FC, type ReactNode, useEffect, useState } from "react";
+import { type FC, type PropsWithChildren, useEffect, useState } from "react";
 import { type IntlConfig, IntlProvider } from "react-intl";
 
 import { getDirection, getLocale, loadMessages } from "../../i18n";
@@ -23,11 +23,7 @@ type LocalState = {
     }
 );
 
-type LocaleProviderProps = {
-  children?: ReactNode;
-};
-
-const LocaleProvider: FC<LocaleProviderProps> = ({ children }) => {
+const LocaleProvider: FC<PropsWithChildren<unknown>> = ({ children }) => {
   const locale =
     usePresentSelector((state) => state.settings.locale) || defaultLocale;
 

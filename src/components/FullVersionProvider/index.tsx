@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import {
   createContext,
   type FC,
-  type ReactNode,
+  type PropsWithChildren,
   useCallback,
   useContext,
   useEffect,
@@ -28,11 +28,7 @@ const Context = createContext<FullVersionContext>({
 
 export const useFullVersion = (): FullVersionContext => useContext(Context);
 
-type FullVersionProviderProps = {
-  children?: ReactNode;
-};
-
-const FullVersionProvider: FC<FullVersionProviderProps> = ({ children }) => {
+const FullVersionProvider: FC<PropsWithChildren<unknown>> = ({ children }) => {
   const { cordova, store } = window;
 
   const dispatch = useAppDispatch();

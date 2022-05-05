@@ -6,7 +6,7 @@ import {
 } from "@mui/material";
 import { deepmerge } from "@mui/utils";
 import PropTypes from "prop-types";
-import { type FC, type ReactNode, useEffect, useMemo } from "react";
+import { type FC, type PropsWithChildren, useEffect, useMemo } from "react";
 import { useIntl } from "react-intl";
 
 import { getDirection } from "../../i18n";
@@ -17,11 +17,7 @@ import usePreviewTheme from "../theme/usePreviewTheme";
 
 import useStatusBar from "./useStatusBar";
 
-type AugmentedThemeProviderProps = {
-  children?: ReactNode;
-};
-
-const AugmentedThemeProvider: FC<AugmentedThemeProviderProps> = ({
+const AugmentedThemeProvider: FC<PropsWithChildren<unknown>> = ({
   children,
 }) => {
   const { locale } = useIntl();

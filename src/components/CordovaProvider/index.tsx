@@ -1,5 +1,11 @@
 import PropTypes from "prop-types";
-import { type FC, type ReactNode, useEffect, useRef, useState } from "react";
+import {
+  type FC,
+  type PropsWithChildren,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import { useLocation } from "react-router-dom";
 
 import AsyncResource from "../../utils/AsyncResource";
@@ -26,11 +32,7 @@ const cordovaResource = new AsyncResource(
   )
 );
 
-type CordovaProviderProps = {
-  children?: ReactNode;
-};
-
-const CordovaProvider: FC<CordovaProviderProps> = ({ children }) => {
+const CordovaProvider: FC<PropsWithChildren<unknown>> = ({ children }) => {
   cordovaResource.read();
 
   const location = useLocation();

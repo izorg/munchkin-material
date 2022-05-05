@@ -1,14 +1,10 @@
 import PropTypes from "prop-types";
-import { type FC, type ReactNode } from "react";
+import { type FC, type PropsWithChildren } from "react";
 import { Provider } from "react-redux";
 
 import store from "../../store";
 
-type ReduxProviderProps = {
-  children?: ReactNode;
-};
-
-const ReduxProvider: FC<ReduxProviderProps> = ({ children }) => (
+const ReduxProvider: FC<PropsWithChildren<unknown>> = ({ children }) => (
   <Provider store={store}>{children}</Provider>
 );
 
