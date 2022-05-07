@@ -56,6 +56,6 @@
   "themeDialog.pureBlack": "Preto puro",
   "undo": "Desfazer",
   "undo.deletePlayers": "{count, plural, one {Jogador removido} other {Jogadores removidos}}",
-  "undo.killPlayer": "{name} {sex, select, female{morreu} male{morreu}}",
+  "undo.killPlayer": "{name} {sex, select, female{morreu} male{morreu} other {}}",
   "undo.resetPlayers": "{name} {sex, select, female{has died} homem {has died} other {}}"
 }

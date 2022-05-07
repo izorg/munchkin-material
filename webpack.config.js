@@ -162,6 +162,10 @@ module.exports = {
   ].filter(Boolean),
 
   resolve: {
+    alias: {
+      "@formatjs/icu-messageformat-parser":
+        "@formatjs/icu-messageformat-parser/no-parser",
+    },
     extensions: [".tsx", ".ts", ".js"],
   },
 };

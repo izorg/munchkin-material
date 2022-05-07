@@ -1,3 +1,5 @@
+import { type MessageFormatElement } from "react-intl";
+
 export const CS = "cs";
 export const DA = "da";
 export const DE = "de";
@@ -71,29 +73,29 @@ export const getLocale = (): string => {
 
 const loaders: Record<
   string,
-  () => Promise<{ default: Record<string, string> }>
+  () => Promise<{ default: Record<string, MessageFormatElement[]> }>
 > = {
-  [CS]: () => import("../languages/cs.json"),
-  [DA]: () => import("../languages/da.json"),
-  [DE]: () => import("../languages/de.json"),
-  [EL]: () => import("../languages/el.json"),
-  [EN]: () => import("../languages/en.json"),
-  [ES]: () => import("../languages/es.json"),
-  [FI]: () => import("../languages/fi.json"),
-  [FR]: () => import("../languages/fr.json"),
-  [HE]: () => import("../languages/he.json"),
-  [HU]: () => import("../languages/hu.json"),
-  [HY]: () => import("../languages/hy.json"),
-  [IT]: () => import("../languages/it.json"),
-  [NB]: () => import("../languages/nb.json"),
-  [NL]: () => import("../languages/nl.json"),
-  [PL]: () => import("../languages/pl.json"),
-  [PT]: () => import("../languages/pt.json"),
-  [PT_BR]: () => import("../languages/pt-BR.json"),
-  [RU]: () => import("../languages/ru.json"),
-  [SK]: () => import("../languages/sk.json"),
-  [TR]: () => import("../languages/tr.json"),
-  [UK]: () => import("../languages/uk.json"),
+  [CS]: () => import("../languages/generated/cs.json"),
+  [DA]: () => import("../languages/generated/da.json"),
+  [DE]: () => import("../languages/generated/de.json"),
+  [EL]: () => import("../languages/generated/el.json"),
+  [EN]: () => import("../languages/generated/en.json"),
+  [ES]: () => import("../languages/generated/es.json"),
+  [FI]: () => import("../languages/generated/fi.json"),
+  [FR]: () => import("../languages/generated/fr.json"),
+  [HE]: () => import("../languages/generated/he.json"),
+  [HU]: () => import("../languages/generated/hu.json"),
+  [HY]: () => import("../languages/generated/hy.json"),
+  [IT]: () => import("../languages/generated/it.json"),
+  [NB]: () => import("../languages/generated/nb.json"),
+  [NL]: () => import("../languages/generated/nl.json"),
+  [PL]: () => import("../languages/generated/pl.json"),
+  [PT]: () => import("../languages/generated/pt.json"),
+  [PT_BR]: () => import("../languages/generated/pt-BR.json"),
+  [RU]: () => import("../languages/generated/ru.json"),
+  [SK]: () => import("../languages/generated/sk.json"),
+  [TR]: () => import("../languages/generated/tr.json"),
+  [UK]: () => import("../languages/generated/uk.json"),
 };
 
 export const loadMessages = async (locale: string) => {

@@ -7,6 +7,7 @@
 .stylelintcache
 .vscode/
 /coverage/
+/languages/generated/
 /screenshots/
 /tsconfig.tsbuildinfo
 /web/
