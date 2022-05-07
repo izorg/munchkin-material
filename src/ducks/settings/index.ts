@@ -19,7 +19,7 @@ const initialState: SettingsState = {
   epic: false,
   fullVersion: false,
   keepAwake: false,
-  levelLimit: false,
+  levelLimit: true,
   locale: undefined,
   singleMode: false,
   singleModePlayerId: undefined,
