@@ -10,7 +10,7 @@ const MenuListItemText = ({ sx = [], ...props }: ListItemTextProps) => (
         overflow: "hidden",
         textOverflow: "ellipsis",
       },
-      ...(Array.isArray(sx) ? sx : [sx]),
+      ...(Array.isArray(sx) ? sx : [sx]), // eslint-disable-line @typescript-eslint/no-unsafe-assignment
     ]}
   />
 );

@@ -14,7 +14,7 @@ const MenuListItem = <D extends ElementType>({
           paddingRight: "max(16px, env(safe-area-inset-left))",
         },
       },
-      ...(Array.isArray(sx) ? sx : [sx]),
+      ...(Array.isArray(sx) ? sx : [sx]), // eslint-disable-line @typescript-eslint/no-unsafe-assignment
     ]}
   />
 );

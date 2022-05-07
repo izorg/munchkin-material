@@ -22,7 +22,7 @@ const CounterLabel = ({ sx = [], ...props }: BoxProps) => {
           textOverflow: "ellipsis",
           whiteSpace: "nowrap",
         },
-        ...(Array.isArray(sx) ? sx : [sx]),
+        ...(Array.isArray(sx) ? sx : [sx]), // eslint-disable-line @typescript-eslint/no-unsafe-assignment
       ]}
       {...props}
     />
