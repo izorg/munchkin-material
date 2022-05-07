@@ -1,3 +1,4 @@
+import { captureException } from "@sentry/react";
 import PropTypes from "prop-types";
 import { type FC, type PropsWithChildren, useEffect, useState } from "react";
 import { type IntlConfig, IntlProvider } from "react-intl";
@@ -80,7 +81,13 @@ const LocaleProvider: FC<PropsWithChildren<unknown>> = ({ children }) => {
   }
 
   return (
-    <IntlProvider locale={localeState.locale} messages={localeState.messages}>
+    <IntlProvider
+      locale={localeState.locale}
+      messages={localeState.messages}
+      onError={
+        process.env.NODE_ENV === "production" ? captureException : undefined
+      }
+    >
       {children}
     </IntlProvider>
   );
