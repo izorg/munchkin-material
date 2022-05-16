@@ -4,6 +4,8 @@ import { type FC, type PropsWithChildren, useEffect, useState } from "react";
 import { type IntlConfig, IntlProvider } from "react-intl";
 
 import { getDirection, getLocale, loadMessages } from "../../i18n";
+import store from "../../store";
+import AsyncResource from "../../utils/AsyncResource";
 import usePresentSelector from "../../utils/usePresentSelector";
 
 const defaultLocale = getLocale();
@@ -12,16 +14,15 @@ type LocalState = {
   locale: string;
 } & (
   | {
-      loading: true;
-    }
-  | {
       error: Error;
-      loading: false;
     }
   | {
-      loading: false;
       messages: IntlConfig["messages"];
     }
+);
+
+const messagesResource = new AsyncResource(
+  loadMessages(store.getState().present.settings.locale || defaultLocale)
 );
 
 const LocaleProvider: FC<PropsWithChildren<unknown>> = ({ children }) => {
@@ -29,8 +30,8 @@ const LocaleProvider: FC<PropsWithChildren<unknown>> = ({ children }) => {
     usePresentSelector((state) => state.settings.locale) || defaultLocale;
 
   const [localeState, setLocaleState] = useState<LocalState>({
-    loading: true,
     locale,
+    messages: messagesResource.read(),
   });
 
   useEffect(() => {
@@ -45,7 +46,6 @@ const LocaleProvider: FC<PropsWithChildren<unknown>> = ({ children }) => {
         if (active && error instanceof Error) {
           setLocaleState({
             error,
-            loading: false,
             locale,
           });
         }
@@ -55,7 +55,6 @@ const LocaleProvider: FC<PropsWithChildren<unknown>> = ({ children }) => {
 
       if (active) {
         setLocaleState({
-          loading: false,
           locale,
           messages,
         });
@@ -74,10 +73,6 @@ const LocaleProvider: FC<PropsWithChildren<unknown>> = ({ children }) => {
 
   if ("error" in localeState) {
     throw localeState.error;
-  }
-
-  if (localeState.loading) {
-    return null;
   }
 
   return (
