@@ -1,5 +1,3 @@
-import { type MessageFormatElement } from "react-intl";
-
 export const CS = "cs";
 export const DA = "da";
 export const DE = "de";
@@ -47,16 +45,20 @@ const supportedLocales = [
   SK,
   TR,
   UK,
-];
+] as const;
 
-export const getLocale = (): string => {
+export type SupportedLocale = typeof supportedLocales[number];
+
+export const getLocale = () => {
   const languages = navigator?.languages?.length
     ? navigator.languages
     : [navigator.language];
 
   for (const language of languages) {
-    if (supportedLocales.includes(language)) {
-      return language;
+    const locale = supportedLocales.find((item) => item === language);
+
+    if (locale) {
+      return locale;
     }
 
     const currentLocale = supportedLocales.find(
@@ -71,10 +73,7 @@ export const getLocale = (): string => {
   return EN;
 };
 
-const loaders: Record<
-  string,
-  () => Promise<{ default: Record<string, MessageFormatElement[]> }>
-> = {
+const loaders = {
   [CS]: () => import("../languages/generated/cs.json"),
   [DA]: () => import("../languages/generated/da.json"),
   [DE]: () => import("../languages/generated/de.json"),
@@ -98,12 +97,8 @@ const loaders: Record<
   [UK]: () => import("../languages/generated/uk.json"),
 };
 
-export const loadMessages = async (locale: string) => {
+export const loadMessages = async (locale: SupportedLocale) => {
   const loader = loaders[locale];
-
-  if (!loader) {
-    throw new Error(`Locale ${locale} is not supported`);
-  }
 
   const { default: messages } = await loader();
 

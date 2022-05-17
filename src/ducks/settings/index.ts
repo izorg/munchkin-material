@@ -1,5 +1,6 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 
+import { type SupportedLocale } from "../../i18n";
 import type store from "../../store";
 import createPlayer from "../../utils/createPlayer";
 import { startCombat } from "../combat";
@@ -10,7 +11,7 @@ type SettingsState = {
   fullVersion: boolean;
   keepAwake: boolean;
   levelLimit: boolean;
-  locale?: string;
+  locale?: SupportedLocale;
   singleMode: boolean;
   singleModePlayerId?: string;
 };
@@ -49,7 +50,7 @@ const settingsSlice = createSlice({
       levelLimit: action.payload,
     }),
 
-    setLocale: (state, action: PayloadAction<string>) => ({
+    setLocale: (state, action: PayloadAction<SupportedLocale>) => ({
       ...state,
       locale: action.payload,
     }),
