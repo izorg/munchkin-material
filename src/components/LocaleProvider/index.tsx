@@ -8,6 +8,8 @@ import store from "../../store";
 import AsyncResource from "../../utils/AsyncResource";
 import usePresentSelector from "../../utils/usePresentSelector";
 
+import polyfillIntl from "./polyfillIntl";
+
 const defaultLocale = getLocale();
 
 type LocalState = {
@@ -21,11 +23,15 @@ type LocalState = {
     }
 );
 
-const messagesResource = new AsyncResource(
-  loadMessages(store.getState().present.settings.locale || defaultLocale)
-);
+const initialLocale = store.getState().present.settings.locale || defaultLocale;
+
+const polyfillResource = new AsyncResource(polyfillIntl(initialLocale));
+
+const messagesResource = new AsyncResource(loadMessages(initialLocale));
 
 const LocaleProvider: FC<PropsWithChildren<unknown>> = ({ children }) => {
+  polyfillResource.read();
+
   const locale =
     usePresentSelector((state) => state.settings.locale) || defaultLocale;
 
@@ -38,6 +44,8 @@ const LocaleProvider: FC<PropsWithChildren<unknown>> = ({ children }) => {
     let active = true;
 
     void (async () => {
+      await polyfillIntl(locale);
+
       let messages;
 
       try {

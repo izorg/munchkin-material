@@ -1,7 +1,7 @@
 import "./sentry";
 
 import { captureException } from "@sentry/react";
-import { StrictMode } from "react";
+import { StrictMode, Suspense } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 
@@ -23,13 +23,15 @@ root.render(
       <ReduxProvider>
         <WorkboxProvider>
           <WakeLockProvider>
-            <LocaleProvider>
-              <AugmentedStylesProvider>
-                <AugmentedThemeProvider>
-                  <App />
-                </AugmentedThemeProvider>
-              </AugmentedStylesProvider>
-            </LocaleProvider>
+            <Suspense fallback={null}>
+              <LocaleProvider>
+                <AugmentedStylesProvider>
+                  <AugmentedThemeProvider>
+                    <App />
+                  </AugmentedThemeProvider>
+                </AugmentedStylesProvider>
+              </LocaleProvider>
+            </Suspense>
           </WakeLockProvider>
         </WorkboxProvider>
       </ReduxProvider>
