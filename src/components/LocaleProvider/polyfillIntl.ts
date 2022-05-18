@@ -1,3 +1,4 @@
+import { shouldPolyfill as shouldPolyfillDateTimeFormat } from "@formatjs/intl-datetimeformat/should-polyfill";
 import { shouldPolyfill as shouldPolyfillGetCanonicalLocales } from "@formatjs/intl-getcanonicallocales/should-polyfill";
 import { shouldPolyfill as shouldPolyfillLocale } from "@formatjs/intl-locale/should-polyfill";
 import { shouldPolyfill as shouldPolyfillNumberFormat } from "@formatjs/intl-numberformat/should-polyfill";
@@ -27,6 +28,30 @@ import {
   TR,
   UK,
 } from "../../i18n";
+
+const dateTimeFormatLoaders = {
+  [CS]: () => import("@formatjs/intl-datetimeformat/locale-data/cs"),
+  [DA]: () => import("@formatjs/intl-datetimeformat/locale-data/da"),
+  [DE]: () => import("@formatjs/intl-datetimeformat/locale-data/de"),
+  [EL]: () => import("@formatjs/intl-datetimeformat/locale-data/el"),
+  [EN]: () => import("@formatjs/intl-datetimeformat/locale-data/en"),
+  [ES]: () => import("@formatjs/intl-datetimeformat/locale-data/es"),
+  [FI]: () => import("@formatjs/intl-datetimeformat/locale-data/fi"),
+  [FR]: () => import("@formatjs/intl-datetimeformat/locale-data/fr"),
+  [HE]: () => import("@formatjs/intl-datetimeformat/locale-data/he"),
+  [HU]: () => import("@formatjs/intl-datetimeformat/locale-data/hu"),
+  [HY]: () => import("@formatjs/intl-datetimeformat/locale-data/hy"),
+  [IT]: () => import("@formatjs/intl-datetimeformat/locale-data/it"),
+  [NB]: () => import("@formatjs/intl-datetimeformat/locale-data/nb"),
+  [NL]: () => import("@formatjs/intl-datetimeformat/locale-data/nl"),
+  [PL]: () => import("@formatjs/intl-datetimeformat/locale-data/pl"),
+  [PT]: () => import("@formatjs/intl-datetimeformat/locale-data/pt"),
+  [PT_BR]: () => import("@formatjs/intl-datetimeformat/locale-data/pt"),
+  [RU]: () => import("@formatjs/intl-datetimeformat/locale-data/ru"),
+  [SK]: () => import("@formatjs/intl-datetimeformat/locale-data/sk"),
+  [TR]: () => import("@formatjs/intl-datetimeformat/locale-data/tr"),
+  [UK]: () => import("@formatjs/intl-datetimeformat/locale-data/uk"),
+};
 
 const pluralRulesLoaders = {
   [CS]: () => import("@formatjs/intl-pluralrules/locale-data/cs"),
@@ -93,6 +118,11 @@ const polyfillIntl = async (locale: SupportedLocale) => {
   if (shouldPolyfillNumberFormat(locale)) {
     await import("@formatjs/intl-numberformat/polyfill-force");
     await numberFormatLoaders[locale]();
+  }
+
+  if (shouldPolyfillDateTimeFormat(locale)) {
+    await import("@formatjs/intl-datetimeformat/polyfill-force");
+    await dateTimeFormatLoaders[locale]();
   }
 };
 

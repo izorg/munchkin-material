@@ -27,6 +27,7 @@
     "@emotion/cache": "11.7.1",
     "@emotion/react": "11.9.0",
     "@emotion/styled": "11.8.1",
+    "@formatjs/intl-datetimeformat": "5.0.2",
     "@formatjs/intl-getcanonicallocales": "1.9.2",
     "@formatjs/intl-locale": "2.4.47",
     "@formatjs/intl-numberformat": "7.4.3",
