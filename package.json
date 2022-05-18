@@ -2,6 +2,7 @@
   "name": "munchkin-web",
   "version": "13.3.7",
   "scripts": {
+    "analyze": "cross-env ANALYZE=true npm run build:web",
     "build:cordova": "cross-env NODE_ENV=production BUILD=cordova webpack",
     "build:web": "cross-env NODE_ENV=production BUILD=web webpack",
     "clean": "rm -rf coverage dist messages node_modules/.cache screenshots web",
@@ -14,7 +15,6 @@
     "reinstall": "rm -rf node_modules package-lock.json && npm install",
     "screenshots": "cross-env NODE_ENV=test node scripts/screenshots.mjs",
     "start": "cross-env NODE_ENV=production BUILD=web webpack-dev-server",
-    "stats": "cross-env STATS=true npm run build:web",
     "stylelint": "stylelint --cache \"**/*.{css,html}\"",
     "test": "jest",
     "tsc": "tsc"

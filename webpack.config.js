@@ -15,7 +15,7 @@ const web = process.env.BUILD === "web";
 
 const outputPath = path.resolve(__dirname, cordova ? "cordova/www" : "web");
 
-const ids = process.env.STATS || dev ? "named" : "deterministic";
+const ids = process.env.ANALYZE || dev ? "named" : "deterministic";
 
 module.exports = {
   devServer: {
@@ -153,7 +153,7 @@ module.exports = {
 
     !dev && web && new GenerateSW(),
 
-    process.env.STATS &&
+    process.env.ANALYZE &&
       new BundleAnalyzerPlugin({
         analyzerHost: "localhost",
         analyzerPort: 3001,
