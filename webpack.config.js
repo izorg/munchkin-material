@@ -28,10 +28,7 @@ module.exports = {
     port: 3000,
   },
 
-  devtool:
-    (dev && "eval-source-map") ||
-    (cordova && "inline-source-map") ||
-    "source-map",
+  devtool: (dev && "eval-source-map") || "source-map",
 
   entry:
     (dev && "./src/dev/index.js") ||
