@@ -35,7 +35,7 @@ const HomePlayerList = (props: ListProps) => {
   const [activeId, setActiveId] = useState<null | string>(null);
 
   const handleDragStart = (event: DragStartEvent) => {
-    setActiveId(event.active.id);
+    setActiveId(event.active.id as string);
   };
 
   const handleDragEnd = useCallback(
@@ -49,8 +49,8 @@ const HomePlayerList = (props: ListProps) => {
       }
 
       if (active.id !== over.id) {
-        const oldIndex = playerList.indexOf(active.id);
-        const newIndex = playerList.indexOf(over.id);
+        const oldIndex = playerList.indexOf(active.id as string);
+        const newIndex = playerList.indexOf(over.id as string);
 
         dispatch(movePlayer(oldIndex, newIndex));
       }
