@@ -1,6 +1,7 @@
 {
   "name": "munchkin-web",
   "version": "13.3.9",
+  "workspaces": ["cordova"],
   "scripts": {
     "analyze": "cross-env ANALYZE=true npm run build:web",
     "build:cordova": "cross-env NODE_ENV=production BUILD=cordova webpack",
