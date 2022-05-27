@@ -1,31 +1,37 @@
 import { mdiMenuDown, mdiMenuUp } from "@mdi/js";
-import { Box, SvgIcon, type Theme } from "@mui/material";
+import {
+  Box,
+  type BoxProps,
+  SvgIcon,
+  type Theme,
+  useMediaQuery,
+} from "@mui/material";
 import { type SxProps } from "@mui/system";
 import PropTypes from "prop-types";
-import { type ReactNode } from "react";
+import { type FC } from "react";
 
 import CounterButton from "../../Counter/Button";
 import CounterLabel from "../../Counter/Label";
 
 type CombatCounterProps = {
-  className?: string;
   decrementDisabled?: boolean;
   incrementDisabled?: boolean;
   onDecrement: () => void;
   onIncrement: () => void;
-  title: ReactNode;
+  title: string;
   value: number;
-};
+} & BoxProps;
 
-const CombatCounter = (props: CombatCounterProps) => {
+const CombatCounter: FC<CombatCounterProps> = (props) => {
   const {
-    className,
     decrementDisabled,
     incrementDisabled,
     onDecrement,
     onIncrement,
+    sx = [],
     title,
     value,
+    ...rest
   } = props;
 
   const buttonSx: SxProps<Theme> = (theme) => ({
@@ -48,24 +54,25 @@ const CombatCounter = (props: CombatCounterProps) => {
 
   return (
     <Box
-      className={className}
-      sx={{
-        alignItems: "center",
-        display: "flex",
-        flexDirection: "column",
-      }}
+      {...rest}
+      sx={[
+        {
+          alignItems: "center",
+          display: "flex",
+          flexDirection: "column",
+        },
+        ...(sx instanceof Array ? sx : [sx]),
+      ]}
     >
       <CounterLabel
         sx={{
-          fontSize: "16px",
+          fontSize: useMediaQuery(
+            "@media (orientation: portrait) and (min-width: 360px) and (min-height: 600px)"
+          )
+            ? "20px"
+            : "16px",
           textAlign: "center",
           width: "100%",
-
-          // eslint-disable-next-line sort-keys
-          "@media (orientation: portrait) and (min-width: 360px) and (min-height: 600px)":
-            {
-              fontSize: "20px",
-            },
         }}
       >
         {title}
@@ -115,12 +122,11 @@ const CombatCounter = (props: CombatCounterProps) => {
 };
 
 CombatCounter.propTypes = {
-  className: PropTypes.string,
   decrementDisabled: PropTypes.bool,
   incrementDisabled: PropTypes.bool,
   onDecrement: PropTypes.func.isRequired,
   onIncrement: PropTypes.func.isRequired,
-  title: PropTypes.node.isRequired,
+  title: PropTypes.string.isRequired,
   value: PropTypes.number.isRequired,
 };
 

@@ -1,6 +1,7 @@
 import { css } from "@emotion/react";
 import { mdiCloseCircle } from "@mdi/js";
 import {
+  Box,
   IconButton,
   Paper,
   styled,
@@ -224,28 +225,30 @@ const CombatMonsterSlider = ({ className }: { className?: string }) => {
         style={{ x, y }}
       >
         {monsters.map((id, monsterIndex) => (
-          <div
+          <Box
             key={id}
-            css={css`
-              flex-shrink: 0;
-              padding: ${theme.spacing(1)};
-            `}
+            sx={{
+              flexShrink: 0,
+              padding: 1,
+            }}
           >
             <Paper
-              css={css`
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                position: relative;
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                position: "relative",
 
-                @media (orientation: portrait) {
-                  width: 280px;
-                }
+                // eslint-disable-next-line sort-keys
+                "@media (orientation: portrait)": {
+                  width: "280px",
+                },
 
-                @media (orientation: landscape) {
-                  max-width: 280px;
-                }
-              `}
+                // eslint-disable-next-line sort-keys
+                "@media (orientation: landscape)": {
+                  maxWidth: "280px",
+                },
+              }}
             >
               <Monster
                 monsterId={id}
@@ -262,15 +265,15 @@ const CombatMonsterSlider = ({ className }: { className?: string }) => {
 
               {monsters.length > 1 && (
                 <IconButton
-                  css={css`
-                    height: 36px;
-                    padding: 6px;
-                    position: absolute;
-                    right: 0;
-                    top: 0;
-                    width: 36px;
-                  `}
                   onClick={() => handleRemove(id)}
+                  sx={{
+                    height: "36px",
+                    padding: "6px",
+                    position: "absolute",
+                    right: 0,
+                    top: 0,
+                    width: "36px",
+                  }}
                 >
                   <SvgIcon>
                     <path d={mdiCloseCircle} />
@@ -278,7 +281,7 @@ const CombatMonsterSlider = ({ className }: { className?: string }) => {
                 </IconButton>
               )}
             </Paper>
-          </div>
+          </Box>
         ))}
       </motion.div>
       <Filler />

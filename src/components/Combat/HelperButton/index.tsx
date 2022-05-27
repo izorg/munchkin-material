@@ -1,4 +1,3 @@
-import { css } from "@emotion/react";
 import { mdiAccountPlusOutline, mdiEmoticonDevilOutline } from "@mdi/js";
 import {
   Backdrop,
@@ -6,7 +5,6 @@ import {
   SpeedDialAction,
   SpeedDialIcon,
   SvgIcon,
-  useTheme,
 } from "@mui/material";
 import { memo, type MouseEvent } from "react";
 import { FormattedMessage } from "react-intl";
@@ -22,7 +20,6 @@ const CombatHelperButton = () => {
   const dispatch = useAppDispatch();
   const location = useLocation();
   const navigate = useNavigate();
-  const theme = useTheme();
 
   const goBack = useGoBack();
   const helperId = usePresentSelector((state) => state.combat.helperId);
@@ -61,33 +58,19 @@ const CombatHelperButton = () => {
   return (
     <>
       <Backdrop
-        css={css`
-          background-color: ${theme.palette.mode === "light"
-            ? "rgba(250, 250, 250, .9)"
-            : undefined};
-          z-index: 1;
-        `}
         onClick={onBack}
         open={open}
+        sx={(theme) => ({
+          backgroundColor:
+            theme.palette.mode === "light"
+              ? "rgba(250, 250, 250, .9)"
+              : undefined,
+          zIndex: 1,
+        })}
       />
 
       <SpeedDial
         ariaLabel=" "
-        css={css`
-          bottom: ${theme.spacing(2)};
-          position: fixed;
-          right: ${theme.spacing(2)};
-          z-index: 2;
-
-          ${theme.breakpoints.up("sm")} {
-            bottom: ${theme.spacing(3)};
-            right: ${theme.spacing(3)};
-
-            @supports (padding: max(0px)) {
-              right: max(${theme.spacing(3)}, env(safe-area-inset-right));
-            }
-          }
-        `}
         FabProps={{
           color: open ? "default" : "primary",
         }}
@@ -110,6 +93,22 @@ const CombatHelperButton = () => {
           }
         }}
         open={open}
+        sx={(theme) => ({
+          bottom: theme.spacing(2),
+          position: "fixed",
+          right: theme.spacing(2),
+          zIndex: 2,
+
+          [theme.breakpoints.up("sm")]: {
+            bottom: theme.spacing(3),
+            right: theme.spacing(3),
+
+            // eslint-disable-next-line sort-keys
+            "@supports (padding: max(0px))": {
+              right: `max(${theme.spacing(3)}, env(safe-area-inset-right))`,
+            },
+          },
+        })}
         TransitionProps={{
           appear: false,
         }}

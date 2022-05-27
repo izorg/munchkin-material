@@ -1,5 +1,4 @@
-import { css } from "@emotion/react";
-import { Typography, useTheme } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import PropTypes from "prop-types";
 import { type ReactNode, useCallback } from "react";
 import { useIntl } from "react-intl";
@@ -25,7 +24,6 @@ const CombatMonster = (props: CombatMonsterProps) => {
 
   const dispatch = useAppDispatch();
   const intl = useIntl();
-  const theme = useTheme();
 
   const monsters = usePresentSelector((state) => state.monsters);
 
@@ -51,53 +49,53 @@ const CombatMonster = (props: CombatMonsterProps) => {
     [dispatch, id]
   );
 
-  const itemCss = css`
-    flex: 1;
-    overflow: hidden;
-  `;
+  const itemSx = {
+    flex: 1,
+    overflow: "hidden",
+  };
 
   return (
-    <div
-      css={css`
-        padding: ${theme.spacing(1)};
-        text-align: center;
-      `}
+    <Box
+      sx={{
+        padding: 1,
+        textAlign: "center",
+      }}
     >
       <Typography
         align="center"
         component="div"
-        css={css`
-          margin: 0 0 16px;
-          padding: 0 24px;
-        `}
         noWrap
+        sx={{
+          margin: "0 0 16px",
+          padding: "0 24px",
+        }}
       >
         {title}
       </Typography>
 
-      <div
-        css={css`
-          display: flex;
-          margin: 0 auto;
-          max-width: 280px;
-        `}
+      <Box
+        sx={{
+          display: "flex",
+          margin: "0 auto",
+          maxWidth: "280px",
+        }}
       >
         <Counter
-          css={itemCss}
           onDecrement={omMonsterLevelDecrement}
           onIncrement={omMonsterLevelIncrement}
+          sx={itemSx}
           title={intl.formatMessage(counterMessages.level)}
           value={level}
         />
         <Counter
-          css={itemCss}
           onDecrement={onMonsterBonusDecrement}
           onIncrement={onMonsterBonusIncrement}
+          sx={itemSx}
           title={intl.formatMessage(counterMessages.modifier)}
           value={bonus}
         />
-      </div>
-    </div>
+      </Box>
+    </Box>
   );
 };
 

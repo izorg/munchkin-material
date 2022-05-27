@@ -1,7 +1,6 @@
-import { css } from "@emotion/react";
-import { IconButton, Typography, useTheme } from "@mui/material";
+import { Box, IconButton, Typography } from "@mui/material";
 import PropTypes from "prop-types";
-import { useCallback } from "react";
+import { type FC, useCallback } from "react";
 import { useIntl } from "react-intl";
 
 import {
@@ -29,10 +28,9 @@ type CombatPlayerProps = {
   playerId: string;
 };
 
-const CombatPlayer = ({ playerId }: CombatPlayerProps) => {
+const CombatPlayer: FC<CombatPlayerProps> = ({ playerId }) => {
   const dispatch = useAppDispatch();
   const intl = useIntl();
-  const theme = useTheme();
 
   const players = usePresentSelector((state) => state.players);
   const { gear, id, level, name, sex } = players[playerId];
@@ -96,75 +94,75 @@ const CombatPlayer = ({ playerId }: CombatPlayerProps) => {
     [dispatch, id]
   );
 
-  const itemCss = css`
-    flex: 1;
-    overflow: hidden;
-  `;
+  const itemSx = {
+    flex: 1,
+    overflow: "hidden",
+  };
 
   return (
-    <div
-      css={css`
-        padding: ${theme.spacing(1)};
-        position: relative;
-        text-align: center;
-      `}
+    <Box
+      sx={{
+        padding: 1,
+        position: "relative",
+        textAlign: "center",
+      }}
     >
       <Typography
         align="center"
         component="div"
-        css={css`
-          margin: 0 0 16px;
-          padding: 0 24px;
-        `}
         noWrap
+        sx={{
+          margin: "0 0 16px",
+          padding: "0 24px",
+        }}
       >
         {name}
       </Typography>
 
       <IconButton
-        css={css`
-          left: 0;
-          padding: 6px;
-          position: absolute;
-          top: 0;
-        `}
         onClick={() => dispatch(togglePlayerSex(id))}
+        sx={{
+          left: 0,
+          padding: "6px",
+          position: "absolute",
+          top: 0,
+        }}
       >
         <SexIcon sex={sex} />
       </IconButton>
 
-      <div
-        css={css`
-          display: flex;
-          margin: 0 auto;
-          max-width: 420px;
-        `}
+      <Box
+        sx={{
+          display: "flex",
+          margin: "0 auto",
+          maxWidth: "420px",
+        }}
       >
         <Counter
-          css={itemCss}
           decrementDisabled={levelDecrementDisabled}
           incrementDisabled={levelIncrementDisabled}
           onDecrement={onPlayerLevelDecrement}
           onIncrement={onPlayerLevelIncrement}
+          sx={itemSx}
           title={intl.formatMessage(counterMessages.level)}
           value={level}
         />
         <Counter
-          css={itemCss}
           onDecrement={onPlayerGearDecrement}
           onIncrement={onPlayerGearIncrement}
+          sx={itemSx}
           title={intl.formatMessage(counterMessages.gear)}
           value={gear}
         />
         <Counter
-          css={itemCss}
           onDecrement={onBonusDecrement}
           onIncrement={onBonusIncrement}
+          sx={itemSx}
           title={intl.formatMessage(counterMessages.modifier)}
           value={bonus}
         />
-      </div>
-    </div>
+      </Box>
+    </Box>
   );
 };
 
