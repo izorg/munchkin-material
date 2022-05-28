@@ -1,6 +1,6 @@
 {
   "name": "munchkin-web",
-  "version": "13.3.11",
+  "version": "13.3.12",
   "workspaces": [
     "cordova"
   ],
