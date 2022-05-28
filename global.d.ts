@@ -37,9 +37,5 @@ declare global {
     app: {
       exitApp: () => void;
     };
-    splashscreen: {
-      hide(): void;
-      show(): void;
-    };
   }
 }
