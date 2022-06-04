@@ -5,7 +5,7 @@
     "build:ios": "cordova build ios",
     "build:www": "cross-env NODE_ENV=production webpack",
     "cordova:prepare": "cordova prepare android ios",
-    "prepare:prepare:windows": "cordova prepare windows",
+    "cordova:prepare:windows": "cordova prepare windows",
     "run:android": "cordova run android",
     "run:ios": "cordova run ios"
   },
