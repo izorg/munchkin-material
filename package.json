@@ -5,8 +5,8 @@
     "cordova"
   ],
   "scripts": {
-    "analyze": "cross-env ANALYZE=true npm run build:web",
-    "build:web": "cross-env NODE_ENV=production webpack",
+    "analyze": "cross-env ANALYZE=true npm run build",
+    "build": "cross-env NODE_ENV=production webpack",
     "clean": "rm -rf coverage dist messages node_modules/.cache screenshots web",
     "dev": "cross-env NODE_ENV=development webpack serve",
     "eslint": "eslint --cache '**/*.{js,json,mjs,ts,tsx}'",

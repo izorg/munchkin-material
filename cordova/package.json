@@ -4,6 +4,8 @@
     "build:android": "cordova build android --release",
     "build:ios": "cordova build ios",
     "build:www": "cross-env NODE_ENV=production webpack",
+    "prepare": "cordova prepare android ios",
+    "prepare:windows": "cordova prepare windows",
     "reinstall": "rm -rf node_modules platforms plugins package-lock.json && npm install && cordova prepare android && cordova prepare ios",
     "run:android": "cordova run android",
     "run:ios": "cordova run ios"
@@ -34,6 +36,7 @@
     }
   },
   "devDependencies": {
+    "cordova": "11.0.0",
     "cordova-android": "10.1.2",
     "cordova-ios": "6.2.0",
     "cordova-plugin-add-swift-support": "2.0.2",

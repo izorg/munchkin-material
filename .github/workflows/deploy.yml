@@ -39,7 +39,7 @@ jobs:
         run: npm run test
 
       - name: Build 🔨
-        run: npm run build:web
+        run: npm run build
 
       - name: Create Sentry release
         uses: getsentry/action-release@v1.1.6
