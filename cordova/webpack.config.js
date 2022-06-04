@@ -1,34 +1,15 @@
 /* eslint-env node */
 const path = require("path");
 
-const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-const CopyPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
-const { GenerateSW } = require("workbox-webpack-plugin");
 
-const dev = process.env.NODE_ENV === "development";
-const prod = process.env.NODE_ENV === "production";
-
-const outputPath = path.resolve(__dirname, "web");
-
-const ids = process.env.ANALYZE || dev ? "named" : "deterministic";
+const outputPath = path.resolve(__dirname, "www");
 
 module.exports = {
-  devServer: {
-    client: {
-      overlay: true,
-    },
-    compress: true,
-    historyApiFallback: true,
-    host: "0.0.0.0",
-    port: 3000,
-  },
+  devtool: "source-map",
 
-  devtool: dev ? "eval-source-map" : "source-map",
-
-  entry: (dev && "./src/dev/index.js") || "./src/web.tsx",
+  entry: "./src/cordova.tsx",
 
   mode: process.env.NODE_ENV,
 
@@ -41,23 +22,22 @@ module.exports = {
           {
             loader: "babel-loader",
             options: {
-              cacheDirectory: dev,
+              cwd: "../",
               plugins: [
-                prod && [
+                [
                   "babel-plugin-formatjs",
                   {
                     removeDefaultMessage: true,
                   },
                 ],
-                prod && [
+                [
                   "babel-plugin-react-remove-properties",
                   {
                     properties: ["data-screenshots"],
                   },
                 ],
-                prod && "babel-plugin-transform-react-remove-prop-types",
-                dev && "react-refresh/babel",
-              ].filter(Boolean),
+                "babel-plugin-transform-react-remove-prop-types",
+              ],
             },
           },
         ],
@@ -111,15 +91,10 @@ module.exports = {
     ],
   },
 
-  optimization: {
-    chunkIds: ids,
-    moduleIds: ids,
-  },
-
   output: {
     filename: "js/[name].js",
     path: outputPath,
-    publicPath: "/",
+    publicPath: "",
   },
 
   plugins: [
@@ -127,30 +102,10 @@ module.exports = {
       verbose: false,
     }),
 
-    new CopyPlugin({
-      patterns: [
-        {
-          context: "src/static",
-          from: "**/*",
-        },
-      ],
-    }),
-
     new HtmlWebpackPlugin({
-      template: "src/web.html",
+      template: "src/cordova.html",
     }),
-
-    dev && new ReactRefreshWebpackPlugin(),
-
-    !dev && new GenerateSW(),
-
-    process.env.ANALYZE &&
-      new BundleAnalyzerPlugin({
-        analyzerHost: "localhost",
-        analyzerPort: 3001,
-        defaultSizes: "gzip",
-      }),
-  ].filter(Boolean),
+  ],
 
   resolve: {
     alias: {

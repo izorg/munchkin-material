@@ -1,19 +1,19 @@
 import "web-animations-js";
 
-import "./scroll";
+import "../../src/scroll";
 
 import { Suspense } from "react";
 import { createRoot } from "react-dom/client";
 import { MemoryRouter } from "react-router-dom";
 
-import App from "./components/App";
-import AugmentedStylesProvider from "./components/AugmentedStylesProvider";
-import AugmentedThemeProvider from "./components/AugmentedThemeProvider";
-import CordovaProvider from "./components/CordovaProvider";
-import FullVersionProvider from "./components/FullVersionProvider";
-import LocaleProvider from "./components/LocaleProvider";
-import ReduxProvider from "./components/ReduxProvider";
-import WakeLockProvider from "./components/WakeLockProvider";
+import App from "../../src/components/App";
+import AugmentedStylesProvider from "../../src/components/AugmentedStylesProvider";
+import AugmentedThemeProvider from "../../src/components/AugmentedThemeProvider";
+import CordovaProvider from "../../src/components/CordovaProvider";
+import FullVersionProvider from "../../src/components/FullVersionProvider";
+import LocaleProvider from "../../src/components/LocaleProvider";
+import ReduxProvider from "../../src/components/ReduxProvider";
+import WakeLockProvider from "../../src/components/WakeLockProvider";
 
 const cordovaScript = document.createElement("script");
 
