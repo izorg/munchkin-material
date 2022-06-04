@@ -35,7 +35,6 @@
     }
   },
   "devDependencies": {
-    "cordova": "11.0.0",
     "cordova-android": "10.1.2",
     "cordova-ios": "6.2.0",
     "cordova-plugin-add-swift-support": "2.0.2",
