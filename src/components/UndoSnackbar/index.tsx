@@ -6,12 +6,10 @@ import {
   useMediaQuery,
   useTheme,
 } from "@mui/material";
-import { useEffect } from "react";
 import { FormattedMessage } from "react-intl";
-import { useSelector } from "react-redux";
 import { ActionCreators } from "redux-undo";
 
-import { type RootState, useAppDispatch } from "../../store";
+import { useAppDispatch, useAppSelector } from "../../store";
 import { useUndo } from "../UndoProvider";
 
 const UndoSnackbar = () => {
@@ -20,7 +18,7 @@ const UndoSnackbar = () => {
 
   const mdDown = useMediaQuery(theme.breakpoints.down("md"));
 
-  const open = useSelector((state: RootState) => state.past.length > 0);
+  const open = useAppSelector((state) => state.past.length > 0);
 
   const onClose = (event: unknown, reason: SnackbarCloseReason | "undo") => {
     if (reason === "undo") {
@@ -31,12 +29,6 @@ const UndoSnackbar = () => {
   };
 
   const { message, setMessage } = useUndo();
-
-  useEffect(() => {
-    if (open && !message) {
-      console.warn("No message for undo snackbar");
-    }
-  }, [message, open]);
 
   return (
     <Snackbar
