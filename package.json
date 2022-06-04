@@ -14,7 +14,7 @@
     "i18n:extract": "formatjs extract --out-file=messages.json 'src/**/*.{js,ts,tsx}' && formatjs compile --out-file=languages/en.json messages.json && rm messages.json && prettier --write languages/en.json",
     "lint": "npm run tsc && npm run eslint && npm run stylelint",
     "prepare": "husky install",
-    "reinstall": "rm -rf node_modules package-lock.json && npm install",
+    "reinstall": "rm -rf cordova/node_modules node_modules package-lock.json && npm install",
     "screenshots": "cross-env NODE_ENV=test node scripts/screenshots.mjs",
     "start": "cross-env NODE_ENV=production webpack-dev-server",
     "stylelint": "stylelint --cache '**/*.{css,html}'",
@@ -74,7 +74,7 @@
     "@types/cordova": "0.0.34",
     "@types/dom-screen-wake-lock": "1.0.0",
     "@types/jest": "28.1.0",
-    "@types/react": "18.0.10",
+    "@types/react": "18.0.11",
     "@types/react-dom": "18.0.5",
     "@types/stylis": "4.0.2",
     "@types/uuid": "8.3.4",
@@ -93,7 +93,7 @@
     "cross-env": "7.0.3",
     "css-loader": "6.7.1",
     "dotenv": "16.0.1",
-    "eslint": "8.16.0",
+    "eslint": "8.17.0",
     "eslint-config-prettier": "8.5.0",
     "eslint-plugin-import": "2.26.0",
     "eslint-plugin-jest": "26.4.6",
@@ -128,5 +128,10 @@
     "webpack-cli": "4.9.2",
     "webpack-dev-server": "4.9.1",
     "workbox-webpack-plugin": "6.5.3"
+  },
+  "overrides": {
+    "cordova-windows": {
+      "shelljs": "0.8.5"
+    }
   }
 }

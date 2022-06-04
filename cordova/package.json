@@ -4,9 +4,8 @@
     "build:android": "cordova build android --release",
     "build:ios": "cordova build ios",
     "build:www": "cross-env NODE_ENV=production webpack",
-    "prepare": "cordova prepare android ios",
-    "prepare:windows": "cordova prepare windows",
-    "reinstall": "rm -rf node_modules platforms plugins package-lock.json && npm install && cordova prepare android && cordova prepare ios",
+    "cordova:prepare": "cordova prepare android ios",
+    "prepare:prepare:windows": "cordova prepare windows",
     "run:android": "cordova run android",
     "run:ios": "cordova run ios"
   },
