@@ -4,7 +4,7 @@ import {
 } from "@mdi/js";
 import { Box, SvgIcon, type Theme } from "@mui/material";
 import PropTypes from "prop-types";
-import { type HTMLAttributes, type ReactNode, type VFC } from "react";
+import { type FC, type HTMLAttributes, type ReactNode } from "react";
 import { defineMessages } from "react-intl";
 
 import Button from "./Button";
@@ -38,7 +38,7 @@ type CounterProps = Omit<HTMLAttributes<HTMLDivElement>, "title"> & {
   value: number;
 };
 
-const Counter: VFC<CounterProps> = ({
+const Counter: FC<CounterProps> = ({
   className,
   decrementDisabled,
   incrementDisabled,

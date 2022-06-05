@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import { IconButton, useTheme } from "@mui/material";
+import { Box, IconButton, useTheme } from "@mui/material";
 import { useCallback } from "react";
 import { useIntl } from "react-intl";
 
@@ -97,21 +97,22 @@ const SinglePlayer = () => {
   const lineHeight = (theme.typography.body2.lineHeight as number) / 2;
 
   return (
-    <div
-      css={css`
-        align-self: center;
-        display: flex;
-        flex: 1;
-        flex-direction: column-reverse;
-        height: 100%;
-        margin: 0 auto;
-        max-height: 600px;
-        max-width: 800px;
+    <Box
+      sx={{
+        alignSelf: "center",
+        display: "flex",
+        flex: 1,
+        flexDirection: "column-reverse",
+        height: "100%",
+        margin: "0 auto",
+        maxHeight: "600px",
+        maxWidth: "800px",
 
-        @media (orientation: landscape) {
-          flex-direction: row;
-        }
-      `}
+        // eslint-disable-next-line sort-keys
+        "@media (orientation: landscape)": {
+          flexDirection: "row",
+        },
+      }}
     >
       <div
         css={css`
@@ -185,15 +186,15 @@ const SinglePlayer = () => {
         </div>
 
         <IconButton
-          css={css`
-            font-size: 32px;
-            padding: 8px;
-
-            @media (orientation: portrait) {
-              margin-top: 16px;
-            }
-          `}
           onClick={onSexToggle}
+          sx={{
+            fontSize: "32px",
+
+            // eslint-disable-next-line sort-keys
+            "@media (orientation: portrait)": {
+              marginTop: 2,
+            },
+          }}
         >
           <SexIcon
             sex={player.sex}
@@ -203,7 +204,7 @@ const SinglePlayer = () => {
           />
         </IconButton>
       </div>
-    </div>
+    </Box>
   );
 };
 

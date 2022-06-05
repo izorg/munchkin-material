@@ -186,22 +186,24 @@ const CombatMonsterSlider = ({ className }: { className?: string }) => {
   };
 
   return (
-    <div
+    <Box
       ref={ref}
       className={className}
-      css={css`
-        display: flex;
-        overflow: hidden;
+      sx={{
+        display: "flex",
+        overflow: "hidden",
 
-        @media (orientation: portrait) {
-          width: 100%;
-        }
+        // eslint-disable-next-line sort-keys
+        "@media (orientation: portrait)": {
+          width: "100%",
+        },
 
-        @media (orientation: landscape) {
-          flex-direction: column;
-          height: 100%;
-        }
-      `}
+        // eslint-disable-next-line sort-keys
+        "@media (orientation: landscape)": {
+          flexDirection: "column",
+          height: "100%",
+        },
+      }}
     >
       <Filler />
       <m.div
@@ -285,7 +287,7 @@ const CombatMonsterSlider = ({ className }: { className?: string }) => {
         ))}
       </m.div>
       <Filler />
-    </div>
+    </Box>
   );
 };
 
