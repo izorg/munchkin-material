@@ -232,7 +232,7 @@ const CombatPlayerSlider = (props: CombatPlayerSliderProps) => {
             height: "100%",
           },
         },
-        ...(Array.isArray(sx) ? sx : [sx]), // eslint-disable-line @typescript-eslint/no-unsafe-assignment
+        ...(sx instanceof Array ? sx : [sx]),
       ]}
     >
       <Filler />

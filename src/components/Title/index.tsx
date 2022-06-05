@@ -12,7 +12,7 @@ const Title: FC<TypographyProps> = ({ sx = [], ...props }) => (
           xs: "24px",
         },
       },
-      ...(Array.isArray(sx) ? sx : [sx]), // eslint-disable-line @typescript-eslint/no-unsafe-assignment
+      ...(sx instanceof Array ? sx : [sx]),
     ]}
     variant="h6"
     {...props}

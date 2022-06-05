@@ -36,7 +36,7 @@ const Color = forwardRef<HTMLButtonElement, ColorProps>(function Color(
           padding: 0,
           width: "48px",
         },
-        ...(Array.isArray(sx) ? sx : [sx]), // eslint-disable-line @typescript-eslint/no-unsafe-assignment
+        ...(sx instanceof Array ? sx : [sx]),
       ]}
       value={value}
       {...rest}
