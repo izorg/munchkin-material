@@ -8,33 +8,12 @@ import {
 } from "react";
 import { useLocation } from "react-router-dom";
 
-import AsyncResource from "../../utils/AsyncResource";
 import { useGoBack } from "../../utils/location";
 
 import hideWindowsBackButton from "./hideWindowsBackButton";
 import useNavigationBreadcrumbs from "./useNavigationBreadcrumbs";
 
-const cordovaResource = new AsyncResource(
-  new Promise<void>((resolve) =>
-    document.addEventListener(
-      "deviceready",
-      () => {
-        if (!window.BuildInfo.debug) {
-          void import("../../sentry").then(() => resolve());
-
-          return;
-        }
-
-        resolve();
-      },
-      false
-    )
-  )
-);
-
 const CordovaProvider: FC<PropsWithChildren<unknown>> = ({ children }) => {
-  cordovaResource.read();
-
   const location = useLocation();
 
   const [initialKey] = useState(location.key);

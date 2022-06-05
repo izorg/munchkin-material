@@ -23,24 +23,36 @@ document.querySelector("head")?.appendChild(cordovaScript);
 
 const root = createRoot(document.getElementById("root") as HTMLElement);
 
-root.render(
-  <MemoryRouter>
-    <ReduxProvider>
-      <Suspense fallback={null}>
-        <CordovaProvider>
-          <FullVersionProvider>
-            <WakeLockProvider>
-              <LocaleProvider>
-                <AugmentedStylesProvider>
-                  <AugmentedThemeProvider>
-                    <App />
-                  </AugmentedThemeProvider>
-                </AugmentedStylesProvider>
-              </LocaleProvider>
-            </WakeLockProvider>
-          </FullVersionProvider>
-        </CordovaProvider>
-      </Suspense>
-    </ReduxProvider>
-  </MemoryRouter>
+document.addEventListener(
+  "deviceready",
+  () => {
+    if (!window.BuildInfo.debug) {
+      import("../../src/sentry").catch(() => {
+        // ignore sentry init error
+      });
+    }
+
+    root.render(
+      <MemoryRouter>
+        <ReduxProvider>
+          <Suspense fallback={null}>
+            <CordovaProvider>
+              <FullVersionProvider>
+                <WakeLockProvider>
+                  <LocaleProvider>
+                    <AugmentedStylesProvider>
+                      <AugmentedThemeProvider>
+                        <App />
+                      </AugmentedThemeProvider>
+                    </AugmentedStylesProvider>
+                  </LocaleProvider>
+                </WakeLockProvider>
+              </FullVersionProvider>
+            </CordovaProvider>
+          </Suspense>
+        </ReduxProvider>
+      </MemoryRouter>
+    );
+  },
+  false
 );
