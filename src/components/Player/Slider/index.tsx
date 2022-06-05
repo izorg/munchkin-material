@@ -1,6 +1,6 @@
 import { css } from "@emotion/react";
 import { useTheme } from "@mui/material";
-import { motion, type PanInfo, useAnimation } from "framer-motion";
+import { m, type PanInfo, useAnimation } from "framer-motion";
 import PropTypes from "prop-types";
 import { useCallback, useRef } from "react";
 import { useNavigate } from "react-router-dom";
@@ -96,7 +96,7 @@ const PlayerSlider = ({ playerId }: PlayerSliderProps) => {
         width: 100%;
       `}
     >
-      <motion.div
+      <m.div
         animate={controls}
         css={css`
           height: 100%;
@@ -152,7 +152,7 @@ const PlayerSlider = ({ playerId }: PlayerSliderProps) => {
             </div>
           );
         })}
-      </motion.div>
+      </m.div>
     </div>
   );
 };

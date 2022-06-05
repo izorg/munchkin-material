@@ -1,3 +1,4 @@
+import { domMax, LazyMotion } from "framer-motion";
 import { lazy, Suspense, useEffect } from "react";
 
 import Home from "../Home";
@@ -37,25 +38,27 @@ const App = () => {
   }, []);
 
   return (
-    <UndoProvider>
-      <ScreenDialog open TransitionProps={{ appear: false }}>
-        <Home />
-      </ScreenDialog>
+    <LazyMotion features={domMax} strict>
+      <UndoProvider>
+        <ScreenDialog open TransitionProps={{ appear: false }}>
+          <Home />
+        </ScreenDialog>
 
-      <Suspense fallback={null}>
-        <SettingsDialog />
-      </Suspense>
+        <Suspense fallback={null}>
+          <SettingsDialog />
+        </Suspense>
 
-      <Suspense fallback={null}>
-        <DiceDialog />
-      </Suspense>
+        <Suspense fallback={null}>
+          <DiceDialog />
+        </Suspense>
 
-      <Suspense fallback={null}>
-        <PlayerDialog />
-      </Suspense>
+        <Suspense fallback={null}>
+          <PlayerDialog />
+        </Suspense>
 
-      <UndoSnackbar />
-    </UndoProvider>
+        <UndoSnackbar />
+      </UndoProvider>
+    </LazyMotion>
   );
 };
 

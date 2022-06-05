@@ -1,5 +1,5 @@
 import { ListItemAvatar, ListItemButton } from "@mui/material";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 
 import { type AvailableColor } from "../../../../utils/availableColors";
@@ -20,7 +20,7 @@ const PlayerListItem = (props: PlayerListItemProps) => {
 
   return (
     <ListItemButton
-      component={motion.div}
+      component={m.div}
       onTap={() => navigate(`/player/${player.id}`, { replace: true })}
       selected={selected}
       sx={{

@@ -1,5 +1,5 @@
 import { IconButton, type IconButtonProps } from "@mui/material";
-import { motion, type TapInfo } from "framer-motion";
+import { m, type TapInfo } from "framer-motion";
 import PropTypes from "prop-types";
 import {
   type FC,
@@ -10,7 +10,7 @@ import {
 } from "react";
 
 type CounterButtonProps = Omit<
-  IconButtonProps<typeof motion.button> & { onClick: () => void },
+  IconButtonProps<typeof m.button> & { onClick: () => void },
   "click"
 >;
 
@@ -96,7 +96,7 @@ const CounterButton: FC<CounterButtonProps> = ({
 
   return (
     <IconButton
-      component={motion.button}
+      component={m.button}
       disabled={disabled}
       {...rest}
       onKeyDown={onKeyDown}

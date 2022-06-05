@@ -9,7 +9,7 @@ import {
   type ListItemProps,
   SvgIcon,
 } from "@mui/material";
-import { motion, type TapInfo } from "framer-motion";
+import { m, type TapInfo } from "framer-motion";
 import PropTypes from "prop-types";
 import { type KeyboardEvent, useCallback, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -194,7 +194,7 @@ const HomePlayerListItem = (props: HomePlayerListItemProps) => {
       ]}
     >
       <ListItemButton
-        component={motion.div}
+        component={m.div}
         onKeyDown={onKeyDown}
         onPanStart={clearPress}
         onTap={onTap}

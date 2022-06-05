@@ -9,7 +9,7 @@ import {
   useMediaQuery,
   useTheme,
 } from "@mui/material";
-import { motion, useAnimation, useMotionValue } from "framer-motion";
+import { m, useAnimation, useMotionValue } from "framer-motion";
 import PropTypes from "prop-types";
 import { memo, useEffect, useRef } from "react";
 import { FormattedMessage } from "react-intl";
@@ -204,7 +204,7 @@ const CombatMonsterSlider = ({ className }: { className?: string }) => {
       `}
     >
       <Filler />
-      <motion.div
+      <m.div
         ref={containerRef}
         animate={animate}
         css={css`
@@ -283,7 +283,7 @@ const CombatMonsterSlider = ({ className }: { className?: string }) => {
             </Paper>
           </Box>
         ))}
-      </motion.div>
+      </m.div>
       <Filler />
     </div>
   );
