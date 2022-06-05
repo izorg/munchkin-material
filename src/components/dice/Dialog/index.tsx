@@ -13,16 +13,16 @@ import {
   type DialogProps,
   SvgIcon,
   useTheme,
+  Zoom,
 } from "@mui/material";
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
-import { TransitionGroup } from "react-transition-group";
+import { SwitchTransition } from "react-transition-group";
 
 import { throwDice } from "../../../ducks/dice";
 import { useAppDispatch } from "../../../store";
 import { useGoBack } from "../../../utils/location";
 import usePresentSelector from "../../../utils/usePresentSelector";
-import DiceTransition from "../Transition";
 
 const diceSize = 120;
 
@@ -76,8 +76,8 @@ const DiceDialog = (props: Partial<DialogProps>) => {
           width: diceSize,
         }}
       >
-        <TransitionGroup component={null}>
-          <DiceTransition key={attempt}>
+        <SwitchTransition>
+          <Zoom key={attempt} appear={false}>
             <Box
               component="span"
               sx={{
@@ -97,8 +97,8 @@ const DiceDialog = (props: Partial<DialogProps>) => {
                 <path d={diceIcon} />
               </SvgIcon>
             </Box>
-          </DiceTransition>
-        </TransitionGroup>
+          </Zoom>
+        </SwitchTransition>
       </ButtonBase>
     </Dialog>
   );
