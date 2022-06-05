@@ -4,7 +4,7 @@ import { type VFC } from "react";
 import { useGoBack } from "../../../utils/location";
 import usePresentSelector from "../../../utils/usePresentSelector";
 import BackButton from "../../BackButton";
-import DiceButton from "../../dice/Button";
+import DiceButton from "../../DiceButton";
 import Title from "../../Title";
 import TopAppBar from "../../TopAppBar";
 

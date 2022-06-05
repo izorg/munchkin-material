@@ -6,7 +6,7 @@ import { finishCombat } from "../../../ducks/combat";
 import { useAppDispatch } from "../../../store";
 import { useGoBack } from "../../../utils/location";
 import BackButton from "../../BackButton";
-import DiceIconButton from "../../dice/Button";
+import DiceIconButton from "../../DiceButton";
 import Title from "../../Title";
 import TopAppBar from "../../TopAppBar";
 import TopIconButton from "../../TopIconButton";

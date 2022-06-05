@@ -9,7 +9,7 @@ const DiceDialog = lazy(
   () =>
     import(
       /* webpackPrefetch: true */
-      "../dice/Dialog"
+      "../DiceDialog"
     )
 );
 

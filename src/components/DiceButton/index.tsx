@@ -3,9 +3,9 @@ import { type IconButtonProps, SvgIcon, Tooltip } from "@mui/material";
 import { useIntl } from "react-intl";
 import { useLocation, useNavigate } from "react-router-dom";
 
-import { throwDice } from "../../../ducks/dice";
-import { useAppDispatch } from "../../../store";
-import TopIconButton from "../../TopIconButton";
+import { throwDice } from "../../ducks/dice";
+import { useAppDispatch } from "../../store";
+import TopIconButton from "../TopIconButton";
 
 const DiceIconButton = (props: Omit<IconButtonProps, "onClick">) => {
   const dispatch = useAppDispatch();

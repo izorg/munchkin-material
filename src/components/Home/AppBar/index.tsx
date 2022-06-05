@@ -11,7 +11,7 @@ import useDeletePlayers from "../../../utils/useDeletePlayers";
 import useEditMode from "../../../utils/useEditMode";
 import useMultiMode from "../../../utils/useMultiMode";
 import usePresentSelector from "../../../utils/usePresentSelector";
-import DiceButton from "../../dice/Button";
+import DiceButton from "../../DiceButton";
 import SettingsIconButton from "../../SettingsIconButton";
 import Title from "../../Title";
 import TopAppBar from "../../TopAppBar";
