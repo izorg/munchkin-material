@@ -1,7 +1,7 @@
 import { mdiSwordCross } from "@mdi/js";
 import { type FabProps, SvgIcon } from "@mui/material";
 import PropTypes from "prop-types";
-import { type VFC } from "react";
+import { type FC } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { startCombat } from "../../../ducks/combat";
@@ -11,7 +11,7 @@ import ScreenFab from "../../ScreenFab";
 
 type CombatButtonProps = { playerId: string } & FabProps;
 
-const CombatButton: VFC<CombatButtonProps> = ({ playerId, ...rest }) => {
+const CombatButton: FC<CombatButtonProps> = ({ playerId, ...rest }) => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 

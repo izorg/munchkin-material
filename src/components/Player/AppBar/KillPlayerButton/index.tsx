@@ -1,7 +1,7 @@
 import { mdiSkull } from "@mdi/js";
 import { type IconButtonProps, SvgIcon, Tooltip } from "@mui/material";
 import PropTypes from "prop-types";
-import { type VFC } from "react";
+import { type FC } from "react";
 import { useIntl } from "react-intl";
 
 import { killPlayer } from "../../../../ducks/players";
@@ -14,7 +14,7 @@ type KillPlayerButtonProps = {
   playerId: string;
 } & IconButtonProps;
 
-const KillPlayerButton: VFC<KillPlayerButtonProps> = ({
+const KillPlayerButton: FC<KillPlayerButtonProps> = ({
   playerId,
   ...props
 }) => {

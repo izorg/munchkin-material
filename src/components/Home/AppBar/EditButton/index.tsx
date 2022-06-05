@@ -1,13 +1,13 @@
 import { mdiCheck, mdiPencilOutline } from "@mdi/js";
 import { type IconButtonProps, SvgIcon, Tooltip } from "@mui/material";
-import { type VFC } from "react";
+import { type FC } from "react";
 import { useIntl } from "react-intl";
 
 import { useGoBack } from "../../../../utils/location";
 import useEditMode from "../../../../utils/useEditMode";
 import TopIconButton from "../../../TopIconButton";
 
-const EditButton: VFC<IconButtonProps> = (props) => {
+const EditButton: FC<IconButtonProps> = (props) => {
   const goBack = useGoBack();
   const intl = useIntl();
 

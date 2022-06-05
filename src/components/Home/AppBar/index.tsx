@@ -1,7 +1,7 @@
 import { mdiClose, mdiFlagCheckered, mdiTrashCanOutline } from "@mdi/js";
 import { SvgIcon } from "@mui/material";
 import PropTypes from "prop-types";
-import { cloneElement, type ReactNode, type VFC } from "react";
+import { cloneElement, type FC, type ReactNode } from "react";
 import { FormattedMessage } from "react-intl";
 
 import { setCombatPlayerBonus } from "../../../ducks/combat";
@@ -26,7 +26,7 @@ type HomeAppBarProps = {
   singleMode: boolean;
 };
 
-const HomeAppBar: VFC<HomeAppBarProps> = (props) => {
+const HomeAppBar: FC<HomeAppBarProps> = (props) => {
   const { empty, singleMode } = props;
   const dispatch = useAppDispatch();
 

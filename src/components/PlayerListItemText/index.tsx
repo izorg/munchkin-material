@@ -1,6 +1,6 @@
 import { mdiChevronUp as levelIcon, mdiSword as strengthIcon } from "@mdi/js";
 import { Box, ListItemText, SvgIcon } from "@mui/material";
-import { type VFC } from "react";
+import { type FC } from "react";
 
 import { playerShape } from "../../utils/propTypes";
 import { type Player } from "../../utils/types";
@@ -10,7 +10,7 @@ type PlayerListItemTextProps = {
   player: Player;
 };
 
-const PlayerListItemText: VFC<PlayerListItemTextProps> = ({ player }) => (
+const PlayerListItemText: FC<PlayerListItemTextProps> = ({ player }) => (
   <>
     <ListItemText
       primary={player.name}

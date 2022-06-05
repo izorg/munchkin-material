@@ -1,12 +1,12 @@
 import { mdiCogOutline } from "@mdi/js";
 import { type IconButtonProps, SvgIcon, Tooltip } from "@mui/material";
-import { type VFC } from "react";
+import { type FC } from "react";
 import { useIntl } from "react-intl";
 import { useNavigate } from "react-router-dom";
 
 import TopIconButton from "../TopIconButton";
 
-const SettingsIconButton: VFC<Omit<IconButtonProps, "children">> = (props) => {
+const SettingsIconButton: FC<Omit<IconButtonProps, "children">> = (props) => {
   const intl = useIntl();
   const navigate = useNavigate();
 

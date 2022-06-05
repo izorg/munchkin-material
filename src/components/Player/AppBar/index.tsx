@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { type VFC } from "react";
+import { type FC } from "react";
 
 import { useGoBack } from "../../../utils/location";
 import usePresentSelector from "../../../utils/usePresentSelector";
@@ -12,7 +12,7 @@ import KillPlayerButton from "./KillPlayerButton";
 
 type PlayerAppBarProps = { playerId: string };
 
-const PlayerAppBar: VFC<PlayerAppBarProps> = ({ playerId }) => {
+const PlayerAppBar: FC<PlayerAppBarProps> = ({ playerId }) => {
   const goBack = useGoBack();
 
   const players = usePresentSelector((state) => state.players);
