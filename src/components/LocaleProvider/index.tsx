@@ -17,7 +17,7 @@ import readMessages from "./readMessages";
 
 const defaultLocale = getLocale();
 
-const LocaleProvider: FC<PropsWithChildren<unknown>> = ({ children }) => {
+const LocaleProvider: FC<PropsWithChildren> = ({ children }) => {
   const selectedLocale =
     usePresentSelector((state) => state.settings.locale) || defaultLocale;
 

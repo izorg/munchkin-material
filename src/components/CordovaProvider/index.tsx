@@ -13,7 +13,7 @@ import { useGoBack } from "../../utils/location";
 import hideWindowsBackButton from "./hideWindowsBackButton";
 import useNavigationBreadcrumbs from "./useNavigationBreadcrumbs";
 
-const CordovaProvider: FC<PropsWithChildren<unknown>> = ({ children }) => {
+const CordovaProvider: FC<PropsWithChildren> = ({ children }) => {
   const location = useLocation();
 
   const [initialKey] = useState(location.key);

@@ -20,9 +20,7 @@ const rtlCache = createCache({
   stylisPlugins: [prefixer, rtlPlugin],
 });
 
-const AugmentedStylesProvider: FC<PropsWithChildren<unknown>> = ({
-  children,
-}) => {
+const AugmentedStylesProvider: FC<PropsWithChildren> = ({ children }) => {
   const { locale } = useIntl();
   const direction = getDirection(locale);
   const cache = direction === "rtl" ? rtlCache : ltrCache;

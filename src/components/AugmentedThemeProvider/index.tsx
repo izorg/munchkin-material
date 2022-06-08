@@ -17,9 +17,7 @@ import usePreviewTheme from "../theme/usePreviewTheme";
 
 import useStatusBar from "./useStatusBar";
 
-const AugmentedThemeProvider: FC<PropsWithChildren<unknown>> = ({
-  children,
-}) => {
+const AugmentedThemeProvider: FC<PropsWithChildren> = ({ children }) => {
   const { locale } = useIntl();
 
   const direction = getDirection(locale);

@@ -25,7 +25,7 @@ const Context = createContext<WorkboxContext>({
 
 export const useWorkbox = (): WorkboxContext => useContext(Context);
 
-const WorkboxProvider: FC<PropsWithChildren<unknown>> = ({ children }) => {
+const WorkboxProvider: FC<PropsWithChildren> = ({ children }) => {
   const [update, setUpdate] = useState(false);
 
   const workbox = useMemo(() => {

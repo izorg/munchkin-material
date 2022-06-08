@@ -29,7 +29,7 @@ const Context = createContext<WakeLockContext>({
 
 export const useWakeLock = (): WakeLockContext => useContext(Context);
 
-const WakeLockProvider: FC<PropsWithChildren<unknown>> = ({ children }) => {
+const WakeLockProvider: FC<PropsWithChildren> = ({ children }) => {
   const dispatch = useAppDispatch();
 
   const insomnia = window.plugins?.insomnia;

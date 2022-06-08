@@ -28,7 +28,7 @@ const Context = createContext<FullVersionContext>({
 
 export const useFullVersion = (): FullVersionContext => useContext(Context);
 
-const FullVersionProvider: FC<PropsWithChildren<unknown>> = ({ children }) => {
+const FullVersionProvider: FC<PropsWithChildren> = ({ children }) => {
   const { cordova, store } = window;
 
   const dispatch = useAppDispatch();

@@ -4,7 +4,7 @@ import { Provider } from "react-redux";
 
 import store from "../../store";
 
-const ReduxProvider: FC<PropsWithChildren<unknown>> = ({ children }) => (
+const ReduxProvider: FC<PropsWithChildren> = ({ children }) => (
   <Provider store={store}>{children}</Provider>
 );
 
