@@ -28,7 +28,7 @@ module.exports = {
 
   devtool: dev ? "eval-source-map" : "source-map",
 
-  entry: "./src/web.tsx",
+  entry: "./src/index.tsx",
 
   mode: process.env.NODE_ENV,
 
@@ -137,7 +137,7 @@ module.exports = {
     }),
 
     new HtmlWebpackPlugin({
-      template: "src/web.html",
+      template: "src/index.html",
     }),
 
     dev && new ReactRefreshWebpackPlugin(),

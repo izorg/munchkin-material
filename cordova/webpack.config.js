@@ -9,7 +9,7 @@ const outputPath = path.resolve(__dirname, "www");
 module.exports = {
   devtool: "source-map",
 
-  entry: "./src/cordova.tsx",
+  entry: "./src/index.tsx",
 
   mode: process.env.NODE_ENV,
 
@@ -103,7 +103,7 @@ module.exports = {
     }),
 
     new HtmlWebpackPlugin({
-      template: "src/cordova.html",
+      template: "src/index.html",
     }),
   ],
 
