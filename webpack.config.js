@@ -28,7 +28,7 @@ module.exports = {
 
   devtool: dev ? "eval-source-map" : "source-map",
 
-  entry: (dev && "./src/dev/index.js") || "./src/web.tsx",
+  entry: "./src/web.tsx",
 
   mode: process.env.NODE_ENV,
 

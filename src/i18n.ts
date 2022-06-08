@@ -49,6 +49,9 @@ const supportedLocales = [
 
 export type SupportedLocale = typeof supportedLocales[number];
 
+export const isSupportedLocale = (locale: string): locale is SupportedLocale =>
+  Boolean(supportedLocales.find((item) => item === locale));
+
 export const getLocale = () => {
   const languages = navigator?.languages?.length
     ? navigator.languages

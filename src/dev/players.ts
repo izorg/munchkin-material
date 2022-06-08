@@ -4,7 +4,7 @@ import { CS, EN, HE, RU, UK } from "../i18n";
 import createPlayer from "../utils/createPlayer";
 import { Sex } from "../utils/types";
 
-export default {
+const players = {
   [CS]: [
     {
       player: createPlayer({
@@ -175,3 +175,5 @@ export default {
     },
   ],
 };
+
+export default players;

@@ -13,6 +13,10 @@ import ReduxProvider from "./components/ReduxProvider";
 import WakeLockProvider from "./components/WakeLockProvider";
 import WorkboxProvider from "./components/WorkboxProvider";
 
+if (process.env.NODE_ENV === "development") {
+  import("./dev");
+}
+
 import("./firebase").catch((error) => captureException(error));
 
 const root = createRoot(document.getElementById("root") as HTMLElement);

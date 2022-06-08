@@ -162,7 +162,11 @@ const getScreenshots = async (browserType, device, locale, deviceName) => {
 const locales = [CS, EN, HE, RU, UK];
 
 const screenshots = async () => {
-  await fs.rmdir(path.join(dir), { recursive: true });
+  try {
+    await fs.rm(path.join(dir), { recursive: true });
+  } catch (error) {
+    // folder could not exist
+  }
 
   for (const [browserName, browserType] of browsers) {
     for (const locale of locales) {
