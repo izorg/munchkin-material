@@ -2,9 +2,9 @@ import {
   mdiMenuDown as decrementIcon,
   mdiMenuUp as incrementIcon,
 } from "@mdi/js";
-import { Box, SvgIcon, type Theme } from "@mui/material";
+import { Box, type BoxProps, SvgIcon, type Theme } from "@mui/material";
 import PropTypes from "prop-types";
-import { type FC, type HTMLAttributes, type ReactNode } from "react";
+import { type FC, type ReactNode } from "react";
 import { defineMessages } from "react-intl";
 
 import Button from "./Button";
@@ -29,7 +29,7 @@ export const counterMessages = defineMessages({
   },
 });
 
-type CounterProps = Omit<HTMLAttributes<HTMLDivElement>, "title"> & {
+type CounterProps = Omit<BoxProps, "title"> & {
   decrementDisabled?: boolean;
   incrementDisabled?: boolean;
   onDecrement: () => void;
@@ -39,23 +39,25 @@ type CounterProps = Omit<HTMLAttributes<HTMLDivElement>, "title"> & {
 };
 
 const Counter: FC<CounterProps> = ({
-  className,
   decrementDisabled,
   incrementDisabled,
   onDecrement,
   onIncrement,
+  sx = [],
   title,
   value,
   ...props
 }) => {
   return (
     <Box
-      className={className}
-      sx={{
-        alignItems: "center",
-        display: "flex",
-        flexDirection: "column",
-      }}
+      sx={[
+        {
+          alignItems: "center",
+          display: "flex",
+          flexDirection: "column",
+        },
+        ...(sx instanceof Array ? sx : [sx]),
+      ]}
       {...props}
     >
       <CounterLabel

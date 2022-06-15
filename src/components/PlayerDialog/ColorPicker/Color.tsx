@@ -17,12 +17,7 @@ const Color = forwardRef<HTMLButtonElement, ColorProps>(function Color(
   props,
   ref
 ) {
-  const {
-    selected,
-    sx = [], // eslint-disable-line react/prop-types
-    value,
-    ...rest
-  } = props;
+  const { selected, sx = [], value, ...rest } = props;
 
   return (
     <ButtonBase

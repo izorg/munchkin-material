@@ -1,5 +1,4 @@
-import { css } from "@emotion/react";
-import { Box, IconButton, useTheme } from "@mui/material";
+import { Box, IconButton } from "@mui/material";
 import { useCallback } from "react";
 import { useIntl } from "react-intl";
 
@@ -24,7 +23,6 @@ import SexIcon from "../../SexIcon";
 const SinglePlayer = () => {
   const dispatch = useAppDispatch();
   const intl = useIntl();
-  const theme = useTheme();
 
   const player = usePresentSelector(
     (state) => state.players[state.settings.singleModePlayerId as string]
@@ -89,12 +87,10 @@ const SinglePlayer = () => {
     [dispatch, player.id]
   );
 
-  const counterCss = css`
-    flex: 1;
-    overflow: hidden;
-  `;
-
-  const lineHeight = (theme.typography.body2.lineHeight as number) / 2;
+  const counterSx = {
+    flex: 1,
+    overflow: "hidden",
+  };
 
   return (
     <Box
@@ -114,52 +110,53 @@ const SinglePlayer = () => {
         },
       }}
     >
-      <div
-        css={css`
-          align-items: center;
-          display: flex;
-          flex: 1;
+      <Box
+        sx={{
+          alignItems: "center",
+          display: "flex",
+          flex: 1,
 
-          @media (orientation: landscape) {
-            flex: 3;
-          }
-        `}
+          // eslint-disable-next-line sort-keys
+          "@media (orientation: landscape)": {
+            flex: 3,
+          },
+        }}
       >
         <Counter
-          css={counterCss}
           data-screenshots="level-counter"
           decrementDisabled={levelDecrementDisabled}
           incrementDisabled={levelIncrementDisabled}
           onDecrement={onLevelDecrement}
           onIncrement={onLevelIncrement}
+          sx={counterSx}
           title={intl.formatMessage(counterMessages.level)}
           value={player.level}
         />
         <Counter
-          css={counterCss}
           data-screenshots="gear-counter"
           onDecrement={onGearDecrement}
           onIncrement={onGearIncrement}
+          sx={counterSx}
           title={intl.formatMessage(counterMessages.gear)}
           value={player.gear}
         />
         <Counter
-          css={counterCss}
           data-screenshots="modifier-counter"
           onDecrement={onBonusDecrement}
           onIncrement={onBonusIncrement}
+          sx={counterSx}
           title={intl.formatMessage(counterMessages.modifier)}
           value={bonus}
         />
-      </div>
-      <div
-        css={css`
-          align-items: center;
-          display: flex;
-          flex: 1;
-          flex-direction: column;
-          justify-content: center;
-        `}
+      </Box>
+      <Box
+        sx={{
+          alignItems: "center",
+          display: "flex",
+          flex: 1,
+          flexDirection: "column",
+          justifyContent: "center",
+        }}
       >
         <CounterLabel
           sx={{
@@ -169,21 +166,25 @@ const SinglePlayer = () => {
           {intl.formatMessage(counterMessages.strength)}
         </CounterLabel>
 
-        <div
-          css={css`
-            color: ${theme.palette.text.primary};
-            font-family: Munchkin, ${theme.typography.fontFamily};
-            font-size: 36px;
+        <Box
+          sx={{
+            color: "text.primary",
+            fontFamily: (theme) =>
+              `Munchkin, ${String(theme.typography.fontFamily)}`,
+            fontSize: "36px",
 
-            @media (orientation: portrait) {
-              font-size: 72px; /* 36px * 2 */
-              line-height: ${lineHeight}; /* 1.43 / 2 */
-              margin-top: 32px;
-            }
-          `}
+            // eslint-disable-next-line sort-keys
+            "@media (orientation: portrait)": {
+              fontSize: "72px" /* 36px * 2 */,
+              lineHeight: (theme) =>
+                (theme.typography.body2.lineHeight as number) /
+                2 /* 1.43 / 2 */,
+              marginTop: "32px",
+            },
+          }}
         >
           {player.level + player.gear + bonus}
-        </div>
+        </Box>
 
         <IconButton
           onClick={onSexToggle}
@@ -203,7 +204,7 @@ const SinglePlayer = () => {
             }}
           />
         </IconButton>
-      </div>
+      </Box>
     </Box>
   );
 };
