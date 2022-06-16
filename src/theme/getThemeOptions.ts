@@ -40,20 +40,6 @@ const getThemeOptions = ({
         },
       },
 
-      MuiSpeedDialAction: {
-        styleOverrides: {
-          fab: {
-            backgroundColor: undefined,
-            color: undefined,
-
-            // eslint-disable-next-line sort-keys
-            "&:hover": {
-              backgroundColor: undefined,
-            },
-          },
-        },
-      },
-
       MuiTooltip: {
         defaultProps: {
           disableHoverListener: ios,

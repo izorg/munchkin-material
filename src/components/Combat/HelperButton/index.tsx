@@ -27,7 +27,7 @@ const CombatHelperButton = () => {
     (state) => state.playerList.length > 1
   );
   const helper = !helperId && hasOtherPlayers;
-  const open = new URLSearchParams(location.search).get("add") !== null;
+  const open = new URLSearchParams(location.search).get("add") === "";
 
   const onAdd = () => {
     const searchParams = new URLSearchParams(location.search);
@@ -60,20 +60,13 @@ const CombatHelperButton = () => {
       <Backdrop
         onClick={onBack}
         open={open}
-        sx={(theme) => ({
-          backgroundColor:
-            theme.palette.mode === "light"
-              ? "rgba(250, 250, 250, .9)"
-              : undefined,
+        sx={{
           zIndex: 1,
-        })}
+        }}
       />
 
       <SpeedDial
         ariaLabel=" "
-        FabProps={{
-          color: open ? "default" : "primary",
-        }}
         icon={
           helper ? (
             <SpeedDialIcon />
@@ -114,9 +107,6 @@ const CombatHelperButton = () => {
         }}
       >
         <SpeedDialAction
-          FabProps={{
-            color: "primary",
-          }}
           icon={
             <SvgIcon>
               <path d={mdiEmoticonDevilOutline} />
@@ -127,6 +117,10 @@ const CombatHelperButton = () => {
             onMonsterAdd();
             onBack();
           }}
+          sx={{
+            backgroundColor: "grey.300",
+            color: "secondary.contrastText",
+          }}
           tooltipTitle={
             <FormattedMessage
               defaultMessage="Monster"
@@ -135,15 +129,16 @@ const CombatHelperButton = () => {
           }
         />
         <SpeedDialAction
-          FabProps={{
-            color: "primary",
-          }}
           icon={
             <SvgIcon>
               <path d={mdiAccountPlusOutline} />
             </SvgIcon>
           }
           onClick={onHelperClick}
+          sx={{
+            backgroundColor: "grey.300",
+            color: "secondary.contrastText",
+          }}
           tooltipTitle={
             <FormattedMessage defaultMessage="Helper" id="combat.add.helper" />
           }
