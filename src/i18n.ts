@@ -101,7 +101,7 @@ const loaders = {
 };
 
 export const loadMessages = async (locale: SupportedLocale) => {
-  const { default: messages } = await loaders[locale]();
+  const messages = await loaders[locale]();
 
-  return messages;
+  return messages.default ?? messages;
 };
