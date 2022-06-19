@@ -57,5 +57,5 @@
   "undo": "Desfazer",
   "undo.deletePlayers": "{count, plural, one {Jogador removido} other {Jogadores removidos}}",
   "undo.killPlayer": "{name} {sex, select, female{morreu} male{morreu} other {}}",
-  "undo.resetPlayers": "{name} {sex, select, female{has died} homem {has died} other {}}"
+  "undo.resetPlayers": "Os jogadores foram redefinidos"
 }
