@@ -5,8 +5,8 @@ import { type FC } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { startCombat } from "../../../ducks/combat";
+import usePresentSelector from "../../../hooks/usePresentSelector";
 import { useAppDispatch } from "../../../store";
-import usePresentSelector from "../../../utils/usePresentSelector";
 import ScreenFab from "../../ScreenFab";
 
 type CombatButtonProps = { playerId: string } & FabProps;

@@ -5,12 +5,12 @@ import { cloneElement, type FC, type ReactNode } from "react";
 import { FormattedMessage } from "react-intl";
 
 import { setCombatPlayerBonus } from "../../../ducks/combat";
+import useDeletePlayers from "../../../hooks/useDeletePlayers";
+import useEditMode from "../../../hooks/useEditMode";
+import useMultiMode from "../../../hooks/useMultiMode";
+import usePresentSelector from "../../../hooks/usePresentSelector";
 import { useAppDispatch } from "../../../store";
 import { useGoBack } from "../../../utils/location";
-import useDeletePlayers from "../../../utils/useDeletePlayers";
-import useEditMode from "../../../utils/useEditMode";
-import useMultiMode from "../../../utils/useMultiMode";
-import usePresentSelector from "../../../utils/usePresentSelector";
 import DiceButton from "../../DiceButton";
 import SettingsIconButton from "../../SettingsIconButton";
 import Title from "../../Title";

@@ -3,8 +3,8 @@ import { ListItemIcon, SvgIcon, Switch } from "@mui/material";
 import { FormattedMessage } from "react-intl";
 
 import { setSingleMode } from "../../../ducks/settings";
+import usePresentSelector from "../../../hooks/usePresentSelector";
 import { useAppDispatch } from "../../../store";
-import usePresentSelector from "../../../utils/usePresentSelector";
 import { useFullVersion } from "../../FullVersionProvider";
 import ListItem from "../Item";
 import ListItemText from "../ItemText";

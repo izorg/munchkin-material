@@ -8,8 +8,8 @@ import {
 } from "@mui/material";
 import PropTypes from "prop-types";
 
+import usePresentSelector from "../../../../hooks/usePresentSelector";
 import { type AvailableColor } from "../../../../utils/availableColors";
-import usePresentSelector from "../../../../utils/usePresentSelector";
 import PlayerAvatar from "../../../PlayerAvatar";
 import PlayerListItemText from "../../../PlayerListItemText";
 

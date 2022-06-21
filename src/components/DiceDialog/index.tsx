@@ -20,9 +20,9 @@ import { useLocation } from "react-router-dom";
 import { SwitchTransition } from "react-transition-group";
 
 import { throwDice } from "../../ducks/dice";
+import usePresentSelector from "../../hooks/usePresentSelector";
 import { useAppDispatch } from "../../store";
 import { useGoBack } from "../../utils/location";
-import usePresentSelector from "../../utils/usePresentSelector";
 
 const diceSize = 120;
 

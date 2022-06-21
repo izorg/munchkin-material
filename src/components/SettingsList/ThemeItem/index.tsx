@@ -3,9 +3,9 @@ import { ListItemIcon, SvgIcon, useTheme } from "@mui/material";
 import { useIntl } from "react-intl";
 import { useLocation, useNavigate } from "react-router-dom";
 
+import usePresentSelector from "../../../hooks/usePresentSelector";
+import themeMessages from "../../../messages/theme";
 import themes from "../../../theme/colors";
-import usePresentSelector from "../../../utils/usePresentSelector";
-import themeMessages from "../../theme/messages";
 import ListItem from "../Item";
 import ListItemText from "../ItemText";
 

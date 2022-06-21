@@ -14,12 +14,12 @@ import {
   incrementPlayerLevel,
   togglePlayerSex,
 } from "../../../../ducks/players";
+import usePresentSelector from "../../../../hooks/usePresentSelector";
 import { useAppDispatch } from "../../../../store";
 import {
   isLevelDecrementDisabled,
   isLevelIncrementDisabled,
 } from "../../../../utils/levelLimit";
-import usePresentSelector from "../../../../utils/usePresentSelector";
 import { counterMessages } from "../../../Counter";
 import SexIcon from "../../../SexIcon";
 import Counter from "../../Counter";

@@ -15,13 +15,13 @@ import { type KeyboardEvent, useCallback, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import { togglePlayer, unselectAllPlayers } from "../../../../ducks/ui";
+import useEditMode from "../../../../hooks/useEditMode";
+import useMultiMode from "../../../../hooks/useMultiMode";
+import usePresentSelector from "../../../../hooks/usePresentSelector";
 import { useAppDispatch } from "../../../../store";
 import { type AvailableColor } from "../../../../utils/availableColors";
 import { useGoBack } from "../../../../utils/location";
 import { ios } from "../../../../utils/platforms";
-import useEditMode from "../../../../utils/useEditMode";
-import useMultiMode from "../../../../utils/useMultiMode";
-import usePresentSelector from "../../../../utils/usePresentSelector";
 import PlayerAvatar from "../../../PlayerAvatar";
 import PlayerListItemText from "../../../PlayerListItemText";
 

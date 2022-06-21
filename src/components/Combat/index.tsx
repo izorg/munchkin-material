@@ -1,7 +1,7 @@
 import { css } from "@emotion/react";
 import { Typography, useTheme } from "@mui/material";
 
-import usePresentSelector from "../../utils/usePresentSelector";
+import usePresentSelector from "../../hooks/usePresentSelector";
 
 import AppBar from "./AppBar";
 import HelperButton from "./HelperButton";

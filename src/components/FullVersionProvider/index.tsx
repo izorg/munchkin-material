@@ -9,8 +9,8 @@ import {
 } from "react";
 
 import { setFullVersion } from "../../ducks/settings";
+import usePresentSelector from "../../hooks/usePresentSelector";
 import { useAppDispatch } from "../../store";
-import usePresentSelector from "../../utils/usePresentSelector";
 
 const FULL_VERSION_ID = "full_version";
 

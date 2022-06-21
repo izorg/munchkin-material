@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import { useCallback, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
-import usePresentSelector from "../../../utils/usePresentSelector";
+import usePresentSelector from "../../../hooks/usePresentSelector";
 
 import PlayerStats from "./Stats";
 

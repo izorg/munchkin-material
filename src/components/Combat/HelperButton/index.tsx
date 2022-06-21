@@ -11,10 +11,10 @@ import { FormattedMessage } from "react-intl";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import { addMonster } from "../../../ducks/monsters";
+import usePresentSelector from "../../../hooks/usePresentSelector";
 import { useAppDispatch } from "../../../store";
 import createMonster from "../../../utils/createMonster";
 import { useGoBack } from "../../../utils/location";
-import usePresentSelector from "../../../utils/usePresentSelector";
 
 const CombatHelperButton = () => {
   const dispatch = useAppDispatch();

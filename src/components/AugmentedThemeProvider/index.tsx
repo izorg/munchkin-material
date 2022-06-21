@@ -9,11 +9,11 @@ import PropTypes from "prop-types";
 import { type FC, type PropsWithChildren, useEffect, useMemo } from "react";
 import { useIntl } from "react-intl";
 
+import usePreviewTheme from "../../hooks/usePreviewTheme";
 import { getDirection } from "../../i18n";
 import themes from "../../theme/colors";
 import getThemeOptions from "../../theme/getThemeOptions";
 import { ios } from "../../utils/platforms";
-import usePreviewTheme from "../theme/usePreviewTheme";
 
 import useStatusBar from "./useStatusBar";
 

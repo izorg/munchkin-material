@@ -3,13 +3,13 @@ import { ListItemIcon, SvgIcon } from "@mui/material";
 import { useIntl } from "react-intl";
 import { useLocation, useNavigate } from "react-router-dom";
 
+import usePresentSelector from "../../../hooks/usePresentSelector";
+import levelLimitMessages from "../../../messages/levelLimit";
 import {
   MAX_EPIC_LEVEL,
   MAX_LEVEL,
   MIN_LEVEL,
 } from "../../../utils/levelLimit";
-import usePresentSelector from "../../../utils/usePresentSelector";
-import levelLimitMessages from "../../levelLimit/messages";
 import ListItem from "../Item";
 import ListItemText from "../ItemText";
 

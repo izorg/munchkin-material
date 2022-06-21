@@ -9,8 +9,8 @@ import {
   incrementMonsterBonus,
   incrementMonsterLevel,
 } from "../../../../ducks/monsters";
+import usePresentSelector from "../../../../hooks/usePresentSelector";
 import { useAppDispatch } from "../../../../store";
-import usePresentSelector from "../../../../utils/usePresentSelector";
 import { counterMessages } from "../../../Counter";
 import Counter from "../../Counter";
 

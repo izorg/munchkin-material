@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
 import { type FC } from "react";
 
+import usePresentSelector from "../../../hooks/usePresentSelector";
 import { useGoBack } from "../../../utils/location";
-import usePresentSelector from "../../../utils/usePresentSelector";
 import BackButton from "../../BackButton";
 import DiceButton from "../../DiceButton";
 import Title from "../../Title";

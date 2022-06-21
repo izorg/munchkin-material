@@ -21,8 +21,8 @@ import { List, type ListProps, Paper } from "@mui/material";
 import { useCallback, useState } from "react";
 
 import { movePlayer } from "../../../ducks/playerList";
+import usePresentSelector from "../../../hooks/usePresentSelector";
 import { useAppDispatch } from "../../../store";
-import usePresentSelector from "../../../utils/usePresentSelector";
 
 import Item from "./Item";
 import OverlayItem from "./OverlayItem";

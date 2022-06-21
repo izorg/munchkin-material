@@ -10,8 +10,8 @@ import {
 } from "react";
 import { IntlProvider } from "react-intl";
 
+import usePresentSelector from "../../hooks/usePresentSelector";
 import { getDirection, getLocale } from "../../i18n";
-import usePresentSelector from "../../utils/usePresentSelector";
 
 import readMessages from "./readMessages";
 

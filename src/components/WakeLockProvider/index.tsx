@@ -10,8 +10,8 @@ import {
 } from "react";
 
 import { setKeepAwake } from "../../ducks/settings";
+import usePresentSelector from "../../hooks/usePresentSelector";
 import { useAppDispatch } from "../../store";
-import usePresentSelector from "../../utils/usePresentSelector";
 
 type WakeLockContext = {
   setWakeLock: (value: boolean) => void;

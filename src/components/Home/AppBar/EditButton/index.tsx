@@ -3,8 +3,8 @@ import { type IconButtonProps, SvgIcon, Tooltip } from "@mui/material";
 import { type FC } from "react";
 import { useIntl } from "react-intl";
 
+import useEditMode from "../../../../hooks/useEditMode";
 import { useGoBack } from "../../../../utils/location";
-import useEditMode from "../../../../utils/useEditMode";
 import TopIconButton from "../../../TopIconButton";
 
 const EditButton: FC<IconButtonProps> = (props) => {

@@ -1,7 +1,7 @@
 import { List, type ListProps, Paper } from "@mui/material";
 import PropTypes from "prop-types";
 
-import usePresentSelector from "../../../utils/usePresentSelector";
+import usePresentSelector from "../../../hooks/usePresentSelector";
 
 import Item from "./Item";
 

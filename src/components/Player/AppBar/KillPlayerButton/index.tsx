@@ -5,8 +5,8 @@ import { type FC } from "react";
 import { useIntl } from "react-intl";
 
 import { killPlayer } from "../../../../ducks/players";
+import usePresentSelector from "../../../../hooks/usePresentSelector";
 import { useAppDispatch } from "../../../../store";
-import usePresentSelector from "../../../../utils/usePresentSelector";
 import TopIconButton from "../../../TopIconButton";
 import { useUndo } from "../../../UndoProvider";
 

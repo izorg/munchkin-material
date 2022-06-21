@@ -1,8 +1,8 @@
 import { Box, Zoom } from "@mui/material";
 import { useMatch } from "react-router-dom";
 
-import useEditMode from "../../utils/useEditMode";
-import usePresentSelector from "../../utils/usePresentSelector";
+import useEditMode from "../../hooks/useEditMode";
+import usePresentSelector from "../../hooks/usePresentSelector";
 import LevelLimitDialog from "../LevelLimitDialog";
 import Nobody from "../Nobody";
 import Player from "../Player";

@@ -13,10 +13,10 @@ import { FormattedMessage } from "react-intl";
 import { useLocation } from "react-router-dom";
 
 import { setCombatHelper } from "../../../ducks/combat";
+import usePresentSelector from "../../../hooks/usePresentSelector";
 import { useAppDispatch } from "../../../store";
 import { type AvailableColor } from "../../../utils/availableColors";
 import { useGoBack } from "../../../utils/location";
-import usePresentSelector from "../../../utils/usePresentSelector";
 import PlayerAvatar from "../../PlayerAvatar";
 import PlayerListItemText from "../../PlayerListItemText";
 

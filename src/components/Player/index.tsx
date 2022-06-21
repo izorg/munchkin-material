@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { useRef } from "react";
 import { Navigate, useMatch } from "react-router-dom";
 
-import usePresentSelector from "../../utils/usePresentSelector";
+import usePresentSelector from "../../hooks/usePresentSelector";
 import Combat from "../Combat";
 import PlayerContext from "../PlayerContext";
 import ScreenDialog from "../ScreenDialog";

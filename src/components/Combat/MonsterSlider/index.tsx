@@ -15,8 +15,8 @@ import { memo, useEffect, useRef } from "react";
 import { FormattedMessage } from "react-intl";
 
 import { removeMonster } from "../../../ducks/monsters";
+import usePresentSelector from "../../../hooks/usePresentSelector";
 import { useAppDispatch } from "../../../store";
-import usePresentSelector from "../../../utils/usePresentSelector";
 
 import Monster from "./Monster";
 
