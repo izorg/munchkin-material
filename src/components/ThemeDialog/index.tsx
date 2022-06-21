@@ -16,16 +16,16 @@ import { type ChangeEvent, type SyntheticEvent, useMemo } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { useLocation, useNavigate } from "react-router-dom";
 
-import { setTheme } from "../../../ducks/theme";
-import { useAppDispatch } from "../../../store";
-import themes from "../../../theme/colors";
-import { useGoBack } from "../../../utils/location";
-import usePresentSelector from "../../../utils/usePresentSelector";
-import CancelButton from "../../CancelButton";
-import { useFullVersion } from "../../FullVersionProvider";
-import SubmitButton from "../../SubmitButton";
-import themeMessages from "../messages";
-import usePreviewTheme from "../usePreviewTheme";
+import { setTheme } from "../../ducks/theme";
+import { useAppDispatch } from "../../store";
+import themes from "../../theme/colors";
+import { useGoBack } from "../../utils/location";
+import usePresentSelector from "../../utils/usePresentSelector";
+import CancelButton from "../CancelButton";
+import { useFullVersion } from "../FullVersionProvider";
+import SubmitButton from "../SubmitButton";
+import themeMessages from "../theme/messages";
+import usePreviewTheme from "../theme/usePreviewTheme";
 
 type FormValues = {
   id: string;

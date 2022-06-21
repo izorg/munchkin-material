@@ -11,18 +11,14 @@ import { type ChangeEvent, type FormEvent, useState } from "react";
 import { useIntl } from "react-intl";
 import { useLocation } from "react-router-dom";
 
-import { setEpic, setLevelLimit } from "../../../ducks/settings";
-import { useAppDispatch } from "../../../store";
-import {
-  MAX_EPIC_LEVEL,
-  MAX_LEVEL,
-  MIN_LEVEL,
-} from "../../../utils/levelLimit";
-import { useGoBack } from "../../../utils/location";
-import usePresentSelector from "../../../utils/usePresentSelector";
-import CancelButton from "../../CancelButton";
-import SubmitButton from "../../SubmitButton";
-import levelLimitMessages from "../messages";
+import { setEpic, setLevelLimit } from "../../ducks/settings";
+import { useAppDispatch } from "../../store";
+import { MAX_EPIC_LEVEL, MAX_LEVEL, MIN_LEVEL } from "../../utils/levelLimit";
+import { useGoBack } from "../../utils/location";
+import usePresentSelector from "../../utils/usePresentSelector";
+import CancelButton from "../CancelButton";
+import levelLimitMessages from "../levelLimit/messages";
+import SubmitButton from "../SubmitButton";
 
 export const DEFAULT_MUNCHKIN_LIMIT = "default";
 export const EPIC_MUNCHKIN_LIMIT = "epic";

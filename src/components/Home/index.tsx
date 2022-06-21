@@ -3,11 +3,11 @@ import { useMatch } from "react-router-dom";
 
 import useEditMode from "../../utils/useEditMode";
 import usePresentSelector from "../../utils/usePresentSelector";
-import LevelLimitDialog from "../levelLimit/Dialog";
+import LevelLimitDialog from "../LevelLimitDialog";
 import Nobody from "../Nobody";
 import Player from "../Player";
 import ScreenDialog from "../ScreenDialog";
-import ThemeDialog from "../theme/Dialog";
+import ThemeDialog from "../ThemeDialog";
 
 import AppBar from "./AppBar";
 import PlayerAddButton from "./PlayerAddButton";
