@@ -17,8 +17,14 @@ const getThemeOptions = ({
   mode: PaletteMode;
   pureBlack: boolean;
 }): ThemeOptions => {
-  let theme = {
+  let theme: ThemeOptions = {
     components: {
+      MuiIconButton: {
+        defaultProps: {
+          color: "inherit",
+        },
+      },
+
       MuiSnackbar: {
         styleOverrides: {
           anchorOriginBottomLeft: {
@@ -79,18 +85,6 @@ const getThemeOptions = ({
         'system-ui, -apple-system, "Roboto", "San Francisco", "Helvetica", "Arial", sans-serif',
     },
   };
-
-  if (mode === "light") {
-    theme = deepmerge(theme, {
-      components: {
-        MuiIconButton: {
-          defaultProps: {
-            color: "inherit",
-          },
-        },
-      },
-    });
-  }
 
   if (mode === "dark" && pureBlack) {
     theme = deepmerge(theme, {
