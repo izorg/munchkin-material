@@ -16,7 +16,6 @@ import {
   sortableKeyboardCoordinates,
   verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
-import { css } from "@emotion/react";
 import { List, type ListProps, Paper } from "@mui/material";
 import { useCallback, useState } from "react";
 
@@ -82,13 +81,12 @@ const HomePlayerList = (props: ListProps) => {
           {playerList.map((playerId) => (
             <Item
               key={playerId}
-              css={
-                playerId === activeId &&
-                css`
-                  visibility: hidden;
-                `
-              }
               playerId={playerId}
+              sx={[
+                playerId === activeId && {
+                  visibility: "hidden",
+                },
+              ]}
             />
           ))}
         </SortableContext>

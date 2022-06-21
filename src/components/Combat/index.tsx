@@ -1,5 +1,10 @@
-import { css } from "@emotion/react";
-import { Typography, useTheme } from "@mui/material";
+import {
+  Box,
+  type SxProps,
+  type Theme,
+  Typography,
+  useTheme,
+} from "@mui/material";
 
 import usePresentSelector from "../../hooks/usePresentSelector";
 
@@ -45,49 +50,52 @@ const Combat = () => {
     return playerStrength + helperStrength;
   });
 
-  const valueCss = css`
-    display: inline-block;
-    font-family: Munchkin, ${theme.typography.fontFamily};
-    font-size: inherit;
-    min-width: 50px;
-  `;
+  const valueSx: SxProps<Theme> = (theme) => ({
+    display: "inline - block",
+    fontFamily: `Munchkin, ${String(theme.typography.fontFamily)}`,
+    fontSize: "inherit",
+    minWidth: "50px",
+  });
 
   return (
     <>
-      <div
-        css={css`
-          background-color: ${theme.palette.background.default};
-          display: flex;
-          flex: 1;
-          flex-direction: column;
-          overflow: hidden;
-          z-index: 1;
-        `}
+      <Box
+        sx={{
+          backgroundColor: "background.default",
+          display: "flex",
+          flex: 1,
+          flexDirection: "column",
+          overflow: "hidden",
+          zIndex: 1,
+        }}
       >
         <AppBar />
-        <div
-          css={css`
-            align-items: center;
-            display: flex;
-            flex: 1;
-            flex-direction: column;
-            justify-content: center;
+        <Box
+          sx={{
+            alignItems: "center",
+            display: "flex",
+            flex: 1,
+            flexDirection: "column",
+            justifyContent: "center",
 
-            @supports (padding: env(safe-area-inset-left)) {
-              padding-left: env(safe-area-inset-left);
-              padding-right: env(safe-area-inset-right);
-            }
+            // eslint-disable-next-line sort-keys
+            "@supports (padding: env(safe-area-inset-left))": {
+              paddingLeft: "env(safe-area-inset-left)",
+              paddingRight: "env(safe-area-inset-right)",
+            },
 
-            @media (orientation: portrait) {
-              overflow-y: auto;
-              padding-bottom: ${theme.spacing(7)};
-            }
+            // eslint-disable-next-line sort-keys
+            "@media (orientation: portrait)": {
+              overflowY: "auto",
+              paddingBottom: 7,
+            },
 
-            @media (orientation: landscape) {
-              flex-direction: row;
-              overflow: hidden;
-            }
-          `}
+            // eslint-disable-next-line sort-keys
+            "@media (orientation: landscape)": {
+              flexDirection: "row",
+              overflow: "hidden",
+            },
+          }}
         >
           <PlayerSlider
             helperId={helperId}
@@ -100,44 +108,47 @@ const Combat = () => {
           />
 
           <Typography align="center" component="div" variant="h4">
-            <sup
-              css={[
-                valueCss,
-                css`
-                  text-align: right;
-                `,
+            <Box
+              component="sup"
+              sx={[
+                valueSx,
+                {
+                  textAlign: "right",
+                },
               ]}
             >
               {combinedPlayerStrength}
-            </sup>
-            <span
-              css={css`
-                margin: ${theme.spacing(0, 0.5)};
-              `}
+            </Box>
+            <Box
+              component="span"
+              sx={(theme) => ({
+                margin: `${theme.spacing(0, 0.5)}`,
+              })}
             >
               {direction === "rtl" ? "\\" : "/"}
-            </span>
-            <sub
-              css={[
-                valueCss,
-                css`
-                  text-align: left;
-                `,
+            </Box>
+            <Box
+              component="sub"
+              sx={[
+                valueSx,
+                {
+                  textAlign: "left",
+                },
               ]}
             >
               {combinedMonsterStrength}
-            </sub>
+            </Box>
           </Typography>
 
           <MonsterSlider
-            css={css`
-              @media (orientation: landscape) {
-                flex: 1;
-              }
-            `}
+            sx={{
+              "@media (orientation: landscape)": {
+                flex: 1,
+              },
+            }}
           />
-        </div>
-      </div>
+        </Box>
+      </Box>
 
       <HelperButton />
 

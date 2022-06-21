@@ -1,4 +1,3 @@
-import { css } from "@emotion/react";
 import { mdiCloseCircle } from "@mdi/js";
 import {
   Box,
@@ -7,6 +6,8 @@ import {
   Paper,
   styled,
   SvgIcon,
+  type SxProps,
+  type Theme,
   useMediaQuery,
   useTheme,
 } from "@mui/material";
@@ -191,26 +192,28 @@ const CombatPlayerSlider = (props: CombatPlayerSliderProps) => {
     dispatch(setCombatHelperBonus(0));
   };
 
-  const itemContainerCss = css`
-    flex-shrink: 0;
-    padding: ${theme.spacing(1)};
-  `;
+  const itemContainerSx: SxProps<Theme> = {
+    flexShrink: 0,
+    padding: 1,
+  };
 
-  const paperCss = css`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-left: auto;
-    position: relative;
+  const paperSx = {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    marginLeft: "auto",
+    position: "relative",
 
-    @media (orientation: portrait) {
-      width: 280px;
-    }
+    // eslint-disable-next-line sort-keys
+    "@media (orientation: portrait)": {
+      width: "280px",
+    },
 
-    @media (orientation: landscape) {
-      max-width: 320px;
-    }
-  `;
+    // eslint-disable-next-line sort-keys
+    "@media (orientation: landscape)": {
+      maxWidth: "320px",
+    },
+  };
 
   return (
     <Box
@@ -236,55 +239,59 @@ const CombatPlayerSlider = (props: CombatPlayerSliderProps) => {
       ]}
     >
       <Filler />
-      <m.div
+      <Box
         ref={containerRef}
         animate={animate}
-        css={css`
-          display: flex;
-          flex-shrink: 0;
-          padding: ${theme.spacing(1)};
-
-          @media (orientation: landscape) {
-            flex-direction: column;
-          }
-        `}
+        component={m.div}
         drag={landscape ? "y" : "x"}
         dragTransition={{
           modifyTarget,
           timeConstant: 300,
         }}
         onDrag={onDrag}
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         style={{ x, y }}
+        sx={{
+          display: "flex",
+          flexShrink: 0,
+          padding: 1,
+
+          // eslint-disable-next-line sort-keys
+          "@media (orientation: landscape)": {
+            flexDirection: "column",
+          },
+        }}
       >
-        <div css={itemContainerCss}>
-          <Paper css={paperCss}>
+        <Box sx={itemContainerSx}>
+          <Paper sx={paperSx}>
             <Player playerId={playerId} />
           </Paper>
-        </div>
+        </Box>
         {helperId && (
-          <div css={itemContainerCss}>
-            <Paper key={helperId} css={paperCss}>
+          <Box sx={itemContainerSx}>
+            <Paper key={helperId} sx={paperSx}>
               <Player playerId={helperId} />
 
               <IconButton
-                css={css`
-                  height: 36px;
-                  padding: 6px;
-                  position: absolute;
-                  right: 0;
-                  top: 0;
-                  width: 36px;
-                `}
                 onClick={handleHelperRemove}
+                sx={{
+                  height: "36px",
+                  padding: "6px",
+                  position: "absolute",
+                  right: 0,
+                  top: 0,
+                  width: "36px",
+                }}
               >
                 <SvgIcon>
                   <path d={mdiCloseCircle} />
                 </SvgIcon>
               </IconButton>
             </Paper>
-          </div>
+          </Box>
         )}
-      </m.div>
+      </Box>
       <Filler />
     </Box>
   );

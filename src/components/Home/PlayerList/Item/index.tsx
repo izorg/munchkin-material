@@ -30,7 +30,7 @@ type HomePlayerListItemProps = ListItemProps & {
 };
 
 const HomePlayerListItem = (props: HomePlayerListItemProps) => {
-  const { playerId, ...rest } = props;
+  const { playerId, sx = [], ...rest } = props;
 
   const dispatch = useAppDispatch();
   const location = useLocation();
@@ -191,6 +191,7 @@ const HomePlayerListItem = (props: HomePlayerListItemProps) => {
             },
           },
         },
+        ...(sx instanceof Array ? sx : [sx]),
       ]}
     >
       <ListItemButton

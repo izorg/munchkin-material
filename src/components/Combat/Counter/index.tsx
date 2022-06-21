@@ -3,10 +3,10 @@ import {
   Box,
   type BoxProps,
   SvgIcon,
+  type SxProps,
   type Theme,
   useMediaQuery,
 } from "@mui/material";
-import { type SxProps } from "@mui/system";
 import PropTypes from "prop-types";
 import { type FC } from "react";
 

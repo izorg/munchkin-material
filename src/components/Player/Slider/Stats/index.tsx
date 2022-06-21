@@ -1,6 +1,6 @@
-import { Box, IconButton, useTheme } from "@mui/material";
+import { Box, type BoxProps, IconButton, useTheme } from "@mui/material";
 import PropTypes from "prop-types";
-import { useCallback } from "react";
+import { type FC, useCallback } from "react";
 import { useIntl } from "react-intl";
 
 import {
@@ -20,12 +20,11 @@ import Counter, { counterMessages } from "../../../Counter";
 import CounterLabel from "../../../Counter/Label";
 import SexIcon from "../../../SexIcon";
 
-type PlayerStatsProps = {
-  className?: string;
+type PlayerStatsProps = BoxProps & {
   playerId: string;
 };
 
-const PlayerStats = ({ className, playerId }: PlayerStatsProps) => {
+const PlayerStats: FC<PlayerStatsProps> = ({ playerId, sx = [], ...props }) => {
   const dispatch = useAppDispatch();
   const intl = useIntl();
   const theme = useTheme();
@@ -71,17 +70,20 @@ const PlayerStats = ({ className, playerId }: PlayerStatsProps) => {
 
   return (
     <Box
-      className={className}
-      sx={{
-        display: "flex",
-        flexDirection: "column-reverse",
-        width: "100%",
+      {...props}
+      sx={[
+        {
+          display: "flex",
+          flexDirection: "column-reverse",
+          width: "100%",
 
-        // eslint-disable-next-line sort-keys
-        "@media (orientation: landscape)": {
-          flexDirection: "row",
+          // eslint-disable-next-line sort-keys
+          "@media (orientation: landscape)": {
+            flexDirection: "row",
+          },
         },
-      }}
+        ...(sx instanceof Array ? sx : [sx]),
+      ]}
     >
       <Box
         sx={{

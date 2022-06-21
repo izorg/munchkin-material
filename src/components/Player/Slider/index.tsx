@@ -1,5 +1,4 @@
-import { css } from "@emotion/react";
-import { useTheme } from "@mui/material";
+import { Box, useTheme } from "@mui/material";
 import { m, type PanInfo, useAnimation } from "framer-motion";
 import PropTypes from "prop-types";
 import { useCallback, useRef } from "react";
@@ -89,71 +88,71 @@ const PlayerSlider = ({ playerId }: PlayerSliderProps) => {
   };
 
   return (
-    <div
+    <Box
       ref={ref}
-      css={css`
-        overflow-x: hidden;
-        width: 100%;
-      `}
+      sx={{
+        overflowX: "hidden",
+        width: "100%",
+      }}
     >
-      <m.div
+      <Box
         animate={controls}
-        css={css`
-          height: 100%;
-          position: relative;
-        `}
+        component={m.div}
         drag={playerList.length > 1 ? "x" : false}
         dragConstraints={ref}
         dragElastic={1}
         onDragEnd={onDragEnd}
+        sx={{
+          height: "100%",
+          position: "relative",
+        }}
       >
         {[currentIndex - 1, currentIndex, currentIndex + 1].map((index) => {
           const playerIndex = getPlayerIndex(index);
           const playerId = playerList[playerIndex];
 
           return (
-            <div
+            <Box
               key={`${playerId}-${index}`}
-              css={[
-                css`
-                  align-items: center;
-                  display: flex;
-                  height: 100%;
-                  padding: ${theme.spacing(2, 2, 7)};
-                  width: 100%;
+              sx={[
+                {
+                  alignItems: "center",
+                  display: "flex",
+                  height: "100%",
+                  padding: theme.spacing(2, 2, 7),
+                  width: "100%",
 
-                  @media (min-height: 720px) {
-                    padding-bottom: ${theme.spacing(2)};
-                  }
-                `,
-                index === currentIndex - 1 &&
-                  css`
-                    left: -100%;
-                    position: absolute;
-                    top: 0;
-                  `,
-                index === currentIndex + 1 &&
-                  css`
-                    left: 100%;
-                    position: absolute;
-                    top: 0;
-                  `,
+                  // eslint-disable-next-line sort-keys
+                  "@media (min-height: 720px)": {
+                    paddingBottom: 2,
+                  },
+                },
+                index === currentIndex - 1 && {
+                  left: "-100%",
+                  position: "absolute",
+                  top: 0,
+                },
+                index === currentIndex + 1 && {
+                  left: "100%",
+                  position: "absolute",
+                  top: 0,
+                },
               ]}
             >
               <PlayerStats
-                css={css`
-                  height: 100%;
-                  margin: 0 auto;
-                  max-height: 600px;
-                  max-width: 600px;
-                `}
                 playerId={playerId}
+                sx={{
+                  height: "100%",
+                  margin: "0 auto",
+                  maxHeight: "600px",
+                  maxWidth: "600px",
+                }}
               />
-            </div>
+            </Box>
           );
         })}
-      </m.div>
-    </div>
+      </Box>
+    </Box>
   );
 };
 

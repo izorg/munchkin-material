@@ -1,7 +1,7 @@
-import { css } from "@emotion/react";
 import { mdiCloseCircle } from "@mdi/js";
 import {
   Box,
+  type BoxProps,
   IconButton,
   Paper,
   styled,
@@ -10,8 +10,7 @@ import {
   useTheme,
 } from "@mui/material";
 import { m, useAnimation, useMotionValue } from "framer-motion";
-import PropTypes from "prop-types";
-import { memo, useEffect, useRef } from "react";
+import { type FC, memo, useEffect, useRef } from "react";
 import { FormattedMessage } from "react-intl";
 
 import { removeMonster } from "../../../ducks/monsters";
@@ -24,7 +23,7 @@ const Filler = styled("div", { label: "Filler" })({
   flex: 1,
 });
 
-const CombatMonsterSlider = ({ className }: { className?: string }) => {
+const CombatMonsterSlider: FC<BoxProps> = ({ sx = [], ...props }) => {
   const dispatch = useAppDispatch();
   const theme = useTheme();
 
@@ -188,43 +187,50 @@ const CombatMonsterSlider = ({ className }: { className?: string }) => {
   return (
     <Box
       ref={ref}
-      className={className}
-      sx={{
-        display: "flex",
-        overflow: "hidden",
+      sx={[
+        {
+          display: "flex",
+          overflow: "hidden",
 
-        // eslint-disable-next-line sort-keys
-        "@media (orientation: portrait)": {
-          width: "100%",
-        },
+          // eslint-disable-next-line sort-keys
+          "@media (orientation: portrait)": {
+            width: "100%",
+          },
 
-        // eslint-disable-next-line sort-keys
-        "@media (orientation: landscape)": {
-          flexDirection: "column",
-          height: "100%",
+          // eslint-disable-next-line sort-keys
+          "@media (orientation: landscape)": {
+            flexDirection: "column",
+            height: "100%",
+          },
         },
-      }}
+        ...(sx instanceof Array ? sx : [sx]),
+      ]}
+      {...props}
     >
       <Filler />
-      <m.div
+      <Box
         ref={containerRef}
         animate={animate}
-        css={css`
-          display: flex;
-          flex-shrink: 0;
-          padding: ${theme.spacing(1)};
-
-          @media (orientation: landscape) {
-            flex-direction: column;
-          }
-        `}
+        component={m.div}
         drag={landscape ? "y" : "x"}
         dragTransition={{
           modifyTarget,
           timeConstant: 300,
         }}
         onDrag={onDrag}
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         style={{ x, y }}
+        sx={{
+          display: "flex",
+          flexShrink: 0,
+          padding: 1,
+
+          // eslint-disable-next-line sort-keys
+          "@media (orientation: landscape)": {
+            flexDirection: "column",
+          },
+        }}
       >
         {monsters.map((id, monsterIndex) => (
           <Box
@@ -285,14 +291,10 @@ const CombatMonsterSlider = ({ className }: { className?: string }) => {
             </Paper>
           </Box>
         ))}
-      </m.div>
+      </Box>
       <Filler />
     </Box>
   );
-};
-
-CombatMonsterSlider.propTypes = {
-  className: PropTypes.string,
 };
 
 export default memo(CombatMonsterSlider);
