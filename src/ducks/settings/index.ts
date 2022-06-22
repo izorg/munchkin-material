@@ -1,7 +1,7 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 
 import { type SupportedLocale } from "../../i18n";
-import type store from "../../store";
+import store from "../../store";
 import createPlayer from "../../utils/createPlayer";
 import { startCombat } from "../combat";
 import { addPlayer } from "../players";

@@ -13,7 +13,7 @@ import {
 } from "@mui/material";
 import { m, useAnimation, useMotionValue } from "framer-motion";
 import PropTypes from "prop-types";
-import { memo, useEffect, useRef } from "react";
+import { type FC, memo, useEffect, useRef } from "react";
 
 import { setCombatHelper, setCombatHelperBonus } from "../../../ducks/combat";
 import { useAppDispatch } from "../../../store";
@@ -29,7 +29,7 @@ type CombatPlayerSliderProps = BoxProps & {
   playerId: string;
 };
 
-const CombatPlayerSlider = (props: CombatPlayerSliderProps) => {
+const CombatPlayerSlider: FC<CombatPlayerSliderProps> = (props) => {
   const { helperId, playerId, sx = [], ...rest } = props;
 
   const dispatch = useAppDispatch();

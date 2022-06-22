@@ -1,7 +1,7 @@
 import { compose, type StateFromReducersMapObject } from "redux";
 
 import migrations from "./migrations";
-import type reducers from "./reducers";
+import reducers from "./reducers";
 
 const key = "redux";
 
