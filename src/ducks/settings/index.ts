@@ -1,10 +1,6 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 
 import { type SupportedLocale } from "../../i18n";
-import store from "../../store";
-import createPlayer from "../../utils/createPlayer";
-import { startCombat } from "../combat";
-import { addPlayer } from "../players";
 
 type SettingsState = {
   epic: boolean;
@@ -76,27 +72,8 @@ export const {
   setKeepAwake,
   setLevelLimit,
   setLocale,
+  setSingleMode,
+  setSingleModePlayer,
 } = settingsSlice.actions;
-
-export const setSingleMode =
-  (singleMode: boolean) =>
-  (dispatch: typeof store.dispatch, getState: typeof store.getState): void => {
-    if (singleMode) {
-      let { singleModePlayerId } = getState().present.settings;
-
-      if (!singleModePlayerId) {
-        const player = createPlayer();
-
-        dispatch(addPlayer(player));
-        dispatch(settingsSlice.actions.setSingleModePlayer(player.id));
-
-        singleModePlayerId = player.id;
-      }
-
-      dispatch(startCombat(singleModePlayerId));
-    }
-
-    dispatch(settingsSlice.actions.setSingleMode(singleMode));
-  };
 
 export default settingsSlice.reducer;

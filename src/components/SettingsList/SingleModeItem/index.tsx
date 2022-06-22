@@ -2,9 +2,12 @@ import { mdiAccountMultipleOutline, mdiAccountOutline } from "@mdi/js";
 import { ListItemIcon, SvgIcon, Switch } from "@mui/material";
 import { FormattedMessage } from "react-intl";
 
-import { setSingleMode } from "../../../ducks/settings";
+import { startCombat } from "../../../ducks/combat";
+import { addPlayer } from "../../../ducks/players";
+import { setSingleMode, setSingleModePlayer } from "../../../ducks/settings";
 import usePresentSelector from "../../../hooks/usePresentSelector";
 import { useAppDispatch } from "../../../store";
+import createPlayer from "../../../utils/createPlayer";
 import { useFullVersion } from "../../FullVersionProvider";
 import ListItem from "../Item";
 import ListItemText from "../ItemText";
@@ -13,6 +16,10 @@ const SingleModeItem = () => {
   const dispatch = useAppDispatch();
 
   const singleMode = usePresentSelector((state) => state.settings.singleMode);
+
+  let singleModePlayerId = usePresentSelector(
+    (state) => state.settings.singleModePlayerId
+  );
 
   const { buyFullVersion, fullVersion } = useFullVersion();
 
@@ -23,6 +30,19 @@ const SingleModeItem = () => {
       } catch (error) {
         return;
       }
+    }
+
+    if (isSingleMode) {
+      if (!singleModePlayerId) {
+        const player = createPlayer();
+
+        dispatch(addPlayer(player));
+        dispatch(setSingleModePlayer(player.id));
+
+        singleModePlayerId = player.id;
+      }
+
+      dispatch(startCombat(singleModePlayerId));
     }
 
     dispatch(setSingleMode(isSingleMode));
