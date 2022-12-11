@@ -29,7 +29,7 @@ const Context = createContext<FullVersionContext>({
 export const useFullVersion = (): FullVersionContext => useContext(Context);
 
 const FullVersionProvider: FC<PropsWithChildren> = ({ children }) => {
-  const { cordova, store } = window;
+  const { store } = window;
 
   const dispatch = useAppDispatch();
 
@@ -87,7 +87,7 @@ const FullVersionProvider: FC<PropsWithChildren> = ({ children }) => {
     });
 
     store.refresh();
-  }, [cordova, dispatch, store]);
+  }, [dispatch, store]);
 
   return (
     <Context.Provider value={{ buyFullVersion, fullVersion }}>

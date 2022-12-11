@@ -7,7 +7,7 @@
       "babel-plugin-polyfill-corejs3",
       {
         "method": "usage-global",
-        "version": "3.25"
+        "version": "3.26"
       }
     ]
   ],
