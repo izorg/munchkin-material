@@ -83,7 +83,9 @@ const ColorPicker: FC<ColorPickerProps> = ({
             }
 
             if (muiFormControl && muiFormControl.onBlur) {
-              muiFormControl.onBlur();
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+              // @ts-ignore
+              muiFormControl.onBlur(event);
             }
           }
         }}
@@ -98,7 +100,9 @@ const ColorPicker: FC<ColorPickerProps> = ({
           }
 
           if (muiFormControl && muiFormControl.onFocus) {
-            muiFormControl.onFocus();
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            muiFormControl.onFocus(event);
           }
         }}
         onKeyDown={(event: KeyboardEvent) => {
