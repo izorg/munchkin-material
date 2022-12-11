@@ -8,7 +8,6 @@ import { CleanWebpackPlugin } from "clean-webpack-plugin";
 import CopyPlugin from "copy-webpack-plugin"; // eslint-disable-line import/default
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
-import { GenerateSW } from "workbox-webpack-plugin";
 
 const dev = process.env.NODE_ENV === "development";
 const prod = process.env.NODE_ENV === "production";
@@ -145,8 +144,6 @@ export default {
     }),
 
     dev && new ReactRefreshWebpackPlugin(),
-
-    !dev && new GenerateSW(),
 
     process.env.ANALYZE &&
       new BundleAnalyzerPlugin({
