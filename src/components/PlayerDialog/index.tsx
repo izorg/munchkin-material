@@ -87,7 +87,7 @@ const PlayerDialog = () => {
         Object.values(players)
           .map((player) => player.color)
           .filter(
-            (color): color is typeof availableColors[number] =>
+            (color): color is (typeof availableColors)[number] =>
               color !== undefined
           )
       ),

@@ -47,7 +47,7 @@ const supportedLocales = [
   UK,
 ] as const;
 
-export type SupportedLocale = typeof supportedLocales[number];
+export type SupportedLocale = (typeof supportedLocales)[number];
 
 export const isSupportedLocale = (locale: string): locale is SupportedLocale =>
   Boolean(supportedLocales.find((item) => item === locale));
