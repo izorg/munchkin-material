@@ -42,7 +42,7 @@
     "clsx": "1.2.1",
     "core-js": "3.27.1",
     "firebase": "9.15.0",
-    "framer-motion": "8.2.4",
+    "framer-motion": "7.10.3",
     "prop-types": "15.8.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
