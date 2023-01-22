@@ -19,7 +19,6 @@
       "rules": {
         "jsx-a11y/no-autofocus": ["error", { "ignoreNonDOM": true }],
         "no-console": ["error", { "allow": ["error", "warn"] }],
-        "react/jsx-sort-default-props": "error",
         "react/jsx-sort-props": [
           "error",
           {
@@ -28,6 +27,7 @@
           }
         ],
         "react/react-in-jsx-scope": "off",
+        "react/sort-default-props": "error",
         "react/sort-prop-types": [
           "error",
           {
