@@ -1,4 +1,5 @@
-/cordova/
-/coverage/
-/scripts/
-/web/
+coverage
+
+/cordova
+/scripts
+/web

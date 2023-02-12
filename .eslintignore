@@ -1,7 +1,8 @@
-/.idea/
-/.vscode/
-/cordova/platforms/
-/cordova/plugins/
-/cordova/www/
-/coverage/
-/web/
+.idea
+.vscode
+coverage
+
+/cordova/platforms
+/cordova/plugins
+/cordova/www
+/web
