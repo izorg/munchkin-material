@@ -8,7 +8,7 @@ import {
 } from "react";
 import { useLocation } from "react-router-dom";
 
-import { useGoBack } from "../../utils/location";
+import { useGoBack } from "../../../../src/utils/location";
 
 import hideWindowsBackButton from "./hideWindowsBackButton";
 import useNavigationBreadcrumbs from "./useNavigationBreadcrumbs";
