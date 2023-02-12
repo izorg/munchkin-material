@@ -1,5 +1,6 @@
 {
   "name": "cordova",
+  "private": true,
   "scripts": {
     "build:android": "cordova build android --release",
     "build:ios": "cordova build ios",
