@@ -1,3 +1,5 @@
+import { expect, test } from "@jest/globals";
+
 import state from "./state.json";
 
 import migrate from "./index";

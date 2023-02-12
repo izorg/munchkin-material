@@ -2,6 +2,8 @@
  * @jest-environment jsdom
  */
 
+import { describe, expect, test } from "@jest/globals";
+
 import { getLocale } from "./i18n";
 
 describe("getLocale()", () => {

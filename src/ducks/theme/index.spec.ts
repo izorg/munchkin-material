@@ -1,3 +1,5 @@
+import { describe, expect, test } from "@jest/globals";
+
 import { key as id } from "../../theme/colors/munchkin";
 
 import reducer, { initialState, setTheme, type ThemeState } from "./index";

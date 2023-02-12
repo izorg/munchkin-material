@@ -1,3 +1,5 @@
+import { describe, expect, test } from "@jest/globals";
+
 import reducer, { initialState, throwDice } from "./index";
 
 describe("Dice reducer", () => {
