@@ -22,9 +22,9 @@ import usePreviewTheme from "../../hooks/usePreviewTheme";
 import themeMessages from "../../messages/theme";
 import { useAppDispatch } from "../../store";
 import themes from "../../theme/colors";
+import { useFullVersion } from "../../utils/fullVersionContext";
 import { useGoBack } from "../../utils/location";
 import CancelButton from "../CancelButton";
-import { useFullVersion } from "../FullVersionProvider";
 import SubmitButton from "../SubmitButton";
 
 type FormValues = {

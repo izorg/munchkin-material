@@ -1,32 +1,12 @@
 import PropTypes from "prop-types";
-import {
-  createContext,
-  type FC,
-  type PropsWithChildren,
-  useCallback,
-  useContext,
-  useEffect,
-} from "react";
+import { type FC, type PropsWithChildren, useCallback, useEffect } from "react";
 
-import { setFullVersion } from "../../ducks/settings";
-import usePresentSelector from "../../hooks/usePresentSelector";
-import { useAppDispatch } from "../../store";
+import { setFullVersion } from "../../../../src/ducks/settings";
+import usePresentSelector from "../../../../src/hooks/usePresentSelector";
+import { useAppDispatch } from "../../../../src/store";
+import { FullVersionContext } from "../../../../src/utils/fullVersionContext";
 
 const FULL_VERSION_ID = "full_version";
-
-type FullVersionContext = {
-  buyFullVersion: () => Promise<void>;
-  fullVersion: boolean;
-};
-
-const Context = createContext<FullVersionContext>({
-  buyFullVersion: () => {
-    throw new Error("No <FullVersionProvider />");
-  },
-  fullVersion: true,
-});
-
-export const useFullVersion = (): FullVersionContext => useContext(Context);
 
 const FullVersionProvider: FC<PropsWithChildren> = ({ children }) => {
   const { store } = window;
@@ -90,9 +70,9 @@ const FullVersionProvider: FC<PropsWithChildren> = ({ children }) => {
   }, [dispatch, store]);
 
   return (
-    <Context.Provider value={{ buyFullVersion, fullVersion }}>
+    <FullVersionContext.Provider value={{ buyFullVersion, fullVersion }}>
       {children}
-    </Context.Provider>
+    </FullVersionContext.Provider>
   );
 };
 

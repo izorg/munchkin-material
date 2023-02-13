@@ -8,7 +8,7 @@ import { setSingleMode, setSingleModePlayer } from "../../../ducks/settings";
 import usePresentSelector from "../../../hooks/usePresentSelector";
 import { useAppDispatch } from "../../../store";
 import createPlayer from "../../../utils/createPlayer";
-import { useFullVersion } from "../../FullVersionProvider";
+import { useFullVersion } from "../../../utils/fullVersionContext";
 import ListItem from "../Item";
 import ListItemText from "../ItemText";
 

@@ -9,12 +9,12 @@ import { MemoryRouter } from "react-router-dom";
 import App from "../../src/components/App";
 import AugmentedStylesProvider from "../../src/components/AugmentedStylesProvider";
 import AugmentedThemeProvider from "../../src/components/AugmentedThemeProvider";
-import FullVersionProvider from "../../src/components/FullVersionProvider";
 import LocaleProvider from "../../src/components/LocaleProvider";
 import ReduxProvider from "../../src/components/ReduxProvider";
 import WakeLockProvider from "../../src/components/WakeLockProvider";
 
 import CordovaProvider from "./components/CordovaProvider";
+import FullVersionProvider from "./components/FullVersionProvider";
 
 const cordovaScript = document.createElement("script");
 
