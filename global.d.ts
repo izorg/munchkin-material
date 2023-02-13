@@ -1,10 +1,7 @@
-import { EnhancedStore } from "@reduxjs/toolkit";
+import { type EnhancedStore } from "@reduxjs/toolkit";
 
 declare global {
   interface Window {
-    BuildInfo: {
-      debug: boolean;
-    };
     Keyboard?: {
       setKeyboardStyle: (color: string) => void;
     };
@@ -34,12 +31,6 @@ declare global {
           };
         };
       };
-    };
-  }
-
-  interface Navigator {
-    app: {
-      exitApp: () => void;
     };
   }
 }
