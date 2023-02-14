@@ -1,17 +1,14 @@
 {
-  "extends": [
-    "stylelint-config-html/html",
-    "stylelint-config-standard",
-    "stylelint-prettier/recommended"
-  ],
+  "extends": ["stylelint-config-html/html", "stylelint-config-standard"],
   "overrides": [
     {
       "customSyntax": "@stylelint/postcss-css-in-js",
       "files": ["**/*.{js,ts,tsx}"]
     }
   ],
-  "plugins": ["stylelint-order"],
+  "plugins": ["stylelint-order", "stylelint-prettier"],
   "rules": {
-    "order/properties-alphabetical-order": true
+    "order/properties-alphabetical-order": true,
+    "prettier/prettier": true
   }
 }
