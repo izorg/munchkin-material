@@ -15,8 +15,6 @@ import themes from "../../theme/colors";
 import getThemeOptions from "../../theme/getThemeOptions";
 import { ios } from "../../utils/platforms";
 
-import useStatusBar from "./useStatusBar";
-
 const AugmentedThemeProvider: FC<PropsWithChildren> = ({ children }) => {
   const { locale } = useIntl();
 
@@ -46,8 +44,6 @@ const AugmentedThemeProvider: FC<PropsWithChildren> = ({ children }) => {
       Keyboard.setKeyboardStyle(theme.palette.mode); // cordova ios
     }
   }, [theme.palette.mode]);
-
-  useStatusBar(theme);
 
   return (
     <ThemeProvider theme={theme}>

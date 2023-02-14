@@ -16,7 +16,6 @@ declare global {
       };
     };
     reduxStore?: EnhancedStore;
-    StatusBar?: StatusBar;
     store?: IapStore.IStore;
     Windows: {
       UI: {
