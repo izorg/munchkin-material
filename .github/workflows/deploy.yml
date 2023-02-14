@@ -30,7 +30,7 @@ jobs:
 
       - name: Get app version
         id: version
-        run: echo "##[set-output name=VERSION;]$(node scripts/version.mjs)"
+        run: echo "##[set-output name=VERSION;]$(node scripts/version.js)"
 
       - name: Lint
         run: npm run lint

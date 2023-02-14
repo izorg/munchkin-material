@@ -1,21 +1,25 @@
 /* eslint-env node */
-const path = require("path");
 
-const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-const CopyPlugin = require("copy-webpack-plugin");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
-const { GenerateSW } = require("workbox-webpack-plugin");
+import path from "node:path";
+import url from "node:url";
+
+import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin";
+import { CleanWebpackPlugin } from "clean-webpack-plugin";
+import CopyPlugin from "copy-webpack-plugin"; // eslint-disable-line import/default
+import HtmlWebpackPlugin from "html-webpack-plugin";
+import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
+import { GenerateSW } from "workbox-webpack-plugin";
 
 const dev = process.env.NODE_ENV === "development";
 const prod = process.env.NODE_ENV === "production";
+
+const __dirname = url.fileURLToPath(new URL(".", import.meta.url));
 
 const outputPath = path.resolve(__dirname, "web");
 
 const ids = process.env.ANALYZE || dev ? "named" : "deterministic";
 
-module.exports = {
+export default {
   devServer: {
     client: {
       overlay: true,

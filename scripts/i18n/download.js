@@ -1,6 +1,6 @@
 import fs from "fs/promises";
 
-import poeditor from "../poeditor.mjs";
+import poeditor from "../poeditor.js";
 
 const projectId = process.env.POEDITOR_PROJECT_ID;
 

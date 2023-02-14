@@ -1,12 +1,16 @@
 /* eslint-env node */
-const path = require("path");
 
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+import path from "node:path";
+import url from "node:url";
+
+import { CleanWebpackPlugin } from "clean-webpack-plugin";
+import HtmlWebpackPlugin from "html-webpack-plugin";
+
+const __dirname = url.fileURLToPath(new URL(".", import.meta.url));
 
 const outputPath = path.resolve(__dirname, "www");
 
-module.exports = {
+export default {
   devtool: "source-map",
 
   entry: "./src/index.tsx",
