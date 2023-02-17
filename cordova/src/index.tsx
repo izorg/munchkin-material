@@ -11,12 +11,12 @@ import AugmentedStylesProvider from "../../src/components/AugmentedStylesProvide
 import AugmentedThemeProvider from "../../src/components/AugmentedThemeProvider";
 import LocaleProvider from "../../src/components/LocaleProvider";
 import ReduxProvider from "../../src/components/ReduxProvider";
-import WakeLockProvider from "../../src/components/WakeLockProvider";
 
 import CordovaProvider from "./components/CordovaProvider";
 import FullVersionProvider from "./components/FullVersionProvider";
 import SplashScreenProvider from "./components/SplashScreenProvider";
 import StatusBarProvider from "./components/StatusBarProvider";
+import WakeLockProvider from "./components/WakeLockProvider";
 
 const cordovaScript = document.createElement("script");
 

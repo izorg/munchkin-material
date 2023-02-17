@@ -7,15 +7,16 @@ import {
   useRef,
 } from "react";
 
-import { setKeepAwake } from "../../ducks/settings";
-import usePresentSelector from "../../hooks/usePresentSelector";
-import { useAppDispatch } from "../../store";
-import { WakeLockContext } from "../../utils/wakeLockContext";
+import { setKeepAwake } from "../../../../src/ducks/settings";
+import usePresentSelector from "../../../../src/hooks/usePresentSelector";
+import { useAppDispatch } from "../../../../src/store";
+import { WakeLockContext } from "../../../../src/utils/wakeLockContext";
 
 const WakeLockProvider: FC<PropsWithChildren> = ({ children }) => {
   const dispatch = useAppDispatch();
 
-  const wakeLockSupport = "wakeLock" in navigator;
+  const insomnia = window.plugins?.insomnia;
+  const wakeLockSupport = !!insomnia || "wakeLock" in navigator;
   const wakeLock = usePresentSelector((state) => state.settings.keepAwake);
   const wakeLockRef = useRef<WakeLockSentinel | undefined>(undefined);
 
@@ -36,20 +37,28 @@ const WakeLockProvider: FC<PropsWithChildren> = ({ children }) => {
     }
 
     if (wakeLock) {
-      navigator.wakeLock
-        .request("screen")
-        .then((wakeLockSentinel) => {
-          wakeLockRef.current = wakeLockSentinel;
-        })
-        .catch(() => setKeepAwake(false));
+      if (insomnia) {
+        insomnia.keepAwake();
+      } else {
+        navigator.wakeLock
+          .request("screen")
+          .then((wakeLockSentinel) => {
+            wakeLockRef.current = wakeLockSentinel;
+          })
+          .catch(() => setKeepAwake(false));
+      }
     } else {
-      if (wakeLockRef.current) {
-        void wakeLockRef.current.release().then(() => {
-          wakeLockRef.current = undefined;
-        });
+      if (insomnia) {
+        insomnia.allowSleepAgain();
+      } else {
+        if (wakeLockRef.current) {
+          void wakeLockRef.current.release().then(() => {
+            wakeLockRef.current = undefined;
+          });
+        }
       }
     }
-  }, [wakeLock, wakeLockSupport]);
+  }, [insomnia, wakeLock, wakeLockSupport]);
 
   return (
     <WakeLockContext.Provider

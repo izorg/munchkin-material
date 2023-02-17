@@ -2,7 +2,7 @@ import { mdiLightbulb, mdiLightbulbOutline } from "@mdi/js";
 import { ListItemIcon, SvgIcon, Switch } from "@mui/material";
 import { FormattedMessage } from "react-intl";
 
-import { useWakeLock } from "../../WakeLockProvider";
+import { useWakeLock } from "../../../utils/wakeLockContext";
 import ListItem from "../Item";
 import ListItemText from "../ItemText";
 
