@@ -15,6 +15,7 @@ import WakeLockProvider from "../../src/components/WakeLockProvider";
 
 import CordovaProvider from "./components/CordovaProvider";
 import FullVersionProvider from "./components/FullVersionProvider";
+import SplashScreenProvider from "./components/SplashScreenProvider";
 import StatusBarProvider from "./components/StatusBarProvider";
 
 const cordovaScript = document.createElement("script");
@@ -44,6 +45,7 @@ document.addEventListener(
                   <LocaleProvider>
                     <AugmentedStylesProvider>
                       <AugmentedThemeProvider>
+                        <SplashScreenProvider />
                         <StatusBarProvider />
                         <App />
                       </AugmentedThemeProvider>

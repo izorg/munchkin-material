@@ -1,5 +1,5 @@
 import { domMax, LazyMotion } from "framer-motion";
-import { lazy, Suspense, useEffect } from "react";
+import { lazy, Suspense } from "react";
 
 import Home from "../Home";
 import ScreenDialog from "../ScreenDialog";
@@ -30,36 +30,28 @@ const SettingsDialog = lazy(
     )
 );
 
-const App = () => {
-  useEffect(() => {
-    setTimeout(() => {
-      navigator.splashscreen?.hide();
-    }, 10);
-  }, []);
+const App = () => (
+  <LazyMotion features={domMax} strict>
+    <UndoProvider>
+      <ScreenDialog open TransitionProps={{ appear: false }}>
+        <Home />
+      </ScreenDialog>
 
-  return (
-    <LazyMotion features={domMax} strict>
-      <UndoProvider>
-        <ScreenDialog open TransitionProps={{ appear: false }}>
-          <Home />
-        </ScreenDialog>
+      <Suspense fallback={null}>
+        <SettingsDialog />
+      </Suspense>
 
-        <Suspense fallback={null}>
-          <SettingsDialog />
-        </Suspense>
+      <Suspense fallback={null}>
+        <DiceDialog />
+      </Suspense>
 
-        <Suspense fallback={null}>
-          <DiceDialog />
-        </Suspense>
+      <Suspense fallback={null}>
+        <PlayerDialog />
+      </Suspense>
 
-        <Suspense fallback={null}>
-          <PlayerDialog />
-        </Suspense>
-
-        <UndoSnackbar />
-      </UndoProvider>
-    </LazyMotion>
-  );
-};
+      <UndoSnackbar />
+    </UndoProvider>
+  </LazyMotion>
+);
 
 export default App;
