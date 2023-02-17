@@ -36,6 +36,10 @@
       "cordova-plugin-web-share": {}
     }
   },
+  "dependencies": {
+    "smoothscroll-polyfill": "0.4.4",
+    "web-animations-js": "2.3.2"
+  },
   "devDependencies": {
     "cordova-android": "10.1.2",
     "cordova-ios": "6.2.0",

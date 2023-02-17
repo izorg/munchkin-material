@@ -1,6 +1,6 @@
 import "web-animations-js";
 
-import "../../src/scroll";
+import "./scroll.js";
 
 import { Suspense } from "react";
 import { createRoot } from "react-dom/client";
