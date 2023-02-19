@@ -30,7 +30,7 @@ jobs:
 
       - name: Get app version
         id: version
-        run: echo "##[set-output name=VERSION;]$(node scripts/version.js)"
+        run: echo "VERSION=$(node scripts/version.js)" >> $GITHUB_ENV
 
       - name: Lint
         run: npm run lint
