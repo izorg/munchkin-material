@@ -4,11 +4,13 @@
 .firebase
 .idea/*
 !.idea/icon.svg
+.parcel-cache
 .stylelintcache
 .vscode
 coverage
 firebase-debug.log
 node_modules
+parcel-bundle-reports
 tsconfig.tsbuildinfo
 
 /languages/generated

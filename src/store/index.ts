@@ -80,7 +80,7 @@ store.subscribe(() => {
   }
 });
 
-(module as __WebpackModuleApi.Module).hot?.accept("./reducers", () =>
+module.hot?.accept("./reducers", () =>
   store.replaceReducer(createRootReducer())
 );
 

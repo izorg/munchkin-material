@@ -1,11 +1,23 @@
 {
   "name": "cordova",
   "private": true,
-  "type": "module",
+  "targets": {
+    "default": {
+      "distDir": "www",
+      "publicUrl": ".",
+      "source": "src/index.html",
+      "sourceMap": {
+        "inline": true
+      }
+    }
+  },
+  "alias": {
+    "@formatjs/icu-messageformat-parser": "@formatjs/icu-messageformat-parser/no-parser"
+  },
   "scripts": {
     "build:android": "cordova build android --release",
     "build:ios": "cordova build ios",
-    "build:www": "cross-env NODE_ENV=production webpack",
+    "build:www": "rm -rf www/* && parcel build",
     "cordova:prepare": "cordova prepare android ios",
     "cordova:prepare:windows": "cordova prepare windows",
     "run:android": "cordova run android",

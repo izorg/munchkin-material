@@ -1,11 +1,5 @@
 {
-  "extends": ["stylelint-config-html/html", "stylelint-config-standard"],
-  "overrides": [
-    {
-      "customSyntax": "@stylelint/postcss-css-in-js",
-      "files": ["**/*.{js,ts,tsx}"]
-    }
-  ],
+  "extends": ["stylelint-config-standard"],
   "plugins": ["stylelint-order", "stylelint-prettier"],
   "rules": {
     "order/properties-alphabetical-order": true,
