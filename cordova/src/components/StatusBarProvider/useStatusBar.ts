@@ -4,8 +4,6 @@ import { useEffect } from "react";
 
 const useStatusBar = (theme: Theme): void => {
   useEffect(() => {
-    const { StatusBar } = window;
-
     if (!StatusBar) {
       return;
     }

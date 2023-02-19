@@ -9,8 +9,6 @@ import { FullVersionContext } from "../../../../src/utils/fullVersionContext";
 const FULL_VERSION_ID = "full_version";
 
 const FullVersionProvider: FC<PropsWithChildren> = ({ children }) => {
-  const { store } = window;
-
   const dispatch = useAppDispatch();
 
   const fullVersion = usePresentSelector((state) => state.settings.fullVersion);

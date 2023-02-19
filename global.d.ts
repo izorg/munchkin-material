@@ -21,7 +21,6 @@ declare global {
       };
     };
     reduxStore?: EnhancedStore;
-    store?: IapStore.IStore;
     Windows: {
       UI: {
         Core: {
