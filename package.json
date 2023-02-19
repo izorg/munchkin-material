@@ -1,7 +1,7 @@
 {
   "name": "munchkin",
   "private": true,
-  "version": "13.3.16",
+  "version": "14.0.0",
   "type": "module",
   "targets": {
     "default": {
