@@ -7,9 +7,6 @@ declare global {
     };
   }
   interface Window {
-    Keyboard?: {
-      setKeyboardStyle: (color: string) => void;
-    };
     munchkinDev?: {
       setLocale: (locale: string) => void;
       setTestData: () => void;

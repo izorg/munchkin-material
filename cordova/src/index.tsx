@@ -14,6 +14,7 @@ import ReduxProvider from "../../src/components/ReduxProvider";
 
 import CordovaProvider from "./components/CordovaProvider";
 import FullVersionProvider from "./components/FullVersionProvider";
+import KeyboardProvider from "./components/KeyboardProvider";
 import SplashScreenProvider from "./components/SplashScreenProvider";
 import StatusBarProvider from "./components/StatusBarProvider";
 import WakeLockProvider from "./components/WakeLockProvider";
@@ -24,7 +25,13 @@ cordovaScript.setAttribute("src", "cordova.js");
 
 document.querySelector("head")?.appendChild(cordovaScript);
 
-const root = createRoot(document.getElementById("root") as HTMLElement);
+const node = document.getElementById("root");
+
+if (!node) {
+  throw new Error("No #root element");
+}
+
+const root = createRoot(node);
 
 document.addEventListener(
   "deviceready",
@@ -47,6 +54,7 @@ document.addEventListener(
                       <AugmentedThemeProvider>
                         <SplashScreenProvider />
                         <StatusBarProvider />
+                        <KeyboardProvider />
                         <App />
                       </AugmentedThemeProvider>
                     </AugmentedStylesProvider>

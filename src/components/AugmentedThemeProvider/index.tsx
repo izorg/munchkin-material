@@ -6,14 +6,13 @@ import {
 } from "@mui/material";
 import { deepmerge } from "@mui/utils";
 import PropTypes from "prop-types";
-import { type FC, type PropsWithChildren, useEffect, useMemo } from "react";
+import { type FC, type PropsWithChildren, useMemo } from "react";
 import { useIntl } from "react-intl";
 
 import usePreviewTheme from "../../hooks/usePreviewTheme";
 import { getDirection } from "../../i18n";
 import themes from "../../theme/colors";
 import getThemeOptions from "../../theme/getThemeOptions";
-import { ios } from "../../utils/platforms";
 
 const AugmentedThemeProvider: FC<PropsWithChildren> = ({ children }) => {
   const { locale } = useIntl();
@@ -36,14 +35,6 @@ const AugmentedThemeProvider: FC<PropsWithChildren> = ({ children }) => {
       )
     );
   }, [direction, previewTheme, systemPaletteMode]);
-
-  useEffect(() => {
-    const { Keyboard } = window;
-
-    if (Keyboard && Keyboard.setKeyboardStyle && ios) {
-      Keyboard.setKeyboardStyle(theme.palette.mode); // cordova ios
-    }
-  }, [theme.palette.mode]);
 
   return (
     <ThemeProvider theme={theme}>

@@ -2,6 +2,7 @@
 .vscode
 coverage
 
+/cordova/Keyboard.d.ts
 /cordova/platforms
 /cordova/plugins
 /cordova/StatusBar.d.ts
