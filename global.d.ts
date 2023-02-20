@@ -13,20 +13,5 @@ declare global {
     };
 
     reduxStore?: EnhancedStore;
-
-    Windows: {
-      UI: {
-        Core: {
-          AppViewBackButtonVisibility: {
-            collapsed: boolean;
-          };
-          SystemNavigationManager: {
-            getForCurrentView: () => {
-              appViewBackButtonVisibility: boolean;
-            };
-          };
-        };
-      };
-    };
   }
 }

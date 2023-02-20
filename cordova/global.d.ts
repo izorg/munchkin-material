@@ -17,4 +17,19 @@ interface Window {
   };
 
   store?: IapStore.IStore;
+
+  Windows: {
+    UI: {
+      Core: {
+        AppViewBackButtonVisibility: {
+          collapsed: boolean;
+        };
+        SystemNavigationManager: {
+          getForCurrentView: () => {
+            appViewBackButtonVisibility: boolean;
+          };
+        };
+      };
+    };
+  };
 }
