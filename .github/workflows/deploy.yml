@@ -50,7 +50,7 @@ jobs:
         with:
           environment: production
           sourcemaps: "./web"
-          version: ${{ steps.version.outputs.VERSION }}
+          version: ${{ env.VERSION }}
 
       - name: Deploy 🚀
         uses: FirebaseExtended/action-hosting-deploy@v0
