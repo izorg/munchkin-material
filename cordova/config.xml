@@ -28,6 +28,7 @@
         <preference name="HeaderColor" value="#795548" />
         <preference name="StatusBarOverlaysWebView" value="false" />
         <preference name="android-minSdkVersion" value="24" />
+        <preference name="android-compileSdkVersion" value="33" />
         <resource-file src="google-services.json" target="app/google-services.json" />
         <icon density="ldpi" background="res/android/mipmap-ldpi/icon_background.png" foreground="res/android/mipmap-ldpi/icon_foreground.png" src="res/android/mipmap-ldpi/icon.png" />
         <icon density="mdpi" background="res/android/mipmap-mdpi/icon_background.png" foreground="res/android/mipmap-mdpi/icon_foreground.png" src="res/android/mipmap-mdpi/icon.png" />
