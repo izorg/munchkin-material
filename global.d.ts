@@ -14,14 +14,9 @@ declare global {
       setLocale: (locale: string) => void;
       setTestData: () => void;
     };
-    plugins?: {
-      insomnia?: {
-        keepAwake: () => void;
-        allowSleepAgain: () => void;
-      };
-    };
+
     reduxStore?: EnhancedStore;
-    store?: IapStore.IStore;
+
     Windows: {
       UI: {
         Core: {

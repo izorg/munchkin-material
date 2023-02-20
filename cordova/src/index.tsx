@@ -1,4 +1,4 @@
-import "web-animations-js";
+import "web-animations-js"; // eslint-disable-line
 
 import "./scroll.js";
 
