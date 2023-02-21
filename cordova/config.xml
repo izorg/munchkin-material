@@ -90,6 +90,7 @@
         <edit-config file="Munchkin/Munchkin-Info.plist" mode="merge" target="UIRequiresFullScreen">
             <false />
         </edit-config>
+        <resource-file src="GoogleService-Info.plist" />
     </platform>
     <platform name="windows">
       <name>ms-resource:DisplayName</name>
