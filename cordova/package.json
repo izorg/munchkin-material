@@ -17,7 +17,8 @@
   "scripts": {
     "build:android": "cordova build android --release",
     "build:ios": "cordova build ios",
-    "build:www": "rm -rf www/* && parcel build",
+    "build:www": "npm run clean && parcel build",
+    "clean": "rimraf www",
     "cordova:prepare": "cordova prepare android ios",
     "cordova:prepare:windows": "cordova prepare windows",
     "run:android": "cordova run android",
