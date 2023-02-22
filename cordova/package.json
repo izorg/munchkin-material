@@ -2,8 +2,33 @@
   "name": "cordova",
   "private": true,
   "targets": {
-    "default": {
+    "android": {
       "distDir": "www",
+      "engines": {
+        "browsers": "chrome 51"
+      },
+      "publicUrl": ".",
+      "source": "src/index.html",
+      "sourceMap": {
+        "inline": true
+      }
+    },
+    "ios": {
+      "distDir": "www",
+      "engines": {
+        "browsers": "ios 13"
+      },
+      "publicUrl": ".",
+      "source": "src/index.html",
+      "sourceMap": {
+        "inline": true
+      }
+    },
+    "windows": {
+      "distDir": "www",
+      "engines": {
+        "browsers": "edge 18"
+      },
       "publicUrl": ".",
       "source": "src/index.html",
       "sourceMap": {
@@ -17,7 +42,9 @@
   "scripts": {
     "build:android": "cordova build android --release",
     "build:ios": "cordova build ios",
-    "build:www": "npm run clean && parcel build",
+    "build:www:android": "npm run clean && parcel build --target=android",
+    "build:www:ios": "npm run clean && parcel build --target=ios",
+    "build:www:windows": "npm run clean && parcel build --target=windows",
     "clean": "rimraf www",
     "cordova:prepare": "cordova prepare android ios",
     "cordova:prepare:windows": "cordova prepare windows",
