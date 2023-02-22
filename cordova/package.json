@@ -42,9 +42,9 @@
   "scripts": {
     "build:android": "cordova build android --release",
     "build:ios": "cordova build ios",
-    "build:www:android": "npm run clean && parcel build --target=android",
-    "build:www:ios": "npm run clean && parcel build --target=ios",
-    "build:www:windows": "npm run clean && parcel build --target=windows",
+    "build:www:android": "yarn run clean && parcel build --target=android",
+    "build:www:ios": "yarn run clean && parcel build --target=ios",
+    "build:www:windows": "yarn run clean && parcel build --target=windows",
     "clean": "rimraf www",
     "cordova:prepare": "cordova prepare android ios",
     "cordova:prepare:windows": "cordova prepare windows",
