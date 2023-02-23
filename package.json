@@ -26,7 +26,7 @@
     "i18n:compile": "formatjs compile-folder --ast --format=simple languages languages/generated",
     "i18n:extract": "formatjs extract --out-file=messages.json \"src/**/*.{js,ts,tsx}\" && formatjs compile --out-file=languages/en.json messages.json && rm messages.json && prettier --write languages/en.json",
     "lint": "yarn run tsc && yarn run eslint && yarn run stylelint",
-    "prepare": "husky install",
+    "postinstall": "husky install",
     "prettier": "prettier --cache --ignore-unknown --write .",
     "reinstall": "rimraf cordova/node_modules node_modules package-lock.json && npm install",
     "screenshots": "node scripts/screenshots.js",
