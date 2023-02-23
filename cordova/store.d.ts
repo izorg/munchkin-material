@@ -7,15 +7,14 @@
 declare var store: IapStore.IStore;
 
 declare namespace IapStore {
-
   /** Types of In-App-Products */
   export type StoreProductType =
-    'consumable' |
-    'non consumable' |
-    'free subscription' |
-    'paid subscription' |
-    'non renewing subscription' |
-    'application';
+    | "consumable"
+    | "non consumable"
+    | "free subscription"
+    | "paid subscription"
+    | "non renewing subscription"
+    | "application";
 
   /** An error triggered by the In-App Purchase plugin */
   export interface IError {
@@ -43,7 +42,13 @@ declare namespace IapStore {
     /** Called when an order is refunded by the user. */
     refunded(callback: (product: IStoreProduct) => void): IWhen;
     /** Called when content download is started */
-    downloading(callback: (product: IStoreProduct, progress: number, timeRemaining: number) => void): IWhen;
+    downloading(
+      callback: (
+        product: IStoreProduct,
+        progress: number,
+        timeRemaining: number
+      ) => void
+    ): IWhen;
     /** Called when content download has successfully completed */
     downloaded(callback: (product: IStoreProduct) => void): IWhen;
     /** Called when receipt validation successful */
@@ -81,17 +86,17 @@ declare namespace IapStore {
 
   /** See https://github.com/j3k0/cordova-plugin-purchase/blob/master/doc/api.md#storeorderproduct-additionaldata for details */
   export type IAndroidProrationMode =
-    'IMMEDIATE_WITH_TIME_PRORATION'
-  | 'IMMEDIATE_AND_CHARGE_PRORATED_PRICE'
-  | 'IMMEDIATE_WITHOUT_PRORATION'
-  | 'DEFERRED'
-  | 'IMMEDIATE_AND_CHARGE_FULL_PRICE';
+    | "IMMEDIATE_WITH_TIME_PRORATION"
+    | "IMMEDIATE_AND_CHARGE_PRORATED_PRICE"
+    | "IMMEDIATE_WITHOUT_PRORATION"
+    | "DEFERRED"
+    | "IMMEDIATE_AND_CHARGE_FULL_PRICE";
 
   export interface IAdditionalData {
     /** A string with the old subscription to upgrade/downgrade on Android.
      *
      * Note: if another subscription product is already owned that is member of the same group, oldSku will be set automatically for you (see product.group). */
-    oldSku?: string
+    oldSku?: string;
     /** A string with the purchaseToken of the subscription to upgrade/downgrade from on Android.
      *
      * Note that it is automatically filled for you if you already specify `oldSku`. */
@@ -224,7 +229,7 @@ declare namespace IapStore {
     /** Error: The app is attempting to use a property for which it does not have the required entitlement. */
     ERR_UNAUTHORIZED_REQUEST_DATA: number;
     /** Error: The offer identifier is invalid. */
-    ERR_INVALID_OFFER_IDENTIFIER : number;
+    ERR_INVALID_OFFER_IDENTIFIER: number;
     /** Error: The price you specified in App Store Connect is no longer valid. */
     ERR_INVALID_OFFER_PRICE: number;
     /** Error: The signature in a payment discount is not valid. */
@@ -330,7 +335,11 @@ declare namespace IapStore {
      * After being called, the callback is unregistered. */
     once(query: string): IWhen;
     once(action: string, callback: () => void): void;
-    once(query: string, action: string, callback: (product: IStoreProduct) => void): IWhen;
+    once(
+      query: string,
+      action: string,
+      callback: (product: IStoreProduct) => void
+    ): IWhen;
 
     /** Add (or register) a product into the store.
      *
@@ -372,7 +381,11 @@ declare namespace IapStore {
      * store.when("cc.fovea.inapp1", "approved", function(product) { ... });
      * ```
      */
-    when(query: string, action: string, callback: (product: IStoreProduct) => void): IWhen;
+    when(
+      query: string,
+      action: string,
+      callback: (product: IStoreProduct) => void
+    ): IWhen;
 
     /**
      * Register a callback to be called when the store is ready to be used.
@@ -417,7 +430,10 @@ declare namespace IapStore {
      * See https://developer.android.com/google/play/billing/subscriptions#price-change-communicate
      *
      * Note: This call does nothing on iOS and Microsoft UWP. */
-    launchPriceChangeConfirmationFlow(productId: string, callback: (status: 'UserCanceled' | 'OK' | 'UnknownProduct') => void): void;
+    launchPriceChangeConfirmationFlow(
+      productId: string,
+      callback: (status: "UserCanceled" | "OK" | "UnknownProduct") => void
+    ): void;
     /** Redeems a promotional offer from within the app.
      *
      * - On iOS, calling store.redeem() will open the Code Redemption Sheet. See the "offer codes" documentation for details.
@@ -438,27 +454,33 @@ declare namespace IapStore {
      * Full documentation here:
      * https://github.com/j3k0/cordova-plugin-purchase/blob/master/doc/api.md#storeorderproduct-additionaldata
      */
-    order(product: string | IStoreProduct, additionalData?: null | IAdditionalData): IOrderPromise;
+    order(
+      product: string | IStoreProduct,
+      additionalData?: null | IAdditionalData
+    ): IOrderPromise;
 
     applicationUsername?: string | (() => string);
   }
 
-  export type TransactionType = 'ios-appstore' | 'android-playstore' | 'windows-store-transaction';
+  export type TransactionType =
+    | "ios-appstore"
+    | "android-playstore"
+    | "windows-store-transaction";
 
   /** Possible states of a product */
   export type StoreProductState =
-    'approved' |
-    'cancelled' |
-    'downloading' |
-    'downloaded' |
-    'expired' |
-    'finished' |
-    'initiated' |
-    'invalid' |
-    'owned' |
-    'registered' |
-    'requested' |
-    'valid';
+    | "approved"
+    | "cancelled"
+    | "downloading"
+    | "downloaded"
+    | "expired"
+    | "finished"
+    | "initiated"
+    | "invalid"
+    | "owned"
+    | "registered"
+    | "requested"
+    | "valid";
 
   export interface ITransaction {
     /** Transaction identifier */
@@ -492,7 +514,13 @@ declare namespace IapStore {
     group?: string;
   }
 
-  export type IPeriodUnit = "Minute" | "Hour" | "Day" | "Week" | "Month" | "Year";
+  export type IPeriodUnit =
+    | "Minute"
+    | "Hour"
+    | "Day"
+    | "Week"
+    | "Month"
+    | "Year";
 
   /**
    * In-App Product or Application Bundle
@@ -604,7 +632,6 @@ declare namespace IapStore {
    * The store.refresh() method returns a promise-like object with the following functions
    */
   export interface IRefreshPromise {
-
     /** Calls `fn` when restoring purchases failed. */
     failed(callback: () => void): IRefreshPromise;
 
@@ -626,7 +653,10 @@ declare namespace IapStore {
   }
 
   export type IProductCallback = (product: IStoreProduct) => void;
-  export type IVerifySuccessCallback = (product: IStoreProduct, purchaseData: any) => void;
+  export type IVerifySuccessCallback = (
+    product: IStoreProduct,
+    purchaseData: any
+  ) => void;
   export type IErrorCallback = (err: IError) => void;
 
   export interface IVerifyPromise {
@@ -657,15 +687,15 @@ declare namespace IapStore {
 
 // For backward compatibility prior v7.1.4.
 declare namespace store {
-    export type StoreProductType = IapStore.StoreProductType;
-    export type IError = IapStore.IError;
-    export type IWhen = IapStore.IWhen;
-    export type IValidatorCallback = IapStore.IValidatorCallback;
-    export type IValidator = IapStore.IValidator;
-    export type IStore = IapStore.IStore;
-    export type TransactionType = IapStore.TransactionType;
-    export type StoreProductState = IapStore.StoreProductState;
-    export type ITransaction = IapStore.ITransaction;
-    export type IRegisterRequest = IapStore.IRegisterRequest;
-    export type IStoreProduct = IapStore.IStoreProduct;
+  export type StoreProductType = IapStore.StoreProductType;
+  export type IError = IapStore.IError;
+  export type IWhen = IapStore.IWhen;
+  export type IValidatorCallback = IapStore.IValidatorCallback;
+  export type IValidator = IapStore.IValidator;
+  export type IStore = IapStore.IStore;
+  export type TransactionType = IapStore.TransactionType;
+  export type StoreProductState = IapStore.StoreProductState;
+  export type ITransaction = IapStore.ITransaction;
+  export type IRegisterRequest = IapStore.IRegisterRequest;
+  export type IStoreProduct = IapStore.IStoreProduct;
 }

@@ -1,6 +1,9 @@
+.yarn
 coverage
 package-lock.json
 package.json
 
-/cordova
+/cordova/platforms
+/cordova/plugins
+/cordova/www
 /web

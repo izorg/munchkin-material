@@ -22,7 +22,7 @@
     "build:workbox": "workbox generateSW workbox.config.cjs",
     "clean": "rimraf .eslintcache .parcel-cache .stylelintcache cordova/www coverage messages node_modules/.cache parcel-bundle-reports screenshots tsconfig.tsbuildinfo web",
     "dev": "parcel --port=3000 --target=default src/index.html",
-    "eslint": "eslint --cache \"**/*.{js,json,ts,tsx}\"",
+    "eslint": "eslint --cache \"**/*.{cjs,js,json,ts,tsx}\"",
     "i18n:compile": "formatjs compile-folder --ast --format=simple languages languages/generated",
     "i18n:extract": "formatjs extract --out-file=messages.json \"src/**/*.{js,ts,tsx}\" && formatjs compile --out-file=languages/en.json messages.json && rm messages.json && prettier --write languages/en.json",
     "lint": "yarn run tsc && yarn run eslint && yarn run stylelint",

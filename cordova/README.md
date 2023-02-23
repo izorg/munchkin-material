@@ -3,7 +3,7 @@
 Consume purchase
 
 ```javascript
-store.inappbilling.consumePurchase(console.log, console.log, 'full_version');
+store.inappbilling.consumePurchase(console.log, console.log, "full_version");
 ```
 
 List iOS emulators
