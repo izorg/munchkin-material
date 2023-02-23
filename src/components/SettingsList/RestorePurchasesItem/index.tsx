@@ -7,7 +7,8 @@ import ListItem from "../Item";
 import ListItemText from "../ItemText";
 
 const RestorePurchasesItem = () => {
-  const { cordova, store } = window;
+  const cordova = window.cordova;
+  const store = window.store;
 
   const { fullVersion } = useFullVersion();
 

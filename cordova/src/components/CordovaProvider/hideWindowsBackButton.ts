@@ -1,11 +1,9 @@
 const hideWindowsBackButton = (): void => {
-  const { Windows } = window;
-
   const currentView =
-    Windows.UI.Core.SystemNavigationManager.getForCurrentView();
+    window.Windows.UI.Core.SystemNavigationManager.getForCurrentView();
 
   currentView.appViewBackButtonVisibility =
-    Windows.UI.Core.AppViewBackButtonVisibility.collapsed;
+    window.Windows.UI.Core.AppViewBackButtonVisibility.collapsed;
 };
 
 export default hideWindowsBackButton;

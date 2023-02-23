@@ -1,35 +1,39 @@
-interface Navigator {
-  app: {
-    exitApp: () => void;
-  };
-}
-
-interface Window {
-  BuildInfo: {
-    debug: boolean;
-  };
-
-  plugins?: {
-    insomnia?: {
-      allowSleepAgain: () => void;
-      keepAwake: () => void;
+declare global {
+  interface Navigator {
+    app: {
+      exitApp: () => void;
     };
-  };
+  }
 
-  store?: IapStore.IStore;
+  interface Window {
+    BuildInfo: {
+      debug: boolean;
+    };
 
-  Windows: {
-    UI: {
-      Core: {
-        AppViewBackButtonVisibility: {
-          collapsed: boolean;
-        };
-        SystemNavigationManager: {
-          getForCurrentView: () => {
-            appViewBackButtonVisibility: boolean;
+    plugins?: {
+      insomnia?: {
+        allowSleepAgain: () => void;
+        keepAwake: () => void;
+      };
+    };
+
+    store?: IapStore.IStore;
+
+    Windows: {
+      UI: {
+        Core: {
+          AppViewBackButtonVisibility: {
+            collapsed: boolean;
+          };
+          SystemNavigationManager: {
+            getForCurrentView: () => {
+              appViewBackButtonVisibility: boolean;
+            };
           };
         };
       };
     };
-  };
+  }
 }
+
+export {};

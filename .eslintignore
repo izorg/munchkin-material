@@ -1,11 +1,8 @@
 .idea
 .vscode
 coverage
+dist
 
-/cordova/src/components/CordovaProvider/hideWindowsBackButton.ts
-/cordova/src/components/FullVersionProvider/index.tsx
-/cordova/src/components/KeyboardProvider/index.tsx
-/cordova/src/components/StatusBarProvider/useStatusBar.ts
 /cordova/Keyboard.d.ts
 /cordova/platforms
 /cordova/plugins
