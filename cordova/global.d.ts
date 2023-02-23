@@ -1,3 +1,10 @@
+import "cordova-plugin-purchase"; // eslint-disable-line import/no-unresolved
+import "cordova-plugin-statusbar"; // eslint-disable-line import/no-unresolved
+
+interface Keyboard {
+  setKeyboardStyle: (color: string) => void;
+}
+
 declare global {
   interface Navigator {
     app: {
@@ -10,12 +17,16 @@ declare global {
       debug: boolean;
     };
 
+    Keyboard?: Keyboard;
+
     plugins?: {
       insomnia?: {
         allowSleepAgain: () => void;
         keepAwake: () => void;
       };
     };
+
+    StatusBar?: StatusBar;
 
     store?: IapStore.IStore;
 

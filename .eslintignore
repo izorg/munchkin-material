@@ -3,10 +3,7 @@
 coverage
 dist
 
-/cordova/Keyboard.d.ts
 /cordova/platforms
 /cordova/plugins
-/cordova/StatusBar.d.ts
-/cordova/store.d.ts
 /cordova/www
 /web
