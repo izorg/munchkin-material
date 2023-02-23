@@ -12118,16 +12118,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"shelljs@npm:^0.5.3":
-  version: 0.5.3
-  resolution: "shelljs@npm:0.5.3"
-  bin:
-    shjs: ./bin/shjs
-  checksum: a62ecf59a474ba373a592d315f8a8718b564c5a7b598a271aeae10175711a91ef13d938a5be4b7bfd216a043726225f8d98d0c350160df7282b61588718638bb
-  languageName: node
-  linkType: hard
-
-"shelljs@npm:^0.8.5":
+"shelljs@npm:0.8.5, shelljs@npm:^0.8.5":
   version: 0.8.5
   resolution: "shelljs@npm:0.8.5"
   dependencies:
