@@ -125,5 +125,8 @@
     "cordova-windows": {
       "shelljs": "0.8.5"
     }
+  },
+  "resolutions": {
+    "@parcel/runtime-js@2.8.3": "patch:@parcel/runtime-js@npm%3A2.8.3#./.yarn/patches/@parcel-runtime-js-npm-2.8.3-a82379279f.patch"
   }
 }
