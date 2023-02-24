@@ -33,7 +33,9 @@
     "start": "firebase emulators:start",
     "stylelint": "stylelint --cache \"**/*.css\"",
     "test": "jest",
-    "tsc": "tsc"
+    "tsc": "tsc",
+    "g:parcel": "cd $INIT_CWD && parcel",
+    "g:rimraf": "cd $INIT_CWD && rimraf"
   },
   "dependencies": {
     "@dnd-kit/core": "6.0.8",
