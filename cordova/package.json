@@ -46,7 +46,8 @@
     "build:www:ios": "yarn run clean && yarn g:parcel build --target=ios",
     "build:www:windows": "yarn run clean && yarn g:parcel build --target=windows",
     "clean": "yarn g:rimraf www",
-    "cordova:prepare": "cordova prepare android ios",
+    "cordova:prepare:android": "cordova prepare android",
+    "cordova:prepare:ios": "cordova prepare ios",
     "cordova:prepare:windows": "cordova prepare windows",
     "run:android": "cordova run android",
     "run:ios": "cordova run ios"
@@ -89,6 +90,7 @@
     "web-animations-js": "2.3.2"
   },
   "devDependencies": {
+    "cordova": "11.1.0",
     "cordova-android": "11.0.0",
     "cordova-ios": "6.2.0",
     "cordova-plugin-add-swift-support": "2.0.2",
