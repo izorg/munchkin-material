@@ -1,5 +1,5 @@
 {
-  "name": "munchkin",
+  "name": "@munchkin/web",
   "private": true,
   "version": "14.0.5",
   "type": "module",

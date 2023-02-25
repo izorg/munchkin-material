@@ -1,11 +1,11 @@
 {
-  "name": "cordova",
+  "name": "@munchkin/cordova",
   "private": true,
   "targets": {
     "android": {
       "distDir": "www",
       "engines": {
-        "browsers": "chrome 51"
+        "browsers": "chrome >= 51"
       },
       "publicUrl": ".",
       "source": "src/index.html",
@@ -16,7 +16,7 @@
     "ios": {
       "distDir": "www",
       "engines": {
-        "browsers": "ios 13"
+        "browsers": "ios >= 13"
       },
       "publicUrl": ".",
       "source": "src/index.html",
@@ -27,7 +27,7 @@
     "windows": {
       "distDir": "www",
       "engines": {
-        "browsers": "edge 18"
+        "browsers": "edge >= 18"
       },
       "publicUrl": ".",
       "source": "src/index.html",
