@@ -1,5 +1,5 @@
-import "cordova-plugin-purchase"; // eslint-disable-line import/no-unresolved
-import "cordova-plugin-statusbar"; // eslint-disable-line import/no-unresolved
+/// <reference types="cordova-plugin-purchase" />
+/// <reference types="cordova-plugin-statusbar" />
 
 interface Keyboard {
   setKeyboardStyle: (color: string) => void;
