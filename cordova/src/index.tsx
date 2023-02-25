@@ -1,6 +1,4 @@
-import "web-animations-js"; // eslint-disable-line
-
-import "./scroll.js";
+import "./polyfills";
 
 import { Suspense } from "react";
 import { createRoot } from "react-dom/client";

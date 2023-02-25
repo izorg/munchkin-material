@@ -3035,6 +3035,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@munchkin/cordova@workspace:cordova"
   dependencies:
+    "@types/smoothscroll-polyfill": 0.3.1
+    "@types/web-animations-js": 2.2.12
     cordova: 11.1.0
     cordova-android: 11.0.0
     cordova-ios: 6.2.0
@@ -4601,6 +4603,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/smoothscroll-polyfill@npm:0.3.1":
+  version: 0.3.1
+  resolution: "@types/smoothscroll-polyfill@npm:0.3.1"
+  checksum: 871a5b556c3be746882ac58b0f936a66a716f4e9b5bd18aaf72fe60aaad42e6ce09e2c639c455ab7655637839bc3a3d923994dd68463c905bd1ecbd1961d8ec1
+  languageName: node
+  linkType: hard
+
 "@types/stack-utils@npm:^2.0.0":
   version: 2.0.1
   resolution: "@types/stack-utils@npm:2.0.1"
@@ -4640,6 +4649,13 @@ __metadata:
   version: 9.0.1
   resolution: "@types/uuid@npm:9.0.1"
   checksum: c472b8a77cbeded4bc529220b8611afa39bd64677f507838f8083d8aac8033b1f88cb9ddaa2f8589e0dcd2317291d0f6e1379f82d5ceebd6f74f3b4825288e00
+  languageName: node
+  linkType: hard
+
+"@types/web-animations-js@npm:2.2.12":
+  version: 2.2.12
+  resolution: "@types/web-animations-js@npm:2.2.12"
+  checksum: 61919bb97d0e7b7a5ccc57ae3e8725a57fb916e733dfc23db4a342a267dd88bb7ca1852b9dda5403b58bee5752b57fd8fe5ccd76c209b01c307b0b72102e4b46
   languageName: node
   linkType: hard
 
