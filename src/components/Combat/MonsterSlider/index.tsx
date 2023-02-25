@@ -218,8 +218,6 @@ const CombatMonsterSlider: FC<BoxProps> = ({ sx = [], ...props }) => {
           timeConstant: 300,
         }}
         onDrag={onDrag}
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
         style={{ x, y }}
         sx={{
           display: "flex",
