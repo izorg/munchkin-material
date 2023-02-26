@@ -3004,7 +3004,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mui/types@npm:^7.2.3":
+"@mui/types@npm:7.2.3, @mui/types@npm:^7.2.3":
   version: 7.2.3
   resolution: "@mui/types@npm:7.2.3"
   peerDependencies:
@@ -3082,6 +3082,7 @@ __metadata:
     "@jest/globals": 29.4.3
     "@mdi/js": 7.1.96
     "@mui/material": 5.11.10
+    "@mui/types": 7.2.3
     "@mui/utils": 5.11.9
     "@parcel/packager-raw-url": 2.8.3
     "@parcel/reporter-bundle-analyzer": 2.8.3

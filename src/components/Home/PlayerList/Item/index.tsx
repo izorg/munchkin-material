@@ -1,13 +1,10 @@
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
-import { mdiDragHorizontalVariant as dragIcon } from "@mdi/js";
 import {
-  IconButton,
   ListItem,
   ListItemAvatar,
   ListItemButton,
   type ListItemProps,
-  SvgIcon,
 } from "@mui/material";
 import { m, type TapInfo } from "framer-motion";
 import PropTypes from "prop-types";
@@ -24,6 +21,8 @@ import { useGoBack } from "../../../../utils/location";
 import { ios } from "../../../../utils/platforms";
 import PlayerAvatar from "../../../PlayerAvatar";
 import PlayerListItemText from "../../../PlayerListItemText";
+
+import DragIconButton from "./DragIconButton";
 
 type HomePlayerListItemProps = ListItemProps & {
   playerId: string;
@@ -150,11 +149,17 @@ const HomePlayerListItem = (props: HomePlayerListItemProps) => {
     }
   };
 
-  const { attributes, listeners, setNodeRef, transform, transition } =
-    useSortable({
-      disabled: !editMode,
-      id: playerId,
-    });
+  const {
+    attributes,
+    listeners,
+    setActivatorNodeRef,
+    setNodeRef,
+    transform,
+    transition,
+  } = useSortable({
+    disabled: !editMode,
+    id: playerId,
+  });
 
   const style = {
     transform: CSS.Transform.toString(transform),
@@ -170,11 +175,13 @@ const HomePlayerListItem = (props: HomePlayerListItemProps) => {
       disablePadding
       secondaryAction={
         editMode && (
-          <IconButton component="span" disableRipple edge="end" {...listeners}>
-            <SvgIcon>
-              <path d={dragIcon} />
-            </SvgIcon>
-          </IconButton>
+          <DragIconButton
+            ref={setActivatorNodeRef}
+            component="span"
+            disableRipple
+            edge="end"
+            {...listeners}
+          />
         )
       }
       style={style}

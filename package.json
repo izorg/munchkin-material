@@ -78,6 +78,7 @@
     "@emotion/eslint-plugin": "11.10.0",
     "@formatjs/cli": "6.0.3",
     "@jest/globals": "29.4.3",
+    "@mui/types": "7.2.3",
     "@parcel/packager-raw-url": "2.8.3",
     "@parcel/reporter-bundle-analyzer": "2.8.3",
     "@parcel/transformer-webmanifest": "2.8.3",
