@@ -21,7 +21,7 @@ const plugins = [
     "babel-plugin-polyfill-corejs3",
     {
       method: "usage-global",
-      version: "3.28",
+      version: "3.29",
     },
   ],
 ].filter(Boolean);
