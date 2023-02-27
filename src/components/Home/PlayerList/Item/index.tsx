@@ -6,7 +6,7 @@ import {
   ListItemButton,
   type ListItemProps,
 } from "@mui/material";
-import { m, type TapInfo } from "framer-motion";
+import { m, type TapHandlers } from "framer-motion";
 import PropTypes from "prop-types";
 import { type KeyboardEvent, useCallback, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -93,10 +93,7 @@ const HomePlayerListItem = (props: HomePlayerListItemProps) => {
   const startPointRef = useRef({ x: 0, y: 0 });
   const startTapTimeRef = useRef(Date.now());
 
-  const onTapStart = (
-    event: MouseEvent | PointerEvent | TouchEvent,
-    info: TapInfo
-  ) => {
+  const onTapStart: TapHandlers["onTapStart"] = (event, info) => {
     startPointRef.current = info.point;
     startTapTimeRef.current = Date.now();
 
@@ -118,10 +115,7 @@ const HomePlayerListItem = (props: HomePlayerListItemProps) => {
     }, 500);
   };
 
-  const onTap = (
-    event: MouseEvent | PointerEvent | TouchEvent,
-    info: TapInfo
-  ) => {
+  const onTap: TapHandlers["onTap"] = (event, info) => {
     clearPress();
 
     if (event.type === "pointercancel") {
