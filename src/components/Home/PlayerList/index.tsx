@@ -17,7 +17,7 @@ import {
   verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
 import { List, type ListProps, Paper } from "@mui/material";
-import { useCallback, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 
 import { movePlayer } from "../../../ducks/playerList";
 import usePresentSelector from "../../../hooks/usePresentSelector";
@@ -33,11 +33,11 @@ const HomePlayerList = (props: ListProps) => {
 
   const [activeId, setActiveId] = useState<null | string>(null);
 
-  const handleDragStart = (event: DragStartEvent) => {
+  const onDragStart = useCallback((event: DragStartEvent) => {
     setActiveId(event.active.id as string);
-  };
+  }, []);
 
-  const handleDragEnd = useCallback(
+  const onDragEnd = useCallback(
     (event: DragEndEvent) => {
       setActiveId(null);
 
@@ -68,9 +68,9 @@ const HomePlayerList = (props: ListProps) => {
   return (
     <DndContext
       collisionDetection={closestCenter}
-      modifiers={[restrictToVerticalAxis]}
-      onDragEnd={handleDragEnd}
-      onDragStart={handleDragStart}
+      modifiers={useMemo(() => [restrictToVerticalAxis], [])}
+      onDragEnd={onDragEnd}
+      onDragStart={onDragStart}
       sensors={sensors}
     >
       <List disablePadding {...props}>
