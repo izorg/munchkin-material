@@ -174,6 +174,9 @@ const HomePlayerListItem = (props: HomePlayerListItemProps) => {
             component="span"
             disableRipple
             edge="end"
+            sx={{
+              touchAction: "none",
+            }}
             {...listeners}
           />
         )

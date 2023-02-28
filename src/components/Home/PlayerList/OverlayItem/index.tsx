@@ -24,7 +24,14 @@ const HomePlayerListOverlayItem = (props: { playerId: string }) => {
       component="div"
       disablePadding
       secondaryAction={
-        <IconButton component="span" disableRipple edge="end">
+        <IconButton
+          component="span"
+          disableRipple
+          edge="end"
+          sx={{
+            touchAction: "none",
+          }}
+        >
           <SvgIcon>
             <path d={dragIcon} />
           </SvgIcon>
