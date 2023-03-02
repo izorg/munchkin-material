@@ -22,7 +22,13 @@ if (process.env.NODE_ENV === "production") {
   import("./firebase").catch((error) => captureException(error));
 }
 
-const root = createRoot(document.getElementById("root") as HTMLElement);
+const node = document.getElementById("root");
+
+if (!node) {
+  throw new Error("No #root element");
+}
+
+const root = createRoot(node);
 
 root.render(
   <StrictMode>
