@@ -10,6 +10,7 @@ import AugmentedStylesProvider from "./components/AugmentedStylesProvider";
 import AugmentedThemeProvider from "./components/AugmentedThemeProvider";
 import LocaleProvider from "./components/LocaleProvider";
 import ReduxProvider from "./components/ReduxProvider";
+import ScreenViewProvider from "./components/ScreenViewProvider";
 import WakeLockProvider from "./components/WakeLockProvider";
 import WorkboxProvider from "./components/WorkboxProvider";
 
@@ -17,7 +18,9 @@ if (process.env.NODE_ENV === "development") {
   import("./dev");
 }
 
-import("./firebase").catch((error) => captureException(error));
+if (process.env.NODE_ENV === "production") {
+  import("./firebase").catch((error) => captureException(error));
+}
 
 const root = createRoot(document.getElementById("root") as HTMLElement);
 
@@ -31,6 +34,7 @@ root.render(
               <LocaleProvider>
                 <AugmentedStylesProvider>
                   <AugmentedThemeProvider>
+                    <ScreenViewProvider />
                     <App />
                   </AugmentedThemeProvider>
                 </AugmentedStylesProvider>

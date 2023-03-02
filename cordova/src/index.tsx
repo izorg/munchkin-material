@@ -13,6 +13,7 @@ import ReduxProvider from "../../src/components/ReduxProvider";
 import CordovaProvider from "./components/CordovaProvider";
 import FullVersionProvider from "./components/FullVersionProvider";
 import KeyboardProvider from "./components/KeyboardProvider";
+import ScreenViewProvider from "./components/ScreenViewProvider";
 import SplashScreenProvider from "./components/SplashScreenProvider";
 import StatusBarProvider from "./components/StatusBarProvider";
 import WakeLockProvider from "./components/WakeLockProvider";
@@ -53,6 +54,7 @@ document.addEventListener(
                         <SplashScreenProvider />
                         <StatusBarProvider />
                         <KeyboardProvider />
+                        <ScreenViewProvider />
                         <App />
                       </AugmentedThemeProvider>
                     </AugmentedStylesProvider>
