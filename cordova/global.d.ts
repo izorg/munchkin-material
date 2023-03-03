@@ -1,3 +1,4 @@
+/// <reference types="cordova-plugin-firebase-analytics" />
 /// <reference types="cordova-plugin-purchase" />
 /// <reference types="cordova-plugin-statusbar" />
 
