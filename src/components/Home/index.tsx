@@ -1,7 +1,6 @@
 import { Box, Zoom } from "@mui/material";
 import { useMatch } from "react-router-dom";
 
-import useEditMode from "../../hooks/useEditMode";
 import usePresentSelector from "../../hooks/usePresentSelector";
 import LevelLimitDialog from "../LevelLimitDialog";
 import Nobody from "../Nobody";
@@ -22,7 +21,6 @@ const Home = () => {
   let content;
 
   const singleMode = usePresentSelector((state) => state.settings.singleMode);
-  const { editMode } = useEditMode();
 
   if (singleMode) {
     content = <SinglePlayer />;
@@ -31,18 +29,11 @@ const Home = () => {
   } else {
     content = (
       <Box
-        sx={[
-          {
-            flex: 1,
-            overflowY: "auto",
-            WebkitOverflowScrolling: "touch",
-          },
-          editMode &&
-            "cordova" in window &&
-            window.cordova.platformId === "windows" && {
-              touchAction: "none",
-            },
-        ]}
+        sx={{
+          flex: 1,
+          overflowY: "auto",
+          WebkitOverflowScrolling: "touch",
+        }}
       >
         <PlayerList
           sx={{
