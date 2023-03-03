@@ -1,7 +1,7 @@
 {
   "name": "@munchkin/web",
   "private": true,
-  "version": "14.1.2",
+  "version": "14.1.3",
   "type": "module",
   "targets": {
     "web": {
