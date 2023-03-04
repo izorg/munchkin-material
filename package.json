@@ -19,7 +19,7 @@
     "analyze": "yarn run build:parcel --reporter @parcel/reporter-bundle-analyzer",
     "build": "yarn run build:parcel && yarn run build:workbox",
     "build:parcel": "rimraf web && parcel build",
-    "build:workbox": "workbox generateSW workbox.config.cjs",
+    "build:workbox": "workbox generateSW workbox.config.json",
     "clean": "rimraf .eslintcache .parcel-cache .stylelintcache cordova/www coverage dist messages node_modules/.cache parcel-bundle-reports screenshots tsconfig.tsbuildinfo web",
     "dev": "parcel --port=3000",
     "eslint": "eslint --cache \"**/*.{cjs,js,json,ts,tsx}\"",
