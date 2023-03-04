@@ -1,10 +1,10 @@
 import PropTypes from "prop-types";
 import { type FC, type PropsWithChildren, useCallback, useEffect } from "react";
 
-import { setFullVersion } from "../../../../src/ducks/settings";
-import usePresentSelector from "../../../../src/hooks/usePresentSelector";
-import { useAppDispatch } from "../../../../src/store";
-import { FullVersionContext } from "../../../../src/utils/fullVersionContext";
+import { setFullVersion } from "../../../../web/src/ducks/settings";
+import usePresentSelector from "../../../../web/src/hooks/usePresentSelector";
+import { useAppDispatch } from "../../../../web/src/store";
+import { FullVersionContext } from "../../../../web/src/utils/fullVersionContext";
 
 const FULL_VERSION_ID = "full_version";
 

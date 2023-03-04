@@ -4,11 +4,11 @@ import { Suspense } from "react";
 import { createRoot } from "react-dom/client";
 import { MemoryRouter } from "react-router-dom";
 
-import App from "../../src/components/App";
-import AugmentedStylesProvider from "../../src/components/AugmentedStylesProvider";
-import AugmentedThemeProvider from "../../src/components/AugmentedThemeProvider";
-import LocaleProvider from "../../src/components/LocaleProvider";
-import ReduxProvider from "../../src/components/ReduxProvider";
+import App from "../../web/src/components/App";
+import AugmentedStylesProvider from "../../web/src/components/AugmentedStylesProvider";
+import AugmentedThemeProvider from "../../web/src/components/AugmentedThemeProvider";
+import LocaleProvider from "../../web/src/components/LocaleProvider";
+import ReduxProvider from "../../web/src/components/ReduxProvider";
 
 import CordovaProvider from "./components/CordovaProvider";
 import FullVersionProvider from "./components/FullVersionProvider";
@@ -36,7 +36,7 @@ document.addEventListener(
   "deviceready",
   () => {
     if (!window.BuildInfo.debug) {
-      import("../../src/sentry").catch(() => {
+      import("../../web/src/sentry").catch(() => {
         // ignore sentry init error
       });
     }

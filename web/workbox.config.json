@@ -1,6 +1,6 @@
 {
-  "globDirectory": "web/",
+  "globDirectory": "dist/",
   "globIgnores": ["**/*.{map,LICENSE.txt}"],
   "globPatterns": ["**/*"],
-  "swDest": "web/service-worker.js"
+  "swDest": "dist/service-worker.js"
 }

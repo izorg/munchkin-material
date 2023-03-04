@@ -1,0 +1,24 @@
+{
+  "private": true,
+  "name": "web",
+  "type": "module",
+  "alias": {
+    "@formatjs/icu-messageformat-parser": "@formatjs/icu-messageformat-parser/no-parser"
+  },
+  "targets": {
+    "web": {
+      "source": "src/index.html"
+    }
+  },
+  "scripts": {
+    "analyze": "yarn run build:parcel --reporter @parcel/reporter-bundle-analyzer",
+    "build": "yarn run build:parcel && yarn run build:workbox",
+    "build:parcel": "yarn g:rimraf dist && yarn g:parcel build",
+    "build:workbox": "yarn g:workbox generateSW workbox.config.json",
+    "dev": "yarn g:parcel --port=3000",
+    "start": "yarn g:firebase emulators:start"
+  },
+  "devDependencies": {
+    "workbox-cli": "6.5.4"
+  }
+}

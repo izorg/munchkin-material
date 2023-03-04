@@ -7,10 +7,10 @@ import {
   useRef,
 } from "react";
 
-import { setKeepAwake } from "../../../../src/ducks/settings";
-import usePresentSelector from "../../../../src/hooks/usePresentSelector";
-import { useAppDispatch } from "../../../../src/store";
-import { WakeLockContext } from "../../../../src/utils/wakeLockContext";
+import { setKeepAwake } from "../../../../web/src/ducks/settings";
+import usePresentSelector from "../../../../web/src/hooks/usePresentSelector";
+import { useAppDispatch } from "../../../../web/src/store";
+import { WakeLockContext } from "../../../../web/src/utils/wakeLockContext";
 
 const WakeLockProvider: FC<PropsWithChildren> = ({ children }) => {
   const dispatch = useAppDispatch();

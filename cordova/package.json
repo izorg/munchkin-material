@@ -1,6 +1,6 @@
 {
-  "name": "@munchkin/cordova",
   "private": true,
+  "name": "cordova",
   "targets": {
     "android": {
       "distDir": "www",

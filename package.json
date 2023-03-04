@@ -1,41 +1,28 @@
 {
-  "name": "@munchkin/web",
   "private": true,
   "version": "14.1.3",
   "type": "module",
-  "targets": {
-    "web": {
-      "distDir": "web",
-      "source": "src/index.html"
-    }
-  },
-  "alias": {
-    "@formatjs/icu-messageformat-parser": "@formatjs/icu-messageformat-parser/no-parser"
-  },
   "workspaces": [
-    "cordova"
+    "cordova",
+    "web"
   ],
   "scripts": {
-    "analyze": "yarn run build:parcel --reporter @parcel/reporter-bundle-analyzer",
-    "build": "yarn run build:parcel && yarn run build:workbox",
-    "build:parcel": "rimraf web && parcel build",
-    "build:workbox": "workbox generateSW workbox.config.json",
     "clean": "rimraf .eslintcache .parcel-cache .stylelintcache cordova/www coverage dist messages node_modules/.cache parcel-bundle-reports screenshots tsconfig.tsbuildinfo web",
-    "dev": "parcel --port=3000",
-    "eslint": "eslint --cache \"**/*.{cjs,js,json,ts,tsx}\"",
+    "eslint": "eslint --cache \"**/*.{js,json,ts,tsx}\"",
     "i18n:compile": "formatjs compile-folder --ast --format=simple languages languages/generated",
-    "i18n:extract": "formatjs extract --out-file=messages.json \"src/**/*.{js,ts,tsx}\" && formatjs compile --out-file=languages/en.json messages.json && rm messages.json && prettier --write languages/en.json",
+    "i18n:extract": "formatjs extract --out-file=messages.json \"web/src/**/*.{js,ts,tsx}\" && formatjs compile --out-file=languages/en.json messages.json && rm messages.json && prettier --write languages/en.json",
     "lint": "yarn run tsc && yarn run eslint && yarn run stylelint",
     "postinstall": "husky install",
     "prettier": "prettier --cache --ignore-unknown --write .",
-    "reinstall": "rimraf cordova/node_modules node_modules package-lock.json && npm install",
+    "reinstall": "rimraf cordova/node_modules node_modules yarn.lock && yarn install",
     "screenshots": "node scripts/screenshots.js",
-    "start": "firebase emulators:start",
     "stylelint": "stylelint --cache \"**/*.css\"",
     "test": "jest",
     "tsc": "tsc",
+    "g:firebase": "cd $INIT_CWD && firebase",
     "g:parcel": "cd $INIT_CWD && parcel",
-    "g:rimraf": "cd $INIT_CWD && rimraf"
+    "g:rimraf": "cd $INIT_CWD && rimraf",
+    "g:workbox": "cd $INIT_CWD && workbox"
   },
   "dependencies": {
     "@dnd-kit/core": "6.0.8",
@@ -121,8 +108,7 @@
     "stylelint-order": "6.0.2",
     "stylelint-prettier": "3.0.0",
     "ts-jest": "29.0.5",
-    "typescript": "4.9.5",
-    "workbox-cli": "6.5.4"
+    "typescript": "4.9.5"
   },
   "resolutions": {
     "@parcel/runtime-js@2.8.3": "patch:@parcel/runtime-js@npm%3A2.8.3#./.yarn/patches/@parcel-runtime-js-npm-2.8.3-a82379279f.patch",

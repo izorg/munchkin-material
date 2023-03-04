@@ -3,7 +3,7 @@
  */
 const config = {
   preset: "ts-jest",
-  roots: ["<rootDir>/src/"],
+  roots: ["<rootDir>/web/src/"],
 };
 
 export default config;

@@ -1,8 +1,9 @@
 coverage
 
+/scripts
+
 /cordova/platforms
 /cordova/plugins
 /cordova/www
-/dist
-/scripts
-/web
+
+/web/dist

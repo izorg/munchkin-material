@@ -39,7 +39,7 @@ jobs:
         run: yarn run test
 
       - name: Build 🔨
-        run: yarn run build
+        run: yarn workspace web run build
 
       - name: Create Sentry release
         uses: getsentry/action-release@v1
@@ -49,13 +49,14 @@ jobs:
           SENTRY_PROJECT: ${{ secrets.SENTRY_PROJECT }}
         with:
           environment: production
-          sourcemaps: "./web"
+          sourcemaps: "./web/dist"
           version: ${{ env.VERSION }}
 
       - name: Deploy 🚀
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           channelId: live
+          entryPoint: web
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_IZORG_MUNCHKIN }}
           projectId: izorg-munchkin
           repoToken: ${{ secrets.GITHUB_TOKEN }}

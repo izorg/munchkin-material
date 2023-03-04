@@ -22,7 +22,6 @@ tsconfig.tsbuildinfo
 
 /languages/generated
 /screenshots
-/web
 
 /cordova/build.json
 /cordova/keystore.jks
