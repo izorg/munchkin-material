@@ -2,7 +2,11 @@
   "extends": [
     "eslint:recommended",
     "plugin:import/recommended",
+    "plugin:jest/recommended",
     "plugin:json/recommended",
+    "plugin:jsx-a11y/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:react/recommended",
     "plugin:prettier/recommended"
   ],
   "overrides": [
@@ -10,31 +14,9 @@
       "env": {
         "browser": true
       },
-      "extends": [
-        "plugin:jsx-a11y/recommended",
-        "plugin:react-hooks/recommended",
-        "plugin:react/recommended"
-      ],
       "files": ["src/**/*"],
       "rules": {
-        "jsx-a11y/no-autofocus": ["error", { "ignoreNonDOM": true }],
-        "no-console": ["error", { "allow": ["error", "warn"] }],
-        "react/jsx-sort-props": [
-          "error",
-          {
-            "ignoreCase": true,
-            "reservedFirst": true
-          }
-        ],
-        "react/react-in-jsx-scope": "off",
-        "react/sort-default-props": "error",
-        "react/sort-prop-types": [
-          "error",
-          {
-            "ignoreCase": true,
-            "sortShapeProp": true
-          }
-        ]
+        "no-console": ["error", { "allow": ["error", "warn"] }]
       }
     },
     {
@@ -44,17 +26,13 @@
         "plugin:import/typescript"
       ],
       "files": ["**/*.ts?(x)"],
-      "parserOptions": {
-        "project": "./tsconfig.json"
-      },
       "rules": {
         "@typescript-eslint/no-misused-promises": [
           "error",
           {
             "checksVoidReturn": false
           }
-        ],
-        "@typescript-eslint/restrict-template-expressions": "error"
+        ]
       }
     },
     {
@@ -64,13 +42,19 @@
       "files": ["scripts/**/*"]
     },
     {
-      "extends": ["plugin:jest/recommended"],
-      "files": ["**/*.spec.ts"]
+      "files": ["**/*.json"],
+      "parserOptions": {
+        "project": null
+      }
     }
   ],
   "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": ["./tsconfig.json"]
+  },
   "plugins": ["@emotion", "only-error"],
   "rules": {
+    "jsx-a11y/no-autofocus": ["error", { "ignoreNonDOM": true }],
     "import/order": [
       "error",
       {
@@ -87,6 +71,22 @@
         "args": "after-used",
         "ignoreRestSiblings": true,
         "vars": "all"
+      }
+    ],
+    "react/jsx-sort-props": [
+      "error",
+      {
+        "ignoreCase": true,
+        "reservedFirst": true
+      }
+    ],
+    "react/react-in-jsx-scope": "off",
+    "react/sort-default-props": "error",
+    "react/sort-prop-types": [
+      "error",
+      {
+        "ignoreCase": true,
+        "sortShapeProp": true
       }
     ],
     "sort-imports": [
