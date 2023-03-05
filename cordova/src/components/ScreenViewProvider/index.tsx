@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-import useScreenView from "../../../../web/src/utils/useScreenView";
+import useScreenView from "@munchkin/web/src/utils/useScreenView";
 
 const ScreenViewProvider = () => {
   const screen = useScreenView();

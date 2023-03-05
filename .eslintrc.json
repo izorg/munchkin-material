@@ -62,6 +62,14 @@
           "caseInsensitive": true,
           "order": "asc"
         },
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          "parent",
+          "sibling",
+          "index"
+        ],
         "newlines-between": "always"
       }
     ],
@@ -106,10 +114,9 @@
     ]
   },
   "settings": {
+    "import/internal-regex": "^@munchkin/",
     "import/resolver": {
-      "node": {
-        "extensions": [".tsx", ".ts", ".js", ".json"]
-      },
+      "node": true,
       "typescript": true
     },
     "react": {

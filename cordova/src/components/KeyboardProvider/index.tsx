@@ -1,7 +1,7 @@
 import { useTheme } from "@mui/material";
 import { useEffect } from "react";
 
-import { ios } from "../../../../web/src/utils/platforms";
+import { ios } from "@munchkin/web/src/utils/platforms";
 
 const KeyboardProvider = () => {
   const theme = useTheme();

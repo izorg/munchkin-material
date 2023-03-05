@@ -8,7 +8,7 @@ import {
 } from "react";
 import { useLocation } from "react-router-dom";
 
-import { useGoBack } from "../../../../web/src/utils/location";
+import { useGoBack } from "@munchkin/web/src/utils/location";
 
 import hideWindowsBackButton from "./hideWindowsBackButton";
 import useNavigationBreadcrumbs from "./useNavigationBreadcrumbs";
