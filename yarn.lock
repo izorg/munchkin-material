@@ -2973,6 +2973,43 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@munchkin/cordova@workspace:cordova":
+  version: 0.0.0-use.local
+  resolution: "@munchkin/cordova@workspace:cordova"
+  dependencies:
+    "@types/smoothscroll-polyfill": 0.3.1
+    "@types/web-animations-js": 2.2.12
+    cordova: 11.1.0
+    cordova-android: 11.0.0
+    cordova-ios: 6.2.0
+    cordova-plugin-add-swift-support: 2.0.2
+    cordova-plugin-android-dark-mode-support: 1.0.0
+    cordova-plugin-buildinfo: 4.0.0
+    cordova-plugin-firebase-analytics: 7.0.5
+    cordova-plugin-firebase-crash: 7.0.4
+    cordova-plugin-headercolor: 1.0.0
+    cordova-plugin-insomnia: 4.3.0
+    cordova-plugin-ionic-keyboard: 2.2.0
+    cordova-plugin-localization-strings: 4.2.0
+    cordova-plugin-purchase: 11.0.0
+    cordova-plugin-splashscreen: 6.0.2
+    cordova-plugin-statusbar: 3.0.0
+    cordova-plugin-vibration: 3.1.1
+    cordova-plugin-web-share: 1.3.0
+    cordova-windows: 7.0.1
+    smoothscroll-polyfill: 0.4.4
+    web-animations-js: 2.3.2
+  languageName: unknown
+  linkType: soft
+
+"@munchkin/web@workspace:web":
+  version: 0.0.0-use.local
+  resolution: "@munchkin/web@workspace:web"
+  dependencies:
+    workbox-cli: 6.5.4
+  languageName: unknown
+  linkType: soft
+
 "@netflix/nerror@npm:^1.1.3":
   version: 1.1.3
   resolution: "@netflix/nerror@npm:1.1.3"
@@ -6446,35 +6483,6 @@ __metadata:
   checksum: 67aea989cfb1f96832d8e81edafc31dac927ca7e0f7635ca077cd2c1589ee4dd67343e1b4cead3355e3ffe653030b5fe2e3c0ddead2554a70ad68f557cb61d0d
   languageName: node
   linkType: hard
-
-"cordova@workspace:cordova":
-  version: 0.0.0-use.local
-  resolution: "cordova@workspace:cordova"
-  dependencies:
-    "@types/smoothscroll-polyfill": 0.3.1
-    "@types/web-animations-js": 2.2.12
-    cordova: 11.1.0
-    cordova-android: 11.0.0
-    cordova-ios: 6.2.0
-    cordova-plugin-add-swift-support: 2.0.2
-    cordova-plugin-android-dark-mode-support: 1.0.0
-    cordova-plugin-buildinfo: 4.0.0
-    cordova-plugin-firebase-analytics: 7.0.5
-    cordova-plugin-firebase-crash: 7.0.4
-    cordova-plugin-headercolor: 1.0.0
-    cordova-plugin-insomnia: 4.3.0
-    cordova-plugin-ionic-keyboard: 2.2.0
-    cordova-plugin-localization-strings: 4.2.0
-    cordova-plugin-purchase: 11.0.0
-    cordova-plugin-splashscreen: 6.0.2
-    cordova-plugin-statusbar: 3.0.0
-    cordova-plugin-vibration: 3.1.1
-    cordova-plugin-web-share: 1.3.0
-    cordova-windows: 7.0.1
-    smoothscroll-polyfill: 0.4.4
-    web-animations-js: 2.3.2
-  languageName: unknown
-  linkType: soft
 
 "core-js-compat@npm:^3.25.1":
   version: 3.28.0
@@ -15379,14 +15387,6 @@ __metadata:
   checksum: 194db111bb2f92c15100c33b63af320ccdc26066748e358a945b947c510216c78e0a1e2ae22fefbaacb585c8a0b41b62a1417d8b549636ee32e16f059bb488f2
   languageName: node
   linkType: hard
-
-"web@workspace:web":
-  version: 0.0.0-use.local
-  resolution: "web@workspace:web"
-  dependencies:
-    workbox-cli: 6.5.4
-  languageName: unknown
-  linkType: soft
 
 "webidl-conversions@npm:^3.0.0":
   version: 3.0.1

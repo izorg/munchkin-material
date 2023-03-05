@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "web",
+  "name": "@munchkin/web",
   "type": "module",
   "alias": {
     "@formatjs/icu-messageformat-parser": "@formatjs/icu-messageformat-parser/no-parser"

@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "cordova",
+  "name": "@munchkin/cordova",
   "type": "module",
   "targets": {
     "android": {
