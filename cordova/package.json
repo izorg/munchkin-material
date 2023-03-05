@@ -1,6 +1,7 @@
 {
   "private": true,
   "name": "cordova",
+  "type": "module",
   "targets": {
     "android": {
       "distDir": "www",
