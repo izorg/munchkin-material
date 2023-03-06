@@ -16,6 +16,7 @@ declare global {
   interface Window {
     BuildInfo: {
       debug: boolean;
+      version: string;
     };
 
     Keyboard?: Keyboard;
