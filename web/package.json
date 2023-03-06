@@ -15,10 +15,11 @@
     "build": "yarn run build:parcel && yarn run build:workbox",
     "build:parcel": "yarn g:rimraf dist && yarn g:parcel build",
     "build:workbox": "yarn g:workbox generateSW workbox.config.json",
-    "dev": "yarn g:parcel --port=3000",
+    "dev": "cross-env DISABLE_V8_COMPILE_CACHE=1 yarn g:parcel --port=3000",
     "start": "yarn g:firebase emulators:start"
   },
   "devDependencies": {
+    "cross-env": "7.0.3",
     "workbox-cli": "6.5.4"
   }
 }
