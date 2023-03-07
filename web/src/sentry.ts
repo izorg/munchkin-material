@@ -1,4 +1,8 @@
-import { init } from "@sentry/react";
+import {
+  init,
+  makeBrowserOfflineTransport,
+  makeFetchTransport,
+} from "@sentry/react";
 
 import version from "./utils/version";
 
@@ -8,4 +12,5 @@ init({
   environment: process.env.NODE_ENV,
   normalizeDepth: 10,
   release: version,
+  transport: makeBrowserOfflineTransport(makeFetchTransport),
 });
