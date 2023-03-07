@@ -30,6 +30,7 @@
         <preference name="HeaderColor" value="#795548" />
         <preference name="StatusBarOverlaysWebView" value="false" />
         <preference name="android-minSdkVersion" value="25" />
+        <preference name="android-targetSdkVersion" value="33" />
         <resource-file src="google-services.json" target="app/google-services.json" />
         <icon density="ldpi" background="res/android/mipmap-ldpi/icon_background.png" foreground="res/android/mipmap-ldpi/icon_foreground.png" src="res/android/mipmap-ldpi/icon.png" />
         <icon density="mdpi" background="res/android/mipmap-mdpi/icon_background.png" foreground="res/android/mipmap-mdpi/icon_foreground.png" src="res/android/mipmap-mdpi/icon.png" />
@@ -38,7 +39,7 @@
         <icon density="xxhdpi" background="res/android/mipmap-xxhdpi/icon_background.png" foreground="res/android/mipmap-xxhdpi/icon_foreground.png" src="res/android/mipmap-xxhdpi/icon.png" />
         <icon density="xxxhdpi" background="res/android/mipmap-xxxhdpi/icon_background.png" foreground="res/android/mipmap-xxxhdpi/icon_foreground.png" src="res/android/mipmap-xxxhdpi/icon.png" />
         <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application">
-            <application android:roundIcon="@mipmap/ic_launcher" />
+            <application android:localeConfig="@xml/locales_config" android:roundIcon="@mipmap/ic_launcher" />
         </edit-config>
         <resource-file src="res/android/mipmap-hdpi/icon_round.png" target="app/src/main/res/mipmap-hdpi/ic_launcher_round.png" />
         <resource-file src="res/android/mipmap-mdpi/icon_round.png" target="app/src/main/res/mipmap-mdpi/ic_launcher_round.png" />
@@ -46,6 +47,7 @@
         <resource-file src="res/android/mipmap-xxhdpi/icon_round.png" target="app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png" />
         <resource-file src="res/android/mipmap-xxxhdpi/icon_round.png" target="app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" />
         <resource-file src="res/android/values-night/colors.xml" target="app/src/main/res/values-night/colors.xml" />
+        <resource-file src="res/android/xml/locales_config.xml" target="app/src/main/res/xml/locales_config.xml" />
     </platform>
     <platform name="ios">
         <allow-intent href="itms:*" />
