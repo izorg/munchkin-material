@@ -36,7 +36,7 @@
         <icon density="xxhdpi" background="res/android/mipmap-xxhdpi/icon_background.png" foreground="res/android/mipmap-xxhdpi/icon_foreground.png" src="res/android/mipmap-xxhdpi/icon.png" />
         <icon density="xxxhdpi" background="res/android/mipmap-xxxhdpi/icon_background.png" foreground="res/android/mipmap-xxxhdpi/icon_foreground.png" src="res/android/mipmap-xxxhdpi/icon.png" />
         <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application">
-            <application android:roundIcon="@mipmap/ic_launcher" />
+            <application android:localeConfig="@xml/locales_config" android:roundIcon="@mipmap/ic_launcher" />
         </edit-config>
         <resource-file src="google-services.json" target="app/google-services.json" />
         <resource-file src="res/android/mipmap-hdpi/icon_round.png" target="app/src/main/res/mipmap-hdpi/ic_launcher_round.png" />
@@ -45,6 +45,7 @@
         <resource-file src="res/android/mipmap-xxhdpi/icon_round.png" target="app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png" />
         <resource-file src="res/android/mipmap-xxxhdpi/icon_round.png" target="app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" />
         <resource-file src="res/android/values-night/colors.xml" target="app/src/main/res/values-night/colors.xml" />
+        <resource-file src="res/android/xml/locales_config.xml" target="app/src/main/res/xml/locales_config.xml" />
     </platform>
     <platform name="ios">
         <allow-intent href="itms:*" />
