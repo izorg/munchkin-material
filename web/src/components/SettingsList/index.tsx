@@ -1,6 +1,6 @@
 import { List } from "@mui/material";
 
-import InsomniaItem from "./InsomniaItem";
+import KeepAwakeItem from "./KeepAwakeItem";
 import LevelLimitItem from "./LevelLimitItem";
 import PrivacyItem from "./PrivacyItem";
 import RateItem from "./RateItem";
@@ -15,7 +15,7 @@ const SettingsList = () => (
     <ThemeItem />
     <SingleModeItem />
     <LevelLimitItem />
-    <InsomniaItem />
+    <KeepAwakeItem />
     <RateItem />
     <ShareItem />
     <RestorePurchasesItem />

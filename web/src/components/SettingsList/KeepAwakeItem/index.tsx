@@ -6,7 +6,7 @@ import { useWakeLock } from "../../../utils/wakeLockContext";
 import ListItem from "../Item";
 import ListItemText from "../ItemText";
 
-const InsomniaItem = () => {
+const KeepAwakeItem = () => {
   const { setWakeLock, wakeLock, wakeLockSupport } = useWakeLock();
 
   if (!wakeLockSupport) {
@@ -43,4 +43,4 @@ const InsomniaItem = () => {
   );
 };
 
-export default InsomniaItem;
+export default KeepAwakeItem;
