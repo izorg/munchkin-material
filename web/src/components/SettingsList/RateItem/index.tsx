@@ -2,42 +2,21 @@ import { mdiStarOutline } from "@mdi/js";
 import { ListItemIcon, SvgIcon } from "@mui/material";
 import { FormattedMessage } from "react-intl";
 
-import { useGoBack } from "../../../utils/location";
+import { useAppStoreLink } from "../../../utils/appStoreLinkContext";
 import ListItem from "../Item";
 import ListItemText from "../ItemText";
 
-const getRateLink = (platformId: string) => {
-  switch (platformId) {
-    case "android":
-      return "market://details?id=com.izorg.munchkin";
-
-    case "ios":
-      return "itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=1448937097";
-
-    default:
-      return null;
-  }
-};
-
 const RateItem = () => {
-  const goBack = useGoBack();
+  const { getAppStoreLink } = useAppStoreLink();
 
-  const rateLink = getRateLink(window.cordova?.platformId);
+  const appStoreLink = getAppStoreLink();
 
-  if (!rateLink) {
+  if (!appStoreLink) {
     return null;
   }
 
-  const onClick = () => goBack();
-
   return (
-    <ListItem
-      button
-      component="a"
-      href={rateLink}
-      onClick={onClick}
-      target="_blank"
-    >
+    <ListItem button component="a" href={appStoreLink} target="_blank">
       <ListItemIcon>
         <SvgIcon>
           <path d={mdiStarOutline} />

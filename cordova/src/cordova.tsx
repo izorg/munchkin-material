@@ -11,6 +11,7 @@ import AugmentedThemeProvider from "@munchkin/web/src/components/AugmentedThemeP
 import LocaleProvider from "@munchkin/web/src/components/LocaleProvider";
 import ReduxProvider from "@munchkin/web/src/components/ReduxProvider";
 
+import AppStoreLinkProvider from "./components/AppStoreLinkProvider";
 import CordovaProvider from "./components/CordovaProvider";
 import FullVersionProvider from "./components/FullVersionProvider";
 import KeyboardProvider from "./components/KeyboardProvider";
@@ -34,17 +35,19 @@ root.render(
         <CordovaProvider>
           <FullVersionProvider>
             <WakeLockProvider>
-              <LocaleProvider>
-                <AugmentedStylesProvider>
-                  <AugmentedThemeProvider>
-                    <SplashScreenProvider />
-                    <StatusBarProvider />
-                    <KeyboardProvider />
-                    <ScreenViewProvider />
-                    <App />
-                  </AugmentedThemeProvider>
-                </AugmentedStylesProvider>
-              </LocaleProvider>
+              <AppStoreLinkProvider>
+                <LocaleProvider>
+                  <AugmentedStylesProvider>
+                    <AugmentedThemeProvider>
+                      <SplashScreenProvider />
+                      <StatusBarProvider />
+                      <KeyboardProvider />
+                      <ScreenViewProvider />
+                      <App />
+                    </AugmentedThemeProvider>
+                  </AugmentedStylesProvider>
+                </LocaleProvider>
+              </AppStoreLinkProvider>
             </WakeLockProvider>
           </FullVersionProvider>
         </CordovaProvider>
