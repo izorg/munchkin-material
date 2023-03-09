@@ -8,11 +8,10 @@ import ListItemText from "../ItemText";
 const ShareItem = () => {
   const intl = useIntl();
 
-  const cordova = window.cordova;
-
-  const shareLink = cordova
-    ? "https://allmunchkins.com"
-    : window.location.origin;
+  const shareLink =
+    location.protocol === "https:" && location.hostname !== "localhost"
+      ? location.origin
+      : "https://allmunchkins.com";
 
   if (!navigator.share) {
     return null;
