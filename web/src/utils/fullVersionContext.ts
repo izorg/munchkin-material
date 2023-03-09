@@ -3,6 +3,7 @@ import { createContext, useContext } from "react";
 export type FullVersionContextValue = {
   buyFullVersion: () => Promise<void>;
   fullVersion: boolean;
+  restorePurchases?: () => void;
 };
 
 export const FullVersionContext = createContext<FullVersionContextValue>({

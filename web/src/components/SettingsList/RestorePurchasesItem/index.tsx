@@ -7,17 +7,14 @@ import ListItem from "../Item";
 import ListItemText from "../ItemText";
 
 const RestorePurchasesItem = () => {
-  const cordova = window.cordova;
-  const store = window.store;
+  const { fullVersion, restorePurchases } = useFullVersion();
 
-  const { fullVersion } = useFullVersion();
-
-  if (fullVersion || cordova?.platformId !== "ios") {
+  if (fullVersion || !restorePurchases) {
     return null;
   }
 
   return (
-    <ListItem button onClick={() => store?.refresh()}>
+    <ListItem button onClick={restorePurchases}>
       <ListItemIcon>
         <SvgIcon>
           <path d={mdiCloudDownloadOutline} />

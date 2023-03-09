@@ -1,5 +1,11 @@
 import PropTypes from "prop-types";
-import { type FC, type PropsWithChildren, useCallback, useEffect } from "react";
+import {
+  type FC,
+  type PropsWithChildren,
+  useCallback,
+  useEffect,
+  useMemo,
+} from "react";
 
 import { setFullVersion } from "@munchkin/web/src/ducks/settings";
 import usePresentSelector from "@munchkin/web/src/hooks/usePresentSelector";
@@ -9,8 +15,6 @@ import { FullVersionContext } from "@munchkin/web/src/utils/fullVersionContext";
 const FULL_VERSION_ID = "full_version";
 
 const FullVersionProvider: FC<PropsWithChildren> = ({ children }) => {
-  const store = window.store;
-
   const dispatch = useAppDispatch();
 
   const fullVersion = usePresentSelector((state) => state.settings.fullVersion);
@@ -34,8 +38,12 @@ const FullVersionProvider: FC<PropsWithChildren> = ({ children }) => {
 
         store.order(FULL_VERSION_ID);
       }),
-    [dispatch, store]
+    [dispatch]
   );
+
+  const restorePurchases = useCallback(() => {
+    store?.refresh();
+  }, []);
 
   useEffect(() => {
     if (!store) {
@@ -67,10 +75,19 @@ const FullVersionProvider: FC<PropsWithChildren> = ({ children }) => {
     });
 
     store.refresh();
-  }, [dispatch, store]);
+  }, [dispatch]);
+
+  const value = useMemo(() => {
+    return {
+      buyFullVersion,
+      fullVersion,
+      restorePurchases:
+        cordova?.platformId === "ios" ? restorePurchases : undefined,
+    };
+  }, [buyFullVersion, fullVersion, restorePurchases]);
 
   return (
-    <FullVersionContext.Provider value={{ buyFullVersion, fullVersion }}>
+    <FullVersionContext.Provider value={value}>
       {children}
     </FullVersionContext.Provider>
   );
