@@ -1,6 +1,6 @@
 import { type FC, type PropsWithChildren } from "react";
 
-import { AppStoreLinkContext } from "@munchkin/web/src/utils/appStoreLinkContext";
+import { AppStoreLinkContext } from "../../../../web/src/utils/appStoreLinkContext";
 
 const getAppStoreLink = () => {
   switch (window.cordova.platformId) {
