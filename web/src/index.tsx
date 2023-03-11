@@ -1,3 +1,4 @@
+import "./polyfills";
 import "./sentry";
 
 import { captureException } from "@sentry/react";

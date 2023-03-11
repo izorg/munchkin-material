@@ -17,13 +17,6 @@ const plugins = [
     },
   ],
   "@emotion/babel-plugin",
-  [
-    "babel-plugin-polyfill-corejs3",
-    {
-      method: "usage-global",
-      version: "3.29",
-    },
-  ],
 ].filter(Boolean);
 
 export default {

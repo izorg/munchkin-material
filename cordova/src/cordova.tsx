@@ -1,4 +1,3 @@
-import "./polyfills";
 import "./sentry";
 
 import { Suspense } from "react";

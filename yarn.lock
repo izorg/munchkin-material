@@ -5261,18 +5261,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"babel-plugin-polyfill-corejs3@npm:0.7.1":
-  version: 0.7.1
-  resolution: "babel-plugin-polyfill-corejs3@npm:0.7.1"
-  dependencies:
-    "@babel/helper-define-polyfill-provider": ^0.3.3
-    core-js-compat: ^3.29.0
-  peerDependencies:
-    "@babel/core": ^7.0.0-0
-  checksum: 1b887b51b4594e6bdc06df285fd6989696acbc6e59a370620c5224b461263c195ae12f65de96b85f750289dae7f9857bc4e21545e69fdbd7f739345df5885595
-  languageName: node
-  linkType: hard
-
 "babel-plugin-polyfill-corejs3@npm:^0.6.0":
   version: 0.6.0
   resolution: "babel-plugin-polyfill-corejs3@npm:0.6.0"
@@ -6499,7 +6487,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"core-js-compat@npm:^3.25.1, core-js-compat@npm:^3.29.0":
+"core-js-compat@npm:^3.25.1":
   version: 3.29.0
   resolution: "core-js-compat@npm:3.29.0"
   dependencies:
@@ -13609,7 +13597,6 @@ __metadata:
     "@typescript-eslint/parser": 5.54.1
     axios: 1.3.4
     babel-plugin-formatjs: 10.4.0
-    babel-plugin-polyfill-corejs3: 0.7.1
     babel-plugin-react-remove-properties: 0.3.0
     babel-plugin-transform-react-remove-prop-types: 0.4.24
     clsx: 1.2.1
