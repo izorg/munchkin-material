@@ -1,48 +1,10 @@
 {
   "private": true,
   "name": "@munchkin/cordova",
-  "targets": {
-    "android": {
-      "distDir": "www",
-      "engines": {
-        "browsers": "chrome >= 69"
-      },
-      "publicUrl": ".",
-      "source": "src/index.html",
-      "sourceMap": {
-        "inline": true
-      }
-    },
-    "ios": {
-      "distDir": "www",
-      "engines": {
-        "browsers": "ios >= 13"
-      },
-      "publicUrl": ".",
-      "source": "src/index.html",
-      "sourceMap": {
-        "inline": true
-      }
-    },
-    "windows": {
-      "distDir": "www",
-      "engines": {
-        "browsers": "edge >= 18"
-      },
-      "publicUrl": ".",
-      "source": "src/index.html",
-      "sourceMap": {
-        "inline": true
-      }
-    }
-  },
-  "alias": {
-    "@formatjs/icu-messageformat-parser": "@formatjs/icu-messageformat-parser/no-parser"
-  },
   "scripts": {
     "build:android": "cordova build android --release",
     "build:ios": "cordova build ios",
-    "build:www:android": "yarn run clean && yarn g:parcel build --target=android",
+    "build:www:android": "yarn run clean && parcel build --target=android",
     "build:www:ios": "yarn run clean && yarn g:parcel build --target=ios",
     "build:www:windows": "yarn run clean && yarn g:parcel build --target=windows",
     "clean": "yarn g:rimraf www",
@@ -51,6 +13,47 @@
     "cordova:prepare:windows": "cordova prepare windows",
     "run:android": "cordova run android",
     "run:ios": "cordova run ios"
+  },
+  "dependencies": {
+    "@emotion/react": "11.10.6",
+    "@emotion/styled": "11.10.6",
+    "@mui/material": "5.11.12",
+    "@sentry/react": "7.42.0",
+    "core-js": "3.29.0",
+    "prop-types": "15.8.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-router-dom": "6.8.2",
+    "smoothscroll-polyfill": "0.4.4",
+    "web-animations-js": "2.3.2"
+  },
+  "devDependencies": {
+    "@parcel/packager-raw-url": "2.8.3",
+    "@types/cordova": "11.0.0",
+    "@types/dom-screen-wake-lock": "1.0.0",
+    "@types/react": "18.0.28",
+    "@types/react-dom": "18.0.11",
+    "@types/smoothscroll-polyfill": "0.3.1",
+    "@types/web-animations-js": "2.2.12",
+    "cordova": "11.1.0",
+    "cordova-android": "11.0.0",
+    "cordova-ios": "6.2.0",
+    "cordova-plugin-add-swift-support": "2.0.2",
+    "cordova-plugin-android-dark-mode-support": "1.0.0",
+    "cordova-plugin-buildinfo": "4.0.0",
+    "cordova-plugin-firebase-analytics": "7.0.5",
+    "cordova-plugin-firebase-crash": "7.0.4",
+    "cordova-plugin-headercolor": "1.0.0",
+    "cordova-plugin-insomnia": "4.3.0",
+    "cordova-plugin-ionic-keyboard": "2.2.0",
+    "cordova-plugin-localization-strings": "4.2.0",
+    "cordova-plugin-purchase": "11.0.0",
+    "cordova-plugin-splashscreen": "6.0.2",
+    "cordova-plugin-statusbar": "3.0.0",
+    "cordova-plugin-vibration": "3.1.1",
+    "cordova-plugin-web-share": "1.3.0",
+    "cordova-windows": "7.0.1",
+    "parcel": "2.8.3"
   },
   "cordova": {
     "platforms": [
@@ -85,30 +88,42 @@
       "cordova-plugin-web-share": {}
     }
   },
-  "dependencies": {
-    "smoothscroll-polyfill": "0.4.4",
-    "web-animations-js": "2.3.2"
+  "alias": {
+    "@formatjs/icu-messageformat-parser": "@formatjs/icu-messageformat-parser/no-parser"
   },
-  "devDependencies": {
-    "@types/smoothscroll-polyfill": "0.3.1",
-    "@types/web-animations-js": "2.2.12",
-    "cordova": "11.1.0",
-    "cordova-android": "11.0.0",
-    "cordova-ios": "6.2.0",
-    "cordova-plugin-add-swift-support": "2.0.2",
-    "cordova-plugin-android-dark-mode-support": "1.0.0",
-    "cordova-plugin-buildinfo": "4.0.0",
-    "cordova-plugin-firebase-analytics": "7.0.5",
-    "cordova-plugin-firebase-crash": "7.0.4",
-    "cordova-plugin-headercolor": "1.0.0",
-    "cordova-plugin-insomnia": "4.3.0",
-    "cordova-plugin-ionic-keyboard": "2.2.0",
-    "cordova-plugin-localization-strings": "4.2.0",
-    "cordova-plugin-purchase": "11.0.0",
-    "cordova-plugin-splashscreen": "6.0.2",
-    "cordova-plugin-statusbar": "3.0.0",
-    "cordova-plugin-vibration": "3.1.1",
-    "cordova-plugin-web-share": "1.3.0",
-    "cordova-windows": "7.0.1"
+  "targets": {
+    "android": {
+      "distDir": "www",
+      "engines": {
+        "browsers": "chrome >= 69"
+      },
+      "publicUrl": ".",
+      "source": "src/index.html",
+      "sourceMap": {
+        "inline": true
+      }
+    },
+    "ios": {
+      "distDir": "www",
+      "engines": {
+        "browsers": "ios >= 13"
+      },
+      "publicUrl": ".",
+      "source": "src/index.html",
+      "sourceMap": {
+        "inline": true
+      }
+    },
+    "windows": {
+      "distDir": "www",
+      "engines": {
+        "browsers": "edge >= 18"
+      },
+      "publicUrl": ".",
+      "source": "src/index.html",
+      "sourceMap": {
+        "inline": true
+      }
+    }
   }
 }
