@@ -52,7 +52,7 @@
   "parserOptions": {
     "project": ["./tsconfig.json"]
   },
-  "plugins": ["@emotion", "only-error"],
+  "plugins": ["only-error"],
   "rules": {
     "jsx-a11y/no-autofocus": ["error", { "ignoreNonDOM": true }],
     "import/order": [

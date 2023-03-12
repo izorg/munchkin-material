@@ -26,7 +26,6 @@
   },
   "devDependencies": {
     "@emotion/babel-plugin": "11.10.6",
-    "@emotion/eslint-plugin": "11.10.0",
     "@formatjs/cli": "6.0.4",
     "@jest/globals": "29.5.0",
     "@typescript-eslint/eslint-plugin": "5.54.1",
