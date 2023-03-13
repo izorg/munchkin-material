@@ -12,6 +12,7 @@ import AugmentedThemeProvider from "./components/AugmentedThemeProvider";
 import LocaleProvider from "./components/LocaleProvider";
 import ReduxProvider from "./components/ReduxProvider";
 import ScreenViewProvider from "./components/ScreenViewProvider";
+import VersionProvider from "./components/VersionProvider";
 import WakeLockProvider from "./components/WakeLockProvider";
 import WorkboxProvider from "./components/WorkboxProvider";
 
@@ -35,20 +36,22 @@ root.render(
   <StrictMode>
     <BrowserRouter>
       <ReduxProvider>
-        <WorkboxProvider>
-          <WakeLockProvider>
-            <Suspense fallback={null}>
-              <LocaleProvider>
-                <AugmentedStylesProvider>
-                  <AugmentedThemeProvider>
-                    <ScreenViewProvider />
-                    <App />
-                  </AugmentedThemeProvider>
-                </AugmentedStylesProvider>
-              </LocaleProvider>
-            </Suspense>
-          </WakeLockProvider>
-        </WorkboxProvider>
+        <VersionProvider>
+          <WorkboxProvider>
+            <WakeLockProvider>
+              <Suspense fallback={null}>
+                <LocaleProvider>
+                  <AugmentedStylesProvider>
+                    <AugmentedThemeProvider>
+                      <ScreenViewProvider />
+                      <App />
+                    </AugmentedThemeProvider>
+                  </AugmentedStylesProvider>
+                </LocaleProvider>
+              </Suspense>
+            </WakeLockProvider>
+          </WorkboxProvider>
+        </VersionProvider>
       </ReduxProvider>
     </BrowserRouter>
   </StrictMode>

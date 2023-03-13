@@ -17,6 +17,7 @@ import KeyboardProvider from "./components/KeyboardProvider";
 import ScreenViewProvider from "./components/ScreenViewProvider";
 import SplashScreenProvider from "./components/SplashScreenProvider";
 import StatusBarProvider from "./components/StatusBarProvider";
+import VersionProvider from "./components/VersionProvider";
 import WakeLockProvider from "./components/WakeLockProvider";
 
 const node = document.getElementById("root");
@@ -32,23 +33,25 @@ root.render(
     <ReduxProvider>
       <Suspense fallback={null}>
         <CordovaProvider>
-          <FullVersionProvider>
-            <WakeLockProvider>
-              <AppStoreLinkProvider>
-                <LocaleProvider>
-                  <AugmentedStylesProvider>
-                    <AugmentedThemeProvider>
-                      <SplashScreenProvider />
-                      <StatusBarProvider />
-                      <KeyboardProvider />
-                      <ScreenViewProvider />
-                      <App />
-                    </AugmentedThemeProvider>
-                  </AugmentedStylesProvider>
-                </LocaleProvider>
-              </AppStoreLinkProvider>
-            </WakeLockProvider>
-          </FullVersionProvider>
+          <VersionProvider>
+            <FullVersionProvider>
+              <WakeLockProvider>
+                <AppStoreLinkProvider>
+                  <LocaleProvider>
+                    <AugmentedStylesProvider>
+                      <AugmentedThemeProvider>
+                        <SplashScreenProvider />
+                        <StatusBarProvider />
+                        <KeyboardProvider />
+                        <ScreenViewProvider />
+                        <App />
+                      </AugmentedThemeProvider>
+                    </AugmentedStylesProvider>
+                  </LocaleProvider>
+                </AppStoreLinkProvider>
+              </WakeLockProvider>
+            </FullVersionProvider>
+          </VersionProvider>
         </CordovaProvider>
       </Suspense>
     </ReduxProvider>

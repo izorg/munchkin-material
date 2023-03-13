@@ -1,7 +1,7 @@
 import { mdiCellphoneArrowDown, mdiInformationOutline } from "@mdi/js";
 import { ListItemIcon, SvgIcon } from "@mui/material";
 
-import version from "../../../utils/version";
+import { useVersion } from "../../../utils/versionContext";
 import { useWorkbox } from "../../WorkboxProvider";
 import ListItem from "../Item";
 import ListItemText from "../ItemText";
@@ -22,7 +22,7 @@ const VersionItem = () => {
           <path d={update ? mdiCellphoneArrowDown : mdiInformationOutline} />
         </SvgIcon>
       </ListItemIcon>
-      <ListItemText primary={version} />
+      <ListItemText primary={useVersion()} />
     </ListItem>
   );
 };
