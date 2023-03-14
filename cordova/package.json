@@ -17,7 +17,7 @@
   "dependencies": {
     "@emotion/react": "11.10.6",
     "@emotion/styled": "11.10.6",
-    "@mui/material": "5.11.12",
+    "@mui/material": "5.11.13",
     "@sentry/react": "7.43.0",
     "core-js": "3.29.1",
     "prop-types": "15.8.1",
