@@ -18,16 +18,13 @@
     "screenshots": "node scripts/screenshots.js",
     "stylelint": "stylelint --cache \"**/*.css\"",
     "test": "jest",
-    "tsc": "tsc",
-    "g:firebase": "cd $INIT_CWD && firebase",
-    "g:parcel": "cd $INIT_CWD && parcel",
-    "g:rimraf": "cd $INIT_CWD && rimraf",
-    "g:workbox": "cd $INIT_CWD && workbox"
+    "tsc": "tsc"
   },
   "devDependencies": {
     "@emotion/babel-plugin": "11.10.6",
     "@formatjs/cli": "6.0.4",
     "@jest/globals": "29.5.0",
+    "@parcel/transformer-webmanifest": "2.8.3",
     "@typescript-eslint/eslint-plugin": "5.55.0",
     "@typescript-eslint/parser": "5.55.0",
     "axios": "1.3.4",
