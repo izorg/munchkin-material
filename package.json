@@ -18,7 +18,8 @@
     "screenshots": "node scripts/screenshots.js",
     "stylelint": "stylelint --cache \"**/*.css\"",
     "test": "jest",
-    "tsc": "tsc"
+    "tsc": "tsc",
+    "g:rimraf": "cd $INIT_CWD && rimraf"
   },
   "devDependencies": {
     "@emotion/babel-plugin": "11.10.6",
