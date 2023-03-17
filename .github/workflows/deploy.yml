@@ -39,7 +39,9 @@ jobs:
         run: yarn run test
 
       - name: Build 🔨
-        run: yarn workspace @munchkin/web run build
+        run: |
+          yarn workspace @munchkin/web run build
+          yarn workspace @munchkin/cordova run build
 
       - name: Create Sentry release
         uses: getsentry/action-release@v1
@@ -49,7 +51,7 @@ jobs:
           SENTRY_PROJECT: ${{ secrets.SENTRY_PROJECT }}
         with:
           environment: production
-          sourcemaps: "./web/dist"
+          sourcemaps: "./cordova/www ./web/dist"
           version: ${{ env.VERSION }}
 
       - name: Deploy 🚀

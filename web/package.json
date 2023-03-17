@@ -2,14 +2,6 @@
   "private": true,
   "name": "@munchkin/web",
   "type": "module",
-  "alias": {
-    "@formatjs/icu-messageformat-parser": "@formatjs/icu-messageformat-parser/no-parser"
-  },
-  "targets": {
-    "web": {
-      "source": "src/index.html"
-    }
-  },
   "scripts": {
     "analyze": "yarn run build:parcel --reporter @parcel/reporter-bundle-analyzer",
     "build": "yarn run build:parcel && yarn run build:workbox",
@@ -70,5 +62,13 @@
     "rimraf": "4.4.0",
     "typescript": "4.9.5",
     "workbox-cli": "6.5.4"
+  },
+  "alias": {
+    "@formatjs/icu-messageformat-parser": "@formatjs/icu-messageformat-parser/no-parser"
+  },
+  "targets": {
+    "default": {
+      "source": "src/index.html"
+    }
   }
 }

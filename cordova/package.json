@@ -4,9 +4,8 @@
   "scripts": {
     "build:android": "cordova build android --release",
     "build:ios": "cordova build ios",
-    "build:www:android": "yarn run clean && parcel build --target=android",
-    "build:www:ios": "yarn run clean && parcel build --target=ios",
-    "build:www:windows": "yarn run clean && parcel build --target=windows",
+    "build": "parcel build",
+    "build:www": "yarn run clean && parcel build --no-source-maps",
     "clean": "yarn g:rimraf www",
     "cordova:prepare:android": "cordova prepare android",
     "cordova:prepare:ios": "cordova prepare ios",
@@ -18,6 +17,7 @@
     "@emotion/react": "11.10.6",
     "@emotion/styled": "11.10.6",
     "@mui/material": "5.11.13",
+    "@sentry/integrations": "7.43.0",
     "@sentry/react": "7.43.0",
     "core-js": "3.29.1",
     "prop-types": "15.8.1",
@@ -92,38 +92,10 @@
     "@formatjs/icu-messageformat-parser": "@formatjs/icu-messageformat-parser/no-parser"
   },
   "targets": {
-    "android": {
+    "default": {
       "distDir": "www",
-      "engines": {
-        "browsers": "chrome >= 69"
-      },
       "publicUrl": ".",
-      "source": "src/index.html",
-      "sourceMap": {
-        "inline": true
-      }
-    },
-    "ios": {
-      "distDir": "www",
-      "engines": {
-        "browsers": "ios >= 13"
-      },
-      "publicUrl": ".",
-      "source": "src/index.html",
-      "sourceMap": {
-        "inline": true
-      }
-    },
-    "windows": {
-      "distDir": "www",
-      "engines": {
-        "browsers": "edge >= 18"
-      },
-      "publicUrl": ".",
-      "source": "src/index.html",
-      "sourceMap": {
-        "inline": true
-      }
+      "source": "src/index.html"
     }
   }
 }
