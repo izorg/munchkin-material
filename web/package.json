@@ -62,9 +62,6 @@
     "typescript": "4.9.5",
     "workbox-cli": "6.5.4"
   },
-  "installConfig": {
-    "hoistingLimits": "dependencies"
-  },
   "alias": {
     "@formatjs/icu-messageformat-parser": "@formatjs/icu-messageformat-parser/no-parser"
   },

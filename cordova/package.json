@@ -4,7 +4,7 @@
   "scripts": {
     "build:android": "cordova build android --release",
     "build:ios": "cordova build ios",
-    "build": "parcel build",
+    "build": "yarn run clean && parcel build",
     "build:www": "yarn run clean && parcel build --no-source-maps",
     "clean": "yarn g:rimraf www",
     "cordova:prepare:android": "cordova prepare android",
