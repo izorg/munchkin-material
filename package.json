@@ -7,14 +7,14 @@
     "web"
   ],
   "scripts": {
-    "clean": "rimraf .eslintcache .parcel-cache .stylelintcache cordova/www coverage dist messages node_modules/.cache parcel-bundle-reports screenshots tsconfig.tsbuildinfo web",
+    "clean": "rimraf .eslintcache .parcel-cache .stylelintcache coverage messages node_modules/.cache parcel-bundle-reports screenshots tsconfig.tsbuildinfo",
     "eslint": "eslint --cache \"**/*.{js,json,ts,tsx}\"",
     "i18n:compile": "formatjs compile-folder --ast --format=simple languages languages/generated",
     "i18n:extract": "formatjs extract --out-file=messages.json \"web/src/**/*.{js,ts,tsx}\" && formatjs compile --out-file=languages/en.json messages.json && rm messages.json && prettier --write languages/en.json",
     "lint": "yarn run tsc && yarn run eslint && yarn run stylelint",
     "postinstall": "husky install",
     "prettier": "prettier --cache --ignore-unknown --write .",
-    "reinstall": "rimraf cordova/node_modules node_modules yarn.lock && yarn install",
+    "reinstall": "rimraf node_modules yarn.lock && yarn install",
     "screenshots": "node scripts/screenshots.js",
     "stylelint": "stylelint --cache \"**/*.css\"",
     "test": "jest",
