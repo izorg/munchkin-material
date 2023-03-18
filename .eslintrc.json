@@ -8,21 +8,12 @@
     "plugin:jsx-a11y/recommended",
     "plugin:react-hooks/recommended",
     "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
     "plugin:prettier/recommended"
   ],
   "overrides": [
     {
-      "env": {
-        "browser": true
-      },
-      "files": ["web/src/**/*"],
-      "rules": {
-        "no-console": ["error", { "allow": ["error", "warn"] }]
-      }
-    },
-    {
       "extends": [
-        "plugin:@typescript-eslint/recommended",
         "plugin:@typescript-eslint/recommended-requiring-type-checking"
       ],
       "files": ["**/*.ts?(x)"],
@@ -53,6 +44,7 @@
     "project": ["./tsconfig.json"]
   },
   "plugins": ["only-error"],
+  "root": true,
   "rules": {
     "jsx-a11y/no-autofocus": ["error", { "ignoreNonDOM": true }],
     "import/order": [
@@ -71,14 +63,6 @@
           "index"
         ],
         "newlines-between": "always"
-      }
-    ],
-    "no-unused-vars": [
-      "error",
-      {
-        "args": "after-used",
-        "ignoreRestSiblings": true,
-        "vars": "all"
       }
     ],
     "react/jsx-sort-props": [
@@ -105,7 +89,7 @@
       }
     ],
     "sort-keys": [
-      "warn",
+      "error",
       "asc",
       {
         "caseSensitive": false,
