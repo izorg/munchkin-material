@@ -14,7 +14,6 @@
 !.yarn/sdks
 !.yarn/versions
 coverage
-dist
 firebase-debug.log
 node_modules
 parcel-bundle-reports
@@ -28,3 +27,5 @@ tsconfig.tsbuildinfo
 /cordova/platforms
 /cordova/plugins
 /cordova/www
+
+/web/dist

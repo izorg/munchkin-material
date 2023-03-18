@@ -20,6 +20,8 @@ if (process.env.NODE_ENV === "production") {
   );
 }
 
-export default {
+const config = {
   plugins,
 };
+
+export default config;
