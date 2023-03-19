@@ -1,3 +1,4 @@
+import { captureException } from "@sentry/react";
 import PropTypes from "prop-types";
 import {
   type FC,
@@ -22,39 +23,27 @@ const FullVersionProvider: FC<PropsWithChildren> = ({ children }) => {
   const buyFullVersion = useCallback(
     () =>
       new Promise<void>((resolve, reject) => {
-        if (!store) {
-          return reject();
-        }
-
-        store.once(FULL_VERSION_ID).owned(() => {
-          dispatch(setFullVersion(true));
-
-          resolve();
-        });
-
-        store.once(FULL_VERSION_ID).cancelled(() => {
-          reject();
-        });
+        store
+          .once(FULL_VERSION_ID)
+          .owned(() => {
+            resolve();
+          })
+          .cancelled(() => {
+            reject();
+          });
 
         store.order(FULL_VERSION_ID);
       }),
-    [dispatch]
+    []
   );
 
   const restorePurchases = useCallback(() => {
-    store?.refresh();
+    store.refresh();
   }, []);
 
   useEffect(() => {
-    if (!store) {
-      console.warn("Store not available");
-      return;
-    }
-
-    // store.verbosity = store.DEBUG;
-
     store.error((error) => {
-      console.error(`ERROR ${error.code}: ${error.message}`);
+      captureException(error);
     });
 
     store.register({
@@ -62,29 +51,30 @@ const FullVersionProvider: FC<PropsWithChildren> = ({ children }) => {
       type: store.NON_CONSUMABLE,
     });
 
-    store.once(FULL_VERSION_ID).loaded(() => {
-      dispatch(setFullVersion(false));
-    });
-
-    store.once(FULL_VERSION_ID).approved((product) => {
-      product.finish();
-    });
-
-    store.once(FULL_VERSION_ID).owned(() => {
-      dispatch(setFullVersion(true));
-    });
+    store
+      .when(FULL_VERSION_ID)
+      .loaded(() => {
+        dispatch(setFullVersion(false));
+      })
+      .approved((product) => {
+        product.finish();
+      })
+      .owned(() => {
+        dispatch(setFullVersion(true));
+      });
 
     store.refresh();
   }, [dispatch]);
 
-  const value = useMemo(() => {
-    return {
+  const value = useMemo(
+    () => ({
       buyFullVersion,
       fullVersion,
       restorePurchases:
-        cordova?.platformId === "ios" ? restorePurchases : undefined,
-    };
-  }, [buyFullVersion, fullVersion, restorePurchases]);
+        cordova.platformId === "ios" ? restorePurchases : undefined,
+    }),
+    [buyFullVersion, fullVersion, restorePurchases]
+  );
 
   return (
     <FullVersionContext.Provider value={value}>

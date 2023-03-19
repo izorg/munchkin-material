@@ -30,8 +30,6 @@ declare global {
 
     StatusBar?: StatusBar;
 
-    store?: IapStore.IStore;
-
     Windows: {
       UI: {
         Core: {
