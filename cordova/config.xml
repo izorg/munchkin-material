@@ -11,26 +11,25 @@
     </author>
     <content src="index.html" />
     <access origin="*" />
+    <allow-intent href="geo:*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
-    <allow-intent href="tel:*" />
-    <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
-    <allow-intent href="geo:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="tel:*" />
     <preference name="AutoHideSplashScreen" value="false" />
     <preference name="ShowSplashScreenSpinner" value="false" />
     <preference name="SplashMaintainAspectRatio" value="true" />
     <platform name="android">
         <allow-intent href="market:*" />
-        <preference name="AndroidXEnabled" value="true" />
-        <preference name="AndroidWindowSplashScreenBackground" value="#fafafa" />
+        <preference name="android-minSdkVersion" value="25" />
         <preference name="AndroidWindowSplashScreenAnimatedIcon" value="res/android/splash-screen-icon.png" />
-        <preference name="GradlePluginKotlinEnabled" value="true" />
+        <preference name="AndroidWindowSplashScreenBackground" value="#fafafa" />
+        <preference name="AndroidXEnabled" value="true" />
         <preference name="GradlePluginGoogleServicesEnabled" value="true" />
+        <preference name="GradlePluginKotlinEnabled" value="true" />
         <preference name="HeaderColor" value="#795548" />
         <preference name="StatusBarOverlaysWebView" value="false" />
-        <preference name="android-minSdkVersion" value="25" />
-        <resource-file src="google-services.json" target="app/google-services.json" />
         <icon density="ldpi" background="res/android/mipmap-ldpi/icon_background.png" foreground="res/android/mipmap-ldpi/icon_foreground.png" src="res/android/mipmap-ldpi/icon.png" />
         <icon density="mdpi" background="res/android/mipmap-mdpi/icon_background.png" foreground="res/android/mipmap-mdpi/icon_foreground.png" src="res/android/mipmap-mdpi/icon.png" />
         <icon density="hdpi" background="res/android/mipmap-hdpi/icon_background.png" foreground="res/android/mipmap-hdpi/icon_foreground.png" src="res/android/mipmap-hdpi/icon.png" />
@@ -40,6 +39,7 @@
         <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application">
             <application android:roundIcon="@mipmap/ic_launcher" />
         </edit-config>
+        <resource-file src="google-services.json" target="app/google-services.json" />
         <resource-file src="res/android/mipmap-hdpi/icon_round.png" target="app/src/main/res/mipmap-hdpi/ic_launcher_round.png" />
         <resource-file src="res/android/mipmap-mdpi/icon_round.png" target="app/src/main/res/mipmap-mdpi/ic_launcher_round.png" />
         <resource-file src="res/android/mipmap-xhdpi/icon_round.png" target="app/src/main/res/mipmap-xhdpi/ic_launcher_round.png" />
@@ -50,9 +50,9 @@
     <platform name="ios">
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
-        <preference name="scheme" value="app" />
-        <preference name="hostname" value="localhost" />
         <preference name="deployment-target" value="13.0" />
+        <preference name="hostname" value="localhost" />
+        <preference name="scheme" value="app" />
         <preference name="DisallowOverscroll" value="true" />
         <preference name="KeyboardDisplayRequiresUserAction" value="false" />
         <preference name="KeyboardResizeMode" value="body" />
@@ -94,10 +94,10 @@
     </platform>
     <platform name="windows">
       <name>ms-resource:DisplayName</name>
-      <preference name="SplashScreenBackgroundColor" value="#FFFFFF" />
-      <preference name="WindowsStoreIdentityName" value="8543ViacheslavZavoruev.LevelCounterforMunchkin" />
-      <preference name="WindowsStoreDisplayName" value="Level Counter for Munchkin" />
       <preference name="windows-target-version" value="10.0" />
+      <preference name="SplashScreenBackgroundColor" value="#FFFFFF" />
+      <preference name="WindowsStoreDisplayName" value="Level Counter for Munchkin" />
+      <preference name="WindowsStoreIdentityName" value="8543ViacheslavZavoruev.LevelCounterforMunchkin" />
       <icon src="res/windows/StoreLogo.png" target="StoreLogo" />
       <icon src="res/windows/Square30x30Logo.png" target="Square30x30Logo" />
       <icon src="res/windows/Square44x44Logo.png" target="Square44x44Logo" />
