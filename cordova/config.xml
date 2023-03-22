@@ -28,6 +28,7 @@
         <preference name="AndroidXEnabled" value="true" />
         <preference name="GradlePluginGoogleServicesEnabled" value="true" />
         <preference name="GradlePluginKotlinEnabled" value="true" />
+        <preference name="GradlePluginKotlinVersion" value="1.6.21" />
         <preference name="HeaderColor" value="#795548" />
         <preference name="StatusBarOverlaysWebView" value="false" />
         <icon density="ldpi" background="res/android/mipmap-ldpi/icon_background.png" foreground="res/android/mipmap-ldpi/icon_foreground.png" src="res/android/mipmap-ldpi/icon.png" />
