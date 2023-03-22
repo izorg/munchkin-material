@@ -4,12 +4,6 @@ import { useEffect } from "react";
 
 const useStatusBar = (theme: Theme): void => {
   useEffect(() => {
-    const StatusBar = window.StatusBar;
-
-    if (!StatusBar) {
-      return;
-    }
-
     const colorPrimary = theme.components?.MuiAppBar?.styleOverrides
       ?.colorPrimary as Record<string, string> | undefined;
 
@@ -27,7 +21,7 @@ const useStatusBar = (theme: Theme): void => {
       }
     }
 
-    if ("cordova" in window && window.cordova.platformId === "android") {
+    if (cordova.platformId === "android") {
       let background =
         colorPrimary?.backgroundColor || theme.palette.primary.main;
 
@@ -35,7 +29,9 @@ const useStatusBar = (theme: Theme): void => {
         background = theme.palette.grey[900];
       }
 
-      StatusBar.backgroundColorByHexString(rgbToHex(darken(background, 0.5)));
+      setTimeout(() => {
+        StatusBar.backgroundColorByHexString(rgbToHex(darken(background, 0.5)));
+      }, 0);
     }
   }, [
     theme.components?.MuiAppBar?.styleOverrides?.colorPrimary,
