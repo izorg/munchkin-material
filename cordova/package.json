@@ -36,10 +36,9 @@
     "@types/smoothscroll-polyfill": "0.3.1",
     "@types/web-animations-js": "2.2.13",
     "cordova": "11.1.0",
-    "cordova-android": "11.0.0",
+    "cordova-android": "12.0.0-nightly.2023.3.22.d4bfd507",
     "cordova-ios": "6.2.0",
     "cordova-plugin-add-swift-support": "2.0.2",
-    "cordova-plugin-android-dark-mode-support": "1.0.0",
     "cordova-plugin-buildinfo": "4.0.0",
     "cordova-plugin-firebase-analytics": "7.0.5",
     "cordova-plugin-firebase-crash": "7.0.4",
@@ -62,7 +61,6 @@
       "windows"
     ],
     "plugins": {
-      "cordova-plugin-android-dark-mode-support": {},
       "cordova-plugin-buildinfo": {},
       "cordova-plugin-firebase-analytics": {
         "ANALYTICS_COLLECTION_ENABLED": "true",
