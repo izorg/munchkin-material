@@ -31,7 +31,7 @@ const useStatusBar = (theme: Theme): void => {
 
       setTimeout(() => {
         StatusBar.backgroundColorByHexString(rgbToHex(darken(background, 0.5)));
-      }, 0);
+      }, 100);
     }
   }, [
     theme.components?.MuiAppBar?.styleOverrides?.colorPrimary,
