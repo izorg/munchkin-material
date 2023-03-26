@@ -36,7 +36,7 @@
     "@types/smoothscroll-polyfill": "0.3.1",
     "@types/web-animations-js": "2.2.13",
     "cordova": "11.1.0",
-    "cordova-android": "12.0.0-nightly.2023.3.22.d4bfd507",
+    "cordova-android": "12.0.0-nightly.2023.3.26.d4bfd507",
     "cordova-ios": "6.2.0",
     "cordova-plugin-buildinfo": "4.0.0",
     "cordova-plugin-firebase-analytics": "7.0.5",
