@@ -39,9 +39,7 @@ jobs:
         run: yarn run test
 
       - name: Build 🔨
-        run: |
-          yarn workspace @munchkin/web run build
-          yarn workspace @munchkin/cordova run build
+        run: yarn workspaces foreach run build
 
       - name: Create Sentry release
         uses: getsentry/action-release@v1
