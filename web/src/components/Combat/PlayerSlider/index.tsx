@@ -11,7 +11,12 @@ import {
   useMediaQuery,
   useTheme,
 } from "@mui/material";
-import { m, useAnimation, useMotionValue } from "framer-motion";
+import {
+  m,
+  type Transition,
+  useAnimation,
+  useMotionValue,
+} from "framer-motion";
 import PropTypes from "prop-types";
 import { type FC, memo, useEffect, useRef } from "react";
 
@@ -117,7 +122,7 @@ const CombatPlayerSlider: FC<CombatPlayerSliderProps> = (props) => {
   useEffect(() => {
     const parent = ref.current;
     const child = containerRef.current;
-    const transitionOverride = { type: "tween" };
+    const transitionOverride = { type: "tween" } satisfies Transition;
 
     if (!child || !parent) {
       return;

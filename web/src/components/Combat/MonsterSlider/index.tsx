@@ -9,7 +9,12 @@ import {
   useMediaQuery,
   useTheme,
 } from "@mui/material";
-import { m, useAnimation, useMotionValue } from "framer-motion";
+import {
+  m,
+  type Transition,
+  useAnimation,
+  useMotionValue,
+} from "framer-motion";
 import { type FC, memo, useEffect, useRef } from "react";
 import { FormattedMessage } from "react-intl";
 
@@ -109,7 +114,7 @@ const CombatMonsterSlider: FC<BoxProps> = ({ sx = [], ...props }) => {
   useEffect(() => {
     const parent = ref.current;
     const child = containerRef.current;
-    const transitionOverride = { type: "tween" };
+    const transitionOverride = { type: "tween" } satisfies Transition;
 
     if (!child || !parent) {
       return;
