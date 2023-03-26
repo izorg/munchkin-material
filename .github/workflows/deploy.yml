@@ -50,6 +50,7 @@ jobs:
         with:
           environment: production
           sourcemaps: "./cordova/www ./web/dist"
+          url_prefix: "~"
           version: ${{ env.VERSION }}
 
       - name: Deploy 🚀
