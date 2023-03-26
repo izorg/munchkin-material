@@ -16,22 +16,24 @@ How I work.
 - Client-side web app
 - LocalStorage as permanent storage
 - Redux store is the only source of truth
-- Service worker static for static caching
+- Service worker for static caching
 
 ### Known Issues
 
 #### React Refresh
 
-Create symbolic links to `node_modules` folder to fix `react-refresh` issue.
+1.  Set `DISABLE_V8_COMPILE_CACHE=1` to fix HMR issue `Invalid host defined options` https://github.com/webpack/webpack-cli/issues/3005.
 
-macOS
+2.  Create symbolic links to `node_modules` folder in `web` to fix `react-refresh` issue.
 
-```shell
-ln -s <absolute_psth_to_project>/node_modules <absolute_psth_to_project>/web/node_modules
-```
+    macOS
 
-Windows
+    ```shell
+    ln -s "$PWD/node_modules" "$PWD/web/node_modules"
+    ```
 
-```shell
-mklink /D "<absolute_psth_to_project>\node_modules" "<absolute_psth_to_project>\web\node_modules"
-```
+    Windows
+
+    ```shell
+    mklink /D "<absolute_psth_to_project>\node_modules" "<absolute_psth_to_project>\web\node_modules"
+    ```
