@@ -38,7 +38,6 @@
     "cordova": "11.1.0",
     "cordova-android": "12.0.0-nightly.2023.3.22.d4bfd507",
     "cordova-ios": "6.2.0",
-    "cordova-plugin-add-swift-support": "2.0.2",
     "cordova-plugin-buildinfo": "4.0.0",
     "cordova-plugin-firebase-analytics": "7.0.5",
     "cordova-plugin-firebase-crash": "7.0.4",
