@@ -7,9 +7,6 @@ const config = {
       "ts-jest",
       {
         isolatedModules: true,
-        tsconfig: {
-          preserveValueImports: false,
-        },
       },
     ],
   },

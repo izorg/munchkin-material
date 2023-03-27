@@ -2,16 +2,15 @@
   "compilerOptions": {
     "esModuleInterop": true,
     "incremental": true,
-    "isolatedModules": true,
     "jsx": "preserve",
     "jsxImportSource": "@emotion/react",
     "module": "ESNext",
     "moduleResolution": "Node",
     "noEmit": true,
-    "preserveValueImports": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
-    "target": "ESNext"
+    "target": "ESNext",
+    "verbatimModuleSyntax": true
   }
 }
