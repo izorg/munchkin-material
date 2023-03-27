@@ -1,14 +1,8 @@
-/** @type {import('ts-jest').JestConfigWithTsJest} */
+/** @type {import('jest').Config} */
 const config = {
-  preset: "ts-jest",
   roots: ["<rootDir>/web/src/"],
   transform: {
-    "^.+\\.tsx?$": [
-      "ts-jest",
-      {
-        isolatedModules: true,
-      },
-    ],
+    "^.+\\.tsx?$": "@swc/jest",
   },
 };
 
