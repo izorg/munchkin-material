@@ -5,7 +5,7 @@
     "build:android": "cordova build android --release",
     "build:ios": "cordova build ios",
     "build": "yarn run clean && parcel build",
-    "build:www": "yarn run clean && parcel build && g:rimraf www/*.map",
+    "build:www": "yarn run clean && parcel build && yarn g:rimraf --glob \"www/*.map\"",
     "clean": "yarn g:rimraf www",
     "cordova:prepare:android": "cordova prepare android",
     "cordova:prepare:ios": "cordova prepare ios",
