@@ -151,7 +151,6 @@ const HomePlayerListItem = (props: HomePlayerListItemProps) => {
     transform,
     transition,
   } = useSortable({
-    disabled: !editMode,
     id: playerId,
   });
 
@@ -205,6 +204,7 @@ const HomePlayerListItem = (props: HomePlayerListItemProps) => {
         onTap={onTap}
         onTapCancel={clearPress}
         onTapStart={onTapStart}
+        role={undefined}
         sx={{
           width: "100%",
 
