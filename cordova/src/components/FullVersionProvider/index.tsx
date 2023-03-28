@@ -1,4 +1,4 @@
-import { captureException } from "@sentry/react";
+import { captureException, captureMessage } from "@sentry/react";
 import PropTypes from "prop-types";
 import {
   type FC,
@@ -43,7 +43,13 @@ const FullVersionProvider: FC<PropsWithChildren> = ({ children }) => {
 
   useEffect(() => {
     store.error((error) => {
-      captureException(error);
+      const message = `${error.code}: ${error.message}`;
+
+      if (error.code === 6777001) {
+        captureMessage(message);
+      }
+
+      captureException(new Error(message));
     });
 
     store.register({
