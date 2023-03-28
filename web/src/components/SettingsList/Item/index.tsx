@@ -9,10 +9,11 @@ const MenuListItem = <D extends ElementType>({
     {...props}
     sx={[
       {
-        "@supports (padding: max(env(safe-area-inset-left)))": {
-          paddingLeft: "max(16px, env(safe-area-inset-left))",
-          paddingRight: "max(16px, env(safe-area-inset-left))",
-        },
+        "@supports (padding: max(0px)) and (padding: env(safe-area-inset-left))":
+          {
+            paddingLeft: "max(16px, env(safe-area-inset-left))",
+            paddingRight: "max(16px, env(safe-area-inset-left))",
+          },
       },
       ...(sx instanceof Array ? sx : [sx]),
     ]}

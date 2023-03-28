@@ -38,7 +38,7 @@ const TopAppBar: FC<PropsWithChildren> = ({ children }) => (
         },
 
         // eslint-disable-next-line sort-keys
-        "@supports (min-height: calc(env(safe-area-inset-top)))": {
+        "@supports (min-height: env(safe-area-inset-top))": {
           minHeight: "calc(56px + env(safe-area-inset-top))",
           paddingTop: "env(safe-area-inset-top)",
 
