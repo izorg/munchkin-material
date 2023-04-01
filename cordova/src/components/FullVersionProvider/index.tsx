@@ -47,9 +47,9 @@ const FullVersionProvider: FC<PropsWithChildren> = ({ children }) => {
 
       if (error.code === 6777001) {
         captureMessage(message);
+      } else {
+        captureException(new Error(message));
       }
-
-      captureException(new Error(message));
     });
 
     store.register({
