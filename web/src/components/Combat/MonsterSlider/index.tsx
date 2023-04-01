@@ -9,12 +9,6 @@ import {
   useMediaQuery,
   useTheme,
 } from "@mui/material";
-import {
-  m,
-  type Transition,
-  useAnimation,
-  useMotionValue,
-} from "framer-motion";
 import { type FC, memo, useEffect, useRef } from "react";
 import { FormattedMessage } from "react-intl";
 
@@ -37,153 +31,36 @@ const CombatMonsterSlider: FC<BoxProps> = ({ sx = [], ...props }) => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   const { direction } = theme;
+  const directionMultiplier = direction === "rtl" ? -1 : 1;
 
   const landscape = useMediaQuery("(orientation: landscape)");
 
   const monsters = usePresentSelector((state) => state.combat.monsters);
   const monsterCount = useRef(monsters.length);
 
-  const animate = useAnimation();
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-
-  const onDrag = () => {
-    const parent = ref.current;
-    const child = containerRef.current;
-
-    if (!child || !parent) {
-      return;
-    }
-
-    if (landscape) {
-      if (child.offsetHeight <= parent.offsetHeight) {
-        y.set(0);
-      }
-    } else {
-      if (child.offsetWidth <= parent.offsetWidth) {
-        x.set(0);
-      }
-    }
-  };
-
-  const modifyTarget = (target: number) => {
-    const parent = ref.current;
-    const child = containerRef.current;
-
-    if (!child || !parent) {
-      return 0;
-    }
-
-    if (landscape) {
-      if (child.offsetHeight <= parent.offsetHeight) {
-        return 0;
-      }
-
-      const min = parent.offsetHeight - child.offsetHeight;
-      const max = 0;
-
-      if (target < min) {
-        return min;
-      }
-
-      if (target > max) {
-        return max;
-      }
-    } else {
-      if (child.offsetWidth <= parent.offsetWidth) {
-        return 0;
-      }
-
-      const min =
-        direction === "rtl" ? 0 : parent.offsetWidth - child.offsetWidth;
-      const max =
-        direction === "rtl" ? child.offsetWidth - parent.offsetWidth : 0;
-
-      if (target < min) {
-        return min;
-      }
-
-      if (target > max) {
-        return max;
-      }
-    }
-
-    return target;
-  };
-
   useEffect(() => {
-    const parent = ref.current;
     const child = containerRef.current;
-    const transitionOverride = { type: "tween" } satisfies Transition;
 
-    if (!child || !parent) {
+    if (!child) {
       return;
     }
 
     if (landscape) {
       if (monsters.length > monsterCount.current) {
-        if (child.offsetHeight > parent.offsetHeight) {
-          void animate.start(
-            { y: parent.offsetHeight - child.offsetHeight },
-            transitionOverride
-          );
-        }
-      }
-
-      if (monsters.length < monsterCount.current) {
-        if (child.offsetHeight <= parent.offsetHeight) {
-          y.set(0);
-        } else if (y.get() < parent.offsetHeight - child.offsetHeight) {
-          void animate.start(
-            { y: parent.offsetHeight - child.offsetHeight },
-            transitionOverride
-          );
-        }
+        child.scrollTo({
+          top: child.scrollHeight,
+        });
       }
     } else {
       if (monsters.length > monsterCount.current) {
-        if (child.offsetWidth > parent.offsetWidth) {
-          let shift = parent.offsetWidth - child.offsetWidth;
-
-          if (direction === "rtl") {
-            shift = -shift;
-          }
-
-          void animate.start({ x: shift }, transitionOverride);
-        }
+        child.scrollTo({
+          left: child.scrollWidth * directionMultiplier,
+        });
       }
-
-      if (monsters.length < monsterCount.current) {
-        if (child.offsetWidth <= parent.offsetWidth) {
-          x.set(0);
-        } else {
-          if (direction === "rtl") {
-            if (x.get() > child.offsetWidth - parent.offsetWidth) {
-              void animate.start(
-                { x: child.offsetWidth - parent.offsetWidth },
-                transitionOverride
-              );
-            }
-          } else {
-            if (x.get() < parent.offsetWidth - child.offsetWidth) {
-              void animate.start(
-                { x: parent.offsetWidth - child.offsetWidth },
-                transitionOverride
-              );
-            }
-          }
-        }
-      }
-    }
-
-    if (monsters.length === monsterCount.current) {
-      animate.stop();
-      x.set(0);
-      y.set(0);
     }
 
     monsterCount.current = monsters.length;
-  }, [animate, direction, landscape, monsters.length, x, y]);
+  }, [directionMultiplier, landscape, monsters.length]);
 
   const handleRemove = (monsterId: string) => {
     dispatch(removeMonster(monsterId));
@@ -215,19 +92,15 @@ const CombatMonsterSlider: FC<BoxProps> = ({ sx = [], ...props }) => {
       <Filler />
       <Box
         ref={containerRef}
-        animate={animate}
-        component={m.div}
-        drag={landscape ? "y" : "x"}
-        dragTransition={{
-          modifyTarget,
-          timeConstant: 300,
-        }}
-        onDrag={onDrag}
-        style={{ x, y }}
         sx={{
           display: "flex",
           flexShrink: 0,
+          maxHeight: "100%",
+          maxWidth: "100%",
+          overflow: "auto",
           padding: 1,
+          scrollBehavior: "smooth",
+          scrollSnapType: "both mandatory",
 
           // eslint-disable-next-line sort-keys
           "@media (orientation: landscape)": {
@@ -238,15 +111,18 @@ const CombatMonsterSlider: FC<BoxProps> = ({ sx = [], ...props }) => {
         {monsters.map((id, monsterIndex) => (
           <Box
             key={id}
-            sx={{
+            sx={(theme) => ({
               flexShrink: 0,
               padding: 1,
-            }}
+              scrollMargin: theme.spacing(3),
+              scrollSnapAlign: "start",
+            })}
           >
             <Paper
               sx={{
                 display: "flex",
                 flexDirection: "column",
+                height: "160px",
                 justifyContent: "center",
                 position: "relative",
 

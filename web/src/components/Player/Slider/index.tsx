@@ -1,7 +1,6 @@
 import { Box, useTheme } from "@mui/material";
-import { m, type PanInfo, useAnimation } from "framer-motion";
 import PropTypes from "prop-types";
-import { useCallback, useRef } from "react";
+import { useCallback, useEffect, useLayoutEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
 import usePresentSelector from "../../../hooks/usePresentSelector";
@@ -15,9 +14,10 @@ type PlayerSliderProps = {
 const PlayerSlider = ({ playerId }: PlayerSliderProps) => {
   const navigate = useNavigate();
   const theme = useTheme();
-  const { direction } = theme;
 
-  const rtl = direction === "rtl";
+  const rtl = theme.direction === "rtl";
+
+  const directionMultiplier = rtl ? -1 : 1;
 
   const playerList = usePresentSelector((state) => state.playerList);
   const playerCount = playerList.length;
@@ -39,119 +39,131 @@ const PlayerSlider = ({ playerId }: PlayerSliderProps) => {
 
   const ref = useRef<HTMLDivElement>(null);
 
-  const controls = useAnimation();
+  const onWindowResize = useCallback(() => {
+    const element = ref.current;
 
-  const onDragEnd = async (
-    event: MouseEvent | TouchEvent | PointerEvent,
-    info: PanInfo
-  ) => {
-    if (!ref.current) {
+    if (element) {
+      element.scrollLeft = element.offsetWidth * directionMultiplier;
+    }
+  }, [directionMultiplier]);
+
+  useLayoutEffect(() => {
+    const element = ref.current;
+
+    if (
+      playerCount > 1 &&
+      element &&
+      playerId // needed update scroll position after navigation
+    ) {
+      element.scrollLeft = element.offsetWidth * directionMultiplier;
+    }
+
+    window.addEventListener("resize", onWindowResize, false);
+
+    return () => {
+      window.removeEventListener("resize", onWindowResize);
+    };
+  }, [directionMultiplier, onWindowResize, playerCount, playerId]);
+
+  const onScrollEnd = useCallback(() => {
+    const element = ref.current;
+
+    if (!element) {
       return;
     }
 
-    const offset = info.offset.x;
-    const velocity = info.velocity.x;
-
     let direction = 0;
 
-    if (Math.abs(velocity) >= 500) {
-      direction = velocity > 0 ? 1 : -1;
-    } else if (Math.abs(offset) >= ref.current.offsetWidth / 2) {
-      direction = offset > 0 ? 1 : -1;
+    if (element.scrollLeft === 0) {
+      direction = -1;
+    } else if (
+      element.scrollLeft ===
+      element.offsetWidth * 2 * directionMultiplier
+    ) {
+      direction = 1;
     }
 
-    if (direction) {
-      const playerDirection = rtl ? direction : -direction;
-
-      const nextPlayerId =
-        playerList[getPlayerIndex(currentIndex + playerDirection)];
-
-      navigate(`/player/${nextPlayerId}`, {
-        replace: true,
-      });
-
-      controls.set({
-        x: ref.current.offsetWidth * -direction + offset,
-      });
-
-      await controls.start(
-        {
-          x: 0,
-        },
-        {
-          mass: 0.1,
-          type: "spring",
-          velocity,
-        }
-      );
+    if (direction === 0) {
+      return;
     }
-  };
+
+    const playerDirection = direction;
+
+    const nextPlayerId =
+      playerList[getPlayerIndex(currentIndex + playerDirection)];
+
+    navigate(`/player/${nextPlayerId}`, {
+      replace: true,
+    });
+  }, [currentIndex, directionMultiplier, getPlayerIndex, navigate, playerList]);
+
+  useEffect(() => {
+    const element = ref.current;
+
+    if (!element) {
+      return;
+    }
+
+    element.addEventListener("scrollend", onScrollEnd, false);
+
+    return () => {
+      element.removeEventListener("scrollend", onScrollEnd);
+    };
+  }, [onScrollEnd]);
 
   return (
     <Box
       ref={ref}
       sx={{
-        overflowX: "hidden",
+        display: "flex",
+        overflowX: "auto",
+        scrollSnapType: "x mandatory",
         width: "100%",
+
+        // eslint-disable-next-line sort-keys
+        "@supports (-ms-scroll-snap-type: mandatory)": {
+          MsScrollSnapType: "mandatory",
+        },
       }}
     >
-      <Box
-        animate={controls}
-        component={m.div}
-        drag={playerList.length > 1 ? "x" : false}
-        dragConstraints={ref}
-        dragElastic={1}
-        onDragEnd={onDragEnd}
-        sx={{
-          height: "100%",
-          position: "relative",
-        }}
-      >
-        {[currentIndex - 1, currentIndex, currentIndex + 1].map((index) => {
-          const playerIndex = getPlayerIndex(index);
-          const playerId = playerList[playerIndex];
+      {(playerCount > 1
+        ? [currentIndex - 1, currentIndex, currentIndex + 1]
+        : [currentIndex]
+      ).map((index) => {
+        const playerIndex = getPlayerIndex(index);
+        const playerId = playerList[playerIndex];
 
-          return (
-            <Box
-              key={`${playerId}-${index}`}
-              sx={[
-                {
-                  alignItems: "center",
-                  display: "flex",
-                  height: "100%",
-                  padding: theme.spacing(2, 2, 7),
-                  width: "100%",
+        return (
+          <Box
+            key={`${playerId}-${index}`}
+            sx={{
+              alignItems: "center",
+              display: "flex",
+              flexShrink: "0",
+              height: "100%",
+              padding: theme.spacing(2, 2, 7),
+              scrollSnapAlign: "center",
+              scrollSnapStop: "always",
+              width: "100%",
 
-                  // eslint-disable-next-line sort-keys
-                  "@media (min-height: 720px)": {
-                    paddingBottom: 2,
-                  },
-                },
-                index === currentIndex - 1 && {
-                  left: "-100%",
-                  position: "absolute",
-                  top: 0,
-                },
-                index === currentIndex + 1 && {
-                  left: "100%",
-                  position: "absolute",
-                  top: 0,
-                },
-              ]}
-            >
-              <PlayerStats
-                playerId={playerId}
-                sx={{
-                  height: "100%",
-                  margin: "0 auto",
-                  maxHeight: "600px",
-                  maxWidth: "600px",
-                }}
-              />
-            </Box>
-          );
-        })}
-      </Box>
+              // eslint-disable-next-line sort-keys
+              "@media (min-height: 720px)": {
+                paddingBottom: 2,
+              },
+            }}
+          >
+            <PlayerStats
+              playerId={playerId}
+              sx={{
+                height: "100%",
+                margin: "0 auto",
+                maxHeight: "600px",
+                maxWidth: "600px",
+              }}
+            />
+          </Box>
+        );
+      })}
     </Box>
   );
 };

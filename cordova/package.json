@@ -23,6 +23,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-router-dom": "6.10.0",
+    "scrollyfills": "1.0.0",
     "smoothscroll-polyfill": "0.4.4",
     "web-animations-js": "2.3.2"
   },
