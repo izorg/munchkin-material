@@ -1,3 +1,5 @@
+import { type MessageFormatElement } from "react-intl";
+
 export const CS = "cs";
 export const DA = "da";
 export const DE = "de";
@@ -100,7 +102,9 @@ const loaders = {
   [UK]: () => import("../../languages/generated/uk.json"),
 };
 
-export const loadMessages = async (locale: SupportedLocale) => {
+export const loadMessages = async (
+  locale: SupportedLocale
+): Promise<Record<string, string> | Record<string, MessageFormatElement[]>> => {
   const messages = await loaders[locale]();
 
   return messages.default ?? messages;

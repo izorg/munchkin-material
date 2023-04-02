@@ -1,44 +1,59 @@
 import { captureException } from "@sentry/react";
 import PropTypes from "prop-types";
-import {
-  type FC,
-  type PropsWithChildren,
-  useEffect,
-  useLayoutEffect,
-  useState,
-  useTransition,
-} from "react";
+import { type FC, type PropsWithChildren, useLayoutEffect } from "react";
 import { IntlProvider } from "react-intl";
+import useSWRImmutable from "swr/immutable";
 
 import usePresentSelector from "../../hooks/usePresentSelector";
-import { getDirection, getLocale } from "../../i18n";
+import {
+  getDirection,
+  getLocale,
+  loadMessages,
+  type SupportedLocale,
+} from "../../i18n";
 
-import readMessages from "./readMessages";
+import polyfillIntl from "./polyfillIntl";
 
 const defaultLocale = getLocale();
+
+const fetchLocale = async (
+  locale: SupportedLocale
+): Promise<{
+  locale: SupportedLocale;
+  messages: Awaited<ReturnType<typeof loadMessages>>;
+}> => {
+  const [messages] = await Promise.all([
+    loadMessages(locale),
+    polyfillIntl(locale),
+  ]);
+
+  return { locale, messages };
+};
 
 const LocaleProvider: FC<PropsWithChildren> = ({ children }) => {
   const selectedLocale =
     usePresentSelector((state) => state.settings.locale) || defaultLocale;
 
-  const [locale, setLocale] = useState(selectedLocale);
-
-  const messages = readMessages(locale);
-
-  const [, startTransition] = useTransition();
-
-  useEffect(() => {
-    if (selectedLocale !== locale) {
-      startTransition(() => {
-        setLocale(selectedLocale);
-      });
+  const { data } = useSWRImmutable(
+    ["locale", selectedLocale],
+    ([, locale]) => fetchLocale(locale),
+    {
+      keepPreviousData: true,
     }
-  }, [locale, selectedLocale]);
+  );
 
   useLayoutEffect(() => {
-    document.documentElement.lang = locale;
-    document.body.dir = getDirection(locale);
-  }, [locale]);
+    if (data?.locale) {
+      document.documentElement.lang = data.locale;
+      document.body.dir = getDirection(data.locale);
+    }
+  }, [data?.locale]);
+
+  if (!data) {
+    return null;
+  }
+
+  const { locale, messages } = data;
 
   return (
     <IntlProvider

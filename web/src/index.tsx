@@ -2,7 +2,7 @@ import "./polyfills";
 import "./sentry";
 
 import { captureException } from "@sentry/react";
-import { StrictMode, Suspense } from "react";
+import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 
@@ -39,16 +39,14 @@ root.render(
         <VersionProvider>
           <WorkboxProvider>
             <WakeLockProvider>
-              <Suspense fallback={null}>
-                <LocaleProvider>
-                  <AugmentedStylesProvider>
-                    <AugmentedThemeProvider>
-                      <ScreenViewProvider />
-                      <App />
-                    </AugmentedThemeProvider>
-                  </AugmentedStylesProvider>
-                </LocaleProvider>
-              </Suspense>
+              <LocaleProvider>
+                <AugmentedStylesProvider>
+                  <AugmentedThemeProvider>
+                    <ScreenViewProvider />
+                    <App />
+                  </AugmentedThemeProvider>
+                </AugmentedStylesProvider>
+              </LocaleProvider>
             </WakeLockProvider>
           </WorkboxProvider>
         </VersionProvider>
