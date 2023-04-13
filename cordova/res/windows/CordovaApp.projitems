@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+        <HasSharedItems>true</HasSharedItems>
+        <SharedGUID>9ebdb27f-d75b-4d8c-b53f-7be4a1fe89f9</SharedGUID>
+    </PropertyGroup>
+    <ItemGroup>
+        <Content Include="$(MSBuildThisFileDirectory)www\**" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="$(MSBuildThisFileDirectory)config.xml" />
+    </ItemGroup>
+    <Import Condition="Exists('$(MSBuildThisFileDirectory)CordovaAppDebug.projitems') And '$(Configuration)'=='Debug'" Project="CordovaAppDebug.projitems" />
+    <Import Condition="Exists('$(MSBuildThisFileDirectory)CordovaAppRelease.projitems') And '$(Configuration)'!='Debug'" Project="CordovaAppRelease.projitems" />
+    <ItemGroup>
+        <PRIResource Include="$(MSBuildThisFileDirectory)strings\cs\resources.resjson" />
+        <PRIResource Include="$(MSBuildThisFileDirectory)strings\da\resources.resjson" />
+        <PRIResource Include="$(MSBuildThisFileDirectory)strings\de\resources.resjson" />
+        <PRIResource Include="$(MSBuildThisFileDirectory)strings\el\resources.resjson" />
+        <PRIResource Include="$(MSBuildThisFileDirectory)strings\en\resources.resjson" />
+        <PRIResource Include="$(MSBuildThisFileDirectory)strings\es\resources.resjson" />
+        <PRIResource Include="$(MSBuildThisFileDirectory)strings\fi\resources.resjson" />
+        <PRIResource Include="$(MSBuildThisFileDirectory)strings\fr\resources.resjson" />
+        <PRIResource Include="$(MSBuildThisFileDirectory)strings\he\resources.resjson" />
+        <PRIResource Include="$(MSBuildThisFileDirectory)strings\hu\resources.resjson" />
+        <PRIResource Include="$(MSBuildThisFileDirectory)strings\hy\resources.resjson" />
+        <PRIResource Include="$(MSBuildThisFileDirectory)strings\it\resources.resjson" />
+        <PRIResource Include="$(MSBuildThisFileDirectory)strings\nb\resources.resjson" />
+        <PRIResource Include="$(MSBuildThisFileDirectory)strings\nl\resources.resjson" />
+        <PRIResource Include="$(MSBuildThisFileDirectory)strings\pl\resources.resjson" />
+        <PRIResource Include="$(MSBuildThisFileDirectory)strings\pt-BR\resources.resjson" />
+        <PRIResource Include="$(MSBuildThisFileDirectory)strings\pt\resources.resjson" />
+        <PRIResource Include="$(MSBuildThisFileDirectory)strings\ru\resources.resjson" />
+        <PRIResource Include="$(MSBuildThisFileDirectory)strings\sk\resources.resjson" />
+        <PRIResource Include="$(MSBuildThisFileDirectory)strings\tr\resources.resjson" />
+        <PRIResource Include="$(MSBuildThisFileDirectory)strings\uk\resources.resjson" />
+        <PRIResource Include="strings/buildinfo.resjson" />
+    </ItemGroup>
+    <Target BeforeTargets="BeforeBuild" Name="BuildInfo_Timestamp">
+        <PropertyGroup>
+            <BuildInfoTimestamp>$([System.DateTime]::Now.ToString("yyyy-MM-ddTHH:mm:sszzz"))</BuildInfoTimestamp>
+        </PropertyGroup>
+        <ItemGroup>
+            <BuildInfoResJson Include="{" />
+            <BuildInfoResJson Include="&quot;Timestamp&quot;: &quot;$(BuildInfoTimestamp)&quot;" />
+            <BuildInfoResJson Include="}" />
+        </ItemGroup>
+        <WriteLinesToFile Encoding="UTF-8" File="strings\buildinfo.resjson" Lines="@(BuildInfoResJson)" Overwrite="true" />
+    </Target>
+</Project>

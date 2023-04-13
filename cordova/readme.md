@@ -22,6 +22,8 @@ To fix Sentry architecture add two scripts according to [docs](https://docs.sent
 
 ## Windows locale resources fix
 
+Auto fix done by script `add-windows-locales`.
+
 Copy to `cordova\platforms\windows\CordovaApp.projitems` before `<PRIResource Include="strings/buildinfo.resjson" />`
 
 ```xml

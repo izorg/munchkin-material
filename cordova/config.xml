@@ -135,5 +135,6 @@
         <Resource Language="tr" />
         <Resource Language="uk" />
       </config-file>
+      <hook type="after_prepare" src="scripts/add-windows-locales.js" />
     </platform>
 </widget>
