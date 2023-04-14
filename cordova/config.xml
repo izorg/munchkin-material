@@ -29,26 +29,27 @@
         <preference name="GradlePluginGoogleServicesEnabled" value="true" />
         <preference name="HeaderColor" value="#795548" />
         <preference name="StatusBarOverlaysWebView" value="false" />
-        <icon density="ldpi" background="res/android/mipmap-ldpi/icon_background.png" foreground="res/android/mipmap-ldpi/icon_foreground.png" src="res/android/mipmap-ldpi/icon.png" />
-        <icon density="mdpi" background="res/android/mipmap-mdpi/icon_background.png" foreground="res/android/mipmap-mdpi/icon_foreground.png" src="res/android/mipmap-mdpi/icon.png" />
-        <icon density="hdpi" background="res/android/mipmap-hdpi/icon_background.png" foreground="res/android/mipmap-hdpi/icon_foreground.png" src="res/android/mipmap-hdpi/icon.png" />
-        <icon density="xhdpi" background="res/android/mipmap-xhdpi/icon_background.png" foreground="res/android/mipmap-xhdpi/icon_foreground.png" src="res/android/mipmap-xhdpi/icon.png" />
-        <icon density="xxhdpi" background="res/android/mipmap-xxhdpi/icon_background.png" foreground="res/android/mipmap-xxhdpi/icon_foreground.png" src="res/android/mipmap-xxhdpi/icon.png" />
-        <icon density="xxxhdpi" background="res/android/mipmap-xxxhdpi/icon_background.png" foreground="res/android/mipmap-xxxhdpi/icon_foreground.png" src="res/android/mipmap-xxxhdpi/icon.png" />
+        <icon density="mdpi" src="res/android/mipmap-mdpi/ic_launcher.png" />
+        <icon density="hdpi" src="res/android/mipmap-hdpi/ic_launcher.png" />
+        <icon density="xhdpi" src="res/android/mipmap-xhdpi/ic_launcher.png" />
+        <icon density="xxhdpi" src="res/android/mipmap-xxhdpi/ic_launcher.png" />
+        <icon density="xxxhdpi" src="res/android/mipmap-xxxhdpi/ic_launcher.png" />
         <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application">
-            <application android:localeConfig="@xml/locales_config" android:roundIcon="@mipmap/ic_launcher" />
+            <application android:localeConfig="@xml/locales_config" android:roundIcon="@mipmap/ic_launcher_round" />
         </edit-config>
         <resource-file src="google-services.json" target="app/google-services.json" />
-        <resource-file src="res/android/mipmap-hdpi/icon_round.png" target="app/src/main/res/mipmap-hdpi/ic_launcher_round.png" />
-        <resource-file src="res/android/mipmap-mdpi/icon_round.png" target="app/src/main/res/mipmap-mdpi/ic_launcher_round.png" />
-        <resource-file src="res/android/mipmap-xhdpi/icon_round.png" target="app/src/main/res/mipmap-xhdpi/ic_launcher_round.png" />
-        <resource-file src="res/android/mipmap-xxhdpi/icon_round.png" target="app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png" />
-        <resource-file src="res/android/mipmap-xxxhdpi/icon_round.png" target="app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" />
+        <resource-file src="res/android/drawable/ic_launcher_background.xml" target="app/src/main/res/drawable/ic_launcher_background.xml" />
+        <resource-file src="res/android/drawable-v24/ic_launcher_foreground.xml" target="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" />
+        <resource-file src="res/android/drawable-v33/ic_launcher_monochrome.xml" target="app/src/main/res/drawable-v33/ic_launcher_monochrome.xml" />
+        <resource-file src="res/android/mipmap-anydpi-v26/ic_launcher.xml" target="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" />
+        <resource-file src="res/android/mipmap-anydpi-v26/ic_launcher_round.xml" target="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" />
+        <resource-file src="res/android/mipmap-mdpi/ic_launcher_round.png" target="app/src/main/res/mipmap-mdpi/ic_launcher_round.png" />
+        <resource-file src="res/android/mipmap-hdpi/ic_launcher_round.png" target="app/src/main/res/mipmap-hdpi/ic_launcher_round.png" />
+        <resource-file src="res/android/mipmap-xhdpi/ic_launcher_round.png" target="app/src/main/res/mipmap-xhdpi/ic_launcher_round.png" />
+        <resource-file src="res/android/mipmap-xxhdpi/ic_launcher_round.png" target="app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png" />
+        <resource-file src="res/android/mipmap-xxxhdpi/ic_launcher_round.png" target="app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" />
         <resource-file src="res/android/values-night/colors.xml" target="app/src/main/res/values-night/colors.xml" />
         <resource-file src="res/android/xml/locales_config.xml" target="app/src/main/res/xml/locales_config.xml" />
-        <resource-file src="res/android/mipmap-anydpi-v26/ic_launcher_monochrome.xml" target="app/src/main/res/mipmap-anydpi-v26/ic_launcher_monochrome.xml" />
-        <resource-file src="res/android/mipmap-anydpi-v26/ic_launcher.xml" target="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" />
-        <hook type="after_prepare" src="scripts/replace-launcher.js" />
     </platform>
     <platform name="ios">
         <allow-intent href="itms:*" />
