@@ -1,4 +1,4 @@
-import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 export type DiceValue = 1 | 2 | 3 | 4 | 5 | 6;
 
@@ -11,12 +11,7 @@ export const diceSlice = createSlice({
   initialState,
   name: "dice",
   reducers: {
-    throwDice: {
-      prepare: () => ({
-        payload: getRandomDice(),
-      }),
-      reducer: (state, action: PayloadAction<DiceValue>) => action.payload,
-    },
+    throwDice: getRandomDice,
   },
 });
 
