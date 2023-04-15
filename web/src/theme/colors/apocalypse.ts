@@ -1,17 +1,13 @@
 import { type ThemeOptions } from "@mui/material";
 import { orange } from "@mui/material/colors";
-import { defineMessages } from "react-intl";
+import { defineMessage } from "react-intl";
 
 export const key = "apocalypse";
 
-const messages = defineMessages({
-  name: {
-    defaultMessage: "Apocalypse",
-    id: "theme.name.apocalypse",
-  },
+export const name = defineMessage({
+  defaultMessage: "Apocalypse",
+  id: "theme.name.apocalypse",
 });
-
-export const name = messages.name;
 
 export const theme: ThemeOptions = {
   components: {

@@ -1,17 +1,13 @@
 import { type ThemeOptions } from "@mui/material";
 import { yellow } from "@mui/material/colors";
-import { defineMessages } from "react-intl";
+import { defineMessage } from "react-intl";
 
 export const key = "super";
 
-const messages = defineMessages({
-  name: {
-    defaultMessage: "Super",
-    id: "theme.name.super",
-  },
+export const name = defineMessage({
+  defaultMessage: "Super",
+  id: "theme.name.super",
 });
-
-export const name = messages.name;
 
 export const theme: ThemeOptions = {
   components: {

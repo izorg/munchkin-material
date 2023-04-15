@@ -1,17 +1,13 @@
 import { type ThemeOptions } from "@mui/material";
 import { red } from "@mui/material/colors";
-import { defineMessages } from "react-intl";
+import { defineMessage } from "react-intl";
 
 export const key = "booty";
 
-const messages = defineMessages({
-  name: {
-    defaultMessage: "Booty",
-    id: "theme.name.booty",
-  },
+export const name = defineMessage({
+  defaultMessage: "Booty",
+  id: "theme.name.booty",
 });
-
-export const name = messages.name;
 
 export const theme: ThemeOptions = {
   components: {
