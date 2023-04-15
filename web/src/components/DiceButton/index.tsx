@@ -1,7 +1,8 @@
 import { mdiDiceMultiple } from "@mdi/js";
 import { type IconButtonProps, SvgIcon, Tooltip } from "@mui/material";
+import { useCallback } from "react";
 import { useIntl } from "react-intl";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 
 import { throwDice } from "../../ducks/dice";
 import { useAppDispatch } from "../../store";
@@ -10,20 +11,17 @@ import TopIconButton from "../TopIconButton";
 const DiceIconButton = (props: Omit<IconButtonProps, "onClick">) => {
   const dispatch = useAppDispatch();
   const intl = useIntl();
-  const location = useLocation();
-  const navigate = useNavigate();
+  const [, setSearchParams] = useSearchParams();
 
-  const onClick = () => {
+  const onClick = useCallback(() => {
     dispatch(throwDice());
 
-    const searchParams = new URLSearchParams(location.search);
+    setSearchParams((searchParams) => {
+      searchParams.append("dice", "");
 
-    searchParams.set("dice", "");
-
-    navigate({
-      search: `?${searchParams.toString()}`,
+      return searchParams;
     });
-  };
+  }, [dispatch, setSearchParams]);
 
   return (
     <Tooltip

@@ -15,8 +15,8 @@ import {
   useTheme,
   Zoom,
 } from "@mui/material";
-import { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useCallback, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import { SwitchTransition } from "react-transition-group";
 
 import { throwDice } from "../../ducks/dice";
@@ -37,14 +37,20 @@ const diceIcons = {
 
 const DiceDialog = (props: Partial<DialogProps>) => {
   const dispatch = useAppDispatch();
-  const location = useLocation();
+  const [searchParams] = useSearchParams();
   const theme = useTheme();
 
   const [attempt, setAttempt] = useState(0);
 
   const dice = usePresentSelector((state) => state.dice);
-  const open = new URLSearchParams(location.search).get("dice") !== null;
+  const open = searchParams.get("dice") !== null;
   const goBack = useGoBack();
+
+  const onDiceClick = useCallback(() => {
+    dispatch(throwDice());
+
+    setAttempt(attempt + 1);
+  }, [attempt, dispatch]);
 
   if (dice === null) {
     return null;
@@ -52,16 +58,8 @@ const DiceDialog = (props: Partial<DialogProps>) => {
 
   const diceIcon = diceIcons[dice];
 
-  const onDiceClick = () => {
-    dispatch(throwDice());
-
-    setAttempt(attempt + 1);
-  };
-
-  const onDialogClose = () => goBack();
-
   return (
-    <Dialog {...props} onClose={onDialogClose} open={open}>
+    <Dialog {...props} onClose={goBack} open={open}>
       <ButtonBase
         autoFocus
         disableRipple
