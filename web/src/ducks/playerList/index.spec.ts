@@ -1,17 +1,14 @@
 import { describe, expect, test } from "@jest/globals";
 
-import reducer, {
-  addPlayerToList,
-  initialState,
-  movePlayer,
-  shufflePlayers,
-} from "./index";
+import { removePlayers } from "../players";
+
+import reducer, { addPlayerToList, movePlayer, shufflePlayers } from "./index";
 
 describe("Player List reducer", () => {
   test("should add player", () => {
     const id = "1";
 
-    const state = reducer(initialState, addPlayerToList(id));
+    const state = reducer(undefined, addPlayerToList(id));
 
     expect(state).toStrictEqual([id]);
   });
@@ -22,12 +19,18 @@ describe("Player List reducer", () => {
     expect(state).toStrictEqual(["2", "3", "1"]);
   });
 
+  test("should remove players", () => {
+    const state = reducer(["1", "2", "3"], removePlayers(["2", "1"]));
+
+    expect(state).toStrictEqual(["3"]);
+  });
+
   test("should shuffle players", () => {
-    const state = ["1", "2", "3"];
+    const initialState = ["1", "2", "3"];
 
-    const playerList = reducer(["1", "2", "3"], shufflePlayers());
+    const state = reducer(initialState, shufflePlayers());
 
-    expect(playerList).not.toBe(state);
-    expect(playerList).toHaveLength(state.length);
+    expect(state).not.toBe(initialState);
+    expect(state).toHaveLength(initialState.length);
   });
 });

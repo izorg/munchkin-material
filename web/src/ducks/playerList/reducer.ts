@@ -25,7 +25,7 @@ const shuffle = (array: string[]): string[] => {
   return result;
 };
 
-export const initialState: string[] = [];
+const initialState: string[] = [];
 
 const playerListReducer = createReducer(initialState, (builder) =>
   builder

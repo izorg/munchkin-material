@@ -7,7 +7,7 @@ export const initialState = null as DiceValue | null;
 
 const getRandomDice = () => (Math.floor(Math.random() * 6) + 1) as DiceValue;
 
-export const diceSlice = createSlice({
+const diceSlice = createSlice({
   initialState,
   name: "dice",
   reducers: {
