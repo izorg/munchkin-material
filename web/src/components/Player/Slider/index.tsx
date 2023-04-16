@@ -1,6 +1,12 @@
-import { Box, useTheme } from "@mui/material";
+import { Box, type SxProps, useTheme } from "@mui/material";
 import PropTypes from "prop-types";
-import { useCallback, useEffect, useLayoutEffect, useRef } from "react";
+import {
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+} from "react";
 import { useNavigate } from "react-router-dom";
 
 import usePresentSelector from "../../../hooks/usePresentSelector";
@@ -9,9 +15,10 @@ import PlayerStats from "./Stats";
 
 type PlayerSliderProps = {
   playerId: string;
+  sx?: SxProps;
 };
 
-const PlayerSlider = ({ playerId }: PlayerSliderProps) => {
+const PlayerSlider = ({ playerId, sx = [] }: PlayerSliderProps) => {
   const navigate = useNavigate();
   const theme = useTheme();
 
@@ -111,59 +118,66 @@ const PlayerSlider = ({ playerId }: PlayerSliderProps) => {
     };
   }, [onScrollEnd]);
 
+  const sliderItems = useMemo(() => {
+    const indexes =
+      playerCount > 1
+        ? [currentIndex - 1, currentIndex, currentIndex + 1]
+        : [currentIndex];
+
+    return indexes.map<[index: number, playerId: string]>((index) => [
+      index,
+      playerList[getPlayerIndex(index)],
+    ]);
+  }, [currentIndex, getPlayerIndex, playerCount, playerList]);
+
   return (
     <Box
       ref={ref}
-      sx={{
-        display: "flex",
-        overflowX: "auto",
-        scrollSnapType: "x mandatory",
-        width: "100%",
+      sx={[
+        {
+          display: "flex",
+          overflowX: "auto",
+          scrollSnapType: "x mandatory",
+          width: "100%",
 
-        // eslint-disable-next-line sort-keys
-        "@supports (-ms-scroll-snap-type: mandatory)": {
-          MsScrollSnapType: "mandatory",
+          // eslint-disable-next-line sort-keys
+          "@supports (-ms-scroll-snap-type: mandatory)": {
+            MsScrollSnapType: "mandatory",
+          },
         },
-      }}
+        ...(sx instanceof Array ? sx : [sx]),
+      ]}
     >
-      {(playerCount > 1
-        ? [currentIndex - 1, currentIndex, currentIndex + 1]
-        : [currentIndex]
-      ).map((index) => {
-        const playerIndex = getPlayerIndex(index);
-        const playerId = playerList[playerIndex];
+      {sliderItems.map(([index, playerId]) => (
+        <Box
+          key={`${playerId}-${index}`}
+          sx={{
+            alignItems: "center",
+            display: "flex",
+            flexShrink: "0",
+            height: "100%",
+            padding: theme.spacing(2, 2, 7),
+            scrollSnapAlign: "center",
+            scrollSnapStop: "always",
+            width: "100%",
 
-        return (
-          <Box
-            key={`${playerId}-${index}`}
+            // eslint-disable-next-line sort-keys
+            "@media (min-height: 720px)": {
+              paddingBottom: 2,
+            },
+          }}
+        >
+          <PlayerStats
+            playerId={playerId}
             sx={{
-              alignItems: "center",
-              display: "flex",
-              flexShrink: "0",
               height: "100%",
-              padding: theme.spacing(2, 2, 7),
-              scrollSnapAlign: "center",
-              scrollSnapStop: "always",
-              width: "100%",
-
-              // eslint-disable-next-line sort-keys
-              "@media (min-height: 720px)": {
-                paddingBottom: 2,
-              },
+              margin: "0 auto",
+              maxHeight: "600px",
+              maxWidth: "600px",
             }}
-          >
-            <PlayerStats
-              playerId={playerId}
-              sx={{
-                height: "100%",
-                margin: "0 auto",
-                maxHeight: "600px",
-                maxWidth: "600px",
-              }}
-            />
-          </Box>
-        );
-      })}
+          />
+        </Box>
+      ))}
     </Box>
   );
 };
