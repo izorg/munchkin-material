@@ -1,4 +1,4 @@
-import { Box, type BoxProps, IconButton, useTheme } from "@mui/material";
+import { Box, IconButton, type SxProps, useTheme } from "@mui/material";
 import PropTypes from "prop-types";
 import { type FC, useCallback } from "react";
 import { useIntl } from "react-intl";
@@ -20,11 +20,12 @@ import Counter, { counterMessages } from "../../../Counter";
 import CounterLabel from "../../../Counter/Label";
 import SexIcon from "../../../SexIcon";
 
-type PlayerStatsProps = BoxProps & {
+type PlayerStatsProps = {
   playerId: string;
+  sx?: SxProps;
 };
 
-const PlayerStats: FC<PlayerStatsProps> = ({ playerId, sx = [], ...props }) => {
+const PlayerStats: FC<PlayerStatsProps> = ({ playerId, sx = [] }) => {
   const dispatch = useAppDispatch();
   const intl = useIntl();
   const theme = useTheme();
@@ -70,7 +71,6 @@ const PlayerStats: FC<PlayerStatsProps> = ({ playerId, sx = [], ...props }) => {
 
   return (
     <Box
-      {...props}
       sx={[
         {
           display: "flex",
@@ -193,7 +193,6 @@ const PlayerStats: FC<PlayerStatsProps> = ({ playerId, sx = [], ...props }) => {
 };
 
 PlayerStats.propTypes = {
-  className: PropTypes.string,
   playerId: PropTypes.string.isRequired,
 };
 
