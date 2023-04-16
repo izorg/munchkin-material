@@ -64,7 +64,12 @@ const Player = ({ playerId }: PlayerProps) => {
             },
           })}
         >
-          <Slider playerId={playerRef.current} />
+          <Slider
+            playerId={playerRef.current}
+            sx={{
+              width: "100%",
+            }}
+          />
         </Box>
         {playerList.length > 1 && (
           <PlayerList
@@ -88,7 +93,7 @@ const Player = ({ playerId }: PlayerProps) => {
                 display: "block",
                 flex: "none",
                 paddingBottom: theme.spacing(1),
-                width: theme.spacing(50),
+                width: "400px",
               },
             })}
           />

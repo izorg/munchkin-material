@@ -138,7 +138,6 @@ const PlayerSlider = ({ playerId, sx = [] }: PlayerSliderProps) => {
           display: "flex",
           overflowX: "auto",
           scrollSnapType: "x mandatory",
-          width: "100%",
 
           // eslint-disable-next-line sort-keys
           "@supports (-ms-scroll-snap-type: mandatory)": {
@@ -152,7 +151,6 @@ const PlayerSlider = ({ playerId, sx = [] }: PlayerSliderProps) => {
         <Box
           key={`${playerId}-${index}`}
           sx={{
-            alignItems: "center",
             display: "flex",
             flexShrink: "0",
             height: "100%",
@@ -174,6 +172,7 @@ const PlayerSlider = ({ playerId, sx = [] }: PlayerSliderProps) => {
               margin: "0 auto",
               maxHeight: "600px",
               maxWidth: "600px",
+              width: "100%",
             }}
           />
         </Box>

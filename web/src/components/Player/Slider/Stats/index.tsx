@@ -75,7 +75,6 @@ const PlayerStats: FC<PlayerStatsProps> = ({ playerId, sx = [] }) => {
         {
           display: "flex",
           flexDirection: "column-reverse",
-          width: "100%",
 
           // eslint-disable-next-line sort-keys
           "@media (orientation: landscape)": {
