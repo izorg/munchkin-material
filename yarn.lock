@@ -1343,13 +1343,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@csstools/media-query-list-parser@npm:^2.0.1":
-  version: 2.0.1
-  resolution: "@csstools/media-query-list-parser@npm:2.0.1"
+"@csstools/media-query-list-parser@npm:^2.0.2":
+  version: 2.0.4
+  resolution: "@csstools/media-query-list-parser@npm:2.0.4"
   peerDependencies:
-    "@csstools/css-parser-algorithms": ^2.0.0
-    "@csstools/css-tokenizer": ^2.0.0
-  checksum: f30b2a9e1aa3c2d8e98d3ac79463ab514ba4c4577c4cc6120a69d9f4562e521766adb62fc44ffee2226a967bdcfcf86a46bdaf625d21af8f21caa99553994d60
+    "@csstools/css-parser-algorithms": ^2.1.1
+    "@csstools/css-tokenizer": ^2.1.1
+  checksum: 059b1e9bb78fc55888d5c51b55ae6a3aa89b7fde14d846a659bc2bc7f01b5a85d4baf02d36b59a44e5157a5a8eb283b24918d567eda34667e5776befbf122983
   languageName: node
   linkType: hard
 
@@ -3069,7 +3069,7 @@ __metadata:
     "@parcel/packager-raw-url": 2.8.3
     "@parcel/reporter-bundle-analyzer": 2.8.3
     "@parcel/transformer-webmanifest": 2.8.3
-    "@reduxjs/toolkit": 1.9.3
+    "@reduxjs/toolkit": 1.9.4
     "@sentry/react": 7.48.0
     "@types/dom-screen-wake-lock": 1.0.1
     "@types/react": 18.0.35
@@ -4054,14 +4054,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@reduxjs/toolkit@npm:1.9.3":
-  version: 1.9.3
-  resolution: "@reduxjs/toolkit@npm:1.9.3"
+"@reduxjs/toolkit@npm:1.9.4":
+  version: 1.9.4
+  resolution: "@reduxjs/toolkit@npm:1.9.4"
   dependencies:
-    immer: ^9.0.16
-    redux: ^4.2.0
+    immer: ^9.0.21
+    redux: ^4.2.1
     redux-thunk: ^2.4.2
-    reselect: ^4.1.7
+    reselect: ^4.1.8
   peerDependencies:
     react: ^16.9.0 || ^17.0.0 || ^18
     react-redux: ^7.2.1 || ^8.0.2
@@ -4070,7 +4070,7 @@ __metadata:
       optional: true
     react-redux:
       optional: true
-  checksum: d965fc6197fd420e4b8eb714015aa908d4ea214e6e10889cf4521e64ac4f8e0a7de29ee4e8da63b291acc40ac330dd31682334090d54838add73c746dc590650
+  checksum: 7cfc9c008a028c067a13e83e663a55daa53ebe62d2b6074db5426ad5cce2fc56547f98d489761c43599d4e48f24cefe1387c145fa774f7da0fdac66c4e64d319
   languageName: node
   linkType: hard
 
@@ -4263,90 +4263,90 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@swc/core-darwin-arm64@npm:1.3.50":
-  version: 1.3.50
-  resolution: "@swc/core-darwin-arm64@npm:1.3.50"
+"@swc/core-darwin-arm64@npm:1.3.51":
+  version: 1.3.51
+  resolution: "@swc/core-darwin-arm64@npm:1.3.51"
   conditions: os=darwin & cpu=arm64
   languageName: node
   linkType: hard
 
-"@swc/core-darwin-x64@npm:1.3.50":
-  version: 1.3.50
-  resolution: "@swc/core-darwin-x64@npm:1.3.50"
+"@swc/core-darwin-x64@npm:1.3.51":
+  version: 1.3.51
+  resolution: "@swc/core-darwin-x64@npm:1.3.51"
   conditions: os=darwin & cpu=x64
   languageName: node
   linkType: hard
 
-"@swc/core-linux-arm-gnueabihf@npm:1.3.50":
-  version: 1.3.50
-  resolution: "@swc/core-linux-arm-gnueabihf@npm:1.3.50"
+"@swc/core-linux-arm-gnueabihf@npm:1.3.51":
+  version: 1.3.51
+  resolution: "@swc/core-linux-arm-gnueabihf@npm:1.3.51"
   conditions: os=linux & cpu=arm
   languageName: node
   linkType: hard
 
-"@swc/core-linux-arm64-gnu@npm:1.3.50":
-  version: 1.3.50
-  resolution: "@swc/core-linux-arm64-gnu@npm:1.3.50"
+"@swc/core-linux-arm64-gnu@npm:1.3.51":
+  version: 1.3.51
+  resolution: "@swc/core-linux-arm64-gnu@npm:1.3.51"
   conditions: os=linux & cpu=arm64 & libc=glibc
   languageName: node
   linkType: hard
 
-"@swc/core-linux-arm64-musl@npm:1.3.50":
-  version: 1.3.50
-  resolution: "@swc/core-linux-arm64-musl@npm:1.3.50"
+"@swc/core-linux-arm64-musl@npm:1.3.51":
+  version: 1.3.51
+  resolution: "@swc/core-linux-arm64-musl@npm:1.3.51"
   conditions: os=linux & cpu=arm64 & libc=musl
   languageName: node
   linkType: hard
 
-"@swc/core-linux-x64-gnu@npm:1.3.50":
-  version: 1.3.50
-  resolution: "@swc/core-linux-x64-gnu@npm:1.3.50"
+"@swc/core-linux-x64-gnu@npm:1.3.51":
+  version: 1.3.51
+  resolution: "@swc/core-linux-x64-gnu@npm:1.3.51"
   conditions: os=linux & cpu=x64 & libc=glibc
   languageName: node
   linkType: hard
 
-"@swc/core-linux-x64-musl@npm:1.3.50":
-  version: 1.3.50
-  resolution: "@swc/core-linux-x64-musl@npm:1.3.50"
+"@swc/core-linux-x64-musl@npm:1.3.51":
+  version: 1.3.51
+  resolution: "@swc/core-linux-x64-musl@npm:1.3.51"
   conditions: os=linux & cpu=x64 & libc=musl
   languageName: node
   linkType: hard
 
-"@swc/core-win32-arm64-msvc@npm:1.3.50":
-  version: 1.3.50
-  resolution: "@swc/core-win32-arm64-msvc@npm:1.3.50"
+"@swc/core-win32-arm64-msvc@npm:1.3.51":
+  version: 1.3.51
+  resolution: "@swc/core-win32-arm64-msvc@npm:1.3.51"
   conditions: os=win32 & cpu=arm64
   languageName: node
   linkType: hard
 
-"@swc/core-win32-ia32-msvc@npm:1.3.50":
-  version: 1.3.50
-  resolution: "@swc/core-win32-ia32-msvc@npm:1.3.50"
+"@swc/core-win32-ia32-msvc@npm:1.3.51":
+  version: 1.3.51
+  resolution: "@swc/core-win32-ia32-msvc@npm:1.3.51"
   conditions: os=win32 & cpu=ia32
   languageName: node
   linkType: hard
 
-"@swc/core-win32-x64-msvc@npm:1.3.50":
-  version: 1.3.50
-  resolution: "@swc/core-win32-x64-msvc@npm:1.3.50"
+"@swc/core-win32-x64-msvc@npm:1.3.51":
+  version: 1.3.51
+  resolution: "@swc/core-win32-x64-msvc@npm:1.3.51"
   conditions: os=win32 & cpu=x64
   languageName: node
   linkType: hard
 
-"@swc/core@npm:1.3.50":
-  version: 1.3.50
-  resolution: "@swc/core@npm:1.3.50"
+"@swc/core@npm:1.3.51":
+  version: 1.3.51
+  resolution: "@swc/core@npm:1.3.51"
   dependencies:
-    "@swc/core-darwin-arm64": 1.3.50
-    "@swc/core-darwin-x64": 1.3.50
-    "@swc/core-linux-arm-gnueabihf": 1.3.50
-    "@swc/core-linux-arm64-gnu": 1.3.50
-    "@swc/core-linux-arm64-musl": 1.3.50
-    "@swc/core-linux-x64-gnu": 1.3.50
-    "@swc/core-linux-x64-musl": 1.3.50
-    "@swc/core-win32-arm64-msvc": 1.3.50
-    "@swc/core-win32-ia32-msvc": 1.3.50
-    "@swc/core-win32-x64-msvc": 1.3.50
+    "@swc/core-darwin-arm64": 1.3.51
+    "@swc/core-darwin-x64": 1.3.51
+    "@swc/core-linux-arm-gnueabihf": 1.3.51
+    "@swc/core-linux-arm64-gnu": 1.3.51
+    "@swc/core-linux-arm64-musl": 1.3.51
+    "@swc/core-linux-x64-gnu": 1.3.51
+    "@swc/core-linux-x64-musl": 1.3.51
+    "@swc/core-win32-arm64-msvc": 1.3.51
+    "@swc/core-win32-ia32-msvc": 1.3.51
+    "@swc/core-win32-x64-msvc": 1.3.51
   peerDependencies:
     "@swc/helpers": ^0.5.0
   dependenciesMeta:
@@ -4373,7 +4373,7 @@ __metadata:
   peerDependenciesMeta:
     "@swc/helpers":
       optional: true
-  checksum: 63364c0bf6f395a57b576c4f7c5f79542a7c018c7bcc121e1bccdb157ca3ead97ee30920cf5ec6e93b0bd58e0145cb388721d7862ede867927137a437b4ef21a
+  checksum: f4e72d347b26353fbb48eae110a63c939922a38b20730ea010f5ae3dd15434f212dce582df05556ec35e677c089dfb6d00f5dd6fc655f8c9a7829458e4301469
   languageName: node
   linkType: hard
 
@@ -9073,10 +9073,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"html-tags@npm:^3.2.0":
-  version: 3.2.0
-  resolution: "html-tags@npm:3.2.0"
-  checksum: a0c9e96ac26c84adad9cc66d15d6711a17f60acda8d987218f1d4cbaacd52864939b230e635cce5a1179f3ddab2a12b9231355617dfbae7945fcfec5e96d2041
+"html-tags@npm:^3.3.1":
+  version: 3.3.1
+  resolution: "html-tags@npm:3.3.1"
+  checksum: b4ef1d5a76b678e43cce46e3783d563607b1d550cab30b4f511211564574770aa8c658a400b100e588bc60b8234e59b35ff72c7851cc28f3b5403b13a2c6cbce
   languageName: node
   linkType: hard
 
@@ -9305,10 +9305,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"immer@npm:^9.0.16":
-  version: 9.0.19
-  resolution: "immer@npm:9.0.19"
-  checksum: f02ee53989989c287cd548a3d817fccf0bfe56db919755ee94a72ea3ae78a00363fba93ee6c010fe54a664380c29c53d44ed4091c6a86cae60957ad2cfabc010
+"immer@npm:^9.0.21":
+  version: 9.0.21
+  resolution: "immer@npm:9.0.21"
+  checksum: 70e3c274165995352f6936695f0ef4723c52c92c92dd0e9afdfe008175af39fa28e76aafb3a2ca9d57d1fb8f796efc4dd1e1cc36f18d33fa5b74f3dfb0375432
   languageName: node
   linkType: hard
 
@@ -13518,7 +13518,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"redux@npm:4.2.1, redux@npm:^4.2.0":
+"redux@npm:4.2.1, redux@npm:^4.2.1":
   version: 4.2.1
   resolution: "redux@npm:4.2.1"
   dependencies:
@@ -13662,10 +13662,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"reselect@npm:^4.1.7":
-  version: 4.1.7
-  resolution: "reselect@npm:4.1.7"
-  checksum: 738d8e2b8f0dca154ad29de6a209c9fbca2d70ae6788fd85df87f2c74b95a65bbf2d16d43a9e2faff39de34d17a29d706ba08a6b2ee5660c09589edbd19af7e1
+"reselect@npm:^4.1.8":
+  version: 4.1.8
+  resolution: "reselect@npm:4.1.8"
+  checksum: a4ac87cedab198769a29be92bc221c32da76cfdad6911eda67b4d3e7136dca86208c3b210e31632eae31ebd2cded18596f0dd230d3ccc9e978df22f233b5583e
   languageName: node
   linkType: hard
 
@@ -13859,7 +13859,7 @@ __metadata:
     "@formatjs/cli": 6.0.4
     "@jest/globals": 29.5.0
     "@parcel/transformer-webmanifest": 2.8.3
-    "@swc/core": 1.3.50
+    "@swc/core": 1.3.51
     "@swc/jest": 0.2.26
     "@typescript-eslint/eslint-plugin": 5.58.0
     "@typescript-eslint/parser": 5.58.0
@@ -13888,8 +13888,8 @@ __metadata:
     prettier: 2.8.7
     process: 0.11.10
     rimraf: 5.0.0
-    stylelint: 15.4.0
-    stylelint-config-standard: 32.0.0
+    stylelint: 15.5.0
+    stylelint-config-standard: 33.0.0
     stylelint-order: 6.0.3
     stylelint-prettier: 3.0.0
     typescript: 5.0.4
@@ -14723,23 +14723,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"stylelint-config-recommended@npm:^11.0.0":
-  version: 11.0.0
-  resolution: "stylelint-config-recommended@npm:11.0.0"
+"stylelint-config-recommended@npm:^12.0.0":
+  version: 12.0.0
+  resolution: "stylelint-config-recommended@npm:12.0.0"
   peerDependencies:
-    stylelint: ^15.3.0
-  checksum: f6bed5995235d61a2b4bcae086fab925df3b824c77ef585f9f0f9b891b1409c0aa8ae49e8f53d6a2f851be8f7928a7d95e2b17ee876f248ce88f718a3892bf6f
+    stylelint: ^15.5.0
+  checksum: d1de0fa2673c8aa4e50259eb7320cc17e7d09d13a176afea943b3227befcaaaf4e78b546ec076ace1e031ff526c81ea5dc6efa98dd7dc77c582b7352a128d37c
   languageName: node
   linkType: hard
 
-"stylelint-config-standard@npm:32.0.0":
-  version: 32.0.0
-  resolution: "stylelint-config-standard@npm:32.0.0"
+"stylelint-config-standard@npm:33.0.0":
+  version: 33.0.0
+  resolution: "stylelint-config-standard@npm:33.0.0"
   dependencies:
-    stylelint-config-recommended: ^11.0.0
+    stylelint-config-recommended: ^12.0.0
   peerDependencies:
-    stylelint: ^15.4.0
-  checksum: 05f7481f93e0fd3d2e69ba6ef3b3b8347c2340fcc6732e3f4289cc1067ae74e87f6474b4385b8936a0ff062cc3dd08c5cc50e27d96994c6176a69d055a75537a
+    stylelint: ^15.5.0
+  checksum: c901e52901f6eb72285a869b04ed55eddfb94b794d2599eee4cc9d56365c874c2276563d26848d29c3665ca7de361bf8abb9f6f7d80073f16013afff60938bad
   languageName: node
   linkType: hard
 
@@ -14767,13 +14767,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"stylelint@npm:15.4.0":
-  version: 15.4.0
-  resolution: "stylelint@npm:15.4.0"
+"stylelint@npm:15.5.0":
+  version: 15.5.0
+  resolution: "stylelint@npm:15.5.0"
   dependencies:
     "@csstools/css-parser-algorithms": ^2.1.0
     "@csstools/css-tokenizer": ^2.1.0
-    "@csstools/media-query-list-parser": ^2.0.1
+    "@csstools/media-query-list-parser": ^2.0.2
     "@csstools/selector-specificity": ^2.2.0
     balanced-match: ^2.0.0
     colord: ^2.9.3
@@ -14787,7 +14787,7 @@ __metadata:
     global-modules: ^2.0.0
     globby: ^11.1.0
     globjoin: ^0.1.4
-    html-tags: ^3.2.0
+    html-tags: ^3.3.1
     ignore: ^5.2.4
     import-lazy: ^4.0.0
     imurmurhash: ^0.1.4
@@ -14815,7 +14815,7 @@ __metadata:
     write-file-atomic: ^5.0.0
   bin:
     stylelint: bin/stylelint.js
-  checksum: f56a75ffb8ee016690b78b2d401626134317526682ce818d686096db5d33472bf5d3b2941f5b5b3f9711061e5ad123a335a6f482316a567c4c75deba6929702a
+  checksum: 330d8cceac28d0b795ffed87bca893e290a498d242cc2cfc9747e983c710db5ebb7ea22028dcbe363095cec01d51909e53572e405b7b2aadbf735738c63ee7f7
   languageName: node
   linkType: hard
 
