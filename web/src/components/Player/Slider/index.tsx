@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 
 import usePresentSelector from "../../../hooks/usePresentSelector";
 
-import PlayerStats from "./Stats";
+import { SliderItem } from "./SliderItem";
 
 type PlayerSliderProps = {
   playerId: string;
@@ -148,34 +148,16 @@ const PlayerSlider = ({ playerId, sx = [] }: PlayerSliderProps) => {
       ]}
     >
       {sliderItems.map(([index, playerId]) => (
-        <Box
+        <SliderItem
           key={`${playerId}-${index}`}
+          playerId={playerId}
           sx={{
-            display: "flex",
             flexShrink: "0",
-            height: "100%",
-            padding: theme.spacing(2, 2, 7),
             scrollSnapAlign: "center",
             scrollSnapStop: "always",
             width: "100%",
-
-            // eslint-disable-next-line sort-keys
-            "@media (min-height: 720px)": {
-              paddingBottom: 2,
-            },
           }}
-        >
-          <PlayerStats
-            playerId={playerId}
-            sx={{
-              height: "100%",
-              margin: "0 auto",
-              maxHeight: "600px",
-              maxWidth: "600px",
-              width: "100%",
-            }}
-          />
-        </Box>
+        />
       ))}
     </Box>
   );
