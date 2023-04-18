@@ -14,6 +14,7 @@ export const SliderItem: FC<SliderItemProps> = ({ playerId, sx = [] }) => (
   <Box
     sx={[
       (theme) => ({
+        alignItems: "center",
         display: "flex",
         padding: theme.spacing(2, 2, 7),
 
@@ -28,11 +29,10 @@ export const SliderItem: FC<SliderItemProps> = ({ playerId, sx = [] }) => (
     <PlayerStats
       playerId={playerId}
       sx={{
-        height: "100%",
+        flexGrow: 1,
         margin: "0 auto",
         maxHeight: "600px",
         maxWidth: "600px",
-        width: "100%",
       }}
     />
   </Box>
