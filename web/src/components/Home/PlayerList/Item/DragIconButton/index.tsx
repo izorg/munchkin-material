@@ -6,7 +6,7 @@ import {
   type IconButtonTypeMap,
   SvgIcon,
 } from "@mui/material";
-import type { OverridableComponent } from "@mui/types";
+import { type OverridableComponent } from "@mui/types";
 import { forwardRef } from "react";
 
 const DragIconButton: OverridableComponent<
