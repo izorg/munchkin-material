@@ -1,6 +1,7 @@
-import { Box, type SxProps } from "@mui/material";
+import { Box, type SxProps, Typography } from "@mui/material";
 import { type FC } from "react";
 
+import usePresentSelector from "../../../hooks/usePresentSelector";
 import { type Player } from "../../../utils/types";
 
 import PlayerStats from "./Stats";
@@ -10,30 +11,44 @@ type SliderItemProps = {
   sx?: SxProps;
 };
 
-export const SliderItem: FC<SliderItemProps> = ({ playerId, sx = [] }) => (
-  <Box
-    sx={[
-      (theme) => ({
-        alignItems: "center",
-        display: "flex",
-        padding: theme.spacing(2, 2, 7),
+export const SliderItem: FC<SliderItemProps> = ({ playerId, sx = [] }) => {
+  const name = usePresentSelector((state) => state.players[playerId].name);
 
-        // eslint-disable-next-line sort-keys
-        "@media (min-height: 720px)": {
-          paddingBottom: 2,
-        },
-      }),
-      ...(sx instanceof Array ? sx : [sx]),
-    ]}
-  >
-    <PlayerStats
-      playerId={playerId}
-      sx={{
-        flexGrow: 1,
-        margin: "0 auto",
-        maxHeight: "600px",
-        maxWidth: "600px",
-      }}
-    />
-  </Box>
-);
+  return (
+    <Box
+      sx={[
+        (theme) => ({
+          alignItems: "center",
+          display: "flex",
+          padding: theme.spacing(2, 2, 10),
+
+          // eslint-disable-next-line sort-keys
+          "@media (min-height: 720px)": {
+            paddingBottom: 2,
+          },
+        }),
+        ...(sx instanceof Array ? sx : [sx]),
+      ]}
+    >
+      <Box
+        sx={{
+          flexGrow: 1,
+          margin: "0 auto",
+          maxHeight: "600px",
+          maxWidth: "600px",
+          overflow: "hidden",
+        }}
+      >
+        <Typography
+          component="span"
+          noWrap
+          sx={{ display: "block", marginBottom: 4, textAlign: "center" }}
+          variant="h5"
+        >
+          {name}
+        </Typography>
+        <PlayerStats playerId={playerId} />
+      </Box>
+    </Box>
+  );
+};
