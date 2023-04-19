@@ -1,6 +1,15 @@
 /* eslint-env node */
 
-const plugins = ["@emotion/babel-plugin"];
+const plugins = [
+  "@emotion/babel-plugin",
+  [
+    "babel-plugin-polyfill-corejs3",
+    {
+      method: "usage-global",
+      version: "3.30",
+    },
+  ],
+];
 
 if (process.env.NODE_ENV === "production") {
   plugins.push(
