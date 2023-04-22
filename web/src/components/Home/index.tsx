@@ -25,7 +25,7 @@ const Home = () => {
   if (singleMode) {
     content = <SinglePlayer />;
   } else if (empty) {
-    content = <Nobody />;
+    content = <Nobody sx={{ flex: 1 }} />;
   } else {
     content = (
       <Box

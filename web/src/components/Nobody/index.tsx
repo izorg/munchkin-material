@@ -1,40 +1,42 @@
 import { mdiAccountCircle } from "@mdi/js";
-import { Box, SvgIcon, Typography, useTheme } from "@mui/material";
+import { Box, SvgIcon, type SxProps, Typography } from "@mui/material";
+import { type FC } from "react";
 import { FormattedMessage } from "react-intl";
 
-const Nobody = () => {
-  const theme = useTheme();
+type NobodyProps = {
+  sx?: SxProps;
+};
 
-  return (
-    <Box
-      sx={{
+const Nobody: FC<NobodyProps> = ({ sx = [] }) => (
+  <Box
+    sx={[
+      (theme) => ({
         alignItems: "center",
-        backgroundColor: theme.palette.background.default,
         color: theme.palette.text.secondary,
         display: "flex",
-        flex: 1,
         flexDirection: "column",
         justifyContent: "center",
+      }),
+      ...(sx instanceof Array ? sx : [sx]),
+    ]}
+  >
+    <SvgIcon
+      sx={{
+        height: "96px",
+        marginBottom: 2,
+        opacity: 0.2,
+        width: "96px",
       }}
     >
-      <SvgIcon
-        sx={{
-          height: "96px",
-          marginBottom: theme.spacing(2),
-          opacity: 0.2,
-          width: "96px",
-        }}
-      >
-        <path d={mdiAccountCircle} />
-      </SvgIcon>
-      <Typography align="center" component="div" variant="subtitle1">
-        <FormattedMessage
-          defaultMessage="No players in the list"
-          id="player.list.empty"
-        />
-      </Typography>
-    </Box>
-  );
-};
+      <path d={mdiAccountCircle} />
+    </SvgIcon>
+    <Typography component="span" variant="subtitle1">
+      <FormattedMessage
+        defaultMessage="No players in the list"
+        id="player.list.empty"
+      />
+    </Typography>
+  </Box>
+);
 
 export default Nobody;
