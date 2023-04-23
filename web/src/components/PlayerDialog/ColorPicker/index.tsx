@@ -10,19 +10,21 @@ import {
 } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
+import { type AvailableColor } from "../../../utils/availableColors";
 import { useGoBack } from "../../../utils/location";
+import { colorType } from "../../../utils/propTypes";
 
 import Color from "./Color";
 import Dialog from "./Dialog";
 import Popover from "./Popover";
 
 type ColorPickerProps = {
-  defaultValue?: string;
+  defaultValue?: AvailableColor;
   name: string;
   onBlur?: (event: FocusEvent) => void;
   onChange?: (color: string) => void;
   onFocus?: (event: FocusEvent) => void;
-  value?: string;
+  value?: AvailableColor;
 };
 
 const ColorPicker: FC<ColorPickerProps> = ({
@@ -134,7 +136,7 @@ const ColorPicker: FC<ColorPickerProps> = ({
       ) : (
         <Dialog
           onClose={onClose}
-          onSelect={(color: string) => {
+          onSelect={(color) => {
             setValue(color);
 
             if (onChange) {
@@ -152,12 +154,12 @@ const ColorPicker: FC<ColorPickerProps> = ({
 };
 
 ColorPicker.propTypes = {
-  defaultValue: PropTypes.string,
+  defaultValue: colorType,
   name: PropTypes.string.isRequired,
   onBlur: PropTypes.func,
   onChange: PropTypes.func,
   onFocus: PropTypes.func,
-  value: PropTypes.string,
+  value: colorType,
 };
 
 export default ColorPicker;

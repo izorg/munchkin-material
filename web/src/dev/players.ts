@@ -1,5 +1,3 @@
-import { cyan, green, orange, yellow } from "@mui/material/colors";
-
 import { CS, EN, HE, RU, UK } from "../i18n";
 import createPlayer from "../utils/createPlayer";
 import { Sex } from "../utils/types";
@@ -8,7 +6,7 @@ const players = {
   [CS]: [
     {
       player: createPlayer({
-        color: yellow[500],
+        color: "yellow",
         gear: 9,
         level: 5,
         name: "Vladimír",
@@ -16,7 +14,7 @@ const players = {
     },
     {
       player: createPlayer({
-        color: green[500],
+        color: "green",
         gear: 10,
         level: 6,
         name: "Otakar",
@@ -24,7 +22,7 @@ const players = {
     },
     {
       player: createPlayer({
-        color: cyan[500],
+        color: "cyan",
         gear: 6,
         level: 2,
         name: "Zdeněk",
@@ -32,7 +30,7 @@ const players = {
     },
     {
       player: createPlayer({
-        color: orange[500],
+        color: "orange",
         gear: 8,
         level: 4,
         name: "Zuzana",
@@ -44,9 +42,7 @@ const players = {
   [EN]: [
     {
       player: createPlayer({
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        color: "#607D8B",
+        color: "blueGrey",
         gear: 13,
         level: 3,
         name: "Barack Obama",
@@ -54,9 +50,7 @@ const players = {
     },
     {
       player: createPlayer({
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        color: "#FFC107",
+        color: "amber",
         gear: 20,
         level: 5,
         name: "Donald Trump",
@@ -64,9 +58,7 @@ const players = {
     },
     {
       player: createPlayer({
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        color: "#03A9F4",
+        color: "blue",
         gear: 10,
         level: 7,
         name: "Hillary Clinton",
@@ -78,9 +70,7 @@ const players = {
   [HE]: [
     {
       player: createPlayer({
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        color: "#607D8B",
+        color: "blueGrey",
         gear: 13,
         level: 3,
         name: "‏בנימין נתניהו‏‎",
@@ -88,9 +78,7 @@ const players = {
     },
     {
       player: createPlayer({
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        color: "#FFC107",
+        color: "amber",
         gear: 20,
         level: 5,
         name: "אהוד אולמרט‏‎",
@@ -98,9 +86,7 @@ const players = {
     },
     {
       player: createPlayer({
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        color: "#03A9F4",
+        color: "blue",
         gear: 10,
         level: 7,
         name: "אריאל שרון‏",
@@ -111,9 +97,7 @@ const players = {
   [RU]: [
     {
       player: createPlayer({
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        color: "#F44336",
+        color: "red",
         gear: 30,
         level: 3,
         name: "Илья Муромец",
@@ -121,7 +105,7 @@ const players = {
     },
     {
       player: createPlayer({
-        color: "#009688",
+        color: "teal",
         gear: 13,
         level: 6,
         name: "Соловей Разбойник",
@@ -129,9 +113,7 @@ const players = {
     },
     {
       player: createPlayer({
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        color: "#E91E63",
+        color: "pink",
         gear: 7,
         level: 8,
         name: "Василиса Премудрая",
@@ -143,7 +125,7 @@ const players = {
   [UK]: [
     {
       player: createPlayer({
-        color: green[500],
+        color: "green",
         gear: 10,
         level: 6,
         name: "Зеленський",
@@ -151,7 +133,7 @@ const players = {
     },
     {
       player: createPlayer({
-        color: yellow[500],
+        color: "yellow",
         gear: 9,
         level: 5,
         name: "Порошенко",
@@ -159,7 +141,7 @@ const players = {
     },
     {
       player: createPlayer({
-        color: orange[500],
+        color: "orange",
         gear: 8,
         level: 4,
         name: "Янукович",
@@ -167,7 +149,7 @@ const players = {
     },
     {
       player: createPlayer({
-        color: cyan[500],
+        color: "cyan",
         gear: 6,
         level: 2,
         name: "Кучма",

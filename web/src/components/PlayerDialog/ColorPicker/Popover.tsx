@@ -2,14 +2,16 @@ import { Popover, type PopoverProps } from "@mui/material";
 import PropTypes from "prop-types";
 import { type FC } from "react";
 
-import availableColors from "../../../utils/availableColors";
+import availableColors, {
+  type AvailableColor,
+} from "../../../utils/availableColors";
 import { colorType } from "../../../utils/propTypes";
 
 import Color from "./Color";
 
 type ColorPickerPopoverProps = Omit<PopoverProps, "onSelect"> & {
-  onSelect: (color: string) => void;
-  value?: string;
+  onSelect: (color: AvailableColor) => void;
+  value?: AvailableColor;
 };
 
 const ColorPickerPopover: FC<ColorPickerPopoverProps> = ({

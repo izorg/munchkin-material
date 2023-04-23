@@ -1,12 +1,13 @@
 import { mdiCheck } from "@mdi/js";
-import { Avatar, SvgIcon } from "@mui/material";
+import { Avatar, colors, SvgIcon } from "@mui/material";
 import PropTypes from "prop-types";
 import { type CSSProperties, forwardRef } from "react";
 
+import { type AvailableColor } from "../../utils/availableColors";
 import { colorType } from "../../utils/propTypes";
 
 type PlayerAvatarProps = {
-  color: string;
+  color: AvailableColor;
   name: string;
   selected?: boolean;
   style?: CSSProperties;
@@ -23,7 +24,7 @@ const PlayerAvatar = forwardRef<HTMLDivElement, PlayerAvatarProps>(
       style = {
         ...style,
 
-        backgroundColor: color,
+        backgroundColor: color && color in colors ? colors[color][500] : color,
       };
     }
 

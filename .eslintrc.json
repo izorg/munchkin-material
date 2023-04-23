@@ -47,6 +47,7 @@
   "root": true,
   "rules": {
     "jsx-a11y/no-autofocus": ["error", { "ignoreNonDOM": true }],
+    "import/namespace": ["error", { "allowComputed": true }],
     "import/order": [
       "error",
       {

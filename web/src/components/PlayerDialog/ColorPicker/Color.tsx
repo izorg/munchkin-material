@@ -3,14 +3,18 @@ import {
   Avatar,
   ButtonBase,
   type ButtonBaseProps,
+  colors,
   SvgIcon,
 } from "@mui/material";
 import PropTypes from "prop-types";
 import { forwardRef } from "react";
 
+import { type AvailableColor } from "../../../utils/availableColors";
+import { colorType } from "../../../utils/propTypes";
+
 type ColorProps = Omit<ButtonBaseProps, "selected" | "value"> & {
   selected?: boolean;
-  value?: string;
+  value?: AvailableColor;
 };
 
 const Color = forwardRef<HTMLButtonElement, ColorProps>(function Color(
@@ -18,6 +22,8 @@ const Color = forwardRef<HTMLButtonElement, ColorProps>(function Color(
   ref
 ) {
   const { selected, sx = [], value, ...rest } = props;
+
+  const backgroundColor = value && value in colors ? colors[value][500] : value;
 
   return (
     <ButtonBase
@@ -37,7 +43,7 @@ const Color = forwardRef<HTMLButtonElement, ColorProps>(function Color(
       {...rest}
     >
       <Avatar
-        style={{ backgroundColor: value }}
+        style={{ backgroundColor }}
         sx={{
           height: "36px",
           margin: "0 auto",
@@ -56,7 +62,7 @@ const Color = forwardRef<HTMLButtonElement, ColorProps>(function Color(
 
 Color.propTypes = {
   selected: PropTypes.bool,
-  value: PropTypes.string,
+  value: colorType,
 };
 
 Color.defaultProps = {

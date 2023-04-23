@@ -1,0 +1,28 @@
+{
+  "players": {
+    "2d6c713d-c89d-43e7-a4c1-bde35415dda4": {
+      "id": "2d6c713d-c89d-43e7-a4c1-bde35415dda4",
+      "gear": 30,
+      "level": 3,
+      "name": "Илья Муромец",
+      "sex": "male",
+      "color": "#F44336"
+    },
+    "f1c2b76e-19fe-4f90-ac4c-1ae285bb3ad7": {
+      "id": "f1c2b76e-19fe-4f90-ac4c-1ae285bb3ad7",
+      "gear": 13,
+      "level": 6,
+      "name": "Соловей Разбойник",
+      "sex": "male",
+      "color": "#009688"
+    },
+    "e006eb43-72b6-4f1a-a028-b559d51c4f1b": {
+      "id": "e006eb43-72b6-4f1a-a028-b559d51c4f1b",
+      "gear": 7,
+      "level": 8,
+      "name": "Василиса Премудрая",
+      "sex": "female",
+      "color": "#E91E63"
+    }
+  }
+}

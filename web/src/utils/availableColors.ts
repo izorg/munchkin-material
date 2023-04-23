@@ -1,46 +1,11 @@
 import { colors } from "@mui/material";
 
-const {
-  amber,
-  blue,
-  blueGrey,
-  cyan,
-  deepOrange,
-  deepPurple,
-  green,
-  grey,
-  indigo,
-  lightBlue,
-  lightGreen,
-  lime,
-  orange,
-  pink,
-  purple,
-  red,
-  teal,
-  yellow,
-} = colors;
+const colorKeys = Object.keys(colors) as (keyof typeof colors)[];
 
-const availableColors = [
-  amber,
-  blue,
-  blueGrey,
-  cyan,
-  deepOrange,
-  deepPurple,
-  green,
-  grey,
-  indigo,
-  lightBlue,
-  lightGreen,
-  lime,
-  orange,
-  pink,
-  purple,
-  red,
-  teal,
-  yellow,
-].map((color) => color[500]);
+const availableColors = colorKeys.filter(
+  (color): color is Exclude<(typeof colorKeys)[number], "brown" | "common"> =>
+    color !== "brown" && color !== "common"
+);
 
 export type AvailableColors = typeof availableColors;
 
