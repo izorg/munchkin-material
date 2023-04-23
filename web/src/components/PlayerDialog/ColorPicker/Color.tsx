@@ -5,6 +5,7 @@ import {
   type ButtonBaseProps,
   colors,
   SvgIcon,
+  useTheme,
 } from "@mui/material";
 import PropTypes from "prop-types";
 import { forwardRef } from "react";
@@ -21,9 +22,14 @@ const Color = forwardRef<HTMLButtonElement, ColorProps>(function Color(
   props,
   ref
 ) {
+  const theme = useTheme();
+
   const { selected, sx = [], value, ...rest } = props;
 
-  const backgroundColor = value && value in colors ? colors[value][500] : value;
+  const backgroundColor =
+    value && value in colors
+      ? colors[value][theme.palette.mode === "dark" ? 200 : 500]
+      : value;
 
   return (
     <ButtonBase

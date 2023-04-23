@@ -1,5 +1,5 @@
 import { mdiCheck } from "@mdi/js";
-import { Avatar, colors, SvgIcon } from "@mui/material";
+import { Avatar, colors, SvgIcon, useTheme } from "@mui/material";
 import PropTypes from "prop-types";
 import { type CSSProperties, forwardRef } from "react";
 
@@ -18,13 +18,18 @@ const PlayerAvatar = forwardRef<HTMLDivElement, PlayerAvatarProps>(
     { color, name, selected = false, style: styleProp, ...props },
     ref
   ) {
+    const theme = useTheme();
+
     let style = styleProp;
 
     if (!selected && color) {
       style = {
         ...style,
 
-        backgroundColor: color && color in colors ? colors[color][500] : color,
+        backgroundColor:
+          color in colors
+            ? colors[color][theme.palette.mode === "dark" ? 200 : 500]
+            : color,
       };
     }
 
