@@ -14,7 +14,7 @@ export const theme: ThemeOptions = {
     MuiAvatar: {
       styleOverrides: {
         colorDefault: {
-          backgroundColor: grey[500],
+          backgroundColor: grey[700],
         },
       },
     },

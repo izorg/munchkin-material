@@ -1,16 +1,14 @@
 import { useMemo } from "react";
-import { useLocation } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 
 import { type ThemeState } from "../ducks/theme";
 
 import usePresentSelector from "./usePresentSelector";
 
 const usePreviewTheme = (): ThemeState => {
-  const location = useLocation();
-
   const storeTheme = usePresentSelector((state) => state.theme);
 
-  const searchParams = new URLSearchParams(location.search);
+  const [searchParams] = useSearchParams();
 
   const id = searchParams.get("id");
   const mode = searchParams.get("mode");
