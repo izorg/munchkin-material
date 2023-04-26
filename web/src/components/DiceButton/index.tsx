@@ -17,7 +17,7 @@ const DiceIconButton = (props: Omit<IconButtonProps, "onClick">) => {
     dispatch(throwDice());
 
     setSearchParams((searchParams) => {
-      searchParams.append("dice", "");
+      searchParams.set("dice", "");
 
       return searchParams;
     });

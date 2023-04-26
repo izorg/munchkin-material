@@ -1,26 +1,23 @@
 import { mdiPlus } from "@mdi/js";
 import { type FabProps, SvgIcon } from "@mui/material";
-import { forwardRef } from "react";
+import { forwardRef, useCallback } from "react";
 import { useIntl } from "react-intl";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 
 import ScreenFab from "../../ScreenFab";
 
 const PlayerAddButton = forwardRef<HTMLButtonElement, FabProps>(
   function PlayerAddButton(props, ref) {
     const intl = useIntl();
-    const location = useLocation();
-    const navigate = useNavigate();
+    const [, setSearchParams] = useSearchParams();
 
-    const onClick = () => {
-      const searchParams = new URLSearchParams(location.search);
+    const onClick = useCallback(() => {
+      setSearchParams((searchParams) => {
+        searchParams.set("player", "");
 
-      searchParams.set("player", "");
-
-      navigate({
-        search: `?${searchParams.toString()}`,
+        return searchParams;
       });
-    };
+    }, [setSearchParams]);
 
     return (
       <ScreenFab

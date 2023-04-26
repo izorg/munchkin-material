@@ -22,7 +22,7 @@ import {
 } from "@mui/material";
 import { type FormEvent, useEffect, useMemo, useRef } from "react";
 import { useIntl } from "react-intl";
-import { useLocation } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 
 import { addPlayerToList } from "../../ducks/playerList";
 import { addPlayer, updatePlayer } from "../../ducks/players";
@@ -48,14 +48,10 @@ let appear = false;
 const PlayerDialog = () => {
   const dispatch = useAppDispatch();
   const intl = useIntl();
-  const location = useLocation();
 
   const deletePlayers = useDeletePlayers();
   const goBack = useGoBack();
-  const searchParams = useMemo(
-    () => new URLSearchParams(location.search),
-    [location.search]
-  );
+  const [searchParams] = useSearchParams();
   const open = searchParams.get("player") !== null;
   const players = usePresentSelector((state) => state.players);
 
