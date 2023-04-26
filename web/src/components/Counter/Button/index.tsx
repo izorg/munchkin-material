@@ -15,7 +15,7 @@ type CounterButtonProps = Omit<
 >;
 
 const CounterButton: FC<CounterButtonProps> = ({
-  disabled,
+  disabled = false,
   onClick,
   ...rest
 }) => {
@@ -111,10 +111,6 @@ const CounterButton: FC<CounterButtonProps> = ({
 CounterButton.propTypes = {
   disabled: PropTypes.bool,
   onClick: PropTypes.func.isRequired,
-};
-
-CounterButton.defaultProps = {
-  disabled: false,
 };
 
 export default CounterButton;

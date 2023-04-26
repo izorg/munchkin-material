@@ -24,8 +24,8 @@ type CombatCounterProps = {
 
 const CombatCounter: FC<CombatCounterProps> = (props) => {
   const {
-    decrementDisabled,
-    incrementDisabled,
+    decrementDisabled = false,
+    incrementDisabled = false,
     onDecrement,
     onIncrement,
     sx = [],
@@ -128,11 +128,6 @@ CombatCounter.propTypes = {
   onIncrement: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
   value: PropTypes.number.isRequired,
-};
-
-CombatCounter.defaultProps = {
-  decrementDisabled: false,
-  incrementDisabled: false,
 };
 
 export default CombatCounter;

@@ -39,8 +39,8 @@ type CounterProps = Omit<BoxProps, "title"> & {
 };
 
 const Counter: FC<CounterProps> = ({
-  decrementDisabled,
-  incrementDisabled,
+  decrementDisabled = false,
+  incrementDisabled = false,
   onDecrement,
   onIncrement,
   sx = [],
@@ -137,11 +137,6 @@ Counter.propTypes = {
   onIncrement: PropTypes.func.isRequired,
   title: PropTypes.node.isRequired,
   value: PropTypes.number.isRequired,
-};
-
-Counter.defaultProps = {
-  decrementDisabled: false,
-  incrementDisabled: false,
 };
 
 export default Counter;

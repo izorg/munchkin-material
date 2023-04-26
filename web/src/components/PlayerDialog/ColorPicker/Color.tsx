@@ -24,7 +24,7 @@ const Color = forwardRef<HTMLButtonElement, ColorProps>(function Color(
 ) {
   const theme = useTheme();
 
-  const { selected, sx = [], value, ...rest } = props;
+  const { selected = false, sx = [], value, ...rest } = props;
 
   const backgroundColor =
     value && value in colors
@@ -69,10 +69,6 @@ const Color = forwardRef<HTMLButtonElement, ColorProps>(function Color(
 Color.propTypes = {
   selected: PropTypes.bool,
   value: colorType,
-};
-
-Color.defaultProps = {
-  selected: false,
 };
 
 export default Color;

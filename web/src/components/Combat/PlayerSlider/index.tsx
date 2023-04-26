@@ -29,7 +29,7 @@ type CombatPlayerSliderProps = BoxProps & {
 };
 
 const CombatPlayerSlider: FC<CombatPlayerSliderProps> = (props) => {
-  const { helperId, playerId, sx = [], ...rest } = props;
+  const { helperId = null, playerId, sx = [], ...rest } = props;
 
   const dispatch = useAppDispatch();
   const theme = useTheme();
@@ -180,10 +180,6 @@ CombatPlayerSlider.propTypes = {
   className: PropTypes.string,
   helperId: PropTypes.string,
   playerId: PropTypes.string.isRequired,
-};
-
-CombatPlayerSlider.defaultProps = {
-  helperId: null,
 };
 
 export default memo(CombatPlayerSlider);

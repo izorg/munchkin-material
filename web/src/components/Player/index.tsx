@@ -17,7 +17,7 @@ type PlayerProps = {
   playerId?: null | string;
 };
 
-const Player = ({ playerId }: PlayerProps) => {
+const Player = ({ playerId = null }: PlayerProps) => {
   const playerRef = useRef<string>();
   const playerList = usePresentSelector((state) => state.playerList);
 
@@ -110,10 +110,6 @@ const Player = ({ playerId }: PlayerProps) => {
 
 Player.propTypes = {
   playerId: PropTypes.string,
-};
-
-Player.defaultProps = {
-  playerId: null,
 };
 
 export default Player;
