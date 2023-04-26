@@ -1,4 +1,4 @@
-import { type ThemeOptions } from "@mui/material";
+import { type PaletteMode } from "@mui/material";
 import { brown } from "@mui/material/colors";
 import { defineMessage } from "react-intl";
 
@@ -9,20 +9,24 @@ export const name = defineMessage({
   id: "theme.name.munchkin",
 });
 
-export const theme: ThemeOptions = {
-  components: {
-    MuiAvatar: {
-      styleOverrides: {
-        colorDefault: {
-          backgroundColor: brown[500],
+export const getTheme = (mode: PaletteMode) => {
+  const color = brown[mode === "light" ? 500 : 200];
+
+  return {
+    components: {
+      MuiAvatar: {
+        styleOverrides: {
+          colorDefault: {
+            backgroundColor: color,
+          },
         },
       },
     },
-  },
 
-  palette: {
-    primary: {
-      main: brown[500],
+    palette: {
+      primary: {
+        main: color,
+      },
     },
-  },
+  };
 };

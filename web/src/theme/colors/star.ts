@@ -1,4 +1,4 @@
-import { type ThemeOptions } from "@mui/material";
+import { type PaletteMode } from "@mui/material";
 import { lightBlue } from "@mui/material/colors";
 import { defineMessage } from "react-intl";
 
@@ -9,20 +9,24 @@ export const name = defineMessage({
   id: "theme.name.star",
 });
 
-export const theme: ThemeOptions = {
-  components: {
-    MuiAvatar: {
-      styleOverrides: {
-        colorDefault: {
-          backgroundColor: lightBlue[600],
+export const getTheme = (mode: PaletteMode) => {
+  const color = lightBlue[mode === "light" ? 600 : 200];
+
+  return {
+    components: {
+      MuiAvatar: {
+        styleOverrides: {
+          colorDefault: {
+            backgroundColor: color,
+          },
         },
       },
     },
-  },
 
-  palette: {
-    primary: {
-      main: lightBlue[600],
+    palette: {
+      primary: {
+        main: color,
+      },
     },
-  },
+  };
 };

@@ -1,4 +1,4 @@
-import { type ThemeOptions } from "@mui/material";
+import { type PaletteMode } from "@mui/material";
 import { lightGreen } from "@mui/material/colors";
 import { defineMessage } from "react-intl";
 
@@ -9,20 +9,24 @@ export const name = defineMessage({
   id: "theme.name.cthulhu",
 });
 
-export const theme: ThemeOptions = {
-  components: {
-    MuiAvatar: {
-      styleOverrides: {
-        colorDefault: {
-          backgroundColor: lightGreen[700],
+export const getTheme = (mode: PaletteMode) => {
+  const color = lightGreen[mode === "light" ? 700 : 200];
+
+  return {
+    components: {
+      MuiAvatar: {
+        styleOverrides: {
+          colorDefault: {
+            backgroundColor: color,
+          },
         },
       },
     },
-  },
 
-  palette: {
-    primary: {
-      main: lightGreen[700],
+    palette: {
+      primary: {
+        main: color,
+      },
     },
-  },
+  };
 };

@@ -1,4 +1,4 @@
-import { type ThemeOptions } from "@mui/material";
+import { type PaletteMode } from "@mui/material";
 import { orange } from "@mui/material/colors";
 import { defineMessage } from "react-intl";
 
@@ -9,20 +9,24 @@ export const name = defineMessage({
   id: "theme.name.apocalypse",
 });
 
-export const theme: ThemeOptions = {
-  components: {
-    MuiAvatar: {
-      styleOverrides: {
-        colorDefault: {
-          backgroundColor: orange[800],
+export const getTheme = (mode: PaletteMode) => {
+  const color = orange[mode === "light" ? 800 : 200];
+
+  return {
+    components: {
+      MuiAvatar: {
+        styleOverrides: {
+          colorDefault: {
+            backgroundColor: color,
+          },
         },
       },
     },
-  },
 
-  palette: {
-    primary: {
-      main: orange[800],
+    palette: {
+      primary: {
+        main: color,
+      },
     },
-  },
+  };
 };
