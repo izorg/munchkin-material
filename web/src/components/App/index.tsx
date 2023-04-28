@@ -1,34 +1,12 @@
 import { domMax, LazyMotion } from "framer-motion";
-import { lazy, Suspense } from "react";
 
+import DiceDialog from "../DiceDialog";
 import Home from "../Home";
+import PlayerDialog from "../PlayerDialog";
 import ScreenDialog from "../ScreenDialog";
+import SettingsDialog from "../SettingsDialog";
 import UndoProvider from "../UndoProvider";
 import UndoSnackbar from "../UndoSnackbar";
-
-const DiceDialog = lazy(
-  () =>
-    import(
-      /* webpackPrefetch: true */
-      "../DiceDialog"
-    )
-);
-
-const PlayerDialog = lazy(
-  () =>
-    import(
-      /* webpackPrefetch: true */
-      "../PlayerDialog"
-    )
-);
-
-const SettingsDialog = lazy(
-  () =>
-    import(
-      /* webpackPrefetch: true */
-      "../SettingsDialog"
-    )
-);
 
 const App = () => (
   <LazyMotion features={domMax} strict>
@@ -36,19 +14,9 @@ const App = () => (
       <ScreenDialog open TransitionProps={{ appear: false }}>
         <Home />
       </ScreenDialog>
-
-      <Suspense fallback={null}>
-        <SettingsDialog />
-      </Suspense>
-
-      <Suspense fallback={null}>
-        <DiceDialog />
-      </Suspense>
-
-      <Suspense fallback={null}>
-        <PlayerDialog />
-      </Suspense>
-
+      <SettingsDialog />
+      <DiceDialog />
+      <PlayerDialog />
       <UndoSnackbar />
     </UndoProvider>
   </LazyMotion>
