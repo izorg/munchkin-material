@@ -9,7 +9,7 @@ import {
 import { m, type TapHandlers } from "framer-motion";
 import PropTypes from "prop-types";
 import { type KeyboardEvent, useCallback, useRef } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 import { togglePlayer, unselectAllPlayers } from "../../../../ducks/ui";
 import useEditMode from "../../../../hooks/useEditMode";
@@ -32,8 +32,8 @@ const HomePlayerListItem = (props: HomePlayerListItemProps) => {
   const { playerId, sx = [], ...rest } = props;
 
   const dispatch = useAppDispatch();
-  const location = useLocation();
   const navigate = useNavigate();
+  const [, setSearchParams] = useSearchParams();
 
   const avatarRef = useRef<HTMLDivElement>(null);
 
@@ -62,12 +62,10 @@ const HomePlayerListItem = (props: HomePlayerListItemProps) => {
     event: KeyboardEvent | MouseEvent | PointerEvent | TouchEvent
   ) => {
     if (editMode) {
-      const searchParams = new URLSearchParams(location.search);
+      setSearchParams((searchParams) => {
+        searchParams.set("player", playerId);
 
-      searchParams.set("player", playerId);
-
-      navigate({
-        search: `?${searchParams.toString()}`,
+        return searchParams;
       });
     } else if (multiMode) {
       dispatch(togglePlayer(playerId));
