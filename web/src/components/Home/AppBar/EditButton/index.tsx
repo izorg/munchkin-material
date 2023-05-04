@@ -1,6 +1,6 @@
 import { mdiCheck, mdiPencilOutline } from "@mdi/js";
 import { type IconButtonProps, SvgIcon, Tooltip } from "@mui/material";
-import { type FC } from "react";
+import { type FC, useCallback } from "react";
 import { useIntl } from "react-intl";
 
 import useEditMode from "../../../../hooks/useEditMode";
@@ -13,7 +13,10 @@ const EditButton: FC<IconButtonProps> = (props) => {
 
   const { editMode, setEditMode } = useEditMode();
 
-  const onToggleEditClick = () => (editMode ? goBack() : setEditMode(true));
+  const onToggleEditClick = useCallback(
+    () => (editMode ? goBack() : setEditMode(true)),
+    [editMode, goBack, setEditMode]
+  );
 
   const editTitle = intl.formatMessage({
     defaultMessage: "Edit",
@@ -24,7 +27,7 @@ const EditButton: FC<IconButtonProps> = (props) => {
     <Tooltip title={editTitle}>
       <TopIconButton
         aria-label={editTitle}
-        onClick={() => onToggleEditClick()}
+        onClick={onToggleEditClick}
         {...props}
       >
         <SvgIcon>
