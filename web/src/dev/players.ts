@@ -1,161 +1,89 @@
-import { CS, EN, HE, RU, UK } from "../i18n";
+import {
+  CS,
+  DA,
+  DE,
+  EL,
+  EN,
+  ES,
+  FI,
+  FR,
+  HE,
+  HU,
+  HY,
+  IT,
+  NB,
+  NL,
+  PL,
+  PT,
+  PT_BR,
+  RU,
+  SK,
+  type SupportedLocale,
+  TR,
+  UK,
+} from "../i18n";
 import createPlayer from "../utils/createPlayer";
 import { Sex } from "../utils/types";
 
-const players = {
-  [CS]: [
-    {
-      player: createPlayer({
-        color: "yellow",
-        gear: 9,
-        level: 5,
-        name: "Vladimír",
-      }),
-    },
-    {
-      player: createPlayer({
-        color: "green",
-        gear: 10,
-        level: 6,
-        name: "Otakar",
-      }),
-    },
-    {
-      player: createPlayer({
-        color: "cyan",
-        gear: 6,
-        level: 2,
-        name: "Zdeněk",
-      }),
-    },
-    {
-      player: createPlayer({
-        color: "orange",
-        gear: 8,
-        level: 4,
-        name: "Zuzana",
-        sex: Sex.Female,
-      }),
-    },
-  ],
+const templatePlayers = [
+  createPlayer({
+    color: "purple",
+    gear: 9,
+    level: 5,
+    sex: Sex.Male,
+  }),
+  createPlayer({
+    color: "green",
+    gear: 10,
+    level: 6,
+    sex: Sex.Male,
+  }),
+  createPlayer({
+    color: "cyan",
+    gear: 6,
+    level: 2,
+    sex: Sex.Female,
+  }),
+  createPlayer({
+    color: "orange",
+    gear: 8,
+    level: 4,
+    sex: Sex.Female,
+  }),
+];
 
-  [EN]: [
-    {
-      player: createPlayer({
-        color: "blueGrey",
-        gear: 13,
-        level: 3,
-        name: "Barack Obama",
-      }),
-    },
-    {
-      player: createPlayer({
-        color: "amber",
-        gear: 20,
-        level: 5,
-        name: "Donald Trump",
-      }),
-    },
-    {
-      player: createPlayer({
-        color: "blue",
-        gear: 10,
-        level: 7,
-        name: "Hillary Clinton",
-        sex: Sex.Female,
-      }),
-    },
-  ],
+const getLocalizedPlayers = (names: string[]) =>
+  templatePlayers.map((templatePlayer, index) => ({
+    ...templatePlayer,
+    name: names[index],
+  }));
 
-  [HE]: [
-    {
-      player: createPlayer({
-        color: "blueGrey",
-        gear: 13,
-        level: 3,
-        name: "‏בנימין נתניהו‏‎",
-      }),
-    },
-    {
-      player: createPlayer({
-        color: "amber",
-        gear: 20,
-        level: 5,
-        name: "אהוד אולמרט‏‎",
-      }),
-    },
-    {
-      player: createPlayer({
-        color: "blue",
-        gear: 10,
-        level: 7,
-        name: "אריאל שרון‏",
-      }),
-    },
-  ],
+const nameEntries: [locale: SupportedLocale, names: string[]][] = [
+  [CS, ["Jan", "Jakub", "Tereza", "Anna"]],
+  [DA, ["William", "Noah", "Emma", "Freja"]],
+  [DE, ["Max", "Paul", "Emma", "Hannah"]],
+  [EL, ["Γιώργος", "Αντώνης", "Μαρία", "Σοφία"]],
+  [EN, ["Liam", "Noah", "Olivia", "Emma"]],
+  [ES, ["Alejandro", "Daniel", "Lucia", "Martina"]],
+  [FI, ["Onni", "Elias", "Aino", "Eevi"]],
+  [FR, ["Gabriel", "Raphaël", "Emma", "Louise"]],
+  [HE, ["נוֹעַם", "אִיתַי", "מַיָּה", "תָּמָר"]],
+  [HU, ["Bence", "Máté", "Hanna", "Luca"]],
+  [HY, ["Արմեն", "Մարտիրոս", "Անահիտ", "Նարինե"]],
+  [IT, ["Leo", "Francesco", "Sofia", "Giulia"]],
+  [NB, ["Jakob", "Lucas", "Emma", "Nora"]],
+  [NL, ["Sem", "Lucas", "Emma", "Julia"]],
+  [PL, ["Jan", "Kacper", "Zuzanna", "Lena"]],
+  [PT, ["João", "Santiago", "Maria", "Matilde"]],
+  [PT_BR, ["Enzo", "Miguel", "Alice", "Sophia"]],
+  [RU, ["Саша", "Макс", "София", "Аня"]],
+  [SK, ["Jakub", "Lukáš", "Sofia", "Ema"]],
+  [TR, ["Mehmet", "Ali", "Ayşe", "Zeynep"]],
+  [UK, ["Олесь", "Макс", "Софія", "Марія"]],
+];
 
-  [RU]: [
-    {
-      player: createPlayer({
-        color: "red",
-        gear: 30,
-        level: 3,
-        name: "Илья Муромец",
-      }),
-    },
-    {
-      player: createPlayer({
-        color: "teal",
-        gear: 13,
-        level: 6,
-        name: "Соловей Разбойник",
-      }),
-    },
-    {
-      player: createPlayer({
-        color: "pink",
-        gear: 7,
-        level: 8,
-        name: "Василиса Премудрая",
-        sex: Sex.Female,
-      }),
-    },
-  ],
-
-  [UK]: [
-    {
-      player: createPlayer({
-        color: "green",
-        gear: 10,
-        level: 6,
-        name: "Зеленський",
-      }),
-    },
-    {
-      player: createPlayer({
-        color: "yellow",
-        gear: 9,
-        level: 5,
-        name: "Порошенко",
-      }),
-    },
-    {
-      player: createPlayer({
-        color: "orange",
-        gear: 8,
-        level: 4,
-        name: "Янукович",
-      }),
-    },
-    {
-      player: createPlayer({
-        color: "cyan",
-        gear: 6,
-        level: 2,
-        name: "Кучма",
-      }),
-    },
-  ],
-};
+const players = Object.fromEntries(
+  nameEntries.map(([locale, names]) => [locale, getLocalizedPlayers(names)])
+);
 
 export default players;

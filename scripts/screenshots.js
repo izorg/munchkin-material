@@ -6,9 +6,25 @@ import { duration } from "@mui/material";
 import { chromium, devices } from "playwright";
 
 const CS = "cs";
+const DA = "da";
+const DE = "de";
+const EL = "el";
 const EN = "en";
+const ES = "es";
+const FI = "fi";
+const FR = "fr";
 const HE = "he";
+const HU = "hu";
+const HY = "hy";
+const IT = "it";
+const NB = "nb";
+const NL = "nl";
+const PL = "pl";
+const PT = "pt";
+const PT_BR = "pt-BR";
 const RU = "ru";
+const SK = "sk";
+const TR = "tr";
 const UK = "uk";
 
 const appUrl = "http://localhost:3000";
@@ -159,7 +175,29 @@ const getScreenshots = async (browserType, device, locale, deviceName) => {
   await browser.close();
 };
 
-const locales = [CS, EN, HE, RU, UK];
+const locales = [
+  CS,
+  DA,
+  DE,
+  EL,
+  EN,
+  ES,
+  FI,
+  FR,
+  HE,
+  HU,
+  HY,
+  IT,
+  NB,
+  NL,
+  PL,
+  PT,
+  PT_BR,
+  RU,
+  SK,
+  TR,
+  UK,
+];
 
 const screenshots = async () => {
   try {

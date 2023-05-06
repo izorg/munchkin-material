@@ -12,8 +12,7 @@ const setLocale = (locale: string) => {
   if (isSupportedLocale(locale)) {
     store.dispatch(setAppLocale(locale));
   } else {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
+    // @ts-expect-error auto locale select
     store.dispatch(setAppLocale());
   }
 };
@@ -28,9 +27,9 @@ const setTestData = () => {
 
   Object.entries(players)
     .find(([key]) => key === locale)?.[1]
-    .forEach((data) => {
-      store.dispatch(addPlayer(data.player));
-      store.dispatch(addPlayerToList(data.player.id));
+    .forEach((player) => {
+      store.dispatch(addPlayer(player));
+      store.dispatch(addPlayerToList(player.id));
     });
 };
 
