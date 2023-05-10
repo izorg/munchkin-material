@@ -84,7 +84,7 @@ const PlayerSlider = ({ playerId, sx = [] }: PlayerSliderProps) => {
     if (element.scrollLeft === 0) {
       direction = -1;
     } else if (
-      element.scrollLeft ===
+      element.scrollLeft >=
       element.offsetWidth * 2 * directionMultiplier
     ) {
       direction = 1;
