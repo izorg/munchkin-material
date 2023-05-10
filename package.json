@@ -1,6 +1,6 @@
 {
   "private": true,
-  "version": "14.6.1",
+  "version": "14.6.2",
   "type": "module",
   "workspaces": [
     "cordova",
