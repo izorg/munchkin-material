@@ -22,7 +22,6 @@
     <preference name="SplashMaintainAspectRatio" value="true" />
     <platform name="android">
         <allow-intent href="market:*" />
-        <preference name="android-minSdkVersion" value="25" />
         <preference name="AndroidPostSplashScreenTheme" value="@style/Theme.AppCompat.DayNight.NoActionBar"/>
         <preference name="AndroidWindowSplashScreenAnimatedIcon" value="res/android/splash-screen-icon.png" />
         <preference name="AndroidWindowSplashScreenBackground" value="#fafafa" />
