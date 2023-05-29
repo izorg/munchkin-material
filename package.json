@@ -22,21 +22,21 @@
     "g:rimraf": "cd $INIT_CWD && rimraf"
   },
   "devDependencies": {
-    "@babel/core": "7.21.8",
+    "@babel/core": "7.22.1",
     "@emotion/babel-plugin": "11.11.0",
     "@formatjs/cli": "6.1.1",
     "@jest/globals": "29.5.0",
-    "@parcel/transformer-webmanifest": "2.8.3",
-    "@swc/core": "1.3.57",
+    "@parcel/transformer-webmanifest": "2.9.1",
+    "@swc/core": "1.3.60",
     "@swc/jest": "0.2.26",
-    "@typescript-eslint/eslint-plugin": "5.59.5",
-    "@typescript-eslint/parser": "5.59.5",
+    "@typescript-eslint/eslint-plugin": "5.59.8",
+    "@typescript-eslint/parser": "5.59.8",
     "axios": "1.4.0",
     "babel-plugin-formatjs": "10.5.1",
     "babel-plugin-polyfill-corejs3": "0.8.1",
     "babel-plugin-react-remove-properties": "0.3.0",
     "babel-plugin-transform-react-remove-prop-types": "0.4.24",
-    "eslint": "8.40.0",
+    "eslint": "8.41.0",
     "eslint-config-prettier": "8.8.0",
     "eslint-import-resolver-typescript": "3.5.5",
     "eslint-plugin-import": "2.27.5",
@@ -51,21 +51,20 @@
     "jest": "29.5.0",
     "jest-environment-jsdom": "29.5.0",
     "lint-staged": "13.2.2",
-    "playwright": "1.33.0",
+    "playwright": "1.34.3",
     "postcss-html": "1.5.0",
     "postcss-syntax": "0.36.2",
     "prettier": "2.8.8",
     "process": "0.11.10",
-    "rimraf": "5.0.0",
-    "stylelint": "15.6.1",
+    "rimraf": "5.0.1",
+    "stylelint": "15.6.2",
     "stylelint-config-standard": "33.0.0",
     "stylelint-order": "6.0.3",
     "stylelint-prettier": "3.0.0",
     "typescript": "5.0.4"
   },
   "resolutions": {
-    "@parcel/runtime-js@2.8.3": "patch:@parcel/runtime-js@npm%3A2.8.3#./.yarn/patches/@parcel-runtime-js-npm-2.8.3-a82379279f.patch",
-    "cordova-windows/shelljs": "0.8.5"
+    "@parcel/runtime-js@2.9.1": "patch:@parcel/runtime-js@npm%3A2.9.1#./.yarn/patches/@parcel-runtime-js-npm-2.9.1-f255b14962.patch"
   },
   "packageManager": "yarn@3.5.1"
 }

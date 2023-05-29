@@ -1,0 +1,13 @@
+diff --git a/lib/helpers/bundle-url.js b/lib/helpers/bundle-url.js
+index 253c47788375ae8df6e0723b59f7cc593fd0f927..9659407fdfe6bd3a4b0f9044a1fee237c084b555 100644
+--- a/lib/helpers/bundle-url.js
++++ b/lib/helpers/bundle-url.js
+@@ -13,7 +13,7 @@ function getBundleURL() {
+   try {
+     throw new Error();
+   } catch (err) {
+-    var matches = ('' + err.stack).match(/(https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/[^)\n]+/g);
++    var matches = ('' + err.stack).match(/(https?|ms-appx-web|file|ftp|(chrome|moz|safari-web)-extension):\/\/[^)\n]+/g);
+     if (matches) {
+       // The first two stack frames will be this function and getBundleURLCached.
+       // Use the 3rd one, which will be a runtime in the original bundle.
