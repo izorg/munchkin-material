@@ -3,7 +3,6 @@
     "esModuleInterop": true,
     "incremental": true,
     "jsx": "preserve",
-    "jsxImportSource": "@emotion/react",
     "module": "ESNext",
     "moduleResolution": "Node",
     "noEmit": true,
