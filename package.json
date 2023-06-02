@@ -27,7 +27,7 @@
     "@formatjs/cli": "6.1.1",
     "@jest/globals": "29.5.0",
     "@parcel/transformer-webmanifest": "2.9.1",
-    "@swc/core": "1.3.60",
+    "@swc/core": "1.3.61",
     "@swc/jest": "0.2.26",
     "@typescript-eslint/eslint-plugin": "5.59.8",
     "@typescript-eslint/parser": "5.59.8",
@@ -66,5 +66,5 @@
   "resolutions": {
     "@parcel/runtime-js@2.9.1": "patch:@parcel/runtime-js@npm%3A2.9.1#./.yarn/patches/@parcel-runtime-js-npm-2.9.1-f255b14962.patch"
   },
-  "packageManager": "yarn@3.5.1"
+  "packageManager": "yarn@3.6.0"
 }
