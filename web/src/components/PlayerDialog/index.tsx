@@ -29,7 +29,7 @@ import { addPlayer, updatePlayer } from "../../ducks/players";
 import useDeletePlayers from "../../hooks/useDeletePlayers";
 import usePresentSelector from "../../hooks/usePresentSelector";
 import { useAppDispatch } from "../../store";
-import availableColors from "../../utils/availableColors";
+import type availableColors from "../../utils/availableColors";
 import createPlayer from "../../utils/createPlayer";
 import getRandomMaterialColor from "../../utils/getRandomMaterialColor";
 import { useGoBack } from "../../utils/location";
