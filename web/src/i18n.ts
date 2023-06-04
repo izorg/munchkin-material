@@ -67,7 +67,7 @@ export const getLocale = () => {
     }
 
     const currentLocale = supportedLocales.find(
-      (locale) => locale === language.substring(0, 2)
+      (locale) => locale === language.slice(0, 2)
     );
 
     if (currentLocale) {
