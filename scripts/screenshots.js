@@ -1,6 +1,6 @@
 /* eslint-env browser */
-import { promises as fs } from "fs";
-import path from "path";
+import { promises as fs } from "node:fs";
+import path from "node:path";
 
 import { duration } from "@mui/material";
 import { chromium, devices } from "playwright";
