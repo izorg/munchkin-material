@@ -37,17 +37,15 @@ const LevelLimitItem = () => {
   let secondary = intl.formatMessage(levelLimitMessages.none);
 
   if (levelLimit) {
-    if (epic) {
-      secondary = intl.formatMessage(levelLimitMessages.epic, {
-        maxLevel: MAX_EPIC_LEVEL,
-        minLevel: MIN_LEVEL,
-      });
-    } else {
-      secondary = intl.formatMessage(levelLimitMessages.munchkin, {
-        maxLevel: MAX_LEVEL,
-        minLevel: MIN_LEVEL,
-      });
-    }
+    secondary = epic
+      ? intl.formatMessage(levelLimitMessages.epic, {
+          maxLevel: MAX_EPIC_LEVEL,
+          minLevel: MIN_LEVEL,
+        })
+      : intl.formatMessage(levelLimitMessages.munchkin, {
+          maxLevel: MAX_LEVEL,
+          minLevel: MIN_LEVEL,
+        });
   }
 
   return (
