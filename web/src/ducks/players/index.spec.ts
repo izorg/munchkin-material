@@ -11,6 +11,7 @@ import reducer, {
   incrementPlayerGear,
   incrementPlayerLevel,
   killPlayer,
+  resetPlayers,
   togglePlayerSex,
   updatePlayer,
 } from "./index";
@@ -56,6 +57,26 @@ describe("Players reducer", () => {
 
     expect(players[id].gear).toBe(0);
     expect(players[id].level).toBe(6);
+  });
+
+  test("resets players", () => {
+    const keepPlayer = createPlayer({ gear: 12, level: 6 });
+    const resetPlayer = createPlayer({ gear: 10, level: 2 });
+
+    const players = reducer(
+      {
+        [keepPlayer.id]: keepPlayer,
+        [resetPlayer.id]: resetPlayer,
+      },
+      resetPlayers([resetPlayer.id])
+    );
+
+    expect(players[keepPlayer.id]).toBe(keepPlayer);
+    expect(players[resetPlayer.id]).toStrictEqual({
+      ...resetPlayer,
+      gear: 0,
+      level: 1,
+    });
   });
 
   test("toggles sex", () => {
