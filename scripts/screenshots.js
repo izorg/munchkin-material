@@ -78,7 +78,7 @@ const getScreenshots = async (browserType, device, locale, deviceName) => {
     await fs.mkdir(screenshotDir, {
       recursive: true,
     });
-  } catch (e) {
+  } catch {
     // dir exists
   }
 

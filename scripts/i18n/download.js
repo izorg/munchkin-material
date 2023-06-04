@@ -7,7 +7,7 @@ const projectId = process.env.POEDITOR_PROJECT_ID;
 const writeTranslation = async (code, data) => {
   try {
     await fs.mkdir("./languages");
-  } catch (e) {
+  } catch {
     // dir exists
   }
 
