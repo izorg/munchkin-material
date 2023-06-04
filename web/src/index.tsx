@@ -24,7 +24,7 @@ if (process.env.NODE_ENV === "production") {
   import("./firebase").catch((error) => captureException(error));
 }
 
-const node = document.getElementById("root");
+const node = document.querySelector("#root");
 
 if (!node) {
   throw new Error("No #root element");

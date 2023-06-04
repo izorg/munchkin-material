@@ -20,7 +20,7 @@ import StatusBarProvider from "./components/StatusBarProvider";
 import VersionProvider from "./components/VersionProvider";
 import WakeLockProvider from "./components/WakeLockProvider";
 
-const node = document.getElementById("root");
+const node = document.querySelector("#root");
 
 if (!node) {
   throw new Error("No #root element");
