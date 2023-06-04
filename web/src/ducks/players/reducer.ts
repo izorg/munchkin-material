@@ -85,20 +85,27 @@ const playersReducer = createReducer(initialState, (builder) =>
         Object.entries(state).filter(([id]) => !action.payload.includes(id))
       )
     )
-    .addCase(resetPlayers, (state, action) =>
-      action.payload.reduce((acc, id) => {
-        const player = state[id];
+    .addCase(resetPlayers, (state, action) => {
+      if (action.payload.length === 0) {
+        return state;
+      }
 
-        return {
-          ...acc,
-          [id]: {
+      const players = { ...state };
+
+      for (const id of action.payload) {
+        if (id in players) {
+          const player = players[id];
+
+          players[id] = {
             ...player,
             gear: 0,
             level: 1,
-          },
-        };
-      }, state)
-    )
+          };
+        }
+      }
+
+      return players;
+    })
     .addCase(updatePlayer, (state, action) => {
       const { id } = action.payload;
 
