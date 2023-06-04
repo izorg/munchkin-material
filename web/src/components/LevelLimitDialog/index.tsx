@@ -54,22 +54,26 @@ const LevelLimitDialog = () => {
     event.preventDefault();
 
     switch (value) {
-      case NO_LIMIT:
+      case NO_LIMIT: {
         dispatch(setLevelLimit(false));
         break;
+      }
 
-      case DEFAULT_MUNCHKIN_LIMIT:
+      case DEFAULT_MUNCHKIN_LIMIT: {
         dispatch(setEpic(false));
         dispatch(setLevelLimit(true));
         break;
+      }
 
-      case EPIC_MUNCHKIN_LIMIT:
+      case EPIC_MUNCHKIN_LIMIT: {
         dispatch(setEpic(true));
         dispatch(setLevelLimit(true));
         break;
+      }
 
-      default:
+      default: {
         break;
+      }
     }
 
     goBack();

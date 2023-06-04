@@ -28,41 +28,47 @@ export const playerReducer = (
   >
 ): Player => {
   switch (action.type) {
-    case decrementPlayerGear.type:
+    case decrementPlayerGear.type: {
       return {
         ...state,
         gear: state.gear - 1,
       };
+    }
 
-    case decrementPlayerLevel.type:
+    case decrementPlayerLevel.type: {
       return {
         ...state,
         level: state.level - 1,
       };
+    }
 
-    case incrementPlayerGear.type:
+    case incrementPlayerGear.type: {
       return {
         ...state,
         gear: state.gear + 1,
       };
+    }
 
-    case incrementPlayerLevel.type:
+    case incrementPlayerLevel.type: {
       return {
         ...state,
         level: state.level + 1,
       };
+    }
 
-    case killPlayer.type:
+    case killPlayer.type: {
       return {
         ...state,
         gear: 0,
       };
+    }
 
-    case togglePlayerSex.type:
+    case togglePlayerSex.type: {
       return {
         ...state,
         sex: toggleSex(state.sex),
       };
+    }
   }
 };
 

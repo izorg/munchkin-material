@@ -17,32 +17,37 @@ export const monsterReducer = (
   action: PayloadAction<string>
 ): Monster => {
   switch (action.type) {
-    case decrementMonsterBonus.type:
+    case decrementMonsterBonus.type: {
       return {
         ...state,
         bonus: state.bonus - 1,
       };
+    }
 
-    case decrementMonsterLevel.type:
+    case decrementMonsterLevel.type: {
       return {
         ...state,
         level: state.level - 1,
       };
+    }
 
-    case incrementMonsterBonus.type:
+    case incrementMonsterBonus.type: {
       return {
         ...state,
         bonus: state.bonus + 1,
       };
+    }
 
-    case incrementMonsterLevel.type:
+    case incrementMonsterLevel.type: {
       return {
         ...state,
         level: state.level + 1,
       };
+    }
 
-    default:
+    default: {
       return state;
+    }
   }
 };
 

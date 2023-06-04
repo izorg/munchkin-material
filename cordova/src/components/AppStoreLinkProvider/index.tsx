@@ -4,14 +4,17 @@ import { AppStoreLinkContext } from "../../../../web/src/utils/appStoreLinkConte
 
 const getAppStoreLink = () => {
   switch (window.cordova.platformId) {
-    case "android":
+    case "android": {
       return "market://details?id=com.izorg.munchkin";
+    }
 
-    case "ios":
+    case "ios": {
       return "itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=1448937097";
+    }
 
-    default:
+    default: {
       return undefined;
+    }
   }
 };
 
