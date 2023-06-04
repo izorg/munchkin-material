@@ -1,7 +1,12 @@
 import { mdiClose, mdiFlagCheckered, mdiTrashCanOutline } from "@mdi/js";
 import { SvgIcon } from "@mui/material";
 import PropTypes from "prop-types";
-import { cloneElement, type FC, type ReactNode } from "react";
+import {
+  cloneElement,
+  type FC,
+  type ReactElement,
+  type ReactNode,
+} from "react";
 import { FormattedMessage } from "react-intl";
 
 import { setCombatPlayerBonus } from "../../../ducks/combat";
@@ -68,7 +73,7 @@ const HomeAppBar: FC<HomeAppBarProps> = (props) => {
     !empty && <EditButton key="edit" />,
     <DiceButton key="dice" />,
     <SettingsIconButton key="settings" />,
-  ].filter((item): item is JSX.Element => item !== false);
+  ].filter((item): item is ReactElement => item !== false);
 
   if (editMode) {
     buttons = [<ShuffleButton key="shuffle" />, <EditButton key="save" />];
