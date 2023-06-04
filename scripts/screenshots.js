@@ -69,7 +69,10 @@ const delay = (timeout) =>
   new Promise((resolve) => setTimeout(resolve, timeout));
 
 const range = (start, end) =>
-  Array.from(Array(Math.abs(end - start) + 1), (_, i) => start + i);
+  Array.from(
+    Array.from({ length: Math.abs(end - start) + 1 }),
+    (_, i) => start + i
+  );
 
 const getScreenshots = async (browserType, device, locale, deviceName) => {
   const screenshotDir = path.join(dir, locale, deviceName);
