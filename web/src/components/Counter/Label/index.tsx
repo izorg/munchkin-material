@@ -3,13 +3,13 @@ import { useIntl } from "react-intl";
 
 import { EN, RU } from "../../../i18n";
 
-const munchkinFontSupportedLocales = [EN, RU];
+const munchkinFontSupportedLocales = new Set([EN, RU]);
 
 const CounterLabel = ({ sx = [], ...props }: BoxProps) => {
   const { locale } = useIntl();
   const theme = useTheme();
 
-  const fontFamily = munchkinFontSupportedLocales.includes(locale)
+  const fontFamily = munchkinFontSupportedLocales.has(locale)
     ? `"Munchkin", ${String(theme.typography.fontFamily)}`
     : theme.typography.fontFamily;
 
