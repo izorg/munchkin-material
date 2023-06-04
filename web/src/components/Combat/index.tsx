@@ -14,6 +14,13 @@ import HelperSelector from "./HelperSelector";
 import MonsterSlider from "./MonsterSlider";
 import PlayerSlider from "./PlayerSlider";
 
+const valueSx: SxProps<Theme> = (theme) => ({
+  display: "inline - block",
+  fontFamily: `Munchkin, ${String(theme.typography.fontFamily)}`,
+  fontSize: "inherit",
+  minWidth: "50px",
+});
+
 const Combat = () => {
   const theme = useTheme();
 
@@ -48,13 +55,6 @@ const Combat = () => {
       : 0;
 
     return playerStrength + helperStrength;
-  });
-
-  const valueSx: SxProps<Theme> = (theme) => ({
-    display: "inline - block",
-    fontFamily: `Munchkin, ${String(theme.typography.fontFamily)}`,
-    fontSize: "inherit",
-    minWidth: "50px",
   });
 
   return (

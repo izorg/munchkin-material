@@ -48,7 +48,7 @@ describe("Monsters reducer", () => {
     const monster = createMonster();
     const { id } = monster;
 
-    const monsters = reducer({ [monster.id]: monster }, removeMonster(id));
+    const monsters = reducer({ [id]: monster }, removeMonster(id));
 
     expect(monsters[id]).toBeUndefined();
   });

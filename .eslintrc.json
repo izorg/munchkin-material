@@ -111,7 +111,6 @@
         "natural": true
       }
     ],
-    "unicorn/consistent-destructuring": "off",
     "unicorn/consistent-function-scoping": "off",
     "unicorn/filename-case": "off",
     "unicorn/no-array-for-each": "off",

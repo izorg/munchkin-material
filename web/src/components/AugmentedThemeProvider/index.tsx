@@ -26,12 +26,12 @@ const AugmentedThemeProvider: FC<PropsWithChildren> = ({ children }) => {
   const previewTheme = usePreviewTheme();
 
   const theme = useMemo(() => {
-    const { mode = systemPaletteMode, pureBlack } = previewTheme;
+    const { id, mode = systemPaletteMode, pureBlack } = previewTheme;
 
     return createTheme(
       deepmerge(
         getThemeOptions({ direction, mode, pureBlack }),
-        themes[previewTheme.id].getTheme(mode)
+        themes[id].getTheme(mode)
       )
     );
   }, [direction, previewTheme, systemPaletteMode]);
