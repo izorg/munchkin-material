@@ -54,9 +54,9 @@ const ThemeDialog = () => {
   const onChange = (partialTheme: Partial<FormValues>) => {
     const searchParams = new URLSearchParams(location.search);
 
-    Object.entries(partialTheme).forEach(([key, value]) =>
-      searchParams.set(key, value)
-    );
+    for (const [key, value] of Object.entries(partialTheme)) {
+      searchParams.set(key, value);
+    }
 
     const search = `?${searchParams.toString()}`;
 

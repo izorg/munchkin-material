@@ -112,7 +112,6 @@
       }
     ],
     "unicorn/filename-case": "off",
-    "unicorn/no-array-for-each": "off",
     "unicorn/no-instanceof-array": "off",
     "unicorn/no-null": "off",
     "unicorn/no-useless-undefined": "off",

@@ -7,7 +7,9 @@ const poeditor = axios.create({
 
     params.append("api_token", process.env.POEDITOR_TOKEN);
 
-    Object.entries(data).forEach(([key, value]) => params.append(key, value));
+    for (const [key, value] of Object.entries(data)) {
+      params.append(key, value);
+    }
 
     return params.toString();
   },

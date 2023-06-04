@@ -10,9 +10,9 @@ test("player colors should be converted to tokens", () => {
   // @ts-expect-error migration data
   const { players } = migrate(state);
 
-  Object.values(players).forEach((player) => {
+  for (const player of Object.values(players)) {
     const { color } = player;
 
     expect([...availableColors, null, undefined].includes(color)).toBe(true);
-  });
+  }
 });

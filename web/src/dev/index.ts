@@ -25,12 +25,16 @@ const setTestData = () => {
 
   const locale = settings.locale || getLocale();
 
-  Object.entries(players)
-    .find(([key]) => key === locale)?.[1]
-    .forEach((player) => {
+  const localePlayers = Object.entries(players).find(
+    ([key]) => key === locale
+  )?.[1];
+
+  if (localePlayers) {
+    for (const player of localePlayers) {
       store.dispatch(addPlayer(player));
       store.dispatch(addPlayerToList(player.id));
-    });
+    }
+  }
 };
 
 window.munchkinDev = {
