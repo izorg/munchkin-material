@@ -40,7 +40,7 @@ const PlayerAvatar = forwardRef<HTMLDivElement, PlayerAvatarProps>(
             <path d={mdiCheck} />
           </SvgIcon>
         ) : (
-          Array.from(name)[0].toUpperCase()
+          [...name][0].toUpperCase()
         )}
       </Avatar>
     );
