@@ -205,7 +205,7 @@ const locales = [
 const screenshots = async () => {
   try {
     await fs.rm(path.join(dir), { recursive: true });
-  } catch (error) {
+  } catch {
     // folder could not exist
   }
 

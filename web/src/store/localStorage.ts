@@ -14,7 +14,7 @@ export const loadState = ():
 
   try {
     serializedState = localStorage.getItem(key);
-  } catch (error) {
+  } catch {
     console.warn("Can't load state from localStorage");
 
     return undefined;
@@ -30,7 +30,7 @@ export const loadState = ():
 export const saveState = (state: State): void => {
   try {
     localStorage.setItem(key, JSON.stringify(state));
-  } catch (error) {
+  } catch {
     console.warn("Can't save state to localStorage");
   }
 };

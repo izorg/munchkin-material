@@ -27,7 +27,7 @@ const SingleModeItem = () => {
     if (isSingleMode && !fullVersion) {
       try {
         await buyFullVersion();
-      } catch (error) {
+      } catch {
         return;
       }
     }

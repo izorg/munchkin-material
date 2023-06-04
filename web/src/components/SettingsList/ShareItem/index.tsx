@@ -32,7 +32,7 @@ const ShareItem = () => {
         title: shareText,
         url: shareLink,
       });
-    } catch (error) {
+    } catch {
       return;
     }
   };

@@ -93,7 +93,7 @@ const ThemeDialog = () => {
     if (previewTheme.id !== currentThemeId && !fullVersion) {
       try {
         await buyFullVersion();
-      } catch (error) {
+      } catch {
         return;
       }
     }
