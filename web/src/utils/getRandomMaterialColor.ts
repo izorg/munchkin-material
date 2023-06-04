@@ -7,7 +7,7 @@ const getRandomMaterialColor = (
     (color) => !excluded.includes(color)
   );
 
-  if (!preferredColors.length) {
+  if (preferredColors.length === 0) {
     preferredColors = availableColors;
   }
 
