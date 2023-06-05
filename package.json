@@ -2,6 +2,7 @@
   "private": true,
   "version": "14.6.2",
   "type": "module",
+  "packageManager": "yarn@3.6.0",
   "workspaces": [
     "cordova",
     "web"
@@ -66,6 +67,5 @@
   },
   "resolutions": {
     "@parcel/runtime-js@2.9.1": "patch:@parcel/runtime-js@npm%3A2.9.1#./.yarn/patches/@parcel-runtime-js-npm-2.9.1-f255b14962.patch"
-  },
-  "packageManager": "yarn@3.6.0"
+  }
 }
