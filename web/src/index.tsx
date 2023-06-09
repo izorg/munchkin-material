@@ -1,7 +1,6 @@
 import "./polyfills";
 import "./sentry";
 
-import { captureException } from "@sentry/react";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
@@ -21,7 +20,7 @@ if (process.env.NODE_ENV === "development") {
 }
 
 if (process.env.NODE_ENV === "production") {
-  import("./firebase").catch((error) => captureException(error));
+  import("./firebase");
 }
 
 const node = document.querySelector("#root");
