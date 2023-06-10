@@ -38,7 +38,7 @@ const AugmentedThemeProvider: FC<PropsWithChildren> = ({ children }) => {
 
   return (
     <ThemeProvider theme={theme}>
-      <CssBaseline />
+      <CssBaseline enableColorScheme />
       {children}
     </ThemeProvider>
   );

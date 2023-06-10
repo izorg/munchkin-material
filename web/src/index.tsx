@@ -11,6 +11,7 @@ import AugmentedThemeProvider from "./components/AugmentedThemeProvider";
 import LocaleProvider from "./components/LocaleProvider";
 import ReduxProvider from "./components/ReduxProvider";
 import ScreenViewProvider from "./components/ScreenViewProvider";
+import ThemeColorProvider from "./components/ThemeColorProvider";
 import VersionProvider from "./components/VersionProvider";
 import WakeLockProvider from "./components/WakeLockProvider";
 import WorkboxProvider from "./components/WorkboxProvider";
@@ -42,6 +43,7 @@ root.render(
                 <AugmentedStylesProvider>
                   <AugmentedThemeProvider>
                     <ScreenViewProvider />
+                    <ThemeColorProvider />
                     <App />
                   </AugmentedThemeProvider>
                 </AugmentedStylesProvider>
