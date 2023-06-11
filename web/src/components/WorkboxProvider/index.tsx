@@ -3,7 +3,6 @@ import {
   createContext,
   type FC,
   type PropsWithChildren,
-  useCallback,
   useContext,
   useEffect,
   useMemo,
@@ -36,16 +35,6 @@ const WorkboxProvider: FC<PropsWithChildren> = ({ children }) => {
     return undefined;
   }, []);
 
-  const applyUpdate = useCallback(() => {
-    if (workbox) {
-      workbox.addEventListener("controlling", () => {
-        window.location.reload();
-      });
-
-      workbox.messageSkipWaiting();
-    }
-  }, [workbox]);
-
   useEffect(() => {
     if (workbox) {
       workbox.addEventListener("waiting", () => {
@@ -58,11 +47,24 @@ const WorkboxProvider: FC<PropsWithChildren> = ({ children }) => {
     }
   }, [workbox]);
 
-  return (
-    <Context.Provider value={{ applyUpdate, update }}>
-      {children}
-    </Context.Provider>
-  );
+  const value = useMemo(() => {
+    const applyUpdate = () => {
+      if (workbox) {
+        workbox.addEventListener("controlling", () => {
+          window.location.reload();
+        });
+
+        workbox.messageSkipWaiting();
+      }
+    };
+
+    return {
+      applyUpdate,
+      update,
+    };
+  }, [update, workbox]);
+
+  return <Context.Provider value={value}>{children}</Context.Provider>;
 };
 
 WorkboxProvider.propTypes = {
