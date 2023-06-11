@@ -1,11 +1,13 @@
-import { useTheme } from "@mui/material";
+import { darken, rgbToHex, useTheme } from "@mui/material";
 import { useEffect } from "react";
 
 const ThemeColorProvider = () => {
   const { palette } = useTheme();
 
   const color =
-    palette.mode === "dark" ? palette.common.black : palette.primary.dark;
+    palette.mode === "dark"
+      ? palette.common.black
+      : rgbToHex(darken(palette.primary.main, 0.5));
 
   useEffect(() => {
     let node = document.querySelector('meta[name="theme-color"]');
