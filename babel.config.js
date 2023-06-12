@@ -6,7 +6,7 @@ const plugins = [
     "babel-plugin-polyfill-corejs3",
     {
       method: "usage-global",
-      version: "3.30",
+      version: "3.31",
     },
   ],
 ];
