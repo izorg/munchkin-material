@@ -63,7 +63,7 @@
     "stylelint-config-standard": "33.0.0",
     "stylelint-order": "6.0.3",
     "stylelint-prettier": "3.0.0",
-    "typescript": "5.0.4"
+    "typescript": "5.1.3"
   },
   "resolutions": {
     "@parcel/runtime-js@2.9.1": "patch:@parcel/runtime-js@npm%3A2.9.1#./.yarn/patches/@parcel-runtime-js-npm-2.9.1-f255b14962.patch"

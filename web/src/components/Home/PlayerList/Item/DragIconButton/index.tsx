@@ -9,9 +9,7 @@ import {
 import { type OverridableComponent } from "@mui/types";
 import { forwardRef } from "react";
 
-const DragIconButton: OverridableComponent<
-  ExtendButtonBaseTypeMap<IconButtonTypeMap>
-> = forwardRef(function DragIconButton(
+const DragIconButton = forwardRef(function DragIconButton(
   props: IconButtonProps,
   ref: IconButtonProps["ref"]
 ) {
@@ -22,6 +20,6 @@ const DragIconButton: OverridableComponent<
       </SvgIcon>
     </IconButton>
   );
-});
+}) as OverridableComponent<ExtendButtonBaseTypeMap<IconButtonTypeMap>>;
 
 export default DragIconButton;
