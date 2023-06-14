@@ -3,10 +3,9 @@ import { m, type TapInfo } from "framer-motion";
 import PropTypes from "prop-types";
 import { type FC, useCallback, useEffect, useRef } from "react";
 
-type CounterButtonProps = Omit<
-  IconButtonProps<typeof m.button> & { onClick: () => void },
-  "click"
->;
+type CounterButtonProps = Omit<IconButtonProps<typeof m.button>, "onClick"> & {
+  onClick: () => void;
+};
 
 const CounterButton: FC<CounterButtonProps> = ({
   disabled = false,
@@ -43,10 +42,7 @@ const CounterButton: FC<CounterButtonProps> = ({
 
   const startPointRef = useRef({ x: 0, y: 0 });
 
-  const onTapStart = (
-    event: MouseEvent | PointerEvent | TouchEvent,
-    info: TapInfo
-  ) => {
+  const onTapStart = (event: PointerEvent, info: TapInfo) => {
     startPointRef.current = info.point;
 
     timeoutRef.current = window.setTimeout(() => {
@@ -58,10 +54,7 @@ const CounterButton: FC<CounterButtonProps> = ({
     }, 500);
   };
 
-  const onTap = (
-    event: MouseEvent | PointerEvent | TouchEvent,
-    info: TapInfo
-  ) => {
+  const onTap = (event: PointerEvent, info: TapInfo) => {
     clearPress();
 
     if (event.type === "pointercancel") {
