@@ -1,13 +1,7 @@
 import { IconButton, type IconButtonProps } from "@mui/material";
 import { m, type TapInfo } from "framer-motion";
 import PropTypes from "prop-types";
-import {
-  type FC,
-  type KeyboardEvent,
-  useCallback,
-  useEffect,
-  useRef,
-} from "react";
+import { type FC, useCallback, useEffect, useRef } from "react";
 
 type CounterButtonProps = Omit<
   IconButtonProps<typeof m.button> & { onClick: () => void },
@@ -88,18 +82,11 @@ const CounterButton: FC<CounterButtonProps> = ({
     }
   };
 
-  const onKeyDown = ({ key }: KeyboardEvent) => {
-    if (key === " " || key === "Enter") {
-      onClick();
-    }
-  };
-
   return (
     <IconButton
       component={m.button}
       disabled={disabled}
       {...rest}
-      onKeyDown={onKeyDown}
       onPanStart={clearPress}
       onTap={onTap}
       onTapCancel={clearPress}
