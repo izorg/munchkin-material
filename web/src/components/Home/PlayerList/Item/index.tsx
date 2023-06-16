@@ -6,9 +6,9 @@ import {
   ListItemButton,
   type ListItemProps,
 } from "@mui/material";
-import { m, type TapHandlers } from "framer-motion";
+import { m, type TapInfo } from "framer-motion";
 import PropTypes from "prop-types";
-import { type KeyboardEvent, useCallback, useRef } from "react";
+import { useCallback, useRef } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 
 import { togglePlayer, unselectAllPlayers } from "../../../../ducks/ui";
@@ -51,34 +51,48 @@ const HomePlayerListItem = (props: HomePlayerListItemProps) => {
   const players = usePresentSelector((state) => state.players);
   const player = players[playerId];
 
-  const onMultiSelectActivate = () => {
+  const onMultiSelectActivate = useCallback(() => {
     dispatch(unselectAllPlayers());
     dispatch(togglePlayer(playerId));
 
     setMultiMode(true);
-  };
+  }, [dispatch, playerId, setMultiMode]);
 
-  const onClick = (
-    event: KeyboardEvent | MouseEvent | PointerEvent | TouchEvent
-  ) => {
-    if (editMode) {
-      setSearchParams((searchParams) => {
-        searchParams.set("player", playerId);
+  const onClick = useCallback(
+    (event: MouseEvent | PointerEvent | TouchEvent) => {
+      if (editMode) {
+        setSearchParams((searchParams) => {
+          searchParams.set("player", playerId);
 
-        return searchParams;
-      });
-    } else if (multiMode) {
-      dispatch(togglePlayer(playerId));
+          return searchParams;
+        });
+      } else if (multiMode) {
+        dispatch(togglePlayer(playerId));
 
-      if (selectedPlayerIds.length === 1 && selectedPlayerIds[0] === playerId) {
-        goBack();
+        if (
+          selectedPlayerIds.length === 1 &&
+          selectedPlayerIds[0] === playerId
+        ) {
+          goBack();
+        }
+      } else if (avatarRef.current?.contains(event.target as HTMLElement)) {
+        onMultiSelectActivate();
+      } else {
+        navigate(`/player/${playerId}`);
       }
-    } else if (avatarRef.current?.contains(event.target as HTMLElement)) {
-      onMultiSelectActivate();
-    } else {
-      navigate(`/player/${playerId}`);
-    }
-  };
+    },
+    [
+      dispatch,
+      editMode,
+      goBack,
+      multiMode,
+      navigate,
+      onMultiSelectActivate,
+      playerId,
+      selectedPlayerIds,
+      setSearchParams,
+    ]
+  );
 
   const clearPress = useCallback(() => {
     if (pressTimeoutRef.current) {
@@ -91,55 +105,41 @@ const HomePlayerListItem = (props: HomePlayerListItemProps) => {
   const startPointRef = useRef({ x: 0, y: 0 });
   const startTapTimeRef = useRef(Date.now());
 
-  const onTapStart: TapHandlers["onTapStart"] = (event, info) => {
-    startPointRef.current = info.point;
-    startTapTimeRef.current = Date.now();
+  const onTapStart = useCallback(
+    (event: MouseEvent | TouchEvent | PointerEvent, info: TapInfo) => {
+      startPointRef.current = info.point;
+      startTapTimeRef.current = Date.now();
 
-    pressTimeoutRef.current = window.setTimeout(() => {
-      pressTimeoutRef.current = 0;
+      pressTimeoutRef.current = window.setTimeout(() => {
+        pressTimeoutRef.current = 0;
 
-      const avatarNode = avatarRef.current;
+        const avatarNode = avatarRef.current;
 
-      if (
-        !(editMode || multiMode) &&
-        (!avatarNode || !avatarNode.contains(event.target as HTMLElement))
-      ) {
-        if (navigator.vibrate && !ios) {
-          navigator.vibrate(20);
+        if (
+          !(editMode || multiMode) &&
+          (!avatarNode || !avatarNode.contains(event.target as HTMLElement))
+        ) {
+          if (navigator.vibrate && !ios) {
+            navigator.vibrate(20);
+          }
+
+          onMultiSelectActivate();
         }
+      }, 500);
+    },
+    [editMode, multiMode, onMultiSelectActivate]
+  );
 
-        onMultiSelectActivate();
+  const onTap = useCallback(
+    (event: MouseEvent | TouchEvent | PointerEvent) => {
+      clearPress();
+
+      if (Date.now() - startTapTimeRef.current < 500) {
+        onClick(event);
       }
-    }, 500);
-  };
-
-  const onTap: TapHandlers["onTap"] = (event, info) => {
-    clearPress();
-
-    if (event.type === "pointercancel") {
-      return;
-    }
-
-    const delta = Math.sqrt(
-      Math.pow(info.point.x - startPointRef.current.x, 2) +
-        Math.pow(info.point.y - startPointRef.current.y, 2)
-    );
-
-    // happens when mouse down, move and up on the same item
-    if (delta > 3) {
-      return;
-    }
-
-    if (Date.now() - startTapTimeRef.current < 500) {
-      onClick(event);
-    }
-  };
-
-  const onKeyDown = (event: KeyboardEvent) => {
-    if (event.key === "Enter") {
-      onClick(event);
-    }
-  };
+    },
+    [clearPress, onClick]
+  );
 
   const {
     attributes,
@@ -151,11 +151,6 @@ const HomePlayerListItem = (props: HomePlayerListItemProps) => {
   } = useSortable({
     id: playerId,
   });
-
-  const style = {
-    transform: CSS.Transform.toString(transform),
-    transition,
-  };
 
   return (
     <ListItem
@@ -178,7 +173,10 @@ const HomePlayerListItem = (props: HomePlayerListItemProps) => {
           />
         )
       }
-      style={style}
+      style={{
+        transform: CSS.Transform.toString(transform),
+        transition,
+      }}
       sx={[
         editMode && {
           "@supports (padding: max(0px))": {
@@ -197,7 +195,6 @@ const HomePlayerListItem = (props: HomePlayerListItemProps) => {
     >
       <ListItemButton
         component={m.div}
-        onKeyDown={onKeyDown}
         onPanStart={clearPress}
         onTap={onTap}
         onTapCancel={clearPress}
