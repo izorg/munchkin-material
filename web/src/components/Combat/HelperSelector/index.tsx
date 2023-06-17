@@ -6,6 +6,7 @@ import {
   ListItemAvatar,
   ListItemButton,
 } from "@mui/material";
+import { useMemo } from "react";
 import { FormattedMessage } from "react-intl";
 import { useLocation } from "react-router-dom";
 
@@ -23,13 +24,14 @@ const HelperSelector = () => {
 
   const goBack = useGoBack();
 
-  const helpers = usePresentSelector((state) => {
-    const { combat, playerList, players } = state;
+  const playerId = usePresentSelector((state) => state.combat.playerId);
+  const playerList = usePresentSelector((state) => state.playerList);
+  const players = usePresentSelector((state) => state.players);
 
-    return playerList
-      .filter((id) => id !== combat.playerId)
-      .map((id) => players[id]);
-  });
+  const helpers = useMemo(
+    () => playerList.filter((id) => id !== playerId).map((id) => players[id]),
+    [playerId, playerList, players]
+  );
 
   const open = new URLSearchParams(location.search).get("add") === "helper";
 
