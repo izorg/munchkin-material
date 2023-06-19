@@ -15,7 +15,7 @@ import MonsterSlider from "./MonsterSlider";
 import PlayerSlider from "./PlayerSlider";
 
 const valueSx: SxProps<Theme> = (theme) => ({
-  display: "inline - block",
+  display: "inline-block",
   fontFamily: `Munchkin, ${String(theme.typography.fontFamily)}`,
   fontSize: "inherit",
   minWidth: "50px",
