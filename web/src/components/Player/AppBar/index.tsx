@@ -1,5 +1,4 @@
 import { Box } from "@mui/material";
-import PropTypes from "prop-types";
 import { type FC } from "react";
 
 import { useGoBack } from "../../../utils/location";
@@ -9,9 +8,7 @@ import TopAppBar from "../../TopAppBar";
 
 import KillPlayerButton from "./KillPlayerButton";
 
-type PlayerAppBarProps = { playerId: string };
-
-const PlayerAppBar: FC<PlayerAppBarProps> = ({ playerId }) => {
+const PlayerAppBar: FC = () => {
   const goBack = useGoBack();
 
   return (
@@ -19,13 +16,9 @@ const PlayerAppBar: FC<PlayerAppBarProps> = ({ playerId }) => {
       <BackButton data-screenshots="player-back-button" onClick={goBack} />
       <Box sx={{ flex: 1 }} />
       <DiceButton data-screenshots="player-dice-button" />
-      <KillPlayerButton edge="end" playerId={playerId} />
+      <KillPlayerButton edge="end" />
     </TopAppBar>
   );
-};
-
-PlayerAppBar.propTypes = {
-  playerId: PropTypes.string.isRequired,
 };
 
 export default PlayerAppBar;

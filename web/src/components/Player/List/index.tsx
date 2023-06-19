@@ -1,13 +1,15 @@
 import { List, type ListProps, Paper } from "@mui/material";
-import PropTypes from "prop-types";
 
 import usePresentSelector from "../../../hooks/usePresentSelector";
+import { usePlayerId } from "../../PlayerView";
 
 import Item from "./Item";
 
-type PlayerListProps = { selectedPlayerId: string } & ListProps<typeof Paper>;
+type PlayerListProps = ListProps<typeof Paper>;
 
-const PlayerList = ({ selectedPlayerId, ...props }: PlayerListProps) => {
+const PlayerList = (props: PlayerListProps) => {
+  const selectedPlayerId = usePlayerId();
+
   const playerList = usePresentSelector((state) => state.playerList);
   const players = usePresentSelector((state) => state.players);
 
@@ -22,10 +24,6 @@ const PlayerList = ({ selectedPlayerId, ...props }: PlayerListProps) => {
       ))}
     </List>
   );
-};
-
-PlayerList.propTypes = {
-  selectedPlayerId: PropTypes.string.isRequired,
 };
 
 export default PlayerList;

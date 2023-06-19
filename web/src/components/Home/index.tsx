@@ -1,11 +1,8 @@
 import { Box, Zoom } from "@mui/material";
-import { useMatch } from "react-router-dom";
 
 import usePresentSelector from "../../hooks/usePresentSelector";
 import LevelLimitDialog from "../LevelLimitDialog";
 import Nobody from "../Nobody";
-import Player from "../Player";
-import ScreenDialog from "../ScreenDialog";
 import ThemeDialog from "../ThemeDialog";
 
 import AppBar from "./AppBar";
@@ -47,11 +44,6 @@ const Home = () => {
     );
   }
 
-  const playerMatch = useMatch({
-    end: false,
-    path: "/player/:id",
-  });
-
   return (
     <>
       <AppBar empty={empty} singleMode={singleMode} />
@@ -73,10 +65,6 @@ const Home = () => {
 
       <LevelLimitDialog />
       <ThemeDialog />
-
-      <ScreenDialog open={Boolean(playerMatch)}>
-        <Player playerId={playerMatch?.params.id} />
-      </ScreenDialog>
     </>
   );
 };

@@ -1,8 +1,10 @@
 import { domMax, LazyMotion } from "framer-motion";
 
+import CombatView from "../CombatView";
 import DiceDialog from "../DiceDialog";
 import Home from "../Home";
 import PlayerDialog from "../PlayerDialog";
+import PlayerView from "../PlayerView";
 import ScreenDialog from "../ScreenDialog";
 import SettingsDialog from "../SettingsDialog";
 import UndoProvider from "../UndoProvider";
@@ -14,6 +16,8 @@ const App = () => (
       <ScreenDialog open TransitionProps={{ appear: false }}>
         <Home />
       </ScreenDialog>
+      <PlayerView />
+      <CombatView />
       <SettingsDialog />
       <DiceDialog />
       <PlayerDialog />

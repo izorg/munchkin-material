@@ -1,26 +1,20 @@
 import { mdiSkull } from "@mdi/js";
 import { type IconButtonProps, SvgIcon, Tooltip } from "@mui/material";
-import PropTypes from "prop-types";
 import { type FC } from "react";
 import { useIntl } from "react-intl";
 
 import { killPlayer } from "../../../../ducks/players";
 import usePresentSelector from "../../../../hooks/usePresentSelector";
 import { useAppDispatch } from "../../../../store";
+import { usePlayerId } from "../../../PlayerView";
 import TopIconButton from "../../../TopIconButton";
 import { useUndo } from "../../../UndoProvider";
 
-type KillPlayerButtonProps = {
-  playerId: string;
-} & IconButtonProps;
-
-const KillPlayerButton: FC<KillPlayerButtonProps> = ({
-  playerId,
-  ...props
-}) => {
+const KillPlayerButton: FC<IconButtonProps> = (props) => {
   const dispatch = useAppDispatch();
   const intl = useIntl();
 
+  const playerId = usePlayerId();
   const { setMessage } = useUndo();
 
   const players = usePresentSelector((state) => state.players);
@@ -67,10 +61,6 @@ const KillPlayerButton: FC<KillPlayerButtonProps> = ({
       {button}
     </Tooltip>
   );
-};
-
-KillPlayerButton.propTypes = {
-  playerId: PropTypes.string.isRequired,
 };
 
 export default KillPlayerButton;

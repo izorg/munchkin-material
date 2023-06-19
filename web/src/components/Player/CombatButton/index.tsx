@@ -1,19 +1,21 @@
 import { mdiSwordCross } from "@mdi/js";
 import { type FabProps, SvgIcon } from "@mui/material";
-import PropTypes from "prop-types";
 import { type FC } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { startCombat } from "../../../ducks/combat";
 import usePresentSelector from "../../../hooks/usePresentSelector";
 import { useAppDispatch } from "../../../store";
+import { usePlayerId } from "../../PlayerView";
 import ScreenFab from "../../ScreenFab";
 
-type CombatButtonProps = { playerId: string } & FabProps;
+type CombatButtonProps = FabProps;
 
-const CombatButton: FC<CombatButtonProps> = ({ playerId, ...rest }) => {
+const CombatButton: FC<CombatButtonProps> = (props) => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+
+  const playerId = usePlayerId();
 
   const combatFinished = usePresentSelector((state) => state.combat.finished);
   const combatPlayerId = usePresentSelector((state) => state.combat.playerId);
@@ -30,17 +32,13 @@ const CombatButton: FC<CombatButtonProps> = ({ playerId, ...rest }) => {
     <ScreenFab
       data-screenshots="combat-button"
       onClick={() => goToCombat()}
-      {...rest}
+      {...props}
     >
       <SvgIcon>
         <path d={mdiSwordCross} />
       </SvgIcon>
     </ScreenFab>
   );
-};
-
-CombatButton.propTypes = {
-  playerId: PropTypes.string.isRequired,
 };
 
 export default CombatButton;

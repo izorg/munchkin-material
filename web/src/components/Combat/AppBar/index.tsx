@@ -1,5 +1,6 @@
 import { mdiFlagCheckered } from "@mdi/js";
 import { SvgIcon } from "@mui/material";
+import { useCallback } from "react";
 import { FormattedMessage } from "react-intl";
 
 import { finishCombat } from "../../../ducks/combat";
@@ -15,16 +16,15 @@ const CombatAppBar = () => {
   const dispatch = useAppDispatch();
 
   const goBack = useGoBack();
-  const onBack = () => goBack();
 
-  const onFinish = () => {
+  const onFinish = useCallback(() => {
     dispatch(finishCombat());
     goBack();
-  };
+  }, [dispatch, goBack]);
 
   return (
     <TopAppBar>
-      <BackButton data-screenshots="combat-back-button" onClick={onBack} />
+      <BackButton data-screenshots="combat-back-button" onClick={goBack} />
 
       <Title>
         <FormattedMessage defaultMessage="Combat" id="combat" />
