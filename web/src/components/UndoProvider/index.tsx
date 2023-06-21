@@ -14,7 +14,7 @@ type UndoContext = {
   setMessage: (message: ReactNode) => void;
 };
 
-const Context = createContext<UndoContext | undefined>(undefined);
+const Context = createContext<undefined | UndoContext>(undefined);
 
 export const useUndo = (): UndoContext => {
   const context = useContext(Context);

@@ -106,7 +106,7 @@ const HomePlayerListItem = (props: HomePlayerListItemProps) => {
   const startTapTimeRef = useRef(Date.now());
 
   const onTapStart = useCallback(
-    (event: MouseEvent | TouchEvent | PointerEvent, info: TapInfo) => {
+    (event: MouseEvent | PointerEvent | TouchEvent, info: TapInfo) => {
       startPointRef.current = info.point;
       startTapTimeRef.current = Date.now();
 
@@ -131,7 +131,7 @@ const HomePlayerListItem = (props: HomePlayerListItemProps) => {
   );
 
   const onTap = useCallback(
-    (event: MouseEvent | TouchEvent | PointerEvent) => {
+    (event: MouseEvent | PointerEvent | TouchEvent) => {
       clearPress();
 
       if (Date.now() - startTapTimeRef.current < 500) {

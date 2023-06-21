@@ -20,7 +20,7 @@ const UndoSnackbar = () => {
 
   const open = useAppSelector((state) => state.past.length > 0);
 
-  const onClose = (event: unknown, reason: SnackbarCloseReason | "undo") => {
+  const onClose = (event: unknown, reason: "undo" | SnackbarCloseReason) => {
     if (reason === "undo") {
       dispatch(ActionCreators.undo());
     }

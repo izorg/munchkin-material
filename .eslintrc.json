@@ -84,7 +84,6 @@
     "perfectionist/sort-imports": "off",
     "perfectionist/sort-jsx-props": "off",
     "perfectionist/sort-objects": "off",
-    "perfectionist/sort-union-types": "off",
     "react/jsx-sort-props": [
       "error",
       {

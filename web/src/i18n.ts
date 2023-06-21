@@ -113,7 +113,7 @@ const loaders = {
 
 export const loadMessages = async (
   locale: SupportedLocale
-): Promise<Record<string, string> | Record<string, MessageFormatElement[]>> => {
+): Promise<Record<string, MessageFormatElement[]> | Record<string, string>> => {
   const messages = await loaders[locale]();
 
   return messages.default ?? messages;

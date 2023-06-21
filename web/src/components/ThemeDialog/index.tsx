@@ -29,7 +29,7 @@ import SubmitButton from "../SubmitButton";
 
 type FormValues = {
   id: string;
-  mode: PaletteMode | "auto";
+  mode: "auto" | PaletteMode;
   pureBlack: "false" | "true";
 };
 
