@@ -13,6 +13,6 @@ test("player colors should be converted to tokens", () => {
   for (const player of Object.values(players)) {
     const { color } = player;
 
-    expect([...availableColors, null, undefined].includes(color)).toBe(true);
+    expect([null, ...availableColors, undefined].includes(color)).toBe(true);
   }
 });

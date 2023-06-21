@@ -81,7 +81,6 @@
         "newlines-between": "always"
       }
     ],
-    "perfectionist/sort-array-includes": "off",
     "perfectionist/sort-imports": "off",
     "perfectionist/sort-jsx-props": "off",
     "perfectionist/sort-objects": "off",
