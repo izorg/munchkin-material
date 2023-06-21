@@ -4934,7 +4934,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/types@npm:5.60.0":
+"@typescript-eslint/types@npm:5.60.0, @typescript-eslint/types@npm:^5.59.11":
   version: 5.60.0
   resolution: "@typescript-eslint/types@npm:5.60.0"
   checksum: 48f29e5c084c5663cfed1a6c4458799a6690a213e7861a24501f9b96698ae59e89a1df1c77e481777e4da78f1b0a5573a549f7b8880e3f4071a7a8b686254db8
@@ -4959,7 +4959,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/utils@npm:5.60.0, @typescript-eslint/utils@npm:^5.10.0":
+"@typescript-eslint/utils@npm:5.60.0, @typescript-eslint/utils@npm:^5.10.0, @typescript-eslint/utils@npm:^5.59.11":
   version: 5.60.0
   resolution: "@typescript-eslint/utils@npm:5.60.0"
   dependencies:
@@ -7897,6 +7897,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"eslint-plugin-perfectionist@npm:1.4.0":
+  version: 1.4.0
+  resolution: "eslint-plugin-perfectionist@npm:1.4.0"
+  dependencies:
+    "@typescript-eslint/types": ^5.59.11
+    "@typescript-eslint/utils": ^5.59.11
+    is-core-module: ^2.12.1
+    json5: ^2.2.3
+    minimatch: ^9.0.1
+    natural-compare-lite: ^1.4.0
+  peerDependencies:
+    eslint: ">=8.0.0"
+  checksum: 2d7f4bcb0e30d6639327dd5197a473fcddd1e4900fdd37c2b5129fbde1d52708081ebb04c8a555669aca0509bb3fd66df1030d7ccb4eae41b1b61de2ffffa318
+  languageName: node
+  linkType: hard
+
 "eslint-plugin-prettier@npm:4.2.1":
   version: 4.2.1
   resolution: "eslint-plugin-prettier@npm:4.2.1"
@@ -9713,7 +9729,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"is-core-module@npm:^2.11.0, is-core-module@npm:^2.12.0, is-core-module@npm:^2.5.0, is-core-module@npm:^2.9.0":
+"is-core-module@npm:^2.11.0, is-core-module@npm:^2.12.0, is-core-module@npm:^2.12.1, is-core-module@npm:^2.5.0, is-core-module@npm:^2.9.0":
   version: 2.12.1
   resolution: "is-core-module@npm:2.12.1"
   dependencies:
@@ -10817,7 +10833,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"json5@npm:^2.2.0, json5@npm:^2.2.1, json5@npm:^2.2.2":
+"json5@npm:^2.2.0, json5@npm:^2.2.1, json5@npm:^2.2.2, json5@npm:^2.2.3":
   version: 2.2.3
   resolution: "json5@npm:2.2.3"
   bin:
@@ -14025,6 +14041,7 @@ __metadata:
     eslint-plugin-json: 3.1.0
     eslint-plugin-jsx-a11y: 6.7.1
     eslint-plugin-only-error: 1.0.2
+    eslint-plugin-perfectionist: 1.4.0
     eslint-plugin-prettier: 4.2.1
     eslint-plugin-react: 7.32.2
     eslint-plugin-react-hooks: 4.6.0

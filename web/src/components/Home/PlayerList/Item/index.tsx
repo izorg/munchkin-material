@@ -203,7 +203,6 @@ const HomePlayerListItem = (props: HomePlayerListItemProps) => {
         sx={{
           width: "100%",
 
-          // eslint-disable-next-line sort-keys
           "@supports (padding: max(0px))": {
             paddingLeft: "max(16px, env(safe-area-inset-left))",
             paddingRight: "max(16px, env(safe-area-inset-right))",

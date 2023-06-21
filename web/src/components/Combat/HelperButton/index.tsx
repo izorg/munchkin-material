@@ -96,7 +96,6 @@ const CombatHelperButton = () => {
             bottom: theme.spacing(3),
             right: theme.spacing(3),
 
-            // eslint-disable-next-line sort-keys
             "@supports (padding: max(0px))": {
               right: `max(${theme.spacing(3)}, env(safe-area-inset-right))`,
             },

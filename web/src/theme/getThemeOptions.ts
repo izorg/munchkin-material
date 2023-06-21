@@ -66,7 +66,6 @@ const getThemeOptions = ({
       toolbar: {
         minHeight: 56,
 
-        // eslint-disable-next-line sort-keys
         "@media (min-width:960px)": {
           minHeight: 64,
         },

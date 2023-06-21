@@ -7,6 +7,7 @@
     "plugin:jest/recommended",
     "plugin:json/recommended",
     "plugin:jsx-a11y/recommended",
+    "plugin:perfectionist/recommended-alphabetical",
     "plugin:react-hooks/recommended",
     "plugin:react/recommended",
     "plugin:unicorn/recommended",
@@ -80,6 +81,11 @@
         "newlines-between": "always"
       }
     ],
+    "perfectionist/sort-array-includes": "off",
+    "perfectionist/sort-imports": "off",
+    "perfectionist/sort-jsx-props": "off",
+    "perfectionist/sort-objects": "off",
+    "perfectionist/sort-union-types": "off",
     "react/jsx-sort-props": [
       "error",
       {
@@ -101,14 +107,6 @@
       {
         "ignoreCase": true,
         "ignoreDeclarationSort": true
-      }
-    ],
-    "sort-keys": [
-      "error",
-      "asc",
-      {
-        "caseSensitive": false,
-        "natural": true
       }
     ],
     "unicorn/filename-case": "off",

@@ -14,7 +14,6 @@ const TopAppBar: FC<PropsWithChildren> = ({ children }) => (
         paddingLeft: theme.spacing(2),
         paddingRight: theme.spacing(2),
 
-        // eslint-disable-next-line sort-keys
         "@supports (padding: max(0px))": {
           paddingLeft: `max(${theme.spacing(2)}, env(safe-area-inset-left))`,
           paddingRight: `max(${theme.spacing(2)}, env(safe-area-inset-right))`,
@@ -24,7 +23,6 @@ const TopAppBar: FC<PropsWithChildren> = ({ children }) => (
           paddingLeft: theme.spacing(3),
           paddingRight: theme.spacing(3),
 
-          // eslint-disable-next-line sort-keys
           "@supports (padding: max(0px))": {
             paddingLeft: `max(${theme.spacing(3)}, env(safe-area-inset-left))`,
             paddingRight: `max(${theme.spacing(
@@ -37,7 +35,6 @@ const TopAppBar: FC<PropsWithChildren> = ({ children }) => (
           minHeight: "64px",
         },
 
-        // eslint-disable-next-line sort-keys
         "@supports (min-height: env(safe-area-inset-top))": {
           minHeight: "calc(56px + env(safe-area-inset-top))",
           paddingTop: "env(safe-area-inset-top)",

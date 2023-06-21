@@ -139,7 +139,6 @@ const PlayerSlider = ({ playerId, sx = [] }: PlayerSliderProps) => {
           overflowX: "auto",
           scrollSnapType: "x mandatory",
 
-          // eslint-disable-next-line sort-keys
           "@supports (-ms-scroll-snap-type: mandatory)": {
             MsScrollSnapType: "mandatory",
           },

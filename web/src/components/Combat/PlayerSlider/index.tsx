@@ -89,12 +89,10 @@ const CombatPlayerSlider: FC<CombatPlayerSliderProps> = (props) => {
     marginLeft: "auto",
     position: "relative",
 
-    // eslint-disable-next-line sort-keys
     "@media (orientation: portrait)": {
       width: "280px",
     },
 
-    // eslint-disable-next-line sort-keys
     "@media (orientation: landscape)": {
       maxWidth: "320px",
     },
@@ -109,12 +107,10 @@ const CombatPlayerSlider: FC<CombatPlayerSliderProps> = (props) => {
           display: "flex",
           overflow: "hidden",
 
-          // eslint-disable-next-line sort-keys
           "@media(orientation: portrait)": {
             width: "100%",
           },
 
-          // eslint-disable-next-line sort-keys
           "@media (orientation: landscape)": {
             flexDirection: "column",
             height: "100%",
@@ -136,7 +132,6 @@ const CombatPlayerSlider: FC<CombatPlayerSliderProps> = (props) => {
           scrollBehavior: "smooth",
           scrollSnapType: "both mandatory",
 
-          // eslint-disable-next-line sort-keys
           "@media (orientation: landscape)": {
             flexDirection: "column",
           },

@@ -22,16 +22,15 @@ const Player = () => {
     <>
       <AppBar />
       <Box
-        sx={(theme) => ({
+        sx={{
           display: "flex",
           flex: 1,
-          flexDirection: "column",
-          overflowY: "auto",
-
-          [theme.breakpoints.up("md")]: {
-            flexDirection: "row-reverse",
+          flexDirection: {
+            xs: "column",
+            md: "row-reverse",
           },
-        })}
+          overflowY: "auto",
+        }}
       >
         <Box
           sx={(theme) => ({
@@ -59,7 +58,6 @@ const Player = () => {
               overflowY: "auto",
               paddingBottom: theme.spacing(7),
 
-              // eslint-disable-next-line sort-keys
               "@media (min-height: 720px)": {
                 display: "block",
               },

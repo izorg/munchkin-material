@@ -17,7 +17,6 @@ const buttonSx: SxProps<Theme> = (theme) => ({
   fontSize: "36px",
   padding: 0,
 
-  // eslint-disable-next-line sort-keys
   "@media (orientation: landscape)": {
     fontSize: "32px",
 

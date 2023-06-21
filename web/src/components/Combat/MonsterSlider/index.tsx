@@ -74,12 +74,10 @@ const CombatMonsterSlider: FC<BoxProps> = ({ sx = [], ...props }) => {
           display: "flex",
           overflow: "hidden",
 
-          // eslint-disable-next-line sort-keys
           "@media (orientation: portrait)": {
             width: "100%",
           },
 
-          // eslint-disable-next-line sort-keys
           "@media (orientation: landscape)": {
             flexDirection: "column",
             height: "100%",
@@ -102,7 +100,6 @@ const CombatMonsterSlider: FC<BoxProps> = ({ sx = [], ...props }) => {
           scrollBehavior: "smooth",
           scrollSnapType: "both mandatory",
 
-          // eslint-disable-next-line sort-keys
           "@media (orientation: landscape)": {
             flexDirection: "column",
           },
@@ -126,12 +123,10 @@ const CombatMonsterSlider: FC<BoxProps> = ({ sx = [], ...props }) => {
                 justifyContent: "center",
                 position: "relative",
 
-                // eslint-disable-next-line sort-keys
                 "@media (orientation: portrait)": {
                   width: "280px",
                 },
 
-                // eslint-disable-next-line sort-keys
                 "@media (orientation: landscape)": {
                   maxWidth: "280px",
                 },

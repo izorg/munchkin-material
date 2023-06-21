@@ -76,7 +76,6 @@ const PlayerStats: FC<PlayerStatsProps> = ({ playerId, sx = [] }) => {
           display: "flex",
           flexDirection: "column-reverse",
 
-          // eslint-disable-next-line sort-keys
           "@media (orientation: landscape)": {
             flexDirection: "row",
           },
@@ -89,7 +88,6 @@ const PlayerStats: FC<PlayerStatsProps> = ({ playerId, sx = [] }) => {
           display: "flex",
           flex: 1,
 
-          // eslint-disable-next-line sort-keys
           "@media (orientation: landscape)": {
             flex: 2,
           },
@@ -155,7 +153,6 @@ const PlayerStats: FC<PlayerStatsProps> = ({ playerId, sx = [] }) => {
               fontFamily: `Munchkin, ${theme.typography.fontFamily || ""}`,
               fontSize: "36px",
 
-              // eslint-disable-next-line sort-keys
               "@media (orientation: portrait)": {
                 fontSize: "72px" /* 36px * 2 */,
                 lineHeight: lineHeight /* 1.43 / 2 */,
@@ -172,7 +169,6 @@ const PlayerStats: FC<PlayerStatsProps> = ({ playerId, sx = [] }) => {
               fontSize: "32px",
               padding: "8px",
 
-              // eslint-disable-next-line sort-keys
               "@media (orientation: portrait)": {
                 marginTop: "16px",
               },

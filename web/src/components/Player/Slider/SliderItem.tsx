@@ -22,7 +22,6 @@ export const SliderItem: FC<SliderItemProps> = ({ playerId, sx = [] }) => {
           display: "flex",
           padding: theme.spacing(2, 2, 10),
 
-          // eslint-disable-next-line sort-keys
           "@media (min-height: 720px)": {
             paddingBottom: 2,
           },

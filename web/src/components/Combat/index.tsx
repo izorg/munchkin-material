@@ -78,19 +78,16 @@ const Combat = () => {
             flexDirection: "column",
             justifyContent: "center",
 
-            // eslint-disable-next-line sort-keys
             "@supports (padding: env(safe-area-inset-left))": {
               paddingLeft: "env(safe-area-inset-left)",
               paddingRight: "env(safe-area-inset-right)",
             },
 
-            // eslint-disable-next-line sort-keys
             "@media (orientation: portrait)": {
               overflowY: "auto",
               paddingBottom: 7,
             },
 
-            // eslint-disable-next-line sort-keys
             "@media (orientation: landscape)": {
               flexDirection: "row",
               overflow: "hidden",

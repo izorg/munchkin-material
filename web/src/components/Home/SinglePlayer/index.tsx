@@ -104,7 +104,6 @@ const SinglePlayer = () => {
         maxHeight: "600px",
         maxWidth: "800px",
 
-        // eslint-disable-next-line sort-keys
         "@media (orientation: landscape)": {
           flexDirection: "row",
         },
@@ -116,7 +115,6 @@ const SinglePlayer = () => {
           display: "flex",
           flex: 1,
 
-          // eslint-disable-next-line sort-keys
           "@media (orientation: landscape)": {
             flex: 3,
           },
@@ -173,7 +171,6 @@ const SinglePlayer = () => {
               `Munchkin, ${String(theme.typography.fontFamily)}`,
             fontSize: "36px",
 
-            // eslint-disable-next-line sort-keys
             "@media (orientation: portrait)": {
               fontSize: "72px" /* 36px * 2 */,
               lineHeight: (theme) =>
@@ -191,7 +188,6 @@ const SinglePlayer = () => {
           sx={{
             fontSize: "32px",
 
-            // eslint-disable-next-line sort-keys
             "@media (orientation: portrait)": {
               marginTop: 2,
             },
