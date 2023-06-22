@@ -86,21 +86,27 @@ const CombatHelperButton = () => {
           }
         }}
         open={open}
-        sx={(theme) => ({
-          bottom: theme.spacing(2),
-          position: "fixed",
-          right: theme.spacing(2),
-          zIndex: 2,
-
-          [theme.breakpoints.up("sm")]: {
-            bottom: theme.spacing(3),
-            right: theme.spacing(3),
-
-            "@supports (padding: max(0px))": {
-              right: `max(${theme.spacing(3)}, env(safe-area-inset-right))`,
+        sx={[
+          (theme) => ({
+            bottom: {
+              sm: theme.spacing(3),
+              xs: theme.spacing(2),
             },
-          },
-        })}
+            position: "fixed",
+            right: {
+              sm: theme.spacing(3),
+              xs: theme.spacing(2),
+            },
+            zIndex: 2,
+          }),
+          (theme) => ({
+            "@supports (padding: max(0px))": {
+              right: {
+                sm: `max(${theme.spacing(3)}, env(safe-area-inset-right))`,
+              },
+            },
+          }),
+        ]}
         TransitionProps={{
           appear: false,
         }}

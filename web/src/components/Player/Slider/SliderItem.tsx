@@ -21,11 +21,12 @@ export const SliderItem: FC<SliderItemProps> = ({ playerId, sx = [] }) => {
           alignItems: "center",
           display: "flex",
           padding: theme.spacing(2, 2, 10),
-
+        }),
+        {
           "@media (min-height: 720px)": {
             paddingBottom: 2,
           },
-        }),
+        },
         ...(sx instanceof Array ? sx : [sx]),
       ]}
     >

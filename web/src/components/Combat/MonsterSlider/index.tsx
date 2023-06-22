@@ -73,14 +73,14 @@ const CombatMonsterSlider: FC<BoxProps> = ({ sx = [], ...props }) => {
         {
           display: "flex",
           overflow: "hidden",
-
-          "@media (orientation: portrait)": {
-            width: "100%",
-          },
-
+        },
+        {
           "@media (orientation: landscape)": {
             flexDirection: "column",
             height: "100%",
+          },
+          "@media (orientation: portrait)": {
+            width: "100%",
           },
         },
         ...(sx instanceof Array ? sx : [sx]),
@@ -90,20 +90,23 @@ const CombatMonsterSlider: FC<BoxProps> = ({ sx = [], ...props }) => {
       <Filler />
       <Box
         ref={containerRef}
-        sx={{
-          display: "flex",
-          flexShrink: 0,
-          maxHeight: "100%",
-          maxWidth: "100%",
-          overflow: "auto",
-          padding: 1,
-          scrollBehavior: "smooth",
-          scrollSnapType: "both mandatory",
-
-          "@media (orientation: landscape)": {
-            flexDirection: "column",
+        sx={[
+          {
+            display: "flex",
+            flexShrink: 0,
+            maxHeight: "100%",
+            maxWidth: "100%",
+            overflow: "auto",
+            padding: 1,
+            scrollBehavior: "smooth",
+            scrollSnapType: "both mandatory",
           },
-        }}
+          {
+            "@media (orientation: landscape)": {
+              flexDirection: "column",
+            },
+          },
+        ]}
       >
         {monsters.map((id, monsterIndex) => (
           <Box
@@ -116,21 +119,23 @@ const CombatMonsterSlider: FC<BoxProps> = ({ sx = [], ...props }) => {
             })}
           >
             <Paper
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                height: "160px",
-                justifyContent: "center",
-                position: "relative",
-
-                "@media (orientation: portrait)": {
-                  width: "280px",
+              sx={[
+                {
+                  display: "flex",
+                  flexDirection: "column",
+                  height: "160px",
+                  justifyContent: "center",
+                  position: "relative",
                 },
-
-                "@media (orientation: landscape)": {
-                  maxWidth: "280px",
+                {
+                  "@media (orientation: landscape)": {
+                    maxWidth: "280px",
+                  },
+                  "@media (orientation: portrait)": {
+                    width: "280px",
+                  },
                 },
-              }}
+              ]}
             >
               <Monster
                 monsterId={id}

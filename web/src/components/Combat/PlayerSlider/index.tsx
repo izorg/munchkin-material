@@ -82,21 +82,23 @@ const CombatPlayerSlider: FC<CombatPlayerSliderProps> = (props) => {
     scrollSnapAlign: "start",
   };
 
-  const paperSx = {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    marginLeft: "auto",
-    position: "relative",
-
-    "@media (orientation: portrait)": {
-      width: "280px",
+  const paperSx: SxProps<Theme> = [
+    {
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center",
+      marginLeft: "auto",
+      position: "relative",
     },
-
-    "@media (orientation: landscape)": {
-      maxWidth: "320px",
+    {
+      "@media (orientation: landscape)": {
+        maxWidth: "320px",
+      },
+      "@media (orientation: portrait)": {
+        width: "280px",
+      },
     },
-  };
+  ];
 
   return (
     <Box
@@ -106,14 +108,14 @@ const CombatPlayerSlider: FC<CombatPlayerSliderProps> = (props) => {
         {
           display: "flex",
           overflow: "hidden",
-
-          "@media(orientation: portrait)": {
-            width: "100%",
-          },
-
+        },
+        {
           "@media (orientation: landscape)": {
             flexDirection: "column",
             height: "100%",
+          },
+          "@media(orientation: portrait)": {
+            width: "100%",
           },
         },
         ...(sx instanceof Array ? sx : [sx]),
@@ -122,20 +124,23 @@ const CombatPlayerSlider: FC<CombatPlayerSliderProps> = (props) => {
       <Filler />
       <Box
         ref={containerRef}
-        sx={{
-          display: "flex",
-          flexShrink: 0,
-          maxHeight: "100%",
-          maxWidth: "100%",
-          overflow: "auto",
-          padding: 1,
-          scrollBehavior: "smooth",
-          scrollSnapType: "both mandatory",
-
-          "@media (orientation: landscape)": {
-            flexDirection: "column",
+        sx={[
+          {
+            display: "flex",
+            flexShrink: 0,
+            maxHeight: "100%",
+            maxWidth: "100%",
+            overflow: "auto",
+            padding: 1,
+            scrollBehavior: "smooth",
+            scrollSnapType: "both mandatory",
           },
-        }}
+          {
+            "@media (orientation: landscape)": {
+              flexDirection: "column",
+            },
+          },
+        ]}
       >
         <Box sx={itemContainerSx}>
           <Paper sx={paperSx}>

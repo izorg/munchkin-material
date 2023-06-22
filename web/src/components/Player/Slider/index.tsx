@@ -138,7 +138,8 @@ const PlayerSlider = ({ playerId, sx = [] }: PlayerSliderProps) => {
           display: "flex",
           overflowX: "auto",
           scrollSnapType: "x mandatory",
-
+        },
+        {
           "@supports (-ms-scroll-snap-type: mandatory)": {
             MsScrollSnapType: "mandatory",
           },

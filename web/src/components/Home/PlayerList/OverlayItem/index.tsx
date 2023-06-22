@@ -50,18 +50,22 @@ const HomePlayerListOverlayItem = (props: { playerId: string }) => {
       }}
     >
       <ListItemButton
-        sx={{
-          width: "100%",
-
-          "@supports (padding: max(0px))": {
-            paddingLeft: "max(16px, env(safe-area-inset-left))",
-            paddingRight: "max(16px, env(safe-area-inset-right))",
+        sx={[
+          {
+            width: "100%",
           },
-
-          "&:hover": {
-            backgroundColor: "transparent",
+          {
+            "&:hover": {
+              backgroundColor: "transparent",
+            },
           },
-        }}
+          {
+            "@supports (padding: max(0px))": {
+              paddingLeft: "max(16px, env(safe-area-inset-left))",
+              paddingRight: "max(16px, env(safe-area-inset-right))",
+            },
+          },
+        ]}
       >
         <ListItemAvatar>
           <PlayerAvatar

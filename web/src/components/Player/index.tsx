@@ -26,8 +26,8 @@ const Player = () => {
           display: "flex",
           flex: 1,
           flexDirection: {
-            xs: "column",
             md: "row-reverse",
+            xs: "column",
           },
           overflowY: "auto",
         }}
@@ -52,27 +52,32 @@ const Player = () => {
         </Box>
         {playerList.length > 1 && (
           <PlayerList
-            sx={(theme) => ({
-              display: "none",
-              flex: "0 1 auto",
-              overflowY: "auto",
-              paddingBottom: theme.spacing(7),
-
-              "@media (min-height: 720px)": {
-                display: "block",
+            sx={[
+              (theme) => ({
+                display: "none",
+                flex: "0 1 auto",
+                overflowY: "auto",
+                paddingBottom: theme.spacing(7),
+              }),
+              {
+                "@media (min-height: 720px)": {
+                  display: "block",
+                },
               },
-
-              [theme.breakpoints.up("sm")]: {
-                paddingBottom: theme.spacing(8),
-              },
-
-              [theme.breakpoints.up("md")]: {
-                display: "block",
-                flex: "none",
-                paddingBottom: theme.spacing(1),
-                width: "400px",
-              },
-            })}
+              (theme) => ({
+                [theme.breakpoints.up("sm")]: {
+                  paddingBottom: theme.spacing(8),
+                },
+              }),
+              (theme) => ({
+                [theme.breakpoints.up("md")]: {
+                  display: "block",
+                  flex: "none",
+                  paddingBottom: theme.spacing(1),
+                  width: "400px",
+                },
+              }),
+            ]}
           />
         )}
       </Box>

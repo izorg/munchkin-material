@@ -10,40 +10,40 @@ const TopAppBar: FC<PropsWithChildren> = ({ children }) => (
     }}
   >
     <Toolbar
-      sx={(theme) => ({
-        paddingLeft: theme.spacing(2),
-        paddingRight: theme.spacing(2),
-
-        "@supports (padding: max(0px))": {
-          paddingLeft: `max(${theme.spacing(2)}, env(safe-area-inset-left))`,
-          paddingRight: `max(${theme.spacing(2)}, env(safe-area-inset-right))`,
-        },
-
-        [theme.breakpoints.up("sm")]: {
-          paddingLeft: theme.spacing(3),
-          paddingRight: theme.spacing(3),
-
+      sx={[
+        (theme) => ({
+          minHeight: {
+            md: "64px",
+          },
+          paddingLeft: {
+            sm: theme.spacing(3),
+            xs: theme.spacing(2),
+          },
+          paddingRight: {
+            sm: theme.spacing(3),
+            xs: theme.spacing(2),
+          },
+        }),
+        (theme) => ({
+          "@supports (min-height: env(safe-area-inset-top))": {
+            minHeight: {
+              md: "calc(64px + env(safe-area-inset-top))",
+              xs: "calc(56px + env(safe-area-inset-top))",
+            },
+            paddingTop: "env(safe-area-inset-top)",
+          },
           "@supports (padding: max(0px))": {
-            paddingLeft: `max(${theme.spacing(3)}, env(safe-area-inset-left))`,
-            paddingRight: `max(${theme.spacing(
-              3
-            )}, env(safe-area-inset-right))`,
+            paddingLeft: {
+              sm: `max(${theme.spacing(3)}, env(safe-area-inset-left))`,
+              xs: `max(${theme.spacing(2)}, env(safe-area-inset-left))`,
+            },
+            paddingRight: {
+              sm: `max(${theme.spacing(3)}, env(safe-area-inset-right))`,
+              xs: `max(${theme.spacing(2)}, env(safe-area-inset-right))`,
+            },
           },
-        },
-
-        [theme.breakpoints.up("md")]: {
-          minHeight: "64px",
-        },
-
-        "@supports (min-height: env(safe-area-inset-top))": {
-          minHeight: "calc(56px + env(safe-area-inset-top))",
-          paddingTop: "env(safe-area-inset-top)",
-
-          [theme.breakpoints.up("md")]: {
-            minHeight: "calc(64px + env(safe-area-inset-top))",
-          },
-        },
-      })}
+        }),
+      ]}
     >
       {children}
     </Toolbar>

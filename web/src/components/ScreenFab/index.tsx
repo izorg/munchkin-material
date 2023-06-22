@@ -11,21 +11,27 @@ const ScreenFab = forwardRef<HTMLButtonElement, FabProps>(function ScreenFab(
     <Fab
       ref={ref}
       color="primary"
-      sx={{
-        bottom: theme.spacing(2),
-        position: "fixed",
-        right: theme.spacing(2),
-        zIndex: 2,
-
-        [theme.breakpoints.up("sm")]: {
-          bottom: theme.spacing(3),
-          right: theme.spacing(3),
-
+      sx={[
+        {
+          bottom: {
+            sm: theme.spacing(3),
+            xs: theme.spacing(2),
+          },
+          position: "fixed",
+          right: {
+            sm: theme.spacing(3),
+            xs: theme.spacing(2),
+          },
+          zIndex: 2,
+        },
+        {
           "@supports (padding: max(0px))": {
-            right: `max(${theme.spacing(3)}, env(safe-area-inset-right))`,
+            right: {
+              sm: `max(${theme.spacing(3)}, env(safe-area-inset-right))`,
+            },
           },
         },
-      }}
+      ]}
       {...props}
     />
   );

@@ -13,18 +13,20 @@ import { type FC } from "react";
 import CounterButton from "../../Counter/Button";
 import CounterLabel from "../../Counter/Label";
 
-const buttonSx: SxProps<Theme> = (theme) => ({
-  fontSize: "36px",
-  padding: 0,
-
-  "@media (orientation: landscape)": {
-    fontSize: "32px",
-
-    [theme.breakpoints.up("sm")]: {
-      fontSize: "36px",
+const buttonSx: SxProps<Theme> = [
+  {
+    fontSize: "36px",
+    padding: 0,
+  },
+  {
+    "@media (orientation: landscape)": {
+      fontSize: {
+        sm: "36px",
+        xs: "32px",
+      },
     },
   },
-});
+];
 
 type CombatCounterProps = {
   decrementDisabled?: boolean;

@@ -42,7 +42,6 @@ const browserDevices = {
         width: 1024,
       },
     },
-    iPhone6Plus: devices["iPhone 6 Plus"],
     iPhone11ProMax: {
       ...devices["iPhone 11 Pro Max"],
       viewport: {
@@ -50,9 +49,10 @@ const browserDevices = {
         width: 414,
       },
     },
+    iPhone6Plus: devices["iPhone 6 Plus"],
+    Nexus10: devices["Nexus 10"],
     Nexus5: devices["Nexus 5"],
     Nexus7: devices["Nexus 7"],
-    Nexus10: devices["Nexus 10"],
     Windows: {
       deviceScaleFactor: 2,
       viewport: {

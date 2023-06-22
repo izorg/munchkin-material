@@ -75,7 +75,8 @@ const PlayerStats: FC<PlayerStatsProps> = ({ playerId, sx = [] }) => {
         {
           display: "flex",
           flexDirection: "column-reverse",
-
+        },
+        {
           "@media (orientation: landscape)": {
             flexDirection: "row",
           },
@@ -84,14 +85,17 @@ const PlayerStats: FC<PlayerStatsProps> = ({ playerId, sx = [] }) => {
       ]}
     >
       <Box
-        sx={{
-          display: "flex",
-          flex: 1,
-
-          "@media (orientation: landscape)": {
-            flex: 2,
+        sx={[
+          {
+            display: "flex",
+            flex: 1,
           },
-        }}
+          {
+            "@media (orientation: landscape)": {
+              flex: 2,
+            },
+          },
+        ]}
       >
         <Box
           sx={{
@@ -148,31 +152,37 @@ const PlayerStats: FC<PlayerStatsProps> = ({ playerId, sx = [] }) => {
           </CounterLabel>
 
           <Box
-            sx={(theme) => ({
-              color: theme.palette.text.primary,
-              fontFamily: `Munchkin, ${theme.typography.fontFamily || ""}`,
-              fontSize: "36px",
-
-              "@media (orientation: portrait)": {
-                fontSize: "72px" /* 36px * 2 */,
-                lineHeight: lineHeight /* 1.43 / 2 */,
-                marginTop: "32px",
+            sx={[
+              (theme) => ({
+                color: theme.palette.text.primary,
+                fontFamily: `Munchkin, ${theme.typography.fontFamily || ""}`,
+                fontSize: "36px",
+              }),
+              {
+                "@media (orientation: portrait)": {
+                  fontSize: "72px" /* 36px * 2 */,
+                  lineHeight: lineHeight /* 1.43 / 2 */,
+                  marginTop: "32px",
+                },
               },
-            })}
+            ]}
           >
             {player.level + player.gear}
           </Box>
 
           <IconButton
             onClick={onSexToggle}
-            sx={{
-              fontSize: "32px",
-              padding: "8px",
-
-              "@media (orientation: portrait)": {
-                marginTop: "16px",
+            sx={[
+              {
+                fontSize: "32px",
+                padding: "8px",
               },
-            }}
+              {
+                "@media (orientation: portrait)": {
+                  marginTop: "16px",
+                },
+              },
+            ]}
           >
             <SexIcon
               sex={player.sex}

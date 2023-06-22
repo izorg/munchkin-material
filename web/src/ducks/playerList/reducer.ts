@@ -31,7 +31,7 @@ const playerListReducer = createReducer(initialState, (builder) =>
   builder
     .addCase(addPlayerToList, (state, action) => [...state, action.payload])
     .addCase(movePlayer, (state, action) => {
-      const { oldPosition, newPosition } = action.payload;
+      const { newPosition, oldPosition } = action.payload;
       const movedPlayer = state[oldPosition];
       const playersWithoutMoved = [
         ...state.slice(0, oldPosition),

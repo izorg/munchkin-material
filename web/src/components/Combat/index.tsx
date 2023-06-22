@@ -71,28 +71,31 @@ const Combat = () => {
       >
         <AppBar />
         <Box
-          sx={{
-            alignItems: "center",
-            display: "flex",
-            flex: 1,
-            flexDirection: "column",
-            justifyContent: "center",
-
-            "@supports (padding: env(safe-area-inset-left))": {
-              paddingLeft: "env(safe-area-inset-left)",
-              paddingRight: "env(safe-area-inset-right)",
+          sx={[
+            {
+              alignItems: "center",
+              display: "flex",
+              flex: 1,
+              flexDirection: "column",
+              justifyContent: "center",
             },
+            {
+              "@media (orientation: landscape)": {
+                flexDirection: "row",
+                overflow: "hidden",
+              },
 
-            "@media (orientation: portrait)": {
-              overflowY: "auto",
-              paddingBottom: 7,
-            },
+              "@media (orientation: portrait)": {
+                overflowY: "auto",
+                paddingBottom: 7,
+              },
 
-            "@media (orientation: landscape)": {
-              flexDirection: "row",
-              overflow: "hidden",
+              "@supports (padding: env(safe-area-inset-left))": {
+                paddingLeft: "env(safe-area-inset-left)",
+                paddingRight: "env(safe-area-inset-right)",
+              },
             },
-          }}
+          ]}
         >
           <PlayerSlider
             helperId={helperId}

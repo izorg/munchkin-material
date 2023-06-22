@@ -200,14 +200,17 @@ const HomePlayerListItem = (props: HomePlayerListItemProps) => {
         onTapCancel={clearPress}
         onTapStart={onTapStart}
         role={undefined}
-        sx={{
-          width: "100%",
-
-          "@supports (padding: max(0px))": {
-            paddingLeft: "max(16px, env(safe-area-inset-left))",
-            paddingRight: "max(16px, env(safe-area-inset-right))",
+        sx={[
+          {
+            width: "100%",
           },
-        }}
+          {
+            "@supports (padding: max(0px))": {
+              paddingLeft: "max(16px, env(safe-area-inset-left))",
+              paddingRight: "max(16px, env(safe-area-inset-right))",
+            },
+          },
+        ]}
       >
         <ListItemAvatar>
           <PlayerAvatar

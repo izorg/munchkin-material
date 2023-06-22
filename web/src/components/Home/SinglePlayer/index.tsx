@@ -94,31 +94,37 @@ const SinglePlayer = () => {
 
   return (
     <Box
-      sx={{
-        alignSelf: "center",
-        display: "flex",
-        flex: 1,
-        flexDirection: "column-reverse",
-        height: "100%",
-        margin: "0 auto",
-        maxHeight: "600px",
-        maxWidth: "800px",
-
-        "@media (orientation: landscape)": {
-          flexDirection: "row",
-        },
-      }}
-    >
-      <Box
-        sx={{
-          alignItems: "center",
+      sx={[
+        {
+          alignSelf: "center",
           display: "flex",
           flex: 1,
-
+          flexDirection: "column-reverse",
+          height: "100%",
+          margin: "0 auto",
+          maxHeight: "600px",
+          maxWidth: "800px",
+        },
+        {
           "@media (orientation: landscape)": {
-            flex: 3,
+            flexDirection: "row",
           },
-        }}
+        },
+      ]}
+    >
+      <Box
+        sx={[
+          {
+            alignItems: "center",
+            display: "flex",
+            flex: 1,
+          },
+          {
+            "@media (orientation: landscape)": {
+              flex: 3,
+            },
+          },
+        ]}
       >
         <Counter
           data-screenshots="level-counter"
@@ -165,33 +171,39 @@ const SinglePlayer = () => {
         </CounterLabel>
 
         <Box
-          sx={{
-            color: "text.primary",
-            fontFamily: (theme) =>
-              `Munchkin, ${String(theme.typography.fontFamily)}`,
-            fontSize: "36px",
-
-            "@media (orientation: portrait)": {
-              fontSize: "72px" /* 36px * 2 */,
-              lineHeight: (theme) =>
-                (theme.typography.body2.lineHeight as number) /
-                2 /* 1.43 / 2 */,
-              marginTop: "32px",
+          sx={[
+            {
+              color: "text.primary",
+              fontFamily: (theme) =>
+                `Munchkin, ${String(theme.typography.fontFamily)}`,
+              fontSize: "36px",
             },
-          }}
+            {
+              "@media (orientation: portrait)": {
+                fontSize: "72px" /* 36px * 2 */,
+                lineHeight: (theme) =>
+                  (theme.typography.body2.lineHeight as number) /
+                  2 /* 1.43 / 2 */,
+                marginTop: "32px",
+              },
+            },
+          ]}
         >
           {player.level + player.gear + bonus}
         </Box>
 
         <IconButton
           onClick={onSexToggle}
-          sx={{
-            fontSize: "32px",
-
-            "@media (orientation: portrait)": {
-              marginTop: 2,
+          sx={[
+            {
+              fontSize: "32px",
             },
-          }}
+            {
+              "@media (orientation: portrait)": {
+                marginTop: 2,
+              },
+            },
+          ]}
         >
           <SexIcon
             sex={player.sex}

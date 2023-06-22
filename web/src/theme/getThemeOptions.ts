@@ -30,9 +30,9 @@ const getThemeOptions = ({
           anchorOriginBottomLeft: {
             "@supports (padding: max(0px))": {
               "@media (min-width:600px)": {
+                [direction === "rtl" ? "left" : "right"]: "auto",
                 [direction === "rtl" ? "right" : "left"]:
                   "max(24px, env(safe-area-inset-right))",
-                [direction === "rtl" ? "left" : "right"]: "auto",
               },
             },
           },
@@ -66,6 +66,7 @@ const getThemeOptions = ({
       toolbar: {
         minHeight: 56,
 
+        // eslint-disable-next-line perfectionist/sort-objects
         "@media (min-width:960px)": {
           minHeight: 64,
         },
