@@ -178,6 +178,9 @@ const HomePlayerListItem = (props: HomePlayerListItemProps) => {
         transition,
       }}
       sx={[
+        {
+          outline: "none",
+        },
         editMode && {
           "@supports (padding: max(0px))": {
             "& > .MuiListItemButton-root": {
