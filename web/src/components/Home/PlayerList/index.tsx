@@ -33,7 +33,9 @@ const HomePlayerList = (props: ListProps) => {
   const [activeId, setActiveId] = useState<null | string>(null);
 
   const onDragStart = useCallback((event: DragStartEvent) => {
-    setActiveId(event.active.id as string);
+    if (typeof event.active.id === "string") {
+      setActiveId(event.active.id);
+    }
   }, []);
 
   const onDragEnd = useCallback(
