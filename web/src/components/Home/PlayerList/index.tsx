@@ -89,7 +89,7 @@ const HomePlayerList = (props: ListProps) => {
           ))}
         </SortableContext>
       </List>
-      <DragOverlay>
+      <DragOverlay zIndex={0}>
         {activeId && (
           <Paper elevation={1} square>
             <OverlayItem playerId={activeId} />
