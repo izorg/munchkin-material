@@ -9,7 +9,6 @@ import {
 import PropTypes from "prop-types";
 
 import usePresentSelector from "../../../../hooks/usePresentSelector";
-import { type AvailableColor } from "../../../../utils/availableColors";
 import PlayerAvatar from "../../../PlayerAvatar";
 import PlayerListItemText from "../../../PlayerListItemText";
 
@@ -68,10 +67,7 @@ const HomePlayerListOverlayItem = (props: { playerId: string }) => {
         ]}
       >
         <ListItemAvatar>
-          <PlayerAvatar
-            color={player.color as AvailableColor}
-            name={player.name}
-          />
+          <PlayerAvatar color={player.color} name={player.name} />
         </ListItemAvatar>
 
         <PlayerListItemText player={player} />

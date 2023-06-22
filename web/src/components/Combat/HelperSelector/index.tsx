@@ -13,7 +13,6 @@ import { useLocation } from "react-router-dom";
 import { setCombatHelper } from "../../../ducks/combat";
 import usePresentSelector from "../../../hooks/usePresentSelector";
 import { useAppDispatch } from "../../../store";
-import { type AvailableColor } from "../../../utils/availableColors";
 import { useGoBack } from "../../../utils/location";
 import PlayerAvatar from "../../PlayerAvatar";
 import PlayerListItemText from "../../PlayerListItemText";
@@ -66,10 +65,7 @@ const HelperSelector = () => {
               onClick={() => onSelect(helper.id)}
             >
               <ListItemAvatar>
-                <PlayerAvatar
-                  color={helper.color as AvailableColor}
-                  name={helper.name}
-                />
+                <PlayerAvatar color={helper.color} name={helper.name} />
               </ListItemAvatar>
               <PlayerListItemText player={helper} />
             </ListItemButton>

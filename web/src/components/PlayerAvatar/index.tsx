@@ -1,40 +1,38 @@
 import { mdiCheck } from "@mdi/js";
 import { Avatar, colors, SvgIcon, useTheme } from "@mui/material";
 import PropTypes from "prop-types";
-import { type CSSProperties, forwardRef } from "react";
+import { type CSSProperties, forwardRef, useMemo } from "react";
 
 import { type AvailableColor } from "../../utils/availableColors";
 import { colorType } from "../../utils/propTypes";
 
 type PlayerAvatarProps = {
-  color: AvailableColor;
+  color?: AvailableColor | null;
   name: string;
   selected?: boolean;
   style?: CSSProperties;
 };
 
 const PlayerAvatar = forwardRef<HTMLDivElement, PlayerAvatarProps>(
-  function PlayerAvatar(
-    { color, name, selected = false, style: styleProp, ...props },
-    ref
-  ) {
+  function PlayerAvatar(props, ref) {
+    const { color, name, selected = false, style: styleProp, ...rest } = props;
+
     const theme = useTheme();
 
-    let style = styleProp;
+    const style = useMemo(() => {
+      if (selected || !color) {
+        return styleProp;
+      }
 
-    if (!selected && color) {
-      style = {
-        ...style,
-
+      return {
+        ...styleProp,
         backgroundColor:
-          color in colors
-            ? colors[color][theme.palette.mode === "dark" ? 200 : 500]
-            : color,
+          colors[color][theme.palette.mode === "dark" ? 200 : 500],
       };
-    }
+    }, [color, selected, styleProp, theme.palette.mode]);
 
     return (
-      <Avatar ref={ref} style={style} {...props}>
+      <Avatar ref={ref} style={style} {...rest}>
         {selected ? (
           <SvgIcon>
             <path d={mdiCheck} />

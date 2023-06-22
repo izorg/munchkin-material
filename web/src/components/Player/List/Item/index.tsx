@@ -2,7 +2,6 @@ import { ListItemAvatar, ListItemButton } from "@mui/material";
 import { m } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 
-import { type AvailableColor } from "../../../../utils/availableColors";
 import { playerShape } from "../../../../utils/propTypes";
 import { type Player } from "../../../../utils/types";
 import PlayerAvatar from "../../../PlayerAvatar";
@@ -31,10 +30,7 @@ const PlayerListItem = (props: PlayerListItemProps) => {
       }}
     >
       <ListItemAvatar>
-        <PlayerAvatar
-          color={player.color as AvailableColor}
-          name={player.name}
-        />
+        <PlayerAvatar color={player.color} name={player.name} />
       </ListItemAvatar>
       <PlayerListItemText player={player} />
     </ListItemButton>

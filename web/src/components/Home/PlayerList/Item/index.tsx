@@ -16,7 +16,6 @@ import useEditMode from "../../../../hooks/useEditMode";
 import useMultiMode from "../../../../hooks/useMultiMode";
 import usePresentSelector from "../../../../hooks/usePresentSelector";
 import { useAppDispatch } from "../../../../store";
-import { type AvailableColor } from "../../../../utils/availableColors";
 import { useGoBack } from "../../../../utils/location";
 import { ios } from "../../../../utils/platforms";
 import PlayerAvatar from "../../../PlayerAvatar";
@@ -218,7 +217,7 @@ const HomePlayerListItem = (props: HomePlayerListItemProps) => {
         <ListItemAvatar>
           <PlayerAvatar
             ref={avatarRef}
-            color={player.color as AvailableColor}
+            color={player.color}
             name={player.name}
             selected={multiMode && selected}
           />
