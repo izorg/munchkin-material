@@ -15,7 +15,7 @@ import {
   sortableKeyboardCoordinates,
   verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
-import { List, type ListProps, Paper } from "@mui/material";
+import { List, type ListProps } from "@mui/material";
 import { useCallback, useMemo, useState } from "react";
 
 import { movePlayer } from "../../../ducks/playerList";
@@ -92,11 +92,7 @@ const HomePlayerList = (props: ListProps) => {
         </SortableContext>
       </List>
       <DragOverlay zIndex={0}>
-        {activeId && (
-          <Paper elevation={1} square>
-            <OverlayItem playerId={activeId} />
-          </Paper>
-        )}
+        {activeId && <OverlayItem playerId={activeId} />}
       </DragOverlay>
     </DndContext>
   );
