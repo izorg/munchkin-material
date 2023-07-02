@@ -1,5 +1,6 @@
 import {
   Dialog,
+  DialogActions,
   DialogContent,
   type DialogProps,
   DialogTitle,
@@ -12,6 +13,7 @@ import availableColors, {
   type AvailableColor,
 } from "../../../utils/availableColors";
 import { colorType } from "../../../utils/propTypes";
+import CancelButton from "../../CancelButton";
 
 import Color from "./Color";
 
@@ -21,11 +23,12 @@ type ColorPickerDialogProps = Omit<DialogProps, "onSelect" | "value"> & {
 };
 
 const ColorPickerDialog: FC<ColorPickerDialogProps> = ({
+  onClose,
   onSelect,
   value,
   ...props
 }) => (
-  <Dialog {...props}>
+  <Dialog onClose={onClose} {...props}>
     <DialogTitle>
       <FormattedMessage
         defaultMessage="Choose color"
@@ -33,10 +36,9 @@ const ColorPickerDialog: FC<ColorPickerDialogProps> = ({
       />
     </DialogTitle>
     <DialogContent
-      sx={(theme) => ({
-        padding: theme.spacing(0, 1, 2),
+      sx={{
         textAlign: "center",
-      })}
+      }}
     >
       {availableColors.map((color) => (
         <Color
@@ -47,6 +49,9 @@ const ColorPickerDialog: FC<ColorPickerDialogProps> = ({
         />
       ))}
     </DialogContent>
+    <DialogActions>
+      <CancelButton onClick={(event) => onClose?.(event, "escapeKeyDown")} />
+    </DialogActions>
   </Dialog>
 );
 
