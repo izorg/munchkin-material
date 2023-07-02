@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-disable @typescript-eslint/no-var-requires,unicorn/prefer-module */
 /* eslint-env node */
 const fs = require("node:fs");
 const path = require("node:path");
