@@ -1,12 +1,7 @@
 import { mdiClose, mdiFlagCheckered, mdiTrashCanOutline } from "@mdi/js";
 import { SvgIcon } from "@mui/material";
 import PropTypes from "prop-types";
-import {
-  cloneElement,
-  type FC,
-  type ReactElement,
-  type ReactNode,
-} from "react";
+import { type FC, type ReactElement, type ReactNode } from "react";
 import { FormattedMessage } from "react-intl";
 
 import { setCombatPlayerBonus } from "../../../ducks/combat";
@@ -45,15 +40,6 @@ const HomeAppBar: FC<HomeAppBarProps> = (props) => {
     (state) => state.ui.selectedPlayerIds
   );
 
-  const onMultiSelectDeactivate = () => goBack();
-
-  const onPlayersDelete = (selected: string[]) => {
-    deletePlayers(selected);
-    goBack();
-  };
-
-  const onTurnFinish = () => dispatch(setCombatPlayerBonus(0));
-
   let title: ReactNode = (
     <FormattedMessage defaultMessage="Munchkins" id="player.list.title" />
   );
@@ -72,18 +58,25 @@ const HomeAppBar: FC<HomeAppBarProps> = (props) => {
     !empty && <ResetButton key="reset" />,
     !empty && <EditButton key="edit" />,
     <DiceButton key="dice" />,
-    <SettingsIconButton key="settings" />,
+    <SettingsIconButton key="settings" edge="end" />,
   ].filter((item): item is ReactElement => item !== false);
 
   if (editMode) {
-    buttons = [<ShuffleButton key="shuffle" />, <EditButton key="save" />];
+    buttons = [
+      <ShuffleButton key="shuffle" />,
+      <EditButton key="save" edge="end" />,
+    ];
   }
 
   if (multiMode) {
     buttons = [
       <TopIconButton
         key="delete"
-        onClick={() => onPlayersDelete(selectedPlayerIds)}
+        edge="end"
+        onClick={() => {
+          deletePlayers(selectedPlayerIds);
+          goBack();
+        }}
       >
         <SvgIcon>
           <path d={mdiTrashCanOutline} />
@@ -95,24 +88,23 @@ const HomeAppBar: FC<HomeAppBarProps> = (props) => {
   if (singleMode) {
     buttons = [
       <ResetButton key="reset" />,
-      <TopIconButton key="finish" onClick={onTurnFinish}>
+      <TopIconButton
+        key="finish"
+        onClick={() => dispatch(setCombatPlayerBonus(0))}
+      >
         <SvgIcon>
           <path d={mdiFlagCheckered} />
         </SvgIcon>
       </TopIconButton>,
       <DiceButton key="dice" />,
-      <SettingsIconButton key="settings" />,
+      <SettingsIconButton key="settings" edge="end" />,
     ];
   }
-
-  buttons[buttons.length - 1] = cloneElement(buttons[buttons.length - 1], {
-    edge: "end",
-  });
 
   return (
     <TopAppBar>
       {multiMode && (
-        <TopIconButton edge="start" onClick={onMultiSelectDeactivate}>
+        <TopIconButton edge="start" onClick={goBack}>
           <SvgIcon>
             <path d={mdiClose} />
           </SvgIcon>
