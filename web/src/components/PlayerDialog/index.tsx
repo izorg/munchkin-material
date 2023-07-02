@@ -98,8 +98,6 @@ const PlayerDialog = () => {
     appear = true;
   }, []);
 
-  const handleClose = () => goBack();
-
   const handleDelete = editPlayer
     ? () => {
         deletePlayers([editPlayer.id]);
@@ -115,7 +113,7 @@ const PlayerDialog = () => {
     const formValues: Partial<Player> = Object.fromEntries(formData);
 
     if (!formValues.name?.trim()) {
-      handleClose();
+      goBack();
 
       return;
     }
@@ -127,7 +125,7 @@ const PlayerDialog = () => {
       };
 
       if (shallowEqual(editPlayer, player)) {
-        handleClose();
+        goBack();
 
         return;
       }
@@ -140,7 +138,7 @@ const PlayerDialog = () => {
       dispatch(addPlayerToList(player.id));
     }
 
-    handleClose();
+    goBack();
   };
 
   const title = editPlayer
@@ -158,7 +156,7 @@ const PlayerDialog = () => {
       disableRestoreFocus
       fullScreen={fullScreen}
       hideBackdrop={fullScreen}
-      onClose={handleClose}
+      onClose={goBack}
       open={open}
       PaperProps={{
         sx: [
@@ -209,11 +207,7 @@ const PlayerDialog = () => {
         })}
       >
         {fullScreen ? (
-          <AppBar
-            onCancel={handleClose}
-            onDelete={handleDelete}
-            title={title}
-          />
+          <AppBar onCancel={goBack} onDelete={handleDelete} title={title} />
         ) : (
           <>
             <Typography component="span" noWrap variant="h6">
@@ -313,7 +307,7 @@ const PlayerDialog = () => {
               <Box flex={1} />
             </>
           )}
-          <CancelButton onClick={handleClose} />
+          <CancelButton onClick={goBack} />
           <SubmitButton form={formId}>
             {intl.formatMessage({
               defaultMessage: "Save",

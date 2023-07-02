@@ -1,6 +1,6 @@
 import {
   Dialog,
-  DialogContent,
+  DialogActions,
   DialogTitle,
   List,
   ListItemAvatar,
@@ -14,6 +14,7 @@ import { setCombatHelper } from "../../../ducks/combat";
 import usePresentSelector from "../../../hooks/usePresentSelector";
 import { useAppDispatch } from "../../../store";
 import { useGoBack } from "../../../utils/location";
+import CancelButton from "../../CancelButton";
 import PlayerAvatar from "../../PlayerAvatar";
 import PlayerListItemText from "../../PlayerListItemText";
 
@@ -42,36 +43,26 @@ const HelperSelector = () => {
   };
 
   return (
-    <Dialog
-      onClose={onClose}
-      open={open}
-      PaperProps={{
-        sx: {
-          margin: 2,
-        },
-      }}
-    >
+    <Dialog onClose={onClose} open={open}>
       <DialogTitle>
         <FormattedMessage
           defaultMessage="Choose helper"
           id="combat.helperSelector.title"
         />
       </DialogTitle>
-      <DialogContent sx={{ padding: 0 }}>
-        <List>
-          {helpers.map((helper) => (
-            <ListItemButton
-              key={helper.id.toString()}
-              onClick={() => onSelect(helper.id)}
-            >
-              <ListItemAvatar>
-                <PlayerAvatar color={helper.color} name={helper.name} />
-              </ListItemAvatar>
-              <PlayerListItemText player={helper} />
-            </ListItemButton>
-          ))}
-        </List>
-      </DialogContent>
+      <List>
+        {helpers.map((helper) => (
+          <ListItemButton key={helper.id} onClick={() => onSelect(helper.id)}>
+            <ListItemAvatar>
+              <PlayerAvatar color={helper.color} name={helper.name} />
+            </ListItemAvatar>
+            <PlayerListItemText player={helper} />
+          </ListItemButton>
+        ))}
+      </List>
+      <DialogActions>
+        <CancelButton onClick={onClose} />
+      </DialogActions>
     </Dialog>
   );
 };
