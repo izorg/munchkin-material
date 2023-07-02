@@ -35,22 +35,20 @@ const HelperSelector = () => {
 
   const open = new URLSearchParams(location.search).get("add") === "helper";
 
-  const onClose = () => goBack();
-
   const onSelect = (id: string) => {
     dispatch(setCombatHelper(id));
     goBack();
   };
 
   return (
-    <Dialog onClose={onClose} open={open}>
+    <Dialog onClose={goBack} open={open}>
       <DialogTitle>
         <FormattedMessage
           defaultMessage="Choose helper"
           id="combat.helperSelector.title"
         />
       </DialogTitle>
-      <List>
+      <List component="div">
         {helpers.map((helper) => (
           <ListItemButton key={helper.id} onClick={() => onSelect(helper.id)}>
             <ListItemAvatar>
@@ -61,7 +59,7 @@ const HelperSelector = () => {
         ))}
       </List>
       <DialogActions>
-        <CancelButton onClick={onClose} />
+        <CancelButton onClick={goBack} />
       </DialogActions>
     </Dialog>
   );
