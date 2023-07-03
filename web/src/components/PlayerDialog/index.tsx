@@ -6,19 +6,15 @@ import {
   DialogActions,
   DialogContent,
   DialogTitle,
-  Fade,
   FormControl,
   FormControlLabel,
   FormLabel,
   Grid,
   Radio,
   RadioGroup,
-  Slide,
   SvgIcon,
   TextField,
-  type Theme,
   Typography,
-  useMediaQuery,
 } from "@mui/material";
 import { type FormEvent, useEffect, useMemo, useRef } from "react";
 import { useIntl } from "react-intl";
@@ -33,7 +29,6 @@ import type availableColors from "../../utils/availableColors";
 import createPlayer from "../../utils/createPlayer";
 import getRandomMaterialColor from "../../utils/getRandomMaterialColor";
 import { useGoBack } from "../../utils/location";
-import { ios } from "../../utils/platforms";
 import shallowEqual from "../../utils/shallowEqual";
 import { type Player, Sex } from "../../utils/types";
 import CancelButton from "../CancelButton";
@@ -42,8 +37,8 @@ import SubmitButton from "../SubmitButton";
 import AppBar from "./AppBar";
 import ColorPicker from "./ColorPicker";
 import formId from "./formId";
-
-let appear = false;
+import { PlayerDialogTransition } from "./PlayerDialogTransition";
+import { useFullScreen } from "./useFullScreen";
 
 const PlayerDialog = () => {
   const dispatch = useAppDispatch();
@@ -90,13 +85,7 @@ const PlayerDialog = () => {
     [players]
   );
 
-  const fullScreen = useMediaQuery<Theme>((theme) =>
-    theme.breakpoints.down("lg")
-  );
-
-  useEffect(() => {
-    appear = true;
-  }, []);
+  const fullScreen = useFullScreen();
 
   const handleDelete = editPlayer
     ? () => {
@@ -186,13 +175,7 @@ const PlayerDialog = () => {
       sx={{
         height: "inherit", // scrolling body in cordova for small screen height
       }}
-      TransitionComponent={fullScreen && ios ? Slide : Fade}
-      TransitionProps={{
-        appear,
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        direction: "up",
-      }}
+      TransitionComponent={PlayerDialogTransition}
     >
       <DialogTitle
         sx={(theme) => ({
