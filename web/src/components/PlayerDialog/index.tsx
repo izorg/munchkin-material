@@ -148,29 +148,12 @@ const PlayerDialog = () => {
       onClose={goBack}
       open={open}
       PaperProps={{
-        sx: [
-          {
-            minWidth: {
-              lg: "320px",
-            },
+        elevation: fullScreen ? 0 : 1,
+        sx: {
+          minWidth: {
+            lg: "320px",
           },
-          (theme) => ({
-            backgroundColor:
-              theme.palette.mode === "dark"
-                ? theme.palette.background.default
-                : theme.palette.background.paper,
-
-            [theme.breakpoints.up("lg")]: {
-              backgroundColor: theme.palette.background.paper,
-            },
-          }),
-          (theme) =>
-            theme.palette.mode === "dark"
-              ? {
-                  backgroundImage: "none",
-                }
-              : null,
-        ],
+        },
       }}
       sx={{
         height: "inherit", // scrolling body in cordova for small screen height
