@@ -16,9 +16,9 @@
   "dependencies": {
     "@emotion/react": "11.11.1",
     "@emotion/styled": "11.11.0",
-    "@mui/material": "5.13.6",
+    "@mui/material": "5.13.7",
     "@sentry/react": "7.57.0",
-    "core-js": "3.31.0",
+    "core-js": "3.31.1",
     "prop-types": "15.8.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
