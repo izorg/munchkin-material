@@ -59,6 +59,7 @@
     "@types/react-dom": "18.2.6",
     "@types/stylis": "4.2.0",
     "@types/uuid": "9.0.2",
+    "firebase-tools": "12.4.3",
     "parcel": "2.9.3",
     "process": "0.11.10",
     "typescript": "5.1.6",
