@@ -32,7 +32,7 @@ const fetchLocale = async (
 
 const LocaleProvider: FC<PropsWithChildren> = ({ children }) => {
   const selectedLocale =
-    usePresentSelector((state) => state.settings.locale) || defaultLocale;
+    usePresentSelector((state) => state.settings.locale) ?? defaultLocale;
 
   const { data } = useSWRImmutable(
     ["locale", selectedLocale],
