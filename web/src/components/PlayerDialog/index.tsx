@@ -175,11 +175,9 @@ const PlayerDialog = () => {
         {fullScreen ? (
           <AppBar onCancel={goBack} onDelete={handleDelete} title={title} />
         ) : (
-          <>
-            <Typography component="span" noWrap variant="h6">
-              {title}
-            </Typography>
-          </>
+          <Typography component="span" noWrap variant="h6">
+            {title}
+          </Typography>
         )}
       </DialogTitle>
       <DialogContent
