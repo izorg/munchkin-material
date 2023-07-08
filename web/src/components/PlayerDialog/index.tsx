@@ -1,6 +1,5 @@
 import { mdiGenderFemale, mdiGenderMale } from "@mdi/js";
 import {
-  Box,
   Button,
   Dialog,
   DialogActions,
@@ -261,15 +260,12 @@ const PlayerDialog = () => {
       {!fullScreen && (
         <DialogActions>
           {editPlayer && (
-            <>
-              <Button onClick={handleDelete} sx={{ marginLeft: 1 }}>
-                {intl.formatMessage({
-                  defaultMessage: "Delete",
-                  id: "player.form.delete",
-                })}
-              </Button>
-              <Box flex={1} />
-            </>
+            <Button onClick={handleDelete} sx={{ marginRight: "auto" }}>
+              {intl.formatMessage({
+                defaultMessage: "Delete",
+                id: "player.form.delete",
+              })}
+            </Button>
           )}
           <CancelButton onClick={goBack} />
           <SubmitButton form={formId}>
