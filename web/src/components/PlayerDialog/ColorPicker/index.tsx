@@ -8,7 +8,7 @@ import {
   useRef,
   useState,
 } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 
 import { type AvailableColor } from "../../../utils/availableColors";
 import { useGoBack } from "../../../utils/location";
@@ -35,9 +35,8 @@ const ColorPicker: FC<ColorPickerProps> = ({
   onFocus,
   value: valueProp,
 }) => {
-  const location = useLocation();
-  const navigate = useNavigate();
   const muiFormControl = useFormControl();
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const anchorEl = useRef<HTMLButtonElement>(null);
   const ignoreNextBlur = useRef(false);
@@ -52,15 +51,13 @@ const ColorPicker: FC<ColorPickerProps> = ({
 
   const goBack = useGoBack();
 
-  const open = new URLSearchParams(location.search).get("color") !== null;
+  const open = searchParams.get("color") !== null;
 
   const onOpen = () => {
-    const searchParams = new URLSearchParams(location.search);
+    setSearchParams((prev) => {
+      prev.set("color", "");
 
-    searchParams.set("color", "");
-
-    navigate({
-      search: `?${searchParams.toString()}`,
+      return prev;
     });
   };
 
@@ -73,7 +70,7 @@ const ColorPicker: FC<ColorPickerProps> = ({
       <input name={name} type="hidden" value={value} />
       <Color
         ref={anchorEl}
-        onBlur={(event: FocusEvent<HTMLButtonElement>) => {
+        onBlur={(event) => {
           if (ignoreNextBlur.current) {
             // The parent components are relying on the bubbling of the event.
             event.stopPropagation();
