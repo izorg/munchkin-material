@@ -24,7 +24,7 @@ import { addPlayer, updatePlayer } from "../../ducks/players";
 import useDeletePlayers from "../../hooks/useDeletePlayers";
 import usePresentSelector from "../../hooks/usePresentSelector";
 import { useAppDispatch } from "../../store";
-import type availableColors from "../../utils/availableColors";
+import { type AvailableColor } from "../../utils/availableColors";
 import createPlayer from "../../utils/createPlayer";
 import getRandomMaterialColor from "../../utils/getRandomMaterialColor";
 import { useGoBack } from "../../utils/location";
@@ -76,10 +76,7 @@ const PlayerDialog = () => {
       getRandomMaterialColor(
         Object.values(players)
           .map((player) => player.color)
-          .filter(
-            (color): color is (typeof availableColors)[number] =>
-              color !== undefined
-          )
+          .filter((color): color is AvailableColor => color !== undefined)
       ),
     [players]
   );
