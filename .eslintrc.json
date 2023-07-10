@@ -15,9 +15,7 @@
   ],
   "overrides": [
     {
-      "extends": [
-        "plugin:@typescript-eslint/recommended-requiring-type-checking"
-      ],
+      "extends": ["plugin:@typescript-eslint/recommended-type-checked"],
       "files": ["**/*.ts?(x)"],
       "rules": {
         "@typescript-eslint/consistent-type-exports": [
