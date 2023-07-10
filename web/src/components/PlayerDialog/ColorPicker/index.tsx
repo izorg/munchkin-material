@@ -27,14 +27,16 @@ type ColorPickerProps = {
   value?: AvailableColor;
 };
 
-const ColorPicker: FC<ColorPickerProps> = ({
-  defaultValue,
-  name,
-  onBlur,
-  onChange,
-  onFocus,
-  value: valueProp,
-}) => {
+const ColorPicker: FC<ColorPickerProps> = (props) => {
+  const {
+    defaultValue,
+    name,
+    onBlur,
+    onChange,
+    onFocus,
+    value: valueProp,
+  } = props;
+
   const muiFormControl = useFormControl();
   const [searchParams, setSearchParams] = useSearchParams();
 

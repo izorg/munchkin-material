@@ -49,6 +49,7 @@ const Color = forwardRef<HTMLButtonElement, ColorProps>(function Color(
       {...rest}
     >
       <Avatar
+        component="span"
         style={{ backgroundColor }}
         sx={{
           height: "36px",
