@@ -76,7 +76,7 @@ const combatReducer = createReducer(initialState, (builder) =>
       finished: false,
       monsters: [action.payload.monster.id],
       playerId: action.payload.playerId,
-    }))
+    })),
 );
 
 export default combatReducer;

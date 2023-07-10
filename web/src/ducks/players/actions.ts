@@ -3,7 +3,7 @@ import { createAction } from "@reduxjs/toolkit";
 import { type Player } from "../../utils/types";
 
 export const addPlayer = createAction<Player, "players/addPlayer">(
-  "players/addPlayer"
+  "players/addPlayer",
 );
 
 export const decrementPlayerGear = createAction<
@@ -27,19 +27,19 @@ export const incrementPlayerLevel = createAction<
 >("player/incrementPlayerLevel");
 
 export const killPlayer = createAction<string, "player/killPlayer">(
-  "player/killPlayer"
+  "player/killPlayer",
 );
 
 export const removePlayers = createAction<string[], "players/removePlayers">(
-  "players/removePlayers"
+  "players/removePlayers",
 );
 
 export const resetPlayers = createAction<string[], "players/resetPlayers">(
-  "players/resetPlayers"
+  "players/resetPlayers",
 );
 
 export const togglePlayerSex = createAction<string, "player/togglePlayerSex">(
-  "player/togglePlayerSex"
+  "player/togglePlayerSex",
 );
 
 export const updatePlayer = createAction<

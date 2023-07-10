@@ -31,22 +31,22 @@ const CombatMonster = (props: CombatMonsterProps) => {
 
   const omMonsterLevelDecrement = useCallback(
     () => dispatch(decrementMonsterLevel(id)),
-    [dispatch, id]
+    [dispatch, id],
   );
 
   const omMonsterLevelIncrement = useCallback(
     () => dispatch(incrementMonsterLevel(id)),
-    [dispatch, id]
+    [dispatch, id],
   );
 
   const onMonsterBonusDecrement = useCallback(
     () => dispatch(decrementMonsterBonus(id)),
-    [dispatch, id]
+    [dispatch, id],
   );
 
   const onMonsterBonusIncrement = useCallback(
     () => dispatch(incrementMonsterBonus(id)),
-    [dispatch, id]
+    [dispatch, id],
   );
 
   const itemSx = {

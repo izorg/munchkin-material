@@ -25,7 +25,7 @@ export const playerReducer = (
     | typeof incrementPlayerLevel
     | typeof killPlayer
     | typeof togglePlayerSex
-  >
+  >,
 ): Player => {
   switch (action.type) {
     case decrementPlayerGear.type: {
@@ -82,8 +82,8 @@ const playersReducer = createReducer(initialState, (builder) =>
     }))
     .addCase(removePlayers, (state, action) =>
       Object.fromEntries(
-        Object.entries(state).filter(([id]) => !action.payload.includes(id))
-      )
+        Object.entries(state).filter(([id]) => !action.payload.includes(id)),
+      ),
     )
     .addCase(resetPlayers, (state, action) => {
       if (action.payload.length === 0) {
@@ -124,7 +124,7 @@ const playersReducer = createReducer(initialState, (builder) =>
         incrementPlayerGear,
         incrementPlayerLevel,
         killPlayer,
-        togglePlayerSex
+        togglePlayerSex,
       ),
       (state, action) => {
         const player = playerReducer(state[action.payload], action);
@@ -133,8 +133,8 @@ const playersReducer = createReducer(initialState, (builder) =>
           ...state,
           [player.id]: player,
         };
-      }
-    )
+      },
+    ),
 );
 
 export default playersReducer;

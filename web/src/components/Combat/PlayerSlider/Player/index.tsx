@@ -42,7 +42,7 @@ const CombatPlayer: FC<CombatPlayerProps> = ({ playerId }) => {
   const levelIncrementDisabled = isLevelIncrementDisabled(
     level,
     levelLimit,
-    epic
+    epic,
   );
 
   const combat = usePresentSelector((state) => state.combat);
@@ -61,37 +61,37 @@ const CombatPlayer: FC<CombatPlayerProps> = ({ playerId }) => {
         dispatch(
           playerId === helperId
             ? setCombatHelperBonus(currentBonus + value)
-            : setCombatPlayerBonus(currentBonus + value)
+            : setCombatPlayerBonus(currentBonus + value),
         );
       });
     },
-    [dispatch, playerId]
+    [dispatch, playerId],
   );
 
   const onBonusDecrement = useCallback(
     () => onBonusChange(-1),
-    [onBonusChange]
+    [onBonusChange],
   );
   const onBonusIncrement = useCallback(() => onBonusChange(1), [onBonusChange]);
 
   const onPlayerLevelDecrement = useCallback(
     () => dispatch(decrementPlayerLevel(id)),
-    [dispatch, id]
+    [dispatch, id],
   );
 
   const onPlayerLevelIncrement = useCallback(
     () => dispatch(incrementPlayerLevel(id)),
-    [dispatch, id]
+    [dispatch, id],
   );
 
   const onPlayerGearDecrement = useCallback(
     () => dispatch(decrementPlayerGear(id)),
-    [dispatch, id]
+    [dispatch, id],
   );
 
   const onPlayerGearIncrement = useCallback(
     () => dispatch(incrementPlayerGear(id)),
-    [dispatch, id]
+    [dispatch, id],
   );
 
   const itemSx = {

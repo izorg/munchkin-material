@@ -20,10 +20,10 @@ const useDeletePlayers = (): ((players: string[]) => void) => {
           values={{
             count: players.length,
           }}
-        />
+        />,
       );
     },
-    [dispatch, setMessage]
+    [dispatch, setMessage],
   );
 };
 

@@ -12,7 +12,7 @@ const useMultiMode = (): {
 
   const searchParams = useMemo(
     () => new URLSearchParams(location.search),
-    [location.search]
+    [location.search],
   );
 
   const multiMode = searchParams.get(key) !== null;
@@ -31,7 +31,7 @@ const useMultiMode = (): {
         search: search ? `?${search}` : "",
       });
     },
-    [navigate, searchParams]
+    [navigate, searchParams],
   );
 
   return { multiMode, setMultiMode };

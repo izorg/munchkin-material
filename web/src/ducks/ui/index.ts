@@ -19,7 +19,7 @@ const uiSlice = createSlice({
         return {
           ...state,
           selectedPlayerIds: state.selectedPlayerIds.filter(
-            (selectedId) => selectedId !== id
+            (selectedId) => selectedId !== id,
           ),
         };
       }

@@ -24,7 +24,7 @@ const CombatHelperButton = () => {
   const goBack = useGoBack();
   const helperId = usePresentSelector((state) => state.combat.helperId);
   const hasOtherPlayers = usePresentSelector(
-    (state) => state.playerList.length > 1
+    (state) => state.playerList.length > 1,
   );
   const helper = !helperId && hasOtherPlayers;
   const open = new URLSearchParams(location.search).get("add") === "";
@@ -50,7 +50,7 @@ const CombatHelperButton = () => {
       {
         search: `?${searchParams.toString()}`,
       },
-      { replace: true }
+      { replace: true },
     );
   };
   const onMonsterAdd = () => dispatch(addMonster(createMonster()));

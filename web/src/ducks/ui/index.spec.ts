@@ -24,7 +24,7 @@ describe("UI reducer", () => {
         ...initialState,
         selectedPlayerIds: [id],
       },
-      togglePlayer(id)
+      togglePlayer(id),
     );
 
     expect(state.selectedPlayerIds).not.toContain(id);
@@ -36,7 +36,7 @@ describe("UI reducer", () => {
         ...initialState,
         selectedPlayerIds: [uuid(), uuid(), uuid()],
       },
-      unselectAllPlayers()
+      unselectAllPlayers(),
     );
 
     expect(state.selectedPlayerIds).toHaveLength(0);

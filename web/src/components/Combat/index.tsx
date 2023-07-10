@@ -36,7 +36,7 @@ const Combat = () => {
       .map((id) => monsters[id])
       .reduce(
         (strength, monster) => strength + monster.level + monster.bonus,
-        0
+        0,
       );
   });
 

@@ -68,7 +68,7 @@ const CombatCounter: FC<CombatCounterProps> = (props) => {
       <CounterLabel
         sx={{
           fontSize: useMediaQuery(
-            "@media (orientation: portrait) and (min-width: 360px) and (min-height: 600px)"
+            "@media (orientation: portrait) and (min-width: 360px) and (min-height: 600px)",
           )
             ? "20px"
             : "16px",

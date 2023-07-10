@@ -34,7 +34,7 @@ const PlayerAddButton = forwardRef<HTMLButtonElement, FabProps>(
         </SvgIcon>
       </ScreenFab>
     );
-  }
+  },
 );
 
 export default PlayerAddButton;

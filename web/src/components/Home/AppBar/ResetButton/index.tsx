@@ -54,7 +54,7 @@ const ResetButton = (props: IconButtonProps) => {
           intl.formatMessage({
             defaultMessage: "Players have been reset",
             id: "undo.resetPlayers",
-          })
+          }),
         );
         dispatch(resetPlayers(playerList));
       }

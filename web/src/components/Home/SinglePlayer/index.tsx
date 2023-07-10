@@ -25,7 +25,7 @@ const SinglePlayer = () => {
   const intl = useIntl();
 
   const player = usePresentSelector(
-    (state) => state.players[state.settings.singleModePlayerId as string]
+    (state) => state.players[state.settings.singleModePlayerId as string],
   );
   const bonus = usePresentSelector((state) => state.combat.playerBonus);
 
@@ -34,57 +34,57 @@ const SinglePlayer = () => {
 
   const levelDecrementDisabled = isLevelDecrementDisabled(
     player.level,
-    levelLimit
+    levelLimit,
   );
   const levelIncrementDisabled = isLevelIncrementDisabled(
     player.level,
     levelLimit,
-    epic
+    epic,
   );
 
   const onBonusDecrement = useCallback(
     () =>
       dispatch((_, getState) =>
         dispatch(
-          setCombatPlayerBonus(getState().present.combat.playerBonus - 1)
-        )
+          setCombatPlayerBonus(getState().present.combat.playerBonus - 1),
+        ),
       ),
-    [dispatch]
+    [dispatch],
   );
 
   const onBonusIncrement = useCallback(
     () =>
       dispatch((_, getState) =>
         dispatch(
-          setCombatPlayerBonus(getState().present.combat.playerBonus + 1)
-        )
+          setCombatPlayerBonus(getState().present.combat.playerBonus + 1),
+        ),
       ),
-    [dispatch]
+    [dispatch],
   );
 
   const onLevelDecrement = useCallback(
     () => dispatch(decrementPlayerLevel(player.id)),
-    [dispatch, player.id]
+    [dispatch, player.id],
   );
 
   const onLevelIncrement = useCallback(
     () => dispatch(incrementPlayerLevel(player.id)),
-    [dispatch, player.id]
+    [dispatch, player.id],
   );
 
   const onGearDecrement = useCallback(
     () => dispatch(decrementPlayerGear(player.id)),
-    [dispatch, player.id]
+    [dispatch, player.id],
   );
 
   const onGearIncrement = useCallback(
     () => dispatch(incrementPlayerGear(player.id)),
-    [dispatch, player.id]
+    [dispatch, player.id],
   );
 
   const onSexToggle = useCallback(
     () => dispatch(togglePlayerSex(player.id)),
-    [dispatch, player.id]
+    [dispatch, player.id],
   );
 
   const counterSx = {

@@ -34,7 +34,7 @@ const TopIconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
         {...props}
       />
     );
-  }
+  },
 );
 
 TopIconButton.propTypes = {

@@ -42,7 +42,7 @@ const PlayerAvatar = forwardRef<HTMLDivElement, PlayerAvatarProps>(
         )}
       </Avatar>
     );
-  }
+  },
 );
 
 PlayerAvatar.propTypes = {

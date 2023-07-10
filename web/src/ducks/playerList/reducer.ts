@@ -45,9 +45,9 @@ const playerListReducer = createReducer(initialState, (builder) =>
       ];
     })
     .addCase(removePlayers, (state, action) =>
-      state.filter((id) => !action.payload.includes(id))
+      state.filter((id) => !action.payload.includes(id)),
     )
-    .addCase(shufflePlayers, shuffle)
+    .addCase(shufflePlayers, shuffle),
 );
 
 export default playerListReducer;

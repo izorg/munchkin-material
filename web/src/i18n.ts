@@ -52,7 +52,7 @@ const supportedLocales = [
 export type SupportedLocale = (typeof supportedLocales)[number];
 
 export const isSupportedLocale = (
-  locale: string
+  locale: string,
 ): locale is SupportedLocale => {
   for (const supportedLocale of supportedLocales) {
     if (locale === supportedLocale) {
@@ -76,7 +76,7 @@ export const getLocale = () => {
     }
 
     const currentLocale = supportedLocales.find(
-      (locale) => locale === language.slice(0, 2)
+      (locale) => locale === language.slice(0, 2),
     );
 
     if (currentLocale) {
@@ -112,7 +112,7 @@ const loaders = {
 };
 
 export const loadMessages = async (
-  locale: SupportedLocale
+  locale: SupportedLocale,
 ): Promise<Record<string, MessageFormatElement[]> | Record<string, string>> => {
   const messages = await loaders[locale]();
 

@@ -68,7 +68,7 @@ describe("Players reducer", () => {
         [keepPlayer.id]: keepPlayer,
         [resetPlayer.id]: resetPlayer,
       },
-      resetPlayers([resetPlayer.id])
+      resetPlayers([resetPlayer.id]),
     );
 
     expect(players[keepPlayer.id]).toBe(keepPlayer);
@@ -103,7 +103,7 @@ describe("Players reducer", () => {
       updatePlayer({
         id,
         name: "Lol",
-      })
+      }),
     );
 
     expect(players[id].name).toBe("Lol");

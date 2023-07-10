@@ -16,7 +16,7 @@ import PlayerListItemText from "../../../PlayerListItemText";
 type HomePlayerListOverlayItemProps = { playerId: string };
 
 const HomePlayerListOverlayItem: FC<HomePlayerListOverlayItemProps> = (
-  props
+  props,
 ) => {
   const { playerId } = props;
 

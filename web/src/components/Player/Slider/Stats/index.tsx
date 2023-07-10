@@ -36,34 +36,34 @@ const PlayerStats: FC<PlayerStatsProps> = ({ playerId, sx = [] }) => {
 
   const levelDecrementDisabled = isLevelDecrementDisabled(
     player.level,
-    levelLimit
+    levelLimit,
   );
 
   const levelIncrementDisabled = isLevelIncrementDisabled(
     player.level,
     levelLimit,
-    epic
+    epic,
   );
 
   const onGearDecrement = useCallback(
     () => dispatch(decrementPlayerGear(playerId)),
-    [dispatch, playerId]
+    [dispatch, playerId],
   );
   const onGearIncrement = useCallback(
     () => dispatch(incrementPlayerGear(playerId)),
-    [dispatch, playerId]
+    [dispatch, playerId],
   );
   const onLevelDecrement = useCallback(
     () => dispatch(decrementPlayerLevel(playerId)),
-    [dispatch, playerId]
+    [dispatch, playerId],
   );
   const onLevelIncrement = useCallback(
     () => dispatch(incrementPlayerLevel(playerId)),
-    [dispatch, playerId]
+    [dispatch, playerId],
   );
   const onSexToggle = useCallback(
     () => dispatch(togglePlayerSex(playerId)),
-    [dispatch, playerId]
+    [dispatch, playerId],
   );
 
   const lineHeight =

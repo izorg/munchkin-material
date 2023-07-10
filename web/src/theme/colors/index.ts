@@ -16,6 +16,6 @@ export default Object.fromEntries(
         ...theme,
         name: (intl: IntlShape) => intl.formatMessage(theme.name),
       },
-    ]
-  )
+    ],
+  ),
 );

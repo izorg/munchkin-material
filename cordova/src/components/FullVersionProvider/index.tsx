@@ -34,7 +34,7 @@ const FullVersionProvider: FC<PropsWithChildren> = ({ children }) => {
 
         store.order(FULL_VERSION_ID);
       }),
-    []
+    [],
   );
 
   const restorePurchases = useCallback(() => {
@@ -79,7 +79,7 @@ const FullVersionProvider: FC<PropsWithChildren> = ({ children }) => {
       restorePurchases:
         cordova.platformId === "ios" ? restorePurchases : undefined,
     }),
-    [buyFullVersion, fullVersion, restorePurchases]
+    [buyFullVersion, fullVersion, restorePurchases],
   );
 
   return (

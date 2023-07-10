@@ -55,5 +55,5 @@ root.render(
         </CordovaProvider>
       </Suspense>
     </ReduxProvider>
-  </MemoryRouter>
+  </MemoryRouter>,
 );

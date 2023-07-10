@@ -28,7 +28,7 @@ const WakeLockProvider: FC<PropsWithChildren> = ({ children }) => {
 
       dispatch(setKeepAwake(value));
     },
-    [dispatch, wakeLockSupport]
+    [dispatch, wakeLockSupport],
   );
 
   useEffect(() => {

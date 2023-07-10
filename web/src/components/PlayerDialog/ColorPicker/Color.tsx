@@ -18,54 +18,53 @@ type ColorProps = Omit<ButtonBaseProps, "selected" | "value"> & {
   value?: AvailableColor;
 };
 
-const Color = forwardRef<HTMLButtonElement, ColorProps>(function Color(
-  props,
-  ref
-) {
-  const theme = useTheme();
+const Color = forwardRef<HTMLButtonElement, ColorProps>(
+  function Color(props, ref) {
+    const theme = useTheme();
 
-  const { selected = false, sx = [], value, ...rest } = props;
+    const { selected = false, sx = [], value, ...rest } = props;
 
-  const backgroundColor =
-    value && value in colors
-      ? colors[value][theme.palette.mode === "dark" ? 200 : 500]
-      : value;
+    const backgroundColor =
+      value && value in colors
+        ? colors[value][theme.palette.mode === "dark" ? 200 : 500]
+        : value;
 
-  return (
-    <ButtonBase
-      ref={ref}
-      centerRipple
-      focusRipple
-      sx={[
-        {
-          borderRadius: "50%",
-          height: "48px",
-          padding: 0,
-          width: "48px",
-        },
-        ...(sx instanceof Array ? sx : [sx]),
-      ]}
-      value={value}
-      {...rest}
-    >
-      <Avatar
-        component="span"
-        style={{ backgroundColor }}
-        sx={{
-          height: "36px",
-          margin: "0 auto",
-          width: "36px",
-        }}
+    return (
+      <ButtonBase
+        ref={ref}
+        centerRipple
+        focusRipple
+        sx={[
+          {
+            borderRadius: "50%",
+            height: "48px",
+            padding: 0,
+            width: "48px",
+          },
+          ...(sx instanceof Array ? sx : [sx]),
+        ]}
+        value={value}
+        {...rest}
       >
-        {selected && (
-          <SvgIcon>
-            <path d={mdiCheck} />
-          </SvgIcon>
-        )}
-      </Avatar>
-    </ButtonBase>
-  );
-});
+        <Avatar
+          component="span"
+          style={{ backgroundColor }}
+          sx={{
+            height: "36px",
+            margin: "0 auto",
+            width: "36px",
+          }}
+        >
+          {selected && (
+            <SvgIcon>
+              <path d={mdiCheck} />
+            </SvgIcon>
+          )}
+        </Avatar>
+      </ButtonBase>
+    );
+  },
+);
 
 Color.propTypes = {
   selected: PropTypes.bool,

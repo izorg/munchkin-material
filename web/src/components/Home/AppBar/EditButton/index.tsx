@@ -15,7 +15,7 @@ const EditButton: FC<IconButtonProps> = (props) => {
 
   const onToggleEditClick = useCallback(
     () => (editMode ? goBack() : setEditMode(true)),
-    [editMode, goBack, setEditMode]
+    [editMode, goBack, setEditMode],
   );
 
   const editTitle = intl.formatMessage({

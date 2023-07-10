@@ -1,10 +1,10 @@
 import availableColors from "./availableColors";
 
 const getRandomMaterialColor = (
-  excluded: typeof availableColors = []
+  excluded: typeof availableColors = [],
 ): (typeof availableColors)[number] => {
   let preferredColors = availableColors.filter(
-    (color) => !excluded.includes(color)
+    (color) => !excluded.includes(color),
   );
 
   if (preferredColors.length === 0) {

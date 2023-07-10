@@ -14,7 +14,7 @@ import {
 
 export const monsterReducer = (
   state: Monster,
-  action: PayloadAction<string>
+  action: PayloadAction<string>,
 ): Monster => {
   switch (action.type) {
     case decrementMonsterBonus.type: {
@@ -74,7 +74,7 @@ const monstersReducer = createReducer(initialState, (builder) =>
         decrementMonsterBonus,
         decrementMonsterLevel,
         incrementMonsterBonus,
-        incrementMonsterLevel
+        incrementMonsterLevel,
       ),
       (state, action) => {
         const monster = monsterReducer(state[action.payload], action);
@@ -83,8 +83,8 @@ const monstersReducer = createReducer(initialState, (builder) =>
           ...state,
           [monster.id]: monster,
         };
-      }
-    )
+      },
+    ),
 );
 
 export default monstersReducer;

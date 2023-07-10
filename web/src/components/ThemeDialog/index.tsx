@@ -46,7 +46,7 @@ const ThemeDialog = () => {
 
   const open = useMemo(
     () => new URLSearchParams(location.search).get("theme") !== null,
-    [location.search]
+    [location.search],
   );
 
   const previewTheme = usePreviewTheme();
@@ -65,7 +65,7 @@ const ThemeDialog = () => {
 
   const onThemeIdChange = (
     event: ChangeEvent<HTMLInputElement>,
-    id: string
+    id: string,
   ) => {
     onChange({
       id,
@@ -74,7 +74,7 @@ const ThemeDialog = () => {
 
   const onThemeModeChange = (
     event: ChangeEvent<HTMLInputElement>,
-    mode: string
+    mode: string,
   ) => {
     onChange({
       mode: mode as FormValues["mode"],

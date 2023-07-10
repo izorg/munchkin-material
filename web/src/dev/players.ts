@@ -83,7 +83,7 @@ const nameEntries: [locale: SupportedLocale, names: string[]][] = [
 ];
 
 const players = Object.fromEntries(
-  nameEntries.map(([locale, names]) => [locale, getLocalizedPlayers(names)])
+  nameEntries.map(([locale, names]) => [locale, getLocalizedPlayers(names)]),
 );
 
 export default players;

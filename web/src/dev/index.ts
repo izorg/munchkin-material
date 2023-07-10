@@ -26,7 +26,7 @@ const setTestData = () => {
   const locale = settings.locale || getLocale();
 
   const localePlayers = Object.entries(players).find(
-    ([key]) => key === locale
+    ([key]) => key === locale,
   )?.[1];
 
   if (localePlayers) {

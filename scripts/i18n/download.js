@@ -13,7 +13,7 @@ const writeTranslation = async (code, data) => {
 
   await fs.promises.writeFile(
     `./languages/${code}.json`,
-    JSON.stringify(data, null, "  ")
+    JSON.stringify(data, null, "  "),
   );
 
   console.log(`✅ ${code.toUpperCase()}`);
@@ -43,5 +43,5 @@ await Promise.all(
     const content = await poeditor.get(url).then(({ data }) => data);
 
     await writeTranslation(language.toLowerCase(), content);
-  })
+  }),
 );

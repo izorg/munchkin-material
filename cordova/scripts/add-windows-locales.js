@@ -7,12 +7,12 @@ module.exports = async (ctx) => {
   const { projectRoot } = ctx.opts;
 
   const buffer = await fs.promises.readFile(
-    path.join(projectRoot, "res/windows/CordovaApp.projitems")
+    path.join(projectRoot, "res/windows/CordovaApp.projitems"),
   );
 
   await fs.promises.writeFile(
     path.join(projectRoot, "platforms/windows/CordovaApp.projitems"),
-    buffer
+    buffer,
   );
 
   await fs.promises.cp(
@@ -20,6 +20,6 @@ module.exports = async (ctx) => {
     path.join(projectRoot, "platforms/windows/strings"),
     {
       recursive: true,
-    }
+    },
   );
 };

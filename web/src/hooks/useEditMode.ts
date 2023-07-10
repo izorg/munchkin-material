@@ -23,7 +23,7 @@ const useEditMode = (): {
         return searchParams;
       });
     },
-    [setSearchParams]
+    [setSearchParams],
   );
 
   return useMemo(() => ({ editMode, setEditMode }), [editMode, setEditMode]);

@@ -33,7 +33,7 @@ describe("Combat reducer", () => {
 
     const combat = reducer(
       { ...initialState, monsters: [id] },
-      removeMonster(id)
+      removeMonster(id),
     );
 
     expect(combat.monsters).toHaveLength(0);

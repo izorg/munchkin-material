@@ -31,8 +31,8 @@ const AugmentedThemeProvider: FC<PropsWithChildren> = ({ children }) => {
     return createTheme(
       deepmerge(
         getThemeOptions({ direction, mode, pureBlack }),
-        themes[id].getTheme(mode)
-      )
+        themes[id].getTheme(mode),
+      ),
     );
   }, [direction, previewTheme, systemPaletteMode]);
 

@@ -53,5 +53,5 @@ root.render(
         </VersionProvider>
       </ReduxProvider>
     </BrowserRouter>
-  </StrictMode>
+  </StrictMode>,
 );

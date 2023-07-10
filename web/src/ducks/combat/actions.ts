@@ -6,15 +6,15 @@ import { type Monster } from "../../utils/types";
 export const finishCombat = createAction("combat/finishCombat");
 
 export const setCombatHelper = createAction<null | string>(
-  "combat/setCombatHelper"
+  "combat/setCombatHelper",
 );
 
 export const setCombatHelperBonus = createAction<number>(
-  "combat/setCombatHelperBonus"
+  "combat/setCombatHelperBonus",
 );
 
 export const setCombatPlayerBonus = createAction<number>(
-  "combat/setCombatPlayerBonus"
+  "combat/setCombatPlayerBonus",
 );
 
 export const startCombat = createAction<

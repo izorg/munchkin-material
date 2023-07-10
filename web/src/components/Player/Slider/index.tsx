@@ -41,7 +41,7 @@ const PlayerSlider = ({ playerId, sx = [] }: PlayerSliderProps) => {
 
       return playerIndex;
     },
-    [playerCount]
+    [playerCount],
   );
 
   const ref = useRef<HTMLDivElement>(null);

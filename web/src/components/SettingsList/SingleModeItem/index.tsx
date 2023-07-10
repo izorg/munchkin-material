@@ -18,7 +18,7 @@ const SingleModeItem = () => {
   const singleMode = usePresentSelector((state) => state.settings.singleMode);
 
   let singleModePlayerId = usePresentSelector(
-    (state) => state.settings.singleModePlayerId
+    (state) => state.settings.singleModePlayerId,
   );
 
   const { buyFullVersion, fullVersion } = useFullVersion();

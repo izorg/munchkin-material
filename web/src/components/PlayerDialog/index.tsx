@@ -52,7 +52,7 @@ const PlayerDialog = () => {
   const queryPlayer = searchParams.get("player");
 
   const previousPlayerRef = useRef(
-    queryPlayer ? players[queryPlayer] : undefined
+    queryPlayer ? players[queryPlayer] : undefined,
   );
 
   const editPlayer = useMemo(() => {
@@ -76,9 +76,9 @@ const PlayerDialog = () => {
       getRandomMaterialColor(
         Object.values(players)
           .map((player) => player.color)
-          .filter((color): color is AvailableColor => color !== undefined)
+          .filter((color): color is AvailableColor => color !== undefined),
       ),
-    [players]
+    [players],
   );
 
   const fullScreen = useFullScreen();

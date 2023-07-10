@@ -36,7 +36,7 @@ const CounterButton: FC<CounterButtonProps> = ({
     () => () => {
       clearPress();
     },
-    [clearPress]
+    [clearPress],
   );
 
   useEffect(() => {

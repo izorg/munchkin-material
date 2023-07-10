@@ -11,7 +11,7 @@ import { forwardRef } from "react";
 
 const DragIconButton = forwardRef(function DragIconButton(
   props: IconButtonProps,
-  ref: IconButtonProps["ref"]
+  ref: IconButtonProps["ref"],
 ) {
   return (
     <IconButton ref={ref} {...props}>

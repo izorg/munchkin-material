@@ -1,7 +1,7 @@
 import { createAction, type PrepareAction } from "@reduxjs/toolkit";
 
 export const addPlayerToList = createAction<string>(
-  "playerList/addPlayerToList"
+  "playerList/addPlayerToList",
 );
 
 export const movePlayer = createAction<

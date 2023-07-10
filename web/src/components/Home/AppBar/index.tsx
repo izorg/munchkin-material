@@ -37,7 +37,7 @@ const HomeAppBar: FC<HomeAppBarProps> = (props) => {
   const { multiMode } = useMultiMode();
 
   const selectedPlayerIds = usePresentSelector(
-    (state) => state.ui.selectedPlayerIds
+    (state) => state.ui.selectedPlayerIds,
   );
 
   let title: ReactNode = (

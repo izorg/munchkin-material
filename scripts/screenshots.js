@@ -71,7 +71,7 @@ const delay = (timeout) =>
 const range = (start, end) =>
   Array.from(
     Array.from({ length: Math.abs(end - start) + 1 }),
-    (_, i) => start + i
+    (_, i) => start + i,
   );
 
 const getScreenshots = async (browserType, device, locale, deviceName) => {
@@ -151,23 +151,23 @@ const getScreenshots = async (browserType, device, locale, deviceName) => {
   await Promise.all(
     range(0, 3).map(async () =>
       page.click(
-        '[data-screenshots="level-counter"] [data-screenshots="increment-button"]'
-      )
-    )
+        '[data-screenshots="level-counter"] [data-screenshots="increment-button"]',
+      ),
+    ),
   );
   await Promise.all(
     range(0, 8).map(async () =>
       page.click(
-        '[data-screenshots="gear-counter"] [data-screenshots="increment-button"]'
-      )
-    )
+        '[data-screenshots="gear-counter"] [data-screenshots="increment-button"]',
+      ),
+    ),
   );
   await Promise.all(
     range(0, 3).map(async () =>
       page.click(
-        '[data-screenshots="modifier-counter"] [data-screenshots="decrement-button"]'
-      )
-    )
+        '[data-screenshots="modifier-counter"] [data-screenshots="decrement-button"]',
+      ),
+    ),
   );
   await delay(duration.enteringScreen);
   await page.screenshot({

@@ -43,7 +43,7 @@ const HomePlayerListItem = (props: HomePlayerListItemProps) => {
   const { multiMode, setMultiMode } = useMultiMode();
 
   const selectedPlayerIds = usePresentSelector(
-    (state) => state.ui.selectedPlayerIds
+    (state) => state.ui.selectedPlayerIds,
   );
   const selected = multiMode && selectedPlayerIds.includes(playerId);
 
@@ -90,7 +90,7 @@ const HomePlayerListItem = (props: HomePlayerListItemProps) => {
       playerId,
       selectedPlayerIds,
       setSearchParams,
-    ]
+    ],
   );
 
   const clearPress = useCallback(() => {
@@ -126,7 +126,7 @@ const HomePlayerListItem = (props: HomePlayerListItemProps) => {
         }
       }, 500);
     },
-    [editMode, multiMode, onMultiSelectActivate]
+    [editMode, multiMode, onMultiSelectActivate],
   );
 
   const onTap = useCallback(
@@ -137,7 +137,7 @@ const HomePlayerListItem = (props: HomePlayerListItemProps) => {
         onClick(event);
       }
     },
-    [clearPress, onClick]
+    [clearPress, onClick],
   );
 
   const {

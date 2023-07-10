@@ -17,7 +17,7 @@ import polyfillIntl from "./polyfillIntl";
 const defaultLocale = getLocale();
 
 const fetchLocale = async (
-  locale: SupportedLocale
+  locale: SupportedLocale,
 ): Promise<{
   locale: SupportedLocale;
   messages: Awaited<ReturnType<typeof loadMessages>>;
@@ -39,7 +39,7 @@ const LocaleProvider: FC<PropsWithChildren> = ({ children }) => {
     ([, locale]) => fetchLocale(locale),
     {
       keepPreviousData: true,
-    }
+    },
   );
 
   useLayoutEffect(() => {

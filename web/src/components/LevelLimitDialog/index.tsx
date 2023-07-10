@@ -45,7 +45,7 @@ const LevelLimitDialog = () => {
 
   const onChange = (
     event: ChangeEvent<HTMLInputElement>,
-    levelLimit: string
+    levelLimit: string,
   ) => {
     setValue(levelLimit);
   };

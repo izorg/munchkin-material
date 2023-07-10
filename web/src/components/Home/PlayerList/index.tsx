@@ -55,14 +55,14 @@ const HomePlayerList = (props: ListProps) => {
         dispatch(movePlayer(oldIndex, newIndex));
       }
     },
-    [dispatch, playerList]
+    [dispatch, playerList],
   );
 
   const sensors = useSensors(
     useSensor(PointerSensor),
     useSensor(KeyboardSensor, {
       coordinateGetter: sortableKeyboardCoordinates,
-    })
+    }),
   );
 
   return (

@@ -9,7 +9,7 @@ export default (state: { players: Record<string, Player> }) => {
       const color = availableColors.find(
         (availableColor) =>
           colors[availableColor][500].toLowerCase() ===
-          player.color?.toLowerCase()
+          player.color?.toLowerCase(),
       );
 
       if (color) {
@@ -23,7 +23,7 @@ export default (state: { players: Record<string, Player> }) => {
       }
 
       return [id, player];
-    })
+    }),
   );
 
   return state;

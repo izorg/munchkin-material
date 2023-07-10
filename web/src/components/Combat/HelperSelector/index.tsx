@@ -30,7 +30,7 @@ const HelperSelector = () => {
 
   const helpers = useMemo(
     () => playerList.filter((id) => id !== playerId).map((id) => players[id]),
-    [playerId, playerList, players]
+    [playerId, playerList, players],
   );
 
   const open = new URLSearchParams(location.search).get("add") === "helper";

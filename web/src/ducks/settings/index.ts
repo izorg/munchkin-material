@@ -58,7 +58,7 @@ const settingsSlice = createSlice({
 
     setSingleModePlayer: (
       state,
-      action: PayloadAction<string | undefined>
+      action: PayloadAction<string | undefined>,
     ) => ({
       ...state,
       singleModePlayerId: action.payload,

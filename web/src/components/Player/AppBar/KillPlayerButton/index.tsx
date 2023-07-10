@@ -33,8 +33,8 @@ const KillPlayerButton: FC<IconButtonProps> = (props) => {
         {
           name: player.name,
           sex: player.sex,
-        }
-      )
+        },
+      ),
     );
     dispatch(killPlayer(playerId));
   };

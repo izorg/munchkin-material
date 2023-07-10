@@ -9,7 +9,7 @@ const useScreenView = (): string | undefined => {
         end: false,
         path: "/player/:id/combat",
       },
-      pathname
+      pathname,
     )
   ) {
     return "Combat";
@@ -21,7 +21,7 @@ const useScreenView = (): string | undefined => {
         end: false,
         path: "/player/:id",
       },
-      pathname
+      pathname,
     )
   ) {
     return "Player";
