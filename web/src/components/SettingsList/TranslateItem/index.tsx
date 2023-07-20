@@ -7,7 +7,6 @@ import ListItemText from "../ItemText";
 
 const TranslateItem = () => (
   <ListItem
-    button
     component="a"
     href="https://poeditor.com/join/project/ZMBvWu9xIw"
     rel="noopener noreferrer"

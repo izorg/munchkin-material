@@ -16,7 +16,7 @@ const RateItem = () => {
   }
 
   return (
-    <ListItem button component="a" href={appStoreLink} target="_blank">
+    <ListItem component="a" href={appStoreLink} target="_blank">
       <ListItemIcon>
         <SvgIcon>
           <path d={mdiStarOutline} />

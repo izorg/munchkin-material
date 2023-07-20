@@ -7,7 +7,6 @@ import ListItemText from "../ItemText";
 
 const PrivacyItem = () => (
   <ListItem
-    button
     component="a"
     href="https://allmunchkins.com/privacy"
     rel="noopener noreferrer"
