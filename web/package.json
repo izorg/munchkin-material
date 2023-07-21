@@ -30,7 +30,7 @@
     "@sentry/react": "7.59.3",
     "clsx": "2.0.0",
     "core-js": "3.31.1",
-    "firebase": "10.0.0",
+    "firebase": "10.1.0",
     "framer-motion": "10.13.0",
     "prop-types": "15.8.1",
     "react": "18.2.0",

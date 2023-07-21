@@ -41,7 +41,7 @@
     "eslint-plugin-only-error": "1.0.2",
     "eslint-plugin-perfectionist": "1.5.0",
     "eslint-plugin-prettier": "5.0.0",
-    "eslint-plugin-react": "7.32.2",
+    "eslint-plugin-react": "7.33.0",
     "eslint-plugin-react-hooks": "4.6.0",
     "eslint-plugin-unicorn": "48.0.0",
     "husky": "8.0.3",
