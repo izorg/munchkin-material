@@ -1,5 +1,5 @@
 import { mdiSwapVertical } from "@mdi/js";
-import { ListItemIcon, SvgIcon } from "@mui/material";
+import { ListItem, ListItemIcon, SvgIcon } from "@mui/material";
 import { useIntl } from "react-intl";
 import { useLocation, useNavigate } from "react-router-dom";
 
@@ -10,8 +10,8 @@ import {
   MAX_LEVEL,
   MIN_LEVEL,
 } from "../../../utils/levelLimit";
-import ListItem from "../Item";
 import ListItemText from "../ItemText";
+import { SettingsListItemButton } from "../SettingsListItemButton";
 
 const LevelLimitItem = () => {
   const intl = useIntl();
@@ -49,25 +49,26 @@ const LevelLimitItem = () => {
   }
 
   return (
-    <ListItem
-      button
-      onClick={onClick}
-      sx={{
-        paddingBottom: 0,
-        paddingTop: 0,
-      }}
-    >
-      <ListItemIcon>
-        <SvgIcon>
-          <path d={mdiSwapVertical} />
-        </SvgIcon>
-      </ListItemIcon>
-      <ListItemText
-        primary={intl.formatMessage(levelLimitMessages.label)}
-        primaryTypographyProps={{ noWrap: true }}
-        secondary={secondary}
-        secondaryTypographyProps={{ noWrap: true }}
-      />
+    <ListItem disablePadding>
+      <SettingsListItemButton
+        onClick={onClick}
+        sx={{
+          paddingBottom: 0,
+          paddingTop: 0,
+        }}
+      >
+        <ListItemIcon>
+          <SvgIcon>
+            <path d={mdiSwapVertical} />
+          </SvgIcon>
+        </ListItemIcon>
+        <ListItemText
+          primary={intl.formatMessage(levelLimitMessages.label)}
+          primaryTypographyProps={{ noWrap: true }}
+          secondary={secondary}
+          secondaryTypographyProps={{ noWrap: true }}
+        />
+      </SettingsListItemButton>
     </ListItem>
   );
 };

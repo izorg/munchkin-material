@@ -1,9 +1,9 @@
 import { mdiShareVariantOutline } from "@mdi/js";
-import { ListItemIcon, SvgIcon } from "@mui/material";
+import { ListItem, ListItemIcon, SvgIcon } from "@mui/material";
 import { useIntl } from "react-intl";
 
-import ListItem from "../Item";
 import ListItemText from "../ItemText";
+import { SettingsListItemButton } from "../SettingsListItemButton";
 
 const ShareItem = () => {
   const intl = useIntl();
@@ -38,13 +38,15 @@ const ShareItem = () => {
   };
 
   return (
-    <ListItem button onClick={onClick}>
-      <ListItemIcon>
-        <SvgIcon>
-          <path d={mdiShareVariantOutline} />
-        </SvgIcon>
-      </ListItemIcon>
-      <ListItemText primary={shareText} />
+    <ListItem disablePadding>
+      <SettingsListItemButton onClick={onClick}>
+        <ListItemIcon>
+          <SvgIcon>
+            <path d={mdiShareVariantOutline} />
+          </SvgIcon>
+        </ListItemIcon>
+        <ListItemText primary={shareText} />
+      </SettingsListItemButton>
     </ListItem>
   );
 };

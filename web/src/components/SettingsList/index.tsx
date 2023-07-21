@@ -10,8 +10,10 @@ import SingleModeItem from "./SingleModeItem";
 import ThemeItem from "./ThemeItem";
 import VersionItem from "./VersionItem";
 
+export * from "./SettingsListItemButton";
+
 const SettingsList = () => (
-  <List component="div" disablePadding sx={{ overflowY: "auto" }}>
+  <List disablePadding sx={{ overflowY: "auto" }}>
     <ThemeItem />
     <SingleModeItem />
     <LevelLimitItem />
