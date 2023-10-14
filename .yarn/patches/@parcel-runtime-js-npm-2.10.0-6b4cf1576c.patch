@@ -1,0 +1,28 @@
+diff --git a/lib/helpers/bundle-url.js b/lib/helpers/bundle-url.js
+index 253c47788375ae8df6e0723b59f7cc593fd0f927..cc2ba5fd72237324b97b4a8727b010d2555f66d2 100644
+--- a/lib/helpers/bundle-url.js
++++ b/lib/helpers/bundle-url.js
+@@ -13,7 +13,7 @@ function getBundleURL() {
+   try {
+     throw new Error();
+   } catch (err) {
+-    var matches = ('' + err.stack).match(/(https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/[^)\n]+/g);
++    var matches = ('' + err.stack).match(/(app|https?|file|ftp|ms-appx-web|(chrome|moz|safari-web)-extension):\/\/[^)\n]+/g);
+     if (matches) {
+       // The first two stack frames will be this function and getBundleURLCached.
+       // Use the 3rd one, which will be a runtime in the original bundle.
+@@ -23,12 +23,12 @@ function getBundleURL() {
+   return '/';
+ }
+ function getBaseURL(url) {
+-  return ('' + url).replace(/^((?:https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/.+)\/[^/]+$/, '$1') + '/';
++  return ('' + url).replace(/^((?:app|https?|file|ftp|ms-appx-web|(chrome|moz|safari-web)-extension):\/\/.+)\/[^/]+$/, '$1') + '/';
+ }
+ 
+ // TODO: Replace uses with `new URL(url).origin` when ie11 is no longer supported.
+ function getOrigin(url) {
+-  var matches = ('' + url).match(/(https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/[^/]+/);
++  var matches = ('' + url).match(/(app|https?|file|ftp|ms-appx-web|(chrome|moz|safari-web)-extension):\/\/[^/]+/);
+   if (!matches) {
+     throw new Error('Origin not found');
+   }
