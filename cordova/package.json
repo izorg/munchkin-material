@@ -9,7 +9,6 @@
     "clean": "yarn g:rimraf www",
     "cordova:prepare:android": "cordova prepare android",
     "cordova:prepare:ios": "cordova prepare ios",
-    "cordova:prepare:windows": "cordova prepare windows",
     "run:android": "cordova run android",
     "run:ios": "cordova run ios"
   },
@@ -50,14 +49,12 @@
     "cordova-plugin-statusbar": "3.0.0",
     "cordova-plugin-vibration": "3.1.1",
     "cordova-plugin-web-share": "1.4.0",
-    "cordova-windows": "7.0.1",
     "parcel": "2.10.0"
   },
   "cordova": {
     "platforms": [
       "android",
-      "ios",
-      "windows"
+      "ios"
     ],
     "plugins": {
       "cordova-plugin-buildinfo": {},

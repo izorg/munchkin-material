@@ -95,46 +95,4 @@
         </edit-config>
         <resource-file src="GoogleService-Info.plist" />
     </platform>
-    <platform name="windows">
-      <name>ms-resource:DisplayName</name>
-      <preference name="windows-target-version" value="10.0" />
-      <preference name="SplashScreenBackgroundColor" value="#FFFFFF" />
-      <preference name="WindowsStoreDisplayName" value="Level Counter for Munchkin" />
-      <preference name="WindowsStoreIdentityName" value="8543ViacheslavZavoruev.LevelCounterforMunchkin" />
-      <icon src="res/windows/StoreLogo.png" target="StoreLogo" />
-      <icon src="res/windows/Square30x30Logo.png" target="Square30x30Logo" />
-      <icon src="res/windows/Square44x44Logo.png" target="Square44x44Logo" />
-      <icon src="res/windows/Square70x70Logo.png" target="Square70x70Logo" />
-      <icon src="res/windows/Square71x71Logo.png" target="Square71x71Logo" />
-      <icon src="res/windows/Square150x150Logo.png" target="Square150x150Logo" />
-      <icon src="res/windows/Square310x310Logo.png" target="Square310x310Logo" />
-      <icon src="res/windows/Wide310x150Logo.png" target="Wide310x150Logo" />
-      <splash src="res/windows/SplashScreen.png" target="SplashScreen"/>
-      <edit-config file="package.windows10.appxmanifest" mode="merge" target="/Package/Resources/Resource">
-        <Resource Language="en" />
-      </edit-config>
-      <config-file target="package.windows10.appxmanifest" parent="/Package/Resources">
-        <Resource Language="cs" />
-        <Resource Language="da" />
-        <Resource Language="de" />
-        <Resource Language="el" />
-        <Resource Language="es" />
-        <Resource Language="fi" />
-        <Resource Language="fr" />
-        <Resource Language="he" />
-        <Resource Language="hu" />
-        <Resource Language="hy" />
-        <Resource Language="it" />
-        <Resource Language="nb" />
-        <Resource Language="nl" />
-        <Resource Language="pl" />
-        <Resource Language="pt" />
-        <Resource Language="pt-BR" />
-        <Resource Language="ru" />
-        <Resource Language="sk" />
-        <Resource Language="tr" />
-        <Resource Language="uk" />
-      </config-file>
-      <hook type="after_prepare" src="scripts/add-windows-locales.js" />
-    </platform>
 </widget>

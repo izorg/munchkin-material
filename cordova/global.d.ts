@@ -29,21 +29,6 @@ declare global {
     };
 
     StatusBar?: StatusBar;
-
-    Windows: {
-      UI: {
-        Core: {
-          AppViewBackButtonVisibility: {
-            collapsed: boolean;
-          };
-          SystemNavigationManager: {
-            getForCurrentView: () => {
-              appViewBackButtonVisibility: boolean;
-            };
-          };
-        };
-      };
-    };
   }
 }
 

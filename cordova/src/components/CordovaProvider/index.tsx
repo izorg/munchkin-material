@@ -10,7 +10,6 @@ import { useLocation } from "react-router-dom";
 
 import { useGoBack } from "../../../../web/src/utils/location";
 
-import hideWindowsBackButton from "./hideWindowsBackButton";
 import useNavigationBreadcrumbs from "./useNavigationBreadcrumbs";
 
 const CordovaProvider: FC<PropsWithChildren> = ({ children }) => {
@@ -35,10 +34,6 @@ const CordovaProvider: FC<PropsWithChildren> = ({ children }) => {
     };
 
     document.addEventListener("backbutton", onBackButton, false);
-
-    if (window.cordova.platformId === "windows") {
-      hideWindowsBackButton();
-    }
 
     return () => {
       document.removeEventListener("backbutton", onBackButton);
