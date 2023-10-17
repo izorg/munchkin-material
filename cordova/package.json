@@ -6,7 +6,7 @@
     "build:ios": "cordova build ios",
     "build": "yarn run clean && parcel build",
     "build:www": "yarn run clean && parcel build && yarn g:rimraf --glob \"www/*.map\"",
-    "clean": "yarn g:rimraf www",
+    "clean": "yarn g:rimraf ../.parcel-cache www",
     "cordova:prepare": "cordova prepare",
     "run:android": "cordova run android",
     "run:ios": "cordova run ios"
@@ -14,13 +14,13 @@
   "dependencies": {
     "@emotion/react": "11.11.1",
     "@emotion/styled": "11.11.0",
-    "@mui/material": "5.14.13",
-    "@sentry/react": "7.74.0",
+    "@mui/material": "5.14.14",
+    "@sentry/react": "7.74.1",
     "core-js": "3.33.0",
     "prop-types": "15.8.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-router-dom": "6.16.0",
+    "react-router-dom": "6.17.0",
     "scrollyfills": "1.0.0",
     "smoothscroll-polyfill": "0.4.4",
     "web-animations-js": "2.3.2"
