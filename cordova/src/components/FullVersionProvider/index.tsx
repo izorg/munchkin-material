@@ -16,32 +16,34 @@ import { FullVersionContext } from "../../../../web/src/utils/fullVersionContext
 const FULL_VERSION_ID = "full_version";
 
 const FullVersionProvider: FC<PropsWithChildren> = ({ children }) => {
+  const { Platform, ProductType, store } = CdvPurchase;
+
   const dispatch = useAppDispatch();
 
   const fullVersion = usePresentSelector((state) => state.settings.fullVersion);
 
-  const buyFullVersion = useCallback(
-    () =>
-      new Promise<void>((resolve, reject) => {
-        store
-          .once(FULL_VERSION_ID)
-          .owned(() => {
-            resolve();
-          })
-          .cancelled(() => {
-            reject();
-          });
+  const buyFullVersion = useCallback(async () => {
+    const product = store.get(FULL_VERSION_ID);
 
-        store.order(FULL_VERSION_ID);
-      }),
-    [],
-  );
+    await product?.getOffer()?.order();
+  }, [store]);
 
   const restorePurchases = useCallback(() => {
-    store.refresh();
-  }, []);
+    void store.restorePurchases();
+  }, [store]);
 
   useEffect(() => {
+    const platformMapping: Record<string, CdvPurchase.Platform> = {
+      android: Platform.GOOGLE_PLAY,
+      ios: Platform.APPLE_APPSTORE,
+    };
+
+    const platform = platformMapping[cordova.platformId];
+
+    if (!platform) {
+      return;
+    }
+
     store.error((error) => {
       const { code, message } = error;
 
@@ -54,23 +56,35 @@ const FullVersionProvider: FC<PropsWithChildren> = ({ children }) => {
 
     store.register({
       id: FULL_VERSION_ID,
-      type: store.NON_CONSUMABLE,
+      platform,
+      type: ProductType.NON_CONSUMABLE,
     });
 
     store
-      .when(FULL_VERSION_ID)
-      .loaded(() => {
-        dispatch(setFullVersion(false));
+      .when()
+      .productUpdated((product) => {
+        dispatch(setFullVersion(product.owned));
       })
-      .approved((product) => {
-        product.finish();
+      .approved((transaction) => {
+        if (!transaction.isAcknowledged) {
+          void transaction.verify();
+        }
       })
-      .owned(() => {
+      .verified((receipt) => {
+        void receipt.finish();
+      })
+      .finished(() => {
         dispatch(setFullVersion(true));
       });
 
-    store.refresh();
-  }, [dispatch]);
+    void store.initialize();
+  }, [
+    Platform.APPLE_APPSTORE,
+    Platform.GOOGLE_PLAY,
+    ProductType.NON_CONSUMABLE,
+    dispatch,
+    store,
+  ]);
 
   const value = useMemo(
     () => ({

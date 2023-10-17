@@ -3198,7 +3198,7 @@ __metadata:
     cordova-plugin-insomnia: 4.3.0
     cordova-plugin-ionic-keyboard: 2.2.0
     cordova-plugin-localization-strings: 5.0.5
-    cordova-plugin-purchase: 11.0.0
+    cordova-plugin-purchase: 13.8.6
     cordova-plugin-splashscreen: 6.0.2
     cordova-plugin-statusbar: 3.0.0
     cordova-plugin-vibration: 3.1.1
@@ -7582,10 +7582,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cordova-plugin-purchase@npm:11.0.0":
-  version: 11.0.0
-  resolution: "cordova-plugin-purchase@npm:11.0.0"
-  checksum: 59cf7904bafd77931f9ce38ba2705c225bba1f83d469983ddf45fe7230ab8358c5e68742bbd274ebc968c5b2c79ba0da620ea56d90e09c4929757c7d1cf54f16
+"cordova-plugin-purchase@npm:13.8.6":
+  version: 13.8.6
+  resolution: "cordova-plugin-purchase@npm:13.8.6"
+  checksum: 00e56647a8362f28cd6f438da4b7fcc2fc6aeb656a2d24b1e99a4ad14b1eec93769eda2f7199f1a629482de9805835f50771fea31916c39a4bfa4b556add384b
   languageName: node
   linkType: hard
 

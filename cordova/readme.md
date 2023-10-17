@@ -3,7 +3,11 @@
 Consume purchase
 
 ```javascript
-store.inappbilling.consumePurchase(console.log, console.log, "full_version");
+CdvPurchase.store.adapters.list[0].bridge.consumePurchase(
+  console.log,
+  console.log,
+  "purchase-token-from-play-console",
+);
 ```
 
 List iOS emulators
