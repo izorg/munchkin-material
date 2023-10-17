@@ -11,5 +11,12 @@
     "strict": true,
     "target": "ESNext",
     "verbatimModuleSyntax": true
-  }
+  },
+  "exclude": [
+    "cordova/platforms",
+    "cordova/plugins",
+    "cordova/www",
+    "node_modules",
+    "web/dist"
+  ]
 }
