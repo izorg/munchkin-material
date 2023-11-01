@@ -4,8 +4,8 @@
   "scripts": {
     "build:android": "cordova build android --release",
     "build:ios": "cordova build ios",
-    "build": "yarn run clean && parcel build",
-    "build:www": "yarn run clean && parcel build && yarn g:rimraf --glob \"www/*.map\"",
+    "build": "yarn run clean && yarn g:parcel build",
+    "build:www": "yarn run clean && yarn g:parcel build && yarn g:rimraf --glob \"www/*.map\"",
     "clean": "yarn g:rimraf ../.parcel-cache www",
     "cordova:prepare": "cordova prepare",
     "run:android": "cordova run android",
@@ -26,7 +26,6 @@
     "web-animations-js": "2.3.2"
   },
   "devDependencies": {
-    "@parcel/packager-raw-url": "2.10.1",
     "@types/cordova": "11.0.2",
     "@types/dom-screen-wake-lock": "1.0.2",
     "@types/react": "18.2.33",
@@ -47,8 +46,7 @@
     "cordova-plugin-splashscreen": "6.0.2",
     "cordova-plugin-statusbar": "3.0.0",
     "cordova-plugin-vibration": "3.1.1",
-    "cordova-plugin-web-share": "1.4.0",
-    "parcel": "2.10.1"
+    "cordova-plugin-web-share": "1.4.0"
   },
   "cordova": {
     "platforms": [

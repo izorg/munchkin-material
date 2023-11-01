@@ -5,7 +5,7 @@
   "scripts": {
     "analyze": "yarn run build:parcel --reporter @parcel/reporter-bundle-analyzer",
     "build": "yarn run build:parcel && yarn run build:workbox",
-    "build:parcel": "yarn g:rimraf dist && parcel build",
+    "build:parcel": "yarn g:rimraf dist && yarn g:parcel build",
     "build:workbox": "workbox generateSW workbox.config.json",
     "dev": "parcel --port=3000",
     "start": "firebase emulators:start"
@@ -50,17 +50,12 @@
   },
   "devDependencies": {
     "@mui/types": "7.2.8",
-    "@parcel/packager-raw-url": "2.10.1",
-    "@parcel/reporter-bundle-analyzer": "2.10.1",
-    "@parcel/resolver-default": "2.10.1",
-    "@parcel/transformer-webmanifest": "2.10.1",
     "@types/dom-screen-wake-lock": "1.0.2",
     "@types/react": "18.2.33",
     "@types/react-dom": "18.2.14",
     "@types/stylis": "4.2.2",
     "@types/uuid": "9.0.6",
     "firebase-tools": "12.8.0",
-    "parcel": "2.10.1",
     "process": "0.11.10",
     "typescript": "5.2.2",
     "workbox-cli": "7.0.0"
