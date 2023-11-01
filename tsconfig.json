@@ -13,10 +13,10 @@
     "verbatimModuleSyntax": true
   },
   "exclude": [
-    "cordova/platforms",
-    "cordova/plugins",
-    "cordova/www",
     "node_modules",
-    "web/dist"
+    "packages/cordova/platforms",
+    "packages/cordova/plugins",
+    "packages/cordova/www",
+    "packages/web/dist"
   ]
 }

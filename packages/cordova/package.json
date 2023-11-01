@@ -1,6 +1,7 @@
 {
   "private": true,
   "name": "@munchkin/cordova",
+  "type": "commonjs",
   "scripts": {
     "build:android": "cordova build android --release",
     "build:ios": "cordova build ios",

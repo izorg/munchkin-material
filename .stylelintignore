@@ -1,7 +1,7 @@
 coverage
 
-/cordova/platforms
-/cordova/plugins
-/cordova/www
+/packages/cordova/platforms
+/packages/cordova/plugins
+/packages/cordova/www
 
-/web/dist
+/packages/web/dist

@@ -3180,9 +3180,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@munchkin/cordova@workspace:cordova":
+"@munchkin/cordova@workspace:packages/cordova":
   version: 0.0.0-use.local
-  resolution: "@munchkin/cordova@workspace:cordova"
+  resolution: "@munchkin/cordova@workspace:packages/cordova"
   dependencies:
     "@emotion/react": "npm:11.11.1"
     "@emotion/styled": "npm:11.11.0"
@@ -3220,9 +3220,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@munchkin/web@workspace:web":
+"@munchkin/web@workspace:packages/web":
   version: 0.0.0-use.local
-  resolution: "@munchkin/web@workspace:web"
+  resolution: "@munchkin/web@workspace:packages/web"
   dependencies:
     "@dnd-kit/core": "npm:6.0.8"
     "@dnd-kit/modifiers": "npm:6.0.1"

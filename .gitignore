@@ -22,10 +22,10 @@ tsconfig.tsbuildinfo
 /languages/generated
 /screenshots
 
-/cordova/build.json
-/cordova/keystore.jks
-/cordova/platforms
-/cordova/plugins
-/cordova/www
+/packages/cordova/build.json
+/packages/cordova/keystore.jks
+/packages/cordova/platforms
+/packages/cordova/plugins
+/packages/cordova/www
 
-/web/dist
+/packages/web/dist
