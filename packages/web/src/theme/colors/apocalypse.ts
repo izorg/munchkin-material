@@ -13,16 +13,6 @@ export const getTheme = (mode: PaletteMode) => {
   const color = orange[mode === "light" ? 800 : 200];
 
   return {
-    components: {
-      MuiAvatar: {
-        styleOverrides: {
-          colorDefault: {
-            backgroundColor: color,
-          },
-        },
-      },
-    },
-
     palette: {
       primary: {
         main: color,
