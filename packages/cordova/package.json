@@ -29,7 +29,7 @@
   "devDependencies": {
     "@types/cordova": "11.0.2",
     "@types/dom-screen-wake-lock": "1.0.2",
-    "@types/react": "18.2.33",
+    "@types/react": "18.2.34",
     "@types/react-dom": "18.2.14",
     "@types/smoothscroll-polyfill": "0.3.2",
     "@types/web-animations-js": "2.2.15",

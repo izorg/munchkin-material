@@ -51,7 +51,7 @@
   "devDependencies": {
     "@mui/types": "7.2.8",
     "@types/dom-screen-wake-lock": "1.0.2",
-    "@types/react": "18.2.33",
+    "@types/react": "18.2.34",
     "@types/react-dom": "18.2.14",
     "@types/stylis": "4.2.2",
     "@types/uuid": "9.0.6",
