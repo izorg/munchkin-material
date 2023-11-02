@@ -39,7 +39,7 @@ jobs:
         run: yarn run test
 
       - name: Build 🔨
-        run: yarn workspaces foreach run build
+        run: yarn workspaces foreach --all --parallel run build
 
       - name: Create Sentry release
         uses: getsentry/action-release@v1
