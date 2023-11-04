@@ -24,10 +24,9 @@ const Color = forwardRef<HTMLButtonElement, ColorProps>(
 
     const { selected = false, sx = [], value, ...rest } = props;
 
-    const backgroundColor =
-      value && value in colors
-        ? colors[value][theme.palette.mode === "dark" ? 200 : 500]
-        : value;
+    const backgroundColor = value
+      ? colors[value][theme.palette.mode === "dark" ? 200 : 500]
+      : value;
 
     return (
       <ButtonBase
