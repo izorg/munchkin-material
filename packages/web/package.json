@@ -8,7 +8,7 @@
     "build:parcel": "yarn g:rimraf dist && yarn g:parcel build",
     "build:workbox": "workbox generateSW workbox.config.json",
     "dev": "yarn g:parcel --port=3000",
-    "start": "firebase emulators:start"
+    "start": "npx firebase-tools emulators:start"
   },
   "dependencies": {
     "@dnd-kit/core": "6.0.8",
@@ -55,7 +55,6 @@
     "@types/react-dom": "18.2.14",
     "@types/stylis": "4.2.2",
     "@types/uuid": "9.0.6",
-    "firebase-tools": "12.8.0",
     "process": "0.11.10",
     "typescript": "5.2.2",
     "workbox-cli": "7.0.0"
