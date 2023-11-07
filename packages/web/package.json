@@ -5,7 +5,7 @@
   "scripts": {
     "analyze": "yarn run build:parcel --reporter @parcel/reporter-bundle-analyzer",
     "build": "yarn run build:parcel && yarn run build:workbox",
-    "build:parcel": "yarn g:rimraf dist && yarn g:parcel build",
+    "build:parcel": "yarn g:rimraf ../../.parcel-cache dist && yarn g:parcel build",
     "build:workbox": "workbox generateSW workbox.config.json",
     "dev": "yarn g:parcel --port=3000",
     "start": "npx firebase-tools emulators:start"
