@@ -3073,7 +3073,6 @@ __metadata:
     "@types/react": "npm:18.2.37"
     "@types/react-dom": "npm:18.2.15"
     "@types/smoothscroll-polyfill": "npm:0.3.3"
-    "@types/web-animations-js": "npm:2.2.16"
     cordova: "npm:12.0.0"
     cordova-android: "npm:12.0.1"
     cordova-ios: "npm:7.0.1"
@@ -3096,7 +3095,6 @@ __metadata:
     react-router-dom: "npm:6.18.0"
     scrollyfills: "npm:1.0.0"
     smoothscroll-polyfill: "npm:0.4.4"
-    web-animations-js: "npm:2.3.2"
   languageName: unknown
   linkType: soft
 
@@ -5069,13 +5067,6 @@ __metadata:
   version: 9.0.7
   resolution: "@types/uuid@npm:9.0.7"
   checksum: c7321194aeba9ea173efd1e721403bdf4e7ae6945f8f8cdbc87c791f4b505ccf3dbc4a8883d90b394ef13b7c2dc778045792b05dbb23b3c746f8ea347804d448
-  languageName: node
-  linkType: hard
-
-"@types/web-animations-js@npm:2.2.16":
-  version: 2.2.16
-  resolution: "@types/web-animations-js@npm:2.2.16"
-  checksum: 43f98206834e6a94dd493dd338217758afad01e7b5e1b6e832661da86bb19767dbec0476b61e03b5415f2122d0a17528081eac4844105986f0b185fc53cd77f1
   languageName: node
   linkType: hard
 
@@ -16502,13 +16493,6 @@ __metadata:
   version: 1.2.2
   resolution: "weak-lru-cache@npm:1.2.2"
   checksum: 441f86236d34b9750ccf2bae1658cc62b49e805b740b3f3bf4b1d78e8cac50b6c05d31791f3f5bbf00f3b544834ae20c0f5a374efc833b7ba2a11dd8af37a790
-  languageName: node
-  linkType: hard
-
-"web-animations-js@npm:2.3.2":
-  version: 2.3.2
-  resolution: "web-animations-js@npm:2.3.2"
-  checksum: 0063173333a7fd716ab4a7d6ea55c1cc8803ec7bada0602d51d848621cfd48d7a4f7d50f5bb7f6b2c9432945bc4d158c221c2dc7a2b1a6964f7e7de6f36ae219
   languageName: node
   linkType: hard
 
