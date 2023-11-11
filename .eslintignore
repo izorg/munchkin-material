@@ -7,4 +7,6 @@ coverage
 /packages/cordova/plugins
 /packages/cordova/www
 
+/packages/site/out
+
 /packages/web/dist

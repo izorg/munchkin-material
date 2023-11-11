@@ -1,0 +1,11 @@
+{
+  "extends": ["next/core-web-vitals"],
+  "rules": {
+    "react/jsx-sort-props": "off"
+  },
+  "settings": {
+    "next": {
+      "rootDir": "packages/site"
+    }
+  }
+}

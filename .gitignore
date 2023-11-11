@@ -28,4 +28,8 @@ tsconfig.tsbuildinfo
 /packages/cordova/plugins
 /packages/cordova/www
 
+/packages/site/.next
+/packages/site/locales/generated
+/packages/site/out
+
 /packages/web/dist

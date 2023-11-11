@@ -1,0 +1,46 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - packages/site/**
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          cache: "yarn"
+          cache-dependency-path: "yarn.lock"
+          node-version-file: ".nvmrc"
+
+      - name: Install ⬇️
+        env:
+          HUSKY: 0
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
+        run: yarn install --immutable
+
+      - name: Compile locales 🔨
+        run: yarn workspace @munchkin/site run i18n:compile
+
+      - name: Build 🔨
+        run: yarn workspace @munchkin/site run build
+        env:
+          NEXT_PUBLIC_SENTRY_ENABLED: true
+          NODE_ENV: production
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          clean: true
+          folder: packages/site/out
