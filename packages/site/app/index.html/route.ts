@@ -3,7 +3,7 @@ export const GET = () =>
     /* HTML */ `
       <html lang="en">
         <head>
-          <title />
+          <title>Redirect</title>
           <meta http-equiv="refresh" content="0; url=/en" />
         </head>
       </html>
