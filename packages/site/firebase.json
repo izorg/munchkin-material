@@ -1,0 +1,20 @@
+{
+  "hosting": {
+    "public": "out",
+    "rewrites": [
+      {
+        "source": "/",
+        "destination": "/en",
+        "type": 301
+      }
+    ]
+  },
+  "emulators": {
+    "hosting": {
+      "port": 3000
+    },
+    "ui": {
+      "enabled": true
+    }
+  }
+}
