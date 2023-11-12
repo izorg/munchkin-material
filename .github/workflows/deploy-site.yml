@@ -31,6 +31,13 @@ jobs:
       - name: Compile locales 🔨
         run: yarn workspace @munchkin/site run i18n:compile
 
+      - name: Restore cache
+        uses: actions/cache@v3
+        with:
+          path: packages/site/.next/cache
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('yarn.lock') }}-${{ hashFiles('packages/site/**.[jt]s', 'packages/site/**.[jt]sx') }}
+          restore-keys: ${{ runner.os }}-nextjs-${{ hashFiles('yarn.lock') }}-
+
       - name: Build 🔨
         run: yarn workspace @munchkin/site run build
         env:
