@@ -1,5 +1,15 @@
 {
   "projects": {
-    "default": "allmunchkins"
-  }
+    "default": "izorg-munchkin"
+  },
+  "targets": {
+    "izorg-munchkin": {
+      "hosting": {
+        "site": [
+          "allmunchkins"
+        ]
+      }
+    }
+  },
+  "etags": {}
 }
