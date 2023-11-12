@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "target": "allmunchkins",
+    "target": "site",
     "public": "out",
     "trailingSlash": false,
     "rewrites": [
