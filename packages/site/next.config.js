@@ -20,6 +20,8 @@ const nextConfig = {
   },
   output: "export",
   productionBrowserSourceMaps: true,
+  skipTrailingSlashRedirect: true,
+  trailingSlash: true,
   typescript: {
     // Using project root TypeScript check
     ignoreBuildErrors: true,

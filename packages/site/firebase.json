@@ -1,7 +1,8 @@
 {
   "hosting": {
-    "target": "site",
+    "target": "allmunchkins",
     "public": "out",
+    "trailingSlash": false,
     "rewrites": [
       {
         "source": "/",
