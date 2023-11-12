@@ -154,11 +154,7 @@ export const Home = () => {
           textAlign: "center",
         }}
       >
-        <Link
-          component={NextLink} // eslint-disable-line @typescript-eslint/no-unsafe-assignment
-          href="/packages/site/components/PrivacyPolicy"
-          underline="always"
-        >
+        <Link component={NextLink} href="/privacy" underline="always">
           {intl.formatMessage(messages.privacy)}
         </Link>
       </Box>
