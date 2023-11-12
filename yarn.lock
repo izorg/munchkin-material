@@ -3110,6 +3110,7 @@ __metadata:
     "@mdi/js": "npm:7.3.67"
     "@mui/material": "npm:5.14.17"
     "@next/bundle-analyzer": "npm:14.0.2"
+    "@next/third-parties": "npm:14.0.2"
     "@sentry/nextjs": "npm:7.77.0"
     "@types/react": "npm:18.2.37"
     "@types/react-dom": "npm:18.2.15"
@@ -3273,6 +3274,18 @@ __metadata:
   version: 14.0.2
   resolution: "@next/swc-win32-x64-msvc@npm:14.0.2"
   conditions: os=win32 & cpu=x64
+  languageName: node
+  linkType: hard
+
+"@next/third-parties@npm:14.0.2":
+  version: 14.0.2
+  resolution: "@next/third-parties@npm:14.0.2"
+  dependencies:
+    third-party-capital: "npm:1.0.20"
+  peerDependencies:
+    next: ^13.0.0 || ^14.0.0
+    react: ^18.2.0
+  checksum: e4462a51ee7cc6fe0411993decfdb37fb665483f6fe14ce07e43ab53572ac2c412d4ee072a31b9b7a6e1cbb7d8625304ffa8ad04e6793d2391acf7511a4fb1c4
   languageName: node
   linkType: hard
 
@@ -16265,6 +16278,13 @@ __metadata:
   version: 0.2.0
   resolution: "text-table@npm:0.2.0"
   checksum: 4383b5baaeffa9bb4cda2ac33a4aa2e6d1f8aaf811848bf73513a9b88fd76372dc461f6fd6d2e9cb5100f48b473be32c6f95bd983509b7d92bb4d92c10747452
+  languageName: node
+  linkType: hard
+
+"third-party-capital@npm:1.0.20":
+  version: 1.0.20
+  resolution: "third-party-capital@npm:1.0.20"
+  checksum: 40e2531b428a21f05531fc62ef82859c0071211eff09588baf75d4b525096bbdb4f93e17e2d538849db8d4fc3cceb074933d7be59fddc26f86718fbbe852a97f
   languageName: node
   linkType: hard
 
