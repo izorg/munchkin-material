@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="192" height="192" fill="none">
+    <g filter="url(#a)">
+        <path fill="#FFECB3" fill-rule="evenodd"
+              d="M56 40h116c6.627 0 12 5.373 12 12v120c0 6.627-5.373 12-12 12h-70L56 40Z" clip-rule="evenodd"/>
+    </g>
+    <path fill="#424242" fill-rule="evenodd"
+          d="M163.333 82h-46.666A6.667 6.667 0 0 0 110 88.667v46.666a6.667 6.667 0 0 0 6.667 6.667h46.666a6.667 6.667 0 0 0 6.667-6.667V88.667A6.667 6.667 0 0 0 163.333 82Zm-46.666 13.333a6.666 6.666 0 1 1 13.333 0 6.667 6.667 0 0 1-13.333 0Zm40 26.667a6.667 6.667 0 1 0 0 13.334 6.667 6.667 0 0 0 0-13.334ZM150 95.333a6.667 6.667 0 1 1 13.334 0 6.667 6.667 0 0 1-13.334 0Zm-10 10a6.667 6.667 0 1 0 0 13.334 6.667 6.667 0 0 0 0-13.334Zm-23.333 23.334a6.666 6.666 0 1 1 13.333-.001 6.666 6.666 0 0 1-13.333.001Z"
+          clip-rule="evenodd"/>
+    <path fill="url(#b)" fill-rule="evenodd" d="m102 184-41.572-41.573V40H100l84 84v48c0 6.627-5.373 12-12 12h-70Z"
+          clip-rule="evenodd"/>
+    <path fill="#3E2723" fill-rule="evenodd" d="m102 184 34-32H91l11 32Z" clip-rule="evenodd"/>
+    <g filter="url(#c)">
+        <path fill="#795548" fill-rule="evenodd"
+              d="M20 8h70l46 144H20c-6.627 0-12-5.373-12-12V20c0-6.627 5.373-12 12-12Z" clip-rule="evenodd"/>
+    </g>
+    <path fill="#F5F5F5" fill-rule="evenodd"
+          d="m38.999 50 36.934 37.067 6.58-6.604 4.375 4.392-7.666 7.694 9.87 9.905a3.11 3.11 0 0 1 0 4.392l-2.204 2.212a3.083 3.083 0 0 1-4.376 0l-9.993-9.874-7.574 7.693-4.376-4.392 6.58-6.603-36.934-37.067V50H39Zm44.786 8.784V50H75L60.29 64.764l8.783 8.784 14.712-14.764ZM44.927 80.183l8.783 8.94-6.86 6.759 6.58 6.603-4.375 4.392-7.574-7.693-9.993 9.905a3.083 3.083 0 0 1-4.377 0l-2.203-2.212a3.11 3.11 0 0 1 0-4.392l9.87-9.936-7.666-7.694 4.376-4.392 6.58 6.604 6.859-6.884Z"
+          clip-rule="evenodd"/>
+    <defs>
+        <filter id="a" width="128" height="144" x="56" y="40" color-interpolation-filters="sRGB"
+                filterUnits="userSpaceOnUse">
+            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+            <feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+            <feColorMatrix in="SourceAlpha" result="hardAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+            <feOffset dy="-1"/>
+            <feComposite in2="hardAlpha" k2="-1" k3="1" operator="arithmetic"/>
+            <feColorMatrix values="0 0 0 0 0.74902 0 0 0 0 0.211765 0 0 0 0 0.0470588 0 0 0 0.2 0"/>
+            <feBlend in2="shape" result="effect1_innerShadow_0_21"/>
+            <feColorMatrix in="SourceAlpha" result="hardAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+            <feOffset dy="1"/>
+            <feComposite in2="hardAlpha" k2="-1" k3="1" operator="arithmetic"/>
+            <feColorMatrix values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.2 0"/>
+            <feBlend in2="effect1_innerShadow_0_21" result="effect2_innerShadow_0_21"/>
+        </filter>
+        <filter id="c" width="128" height="144" x="8" y="8" color-interpolation-filters="sRGB"
+                filterUnits="userSpaceOnUse">
+            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+            <feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+            <feColorMatrix in="SourceAlpha" result="hardAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+            <feOffset dy="-1"/>
+            <feComposite in2="hardAlpha" k2="-1" k3="1" operator="arithmetic"/>
+            <feColorMatrix values="0 0 0 0 0.243137 0 0 0 0 0.152941 0 0 0 0 0.137255 0 0 0 0.2 0"/>
+            <feBlend in2="shape" result="effect1_innerShadow_0_21"/>
+            <feColorMatrix in="SourceAlpha" result="hardAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+            <feOffset dy="1"/>
+            <feComposite in2="hardAlpha" k2="-1" k3="1" operator="arithmetic"/>
+            <feColorMatrix values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.2 0"/>
+            <feBlend in2="effect1_innerShadow_0_21" result="effect2_innerShadow_0_21"/>
+        </filter>
+        <radialGradient id="b" cx="0" cy="0" r="1"
+                        gradientTransform="matrix(130.63266 136.23152 -136.95114 131.3227 6.366 .003)"
+                        gradientUnits="userSpaceOnUse">
+            <stop stop-color="#3E2723" stop-opacity=".2"/>
+            <stop offset="1" stop-opacity=".01"/>
+        </radialGradient>
+    </defs>
+</svg>

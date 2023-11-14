@@ -12,19 +12,25 @@ const withBundleAnalyzer = bundleAnalyzer({
  */
 const nextConfig = {
   eslint: {
-    // Using project root ESLint check
-    ignoreDuringBuilds: true,
+    ignoreDuringBuilds: true, // Using project root ESLint check
   },
   images: {
     unoptimized: true,
   },
   output: "export",
   productionBrowserSourceMaps: true,
+  redirects: () =>
+    Promise.resolve([
+      {
+        destination: "/en",
+        permanent: true,
+        source: "/",
+      },
+    ]),
   skipTrailingSlashRedirect: true,
   trailingSlash: true,
   typescript: {
-    // Using project root TypeScript check
-    ignoreBuildErrors: true,
+    ignoreBuildErrors: true, // Using project root TypeScript check
   },
   webpack: (config, { dev }) => {
     if (!dev) {
