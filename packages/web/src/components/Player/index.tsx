@@ -33,15 +33,17 @@ const Player = () => {
         }}
       >
         <Box
-          sx={(theme) => ({
+          data-test="lol"
+          sx={{
             display: "flex",
             flex: "1 0 auto",
-
-            [theme.breakpoints.up("md")]: {
-              flexShrink: 1,
-              overflow: "hidden",
+            flexShrink: {
+              md: 1,
             },
-          })}
+            overflow: {
+              md: "hidden",
+            },
+          }}
         >
           <Slider
             playerId={playerId}
@@ -53,27 +55,25 @@ const Player = () => {
         {playerList.length > 1 && (
           <PlayerList
             sx={[
-              (theme) => ({
+              {
                 display: "none",
                 flex: "0 1 auto",
                 overflowY: "auto",
-                paddingBottom: theme.spacing(7),
-              }),
+                paddingBottom: {
+                  md: 1,
+                  sm: 8,
+                  xs: 7,
+                },
+              },
               {
                 "@media (min-height: 720px)": {
                   display: "block",
                 },
               },
               (theme) => ({
-                [theme.breakpoints.up("sm")]: {
-                  paddingBottom: theme.spacing(8),
-                },
-              }),
-              (theme) => ({
                 [theme.breakpoints.up("md")]: {
                   display: "block",
                   flex: "none",
-                  paddingBottom: theme.spacing(1),
                   width: "400px",
                 },
               }),

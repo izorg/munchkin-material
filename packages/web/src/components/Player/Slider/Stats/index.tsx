@@ -155,7 +155,7 @@ const PlayerStats: FC<PlayerStatsProps> = ({ playerId, sx = [] }) => {
             sx={[
               (theme) => ({
                 color: theme.palette.text.primary,
-                fontFamily: `Munchkin, ${theme.typography.fontFamily || ""}`,
+                fontFamily: `Munchkin, ${theme.typography.fontFamily ?? ""}`,
                 fontSize: "36px",
               }),
               {
