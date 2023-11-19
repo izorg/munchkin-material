@@ -1,6 +1,12 @@
 import "./polyfills";
 
-document.addEventListener("deviceready", () => import("./cordova"), false);
+document.addEventListener(
+  "deviceready",
+  () => {
+    import("./cordova");
+  },
+  false,
+);
 
 const cordovaScript = document.createElement("script");
 cordovaScript.setAttribute("src", "cordova.js");
