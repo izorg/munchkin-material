@@ -3,7 +3,7 @@
     "target": "site",
     "public": "out",
     "trailingSlash": false,
-    "rewrites": [
+    "redirects": [
       {
         "source": "/",
         "destination": "/en",
