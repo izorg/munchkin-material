@@ -3,13 +3,9 @@
     "target": "site",
     "public": "out",
     "trailingSlash": false,
-    "redirects": [
-      {
-        "source": "/",
-        "destination": "/en",
-        "type": 301
-      }
-    ]
+    "i18n": {
+      "root": "."
+    }
   },
   "emulators": {
     "hosting": {

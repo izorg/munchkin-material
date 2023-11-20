@@ -7,7 +7,7 @@
     "build": "next build",
     "dev": "next dev",
     "i18n:compile": "yarn g:formatjs compile-folder --ast --format=simple locales locales/generated",
-    "start": "npx http-server --port=3000 out"
+    "start": "npx firebase-tools emulators:start"
   },
   "dependencies": {
     "@emotion/cache": "11.11.0",
