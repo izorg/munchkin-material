@@ -3,7 +3,7 @@ import "./sentry";
 
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { BrowserRouter } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 
 import App from "./components/App";
 import AugmentedStylesProvider from "./components/AugmentedStylesProvider";
@@ -34,7 +34,7 @@ const root = createRoot(node);
 
 root.render(
   <StrictMode>
-    <BrowserRouter>
+    <HashRouter>
       <ReduxProvider>
         <VersionProvider>
           <WorkboxProvider>
@@ -52,6 +52,6 @@ root.render(
           </WorkboxProvider>
         </VersionProvider>
       </ReduxProvider>
-    </BrowserRouter>
+    </HashRouter>
   </StrictMode>,
 );

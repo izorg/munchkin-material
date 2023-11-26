@@ -33,3 +33,4 @@ tsconfig.tsbuildinfo
 /packages/site/out
 
 /packages/web/dist
+/packages/web/src/localized-files/*/index.html

@@ -4,10 +4,11 @@
   "type": "module",
   "scripts": {
     "analyze": "yarn run build:parcel --reporter @parcel/reporter-bundle-analyzer",
-    "build": "yarn run build:parcel && yarn run build:workbox",
-    "build:parcel": "yarn g:rimraf ../../.parcel-cache dist && yarn g:parcel build",
+    "build": "yarn run generate-html && yarn run build:parcel && yarn run build:workbox",
+    "build:parcel": "yarn g:rimraf ../../.parcel-cache dist && yarn g:parcel build src/index.html src/localized-files/*/index.html",
     "build:workbox": "workbox generateSW workbox.config.json",
-    "dev": "yarn g:parcel --port=3000",
+    "dev": "yarn g:parcel --port=3000 src/index.html",
+    "generate-html": "node scripts/generate-html.js",
     "start": "npx firebase-tools emulators:start"
   },
   "dependencies": {
@@ -54,16 +55,12 @@
     "@types/react-dom": "18.2.17",
     "@types/stylis": "4.2.4",
     "@types/uuid": "9.0.7",
+    "handlebars": "4.7.8",
     "process": "0.11.10",
     "typescript": "5.3.2",
     "workbox-cli": "7.0.0"
   },
   "alias": {
     "@formatjs/icu-messageformat-parser": "@formatjs/icu-messageformat-parser/no-parser"
-  },
-  "targets": {
-    "default": {
-      "source": "src/index.html"
-    }
   }
 }

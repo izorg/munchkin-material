@@ -1,14 +1,4 @@
 {
-  "hosting": {
-    "public": "dist",
-    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
-    "rewrites": [
-      {
-        "source": "**",
-        "destination": "/index.html"
-      }
-    ]
-  },
   "emulators": {
     "hosting": {
       "port": 3000
@@ -16,5 +6,13 @@
     "ui": {
       "enabled": true
     }
+  },
+  "hosting": {
+    "i18n": {
+      "root": "/localized-files"
+    },
+    "ignore": ["**/*.map"],
+    "public": "dist",
+    "trailingSlash": false
   }
 }

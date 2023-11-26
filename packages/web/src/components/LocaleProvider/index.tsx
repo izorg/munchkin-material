@@ -45,7 +45,7 @@ const LocaleProvider: FC<PropsWithChildren> = ({ children }) => {
   useLayoutEffect(() => {
     if (data?.locale) {
       document.documentElement.lang = data.locale;
-      document.body.dir = getDirection(data.locale);
+      document.documentElement.dir = getDirection(data.locale);
     }
   }, [data?.locale]);
 

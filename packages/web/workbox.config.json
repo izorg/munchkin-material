@@ -1,6 +1,6 @@
 {
   "globDirectory": "dist/",
-  "globIgnores": ["**/*.{map,LICENSE.txt}"],
+  "globIgnores": ["**/*.map", "localized-files/**"],
   "globPatterns": ["**/*"],
   "swDest": "dist/service-worker.js"
 }
