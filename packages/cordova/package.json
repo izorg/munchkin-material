@@ -13,8 +13,8 @@
     "run:ios": "cordova run ios"
   },
   "dependencies": {
-    "@mui/material": "5.14.18",
-    "@sentry/react": "7.81.1",
+    "@mui/material": "5.14.19",
+    "@sentry/react": "7.84.0",
     "core-js": "3.33.3",
     "prop-types": "15.8.1",
     "react": "18.2.0",
@@ -26,7 +26,7 @@
   "devDependencies": {
     "@types/cordova": "11.0.3",
     "@types/dom-screen-wake-lock": "1.0.3",
-    "@types/react": "18.2.38",
+    "@types/react": "18.2.39",
     "@types/react-dom": "18.2.17",
     "@types/smoothscroll-polyfill": "0.3.3",
     "cordova": "12.0.0",
