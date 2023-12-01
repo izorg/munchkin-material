@@ -7,3 +7,4 @@ package.json
 /packages/cordova/www
 
 /packages/web/dist
+/packages/web/src/templates/markup/manifest.webmanifest.hbs
