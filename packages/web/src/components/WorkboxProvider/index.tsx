@@ -51,7 +51,11 @@ const WorkboxProvider: FC<PropsWithChildren> = ({ children }) => {
     const applyUpdate = () => {
       if (workbox) {
         workbox.addEventListener("controlling", () => {
-          window.location.reload();
+          if (window.location.pathname === "/") {
+            window.location.reload();
+          } else {
+            window.location.href = "/";
+          }
         });
 
         workbox.messageSkipWaiting();
