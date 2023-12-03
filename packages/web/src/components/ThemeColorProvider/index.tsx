@@ -4,11 +4,6 @@ import { useEffect } from "react";
 const ThemeColorProvider = () => {
   const { palette } = useTheme();
 
-  const color =
-    palette.mode === "dark"
-      ? palette.common.black
-      : rgbToHex(darken(palette.primary.main, 0.5));
-
   useEffect(() => {
     let node = document.querySelector('meta[name="theme-color"]');
 
@@ -20,8 +15,13 @@ const ThemeColorProvider = () => {
       document.head.append(node);
     }
 
+    const color =
+      palette.mode === "dark"
+        ? palette.common.black
+        : rgbToHex(darken(palette.primary.main, 0.5));
+
     node.setAttribute("content", color);
-  }, [color]);
+  }, [palette.common.black, palette.mode, palette.primary.main]);
 
   return null;
 };
