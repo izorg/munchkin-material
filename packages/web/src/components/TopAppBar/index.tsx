@@ -4,6 +4,8 @@ import { type FC, type PropsWithChildren } from "react";
 
 const TopAppBar: FC<PropsWithChildren> = ({ children }) => (
   <AppBar
+    color="inherit"
+    elevation={0}
     position="static"
     sx={{
       zIndex: "appBar",
@@ -11,19 +13,15 @@ const TopAppBar: FC<PropsWithChildren> = ({ children }) => (
   >
     <Toolbar
       sx={[
-        (theme) => ({
+        {
           minHeight: {
             md: "64px",
           },
-          paddingLeft: {
-            sm: theme.spacing(3),
-            xs: theme.spacing(2),
+          paddingX: {
+            sm: 3,
+            xs: 2,
           },
-          paddingRight: {
-            sm: theme.spacing(3),
-            xs: theme.spacing(2),
-          },
-        }),
+        },
         (theme) => ({
           "@supports (min-height: env(safe-area-inset-top))": {
             minHeight: {

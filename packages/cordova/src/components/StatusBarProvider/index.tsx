@@ -1,9 +1,26 @@
-import { useTheme } from "@mui/material";
-
-import useStatusBar from "./useStatusBar";
+import { darken, rgbToHex, useTheme } from "@mui/material";
+import { useEffect } from "react";
 
 const StatusBarProvider = () => {
-  useStatusBar(useTheme());
+  const theme = useTheme();
+
+  useEffect(() => {
+    if (cordova.platformId === "android") {
+      setTimeout(() => {
+        StatusBar.backgroundColorByHexString(
+          rgbToHex(darken(theme.palette.background.default, 0.5)),
+        );
+      }, 100);
+    }
+
+    if (cordova.platformId === "ios") {
+      if (theme.palette.mode === "dark") {
+        StatusBar.styleLightContent();
+      } else {
+        StatusBar.styleDefault();
+      }
+    }
+  }, [theme.palette.background.default, theme.palette.mode]);
 
   return null;
 };

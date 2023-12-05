@@ -15,13 +15,11 @@ const ThemeColorProvider = () => {
       document.head.append(node);
     }
 
-    const color =
-      palette.mode === "dark"
-        ? palette.common.black
-        : rgbToHex(darken(palette.primary.main, 0.5));
-
-    node.setAttribute("content", color);
-  }, [palette.common.black, palette.mode, palette.primary.main]);
+    node.setAttribute(
+      "content",
+      rgbToHex(darken(palette.background.default, 0.5)),
+    );
+  }, [palette.background.default]);
 
   return null;
 };
