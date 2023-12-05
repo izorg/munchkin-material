@@ -33,7 +33,9 @@ const sentryReduxEnhancer = createReduxEnhancer() as StoreEnhancer;
 
 const store = configureStore({
   devTools: process.env.NODE_ENV === "development",
-  enhancers: [sentryReduxEnhancer],
+  enhancers: (getDefaultEnhancers) =>
+    // eslint-disable-next-line unicorn/prefer-spread -- need for correct types
+    getDefaultEnhancers().concat(sentryReduxEnhancer),
   preloadedState: preloadedPresentState && {
     future: [],
     past: [],
