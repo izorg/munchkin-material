@@ -30,9 +30,14 @@ const getThemeOptions = ({
           anchorOriginBottomLeft: {
             "@supports (padding: max(0px))": {
               "@media (min-width:600px)": {
-                [direction === "rtl" ? "left" : "right"]: "auto",
-                [direction === "rtl" ? "right" : "left"]:
-                  "max(24px, env(safe-area-inset-right))",
+                'html[dir="ltr"] &': {
+                  left: "max(24px, env(safe-area-inset-left))",
+                  right: "auto",
+                },
+                'html[dir="rtl"] &': {
+                  left: "auto",
+                  right: "max(24px, env(safe-area-inset-right))",
+                },
               },
             },
           },
