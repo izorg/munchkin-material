@@ -13,9 +13,9 @@
     "run:ios": "cordova run ios"
   },
   "dependencies": {
-    "@mui/material": "5.14.19",
+    "@mui/material": "5.14.20",
     "@sentry/react": "7.85.0",
-    "core-js": "3.33.3",
+    "core-js": "3.34.0",
     "prop-types": "15.8.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -39,7 +39,7 @@
     "cordova-plugin-insomnia": "4.3.0",
     "cordova-plugin-ionic-keyboard": "2.2.0",
     "cordova-plugin-localization-strings": "5.0.5",
-    "cordova-plugin-purchase": "13.9.0",
+    "cordova-plugin-purchase": "13.10.0",
     "cordova-plugin-splashscreen": "6.0.2",
     "cordova-plugin-statusbar": "4.0.0",
     "cordova-plugin-vibration": "3.1.1",
