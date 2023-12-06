@@ -1,5 +1,6 @@
 import { createReducer } from "@reduxjs/toolkit";
 
+import { getRandomInt } from "../../utils/getRandomInt";
 import { removePlayers } from "../players";
 
 import { addPlayerToList, movePlayer, shufflePlayers } from "./actions";
@@ -13,7 +14,7 @@ const shuffle = (array: string[]): string[] => {
   const result = [...array];
 
   while (index < length) {
-    const rand = index + Math.floor(Math.random() * (lastIndex - index + 1));
+    const rand = getRandomInt(index, lastIndex);
     const value = result[rand];
 
     result[rand] = result[index];
