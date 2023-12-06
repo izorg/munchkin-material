@@ -1,4 +1,5 @@
 import availableColors from "./availableColors";
+import { getRandomInt } from "./getRandomInt";
 
 const getRandomMaterialColor = (
   excluded: typeof availableColors = [],
@@ -11,7 +12,7 @@ const getRandomMaterialColor = (
     preferredColors = availableColors;
   }
 
-  const index = Math.floor(Math.random() * preferredColors.length);
+  const index = getRandomInt(0, preferredColors.length - 1);
 
   return preferredColors[index];
 };
