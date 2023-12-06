@@ -1,11 +1,5 @@
 import PropTypes from "prop-types";
-import {
-  type FC,
-  type PropsWithChildren,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import { type FC, type PropsWithChildren, useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
 
 import { useGoBack } from "../../../../web/src/utils/location";
@@ -15,10 +9,10 @@ import useNavigationBreadcrumbs from "./useNavigationBreadcrumbs";
 const CordovaProvider: FC<PropsWithChildren> = ({ children }) => {
   const location = useLocation();
 
-  const [initialKey] = useState(location.key);
+  const initialKeyRef = useRef(location.key);
   const homeLocationRef = useRef(false);
 
-  homeLocationRef.current = location.key === initialKey;
+  homeLocationRef.current = location.key === initialKeyRef.current;
 
   const goBack = useGoBack();
 
