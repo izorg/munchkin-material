@@ -42,7 +42,7 @@ const CordovaProvider: FC<PropsWithChildren> = ({ children }) => {
 
   useNavigationBreadcrumbs();
 
-  return <>{children}</>;
+  return children;
 };
 
 CordovaProvider.propTypes = {
