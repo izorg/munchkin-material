@@ -2871,6 +2871,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@mdn/browser-compat-data@npm:^5.2.34, @mdn/browser-compat-data@npm:^5.3.13":
+  version: 5.4.4
+  resolution: "@mdn/browser-compat-data@npm:5.4.4"
+  checksum: e0c0e766ff17b8ecf3df43c328de4247485a69da69f00913b5b08c9125f6b188b2029ac6bce4b3c151670817eba20fb081c81736261f42db4e976a6112ffeea4
+  languageName: node
+  linkType: hard
+
 "@mischnic/json-sourcemap@npm:^0.1.0":
   version: 0.1.1
   resolution: "@mischnic/json-sourcemap@npm:0.1.1"
@@ -6077,6 +6084,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"ast-metadata-inferer@npm:^0.8.0":
+  version: 0.8.0
+  resolution: "ast-metadata-inferer@npm:0.8.0"
+  dependencies:
+    "@mdn/browser-compat-data": "npm:^5.2.34"
+  checksum: 8dd299c5b317dc210553951a35536ab98c63d787077d1e83799675f26617848288524a48051d2a9821304da3046f9e4331aee8b0ef3c2026722e6f11a66ecfbd
+  languageName: node
+  linkType: hard
+
 "ast-types-flow@npm:^0.0.8":
   version: 0.0.8
   resolution: "ast-types-flow@npm:0.0.8"
@@ -6489,6 +6505,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"browserslist@npm:^4.21.10":
+  version: 4.22.2
+  resolution: "browserslist@npm:4.22.2"
+  dependencies:
+    caniuse-lite: "npm:^1.0.30001565"
+    electron-to-chromium: "npm:^1.4.601"
+    node-releases: "npm:^2.0.14"
+    update-browserslist-db: "npm:^1.0.13"
+  bin:
+    browserslist: cli.js
+  checksum: e3590793db7f66ad3a50817e7b7f195ce61e029bd7187200244db664bfbe0ac832f784e4f6b9c958aef8ea4abe001ae7880b7522682df521f4bc0a5b67660b5e
+  languageName: node
+  linkType: hard
+
 "browserslist@npm:^4.21.9, browserslist@npm:^4.22.1, browserslist@npm:^4.6.6":
   version: 4.22.1
   resolution: "browserslist@npm:4.22.1"
@@ -6723,10 +6753,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"caniuse-lite@npm:^1.0.30001406, caniuse-lite@npm:^1.0.30001541":
-  version: 1.0.30001565
-  resolution: "caniuse-lite@npm:1.0.30001565"
-  checksum: abc58bf3504508c4cb62f0e4a3267a222140935cb63ff252f1e960bf8680cc17368da1d29fb1f68343dfa8b046de7b9e7c2003b822732adc4c68e8ab6ae82c0e
+"caniuse-lite@npm:^1.0.30001406, caniuse-lite@npm:^1.0.30001524, caniuse-lite@npm:^1.0.30001541, caniuse-lite@npm:^1.0.30001565":
+  version: 1.0.30001566
+  resolution: "caniuse-lite@npm:1.0.30001566"
+  checksum: fdff43ed498201bf4f6074bd1112bd853e91973b6ccb016049b030948a7d197cba235ac4d93e712d1862b33a3c947bf4e62bad7011ccdac78e5179501b28d04a
   languageName: node
   linkType: hard
 
@@ -8176,6 +8206,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"electron-to-chromium@npm:^1.4.601":
+  version: 1.4.608
+  resolution: "electron-to-chromium@npm:1.4.608"
+  checksum: 521b5e15ca18b37b20c4382d18d37ff913ae27536c8e7373e063c115db84e9d8849f3f36c5dc030aab543e31591e0a282ba375c40da808cff6395fd911186bc6
+  languageName: node
+  linkType: hard
+
 "elementtree@npm:^0.1.7":
   version: 0.1.7
   resolution: "elementtree@npm:0.1.7"
@@ -8535,6 +8572,23 @@ __metadata:
     eslint:
       optional: true
   checksum: a9a7ed93eb858092e3cdc797357d4ead2b3ea06959b0eada31ab13862d46a59eb064b9cb82302214232e547980ce33618c2992f6821138a4934e65710ed9cc29
+  languageName: node
+  linkType: hard
+
+"eslint-plugin-compat@npm:4.2.0":
+  version: 4.2.0
+  resolution: "eslint-plugin-compat@npm:4.2.0"
+  dependencies:
+    "@mdn/browser-compat-data": "npm:^5.3.13"
+    ast-metadata-inferer: "npm:^0.8.0"
+    browserslist: "npm:^4.21.10"
+    caniuse-lite: "npm:^1.0.30001524"
+    find-up: "npm:^5.0.0"
+    lodash.memoize: "npm:^4.1.2"
+    semver: "npm:^7.5.4"
+  peerDependencies:
+    eslint: ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0
+  checksum: 01bb4adbb38dd9549ad24e5b4bc2f5b8dd31e67a4b5c89e9110be3352fee3cdca4fde786a7cd25eccf193eebffb5af79afc02de036ff7cd27b84a3e9a8a402cf
   languageName: node
   linkType: hard
 
@@ -12218,6 +12272,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"lodash.memoize@npm:^4.1.2":
+  version: 4.1.2
+  resolution: "lodash.memoize@npm:4.1.2"
+  checksum: 192b2168f310c86f303580b53acf81ab029761b9bd9caa9506a019ffea5f3363ea98d7e39e7e11e6b9917066c9d36a09a11f6fe16f812326390d8f3a54a1a6da
+  languageName: node
+  linkType: hard
+
 "lodash.merge@npm:^4.6.2":
   version: 4.6.2
   resolution: "lodash.merge@npm:4.6.2"
@@ -13143,7 +13204,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"node-releases@npm:^2.0.13":
+"node-releases@npm:^2.0.13, node-releases@npm:^2.0.14":
   version: 2.0.14
   resolution: "node-releases@npm:2.0.14"
   checksum: 0f7607ec7db5ef1dc616899a5f24ae90c869b6a54c2d4f36ff6d84a282ab9343c7ff3ca3670fe4669171bb1e8a9b3e286e1ef1c131f09a83d70554f855d54f24
@@ -15147,6 +15208,7 @@ __metadata:
     eslint: "npm:8.55.0"
     eslint-config-prettier: "npm:9.1.0"
     eslint-import-resolver-typescript: "npm:3.6.1"
+    eslint-plugin-compat: "npm:4.2.0"
     eslint-plugin-import: "npm:2.29.0"
     eslint-plugin-jest: "npm:27.6.0"
     eslint-plugin-json: "npm:3.1.0"
