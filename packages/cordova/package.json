@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@mui/material": "5.14.20",
-    "@sentry/react": "7.85.0",
+    "@sentry/react": "7.86.0",
     "core-js": "3.34.0",
     "prop-types": "15.8.1",
     "react": "18.2.0",
