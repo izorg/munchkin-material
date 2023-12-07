@@ -3115,6 +3115,7 @@ __metadata:
     react-router-dom: "npm:6.20.1"
     scrollyfills: "npm:1.0.0"
     smoothscroll-polyfill: "npm:0.4.4"
+    swr: "npm:2.2.4"
   languageName: unknown
   linkType: soft
 
