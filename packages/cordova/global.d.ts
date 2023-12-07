@@ -3,7 +3,7 @@
 /// <reference types="cordova-plugin-statusbar" />
 
 interface Keyboard {
-  setKeyboardStyle: (color: string) => void;
+  setKeyboardStyle: (color: "dark" | "light") => void;
 }
 
 declare global {

@@ -7,10 +7,8 @@ const KeyboardProvider = () => {
   const theme = useTheme();
 
   useEffect(() => {
-    const Keyboard = window.Keyboard;
-
-    if (Keyboard && Keyboard.setKeyboardStyle && ios) {
-      Keyboard.setKeyboardStyle(theme.palette.mode); // cordova ios
+    if (window.Keyboard?.setKeyboardStyle && ios) {
+      window.Keyboard.setKeyboardStyle(theme.palette.mode);
     }
   }, [theme.palette.mode]);
 
