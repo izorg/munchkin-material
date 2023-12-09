@@ -74,13 +74,11 @@ export const ThemeRegistry = (props: ThemeRegistryProps) => {
   });
 
   return (
-    <>
-      <CacheProvider value={cache}>
-        <CssVarsProvider theme={theme}>
-          <CssBaseline />
-          {children}
-        </CssVarsProvider>
-      </CacheProvider>
-    </>
+    <CacheProvider value={cache}>
+      <CssVarsProvider theme={theme}>
+        <CssBaseline />
+        {children}
+      </CssVarsProvider>
+    </CacheProvider>
   );
 };

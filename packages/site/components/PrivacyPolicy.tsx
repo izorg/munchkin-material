@@ -1,3 +1,5 @@
+"use client";
+
 import { Container, Link } from "@mui/material";
 
 export const PrivacyPolicy = () => (
