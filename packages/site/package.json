@@ -17,10 +17,10 @@
     "@formatjs/intl": "2.9.9",
     "@mdi/js": "7.3.67",
     "@mui/material": "5.14.20",
-    "@next/third-parties": "14.0.3",
+    "@next/third-parties": "14.0.4",
     "@sentry/nextjs": "7.86.0",
     "core-js": "3.34.0",
-    "next": "14.0.3",
+    "next": "14.0.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-intl": "6.5.5",
@@ -28,12 +28,12 @@
     "stylis-plugin-rtl": "2.1.1"
   },
   "devDependencies": {
-    "@next/bundle-analyzer": "14.0.3",
+    "@next/bundle-analyzer": "14.0.4",
     "@types/react": "18.2.42",
     "@types/react-dom": "18.2.17",
     "@types/stylis": "4.2.4",
     "eslint": "8.55.0",
-    "eslint-config-next": "14.0.3",
+    "eslint-config-next": "14.0.4",
     "typescript": "5.3.3"
   }
 }

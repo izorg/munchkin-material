@@ -31,7 +31,7 @@
     "@sentry/react": "7.86.0",
     "core-js": "3.34.0",
     "firebase": "10.7.1",
-    "framer-motion": "10.16.15",
+    "framer-motion": "10.16.16",
     "prop-types": "15.8.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
