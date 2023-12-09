@@ -13,6 +13,7 @@ import ReduxProvider from "../../web/src/components/ReduxProvider";
 import AppStoreLinkProvider from "./components/AppStoreLinkProvider";
 import CordovaProvider from "./components/CordovaProvider";
 import FullVersionProvider from "./components/FullVersionProvider";
+import HeaderColorProvider from "./components/HeaderColorProvider";
 import KeyboardProvider from "./components/KeyboardProvider";
 import ScreenViewProvider from "./components/ScreenViewProvider";
 import SplashScreenProvider from "./components/SplashScreenProvider";
@@ -42,6 +43,7 @@ root.render(
                       <AugmentedThemeProvider>
                         <SplashScreenProvider />
                         <StatusBarProvider />
+                        <HeaderColorProvider />
                         <KeyboardProvider />
                         <ScreenViewProvider />
                         <App />
