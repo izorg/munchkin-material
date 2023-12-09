@@ -1,6 +1,4 @@
-"use client";
-
-import { Container } from "@mui/material";
+import { Container, Link } from "@mui/material";
 
 export const PrivacyPolicy = () => (
   <Container>
@@ -40,22 +38,22 @@ export const PrivacyPolicy = () => (
       </p>
       <ul>
         <li>
-          <a
+          <Link
             href="https://www.google.com/policies/privacy/index.tsx"
             rel="noopener noreferrer"
             target="_blank"
           >
             Google Play Services
-          </a>
+          </Link>
         </li>
         <li>
-          <a
+          <Link
             href="https://firebase.google.com/policies/analytics"
             rel="noopener noreferrer"
             target="_blank"
           >
             Firebase Analytics
-          </a>
+          </Link>
         </li>
       </ul>
     </div>
@@ -155,7 +153,7 @@ export const PrivacyPolicy = () => (
     <p>
       If you have any questions or suggestions about my Privacy Policy, do not
       hesitate to contact me at{" "}
-      <a href="mailto:izorgster@gmail.com">izorgster@gmail.com</a>.
+      <Link href="mailto:izorgster@gmail.com">izorgster@gmail.com</Link>.
     </p>
   </Container>
 );

@@ -1,26 +1,25 @@
-import { colors, createTheme, responsiveFontSizes } from "@mui/material";
+import { colors, experimental_extendTheme as extendTheme } from "@mui/material";
 
-export const theme = responsiveFontSizes(
-  createTheme({
-    components: {
-      MuiButton: {
-        styleOverrides: {
-          root: {
-            textTransform: "none",
-          },
+export const theme = extendTheme({
+  colorSchemes: {
+    light: {
+      palette: {
+        primary: colors.brown,
+      },
+    },
+  },
+
+  components: {
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          textTransform: "none",
         },
       },
     },
+  },
 
-    palette: {
-      background: {
-        default: colors.common.white,
-      },
-      primary: colors.brown,
-    },
-
-    typography: {
-      fontFamily: '"Roboto", "San Francisco", "Helvetica", "Arial", sans-serif',
-    },
-  }),
-);
+  typography: {
+    fontFamily: '"Roboto", "San Francisco", "Helvetica", "Arial", sans-serif',
+  },
+});

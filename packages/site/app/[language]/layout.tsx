@@ -1,11 +1,16 @@
 import { GoogleTagManager } from "@next/third-parties/google";
+import { type Viewport } from "next";
 import { type PropsWithChildren } from "react";
 
 import { I18nProvider } from "../../components/I18nProvider";
 import { ThemeRegistry } from "../../components/ThemeRegistry";
 import { getLocalMessages, localeByLanguage } from "../../lib/i18n";
-import type { Language } from "../../lib/i18n";
+import { type Language } from "../../lib/i18n";
 import { munchkinFont } from "../../lib/munchkinFont";
+
+export const viewport: Viewport = {
+  colorScheme: "light",
+};
 
 type LayoutProps = PropsWithChildren<{
   params: {

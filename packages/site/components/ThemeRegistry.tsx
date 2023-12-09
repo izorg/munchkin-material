@@ -2,7 +2,10 @@
 
 import createCache, { type Options } from "@emotion/cache";
 import { CacheProvider } from "@emotion/react";
-import { CssBaseline, ThemeProvider } from "@mui/material";
+import {
+  CssBaseline,
+  Experimental_CssVarsProvider as CssVarsProvider,
+} from "@mui/material";
 import { useServerInsertedHTML } from "next/navigation";
 import { type PropsWithChildren, useState } from "react";
 
@@ -71,11 +74,13 @@ export const ThemeRegistry = (props: ThemeRegistryProps) => {
   });
 
   return (
-    <CacheProvider value={cache}>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        {children}
-      </ThemeProvider>
-    </CacheProvider>
+    <>
+      <CacheProvider value={cache}>
+        <CssVarsProvider theme={theme}>
+          <CssBaseline />
+          {children}
+        </CssVarsProvider>
+      </CacheProvider>
+    </>
   );
 };
