@@ -22,19 +22,22 @@
     <preference name="SplashMaintainAspectRatio" value="true" />
     <platform name="android">
         <allow-intent href="market:*" />
+        <preference name="AndroidGradlePluginVersion" value="8.2.0" />
         <preference name="AndroidPostSplashScreenTheme" value="@style/Theme.AppCompat.DayNight.NoActionBar"/>
         <preference name="AndroidWindowSplashScreenAnimatedIcon" value="res/android/splash-screen-icon.png" />
         <preference name="AndroidWindowSplashScreenBackground" value="#fafafa" />
         <preference name="GradlePluginGoogleServicesEnabled" value="true" />
+        <preference name="GradleVersion" value="8.2" />
         <preference name="StatusBarOverlaysWebView" value="false" />
         <preference name="StatusBarStyle" value="lightcontent" />
+        <preference name="android-buildToolsVersion" value="34.0.0" />
         <icon density="mdpi" src="res/android/mipmap-mdpi/ic_launcher.png" />
         <icon density="hdpi" src="res/android/mipmap-hdpi/ic_launcher.png" />
         <icon density="xhdpi" src="res/android/mipmap-xhdpi/ic_launcher.png" />
         <icon density="xxhdpi" src="res/android/mipmap-xxhdpi/ic_launcher.png" />
         <icon density="xxxhdpi" src="res/android/mipmap-xxxhdpi/ic_launcher.png" />
         <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application">
-            <application android:localeConfig="@xml/locales_config" android:roundIcon="@mipmap/ic_launcher_round" />
+            <application android:roundIcon="@mipmap/ic_launcher_round" />
         </edit-config>
         <resource-file src="google-services.json" target="app/google-services.json" />
         <resource-file src="res/android/drawable/ic_launcher_background.xml" target="app/src/main/res/drawable/ic_launcher_background.xml" />
@@ -48,7 +51,8 @@
         <resource-file src="res/android/mipmap-xxhdpi/ic_launcher_round.png" target="app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png" />
         <resource-file src="res/android/mipmap-xxxhdpi/ic_launcher_round.png" target="app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" />
         <resource-file src="res/android/values-night/colors.xml" target="app/src/main/res/values-night/colors.xml" />
-        <resource-file src="res/android/xml/locales_config.xml" target="app/src/main/res/xml/locales_config.xml" />
+        <resource-file src="res/android/resources.properties" target="app/src/main/res/resources.properties" />
+        <hook type="before_build" src="scripts/copy-gradle-extras.js" />
     </platform>
     <platform name="ios">
         <allow-intent href="itms:*" />
