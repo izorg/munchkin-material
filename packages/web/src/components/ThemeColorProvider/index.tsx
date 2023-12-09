@@ -15,11 +15,8 @@ const ThemeColorProvider = () => {
       document.head.append(node);
     }
 
-    node.setAttribute(
-      "content",
-      rgbToHex(darken(palette.background.default, 0.5)),
-    );
-  }, [palette.background.default]);
+    node.setAttribute("content", rgbToHex(darken(palette.primary.main, 0.5)));
+  }, [palette.primary.main]);
 
   return null;
 };

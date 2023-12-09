@@ -8,11 +8,13 @@ const StatusBarProvider = () => {
     if (cordova.platformId === "android") {
       setTimeout(() => {
         StatusBar.backgroundColorByHexString(
-          rgbToHex(darken(theme.palette.background.default, 0.5)),
+          rgbToHex(darken(theme.palette.primary.main, 0.5)),
         );
       }, 100);
     }
+  }, [theme.palette.primary.main]);
 
+  useEffect(() => {
     if (cordova.platformId === "ios") {
       if (theme.palette.mode === "dark") {
         StatusBar.styleLightContent();
@@ -20,7 +22,7 @@ const StatusBarProvider = () => {
         StatusBar.styleDefault();
       }
     }
-  }, [theme.palette.background.default, theme.palette.mode]);
+  }, [theme.palette.mode]);
 
   return null;
 };
