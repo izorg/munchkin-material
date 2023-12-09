@@ -40,7 +40,7 @@ if (process.env.NODE_ENV === "development") {
     Promise.resolve([
       {
         destination: "/en",
-        permanent: true,
+        permanent: false,
         source: "/",
       },
     ]);
