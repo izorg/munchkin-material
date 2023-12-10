@@ -53,9 +53,9 @@
   "themeDialog.auto": "Järjestelmän oletus",
   "themeDialog.dark": "Tumma",
   "themeDialog.light": "Kirkas",
-  "themeDialog.pureBlack": "",
+  "themeDialog.pureBlack": "Puhdas musta",
   "undo": "Peruuta",
-  "undo.deletePlayers": "{count, plural, one {Pelaaja} other {Pelaajat}} poistettu",
+  "undo.deletePlayers": "{count, plural, one {Pelaaja poistettu} other {Pelaajat poistettu}}",
   "undo.killPlayer": "{name} {sex, select, female{on kuollut} male{on kuollut} other {}}",
   "undo.resetPlayers": "Pelaajat on tyhjätty"
 }

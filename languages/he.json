@@ -53,9 +53,9 @@
   "themeDialog.auto": "ברירת מחדל של המערכת",
   "themeDialog.dark": "כהה",
   "themeDialog.light": "בהיר",
-  "themeDialog.pureBlack": "",
+  "themeDialog.pureBlack": "שחור טהור",
   "undo": "בטל",
-  "undo.deletePlayers": "",
+  "undo.deletePlayers": "{count, plural, one {Player has been removed} other {שחקנים הוסרו}}",
   "undo.killPlayer": "{name} {sex, select, female{נפטרה} male{מת} other {}}",
   "undo.resetPlayers": "השחקנים אופסו"
 }
