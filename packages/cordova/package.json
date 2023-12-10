@@ -43,8 +43,7 @@
     "cordova-plugin-purchase": "13.10.0",
     "cordova-plugin-splashscreen": "6.0.2",
     "cordova-plugin-statusbar": "4.0.0",
-    "cordova-plugin-vibration": "3.1.1",
-    "cordova-plugin-web-share": "1.4.1"
+    "cordova-plugin-vibration": "3.1.1"
   },
   "cordova": {
     "platforms": [
@@ -73,8 +72,7 @@
       },
       "cordova-plugin-splashscreen": {},
       "cordova-plugin-statusbar": {},
-      "cordova-plugin-vibration": {},
-      "cordova-plugin-web-share": {}
+      "cordova-plugin-vibration": {}
     }
   },
   "alias": {
