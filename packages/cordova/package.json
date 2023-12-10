@@ -55,11 +55,11 @@
       "cordova-plugin-firebase-analytics": {
         "ANALYTICS_COLLECTION_ENABLED": "true",
         "AUTOMATIC_SCREEN_REPORTING_ENABLED": "true",
-        "ANDROID_FIREBASE_BOM_VERSION": "30.3.1"
+        "ANDROID_FIREBASE_BOM_VERSION": "32.7.0"
       },
       "cordova-plugin-firebase-crash": {
         "CRASHLYTICS_COLLECTION_ENABLED": "true",
-        "ANDROID_FIREBASE_BOM_VERSION": "30.3.1"
+        "ANDROID_FIREBASE_BOM_VERSION": "32.7.0"
       },
       "cordova-plugin-headercolor": {},
       "cordova-plugin-insomnia": {},
