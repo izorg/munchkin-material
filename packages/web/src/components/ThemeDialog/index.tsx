@@ -131,7 +131,7 @@ const ThemeDialog = () => {
             <RadioGroup
               name="mode"
               onChange={onThemeModeChange}
-              value={previewTheme.mode || "auto"}
+              value={previewTheme.mode ?? "auto"}
             >
               <FormControlLabel
                 control={<Radio color="primary" />}
