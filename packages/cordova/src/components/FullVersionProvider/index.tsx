@@ -1,4 +1,3 @@
-import { captureMessage } from "@sentry/react";
 import PropTypes from "prop-types";
 import {
   type FC,
@@ -6,6 +5,7 @@ import {
   useCallback,
   useEffect,
   useMemo,
+  useRef,
 } from "react";
 
 import { setFullVersion } from "../../../../web/src/ducks/settings";
@@ -22,10 +22,32 @@ const FullVersionProvider: FC<PropsWithChildren> = ({ children }) => {
 
   const fullVersion = usePresentSelector((state) => state.settings.fullVersion);
 
-  const buyFullVersion = useCallback(async () => {
-    const product = store.get(FULL_VERSION_ID);
+  const buyExecutorRef = useRef<{
+    reject: (error: Error) => void;
+    resolve: () => void;
+  }>();
 
-    await product?.getOffer()?.order();
+  const shopErrorRef = useRef<CdvPurchase.IError>();
+
+  const buyFullVersion = useCallback(async () => {
+    const offer = store.get(FULL_VERSION_ID)?.getOffer();
+
+    if (!offer) {
+      throw new Error(shopErrorRef.current?.message ?? "");
+    }
+
+    const error = await offer.order();
+
+    if (error) {
+      throw new Error(error.message);
+    }
+
+    return new Promise<void>((resolve, reject) => {
+      buyExecutorRef.current = {
+        reject,
+        resolve,
+      };
+    });
   }, [store]);
 
   const restorePurchases = useCallback(() => {
@@ -33,7 +55,10 @@ const FullVersionProvider: FC<PropsWithChildren> = ({ children }) => {
   }, [store]);
 
   useEffect(() => {
-    const platformMapping: Record<string, CdvPurchase.Platform> = {
+    const platformMapping: Record<
+      typeof cordova.platformId,
+      CdvPurchase.Platform
+    > = {
       android: Platform.GOOGLE_PLAY,
       ios: Platform.APPLE_APPSTORE,
     };
@@ -45,13 +70,8 @@ const FullVersionProvider: FC<PropsWithChildren> = ({ children }) => {
     }
 
     store.error((error) => {
-      const { code, message } = error;
-
-      captureMessage(String(code), {
-        extra: {
-          message,
-        },
-      });
+      shopErrorRef.current = error;
+      buyExecutorRef.current?.reject(new Error(error.message));
     });
 
     store.register({
@@ -75,6 +95,8 @@ const FullVersionProvider: FC<PropsWithChildren> = ({ children }) => {
       })
       .finished(() => {
         dispatch(setFullVersion(true));
+
+        buyExecutorRef.current?.resolve();
       });
 
     void store.initialize();

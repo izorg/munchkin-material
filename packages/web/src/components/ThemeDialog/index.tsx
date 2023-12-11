@@ -12,6 +12,7 @@ import {
   Radio,
   RadioGroup,
 } from "@mui/material";
+import { captureException } from "@sentry/react";
 import { type ChangeEvent, type SyntheticEvent, useMemo } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -93,7 +94,9 @@ const ThemeDialog = () => {
     if (previewTheme.id !== currentThemeId && !fullVersion) {
       try {
         await buyFullVersion();
-      } catch {
+      } catch (error) {
+        captureException(error);
+
         return;
       }
     }

@@ -1,5 +1,6 @@
 import { mdiAccountMultipleOutline, mdiAccountOutline } from "@mdi/js";
 import { Badge, ListItem, ListItemIcon, SvgIcon, Switch } from "@mui/material";
+import { captureException } from "@sentry/react";
 import { FormattedMessage } from "react-intl";
 
 import { startCombat } from "../../../ducks/combat";
@@ -27,7 +28,9 @@ const SingleModeItem = () => {
     if (isSingleMode && !fullVersion) {
       try {
         await buyFullVersion();
-      } catch {
+      } catch (error) {
+        captureException(error);
+
         return;
       }
     }
