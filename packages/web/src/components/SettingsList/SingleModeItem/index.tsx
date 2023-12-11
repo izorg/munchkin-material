@@ -1,5 +1,5 @@
 import { mdiAccountMultipleOutline, mdiAccountOutline } from "@mdi/js";
-import { ListItem, ListItemIcon, SvgIcon, Switch } from "@mui/material";
+import { Badge, ListItem, ListItemIcon, SvgIcon, Switch } from "@mui/material";
 import { FormattedMessage } from "react-intl";
 
 import { startCombat } from "../../../ducks/combat";
@@ -59,11 +59,13 @@ const SingleModeItem = () => {
         }}
       >
         <ListItemIcon>
-          <SvgIcon>
-            <path
-              d={singleMode ? mdiAccountOutline : mdiAccountMultipleOutline}
-            />
-          </SvgIcon>
+          <Badge badgeContent="$" invisible={fullVersion}>
+            <SvgIcon>
+              <path
+                d={singleMode ? mdiAccountOutline : mdiAccountMultipleOutline}
+              />
+            </SvgIcon>
+          </Badge>
         </ListItemIcon>
         <ListItemText
           primary={

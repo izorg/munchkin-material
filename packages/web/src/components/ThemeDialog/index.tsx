@@ -190,6 +190,7 @@ const ThemeDialog = () => {
           >
             <FormLabel component="legend">
               <FormattedMessage defaultMessage="Color" id="theme.color" />
+              {!fullVersion && " ($)"}
             </FormLabel>
             <RadioGroup
               name="id"
