@@ -1,4 +1,4 @@
-import { type PaletteMode } from "@mui/material";
+import { type CssVarsThemeOptions } from "@mui/material";
 import { red } from "@mui/material/colors";
 import { defineMessage } from "react-intl";
 
@@ -9,13 +9,22 @@ export const name = defineMessage({
   id: "theme.name.booty",
 });
 
-export const getTheme = (mode: PaletteMode) => {
-  const color = red[mode === "light" ? 700 : 200];
-
+export const getTheme = (): CssVarsThemeOptions => {
   return {
-    palette: {
-      primary: {
-        main: color,
+    colorSchemes: {
+      dark: {
+        palette: {
+          primary: {
+            main: red[200],
+          },
+        },
+      },
+      light: {
+        palette: {
+          primary: {
+            main: red[700],
+          },
+        },
       },
     },
   };

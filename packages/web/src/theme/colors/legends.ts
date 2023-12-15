@@ -1,4 +1,4 @@
-import { type PaletteMode } from "@mui/material";
+import { type CssVarsThemeOptions } from "@mui/material";
 import { grey } from "@mui/material/colors";
 import { defineMessage } from "react-intl";
 
@@ -9,13 +9,22 @@ export const name = defineMessage({
   id: "theme.name.legends",
 });
 
-export const getTheme = (mode: PaletteMode) => {
-  const color = grey[mode === "light" ? 700 : 200];
-
+export const getTheme = (): CssVarsThemeOptions => {
   return {
-    palette: {
-      primary: {
-        main: color,
+    colorSchemes: {
+      dark: {
+        palette: {
+          primary: {
+            main: grey[200],
+          },
+        },
+      },
+      light: {
+        palette: {
+          primary: {
+            main: grey[700],
+          },
+        },
       },
     },
   };

@@ -1,4 +1,4 @@
-import { type PaletteMode } from "@mui/material";
+import { type CssVarsThemeOptions } from "@mui/material";
 import { lightGreen } from "@mui/material/colors";
 import { defineMessage } from "react-intl";
 
@@ -9,13 +9,22 @@ export const name = defineMessage({
   id: "theme.name.cthulhu",
 });
 
-export const getTheme = (mode: PaletteMode) => {
-  const color = lightGreen[mode === "light" ? 700 : 200];
-
+export const getTheme = (): CssVarsThemeOptions => {
   return {
-    palette: {
-      primary: {
-        main: color,
+    colorSchemes: {
+      dark: {
+        palette: {
+          primary: {
+            main: lightGreen[200],
+          },
+        },
+      },
+      light: {
+        palette: {
+          primary: {
+            main: lightGreen[700],
+          },
+        },
       },
     },
   };

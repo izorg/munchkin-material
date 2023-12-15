@@ -1,4 +1,4 @@
-import { type PaletteMode } from "@mui/material";
+import { type CssVarsThemeOptions } from "@mui/material";
 import { brown } from "@mui/material/colors";
 import { defineMessage } from "react-intl";
 
@@ -9,13 +9,22 @@ export const name = defineMessage({
   id: "theme.name.munchkin",
 });
 
-export const getTheme = (mode: PaletteMode) => {
-  const color = brown[mode === "light" ? 500 : 200];
-
+export const getTheme = (): CssVarsThemeOptions => {
   return {
-    palette: {
-      primary: {
-        main: color,
+    colorSchemes: {
+      dark: {
+        palette: {
+          primary: {
+            main: brown[200],
+          },
+        },
+      },
+      light: {
+        palette: {
+          primary: {
+            main: brown[500],
+          },
+        },
       },
     },
   };

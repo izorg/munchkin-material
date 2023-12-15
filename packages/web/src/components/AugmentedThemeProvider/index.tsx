@@ -1,8 +1,7 @@
 import {
-  createTheme,
   CssBaseline,
-  ThemeProvider,
-  useMediaQuery,
+  Experimental_CssVarsProvider as CssVarsProvider,
+  experimental_extendTheme as extendTheme,
 } from "@mui/material";
 import { deepmerge } from "@mui/utils";
 import PropTypes from "prop-types";
@@ -14,33 +13,32 @@ import { getDirection } from "../../i18n";
 import themes from "../../theme/colors";
 import getThemeOptions from "../../theme/getThemeOptions";
 
+import { ModeProvider } from "./ModeProvider";
+
 const AugmentedThemeProvider: FC<PropsWithChildren> = ({ children }) => {
   const { locale } = useIntl();
 
   const direction = getDirection(locale);
 
-  const systemPaletteMode = useMediaQuery("(prefers-color-scheme: dark)")
-    ? "dark"
-    : "light";
-
   const previewTheme = usePreviewTheme();
 
   const theme = useMemo(() => {
-    const { id, mode = systemPaletteMode, pureBlack } = previewTheme;
+    const { id, pureBlack } = previewTheme;
 
-    return createTheme(
+    return extendTheme(
       deepmerge(
-        getThemeOptions({ direction, mode, pureBlack }),
-        themes[id].getTheme(mode),
+        getThemeOptions({ direction, pureBlack }),
+        themes[id].getTheme(),
       ),
     );
-  }, [direction, previewTheme, systemPaletteMode]);
+  }, [direction, previewTheme]);
 
   return (
-    <ThemeProvider theme={theme}>
+    <CssVarsProvider defaultMode={previewTheme.mode ?? "system"} theme={theme}>
+      <ModeProvider />
       <CssBaseline enableColorScheme />
       {children}
-    </ThemeProvider>
+    </CssVarsProvider>
   );
 };
 

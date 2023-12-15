@@ -1,8 +1,4 @@
-import {
-  type Direction,
-  type PaletteMode,
-  type ThemeOptions,
-} from "@mui/material";
+import { type CssVarsThemeOptions, type Direction } from "@mui/material";
 import { common, orange } from "@mui/material/colors";
 import { deepmerge } from "@mui/utils";
 
@@ -10,14 +6,29 @@ import { ios } from "../utils/platforms";
 
 const getThemeOptions = ({
   direction,
-  mode = "light",
   pureBlack,
 }: {
   direction: Direction;
-  mode: PaletteMode;
   pureBlack: boolean;
-}): ThemeOptions => {
-  let theme: ThemeOptions = {
+}): CssVarsThemeOptions => {
+  let theme: CssVarsThemeOptions = {
+    colorSchemes: {
+      dark: {
+        palette: {
+          secondary: {
+            main: orange.A400,
+          },
+        },
+      },
+      light: {
+        palette: {
+          secondary: {
+            main: orange.A400,
+          },
+        },
+      },
+    },
+
     components: {
       MuiIconButton: {
         defaultProps: {
@@ -78,25 +89,22 @@ const getThemeOptions = ({
       },
     },
 
-    palette: {
-      mode,
-      secondary: {
-        main: orange.A400,
-      },
-    },
-
     typography: {
       fontFamily:
         'system-ui, -apple-system, "Roboto", "San Francisco", "Helvetica", "Arial", sans-serif',
     },
   };
 
-  if (mode === "dark" && pureBlack) {
+  if (pureBlack) {
     theme = deepmerge(theme, {
-      palette: {
-        background: {
-          default: common.black,
-          paper: common.black,
+      colorSchemes: {
+        dark: {
+          palette: {
+            background: {
+              default: common.black,
+              paper: common.black,
+            },
+          },
         },
       },
     });
