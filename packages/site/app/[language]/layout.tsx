@@ -27,7 +27,7 @@ const Layout = async ({ children, params }: LayoutProps) => {
       <html className={munchkinFont.variable} lang={locale}>
         <body>
           <I18nProvider locale={locale} messages={messages}>
-            <ThemeRegistry options={{ key: "mui" }}>{children}</ThemeRegistry>
+            <ThemeRegistry>{children}</ThemeRegistry>
           </I18nProvider>
         </body>
       </html>

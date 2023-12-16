@@ -2961,6 +2961,27 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@mui/material-nextjs@npm:5.15.0":
+  version: 5.15.0
+  resolution: "@mui/material-nextjs@npm:5.15.0"
+  peerDependencies:
+    "@emotion/cache": ^11.11.0
+    "@emotion/server": ^11.11.0
+    "@mui/material": ^5.0.0
+    "@types/react": ^17.0.0 || ^18.0.0
+    next: ^13.0.0 || ^14.0.0
+    react: ^17.0.0 || ^18.0.0
+  peerDependenciesMeta:
+    "@emotion/cache":
+      optional: true
+    "@emotion/server":
+      optional: true
+    "@types/react":
+      optional: true
+  checksum: a46a2acc727614bb5c72390e956bdfeab740413174eb83d8bd5a111bf0fa4f306583d6e8057b047587e643e530f1f26889a7d9a7d2519d9137a3d5a05dbd1c03
+  languageName: node
+  linkType: hard
+
 "@mui/material@npm:5.15.0":
   version: 5.15.0
   resolution: "@mui/material@npm:5.15.0"
@@ -3137,6 +3158,7 @@ __metadata:
     "@formatjs/intl": "npm:2.9.9"
     "@mdi/js": "npm:7.3.67"
     "@mui/material": "npm:5.15.0"
+    "@mui/material-nextjs": "npm:5.15.0"
     "@next/bundle-analyzer": "npm:14.0.4"
     "@next/third-parties": "npm:14.0.4"
     "@sentry/nextjs": "npm:7.88.0"

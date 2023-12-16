@@ -12,7 +12,7 @@ const Layout = ({ children }: PropsWithChildren) => (
   <>
     <html lang="en">
       <body>
-        <ThemeRegistry options={{ key: "mui" }}>{children}</ThemeRegistry>
+        <ThemeRegistry>{children}</ThemeRegistry>
       </body>
     </html>
     <GoogleTagManager gtmId="GTM-5Z3D8FX" />
