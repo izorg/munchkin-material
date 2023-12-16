@@ -2,7 +2,6 @@
   "hosting": {
     "target": "site",
     "public": "out",
-    "trailingSlash": false,
     "i18n": {
       "root": "/"
     }

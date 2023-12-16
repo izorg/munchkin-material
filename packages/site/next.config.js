@@ -18,7 +18,6 @@ const nextConfig = {
     unoptimized: true,
   },
   productionBrowserSourceMaps: true,
-  skipTrailingSlashRedirect: true,
   trailingSlash: true,
   typescript: {
     ignoreBuildErrors: true, // Using project root TypeScript check
