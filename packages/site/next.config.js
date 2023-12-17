@@ -14,6 +14,9 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true, // Using project root ESLint check
   },
+  experimental: {
+    typedRoutes: true,
+  },
   images: {
     unoptimized: true,
   },
