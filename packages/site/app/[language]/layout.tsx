@@ -1,7 +1,7 @@
-import { GoogleTagManager } from "@next/third-parties/google";
 import { type Viewport } from "next";
 import { type PropsWithChildren } from "react";
 
+import { Analytics } from "../../components/Analytics";
 import { I18nProvider } from "../../components/I18nProvider";
 import { ThemeRegistry } from "../../components/ThemeRegistry";
 import { getLocalMessages, localeByLanguage } from "../../lib/i18n";
@@ -23,16 +23,14 @@ const Layout = async ({ children, params }: LayoutProps) => {
   const messages = await getLocalMessages(locale);
 
   return (
-    <>
-      <html className={munchkinFont.variable} lang={locale}>
-        <body>
-          <I18nProvider locale={locale} messages={messages}>
-            <ThemeRegistry>{children}</ThemeRegistry>
-          </I18nProvider>
-        </body>
-      </html>
-      <GoogleTagManager gtmId="GTM-5Z3D8FX" />
-    </>
+    <html className={munchkinFont.variable} lang={locale}>
+      <body>
+        <I18nProvider locale={locale} messages={messages}>
+          <ThemeRegistry>{children}</ThemeRegistry>
+        </I18nProvider>
+        <Analytics />
+      </body>
+    </html>
   );
 };
 
