@@ -1,10 +1,13 @@
-import { colors, experimental_extendTheme as extendTheme } from "@mui/material";
+"use client";
+
+import brown from "@mui/material/colors/brown";
+import extendTheme from "@mui/material/styles/experimental_extendTheme";
 
 export const theme = extendTheme({
   colorSchemes: {
     light: {
       palette: {
-        primary: colors.brown,
+        primary: brown,
       },
     },
   },

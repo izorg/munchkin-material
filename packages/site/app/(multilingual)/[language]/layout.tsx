@@ -1,12 +1,12 @@
 import { type Viewport } from "next";
 import { type PropsWithChildren } from "react";
 
-import { Analytics } from "../../components/Analytics";
-import { I18nProvider } from "../../components/I18nProvider";
-import { ThemeRegistry } from "../../components/ThemeRegistry";
-import { getLocalMessages, localeByLanguage } from "../../lib/i18n";
-import { type Language } from "../../lib/i18n";
-import { munchkinFont } from "../../lib/munchkinFont";
+import { Analytics } from "../../../components/Analytics";
+import { I18nProvider } from "../../../components/I18nProvider";
+import { ThemeRegistry } from "../../../components/ThemeRegistry";
+import { getLocalMessages, localeByLanguage } from "../../../lib/i18n";
+import { type Language } from "../../../lib/i18n";
+import { munchkinFont } from "../../../lib/munchkinFont";
 
 export const viewport: Viewport = {
   colorScheme: "light",

@@ -1,8 +1,8 @@
 import { type Viewport } from "next";
 import { type PropsWithChildren } from "react";
 
-import { Analytics } from "../../components/Analytics";
-import { ThemeRegistry } from "../../components/ThemeRegistry";
+import { Analytics } from "../components/Analytics";
+import { ThemeRegistry } from "../components/ThemeRegistry";
 
 export const viewport: Viewport = {
   colorScheme: "light",

@@ -14,10 +14,10 @@ import {
 import { type Metadata } from "next";
 import NextLink from "next/link";
 
-import { StoreButton } from "../../components/StoreButton";
-import { getServerIntl, localeByLanguage } from "../../lib/i18n";
-import type { Language } from "../../lib/i18n";
-import * as languages from "../../lib/languages";
+import { StoreButton } from "../../../components/StoreButton";
+import { getServerIntl, localeByLanguage } from "../../../lib/i18n";
+import type { Language } from "../../../lib/i18n";
+import * as languages from "../../../lib/languages";
 
 export const generateStaticParams = () =>
   Object.values(languages).map((language) => ({

@@ -1,6 +1,5 @@
-"use client";
-
-import { Container, Link } from "@mui/material";
+import Container from "@mui/material/Container";
+import Link from "@mui/material/Link";
 
 export const PrivacyPolicy = () => (
   <Container>

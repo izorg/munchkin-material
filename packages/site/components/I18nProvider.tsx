@@ -1,6 +1,6 @@
 "use client";
 
-import type { MessageFormatElement } from "@formatjs/icu-messageformat-parser";
+import { type MessageFormatElement } from "@formatjs/icu-messageformat-parser";
 import { captureException } from "@sentry/react";
 import { type PropsWithChildren } from "react";
 import { IntlProvider } from "react-intl";
