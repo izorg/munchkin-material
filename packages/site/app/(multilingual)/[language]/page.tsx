@@ -1,16 +1,14 @@
 import { defineMessages } from "@formatjs/intl";
 import { mdiApple, mdiGooglePlay, mdiMicrosoftWindows } from "@mdi/js";
-import {
-  AppBar,
-  Box,
-  Button,
-  Container,
-  Link,
-  Stack,
-  SvgIcon,
-  Toolbar,
-  Typography,
-} from "@mui/material";
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Container from "@mui/material/Container";
+import Link from "@mui/material/Link";
+import Stack from "@mui/material/Stack";
+import SvgIcon from "@mui/material/SvgIcon";
+import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
 import { type Metadata } from "next";
 import NextLink from "next/link";
 
