@@ -13,7 +13,7 @@ import { getDirection } from "../../i18n";
 import themes from "../../theme/colors";
 import getThemeOptions from "../../theme/getThemeOptions";
 
-import { ModeProvider } from "./ModeProvider";
+import { ModeSwitcher } from "./ModeSwitcher";
 
 const AugmentedThemeProvider: FC<PropsWithChildren> = ({ children }) => {
   const { locale } = useIntl();
@@ -35,7 +35,7 @@ const AugmentedThemeProvider: FC<PropsWithChildren> = ({ children }) => {
 
   return (
     <CssVarsProvider defaultMode={previewTheme.mode ?? "system"} theme={theme}>
-      <ModeProvider />
+      <ModeSwitcher />
       <CssBaseline enableColorScheme />
       {children}
     </CssVarsProvider>

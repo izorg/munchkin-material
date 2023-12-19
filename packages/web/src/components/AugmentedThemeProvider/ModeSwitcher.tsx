@@ -3,7 +3,7 @@ import { useEffect } from "react";
 
 import usePreviewTheme from "../../hooks/usePreviewTheme";
 
-export const ModeProvider = () => {
+export const ModeSwitcher = () => {
   const { setMode } = useColorScheme();
 
   const previewTheme = usePreviewTheme();
