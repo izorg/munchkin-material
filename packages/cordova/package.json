@@ -13,8 +13,8 @@
     "run:ios": "cordova run ios"
   },
   "dependencies": {
-    "@mui/material": "5.15.0",
-    "@sentry/react": "7.88.0",
+    "@mui/material": "5.15.1",
+    "@sentry/react": "7.89.0",
     "core-js": "3.34.0",
     "prop-types": "15.8.1",
     "react": "18.2.0",
