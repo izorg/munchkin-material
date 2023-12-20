@@ -63,7 +63,6 @@
     "stylelint": "16.0.2",
     "stylelint-config-standard": "35.0.0",
     "stylelint-order": "6.0.4",
-    "stylelint-prettier": "5.0.0",
     "typescript": "5.3.3"
   },
   "resolutions": {
