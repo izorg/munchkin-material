@@ -19,7 +19,7 @@
     "prop-types": "15.8.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-router-dom": "6.21.0",
+    "react-router-dom": "6.21.1",
     "scrollyfills": "1.0.0",
     "smoothscroll-polyfill": "0.4.4",
     "swr": "2.2.4"
