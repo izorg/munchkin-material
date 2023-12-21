@@ -6,7 +6,7 @@ import {
   ListItemButton,
   type ListItemProps,
 } from "@mui/material";
-import { m, type TapInfo } from "framer-motion";
+import { m, type TapHandlers } from "framer-motion";
 import PropTypes from "prop-types";
 import { useCallback, useRef } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
@@ -58,7 +58,7 @@ const HomePlayerListItem = (props: HomePlayerListItemProps) => {
   }, [dispatch, playerId, setMultiMode]);
 
   const onClick = useCallback(
-    (event: MouseEvent | PointerEvent | TouchEvent) => {
+    (event: Parameters<Required<TapHandlers>["onTap"]>[0]) => {
       if (editMode) {
         setSearchParams((searchParams) => {
           searchParams.set("player", playerId);
@@ -104,8 +104,8 @@ const HomePlayerListItem = (props: HomePlayerListItemProps) => {
   const startPointRef = useRef({ x: 0, y: 0 });
   const startTapTimeRef = useRef(Date.now());
 
-  const onTapStart = useCallback(
-    (event: MouseEvent | PointerEvent | TouchEvent, info: TapInfo) => {
+  const onTapStart: Required<TapHandlers>["onTapStart"] = useCallback(
+    (event, info) => {
       startPointRef.current = info.point;
       startTapTimeRef.current = Date.now();
 
@@ -129,8 +129,8 @@ const HomePlayerListItem = (props: HomePlayerListItemProps) => {
     [editMode, multiMode, onMultiSelectActivate],
   );
 
-  const onTap = useCallback(
-    (event: MouseEvent | PointerEvent | TouchEvent) => {
+  const onTap: Required<TapHandlers>["onTap"] = useCallback(
+    (event) => {
       clearPress();
 
       if (Date.now() - startTapTimeRef.current < 500) {
