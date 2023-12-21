@@ -103,6 +103,7 @@ const CombatHelperButton = () => {
             "@supports (padding: max(0px))": {
               right: {
                 sm: `max(${theme.spacing(3)}, env(safe-area-inset-right))`,
+                xs: `max(${theme.spacing(2)}, env(safe-area-inset-right))`,
               },
             },
           }),
@@ -122,10 +123,6 @@ const CombatHelperButton = () => {
             onMonsterAdd();
             onBack();
           }}
-          sx={{
-            backgroundColor: "grey.300",
-            color: "secondary.contrastText",
-          }}
           tooltipTitle={
             <FormattedMessage
               defaultMessage="Monster"
@@ -140,10 +137,6 @@ const CombatHelperButton = () => {
             </SvgIcon>
           }
           onClick={onHelperClick}
-          sx={{
-            backgroundColor: "grey.300",
-            color: "secondary.contrastText",
-          }}
           tooltipTitle={
             <FormattedMessage defaultMessage="Helper" id="combat.add.helper" />
           }
