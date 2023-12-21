@@ -8,7 +8,7 @@ import {
 } from "@mui/material";
 import { memo, type MouseEvent } from "react";
 import { FormattedMessage } from "react-intl";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 
 import { addMonster } from "../../../ducks/monsters";
 import usePresentSelector from "../../../hooks/usePresentSelector";
@@ -18,8 +18,7 @@ import { useGoBack } from "../../../utils/location";
 
 const CombatHelperButton = () => {
   const dispatch = useAppDispatch();
-  const location = useLocation();
-  const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const goBack = useGoBack();
   const helperId = usePresentSelector((state) => state.combat.helperId);
@@ -27,30 +26,29 @@ const CombatHelperButton = () => {
     (state) => state.playerList.length > 1,
   );
   const helper = !helperId && hasOtherPlayers;
-  const open = new URLSearchParams(location.search).get("add") === "";
+  const open = searchParams.get("add") === "";
 
   const onAdd = () => {
-    const searchParams = new URLSearchParams(location.search);
+    setSearchParams((searchParams) => {
+      searchParams.set("add", "");
 
-    searchParams.set("add", "");
-
-    navigate({
-      search: `?${searchParams.toString()}`,
+      return searchParams;
     });
   };
   const onBack = () => goBack();
+
   const onHelperClick = (event: MouseEvent) => {
     event.stopPropagation();
 
-    const searchParams = new URLSearchParams(location.search);
+    setSearchParams(
+      (searchParams) => {
+        searchParams.set("add", "helper");
 
-    searchParams.set("add", "helper");
-
-    navigate(
-      {
-        search: `?${searchParams.toString()}`,
+        return searchParams;
       },
-      { replace: true },
+      {
+        replace: true,
+      },
     );
   };
   const onMonsterAdd = () => dispatch(addMonster(createMonster()));
