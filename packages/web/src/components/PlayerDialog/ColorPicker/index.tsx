@@ -83,9 +83,8 @@ const ColorPicker: FC<ColorPickerProps> = (props) => {
               onBlur(event);
             }
 
-            if (muiFormControl && muiFormControl.onBlur) {
-              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-              // @ts-ignore
+            if (muiFormControl?.onBlur) {
+              // @ts-expect-error -- need to fix type
               muiFormControl.onBlur(event);
             }
           }
@@ -100,9 +99,8 @@ const ColorPicker: FC<ColorPickerProps> = (props) => {
             onFocus(event);
           }
 
-          if (muiFormControl && muiFormControl.onFocus) {
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
+          if (muiFormControl?.onFocus) {
+            // @ts-expect-error -- need to fix type
             muiFormControl.onFocus(event);
           }
         }}
