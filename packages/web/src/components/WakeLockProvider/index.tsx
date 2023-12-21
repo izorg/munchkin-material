@@ -4,6 +4,7 @@ import {
   type PropsWithChildren,
   useCallback,
   useEffect,
+  useMemo,
   useRef,
 } from "react";
 
@@ -51,10 +52,13 @@ const WakeLockProvider: FC<PropsWithChildren> = ({ children }) => {
     }
   }, [wakeLock, wakeLockSupport]);
 
+  const value = useMemo(
+    () => ({ setWakeLock, wakeLock, wakeLockSupport }),
+    [setWakeLock, wakeLock, wakeLockSupport],
+  );
+
   return (
-    <WakeLockContext.Provider
-      value={{ setWakeLock, wakeLock, wakeLockSupport }}
-    >
+    <WakeLockContext.Provider value={value}>
       {children}
     </WakeLockContext.Provider>
   );
