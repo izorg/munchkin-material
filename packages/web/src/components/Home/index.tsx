@@ -4,6 +4,7 @@ import usePresentSelector from "../../hooks/usePresentSelector";
 import LevelLimitDialog from "../LevelLimitDialog";
 import Nobody from "../Nobody";
 import ThemeDialog from "../ThemeDialog";
+import ThemeSchemeDialog from "../ThemeSchemeDialog";
 
 import AppBar from "./AppBar";
 import PlayerAddButton from "./PlayerAddButton";
@@ -65,6 +66,7 @@ const Home = () => {
 
       <LevelLimitDialog />
       <ThemeDialog />
+      <ThemeSchemeDialog />
     </>
   );
 };

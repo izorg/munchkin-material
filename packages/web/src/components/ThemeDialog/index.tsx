@@ -1,20 +1,17 @@
 import {
   Box,
-  Checkbox,
   Dialog,
   DialogActions,
   DialogContent,
   DialogTitle,
   FormControl,
   FormControlLabel,
-  FormLabel,
-  type PaletteMode,
   Radio,
   RadioGroup,
 } from "@mui/material";
 import { captureException } from "@sentry/react";
 import { type ChangeEvent, type SyntheticEvent, useMemo } from "react";
-import { FormattedMessage, useIntl } from "react-intl";
+import { useIntl } from "react-intl";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import { setTheme } from "../../ducks/theme";
@@ -30,8 +27,6 @@ import SubmitButton from "../SubmitButton";
 
 type FormValues = {
   id: string;
-  mode: "auto" | PaletteMode;
-  pureBlack: "false" | "true";
 };
 
 const ThemeDialog = () => {
@@ -73,21 +68,6 @@ const ThemeDialog = () => {
     });
   };
 
-  const onThemeModeChange = (
-    event: ChangeEvent<HTMLInputElement>,
-    mode: string,
-  ) => {
-    onChange({
-      mode: mode as FormValues["mode"],
-    });
-  };
-
-  const onThemePureBlackChange = (event: ChangeEvent<HTMLInputElement>) => {
-    onChange({
-      pureBlack: event.target.checked ? "true" : "false",
-    });
-  };
-
   const onSubmit = async (event: SyntheticEvent<HTMLFormElement>) => {
     event.preventDefault();
 
@@ -110,91 +90,10 @@ const ThemeDialog = () => {
 
   return (
     <Dialog onClose={onClose} open={open}>
-      <DialogTitle>{intl.formatMessage(themeMessages.label)}</DialogTitle>
+      <DialogTitle>{intl.formatMessage(themeMessages.color)}</DialogTitle>
       <DialogContent>
-        <Box
-          component="form"
-          id="theme-setup"
-          onSubmit={onSubmit}
-          sx={{
-            marginLeft: -2,
-            marginTop: -2,
-          }}
-        >
-          <FormControl
-            component="fieldset"
-            sx={{
-              marginLeft: 2,
-              marginTop: 2,
-            }}
-          >
-            <FormLabel component="legend">
-              <FormattedMessage defaultMessage="Mode" id="theme.mode" />
-            </FormLabel>
-            <RadioGroup
-              name="mode"
-              onChange={onThemeModeChange}
-              value={previewTheme.mode ?? "auto"}
-            >
-              <FormControlLabel
-                control={<Radio color="primary" />}
-                label={
-                  <FormattedMessage
-                    defaultMessage="System Default"
-                    id="themeDialog.auto"
-                  />
-                }
-                value="auto"
-              />
-              <FormControlLabel
-                control={<Radio color="primary" />}
-                label={
-                  <FormattedMessage
-                    defaultMessage="Light"
-                    id="themeDialog.light"
-                  />
-                }
-                value="light"
-              />
-              <FormControlLabel
-                control={<Radio color="primary" />}
-                label={
-                  <FormattedMessage
-                    defaultMessage="Dark"
-                    id="themeDialog.dark"
-                  />
-                }
-                value="dark"
-              />
-            </RadioGroup>
-            <FormControlLabel
-              control={
-                <Checkbox
-                  checked={previewTheme.pureBlack}
-                  color="primary"
-                  name="pureBlack"
-                  onChange={onThemePureBlackChange}
-                />
-              }
-              label={
-                <FormattedMessage
-                  defaultMessage="Pure black"
-                  id="themeDialog.pureBlack"
-                />
-              }
-            />
-          </FormControl>
-          <FormControl
-            component="fieldset"
-            sx={{
-              marginLeft: 2,
-              marginTop: 2,
-            }}
-          >
-            <FormLabel component="legend">
-              <FormattedMessage defaultMessage="Color" id="theme.color" />
-              {!fullVersion && " ($)"}
-            </FormLabel>
+        <Box component="form" id="theme-setup" onSubmit={onSubmit}>
+          <FormControl component="fieldset">
             <RadioGroup
               name="id"
               onChange={onThemeIdChange}

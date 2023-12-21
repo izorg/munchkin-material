@@ -8,12 +8,14 @@ import RestorePurchasesItem from "./RestorePurchasesItem";
 import ShareItem from "./ShareItem";
 import SingleModeItem from "./SingleModeItem";
 import ThemeItem from "./ThemeItem";
+import ThemeSchemeItem from "./ThemeSchemeItem";
 import VersionItem from "./VersionItem";
 
 export * from "./SettingsListItemButton";
 
 const SettingsList = () => (
   <List disablePadding sx={{ overflowY: "auto" }}>
+    <ThemeSchemeItem />
     <ThemeItem />
     <SingleModeItem />
     <LevelLimitItem />

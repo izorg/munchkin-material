@@ -1,51 +1,56 @@
 import { mdiPaletteOutline } from "@mdi/js";
-import { ListItem, ListItemIcon, SvgIcon, useTheme } from "@mui/material";
+import {
+  Badge,
+  ListItem,
+  ListItemIcon,
+  SvgIcon,
+  useTheme,
+} from "@mui/material";
+import { useCallback } from "react";
 import { useIntl } from "react-intl";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 
 import usePresentSelector from "../../../hooks/usePresentSelector";
 import themeMessages from "../../../messages/theme";
 import themes from "../../../theme/colors";
+import { useFullVersion } from "../../../utils/fullVersionContext";
 import ListItemText from "../ItemText";
 import { SettingsListItemButton } from "../SettingsListItemButton";
 
 const ThemeItem = () => {
   const intl = useIntl();
-  const location = useLocation();
-  const navigate = useNavigate();
+  const [, setSearchParams] = useSearchParams();
   const theme = useTheme();
+
+  const { fullVersion } = useFullVersion();
 
   const themeKey = usePresentSelector((state) => state.theme.id);
 
-  const onClick = () => {
-    const searchParams = new URLSearchParams(location.search);
+  const onClick = useCallback(() => {
+    setSearchParams((searchParams) => {
+      searchParams.set("theme", "");
 
-    searchParams.delete("menu");
-    searchParams.set("theme", "");
-
-    const to = {
-      search: `?${searchParams.toString()}`,
-    };
-
-    navigate(to);
-  };
+      return searchParams;
+    });
+  }, [setSearchParams]);
 
   return (
     <ListItem disablePadding>
       <SettingsListItemButton
         onClick={onClick}
         sx={{
-          paddingBottom: 0,
-          paddingTop: 0,
+          paddingY: 0,
         }}
       >
         <ListItemIcon>
-          <SvgIcon style={{ color: theme.palette.primary.main }}>
-            <path d={mdiPaletteOutline} />
-          </SvgIcon>
+          <Badge badgeContent="$" invisible={fullVersion}>
+            <SvgIcon style={{ color: theme.palette.primary.main }}>
+              <path d={mdiPaletteOutline} />
+            </SvgIcon>
+          </Badge>
         </ListItemIcon>
         <ListItemText
-          primary={intl.formatMessage(themeMessages.label)}
+          primary={intl.formatMessage(themeMessages.color)}
           secondary={themes[themeKey].name(intl)}
         />
       </SettingsListItemButton>
