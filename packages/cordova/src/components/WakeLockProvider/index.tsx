@@ -50,12 +50,10 @@ const WakeLockProvider: FC<PropsWithChildren> = ({ children }) => {
     } else {
       if (insomnia) {
         insomnia.allowSleepAgain();
-      } else {
-        if (wakeLockRef.current) {
-          void wakeLockRef.current.release().then(() => {
-            wakeLockRef.current = undefined;
-          });
-        }
+      } else if (wakeLockRef.current) {
+        void wakeLockRef.current.release().then(() => {
+          wakeLockRef.current = undefined;
+        });
       }
     }
   }, [insomnia, wakeLock, wakeLockSupport]);
