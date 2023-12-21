@@ -1,4 +1,8 @@
-/** @type {import('jest').Config} */
+// @ts-check
+
+/**
+ * @type {import('jest').Config}
+ */
 const config = {
   roots: ["<rootDir>/packages/web/src/"],
   transform: {
