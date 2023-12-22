@@ -4,12 +4,13 @@ import { type FC, type PropsWithChildren } from "react";
 
 const TopAppBar: FC<PropsWithChildren> = ({ children }) => (
   <AppBar
-    color="inherit"
+    color="transparent"
     elevation={0}
     position="static"
-    sx={{
+    sx={(theme) => ({
+      backgroundColor: theme.palette.background.default,
       zIndex: "appBar",
-    }}
+    })}
   >
     <Toolbar
       sx={[
