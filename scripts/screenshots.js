@@ -1,5 +1,4 @@
-/* eslint-env browser */
-import { promises as fs } from "node:fs";
+import fs from "node:fs";
 import path from "node:path";
 
 import { duration } from "@mui/material";
@@ -78,7 +77,7 @@ const getScreenshots = async (browserType, device, locale, deviceName) => {
   const screenshotDir = path.join(dir, locale, deviceName);
 
   try {
-    await fs.mkdir(screenshotDir, {
+    await fs.promises.mkdir(screenshotDir, {
       recursive: true,
     });
   } catch {
@@ -204,7 +203,7 @@ const locales = [
 
 const screenshots = async () => {
   try {
-    await fs.rm(path.join(dir), { recursive: true });
+    await fs.promises.rm(path.join(dir), { recursive: true });
   } catch {
     // folder could not exist
   }
