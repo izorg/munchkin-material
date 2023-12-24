@@ -1,4 +1,5 @@
 import { type Viewport } from "next";
+import Script from "next/script";
 import { type PropsWithChildren } from "react";
 
 import { Analytics } from "../components/Analytics";
@@ -14,6 +15,9 @@ const Layout = ({ children }: PropsWithChildren) => (
     <body>
       <ThemeRegistry>{children}</ThemeRegistry>
       <Analytics />
+      <Script id="globalThis" strategy="beforeInteractive">
+        window.globalThis = window;
+      </Script>
     </body>
   </html>
 );
