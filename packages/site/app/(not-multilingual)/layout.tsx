@@ -2,9 +2,9 @@ import { type Viewport } from "next";
 import Script from "next/script";
 import { type PropsWithChildren } from "react";
 
-import { Analytics } from "../components/Analytics";
-import { ThemeRegistry } from "../components/ThemeRegistry";
-import { munchkinFont } from "../lib/munchkinFont";
+import { Analytics } from "../../components/Analytics";
+import { ThemeRegistry } from "../../components/ThemeRegistry";
+import { munchkinFont } from "../../lib/munchkinFont";
 
 export const viewport: Viewport = {
   colorScheme: "light",

@@ -152,7 +152,7 @@ const Page = async (props: PageProps) => {
         <StoreButton
           href="https://itunes.apple.com/us/app/level-counter-for-munchkin/id1448937097?mt=8"
           startIcon={
-            <SvgIcon style={{ marginTop: -4 }}>
+            <SvgIcon sx={{ marginTop: "-4px" }}>
               <path d={mdiApple} />
             </SvgIcon>
           }
@@ -162,7 +162,7 @@ const Page = async (props: PageProps) => {
         <StoreButton
           href="https://www.microsoft.com/store/apps/9PDVK4CF6NMF"
           startIcon={
-            <SvgIcon style={{ marginTop: -2 }}>
+            <SvgIcon sx={{ marginTop: "-2px" }}>
               <path d={mdiMicrosoftWindows} />
             </SvgIcon>
           }
