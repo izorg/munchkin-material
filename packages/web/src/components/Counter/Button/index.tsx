@@ -1,4 +1,5 @@
 import { IconButton, type IconButtonProps } from "@mui/material";
+import { captureException } from "@sentry/react";
 import { m } from "framer-motion";
 import PropTypes from "prop-types";
 import { type FC, useCallback, useEffect, useRef } from "react";
@@ -32,6 +33,7 @@ const CounterButton: FC<CounterButtonProps> = ({
     }
   }, []);
 
+  // clear timeout on unmount
   useEffect(
     () => () => {
       clearPress();
@@ -46,14 +48,26 @@ const CounterButton: FC<CounterButtonProps> = ({
   }, [clearPress, disabled]);
 
   const onTapStart = useCallback(() => {
+    clearPress();
+
     timeoutRef.current = window.setTimeout(() => {
-      onClick();
+      try {
+        onClick();
+      } catch (error) {
+        captureException(error);
+      }
 
       intervalRef.current = window.setInterval(() => {
-        onClick();
+        try {
+          onClick();
+        } catch (error) {
+          captureException(error);
+
+          clearPress();
+        }
       }, PRESS_HOLD_INTERVAL);
     }, PRESS_HOLD_TIMEOUT);
-  }, [onClick]);
+  }, [clearPress, onClick]);
 
   const onTap = useCallback(() => {
     clearPress();
@@ -74,7 +88,7 @@ const CounterButton: FC<CounterButtonProps> = ({
       component={m.button}
       disabled={disabled}
       {...rest}
-      onPanStart={onPanStart}
+      onPanStart={onPanStart} // cover mouse drag action
       onTap={onTap}
       onTapCancel={onTapCancel}
       onTapStart={onTapStart}
