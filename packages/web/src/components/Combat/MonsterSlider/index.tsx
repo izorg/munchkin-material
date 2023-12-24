@@ -45,14 +45,12 @@ const CombatMonsterSlider: FC<BoxProps> = ({ sx = [], ...props }) => {
       return;
     }
 
-    if (landscape) {
-      if (monsters.length > monsterCount.current) {
+    if (monsters.length > monsterCount.current) {
+      if (landscape) {
         child.scrollTo({
           top: child.scrollHeight,
         });
-      }
-    } else {
-      if (monsters.length > monsterCount.current) {
+      } else {
         child.scrollTo({
           left: child.scrollWidth * directionMultiplier,
         });

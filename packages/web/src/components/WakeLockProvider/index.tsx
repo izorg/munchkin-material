@@ -43,12 +43,10 @@ const WakeLockProvider: FC<PropsWithChildren> = ({ children }) => {
           wakeLockRef.current = wakeLockSentinel;
         })
         .catch(() => setKeepAwake(false));
-    } else {
-      if (wakeLockRef.current) {
-        void wakeLockRef.current.release().then(() => {
-          wakeLockRef.current = undefined;
-        });
-      }
+    } else if (wakeLockRef.current) {
+      void wakeLockRef.current.release().then(() => {
+        wakeLockRef.current = undefined;
+      });
     }
   }, [wakeLock, wakeLockSupport]);
 

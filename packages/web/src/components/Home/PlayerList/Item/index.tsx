@@ -116,7 +116,7 @@ const HomePlayerListItem = (props: HomePlayerListItemProps) => {
 
         if (
           !(editMode || multiMode) &&
-          (!avatarNode || !avatarNode.contains(event.target as HTMLElement))
+          !avatarNode?.contains(event.target as HTMLElement)
         ) {
           if (navigator.vibrate && !ios) {
             navigator.vibrate(20);

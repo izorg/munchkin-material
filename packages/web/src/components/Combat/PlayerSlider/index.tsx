@@ -53,14 +53,12 @@ const CombatPlayerSlider: FC<CombatPlayerSliderProps> = (props) => {
       return;
     }
 
-    if (landscape) {
-      if (playerCount > playerCountRef.current) {
+    if (playerCount > playerCountRef.current) {
+      if (landscape) {
         child.scrollTo({
           top: child.scrollHeight,
         });
-      }
-    } else {
-      if (playerCount > playerCountRef.current) {
+      } else {
         child.scrollTo({
           left: child.scrollWidth * directionMultiplier,
         });
