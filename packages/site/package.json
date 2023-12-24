@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@emotion/cache": "11.11.0",
-    "@emotion/react": "11.11.1",
+    "@emotion/react": "11.11.3",
     "@emotion/styled": "11.11.0",
     "@formatjs/icu-messageformat-parser": "2.7.3",
     "@formatjs/intl": "2.9.9",
