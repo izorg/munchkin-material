@@ -18,17 +18,13 @@ const WakeLockProvider: FC<PropsWithChildren> = ({ children }) => {
 
   const wakeLockSupport = "wakeLock" in navigator;
   const wakeLock = usePresentSelector((state) => state.settings.keepAwake);
-  const wakeLockRef = useRef<undefined | WakeLockSentinel>(undefined);
+  const wakeLockRef = useRef<WakeLockSentinel>();
 
   const setWakeLock = useCallback(
     (value: boolean) => {
-      if (!wakeLockSupport) {
-        throw new Error("Calling setWakeLock() without wakeLockSupport");
-      }
-
       dispatch(setKeepAwake(value));
     },
-    [dispatch, wakeLockSupport],
+    [dispatch],
   );
 
   useEffect(() => {

@@ -23,13 +23,9 @@ const WakeLockProvider: FC<PropsWithChildren> = ({ children }) => {
 
   const setWakeLock = useCallback(
     (value: boolean) => {
-      if (!wakeLockSupport) {
-        throw new Error("Calling setWakeLock() without wakeLockSupport");
-      }
-
       dispatch(setKeepAwake(value));
     },
-    [dispatch, wakeLockSupport],
+    [dispatch],
   );
 
   useEffect(() => {
