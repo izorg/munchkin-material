@@ -16,7 +16,7 @@ import {
   verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
 import { List, type ListProps } from "@mui/material";
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useState } from "react";
 
 import { movePlayer } from "../../../ducks/playerList";
 import usePresentSelector from "../../../hooks/usePresentSelector";
@@ -24,6 +24,8 @@ import { useAppDispatch } from "../../../store";
 
 import Item from "./Item";
 import OverlayItem from "./OverlayItem";
+
+const dndContextModifiers = [restrictToVerticalAxis];
 
 const HomePlayerList = (props: ListProps) => {
   const dispatch = useAppDispatch();
@@ -33,9 +35,7 @@ const HomePlayerList = (props: ListProps) => {
   const [activeId, setActiveId] = useState<null | string>(null);
 
   const onDragStart = useCallback((event: DragStartEvent) => {
-    if (typeof event.active.id === "string") {
-      setActiveId(event.active.id);
-    }
+    setActiveId(String(event.active.id));
   }, []);
 
   const onDragEnd = useCallback(
@@ -49,8 +49,8 @@ const HomePlayerList = (props: ListProps) => {
       }
 
       if (active.id !== over.id) {
-        const oldIndex = playerList.indexOf(active.id as string);
-        const newIndex = playerList.indexOf(over.id as string);
+        const oldIndex = playerList.indexOf(String(active.id));
+        const newIndex = playerList.indexOf(String(over.id));
 
         dispatch(movePlayer(oldIndex, newIndex));
       }
@@ -68,7 +68,7 @@ const HomePlayerList = (props: ListProps) => {
   return (
     <DndContext
       collisionDetection={closestCenter}
-      modifiers={useMemo(() => [restrictToVerticalAxis], [])}
+      modifiers={dndContextModifiers}
       onDragEnd={onDragEnd}
       onDragStart={onDragStart}
       sensors={sensors}
@@ -82,11 +82,9 @@ const HomePlayerList = (props: ListProps) => {
             <Item
               key={playerId}
               playerId={playerId}
-              sx={[
-                playerId === activeId && {
-                  visibility: "hidden",
-                },
-              ]}
+              sx={{
+                visibility: playerId === activeId ? "hidden" : undefined,
+              }}
             />
           ))}
         </SortableContext>
