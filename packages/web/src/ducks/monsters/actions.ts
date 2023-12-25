@@ -2,22 +2,30 @@ import { createAction } from "@reduxjs/toolkit";
 
 import { type Monster } from "../../utils/types";
 
-export const addMonster = createAction<Monster>("monsters/addMonster");
-
-export const decrementMonsterBonus = createAction<string>(
-  "monster/decrementMonsterBonus",
+export const addMonster = createAction<Monster, "monsters/addMonster">(
+  "monsters/addMonster",
 );
 
-export const decrementMonsterLevel = createAction<string>(
-  "monster/decrementMonsterLevel",
-);
+export const decrementMonsterBonus = createAction<
+  string,
+  "monster/decrementMonsterBonus"
+>("monster/decrementMonsterBonus");
 
-export const incrementMonsterBonus = createAction<string>(
-  "monster/incrementMonsterBonus",
-);
+export const decrementMonsterLevel = createAction<
+  string,
+  "monster/decrementMonsterLevel"
+>("monster/decrementMonsterLevel");
 
-export const incrementMonsterLevel = createAction<string>(
-  "monster/incrementMonsterLevel",
-);
+export const incrementMonsterBonus = createAction<
+  string,
+  "monster/incrementMonsterBonus"
+>("monster/incrementMonsterBonus");
 
-export const removeMonster = createAction<string>("monsters/removeMonster");
+export const incrementMonsterLevel = createAction<
+  string,
+  "monster/incrementMonsterLevel"
+>("monster/incrementMonsterLevel");
+
+export const removeMonster = createAction<string, "monsters/removeMonster">(
+  "monsters/removeMonster",
+);

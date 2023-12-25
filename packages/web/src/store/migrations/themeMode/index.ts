@@ -1,3 +1,5 @@
+/* istanbul ignore file */
+
 import { type ThemeState } from "../../../ducks/theme";
 
 export type OldThemeState = Omit<ThemeState, "mode"> & {

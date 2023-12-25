@@ -86,10 +86,6 @@ const playersReducer = createReducer(initialState, (builder) =>
       ),
     )
     .addCase(resetPlayers, (state, action) => {
-      if (action.payload.length === 0) {
-        return state;
-      }
-
       const players = { ...state };
 
       for (const id of action.payload) {

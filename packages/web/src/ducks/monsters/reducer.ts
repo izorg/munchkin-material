@@ -1,4 +1,4 @@
-import { createReducer, isAnyOf, type PayloadAction } from "@reduxjs/toolkit";
+import { createReducer, isAnyOf } from "@reduxjs/toolkit";
 
 import { type Monster } from "../../utils/types";
 import { startCombat } from "../combat";
@@ -14,7 +14,12 @@ import {
 
 export const monsterReducer = (
   state: Monster,
-  action: PayloadAction<string>,
+  action: ReturnType<
+    | typeof decrementMonsterBonus
+    | typeof decrementMonsterLevel
+    | typeof incrementMonsterBonus
+    | typeof incrementMonsterLevel
+  >,
 ): Monster => {
   switch (action.type) {
     case decrementMonsterBonus.type: {
@@ -43,10 +48,6 @@ export const monsterReducer = (
         ...state,
         level: state.level + 1,
       };
-    }
-
-    default: {
-      return state;
     }
   }
 };
