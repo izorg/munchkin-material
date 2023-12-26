@@ -31,8 +31,6 @@ const WorkboxProvider: FC<PropsWithChildren> = ({ children }) => {
     if (process.env.NODE_ENV === "production" && "serviceWorker" in navigator) {
       return new Workbox("/service-worker.js");
     }
-
-    return undefined;
   }, []);
 
   useEffect(() => {

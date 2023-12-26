@@ -113,7 +113,6 @@
     "unicorn/filename-case": "off",
     "unicorn/no-instanceof-array": "off",
     "unicorn/no-null": "off",
-    "unicorn/no-useless-undefined": "off",
     "unicorn/prevent-abbreviations": "off"
   },
   "settings": {
