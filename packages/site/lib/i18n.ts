@@ -19,10 +19,10 @@ export const localeByLanguage: Record<Language, Locale> = {
   [LANGUAGE_RU]: LOCALE_RU,
 };
 
-let cache: IntlCache | null = null;
+let cache: IntlCache | undefined;
 
 const getCache = (): IntlCache => {
-  if (cache === null) {
+  if (!cache) {
     cache = createIntlCache();
   }
 

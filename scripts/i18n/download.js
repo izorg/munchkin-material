@@ -13,7 +13,7 @@ const writeTranslation = async (code, data) => {
 
   await fs.promises.writeFile(
     `./languages/${code}.json`,
-    JSON.stringify(data, null, "  "),
+    JSON.stringify(data, undefined, "  "),
   );
 
   console.log(`✅ ${code.toUpperCase()}`);
