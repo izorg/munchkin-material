@@ -7,9 +7,7 @@ import ListItemText from "../ItemText";
 import { SettingsListItemButton } from "../SettingsListItemButton";
 
 const RateItem = () => {
-  const { getAppStoreLink } = useAppStoreLink();
-
-  const appStoreLink = getAppStoreLink();
+  const appStoreLink = useAppStoreLink();
 
   if (!appStoreLink) {
     return null;

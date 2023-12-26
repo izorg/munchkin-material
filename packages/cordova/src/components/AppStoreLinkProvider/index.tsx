@@ -1,9 +1,11 @@
-import { type FC, type PropsWithChildren } from "react";
+import { type FC, type PropsWithChildren, useMemo } from "react";
 
 import { AppStoreLinkContext } from "../../../../web/src/utils/appStoreLinkContext";
 
 const getAppStoreLink = () => {
-  switch (window.cordova.platformId) {
+  const { platformId } = window.cordova;
+
+  switch (platformId) {
     case "android": {
       return "market://details?id=com.izorg.munchkin";
     }
@@ -13,17 +15,13 @@ const getAppStoreLink = () => {
     }
 
     default: {
-      return undefined;
+      throw new Error(`Unknown platform "${platformId}"`);
     }
   }
 };
 
-const value = {
-  getAppStoreLink,
-};
-
 const AppStoreLinkProvider: FC<PropsWithChildren> = ({ children }) => (
-  <AppStoreLinkContext.Provider value={value}>
+  <AppStoreLinkContext.Provider value={useMemo(getAppStoreLink, [])}>
     {children}
   </AppStoreLinkContext.Provider>
 );
