@@ -9,8 +9,6 @@
   "scripts": {
     "clean": "rimraf .eslintcache .parcel-cache .stylelintcache coverage messages node_modules/.cache parcel-bundle-reports screenshots tsconfig.tsbuildinfo",
     "eslint": "NODE_OPTIONS=\"--max-old-space-size=4096\" eslint --cache \"**/*.{js,json,ts,tsx}\"",
-    "i18n:compile": "formatjs compile-folder --ast --format=simple languages languages/generated",
-    "i18n:extract": "formatjs extract --out-file=messages.json \"packages/web/src/**/*.{js,ts,tsx}\" && formatjs compile --out-file=languages/en.json messages.json && rm messages.json && prettier --write languages/en.json",
     "lint": "yarn run tsc && yarn run eslint && yarn run stylelint",
     "postinstall": "husky install",
     "prettier": "prettier --cache --ignore-unknown --write .",
@@ -24,7 +22,6 @@
     "g:rimraf": "cd $INIT_CWD && rimraf"
   },
   "devDependencies": {
-    "@formatjs/cli": "6.2.4",
     "@jest/globals": "29.7.0",
     "@parcel/packager-raw-url": "2.10.3",
     "@parcel/reporter-bundle-analyzer": "2.10.3",

@@ -19,7 +19,6 @@ node_modules
 parcel-bundle-reports
 tsconfig.tsbuildinfo
 
-/languages/generated
 /screenshots
 
 /packages/cordova/build.json
@@ -33,4 +32,5 @@ tsconfig.tsbuildinfo
 /packages/site/out
 
 /packages/web/dist
+/packages/web/languages/generated
 /packages/web/src/localized-files

@@ -3189,6 +3189,7 @@ __metadata:
     "@emotion/cache": "npm:11.11.0"
     "@emotion/react": "npm:11.11.3"
     "@emotion/styled": "npm:11.11.0"
+    "@formatjs/cli": "npm:6.2.4"
     "@formatjs/intl-datetimeformat": "npm:6.12.0"
     "@formatjs/intl-getcanonicallocales": "npm:2.3.0"
     "@formatjs/intl-locale": "npm:3.4.3"
@@ -15135,7 +15136,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "root-workspace-0b6124@workspace:."
   dependencies:
-    "@formatjs/cli": "npm:6.2.4"
     "@jest/globals": "npm:29.7.0"
     "@parcel/packager-raw-url": "npm:2.10.3"
     "@parcel/reporter-bundle-analyzer": "npm:2.10.3"
