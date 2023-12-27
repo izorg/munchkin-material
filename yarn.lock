@@ -3154,6 +3154,7 @@ __metadata:
     "@emotion/cache": "npm:11.11.0"
     "@emotion/react": "npm:11.11.3"
     "@emotion/styled": "npm:11.11.0"
+    "@formatjs/cli": "npm:6.2.4"
     "@formatjs/icu-messageformat-parser": "npm:2.7.3"
     "@formatjs/intl": "npm:2.9.9"
     "@mdi/js": "npm:7.4.47"

@@ -6,7 +6,7 @@
     "analyze": "ANALYZE=true yarn run build",
     "build": "next build",
     "dev": "next dev",
-    "i18n:compile": "yarn g:formatjs compile-folder --ast --format=simple locales locales/generated",
+    "i18n:compile": "formatjs compile-folder --ast --format=simple locales locales/generated",
     "start": "npx firebase-tools emulators:start"
   },
   "dependencies": {
@@ -29,6 +29,7 @@
     "stylis-plugin-rtl": "2.1.1"
   },
   "devDependencies": {
+    "@formatjs/cli": "6.2.4",
     "@next/bundle-analyzer": "14.0.4",
     "@types/react": "18.2.45",
     "@types/react-dom": "18.2.18",

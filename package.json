@@ -17,7 +17,6 @@
     "stylelint": "stylelint --cache \"**/*.css\"",
     "test": "jest",
     "tsc": "tsc",
-    "g:formatjs": "cd $INIT_CWD && formatjs",
     "g:parcel": "cd $INIT_CWD && parcel",
     "g:rimraf": "cd $INIT_CWD && rimraf"
   },
