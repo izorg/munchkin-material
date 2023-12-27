@@ -15,7 +15,7 @@
     "@emotion/styled": "11.11.0",
     "@formatjs/icu-messageformat-parser": "2.7.3",
     "@formatjs/intl": "2.9.9",
-    "@mdi/js": "7.3.67",
+    "@mdi/js": "7.4.47",
     "@mui/material": "5.15.2",
     "@mui/material-nextjs": "5.15.0",
     "@next/third-parties": "14.0.4",
@@ -25,7 +25,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-intl": "6.5.5",
-    "stylis": "4.3.0",
+    "stylis": "4.3.1",
     "stylis-plugin-rtl": "2.1.1"
   },
   "devDependencies": {

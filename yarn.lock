@@ -2865,10 +2865,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mdi/js@npm:7.3.67":
-  version: 7.3.67
-  resolution: "@mdi/js@npm:7.3.67"
-  checksum: 0f54a632d4ab3213931cc348d524f0f5e6b492ea74f8f1babe00298a8e7ae07b2fec88cfaf0cf7be0f1e427026a8da23fb8bed55b22892ad3b40b482e01cfb17
+"@mdi/js@npm:7.4.47":
+  version: 7.4.47
+  resolution: "@mdi/js@npm:7.4.47"
+  checksum: c1a8fc82f23030bccc0cf324b13b73a0034d06140e79f8bc7b0e4e59275624c470e5ca6524d6141ad8c4fe3ad0f314c7af99afb3e38df163eb50d3b13b9eab17
   languageName: node
   linkType: hard
 
@@ -3156,7 +3156,7 @@ __metadata:
     "@emotion/styled": "npm:11.11.0"
     "@formatjs/icu-messageformat-parser": "npm:2.7.3"
     "@formatjs/intl": "npm:2.9.9"
-    "@mdi/js": "npm:7.3.67"
+    "@mdi/js": "npm:7.4.47"
     "@mui/material": "npm:5.15.2"
     "@mui/material-nextjs": "npm:5.15.0"
     "@next/bundle-analyzer": "npm:14.0.4"
@@ -3172,7 +3172,7 @@ __metadata:
     react: "npm:18.2.0"
     react-dom: "npm:18.2.0"
     react-intl: "npm:6.5.5"
-    stylis: "npm:4.3.0"
+    stylis: "npm:4.3.1"
     stylis-plugin-rtl: "npm:2.1.1"
     typescript: "npm:5.3.3"
   languageName: unknown
@@ -3195,7 +3195,7 @@ __metadata:
     "@formatjs/intl-locale": "npm:3.4.3"
     "@formatjs/intl-numberformat": "npm:8.9.0"
     "@formatjs/intl-pluralrules": "npm:5.2.10"
-    "@mdi/js": "npm:7.3.67"
+    "@mdi/js": "npm:7.4.47"
     "@mui/material": "npm:5.15.2"
     "@mui/types": "npm:7.2.11"
     "@mui/utils": "npm:5.15.2"
@@ -3221,7 +3221,7 @@ __metadata:
     redux: "npm:5.0.1"
     redux-undo: "npm:1.1.0"
     scrollyfills: "npm:1.0.0"
-    stylis: "npm:4.3.0"
+    stylis: "npm:4.3.1"
     stylis-plugin-rtl: "npm:2.1.1"
     swr: "npm:2.2.4"
     typescript: "npm:5.3.3"
@@ -6215,14 +6215,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axios@npm:1.6.2":
-  version: 1.6.2
-  resolution: "axios@npm:1.6.2"
+"axios@npm:1.6.3":
+  version: 1.6.3
+  resolution: "axios@npm:1.6.3"
   dependencies:
     follow-redirects: "npm:^1.15.0"
     form-data: "npm:^4.0.0"
     proxy-from-env: "npm:^1.1.0"
-  checksum: 612bc93f8f738a518e7c5f9de9cc782bcd36aac6bae279160ef6a10260378e21c1786520eab3336898e3d66e0839ebdf739f327fb6d0431baa4d3235703a7652
+  checksum: 78e72ec40ee49b85f076758e65d04dd966361cbf82f3789e53c5a1b6814ef57825098f8a997ec1846cf004fb7407655c7b96c496d8133d88ca0f73a98a9c452b
   languageName: node
   linkType: hard
 
@@ -15144,7 +15144,7 @@ __metadata:
     "@swc/jest": "npm:0.2.29"
     "@typescript-eslint/eslint-plugin": "npm:6.16.0"
     "@typescript-eslint/parser": "npm:6.16.0"
-    axios: "npm:1.6.2"
+    axios: "npm:1.6.3"
     eslint: "npm:8.56.0"
     eslint-config-prettier: "npm:9.1.0"
     eslint-import-resolver-typescript: "npm:3.6.1"
@@ -16146,10 +16146,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"stylis@npm:4.3.0":
-  version: 4.3.0
-  resolution: "stylis@npm:4.3.0"
-  checksum: 54eb1a13a9ec394a01a2e1a5ca8f856b96ecd8b85b8c04a24c0ff0aa8416798a6a1e9555f6a4345b6f088d03424f5a4376ea093d0ec73e419698415a3c8b59d0
+"stylis@npm:4.3.1":
+  version: 4.3.1
+  resolution: "stylis@npm:4.3.1"
+  checksum: 20b04044397c5c69e4b9f00b037159ba82b602c61d45f26d8def08577fd6ddc4b2853d86818548c1b404d29194a99b6495cca1733880afc845533ced843cb266
   languageName: node
   linkType: hard
 
