@@ -32,5 +32,5 @@ tsconfig.tsbuildinfo
 /packages/site/out
 
 /packages/web/dist
-/packages/web/languages/generated
+/packages/web/l10n/translations/generated
 /packages/web/src/localized-files

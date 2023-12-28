@@ -1,0 +1,176 @@
+{
+  "button.cancel": {
+    "message": "Cancel"
+  },
+  "button.submit": {
+    "message": "OK"
+  },
+  "colorPicker.dialog.title": {
+    "message": "Choose color"
+  },
+  "combat": {
+    "message": "Combat"
+  },
+  "combat.add.helper": {
+    "message": "Helper"
+  },
+  "combat.add.monster": {
+    "message": "Monster"
+  },
+  "combat.helperSelector.title": {
+    "message": "Choose helper"
+  },
+  "combat.monster": {
+    "message": "Monster {number}"
+  },
+  "counter.gear": {
+    "message": "Gear"
+  },
+  "counter.level": {
+    "message": "Level"
+  },
+  "counter.modifier": {
+    "message": "Modifier"
+  },
+  "counter.strength": {
+    "message": "Strength"
+  },
+  "dice": {
+    "message": "Dice"
+  },
+  "home.single.title": {
+    "message": "Munchkin"
+  },
+  "kill": {
+    "message": "Kill"
+  },
+  "levelLimit.epic": {
+    "message": "Epic Munchkin ({minLevel} - {maxLevel})"
+  },
+  "levelLimit.label": {
+    "message": "Level limit"
+  },
+  "levelLimit.munchkin": {
+    "message": "Munchkin ({minLevel} - {maxLevel})"
+  },
+  "levelLimit.none": {
+    "message": "No limit"
+  },
+  "mainButton.label": {
+    "message": "Add"
+  },
+  "menu.keepAwake": {
+    "message": "Keep awake"
+  },
+  "menu.privacyPolicy": {
+    "message": "Privacy Policy"
+  },
+  "menu.rateApp": {
+    "message": "Rate the app"
+  },
+  "menu.restorePurchases": {
+    "message": "Restore purchases"
+  },
+  "menu.share": {
+    "message": "Share"
+  },
+  "menu.singleMode": {
+    "message": "Single mode"
+  },
+  "menu.translate": {
+    "message": "Translate"
+  },
+  "player.form.color": {
+    "message": "Color"
+  },
+  "player.form.delete": {
+    "message": "Delete"
+  },
+  "player.form.namePlaceholder": {
+    "message": "Name"
+  },
+  "player.form.save": {
+    "message": "Save"
+  },
+  "player.form.sex": {
+    "message": "Sex"
+  },
+  "player.form.title": {
+    "message": "New munchkin"
+  },
+  "player.form.titleEdit": {
+    "message": "Edit munchkin"
+  },
+  "player.list.edit": {
+    "message": "Edit"
+  },
+  "player.list.empty": {
+    "message": "No players in the list"
+  },
+  "player.list.reset": {
+    "message": "Reset"
+  },
+  "player.list.shuffle": {
+    "message": "Shuffle players"
+  },
+  "player.list.title": {
+    "message": "Munchkins"
+  },
+  "settings": {
+    "message": "Settings"
+  },
+  "share.text": {
+    "message": "Simple but powerful Level Counter for Munchkin"
+  },
+  "theme": {
+    "message": "Theme"
+  },
+  "theme.color": {
+    "message": "Color"
+  },
+  "theme.name.apocalypse": {
+    "message": "Apocalypse"
+  },
+  "theme.name.booty": {
+    "message": "Booty"
+  },
+  "theme.name.cthulhu": {
+    "message": "Cthulhu"
+  },
+  "theme.name.legends": {
+    "message": "Legends"
+  },
+  "theme.name.munchkin": {
+    "message": "Munchkin"
+  },
+  "theme.name.star": {
+    "message": "Star"
+  },
+  "theme.name.super": {
+    "message": "Super"
+  },
+  "themeDialog.auto": {
+    "message": "System Default"
+  },
+  "themeDialog.dark": {
+    "message": "Dark"
+  },
+  "themeDialog.light": {
+    "message": "Light"
+  },
+  "themeDialog.pureBlack": {
+    "message": "Pure black"
+  },
+  "undo": {
+    "message": "Undo"
+  },
+  "undo.deletePlayers": {
+    "message": "{count, plural, one {Player has} other {Players have}} been removed"
+  },
+  "undo.killPlayer": {
+    "message": "{name} {sex, select, female {has died} male {has died} other {}}"
+  },
+  "undo.resetPlayers": {
+    "message": "Players have been reset"
+  }
+}
