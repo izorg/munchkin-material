@@ -1,3 +1,49 @@
 files:
+  - source: /packages/site/locales/en.json
+    translation: /%original_path%/%locale%.json
+    excluded_target_languages:
+      - cs
+      - da
+      - de
+      - el
+      - en
+      - es
+      - fi
+      - fr
+      - he
+      - hu
+      - hy
+      - it
+      - nb
+      - nl
+      - pl
+      - pt
+      - pt-BR
+      - sk
+      - tr
+      - uk
   - source: /packages/web/l10n/en.json
     translation: /%original_path%/%locale%.json
+  - source: /packages/web/src/templates/data/en.json
+    translation: /%original_path%/%locale%.json
+    excluded_target_languages:
+      - cs
+      - da
+      - de
+      - el
+      - en
+      - es
+      - fi
+      - fr
+      - he
+      - hu
+      - hy
+      - it
+      - nb
+      - nl
+      - pl
+      - pt
+      - pt-BR
+      - sk
+      - tr
+      - uk
