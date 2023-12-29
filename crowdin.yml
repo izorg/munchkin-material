@@ -2,6 +2,7 @@ files:
   - source: /packages/site/locales/en.json
     translation: /%original_path%/%locale%.json
     excluded_target_languages:
+      - cs
       - da
       - de
       - el
