@@ -1,0 +1,3 @@
+files:
+  - source: messages.json
+    translation: /packages/web/l10n/translations/%two_letters_code%.json
