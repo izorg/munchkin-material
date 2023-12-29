@@ -2,22 +2,21 @@ files:
   - source: /packages/site/locales/en.json
     translation: /%original_path%/%locale%.json
     excluded_target_languages:
-      - cs
       - da
       - de
       - el
-      - es
+      - es-ES
       - fi
       - fr
       - he
       - hu
-      - hy
+      - hy-AM
       - it
       - nb
       - nl
       - pl
-      - pt
       - pt-BR
+      - pt-PT
       - sk
       - tr
       - uk
@@ -30,18 +29,18 @@ files:
       - da
       - de
       - el
-      - es
+      - es-ES
       - fi
       - fr
       - he
       - hu
-      - hy
+      - hy-AM
       - it
       - nb
       - nl
       - pl
-      - pt
       - pt-BR
+      - pt-PT
       - sk
       - tr
       - uk
