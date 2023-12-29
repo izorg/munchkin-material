@@ -1,0 +1,435 @@
+{
+  "button.cancel": [
+    {
+      "type": 0,
+      "value": "Скасувати"
+    }
+  ],
+  "button.submit": [
+    {
+      "type": 0,
+      "value": "OK"
+    }
+  ],
+  "colorPicker.dialog.title": [
+    {
+      "type": 0,
+      "value": "Оберіть колір"
+    }
+  ],
+  "combat": [
+    {
+      "type": 0,
+      "value": "Бій"
+    }
+  ],
+  "combat.add.helper": [
+    {
+      "type": 0,
+      "value": "Помічник"
+    }
+  ],
+  "combat.add.monster": [
+    {
+      "type": 0,
+      "value": "Монстр"
+    }
+  ],
+  "combat.helperSelector.title": [
+    {
+      "type": 0,
+      "value": "Оберіть помічника"
+    }
+  ],
+  "combat.monster": [
+    {
+      "type": 0,
+      "value": "Монстр "
+    },
+    {
+      "type": 1,
+      "value": "number"
+    }
+  ],
+  "counter.gear": [
+    {
+      "type": 0,
+      "value": "Манатки"
+    }
+  ],
+  "counter.level": [
+    {
+      "type": 0,
+      "value": "Рівень"
+    }
+  ],
+  "counter.modifier": [
+    {
+      "type": 0,
+      "value": "Модифікатор"
+    }
+  ],
+  "counter.strength": [
+    {
+      "type": 0,
+      "value": "Сила"
+    }
+  ],
+  "dice": [
+    {
+      "type": 0,
+      "value": "Кубик"
+    }
+  ],
+  "home.single.title": [
+    {
+      "type": 0,
+      "value": "Манчкін"
+    }
+  ],
+  "kill": [
+    {
+      "type": 0,
+      "value": "Вбити"
+    }
+  ],
+  "levelLimit.epic": [
+    {
+      "type": 0,
+      "value": "Епічний Манчкін ("
+    },
+    {
+      "type": 1,
+      "value": "minLevel"
+    },
+    {
+      "type": 0,
+      "value": " - "
+    },
+    {
+      "type": 1,
+      "value": "maxLevel"
+    },
+    {
+      "type": 0,
+      "value": ")"
+    }
+  ],
+  "levelLimit.label": [
+    {
+      "type": 0,
+      "value": "Ліміт рівня"
+    }
+  ],
+  "levelLimit.munchkin": [
+    {
+      "type": 0,
+      "value": "Манчкін ("
+    },
+    {
+      "type": 1,
+      "value": "minLevel"
+    },
+    {
+      "type": 0,
+      "value": " - "
+    },
+    {
+      "type": 1,
+      "value": "maxLevel"
+    },
+    {
+      "type": 0,
+      "value": ")"
+    }
+  ],
+  "levelLimit.none": [
+    {
+      "type": 0,
+      "value": "Без обмежень"
+    }
+  ],
+  "mainButton.label": [
+    {
+      "type": 0,
+      "value": "Додати"
+    }
+  ],
+  "menu.keepAwake": [
+    {
+      "type": 0,
+      "value": "Не вимикати екран"
+    }
+  ],
+  "menu.privacyPolicy": [
+    {
+      "type": 0,
+      "value": "Політика конфіденційності"
+    }
+  ],
+  "menu.rateApp": [
+    {
+      "type": 0,
+      "value": "Оцініть додаток"
+    }
+  ],
+  "menu.restorePurchases": [
+    {
+      "type": 0,
+      "value": "Відновити покупки"
+    }
+  ],
+  "menu.share": [
+    {
+      "type": 0,
+      "value": "Поділитися"
+    }
+  ],
+  "menu.singleMode": [
+    {
+      "type": 0,
+      "value": "Одиночний режим"
+    }
+  ],
+  "menu.translate": [
+    {
+      "type": 0,
+      "value": "Перекласти"
+    }
+  ],
+  "player.form.color": [
+    {
+      "type": 0,
+      "value": "Колір"
+    }
+  ],
+  "player.form.delete": [
+    {
+      "type": 0,
+      "value": "Видалити"
+    }
+  ],
+  "player.form.namePlaceholder": [
+    {
+      "type": 0,
+      "value": "Ім'я"
+    }
+  ],
+  "player.form.save": [
+    {
+      "type": 0,
+      "value": "Зберегти"
+    }
+  ],
+  "player.form.sex": [
+    {
+      "type": 0,
+      "value": "Стать"
+    }
+  ],
+  "player.form.title": [
+    {
+      "type": 0,
+      "value": "Новий манчкін"
+    }
+  ],
+  "player.form.titleEdit": [
+    {
+      "type": 0,
+      "value": "Відредагувати манчкіна"
+    }
+  ],
+  "player.list.edit": [
+    {
+      "type": 0,
+      "value": "Відредагувати"
+    }
+  ],
+  "player.list.empty": [
+    {
+      "type": 0,
+      "value": "Немає тут нікого"
+    }
+  ],
+  "player.list.reset": [
+    {
+      "type": 0,
+      "value": "Скинути"
+    }
+  ],
+  "player.list.shuffle": [
+    {
+      "type": 0,
+      "value": "Перетасувати гравців"
+    }
+  ],
+  "player.list.title": [
+    {
+      "type": 0,
+      "value": "Манчкіни"
+    }
+  ],
+  "settings": [
+    {
+      "type": 0,
+      "value": "Налаштування"
+    }
+  ],
+  "share.text": [
+    {
+      "type": 0,
+      "value": "Простий, та потужний лічильник рівня Манчкіна"
+    }
+  ],
+  "theme": [
+    {
+      "type": 0,
+      "value": "Тема"
+    }
+  ],
+  "theme.color": [
+    {
+      "type": 0,
+      "value": "Колір"
+    }
+  ],
+  "theme.name.apocalypse": [
+    {
+      "type": 0,
+      "value": "Апокаліпсис"
+    }
+  ],
+  "theme.name.booty": [
+    {
+      "type": 0,
+      "value": "Піратський"
+    }
+  ],
+  "theme.name.cthulhu": [
+    {
+      "type": 0,
+      "value": "Ктулху"
+    }
+  ],
+  "theme.name.legends": [
+    {
+      "type": 0,
+      "value": "Легенди"
+    }
+  ],
+  "theme.name.munchkin": [
+    {
+      "type": 0,
+      "value": "Манчкін"
+    }
+  ],
+  "theme.name.star": [
+    {
+      "type": 0,
+      "value": "Зірка"
+    }
+  ],
+  "theme.name.super": [
+    {
+      "type": 0,
+      "value": "Супер"
+    }
+  ],
+  "themeDialog.auto": [
+    {
+      "type": 0,
+      "value": "За умовчанням системи"
+    }
+  ],
+  "themeDialog.dark": [
+    {
+      "type": 0,
+      "value": "Темний"
+    }
+  ],
+  "themeDialog.light": [
+    {
+      "type": 0,
+      "value": "Світлий"
+    }
+  ],
+  "themeDialog.pureBlack": [
+    {
+      "type": 0,
+      "value": "Чисто чорна"
+    }
+  ],
+  "undo": [
+    {
+      "type": 0,
+      "value": "Відмінити"
+    }
+  ],
+  "undo.deletePlayers": [
+    {
+      "offset": 0,
+      "options": {
+        "one": {
+          "value": [
+            {
+              "type": 0,
+              "value": "Гравець видалений"
+            }
+          ]
+        },
+        "other": {
+          "value": [
+            {
+              "type": 0,
+              "value": "Гравці видалені"
+            }
+          ]
+        }
+      },
+      "pluralType": "cardinal",
+      "type": 6,
+      "value": "count"
+    }
+  ],
+  "undo.killPlayer": [
+    {
+      "type": 1,
+      "value": "name"
+    },
+    {
+      "type": 0,
+      "value": " "
+    },
+    {
+      "options": {
+        "female": {
+          "value": [
+            {
+              "type": 0,
+              "value": "померла"
+            }
+          ]
+        },
+        "male": {
+          "value": [
+            {
+              "type": 0,
+              "value": "помер"
+            }
+          ]
+        },
+        "other": {
+          "value": []
+        }
+      },
+      "type": 5,
+      "value": "sex"
+    }
+  ],
+  "undo.resetPlayers": [
+    {
+      "type": 0,
+      "value": "Гравці були скинуті"
+    }
+  ]
+}

@@ -1,0 +1,435 @@
+{
+  "button.cancel": [
+    {
+      "type": 0,
+      "value": "Anuluj"
+    }
+  ],
+  "button.submit": [
+    {
+      "type": 0,
+      "value": "OK"
+    }
+  ],
+  "colorPicker.dialog.title": [
+    {
+      "type": 0,
+      "value": "Wybierz kolor"
+    }
+  ],
+  "combat": [
+    {
+      "type": 0,
+      "value": "Walka"
+    }
+  ],
+  "combat.add.helper": [
+    {
+      "type": 0,
+      "value": "Pomocnik"
+    }
+  ],
+  "combat.add.monster": [
+    {
+      "type": 0,
+      "value": "Potwór"
+    }
+  ],
+  "combat.helperSelector.title": [
+    {
+      "type": 0,
+      "value": "Wybierz pomocnika"
+    }
+  ],
+  "combat.monster": [
+    {
+      "type": 0,
+      "value": "Potwór "
+    },
+    {
+      "type": 1,
+      "value": "number"
+    }
+  ],
+  "counter.gear": [
+    {
+      "type": 0,
+      "value": "Przedmiotów"
+    }
+  ],
+  "counter.level": [
+    {
+      "type": 0,
+      "value": "Poziom"
+    }
+  ],
+  "counter.modifier": [
+    {
+      "type": 0,
+      "value": "Modyfikator"
+    }
+  ],
+  "counter.strength": [
+    {
+      "type": 0,
+      "value": "Siła"
+    }
+  ],
+  "dice": [
+    {
+      "type": 0,
+      "value": "Rzut kością"
+    }
+  ],
+  "home.single.title": [
+    {
+      "type": 0,
+      "value": "Munchkin"
+    }
+  ],
+  "kill": [
+    {
+      "type": 0,
+      "value": "Zabić"
+    }
+  ],
+  "levelLimit.epic": [
+    {
+      "type": 0,
+      "value": "Epicki Munchkin ("
+    },
+    {
+      "type": 1,
+      "value": "minLevel"
+    },
+    {
+      "type": 0,
+      "value": " - "
+    },
+    {
+      "type": 1,
+      "value": "maxLevel"
+    },
+    {
+      "type": 0,
+      "value": ")"
+    }
+  ],
+  "levelLimit.label": [
+    {
+      "type": 0,
+      "value": "Limit poziomu"
+    }
+  ],
+  "levelLimit.munchkin": [
+    {
+      "type": 0,
+      "value": "Munchkin ("
+    },
+    {
+      "type": 1,
+      "value": "minLevel"
+    },
+    {
+      "type": 0,
+      "value": " - "
+    },
+    {
+      "type": 1,
+      "value": "maxLevel"
+    },
+    {
+      "type": 0,
+      "value": ")"
+    }
+  ],
+  "levelLimit.none": [
+    {
+      "type": 0,
+      "value": "Bez limitu"
+    }
+  ],
+  "mainButton.label": [
+    {
+      "type": 0,
+      "value": "Dodaj"
+    }
+  ],
+  "menu.keepAwake": [
+    {
+      "type": 0,
+      "value": "Tryb czuwania"
+    }
+  ],
+  "menu.privacyPolicy": [
+    {
+      "type": 0,
+      "value": "Polityka prywatności"
+    }
+  ],
+  "menu.rateApp": [
+    {
+      "type": 0,
+      "value": "Oceń aplikację"
+    }
+  ],
+  "menu.restorePurchases": [
+    {
+      "type": 0,
+      "value": "Przywróć zakupy"
+    }
+  ],
+  "menu.share": [
+    {
+      "type": 0,
+      "value": "Udostępnij"
+    }
+  ],
+  "menu.singleMode": [
+    {
+      "type": 0,
+      "value": "Tryb solo"
+    }
+  ],
+  "menu.translate": [
+    {
+      "type": 0,
+      "value": "Tłumaczenie"
+    }
+  ],
+  "player.form.color": [
+    {
+      "type": 0,
+      "value": "Kolor"
+    }
+  ],
+  "player.form.delete": [
+    {
+      "type": 0,
+      "value": "Usunąć"
+    }
+  ],
+  "player.form.namePlaceholder": [
+    {
+      "type": 0,
+      "value": "Imię"
+    }
+  ],
+  "player.form.save": [
+    {
+      "type": 0,
+      "value": "Zapisać"
+    }
+  ],
+  "player.form.sex": [
+    {
+      "type": 0,
+      "value": "Płeć"
+    }
+  ],
+  "player.form.title": [
+    {
+      "type": 0,
+      "value": "Nowy munchkin"
+    }
+  ],
+  "player.form.titleEdit": [
+    {
+      "type": 0,
+      "value": "Edytuj munchkin"
+    }
+  ],
+  "player.list.edit": [
+    {
+      "type": 0,
+      "value": "Edytuj"
+    }
+  ],
+  "player.list.empty": [
+    {
+      "type": 0,
+      "value": "Brak graczy na liście"
+    }
+  ],
+  "player.list.reset": [
+    {
+      "type": 0,
+      "value": "Zresetuj"
+    }
+  ],
+  "player.list.shuffle": [
+    {
+      "type": 0,
+      "value": "Przetasuj graczy"
+    }
+  ],
+  "player.list.title": [
+    {
+      "type": 0,
+      "value": "Munchkins"
+    }
+  ],
+  "settings": [
+    {
+      "type": 0,
+      "value": "Ustawienia"
+    }
+  ],
+  "share.text": [
+    {
+      "type": 0,
+      "value": "Prosty, ale potężny licznik poziomów Munchkina"
+    }
+  ],
+  "theme": [
+    {
+      "type": 0,
+      "value": "Motyw"
+    }
+  ],
+  "theme.color": [
+    {
+      "type": 0,
+      "value": "Kolor"
+    }
+  ],
+  "theme.name.apocalypse": [
+    {
+      "type": 0,
+      "value": "Apokalipsa"
+    }
+  ],
+  "theme.name.booty": [
+    {
+      "type": 0,
+      "value": "Z Karaibów"
+    }
+  ],
+  "theme.name.cthulhu": [
+    {
+      "type": 0,
+      "value": "Cthulhu"
+    }
+  ],
+  "theme.name.legends": [
+    {
+      "type": 0,
+      "value": "Legendy"
+    }
+  ],
+  "theme.name.munchkin": [
+    {
+      "type": 0,
+      "value": "Munchkin"
+    }
+  ],
+  "theme.name.star": [
+    {
+      "type": 0,
+      "value": "Gwiezdny"
+    }
+  ],
+  "theme.name.super": [
+    {
+      "type": 0,
+      "value": "Super"
+    }
+  ],
+  "themeDialog.auto": [
+    {
+      "type": 0,
+      "value": "Domyślny systemowy"
+    }
+  ],
+  "themeDialog.dark": [
+    {
+      "type": 0,
+      "value": "Ciemny"
+    }
+  ],
+  "themeDialog.light": [
+    {
+      "type": 0,
+      "value": "Jasny"
+    }
+  ],
+  "themeDialog.pureBlack": [
+    {
+      "type": 0,
+      "value": "Czysta czerń"
+    }
+  ],
+  "undo": [
+    {
+      "type": 0,
+      "value": "Cofnij"
+    }
+  ],
+  "undo.deletePlayers": [
+    {
+      "offset": 0,
+      "options": {
+        "one": {
+          "value": [
+            {
+              "type": 0,
+              "value": "Gracz został usunięty"
+            }
+          ]
+        },
+        "other": {
+          "value": [
+            {
+              "type": 0,
+              "value": "Gracze zostali usunięci"
+            }
+          ]
+        }
+      },
+      "pluralType": "cardinal",
+      "type": 6,
+      "value": "count"
+    }
+  ],
+  "undo.killPlayer": [
+    {
+      "type": 1,
+      "value": "name"
+    },
+    {
+      "type": 0,
+      "value": " "
+    },
+    {
+      "options": {
+        "female": {
+          "value": [
+            {
+              "type": 0,
+              "value": "umarła"
+            }
+          ]
+        },
+        "male": {
+          "value": [
+            {
+              "type": 0,
+              "value": "umarł"
+            }
+          ]
+        },
+        "other": {
+          "value": []
+        }
+      },
+      "type": 5,
+      "value": "sex"
+    }
+  ],
+  "undo.resetPlayers": [
+    {
+      "type": 0,
+      "value": "Gracze zostali zresetowani"
+    }
+  ]
+}
