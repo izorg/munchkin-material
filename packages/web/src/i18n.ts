@@ -26,7 +26,7 @@ export const UK = "uk";
 export const getDirection = (locale: string): "ltr" | "rtl" =>
   [HE].includes(locale) ? "rtl" : "ltr";
 
-const supportedLocales = [
+const availableLocales = [
   BE,
   CS,
   DA,
@@ -51,12 +51,12 @@ const supportedLocales = [
   UK,
 ] as const;
 
-export type SupportedLocale = (typeof supportedLocales)[number];
+export type AvailableLocale = (typeof availableLocales)[number];
 
 export const isSupportedLocale = (
   locale: string,
-): locale is SupportedLocale => {
-  for (const supportedLocale of supportedLocales) {
+): locale is AvailableLocale => {
+  for (const supportedLocale of availableLocales) {
     if (locale === supportedLocale) {
       return true;
     }
@@ -71,13 +71,13 @@ export const getLocale = () => {
     : [navigator.language];
 
   for (const language of languages) {
-    const locale = supportedLocales.find((item) => item === language);
+    const locale = availableLocales.find((item) => item === language);
 
     if (locale) {
       return locale;
     }
 
-    const currentLocale = supportedLocales.find(
+    const currentLocale = availableLocales.find(
       (locale) => locale === language.slice(0, 2),
     );
 
@@ -115,7 +115,7 @@ const loaders = {
 };
 
 export const loadMessages = async (
-  locale: SupportedLocale,
+  locale: AvailableLocale,
 ): Promise<Record<string, MessageFormatElement[]> | Record<string, string>> => {
   const messages = await loaders[locale]();
 

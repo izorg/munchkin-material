@@ -5,6 +5,7 @@ import { shouldPolyfill as shouldPolyfillNumberFormat } from "@formatjs/intl-num
 import { shouldPolyfill as shouldPolyfillPluralRules } from "@formatjs/intl-pluralrules/should-polyfill";
 
 import {
+  type AvailableLocale,
   BE,
   CS,
   DA,
@@ -25,7 +26,6 @@ import {
   PT_BR,
   RU,
   SK,
-  type SupportedLocale,
   TR,
   UK,
 } from "../../i18n";
@@ -105,7 +105,7 @@ const numberFormatLoaders = {
   [UK]: () => import("@formatjs/intl-numberformat/locale-data/uk"),
 };
 
-const polyfillIntl = async (locale: SupportedLocale) => {
+const polyfillIntl = async (locale: AvailableLocale) => {
   if (shouldPolyfillLocale()) {
     await import("@formatjs/intl-locale/polyfill");
   }

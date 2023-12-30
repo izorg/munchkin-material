@@ -6,10 +6,10 @@ import useSWRImmutable from "swr/immutable";
 
 import usePresentSelector from "../../hooks/usePresentSelector";
 import {
+  type AvailableLocale,
   getDirection,
   getLocale,
   loadMessages,
-  type SupportedLocale,
 } from "../../i18n";
 
 import polyfillIntl from "./polyfillIntl";
@@ -17,9 +17,9 @@ import polyfillIntl from "./polyfillIntl";
 const defaultLocale = getLocale();
 
 const fetchLocale = async (
-  locale: SupportedLocale,
+  locale: AvailableLocale,
 ): Promise<{
-  locale: SupportedLocale;
+  locale: AvailableLocale;
   messages: Awaited<ReturnType<typeof loadMessages>>;
 }> => {
   const [messages] = await Promise.all([

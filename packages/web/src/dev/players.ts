@@ -1,4 +1,5 @@
 import {
+  type AvailableLocale,
   CS,
   DA,
   DE,
@@ -18,7 +19,6 @@ import {
   PT_BR,
   RU,
   SK,
-  type SupportedLocale,
   TR,
   UK,
 } from "../i18n";
@@ -58,7 +58,7 @@ const getLocalizedPlayers = (names: string[]) =>
     name: names[index],
   }));
 
-const nameEntries: [locale: SupportedLocale, names: string[]][] = [
+const nameEntries: [locale: AvailableLocale, names: string[]][] = [
   [CS, ["Jan", "Jakub", "Tereza", "Anna"]],
   [DA, ["William", "Noah", "Emma", "Freja"]],
   [DE, ["Max", "Paul", "Emma", "Hannah"]],
