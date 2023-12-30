@@ -30,7 +30,7 @@ import {
   UK,
 } from "../../i18n";
 
-const dateTimeFormatLoaders = {
+const dateTimeFormatLoaders: Record<AvailableLocale, () => unknown> = {
   [BE]: () => import("@formatjs/intl-datetimeformat/locale-data/be"),
   [CS]: () => import("@formatjs/intl-datetimeformat/locale-data/cs"),
   [DA]: () => import("@formatjs/intl-datetimeformat/locale-data/da"),
@@ -55,7 +55,7 @@ const dateTimeFormatLoaders = {
   [UK]: () => import("@formatjs/intl-datetimeformat/locale-data/uk"),
 };
 
-const pluralRulesLoaders = {
+const pluralRulesLoaders: Record<AvailableLocale, () => unknown> = {
   [BE]: () => import("@formatjs/intl-pluralrules/locale-data/be"),
   [CS]: () => import("@formatjs/intl-pluralrules/locale-data/cs"),
   [DA]: () => import("@formatjs/intl-pluralrules/locale-data/da"),
@@ -80,7 +80,7 @@ const pluralRulesLoaders = {
   [UK]: () => import("@formatjs/intl-pluralrules/locale-data/uk"),
 };
 
-const numberFormatLoaders = {
+const numberFormatLoaders: Record<AvailableLocale, () => unknown> = {
   [BE]: () => import("@formatjs/intl-numberformat/locale-data/be"),
   [CS]: () => import("@formatjs/intl-numberformat/locale-data/cs"),
   [DA]: () => import("@formatjs/intl-numberformat/locale-data/da"),
