@@ -5,6 +5,7 @@ import { shouldPolyfill as shouldPolyfillNumberFormat } from "@formatjs/intl-num
 import { shouldPolyfill as shouldPolyfillPluralRules } from "@formatjs/intl-pluralrules/should-polyfill";
 
 import {
+  BE,
   CS,
   DA,
   DE,
@@ -30,6 +31,7 @@ import {
 } from "../../i18n";
 
 const dateTimeFormatLoaders = {
+  [BE]: () => import("@formatjs/intl-datetimeformat/locale-data/be"),
   [CS]: () => import("@formatjs/intl-datetimeformat/locale-data/cs"),
   [DA]: () => import("@formatjs/intl-datetimeformat/locale-data/da"),
   [DE]: () => import("@formatjs/intl-datetimeformat/locale-data/de"),
@@ -54,6 +56,7 @@ const dateTimeFormatLoaders = {
 };
 
 const pluralRulesLoaders = {
+  [BE]: () => import("@formatjs/intl-pluralrules/locale-data/be"),
   [CS]: () => import("@formatjs/intl-pluralrules/locale-data/cs"),
   [DA]: () => import("@formatjs/intl-pluralrules/locale-data/da"),
   [DE]: () => import("@formatjs/intl-pluralrules/locale-data/de"),
@@ -78,6 +81,7 @@ const pluralRulesLoaders = {
 };
 
 const numberFormatLoaders = {
+  [BE]: () => import("@formatjs/intl-numberformat/locale-data/be"),
   [CS]: () => import("@formatjs/intl-numberformat/locale-data/cs"),
   [DA]: () => import("@formatjs/intl-numberformat/locale-data/da"),
   [DE]: () => import("@formatjs/intl-numberformat/locale-data/de"),

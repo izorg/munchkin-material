@@ -1,5 +1,6 @@
 import { type MessageFormatElement } from "react-intl";
 
+export const BE = "be";
 export const CS = "cs";
 export const DA = "da";
 export const DE = "de";
@@ -26,6 +27,7 @@ export const getDirection = (locale: string): "ltr" | "rtl" =>
   [HE].includes(locale) ? "rtl" : "ltr";
 
 const supportedLocales = [
+  BE,
   CS,
   DA,
   DE,
@@ -88,6 +90,7 @@ export const getLocale = () => {
 };
 
 const loaders = {
+  [BE]: () => import("../l10n/generated/be.json"),
   [CS]: () => import("../l10n/generated/cs.json"),
   [DA]: () => import("../l10n/generated/da.json"),
   [DE]: () => import("../l10n/generated/de.json"),
