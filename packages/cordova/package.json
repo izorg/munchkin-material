@@ -2,6 +2,12 @@
   "private": true,
   "name": "@munchkin/cordova",
   "type": "commonjs",
+  "sideEffects": [
+    "src/cordova.tsx",
+    "src/index.ts",
+    "src/polyfills.ts",
+    "src/sentry.ts"
+  ],
   "scripts": {
     "build:android": "cordova build android --release",
     "build:ios": "cordova build ios",

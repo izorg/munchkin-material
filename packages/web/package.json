@@ -2,6 +2,13 @@
   "private": true,
   "name": "@munchkin/web",
   "type": "module",
+  "sideEffects": [
+    "src/dev/index.ts",
+    "src/firebase.ts",
+    "src/index.tsx",
+    "src/polyfills.ts",
+    "src/sentry.ts"
+  ],
   "scripts": {
     "analyze": "yarn run build:parcel --reporter @parcel/reporter-bundle-analyzer",
     "build": "yarn run generate-assets && yarn run build:parcel && yarn run build:workbox",
