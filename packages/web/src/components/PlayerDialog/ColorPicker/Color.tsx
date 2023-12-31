@@ -5,7 +5,6 @@ import {
   type ButtonBaseProps,
   colors,
   SvgIcon,
-  useTheme,
 } from "@mui/material";
 import PropTypes from "prop-types";
 import { forwardRef } from "react";
@@ -20,13 +19,7 @@ type ColorProps = Omit<ButtonBaseProps, "selected" | "value"> & {
 
 const Color = forwardRef<HTMLButtonElement, ColorProps>(
   function Color(props, ref) {
-    const theme = useTheme();
-
     const { selected = false, sx = [], value, ...rest } = props;
-
-    const backgroundColor = value
-      ? colors[value][theme.palette.mode === "dark" ? 200 : 500]
-      : value;
 
     return (
       <ButtonBase
@@ -47,12 +40,13 @@ const Color = forwardRef<HTMLButtonElement, ColorProps>(
       >
         <Avatar
           component="span"
-          style={{ backgroundColor }}
-          sx={{
+          sx={(theme) => ({
+            backgroundColor:
+              value && colors[value][theme.palette.mode === "dark" ? 200 : 500],
             height: "36px",
             margin: "0 auto",
             width: "36px",
-          }}
+          })}
         >
           {selected && (
             <SvgIcon>

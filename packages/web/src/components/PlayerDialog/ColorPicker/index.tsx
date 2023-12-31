@@ -43,7 +43,7 @@ const ColorPicker: FC<ColorPickerProps> = (props) => {
   const anchorEl = useRef<HTMLButtonElement>(null);
   const ignoreNextBlur = useRef(false);
 
-  const [value, setValue] = useState(defaultValue || valueProp);
+  const [value, setValue] = useState(defaultValue ?? valueProp);
 
   useEffect(() => {
     if (valueProp) {
