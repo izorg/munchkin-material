@@ -13,7 +13,7 @@ const TransitionComponent = forwardRef<
     useMediaQuery<Theme>((theme) => theme.breakpoints.down("lg")) && ios;
 
   if (slide) {
-    return <Slide ref={ref} direction="left" {...props} />;
+    return <Slide direction="left" ref={ref} {...props} />;
   }
 
   return <Fade ref={ref} {...props} />;

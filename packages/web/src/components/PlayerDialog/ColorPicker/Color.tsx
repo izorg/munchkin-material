@@ -30,9 +30,9 @@ const Color = forwardRef<HTMLButtonElement, ColorProps>(
 
     return (
       <ButtonBase
-        ref={ref}
         centerRipple
         focusRipple
+        ref={ref}
         sx={[
           {
             borderRadius: "50%",

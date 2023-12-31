@@ -75,7 +75,7 @@ const DiceDialog = (props: Partial<DialogProps>) => {
         }}
       >
         <SwitchTransition>
-          <Zoom key={attempt} appear={false}>
+          <Zoom appear={false} key={attempt}>
             <Box
               component="span"
               sx={{

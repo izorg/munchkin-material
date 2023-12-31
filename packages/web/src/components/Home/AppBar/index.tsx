@@ -58,21 +58,21 @@ const HomeAppBar: FC<HomeAppBarProps> = (props) => {
     !empty && <ResetButton key="reset" />,
     !empty && <EditButton key="edit" />,
     <DiceButton key="dice" />,
-    <SettingsIconButton key="settings" edge="end" />,
+    <SettingsIconButton edge="end" key="settings" />,
   ].filter((item): item is ReactElement => item !== false);
 
   if (editMode) {
     buttons = [
       <ShuffleButton key="shuffle" />,
-      <EditButton key="save" edge="end" />,
+      <EditButton edge="end" key="save" />,
     ];
   }
 
   if (multiMode) {
     buttons = [
       <TopIconButton
-        key="delete"
         edge="end"
+        key="delete"
         onClick={() => {
           deletePlayers(selectedPlayerIds);
           goBack();
@@ -97,7 +97,7 @@ const HomeAppBar: FC<HomeAppBarProps> = (props) => {
         </SvgIcon>
       </TopIconButton>,
       <DiceButton key="dice" />,
-      <SettingsIconButton key="settings" edge="end" />,
+      <SettingsIconButton edge="end" key="settings" />,
     ];
   }
 

@@ -7,8 +7,8 @@ const ScreenFab = forwardRef<HTMLButtonElement, FabProps>(
 
     return (
       <Fab
-        ref={ref}
         color="primary"
+        ref={ref}
         sx={[
           (theme) => ({
             bottom: {

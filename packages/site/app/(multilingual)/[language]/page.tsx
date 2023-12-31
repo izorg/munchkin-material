@@ -83,8 +83,8 @@ const Page = async (props: PageProps) => {
           <Button
             color="inherit"
             component={NextLink}
-            href="/en"
             disabled={language === "en"}
+            href="/en"
             size="small"
           >
             EN

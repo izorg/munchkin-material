@@ -21,12 +21,12 @@ const PlayerAddButton = forwardRef<HTMLButtonElement, FabProps>(
 
     return (
       <ScreenFab
-        ref={ref}
         aria-label={intl.formatMessage({
           defaultMessage: "Add",
           id: "mainButton.label",
         })}
         onClick={onClick}
+        ref={ref}
         {...props}
       >
         <SvgIcon>

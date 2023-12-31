@@ -155,16 +155,16 @@ const HomePlayerListItem = (props: HomePlayerListItemProps) => {
     <ListItem
       {...rest}
       {...attributes}
-      ref={setNodeRef}
       data-screenshots="player-list-item"
       disablePadding
+      ref={setNodeRef}
       secondaryAction={
         editMode && (
           <DragIconButton
-            ref={setActivatorNodeRef}
             component="span"
             disableRipple
             edge="end"
+            ref={setActivatorNodeRef}
             sx={{
               touchAction: "none",
             }}
@@ -216,9 +216,9 @@ const HomePlayerListItem = (props: HomePlayerListItemProps) => {
       >
         <ListItemAvatar>
           <PlayerAvatar
-            ref={avatarRef}
             color={player.color}
             name={player.name}
+            ref={avatarRef}
             selected={multiMode && selected}
           />
         </ListItemAvatar>

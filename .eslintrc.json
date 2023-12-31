@@ -87,22 +87,7 @@
       }
     ],
     "perfectionist/sort-imports": "off",
-    "perfectionist/sort-jsx-props": "off",
-    "react/jsx-sort-props": [
-      "error",
-      {
-        "ignoreCase": true,
-        "reservedFirst": true
-      }
-    ],
     "react/react-in-jsx-scope": "off",
-    "react/sort-prop-types": [
-      "error",
-      {
-        "ignoreCase": true,
-        "sortShapeProp": true
-      }
-    ],
     "sort-imports": [
       "error",
       {

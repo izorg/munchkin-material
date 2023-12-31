@@ -116,8 +116,8 @@ const ThemeDialog = () => {
                 })
                 .map((option) => (
                   <FormControlLabel
-                    key={option.key}
                     control={<Radio color="primary" />}
+                    key={option.key}
                     label={option.name(intl)}
                     value={option.key}
                   />

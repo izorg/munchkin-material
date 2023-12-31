@@ -71,7 +71,6 @@ const ColorPicker: FC<ColorPickerProps> = (props) => {
     <>
       <input name={name} type="hidden" value={value} />
       <Color
-        ref={anchorEl}
         onBlur={(event) => {
           if (ignoreNextBlur.current) {
             // The parent components are relying on the bubbling of the event.
@@ -109,6 +108,7 @@ const ColorPicker: FC<ColorPickerProps> = (props) => {
             ignoreNextBlur.current = true;
           }
         }}
+        ref={anchorEl}
         sx={{
           marginLeft: "-6px",
         }}

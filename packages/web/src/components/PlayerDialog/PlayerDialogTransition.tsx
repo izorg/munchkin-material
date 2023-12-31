@@ -21,14 +21,14 @@ export const PlayerDialogTransition = forwardRef<
 
   if (fullScreen && ios) {
     return (
-      <Slide ref={ref} appear={appear} direction="up" {...props}>
+      <Slide appear={appear} direction="up" ref={ref} {...props}>
         {children}
       </Slide>
     );
   }
 
   return (
-    <Fade ref={ref} appear={appear} {...props}>
+    <Fade appear={appear} ref={ref} {...props}>
       {children}
     </Fade>
   );
