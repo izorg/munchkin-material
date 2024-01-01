@@ -1,4 +1,4 @@
-import { mdiSwapVertical } from "@mdi/js";
+import { mdiArrowExpandVertical } from "@mdi/js";
 import { ListItem, ListItemIcon, SvgIcon } from "@mui/material";
 import { useIntl } from "react-intl";
 import { useSearchParams } from "react-router-dom";
@@ -53,7 +53,7 @@ const LevelLimitItem = () => {
       >
         <ListItemIcon>
           <SvgIcon>
-            <path d={mdiSwapVertical} />
+            <path d={mdiArrowExpandVertical} />
           </SvgIcon>
         </ListItemIcon>
         <ListItemText
