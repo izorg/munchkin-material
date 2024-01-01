@@ -11,9 +11,9 @@ import {
   Radio,
   RadioGroup,
 } from "@mui/material";
-import { type ChangeEvent, type SyntheticEvent, useMemo } from "react";
+import { type ChangeEvent, type SyntheticEvent } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 
 import { setTheme } from "../../ducks/theme";
 import usePreviewTheme from "../../hooks/usePreviewTheme";
@@ -31,37 +31,29 @@ type FormValues = {
 const ThemeSchemeDialog = () => {
   const dispatch = useAppDispatch();
   const intl = useIntl();
-  const location = useLocation();
-  const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const goBack = useGoBack();
 
-  const open = useMemo(
-    () => new URLSearchParams(location.search).get("scheme") !== null,
-    [location.search],
-  );
+  const open = searchParams.get("scheme") !== null;
 
   const previewTheme = usePreviewTheme();
 
   const onChange = (partialTheme: Partial<FormValues>) => {
-    const searchParams = new URLSearchParams(location.search);
+    setSearchParams(
+      (searchParams) => {
+        for (const [key, value] of Object.entries(partialTheme)) {
+          searchParams.set(key, value);
+        }
 
-    for (const [key, value] of Object.entries(partialTheme)) {
-      searchParams.set(key, value);
-    }
-
-    navigate(
-      {
-        search: `?${searchParams.toString()}`,
+        return searchParams;
       },
-      {
-        replace: true,
-      },
+      { replace: true },
     );
   };
 
   const onThemeModeChange = (
-    event: ChangeEvent<HTMLInputElement>,
+    _event: ChangeEvent<HTMLInputElement>,
     mode: string,
   ) => {
     onChange({

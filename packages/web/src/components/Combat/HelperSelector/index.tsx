@@ -8,7 +8,7 @@ import {
 } from "@mui/material";
 import { useMemo } from "react";
 import { FormattedMessage } from "react-intl";
-import { useLocation } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 
 import { setCombatHelper } from "../../../ducks/combat";
 import usePresentSelector from "../../../hooks/usePresentSelector";
@@ -19,8 +19,9 @@ import PlayerAvatar from "../../PlayerAvatar";
 import PlayerListItemText from "../../PlayerListItemText";
 
 const HelperSelector = () => {
+  const [searchParams] = useSearchParams();
+
   const dispatch = useAppDispatch();
-  const location = useLocation();
 
   const goBack = useGoBack();
 
@@ -33,7 +34,7 @@ const HelperSelector = () => {
     [playerId, playerList, players],
   );
 
-  const open = new URLSearchParams(location.search).get("add") === "helper";
+  const open = searchParams.get("add") === "helper";
 
   const onSelect = (id: string) => {
     dispatch(setCombatHelper(id));

@@ -1,7 +1,7 @@
 import { mdiSwapVertical } from "@mdi/js";
 import { ListItem, ListItemIcon, SvgIcon } from "@mui/material";
 import { useIntl } from "react-intl";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 
 import usePresentSelector from "../../../hooks/usePresentSelector";
 import levelLimitMessages from "../../../messages/levelLimit";
@@ -15,23 +15,17 @@ import { SettingsListItemButton } from "../SettingsListItemButton";
 
 const LevelLimitItem = () => {
   const intl = useIntl();
-  const location = useLocation();
-  const navigate = useNavigate();
+  const [, setSearchParams] = useSearchParams();
 
   const epic = usePresentSelector((state) => state.settings.epic);
   const levelLimit = usePresentSelector((state) => state.settings.levelLimit);
 
   const onClick = () => {
-    const searchParams = new URLSearchParams(location.search);
+    setSearchParams((searchParams) => {
+      searchParams.set("levelLimit", "");
 
-    searchParams.set("levelLimit", "");
-    searchParams.delete("menu");
-
-    const to = {
-      search: `?${searchParams.toString()}`,
-    };
-
-    navigate(to);
+      return searchParams;
+    });
   };
 
   let secondary = intl.formatMessage(levelLimitMessages.none);
