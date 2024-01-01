@@ -3122,6 +3122,7 @@ __metadata:
     "@types/react": "npm:18.2.46"
     "@types/react-dom": "npm:18.2.18"
     "@types/smoothscroll-polyfill": "npm:0.3.3"
+    abortcontroller-polyfill: "npm:1.7.5"
     cordova: "npm:12.0.0"
     cordova-android: "npm:12.0.1"
     cordova-ios: "npm:7.0.1"
@@ -5797,7 +5798,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"abortcontroller-polyfill@npm:^1.1.9":
+"abortcontroller-polyfill@npm:1.7.5, abortcontroller-polyfill@npm:^1.1.9":
   version: 1.7.5
   resolution: "abortcontroller-polyfill@npm:1.7.5"
   checksum: aac398f7fc076235fe731adaffd2c319fe6c1527af8ca561890242d5396351350e0705726478778dc90326a69a4c044890c156fe867cba7f3ffeb670f8665a51
