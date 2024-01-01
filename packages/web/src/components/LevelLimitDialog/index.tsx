@@ -3,136 +3,36 @@ import {
   DialogActions,
   DialogContent,
   DialogTitle,
-  FormControlLabel,
-  Radio,
-  RadioGroup,
 } from "@mui/material";
-import { type ChangeEvent, type FormEvent, useState } from "react";
 import { useIntl } from "react-intl";
-import { useLocation } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 
-import { setEpic, setLevelLimit } from "../../ducks/settings";
-import usePresentSelector from "../../hooks/usePresentSelector";
 import levelLimitMessages from "../../messages/levelLimit";
-import { useAppDispatch } from "../../store";
-import { MAX_EPIC_LEVEL, MAX_LEVEL, MIN_LEVEL } from "../../utils/levelLimit";
 import { useGoBack } from "../../utils/location";
 import CancelButton from "../CancelButton";
 import SubmitButton from "../SubmitButton";
 
-export const DEFAULT_MUNCHKIN_LIMIT = "default";
-export const EPIC_MUNCHKIN_LIMIT = "epic";
-export const NO_LIMIT = "no-limit";
+import { LevelLimitForm } from "./LevelLimitForm";
+
+const formId = "level-limit-form";
 
 const LevelLimitDialog = () => {
-  const dispatch = useAppDispatch();
   const intl = useIntl();
-  const location = useLocation();
+  const [searchParams] = useSearchParams();
 
-  const levelLimit = usePresentSelector((state) => state.settings.levelLimit);
-  const epic = usePresentSelector((state) => state.settings.epic);
-  const defaultValue = levelLimit
-    ? epic
-      ? EPIC_MUNCHKIN_LIMIT
-      : DEFAULT_MUNCHKIN_LIMIT
-    : NO_LIMIT;
-  const [value, setValue] = useState(defaultValue);
-
-  const open = new URLSearchParams(location.search).get("levelLimit") !== null;
+  const open = searchParams.get("levelLimit") !== null;
 
   const goBack = useGoBack();
-  const onClose = () => goBack();
-
-  const onChange = (
-    event: ChangeEvent<HTMLInputElement>,
-    levelLimit: string,
-  ) => {
-    setValue(levelLimit);
-  };
-
-  const onSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-
-    switch (value) {
-      case NO_LIMIT: {
-        dispatch(setLevelLimit(false));
-        break;
-      }
-
-      case DEFAULT_MUNCHKIN_LIMIT: {
-        dispatch(setEpic(false));
-        dispatch(setLevelLimit(true));
-        break;
-      }
-
-      case EPIC_MUNCHKIN_LIMIT: {
-        dispatch(setEpic(true));
-        dispatch(setLevelLimit(true));
-        break;
-      }
-
-      default: {
-        break;
-      }
-    }
-
-    goBack();
-  };
 
   return (
-    <Dialog
-      onClose={onClose}
-      open={open}
-      PaperProps={{
-        component: "form",
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        onSubmit,
-      }}
-    >
+    <Dialog onClose={goBack} open={open}>
       <DialogTitle>{intl.formatMessage(levelLimitMessages.label)}</DialogTitle>
-      <DialogContent
-        sx={{
-          paddingBottom: "1px",
-        }}
-      >
-        <RadioGroup name="levelLimit" onChange={onChange} value={value}>
-          <FormControlLabel
-            control={<Radio autoFocus={value === NO_LIMIT} color="primary" />}
-            label={intl.formatMessage(levelLimitMessages.none)}
-            value={NO_LIMIT}
-          />
-          <FormControlLabel
-            control={
-              <Radio
-                autoFocus={value === DEFAULT_MUNCHKIN_LIMIT}
-                color="primary"
-              />
-            }
-            label={intl.formatMessage(levelLimitMessages.munchkin, {
-              maxLevel: MAX_LEVEL,
-              minLevel: MIN_LEVEL,
-            })}
-            value={DEFAULT_MUNCHKIN_LIMIT}
-          />
-          <FormControlLabel
-            control={
-              <Radio
-                autoFocus={value === EPIC_MUNCHKIN_LIMIT}
-                color="primary"
-              />
-            }
-            label={intl.formatMessage(levelLimitMessages.epic, {
-              maxLevel: MAX_EPIC_LEVEL,
-              minLevel: MIN_LEVEL,
-            })}
-            value={EPIC_MUNCHKIN_LIMIT}
-          />
-        </RadioGroup>
+      <DialogContent>
+        <LevelLimitForm id={formId} onSubmit={goBack} />
       </DialogContent>
       <DialogActions>
-        <CancelButton onClick={onClose} />
-        <SubmitButton />
+        <CancelButton onClick={goBack} />
+        <SubmitButton form={formId} />
       </DialogActions>
     </Dialog>
   );
