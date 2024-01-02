@@ -1,6 +1,5 @@
 import "./sentry";
 
-import { Suspense } from "react";
 import { createRoot } from "react-dom/client";
 import { createMemoryRouter, RouterProvider } from "react-router-dom";
 
@@ -33,30 +32,28 @@ const router = createMemoryRouter([
   {
     element: (
       <ReduxProvider>
-        <Suspense fallback={null}>
-          <CordovaProvider>
-            <VersionProvider>
-              <FullVersionProvider>
-                <WakeLockProvider>
-                  <AppStoreLinkProvider>
-                    <LocaleProvider>
-                      <AugmentedStylesProvider>
-                        <AugmentedThemeProvider>
-                          <SplashScreenProvider />
-                          <StatusBarProvider />
-                          <HeaderColorProvider />
-                          <KeyboardProvider />
-                          <ScreenViewProvider />
-                          <App />
-                        </AugmentedThemeProvider>
-                      </AugmentedStylesProvider>
-                    </LocaleProvider>
-                  </AppStoreLinkProvider>
-                </WakeLockProvider>
-              </FullVersionProvider>
-            </VersionProvider>
-          </CordovaProvider>
-        </Suspense>
+        <CordovaProvider>
+          <VersionProvider>
+            <FullVersionProvider>
+              <WakeLockProvider>
+                <AppStoreLinkProvider>
+                  <LocaleProvider>
+                    <AugmentedStylesProvider>
+                      <AugmentedThemeProvider>
+                        <SplashScreenProvider />
+                        <StatusBarProvider />
+                        <HeaderColorProvider />
+                        <KeyboardProvider />
+                        <ScreenViewProvider />
+                        <App />
+                      </AugmentedThemeProvider>
+                    </AugmentedStylesProvider>
+                  </LocaleProvider>
+                </AppStoreLinkProvider>
+              </WakeLockProvider>
+            </FullVersionProvider>
+          </VersionProvider>
+        </CordovaProvider>
       </ReduxProvider>
     ),
     path: "*",
