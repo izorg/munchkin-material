@@ -35,23 +35,13 @@ const root = createRoot(node);
 const router = createHashRouter([
   {
     element: (
-      <ReduxProvider>
-        <VersionProvider>
-          <WorkboxProvider>
-            <WakeLockProvider>
-              <LocaleProvider>
-                <AugmentedStylesProvider>
-                  <AugmentedThemeProvider>
-                    <ScreenViewProvider />
-                    <ThemeColorProvider />
-                    <App />
-                  </AugmentedThemeProvider>
-                </AugmentedStylesProvider>
-              </LocaleProvider>
-            </WakeLockProvider>
-          </WorkboxProvider>
-        </VersionProvider>
-      </ReduxProvider>
+      <AugmentedStylesProvider>
+        <AugmentedThemeProvider>
+          <ScreenViewProvider />
+          <ThemeColorProvider />
+          <App />
+        </AugmentedThemeProvider>
+      </AugmentedStylesProvider>
     ),
     path: "*",
   },
@@ -59,6 +49,16 @@ const router = createHashRouter([
 
 root.render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <ReduxProvider>
+      <VersionProvider>
+        <WorkboxProvider>
+          <WakeLockProvider>
+            <LocaleProvider>
+              <RouterProvider router={router} />
+            </LocaleProvider>
+          </WakeLockProvider>
+        </WorkboxProvider>
+      </VersionProvider>
+    </ReduxProvider>
   </StrictMode>,
 );
