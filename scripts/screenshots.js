@@ -1,3 +1,5 @@
+// @ts-check
+
 import fs from "node:fs";
 import path from "node:path";
 
@@ -67,22 +69,12 @@ const dir = "screenshots";
 const delay = (timeout) =>
   new Promise((resolve) => setTimeout(resolve, timeout));
 
-const range = (start, end) =>
-  Array.from(
-    Array.from({ length: Math.abs(end - start) + 1 }),
-    (_, i) => start + i,
-  );
-
 const getScreenshots = async (browserType, device, locale, deviceName) => {
   const screenshotDir = path.join(dir, locale, deviceName);
 
-  try {
-    await fs.promises.mkdir(screenshotDir, {
-      recursive: true,
-    });
-  } catch {
-    // dir exists
-  }
+  await fs.promises.mkdir(screenshotDir, {
+    recursive: true,
+  });
 
   const browser = await browserType.launch({ headless: false });
   const context = await browser.newContext(device);
@@ -143,32 +135,29 @@ const getScreenshots = async (browserType, device, locale, deviceName) => {
 
   await page.click('[data-screenshots="settings"]');
   await delay(duration.enteringScreen);
-  await page.click(`[data-screenshots="single-mode-item"]`);
+  await page.click('[data-screenshots="single-mode-item"]');
   await page.click('[data-screenshots="back"]');
 
   await delay(duration.leavingScreen);
-  await Promise.all(
-    range(0, 3).map(async () =>
-      page.click(
-        '[data-screenshots="level-counter"] [data-screenshots="increment-button"]',
-      ),
-    ),
+  await page.click(
+    '[data-screenshots="level-counter"] [data-screenshots="increment-button"]',
+    {
+      clickCount: 4,
+    },
   );
-  await Promise.all(
-    range(0, 8).map(async () =>
-      page.click(
-        '[data-screenshots="gear-counter"] [data-screenshots="increment-button"]',
-      ),
-    ),
+  await page.click(
+    '[data-screenshots="gear-counter"] [data-screenshots="increment-button"]',
+    {
+      clickCount: 9,
+    },
   );
-  await Promise.all(
-    range(0, 3).map(async () =>
-      page.click(
-        '[data-screenshots="modifier-counter"] [data-screenshots="decrement-button"]',
-      ),
-    ),
+  await page.click(
+    '[data-screenshots="modifier-counter"] [data-screenshots="decrement-button"]',
+    {
+      clickCount: 4,
+    },
   );
-  await delay(duration.enteringScreen);
+  await delay(630); // https://github.com/mui/material-ui/blob/023c5c7ef29c49b2b3a54ba911cd902d0851f8dd/packages/mui-material-next/src/ButtonBase/TouchRipple.tsx#L13-L14
   await page.screenshot({
     path: path.join(screenshotDir, `${count}-single.png`),
   });
@@ -201,22 +190,14 @@ const locales = [
   UK,
 ];
 
-const screenshots = async () => {
-  try {
-    await fs.promises.rm(path.join(dir), { recursive: true });
-  } catch {
-    // folder could not exist
-  }
+await fs.promises.rm(path.join(dir), { recursive: true });
 
-  for (const [browserName, browserType] of browsers) {
-    for (const locale of locales) {
-      for (const [deviceName, device] of browserDevices[browserName]) {
-        console.log(`🌍 ${locale}`);
-        console.log(`📱 ${deviceName}`);
-        await getScreenshots(browserType, device, locale, deviceName);
-      }
+for (const [browserName, browserType] of browsers) {
+  for (const locale of locales) {
+    for (const [deviceName, device] of browserDevices[browserName]) {
+      console.log(`🌍 ${locale}`);
+      console.log(`📱 ${deviceName}`);
+      await getScreenshots(browserType, device, locale, deviceName);
     }
   }
-};
-
-screenshots();
+}
