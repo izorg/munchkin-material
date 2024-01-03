@@ -12,7 +12,6 @@ const setLocale = (locale: string) => {
   if (isSupportedLocale(locale)) {
     store.dispatch(setAppLocale(locale));
   } else {
-    // @ts-expect-error auto locale select
     store.dispatch(setAppLocale());
   }
 };
@@ -23,7 +22,7 @@ const setTestData = () => {
   store.dispatch(removePlayers(playerList));
   store.dispatch(ActionCreators.clearHistory());
 
-  const locale = settings.locale || getLocale();
+  const locale = settings.locale ?? getLocale();
 
   const localePlayers = Object.entries(players).find(
     ([key]) => key === locale,

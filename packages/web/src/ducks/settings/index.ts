@@ -46,7 +46,7 @@ const settingsSlice = createSlice({
       levelLimit: action.payload,
     }),
 
-    setLocale: (state, action: PayloadAction<AvailableLocale>) => ({
+    setLocale: (state, action: PayloadAction<AvailableLocale | undefined>) => ({
       ...state,
       locale: action.payload,
     }),
