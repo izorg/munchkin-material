@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "@mui/material": "5.15.3",
-    "@sentry/react": "7.91.0",
+    "@sentry/react": "7.92.0",
     "abortcontroller-polyfill": "1.7.5",
     "core-js": "3.35.0",
     "prop-types": "15.8.1",
