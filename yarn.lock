@@ -15029,6 +15029,8 @@ __metadata:
   resolution: "root-workspace-0b6124@workspace:."
   dependencies:
     "@jest/globals": "npm:29.7.0"
+    "@parcel/config-default": "npm:2.10.3"
+    "@parcel/core": "npm:2.10.3"
     "@parcel/packager-raw-url": "npm:2.10.3"
     "@parcel/reporter-bundle-analyzer": "npm:2.10.3"
     "@parcel/transformer-webmanifest": "npm:2.10.3"

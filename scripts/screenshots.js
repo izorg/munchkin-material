@@ -2,9 +2,27 @@
 
 import fs from "node:fs";
 import path from "node:path";
+import process from "node:process";
 
 import { duration } from "@mui/material";
+import { Parcel } from "@parcel/core";
 import { chromium, devices } from "playwright";
+
+process.chdir("packages/web");
+
+const bundler = new Parcel({
+  defaultConfig: "@parcel/config-default",
+  entries: "src/index.html",
+  env: {
+    NODE_ENV: "development",
+  },
+  mode: "development",
+  serveOptions: {
+    port: 3000,
+  },
+});
+
+await bundler.watch();
 
 const CS = "cs";
 const DA = "da";
@@ -64,7 +82,7 @@ const browserDevices = {
   }),
 };
 
-const dir = "screenshots";
+const dir = "../../screenshots";
 
 const delay = (timeout) =>
   new Promise((resolve) => setTimeout(resolve, timeout));
@@ -190,7 +208,9 @@ const locales = [
   UK,
 ];
 
-await fs.promises.rm(path.join(dir), { recursive: true });
+if (fs.existsSync(dir)) {
+  await fs.promises.rm(dir, { recursive: true });
+}
 
 for (const [browserName, browserType] of browsers) {
   for (const locale of locales) {
@@ -201,3 +221,6 @@ for (const [browserName, browserType] of browsers) {
     }
   }
 }
+
+// eslint-disable-next-line unicorn/no-process-exit -- stop parcel watch
+process.exit();

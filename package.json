@@ -22,6 +22,8 @@
   },
   "devDependencies": {
     "@jest/globals": "29.7.0",
+    "@parcel/config-default": "2.10.3",
+    "@parcel/core": "2.10.3",
     "@parcel/packager-raw-url": "2.10.3",
     "@parcel/reporter-bundle-analyzer": "2.10.3",
     "@parcel/transformer-webmanifest": "2.10.3",
