@@ -18,5 +18,8 @@
     "packages/cordova/plugins",
     "packages/cordova/www",
     "packages/web/dist"
-  ]
+  ],
+  "ts-node": {
+    "swc": true
+  }
 }

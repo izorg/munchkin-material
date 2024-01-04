@@ -1,12 +1,11 @@
-// @ts-check
-
 import fs from "node:fs";
 import path from "node:path";
 import process from "node:process";
 
 import { duration } from "@mui/material";
 import { Parcel } from "@parcel/core";
-import { chromium, devices } from "playwright";
+import { type BrowserType, chromium, devices } from "playwright";
+import type { BrowserContextOptions } from "playwright-core";
 
 process.chdir("packages/web");
 
@@ -84,10 +83,15 @@ const browserDevices = {
 
 const dir = "../../screenshots";
 
-const delay = (timeout) =>
+const delay = (timeout: number) =>
   new Promise((resolve) => setTimeout(resolve, timeout));
 
-const getScreenshots = async (browserType, device, locale, deviceName) => {
+const getScreenshots = async (
+  browserType: BrowserType,
+  device: BrowserContextOptions,
+  locale: string,
+  deviceName: string,
+) => {
   const screenshotDir = path.join(dir, locale, deviceName);
 
   await fs.promises.mkdir(screenshotDir, {
@@ -107,8 +111,8 @@ const getScreenshots = async (browserType, device, locale, deviceName) => {
   count += 1;
   await page.goto(appUrl, { waitUntil: "networkidle" });
   await page.evaluate((testLocale) => {
-    window.munchkinDev.setLocale(testLocale);
-    window.munchkinDev.setTestData();
+    window.munchkinDev?.setLocale(testLocale);
+    window.munchkinDev?.setTestData();
   }, locale);
   await page.screenshot({
     path: path.join(screenshotDir, `${count}-home.png`),
@@ -214,7 +218,10 @@ if (fs.existsSync(dir)) {
 
 for (const [browserName, browserType] of browsers) {
   for (const locale of locales) {
-    for (const [deviceName, device] of browserDevices[browserName]) {
+    const deviceEntry =
+      browserDevices[browserName as keyof typeof browserDevices];
+
+    for (const [deviceName, device] of deviceEntry) {
       console.log(`🌍 ${locale}`);
       console.log(`📱 ${deviceName}`);
       await getScreenshots(browserType, device, locale, deviceName);
