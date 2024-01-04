@@ -1,5 +1,6 @@
 import {
   type AvailableLocale,
+  BE,
   CS,
   DA,
   DE,
@@ -23,7 +24,7 @@ import {
   UK,
 } from "../i18n";
 import createPlayer from "../utils/createPlayer";
-import { Sex } from "../utils/types";
+import { type Player, Sex } from "../utils/types";
 
 const templatePlayers = [
   createPlayer({
@@ -52,38 +53,36 @@ const templatePlayers = [
   }),
 ];
 
-const getLocalizedPlayers = (names: string[]) =>
+const getLocalizedPlayers = (names: string[]): Player[] =>
   templatePlayers.map((templatePlayer, index) => ({
     ...templatePlayer,
     name: names[index],
   }));
 
-const nameEntries: [locale: AvailableLocale, names: string[]][] = [
-  [CS, ["Jan", "Jakub", "Tereza", "Anna"]],
-  [DA, ["William", "Noah", "Emma", "Freja"]],
-  [DE, ["Max", "Paul", "Emma", "Hannah"]],
-  [EL, ["Γιώργος", "Αντώνης", "Μαρία", "Σοφία"]],
-  [EN, ["Liam", "Noah", "Olivia", "Emma"]],
-  [ES, ["Alejandro", "Daniel", "Lucia", "Martina"]],
-  [FI, ["Onni", "Elias", "Aino", "Eevi"]],
-  [FR, ["Gabriel", "Raphaël", "Emma", "Louise"]],
-  [HE, ["נוֹעַם", "אִיתַי", "מַיָּה", "תָּמָר"]],
-  [HU, ["Bence", "Máté", "Hanna", "Luca"]],
-  [HY, ["Արմեն", "Մարտիրոս", "Անահիտ", "Նարինե"]],
-  [IT, ["Leo", "Francesco", "Sofia", "Giulia"]],
-  [NB, ["Jakob", "Lucas", "Emma", "Nora"]],
-  [NL, ["Sem", "Lucas", "Emma", "Julia"]],
-  [PL, ["Jan", "Kacper", "Zuzanna", "Lena"]],
-  [PT, ["João", "Santiago", "Maria", "Matilde"]],
-  [PT_BR, ["Enzo", "Miguel", "Alice", "Sophia"]],
-  [RU, ["Саша", "Макс", "София", "Аня"]],
-  [SK, ["Jakub", "Lukáš", "Sofia", "Ema"]],
-  [TR, ["Mehmet", "Ali", "Ayşe", "Zeynep"]],
-  [UK, ["Олесь", "Макс", "Софія", "Марія"]],
-];
+const nameEntries: Record<AvailableLocale, string[]> = {
+  [BE]: ["Аляксандр", "Сяргей", "Ганна", "Кацярына"],
+  [CS]: ["Jan", "Jakub", "Tereza", "Anna"],
+  [DA]: ["William", "Noah", "Emma", "Freja"],
+  [DE]: ["Max", "Paul", "Emma", "Hannah"],
+  [EL]: ["Γιώργος", "Αντώνης", "Μαρία", "Σοφία"],
+  [EN]: ["Liam", "Noah", "Olivia", "Emma"],
+  [ES]: ["Alejandro", "Daniel", "Lucia", "Martina"],
+  [FI]: ["Onni", "Elias", "Aino", "Eevi"],
+  [FR]: ["Gabriel", "Raphaël", "Emma", "Louise"],
+  [HE]: ["נוֹעַם", "אִיתַי", "מַיָּה", "תָּמָר"],
+  [HU]: ["Bence", "Máté", "Hanna", "Luca"],
+  [HY]: ["Արմեն", "Մարտիրոս", "Անահիտ", "Նարինե"],
+  [IT]: ["Leo", "Francesco", "Sofia", "Giulia"],
+  [NB]: ["Jakob", "Lucas", "Emma", "Nora"],
+  [NL]: ["Sem", "Lucas", "Emma", "Julia"],
+  [PL]: ["Jan", "Kacper", "Zuzanna", "Lena"],
+  [PT]: ["João", "Santiago", "Maria", "Matilde"],
+  [PT_BR]: ["Enzo", "Miguel", "Alice", "Sophia"],
+  [RU]: ["Саша", "Макс", "София", "Аня"],
+  [SK]: ["Jakub", "Lukáš", "Sofia", "Ema"],
+  [TR]: ["Mehmet", "Ali", "Ayşe", "Zeynep"],
+  [UK]: ["Олесь", "Макс", "Софія", "Марія"],
+};
 
-const players = Object.fromEntries(
-  nameEntries.map(([locale, names]) => [locale, getLocalizedPlayers(names)]),
-);
-
-export default players;
+export const getPlayers = (locale: AvailableLocale): Player[] =>
+  getLocalizedPlayers(nameEntries[locale]);

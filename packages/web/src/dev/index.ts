@@ -6,7 +6,7 @@ import { setLocale as setAppLocale } from "../ducks/settings";
 import { getLocale, isSupportedLocale } from "../i18n";
 import store from "../store";
 
-import players from "./players";
+import { getPlayers } from "./players";
 
 const setLocale = (locale: string) => {
   if (isSupportedLocale(locale)) {
@@ -24,15 +24,11 @@ const setTestData = () => {
 
   const locale = settings.locale ?? getLocale();
 
-  const localePlayers = Object.entries(players).find(
-    ([key]) => key === locale,
-  )?.[1];
+  const localePlayers = getPlayers(locale);
 
-  if (localePlayers) {
-    for (const player of localePlayers) {
-      store.dispatch(addPlayer(player));
-      store.dispatch(addPlayerToList(player.id));
-    }
+  for (const player of localePlayers) {
+    store.dispatch(addPlayer(player));
+    store.dispatch(addPlayerToList(player.id));
   }
 };
 
