@@ -1,8 +1,3 @@
-import fs from "node:fs";
-import path from "node:path";
+import packageJson from "../package.json" assert { type: "json" };
 
-const buffer = fs.readFileSync(path.resolve("./package.json"));
-
-const json = JSON.parse(buffer.toString());
-
-console.log(json.version);
+console.log(packageJson.version);

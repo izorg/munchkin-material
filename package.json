@@ -17,6 +17,7 @@
     "stylelint": "stylelint --cache \"**/*.css\"",
     "test": "jest",
     "tsc": "tsc",
+    "version": "node --no-warnings scripts/version.js",
     "g:parcel": "cd $INIT_CWD && parcel",
     "g:rimraf": "cd $INIT_CWD && rimraf"
   },
