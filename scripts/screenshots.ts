@@ -4,8 +4,14 @@ import process from "node:process";
 
 import { duration } from "@mui/material";
 import { Parcel } from "@parcel/core";
-import { type BrowserType, chromium, devices } from "playwright";
-import type { BrowserContextOptions } from "playwright-core";
+import {
+  type BrowserContextOptions,
+  type BrowserType,
+  chromium,
+  devices,
+} from "playwright";
+
+import { availableLocales } from "@munchkin/web/src/i18n";
 
 process.chdir("packages/web");
 
@@ -22,28 +28,6 @@ const bundler = new Parcel({
 });
 
 await bundler.watch();
-
-const CS = "cs";
-const DA = "da";
-const DE = "de";
-const EL = "el";
-const EN = "en";
-const ES = "es";
-const FI = "fi";
-const FR = "fr";
-const HE = "he";
-const HU = "hu";
-const HY = "hy";
-const IT = "it";
-const NB = "nb";
-const NL = "nl";
-const PL = "pl";
-const PT = "pt";
-const PT_BR = "pt-BR";
-const RU = "ru";
-const SK = "sk";
-const TR = "tr";
-const UK = "uk";
 
 const appUrl = "http://localhost:3000";
 
@@ -188,36 +172,12 @@ const getScreenshots = async (
   await browser.close();
 };
 
-const locales = [
-  CS,
-  DA,
-  DE,
-  EL,
-  EN,
-  ES,
-  FI,
-  FR,
-  HE,
-  HU,
-  HY,
-  IT,
-  NB,
-  NL,
-  PL,
-  PT,
-  PT_BR,
-  RU,
-  SK,
-  TR,
-  UK,
-];
-
 if (fs.existsSync(dir)) {
   await fs.promises.rm(dir, { recursive: true });
 }
 
 for (const [browserName, browserType] of browsers) {
-  for (const locale of locales) {
+  for (const locale of availableLocales) {
     const deviceEntry =
       browserDevices[browserName as keyof typeof browserDevices];
 

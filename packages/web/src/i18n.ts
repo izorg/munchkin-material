@@ -26,7 +26,7 @@ export const UK = "uk";
 export const getDirection = (locale: string): "ltr" | "rtl" =>
   [HE].includes(locale) ? "rtl" : "ltr";
 
-const availableLocales = [
+export const availableLocales = [
   BE,
   CS,
   DA,

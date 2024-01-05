@@ -9,6 +9,9 @@
     "src/polyfills.ts",
     "src/sentry.ts"
   ],
+  "exports": {
+    "./src/*": "./src/*.ts"
+  },
   "scripts": {
     "analyze": "yarn run build:parcel --reporter @parcel/reporter-bundle-analyzer",
     "build": "yarn run generate-assets && yarn run build:parcel && yarn run build:workbox",

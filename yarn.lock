@@ -3199,7 +3199,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@munchkin/web@workspace:packages/web":
+"@munchkin/web@workspace:*, @munchkin/web@workspace:packages/web":
   version: 0.0.0-use.local
   resolution: "@munchkin/web@workspace:packages/web"
   dependencies:
@@ -4058,6 +4058,18 @@ __metadata:
     "@parcel/utils": "npm:2.11.0"
     nullthrows: "npm:^1.1.1"
   checksum: da0a4ba813937774e738f35ae47e096b213fb10c7b13d48de23e59ae1eaa16a739043d559ede268306d3bb3a92393f482dcafe2794c5086b7b871b95abcb9805
+  languageName: node
+  linkType: hard
+
+"@parcel/runtime-js@patch:@parcel/runtime-js@npm%3A2.11.0#~/.yarn/patches/@parcel-runtime-js-npm-2.11.0-d9caebabcf.patch":
+  version: 2.11.0
+  resolution: "@parcel/runtime-js@patch:@parcel/runtime-js@npm%3A2.11.0#~/.yarn/patches/@parcel-runtime-js-npm-2.11.0-d9caebabcf.patch::version=2.11.0&hash=14dcda"
+  dependencies:
+    "@parcel/diagnostic": "npm:2.11.0"
+    "@parcel/plugin": "npm:2.11.0"
+    "@parcel/utils": "npm:2.11.0"
+    nullthrows: "npm:^1.1.1"
+  checksum: efd16951949359cd12cd13fea82e642f3484993fc4c26ed22a18f15a7886e72df582b12c71d1a9e5df438472cab01b1e87f34e5db7cf07d213151c7f79c74165
   languageName: node
   linkType: hard
 
@@ -15102,6 +15114,7 @@ __metadata:
   resolution: "root-workspace-0b6124@workspace:."
   dependencies:
     "@jest/globals": "npm:29.7.0"
+    "@munchkin/web": "workspace:*"
     "@parcel/config-default": "npm:2.11.0"
     "@parcel/core": "npm:2.11.0"
     "@parcel/packager-raw-url": "npm:2.11.0"

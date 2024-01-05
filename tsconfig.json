@@ -15,9 +15,7 @@
   "exclude": [
     "node_modules",
     "packages/cordova/platforms",
-    "packages/cordova/plugins",
-    "packages/cordova/www",
-    "packages/web/dist"
+    "packages/cordova/plugins"
   ],
   "ts-node": {
     "swc": true

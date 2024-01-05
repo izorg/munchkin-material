@@ -23,6 +23,7 @@
   },
   "devDependencies": {
     "@jest/globals": "29.7.0",
+    "@munchkin/web": "workspace:*",
     "@parcel/config-default": "2.11.0",
     "@parcel/core": "2.11.0",
     "@parcel/packager-raw-url": "2.11.0",
