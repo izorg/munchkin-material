@@ -27,7 +27,7 @@ jobs:
         run: yarn install --immutable
 
       - name: Compile locales 🔨
-        run: yarn run i18n:compile
+        run: yarn workspace @munchkin/web run i18n:compile
 
       - name: Get app version
         run: echo "VERSION=$(yarn run get-version)" >> $GITHUB_ENV
