@@ -9,6 +9,7 @@
   "scripts": {
     "clean": "rimraf .eslintcache .parcel-cache .stylelintcache coverage messages node_modules/.cache parcel-bundle-reports screenshots tsconfig.tsbuildinfo",
     "eslint": "NODE_OPTIONS=\"--max-old-space-size=4096\" eslint --cache \"**/*.{js,json,ts,tsx}\"",
+    "get-version": "node --no-warnings scripts/version.js",
     "lint": "yarn run tsc && yarn run eslint && yarn run stylelint",
     "postinstall": "husky install",
     "prettier": "prettier --cache --ignore-unknown --write .",
@@ -17,7 +18,6 @@
     "stylelint": "stylelint --cache \"**/*.css\"",
     "test": "jest",
     "tsc": "tsc",
-    "version": "node --no-warnings scripts/version.js",
     "g:parcel": "cd $INIT_CWD && parcel",
     "g:rimraf": "cd $INIT_CWD && rimraf"
   },

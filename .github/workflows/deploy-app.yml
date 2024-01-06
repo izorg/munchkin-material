@@ -30,7 +30,7 @@ jobs:
         run: yarn run i18n:compile
 
       - name: Get app version
-        run: echo "VERSION=$(yarn run version)" >> $GITHUB_ENV
+        run: echo "VERSION=$(yarn run get-version)" >> $GITHUB_ENV
 
       - name: Lint
         run: yarn run lint
