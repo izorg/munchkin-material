@@ -3199,7 +3199,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@munchkin/web@workspace:*, @munchkin/web@workspace:packages/web":
+"@munchkin/web@workspace:packages/web":
   version: 0.0.0-use.local
   resolution: "@munchkin/web@workspace:packages/web"
   dependencies:
@@ -15093,7 +15093,6 @@ __metadata:
   resolution: "root-workspace-0b6124@workspace:."
   dependencies:
     "@jest/globals": "npm:29.7.0"
-    "@munchkin/web": "workspace:*"
     "@parcel/config-default": "npm:2.11.0"
     "@parcel/core": "npm:2.11.0"
     "@parcel/packager-raw-url": "npm:2.11.0"

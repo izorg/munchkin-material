@@ -11,7 +11,7 @@ import {
   devices,
 } from "playwright";
 
-import { availableLocales } from "@munchkin/web/src/i18n";
+import { availableLocales } from "../packages/web/src/i18n";
 
 process.chdir("packages/web");
 
