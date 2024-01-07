@@ -1,9 +1,6 @@
-// @ts-check
+import { type Config } from "jest";
 
-/**
- * @type {import('jest').Config}
- */
-const config = {
+const config: Config = {
   roots: ["<rootDir>/packages/web/src/"],
   transform: {
     "^.+\\.tsx?$": "@swc/jest",
