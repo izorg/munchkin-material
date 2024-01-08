@@ -23,9 +23,6 @@ export const SK = "sk";
 export const TR = "tr";
 export const UK = "uk";
 
-export const getDirection = (locale: string): "ltr" | "rtl" =>
-  [HE].includes(locale) ? "rtl" : "ltr";
-
 export const availableLocales = [
   BE,
   CS,

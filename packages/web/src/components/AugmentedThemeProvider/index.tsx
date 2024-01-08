@@ -9,16 +9,16 @@ import { type FC, type PropsWithChildren, useMemo } from "react";
 import { useIntl } from "react-intl";
 
 import usePreviewTheme from "../../hooks/usePreviewTheme";
-import { getDirection } from "../../i18n";
 import themes from "../../theme/colors";
 import getThemeOptions from "../../theme/getThemeOptions";
+import { getLocaleDirection } from "../../utils/getLocaleDirection";
 
 import { ModeSwitcher } from "./ModeSwitcher";
 
 const AugmentedThemeProvider: FC<PropsWithChildren> = ({ children }) => {
   const { locale } = useIntl();
 
-  const direction = getDirection(locale);
+  const direction = getLocaleDirection(locale);
 
   const previewTheme = usePreviewTheme();
 

@@ -6,7 +6,7 @@ import { useIntl } from "react-intl";
 import { prefixer } from "stylis";
 import rtlPlugin from "stylis-plugin-rtl";
 
-import { getDirection } from "../../i18n";
+import { getLocaleDirection } from "../../utils/getLocaleDirection";
 
 const ltrCache = createCache({
   key: "ltr",
@@ -22,7 +22,7 @@ const rtlCache = createCache({
 
 const AugmentedStylesProvider: FC<PropsWithChildren> = ({ children }) => {
   const { locale } = useIntl();
-  const direction = getDirection(locale);
+  const direction = getLocaleDirection(locale);
   const cache = direction === "rtl" ? rtlCache : ltrCache;
 
   return <CacheProvider value={cache}>{children}</CacheProvider>;

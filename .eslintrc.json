@@ -55,7 +55,7 @@
     {
       "files": ["packages/cordova/**/*", "packages/web/**/*"],
       "settings": {
-        "polyfills": ["Object.fromEntries"]
+        "polyfills": ["Intl", "Object.fromEntries"]
       }
     }
   ],

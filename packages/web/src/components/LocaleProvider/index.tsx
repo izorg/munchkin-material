@@ -5,12 +5,8 @@ import { IntlProvider } from "react-intl";
 import useSWRImmutable from "swr/immutable";
 
 import usePresentSelector from "../../hooks/usePresentSelector";
-import {
-  type AvailableLocale,
-  getDirection,
-  getLocale,
-  loadMessages,
-} from "../../i18n";
+import { type AvailableLocale, getLocale, loadMessages } from "../../i18n";
+import { getLocaleDirection } from "../../utils/getLocaleDirection";
 
 import polyfillIntl from "./polyfillIntl";
 
@@ -45,7 +41,7 @@ const LocaleProvider: FC<PropsWithChildren> = ({ children }) => {
   useLayoutEffect(() => {
     if (data?.locale) {
       document.documentElement.lang = data.locale;
-      document.documentElement.dir = getDirection(data.locale);
+      document.documentElement.dir = getLocaleDirection(data.locale);
     }
   }, [data?.locale]);
 
