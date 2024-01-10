@@ -1,6 +1,6 @@
 import CssBaseline from "@mui/material/CssBaseline";
 import { Experimental_CssVarsProvider as CssVarsProvider } from "@mui/material/styles/CssVarsProvider";
-import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
+import { AppRouterCacheProvider } from "@mui/material-nextjs/build/v14-appRouter";
 import { type PropsWithChildren } from "react";
 
 import { theme } from "../lib/theme";
