@@ -1,17 +1,9 @@
-import { useRef } from "react";
-import {
-  type Location,
-  Route,
-  Routes,
-  useLocation,
-  useMatch,
-  useParams,
-} from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import Player from "../Player";
-import ScreenDialog from "../ScreenDialog";
+import { RouteScreenDialog } from "../RouteScreenDialog";
 
-const path = "/player/:playerId/*";
+const path = "/player/:playerId";
 
 export const usePlayerId = () => {
   const { playerId } = useParams();
@@ -23,26 +15,10 @@ export const usePlayerId = () => {
   return playerId;
 };
 
-const PlayerView = () => {
-  const playerMatch = useMatch({
-    end: false,
-    path,
-  });
-
-  const location = useLocation();
-  const locationRef = useRef<Location>();
-
-  if (playerMatch) {
-    locationRef.current = location;
-  }
-
-  return (
-    <ScreenDialog open={Boolean(playerMatch)}>
-      <Routes location={locationRef.current}>
-        <Route element={<Player />} path={path} />
-      </Routes>
-    </ScreenDialog>
-  );
-};
+const PlayerView = () => (
+  <RouteScreenDialog path={path}>
+    <Player />
+  </RouteScreenDialog>
+);
 
 export default PlayerView;
