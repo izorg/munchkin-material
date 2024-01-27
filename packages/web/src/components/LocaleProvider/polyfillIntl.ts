@@ -1,6 +1,5 @@
 import { shouldPolyfill as shouldPolyfillDateTimeFormat } from "@formatjs/intl-datetimeformat/should-polyfill";
 import { shouldPolyfill as shouldPolyfillGetCanonicalLocales } from "@formatjs/intl-getcanonicallocales/should-polyfill";
-import { shouldPolyfill as shouldPolyfillLocale } from "@formatjs/intl-locale/should-polyfill";
 import { shouldPolyfill as shouldPolyfillNumberFormat } from "@formatjs/intl-numberformat/should-polyfill";
 import { shouldPolyfill as shouldPolyfillPluralRules } from "@formatjs/intl-pluralrules/should-polyfill";
 
@@ -106,9 +105,8 @@ const numberFormatLoaders: Record<AvailableLocale, () => unknown> = {
 };
 
 const polyfillIntl = async (locale: AvailableLocale) => {
-  if (shouldPolyfillLocale()) {
-    await import("@formatjs/intl-locale/polyfill");
-  }
+  // use force to polyfill `textInfo`
+  await import("@formatjs/intl-locale/polyfill-force");
 
   if (shouldPolyfillGetCanonicalLocales()) {
     await import("@formatjs/intl-getcanonicallocales/polyfill");
