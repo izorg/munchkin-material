@@ -25,10 +25,7 @@ const Player = () => {
         sx={{
           display: "flex",
           flex: 1,
-          flexDirection: {
-            md: "row-reverse",
-            xs: "column",
-          },
+          flexDirection: "column",
           overflowY: "auto",
         }}
       >
@@ -36,12 +33,6 @@ const Player = () => {
           sx={{
             display: "flex",
             flex: "1 0 auto",
-            flexShrink: {
-              md: 1,
-            },
-            overflow: {
-              md: "hidden",
-            },
           }}
         >
           <Slider
@@ -59,7 +50,6 @@ const Player = () => {
                 flex: "0 1 auto",
                 overflowY: "auto",
                 paddingBottom: {
-                  md: 1,
                   sm: 8,
                   xs: 7,
                 },
@@ -69,13 +59,6 @@ const Player = () => {
                   display: "block",
                 },
               },
-              (theme) => ({
-                [theme.breakpoints.up("md")]: {
-                  display: "block",
-                  flex: "none",
-                  width: "400px",
-                },
-              }),
             ]}
           />
         )}
