@@ -33,7 +33,6 @@ const Player = () => {
         }}
       >
         <Box
-          data-test="lol"
           sx={{
             display: "flex",
             flex: "1 0 auto",
