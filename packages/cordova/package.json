@@ -19,8 +19,8 @@
     "run:ios": "cordova run ios"
   },
   "dependencies": {
-    "@mui/material": "5.15.6",
-    "@sentry/react": "7.98.0",
+    "@mui/material": "5.15.7",
+    "@sentry/react": "7.99.0",
     "abortcontroller-polyfill": "1.7.5",
     "core-js": "3.35.1",
     "prop-types": "15.8.1",
