@@ -1,28 +1,39 @@
 import { darken, rgbToHex, useTheme } from "@mui/material";
 import { useEffect } from "react";
 
+import usePresentSelector from "../../../../web/src/hooks/usePresentSelector";
+
 const StatusBarProvider = () => {
-  const theme = useTheme();
+  const { palette } = useTheme();
+
+  const pureBlack = usePresentSelector((state) => state.theme.pureBlack);
 
   useEffect(() => {
     if (cordova.platformId === "android") {
       setTimeout(() => {
         StatusBar.backgroundColorByHexString(
-          rgbToHex(darken(theme.palette.primary.main, 0.5)),
+          palette.mode === "dark" && pureBlack
+            ? palette.background.default
+            : rgbToHex(darken(palette.primary.main, 0.5)),
         );
       }, 100);
     }
-  }, [theme.palette.primary.main]);
+  }, [
+    palette.background.default,
+    palette.mode,
+    palette.primary.main,
+    pureBlack,
+  ]);
 
   useEffect(() => {
     if (cordova.platformId === "ios") {
-      if (theme.palette.mode === "dark") {
+      if (palette.mode === "dark") {
         StatusBar.styleLightContent();
       } else {
         StatusBar.styleDefault();
       }
     }
-  }, [theme.palette.mode]);
+  }, [palette.mode]);
 
   return null;
 };
