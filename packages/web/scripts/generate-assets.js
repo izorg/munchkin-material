@@ -2,7 +2,6 @@
 
 import fs from "node:fs";
 import path from "node:path";
-import process from "node:process";
 
 import Handlebars from "handlebars";
 
@@ -11,20 +10,23 @@ export const getDirection = (locale) =>
 
 export const getRoot = (locale) => (locale === "en" ? "" : "../../");
 
-const [htmlTemplateFile, manifestFile] = await Promise.all([
-  fs.promises.readFile(
-    path.join(process.cwd(), "src/templates/markup/index.html.hbs"),
-  ),
-  fs.promises.readFile(
-    path.join(process.cwd(), "src/templates/markup/manifest.webmanifest.hbs"),
-  ),
+/**
+ * @param {string} templatePath
+ * @return {Promise<Handlebars.TemplateDelegate<unknown>>}
+ */
+const getTemplate = async (templatePath) => {
+  const file = await fs.promises.readFile(path.resolve(templatePath));
+
+  return Handlebars.compile(file.toString());
+};
+
+const [htmlTemplate, manifestTemplate] = await Promise.all([
+  getTemplate("src/templates/markup/index.html.hbs"),
+  getTemplate("src/templates/markup/manifest.webmanifest.hbs"),
 ]);
 
-const htmlTemplate = Handlebars.compile(htmlTemplateFile.toString());
-const manifestTemplate = Handlebars.compile(manifestFile.toString());
-
 const languagesDir = await fs.promises.readdir(
-  path.join(process.cwd(), "src/templates/data"),
+  path.resolve("src/templates/data"),
 );
 
 const locales = languagesDir
@@ -49,9 +51,8 @@ await Promise.all(
 
     const folder =
       locale === "en"
-        ? path.join(process.cwd(), "src")
-        : path.join(
-            process.cwd(),
+        ? path.resolve("src")
+        : path.resolve(
             "src/localized-files",
             locale.toLowerCase().replace("-", "_"),
           );
