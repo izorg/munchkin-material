@@ -48,7 +48,7 @@ const Color = forwardRef<HTMLButtonElement, ColorProps>(
             width: "36px",
           })}
         >
-          {selected && (
+          {!selected || (
             <SvgIcon>
               <path d={mdiCheck} />
             </SvgIcon>
