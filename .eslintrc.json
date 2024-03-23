@@ -68,40 +68,28 @@
   "rules": {
     "jsx-a11y/no-autofocus": ["error", { "ignoreNonDOM": true }],
     "import/namespace": ["error", { "allowComputed": true }],
-    "import/order": [
+    "perfectionist/sort-imports": [
       "error",
       {
-        "alphabetize": {
-          "caseInsensitive": true,
-          "order": "asc"
-        },
         "groups": [
           "builtin",
+          "side-effect",
           "external",
           "internal",
           "parent",
           "sibling",
           "index"
         ],
-        "newlines-between": "always"
+        "internal-pattern": ["@munchkin/**"]
       }
     ],
-    "perfectionist/sort-imports": "off",
     "react/react-in-jsx-scope": "off",
-    "sort-imports": [
-      "error",
-      {
-        "ignoreCase": true,
-        "ignoreDeclarationSort": true
-      }
-    ],
     "unicorn/filename-case": "off",
     "unicorn/no-instanceof-array": "off",
     "unicorn/no-null": "off",
     "unicorn/prevent-abbreviations": "off"
   },
   "settings": {
-    "import/internal-regex": "^@munchkin/",
     "import/resolver": {
       "node": true,
       "typescript": true
