@@ -9,8 +9,9 @@
     "plugin:json/recommended",
     "plugin:jsx-a11y/recommended",
     "plugin:perfectionist/recommended-alphabetical",
-    "plugin:react-hooks/recommended",
     "plugin:react/recommended",
+    "plugin:react/jsx-runtime",
+    "plugin:react-hooks/recommended",
     "plugin:unicorn/recommended",
     "plugin:prettier/recommended"
   ],
@@ -83,7 +84,6 @@
         "internal-pattern": ["@munchkin/**"]
       }
     ],
-    "react/react-in-jsx-scope": "off",
     "unicorn/filename-case": "off",
     "unicorn/no-instanceof-array": "off",
     "unicorn/no-null": "off",
