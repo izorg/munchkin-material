@@ -212,7 +212,7 @@ const PlayerDialog = () => {
                   })}
                 </FormLabel>
                 <RadioGroup
-                  defaultValue={editPlayer?.sex || Sex.Male}
+                  defaultValue={editPlayer?.sex ?? Sex.Male}
                   name="sex"
                 >
                   <FormControlLabel
@@ -246,7 +246,7 @@ const PlayerDialog = () => {
                   })}
                 </FormLabel>
                 <ColorPicker
-                  defaultValue={editPlayer?.color || randomColor}
+                  defaultValue={editPlayer?.color ?? randomColor}
                   name="color"
                 />
               </FormControl>

@@ -20,9 +20,11 @@ const ColorPickerPopover: FC<ColorPickerPopoverProps> = ({
   ...props
 }) => (
   <Popover
-    PaperProps={{
-      sx: {
-        maxWidth: 288,
+    slotProps={{
+      paper: {
+        sx: {
+          maxWidth: 288,
+        },
       },
     }}
     {...props}

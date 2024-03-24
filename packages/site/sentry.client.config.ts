@@ -2,7 +2,7 @@
 // The config you add here will be used whenever a users loads a page in their browser.
 // https://docs.sentry.io/platforms/javascript/guides/nextjs/
 
-import { init, Replay } from "@sentry/nextjs";
+import { init, replayIntegration } from "@sentry/nextjs";
 
 init({
   // Setting this option to true will print useful information to the console while you're setting up Sentry.
@@ -14,7 +14,7 @@ init({
 
   // You can remove this option if you're not planning to use the Sentry Session Replay feature:
   integrations: [
-    new Replay({
+    replayIntegration({
       blockAllMedia: false,
       // Additional Replay configuration goes in here, for example:
       maskAllText: false,
