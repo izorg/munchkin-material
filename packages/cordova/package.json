@@ -18,25 +18,15 @@
     "run:android": "cordova run android",
     "run:ios": "cordova run ios"
   },
-  "dependencies": {
+  "devDependencies": {
     "@mui/material": "5.15.14",
     "@sentry/react": "7.108.0",
-    "abortcontroller-polyfill": "1.7.5",
-    "core-js": "3.36.1",
-    "prop-types": "15.8.1",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "react-router-dom": "6.22.3",
-    "scrollyfills": "1.0.1",
-    "smoothscroll-polyfill": "0.4.4",
-    "swr": "2.2.5"
-  },
-  "devDependencies": {
     "@types/cordova": "11.0.3",
     "@types/dom-screen-wake-lock": "1.0.3",
     "@types/react": "18.2.70",
     "@types/react-dom": "18.2.22",
     "@types/smoothscroll-polyfill": "0.3.4",
+    "abortcontroller-polyfill": "1.7.5",
     "cordova": "12.0.0",
     "cordova-android": "12.0.1",
     "cordova-ios": "7.0.1",
@@ -50,7 +40,15 @@
     "cordova-plugin-purchase": "13.10.1",
     "cordova-plugin-splashscreen": "6.0.2",
     "cordova-plugin-statusbar": "4.0.0",
-    "cordova-plugin-vibration": "3.1.1"
+    "cordova-plugin-vibration": "3.1.1",
+    "core-js": "3.36.1",
+    "prop-types": "15.8.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-router-dom": "6.22.3",
+    "scrollyfills": "1.0.1",
+    "smoothscroll-polyfill": "0.4.4",
+    "swr": "2.2.5"
   },
   "cordova": {
     "platforms": [
