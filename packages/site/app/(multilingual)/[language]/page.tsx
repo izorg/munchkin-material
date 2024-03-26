@@ -14,7 +14,7 @@ import NextLink from "next/link";
 
 import { StoreButton } from "../../../components/StoreButton";
 import { getServerIntl, localeByLanguage } from "../../../lib/i18n";
-import type { Language } from "../../../lib/i18n";
+import { type Language } from "../../../lib/i18n";
 import * as languages from "../../../lib/languages";
 
 export const generateStaticParams = () =>

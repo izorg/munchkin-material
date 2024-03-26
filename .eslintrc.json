@@ -69,6 +69,7 @@
   "root": true,
   "rules": {
     "jsx-a11y/no-autofocus": ["error", { "ignoreNonDOM": true }],
+    "import/consistent-type-specifier-style": ["error", "prefer-inline"],
     "import/namespace": ["error", { "allowComputed": true }],
     "perfectionist/sort-imports": [
       "error",

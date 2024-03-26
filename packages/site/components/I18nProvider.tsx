@@ -5,7 +5,7 @@ import { captureException } from "@sentry/react";
 import { type PropsWithChildren } from "react";
 import { IntlProvider } from "react-intl";
 
-import type { Locale } from "../lib/i18n";
+import { type Locale } from "../lib/i18n";
 
 type I18nProviderProps = PropsWithChildren<{
   locale: Locale;
