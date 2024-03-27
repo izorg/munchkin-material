@@ -6,6 +6,7 @@ on:
       - master
     paths:
       - packages/site/**
+      - !packages/site/package.json
 
 jobs:
   deploy:
