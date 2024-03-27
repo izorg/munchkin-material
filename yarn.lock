@@ -3323,7 +3323,7 @@ __metadata:
     "@sentry/react": "npm:7.108.0"
     "@types/cordova": "npm:11.0.3"
     "@types/dom-screen-wake-lock": "npm:1.0.3"
-    "@types/react": "npm:18.2.72"
+    "@types/react": "npm:18.2.73"
     "@types/react-dom": "npm:18.2.22"
     "@types/smoothscroll-polyfill": "npm:0.3.4"
     abortcontroller-polyfill: "npm:1.7.5"
@@ -3368,7 +3368,7 @@ __metadata:
     "@next/bundle-analyzer": "npm:14.1.4"
     "@next/third-parties": "npm:14.1.4"
     "@sentry/nextjs": "npm:7.108.0"
-    "@types/react": "npm:18.2.72"
+    "@types/react": "npm:18.2.73"
     "@types/react-dom": "npm:18.2.22"
     "@types/stylis": "npm:4.2.5"
     core-js: "npm:3.36.1"
@@ -3408,7 +3408,7 @@ __metadata:
     "@reduxjs/toolkit": "npm:2.2.2"
     "@sentry/react": "npm:7.108.0"
     "@types/dom-screen-wake-lock": "npm:1.0.3"
-    "@types/react": "npm:18.2.72"
+    "@types/react": "npm:18.2.73"
     "@types/react-dom": "npm:18.2.22"
     "@types/stylis": "npm:4.2.5"
     "@types/uuid": "npm:9.0.8"
@@ -6177,13 +6177,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:18.2.72":
-  version: 18.2.72
-  resolution: "@types/react@npm:18.2.72"
+"@types/react@npm:18.2.73":
+  version: 18.2.73
+  resolution: "@types/react@npm:18.2.73"
   dependencies:
     "@types/prop-types": "npm:*"
     csstype: "npm:^3.0.2"
-  checksum: 10/0c15461eeb8cd5153b48446d4aae681ae1d4f45fa5828fc53c12aaac9dfe426a64259a284737f6abfc3bea36df9507c129d7065ebb390b21349ad30128385ac1
+  checksum: 10/799e30e73464dff40e04f4eb7499ebc31f99b1711a69263b9af340af738e35c9cdf53084e3dacc3b21c031aaa0cba1b51f4ba60490204b7abb75f115b841583f
   languageName: node
   linkType: hard
 
