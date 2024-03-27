@@ -154,7 +154,6 @@ const HomePlayerListItem = (props: HomePlayerListItemProps) => {
   return (
     <ListItem
       {...rest}
-      {...attributes}
       data-screenshots="player-list-item"
       disablePadding
       ref={setNodeRef}
@@ -168,6 +167,7 @@ const HomePlayerListItem = (props: HomePlayerListItemProps) => {
             sx={{
               touchAction: "none",
             }}
+            {...attributes}
             {...listeners}
           />
         )
