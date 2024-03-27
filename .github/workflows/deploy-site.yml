@@ -5,8 +5,8 @@ on:
     branches:
       - master
     paths:
-      - packages/site/**
-      - !packages/site/package.json
+      - "packages/site/**"
+      - "!packages/site/package.json"
 
 jobs:
   deploy:
