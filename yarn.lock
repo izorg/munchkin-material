@@ -2443,17 +2443,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@formatjs/cli@npm:6.2.8":
-  version: 6.2.8
-  resolution: "@formatjs/cli@npm:6.2.8"
+"@formatjs/cli@npm:6.2.9":
+  version: 6.2.9
+  resolution: "@formatjs/cli@npm:6.2.9"
   peerDependencies:
-    vue: ^3.3.4
+    vue: ^3.4.0
   peerDependenciesMeta:
     vue:
       optional: true
   bin:
     formatjs: bin/formatjs
-  checksum: 10/01a6ae382fe1cda1ef3ea75ef73cf1c35556d86bb634e8b1804173962b975823ed939c3f6748f13a8d263aad26c3bfb8f1a653296e8d8bb574cf297fa96a3d45
+  checksum: 10/a39e5344ffd120d573876fb5d8f786e6d53bcc5a1b35fecb3f0befb021b39ae9f86cf48d6268fe3c0ed835f834d411f5235c64a3af7ec0e99f028e7c996cc73b
   languageName: node
   linkType: hard
 
@@ -3359,7 +3359,7 @@ __metadata:
     "@emotion/cache": "npm:11.11.0"
     "@emotion/react": "npm:11.11.4"
     "@emotion/styled": "npm:11.11.0"
-    "@formatjs/cli": "npm:6.2.8"
+    "@formatjs/cli": "npm:6.2.9"
     "@formatjs/icu-messageformat-parser": "npm:2.7.6"
     "@formatjs/intl": "npm:2.10.1"
     "@mdi/js": "npm:7.4.47"
@@ -3377,7 +3377,7 @@ __metadata:
     next: "npm:14.1.4"
     react: "npm:18.2.0"
     react-dom: "npm:18.2.0"
-    react-intl: "npm:6.6.3"
+    react-intl: "npm:6.6.4"
     stylis: "npm:4.3.1"
     stylis-plugin-rtl: "npm:2.1.1"
     typescript: "npm:5.4.3"
@@ -3395,7 +3395,7 @@ __metadata:
     "@emotion/cache": "npm:11.11.0"
     "@emotion/react": "npm:11.11.4"
     "@emotion/styled": "npm:11.11.0"
-    "@formatjs/cli": "npm:6.2.8"
+    "@formatjs/cli": "npm:6.2.9"
     "@formatjs/intl-datetimeformat": "npm:6.12.3"
     "@formatjs/intl-getcanonicallocales": "npm:2.3.0"
     "@formatjs/intl-locale": "npm:3.4.5"
@@ -3420,7 +3420,7 @@ __metadata:
     prop-types: "npm:15.8.1"
     react: "npm:18.2.0"
     react-dom: "npm:18.2.0"
-    react-intl: "npm:6.6.3"
+    react-intl: "npm:6.6.4"
     react-redux: "npm:9.1.0"
     react-router-dom: "npm:6.22.3"
     react-transition-group: "npm:4.4.5"
@@ -16639,9 +16639,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-intl@npm:6.6.3":
-  version: 6.6.3
-  resolution: "react-intl@npm:6.6.3"
+"react-intl@npm:6.6.4":
+  version: 6.6.4
+  resolution: "react-intl@npm:6.6.4"
   dependencies:
     "@formatjs/ecma402-abstract": "npm:1.18.2"
     "@formatjs/icu-messageformat-parser": "npm:2.7.6"
@@ -16659,7 +16659,7 @@ __metadata:
   peerDependenciesMeta:
     typescript:
       optional: true
-  checksum: 10/5d5242e477e5c00835e4de3ac1fce583272d10134de07d6da14d7c18b8154a3bc0daf5585f8855a29aca87c3b31201d655c983d1df1ae8609d17a9f7c2a8d915
+  checksum: 10/58fd81966ff0430ff47a864ecd6e87e62187eaa54b28195e4b7ec43d37942157db532ae4e162e7273d73056c5fd1399cfa4d06b78b95cd5fd2d425c3f2ae06ad
   languageName: node
   linkType: hard
 
