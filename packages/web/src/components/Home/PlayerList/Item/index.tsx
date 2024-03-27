@@ -161,7 +161,6 @@ const HomePlayerListItem = (props: HomePlayerListItemProps) => {
         editMode && (
           <DragIconButton
             component="span"
-            disableRipple
             edge="end"
             ref={setActivatorNodeRef}
             sx={{
