@@ -39,7 +39,7 @@
     "@mui/types": "7.2.14",
     "@mui/utils": "5.15.14",
     "@reduxjs/toolkit": "2.2.2",
-    "@sentry/react": "7.108.0",
+    "@sentry/react": "7.109.0",
     "@types/dom-screen-wake-lock": "1.0.3",
     "@types/react": "18.2.73",
     "@types/react-dom": "18.2.22",
