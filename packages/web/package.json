@@ -27,7 +27,7 @@
     "@dnd-kit/utilities": "3.2.2",
     "@emotion/cache": "11.11.0",
     "@emotion/react": "11.11.4",
-    "@emotion/styled": "11.11.0",
+    "@emotion/styled": "11.11.5",
     "@formatjs/cli": "6.2.9",
     "@formatjs/intl-datetimeformat": "6.12.3",
     "@formatjs/intl-getcanonicallocales": "2.3.0",
