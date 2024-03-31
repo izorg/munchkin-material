@@ -164,7 +164,7 @@ const SinglePlayer = () => {
       >
         <CounterLabel
           sx={{
-            fontSize: "24px",
+            fontSize: "1.5rem",
           }}
         >
           {intl.formatMessage(counterMessages.strength)}
@@ -176,11 +176,11 @@ const SinglePlayer = () => {
               color: "text.primary",
               fontFamily: (theme) =>
                 `Munchkin, ${String(theme.typography.fontFamily)}`,
-              fontSize: "36px",
+              fontSize: "2.25rem",
             },
             {
               "@media (orientation: portrait)": {
-                fontSize: "72px" /* 36px * 2 */,
+                fontSize: "4.5rem" /* 36px * 2 */,
                 lineHeight: (theme) =>
                   (theme.typography.body2.lineHeight as number) /
                   2 /* 1.43 / 2 */,
@@ -196,7 +196,7 @@ const SinglePlayer = () => {
           onClick={onSexToggle}
           sx={[
             {
-              fontSize: "32px",
+              fontSize: "2rem",
             },
             {
               "@media (orientation: portrait)": {

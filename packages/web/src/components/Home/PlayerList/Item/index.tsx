@@ -151,26 +151,26 @@ const HomePlayerListItem = (props: HomePlayerListItemProps) => {
     id: playerId,
   });
 
+  const secondaryAction = editMode && (
+    <DragIconButton
+      component="span"
+      edge="end"
+      ref={setActivatorNodeRef}
+      sx={{
+        touchAction: "none",
+      }}
+      {...attributes}
+      {...listeners}
+    />
+  );
+
   return (
     <ListItem
       {...rest}
       data-screenshots="player-list-item"
       disablePadding
       ref={setNodeRef}
-      secondaryAction={
-        editMode && (
-          <DragIconButton
-            component="span"
-            edge="end"
-            ref={setActivatorNodeRef}
-            sx={{
-              touchAction: "none",
-            }}
-            {...attributes}
-            {...listeners}
-          />
-        )
-      }
+      secondaryAction={secondaryAction}
       style={{
         transform: CSS.Transform.toString(transform),
         transition,

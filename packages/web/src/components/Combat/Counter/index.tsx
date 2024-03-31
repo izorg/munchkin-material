@@ -15,14 +15,14 @@ import CounterLabel from "../../Counter/Label";
 
 const buttonSx: SxProps<Theme> = [
   {
-    fontSize: "36px",
+    fontSize: "2.25rem",
     padding: 0,
   },
   {
     "@media (orientation: landscape)": {
       fontSize: {
-        sm: "36px",
-        xs: "32px",
+        sm: "2.25rem",
+        xs: "2rem",
       },
     },
   },

@@ -62,7 +62,7 @@ const Counter: FC<CounterProps> = ({
     >
       <CounterLabel
         sx={{
-          fontSize: "24px",
+          fontSize: "1.5rem",
           textAlign: "center",
           width: "100%",
         }}
@@ -75,7 +75,7 @@ const Counter: FC<CounterProps> = ({
           color: "text.primary",
           fontFamily: (theme: Theme) =>
             `Munchkin, ${String(theme.typography.fontFamily)}`,
-          fontSize: "36px",
+          fontSize: "2.25rem",
         }}
       >
         {value}
@@ -94,7 +94,7 @@ const Counter: FC<CounterProps> = ({
           disabled={decrementDisabled}
           onClick={onDecrement}
           sx={{
-            fontSize: "48px",
+            fontSize: "3rem",
             padding: 0,
           }}
         >
@@ -112,7 +112,7 @@ const Counter: FC<CounterProps> = ({
           disabled={incrementDisabled}
           onClick={onIncrement}
           sx={{
-            fontSize: "48px",
+            fontSize: "3rem",
             padding: 0,
           }}
         >

@@ -145,7 +145,7 @@ const PlayerStats: FC<PlayerStatsProps> = ({ playerId, sx = [] }) => {
         >
           <CounterLabel
             sx={{
-              fontSize: "24px",
+              fontSize: "1.5rem",
             }}
           >
             {intl.formatMessage(counterMessages.strength)}
@@ -156,13 +156,13 @@ const PlayerStats: FC<PlayerStatsProps> = ({ playerId, sx = [] }) => {
               (theme) => ({
                 color: theme.palette.text.primary,
                 fontFamily: `Munchkin, ${theme.typography.fontFamily ?? ""}`,
-                fontSize: "36px",
+                fontSize: "2.25rem",
               }),
               {
                 "@media (orientation: portrait)": {
-                  fontSize: "72px" /* 36px * 2 */,
+                  fontSize: "4.5rem" /* 36px * 2 */,
                   lineHeight: lineHeight /* 1.43 / 2 */,
-                  marginTop: "32px",
+                  marginTop: "2.25rem",
                 },
               },
             ]}
@@ -174,7 +174,7 @@ const PlayerStats: FC<PlayerStatsProps> = ({ playerId, sx = [] }) => {
             onClick={onSexToggle}
             sx={[
               {
-                fontSize: "32px",
+                fontSize: "2.25rem",
                 padding: "8px",
               },
               {
