@@ -42,7 +42,11 @@ export const SliderItem: FC<SliderItemProps> = ({ playerId, sx = [] }) => {
         <Typography
           component="span"
           noWrap
-          sx={{ display: "block", marginBottom: 4, textAlign: "center" }}
+          sx={{
+            display: "block",
+            marginBottom: 4,
+            textAlign: "center",
+          }}
           variant="h5"
         >
           {name}
