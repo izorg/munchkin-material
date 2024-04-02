@@ -33,7 +33,7 @@ const UndoSnackbar = () => {
   return (
     <Snackbar
       action={
-        <Button color="secondary" onClick={(event) => onClose(event, "undo")}>
+        <Button onClick={(event) => onClose(event, "undo")}>
           <FormattedMessage defaultMessage="Undo" id="undo" />
         </Button>
       }
