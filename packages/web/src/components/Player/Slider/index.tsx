@@ -144,6 +144,8 @@ const PlayerSlider = ({ playerId, sx = [] }: PlayerSliderProps) => {
     >
       {sliderItems.map(([index, playerId]) => (
         <SliderItem
+          // @ts-expect-error https://github.com/facebook/react/issues/17157
+          inert={currentIndex === index ? undefined : ""}
           key={`${playerId}-${index}`}
           playerId={playerId}
           sx={{

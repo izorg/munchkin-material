@@ -1,4 +1,4 @@
-import { Box, type SxProps, Typography } from "@mui/material";
+import { Box, type BoxProps, Typography } from "@mui/material";
 import { type FC } from "react";
 
 import usePresentSelector from "../../../hooks/usePresentSelector";
@@ -6,12 +6,12 @@ import { type Player } from "../../../utils/types";
 
 import PlayerStats from "./Stats";
 
-type SliderItemProps = {
+type SliderItemProps = BoxProps & {
   playerId: Player["id"];
-  sx?: SxProps;
 };
 
-export const SliderItem: FC<SliderItemProps> = ({ playerId, sx = [] }) => {
+export const SliderItem: FC<SliderItemProps> = (props) => {
+  const { playerId, sx = [], ...rest } = props;
   const name = usePresentSelector((state) => state.players[playerId].name);
 
   return (
@@ -29,6 +29,7 @@ export const SliderItem: FC<SliderItemProps> = ({ playerId, sx = [] }) => {
         },
         ...(sx instanceof Array ? sx : [sx]),
       ]}
+      {...rest}
     >
       <Box
         sx={{
