@@ -23,7 +23,7 @@
     "@sentry/react": "7.109.0",
     "@types/cordova": "11.0.3",
     "@types/dom-screen-wake-lock": "1.0.3",
-    "@types/react": "18.2.73",
+    "@types/react": "18.2.74",
     "@types/react-dom": "18.2.23",
     "@types/smoothscroll-polyfill": "0.3.4",
     "abortcontroller-polyfill": "1.7.5",
