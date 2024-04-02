@@ -23,7 +23,7 @@
     "@next/bundle-analyzer": "14.1.4",
     "@next/third-parties": "14.1.4",
     "@sentry/nextjs": "7.109.0",
-    "@types/react": "18.2.73",
+    "@types/react": "18.2.74",
     "@types/react-dom": "18.2.23",
     "@types/stylis": "4.2.5",
     "core-js": "3.36.1",
