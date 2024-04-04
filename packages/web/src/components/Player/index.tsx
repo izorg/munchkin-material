@@ -29,19 +29,13 @@ const Player = () => {
           overflowY: "auto",
         }}
       >
-        <Box
+        <Slider
+          playerId={playerId}
           sx={{
             display: "flex",
             flex: "1 0 auto",
           }}
-        >
-          <Slider
-            playerId={playerId}
-            sx={{
-              width: "100%",
-            }}
-          />
-        </Box>
+        />
         {playerList.length > 1 && (
           <PlayerList
             sx={[

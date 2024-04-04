@@ -1,4 +1,11 @@
-import { Box, type SxProps, useTheme } from "@mui/material";
+import { mdiChevronLeft, mdiChevronRight } from "@mdi/js";
+import {
+  Box,
+  IconButton,
+  SvgIcon,
+  type SxProps,
+  useTheme,
+} from "@mui/material";
 import PropTypes from "prop-types";
 import {
   useCallback,
@@ -83,10 +90,7 @@ const PlayerSlider = ({ playerId, sx = [] }: PlayerSliderProps) => {
 
     if (element.scrollLeft === 0) {
       direction = -1;
-    } else if (
-      element.scrollLeft >=
-      element.offsetWidth * 2 * directionMultiplier
-    ) {
+    } else if (Math.abs(element.scrollLeft) >= element.offsetWidth * 2) {
       direction = 1;
     }
 
@@ -102,7 +106,7 @@ const PlayerSlider = ({ playerId, sx = [] }: PlayerSliderProps) => {
     navigate(`/player/${nextPlayerId}`, {
       replace: true,
     });
-  }, [currentIndex, directionMultiplier, getPlayerIndex, navigate, playerList]);
+  }, [currentIndex, getPlayerIndex, navigate, playerList]);
 
   useEffect(() => {
     const element = ref.current;
@@ -130,32 +134,100 @@ const PlayerSlider = ({ playerId, sx = [] }: PlayerSliderProps) => {
     ]);
   }, [currentIndex, getPlayerIndex, playerCount, playerList]);
 
+  const onPrevious = () => {
+    const element = ref.current;
+
+    if (element) {
+      element.scrollBy({
+        behavior: "smooth",
+        left: -element.offsetWidth * directionMultiplier,
+      });
+    }
+  };
+
+  const onNext = () => {
+    const element = ref.current;
+
+    if (element) {
+      element.scrollBy({
+        behavior: "smooth",
+        left: element.offsetWidth * directionMultiplier,
+      });
+    }
+  };
+
   return (
     <Box
-      ref={ref}
       sx={[
         {
-          display: "flex",
-          overflowX: "auto",
-          scrollSnapType: "x mandatory",
+          position: "relative",
         },
         ...(sx instanceof Array ? sx : [sx]),
       ]}
     >
-      {sliderItems.map(([index, playerId]) => (
-        <SliderItem
-          // @ts-expect-error https://github.com/facebook/react/issues/17157
-          inert={currentIndex === index ? undefined : ""}
-          key={`${playerId}-${index}`}
-          playerId={playerId}
-          sx={{
-            flexShrink: "0",
-            scrollSnapAlign: "center",
-            scrollSnapStop: "always",
+      <Box
+        ref={ref}
+        sx={[
+          {
+            display: "flex",
+            overflowX: "auto",
+            scrollbarWidth: "none",
+            scrollSnapType: "x mandatory",
             width: "100%",
-          }}
-        />
-      ))}
+          },
+        ]}
+      >
+        {sliderItems.map(([index, playerId]) => (
+          <SliderItem
+            // @ts-expect-error https://github.com/facebook/react/issues/17157
+            inert={currentIndex === index ? undefined : ""}
+            key={`${playerId}-${index}`}
+            playerId={playerId}
+            sx={{
+              flexShrink: "0",
+              scrollSnapAlign: "center",
+              scrollSnapStop: "always",
+              width: "100%",
+            }}
+          />
+        ))}
+      </Box>
+      <IconButton
+        onClick={onPrevious}
+        size="large"
+        sx={(theme) => ({
+          display: {
+            sm: "inline-flex",
+            xs: "none",
+          },
+          left: `${theme.spacing(2)}`,
+          position: "absolute",
+          top: "50%",
+          transform: "translateY(-50%)",
+        })}
+      >
+        <SvgIcon>
+          <path d={rtl ? mdiChevronRight : mdiChevronLeft} />
+        </SvgIcon>
+      </IconButton>
+      <IconButton
+        onClick={onNext}
+        size="large"
+        sx={(theme) => ({
+          display: {
+            sm: "inline-flex",
+            xs: "none",
+          },
+          position: "absolute",
+          right: `${theme.spacing(2)}`,
+          top: "50%",
+          transform: "translateY(-50%)",
+        })}
+      >
+        <SvgIcon>
+          <path d={rtl ? mdiChevronLeft : mdiChevronRight} />
+        </SvgIcon>
+      </IconButton>
     </Box>
   );
 };
