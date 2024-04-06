@@ -1,7 +1,7 @@
 import { createReducer, isAnyOf } from "@reduxjs/toolkit";
 
 import { type Monster } from "../../utils/types";
-import { startCombat } from "../combat";
+import { startCombat } from "../combat/actions";
 
 import {
   addMonster,

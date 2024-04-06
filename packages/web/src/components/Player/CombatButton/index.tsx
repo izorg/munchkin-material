@@ -3,10 +3,10 @@ import { type FabProps, SvgIcon } from "@mui/material";
 import { type FC } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { startCombat } from "../../../ducks/combat";
+import { startCombat } from "../../../ducks/combat/actions";
+import { usePlayerId } from "../../../hooks/usePlayerId";
 import usePresentSelector from "../../../hooks/usePresentSelector";
 import { useAppDispatch } from "../../../store";
-import { usePlayerId } from "../../PlayerView";
 import ScreenFab from "../../ScreenFab";
 
 type CombatButtonProps = FabProps;

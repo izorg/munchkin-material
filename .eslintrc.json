@@ -71,6 +71,7 @@
     "jsx-a11y/no-autofocus": ["error", { "ignoreNonDOM": true }],
     "import/consistent-type-specifier-style": ["error", "prefer-inline"],
     "import/namespace": ["error", { "allowComputed": true }],
+    "import/no-cycle": "error",
     "perfectionist/sort-imports": [
       "error",
       {

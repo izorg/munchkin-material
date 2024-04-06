@@ -3,7 +3,7 @@ import { Badge, ListItem, ListItemIcon, SvgIcon, Switch } from "@mui/material";
 import { captureException } from "@sentry/react";
 import { FormattedMessage } from "react-intl";
 
-import { startCombat } from "../../../ducks/combat";
+import { startCombat } from "../../../ducks/combat/actions";
 import { addPlayer } from "../../../ducks/players";
 import { setSingleMode, setSingleModePlayer } from "../../../ducks/settings";
 import usePresentSelector from "../../../hooks/usePresentSelector";

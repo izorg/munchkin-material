@@ -2,7 +2,7 @@ import { Box, IconButton } from "@mui/material";
 import { useCallback } from "react";
 import { useIntl } from "react-intl";
 
-import { setCombatPlayerBonus } from "../../../ducks/combat";
+import { setCombatPlayerBonus } from "../../../ducks/combat/actions";
 import {
   decrementPlayerGear,
   decrementPlayerLevel,

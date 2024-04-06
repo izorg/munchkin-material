@@ -1,8 +1,8 @@
 import { Box } from "@mui/material";
 import { Navigate } from "react-router-dom";
 
+import { usePlayerId } from "../../hooks/usePlayerId";
 import usePresentSelector from "../../hooks/usePresentSelector";
-import { usePlayerId } from "../PlayerView";
 
 import AppBar from "./AppBar";
 import CombatButton from "./CombatButton";

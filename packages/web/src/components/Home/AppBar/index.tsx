@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { type FC, type ReactElement, type ReactNode } from "react";
 import { FormattedMessage } from "react-intl";
 
-import { setCombatPlayerBonus } from "../../../ducks/combat";
+import { setCombatPlayerBonus } from "../../../ducks/combat/actions";
 import useDeletePlayers from "../../../hooks/useDeletePlayers";
 import useEditMode from "../../../hooks/useEditMode";
 import useMultiMode from "../../../hooks/useMultiMode";

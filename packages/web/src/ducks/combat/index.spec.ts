@@ -5,14 +5,15 @@ import createMonster from "../../utils/createMonster";
 import { addMonster, removeMonster } from "../monsters";
 import { removePlayers } from "../players";
 
-import reducer, {
+import {
   finishCombat,
-  initialState,
   setCombatHelper,
   setCombatHelperBonus,
   setCombatPlayerBonus,
   startCombat,
-} from "./index";
+} from "./actions";
+
+import reducer, { initialState } from "./index";
 
 describe("Combat reducer", () => {
   test("adds monster", () => {

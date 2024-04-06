@@ -14,7 +14,10 @@ import {
 import PropTypes from "prop-types";
 import { type FC, memo, useEffect, useRef } from "react";
 
-import { setCombatHelper, setCombatHelperBonus } from "../../../ducks/combat";
+import {
+  setCombatHelper,
+  setCombatHelperBonus,
+} from "../../../ducks/combat/actions";
 import { useAppDispatch } from "../../../store";
 
 import Player from "./Player";

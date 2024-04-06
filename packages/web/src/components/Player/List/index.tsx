@@ -1,7 +1,7 @@
 import { List, type ListProps, Paper } from "@mui/material";
 
+import { usePlayerId } from "../../../hooks/usePlayerId";
 import usePresentSelector from "../../../hooks/usePresentSelector";
-import { usePlayerId } from "../../PlayerView";
 
 import Item from "./Item";
 

@@ -6,7 +6,7 @@ import { useIntl } from "react-intl";
 import {
   setCombatHelperBonus,
   setCombatPlayerBonus,
-} from "../../../../ducks/combat";
+} from "../../../../ducks/combat/actions";
 import {
   decrementPlayerGear,
   decrementPlayerLevel,

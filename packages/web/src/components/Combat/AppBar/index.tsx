@@ -3,7 +3,7 @@ import { SvgIcon } from "@mui/material";
 import { useCallback } from "react";
 import { FormattedMessage } from "react-intl";
 
-import { finishCombat } from "../../../ducks/combat";
+import { finishCombat } from "../../../ducks/combat/actions";
 import { useAppDispatch } from "../../../store";
 import { useGoBack } from "../../../utils/location";
 import BackButton from "../../BackButton";

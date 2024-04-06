@@ -10,7 +10,7 @@ import { useMemo } from "react";
 import { FormattedMessage } from "react-intl";
 import { useSearchParams } from "react-router-dom";
 
-import { setCombatHelper } from "../../../ducks/combat";
+import { setCombatHelper } from "../../../ducks/combat/actions";
 import usePresentSelector from "../../../hooks/usePresentSelector";
 import { useAppDispatch } from "../../../store";
 import { useGoBack } from "../../../utils/location";
