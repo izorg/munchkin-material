@@ -236,40 +236,47 @@ const PlayerSlider = ({ playerId, sx = [] }: PlayerSliderProps) => {
           </SvgIcon>
         </IconButton>
       </Tooltip>
-      <IconButton
-        onClick={onNext}
-        size="large"
-        sx={[
-          (theme) => ({
-            display: {
-              sm: "inline-flex",
-              xs: "none",
-            },
-            position: "absolute",
-            right: `${theme.spacing(2)}`,
-            top: "50%",
-            transform: "translateY(-50%)",
-          }),
-          (theme) => ({
-            "@supports (padding: max(0px))": {
-              '[dir="ltr"] &': {
-                right: `max(${theme.spacing(
-                  2,
-                )}, env(safe-area-inset-right)) /*! @noflip */`,
-              },
-              '[dir="rtl"] &': {
-                left: `max(${theme.spacing(
-                  2,
-                )}, env(safe-area-inset-left)) /*! @noflip */`,
-              },
-            },
-          }),
-        ]}
+      <Tooltip
+        title={intl.formatMessage({
+          defaultMessage: "Next player",
+          id: "U8jwxJ",
+        })}
       >
-        <SvgIcon>
-          <path d={rtl ? mdiChevronLeft : mdiChevronRight} />
-        </SvgIcon>
-      </IconButton>
+        <IconButton
+          onClick={onNext}
+          size="large"
+          sx={[
+            (theme) => ({
+              display: {
+                sm: "inline-flex",
+                xs: "none",
+              },
+              position: "absolute",
+              right: `${theme.spacing(2)}`,
+              top: "50%",
+              transform: "translateY(-50%)",
+            }),
+            (theme) => ({
+              "@supports (padding: max(0px))": {
+                '[dir="ltr"] &': {
+                  right: `max(${theme.spacing(
+                    2,
+                  )}, env(safe-area-inset-right)) /*! @noflip */`,
+                },
+                '[dir="rtl"] &': {
+                  left: `max(${theme.spacing(
+                    2,
+                  )}, env(safe-area-inset-left)) /*! @noflip */`,
+                },
+              },
+            }),
+          ]}
+        >
+          <SvgIcon>
+            <path d={rtl ? mdiChevronLeft : mdiChevronRight} />
+          </SvgIcon>
+        </IconButton>
+      </Tooltip>
     </Box>
   );
 };
