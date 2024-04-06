@@ -55,7 +55,7 @@
   "themeDialog.light": "Licht",
   "themeDialog.pureBlack": "Puur zwart",
   "undo": "Ongedaan maken",
-  "undo.deletePlayers": "{count, plural, one {Player has been removed} other {Players have been removed}}",
+  "undo.deletePlayers": "{count, plural, one {Speler verwijderd} other {Spelers verwijderd}}",
   "undo.killPlayer": "{name} {sex, select, female{is gestorven} male{is gestorven} other {}}",
   "undo.resetPlayers": "Spelerslijst is opgekuist"
 }
