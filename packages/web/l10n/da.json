@@ -55,7 +55,7 @@
   "themeDialog.light": "Lyst",
   "themeDialog.pureBlack": "Ren Sort",
   "undo": "Fortryd",
-  "undo.deletePlayers": "{count, plural, one {Player has} other {Players have}} been removed",
+  "undo.deletePlayers": "{count, plural, one {Player has been removed} other {Players have been removed}}",
   "undo.killPlayer": "{name} {sex, select, female {er død} male {er død} other {}}",
   "undo.resetPlayers": "Spillere er blevet nulstillet"
 }
