@@ -4,6 +4,7 @@ import {
   IconButton,
   SvgIcon,
   type SxProps,
+  Tooltip,
   useTheme,
 } from "@mui/material";
 import PropTypes from "prop-types";
@@ -14,6 +15,7 @@ import {
   useMemo,
   useRef,
 } from "react";
+import { useIntl } from "react-intl";
 import { useNavigate } from "react-router-dom";
 
 import usePresentSelector from "../../../hooks/usePresentSelector";
@@ -26,6 +28,7 @@ type PlayerSliderProps = {
 };
 
 const PlayerSlider = ({ playerId, sx = [] }: PlayerSliderProps) => {
+  const intl = useIntl();
   const navigate = useNavigate();
   const theme = useTheme();
 
@@ -192,40 +195,47 @@ const PlayerSlider = ({ playerId, sx = [] }: PlayerSliderProps) => {
           />
         ))}
       </Box>
-      <IconButton
-        onClick={onPrevious}
-        size="large"
-        sx={[
-          (theme) => ({
-            display: {
-              sm: "inline-flex",
-              xs: "none",
-            },
-            left: `${theme.spacing(2)}`,
-            position: "absolute",
-            top: "50%",
-            transform: "translateY(-50%)",
-          }),
-          (theme) => ({
-            "@supports (padding: max(0px))": {
-              '[dir="ltr"] &': {
-                left: `max(${theme.spacing(
-                  2,
-                )}, env(safe-area-inset-left)) /*! @noflip */`,
-              },
-              '[dir="rtl"] &': {
-                right: `max(${theme.spacing(
-                  2,
-                )}, env(safe-area-inset-right)) /*! @noflip */`,
-              },
-            },
-          }),
-        ]}
+      <Tooltip
+        title={intl.formatMessage({
+          defaultMessage: "Previous player",
+          id: "VWJ5/Y",
+        })}
       >
-        <SvgIcon>
-          <path d={rtl ? mdiChevronRight : mdiChevronLeft} />
-        </SvgIcon>
-      </IconButton>
+        <IconButton
+          onClick={onPrevious}
+          size="large"
+          sx={[
+            (theme) => ({
+              display: {
+                sm: "inline-flex",
+                xs: "none",
+              },
+              left: `${theme.spacing(2)}`,
+              position: "absolute",
+              top: "50%",
+              transform: "translateY(-50%)",
+            }),
+            (theme) => ({
+              "@supports (padding: max(0px))": {
+                '[dir="ltr"] &': {
+                  left: `max(${theme.spacing(
+                    2,
+                  )}, env(safe-area-inset-left)) /*! @noflip */`,
+                },
+                '[dir="rtl"] &': {
+                  right: `max(${theme.spacing(
+                    2,
+                  )}, env(safe-area-inset-right)) /*! @noflip */`,
+                },
+              },
+            }),
+          ]}
+        >
+          <SvgIcon>
+            <path d={rtl ? mdiChevronRight : mdiChevronLeft} />
+          </SvgIcon>
+        </IconButton>
+      </Tooltip>
       <IconButton
         onClick={onNext}
         size="large"
