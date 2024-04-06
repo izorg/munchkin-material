@@ -55,7 +55,7 @@
   "themeDialog.light": "Hell",
   "themeDialog.pureBlack": "Reines Schwarz",
   "undo": "Rückgängig machen",
-  "undo.deletePlayers": "{count, plural, one {Player has} other {Players have}} been removed",
+  "undo.deletePlayers": "{count, plural, one {Player has been removed} other {Players have been removed}}",
   "undo.killPlayer": "{name} {sex, select, female {ist gestorben} male {ist gestorben} other {}}",
   "undo.resetPlayers": "Die Spieler wurden zurückgesetzt"
 }
