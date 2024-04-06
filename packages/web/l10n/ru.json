@@ -1,4 +1,5 @@
 {
+  "VWJ5/Y": "Previous player",
   "button.cancel": "Отменить",
   "button.submit": "OK",
   "colorPicker.dialog.title": "Выберите цвет",
@@ -54,7 +55,7 @@
   "themeDialog.light": "Светлая",
   "themeDialog.pureBlack": "Натуральный чёрный",
   "undo": "Отменить",
-  "undo.deletePlayers": "{count, plural, one {Игрок удалён} other {Игроки удалены}}",
+  "undo.deletePlayers": "{count, plural, one {Player has} other {Players have}} been removed",
   "undo.killPlayer": "{name} {sex, select, female {умерла} male {умер} other {}}",
   "undo.resetPlayers": "Игроки были сброшены"
 }
