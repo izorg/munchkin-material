@@ -55,7 +55,7 @@
   "themeDialog.light": "Svetlý",
   "themeDialog.pureBlack": "Prirodzená čierna",
   "undo": "Späť",
-  "undo.deletePlayers": "{count, plural, one {Player has been removed} other {Players have been removed}}",
+  "undo.deletePlayers": "{count, plural, one {Hráč bol odstránený} other {Hráči boli odstránení}}",
   "undo.killPlayer": "{name} {sex, select, female{zomrela} male{zomrel} other {}}",
   "undo.resetPlayers": "Hráči boli resetovaní"
 }
