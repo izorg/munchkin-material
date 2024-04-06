@@ -6,7 +6,7 @@ export type OldThemeState = Omit<ThemeState, "mode"> & {
   type: ThemeState["mode"];
 };
 
-export default (state: {
+const migrateThemeMode = (state: {
   theme: OldThemeState | ThemeState;
 }): { theme: ThemeState } => {
   const { theme } = state;
@@ -27,3 +27,5 @@ export default (state: {
 
   return state;
 };
+
+export default migrateThemeMode;

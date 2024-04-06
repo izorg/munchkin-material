@@ -5,7 +5,7 @@ import { colors } from "@mui/material";
 import availableColors from "../../../utils/availableColors";
 import { type Player } from "../../../utils/types";
 
-export default (state: { players: Record<string, Player> }) => {
+const migrateColors = (state: { players: Record<string, Player> }) => {
   state.players = Object.fromEntries(
     Object.entries(state.players).map(([id, player]) => {
       const color = availableColors.find(
@@ -30,3 +30,5 @@ export default (state: { players: Record<string, Player> }) => {
 
   return state;
 };
+
+export default migrateColors;

@@ -3,7 +3,7 @@
 const fs = require("node:fs");
 const path = require("node:path");
 
-module.exports = async (ctx) => {
+const copyGradleExtras = async (ctx) => {
   const { projectRoot } = ctx.opts;
 
   await fs.promises.copyFile(
@@ -11,3 +11,5 @@ module.exports = async (ctx) => {
     path.join(projectRoot, "platforms/android/app/build-extras.gradle"),
   );
 };
+
+module.exports = copyGradleExtras;
