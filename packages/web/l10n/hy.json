@@ -55,7 +55,7 @@
   "themeDialog.light": "Բաց",
   "themeDialog.pureBlack": "Մաքուր սև",
   "undo": "Ետ գնալ",
-  "undo.deletePlayers": "{count, plural, one {Player has} other {Players have}} been removed",
+  "undo.deletePlayers": "{count, plural, one {Player has been removed} other {Players have been removed}}",
   "undo.killPlayer": "{name} {sex, select, female {ն մահացավ} male {ն մահացավ} other {}}",
   "undo.resetPlayers": "Խաղացողները վերականգնվեցին"
 }
