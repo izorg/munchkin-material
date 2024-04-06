@@ -55,7 +55,7 @@
   "themeDialog.light": "Claro",
   "themeDialog.pureBlack": "Muy oscuro",
   "undo": "Deshacer",
-  "undo.deletePlayers": "{count, plural, one {Player has} other {Players have}} been removed",
+  "undo.deletePlayers": "{count, plural, one {Player has been removed} other {Players have been removed}}",
   "undo.killPlayer": "{name} {sex, select, female {ha muerto} male {ha muerto} other {}}",
   "undo.resetPlayers": "Los jugadores han sido restablecidos"
 }
