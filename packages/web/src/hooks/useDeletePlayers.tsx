@@ -16,7 +16,7 @@ const useDeletePlayers = (): ((players: string[]) => void) => {
       setMessage(
         // eslint-disable-next-line formatjs/enforce-id
         <FormattedMessage
-          defaultMessage="{count, plural, one {Player has} other {Players have}} been removed"
+          defaultMessage="{count, plural, one {Player has been removed} other {Players have been removed}}"
           id="undo.deletePlayers"
           values={{
             count: players.length,
