@@ -55,7 +55,7 @@
   "themeDialog.light": "Φως",
   "themeDialog.pureBlack": "Καθαρό μαύρο",
   "undo": "Αναίρεση",
-  "undo.deletePlayers": "{count, plural, one {Player has} other {Players have}} been removed",
+  "undo.deletePlayers": "{count, plural, one {Player has been removed} other {Players have been removed}}",
   "undo.killPlayer": "{name} {sex, select, female {έχει πεθάνει} male {έχει πεθάνει} other {}}",
   "undo.resetPlayers": "Οι παίκτες έχουν επαναφερθεί"
 }
