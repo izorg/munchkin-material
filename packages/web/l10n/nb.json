@@ -55,7 +55,7 @@
   "themeDialog.light": "Lyst",
   "themeDialog.pureBlack": "Ren svart",
   "undo": "Angre",
-  "undo.deletePlayers": "{count, plural, one {Player has been removed} other {Players have been removed}}",
+  "undo.deletePlayers": "{count, plural, one {Spilleren er fjernet} other {Spillere fjernet}}",
   "undo.killPlayer": "{name} {sex, select, female{har dødd} male{har dødd} other {}}",
   "undo.resetPlayers": "Spillere er tilbakestilt"
 }
