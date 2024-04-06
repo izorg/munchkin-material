@@ -195,16 +195,32 @@ const PlayerSlider = ({ playerId, sx = [] }: PlayerSliderProps) => {
       <IconButton
         onClick={onPrevious}
         size="large"
-        sx={(theme) => ({
-          display: {
-            sm: "inline-flex",
-            xs: "none",
-          },
-          left: `${theme.spacing(2)}`,
-          position: "absolute",
-          top: "50%",
-          transform: "translateY(-50%)",
-        })}
+        sx={[
+          (theme) => ({
+            display: {
+              sm: "inline-flex",
+              xs: "none",
+            },
+            left: `${theme.spacing(2)}`,
+            position: "absolute",
+            top: "50%",
+            transform: "translateY(-50%)",
+          }),
+          (theme) => ({
+            "@supports (padding: max(0px))": {
+              '[dir="ltr"] &': {
+                left: `max(${theme.spacing(
+                  2,
+                )}, env(safe-area-inset-left)) /*! @noflip */`,
+              },
+              '[dir="rtl"] &': {
+                right: `max(${theme.spacing(
+                  2,
+                )}, env(safe-area-inset-right)) /*! @noflip */`,
+              },
+            },
+          }),
+        ]}
       >
         <SvgIcon>
           <path d={rtl ? mdiChevronRight : mdiChevronLeft} />
@@ -213,16 +229,32 @@ const PlayerSlider = ({ playerId, sx = [] }: PlayerSliderProps) => {
       <IconButton
         onClick={onNext}
         size="large"
-        sx={(theme) => ({
-          display: {
-            sm: "inline-flex",
-            xs: "none",
-          },
-          position: "absolute",
-          right: `${theme.spacing(2)}`,
-          top: "50%",
-          transform: "translateY(-50%)",
-        })}
+        sx={[
+          (theme) => ({
+            display: {
+              sm: "inline-flex",
+              xs: "none",
+            },
+            position: "absolute",
+            right: `${theme.spacing(2)}`,
+            top: "50%",
+            transform: "translateY(-50%)",
+          }),
+          (theme) => ({
+            "@supports (padding: max(0px))": {
+              '[dir="ltr"] &': {
+                right: `max(${theme.spacing(
+                  2,
+                )}, env(safe-area-inset-right)) /*! @noflip */`,
+              },
+              '[dir="rtl"] &': {
+                left: `max(${theme.spacing(
+                  2,
+                )}, env(safe-area-inset-left)) /*! @noflip */`,
+              },
+            },
+          }),
+        ]}
       >
         <SvgIcon>
           <path d={rtl ? mdiChevronLeft : mdiChevronRight} />
