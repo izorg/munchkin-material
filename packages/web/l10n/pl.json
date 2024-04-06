@@ -55,7 +55,7 @@
   "themeDialog.light": "Jasny",
   "themeDialog.pureBlack": "Czysta czerń",
   "undo": "Cofnij",
-  "undo.deletePlayers": "{count, plural, one {Player has} other {Players have}} been removed",
+  "undo.deletePlayers": "{count, plural, one {Player has been removed} other {Players have been removed}}",
   "undo.killPlayer": "{name} {sex, select, female {umarła} male {umarł} other {}}",
   "undo.resetPlayers": "Gracze zostali zresetowani"
 }
