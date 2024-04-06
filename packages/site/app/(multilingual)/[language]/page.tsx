@@ -91,7 +91,7 @@ const Page = async (props: PageProps) => {
           </Button>
           <Button
             color="inherit"
-            component={NextLink} // eslint-disable-line @typescript-eslint/no-unsafe-assignment
+            component={NextLink}
             disabled={locale === "ru"}
             href="/ru"
             size="small"
