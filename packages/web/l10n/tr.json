@@ -55,7 +55,7 @@
   "themeDialog.light": "Açık",
   "themeDialog.pureBlack": "Doğal siyah",
   "undo": "Geri al",
-  "undo.deletePlayers": "{count, plural, one {Player has been removed} other {Players have been removed}}",
+  "undo.deletePlayers": "{count, plural, one {Oyuncu kaldırıldı} other {Kaldırılan oyuncular}}",
   "undo.killPlayer": "{name} {sex, select, female{ölen} male{ölen} other {}}",
   "undo.resetPlayers": "Oyuncular resetlendi"
 }
