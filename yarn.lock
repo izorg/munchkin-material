@@ -3342,7 +3342,7 @@ __metadata:
     abortcontroller-polyfill: "npm:1.7.5"
     cordova: "npm:12.0.0"
     cordova-android: "npm:12.0.1"
-    cordova-ios: "npm:7.0.1"
+    cordova-ios: "npm:7.1.0"
     cordova-plugin-buildinfo: "npm:4.0.0"
     cordova-plugin-firebase-analytics: "npm:8.0.0"
     cordova-plugin-firebase-crash: "npm:8.0.2"
@@ -8360,22 +8360,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cordova-ios@npm:7.0.1":
-  version: 7.0.1
-  resolution: "cordova-ios@npm:7.0.1"
+"cordova-ios@npm:7.1.0":
+  version: 7.1.0
+  resolution: "cordova-ios@npm:7.1.0"
   dependencies:
     cordova-common: "npm:^5.0.0"
+    elementtree: "npm:^0.1.7"
     execa: "npm:^5.1.1"
-    fs-extra: "npm:^11.1.1"
     ios-sim: "npm:^8.0.2"
-    nopt: "npm:^7.1.0"
     plist: "npm:^3.0.6"
     semver: "npm:^7.4.0"
-    unorm: "npm:^1.6.0"
-    which: "npm:^3.0.0"
+    which: "npm:^4.0.0"
     xcode: "npm:^3.0.1"
     xml-escape: "npm:^1.1.0"
-  checksum: 10/537c7300177e53b3554eb38fee6d1560aa106fe12a725f58ed82a7b016c0c7b56aa0d4fbd305246124c13640bc87b2a175271f8a3a88db3c1f0e71574d0fa198
+  checksum: 10/1d2143c4553376d0321b24dc59e311f8f5e964941584893df6bc4812e93a9e9b28c254f6af7050e108295c92414e5333cf69607645a54651b9910b9a4749e9bb
   languageName: node
   linkType: hard
 
@@ -19383,13 +19381,6 @@ __metadata:
   version: 2.0.1
   resolution: "universalify@npm:2.0.1"
   checksum: 10/ecd8469fe0db28e7de9e5289d32bd1b6ba8f7183db34f3bfc4ca53c49891c2d6aa05f3fb3936a81285a905cc509fb641a0c3fc131ec786167eff41236ae32e60
-  languageName: node
-  linkType: hard
-
-"unorm@npm:^1.6.0":
-  version: 1.6.0
-  resolution: "unorm@npm:1.6.0"
-  checksum: 10/af09a4c656830173571a547605a185916eb5ee2a684374282edf318ef54882f9b25d00bfd44591b686a292d8130e083755a3317eca62753d56e18616e98e501b
   languageName: node
   linkType: hard
 
