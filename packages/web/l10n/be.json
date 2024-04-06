@@ -55,7 +55,7 @@
   "themeDialog.light": "Светлая",
   "themeDialog.pureBlack": "Цалкам чорны",
   "undo": "Адмяніць",
-  "undo.deletePlayers": "{count, plural, one {Player has} other {Players have}} been removed",
+  "undo.deletePlayers": "{count, plural, one {Player has been removed} other {Players have been removed}}",
   "undo.killPlayer": "{name} {sex, select, female {памерла} male {памёр} other {}}",
   "undo.resetPlayers": "Гульцы былі скінуты"
 }
