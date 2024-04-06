@@ -55,7 +55,7 @@
   "themeDialog.light": "Claro",
   "themeDialog.pureBlack": "Preto puro",
   "undo": "Desfazer",
-  "undo.deletePlayers": "{count, plural, one {Player has} other {Players have}} been removed",
+  "undo.deletePlayers": "{count, plural, one {Player has been removed} other {Players have been removed}}",
   "undo.killPlayer": "{name} {sex, select, female{morreu} male{morreu} other {}}",
   "undo.resetPlayers": "Os jogadores foram redefinidos"
 }
