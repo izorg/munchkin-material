@@ -3324,7 +3324,7 @@ __metadata:
     "@types/cordova": "npm:11.0.3"
     "@types/dom-screen-wake-lock": "npm:1.0.3"
     "@types/react": "npm:18.2.74"
-    "@types/react-dom": "npm:18.2.23"
+    "@types/react-dom": "npm:18.2.24"
     "@types/smoothscroll-polyfill": "npm:0.3.4"
     abortcontroller-polyfill: "npm:1.7.5"
     cordova: "npm:12.0.0"
@@ -3369,7 +3369,7 @@ __metadata:
     "@next/third-parties": "npm:14.1.4"
     "@sentry/nextjs": "npm:7.109.0"
     "@types/react": "npm:18.2.74"
-    "@types/react-dom": "npm:18.2.23"
+    "@types/react-dom": "npm:18.2.24"
     "@types/stylis": "npm:4.2.5"
     core-js: "npm:3.36.1"
     eslint: "npm:8.57.0"
@@ -3409,7 +3409,7 @@ __metadata:
     "@sentry/react": "npm:7.109.0"
     "@types/dom-screen-wake-lock": "npm:1.0.3"
     "@types/react": "npm:18.2.74"
-    "@types/react-dom": "npm:18.2.23"
+    "@types/react-dom": "npm:18.2.24"
     "@types/stylis": "npm:4.2.5"
     "@types/uuid": "npm:9.0.8"
     core-js: "npm:3.36.1"
@@ -6157,12 +6157,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-dom@npm:18.2.23":
-  version: 18.2.23
-  resolution: "@types/react-dom@npm:18.2.23"
+"@types/react-dom@npm:18.2.24":
+  version: 18.2.24
+  resolution: "@types/react-dom@npm:18.2.24"
   dependencies:
     "@types/react": "npm:*"
-  checksum: 10/8311c67767b0aafb5cd94176a90f801f0f5f6930731d57caaa04bb0d87fdef6bc6f723a116d9777d2082ec022682acaad7a62d04dc27e330e818cf34f2ef2703
+  checksum: 10/bbd4005f2f65b7606505e9b8759b6e99e222d503602765594ea327893fb7061de8951279baef47a1932f04d94d1865daea05a32f9fcf6f9f1143dbabce5b33de
   languageName: node
   linkType: hard
 
