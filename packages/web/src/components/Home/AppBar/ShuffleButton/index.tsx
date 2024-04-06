@@ -12,10 +12,13 @@ const ShuffleButton = (props: IconButtonProps) => {
 
   return (
     <Tooltip
-      title={intl.formatMessage({
-        defaultMessage: "Shuffle players",
-        id: "player.list.shuffle",
-      })}
+      title={
+        // eslint-disable-next-line formatjs/enforce-id
+        intl.formatMessage({
+          defaultMessage: "Shuffle players",
+          id: "player.list.shuffle",
+        })
+      }
     >
       <TopIconButton onClick={() => dispatch(shufflePlayers())} {...props}>
         <SvgIcon>

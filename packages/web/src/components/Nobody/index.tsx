@@ -31,6 +31,7 @@ const Nobody: FC<NobodyProps> = ({ sx = [] }) => (
       <path d={mdiAccountCircle} />
     </SvgIcon>
     <Typography component="span" variant="subtitle1">
+      {/* eslint-disable-next-line formatjs/enforce-id */}
       <FormattedMessage
         defaultMessage="No players in the list"
         id="player.list.empty"

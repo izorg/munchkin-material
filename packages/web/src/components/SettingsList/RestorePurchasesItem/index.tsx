@@ -23,6 +23,7 @@ const RestorePurchasesItem = () => {
         </ListItemIcon>
         <ListItemText
           primary={
+            // eslint-disable-next-line formatjs/enforce-id
             <FormattedMessage
               defaultMessage="Restore purchases"
               id="menu.restorePurchases"

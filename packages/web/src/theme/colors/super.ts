@@ -4,6 +4,7 @@ import { defineMessage } from "react-intl";
 
 export const key = "super";
 
+// eslint-disable-next-line formatjs/enforce-id
 export const name = defineMessage({
   defaultMessage: "Super",
   id: "theme.name.super",

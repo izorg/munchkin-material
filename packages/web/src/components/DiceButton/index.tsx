@@ -25,6 +25,7 @@ const DiceIconButton = (props: Omit<IconButtonProps, "onClick">) => {
 
   return (
     <Tooltip
+      // eslint-disable-next-line formatjs/enforce-id
       title={intl.formatMessage({
         defaultMessage: "Dice",
         id: "dice",

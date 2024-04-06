@@ -72,6 +72,7 @@ const SingleModeItem = () => {
         </ListItemIcon>
         <ListItemText
           primary={
+            // eslint-disable-next-line formatjs/enforce-id
             <FormattedMessage
               defaultMessage="Single mode"
               id="menu.singleMode"

@@ -18,6 +18,7 @@ const EditButton: FC<IconButtonProps> = (props) => {
     [editMode, goBack, setEditMode],
   );
 
+  // eslint-disable-next-line formatjs/enforce-id
   const editTitle = intl.formatMessage({
     defaultMessage: "Edit",
     id: "player.list.edit",

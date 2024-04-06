@@ -4,6 +4,7 @@ import { defineMessage } from "react-intl";
 
 export const key = "cthulhu";
 
+// eslint-disable-next-line formatjs/enforce-id
 export const name = defineMessage({
   defaultMessage: "Cthulhu",
   id: "theme.name.cthulhu",

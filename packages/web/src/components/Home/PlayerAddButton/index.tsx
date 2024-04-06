@@ -21,10 +21,13 @@ const PlayerAddButton = forwardRef<HTMLButtonElement, FabProps>(
 
     return (
       <ScreenFab
-        aria-label={intl.formatMessage({
-          defaultMessage: "Add",
-          id: "mainButton.label",
-        })}
+        aria-label={
+          // eslint-disable-next-line formatjs/enforce-id
+          intl.formatMessage({
+            defaultMessage: "Add",
+            id: "mainButton.label",
+          })
+        }
         onClick={onClick}
         ref={ref}
         {...props}

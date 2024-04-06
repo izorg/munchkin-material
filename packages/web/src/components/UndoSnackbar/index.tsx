@@ -34,6 +34,7 @@ const UndoSnackbar = () => {
     <Snackbar
       action={
         <Button onClick={(event) => onClose(event, "undo")}>
+          {/* eslint-disable-next-line formatjs/enforce-id */}
           <FormattedMessage defaultMessage="Undo" id="undo" />
         </Button>
       }

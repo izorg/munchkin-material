@@ -68,6 +68,12 @@
   "plugins": ["formatjs", "only-error"],
   "root": true,
   "rules": {
+    "formatjs/enforce-id": [
+      "error",
+      {
+        "idInterpolationPattern": "[sha512:contenthash:base64:6]"
+      }
+    ],
     "formatjs/no-invalid-icu": "error",
     "jsx-a11y/no-autofocus": ["error", { "ignoreNonDOM": true }],
     "import/consistent-type-specifier-style": ["error", "prefer-inline"],

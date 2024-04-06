@@ -20,6 +20,7 @@ const PrivacyItem = () => (
       </ListItemIcon>
       <ListItemText
         primary={
+          // eslint-disable-next-line formatjs/enforce-id
           <FormattedMessage
             defaultMessage="Privacy Policy"
             id="menu.privacyPolicy"

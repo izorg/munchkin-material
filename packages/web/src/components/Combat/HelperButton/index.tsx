@@ -122,6 +122,7 @@ const CombatHelperButton = () => {
             onBack();
           }}
           tooltipTitle={
+            // eslint-disable-next-line formatjs/enforce-id
             <FormattedMessage
               defaultMessage="Monster"
               id="combat.add.monster"
@@ -136,6 +137,7 @@ const CombatHelperButton = () => {
           }
           onClick={onHelperClick}
           tooltipTitle={
+            // eslint-disable-next-line formatjs/enforce-id
             <FormattedMessage defaultMessage="Helper" id="combat.add.helper" />
           }
         />

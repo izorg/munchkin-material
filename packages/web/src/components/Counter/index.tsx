@@ -10,6 +10,7 @@ import { defineMessages } from "react-intl";
 import Button from "./Button";
 import CounterLabel from "./Label";
 
+// eslint-disable-next-line formatjs/enforce-id
 export const counterMessages = defineMessages({
   gear: {
     defaultMessage: "Gear",

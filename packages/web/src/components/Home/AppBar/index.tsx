@@ -41,6 +41,7 @@ const HomeAppBar: FC<HomeAppBarProps> = (props) => {
   );
 
   let title: ReactNode = (
+    // eslint-disable-next-line formatjs/enforce-id
     <FormattedMessage defaultMessage="Munchkins" id="player.list.title" />
   );
 
@@ -50,6 +51,7 @@ const HomeAppBar: FC<HomeAppBarProps> = (props) => {
 
   if (singleMode) {
     title = (
+      // eslint-disable-next-line formatjs/enforce-id
       <FormattedMessage defaultMessage="Munchkin" id="home.single.title" />
     );
   }

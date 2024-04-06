@@ -4,6 +4,7 @@ import { defineMessage } from "react-intl";
 
 export const key = "munchkin";
 
+// eslint-disable-next-line formatjs/enforce-id
 export const name = defineMessage({
   defaultMessage: "Munchkin",
   id: "theme.name.munchkin",

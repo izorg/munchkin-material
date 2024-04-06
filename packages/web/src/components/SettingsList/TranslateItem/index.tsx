@@ -20,6 +20,7 @@ const TranslateItem = () => (
       </ListItemIcon>
       <ListItemText
         primary={
+          // eslint-disable-next-line formatjs/enforce-id
           <FormattedMessage defaultMessage="Translate" id="menu.translate" />
         }
       />

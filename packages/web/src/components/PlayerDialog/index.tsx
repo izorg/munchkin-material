@@ -127,11 +127,13 @@ const PlayerDialog = () => {
   };
 
   const title = editPlayer
-    ? intl.formatMessage({
+    ? // eslint-disable-next-line formatjs/enforce-id
+      intl.formatMessage({
         defaultMessage: "Edit munchkin",
         id: "player.form.titleEdit",
       })
-    : intl.formatMessage({
+    : // eslint-disable-next-line formatjs/enforce-id
+      intl.formatMessage({
         defaultMessage: "New munchkin",
         id: "player.form.title",
       });
@@ -194,10 +196,13 @@ const PlayerDialog = () => {
             autoFocus={!editPlayer}
             defaultValue={editPlayer?.name}
             fullWidth
-            label={intl.formatMessage({
-              defaultMessage: "Name",
-              id: "player.form.namePlaceholder",
-            })}
+            label={
+              // eslint-disable-next-line formatjs/enforce-id
+              intl.formatMessage({
+                defaultMessage: "Name",
+                id: "player.form.namePlaceholder",
+              })
+            }
             margin="normal"
             name="name"
           />
@@ -206,10 +211,13 @@ const PlayerDialog = () => {
             <Grid item xs={6}>
               <FormControl component="fieldset" margin="normal">
                 <FormLabel component="legend">
-                  {intl.formatMessage({
-                    defaultMessage: "Sex",
-                    id: "player.form.sex",
-                  })}
+                  {
+                    // eslint-disable-next-line formatjs/enforce-id
+                    intl.formatMessage({
+                      defaultMessage: "Sex",
+                      id: "player.form.sex",
+                    })
+                  }
                 </FormLabel>
                 <RadioGroup
                   defaultValue={editPlayer?.sex ?? Sex.Male}
@@ -240,10 +248,13 @@ const PlayerDialog = () => {
             <Grid item xs={6}>
               <FormControl margin="normal">
                 <FormLabel>
-                  {intl.formatMessage({
-                    defaultMessage: "Color",
-                    id: "player.form.color",
-                  })}
+                  {
+                    // eslint-disable-next-line formatjs/enforce-id
+                    intl.formatMessage({
+                      defaultMessage: "Color",
+                      id: "player.form.color",
+                    })
+                  }
                 </FormLabel>
                 <ColorPicker
                   defaultValue={editPlayer?.color ?? randomColor}
@@ -258,18 +269,24 @@ const PlayerDialog = () => {
         <DialogActions>
           {editPlayer && (
             <Button onClick={handleDelete} sx={{ marginRight: "auto" }}>
-              {intl.formatMessage({
-                defaultMessage: "Delete",
-                id: "player.form.delete",
-              })}
+              {
+                // eslint-disable-next-line formatjs/enforce-id
+                intl.formatMessage({
+                  defaultMessage: "Delete",
+                  id: "player.form.delete",
+                })
+              }
             </Button>
           )}
           <CancelButton onClick={goBack} />
           <SubmitButton form={formId}>
-            {intl.formatMessage({
-              defaultMessage: "Save",
-              id: "player.form.save",
-            })}
+            {
+              // eslint-disable-next-line formatjs/enforce-id
+              intl.formatMessage({
+                defaultMessage: "Save",
+                id: "player.form.save",
+              })
+            }
           </SubmitButton>
         </DialogActions>
       )}

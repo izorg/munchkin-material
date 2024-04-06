@@ -24,6 +24,7 @@ const KillPlayerButton: FC<IconButtonProps> = (props) => {
     const player = players[playerId];
 
     setMessage(
+      // eslint-disable-next-line formatjs/enforce-id
       intl.formatMessage(
         {
           defaultMessage:
@@ -53,10 +54,13 @@ const KillPlayerButton: FC<IconButtonProps> = (props) => {
 
   return (
     <Tooltip
-      title={intl.formatMessage({
-        defaultMessage: "Kill",
-        id: "kill",
-      })}
+      title={
+        // eslint-disable-next-line formatjs/enforce-id
+        intl.formatMessage({
+          defaultMessage: "Kill",
+          id: "kill",
+        })
+      }
     >
       {button}
     </Tooltip>

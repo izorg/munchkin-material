@@ -51,6 +51,7 @@ const ResetButton = (props: IconButtonProps) => {
         dispatch(ActionCreators.clearHistory());
       } else {
         setMessage(
+          // eslint-disable-next-line formatjs/enforce-id
           intl.formatMessage({
             defaultMessage: "Players have been reset",
             id: "undo.resetPlayers",
@@ -74,10 +75,13 @@ const ResetButton = (props: IconButtonProps) => {
 
   return (
     <Tooltip
-      title={intl.formatMessage({
-        defaultMessage: "Reset",
-        id: "player.list.reset",
-      })}
+      title={
+        // eslint-disable-next-line formatjs/enforce-id
+        intl.formatMessage({
+          defaultMessage: "Reset",
+          id: "player.list.reset",
+        })
+      }
     >
       {button}
     </Tooltip>

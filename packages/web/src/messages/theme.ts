@@ -1,5 +1,6 @@
 import { defineMessages } from "react-intl";
 
+// eslint-disable-next-line formatjs/enforce-id
 export default defineMessages({
   color: {
     defaultMessage: "Color",

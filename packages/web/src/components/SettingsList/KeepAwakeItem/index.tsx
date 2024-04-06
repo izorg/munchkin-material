@@ -29,6 +29,7 @@ const KeepAwakeItem = () => {
         </ListItemIcon>
         <ListItemText
           primary={
+            // eslint-disable-next-line formatjs/enforce-id
             <FormattedMessage defaultMessage="Keep awake" id="menu.keepAwake" />
           }
         />

@@ -30,6 +30,7 @@ const ColorPickerDialog: FC<ColorPickerDialogProps> = ({
 }) => (
   <Dialog onClose={onClose} {...props}>
     <DialogTitle>
+      {/* eslint-disable-next-line formatjs/enforce-id */}
       <FormattedMessage
         defaultMessage="Choose color"
         id="colorPicker.dialog.title"

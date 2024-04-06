@@ -17,6 +17,7 @@ const ShareItem = () => {
     return null;
   }
 
+  // eslint-disable-next-line formatjs/enforce-id
   const shareText = intl.formatMessage({
     defaultMessage: "Share",
     id: "menu.share",
@@ -25,6 +26,7 @@ const ShareItem = () => {
   const onClick = async () => {
     try {
       await navigator.share({
+        // eslint-disable-next-line formatjs/enforce-id
         text: intl.formatMessage({
           defaultMessage: "Simple but powerful Level Counter for Munchkin",
           id: "share.text",

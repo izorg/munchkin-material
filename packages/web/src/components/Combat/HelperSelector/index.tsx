@@ -44,6 +44,7 @@ const HelperSelector = () => {
   return (
     <Dialog onClose={goBack} open={open}>
       <DialogTitle>
+        {/* eslint-disable-next-line formatjs/enforce-id */}
         <FormattedMessage
           defaultMessage="Choose helper"
           id="combat.helperSelector.title"

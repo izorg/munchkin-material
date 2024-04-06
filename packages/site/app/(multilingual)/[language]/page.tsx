@@ -22,6 +22,7 @@ export const generateStaticParams = () =>
     language,
   }));
 
+// eslint-disable-next-line formatjs/enforce-id
 const messages = defineMessages({
   description: {
     defaultMessage: "Simple but powerful level counter for Munchkin",
@@ -58,6 +59,7 @@ export const generateMetadata = async ({
   const intl = await getServerIntl(localeByLanguage[language]);
 
   return {
+    // eslint-disable-next-line formatjs/enforce-id
     title: intl.formatMessage({
       id: "home.title",
     }),

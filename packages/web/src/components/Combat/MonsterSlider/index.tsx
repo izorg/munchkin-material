@@ -138,6 +138,7 @@ const CombatMonsterSlider: FC<BoxProps> = ({ sx = [], ...props }) => {
               <Monster
                 monsterId={id}
                 title={
+                  // eslint-disable-next-line formatjs/enforce-id
                   <FormattedMessage
                     defaultMessage="Monster {number}"
                     id="combat.monster"

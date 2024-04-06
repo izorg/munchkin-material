@@ -17,10 +17,13 @@ const SettingsDialog = () => {
       <TopAppBar>
         <BackButton onClick={goBack} />
         <Title>
-          {intl.formatMessage({
-            defaultMessage: "Settings",
-            id: "settings",
-          })}
+          {
+            // eslint-disable-next-line formatjs/enforce-id
+            intl.formatMessage({
+              defaultMessage: "Settings",
+              id: "settings",
+            })
+          }
         </Title>
       </TopAppBar>
       <SettingsList />

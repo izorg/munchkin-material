@@ -23,6 +23,7 @@ const RateItem = () => {
         </ListItemIcon>
         <ListItemText
           primary={
+            // eslint-disable-next-line formatjs/enforce-id
             <FormattedMessage defaultMessage="Rate the app" id="menu.rateApp" />
           }
         />

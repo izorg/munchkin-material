@@ -27,6 +27,7 @@ const CombatAppBar = () => {
       <BackButton data-screenshots="combat-back-button" onClick={goBack} />
 
       <Title>
+        {/* eslint-disable-next-line formatjs/enforce-id */}
         <FormattedMessage defaultMessage="Combat" id="combat" />
       </Title>
 

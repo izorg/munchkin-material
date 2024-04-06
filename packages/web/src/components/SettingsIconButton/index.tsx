@@ -12,10 +12,13 @@ const SettingsIconButton: FC<Omit<IconButtonProps, "children">> = (props) => {
 
   return (
     <Tooltip
-      title={intl.formatMessage({
-        defaultMessage: "Settings",
-        id: "settings",
-      })}
+      title={
+        // eslint-disable-next-line formatjs/enforce-id
+        intl.formatMessage({
+          defaultMessage: "Settings",
+          id: "settings",
+        })
+      }
     >
       <TopIconButton
         {...props}

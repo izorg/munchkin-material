@@ -114,6 +114,7 @@ const ThemeSchemeDialog = () => {
                 />
               }
               label={
+                // eslint-disable-next-line formatjs/enforce-id
                 <FormattedMessage
                   defaultMessage="Pure black"
                   id="themeDialog.pureBlack"
