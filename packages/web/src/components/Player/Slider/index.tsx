@@ -92,7 +92,8 @@ const PlayerSlider = ({ playerId, sx = [] }: PlayerSliderProps) => {
     const onScroll = () => {
       let direction = 0;
 
-      if (element.scrollLeft === 0) {
+      // Safari in some cases returns -1 (+1 for rtl) instead of 0
+      if (Math.abs(element.scrollLeft) <= 1) {
         direction = -1;
       } else if (Math.abs(element.scrollLeft) >= element.offsetWidth * 2) {
         direction = 1;
