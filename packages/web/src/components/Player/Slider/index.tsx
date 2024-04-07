@@ -82,35 +82,6 @@ const PlayerSlider = ({ playerId, sx = [] }: PlayerSliderProps) => {
     };
   }, [directionMultiplier, onWindowResize, playerCount, playerId]);
 
-  const onScrollEnd = useCallback(() => {
-    const element = ref.current;
-
-    if (!element) {
-      return;
-    }
-
-    let direction = 0;
-
-    if (element.scrollLeft === 0) {
-      direction = -1;
-    } else if (Math.abs(element.scrollLeft) >= element.offsetWidth * 2) {
-      direction = 1;
-    }
-
-    if (direction === 0) {
-      return;
-    }
-
-    const playerDirection = direction;
-
-    const nextPlayerId =
-      playerList[getPlayerIndex(currentIndex + playerDirection)];
-
-    navigate(`/player/${nextPlayerId}`, {
-      replace: true,
-    });
-  }, [currentIndex, getPlayerIndex, navigate, playerList]);
-
   useEffect(() => {
     const element = ref.current;
 
@@ -118,12 +89,48 @@ const PlayerSlider = ({ playerId, sx = [] }: PlayerSliderProps) => {
       return;
     }
 
-    element.addEventListener("scrollend", onScrollEnd, false);
+    const onScroll = () => {
+      let direction = 0;
+
+      if (element.scrollLeft === 0) {
+        direction = -1;
+      } else if (Math.abs(element.scrollLeft) >= element.offsetWidth * 2) {
+        direction = 1;
+      }
+
+      if (direction === 0) {
+        return;
+      }
+
+      const nextPlayerId = playerList[getPlayerIndex(currentIndex + direction)];
+
+      navigate(`/player/${nextPlayerId}`, {
+        replace: true,
+      });
+    };
+
+    let timeout: number | undefined;
+
+    const clearScrollTimeout = () => {
+      if (timeout) {
+        window.clearTimeout(timeout);
+
+        timeout = undefined;
+      }
+    };
+
+    const onDebouncedScroll = () => {
+      clearScrollTimeout();
+      timeout = window.setTimeout(onScroll, 100);
+    };
+
+    element.addEventListener("scroll", onDebouncedScroll, false);
 
     return () => {
-      element.removeEventListener("scrollend", onScrollEnd);
+      element.removeEventListener("scroll", onDebouncedScroll);
+      clearScrollTimeout();
     };
-  }, [onScrollEnd]);
+  }, [currentIndex, getPlayerIndex, navigate, playerList]);
 
   const sliderItems = useMemo(() => {
     const indexes =
@@ -173,10 +180,15 @@ const PlayerSlider = ({ playerId, sx = [] }: PlayerSliderProps) => {
         sx={[
           {
             display: "flex",
-            overflowX: "auto",
+            overflowX: "hidden",
             scrollbarWidth: "none",
-            scrollSnapType: "x mandatory",
             width: "100%",
+          },
+          {
+            "@supports (scroll-snap-type: x mandatory)": {
+              overflowX: "auto",
+              scrollSnapType: "x mandatory",
+            },
           },
         ]}
       >
@@ -195,88 +207,136 @@ const PlayerSlider = ({ playerId, sx = [] }: PlayerSliderProps) => {
           />
         ))}
       </Box>
-      <Tooltip
-        title={intl.formatMessage({
-          defaultMessage: "Previous player",
-          id: "VWJ5/Y",
-        })}
-      >
-        <IconButton
-          onClick={onPrevious}
-          size="large"
-          sx={[
-            (theme) => ({
-              display: {
-                sm: "inline-flex",
-                xs: "none",
-              },
-              left: `${theme.spacing(2)}`,
-              position: "absolute",
-              top: "50%",
-              transform: "translateY(-50%)",
-            }),
-            (theme) => ({
-              "@supports (padding: max(0px))": {
-                '[dir="ltr"] &': {
-                  left: `max(${theme.spacing(
-                    2,
-                  )}, env(safe-area-inset-left)) /*! @noflip */`,
+      {sliderItems.length > 1 && (
+        <>
+          <Tooltip
+            title={intl.formatMessage({
+              defaultMessage: "Previous player",
+              id: "VWJ5/Y",
+            })}
+          >
+            <IconButton
+              onClick={onPrevious}
+              size="large"
+              sx={[
+                (theme) => ({
+                  left: {
+                    sm: theme.spacing(2),
+                    xs: theme.spacing(1),
+                  },
+                  position: "absolute",
+                  top: `calc(50% - ${theme.spacing(8)})`,
+                  transform: "translateY(-50%)",
+                }),
+                {
+                  "@media (min-height: 720px)": {
+                    top: `calc(50% - ${theme.spacing(2)})`,
+                  },
                 },
-                '[dir="rtl"] &': {
-                  right: `max(${theme.spacing(
-                    2,
-                  )}, env(safe-area-inset-right)) /*! @noflip */`,
+                {
+                  "@supports (scroll-snap-type: x mandatory)": {
+                    display: {
+                      sm: "inline-flex",
+                      xs: "none",
+                    },
+                  },
                 },
-              },
-            }),
-          ]}
-        >
-          <SvgIcon>
-            <path d={rtl ? mdiChevronRight : mdiChevronLeft} />
-          </SvgIcon>
-        </IconButton>
-      </Tooltip>
-      <Tooltip
-        title={intl.formatMessage({
-          defaultMessage: "Next player",
-          id: "U8jwxJ",
-        })}
-      >
-        <IconButton
-          onClick={onNext}
-          size="large"
-          sx={[
-            (theme) => ({
-              display: {
-                sm: "inline-flex",
-                xs: "none",
-              },
-              position: "absolute",
-              right: `${theme.spacing(2)}`,
-              top: "50%",
-              transform: "translateY(-50%)",
-            }),
-            (theme) => ({
-              "@supports (padding: max(0px))": {
-                '[dir="ltr"] &': {
-                  right: `max(${theme.spacing(
-                    2,
-                  )}, env(safe-area-inset-right)) /*! @noflip */`,
+                (theme) => ({
+                  "@supports (padding: max(0px))": {
+                    '[dir="ltr"] &': {
+                      left: {
+                        sm: `max(${theme.spacing(
+                          2,
+                        )}, env(safe-area-inset-left)) /*! @noflip */`,
+                        xs: `max(${theme.spacing(
+                          1,
+                        )}, env(safe-area-inset-left)) /*! @noflip */`,
+                      },
+                    },
+                    '[dir="rtl"] &': {
+                      right: {
+                        sm: `max(${theme.spacing(
+                          2,
+                        )}, env(safe-area-inset-right)) /*! @noflip */`,
+                        xs: `max(${theme.spacing(
+                          1,
+                        )}, env(safe-area-inset-right)) /*! @noflip */`,
+                      },
+                    },
+                  },
+                }),
+              ]}
+            >
+              <SvgIcon>
+                <path d={rtl ? mdiChevronRight : mdiChevronLeft} />
+              </SvgIcon>
+            </IconButton>
+          </Tooltip>
+          <Tooltip
+            title={intl.formatMessage({
+              defaultMessage: "Next player",
+              id: "U8jwxJ",
+            })}
+          >
+            <IconButton
+              onClick={onNext}
+              size="large"
+              sx={[
+                (theme) => ({
+                  position: "absolute",
+                  right: {
+                    sm: theme.spacing(2),
+                    xs: theme.spacing(1),
+                  },
+                  top: `calc(50% - ${theme.spacing(8)})`,
+                  transform: "translateY(-50%)",
+                }),
+                {
+                  "@media (min-height: 720px)": {
+                    top: `calc(50% - ${theme.spacing(2)})`,
+                  },
                 },
-                '[dir="rtl"] &': {
-                  left: `max(${theme.spacing(
-                    2,
-                  )}, env(safe-area-inset-left)) /*! @noflip */`,
+                {
+                  "@supports (scroll-snap-type: x mandatory)": {
+                    display: {
+                      sm: "inline-flex",
+                      xs: "none",
+                    },
+                  },
                 },
-              },
-            }),
-          ]}
-        >
-          <SvgIcon>
-            <path d={rtl ? mdiChevronLeft : mdiChevronRight} />
-          </SvgIcon>
-        </IconButton>
-      </Tooltip>
+                (theme) => ({
+                  "@supports (padding: max(0px))": {
+                    '[dir="ltr"] &': {
+                      right: {
+                        sm: `max(${theme.spacing(
+                          2,
+                        )}, env(safe-area-inset-right)) /*! @noflip */`,
+                        xs: `max(${theme.spacing(
+                          1,
+                        )}, env(safe-area-inset-right)) /*! @noflip */`,
+                      },
+                    },
+                    '[dir="rtl"] &': {
+                      left: {
+                        sm: `max(${theme.spacing(
+                          2,
+                        )}, env(safe-area-inset-left)) /*! @noflip */`,
+                        xs: `max(${theme.spacing(
+                          1,
+                        )}, env(safe-area-inset-left)) /*! @noflip */`,
+                      },
+                    },
+                  },
+                }),
+              ]}
+            >
+              <SvgIcon>
+                <path d={rtl ? mdiChevronLeft : mdiChevronRight} />
+              </SvgIcon>
+            </IconButton>
+          </Tooltip>
+        </>
+      )}
     </Box>
   );
 };
