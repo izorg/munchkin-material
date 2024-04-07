@@ -1,5 +1,5 @@
 import { type CssVarsThemeOptions, type Direction } from "@mui/material";
-import { common } from "@mui/material/colors";
+import { common, orange } from "@mui/material/colors";
 import { deepmerge } from "@mui/utils";
 
 import { ios } from "../utils/platforms";
@@ -12,6 +12,23 @@ const getThemeOptions = ({
   pureBlack: boolean;
 }): CssVarsThemeOptions => {
   let theme: CssVarsThemeOptions = {
+    colorSchemes: {
+      dark: {
+        palette: {
+          secondary: {
+            main: orange.A400,
+          },
+        },
+      },
+      light: {
+        palette: {
+          secondary: {
+            main: orange.A400,
+          },
+        },
+      },
+    },
+
     components: {
       MuiIconButton: {
         defaultProps: {
