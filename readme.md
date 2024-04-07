@@ -1,19 +1,12 @@
-# Munchkin Material
+# Munchkin Level Counter
 
-Munchkin level counter inspired by Material Design
+Simple but powerful level counter for Munchkin
 
 ## Demo
 
 https://web.allmunchkins.com
 
-## Approach
+## App
 
-This web app is an example of how I work with the code. How I implement practices.
-How I work.
-
-### Input criteria
-
-- Client-side web app
-- LocalStorage as permanent storage
-- Redux store is the only source of truth
-- Service worker for static caching
+- [App Store](https://apps.apple.com/us/app/level-counter-for-card-games/id1448937097)
+- [Google Play](https://play.google.com/store/apps/details?id=com.izorg.munchkin)
