@@ -4000,17 +4000,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@octokit/plugin-paginate-rest@npm:^10.0.0":
-  version: 10.1.0
-  resolution: "@octokit/plugin-paginate-rest@npm:10.1.0"
-  dependencies:
-    "@octokit/types": "npm:^12.6.0"
-  peerDependencies:
-    "@octokit/core": ">=6"
-  checksum: 10/17adad3b5969ccbd271b5dd6fa613958d232852f03df02449a0dd22687de33a0c9fddb0c6052fbdf4b7a7052d008ab62a6d0c3a5f30b317a9691f2123378a427
-  languageName: node
-  linkType: hard
-
 "@octokit/plugin-paginate-rest@npm:^11.0.0":
   version: 11.0.0
   resolution: "@octokit/plugin-paginate-rest@npm:11.0.0"
@@ -4068,7 +4057,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@octokit/types@npm:^12.0.0, @octokit/types@npm:^12.6.0":
+"@octokit/types@npm:^12.0.0":
   version: 12.6.0
   resolution: "@octokit/types@npm:12.6.0"
   dependencies:
@@ -5244,7 +5233,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@semantic-release/github@npm:10.0.3":
+"@semantic-release/github@npm:10.0.3, @semantic-release/github@npm:^10.0.0":
   version: 10.0.3
   resolution: "@semantic-release/github@npm:10.0.3"
   dependencies:
@@ -5267,32 +5256,6 @@ __metadata:
   peerDependencies:
     semantic-release: ">=20.1.0"
   checksum: 10/071bfd8728c662e1ead316785d98478d817e995801b0abeb9f6302b67c33f503412e62d52887d39d6d16bac26ff96ec57d31223192f8069877114df20cdca05e
-  languageName: node
-  linkType: hard
-
-"@semantic-release/github@npm:^10.0.0":
-  version: 10.0.2
-  resolution: "@semantic-release/github@npm:10.0.2"
-  dependencies:
-    "@octokit/core": "npm:^6.0.0"
-    "@octokit/plugin-paginate-rest": "npm:^10.0.0"
-    "@octokit/plugin-retry": "npm:^7.0.0"
-    "@octokit/plugin-throttling": "npm:^9.0.0"
-    "@semantic-release/error": "npm:^4.0.0"
-    aggregate-error: "npm:^5.0.0"
-    debug: "npm:^4.3.4"
-    dir-glob: "npm:^3.0.1"
-    globby: "npm:^14.0.0"
-    http-proxy-agent: "npm:^7.0.0"
-    https-proxy-agent: "npm:^7.0.0"
-    issue-parser: "npm:^7.0.0"
-    lodash-es: "npm:^4.17.21"
-    mime: "npm:^4.0.0"
-    p-filter: "npm:^4.0.0"
-    url-join: "npm:^5.0.0"
-  peerDependencies:
-    semantic-release: ">=20.1.0"
-  checksum: 10/4e9e401205447b1f115f9e2db9213be6942ce6a82df94e687939165df599b9d39e95460a9419d3a368aed6a8639386da9b7277d6f50a116d08719ae02fdb28f1
   languageName: node
   linkType: hard
 
@@ -7479,11 +7442,11 @@ __metadata:
   linkType: hard
 
 "builtins@npm:^5.0.0":
-  version: 5.0.1
-  resolution: "builtins@npm:5.0.1"
+  version: 5.1.0
+  resolution: "builtins@npm:5.1.0"
   dependencies:
     semver: "npm:^7.0.0"
-  checksum: 10/90136fa0ba98b7a3aea33190b1262a5297164731efb6a323b0231acf60cc2ea0b2b1075dbf107038266b8b77d6045fa9631d1c3f90efc1c594ba61218fbfbb4c
+  checksum: 10/60aa9969f69656bf6eab82cd74b23ab805f112ae46a54b912bccc1533875760f2d2ce95e0a7d13144e35ada9f0386f17ed4961908bc9434b5a5e21375b1902b2
   languageName: node
   linkType: hard
 
