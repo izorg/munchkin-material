@@ -13,8 +13,10 @@
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+GoogleService-Info.plist
 coverage
 firebase-debug.log
+google-services.json
 node_modules
 parcel-bundle-reports
 tsconfig.tsbuildinfo
