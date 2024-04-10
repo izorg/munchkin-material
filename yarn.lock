@@ -3371,7 +3371,6 @@ __metadata:
     cordova-plugin-ionic-keyboard: "npm:2.2.0"
     cordova-plugin-localization-strings: "npm:5.0.5"
     cordova-plugin-purchase: "npm:13.10.1"
-    cordova-plugin-splashscreen: "npm:6.0.2"
     cordova-plugin-statusbar: "npm:4.0.0"
     cordova-plugin-vibration: "npm:3.1.1"
     core-js: "npm:3.36.1"
@@ -8448,13 +8447,6 @@ __metadata:
   version: 13.10.1
   resolution: "cordova-plugin-purchase@npm:13.10.1"
   checksum: 10/6b8a9fb3d9e0959f880a05a0b4312477fa9a497fc5b871a873389a9e8f2fc7a47aa8bf71d71fcf1a62352cb4fab23740724b76fe9d443211876a5d9805eb415a
-  languageName: node
-  linkType: hard
-
-"cordova-plugin-splashscreen@npm:6.0.2":
-  version: 6.0.2
-  resolution: "cordova-plugin-splashscreen@npm:6.0.2"
-  checksum: 10/0bae7c99f7e9c3115d3e5b0831885f713d864127821041dbd23ab181771ceaa35f5662f9b8951ad6c189b5acad52cdea6283e09867402286f8862dc4c1860455
   languageName: node
   linkType: hard
 

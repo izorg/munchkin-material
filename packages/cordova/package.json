@@ -38,7 +38,6 @@
     "cordova-plugin-ionic-keyboard": "2.2.0",
     "cordova-plugin-localization-strings": "5.0.5",
     "cordova-plugin-purchase": "13.10.1",
-    "cordova-plugin-splashscreen": "6.0.2",
     "cordova-plugin-statusbar": "4.0.0",
     "cordova-plugin-vibration": "3.1.1",
     "core-js": "3.36.1",
@@ -74,7 +73,6 @@
       "cordova-plugin-purchase": {
         "BILLING_KEY": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArcvLt8/a5hLIoVYkE33XUl+rAjc6QMMoaic69FPmxGe0eVRFfrnyzk3pdPSRD1Hiy/orAgVGnV3tPF1iJj0TXcUMCzSD8Ahvs3fEvN7jCwp4/v7dlWTxZ5Km7cVUEIL8SkOKt+uof8qkKal9t4N56DRF+jNmlUXf/2fNXASFRiQDfMloOORVGMnAIy6KVo7JugTO7glGqv1Ybal5OOLMWruKEBDxJqEeGTx+ELrXaAfzSEB3Ax3caht5AkaVaAxeP6nctSt0pysIPe5FdFWVofbzn5HssC89qWgVGWHXYXaIKALo61h/p6Ylwa1pFe8JBIigoVkamlVtjeGP16OvjQIDAQAB"
       },
-      "cordova-plugin-splashscreen": {},
       "cordova-plugin-statusbar": {},
       "cordova-plugin-vibration": {}
     }
