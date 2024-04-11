@@ -1,8 +1,8 @@
 {
   "config_android": {
-    "app_name": "Munchkin"
+    "app_name": "Sayacı"
   },
   "config_ios": {
-    "CFBundleDisplayName": "Munchkin"
+    "CFBundleDisplayName": "Sayacı"
   }
 }

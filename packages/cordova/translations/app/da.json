@@ -1,5 +1,8 @@
 {
+  "config_android": {
+    "app_name": "Tæller"
+  },
   "config_ios": {
-    "CFBundleDisplayName": "Munchkin"
+    "CFBundleDisplayName": "Tæller"
   }
 }

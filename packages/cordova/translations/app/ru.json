@@ -1,8 +1,8 @@
 {
   "config_android": {
-    "app_name": "Манчкин"
+    "app_name": "Счётчик"
   },
   "config_ios": {
-    "CFBundleDisplayName": "Манчкин"
+    "CFBundleDisplayName": "Счётчик"
   }
 }

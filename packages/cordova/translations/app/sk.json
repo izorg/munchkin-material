@@ -1,5 +1,8 @@
 {
+  "config_android": {
+    "app_name": "Počítadlo"
+  },
   "config_ios": {
-    "CFBundleDisplayName": "Munchkin"
+    "CFBundleDisplayName": "Počítadlo"
   }
 }

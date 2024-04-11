@@ -4,9 +4,9 @@
     "ios": ["he"]
   },
   "config_android": {
-    "app_name": "מנצ׳קין"
+    "app_name": "מונה"
   },
   "config_ios": {
-    "CFBundleDisplayName": "מנצ׳קין"
+    "CFBundleDisplayName": "מונה"
   }
 }

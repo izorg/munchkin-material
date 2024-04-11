@@ -1,5 +1,8 @@
 {
+  "config_android": {
+    "app_name": "Számláló"
+  },
   "config_ios": {
-    "CFBundleDisplayName": "Munchkin"
+    "CFBundleDisplayName": "Számláló"
   }
 }

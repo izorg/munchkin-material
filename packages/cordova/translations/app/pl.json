@@ -1,5 +1,8 @@
 {
+  "config_android": {
+    "app_name": "Licznik"
+  },
   "config_ios": {
-    "CFBundleDisplayName": "Munchkin"
+    "CFBundleDisplayName": "Licznik"
   }
 }
