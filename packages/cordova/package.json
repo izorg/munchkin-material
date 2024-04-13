@@ -11,7 +11,7 @@
   "scripts": {
     "build:android": "cordova build android --release",
     "build:ios": "cordova build ios",
-    "build": "yarn run clean && yarn g:parcel build",
+    "build": "yarn run clean && yarn parcel build",
     "build:www": "yarn run build && yarn g:rimraf --glob \"www/*.map\"",
     "clean": "yarn g:rimraf ../../.parcel-cache www",
     "cordova:prepare": "cordova prepare",
@@ -41,6 +41,7 @@
     "cordova-plugin-statusbar": "4.0.0",
     "cordova-plugin-vibration": "3.1.1",
     "core-js": "3.36.1",
+    "parcel": "2.12.0",
     "prop-types": "15.8.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",

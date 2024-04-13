@@ -21,8 +21,6 @@ node_modules
 parcel-bundle-reports
 tsconfig.tsbuildinfo
 
-/screenshots
-
 /packages/cordova/build.json
 /packages/cordova/keystore.jks
 /packages/cordova/platforms
@@ -35,4 +33,5 @@ tsconfig.tsbuildinfo
 
 /packages/web/dist
 /packages/web/l10n/generated
+/packages/web/screenshots
 /packages/web/src/localized-files

@@ -11,9 +11,8 @@ import {
   devices,
 } from "playwright";
 
-import { availableLocales } from "../packages/web/src/i18n";
-
-process.chdir("packages/web");
+// @ts-expect-error switching to @playwright/test should help to avoid ts-node usage
+import { availableLocales } from "../src/i18n.ts";
 
 const bundler = new Parcel({
   defaultConfig: "@parcel/config-default",
@@ -65,7 +64,7 @@ const browserDevices = {
   }),
 };
 
-const dir = "../../screenshots";
+const dir = "screenshots";
 
 const delay = (timeout: number) =>
   new Promise((resolve) => setTimeout(resolve, timeout));
@@ -82,7 +81,7 @@ const getScreenshots = async (
     recursive: true,
   });
 
-  const browser = await browserType.launch({ headless: false });
+  const browser = await browserType.launch({ headless: true });
   const context = await browser.newContext(device);
   const page = await context.newPage();
 
