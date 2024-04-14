@@ -2,9 +2,9 @@
 
 import { type ThemeState } from "../../../ducks/theme";
 
-export type OldThemeState = Omit<ThemeState, "mode"> & {
+export type OldThemeState = {
   type: ThemeState["mode"];
-};
+} & Omit<ThemeState, "mode">;
 
 const migrateThemeMode = (state: {
   theme: OldThemeState | ThemeState;

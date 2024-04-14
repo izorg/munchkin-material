@@ -7,7 +7,7 @@ import { ios } from "../../utils/platforms";
 
 const TransitionComponent = forwardRef<
   typeof Transition,
-  Omit<TransitionProps, "children"> & { children: ReactElement }
+  { children: ReactElement } & Omit<TransitionProps, "children">
 >(function TransitionComponent(props, ref) {
   const slide =
     useMediaQuery<Theme>((theme) => theme.breakpoints.down("lg")) && ios;

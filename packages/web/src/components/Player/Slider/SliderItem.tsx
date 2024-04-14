@@ -6,9 +6,9 @@ import { type Player } from "../../../utils/types";
 
 import PlayerStats from "./Stats";
 
-type SliderItemProps = BoxProps & {
+type SliderItemProps = {
   playerId: Player["id"];
-};
+} & BoxProps;
 
 export const SliderItem: FC<SliderItemProps> = (props) => {
   const { playerId, sx = [], ...rest } = props;

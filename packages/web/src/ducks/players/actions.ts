@@ -43,6 +43,6 @@ export const togglePlayerSex = createAction<string, "player/togglePlayerSex">(
 );
 
 export const updatePlayer = createAction<
-  Pick<Player, "id"> & Partial<Omit<Player, "id">>,
+  Partial<Omit<Player, "id">> & Pick<Player, "id">,
   "player/updatePlayer"
 >("player/updatePlayer");

@@ -9,10 +9,10 @@ import { colorType } from "../../../utils/propTypes";
 
 import Color from "./Color";
 
-type ColorPickerPopoverProps = Omit<PopoverProps, "onSelect"> & {
+type ColorPickerPopoverProps = {
   onSelect: (color: AvailableColor) => void;
   value?: AvailableColor;
-};
+} & Omit<PopoverProps, "onSelect">;
 
 const ColorPickerPopover: FC<ColorPickerPopoverProps> = ({
   onSelect,

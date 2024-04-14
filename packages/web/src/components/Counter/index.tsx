@@ -30,14 +30,14 @@ export const counterMessages = defineMessages({
   },
 });
 
-type CounterProps = Omit<BoxProps, "title"> & {
+type CounterProps = {
   decrementDisabled?: boolean;
   incrementDisabled?: boolean;
   onDecrement: () => void;
   onIncrement: () => void;
   title: ReactNode;
   value: number;
-};
+} & Omit<BoxProps, "title">;
 
 const Counter: FC<CounterProps> = ({
   decrementDisabled = false,

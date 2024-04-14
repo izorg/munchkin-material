@@ -26,10 +26,10 @@ const Filler = styled("div", { label: "Filler" })({
   flex: 1,
 });
 
-type CombatPlayerSliderProps = BoxProps & {
+type CombatPlayerSliderProps = {
   helperId?: null | string;
   playerId: string;
-};
+} & BoxProps;
 
 const CombatPlayerSlider: FC<CombatPlayerSliderProps> = (props) => {
   const { helperId = null, playerId, sx = [], ...rest } = props;

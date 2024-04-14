@@ -7,9 +7,9 @@ import { type FC, useCallback, useEffect, useRef } from "react";
 const PRESS_HOLD_TIMEOUT = 500;
 const PRESS_HOLD_INTERVAL = 250;
 
-type CounterButtonProps = Omit<IconButtonProps<typeof m.button>, "onClick"> & {
+type CounterButtonProps = {
   onClick: () => void;
-};
+} & Omit<IconButtonProps<typeof m.button>, "onClick">;
 
 const CounterButton: FC<CounterButtonProps> = ({
   disabled = false,

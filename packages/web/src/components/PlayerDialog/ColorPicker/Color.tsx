@@ -12,10 +12,10 @@ import { forwardRef } from "react";
 import { type AvailableColor } from "../../../utils/availableColors";
 import { colorType } from "../../../utils/propTypes";
 
-type ColorProps = Omit<ButtonBaseProps, "selected" | "value"> & {
+type ColorProps = {
   selected?: boolean;
   value?: AvailableColor;
-};
+} & Omit<ButtonBaseProps, "selected" | "value">;
 
 const Color = forwardRef<HTMLButtonElement, ColorProps>(
   function Color(props, ref) {

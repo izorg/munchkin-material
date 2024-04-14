@@ -5,9 +5,9 @@ import { type FC } from "react";
 import { sexType } from "../../utils/propTypes";
 import { Sex } from "../../utils/types";
 
-type SexProps = SvgIconProps & {
+type SexProps = {
   sex: Sex;
-};
+} & SvgIconProps;
 
 const icons = {
   [Sex.Female]: mdiGenderFemale,

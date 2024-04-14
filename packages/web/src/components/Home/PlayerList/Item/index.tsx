@@ -23,9 +23,9 @@ import PlayerListItemText from "../../../PlayerListItemText";
 
 import DragIconButton from "./DragIconButton";
 
-type HomePlayerListItemProps = ListItemProps & {
+type HomePlayerListItemProps = {
   playerId: string;
-};
+} & ListItemProps;
 
 const HomePlayerListItem = (props: HomePlayerListItemProps) => {
   const { playerId, sx = [], ...rest } = props;

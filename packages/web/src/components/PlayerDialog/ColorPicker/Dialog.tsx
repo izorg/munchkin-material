@@ -17,10 +17,10 @@ import CancelButton from "../../CancelButton";
 
 import Color from "./Color";
 
-type ColorPickerDialogProps = Omit<DialogProps, "onSelect" | "value"> & {
+type ColorPickerDialogProps = {
   onSelect: (color: AvailableColor) => void;
   value?: AvailableColor;
-};
+} & Omit<DialogProps, "onSelect" | "value">;
 
 const ColorPickerDialog: FC<ColorPickerDialogProps> = ({
   onClose,
