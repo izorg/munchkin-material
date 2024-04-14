@@ -12,8 +12,7 @@ import {
   setCombatPlayerBonus,
   startCombat,
 } from "./actions";
-
-import reducer, { initialState } from "./index";
+import reducer, { initialState } from "./reducer";
 
 describe("Combat reducer", () => {
   test("adds monster", () => {

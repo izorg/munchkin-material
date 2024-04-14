@@ -11,8 +11,7 @@ import {
   incrementMonsterLevel,
   removeMonster,
 } from "./actions";
-
-import reducer from "./index";
+import reducer from "./reducer";
 
 describe("Monsters reducer", () => {
   test("adds monster", () => {

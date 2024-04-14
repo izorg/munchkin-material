@@ -4,7 +4,7 @@ import { v4 as uuid } from "uuid";
 import createPlayer from "../../utils/createPlayer";
 import { Sex } from "../../utils/types";
 
-import reducer, {
+import {
   addPlayer,
   decrementPlayerGear,
   decrementPlayerLevel,
@@ -15,7 +15,8 @@ import reducer, {
   resetPlayers,
   togglePlayerSex,
   updatePlayer,
-} from "./index";
+} from "./actions";
+import reducer from "./reducer";
 
 describe("Players reducer", () => {
   test("adds player", () => {

@@ -6,7 +6,8 @@ import { describe, expect, test } from "@jest/globals";
 
 import { removePlayers } from "../players";
 
-import reducer, { addPlayerToList, movePlayer, shufflePlayers } from "./index";
+import { addPlayerToList, movePlayer, shufflePlayers } from "./actions";
+import reducer from "./reducer";
 
 describe("Player List reducer", () => {
   test("should add player", () => {
