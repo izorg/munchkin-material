@@ -15,7 +15,9 @@ export type Player = {
   sex: Sex;
 };
 
-export enum Sex {
-  Female = "female",
-  Male = "male",
-}
+export const Sex = {
+  Female: "female",
+  Male: "male",
+} as const;
+
+export type Sex = (typeof Sex)[keyof typeof Sex];
