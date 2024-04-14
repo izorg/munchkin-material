@@ -9,22 +9,11 @@ html {
   background-color: #fafafa;
   height: 100vh;
   overflow: hidden;
-  /* stylelint-disable-next-line alpha-value-notation,color-function-notation */
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  /* stylelint-disable-next-line property-no-vendor-prefix */
-  -webkit-text-size-adjust: 100%;
-}
-
-@media (prefers-color-scheme: light) {
-  html {
-    color-scheme: light;
-  }
 }
 
 @media (prefers-color-scheme: dark) {
   html {
     background-color: #121212;
-    color-scheme: dark;
   }
 }
 
