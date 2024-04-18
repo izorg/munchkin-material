@@ -22,11 +22,6 @@ export const SliderItem: FC<SliderItemProps> = (props) => {
           display: "flex",
           padding: theme.spacing(2, 2, 10),
         }),
-        {
-          "@media (min-height: 720px)": {
-            paddingBottom: 2,
-          },
-        },
         ...(sx instanceof Array ? sx : [sx]),
       ]}
       {...rest}

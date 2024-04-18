@@ -226,14 +226,9 @@ const PlayerSlider = ({ playerId, sx = [] }: PlayerSliderProps) => {
                     xs: theme.spacing(1),
                   },
                   position: "absolute",
-                  top: `calc(50% - ${theme.spacing(8)})`,
+                  top: `calc(50% - ${theme.spacing(4)})`,
                   transform: "translateY(-50%)",
                 }),
-                {
-                  "@media (min-height: 720px)": {
-                    top: `calc(50% - ${theme.spacing(2)})`,
-                  },
-                },
                 {
                   "@supports (scroll-snap-type: x mandatory)": {
                     display: {
@@ -289,14 +284,9 @@ const PlayerSlider = ({ playerId, sx = [] }: PlayerSliderProps) => {
                     sm: theme.spacing(2),
                     xs: theme.spacing(1),
                   },
-                  top: `calc(50% - ${theme.spacing(8)})`,
+                  top: `calc(50% - ${theme.spacing(4)})`,
                   transform: "translateY(-50%)",
                 }),
-                {
-                  "@media (min-height: 720px)": {
-                    top: `calc(50% - ${theme.spacing(2)})`,
-                  },
-                },
                 {
                   "@supports (scroll-snap-type: x mandatory)": {
                     display: {

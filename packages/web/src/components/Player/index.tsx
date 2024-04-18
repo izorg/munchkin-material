@@ -6,7 +6,6 @@ import usePresentSelector from "../../hooks/usePresentSelector";
 
 import AppBar from "./AppBar";
 import CombatButton from "./CombatButton";
-import PlayerList from "./List";
 import Slider from "./Slider";
 
 const Player = () => {
@@ -36,26 +35,6 @@ const Player = () => {
             flex: "1 0 auto",
           }}
         />
-        {playerList.length > 1 && (
-          <PlayerList
-            sx={[
-              {
-                display: "none",
-                flex: "0 1 auto",
-                overflowY: "auto",
-                paddingBottom: {
-                  sm: 8,
-                  xs: 7,
-                },
-              },
-              {
-                "@media (min-height: 720px)": {
-                  display: "block",
-                },
-              },
-            ]}
-          />
-        )}
       </Box>
       <CombatButton />
     </>
