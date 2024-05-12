@@ -3453,7 +3453,7 @@ __metadata:
     "@types/uuid": "npm:9.0.8"
     core-js: "npm:3.37.0"
     firebase: "npm:10.11.0"
-    framer-motion: "npm:11.1.7"
+    framer-motion: "npm:11.1.9"
     handlebars: "npm:4.7.8"
     parcel: "npm:2.12.0"
     playwright: "npm:1.43.1"
@@ -10767,9 +10767,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"framer-motion@npm:11.1.7":
-  version: 11.1.7
-  resolution: "framer-motion@npm:11.1.7"
+"framer-motion@npm:11.1.9":
+  version: 11.1.9
+  resolution: "framer-motion@npm:11.1.9"
   dependencies:
     tslib: "npm:^2.4.0"
   peerDependencies:
@@ -10783,7 +10783,7 @@ __metadata:
       optional: true
     react-dom:
       optional: true
-  checksum: 10/b3bc5ac1c41fa3646b86f1855317cd7c9ebbc576667e1b29c283ab95dca7bcda6c3b0ad392645d12779b5bc340e816cef405574fbb757ba44a0517b2527fe30f
+  checksum: 10/fadd08af0879c7dd9abe07d6a27409bb6b657a41f0addbcc23357a09a243052e592da6a5b0b8c0e4a842b813b0bb29f3f29f54abcfa9949a81c9a00c509b1c91
   languageName: node
   linkType: hard
 
