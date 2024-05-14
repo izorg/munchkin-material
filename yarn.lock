@@ -3404,7 +3404,7 @@ __metadata:
     cordova-plugin-purchase: "npm:13.10.1"
     cordova-plugin-statusbar: "npm:4.0.0"
     cordova-plugin-vibration: "npm:3.1.1"
-    core-js: "npm:3.37.0"
+    core-js: "npm:3.37.1"
     parcel: "npm:2.12.0"
     prop-types: "npm:15.8.1"
     react: "npm:18.3.1"
@@ -3435,7 +3435,7 @@ __metadata:
     "@types/react": "npm:18.3.2"
     "@types/react-dom": "npm:18.3.0"
     "@types/stylis": "npm:4.2.6"
-    core-js: "npm:3.37.0"
+    core-js: "npm:3.37.1"
     eslint: "npm:8.57.0"
     eslint-config-next: "npm:14.2.3"
     next: "npm:14.2.3"
@@ -3482,7 +3482,7 @@ __metadata:
     "@types/react-dom": "npm:18.3.0"
     "@types/stylis": "npm:4.2.6"
     "@types/uuid": "npm:9.0.8"
-    core-js: "npm:3.37.0"
+    core-js: "npm:3.37.1"
     firebase: "npm:10.11.1"
     framer-motion: "npm:11.1.9"
     handlebars: "npm:4.7.8"
@@ -8591,10 +8591,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"core-js@npm:3.37.0":
-  version: 3.37.0
-  resolution: "core-js@npm:3.37.0"
-  checksum: 10/97feac0b54b95d928bda6a6e611cf34963a265a5fe8ab46ed35bbc9d32a14221bf6bede5d6cd4b0c0f30e8440cf1eff0c4f0c242d719c561e5dd73d3b005d63c
+"core-js@npm:3.37.1":
+  version: 3.37.1
+  resolution: "core-js@npm:3.37.1"
+  checksum: 10/25d6bd15fcc6ffd2a0ec0be57a78ff3358b3e1fdffdb6800fc93dcfdb3854037aee41f3d101aed8c37905d107daf98218b3e7ee95cec383710d2a66a5d9e541b
   languageName: node
   linkType: hard
 
