@@ -12,7 +12,7 @@
     "plugin:react/recommended",
     "plugin:react/jsx-runtime",
     "plugin:react-hooks/recommended",
-    "plugin:sonarjs/recommended",
+    "plugin:sonarjs/recommended-legacy",
     "plugin:unicorn/recommended",
     "plugin:prettier/recommended"
   ],
