@@ -3417,7 +3417,7 @@ __metadata:
     "@types/smoothscroll-polyfill": "npm:0.3.4"
     abortcontroller-polyfill: "npm:1.7.5"
     cordova: "npm:12.0.0"
-    cordova-android: "npm:12.0.1"
+    cordova-android: "npm:13.0.0"
     cordova-ios: "npm:7.1.0"
     cordova-plugin-buildinfo: "npm:4.0.0"
     cordova-plugin-firebase-analytics: "npm:8.0.0"
@@ -6745,12 +6745,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"android-versions@npm:^1.8.1":
-  version: 1.9.0
-  resolution: "android-versions@npm:1.9.0"
+"android-versions@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "android-versions@npm:2.0.0"
   dependencies:
     semver: "npm:^7.5.2"
-  checksum: 10/77f7f2aeca00927a32bb8a15e4a6bdc26c8989561b578d6aae6af683eff59e9a6ddd29c581b4537a7010cda5a296c902b74c807397a4a311ef27ea9f7ac69b75
+  checksum: 10/bcdf6cd295b8c917df145768a47b5e6af68b3ad4eb6415b02d012369edf40395f0f805c31477bb176896aa51c43e97a88b771638fe39bd955154f02c7a4db06d
   languageName: node
   linkType: hard
 
@@ -8359,24 +8359,24 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cordova-android@npm:12.0.1":
-  version: 12.0.1
-  resolution: "cordova-android@npm:12.0.1"
+"cordova-android@npm:13.0.0":
+  version: 13.0.0
+  resolution: "cordova-android@npm:13.0.0"
   dependencies:
-    android-versions: "npm:^1.8.1"
+    android-versions: "npm:^2.0.0"
     cordova-common: "npm:^5.0.0"
-    dedent: "npm:^1.0.1"
+    dedent: "npm:^1.5.3"
     execa: "npm:^5.1.1"
-    fast-glob: "npm:^3.2.12"
-    fs-extra: "npm:^11.1.1"
+    fast-glob: "npm:^3.3.2"
+    fs-extra: "npm:^11.2.0"
     is-path-inside: "npm:^3.0.3"
-    nopt: "npm:^7.1.0"
-    properties-parser: "npm:^0.3.1"
-    semver: "npm:^7.3.8"
+    nopt: "npm:^7.2.1"
+    properties-parser: "npm:^0.6.0"
+    semver: "npm:^7.6.2"
     string-argv: "npm:^0.3.1"
     untildify: "npm:^4.0.0"
-    which: "npm:^3.0.0"
-  checksum: 10/999c6642318ab05a1eb4ab9a2ec533cac6ba57edcf5a384564e44904399bcfa0014ac2ce3501a303a7e70ab46327e46336d90f37ec8e3c55a189b890b1126272
+    which: "npm:^4.0.0"
+  checksum: 10/f5637b400de3a024f5c1fd3bec8d47fa21b6c3cddeb2a28318d91f62e781078c6a6514f2eb277376be57ec60bd4429d1c4886078736bf5b7bc4c768fd82927f2
   languageName: node
   linkType: hard
 
@@ -8991,7 +8991,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dedent@npm:^1.0.0, dedent@npm:^1.0.1":
+"dedent@npm:^1.0.0, dedent@npm:^1.5.3":
   version: 1.5.3
   resolution: "dedent@npm:1.5.3"
   peerDependencies:
@@ -10759,7 +10759,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fs-extra@npm:^11.0.0, fs-extra@npm:^11.1.0, fs-extra@npm:^11.1.1":
+"fs-extra@npm:^11.0.0, fs-extra@npm:^11.1.0, fs-extra@npm:^11.1.1, fs-extra@npm:^11.2.0":
   version: 11.2.0
   resolution: "fs-extra@npm:11.2.0"
   dependencies:
@@ -16569,12 +16569,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"properties-parser@npm:^0.3.1":
-  version: 0.3.1
-  resolution: "properties-parser@npm:0.3.1"
-  dependencies:
-    string.prototype.codepointat: "npm:^0.2.0"
-  checksum: 10/0c1fee79047d3a0f53134413f5c1312fafeacd2385b0a2e1311a350a3e87406c01c952cd78b7979168c6cd3598daf94254e21e4c873e3d9b7d6e58137dff29a5
+"properties-parser@npm:^0.6.0":
+  version: 0.6.0
+  resolution: "properties-parser@npm:0.6.0"
+  checksum: 10/5d5707c71fa460a30755e7bc2cb0069ab3c43ef840dc68bd4fde442993c34ce738c0e56d46682264f39a598abfafb964ddcf7e4eb4d31ad7debf1944b1673c6b
   languageName: node
   linkType: hard
 
@@ -18335,13 +18333,6 @@ __metadata:
     get-east-asian-width: "npm:^1.0.0"
     strip-ansi: "npm:^7.1.0"
   checksum: 10/a183573fe7209e0d294f661846d33f8caf72aa86d983e5b48a0ed45ab15bcccb02c6f0344b58b571988871105457137b8207855ea536827dbc4a376a0f31bf8f
-  languageName: node
-  linkType: hard
-
-"string.prototype.codepointat@npm:^0.2.0":
-  version: 0.2.1
-  resolution: "string.prototype.codepointat@npm:0.2.1"
-  checksum: 10/bafa15844d7ea5bed24a01fa8954327c0c49226cefe68ab70573f1338f6a4680587db962724924f2cceb91abe408e11bd38c80095f25ee080f136a6c9d300f00
   languageName: node
   linkType: hard
 
