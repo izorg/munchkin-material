@@ -18,7 +18,7 @@
     "@formatjs/icu-messageformat-parser": "2.7.8",
     "@formatjs/intl": "2.10.4",
     "@mdi/js": "7.4.47",
-    "@mui/material": "5.15.18",
+    "@mui/material": "5.15.19",
     "@mui/material-nextjs": "5.15.11",
     "@next/bundle-analyzer": "14.2.3",
     "@next/third-parties": "14.2.3",

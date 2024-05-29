@@ -36,7 +36,7 @@
     "@formatjs/intl-numberformat": "8.10.3",
     "@formatjs/intl-pluralrules": "5.2.14",
     "@mdi/js": "7.4.47",
-    "@mui/material": "5.15.18",
+    "@mui/material": "5.15.19",
     "@mui/types": "7.2.14",
     "@mui/utils": "5.15.14",
     "@parcel/config-default": "2.12.0",
