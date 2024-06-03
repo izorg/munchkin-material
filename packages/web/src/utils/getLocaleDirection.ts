@@ -9,5 +9,5 @@ export const getLocaleDirection = (locale: string) => {
     localeMap.set(locale, intlLocale);
   }
 
-  return intlLocale.textInfo.direction;
+  return intlLocale.getTextInfo().direction;
 };

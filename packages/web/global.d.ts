@@ -3,7 +3,7 @@ import { type EnhancedStore } from "@reduxjs/toolkit";
 declare global {
   namespace Intl {
     interface Locale {
-      textInfo: {
+      getTextInfo: () => {
         direction: "ltr" | "rtl";
       };
     }
