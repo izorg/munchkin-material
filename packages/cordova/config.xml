@@ -22,16 +22,13 @@
     <preference name="SplashMaintainAspectRatio" value="true" />
     <platform name="android">
         <allow-intent href="market:*" />
-        <preference name="AndroidGradlePluginVersion" value="8.2.0" />
         <preference name="AndroidPostSplashScreenTheme" value="@style/Theme.AppCompat.DayNight.NoActionBar"/>
         <preference name="AndroidWindowSplashScreenAnimatedIcon" value="res/android/splash-screen-icon.png" />
         <preference name="AndroidWindowSplashScreenBackground" value="#fafafa" />
         <preference name="GradlePluginGoogleServicesEnabled" value="true" />
-        <preference name="GradleVersion" value="8.2" />
         <preference name="HeaderColor" value="#3c2a24" />
         <preference name="StatusBarOverlaysWebView" value="false" />
         <preference name="StatusBarStyle" value="lightcontent" />
-        <preference name="android-buildToolsVersion" value="34.0.0" />
         <icon density="mdpi" src="res/android/mipmap-mdpi/ic_launcher.png" />
         <icon density="hdpi" src="res/android/mipmap-hdpi/ic_launcher.png" />
         <icon density="xhdpi" src="res/android/mipmap-xhdpi/ic_launcher.png" />
