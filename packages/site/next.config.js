@@ -15,6 +15,7 @@ const nextConfig = {
     ignoreDuringBuilds: true, // Using project root ESLint check
   },
   experimental: {
+    instrumentationHook: true,
     typedRoutes: true,
   },
   images: {
@@ -50,29 +51,19 @@ if (process.env.NODE_ENV === "development") {
   nextConfig.output = "export";
 }
 
-export default withSentryConfig(
-  withBundleAnalyzer(nextConfig),
-  {
-    // For all available options, see:
-    // https://github.com/getsentry/sentry-webpack-plugin#options
+export default withSentryConfig(withBundleAnalyzer(nextConfig), {
+  // For all available options, see:
+  // https://github.com/getsentry/sentry-webpack-plugin#options
 
-    dryRun: process.env.CI !== "true",
-    org: "viacheslav",
-    project: "munchkin-site",
-    // Suppresses source map uploading logs during build
-    silent: true,
-  },
-  {
-    // For all available options, see:
-    // https://docs.sentry.io/platforms/javascript/guides/nextjs/manual-setup/
-
-    // Automatically tree-shake Sentry logger statements to reduce bundle size
-    disableLogger: true,
-
-    // Hides source maps from generated client bundles
-    hideSourceMaps: true,
-
-    // Upload a larger set of source maps for prettier stack traces (increases build time)
-    widenClientFileUpload: true,
-  },
-);
+  // Automatically tree-shake Sentry logger statements to reduce bundle size
+  disableLogger: true,
+  // Hides source maps from generated client bundles
+  hideSourceMaps: true,
+  org: "viacheslav",
+  project: "munchkin-site",
+  // Suppresses source map uploading logs during build
+  silent: true,
+  telemetry: false,
+  // Upload a larger set of source maps for prettier stack traces (increases build time)
+  widenClientFileUpload: true,
+});
