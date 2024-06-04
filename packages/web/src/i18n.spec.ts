@@ -48,4 +48,12 @@ describe("getLocale()", () => {
 
     expect(getLocale()).toBe("en");
   });
+
+  test("should get fallback en locale if languages is not supported", () => {
+    jest
+      .spyOn(navigator, "languages", "get")
+      .mockImplementation(() => ["ja-JP"]);
+
+    expect(getLocale()).toBe("en");
+  });
 });

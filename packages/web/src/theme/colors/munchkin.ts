@@ -10,23 +10,21 @@ export const name = defineMessage({
   id: "theme.name.munchkin",
 });
 
-export const getTheme = (): CssVarsThemeOptions => {
-  return {
-    colorSchemes: {
-      dark: {
-        palette: {
-          primary: {
-            main: brown[200],
-          },
-        },
-      },
-      light: {
-        palette: {
-          primary: {
-            main: brown[500],
-          },
+export const getTheme = (): CssVarsThemeOptions => ({
+  colorSchemes: {
+    dark: {
+      palette: {
+        primary: {
+          main: brown[200],
         },
       },
     },
-  };
-};
+    light: {
+      palette: {
+        primary: {
+          main: brown[500],
+        },
+      },
+    },
+  },
+});
