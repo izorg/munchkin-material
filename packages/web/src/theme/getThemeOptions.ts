@@ -55,7 +55,7 @@ const getThemeOptions = ({
 
           root: {
             "@supports (padding: max(0px))": {
-              left: "max(8px, env(safe-area-inset-right))",
+              left: "max(8px, env(safe-area-inset-left))",
               right: "max(8px, env(safe-area-inset-right))",
             },
           },
