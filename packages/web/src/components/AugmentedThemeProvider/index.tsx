@@ -9,7 +9,7 @@ import { type FC, type PropsWithChildren, useMemo } from "react";
 import { useIntl } from "react-intl";
 
 import usePreviewTheme from "../../hooks/usePreviewTheme";
-import themes from "../../theme/colors";
+import colorThemes from "../../theme/colors";
 import getThemeOptions from "../../theme/getThemeOptions";
 import { getLocaleDirection } from "../../utils/getLocaleDirection";
 
@@ -28,7 +28,7 @@ const AugmentedThemeProvider: FC<PropsWithChildren> = ({ children }) => {
     return extendTheme(
       deepmerge(
         getThemeOptions({ direction, pureBlack }),
-        themes[id].getTheme(),
+        colorThemes[id].getTheme(),
       ),
     );
   }, [direction, previewTheme]);
