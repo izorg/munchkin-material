@@ -46,7 +46,7 @@
       "env": {
         "node": true
       },
-      "files": ["scripts/**/*"]
+      "files": ["scripts/**/*", "next.config.js"]
     },
     {
       "files": ["**/*.json"],
