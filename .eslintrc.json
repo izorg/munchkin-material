@@ -6,7 +6,7 @@
     "plugin:import/recommended",
     "plugin:import/typescript",
     "plugin:jest/recommended",
-    "plugin:json/recommended",
+    "plugin:json/recommended-legacy",
     "plugin:jsx-a11y/recommended",
     "plugin:perfectionist/recommended-alphabetical",
     "plugin:react/recommended",
