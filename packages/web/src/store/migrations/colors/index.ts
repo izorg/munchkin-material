@@ -2,8 +2,8 @@
 
 import { colors } from "@mui/material";
 
+import { type Player } from "../../../domains/player";
 import availableColors from "../../../utils/availableColors";
-import { type Player } from "../../../utils/types";
 
 const migrateColors = (state: { players: Record<string, Player> }) => {
   state.players = Object.fromEntries(

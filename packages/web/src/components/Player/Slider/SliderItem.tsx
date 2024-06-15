@@ -1,8 +1,8 @@
 import { Box, type BoxProps, Typography } from "@mui/material";
 import { type FC } from "react";
 
+import { type Player } from "../../../domains/player";
 import usePresentSelector from "../../../hooks/usePresentSelector";
-import { type Player } from "../../../utils/types";
 
 import PlayerStats from "./Stats";
 

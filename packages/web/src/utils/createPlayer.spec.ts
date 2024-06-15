@@ -1,8 +1,9 @@
 import { describe, expect, test } from "@jest/globals";
 import { v4 as uuid } from "uuid";
 
+import { Sex } from "../domains/player";
+
 import createPlayer, { defaultData } from "./createPlayer";
-import { Sex } from "./types";
 
 describe("createPlayer", () => {
   test("should create a new player", () => {

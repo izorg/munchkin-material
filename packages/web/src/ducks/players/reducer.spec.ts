@@ -1,8 +1,8 @@
 import { describe, expect, test } from "@jest/globals";
 import { v4 as uuid } from "uuid";
 
+import { Sex } from "../../domains/player";
 import createPlayer from "../../utils/createPlayer";
-import { Sex } from "../../utils/types";
 
 import {
   addPlayer,

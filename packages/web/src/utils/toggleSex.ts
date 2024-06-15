@@ -1,4 +1,4 @@
-import { Sex } from "./types";
+import { Sex } from "../domains/player";
 
 const toggleSex = (sex: Sex): Sex => {
   switch (sex) {

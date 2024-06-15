@@ -2,8 +2,7 @@ import { mdiGenderFemale, mdiGenderMale } from "@mdi/js";
 import { SvgIcon, type SvgIconProps } from "@mui/material";
 import { type FC } from "react";
 
-import { sexType } from "../../utils/propTypes";
-import { Sex } from "../../utils/types";
+import { Sex, sexType } from "../../domains/player";
 
 type SexProps = {
   sex: Sex;

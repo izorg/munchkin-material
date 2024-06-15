@@ -1,7 +1,7 @@
 import { createReducer, isAnyOf } from "@reduxjs/toolkit";
 
+import { type Player } from "../../domains/player";
 import toggleSex from "../../utils/toggleSex";
-import { type Player } from "../../utils/types";
 
 import {
   addPlayer,

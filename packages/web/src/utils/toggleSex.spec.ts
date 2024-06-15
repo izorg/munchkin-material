@@ -1,7 +1,8 @@
 import { describe, expect, test } from "@jest/globals";
 
+import { Sex } from "../domains/player";
+
 import toggleSex from "./toggleSex";
-import { Sex } from "./types";
 
 describe("Sex toggle", () => {
   test("should change female to male and vice versa", () => {

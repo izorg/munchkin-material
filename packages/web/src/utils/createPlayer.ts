@@ -1,6 +1,6 @@
 import { v4 as uuid } from "uuid";
 
-import { type Player, Sex } from "./types";
+import { type Player, Sex } from "../domains/player";
 
 export const defaultData = {
   gear: 0,

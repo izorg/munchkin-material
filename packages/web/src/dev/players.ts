@@ -1,3 +1,4 @@
+import { type Player, Sex } from "../domains/player";
 import {
   type AvailableLocale,
   BE,
@@ -24,7 +25,6 @@ import {
   UK,
 } from "../i18n";
 import createPlayer from "../utils/createPlayer";
-import { type Player, Sex } from "../utils/types";
 
 const templatePlayers = [
   createPlayer({

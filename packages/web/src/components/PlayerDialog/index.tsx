@@ -19,6 +19,7 @@ import { type FormEvent, useEffect, useMemo, useRef } from "react";
 import { useIntl } from "react-intl";
 import { useSearchParams } from "react-router-dom";
 
+import { type Player, Sex } from "../../domains/player";
 import { addPlayerToList } from "../../ducks/playerList";
 import { addPlayer, updatePlayer } from "../../ducks/players";
 import useDeletePlayers from "../../hooks/useDeletePlayers";
@@ -29,7 +30,6 @@ import createPlayer from "../../utils/createPlayer";
 import getRandomMaterialColor from "../../utils/getRandomMaterialColor";
 import { useGoBack } from "../../utils/location";
 import shallowEqual from "../../utils/shallowEqual";
-import { type Player, Sex } from "../../utils/types";
 import CancelButton from "../CancelButton";
 import SubmitButton from "../SubmitButton";
 
