@@ -58,12 +58,14 @@
       "cordova-plugin-buildinfo": {},
       "cordova-plugin-firebase-analytics": {
         "ANALYTICS_COLLECTION_ENABLED": "true",
+        "ANDROID_FIREBASE_BOM_VERSION": "33.1.0",
         "AUTOMATIC_SCREEN_REPORTING_ENABLED": "true",
-        "ANDROID_FIREBASE_BOM_VERSION": "32.7.0"
+        "IOS_FIREBASE_POD_VERSION": "10.27.0"
       },
       "cordova-plugin-firebase-crash": {
+        "ANDROID_FIREBASE_BOM_VERSION": "33.1.0",
         "CRASHLYTICS_COLLECTION_ENABLED": "true",
-        "ANDROID_FIREBASE_BOM_VERSION": "32.7.0"
+        "IOS_FIREBASE_POD_VERSION": "10.27.0"
       },
       "cordova-plugin-headercolor": {},
       "cordova-plugin-insomnia": {},
