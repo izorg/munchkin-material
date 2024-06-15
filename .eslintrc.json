@@ -59,6 +59,15 @@
       "settings": {
         "polyfills": ["Intl", "Object.fromEntries"]
       }
+    },
+    {
+      "files": "packages/site/**/*",
+      "extends": ["plugin:@next/next/core-web-vitals"],
+      "settings": {
+        "next": {
+          "rootDir": "packages/site"
+        }
+      }
     }
   ],
   "parser": "@typescript-eslint/parser",
