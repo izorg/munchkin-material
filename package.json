@@ -1,6 +1,6 @@
 {
   "private": true,
-  "version": "15.4.4",
+  "version": "15.4.5",
   "type": "module",
   "packageManager": "yarn@4.3.0",
   "workspaces": [
