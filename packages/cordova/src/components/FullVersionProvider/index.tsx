@@ -16,7 +16,9 @@ import { FullVersionContext } from "../../../../web/src/utils/fullVersionContext
 const FULL_VERSION_ID = "full_version";
 
 const FullVersionProvider: FC<PropsWithChildren> = ({ children }) => {
-  const { Platform, ProductType, store } = CdvPurchase;
+  const { LogLevel, Platform, ProductType, store } = CdvPurchase;
+
+  store.verbosity = LogLevel.DEBUG;
 
   const dispatch = useAppDispatch();
 
