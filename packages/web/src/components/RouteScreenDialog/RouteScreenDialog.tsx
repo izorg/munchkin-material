@@ -16,10 +16,13 @@ type RouteScreenDialogProps = PropsWithChildren<{
 export const RouteScreenDialog = (props: RouteScreenDialogProps) => {
   const { children, path } = props;
 
-  const match = useMatch(path);
+  const match = useMatch({
+    end: false,
+    path,
+  });
 
   const location = useLocation();
-  const locationRef = useRef<Location>();
+  const locationRef = useRef<Location>(location);
 
   if (match) {
     locationRef.current = location;
@@ -27,7 +30,7 @@ export const RouteScreenDialog = (props: RouteScreenDialogProps) => {
 
   return (
     <ScreenDialog open={Boolean(match)}>
-      <Routes location={location}>
+      <Routes location={locationRef.current}>
         <Route element={children} path={path} />
       </Routes>
     </ScreenDialog>
