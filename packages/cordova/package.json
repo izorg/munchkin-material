@@ -19,7 +19,7 @@
     "run:ios": "cordova run ios"
   },
   "devDependencies": {
-    "@mui/material": "5.15.20",
+    "@mui/material": "5.15.21",
     "@sentry/react": "8.13.0",
     "@types/cordova": "11.0.3",
     "@types/dom-screen-wake-lock": "1.0.3",
