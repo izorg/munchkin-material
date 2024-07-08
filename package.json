@@ -25,7 +25,7 @@
     "@jest/globals": "29.7.0",
     "@next/eslint-plugin-next": "14.2.4",
     "@semantic-release/commit-analyzer": "13.0.0",
-    "@semantic-release/github": "10.0.6",
+    "@semantic-release/github": "10.1.0",
     "@semantic-release/release-notes-generator": "14.0.1",
     "@swc/core": "1.6.5",
     "@swc/jest": "0.2.36",
