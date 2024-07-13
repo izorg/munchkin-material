@@ -18,8 +18,8 @@
     "@formatjs/icu-messageformat-parser": "2.7.8",
     "@formatjs/intl": "2.10.4",
     "@mdi/js": "7.4.47",
-    "@mui/material": "5.16.0",
-    "@mui/material-nextjs": "5.15.11",
+    "@mui/material": "5.16.1",
+    "@mui/material-nextjs": "5.16.1",
     "@next/bundle-analyzer": "14.2.5",
     "@next/third-parties": "14.2.5",
     "@sentry/nextjs": "8.17.0",
@@ -35,6 +35,6 @@
     "stylis": "4.3.2",
     "stylis-plugin-rtl": "2.1.1",
     "typescript": "5.5.3",
-    "webpack": "5.92.1"
+    "webpack": "5.93.0"
   }
 }
