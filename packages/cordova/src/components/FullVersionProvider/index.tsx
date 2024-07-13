@@ -15,33 +15,41 @@ import { FullVersionContext } from "../../../../web/src/utils/fullVersionContext
 
 const FULL_VERSION_ID = "full_version";
 
+const { LogLevel, ProductType, store } = CdvPurchase;
+
+store.verbosity = LogLevel.DEBUG;
+
+store.register({
+  id: FULL_VERSION_ID,
+  platform: store.defaultPlatform(),
+  type: ProductType.NON_CONSUMABLE,
+});
+
+const restorePurchases = () => {
+  void store.restorePurchases();
+};
+
 const FullVersionProvider: FC<PropsWithChildren> = ({ children }) => {
-  const { LogLevel, Platform, ProductType, store } = CdvPurchase;
-
-  store.verbosity = LogLevel.DEBUG;
-
   const dispatch = useAppDispatch();
 
   const fullVersion = usePresentSelector((state) => state.settings.fullVersion);
 
   const buyExecutorRef = useRef<{
-    reject: (error: Error) => void;
+    reject: (error: CdvPurchase.IError) => void;
     resolve: () => void;
   }>();
-
-  const shopErrorRef = useRef<CdvPurchase.IError>();
 
   const buyFullVersion = useCallback(async () => {
     const offer = store.get(FULL_VERSION_ID)?.getOffer();
 
     if (!offer) {
-      throw new Error(shopErrorRef.current?.message ?? "");
+      throw new Error("No offer");
     }
 
     const error = await offer.order();
 
     if (error) {
-      throw new Error(error.message);
+      throw error;
     }
 
     return new Promise<void>((resolve, reject) => {
@@ -50,36 +58,11 @@ const FullVersionProvider: FC<PropsWithChildren> = ({ children }) => {
         resolve,
       };
     });
-  }, [store]);
-
-  const restorePurchases = useCallback(() => {
-    void store.restorePurchases();
-  }, [store]);
+  }, []);
 
   useEffect(() => {
-    const platformMapping: Record<
-      typeof cordova.platformId,
-      CdvPurchase.Platform
-    > = {
-      android: Platform.GOOGLE_PLAY,
-      ios: Platform.APPLE_APPSTORE,
-    };
-
-    const platform = platformMapping[cordova.platformId];
-
-    if (!platform) {
-      return;
-    }
-
     store.error((error) => {
-      shopErrorRef.current = error;
-      buyExecutorRef.current?.reject(new Error(error.message));
-    });
-
-    store.register({
-      id: FULL_VERSION_ID,
-      platform,
-      type: ProductType.NON_CONSUMABLE,
+      buyExecutorRef.current?.reject(error);
     });
 
     store
@@ -102,13 +85,7 @@ const FullVersionProvider: FC<PropsWithChildren> = ({ children }) => {
       });
 
     void store.initialize();
-  }, [
-    Platform.APPLE_APPSTORE,
-    Platform.GOOGLE_PLAY,
-    ProductType.NON_CONSUMABLE,
-    dispatch,
-    store,
-  ]);
+  }, [dispatch]);
 
   const value = useMemo(
     () => ({
@@ -117,7 +94,7 @@ const FullVersionProvider: FC<PropsWithChildren> = ({ children }) => {
       restorePurchases:
         cordova.platformId === "ios" ? restorePurchases : undefined,
     }),
-    [buyFullVersion, fullVersion, restorePurchases],
+    [buyFullVersion, fullVersion],
   );
 
   return (
