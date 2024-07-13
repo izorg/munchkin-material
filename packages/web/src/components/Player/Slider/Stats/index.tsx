@@ -4,7 +4,9 @@ import { type FC, useCallback } from "react";
 import { useIntl } from "react-intl";
 
 import {
+  decrementPlayerGear,
   decrementPlayerLevel,
+  incrementPlayerGear,
   incrementPlayerLevel,
   togglePlayerSex,
 } from "../../../../ducks/players";
@@ -16,7 +18,6 @@ import {
 } from "../../../../utils/levelLimit";
 import Counter, { counterMessages } from "../../../Counter";
 import CounterLabel from "../../../Counter/Label";
-import { GearCounter } from "../../../GearCounter";
 import SexIcon from "../../../SexIcon";
 
 type PlayerStatsProps = {
@@ -44,6 +45,14 @@ const PlayerStats: FC<PlayerStatsProps> = ({ playerId, sx = [] }) => {
     epic,
   );
 
+  const onGearDecrement = useCallback(
+    () => dispatch(decrementPlayerGear(playerId)),
+    [dispatch, playerId],
+  );
+  const onGearIncrement = useCallback(
+    () => dispatch(incrementPlayerGear(playerId)),
+    [dispatch, playerId],
+  );
   const onLevelDecrement = useCallback(
     () => dispatch(decrementPlayerLevel(playerId)),
     [dispatch, playerId],
@@ -113,7 +122,12 @@ const PlayerStats: FC<PlayerStatsProps> = ({ playerId, sx = [] }) => {
             justifyContent: "center",
           }}
         >
-          <GearCounter player={player} />
+          <Counter
+            onDecrement={onGearDecrement}
+            onIncrement={onGearIncrement}
+            title={intl.formatMessage(counterMessages.gear)}
+            value={player.gear}
+          />
         </Box>
       </Box>
       <Box
