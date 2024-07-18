@@ -20,35 +20,26 @@ export const SliderItem: FC<SliderItemProps> = (props) => {
         (theme) => ({
           alignItems: "center",
           display: "flex",
+          flexDirection: "column",
+          gap: 4,
+          justifyContent: "center",
           padding: theme.spacing(2, 2, 10),
         }),
         ...(sx instanceof Array ? sx : [sx]),
       ]}
       {...rest}
     >
-      <Box
+      <Typography
+        component="span"
+        noWrap
         sx={{
-          flexGrow: 1,
-          margin: "0 auto",
-          maxHeight: "600px",
-          maxWidth: "600px",
-          overflow: "hidden",
+          textAlign: "center",
         }}
+        variant="h5"
       >
-        <Typography
-          component="span"
-          noWrap
-          sx={{
-            display: "block",
-            marginBottom: 4,
-            textAlign: "center",
-          }}
-          variant="h5"
-        >
-          {name}
-        </Typography>
-        <PlayerStats playerId={playerId} />
-      </Box>
+        {name}
+      </Typography>
+      <PlayerStats playerId={playerId} />
     </Box>
   );
 };

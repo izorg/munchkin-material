@@ -72,126 +72,116 @@ const PlayerStats: FC<PlayerStatsProps> = ({ playerId, sx = [] }) => {
   return (
     <Box
       sx={[
-        {
-          display: "flex",
-          flexDirection: "column-reverse",
-        },
+        (theme) => ({
+          display: "grid",
+          gap: theme.spacing(2, 6),
+          gridTemplateAreas: `
+            "strength strength"
+            "level gear"
+          `,
+          gridTemplateColumns: "repeat(2, 1fr)",
+          gridTemplateRows: "repeat(2, auto)",
+          justifyItems: "center",
+          width: "fit-content",
+        }),
         {
           "@media (orientation: landscape)": {
-            flexDirection: "row",
+            gridTemplateAreas: `
+              "level gear strength"
+            `,
+            gridTemplateColumns: "repeat(3, 1fr)",
+            gridTemplateRows: "repeat(1, auto)",
           },
         },
         ...(sx instanceof Array ? sx : [sx]),
       ]}
     >
       <Box
-        sx={[
-          {
-            display: "flex",
-            flex: 1,
-          },
-          {
-            "@media (orientation: landscape)": {
-              flex: 2,
-            },
-          },
-        ]}
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          gridArea: "level",
+        }}
       >
-        <Box
-          sx={{
-            display: "flex",
-            flex: "1 1 50%",
-            flexDirection: "column",
-            justifyContent: "center",
-          }}
-        >
-          <Counter
-            decrementDisabled={levelDecrementDisabled}
-            incrementDisabled={levelIncrementDisabled}
-            onDecrement={onLevelDecrement}
-            onIncrement={onLevelIncrement}
-            title={intl.formatMessage(counterMessages.level)}
-            value={player.level}
-          />
-        </Box>
-        <Box
-          sx={{
-            display: "flex",
-            flex: "1 1 50%",
-            flexDirection: "column",
-            justifyContent: "center",
-          }}
-        >
-          <Counter
-            onDecrement={onGearDecrement}
-            onIncrement={onGearIncrement}
-            title={intl.formatMessage(counterMessages.gear)}
-            value={player.gear}
-          />
-        </Box>
+        <Counter
+          decrementDisabled={levelDecrementDisabled}
+          incrementDisabled={levelIncrementDisabled}
+          onDecrement={onLevelDecrement}
+          onIncrement={onLevelIncrement}
+          title={intl.formatMessage(counterMessages.level)}
+          value={player.level}
+        />
       </Box>
       <Box
         sx={{
           display: "flex",
-          flex: 1,
           flexDirection: "column",
-          justifyContent: "center",
+          gridArea: "gear",
         }}
       >
-        <Box
+        <Counter
+          onDecrement={onGearDecrement}
+          onIncrement={onGearIncrement}
+          title={intl.formatMessage(counterMessages.gear)}
+          value={player.gear}
+        />
+      </Box>
+      <Box
+        sx={{
+          alignItems: "center",
+          display: "flex",
+          flexDirection: "column",
+          gridArea: "strength",
+        }}
+      >
+        <CounterLabel
           sx={{
-            textAlign: "center",
+            fontSize: "1.5rem",
           }}
         >
-          <CounterLabel
-            sx={{
-              fontSize: "1.5rem",
-            }}
-          >
-            {intl.formatMessage(counterMessages.strength)}
-          </CounterLabel>
+          {intl.formatMessage(counterMessages.strength)}
+        </CounterLabel>
 
-          <Box
-            sx={[
-              (theme) => ({
-                color: theme.palette.text.primary,
-                fontFamily: `Munchkin, ${theme.typography.fontFamily ?? ""}`,
-                fontSize: "2.25rem",
-              }),
-              {
-                "@media (orientation: portrait)": {
-                  fontSize: "4.5rem" /* 36px * 2 */,
-                  lineHeight: lineHeight /* 1.43 / 2 */,
-                  marginTop: "2.25rem",
-                },
+        <Box
+          sx={[
+            (theme) => ({
+              color: theme.palette.text.primary,
+              fontFamily: `Munchkin, ${theme.typography.fontFamily ?? ""}`,
+              fontSize: "2.25rem",
+            }),
+            {
+              "@media (orientation: portrait)": {
+                fontSize: "4.5rem" /* 36px * 2 */,
+                lineHeight: lineHeight /* 1.43 / 2 */,
+                marginTop: "2.25rem",
               },
-            ]}
-          >
-            {player.level + player.gear}
-          </Box>
-
-          <IconButton
-            onClick={onSexToggle}
-            sx={[
-              {
-                fontSize: "2.25rem",
-                padding: "8px",
-              },
-              {
-                "@media (orientation: portrait)": {
-                  marginTop: "16px",
-                },
-              },
-            ]}
-          >
-            <SexIcon
-              sex={player.sex}
-              sx={{
-                fontSize: "inherit",
-              }}
-            />
-          </IconButton>
+            },
+          ]}
+        >
+          {player.level + player.gear}
         </Box>
+
+        <IconButton
+          onClick={onSexToggle}
+          sx={[
+            {
+              fontSize: "2.25rem",
+              padding: "8px",
+            },
+            {
+              "@media (orientation: portrait)": {
+                marginTop: "16px",
+              },
+            },
+          ]}
+        >
+          <SexIcon
+            sex={player.sex}
+            sx={{
+              fontSize: "inherit",
+            }}
+          />
+        </IconButton>
       </Box>
     </Box>
   );

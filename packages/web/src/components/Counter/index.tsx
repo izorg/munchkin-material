@@ -86,8 +86,7 @@ const Counter: FC<CounterProps> = ({
         sx={{
           display: "flex",
           justifyContent: "space-between",
-          maxWidth: "120px",
-          width: "100%",
+          width: "120px",
         }}
       >
         <Button
