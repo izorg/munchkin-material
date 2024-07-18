@@ -55,6 +55,7 @@ const SingleModeItem = () => {
     <ListItem disablePadding>
       <SettingsListItemButton
         data-screenshots="single-mode-item"
+        // eslint-disable-next-line sonarjs/no-misused-promises
         onClick={() => onChange(!singleMode)}
         sx={{
           paddingBottom: "9px",

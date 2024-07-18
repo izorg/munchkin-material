@@ -41,6 +41,7 @@ const ShareItem = () => {
 
   return (
     <ListItem disablePadding>
+      {/* eslint-disable-next-line sonarjs/no-misused-promises */}
       <SettingsListItemButton onClick={onClick}>
         <ListItemIcon>
           <SvgIcon>

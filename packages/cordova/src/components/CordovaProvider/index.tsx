@@ -6,6 +6,7 @@ import { useGoBack } from "../../../../web/src/utils/location";
 
 import useNavigationBreadcrumbs from "./useNavigationBreadcrumbs";
 
+// eslint-disable-next-line sonarjs/function-return-type
 const CordovaProvider: FC<PropsWithChildren> = ({ children }) => {
   const location = useLocation();
 
