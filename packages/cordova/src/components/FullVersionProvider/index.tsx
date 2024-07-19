@@ -63,7 +63,7 @@ const FullVersionProvider: FC<PropsWithChildren> = ({ children }) => {
     const error = await offer.order();
 
     if (error) {
-      throw error;
+      throw new StoreError(error);
     }
 
     return new Promise<void>((resolve, reject) => {
