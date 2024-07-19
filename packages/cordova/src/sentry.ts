@@ -2,6 +2,7 @@ import {
   init,
   makeBrowserOfflineTransport,
   makeFetchTransport,
+  replayIntegration,
 } from "@sentry/react";
 
 init({
@@ -9,7 +10,15 @@ init({
   enabled: !window.BuildInfo.debug,
   environment: process.env.NODE_ENV,
   ignoreErrors: ["BILLING_UNAVAILABLE", "USER_CANCELED"],
+  integrations: [
+    replayIntegration({
+      blockAllMedia: false,
+      maskAllText: false,
+    }),
+  ],
   normalizeDepth: 10,
   release: window.BuildInfo.version,
+  replaysOnErrorSampleRate: 1,
+  replaysSessionSampleRate: 0.01,
   transport: makeBrowserOfflineTransport(makeFetchTransport),
 });
