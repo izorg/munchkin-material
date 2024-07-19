@@ -26,9 +26,8 @@ store.register({
   type: ProductType.NON_CONSUMABLE,
 });
 
-const restorePurchases = () => {
-  void store.restorePurchases();
-};
+const restorePurchases =
+  cordova.platformId === "ios" ? () => store.restorePurchases() : undefined;
 
 class StoreError extends Error {
   public constructor(error: CdvPurchase.IError) {
@@ -90,11 +89,15 @@ const FullVersionProvider: FC<PropsWithChildren> = ({ children }) => {
       })
       .approved((transaction) => {
         if (!transaction.isAcknowledged) {
-          void transaction.verify();
+          void (async () => {
+            await transaction.verify();
+          })();
         }
       })
       .verified((receipt) => {
-        void receipt.finish();
+        void (async () => {
+          await receipt.finish();
+        })();
       })
       .finished(() => {
         dispatch(setFullVersion(true));
@@ -102,15 +105,16 @@ const FullVersionProvider: FC<PropsWithChildren> = ({ children }) => {
         buyExecutorRef.current?.resolve();
       });
 
-    void store.initialize();
+    void (async () => {
+      await store.initialize();
+    })();
   }, [dispatch]);
 
   const value = useMemo(
     () => ({
       buyFullVersion,
       fullVersion,
-      restorePurchases:
-        cordova.platformId === "ios" ? restorePurchases : undefined,
+      restorePurchases,
     }),
     [buyFullVersion, fullVersion],
   );
