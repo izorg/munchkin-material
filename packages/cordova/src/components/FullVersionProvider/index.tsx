@@ -1,3 +1,4 @@
+import { setContext } from "@sentry/react";
 import PropTypes from "prop-types";
 import {
   type FC,
@@ -29,13 +30,26 @@ const restorePurchases = () => {
   void store.restorePurchases();
 };
 
+class StoreError extends Error {
+  public constructor(error: CdvPurchase.IError) {
+    super(error.message);
+
+    this.name = "StoreError";
+
+    setContext("Store", {
+      code: error.code,
+      platform: error.platform,
+    });
+  }
+}
+
 const FullVersionProvider: FC<PropsWithChildren> = ({ children }) => {
   const dispatch = useAppDispatch();
 
   const fullVersion = usePresentSelector((state) => state.settings.fullVersion);
 
   const buyExecutorRef = useRef<{
-    reject: (error: CdvPurchase.IError) => void;
+    reject: (error: StoreError) => void;
     resolve: () => void;
   }>();
 
@@ -62,7 +76,11 @@ const FullVersionProvider: FC<PropsWithChildren> = ({ children }) => {
 
   useEffect(() => {
     store.error((error) => {
-      buyExecutorRef.current?.reject(error);
+      if (buyExecutorRef.current) {
+        buyExecutorRef.current.reject(new StoreError(error));
+
+        buyExecutorRef.current = undefined;
+      }
     });
 
     store
