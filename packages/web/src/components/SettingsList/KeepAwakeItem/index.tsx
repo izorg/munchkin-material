@@ -16,7 +16,9 @@ const KeepAwakeItem = () => {
   return (
     <ListItem disablePadding>
       <SettingsListItemButton
-        onClick={() => setWakeLock(!wakeLock)}
+        onClick={() => {
+          void setWakeLock(!wakeLock);
+        }}
         sx={{
           paddingBottom: "9px",
           paddingTop: "9px",

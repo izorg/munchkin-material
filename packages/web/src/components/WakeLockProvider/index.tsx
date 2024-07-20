@@ -3,7 +3,6 @@ import {
   type FC,
   type PropsWithChildren,
   useCallback,
-  useEffect,
   useMemo,
   useRef,
 } from "react";
@@ -18,33 +17,38 @@ const WakeLockProvider: FC<PropsWithChildren> = ({ children }) => {
 
   const wakeLockSupport = "wakeLock" in navigator;
   const wakeLock = usePresentSelector((state) => state.settings.keepAwake);
-  const wakeLockRef = useRef<WakeLockSentinel>();
+  const wakeLockSentinelRef = useRef<WakeLockSentinel>();
 
   const setWakeLock = useCallback(
-    (value: boolean) => {
+    async (value: boolean) => {
+      if (!wakeLockSupport) {
+        return;
+      }
+
+      console.log("=== value ===", value);
+
+      if (value) {
+        wakeLockSentinelRef.current =
+          await navigator.wakeLock.request("screen");
+
+        console.log(
+          "=== wakeLockSentinelRef.current ===",
+          wakeLockSentinelRef.current,
+        );
+      } else {
+        if (!wakeLockSentinelRef.current) {
+          return;
+        }
+
+        await wakeLockSentinelRef.current.release();
+
+        wakeLockSentinelRef.current = undefined;
+      }
+
       dispatch(setKeepAwake(value));
     },
-    [dispatch],
+    [dispatch, wakeLockSupport],
   );
-
-  useEffect(() => {
-    if (!wakeLockSupport) {
-      return;
-    }
-
-    if (wakeLock) {
-      navigator.wakeLock
-        .request("screen")
-        .then((wakeLockSentinel) => {
-          wakeLockRef.current = wakeLockSentinel;
-        })
-        .catch(() => setKeepAwake(false));
-    } else if (wakeLockRef.current) {
-      void wakeLockRef.current.release().then(() => {
-        wakeLockRef.current = undefined;
-      });
-    }
-  }, [wakeLock, wakeLockSupport]);
 
   const value = useMemo(
     () => ({ setWakeLock, wakeLock, wakeLockSupport }),
