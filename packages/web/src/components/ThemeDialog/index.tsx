@@ -91,7 +91,6 @@ const ThemeDialog = () => {
     <Dialog onClose={onClose} open={open}>
       <DialogTitle>{intl.formatMessage(themeMessages.color)}</DialogTitle>
       <DialogContent>
-        {/* eslint-disable-next-line sonarjs/no-misused-promises */}
         <Box component="form" id="theme-setup" onSubmit={onSubmit}>
           <FormControl component="fieldset">
             <RadioGroup

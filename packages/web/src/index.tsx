@@ -17,11 +17,11 @@ import WakeLockProvider from "./components/WakeLockProvider";
 import WorkboxProvider from "./components/WorkboxProvider";
 
 if (process.env.NODE_ENV === "development") {
-  import("./dev");
+  void import("./dev");
 }
 
 if (process.env.NODE_ENV === "production") {
-  import("./firebase");
+  void import("./firebase");
 }
 
 const node = document.querySelector("#root");

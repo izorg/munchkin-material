@@ -8,7 +8,7 @@
     "plugin:jest/recommended",
     "plugin:json/recommended-legacy",
     "plugin:jsx-a11y/recommended",
-    "plugin:perfectionist/recommended-alphabetical",
+    "plugin:perfectionist/recommended-alphabetical-legacy",
     "plugin:react/recommended",
     "plugin:react/jsx-runtime",
     "plugin:react-hooks/recommended",
@@ -100,7 +100,7 @@
           "sibling",
           "index"
         ],
-        "internal-pattern": ["@munchkin/**"]
+        "internalPattern": ["@munchkin/**"]
       }
     ],
     "unicorn/filename-case": "off",

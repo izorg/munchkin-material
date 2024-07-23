@@ -3,7 +3,7 @@ import "./polyfills";
 document.addEventListener(
   "deviceready",
   () => {
-    import("./cordova");
+    void import("./cordova");
   },
   false,
 );
