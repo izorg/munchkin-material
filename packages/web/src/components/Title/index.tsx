@@ -7,10 +7,7 @@ const Title: FC<TypographyProps> = ({ sx = [], ...props }) => (
     sx={[
       {
         flex: 1,
-        paddingLeft: {
-          md: "20px",
-          xs: "24px",
-        },
+        paddingX: "4px",
       },
       ...(sx instanceof Array ? sx : [sx]),
     ]}

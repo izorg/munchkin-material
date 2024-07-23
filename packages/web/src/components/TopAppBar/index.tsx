@@ -18,10 +18,7 @@ const TopAppBar: FC<PropsWithChildren> = ({ children }) => (
           minHeight: {
             md: "64px",
           },
-          paddingX: {
-            sm: 3,
-            xs: 2,
-          },
+          paddingX: 2,
         },
         (theme) => ({
           "@supports (min-height: env(safe-area-inset-top))": {
@@ -32,14 +29,8 @@ const TopAppBar: FC<PropsWithChildren> = ({ children }) => (
             paddingTop: "env(safe-area-inset-top)",
           },
           "@supports (padding: max(0px))": {
-            paddingLeft: {
-              sm: `max(${theme.spacing(3)}, env(safe-area-inset-left))`,
-              xs: `max(${theme.spacing(2)}, env(safe-area-inset-left))`,
-            },
-            paddingRight: {
-              sm: `max(${theme.spacing(3)}, env(safe-area-inset-right))`,
-              xs: `max(${theme.spacing(2)}, env(safe-area-inset-right))`,
-            },
+            paddingLeft: `max(${theme.spacing(2)}, env(safe-area-inset-left))`,
+            paddingRight: `max(${theme.spacing(2)}, env(safe-area-inset-right))`,
           },
         }),
       ]}

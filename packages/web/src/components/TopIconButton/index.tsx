@@ -1,5 +1,4 @@
 import { IconButton, type IconButtonProps } from "@mui/material";
-import PropTypes from "prop-types";
 import { forwardRef } from "react";
 
 const TopIconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
@@ -9,26 +8,13 @@ const TopIconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
         ref={ref}
         sx={[
           {
-            margin: {
-              md: 0,
-              xs: "2px",
-            },
-            padding: {
-              md: "12px",
-              xs: "8px",
-            },
+            padding: "12px",
           },
           props.edge === "start" && {
-            marginLeft: {
-              md: "-12px",
-              xs: "-8px",
-            },
+            marginLeft: "-12px",
           },
           props.edge === "end" && {
-            marginRight: {
-              md: "-12px",
-              xs: "-8px",
-            },
+            marginRight: "-12px",
           },
         ]}
         {...props}
@@ -36,9 +22,5 @@ const TopIconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
     );
   },
 );
-
-TopIconButton.propTypes = {
-  edge: PropTypes.oneOf([false, "start", "end"]),
-};
 
 export default TopIconButton;
