@@ -16,7 +16,7 @@
   "dice": "Dado",
   "home.single.title": "Munchkin",
   "kill": "Uccidi",
-  "levelLimit.epic": "Munchkin Epico ({minLevel} - {maxLevel}) ",
+  "levelLimit.epic": "Munchkin Epico ({minLevel} - {maxLevel})",
   "levelLimit.label": "Livello limite",
   "levelLimit.munchkin": "Munchkin ({minLevel} - {maxLevel})",
   "levelLimit.none": "Nessun limite",
