@@ -1,5 +1,4 @@
-import { Box, IconButton, type SxProps, useTheme } from "@mui/material";
-import PropTypes from "prop-types";
+import { Box, IconButton, type SxProps } from "@mui/material";
 import { type FC, useCallback } from "react";
 import { useIntl } from "react-intl";
 
@@ -28,7 +27,6 @@ type PlayerStatsProps = {
 const PlayerStats: FC<PlayerStatsProps> = ({ playerId, sx = [] }) => {
   const dispatch = useAppDispatch();
   const intl = useIntl();
-  const theme = useTheme();
 
   const player = usePresentSelector((state) => state.players[playerId]);
   const levelLimit = usePresentSelector((state) => state.settings.levelLimit);
@@ -65,9 +63,6 @@ const PlayerStats: FC<PlayerStatsProps> = ({ playerId, sx = [] }) => {
     () => dispatch(togglePlayerSex(playerId)),
     [dispatch, playerId],
   );
-
-  const lineHeight =
-    (theme.typography.body2.lineHeight as number) / 2; /* 1.43 / 2 */
 
   return (
     <Box
@@ -149,13 +144,12 @@ const PlayerStats: FC<PlayerStatsProps> = ({ playerId, sx = [] }) => {
               fontFamily: `Munchkin, ${theme.typography.fontFamily ?? ""}`,
               fontSize: "2.25rem",
             }),
-            {
+            (theme) => ({
               "@media (orientation: portrait)": {
-                fontSize: "4.5rem" /* 36px * 2 */,
-                lineHeight: lineHeight /* 1.43 / 2 */,
-                marginTop: "2.25rem",
+                ...theme.typography.h1,
+                fontFamily: `Munchkin, ${theme.typography.fontFamily ?? ""}`,
               },
-            },
+            }),
           ]}
         >
           {player.level + player.gear}
@@ -163,17 +157,9 @@ const PlayerStats: FC<PlayerStatsProps> = ({ playerId, sx = [] }) => {
 
         <IconButton
           onClick={onSexToggle}
-          sx={[
-            {
-              fontSize: "2.25rem",
-              padding: "8px",
-            },
-            {
-              "@media (orientation: portrait)": {
-                marginTop: "16px",
-              },
-            },
-          ]}
+          sx={{
+            fontSize: "2rem",
+          }}
         >
           <SexIcon
             sex={player.sex}
@@ -185,10 +171,6 @@ const PlayerStats: FC<PlayerStatsProps> = ({ playerId, sx = [] }) => {
       </Box>
     </Box>
   );
-};
-
-PlayerStats.propTypes = {
-  playerId: PropTypes.string.isRequired,
 };
 
 export default PlayerStats;
