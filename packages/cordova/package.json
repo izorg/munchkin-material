@@ -19,8 +19,8 @@
     "run:ios": "cordova run ios"
   },
   "devDependencies": {
-    "@mui/material": "5.16.4",
-    "@sentry/react": "8.19.0",
+    "@mui/material": "5.16.5",
+    "@sentry/react": "8.20.0",
     "@types/cordova": "11.0.3",
     "@types/dom-screen-wake-lock": "1.0.3",
     "@types/react": "18.3.3",
@@ -29,7 +29,7 @@
     "abortcontroller-polyfill": "1.7.5",
     "cordova": "12.0.0",
     "cordova-android": "13.0.0",
-    "cordova-ios": "7.1.0",
+    "cordova-ios": "7.1.1",
     "cordova-plugin-buildinfo": "4.0.0",
     "cordova-plugin-firebase-analytics": "8.0.0",
     "cordova-plugin-firebase-crash": "8.0.2",
