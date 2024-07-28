@@ -3,11 +3,5 @@
   "extends": ["config:recommended"],
   "lockFileMaintenance": {
     "enabled": true
-  },
-  "packageRules": [
-    {
-      "enabled": false,
-      "matchPackageNames": ["eslint-plugin-react-hooks"]
-    }
-  ]
+  }
 }
