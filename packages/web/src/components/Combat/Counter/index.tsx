@@ -2,6 +2,7 @@ import { mdiMenuDown, mdiMenuUp } from "@mdi/js";
 import {
   Box,
   type BoxProps,
+  IconButton,
   SvgIcon,
   type SxProps,
   type Theme,
@@ -10,7 +11,6 @@ import {
 import PropTypes from "prop-types";
 import { type FC } from "react";
 
-import CounterButton from "../../Counter/Button";
 import CounterLabel from "../../Counter/Label";
 
 const buttonSx: SxProps<Theme> = [
@@ -98,7 +98,7 @@ const CombatCounter: FC<CombatCounterProps> = (props) => {
           width: "100%",
         }}
       >
-        <CounterButton
+        <IconButton
           disabled={decrementDisabled}
           onClick={onDecrement}
           sx={buttonSx}
@@ -106,9 +106,9 @@ const CombatCounter: FC<CombatCounterProps> = (props) => {
           <SvgIcon sx={iconSx}>
             <path d={mdiMenuDown} />
           </SvgIcon>
-        </CounterButton>
+        </IconButton>
 
-        <CounterButton
+        <IconButton
           disabled={incrementDisabled}
           onClick={onIncrement}
           sx={buttonSx}
@@ -116,7 +116,7 @@ const CombatCounter: FC<CombatCounterProps> = (props) => {
           <SvgIcon sx={iconSx}>
             <path d={mdiMenuUp} />
           </SvgIcon>
-        </CounterButton>
+        </IconButton>
       </Box>
     </Box>
   );
