@@ -94,34 +94,34 @@ const SinglePlayer = () => {
 
   return (
     <Box
-      sx={[
-        {
-          alignSelf: "center",
-          display: "flex",
-          flex: 1,
-          flexDirection: "column-reverse",
-          height: "100%",
-          margin: "0 auto",
-          maxHeight: "600px",
-          maxWidth: "800px",
-        },
-        {
-          "@media (orientation: landscape)": {
-            flexDirection: "row",
-          },
-        },
-      ]}
+      sx={{
+        alignSelf: "center",
+        margin: "0 auto",
+        padding: 2,
+      }}
     >
       <Box
         sx={[
-          {
-            alignItems: "center",
-            display: "flex",
+          (theme) => ({
+            display: "grid",
             flex: 1,
-          },
+            flexDirection: "column-reverse",
+            gap: theme.spacing(2, 6),
+            gridTemplateAreas: `
+            "strength strength strength"
+            "level gear modifier"
+          `,
+            gridTemplateColumns: "repeat(3, 1fr)",
+            gridTemplateRows: "repeat(2, auto)",
+            width: "fit-content",
+          }),
           {
             "@media (orientation: landscape)": {
-              flex: 3,
+              gridTemplateAreas: `
+                "level gear modifier strength"
+              `,
+              gridTemplateColumns: "repeat(4, 1fr)",
+              gridTemplateRows: "repeat(1, auto)",
             },
           },
         ]}
@@ -152,66 +152,57 @@ const SinglePlayer = () => {
           title={intl.formatMessage(counterMessages.modifier)}
           value={bonus}
         />
-      </Box>
-      <Box
-        sx={{
-          alignItems: "center",
-          display: "flex",
-          flex: 1,
-          flexDirection: "column",
-          justifyContent: "center",
-        }}
-      >
-        <CounterLabel
+        <Box
           sx={{
-            fontSize: "1.5rem",
+            alignItems: "center",
+            display: "flex",
+            flexDirection: "column",
+            gridArea: "strength",
+            justifyContent: "center",
           }}
         >
-          {intl.formatMessage(counterMessages.strength)}
-        </CounterLabel>
-
-        <Box
-          sx={[
-            {
-              color: "text.primary",
-              fontFamily: (theme) =>
-                `Munchkin, ${String(theme.typography.fontFamily)}`,
-              fontSize: "2.25rem",
-            },
-            {
-              "@media (orientation: portrait)": {
-                fontSize: "4.5rem" /* 36px * 2 */,
-                lineHeight: (theme) =>
-                  (theme.typography.body2.lineHeight as number) /
-                  2 /* 1.43 / 2 */,
-                marginTop: "32px",
-              },
-            },
-          ]}
-        >
-          {player.level + player.gear + bonus}
-        </Box>
-
-        <IconButton
-          onClick={onSexToggle}
-          sx={[
-            {
-              fontSize: "2rem",
-            },
-            {
-              "@media (orientation: portrait)": {
-                marginTop: 2,
-              },
-            },
-          ]}
-        >
-          <SexIcon
-            sex={player.sex}
+          <CounterLabel
             sx={{
-              fontSize: "inherit",
+              fontSize: "1.5rem",
             }}
-          />
-        </IconButton>
+          >
+            {intl.formatMessage(counterMessages.strength)}
+          </CounterLabel>
+
+          <Box
+            sx={[
+              (theme) => ({
+                color: "text.primary",
+                fontFamily: `Munchkin, ${String(theme.typography.fontFamily)}`,
+                fontSize: "2.25rem",
+              }),
+              (theme) => ({
+                "@media (orientation: portrait)": {
+                  ...theme.typography.h1,
+                  fontFamily: `Munchkin, ${String(theme.typography.fontFamily)}`,
+                },
+              }),
+            ]}
+          >
+            {player.level + player.gear + bonus}
+          </Box>
+
+          <IconButton
+            onClick={onSexToggle}
+            sx={[
+              {
+                fontSize: "2rem",
+              },
+            ]}
+          >
+            <SexIcon
+              sex={player.sex}
+              sx={{
+                fontSize: "inherit",
+              }}
+            />
+          </IconButton>
+        </Box>
       </Box>
     </Box>
   );
