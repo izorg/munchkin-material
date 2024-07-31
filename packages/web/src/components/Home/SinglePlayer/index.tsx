@@ -108,11 +108,12 @@ const SinglePlayer = () => {
             flexDirection: "column-reverse",
             gap: theme.spacing(2, 6),
             gridTemplateAreas: `
-            "strength strength strength"
-            "level gear modifier"
+            "strength strength"
+            "level gear"
+            "modifier modifier"
           `,
-            gridTemplateColumns: "repeat(3, 1fr)",
-            gridTemplateRows: "repeat(2, auto)",
+            gridTemplateColumns: "repeat(2, 1fr)",
+            gridTemplateRows: "repeat(3, auto)",
             width: "fit-content",
           }),
           {
@@ -132,7 +133,12 @@ const SinglePlayer = () => {
           incrementDisabled={levelIncrementDisabled}
           onDecrement={onLevelDecrement}
           onIncrement={onLevelIncrement}
-          sx={counterSx}
+          sx={[
+            counterSx,
+            {
+              gridArea: "level",
+            },
+          ]}
           title={intl.formatMessage(counterMessages.level)}
           value={player.level}
         />
@@ -140,7 +146,12 @@ const SinglePlayer = () => {
           data-screenshots="gear-counter"
           onDecrement={onGearDecrement}
           onIncrement={onGearIncrement}
-          sx={counterSx}
+          sx={[
+            counterSx,
+            {
+              gridArea: "gear",
+            },
+          ]}
           title={intl.formatMessage(counterMessages.gear)}
           value={player.gear}
         />
@@ -148,7 +159,12 @@ const SinglePlayer = () => {
           data-screenshots="modifier-counter"
           onDecrement={onBonusDecrement}
           onIncrement={onBonusIncrement}
-          sx={counterSx}
+          sx={[
+            counterSx,
+            {
+              gridArea: "modifier",
+            },
+          ]}
           title={intl.formatMessage(counterMessages.modifier)}
           value={bonus}
         />
