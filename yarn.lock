@@ -3381,7 +3381,7 @@ __metadata:
     "@next/bundle-analyzer": "npm:14.2.5"
     "@next/third-parties": "npm:14.2.5"
     "@sentry/nextjs": "npm:8.20.0"
-    "@types/node": "npm:20.14.13"
+    "@types/node": "npm:20.14.14"
     "@types/react": "npm:18.3.3"
     "@types/react-dom": "npm:18.3.0"
     "@types/stylis": "npm:4.2.6"
@@ -3426,7 +3426,7 @@ __metadata:
     "@reduxjs/toolkit": "npm:2.2.7"
     "@sentry/react": "npm:8.20.0"
     "@types/dom-screen-wake-lock": "npm:1.0.3"
-    "@types/node": "npm:20.14.13"
+    "@types/node": "npm:20.14.14"
     "@types/react": "npm:18.3.3"
     "@types/react-dom": "npm:18.3.0"
     "@types/stylis": "npm:4.2.6"
@@ -6605,12 +6605,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:20.14.13":
-  version: 20.14.13
-  resolution: "@types/node@npm:20.14.13"
+"@types/node@npm:20.14.14":
+  version: 20.14.14
+  resolution: "@types/node@npm:20.14.14"
   dependencies:
     undici-types: "npm:~5.26.4"
-  checksum: 10/749160b6bd9866e6169cb1a222e75aaf81da3868af1fda1e1e66d33c7e182be381f98a42b7d231fddf470f6389f2052ee842e776b3fdc677df798b933617866d
+  checksum: 10/035bc347e3de04888d537801e23eb4b4f99522975ca002dbfef978edd853710031b7cd43bf022670d6aba4ed5d4ac75ea1b5ff77ff8f80998bffd943b7bcef48
   languageName: node
   linkType: hard
 
@@ -18561,7 +18561,7 @@ __metadata:
     "@semantic-release/release-notes-generator": "npm:14.0.1"
     "@swc/core": "npm:1.7.3"
     "@swc/jest": "npm:0.2.36"
-    "@types/node": "npm:20.14.13"
+    "@types/node": "npm:20.14.14"
     "@typescript-eslint/eslint-plugin": "npm:7.18.0"
     "@typescript-eslint/parser": "npm:7.18.0"
     conventional-changelog-conventionalcommits: "npm:8.0.0"
