@@ -40,9 +40,9 @@ const store = configureStore({
   reducer: createRootReducer(),
 });
 
-export type AppDispatch = typeof store.dispatch;
+type AppDispatch = typeof store.dispatch;
 
-export type RootState = ReturnType<typeof store.getState>;
+type RootState = ReturnType<typeof store.getState>;
 
 export type PresentState = RootState["present"];
 

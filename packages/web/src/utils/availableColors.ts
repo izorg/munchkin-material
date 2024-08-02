@@ -7,7 +7,7 @@ const availableColors = colorKeys.filter(
     color !== "brown" && color !== "common",
 );
 
-export type AvailableColors = typeof availableColors;
+type AvailableColors = typeof availableColors;
 
 export type AvailableColor = AvailableColors[number];
 

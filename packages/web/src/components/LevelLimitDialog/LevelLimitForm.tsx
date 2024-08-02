@@ -13,9 +13,9 @@ import levelLimitMessages from "../../messages/levelLimit";
 import { useAppDispatch } from "../../store";
 import { MAX_EPIC_LEVEL, MAX_LEVEL, MIN_LEVEL } from "../../utils/levelLimit";
 
-export const DEFAULT_MUNCHKIN_LIMIT = "default";
-export const EPIC_MUNCHKIN_LIMIT = "epic";
-export const NO_LIMIT = "no-limit";
+const DEFAULT_MUNCHKIN_LIMIT = "default";
+const EPIC_MUNCHKIN_LIMIT = "epic";
+const NO_LIMIT = "no-limit";
 
 type LevelLimit =
   | typeof DEFAULT_MUNCHKIN_LIMIT

@@ -2,7 +2,7 @@
 
 import { type ThemeState } from "../../../ducks/theme";
 
-export type OldThemeState = {
+type OldThemeState = {
   type: ThemeState["mode"];
 } & Omit<ThemeState, "mode">;
 

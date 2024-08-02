@@ -1,6 +1,6 @@
 import { createContext, useContext } from "react";
 
-export type WakeLockContextValue = {
+type WakeLockContextValue = {
   setWakeLock: (value: boolean) => Promise<void>;
   wakeLock: boolean;
   wakeLockSupport: boolean;

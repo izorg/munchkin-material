@@ -31,7 +31,7 @@ const getCache = (): IntlCache => {
 
 const intlCache = new Map<string, Promise<IntlShape>>();
 
-export type LocaleMessages =
+type LocaleMessages =
   | Record<string, MessageFormatElement[]>
   | Record<string, string>;
 
