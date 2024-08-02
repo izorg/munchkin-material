@@ -1,0 +1,24 @@
+{
+  "$schema": "https://unpkg.com/knip@5/schema.json",
+  "entry": ["packages/cordova/scripts/copy-gradle-extras.js"],
+  "ignore": [
+    "packages/web/src/components/Loading/index.tsx",
+    "packages/web/src/components/SettingsList/TranslateItem/index.tsx",
+    "packages/web/src/theme/colors/*.ts"
+  ],
+  "ignoreBinaries": ["firebase-tools", "g:*"],
+  "ignoreDependencies": [
+    "@parcel/*",
+    "@types/dom-screen-wake-lock",
+    "@types/stylis",
+    "conventional-changelog-conventionalcommits",
+    "cordova-*",
+    "core-js",
+    "jest-environment-jsdom",
+    "postcss*",
+    "process",
+    "stylis",
+    "stylis-plugin-rtl"
+  ],
+  "include": ["classMembers", "nsExports", "nsTypes"]
+}
