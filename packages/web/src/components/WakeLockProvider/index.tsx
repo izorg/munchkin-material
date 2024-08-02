@@ -25,16 +25,9 @@ const WakeLockProvider: FC<PropsWithChildren> = ({ children }) => {
         return;
       }
 
-      console.log("=== value ===", value);
-
       if (value) {
         wakeLockSentinelRef.current =
           await navigator.wakeLock.request("screen");
-
-        console.log(
-          "=== wakeLockSentinelRef.current ===",
-          wakeLockSentinelRef.current,
-        );
       } else {
         if (!wakeLockSentinelRef.current) {
           return;
