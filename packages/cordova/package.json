@@ -20,7 +20,7 @@
   },
   "devDependencies": {
     "@mui/material": "5.16.6",
-    "@sentry/react": "8.20.0",
+    "@sentry/react": "8.22.0",
     "@types/cordova": "11.0.3",
     "@types/dom-screen-wake-lock": "1.0.3",
     "@types/react": "18.3.3",
@@ -45,7 +45,7 @@
     "prop-types": "15.8.1",
     "react": "18.3.1",
     "react-dom": "18.3.1",
-    "react-router-dom": "6.25.1",
+    "react-router-dom": "6.26.0",
     "smoothscroll-polyfill": "0.4.4",
     "swr": "2.2.5"
   },
