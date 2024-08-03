@@ -1,7 +1,7 @@
 {
   "*": "prettier --cache --ignore-unknown --write",
   "*.css": ["stylelint --cache --fix", "prettier --cache --write"],
-  "*.{js,json,ts,tsx}": [
+  "*.{js,ts,tsx}": [
     "node --max-old-space-size=4096 ./node_modules/eslint/bin/eslint.js --cache --fix",
     "prettier --cache --write"
   ]
