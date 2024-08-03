@@ -5,10 +5,10 @@ import { fixupConfigRules, fixupPluginRules } from "@eslint/compat";
 import { FlatCompat } from "@eslint/eslintrc";
 import js from "@eslint/js";
 import next from "@next/eslint-plugin-next";
-import tsParser from "@typescript-eslint/parser";
 import formatjs from "eslint-plugin-formatjs";
 import onlyError from "eslint-plugin-only-error";
 import globals from "globals";
+import ts from "typescript-eslint";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -18,7 +18,7 @@ const compat = new FlatCompat({
   recommendedConfig: js.configs.recommended,
 });
 
-export default [
+export default ts.config(
   {
     ignores: [
       "**/.next/",
@@ -33,10 +33,10 @@ export default [
       "packages/web/dist/",
     ],
   },
+  js.configs.recommended,
+  ...ts.configs.recommendedTypeChecked,
   ...fixupConfigRules(
     compat.extends(
-      "eslint:recommended",
-      "plugin:@typescript-eslint/recommended",
       "plugin:compat/recommended",
       "plugin:import/recommended",
       "plugin:import/typescript",
@@ -55,9 +55,9 @@ export default [
   {
     languageOptions: {
       ecmaVersion: 5,
-      parser: tsParser,
       parserOptions: {
         project: true,
+        tsconfigRootDir: import.meta.dirname,
       },
 
       sourceType: "script",
@@ -132,12 +132,10 @@ export default [
       },
     },
   },
-  ...fixupConfigRules(
-    compat.extends("plugin:@typescript-eslint/recommended-type-checked"),
-  ).map((config) => ({
-    ...config,
-    files: ["**/*.ts?(x)"],
-  })),
+  {
+    ...ts.configs.disableTypeChecked,
+    files: ["**/*.js"],
+  },
   {
     files: ["**/*.ts?(x)"],
 
@@ -208,4 +206,4 @@ export default [
       },
     },
   },
-];
+);

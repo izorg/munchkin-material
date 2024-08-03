@@ -34,8 +34,6 @@
     "@swc/core": "1.7.5",
     "@swc/jest": "0.2.36",
     "@types/node": "20.14.14",
-    "@typescript-eslint/eslint-plugin": "8.0.0",
-    "@typescript-eslint/parser": "8.0.0",
     "conventional-changelog-conventionalcommits": "8.0.0",
     "eslint": "9.8.0",
     "eslint-config-prettier": "9.1.0",
@@ -43,7 +41,7 @@
     "eslint-plugin-compat": "6.0.0",
     "eslint-plugin-formatjs": "4.13.3",
     "eslint-plugin-import": "2.29.1",
-    "eslint-plugin-jest": "28.6.0",
+    "eslint-plugin-jest": "28.7.0",
     "eslint-plugin-json": "4.0.0",
     "eslint-plugin-jsx-a11y": "6.9.0",
     "eslint-plugin-only-error": "1.0.2",
@@ -69,7 +67,8 @@
     "stylelint": "16.8.1",
     "stylelint-config-standard": "36.0.1",
     "stylelint-order": "6.0.4",
-    "typescript": "5.5.4"
+    "typescript": "5.5.4",
+    "typescript-eslint": "8.0.0"
   },
   "resolutions": {
     "@parcel/runtime-js@npm:2.12.0": "patch:@parcel/runtime-js@npm%3A2.12.0#~/.yarn/patches/@parcel-runtime-js-npm-2.12.0-e21acc0f42.patch"

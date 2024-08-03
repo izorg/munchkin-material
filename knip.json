@@ -11,7 +11,6 @@
     "@parcel/*",
     "@types/dom-screen-wake-lock",
     "@types/stylis",
-    "@typescript-eslint/eslint-plugin",
     "conventional-changelog-conventionalcommits",
     "cordova-*",
     "core-js",
