@@ -8,7 +8,6 @@
   ],
   "ignoreBinaries": ["firebase-tools", "g:*"],
   "ignoreDependencies": [
-    "@next/eslint-plugin-next",
     "@parcel/*",
     "@types/dom-screen-wake-lock",
     "@types/stylis",

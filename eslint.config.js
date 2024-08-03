@@ -1,9 +1,10 @@
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-import { fixupConfigRules } from "@eslint/compat";
+import { fixupConfigRules, fixupPluginRules } from "@eslint/compat";
 import { FlatCompat } from "@eslint/eslintrc";
 import js from "@eslint/js";
+import next from "@next/eslint-plugin-next";
 import tsParser from "@typescript-eslint/parser";
 import formatjs from "eslint-plugin-formatjs";
 import onlyError from "eslint-plugin-only-error";
@@ -63,7 +64,7 @@ export default [
     },
 
     plugins: {
-      formatjs,
+      formatjs: fixupPluginRules(formatjs),
       "only-error": onlyError,
     },
 
@@ -192,13 +193,15 @@ export default [
       polyfills: ["Intl", "Object.fromEntries"],
     },
   },
-  ...compat.extends("plugin:@next/next/core-web-vitals").map((config) => ({
-    ...config,
-    files: ["packages/site/**/*"],
-  })),
   {
     files: ["packages/site/**/*"],
-
+    plugins: {
+      "@next/next": fixupPluginRules(next),
+    },
+    rules: {
+      ...next.configs.recommended.rules,
+      ...next.configs["core-web-vitals"].rules,
+    },
     settings: {
       next: {
         rootDir: "packages/site",
