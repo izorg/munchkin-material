@@ -103,6 +103,7 @@
         "internalPattern": ["@munchkin/**"]
       }
     ],
+    "react/prop-types": "off",
     "unicorn/filename-case": "off",
     "unicorn/no-instanceof-array": "off",
     "unicorn/no-null": "off",
@@ -111,7 +112,9 @@
   "settings": {
     "import/resolver": {
       "node": true,
-      "typescript": true
+      "typescript": {
+        "project": ["packages/*/tsconfig.json", "tsconfig.json"]
+      }
     },
     "lintAllEsApis": true,
     "react": {
