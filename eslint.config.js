@@ -5,14 +5,16 @@ import { fixupConfigRules, fixupPluginRules } from "@eslint/compat";
 import { FlatCompat } from "@eslint/eslintrc";
 import js from "@eslint/js";
 import next from "@next/eslint-plugin-next";
+import compat from "eslint-plugin-compat";
 import formatjs from "eslint-plugin-formatjs";
+import jest from "eslint-plugin-jest";
 import onlyError from "eslint-plugin-only-error";
 import globals from "globals";
 import ts from "typescript-eslint";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const compat = new FlatCompat({
+const flatCompat = new FlatCompat({
   allConfig: js.configs.all,
   baseDirectory: __dirname,
   recommendedConfig: js.configs.recommended,
@@ -35,12 +37,11 @@ export default ts.config(
   },
   js.configs.recommended,
   ...ts.configs.recommendedTypeChecked,
+  compat.configs["flat/recommended"],
   ...fixupConfigRules(
-    compat.extends(
-      "plugin:compat/recommended",
+    flatCompat.extends(
       "plugin:import/recommended",
       "plugin:import/typescript",
-      "plugin:jest/recommended",
       "plugin:json/recommended-legacy",
       "plugin:jsx-a11y/recommended",
       "plugin:perfectionist/recommended-alphabetical-legacy",
@@ -104,8 +105,6 @@ export default ts.config(
             "sibling",
             "index",
           ],
-
-          internalPattern: ["@munchkin/**"],
         },
       ],
 
@@ -162,6 +161,10 @@ export default ts.config(
         },
       ],
     },
+  },
+  {
+    ...jest.configs["flat/recommended"],
+    files: ["**/*.spec.ts?(x)"],
   },
   {
     files: ["**/scripts/**", "**/next.config.js"],
