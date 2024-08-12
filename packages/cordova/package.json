@@ -19,8 +19,8 @@
     "run:ios": "cordova run ios"
   },
   "devDependencies": {
-    "@mui/material": "5.16.6",
-    "@sentry/react": "8.22.0",
+    "@mui/material": "5.16.7",
+    "@sentry/react": "8.25.0",
     "@types/cordova": "11.0.3",
     "@types/dom-screen-wake-lock": "1.0.3",
     "@types/react": "18.3.3",
@@ -40,7 +40,7 @@
     "cordova-plugin-purchase": "13.11.1",
     "cordova-plugin-statusbar": "4.0.0",
     "cordova-plugin-vibration": "3.1.1",
-    "core-js": "3.37.1",
+    "core-js": "3.38.0",
     "parcel": "2.12.0",
     "prop-types": "15.8.1",
     "react": "18.3.1",
