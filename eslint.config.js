@@ -9,6 +9,7 @@ import compat from "eslint-plugin-compat";
 import formatjs from "eslint-plugin-formatjs";
 import jest from "eslint-plugin-jest";
 import onlyError from "eslint-plugin-only-error";
+import sonarjs from "eslint-plugin-sonarjs";
 import globals from "globals";
 import ts from "typescript-eslint";
 
@@ -38,6 +39,7 @@ export default ts.config(
   js.configs.recommended,
   ...ts.configs.recommendedTypeChecked,
   compat.configs["flat/recommended"],
+  sonarjs.configs.recommended,
   ...fixupConfigRules(
     flatCompat.extends(
       "plugin:import/recommended",
@@ -48,7 +50,6 @@ export default ts.config(
       "plugin:react/recommended",
       "plugin:react/jsx-runtime",
       "plugin:react-hooks/recommended",
-      "plugin:sonarjs/recommended-legacy",
       "plugin:unicorn/recommended",
       "plugin:prettier/recommended",
     ),
@@ -76,7 +77,6 @@ export default ts.config(
           idInterpolationPattern: "[sha512:contenthash:base64:6]",
         },
       ],
-
       "formatjs/no-invalid-icu": "error",
 
       "import/consistent-type-specifier-style": ["error", "prefer-inline"],
@@ -109,6 +109,12 @@ export default ts.config(
       ],
 
       "react/prop-types": "off",
+
+      "sonarjs/function-return-type": "off",
+      "sonarjs/no-misused-promises": "off",
+      "sonarjs/no-redeclare": "off",
+      "sonarjs/sonar-no-fallthrough": "off",
+
       "unicorn/filename-case": "off",
       "unicorn/no-instanceof-array": "off",
       "unicorn/no-null": "off",
