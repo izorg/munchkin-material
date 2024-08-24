@@ -2,7 +2,7 @@
   "private": true,
   "version": "15.5.1",
   "type": "module",
-  "packageManager": "yarn@4.4.0",
+  "packageManager": "yarn@4.4.1",
   "workspaces": [
     "packages/*"
   ],
