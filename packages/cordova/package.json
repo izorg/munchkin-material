@@ -20,7 +20,7 @@
   },
   "devDependencies": {
     "@mui/material": "5.16.7",
-    "@sentry/react": "8.26.0",
+    "@sentry/react": "8.27.0",
     "@types/cordova": "11.0.3",
     "@types/dom-screen-wake-lock": "1.0.3",
     "@types/react": "18.3.4",
