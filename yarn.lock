@@ -6851,16 +6851,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/eslint@npm:8.56.10":
-  version: 8.56.10
-  resolution: "@types/eslint@npm:8.56.10"
-  dependencies:
-    "@types/estree": "npm:*"
-    "@types/json-schema": "npm:*"
-  checksum: 10/0cdd914b944ebba51c35827d3ef95bc3e16eb82b4c2741f6437fa57cdb00a4407c77f89c220afe9e4c9566982ec8a0fb9b97c956ac3bd4623a3b6af32eed8424
-  languageName: node
-  linkType: hard
-
 "@types/estree@npm:*, @types/estree@npm:^1.0.0, @types/estree@npm:^1.0.5":
   version: 1.0.5
   resolution: "@types/estree@npm:1.0.5"
@@ -11307,9 +11297,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-sonarjs@npm:2.0.1":
-  version: 2.0.1
-  resolution: "eslint-plugin-sonarjs@npm:2.0.1"
+"eslint-plugin-sonarjs@npm:2.0.2":
+  version: 2.0.2
+  resolution: "eslint-plugin-sonarjs@npm:2.0.2"
   dependencies:
     "@babel/core": "npm:7.24.3"
     "@babel/eslint-parser": "npm:7.24.1"
@@ -11318,7 +11308,6 @@ __metadata:
     "@babel/preset-flow": "npm:7.24.1"
     "@babel/preset-react": "npm:7.24.1"
     "@eslint-community/regexpp": "npm:4.10.0"
-    "@types/eslint": "npm:8.56.10"
     "@typescript-eslint/eslint-plugin": "npm:7.16.1"
     "@typescript-eslint/utils": "npm:^7.16.1"
     builtin-modules: "npm:3.3.0"
@@ -11333,11 +11322,11 @@ __metadata:
     minimatch: "npm:^9.0.3"
     scslre: "npm:0.3.0"
     semver: "npm:7.6.0"
-    typescript: "npm:5.4.3"
+    typescript: "npm:*"
     vue-eslint-parser: "npm:9.4.3"
   peerDependencies:
     eslint: ^8.0.0 || ^9.0.0
-  checksum: 10/c3a4572388e1430de5b3020386ee74cec0d15ae54fcb4a940c8e2cf68c9e05bffd99f9f8559919aa0e907ba5d5932e7578e229624a25eda40018470b06f116b8
+  checksum: 10/7e41c281e815e22b2d0d96857645ee9bbef7aa868283168d74823c7969c9846e1edee17b2c625d0b740d022cf9a89af06f96ed51af668aa650fc61515e6696b8
   languageName: node
   linkType: hard
 
@@ -19268,7 +19257,7 @@ __metadata:
     eslint-plugin-prettier: "npm:5.2.1"
     eslint-plugin-react: "npm:7.35.0"
     eslint-plugin-react-hooks: "npm:4.6.2"
-    eslint-plugin-sonarjs: "npm:2.0.1"
+    eslint-plugin-sonarjs: "npm:2.0.2"
     eslint-plugin-unicorn: "npm:55.0.0"
     globals: "npm:15.9.0"
     husky: "npm:9.1.5"
@@ -21262,7 +21251,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:5, typescript@npm:5.5.4":
+"typescript@npm:*, typescript@npm:5, typescript@npm:5.5.4":
   version: 5.5.4
   resolution: "typescript@npm:5.5.4"
   bin:
@@ -21272,33 +21261,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:5.4.3":
-  version: 5.4.3
-  resolution: "typescript@npm:5.4.3"
-  bin:
-    tsc: bin/tsc
-    tsserver: bin/tsserver
-  checksum: 10/de4c69f49a7ad4b1ea66a6dcc8b055ac34eb56af059a069d8988dd811c5e649be07e042e5bf573e8d0ac3ec2f30e6c999aa651cd09f6e9cbc6113749e8b6be20
-  languageName: node
-  linkType: hard
-
-"typescript@patch:typescript@npm%3A5#optional!builtin<compat/typescript>, typescript@patch:typescript@npm%3A5.5.4#optional!builtin<compat/typescript>":
+"typescript@patch:typescript@npm%3A*#optional!builtin<compat/typescript>, typescript@patch:typescript@npm%3A5#optional!builtin<compat/typescript>, typescript@patch:typescript@npm%3A5.5.4#optional!builtin<compat/typescript>":
   version: 5.5.4
   resolution: "typescript@patch:typescript@npm%3A5.5.4#optional!builtin<compat/typescript>::version=5.5.4&hash=379a07"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
   checksum: 10/746fdd0865c5ce4f15e494c57ede03a9e12ede59cfdb40da3a281807853fe63b00ef1c912d7222143499aa82f18b8b472baa1830df8804746d09b55f6cf5b1cc
-  languageName: node
-  linkType: hard
-
-"typescript@patch:typescript@npm%3A5.4.3#optional!builtin<compat/typescript>":
-  version: 5.4.3
-  resolution: "typescript@patch:typescript@npm%3A5.4.3#optional!builtin<compat/typescript>::version=5.4.3&hash=5adc0c"
-  bin:
-    tsc: bin/tsc
-    tsserver: bin/tsserver
-  checksum: 10/5aedd97595582b08aadb8a70e8e3ddebaf5a9c1e5ad4d6503c2fcfc15329b5cf8d01145b09913e9555683ac16c5123a96be32b6d72614098ebd42df520eed9b1
   languageName: node
   linkType: hard
 
