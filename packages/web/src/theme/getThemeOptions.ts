@@ -1,8 +1,10 @@
-import { type CssVarsThemeOptions, type Direction } from "@mui/material";
+import { type createTheme, type Direction } from "@mui/material";
 import { common, orange } from "@mui/material/colors";
 import { deepmerge } from "@mui/utils";
 
 import { ios } from "../utils/platforms";
+
+type AugmentedThemeOptions = Parameters<typeof createTheme>[0];
 
 const getThemeOptions = ({
   direction,
@@ -10,8 +12,8 @@ const getThemeOptions = ({
 }: {
   direction: Direction;
   pureBlack: boolean;
-}): CssVarsThemeOptions => {
-  let theme: CssVarsThemeOptions = {
+}): AugmentedThemeOptions => {
+  let theme: AugmentedThemeOptions = {
     colorSchemes: {
       dark: {
         palette: {
@@ -74,6 +76,10 @@ const getThemeOptions = ({
           noSsr: true,
         },
       },
+    },
+
+    cssVariables: {
+      colorSchemeSelector: "data",
     },
 
     direction,

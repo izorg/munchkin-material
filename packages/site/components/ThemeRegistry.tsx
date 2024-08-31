@@ -1,6 +1,5 @@
-import { CssBaseline } from "@mui/material";
+import { CssBaseline, ThemeProvider } from "@mui/material";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
-import { Experimental_CssVarsProvider as CssVarsProvider } from "@mui/material/styles/CssVarsProvider";
 import { type PropsWithChildren } from "react";
 
 import { theme } from "../lib/theme";
@@ -12,10 +11,10 @@ export const ThemeRegistry = (props: PropsWithChildren) => {
 
   return (
     <AppRouterCacheProvider>
-      <CssVarsProvider theme={theme}>
+      <ThemeProvider theme={theme}>
         <CssBaseline />
         {children}
-      </CssVarsProvider>
+      </ThemeProvider>
     </AppRouterCacheProvider>
   );
 };

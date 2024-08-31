@@ -1,8 +1,4 @@
-import {
-  CssBaseline,
-  Experimental_CssVarsProvider as CssVarsProvider,
-  experimental_extendTheme as extendTheme,
-} from "@mui/material";
+import { createTheme, CssBaseline, ThemeProvider } from "@mui/material";
 import { deepmerge } from "@mui/utils";
 import PropTypes from "prop-types";
 import { type FC, type PropsWithChildren, useMemo } from "react";
@@ -25,20 +21,23 @@ const AugmentedThemeProvider: FC<PropsWithChildren> = ({ children }) => {
   const theme = useMemo(() => {
     const { id, pureBlack } = previewTheme;
 
-    return extendTheme(
+    return createTheme(
       deepmerge(
-        getThemeOptions({ direction, pureBlack }),
+        getThemeOptions({
+          direction,
+          pureBlack,
+        }),
         colorThemes[id].getTheme(),
       ),
     );
   }, [direction, previewTheme]);
 
   return (
-    <CssVarsProvider defaultMode={previewTheme.mode ?? "system"} theme={theme}>
+    <ThemeProvider theme={theme}>
       <ModeSwitcher />
       <CssBaseline enableColorScheme />
       {children}
-    </CssVarsProvider>
+    </ThemeProvider>
   );
 };
 

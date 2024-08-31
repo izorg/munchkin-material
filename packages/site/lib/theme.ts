@@ -1,13 +1,22 @@
 "use client";
 
+import { createTheme } from "@mui/material";
 import brown from "@mui/material/colors/brown";
-import extendTheme from "@mui/material/styles/experimental_extendTheme";
 
-export const theme = extendTheme({
+export const theme = createTheme({
   colorSchemes: {
+    dark: {
+      palette: {
+        primary: {
+          main: brown[200],
+        },
+      },
+    },
     light: {
       palette: {
-        primary: brown,
+        primary: {
+          main: brown[500],
+        },
       },
     },
   },
@@ -21,6 +30,8 @@ export const theme = extendTheme({
       },
     },
   },
+
+  cssVariables: true,
 
   typography: {
     fontFamily: '"Roboto", "San Francisco", "Helvetica", "Arial", sans-serif',
