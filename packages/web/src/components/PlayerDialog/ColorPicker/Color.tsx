@@ -41,11 +41,13 @@ const Color = forwardRef<HTMLButtonElement, ColorProps>(
         <Avatar
           component="span"
           sx={(theme) => ({
-            backgroundColor:
-              value && colors[value][theme.palette.mode === "dark" ? 200 : 500],
+            backgroundColor: value && colors[value][500],
             height: "36px",
             margin: "0 auto",
             width: "36px",
+            ...theme.applyStyles("dark", {
+              backgroundColor: value && colors[value][200],
+            }),
           })}
         >
           {selected ? (

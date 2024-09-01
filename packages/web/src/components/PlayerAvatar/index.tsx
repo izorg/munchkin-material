@@ -21,10 +21,12 @@ const PlayerAvatar = forwardRef<HTMLDivElement, PlayerAvatarProps>(
       <Avatar
         ref={ref}
         sx={[
-          color
+          color && !selected
             ? (theme) => ({
-                backgroundColor:
-                  colors[color][theme.palette.mode === "dark" ? 200 : 500],
+                backgroundColor: colors[color][500],
+                ...theme.applyStyles("dark", {
+                  backgroundColor: colors[color][200],
+                }),
               })
             : false,
           selected
