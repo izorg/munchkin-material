@@ -8,7 +8,7 @@ import {
   FormControl,
   FormControlLabel,
   FormLabel,
-  Grid,
+  Grid2,
   Radio,
   RadioGroup,
   SvgIcon,
@@ -207,8 +207,8 @@ const PlayerDialog = () => {
             name="name"
           />
 
-          <Grid container>
-            <Grid item xs={6}>
+          <Grid2 container>
+            <Grid2 size={6}>
               <FormControl component="fieldset" margin="normal">
                 <FormLabel component="legend">
                   {
@@ -243,9 +243,9 @@ const PlayerDialog = () => {
                   />
                 </RadioGroup>
               </FormControl>
-            </Grid>
+            </Grid2>
 
-            <Grid item xs={6}>
+            <Grid2 size={6}>
               <FormControl margin="normal">
                 <FormLabel>
                   {
@@ -261,8 +261,8 @@ const PlayerDialog = () => {
                   name="color"
                 />
               </FormControl>
-            </Grid>
-          </Grid>
+            </Grid2>
+          </Grid2>
         </form>
       </DialogContent>
       {!fullScreen && (
