@@ -57,7 +57,7 @@
     "jest-environment-jsdom": "29.7.0",
     "knip": "5.29.1",
     "lint-staged": "15.2.10",
-    "postcss": "8.4.44",
+    "postcss": "8.4.45",
     "postcss-html": "1.7.0",
     "postcss-syntax": "0.36.2",
     "prettier": "3.3.3",
