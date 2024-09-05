@@ -7227,7 +7227,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/types@npm:8.4.0, @typescript-eslint/types@npm:^8.3.0":
+"@typescript-eslint/types@npm:8.4.0, @typescript-eslint/types@npm:^8.4.0":
   version: 8.4.0
   resolution: "@typescript-eslint/types@npm:8.4.0"
   checksum: 10/962eb0b45ca7634264698086dadb917d96684bd8a88926026e0c314984e68d14e1f30e0291f196408935a507aa9e9976ec4d27fc6aa632d34295059b4e436bae
@@ -7324,7 +7324,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/utils@npm:8.4.0, @typescript-eslint/utils@npm:^6.0.0 || ^7.0.0 || ^8.0.0, @typescript-eslint/utils@npm:^8.3.0":
+"@typescript-eslint/utils@npm:8.4.0, @typescript-eslint/utils@npm:^6.0.0 || ^7.0.0 || ^8.0.0, @typescript-eslint/utils@npm:^8.4.0":
   version: 8.4.0
   resolution: "@typescript-eslint/utils@npm:8.4.0"
   dependencies:
@@ -11036,13 +11036,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-perfectionist@npm:3.3.0":
-  version: 3.3.0
-  resolution: "eslint-plugin-perfectionist@npm:3.3.0"
+"eslint-plugin-perfectionist@npm:3.4.0":
+  version: 3.4.0
+  resolution: "eslint-plugin-perfectionist@npm:3.4.0"
   dependencies:
-    "@typescript-eslint/types": "npm:^8.3.0"
-    "@typescript-eslint/utils": "npm:^8.3.0"
-    minimatch: "npm:^10.0.1"
+    "@typescript-eslint/types": "npm:^8.4.0"
+    "@typescript-eslint/utils": "npm:^8.4.0"
+    minimatch: "npm:^9.0.5"
     natural-compare-lite: "npm:^1.4.0"
   peerDependencies:
     astro-eslint-parser: ^1.0.2
@@ -11059,7 +11059,7 @@ __metadata:
       optional: true
     vue-eslint-parser:
       optional: true
-  checksum: 10/7609ecbb245ac5f3ffa5dff0cf54d4034906509f8112ee5cc58eda9dea95d5d9b5c91abeba9a0c1e871fabefb0bd86bab3b4d1cadd11b082f94ac9d411b26cc8
+  checksum: 10/0867a8366b1cee096f4f3fc20d8c47e7a0acc62ffcfe6c05725948f284d15f51f4c91476d81a22fa318f70d71ffa36444fc0ca06d7d5da0a90cb4b8bbf4fef3d
   languageName: node
   linkType: hard
 
@@ -15950,7 +15950,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"minimatch@npm:^10.0.0, minimatch@npm:^10.0.1":
+"minimatch@npm:^10.0.0":
   version: 10.0.1
   resolution: "minimatch@npm:10.0.1"
   dependencies:
@@ -19085,7 +19085,7 @@ __metadata:
     eslint-plugin-json: "npm:4.0.1"
     eslint-plugin-jsx-a11y: "npm:6.9.0"
     eslint-plugin-only-error: "npm:1.0.2"
-    eslint-plugin-perfectionist: "npm:3.3.0"
+    eslint-plugin-perfectionist: "npm:3.4.0"
     eslint-plugin-prettier: "npm:5.2.1"
     eslint-plugin-react: "npm:7.35.1"
     eslint-plugin-react-hooks: "npm:4.6.2"
