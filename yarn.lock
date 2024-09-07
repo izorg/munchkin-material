@@ -68,7 +68,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/core@npm:^7.11.6, @babel/core@npm:^7.12.3, @babel/core@npm:^7.18.5, @babel/core@npm:^7.23.9, @babel/core@npm:^7.24.4":
+"@babel/core@npm:7.25.2, @babel/core@npm:^7.11.6, @babel/core@npm:^7.12.3, @babel/core@npm:^7.18.5, @babel/core@npm:^7.23.9, @babel/core@npm:^7.24.4":
   version: 7.25.2
   resolution: "@babel/core@npm:7.25.2"
   dependencies:
@@ -3581,7 +3581,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@munchkin/cordova@workspace:packages/cordova"
   dependencies:
+    "@babel/core": "npm:7.25.2"
     "@mui/material": "npm:6.0.2"
+    "@sentry/babel-plugin-component-annotate": "npm:2.22.4"
     "@sentry/react": "npm:8.28.0"
     "@types/cordova": "npm:11.0.3"
     "@types/dom-screen-wake-lock": "npm:1.0.3"
@@ -3649,6 +3651,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@munchkin/web@workspace:packages/web"
   dependencies:
+    "@babel/core": "npm:7.25.2"
     "@dnd-kit/core": "npm:6.1.0"
     "@dnd-kit/modifiers": "npm:7.0.0"
     "@dnd-kit/sortable": "npm:8.0.0"
@@ -3672,6 +3675,7 @@ __metadata:
     "@parcel/reporter-bundle-analyzer": "npm:2.12.0"
     "@parcel/transformer-webmanifest": "npm:2.12.0"
     "@reduxjs/toolkit": "npm:2.2.7"
+    "@sentry/babel-plugin-component-annotate": "npm:2.22.4"
     "@sentry/react": "npm:8.28.0"
     "@types/dom-screen-wake-lock": "npm:1.0.3"
     "@types/node": "npm:20.16.5"
@@ -6004,6 +6008,13 @@ __metadata:
   version: 2.22.3
   resolution: "@sentry/babel-plugin-component-annotate@npm:2.22.3"
   checksum: 10/481b6ec6fa6a744557bc1847f9150e779b3a04d4bd12d29d8f8e816fdcd4033bb983e97a728524605fdf663e0381f2587a49f0b922e4b7d6e35edc2577bf6a37
+  languageName: node
+  linkType: hard
+
+"@sentry/babel-plugin-component-annotate@npm:2.22.4":
+  version: 2.22.4
+  resolution: "@sentry/babel-plugin-component-annotate@npm:2.22.4"
+  checksum: 10/203e782791f412c478b1e2336e9a45c755d2bede6f4900d06f013230d6e7900f9afde617157544d7838a2fd403d5b87e09fb2916ac561e5a4681c9feed6f4af4
   languageName: node
   linkType: hard
 

@@ -8,6 +8,7 @@
   ],
   "ignoreBinaries": ["firebase-tools", "g:*"],
   "ignoreDependencies": [
+    "@babel/*",
     "@parcel/*",
     "@types/dom-screen-wake-lock",
     "@types/stylis",
