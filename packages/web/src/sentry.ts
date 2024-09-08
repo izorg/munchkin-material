@@ -16,7 +16,7 @@ init({
     }),
   ],
   normalizeDepth: 10,
-  release: process.env.VERSION,
+  release: `munchkin@${process.env.VERSION}`,
   replaysOnErrorSampleRate: 1,
   replaysSessionSampleRate: 0.01,
   transport: makeBrowserOfflineTransport(makeFetchTransport),
