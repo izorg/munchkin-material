@@ -20,7 +20,7 @@
   },
   "devDependencies": {
     "@babel/core": "7.25.2",
-    "@mui/material": "6.0.2",
+    "@mui/material": "6.1.0",
     "@sentry/babel-plugin-component-annotate": "2.22.4",
     "@sentry/react": "8.28.0",
     "@types/cordova": "11.0.3",
