@@ -1,6 +1,7 @@
 import {
   Dialog,
   DialogActions,
+  DialogContent,
   DialogTitle,
   List,
   ListItemAvatar,
@@ -50,16 +51,18 @@ const HelperSelector = () => {
           id="combat.helperSelector.title"
         />
       </DialogTitle>
-      <List component="div">
-        {helpers.map((helper) => (
-          <ListItemButton key={helper.id} onClick={() => onSelect(helper.id)}>
-            <ListItemAvatar>
-              <PlayerAvatar color={helper.color} name={helper.name} />
-            </ListItemAvatar>
-            <PlayerListItemText player={helper} />
-          </ListItemButton>
-        ))}
-      </List>
+      <DialogContent sx={{ padding: 0 }}>
+        <List component="div">
+          {helpers.map((helper) => (
+            <ListItemButton key={helper.id} onClick={() => onSelect(helper.id)}>
+              <ListItemAvatar>
+                <PlayerAvatar color={helper.color} name={helper.name} />
+              </ListItemAvatar>
+              <PlayerListItemText player={helper} />
+            </ListItemButton>
+          ))}
+        </List>
+      </DialogContent>
       <DialogActions>
         <CancelButton onClick={goBack} />
       </DialogActions>
