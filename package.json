@@ -2,7 +2,7 @@
   "private": true,
   "version": "15.5.4",
   "type": "module",
-  "packageManager": "yarn@4.4.1",
+  "packageManager": "yarn@4.5.0",
   "workspaces": [
     "packages/*"
   ],
@@ -27,9 +27,9 @@
     "@eslint/eslintrc": "3.1.0",
     "@eslint/js": "9.10.0",
     "@jest/globals": "29.7.0",
-    "@next/eslint-plugin-next": "14.2.11",
+    "@next/eslint-plugin-next": "14.2.12",
     "@semantic-release/commit-analyzer": "13.0.0",
-    "@semantic-release/github": "10.3.3",
+    "@semantic-release/github": "10.3.4",
     "@semantic-release/release-notes-generator": "14.0.1",
     "@swc/core": "1.7.26",
     "@swc/jest": "0.2.36",
@@ -57,7 +57,7 @@
     "jest-environment-jsdom": "29.7.0",
     "knip": "5.30.2",
     "lint-staged": "15.2.10",
-    "postcss": "8.4.45",
+    "postcss": "8.4.47",
     "postcss-html": "1.7.0",
     "postcss-syntax": "0.36.2",
     "prettier": "3.3.3",
@@ -68,7 +68,7 @@
     "stylelint-config-standard": "36.0.1",
     "stylelint-order": "6.0.4",
     "typescript": "5.6.2",
-    "typescript-eslint": "8.5.0"
+    "typescript-eslint": "8.6.0"
   },
   "resolutions": {
     "@parcel/runtime-js@npm:2.12.0": "patch:@parcel/runtime-js@npm%3A2.12.0#~/.yarn/patches/@parcel-runtime-js-npm-2.12.0-e21acc0f42.patch"
