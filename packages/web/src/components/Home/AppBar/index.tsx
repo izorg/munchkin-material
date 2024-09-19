@@ -1,7 +1,7 @@
 import { mdiClose, mdiFlagCheckered, mdiTrashCanOutline } from "@mdi/js";
 import { SvgIcon } from "@mui/material";
 import PropTypes from "prop-types";
-import { type FC, type ReactElement, type ReactNode } from "react";
+import { type FC, type ReactNode } from "react";
 import { FormattedMessage } from "react-intl";
 
 import { setCombatPlayerBonus } from "../../../ducks/combat/actions";
@@ -61,7 +61,7 @@ const HomeAppBar: FC<HomeAppBarProps> = (props) => {
     !empty && <EditButton key="edit" />,
     <DiceButton key="dice" />,
     <SettingsIconButton edge="end" key="settings" />,
-  ].filter((item): item is ReactElement => item !== false);
+  ].filter((item) => item !== false);
 
   if (editMode) {
     buttons = [
