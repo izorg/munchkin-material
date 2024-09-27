@@ -1,25 +1,21 @@
-import path from "node:path";
-import { fileURLToPath } from "node:url";
-
-import { fixupConfigRules, fixupPluginRules } from "@eslint/compat";
-import { FlatCompat } from "@eslint/eslintrc";
+import { fixupPluginRules } from "@eslint/compat";
 import js from "@eslint/js";
+import json from "@eslint/json";
 import next from "@next/eslint-plugin-next";
+import prettier from "eslint-config-prettier";
 import compat from "eslint-plugin-compat";
 import formatjs from "eslint-plugin-formatjs";
+import importPlugin from "eslint-plugin-import";
 import jest from "eslint-plugin-jest";
+import jsxA11y from "eslint-plugin-jsx-a11y";
 import onlyError from "eslint-plugin-only-error";
+import perfectionist from "eslint-plugin-perfectionist";
+import react from "eslint-plugin-react";
+import reactHooks from "eslint-plugin-react-hooks";
 import sonarjs from "eslint-plugin-sonarjs";
+import unicorn from "eslint-plugin-unicorn";
 import globals from "globals";
 import ts from "typescript-eslint";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const flatCompat = new FlatCompat({
-  allConfig: js.configs.all,
-  baseDirectory: __dirname,
-  recommendedConfig: js.configs.recommended,
-});
 
 export default ts.config(
   {
@@ -39,21 +35,15 @@ export default ts.config(
   js.configs.recommended,
   ...ts.configs.recommendedTypeChecked,
   compat.configs["flat/recommended"],
+  perfectionist.configs["recommended-alphabetical"],
+  importPlugin.flatConfigs.recommended,
+  importPlugin.flatConfigs.typescript,
+  jsxA11y.flatConfigs.recommended,
+  react.configs.flat.recommended,
+  react.configs.flat["jsx-runtime"],
   sonarjs.configs.recommended,
-  ...fixupConfigRules(
-    flatCompat.extends(
-      "plugin:import/recommended",
-      "plugin:import/typescript",
-      "plugin:json/recommended-legacy",
-      "plugin:jsx-a11y/recommended",
-      "plugin:perfectionist/recommended-alphabetical-legacy",
-      "plugin:react/recommended",
-      "plugin:react/jsx-runtime",
-      "plugin:react-hooks/recommended",
-      "plugin:unicorn/recommended",
-      "plugin:prettier/recommended",
-    ),
-  ),
+  unicorn.configs["flat/recommended"],
+  prettier,
   {
     languageOptions: {
       ecmaVersion: 5,
@@ -66,11 +56,14 @@ export default ts.config(
     },
 
     plugins: {
-      formatjs: fixupPluginRules(formatjs),
+      formatjs,
       "only-error": onlyError,
+      "react-hooks": fixupPluginRules(reactHooks),
     },
 
     rules: {
+      ...reactHooks.configs.recommended.rules,
+
       "formatjs/enforce-id": [
         "error",
         {
@@ -183,15 +176,8 @@ export default ts.config(
   },
   {
     files: ["**/*.json"],
-
-    languageOptions: {
-      ecmaVersion: 5,
-      parserOptions: {
-        project: null,
-      },
-
-      sourceType: "script",
-    },
+    language: "json/json",
+    ...json.configs.recommended,
   },
   {
     files: ["packages/cordova/**/*", "packages/web/**/*"],
