@@ -12,7 +12,6 @@ import {
   Typography,
 } from "@mui/material";
 import { type Metadata } from "next";
-import NextLink from "next/link";
 
 import { StoreButton } from "../../../components/StoreButton";
 import { getServerIntl, localeByLanguage } from "../../../lib/i18n";
@@ -86,7 +85,7 @@ const Page = async (props: PageProps) => {
         <Toolbar sx={{ justifyContent: "flex-end" }}>
           <Button
             color="inherit"
-            component={NextLink}
+            component="a"
             disabled={language === "en"}
             href="/en"
             size="small"
@@ -95,7 +94,7 @@ const Page = async (props: PageProps) => {
           </Button>
           <Button
             color="inherit"
-            component={NextLink}
+            component="a"
             disabled={locale === "ru"}
             href="/ru"
             size="small"
@@ -181,7 +180,7 @@ const Page = async (props: PageProps) => {
           textAlign: "center",
         }}
       >
-        <Link component={NextLink} href="/privacy" underline="always">
+        <Link href="/privacy" underline="always">
           {intl.formatMessage(messages.privacy)}
         </Link>
       </Box>
