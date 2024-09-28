@@ -7,7 +7,7 @@ import { ThemeRegistry } from "../../components/ThemeRegistry";
 import { munchkinFont } from "../../lib/munchkinFont";
 
 export const viewport: Viewport = {
-  colorScheme: "light",
+  colorScheme: "light dark",
 };
 
 const Layout = ({ children }: PropsWithChildren) => (

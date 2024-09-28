@@ -2,7 +2,7 @@ import { Box } from "@mui/material";
 import { type Viewport } from "next";
 
 export const viewport: Viewport = {
-  colorScheme: "light",
+  colorScheme: "light dark",
 };
 
 const NotFound = () => (
