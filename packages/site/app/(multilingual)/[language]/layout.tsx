@@ -13,7 +13,7 @@ import {
 import { munchkinFont } from "../../../lib/munchkinFont";
 
 export const viewport: Viewport = {
-  colorScheme: "light",
+  colorScheme: "light dark",
 };
 
 type LayoutProps = PropsWithChildren<{
