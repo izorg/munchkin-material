@@ -55,7 +55,7 @@
     "@types/stylis": "4.2.6",
     "@types/uuid": "10.0.0",
     "core-js": "3.38.1",
-    "firebase": "10.13.2",
+    "firebase": "10.14.0",
     "framer-motion": "11.9.0",
     "handlebars": "4.7.8",
     "parcel": "2.12.0",
