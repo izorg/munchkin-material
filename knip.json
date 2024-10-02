@@ -19,6 +19,7 @@
     "jest-environment-jsdom",
     "postcss*",
     "process",
+    "sharp",
     "stylis",
     "stylis-plugin-rtl"
   ],

@@ -4,7 +4,13 @@
     "public": "out",
     "i18n": {
       "root": "/"
-    }
+    },
+    "rewrites": [
+      {
+        "source": "/",
+        "destination": "/en/index.html"
+      }
+    ]
   },
   "emulators": {
     "hosting": {

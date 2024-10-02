@@ -21,6 +21,7 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  output: "export",
   productionBrowserSourceMaps: true,
   trailingSlash: true,
   typescript: {
@@ -39,16 +40,13 @@ const nextConfig = {
 };
 
 if (process.env.NODE_ENV === "development") {
-  nextConfig.redirects = () =>
+  nextConfig.rewrites = () =>
     Promise.resolve([
       {
         destination: "/en",
-        permanent: false,
         source: "/",
       },
     ]);
-} else {
-  nextConfig.output = "export";
 }
 
 export default withSentryConfig(withBundleAnalyzer(nextConfig), {
