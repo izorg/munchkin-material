@@ -15,7 +15,7 @@ import reactHooks from "eslint-plugin-react-hooks";
 import sonarjs from "eslint-plugin-sonarjs";
 import unicorn from "eslint-plugin-unicorn";
 import globals from "globals";
-import ts from "typescript-eslint";
+import * as ts from "typescript-eslint";
 
 export default ts.config(
   {
@@ -73,11 +73,7 @@ export default ts.config(
       "formatjs/no-invalid-icu": "error",
 
       "import/consistent-type-specifier-style": ["error", "prefer-inline"],
-      "import/default": "off",
-      "import/namespace": "off",
       "import/no-cycle": "error",
-      "import/no-named-as-default": "off",
-      "import/no-named-as-default-member": "off",
 
       "jsx-a11y/no-autofocus": [
         "error",
