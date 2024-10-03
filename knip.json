@@ -11,7 +11,6 @@
     "@babel/*",
     "@parcel/*",
     "@types/dom-screen-wake-lock",
-    "@types/stylis",
     "conventional-changelog-conventionalcommits",
     "cordova-*",
     "core-js",
@@ -19,9 +18,7 @@
     "jest-environment-jsdom",
     "postcss*",
     "process",
-    "sharp",
-    "stylis",
-    "stylis-plugin-rtl"
+    "sharp"
   ],
   "include": ["classMembers", "nsExports", "nsTypes"]
 }

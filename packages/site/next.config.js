@@ -21,7 +21,6 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  output: "export",
   productionBrowserSourceMaps: true,
   trailingSlash: true,
   typescript: {
@@ -47,6 +46,8 @@ if (process.env.NODE_ENV === "development") {
         source: "/",
       },
     ]);
+} else {
+  nextConfig.output = "export";
 }
 
 export default withSentryConfig(withBundleAnalyzer(nextConfig), {

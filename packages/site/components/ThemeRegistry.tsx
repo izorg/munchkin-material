@@ -4,6 +4,8 @@ import { type PropsWithChildren } from "react";
 
 import { theme } from "../lib/theme";
 
+import StylisProvider from "./StylisProvider";
+
 // This implementation is from emotion-js
 // https://github.com/emotion-js/emotion/issues/2928#issuecomment-1319747902
 export const ThemeRegistry = (props: PropsWithChildren) => {
@@ -11,10 +13,12 @@ export const ThemeRegistry = (props: PropsWithChildren) => {
 
   return (
     <AppRouterCacheProvider>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        {children}
-      </ThemeProvider>
+      <StylisProvider>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          {children}
+        </ThemeProvider>
+      </StylisProvider>
     </AppRouterCacheProvider>
   );
 };
