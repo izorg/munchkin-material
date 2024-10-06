@@ -137,7 +137,7 @@ export const HomePage = async (props: HomePageProps) => {
             App Store
           </StoreButton>
           <StoreButton
-            href="https://www.microsoft.com/store/apps/9PDVK4CF6NMF"
+            href="https://apps.microsoft.com/detail/9pdvk4cf6nmf"
             startIcon={
               <SvgIcon sx={{ marginTop: "-2px" }}>
                 <path d={mdiMicrosoftWindows} />
