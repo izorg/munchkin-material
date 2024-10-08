@@ -14,7 +14,7 @@
     "conventional-changelog-conventionalcommits",
     "cordova-*",
     "core-js",
-    "eslint-*",
+    "eslint-import-resolver-typescript",
     "jest-environment-jsdom",
     "postcss*",
     "process",

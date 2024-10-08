@@ -50,6 +50,7 @@ export default ts.config(
       parserOptions: {
         project: true,
         tsconfigRootDir: import.meta.dirname,
+        warnOnUnsupportedTypeScriptVersion: false,
       },
 
       sourceType: "script",
@@ -107,6 +108,7 @@ export default ts.config(
       "unicorn/filename-case": "off",
       "unicorn/no-instanceof-array": "off",
       "unicorn/no-null": "off",
+      "unicorn/prefer-global-this": "off",
       "unicorn/prevent-abbreviations": "off",
     },
 
