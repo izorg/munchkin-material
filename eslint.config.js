@@ -46,7 +46,6 @@ export default ts.config(
   prettier,
   {
     languageOptions: {
-      ecmaVersion: 5,
       parserOptions: {
         project: true,
         tsconfigRootDir: import.meta.dirname,
@@ -113,14 +112,9 @@ export default ts.config(
     settings: {
       "import/resolver": {
         node: true,
-
-        typescript: {
-          project: ["packages/*/tsconfig.json", "tsconfig.json"],
-        },
+        typescript: true,
       },
-
       lintAllEsApis: true,
-
       react: {
         version: "detect",
       },
