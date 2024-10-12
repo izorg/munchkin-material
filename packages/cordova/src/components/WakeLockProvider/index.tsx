@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import {
   type FC,
   type PropsWithChildren,
@@ -59,10 +58,6 @@ const WakeLockProvider: FC<PropsWithChildren> = ({ children }) => {
       {children}
     </WakeLockContext.Provider>
   );
-};
-
-WakeLockProvider.propTypes = {
-  children: PropTypes.node,
 };
 
 export default WakeLockProvider;

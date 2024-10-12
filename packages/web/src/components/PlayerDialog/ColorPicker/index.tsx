@@ -1,5 +1,4 @@
 import { type Theme, useFormControl, useMediaQuery } from "@mui/material";
-import PropTypes from "prop-types";
 import {
   type FC,
   type FocusEvent,
@@ -12,7 +11,6 @@ import { useSearchParams } from "react-router-dom";
 
 import { type AvailableColor } from "../../../utils/availableColors";
 import { useGoBack } from "../../../utils/location";
-import { colorType } from "../../../utils/propTypes";
 
 import Color from "./Color";
 import Dialog from "./Dialog";
@@ -148,15 +146,6 @@ const ColorPicker: FC<ColorPickerProps> = (props) => {
       )}
     </>
   );
-};
-
-ColorPicker.propTypes = {
-  defaultValue: colorType,
-  name: PropTypes.string.isRequired,
-  onBlur: PropTypes.func,
-  onChange: PropTypes.func,
-  onFocus: PropTypes.func,
-  value: colorType,
 };
 
 export default ColorPicker;

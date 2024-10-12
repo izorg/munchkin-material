@@ -2,7 +2,7 @@ import { mdiChevronUp as levelIcon, mdiSword as strengthIcon } from "@mdi/js";
 import { Box, ListItemText, SvgIcon } from "@mui/material";
 import { type FC } from "react";
 
-import { type Player, playerType } from "../../domains/player";
+import { type Player } from "../../domains/player";
 import SexIcon from "../SexIcon";
 
 type PlayerListItemTextProps = {
@@ -84,9 +84,5 @@ const PlayerListItemText: FC<PlayerListItemTextProps> = ({ player }) => (
     </ListItemText>
   </>
 );
-
-PlayerListItemText.propTypes = {
-  player: playerType.isRequired,
-};
 
 export default PlayerListItemText;

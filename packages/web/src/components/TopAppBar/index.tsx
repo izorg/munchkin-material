@@ -1,5 +1,4 @@
 import { AppBar, Toolbar } from "@mui/material";
-import PropTypes from "prop-types";
 import { type FC, type PropsWithChildren } from "react";
 
 const TopAppBar: FC<PropsWithChildren> = ({ children }) => (
@@ -39,9 +38,5 @@ const TopAppBar: FC<PropsWithChildren> = ({ children }) => (
     </Toolbar>
   </AppBar>
 );
-
-TopAppBar.propTypes = {
-  children: PropTypes.node,
-};
 
 export default TopAppBar;

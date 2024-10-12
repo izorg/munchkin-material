@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import { type FC, type PropsWithChildren, useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
 
@@ -37,10 +36,6 @@ const CordovaProvider: FC<PropsWithChildren> = ({ children }) => {
   useNavigationBreadcrumbs();
 
   return children;
-};
-
-CordovaProvider.propTypes = {
-  children: PropTypes.node,
 };
 
 export default CordovaProvider;

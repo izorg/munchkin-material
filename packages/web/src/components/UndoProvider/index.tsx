@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import {
   createContext,
   type FC,
@@ -32,10 +31,6 @@ const UndoProvider: FC<PropsWithChildren> = ({ children }) => {
   const value = useMemo(() => ({ message, setMessage }), [message]);
 
   return <Context.Provider value={value}>{children}</Context.Provider>;
-};
-
-UndoProvider.propTypes = {
-  children: PropTypes.node,
 };
 
 export default UndoProvider;

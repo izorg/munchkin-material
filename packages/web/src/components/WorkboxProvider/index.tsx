@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import {
   createContext,
   type FC,
@@ -67,10 +66,6 @@ const WorkboxProvider: FC<PropsWithChildren> = ({ children }) => {
   }, [update, workbox]);
 
   return <Context.Provider value={value}>{children}</Context.Provider>;
-};
-
-WorkboxProvider.propTypes = {
-  children: PropTypes.node,
 };
 
 export default WorkboxProvider;

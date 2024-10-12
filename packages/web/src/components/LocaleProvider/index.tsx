@@ -1,5 +1,4 @@
 import { captureException } from "@sentry/react";
-import PropTypes from "prop-types";
 import { type FC, type PropsWithChildren, useLayoutEffect } from "react";
 import { IntlProvider } from "react-intl";
 import useSWRImmutable from "swr/immutable";
@@ -62,10 +61,6 @@ const LocaleProvider: FC<PropsWithChildren> = ({ children }) => {
       {children}
     </IntlProvider>
   );
-};
-
-LocaleProvider.propTypes = {
-  children: PropTypes.node,
 };
 
 export default LocaleProvider;

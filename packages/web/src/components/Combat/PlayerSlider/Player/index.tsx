@@ -1,5 +1,4 @@
 import { Box, IconButton, Typography } from "@mui/material";
-import PropTypes from "prop-types";
 import { type FC, useCallback } from "react";
 import { useIntl } from "react-intl";
 
@@ -164,10 +163,6 @@ const CombatPlayer: FC<CombatPlayerProps> = ({ playerId }) => {
       </Box>
     </Box>
   );
-};
-
-CombatPlayer.propTypes = {
-  playerId: PropTypes.string.isRequired,
 };
 
 export default CombatPlayer;

@@ -1,6 +1,5 @@
 import { mdiClose, mdiFlagCheckered, mdiTrashCanOutline } from "@mdi/js";
 import { SvgIcon } from "@mui/material";
-import PropTypes from "prop-types";
 import { type FC, type ReactNode } from "react";
 import { FormattedMessage } from "react-intl";
 
@@ -118,11 +117,6 @@ const HomeAppBar: FC<HomeAppBarProps> = (props) => {
       {buttons}
     </TopAppBar>
   );
-};
-
-HomeAppBar.propTypes = {
-  empty: PropTypes.bool.isRequired,
-  singleMode: PropTypes.bool.isRequired,
 };
 
 export default HomeAppBar;

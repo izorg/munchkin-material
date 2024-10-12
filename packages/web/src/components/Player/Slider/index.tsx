@@ -7,7 +7,6 @@ import {
   Tooltip,
   useTheme,
 } from "@mui/material";
-import PropTypes from "prop-types";
 import {
   useCallback,
   useEffect,
@@ -330,10 +329,6 @@ const PlayerSlider = ({ playerId, sx = [] }: PlayerSliderProps) => {
       )}
     </Box>
   );
-};
-
-PlayerSlider.propTypes = {
-  playerId: PropTypes.string.isRequired,
 };
 
 export default PlayerSlider;

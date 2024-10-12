@@ -1,10 +1,8 @@
 import { mdiCheck } from "@mdi/js";
 import { Avatar, colors, SvgIcon, type SxProps } from "@mui/material";
-import PropTypes from "prop-types";
 import { forwardRef } from "react";
 
 import { type AvailableColor } from "../../utils/availableColors";
-import { colorType } from "../../utils/propTypes";
 
 type PlayerAvatarProps = {
   color?: AvailableColor | null;
@@ -47,11 +45,5 @@ const PlayerAvatar = forwardRef<HTMLDivElement, PlayerAvatarProps>(
     );
   },
 );
-
-PlayerAvatar.propTypes = {
-  color: colorType.isRequired,
-  name: PropTypes.string.isRequired,
-  selected: PropTypes.bool,
-};
 
 export default PlayerAvatar;

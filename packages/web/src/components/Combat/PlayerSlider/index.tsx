@@ -11,7 +11,6 @@ import {
   useMediaQuery,
   useTheme,
 } from "@mui/material";
-import PropTypes from "prop-types";
 import { type FC, memo, useEffect, useRef } from "react";
 
 import {
@@ -175,12 +174,6 @@ const CombatPlayerSlider: FC<CombatPlayerSliderProps> = (props) => {
       <Filler />
     </Box>
   );
-};
-
-CombatPlayerSlider.propTypes = {
-  className: PropTypes.string,
-  helperId: PropTypes.string,
-  playerId: PropTypes.string.isRequired,
 };
 
 export default memo(CombatPlayerSlider);

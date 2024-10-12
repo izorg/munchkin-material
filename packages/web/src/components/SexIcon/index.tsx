@@ -2,7 +2,7 @@ import { mdiGenderFemale, mdiGenderMale } from "@mdi/js";
 import { SvgIcon, type SvgIconProps } from "@mui/material";
 import { type FC } from "react";
 
-import { Sex, sexType } from "../../domains/player";
+import { Sex } from "../../domains/player";
 
 type SexProps = {
   sex: Sex;
@@ -18,9 +18,5 @@ const SexIcon: FC<SexProps> = ({ sex, ...props }) => (
     <path d={icons[sex]} />
   </SvgIcon>
 );
-
-SexIcon.propTypes = {
-  sex: sexType.isRequired,
-};
 
 export default SexIcon;

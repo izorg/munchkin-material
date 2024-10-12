@@ -9,7 +9,6 @@ import {
   SvgIcon,
   type Theme,
 } from "@mui/material";
-import PropTypes from "prop-types";
 import { type FC, type ReactNode } from "react";
 import { defineMessages } from "react-intl";
 
@@ -132,16 +131,6 @@ const Counter: FC<CounterProps> = ({
       </Box>
     </Box>
   );
-};
-
-Counter.propTypes = {
-  className: PropTypes.string,
-  decrementDisabled: PropTypes.bool,
-  incrementDisabled: PropTypes.bool,
-  onDecrement: PropTypes.func.isRequired,
-  onIncrement: PropTypes.func.isRequired,
-  title: PropTypes.node.isRequired,
-  value: PropTypes.number.isRequired,
 };
 
 export default Counter;

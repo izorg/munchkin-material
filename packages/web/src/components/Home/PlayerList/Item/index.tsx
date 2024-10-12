@@ -7,7 +7,6 @@ import {
   type ListItemProps,
 } from "@mui/material";
 import { m, type TapHandlers } from "framer-motion";
-import PropTypes from "prop-types";
 import { useCallback, useRef } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 
@@ -226,10 +225,6 @@ const HomePlayerListItem = (props: HomePlayerListItemProps) => {
       </ListItemButton>
     </ListItem>
   );
-};
-
-HomePlayerListItem.propTypes = {
-  playerId: PropTypes.string.isRequired,
 };
 
 export default HomePlayerListItem;

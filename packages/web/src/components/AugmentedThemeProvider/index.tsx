@@ -1,6 +1,5 @@
 import { createTheme, CssBaseline, ThemeProvider } from "@mui/material";
 import { deepmerge } from "@mui/utils";
-import PropTypes from "prop-types";
 import { type FC, type PropsWithChildren, useMemo } from "react";
 import { useIntl } from "react-intl";
 
@@ -39,10 +38,6 @@ const AugmentedThemeProvider: FC<PropsWithChildren> = ({ children }) => {
       {children}
     </ThemeProvider>
   );
-};
-
-AugmentedThemeProvider.propTypes = {
-  children: PropTypes.node,
 };
 
 export default AugmentedThemeProvider;

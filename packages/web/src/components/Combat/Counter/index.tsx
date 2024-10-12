@@ -8,7 +8,6 @@ import {
   type Theme,
   useMediaQuery,
 } from "@mui/material";
-import PropTypes from "prop-types";
 import { type FC } from "react";
 
 import CounterLabel from "../../Counter/Label";
@@ -120,15 +119,6 @@ const CombatCounter: FC<CombatCounterProps> = (props) => {
       </Box>
     </Box>
   );
-};
-
-CombatCounter.propTypes = {
-  decrementDisabled: PropTypes.bool,
-  incrementDisabled: PropTypes.bool,
-  onDecrement: PropTypes.func.isRequired,
-  onIncrement: PropTypes.func.isRequired,
-  title: PropTypes.string.isRequired,
-  value: PropTypes.number.isRequired,
 };
 
 export default CombatCounter;

@@ -1,5 +1,4 @@
 import { Box, Typography } from "@mui/material";
-import PropTypes from "prop-types";
 import { type ReactNode, useCallback } from "react";
 import { useIntl } from "react-intl";
 
@@ -97,11 +96,6 @@ const CombatMonster = (props: CombatMonsterProps) => {
       </Box>
     </Box>
   );
-};
-
-CombatMonster.propTypes = {
-  monsterId: PropTypes.string.isRequired,
-  title: PropTypes.node.isRequired,
 };
 
 export default CombatMonster;

@@ -6,7 +6,6 @@ import {
   Paper,
   SvgIcon,
 } from "@mui/material";
-import PropTypes from "prop-types";
 import { type FC } from "react";
 
 import usePresentSelector from "../../../../hooks/usePresentSelector";
@@ -73,10 +72,6 @@ const HomePlayerListOverlayItem: FC<HomePlayerListOverlayItemProps> = (
       <PlayerListItemText player={player} />
     </ListItem>
   );
-};
-
-HomePlayerListOverlayItem.propTypes = {
-  playerId: PropTypes.string.isRequired,
 };
 
 export default HomePlayerListOverlayItem;

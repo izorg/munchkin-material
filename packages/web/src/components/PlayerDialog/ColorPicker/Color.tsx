@@ -6,11 +6,9 @@ import {
   colors,
   SvgIcon,
 } from "@mui/material";
-import PropTypes from "prop-types";
 import { forwardRef } from "react";
 
 import { type AvailableColor } from "../../../utils/availableColors";
-import { colorType } from "../../../utils/propTypes";
 
 type ColorProps = {
   selected?: boolean;
@@ -62,10 +60,5 @@ const Color = forwardRef<HTMLButtonElement, ColorProps>(
     );
   },
 );
-
-Color.propTypes = {
-  selected: PropTypes.bool,
-  value: colorType,
-};
 
 export default Color;

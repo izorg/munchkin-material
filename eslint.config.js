@@ -98,8 +98,6 @@ export default ts.config(
         },
       ],
 
-      "react/prop-types": "off",
-
       "sonarjs/function-return-type": "off",
       "sonarjs/no-misused-promises": "off",
       "sonarjs/no-redeclare": "off",

@@ -1,5 +1,4 @@
 import { setContext } from "@sentry/react";
-import PropTypes from "prop-types";
 import {
   type FC,
   type PropsWithChildren,
@@ -124,10 +123,6 @@ const FullVersionProvider: FC<PropsWithChildren> = ({ children }) => {
       {children}
     </FullVersionContext.Provider>
   );
-};
-
-FullVersionProvider.propTypes = {
-  children: PropTypes.node,
 };
 
 export default FullVersionProvider;
