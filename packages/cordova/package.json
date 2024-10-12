@@ -11,8 +11,8 @@
   "scripts": {
     "build:android": "cordova build android --release",
     "build:ios": "cordova build ios",
-    "build": "yarn run clean && yarn parcel build",
-    "build:www": "yarn run build && yarn g:rimraf --glob \"www/*.map\"",
+    "build": "yarn parcel build --no-cache",
+    "build:www": "yarn run clean && yarn run build && yarn g:rimraf --glob \"www/*.map\"",
     "clean": "yarn g:rimraf ../../.parcel-cache www",
     "cordova:prepare": "cordova prepare",
     "run:android": "cordova run android",
