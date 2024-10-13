@@ -100,10 +100,14 @@ export default ts.config(
       "sonarjs/function-return-type": "off",
       "sonarjs/no-misused-promises": "off",
       "sonarjs/no-redeclare": "off",
-      "sonarjs/sonar-no-fallthrough": "off",
 
       "unicorn/filename-case": "off",
+
+      /**
+       * Conflicts with TypeScript checks for `sx` prop
+       */
       "unicorn/no-instanceof-array": "off",
+
       "unicorn/no-null": "off",
       "unicorn/prefer-global-this": "off",
       "unicorn/prevent-abbreviations": "off",
@@ -170,14 +174,14 @@ export default ts.config(
     ...json.configs.recommended,
   },
   {
-    files: ["packages/cordova/**/*", "packages/web/**/*"],
+    files: ["packages/cordova/**", "packages/web/**"],
 
     settings: {
-      polyfills: ["Intl", "Object.fromEntries"],
+      polyfills: ["Object.fromEntries"],
     },
   },
   {
-    files: ["packages/site/**/*"],
+    files: ["packages/site/**"],
     plugins: {
       "@next/next": fixupPluginRules(next),
     },
