@@ -24,7 +24,6 @@ export const RootLayout = async ({ children, language }: RootLayoutProps) => {
     <html className={munchkinFont.variable} lang={locale}>
       <GoogleAnalytics gaId="G-3HCBBLXXS0" />
       <body>
-        <script>window.globalThis = window;</script>
         <I18nProvider locale={locale} messages={messages}>
           <ThemeRegistry>{children}</ThemeRegistry>
         </I18nProvider>
