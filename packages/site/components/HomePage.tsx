@@ -30,10 +30,9 @@ export const HomePage = async (props: HomePageProps) => {
   return (
     <>
       <title>
-        {/* eslint-disable-next-line formatjs/enforce-id */}
         {intl.formatMessage({
           defaultMessage: "Level Counter",
-          id: "home.title",
+          id: "e5KeUK",
         })}
       </title>
       <Container component={Stack} spacing={8}>
@@ -69,18 +68,16 @@ export const HomePage = async (props: HomePageProps) => {
               }}
               variant="h1"
             >
-              {/* eslint-disable-next-line formatjs/enforce-id */}
               {intl.formatMessage({
                 defaultMessage: "Level Counter",
-                id: "home.title",
+                id: "e5KeUK",
               })}
             </Typography>
             <Typography align="center" gutterBottom>
-              {/* eslint-disable-next-line formatjs/enforce-id */}
               {intl.formatMessage({
                 defaultMessage:
                   "Simple but powerful level counter for Munchkin",
-                id: "home.description",
+                id: "m9AxN5",
               })}
             </Typography>
           </div>
@@ -94,10 +91,9 @@ export const HomePage = async (props: HomePageProps) => {
               }}
               variant="contained"
             >
-              {/* eslint-disable-next-line formatjs/enforce-id */}
               {intl.formatMessage({
                 defaultMessage: "Try",
-                id: "home.try",
+                id: "6lbvZe",
               })}
             </Button>
           </Box>
@@ -153,10 +149,9 @@ export const HomePage = async (props: HomePageProps) => {
           }}
         >
           <Link component={NextLink} href="/privacy" underline="always">
-            {/* eslint-disable-next-line formatjs/enforce-id */}
             {intl.formatMessage({
               defaultMessage: "Privacy Policy",
-              id: "home.privacy",
+              id: "vx0nkZ",
             })}
           </Link>
         </Box>
