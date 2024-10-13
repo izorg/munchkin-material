@@ -105,10 +105,18 @@ const getThemeOptions = ({
     theme = deepmerge(theme, {
       colorSchemes: {
         dark: {
+          components: {
+            MuiDialog: {
+              styleOverrides: {
+                paperFullScreen: {
+                  backgroundColor: common.black,
+                },
+              },
+            },
+          },
           palette: {
             background: {
               default: common.black,
-              paper: common.black,
             },
           },
         },
