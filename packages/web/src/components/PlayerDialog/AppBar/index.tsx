@@ -1,4 +1,4 @@
-import { mdiCheck, mdiDelete } from "@mdi/js";
+import { mdiCheck, mdiTrashCanOutline } from "@mdi/js";
 import { SvgIcon } from "@mui/material";
 import { type FC, type ReactNode } from "react";
 
@@ -27,7 +27,7 @@ const PlayerDialogAppBar: FC<PlayerDialogAppBarProps> = ({
     {onDelete && (
       <TopIconButton onClick={onDelete}>
         <SvgIcon>
-          <path d={mdiDelete} />
+          <path d={mdiTrashCanOutline} />
         </SvgIcon>
       </TopIconButton>
     )}
