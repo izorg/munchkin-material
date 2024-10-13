@@ -30,6 +30,12 @@ export const theme = responsiveFontSizes(
           },
         },
       },
+
+      MuiStack: {
+        defaultProps: {
+          useFlexGap: true,
+        },
+      },
     },
 
     cssVariables: true,

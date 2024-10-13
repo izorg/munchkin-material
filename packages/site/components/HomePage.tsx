@@ -1,4 +1,3 @@
-import { defineMessages } from "@formatjs/intl";
 import { mdiApple, mdiGooglePlay, mdiMicrosoftWindows } from "@mdi/js";
 import {
   AppBar,
@@ -17,29 +16,6 @@ import { getServerIntl, type Language, localeByLanguage } from "../lib/i18n";
 
 import { StoreButton } from "./StoreButton";
 
-// eslint-disable-next-line formatjs/enforce-id
-const messages = defineMessages({
-  description: {
-    defaultMessage: "Simple but powerful level counter for Munchkin",
-    id: "home.description",
-  },
-
-  privacy: {
-    defaultMessage: "Privacy Policy",
-    id: "home.privacy",
-  },
-
-  title: {
-    defaultMessage: "Level Counter",
-    id: "home.title",
-  },
-
-  try: {
-    defaultMessage: "Try",
-    id: "home.try",
-  },
-});
-
 type HomePageProps = {
   language: Language;
 };
@@ -53,8 +29,14 @@ export const HomePage = async (props: HomePageProps) => {
 
   return (
     <>
-      <title>{intl.formatMessage(messages.title)}</title>
-      <Container>
+      <title>
+        {/* eslint-disable-next-line formatjs/enforce-id */}
+        {intl.formatMessage({
+          defaultMessage: "Level Counter",
+          id: "home.title",
+        })}
+      </title>
+      <Container component={Stack} spacing={8}>
         <AppBar color="transparent" elevation={0} position="static">
           <Toolbar sx={{ justifyContent: "flex-end" }}>
             <Button
@@ -77,85 +59,105 @@ export const HomePage = async (props: HomePageProps) => {
             </Button>
           </Toolbar>
         </AppBar>
-        <Typography
-          align="center"
-          gutterBottom
-          sx={{
-            fontFamily: "var(--munchkin-font)",
-          }}
-          variant="h1"
-        >
-          {intl.formatMessage(messages.title)}
-        </Typography>
-        <Typography align="center" gutterBottom>
-          {intl.formatMessage(messages.description)}
-        </Typography>
+        <Stack component="main" spacing={4}>
+          <div>
+            <Typography
+              align="center"
+              gutterBottom
+              sx={{
+                fontFamily: "var(--munchkin-font)",
+              }}
+              variant="h1"
+            >
+              {/* eslint-disable-next-line formatjs/enforce-id */}
+              {intl.formatMessage({
+                defaultMessage: "Level Counter",
+                id: "home.title",
+              })}
+            </Typography>
+            <Typography align="center" gutterBottom>
+              {/* eslint-disable-next-line formatjs/enforce-id */}
+              {intl.formatMessage({
+                defaultMessage:
+                  "Simple but powerful level counter for Munchkin",
+                id: "home.description",
+              })}
+            </Typography>
+          </div>
 
-        <Box sx={{ marginTop: 4, textAlign: "center" }}>
-          <Button
-            color="primary"
-            href="https://web.allmunchkins.com"
-            sx={{
-              minWidth: 120,
+          <Box sx={{ textAlign: "center" }}>
+            <Button
+              color="primary"
+              href="https://web.allmunchkins.com"
+              sx={{
+                minWidth: 120,
+              }}
+              variant="contained"
+            >
+              {/* eslint-disable-next-line formatjs/enforce-id */}
+              {intl.formatMessage({
+                defaultMessage: "Try",
+                id: "home.try",
+              })}
+            </Button>
+          </Box>
+
+          <Stack
+            direction={{
+              md: "row",
+              xs: "column",
             }}
-            variant="contained"
+            spacing={4}
+            sx={{
+              alignItems: "center",
+              justifyContent: "center",
+            }}
           >
-            {intl.formatMessage(messages.try)}
-          </Button>
-        </Box>
-
-        <Stack
-          direction={{
-            md: "row",
-            xs: "column",
-          }}
-          spacing={4}
-          sx={{
-            alignItems: "center",
-            justifyContent: "center",
-            marginTop: 4,
-          }}
-        >
-          <StoreButton
-            href="https://play.google.com/store/apps/details?id=com.izorg.munchkin"
-            startIcon={
-              <SvgIcon>
-                <path d={mdiGooglePlay} />
-              </SvgIcon>
-            }
-          >
-            Google Play
-          </StoreButton>
-          <StoreButton
-            href="https://itunes.apple.com/us/app/level-counter-for-munchkin/id1448937097?mt=8"
-            startIcon={
-              <SvgIcon sx={{ marginTop: "-4px" }}>
-                <path d={mdiApple} />
-              </SvgIcon>
-            }
-          >
-            App Store
-          </StoreButton>
-          <StoreButton
-            href="https://apps.microsoft.com/detail/9pdvk4cf6nmf"
-            startIcon={
-              <SvgIcon sx={{ marginTop: "-2px" }}>
-                <path d={mdiMicrosoftWindows} />
-              </SvgIcon>
-            }
-          >
-            Windows
-          </StoreButton>
+            <StoreButton
+              href="https://play.google.com/store/apps/details?id=com.izorg.munchkin"
+              startIcon={
+                <SvgIcon>
+                  <path d={mdiGooglePlay} />
+                </SvgIcon>
+              }
+            >
+              Google Play
+            </StoreButton>
+            <StoreButton
+              href="https://itunes.apple.com/us/app/level-counter-for-munchkin/id1448937097?mt=8"
+              startIcon={
+                <SvgIcon sx={{ marginTop: "-4px" }}>
+                  <path d={mdiApple} />
+                </SvgIcon>
+              }
+            >
+              App Store
+            </StoreButton>
+            <StoreButton
+              href="https://apps.microsoft.com/detail/9pdvk4cf6nmf"
+              startIcon={
+                <SvgIcon sx={{ marginTop: "-2px" }}>
+                  <path d={mdiMicrosoftWindows} />
+                </SvgIcon>
+              }
+            >
+              Windows
+            </StoreButton>
+          </Stack>
         </Stack>
 
         <Box
+          component="footer"
           sx={{
-            marginTop: 6,
             textAlign: "center",
           }}
         >
           <Link component={NextLink} href="/privacy" underline="always">
-            {intl.formatMessage(messages.privacy)}
+            {/* eslint-disable-next-line formatjs/enforce-id */}
+            {intl.formatMessage({
+              defaultMessage: "Privacy Policy",
+              id: "home.privacy",
+            })}
           </Link>
         </Box>
       </Container>
