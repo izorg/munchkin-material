@@ -58,7 +58,7 @@ export default ts.config(
     plugins: {
       formatjs,
       "only-error": onlyError,
-      "react-hooks": fixupPluginRules(reactHooks),
+      "react-hooks": reactHooks,
     },
 
     rules: {
