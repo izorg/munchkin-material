@@ -7,7 +7,6 @@
     "packages/*"
   ],
   "scripts": {
-    "clean": "rimraf .eslintcache .parcel-cache .stylelintcache coverage messages node_modules/.cache parcel-bundle-reports screenshots tsconfig.tsbuildinfo",
     "format": "prettier --cache --ignore-unknown --write .",
     "get-version": "node --no-warnings scripts/version.js",
     "lint": "yarn lint-unused && yarn lint-types && yarn lint-js && yarn lint-css",
@@ -16,9 +15,8 @@
     "lint-types": "tsc",
     "lint-unused": "knip --cache",
     "postinstall": "husky || true",
-    "reinstall": "rimraf node_modules yarn.lock && yarn install",
-    "test": "jest",
-    "g:rimraf": "cd $INIT_CWD && rimraf"
+    "reinstall": "rm -r node_modules yarn.lock && yarn install",
+    "test": "jest"
   },
   "devDependencies": {
     "@commitlint/cli": "19.5.0",
@@ -60,13 +58,12 @@
     "postcss-syntax": "0.36.2",
     "prettier": "3.3.3",
     "process": "0.11.10",
-    "rimraf": "6.0.1",
     "semantic-release": "24.1.2",
     "stylelint": "16.10.0",
     "stylelint-config-standard": "36.0.1",
     "stylelint-order": "6.0.4",
     "typescript": "5.6.3",
-    "typescript-eslint": "8.8.1"
+    "typescript-eslint": "8.9.0"
   },
   "resolutions": {
     "@parcel/runtime-js@npm:2.12.0": "patch:@parcel/runtime-js@npm%3A2.12.0#~/.yarn/patches/@parcel-runtime-js-npm-2.12.0-e21acc0f42.patch"
