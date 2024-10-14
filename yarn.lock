@@ -3811,7 +3811,6 @@ __metadata:
     "@sentry/babel-plugin-component-annotate": "npm:2.22.5"
     "@sentry/react": "npm:8.34.0"
     "@types/cordova": "npm:11.0.3"
-    "@types/dom-screen-wake-lock": "npm:1.0.3"
     "@types/react": "npm:18.3.11"
     "@types/react-dom": "npm:18.3.1"
     "@types/smoothscroll-polyfill": "npm:0.3.4"
@@ -3901,7 +3900,6 @@ __metadata:
     "@reduxjs/toolkit": "npm:2.2.8"
     "@sentry/babel-plugin-component-annotate": "npm:2.22.5"
     "@sentry/react": "npm:8.34.0"
-    "@types/dom-screen-wake-lock": "npm:1.0.3"
     "@types/node": "npm:20.16.11"
     "@types/react": "npm:18.3.11"
     "@types/react-dom": "npm:18.3.1"
@@ -7152,13 +7150,6 @@ __metadata:
   version: 11.0.3
   resolution: "@types/cordova@npm:11.0.3"
   checksum: 10/fb0eb0c614bb83ce886050f84feb1ae47efc469d4c091c74a64c7f99f65f75973ab4055328dacdaccb3fefed8ff57b95a9c220536418e71f1fe961bf6b5e68a1
-  languageName: node
-  linkType: hard
-
-"@types/dom-screen-wake-lock@npm:1.0.3":
-  version: 1.0.3
-  resolution: "@types/dom-screen-wake-lock@npm:1.0.3"
-  checksum: 10/66bece3508b4f4147db97a530c758f8f5d3132ef00c06cab1db4bf2b4af6a3a614ae0a0ba6b53ddc4177a6545adf9d312547087256efc8eff7314b13221380b8
   languageName: node
   linkType: hard
 

@@ -8,9 +8,8 @@
   ],
   "ignoreBinaries": ["firebase-tools"],
   "ignoreDependencies": [
-    "@babel/*",
+    "@babel/core",
     "@parcel/*",
-    "@types/dom-screen-wake-lock",
     "conventional-changelog-conventionalcommits",
     "cordova-*",
     "eslint-import-resolver-typescript",

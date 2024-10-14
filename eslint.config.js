@@ -23,6 +23,7 @@ export default ts.config(
       "**/.next/",
       "**/coverage/",
       ".idea/",
+      ".parcel-cache/",
       ".vscode/",
       ".yarn/",
       "packages/cordova/platforms/",
@@ -51,16 +52,13 @@ export default ts.config(
         tsconfigRootDir: import.meta.dirname,
         warnOnUnsupportedTypeScriptVersion: false,
       },
-
       sourceType: "script",
     },
-
     plugins: {
       formatjs,
       "only-error": onlyError,
       "react-hooks": reactHooks,
     },
-
     rules: {
       ...reactHooks.configs.recommended.rules,
 
@@ -130,7 +128,6 @@ export default ts.config(
   },
   {
     files: ["**/*.ts?(x)"],
-
     rules: {
       "@typescript-eslint/consistent-type-exports": [
         "error",
@@ -161,7 +158,6 @@ export default ts.config(
   },
   {
     files: ["**/scripts/**", "**/next.config.js"],
-
     languageOptions: {
       globals: {
         ...globals.node,
@@ -169,13 +165,12 @@ export default ts.config(
     },
   },
   {
+    ...json.configs.recommended,
     files: ["**/*.json"],
     language: "json/json",
-    ...json.configs.recommended,
   },
   {
     files: ["packages/cordova/**", "packages/web/**"],
-
     settings: {
       polyfills: ["Object.fromEntries"],
     },

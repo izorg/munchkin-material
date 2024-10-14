@@ -48,7 +48,6 @@
     "@reduxjs/toolkit": "2.2.8",
     "@sentry/babel-plugin-component-annotate": "2.22.5",
     "@sentry/react": "8.34.0",
-    "@types/dom-screen-wake-lock": "1.0.3",
     "@types/node": "20.16.11",
     "@types/react": "18.3.11",
     "@types/react-dom": "18.3.1",

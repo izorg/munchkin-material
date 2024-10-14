@@ -23,7 +23,6 @@
     "@sentry/babel-plugin-component-annotate": "2.22.5",
     "@sentry/react": "8.34.0",
     "@types/cordova": "11.0.3",
-    "@types/dom-screen-wake-lock": "1.0.3",
     "@types/react": "18.3.11",
     "@types/react-dom": "18.3.1",
     "@types/smoothscroll-polyfill": "0.3.4",
