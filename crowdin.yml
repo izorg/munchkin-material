@@ -1,3 +1,5 @@
+append_commit_message: false
+commit_message: "chore(l10n): new translations %original_path%%original_file_name% (%locale%)"
 files:
   - source: /packages/site/locales/en.json
     translation: /%original_path%/%locale%.json
@@ -47,3 +49,4 @@ files:
       - sk
       - tr
       - uk
+pull_request_title: "chore(l10n): new Crowdin updates"
