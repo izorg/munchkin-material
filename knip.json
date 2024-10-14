@@ -16,7 +16,6 @@
     "eslint-import-resolver-typescript",
     "jest-environment-jsdom",
     "node_modules",
-    "postcss*",
     "process",
     "sharp",
     "www"
