@@ -1,12 +1,12 @@
 import { type PropsWithChildren } from "react";
 
-import { RootLayout } from "../../components/RootLayout";
-import { LANGUAGE_EN } from "../../lib/languages";
+import { LANGUAGE } from "../../domains/i18n";
+import { RootLayout } from "../../domains/layout";
 
-export { viewport } from "../../components/RootLayout";
+export { viewport } from "../../domains/layout";
 
 const Layout = ({ children }: PropsWithChildren) => (
-  <RootLayout language={LANGUAGE_EN}>{children}</RootLayout>
+  <RootLayout language={LANGUAGE.EN}>{children}</RootLayout>
 );
 
 export default Layout;

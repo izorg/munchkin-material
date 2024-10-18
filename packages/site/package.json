@@ -8,7 +8,7 @@
     "build": "next build",
     "dev": "next dev",
     "i18n:compile": "formatjs compile-folder --ast --format=simple domains/l10n/messages domains/l10n/messages/generated",
-    "i18n:extract": "formatjs extract --format=simple --out-file=domains/l10n/messages/en.json \"{app,components,domains}/**/*.{ts,tsx}\"",
+    "i18n:extract": "formatjs extract --format=simple --out-file=domains/l10n/messages/en.json \"{app,domains}/**/*.{ts,tsx}\"",
     "start": "npx firebase-tools emulators:start"
   },
   "devDependencies": {

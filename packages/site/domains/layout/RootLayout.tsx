@@ -2,29 +2,26 @@ import { GoogleAnalytics } from "@next/third-parties/google";
 import { type Viewport } from "next";
 import { type PropsWithChildren } from "react";
 
-import { getLocalMessages, type Language, localeByLanguage } from "../lib/i18n";
-import { munchkinFont } from "../lib/munchkinFont";
-
-import { I18nProvider } from "./I18nProvider";
-import { ThemeRegistry } from "./ThemeRegistry";
+import { munchkinFont } from "../fonts";
+import { getServerIntl, I18nProvider, type LANGUAGE } from "../i18n";
+import { ThemeRegistry } from "../theme";
 
 export const viewport: Viewport = {
   colorScheme: "light dark",
 };
 
 type RootLayoutProps = PropsWithChildren<{
-  language: Language;
+  language: LANGUAGE;
 }>;
 
 export const RootLayout = async ({ children, language }: RootLayoutProps) => {
-  const locale = localeByLanguage[language];
-  const messages = await getLocalMessages(locale);
+  const intl = await getServerIntl(language);
 
   return (
-    <html className={munchkinFont.variable} lang={locale}>
+    <html className={munchkinFont.variable} lang={intl.locale}>
       <GoogleAnalytics gaId="G-3HCBBLXXS0" />
       <body>
-        <I18nProvider locale={locale} messages={messages}>
+        <I18nProvider locale={intl.locale} messages={intl.messages}>
           <ThemeRegistry>{children}</ThemeRegistry>
         </I18nProvider>
       </body>

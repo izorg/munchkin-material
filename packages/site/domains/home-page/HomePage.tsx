@@ -12,20 +12,18 @@ import {
 } from "@mui/material";
 import NextLink from "next/link";
 
-import { getServerIntl, type Language, localeByLanguage } from "../lib/i18n";
+import { getServerIntl, type LANGUAGE } from "../i18n";
 
 import { StoreButton } from "./StoreButton";
 
 type HomePageProps = {
-  language: Language;
+  language: LANGUAGE;
 };
 
 export const HomePage = async (props: HomePageProps) => {
   const { language } = props;
 
-  const intl = await getServerIntl(localeByLanguage[language]);
-
-  const { locale } = intl;
+  const intl = await getServerIntl(language);
 
   return (
     <>
@@ -50,7 +48,7 @@ export const HomePage = async (props: HomePageProps) => {
             <Button
               color="inherit"
               component={NextLink}
-              disabled={locale === "ru"}
+              disabled={language === "ru"}
               href="/ru"
               size="small"
             >

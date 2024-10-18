@@ -1,13 +1,13 @@
 import { type PropsWithChildren } from "react";
 
-import { RootLayout } from "../../../components/RootLayout";
-import { type Language } from "../../../lib/i18n";
+import { type LANGUAGE } from "../../../domains/i18n";
+import { RootLayout } from "../../../domains/layout";
 
-export { viewport } from "../../../components/RootLayout";
+export { viewport } from "../../../domains/layout";
 
 type LayoutProps = PropsWithChildren<{
   params: {
-    language: Language;
+    language: LANGUAGE;
   };
 }>;
 

@@ -1,13 +1,12 @@
-import { HomePage } from "../../../components/HomePage";
-import { type Language } from "../../../lib/i18n";
-import * as languages from "../../../lib/languages";
+import { HomePage } from "../../../domains/home-page";
+import { LANGUAGE } from "../../../domains/i18n";
 
 export const generateStaticParams = () =>
-  Object.values(languages).map((language) => ({
+  Object.values(LANGUAGE).map((language) => ({
     language,
   }));
 
-type Params = { language: Language };
+type Params = { language: LANGUAGE };
 
 type PageProps = {
   params: Params;
