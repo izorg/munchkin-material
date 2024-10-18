@@ -28,7 +28,7 @@ tsconfig.tsbuildinfo
 /packages/cordova/www
 
 /packages/site/.next
-/packages/site/locales/generated
+/packages/site/domains/l10n/messages/generated
 /packages/site/out
 
 /packages/web/dist

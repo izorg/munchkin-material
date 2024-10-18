@@ -36,7 +36,7 @@ type LocaleMessages =
   | Record<string, string>;
 
 export const getLocalMessages = (locale: Locale) =>
-  import(`../locales/generated/${locale}.json`).then(
+  import(`../domains/l10n/messages/generated/${locale}.json`).then(
     (module: { default: LocaleMessages }) => module.default,
   );
 

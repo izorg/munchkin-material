@@ -7,8 +7,8 @@
     "analyze": "ANALYZE=true yarn run build",
     "build": "next build",
     "dev": "next dev",
-    "i18n:compile": "formatjs compile-folder --ast --format=simple locales locales/generated",
-    "i18n:extract": "formatjs extract --format=simple --out-file=locales/en.json \"{app,components}/**/*.{ts,tsx}\"",
+    "i18n:compile": "formatjs compile-folder --ast --format=simple domains/l10n/messages domains/l10n/messages/generated",
+    "i18n:extract": "formatjs extract --format=simple --out-file=domains/l10n/messages/en.json \"{app,components,domains}/**/*.{ts,tsx}\"",
     "start": "npx firebase-tools emulators:start"
   },
   "devDependencies": {

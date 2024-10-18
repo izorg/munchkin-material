@@ -1,7 +1,7 @@
 append_commit_message: false
 commit_message: "chore(l10n): new translations %original_path%%original_file_name% (%locale%)"
 files:
-  - source: /packages/site/locales/en.json
+  - source: /packages/site/domains/l10n/messages/en.json
     translation: /%original_path%/%locale%.json
     excluded_target_languages:
       - be
