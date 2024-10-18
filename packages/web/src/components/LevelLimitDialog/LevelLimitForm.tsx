@@ -56,11 +56,6 @@ export const LevelLimitForm = (props: LevelLimitFormProps) => {
       };
 
       switch (formValues.levelLimit) {
-        case NO_LIMIT: {
-          dispatch(setLevelLimit(false));
-          break;
-        }
-
         case DEFAULT_MUNCHKIN_LIMIT: {
           dispatch(setEpic(false));
           dispatch(setLevelLimit(true));
@@ -70,6 +65,11 @@ export const LevelLimitForm = (props: LevelLimitFormProps) => {
         case EPIC_MUNCHKIN_LIMIT: {
           dispatch(setEpic(true));
           dispatch(setLevelLimit(true));
+          break;
+        }
+
+        case NO_LIMIT: {
+          dispatch(setLevelLimit(false));
           break;
         }
       }
