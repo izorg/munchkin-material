@@ -33,8 +33,15 @@ export const HomePage = async (props: HomePageProps) => {
           id: "e5KeUK",
         })}
       </title>
-      <Container component={Stack} spacing={8}>
-        <AppBar color="transparent" elevation={0} position="static">
+      <Container>
+        <AppBar
+          color="transparent"
+          elevation={0}
+          position="static"
+          sx={{
+            marginBottom: 2,
+          }}
+        >
           <Toolbar sx={{ justifyContent: "flex-end" }}>
             <Button
               color="inherit"
@@ -143,6 +150,7 @@ export const HomePage = async (props: HomePageProps) => {
         <Box
           component="footer"
           sx={{
+            marginTop: 8,
             textAlign: "center",
           }}
         >
