@@ -48,7 +48,7 @@
     "@reduxjs/toolkit": "2.3.0",
     "@sentry/babel-plugin-component-annotate": "2.22.6",
     "@sentry/react": "8.34.0",
-    "@types/node": "20.16.12",
+    "@types/node": "20.16.13",
     "@types/react": "18.3.11",
     "@types/react-dom": "18.3.1",
     "@types/stylis": "4.2.6",
