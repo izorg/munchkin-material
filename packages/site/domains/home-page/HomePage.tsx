@@ -13,6 +13,7 @@ import {
 import NextLink from "next/link";
 
 import { getServerIntl, type LANGUAGE, LanguageSwitcher } from "../i18n";
+import { LOCALE } from "../l10n";
 
 import { StoreButton } from "./StoreButton";
 
@@ -20,10 +21,14 @@ type HomePageProps = {
   language: LANGUAGE;
 };
 
+const locales = new Set<string>([LOCALE.EN, LOCALE.RU]);
+
 export const HomePage = async (props: HomePageProps) => {
   const { language } = props;
 
   const intl = await getServerIntl(language);
+
+  const munchkinFontSupport = locales.has(intl.locale);
 
   return (
     <>
@@ -52,7 +57,9 @@ export const HomePage = async (props: HomePageProps) => {
               align="center"
               gutterBottom
               sx={{
-                fontFamily: "var(--munchkin-font)",
+                fontFamily: munchkinFontSupport
+                  ? "var(--munchkin-font)"
+                  : undefined,
               }}
               variant="h1"
             >
