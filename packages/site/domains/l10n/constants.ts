@@ -1,4 +1,5 @@
 export const LOCALE = {
+  DE: "de",
   EN: "en",
   RU: "ru",
 } as const;

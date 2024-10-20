@@ -10,6 +10,7 @@ import { getL10nMessages, LOCALE } from "../l10n";
 import { LANGUAGE } from "./constants";
 
 const localeByLanguage: Record<LANGUAGE, LOCALE> = {
+  [LANGUAGE.DE]: LOCALE.DE,
   [LANGUAGE.EN]: LOCALE.EN,
   [LANGUAGE.RU]: LOCALE.RU,
 };

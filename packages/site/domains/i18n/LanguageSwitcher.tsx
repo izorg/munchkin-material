@@ -14,6 +14,7 @@ const LANGUAGE_SWITCHER = "language-switcher";
 const LANGUAGE_SWITCHER_MENU = "language-switcher-menu";
 
 const languages: [language: LANGUAGE, value: string][] = [
+  [LANGUAGE.DE, "Deutsch"],
   [LANGUAGE.EN, "English"],
   [LANGUAGE.RU, "Русский"],
 ];
