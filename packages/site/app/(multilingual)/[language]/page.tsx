@@ -1,10 +1,5 @@
 import { HomePage } from "../../../domains/home-page";
-import { LANGUAGE } from "../../../domains/i18n";
-
-export const generateStaticParams = () =>
-  Object.values(LANGUAGE).map((language) => ({
-    language,
-  }));
+import { type LANGUAGE } from "../../../domains/i18n";
 
 type Params = { language: LANGUAGE };
 

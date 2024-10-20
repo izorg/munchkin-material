@@ -1,9 +1,14 @@
 import { type PropsWithChildren } from "react";
 
-import { type LANGUAGE } from "../../../domains/i18n";
+import { LANGUAGE } from "../../../domains/i18n";
 import { RootLayout } from "../../../domains/layout";
 
 export { viewport } from "../../../domains/layout";
+
+export const generateStaticParams = () =>
+  Object.values(LANGUAGE).map((language) => ({
+    language,
+  }));
 
 type LayoutProps = PropsWithChildren<{
   params: {

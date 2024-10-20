@@ -134,6 +134,7 @@ export const HomePage = async (props: HomePageProps) => {
           component="footer"
           sx={{
             marginTop: 8,
+            paddingBottom: 2,
             textAlign: "center",
           }}
         >
