@@ -12,7 +12,7 @@ import {
 } from "@mui/material";
 import NextLink from "next/link";
 
-import { getServerIntl, type LANGUAGE } from "../i18n";
+import { getServerIntl, type LANGUAGE, LanguageSwitcher } from "../i18n";
 
 import { StoreButton } from "./StoreButton";
 
@@ -43,24 +43,7 @@ export const HomePage = async (props: HomePageProps) => {
           }}
         >
           <Toolbar sx={{ justifyContent: "flex-end" }}>
-            <Button
-              color="inherit"
-              component={NextLink}
-              disabled={language === "en"}
-              href="/en"
-              size="small"
-            >
-              EN
-            </Button>
-            <Button
-              color="inherit"
-              component={NextLink}
-              disabled={language === "ru"}
-              href="/ru"
-              size="small"
-            >
-              RU
-            </Button>
+            <LanguageSwitcher />
           </Toolbar>
         </AppBar>
         <Stack component="main" spacing={4}>
@@ -154,7 +137,12 @@ export const HomePage = async (props: HomePageProps) => {
             textAlign: "center",
           }}
         >
-          <Link component={NextLink} href="/privacy" underline="always">
+          <Link
+            component={NextLink}
+            href="/privacy"
+            prefetch={false}
+            underline="always"
+          >
             {intl.formatMessage({
               defaultMessage: "Privacy Policy",
               id: "vx0nkZ",
