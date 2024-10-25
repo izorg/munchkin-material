@@ -18,12 +18,12 @@
     "run:ios": "cordova run ios"
   },
   "devDependencies": {
-    "@babel/core": "7.25.9",
+    "@babel/core": "7.26.0",
     "@mui/material": "6.1.5",
     "@sentry/babel-plugin-component-annotate": "2.22.6",
     "@sentry/react": "8.35.0",
     "@types/cordova": "11.0.3",
-    "@types/react": "18.3.11",
+    "@types/react": "18.3.12",
     "@types/react-dom": "18.3.1",
     "@types/smoothscroll-polyfill": "0.3.4",
     "abortcontroller-polyfill": "1.7.5",
