@@ -4,12 +4,19 @@ import {
   mdiChevronLeft,
   mdiChevronRight,
 } from "@mdi/js";
-import { type IconButtonProps, SvgIcon, useTheme } from "@mui/material";
+import {
+  type IconButtonProps,
+  SvgIcon,
+  Tooltip,
+  useTheme,
+} from "@mui/material";
+import { useIntl } from "react-intl";
 
 import { ios } from "../../utils/platforms";
 import TopIconButton from "../TopIconButton";
 
 const BackButton = (props: IconButtonProps) => {
+  const intl = useIntl();
   const { direction } = useTheme();
 
   const icon = ios ? (
@@ -27,9 +34,13 @@ const BackButton = (props: IconButtonProps) => {
   );
 
   return (
-    <TopIconButton data-screenshots="back" edge="start" {...props}>
-      {icon}
-    </TopIconButton>
+    <Tooltip
+      title={intl.formatMessage({ defaultMessage: "Back", id: "cyR7Kh" })}
+    >
+      <TopIconButton data-screenshots="back" edge="start" {...props}>
+        {icon}
+      </TopIconButton>
+    </Tooltip>
   );
 };
 
