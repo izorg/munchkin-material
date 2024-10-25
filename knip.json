@@ -14,10 +14,8 @@
     "cordova-*",
     "eslint-import-resolver-typescript",
     "jest-environment-jsdom",
-    "node_modules",
     "process",
-    "sharp",
-    "www"
+    "sharp"
   ],
   "include": ["classMembers", "nsExports", "nsTypes"]
 }
