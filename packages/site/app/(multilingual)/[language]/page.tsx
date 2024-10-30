@@ -1,7 +1,7 @@
 import { HomePage } from "../../../domains/home-page";
 import { type LANGUAGE } from "../../../domains/i18n";
 
-type Params = { language: LANGUAGE };
+export type Params = { language: LANGUAGE };
 
 type PageProps = {
   params: Params;
