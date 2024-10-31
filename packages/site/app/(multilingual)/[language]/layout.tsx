@@ -13,12 +13,12 @@ export const generateStaticParams = () =>
   }));
 
 type LayoutProps = PropsWithChildren<{
-  params: Params;
+  params: Promise<Params>;
 }>;
 
-const Layout = (props: LayoutProps) => {
+const Layout = async (props: LayoutProps) => {
   const { children, params } = props;
-  const { language } = params;
+  const { language } = await params;
 
   return <RootLayout language={language}>{children}</RootLayout>;
 };

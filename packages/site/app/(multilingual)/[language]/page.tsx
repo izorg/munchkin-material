@@ -4,12 +4,12 @@ import { type LANGUAGE } from "../../../domains/i18n";
 export type Params = { language: LANGUAGE };
 
 type PageProps = {
-  params: Params;
+  params: Promise<Params>;
 };
 
-const Page = (props: PageProps) => {
+const Page = async (props: PageProps) => {
   const { params } = props;
-  const { language } = params;
+  const { language } = await params;
 
   return <HomePage language={language} />;
 };

@@ -15,7 +15,6 @@ const nextConfig = {
     ignoreDuringBuilds: true, // Using project root ESLint check
   },
   experimental: {
-    instrumentationHook: true,
     typedRoutes: true,
   },
   images: {

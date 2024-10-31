@@ -1,23 +1,42 @@
-import { CssBaseline, ThemeProvider } from "@mui/material";
-import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
-import { type PropsWithChildren } from "react";
+"use client";
 
-import StylisProvider from "./StylisProvider";
+import { CssBaseline, ThemeProvider } from "@mui/material";
+import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
+import { type PropsWithChildren, useMemo } from "react";
+import { prefixer } from "stylis";
+import rtlPlugin from "stylis-plugin-rtl";
+
 import { theme } from "./theme";
 
-// This implementation is from emotion-js
-// https://github.com/emotion-js/emotion/issues/2928#issuecomment-1319747902
-export const ThemeRegistry = (props: PropsWithChildren) => {
-  const { children } = props;
+type ThemeRegistryProps = PropsWithChildren<{
+  direction: string;
+}>;
+
+export const ThemeRegistry = (props: ThemeRegistryProps) => {
+  const { children, direction } = props;
+
+  const options = useMemo(
+    () =>
+      direction === "rtl"
+        ? {
+            key: "rtl",
+            prepend: true,
+            stylisPlugins: [prefixer, rtlPlugin],
+          }
+        : {
+            key: "ltr",
+            prepend: true,
+            stylisPlugins: [prefixer],
+          },
+    [direction],
+  );
 
   return (
-    <AppRouterCacheProvider>
-      <StylisProvider>
-        <ThemeProvider theme={theme}>
-          <CssBaseline />
-          {children}
-        </ThemeProvider>
-      </StylisProvider>
+    <AppRouterCacheProvider options={options}>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        {children}
+      </ThemeProvider>
     </AppRouterCacheProvider>
   );
 };
