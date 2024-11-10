@@ -45,6 +45,7 @@ jobs:
         run: yarn workspace @munchkin/site run build
         env:
           NEXT_PUBLIC_SENTRY_ENABLED: true
+          NEXT_TELEMETRY_DISABLED: 1
           NODE_ENV: production
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
 
