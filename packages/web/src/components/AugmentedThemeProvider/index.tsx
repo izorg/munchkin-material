@@ -1,4 +1,9 @@
-import { createTheme, CssBaseline, ThemeProvider } from "@mui/material";
+import {
+  createTheme,
+  CssBaseline,
+  ThemeProvider,
+  useMediaQuery,
+} from "@mui/material";
 import { deepmerge } from "@mui/utils";
 import { type FC, type PropsWithChildren, useMemo } from "react";
 import { useIntl } from "react-intl";
@@ -17,6 +22,8 @@ const AugmentedThemeProvider: FC<PropsWithChildren> = ({ children }) => {
 
   const previewTheme = usePreviewTheme();
 
+  const reducedMotion = useMediaQuery("(prefers-reduced-motion)");
+
   const theme = useMemo(() => {
     const { id, pureBlack } = previewTheme;
 
@@ -25,11 +32,12 @@ const AugmentedThemeProvider: FC<PropsWithChildren> = ({ children }) => {
         getThemeOptions({
           direction,
           pureBlack,
+          reducedMotion,
         }),
         colorThemes[id].getTheme(),
       ),
     );
-  }, [direction, previewTheme]);
+  }, [direction, previewTheme, reducedMotion]);
 
   return (
     <ThemeProvider theme={theme}>

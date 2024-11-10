@@ -9,9 +9,11 @@ type AugmentedThemeOptions = Parameters<typeof createTheme>[0];
 const getThemeOptions = ({
   direction,
   pureBlack,
+  reducedMotion,
 }: {
   direction: Direction;
   pureBlack: boolean;
+  reducedMotion: boolean;
 }): AugmentedThemeOptions => {
   let theme: AugmentedThemeOptions = {
     colorSchemes: {
@@ -32,6 +34,18 @@ const getThemeOptions = ({
     },
 
     components: {
+      MuiButtonBase: {
+        defaultProps: {
+          disableRipple: reducedMotion ? true : undefined,
+        },
+      },
+
+      MuiDialog: {
+        defaultProps: {
+          transitionDuration: reducedMotion ? 0 : undefined,
+        },
+      },
+
       MuiIconButton: {
         defaultProps: {
           color: "inherit",
