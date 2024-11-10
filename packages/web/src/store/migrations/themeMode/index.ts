@@ -11,7 +11,7 @@ const migrateThemeMode = (state: {
 }): { theme: ThemeState } => {
   const { theme } = state;
 
-  if ("type" in theme) {
+  if (theme && "type" in theme) {
     const copy = { ...theme };
 
     delete copy.type;

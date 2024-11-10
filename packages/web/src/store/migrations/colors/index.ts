@@ -6,6 +6,10 @@ import { type Player } from "../../../domains/player";
 import availableColors from "../../../utils/availableColors";
 
 const migrateColors = (state: { players: Record<string, Player> }) => {
+  if (!state.players) {
+    return state;
+  }
+
   state.players = Object.fromEntries(
     Object.entries(state.players).map(([id, player]) => {
       const color = availableColors.find(

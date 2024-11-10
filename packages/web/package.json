@@ -18,7 +18,7 @@
     "generate-assets": "node scripts/generate-assets.js",
     "i18n:compile": "formatjs compile-folder --ast --format=simple l10n l10n/generated",
     "i18n:extract": "formatjs extract --format=simple --out-file=l10n/en.json \"src/**/*.{js,ts,tsx}\"",
-    "screenshots": "node --loader ts-node/esm --no-warnings scripts/screenshots.ts",
+    "screenshots": "playwright test",
     "start": "npx firebase-tools emulators:start"
   },
   "devDependencies": {
@@ -45,6 +45,7 @@
     "@parcel/packager-raw-url": "2.12.0",
     "@parcel/reporter-bundle-analyzer": "2.12.0",
     "@parcel/transformer-webmanifest": "2.12.0",
+    "@playwright/test": "1.48.2",
     "@reduxjs/toolkit": "2.3.0",
     "@sentry/babel-plugin-component-annotate": "2.22.6",
     "@sentry/react": "8.37.1",
@@ -69,7 +70,6 @@
     "stylis": "4.3.4",
     "stylis-plugin-rtl": "2.1.1",
     "swr": "2.2.5",
-    "ts-node": "10.9.2",
     "typescript": "5.6.3",
     "uuid": "11.0.2",
     "workbox-cli": "7.3.0",
