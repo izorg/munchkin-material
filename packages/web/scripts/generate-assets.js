@@ -41,7 +41,7 @@ await Promise.all(
     const { default: data } = await import(
       `../src/templates/data/${locale}.json`,
       {
-        assert: {
+        with: {
           type: "json",
         },
       }
@@ -58,6 +58,8 @@ await Promise.all(
     await fs.promises.mkdir(folder, {
       recursive: true,
     });
+
+    console.log("=== root ===", getRoot(locale));
 
     await Promise.all([
       fs.promises.writeFile(
