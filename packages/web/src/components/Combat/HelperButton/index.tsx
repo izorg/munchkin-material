@@ -98,12 +98,20 @@ const CombatHelperButton = () => {
             zIndex: 2,
           }),
           (theme) => ({
-            "@supports (padding: max(0px))": {
-              right: {
-                sm: `max(${theme.spacing(3)}, env(safe-area-inset-right))`,
-                xs: `max(${theme.spacing(2)}, env(safe-area-inset-right))`,
-              },
-            },
+            "@supports (padding: max(0px))":
+              theme.direction === "rtl"
+                ? {
+                    left: {
+                      sm: `max(${theme.spacing(3)}, env(safe-area-inset-left))`,
+                      xs: `max(${theme.spacing(2)}, env(safe-area-inset-left))`,
+                    },
+                  }
+                : {
+                    right: {
+                      sm: `max(${theme.spacing(3)}, env(safe-area-inset-right))`,
+                      xs: `max(${theme.spacing(2)}, env(safe-area-inset-right))`,
+                    },
+                  },
           }),
         ]}
         TransitionProps={{
