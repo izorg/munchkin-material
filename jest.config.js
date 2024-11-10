@@ -1,6 +1,7 @@
-import { type Config } from "jest";
-
-const config: Config = {
+/**
+ * @type {import('jest').Config}
+ */
+const config = {
   roots: ["<rootDir>/packages/web/src/"],
   transform: {
     "^.+\\.tsx?$": "@swc/jest",
