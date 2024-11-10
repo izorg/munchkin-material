@@ -9,10 +9,11 @@ import {
   FormControlLabel,
   FormLabel,
   Grid2,
+  InputLabel,
+  OutlinedInput,
   Radio,
   RadioGroup,
   SvgIcon,
-  TextField,
   Typography,
 } from "@mui/material";
 import { type FormEvent, useEffect, useMemo, useRef } from "react";
@@ -138,6 +139,14 @@ const PlayerDialog = () => {
         id: "player.form.title",
       });
 
+  // eslint-disable-next-line formatjs/enforce-id
+  const nameLabel = intl.formatMessage({
+    defaultMessage: "Name",
+    id: "player.form.namePlaceholder",
+  });
+
+  const nameId = "player-form-name";
+
   return (
     <Dialog
       disableRestoreFocus
@@ -192,20 +201,16 @@ const PlayerDialog = () => {
         })}
       >
         <form id={formId} onSubmit={onSubmit}>
-          <TextField
-            autoFocus={!editPlayer}
-            defaultValue={editPlayer?.name}
-            fullWidth
-            label={
-              // eslint-disable-next-line formatjs/enforce-id
-              intl.formatMessage({
-                defaultMessage: "Name",
-                id: "player.form.namePlaceholder",
-              })
-            }
-            margin="normal"
-            name="name"
-          />
+          <FormControl fullWidth margin="normal">
+            <InputLabel htmlFor={nameId}>{nameLabel}</InputLabel>
+            <OutlinedInput
+              autoFocus={!editPlayer}
+              defaultValue={editPlayer?.name}
+              id={nameId}
+              label={nameLabel}
+              name="name"
+            />
+          </FormControl>
 
           <Grid2 container>
             <Grid2 size={6}>
