@@ -32,20 +32,31 @@ if (!node) {
 
 const root = createRoot(node);
 
-const router = createHashRouter([
+const router = createHashRouter(
+  [
+    {
+      element: (
+        <AugmentedStylesProvider>
+          <AugmentedThemeProvider>
+            <ScreenViewProvider />
+            <ThemeColorProvider />
+            <App />
+          </AugmentedThemeProvider>
+        </AugmentedStylesProvider>
+      ),
+      path: "*",
+    },
+  ],
   {
-    element: (
-      <AugmentedStylesProvider>
-        <AugmentedThemeProvider>
-          <ScreenViewProvider />
-          <ThemeColorProvider />
-          <App />
-        </AugmentedThemeProvider>
-      </AugmentedStylesProvider>
-    ),
-    path: "*",
+    future: {
+      v7_fetcherPersist: true,
+      v7_normalizeFormMethod: true,
+      v7_partialHydration: true,
+      v7_relativeSplatPath: true,
+      v7_skipActionErrorRevalidation: true,
+    },
   },
-]);
+);
 
 root.render(
   <StrictMode>
@@ -54,7 +65,12 @@ root.render(
         <WorkboxProvider>
           <WakeLockProvider>
             <LocaleProvider>
-              <RouterProvider router={router} />
+              <RouterProvider
+                future={{
+                  v7_startTransition: true,
+                }}
+                router={router}
+              />
             </LocaleProvider>
           </WakeLockProvider>
         </WorkboxProvider>
