@@ -5,6 +5,7 @@ import {
   Typography,
   useTheme,
 } from "@mui/material";
+import { FormattedNumber } from "react-intl";
 
 import usePresentSelector from "../../hooks/usePresentSelector";
 
@@ -117,7 +118,7 @@ const Combat = () => {
                 },
               ]}
             >
-              {combinedPlayerStrength}
+              <FormattedNumber value={combinedPlayerStrength} />
             </Box>
             <Box
               component="span"
@@ -136,7 +137,7 @@ const Combat = () => {
                 },
               ]}
             >
-              {combinedMonsterStrength}
+              <FormattedNumber value={combinedMonsterStrength} />
             </Box>
           </Typography>
 

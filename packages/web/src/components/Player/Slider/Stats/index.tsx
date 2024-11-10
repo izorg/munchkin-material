@@ -1,6 +1,6 @@
 import { Box, IconButton, type SxProps } from "@mui/material";
 import { type FC, useCallback } from "react";
-import { useIntl } from "react-intl";
+import { FormattedNumber, useIntl } from "react-intl";
 
 import {
   decrementPlayerGear,
@@ -148,7 +148,7 @@ const PlayerStats: FC<PlayerStatsProps> = ({ playerId, sx = [] }) => {
             }),
           ]}
         >
-          {player.level + player.gear}
+          <FormattedNumber value={player.level + player.gear} />
         </Box>
 
         <IconButton

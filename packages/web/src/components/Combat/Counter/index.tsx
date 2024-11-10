@@ -9,6 +9,7 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import { type FC } from "react";
+import { FormattedNumber } from "react-intl";
 
 import CounterLabel from "../../Counter/Label";
 
@@ -86,7 +87,7 @@ const CombatCounter: FC<CombatCounterProps> = (props) => {
           lineHeight: theme.typography.h4.lineHeight,
         })}
       >
-        {value}
+        <FormattedNumber value={value} />
       </Box>
 
       <Box

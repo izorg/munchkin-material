@@ -1,6 +1,6 @@
 import { Box, IconButton } from "@mui/material";
 import { useCallback } from "react";
-import { useIntl } from "react-intl";
+import { FormattedNumber, useIntl } from "react-intl";
 
 import { setCombatPlayerBonus } from "../../../ducks/combat/actions";
 import {
@@ -196,7 +196,7 @@ const SinglePlayer = () => {
               }),
             ]}
           >
-            {player.level + player.gear + bonus}
+            <FormattedNumber value={player.level + player.gear + bonus} />
           </Box>
 
           <IconButton

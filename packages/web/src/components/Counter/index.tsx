@@ -10,7 +10,7 @@ import {
   type Theme,
 } from "@mui/material";
 import { type FC, type ReactNode } from "react";
-import { defineMessages } from "react-intl";
+import { defineMessages, FormattedNumber } from "react-intl";
 
 import CounterLabel from "./Label";
 
@@ -83,7 +83,7 @@ const Counter: FC<CounterProps> = ({
           fontSize: "2.25rem",
         }}
       >
-        {value}
+        <FormattedNumber value={value} />
       </Box>
 
       <Box

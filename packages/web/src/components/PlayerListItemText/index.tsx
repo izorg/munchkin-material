@@ -1,6 +1,7 @@
 import { mdiChevronUp as levelIcon, mdiSword as strengthIcon } from "@mdi/js";
 import { Box, ListItemText, SvgIcon } from "@mui/material";
 import { type FC } from "react";
+import { FormattedNumber } from "react-intl";
 
 import { type Player } from "../../domains/player";
 import SexIcon from "../SexIcon";
@@ -56,7 +57,7 @@ const PlayerListItemText: FC<PlayerListItemTextProps> = ({ player }) => (
           width: 50,
         }}
       >
-        {player.level}
+        <FormattedNumber value={player.level} />
         <SvgIcon>
           <path d={levelIcon} />
         </SvgIcon>
@@ -71,7 +72,7 @@ const PlayerListItemText: FC<PlayerListItemTextProps> = ({ player }) => (
           width: 60,
         }}
       >
-        {player.level + player.gear}
+        <FormattedNumber value={player.level + player.gear} />
         <SvgIcon
           sx={{
             fontSize: "1.2em",
