@@ -74,8 +74,6 @@ const PlayerStats: FC<PlayerStatsProps> = ({ playerId, sx = [] }) => {
             "strength strength"
             "level gear"
           `,
-          gridTemplateColumns: "repeat(2, 1fr)",
-          gridTemplateRows: "repeat(2, auto)",
           justifyItems: "center",
           width: "fit-content",
         }),
@@ -84,8 +82,6 @@ const PlayerStats: FC<PlayerStatsProps> = ({ playerId, sx = [] }) => {
             gridTemplateAreas: `
               "level gear strength"
             `,
-            gridTemplateColumns: "repeat(3, 1fr)",
-            gridTemplateRows: "repeat(1, auto)",
           },
         },
         ...(sx instanceof Array ? sx : [sx]),

@@ -108,12 +108,10 @@ const SinglePlayer = () => {
             flexDirection: "column-reverse",
             gap: theme.spacing(2, 6),
             gridTemplateAreas: `
-            "strength strength"
-            "level gear"
-            "modifier modifier"
+              "strength strength"
+              "level gear"
+              "modifier modifier"
           `,
-            gridTemplateColumns: "repeat(2, 1fr)",
-            gridTemplateRows: "repeat(3, auto)",
             width: "fit-content",
           }),
           {
@@ -121,8 +119,6 @@ const SinglePlayer = () => {
               gridTemplateAreas: `
                 "level gear modifier strength"
               `,
-              gridTemplateColumns: "repeat(4, 1fr)",
-              gridTemplateRows: "repeat(1, auto)",
             },
           },
         ]}
