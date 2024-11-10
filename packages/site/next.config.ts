@@ -1,16 +1,13 @@
-// @ts-check
-
 import bundleAnalyzer from "@next/bundle-analyzer";
 import { withSentryConfig } from "@sentry/nextjs";
+import { type NextConfig } from "next";
+import { type Configuration } from "webpack";
 
 const withBundleAnalyzer = bundleAnalyzer({
   enabled: process.env.ANALYZE === "true",
 });
 
-/**
- * @type {import('next').NextConfig}
- */
-const nextConfig = {
+const nextConfig: NextConfig = {
   eslint: {
     ignoreDuringBuilds: true, // Using project root ESLint check
   },
@@ -25,8 +22,16 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true, // Using project root TypeScript check
   },
-  webpack: (config, { dev }) => {
+  webpack: (config: Configuration, { dev }) => {
     if (!dev) {
+      if (!config.resolve) {
+        config.resolve = {};
+      }
+
+      if (!config.resolve.alias) {
+        config.resolve.alias = {};
+      }
+
       Object.assign(config.resolve.alias, {
         "@formatjs/icu-messageformat-parser":
           "@formatjs/icu-messageformat-parser/no-parser",

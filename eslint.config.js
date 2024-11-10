@@ -157,7 +157,7 @@ export default ts.config(
     files: ["**/*.spec.ts?(x)"],
   },
   {
-    files: ["**/scripts/**", "**/next.config.js"],
+    files: ["**/scripts/**", "**/next.config.ts"],
     languageOptions: {
       globals: {
         ...globals.node,
