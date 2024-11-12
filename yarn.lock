@@ -5504,18 +5504,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@parcel/runtime-js@patch:@parcel/runtime-js@npm%3A2.12.0#~/.yarn/patches/@parcel-runtime-js-npm-2.12.0-e21acc0f42.patch":
-  version: 2.12.0
-  resolution: "@parcel/runtime-js@patch:@parcel/runtime-js@npm%3A2.12.0#~/.yarn/patches/@parcel-runtime-js-npm-2.12.0-e21acc0f42.patch::version=2.12.0&hash=14dcda"
-  dependencies:
-    "@parcel/diagnostic": "npm:2.12.0"
-    "@parcel/plugin": "npm:2.12.0"
-    "@parcel/utils": "npm:2.12.0"
-    nullthrows: "npm:^1.1.1"
-  checksum: 10/7ea15724ccf9fd680607e6036b78735f2d59bd0c93b85e77dbd068060297b3d5cb90e1aea6e45451f0d2f9074d024ba1e0200db807e5e22ff5172885badcbc52
-  languageName: node
-  linkType: hard
-
 "@parcel/runtime-react-refresh@npm:2.12.0":
   version: 2.12.0
   resolution: "@parcel/runtime-react-refresh@npm:2.12.0"

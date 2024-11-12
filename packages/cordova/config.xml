@@ -57,7 +57,7 @@
         <allow-intent href="itms-apps:*" />
         <preference name="deployment-target" value="13.0" />
         <preference name="hostname" value="localhost" />
-        <preference name="scheme" value="app" />
+        <preference name="scheme" value="safari-web-extension" />
         <preference name="DisallowOverscroll" value="true" />
         <preference name="KeyboardDisplayRequiresUserAction" value="false" />
         <preference name="KeyboardResizeMode" value="body" />
