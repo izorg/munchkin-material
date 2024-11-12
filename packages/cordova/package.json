@@ -12,7 +12,7 @@
     "build:android": "cordova build android --release",
     "build:ios": "cordova build ios",
     "build": "yarn parcel build --no-cache",
-    "build:www": "rm -r www && yarn run build && rm -r \"www/*.map\"",
+    "build:www": "rm -rf www && yarn run build && rm -r www/*.map",
     "cordova:prepare": "cordova prepare",
     "run:android": "cordova run android",
     "run:ios": "cordova run ios"
