@@ -41,7 +41,7 @@
     "cordova-plugin-statusbar": "4.0.0",
     "cordova-plugin-vibration": "3.1.1",
     "core-js": "3.39.0",
-    "parcel": "2.12.0",
+    "parcel": "2.13.0",
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "react-router-dom": "6.28.0",
