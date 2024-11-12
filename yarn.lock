@@ -15197,9 +15197,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"knip@npm:5.36.3":
-  version: 5.36.3
-  resolution: "knip@npm:5.36.3"
+"knip@npm:5.36.7":
+  version: 5.36.7
+  resolution: "knip@npm:5.36.7"
   dependencies:
     "@nodelib/fs.walk": "npm:1.2.8"
     "@snyk/github-codeowners": "npm:1.1.0"
@@ -15223,7 +15223,7 @@ __metadata:
   bin:
     knip: bin/knip.js
     knip-bun: bin/knip-bun.js
-  checksum: 10/55991abe4bc0e4c8d78ffc765e9170ba16dcf2eef8f0ed59f133299c7558cdc44547e32aba2d506ae4baf6c72ce3c1a8f9f22a418c3009537c8c5447a7b1d5f2
+  checksum: 10/52b1768d350a675662844f926179d449f1543c36b87548ea517d3d0f8a2a9a619f887d30eb211f13613ea301230a4af1723f5a0c5f1e58efedb63eb7dcb78628
   languageName: node
   linkType: hard
 
@@ -19578,7 +19578,7 @@ __metadata:
     husky: "npm:9.1.6"
     jest: "npm:29.7.0"
     jest-environment-jsdom: "npm:29.7.0"
-    knip: "npm:5.36.3"
+    knip: "npm:5.36.7"
     lint-staged: "npm:15.2.10"
     prettier: "npm:3.3.3"
     process: "npm:0.11.10"

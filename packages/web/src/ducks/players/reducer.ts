@@ -16,7 +16,7 @@ import {
   updatePlayer,
 } from "./actions";
 
-export const playerReducer = (
+const playerReducer = (
   state: Player,
   action: ReturnType<
     | typeof decrementPlayerGear
@@ -72,7 +72,7 @@ export const playerReducer = (
   }
 };
 
-export const initialState: Record<string, Player> = {};
+const initialState: Record<string, Player> = {};
 
 const playersReducer = createReducer(initialState, (builder) =>
   builder

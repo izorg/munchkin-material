@@ -12,7 +12,7 @@ import {
   removeMonster,
 } from "./actions";
 
-export const monsterReducer = (
+const monsterReducer = (
   state: Monster,
   action: ReturnType<
     | typeof decrementMonsterBonus
@@ -52,7 +52,7 @@ export const monsterReducer = (
   }
 };
 
-export const initialState: Record<string, Monster> = {};
+const initialState: Record<string, Monster> = {};
 
 const monstersReducer = createReducer(initialState, (builder) =>
   builder
