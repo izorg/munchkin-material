@@ -6,10 +6,9 @@ const TopAppBar: FC<PropsWithChildren> = ({ children }) => (
     color="transparent"
     elevation={0}
     position="static"
-    sx={(theme) => ({
-      backgroundColor: theme.palette.background.default,
+    sx={{
       zIndex: "appBar",
-    })}
+    }}
   >
     <Toolbar
       sx={[
