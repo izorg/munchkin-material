@@ -1,0 +1,4 @@
+.next/
+domains/l10n/messages/generated/
+out/
+.env*.local

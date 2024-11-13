@@ -1,0 +1,7 @@
+platforms/
+plugins/
+www/
+build.json
+google-services.json
+GoogleService-Info.plist
+keystore.jks
