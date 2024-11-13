@@ -16992,7 +16992,6 @@ __metadata:
     "@semantic-release/commit-analyzer": "npm:13.0.0"
     "@semantic-release/github": "npm:11.0.1"
     "@semantic-release/release-notes-generator": "npm:14.0.1"
-    "@types/node": "npm:22.9.0"
     conventional-changelog-conventionalcommits: "npm:8.0.0"
     eslint: "npm:9.14.0"
     eslint-config-prettier: "npm:9.1.0"
