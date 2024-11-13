@@ -3,6 +3,7 @@
   "*.css": ["stylelint --cache --fix", "prettier --cache --write"],
   "*.{js,ts,tsx}": [
     "node --max-old-space-size=4096 ./node_modules/eslint/bin/eslint.js --cache --fix",
+    "madge --circular",
     "prettier --cache --write"
   ]
 }

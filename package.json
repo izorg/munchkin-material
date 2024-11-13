@@ -10,7 +10,8 @@
   "scripts": {
     "format": "prettier --cache --ignore-unknown --write .",
     "get-version": "node --no-warnings scripts/version.js",
-    "lint": "yarn lint-unused && yarn lint-types && yarn lint-js && yarn lint-css",
+    "lint": "yarn lint-unused && yarn lint-types && yarn lint-js && yarn lint-circular && yarn lint-css",
+    "lint-circular": "madge --circular packages/cordova/src/index.ts packages/site/app packages/web/src/index.tsx",
     "lint-css": "stylelint --cache \"**/*.css\"",
     "lint-js": "NODE_OPTIONS=\"--max-old-space-size=4096\" eslint --cache \"**/*.{js,ts,tsx}\"",
     "lint-types": "tsc",
@@ -48,6 +49,7 @@
     "husky": "9.1.6",
     "knip": "5.36.7",
     "lint-staged": "15.2.10",
+    "madge": "8.0.0",
     "prettier": "3.3.3",
     "process": "0.11.10",
     "semantic-release": "24.2.0",
