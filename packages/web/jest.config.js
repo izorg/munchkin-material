@@ -2,7 +2,7 @@
  * @type {import('jest').Config}
  */
 const config = {
-  roots: ["<rootDir>/packages/web/src/"],
+  roots: ["<rootDir>/src/"],
   transform: {
     "^.+\\.tsx?$": "@swc/jest",
   },

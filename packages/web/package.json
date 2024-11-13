@@ -19,7 +19,8 @@
     "i18n:compile": "formatjs compile-folder --ast --format=simple l10n l10n/generated",
     "i18n:extract": "formatjs extract --format=simple --out-file=l10n/en.json \"src/**/*.{js,ts,tsx}\"",
     "screenshots": "playwright test",
-    "start": "npx firebase-tools emulators:start"
+    "start": "npx firebase-tools emulators:start",
+    "test": "jest"
   },
   "devDependencies": {
     "@babel/core": "7.26.0",
@@ -36,6 +37,7 @@
     "@formatjs/intl-locale": "4.2.4",
     "@formatjs/intl-numberformat": "8.14.4",
     "@formatjs/intl-pluralrules": "5.3.4",
+    "@jest/globals": "29.7.0",
     "@mdi/js": "7.4.47",
     "@mui/material": "6.1.7",
     "@mui/types": "7.2.19",
@@ -49,6 +51,8 @@
     "@reduxjs/toolkit": "2.3.0",
     "@sentry/babel-plugin-component-annotate": "2.22.6",
     "@sentry/react": "8.38.0",
+    "@swc/core": "1.9.2",
+    "@swc/jest": "0.2.37",
     "@types/node": "22.9.0",
     "@types/react": "18.3.12",
     "@types/react-dom": "18.3.1",
@@ -57,6 +61,8 @@
     "firebase": "11.0.1",
     "framer-motion": "11.11.15",
     "handlebars": "4.7.8",
+    "jest": "29.7.0",
+    "jest-environment-jsdom": "29.7.0",
     "parcel": "2.13.0",
     "playwright": "1.48.2",
     "react": "18.3.1",
