@@ -1,8 +1,6 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "forceConsistentCasingInFileNames": true,
-    "isolatedModules": true,
     "lib": ["dom", "dom.iterable", "esnext"],
     "plugins": [{ "name": "next" }]
   },
