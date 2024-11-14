@@ -38,7 +38,7 @@ for (const locale of availableLocales) {
       });
 
       await page.click('[data-screenshots="player-list-item"]');
-      await delay(10);
+      await delay(500);
       await page.screenshot({
         animations: "disabled",
         path: `screenshots/${project.name}/${locale}/2-player.png`,
@@ -50,7 +50,9 @@ for (const locale of availableLocales) {
         path: `screenshots/${project.name}/${locale}/3-dice.png`,
       });
 
+      await delay(500);
       await page.keyboard.down("Escape");
+      await delay(500);
       await page.click('[data-screenshots="combat-button"]');
       await page.screenshot({
         animations: "disabled",
