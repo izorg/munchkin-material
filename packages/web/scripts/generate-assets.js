@@ -6,8 +6,6 @@ import Handlebars from "handlebars";
 export const getDirection = (locale) =>
   ["he"].includes(locale) ? "rtl" : "ltr";
 
-export const getRoot = () => "../../";
-
 /**
  * @param {string} templatePath
  * @return {Promise<Handlebars.TemplateDelegate<unknown>>}
@@ -56,43 +54,46 @@ await Promise.all(
       recursive: true,
     });
 
-    await Promise.all([
-      ...(locale === "en"
-        ? [
-            fs.promises.writeFile(
-              path.join(path.resolve("src"), "index.html"),
-              htmlTemplate({
-                ...data,
-                dir: "ltr",
-                lang: locale,
-                root: "",
-              }),
-            ),
-            fs.promises.writeFile(
-              path.join(path.resolve("src"), "manifest.webmanifest"),
-              manifestTemplate({
-                ...data,
-                root: "",
-              }),
-            ),
-          ]
-        : []),
+    const assetPromises = [
       fs.promises.writeFile(
         path.join(folder, "index.html"),
         htmlTemplate({
           ...data,
           dir: getDirection(locale),
           lang: locale,
-          root: getRoot(),
+          root: "../../",
         }),
       ),
       fs.promises.writeFile(
         path.join(folder, "manifest.webmanifest"),
         manifestTemplate({
           ...data,
-          root: getRoot(),
+          root: "../../",
         }),
       ),
-    ]);
+    ];
+
+    if (locale === "en") {
+      assetPromises.push(
+        fs.promises.writeFile(
+          path.resolve("src", "index.html"),
+          htmlTemplate({
+            ...data,
+            dir: getDirection(locale),
+            lang: locale,
+            root: "",
+          }),
+        ),
+        fs.promises.writeFile(
+          path.resolve("src", "manifest.webmanifest"),
+          manifestTemplate({
+            ...data,
+            root: "",
+          }),
+        ),
+      );
+    }
+
+    return Promise.all(assetPromises);
   }),
 );
