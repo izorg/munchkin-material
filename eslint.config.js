@@ -1,4 +1,3 @@
-import { fixupPluginRules } from "@eslint/compat";
 import js from "@eslint/js";
 import json from "@eslint/json";
 import next from "@next/eslint-plugin-next";
@@ -178,7 +177,7 @@ export default ts.config(
   {
     files: ["packages/site/**"],
     plugins: {
-      "@next/next": fixupPluginRules(next),
+      "@next/next": next,
     },
     rules: {
       ...next.configs.recommended.rules,
