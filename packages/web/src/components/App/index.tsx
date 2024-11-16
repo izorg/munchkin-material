@@ -1,4 +1,4 @@
-import { domMax, LazyMotion } from "framer-motion";
+import { domMax, LazyMotion } from "motion/react";
 
 import CombatView from "../CombatView";
 import DiceDialog from "../DiceDialog";

@@ -3899,10 +3899,10 @@ __metadata:
     "@types/stylis": "npm:4.2.6"
     core-js: "npm:3.39.0"
     firebase: "npm:11.0.2"
-    framer-motion: "npm:11.11.17"
     handlebars: "npm:4.7.8"
     jest: "npm:29.7.0"
     jest-environment-jsdom: "npm:29.7.0"
+    motion: "npm:11.11.17"
     parcel: "npm:2.13.0"
     playwright: "npm:1.48.2"
     react: "npm:18.3.1"
@@ -12613,7 +12613,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"framer-motion@npm:11.11.17":
+"framer-motion@npm:^11.11.17":
   version: 11.11.17
   resolution: "framer-motion@npm:11.11.17"
   dependencies:
@@ -16899,6 +16899,27 @@ __metadata:
   bin:
     lookup-amd: bin/cli.js
   checksum: 10/593d954d8cf5653ff79c5c571b10f45270b3ecba36ad30f07ca459705d23b5392d000f01378118aadbb2d0d7c6fbc2dae02fe112a3769a0ff32282a57fa5fef5
+  languageName: node
+  linkType: hard
+
+"motion@npm:11.11.17":
+  version: 11.11.17
+  resolution: "motion@npm:11.11.17"
+  dependencies:
+    framer-motion: "npm:^11.11.17"
+    tslib: "npm:^2.4.0"
+  peerDependencies:
+    "@emotion/is-prop-valid": "*"
+    react: ^18.0.0
+    react-dom: ^18.0.0
+  peerDependenciesMeta:
+    "@emotion/is-prop-valid":
+      optional: true
+    react:
+      optional: true
+    react-dom:
+      optional: true
+  checksum: 10/d7d1195a781db3859bf05ac1c839511d314eceb1ddbe0157d5d6268aa2989af58fdff2497bfd408c97d1e3dd81e4521820a75b0d0aeaa7a25f55c011f6a079fe
   languageName: node
   linkType: hard
 

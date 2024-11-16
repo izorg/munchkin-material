@@ -6,7 +6,7 @@ import {
   ListItemButton,
   type ListItemProps,
 } from "@mui/material";
-import { m, type TapHandlers } from "framer-motion";
+import { m, type TapHandlers } from "motion/react";
 import { useCallback, useRef } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 
