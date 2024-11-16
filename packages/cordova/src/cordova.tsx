@@ -28,38 +28,54 @@ if (!node) {
 
 const root = createRoot(node);
 
-const router = createMemoryRouter([
+const router = createMemoryRouter(
+  [
+    {
+      element: (
+        <CordovaProvider>
+          <VersionProvider>
+            <FullVersionProvider>
+              <WakeLockProvider>
+                <AppStoreLinkProvider>
+                  <LocaleProvider>
+                    <AugmentedStylesProvider>
+                      <AugmentedThemeProvider>
+                        <SplashScreenProvider />
+                        <StatusBarProvider />
+                        <HeaderColorProvider />
+                        <KeyboardProvider />
+                        <ScreenViewProvider />
+                        <App />
+                      </AugmentedThemeProvider>
+                    </AugmentedStylesProvider>
+                  </LocaleProvider>
+                </AppStoreLinkProvider>
+              </WakeLockProvider>
+            </FullVersionProvider>
+          </VersionProvider>
+        </CordovaProvider>
+      ),
+      path: "*",
+    },
+  ],
   {
-    element: (
-      <CordovaProvider>
-        <VersionProvider>
-          <FullVersionProvider>
-            <WakeLockProvider>
-              <AppStoreLinkProvider>
-                <LocaleProvider>
-                  <AugmentedStylesProvider>
-                    <AugmentedThemeProvider>
-                      <SplashScreenProvider />
-                      <StatusBarProvider />
-                      <HeaderColorProvider />
-                      <KeyboardProvider />
-                      <ScreenViewProvider />
-                      <App />
-                    </AugmentedThemeProvider>
-                  </AugmentedStylesProvider>
-                </LocaleProvider>
-              </AppStoreLinkProvider>
-            </WakeLockProvider>
-          </FullVersionProvider>
-        </VersionProvider>
-      </CordovaProvider>
-    ),
-    path: "*",
+    future: {
+      v7_fetcherPersist: true,
+      v7_normalizeFormMethod: true,
+      v7_partialHydration: true,
+      v7_relativeSplatPath: true,
+      v7_skipActionErrorRevalidation: true,
+    },
   },
-]);
+);
 
 root.render(
   <ReduxProvider>
-    <RouterProvider router={router} />
+    <RouterProvider
+      future={{
+        v7_startTransition: true,
+      }}
+      router={router}
+    />
   </ReduxProvider>,
 );
