@@ -37,8 +37,9 @@ for (const locale of availableLocales) {
         path: `screenshots/${project.name}/${locale}/1-home.png`,
       });
 
-      await page.click('[data-screenshots="player-list-item"]');
-      await delay(500);
+      await page.click('[data-screenshots="player-list-item"]', {
+        delay: 50, // prevent false positive long press for `motion` handlers
+      });
       await page.screenshot({
         animations: "disabled",
         path: `screenshots/${project.name}/${locale}/2-player.png`,
