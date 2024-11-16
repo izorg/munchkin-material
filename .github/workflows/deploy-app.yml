@@ -36,7 +36,7 @@ jobs:
         run: yarn run lint
 
       - name: Test
-        run: yarn run test
+        run: yarn workspaces foreach --all run test
 
       - name: Build 🔨
         run: yarn workspaces foreach --from '@munchkin/{cordova,web}' --parallel --recursive run build
