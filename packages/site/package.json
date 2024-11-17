@@ -15,7 +15,7 @@
     "@emotion/cache": "11.13.1",
     "@emotion/react": "11.13.3",
     "@emotion/styled": "11.13.0",
-    "@formatjs/cli": "6.3.8",
+    "@formatjs/cli": "6.3.9",
     "@formatjs/icu-messageformat-parser": "2.9.3",
     "@formatjs/intl": "2.10.14",
     "@mdi/js": "7.4.47",
