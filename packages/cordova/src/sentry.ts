@@ -21,7 +21,7 @@ init({
     }),
   ],
   normalizeDepth: 10,
-  release: window.BuildInfo.version,
+  release: `munchkin@${window.BuildInfo.version}`,
   replaysOnErrorSampleRate: 1,
   replaysSessionSampleRate: 0.01,
   transport: makeBrowserOfflineTransport(makeFetchTransport),
