@@ -2,6 +2,7 @@ import { shouldPolyfill as shouldPolyfillDateTimeFormat } from "@formatjs/intl-d
 import { shouldPolyfill as shouldPolyfillGetCanonicalLocales } from "@formatjs/intl-getcanonicallocales/should-polyfill";
 import { shouldPolyfill as shouldPolyfillNumberFormat } from "@formatjs/intl-numberformat/should-polyfill";
 import { shouldPolyfill as shouldPolyfillPluralRules } from "@formatjs/intl-pluralrules/should-polyfill";
+import { captureMessage } from "@sentry/react";
 
 import {
   type AvailableLocale,
@@ -109,20 +110,24 @@ const polyfillIntl = async (locale: AvailableLocale) => {
   await import("@formatjs/intl-locale/polyfill-force");
 
   if (shouldPolyfillGetCanonicalLocales()) {
+    captureMessage("Intl: getCanonicalLocales");
     await import("@formatjs/intl-getcanonicallocales/polyfill");
   }
 
   if (shouldPolyfillPluralRules(locale)) {
+    captureMessage("Intl: PluralRules");
     await import("@formatjs/intl-pluralrules/polyfill-force");
     await pluralRulesLoaders[locale]();
   }
 
   if (shouldPolyfillNumberFormat(locale)) {
+    captureMessage("Intl: NumberFormat");
     await import("@formatjs/intl-numberformat/polyfill-force");
     await numberFormatLoaders[locale]();
   }
 
   if (shouldPolyfillDateTimeFormat(locale)) {
+    captureMessage("Intl: DateTimeFormat");
     await import("@formatjs/intl-datetimeformat/polyfill-force");
     await dateTimeFormatLoaders[locale]();
   }
