@@ -16,7 +16,13 @@ export default defineConfig({
     },
     {
       name: "iPhone 6.5″ Display",
-      use: devices["iPhone 14 Plus"],
+      use: {
+        ...devices["iPhone 14 Plus"],
+        viewport: {
+          height: 926,
+          width: 428,
+        },
+      },
     },
     {
       name: "iPhone 5.5″ Display",

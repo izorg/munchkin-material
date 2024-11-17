@@ -40,6 +40,7 @@ for (const locale of availableLocales) {
       await page.click('[data-screenshots="player-list-item"]', {
         delay: 50, // prevent false positive long press for `motion` handlers
       });
+      await delay(100);
       await page.screenshot({
         animations: "disabled",
         path: `screenshots/${project.name}/${locale}/2-player.png`,
@@ -55,6 +56,7 @@ for (const locale of availableLocales) {
       await page.keyboard.down("Escape");
       await delay(500);
       await page.click('[data-screenshots="combat-button"]');
+      await delay(500);
       await page.screenshot({
         animations: "disabled",
         path: `screenshots/${project.name}/${locale}/4-combat.png`,
