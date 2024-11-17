@@ -16,7 +16,6 @@ init({
   integrations: [
     replayIntegration({
       blockAllMedia: false,
-      // Additional Replay configuration goes in here, for example:
       maskAllText: false,
     }),
   ],
@@ -25,7 +24,7 @@ init({
 
   // This sets the sample rate to be 10%. You may want this to be 100% while
   // in development and sample at a lower rate in production
-  replaysSessionSampleRate: 0.05,
+  replaysSessionSampleRate: 0,
 
   // Adjust this value in production, or use tracesSampler for greater control
   tracesSampleRate: 0.1,
