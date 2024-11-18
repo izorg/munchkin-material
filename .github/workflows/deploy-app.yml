@@ -23,7 +23,6 @@ jobs:
       - name: Install ⬇️
         env:
           HUSKY: 0
-          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
         run: yarn install --immutable
 
       - name: Compile locales 🔨
