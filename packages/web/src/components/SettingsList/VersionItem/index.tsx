@@ -1,5 +1,6 @@
 import { mdiCellphoneArrowDown, mdiInformationOutline } from "@mdi/js";
 import { ListItem, ListItemIcon, SvgIcon } from "@mui/material";
+import { FormattedMessage } from "react-intl";
 
 import { useVersion } from "../../../utils/versionContext";
 import { useWorkbox } from "../../WorkboxProvider";
@@ -23,7 +24,10 @@ const VersionItem = () => {
             <path d={update ? mdiCellphoneArrowDown : mdiInformationOutline} />
           </SvgIcon>
         </ListItemIcon>
-        <ListItemText primary={useVersion()} />
+        <ListItemText
+          primary={<FormattedMessage defaultMessage="Version" id="I3b4hn" />}
+          secondary={useVersion()}
+        />
       </SettingsListItemButton>
     </ListItem>
   );
