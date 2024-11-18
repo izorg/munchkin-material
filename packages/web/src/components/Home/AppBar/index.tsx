@@ -1,4 +1,4 @@
-import { mdiClose, mdiFlagCheckered, mdiTrashCanOutline } from "@mdi/js";
+import { mdiFlagCheckered, mdiTrashCanOutline } from "@mdi/js";
 import { SvgIcon } from "@mui/material";
 import { type FC, type ReactNode } from "react";
 import { FormattedMessage } from "react-intl";
@@ -16,6 +16,7 @@ import Title from "../../Title";
 import TopAppBar from "../../TopAppBar";
 import TopIconButton from "../../TopIconButton";
 
+import { CancelButton } from "./CancelButton";
 import EditButton from "./EditButton";
 import ResetButton from "./ResetButton";
 import ShuffleButton from "./ShuffleButton";
@@ -104,13 +105,7 @@ const HomeAppBar: FC<HomeAppBarProps> = (props) => {
 
   return (
     <TopAppBar>
-      {multiMode && (
-        <TopIconButton edge="start" onClick={goBack}>
-          <SvgIcon>
-            <path d={mdiClose} />
-          </SvgIcon>
-        </TopIconButton>
-      )}
+      {multiMode && <CancelButton edge="start" />}
 
       <Title sx={[!multiMode && { paddingLeft: { xs: 0 } }]}>{title}</Title>
 
