@@ -13,6 +13,7 @@ init({
     "BILLING_UNAVAILABLE",
     "The user cancelled the order.",
     "USER_CANCELED",
+    "validProducts.find is not a function",
   ],
   integrations: [
     replayIntegration({
