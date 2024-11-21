@@ -93,10 +93,13 @@ export default ts.config(
           ],
         },
       ],
+      "perfectionist/sort-modules": "off",
 
       "sonarjs/function-return-type": "off",
+      "sonarjs/no-empty-function": "off",
       "sonarjs/no-misused-promises": "off",
       "sonarjs/no-redeclare": "off",
+      "sonarjs/no-unused-expressions": "off",
 
       "unicorn/filename-case": "off",
 

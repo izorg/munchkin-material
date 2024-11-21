@@ -51,6 +51,7 @@ const CombatHelperButton = () => {
       },
     );
   };
+
   const onMonsterAdd = () => dispatch(addMonster(createMonster()));
 
   return (
@@ -84,6 +85,11 @@ const CombatHelperButton = () => {
           }
         }}
         open={open}
+        slotProps={{
+          transition: {
+            appear: false,
+          },
+        }}
         sx={[
           (theme) => ({
             bottom: {
@@ -114,9 +120,6 @@ const CombatHelperButton = () => {
                   },
           }),
         ]}
-        TransitionProps={{
-          appear: false,
-        }}
       >
         <SpeedDialAction
           icon={
