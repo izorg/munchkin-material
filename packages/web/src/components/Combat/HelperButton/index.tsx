@@ -3,10 +3,11 @@ import {
   Backdrop,
   SpeedDial,
   SpeedDialAction,
+  type SpeedDialActionProps,
   SpeedDialIcon,
   SvgIcon,
 } from "@mui/material";
-import { memo, type MouseEvent } from "react";
+import { memo } from "react";
 import { FormattedMessage } from "react-intl";
 import { useSearchParams } from "react-router-dom";
 
@@ -35,9 +36,8 @@ const CombatHelperButton = () => {
       return searchParams;
     });
   };
-  const onBack = () => goBack();
 
-  const onHelperClick = (event: MouseEvent) => {
+  const onHelperClick: SpeedDialActionProps["onClick"] = (event) => {
     event.stopPropagation();
 
     setSearchParams(
@@ -54,10 +54,26 @@ const CombatHelperButton = () => {
 
   const onMonsterAdd = () => dispatch(addMonster(createMonster()));
 
+  const onMonsterClick: SpeedDialActionProps["onClick"] = (event) => {
+    event.stopPropagation();
+    onMonsterAdd();
+    goBack();
+  };
+
+  const onSpeedDialClick = () => {
+    if (open) {
+      goBack();
+    } else if (helper) {
+      onAdd();
+    } else {
+      onMonsterAdd();
+    }
+  };
+
   return (
     <>
       <Backdrop
-        onClick={onBack}
+        onClick={goBack}
         open={open}
         sx={{
           zIndex: 1,
@@ -75,15 +91,7 @@ const CombatHelperButton = () => {
             </SvgIcon>
           )
         }
-        onClick={() => {
-          if (open) {
-            onBack();
-          } else if (helper) {
-            onAdd();
-          } else {
-            onMonsterAdd();
-          }
-        }}
+        onClick={onSpeedDialClick}
         open={open}
         slotProps={{
           transition: {
@@ -127,11 +135,7 @@ const CombatHelperButton = () => {
               <path d={mdiEmoticonDevilOutline} />
             </SvgIcon>
           }
-          onClick={(event) => {
-            event.stopPropagation();
-            onMonsterAdd();
-            onBack();
-          }}
+          onClick={onMonsterClick}
           tooltipTitle={
             // eslint-disable-next-line formatjs/enforce-id
             <FormattedMessage
