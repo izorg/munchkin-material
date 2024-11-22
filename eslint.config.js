@@ -35,15 +35,15 @@ export default ts.config(
   js.configs.recommended,
   ...ts.configs.recommendedTypeChecked,
   compat.configs["flat/recommended"],
-  perfectionist.configs["recommended-alphabetical"],
+  formatjs.configs.recommended,
   importPlugin.flatConfigs.recommended,
   importPlugin.flatConfigs.typescript,
   jsxA11y.flatConfigs.recommended,
+  perfectionist.configs["recommended-alphabetical"],
   react.configs.flat.recommended,
   react.configs.flat["jsx-runtime"],
   sonarjs.configs.recommended,
   unicorn.configs["flat/recommended"],
-  prettier,
   {
     languageOptions: {
       parserOptions: {
@@ -54,13 +54,11 @@ export default ts.config(
       sourceType: "script",
     },
     plugins: {
-      formatjs,
       "only-error": onlyError,
       "react-hooks": reactHooks,
     },
     rules: {
-      ...reactHooks.configs.recommended.rules,
-
+      "formatjs/enforce-description": "off",
       "formatjs/enforce-id": [
         "error",
         {
@@ -68,6 +66,7 @@ export default ts.config(
         },
       ],
       "formatjs/no-invalid-icu": "error",
+      "formatjs/no-literal-string-in-jsx": "off",
 
       "import/consistent-type-specifier-style": ["error", "prefer-inline"],
       "import/no-cycle": "error",
@@ -94,6 +93,8 @@ export default ts.config(
         },
       ],
       "perfectionist/sort-modules": "off",
+
+      ...reactHooks.configs.recommended.rules,
 
       "sonarjs/function-return-type": "off",
       "sonarjs/no-empty-function": "off",
@@ -192,4 +193,5 @@ export default ts.config(
       },
     },
   },
+  prettier,
 );
