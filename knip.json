@@ -1,6 +1,10 @@
 {
   "$schema": "node_modules/knip/schema.json",
-  "entry": ["packages/cordova/scripts/copy-gradle-extras.js"],
+  "entry": [
+    "packages/cordova/scripts/copy-gradle-extras.js",
+    "packages/web/src/polyfills.ts",
+    "packages/web/src/sentry.ts"
+  ],
   "ignore": [
     "packages/web/src/components/Loading/index.tsx",
     "packages/web/src/components/SettingsList/TranslateItem/index.tsx",

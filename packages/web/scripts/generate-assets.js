@@ -81,14 +81,14 @@ await Promise.all(
             ...data,
             dir: getDirection(locale),
             lang: locale,
-            root: "",
+            root: "./",
           }),
         ),
         fs.promises.writeFile(
           path.resolve("src", "manifest.webmanifest"),
           manifestTemplate({
             ...data,
-            root: "",
+            root: "./",
           }),
         ),
       );
