@@ -12,7 +12,7 @@ import {
 import { captureException } from "@sentry/react";
 import { type ChangeEvent, type SyntheticEvent } from "react";
 import { useIntl } from "react-intl";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router";
 
 import { setTheme } from "../../ducks/theme";
 import usePresentSelector from "../../hooks/usePresentSelector";
@@ -82,7 +82,7 @@ const ThemeDialog = () => {
 
     dispatch(setTheme(previewTheme));
 
-    goBack();
+    await goBack();
   };
 
   const onClose = () => goBack();

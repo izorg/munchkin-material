@@ -13,7 +13,7 @@ import {
 } from "@mui/material";
 import { type ChangeEvent, type SyntheticEvent } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router";
 
 import { setTheme } from "../../ducks/theme";
 import usePreviewTheme from "../../hooks/usePreviewTheme";
@@ -67,12 +67,12 @@ const ThemeSchemeDialog = () => {
     });
   };
 
-  const onSubmit = (event: SyntheticEvent<HTMLFormElement>) => {
+  const onSubmit = async (event: SyntheticEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     dispatch(setTheme(previewTheme));
 
-    goBack();
+    await goBack();
   };
 
   const onClose = () => goBack();

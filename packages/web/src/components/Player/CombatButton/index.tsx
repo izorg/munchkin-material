@@ -1,7 +1,7 @@
 import { mdiSwordCross } from "@mdi/js";
 import { type FabProps, SvgIcon } from "@mui/material";
 import { type FC } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 
 import { startCombat } from "../../../ducks/combat/actions";
 import { usePlayerId } from "../../../hooks/usePlayerId";
@@ -20,12 +20,12 @@ const CombatButton: FC<CombatButtonProps> = (props) => {
   const combatFinished = usePresentSelector((state) => state.combat.finished);
   const combatPlayerId = usePresentSelector((state) => state.combat.playerId);
 
-  const goToCombat = () => {
+  const goToCombat = async () => {
     if (combatFinished || playerId !== combatPlayerId) {
       dispatch(startCombat(playerId));
     }
 
-    navigate(`/player/${playerId}/combat`);
+    await navigate(`/player/${playerId}/combat`);
   };
 
   return (

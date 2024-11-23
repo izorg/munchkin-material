@@ -18,7 +18,7 @@ import {
 } from "@mui/material";
 import { type FormEvent, useEffect, useMemo, useRef } from "react";
 import { useIntl } from "react-intl";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router";
 
 import { type Player, Sex } from "../../domains/player";
 import { addPlayerToList } from "../../ducks/playerList";
@@ -85,13 +85,13 @@ const PlayerDialog = () => {
   const fullScreen = useFullScreen();
 
   const handleDelete = editPlayer
-    ? () => {
+    ? async () => {
         deletePlayers([editPlayer.id]);
-        goBack();
+        await goBack();
       }
     : undefined;
 
-  const onSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     const formData = new FormData(event.target as HTMLFormElement);
@@ -99,7 +99,7 @@ const PlayerDialog = () => {
     const formValues: Partial<Player> = Object.fromEntries(formData);
 
     if (!formValues.name?.trim()) {
-      goBack();
+      await goBack();
 
       return;
     }
@@ -111,7 +111,7 @@ const PlayerDialog = () => {
       };
 
       if (shallowEqual(editPlayer, player)) {
-        goBack();
+        await goBack();
 
         return;
       }
@@ -124,7 +124,7 @@ const PlayerDialog = () => {
       dispatch(addPlayerToList(player.id));
     }
 
-    goBack();
+    await goBack();
   };
 
   const title = editPlayer

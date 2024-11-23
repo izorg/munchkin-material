@@ -1,7 +1,7 @@
 import "./sentry";
 
 import { createRoot } from "react-dom/client";
-import { createMemoryRouter, RouterProvider } from "react-router-dom";
+import { createMemoryRouter, RouterProvider } from "react-router";
 
 import App from "../../web/src/components/App";
 import AugmentedStylesProvider from "../../web/src/components/AugmentedStylesProvider";
@@ -28,54 +28,38 @@ if (!node) {
 
 const root = createRoot(node);
 
-const router = createMemoryRouter(
-  [
-    {
-      element: (
-        <CordovaProvider>
-          <VersionProvider>
-            <FullVersionProvider>
-              <WakeLockProvider>
-                <AppStoreLinkProvider>
-                  <LocaleProvider>
-                    <AugmentedStylesProvider>
-                      <AugmentedThemeProvider>
-                        <SplashScreenProvider />
-                        <StatusBarProvider />
-                        <HeaderColorProvider />
-                        <KeyboardProvider />
-                        <ScreenViewProvider />
-                        <App />
-                      </AugmentedThemeProvider>
-                    </AugmentedStylesProvider>
-                  </LocaleProvider>
-                </AppStoreLinkProvider>
-              </WakeLockProvider>
-            </FullVersionProvider>
-          </VersionProvider>
-        </CordovaProvider>
-      ),
-      path: "*",
-    },
-  ],
+const router = createMemoryRouter([
   {
-    future: {
-      v7_fetcherPersist: true,
-      v7_normalizeFormMethod: true,
-      v7_partialHydration: true,
-      v7_relativeSplatPath: true,
-      v7_skipActionErrorRevalidation: true,
-    },
+    element: (
+      <CordovaProvider>
+        <VersionProvider>
+          <FullVersionProvider>
+            <WakeLockProvider>
+              <AppStoreLinkProvider>
+                <LocaleProvider>
+                  <AugmentedStylesProvider>
+                    <AugmentedThemeProvider>
+                      <SplashScreenProvider />
+                      <StatusBarProvider />
+                      <HeaderColorProvider />
+                      <KeyboardProvider />
+                      <ScreenViewProvider />
+                      <App />
+                    </AugmentedThemeProvider>
+                  </AugmentedStylesProvider>
+                </LocaleProvider>
+              </AppStoreLinkProvider>
+            </WakeLockProvider>
+          </FullVersionProvider>
+        </VersionProvider>
+      </CordovaProvider>
+    ),
+    path: "*",
   },
-);
+]);
 
 root.render(
   <ReduxProvider>
-    <RouterProvider
-      future={{
-        v7_startTransition: true,
-      }}
-      router={router}
-    />
+    <RouterProvider router={router} />
   </ReduxProvider>,
 );

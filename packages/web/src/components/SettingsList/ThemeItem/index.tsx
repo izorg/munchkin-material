@@ -8,7 +8,7 @@ import {
 } from "@mui/material";
 import { useCallback } from "react";
 import { useIntl } from "react-intl";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router";
 
 import usePresentSelector from "../../../hooks/usePresentSelector";
 import themeMessages from "../../../messages/theme";

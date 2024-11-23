@@ -5,7 +5,7 @@ import {
   DialogTitle,
 } from "@mui/material";
 import { useIntl } from "react-intl";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router";
 
 import levelLimitMessages from "../../messages/levelLimit";
 import { useGoBack } from "../../utils/location";

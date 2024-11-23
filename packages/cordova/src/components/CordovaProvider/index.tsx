@@ -1,5 +1,5 @@
 import { type FC, type PropsWithChildren, useEffect, useRef } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation } from "react-router";
 
 import { useGoBack } from "../../../../web/src/utils/location";
 
@@ -16,13 +16,13 @@ const CordovaProvider: FC<PropsWithChildren> = ({ children }) => {
   const goBack = useGoBack();
 
   useEffect(() => {
-    const onBackButton = (event: Event) => {
+    const onBackButton = async (event: Event) => {
       event.preventDefault();
 
       if (homeLocationRef.current) {
         window.navigator.app.exitApp();
       } else {
-        goBack();
+        await goBack();
       }
     };
 

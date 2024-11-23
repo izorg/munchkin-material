@@ -15,7 +15,7 @@ import {
   useRef,
 } from "react";
 import { useIntl } from "react-intl";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 
 import usePresentSelector from "../../../hooks/usePresentSelector";
 
@@ -88,7 +88,7 @@ const PlayerSlider = ({ playerId, sx = [] }: PlayerSliderProps) => {
       return;
     }
 
-    const onScroll = () => {
+    const onScroll = async () => {
       let direction = 0;
 
       // Safari in some cases returns -1 (+1 for rtl) instead of 0
@@ -104,7 +104,7 @@ const PlayerSlider = ({ playerId, sx = [] }: PlayerSliderProps) => {
 
       const nextPlayerId = playerList[getPlayerIndex(currentIndex + direction)];
 
-      navigate(`/player/${nextPlayerId}`, {
+      await navigate(`/player/${nextPlayerId}`, {
         replace: true,
       });
     };

@@ -16,7 +16,7 @@ import {
   Zoom,
 } from "@mui/material";
 import { useCallback, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router";
 import { SwitchTransition } from "react-transition-group";
 
 import { throwDice } from "../../ducks/dice";

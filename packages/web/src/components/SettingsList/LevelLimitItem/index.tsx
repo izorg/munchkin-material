@@ -1,7 +1,7 @@
 import { mdiArrowExpandVertical } from "@mdi/js";
 import { ListItem, ListItemIcon, SvgIcon } from "@mui/material";
 import { useIntl } from "react-intl";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router";
 
 import usePresentSelector from "../../../hooks/usePresentSelector";
 import levelLimitMessages from "../../../messages/levelLimit";

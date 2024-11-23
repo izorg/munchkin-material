@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 import { memo } from "react";
 import { FormattedMessage } from "react-intl";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router";
 
 import { addMonster } from "../../../ducks/monsters";
 import usePresentSelector from "../../../hooks/usePresentSelector";
@@ -54,15 +54,15 @@ const CombatHelperButton = () => {
 
   const onMonsterAdd = () => dispatch(addMonster(createMonster()));
 
-  const onMonsterClick: SpeedDialActionProps["onClick"] = (event) => {
+  const onMonsterClick: SpeedDialActionProps["onClick"] = async (event) => {
     event.stopPropagation();
     onMonsterAdd();
-    goBack();
+    await goBack();
   };
 
-  const onSpeedDialClick = () => {
+  const onSpeedDialClick = async () => {
     if (open) {
-      goBack();
+      await goBack();
     } else if (helper) {
       onAdd();
     } else {

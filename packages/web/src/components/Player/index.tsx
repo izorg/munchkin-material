@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import { Navigate } from "react-router-dom";
+import { Navigate } from "react-router";
 
 import { usePlayerId } from "../../hooks/usePlayerId";
 import usePresentSelector from "../../hooks/usePresentSelector";

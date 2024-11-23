@@ -7,7 +7,7 @@ import {
   useRef,
   useState,
 } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router";
 
 import { type AvailableColor } from "../../../utils/availableColors";
 import { useGoBack } from "../../../utils/location";
@@ -116,14 +116,14 @@ const ColorPicker: FC<ColorPickerProps> = (props) => {
         <Popover
           anchorEl={() => anchorEl.current as HTMLButtonElement}
           onClose={onClose}
-          onSelect={(color) => {
+          onSelect={async (color) => {
             setValue(color);
 
             if (onChange) {
               onChange(color);
             }
 
-            onClose();
+            await onClose();
           }}
           open={open}
           value={value}
@@ -131,14 +131,14 @@ const ColorPicker: FC<ColorPickerProps> = (props) => {
       ) : (
         <Dialog
           onClose={onClose}
-          onSelect={(color) => {
+          onSelect={async (color) => {
             setValue(color);
 
             if (onChange) {
               onChange(color);
             }
 
-            onClose();
+            await onClose();
           }}
           open={open}
           value={value}

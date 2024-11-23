@@ -5,7 +5,7 @@ import {
   Routes,
   useLocation,
   useMatch,
-} from "react-router-dom";
+} from "react-router";
 
 import ScreenDialog from "../ScreenDialog";
 

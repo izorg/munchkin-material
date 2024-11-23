@@ -2,7 +2,7 @@ import { mdiPlus } from "@mdi/js";
 import { type FabProps, SvgIcon } from "@mui/material";
 import { forwardRef, useCallback } from "react";
 import { useIntl } from "react-intl";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router";
 
 import ScreenFab from "../../ScreenFab";
 

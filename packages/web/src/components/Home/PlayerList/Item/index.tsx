@@ -8,7 +8,7 @@ import {
 } from "@mui/material";
 import { m, type TapHandlers } from "motion/react";
 import { useCallback, useRef } from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router";
 
 import { togglePlayer, unselectAllPlayers } from "../../../../ducks/ui";
 import useEditMode from "../../../../hooks/useEditMode";
@@ -57,7 +57,7 @@ const HomePlayerListItem = (props: HomePlayerListItemProps) => {
   }, [dispatch, playerId, setMultiMode]);
 
   const onClick = useCallback(
-    (event: Parameters<Required<TapHandlers>["onTap"]>[0]) => {
+    async (event: Parameters<Required<TapHandlers>["onTap"]>[0]) => {
       if (editMode) {
         setSearchParams((searchParams) => {
           searchParams.set("player", playerId);
@@ -71,12 +71,12 @@ const HomePlayerListItem = (props: HomePlayerListItemProps) => {
           selectedPlayerIds.length === 1 &&
           selectedPlayerIds[0] === playerId
         ) {
-          goBack();
+          await goBack();
         }
       } else if (avatarRef.current?.contains(event.target as HTMLElement)) {
         onMultiSelectActivate();
       } else {
-        navigate(`/player/${playerId}`);
+        await navigate(`/player/${playerId}`);
       }
     },
     [
@@ -129,11 +129,11 @@ const HomePlayerListItem = (props: HomePlayerListItemProps) => {
   );
 
   const onTap: Required<TapHandlers>["onTap"] = useCallback(
-    (event) => {
+    async (event) => {
       clearPress();
 
       if (Date.now() - startTapTimeRef.current < 500) {
-        onClick(event);
+        await onClick(event);
       }
     },
     [clearPress, onClick],

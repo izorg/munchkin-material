@@ -2,7 +2,7 @@ import { mdiCogOutline } from "@mdi/js";
 import { type IconButtonProps, SvgIcon, Tooltip } from "@mui/material";
 import { type FC } from "react";
 import { useIntl } from "react-intl";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 
 import TopIconButton from "../TopIconButton";
 

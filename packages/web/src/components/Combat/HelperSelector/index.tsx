@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 import { useMemo } from "react";
 import { FormattedMessage } from "react-intl";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router";
 
 import { setCombatHelper } from "../../../ducks/combat/actions";
 import usePresentSelector from "../../../hooks/usePresentSelector";
@@ -37,9 +37,9 @@ const HelperSelector = () => {
 
   const open = searchParams.get("add") === "helper";
 
-  const onSelect = (id: string) => {
+  const onSelect = async (id: string) => {
     dispatch(setCombatHelper(id));
-    goBack();
+    await goBack();
   };
 
   return (

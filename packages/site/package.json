@@ -34,7 +34,7 @@
     "sharp": "0.33.5",
     "stylis": "4.3.4",
     "stylis-plugin-rtl": "2.1.1",
-    "typescript": "5.6.3",
+    "typescript": "5.7.2",
     "webpack": "5.96.1"
   }
 }

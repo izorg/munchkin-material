@@ -1,4 +1,4 @@
-import { matchPath, useLocation } from "react-router-dom";
+import { matchPath, useLocation } from "react-router";
 
 const useScreenView = (): string | undefined => {
   const { pathname } = useLocation();
