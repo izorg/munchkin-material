@@ -17,9 +17,9 @@ const CombatAppBar = () => {
 
   const goBack = useGoBack();
 
-  const onFinish = useCallback(() => {
+  const onFinish = useCallback(async () => {
     dispatch(finishCombat());
-    goBack();
+    await goBack();
   }, [dispatch, goBack]);
 
   return (

@@ -75,9 +75,9 @@ const HomeAppBar: FC<HomeAppBarProps> = (props) => {
       <TopIconButton
         edge="end"
         key="delete"
-        onClick={() => {
+        onClick={async () => {
           deletePlayers(selectedPlayerIds);
-          goBack();
+          await goBack();
         }}
       >
         <SvgIcon>
