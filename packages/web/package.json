@@ -12,7 +12,7 @@
   "scripts": {
     "analyze": "yarn run build:parcel --reporter @parcel/reporter-bundle-analyzer",
     "build": "yarn run generate-assets && yarn run build:parcel && yarn run build:workbox",
-    "build:parcel": "yarn parcel build --no-cache src/index.html src/localized-files/*/index.html",
+    "build:parcel": "yarn parcel build --no-cache src/index.html \"src/localized-files/*/index.html\"",
     "build:workbox": "workbox generateSW workbox.config.json",
     "dev": "yarn parcel --no-cache --port=3000 --watch-dir ../ src/index.html",
     "generate-assets": "node scripts/generate-assets.js",
