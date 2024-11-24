@@ -58,7 +58,7 @@
       "cordova-plugin-firebase-analytics": {
         "ANALYTICS_COLLECTION_ENABLED": "true",
         "ANDROID_FIREBASE_BOM_VERSION": "33.6.0",
-        "AUTOMATIC_SCREEN_REPORTING_ENABLED": "true",
+        "AUTOMATIC_SCREEN_REPORTING_ENABLED": "false",
         "IOS_FIREBASE_POD_VERSION": "11.5.0"
       },
       "cordova-plugin-firebase-crash": {
