@@ -1,3 +1,5 @@
+import { captureException } from "@sentry/react";
+
 const localeMap = new Map<string, Intl.Locale>();
 
 export const getLocaleDirection = (locale: string) => {
@@ -9,5 +11,14 @@ export const getLocaleDirection = (locale: string) => {
     localeMap.set(locale, intlLocale);
   }
 
-  return intlLocale.getTextInfo().direction;
+  const direction =
+    intlLocale.getTextInfo?.().direction ?? intlLocale.textInfo?.direction;
+
+  if (!direction) {
+    captureException(new Error("`Intl.Locale` does not have direction info"));
+
+    return "ltr";
+  }
+
+  return direction;
 };
