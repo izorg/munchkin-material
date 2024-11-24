@@ -1,27 +1,23 @@
 import { logEvent } from "firebase/analytics";
-import { useEffect } from "react";
+import useSWRImmutable from "swr/immutable";
 
 import useScreenView from "../../utils/useScreenView";
+
+const screenViewFetcher = async (screen: string) => {
+  if (process.env.NODE_ENV === "production") {
+    const { analytics } = await import("../../firebase");
+
+    logEvent(analytics, "screen_view", {
+      firebase_screen: screen,
+      firebase_screen_class: screen,
+    });
+  }
+};
 
 const ScreenViewProvider = () => {
   const screen = useScreenView();
 
-  useEffect(() => {
-    if (!screen) {
-      return;
-    }
-
-    if (process.env.NODE_ENV === "production") {
-      void (async () => {
-        const { analytics } = await import("../../firebase");
-
-        logEvent(analytics, "screen_view", {
-          firebase_screen: screen,
-          firebase_screen_class: screen,
-        });
-      })();
-    }
-  }, [screen]);
+  useSWRImmutable(screen, screenViewFetcher);
 
   return null;
 };
