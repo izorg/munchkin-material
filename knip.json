@@ -2,6 +2,7 @@
   "$schema": "node_modules/knip/schema.json",
   "entry": [
     "packages/cordova/scripts/copy-gradle-extras.js",
+    "packages/cordova/src/polyfills.ts",
     "packages/web/src/polyfills.ts",
     "packages/web/src/sentry.ts"
   ],
