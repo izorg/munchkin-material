@@ -11,7 +11,6 @@ import onlyError from "eslint-plugin-only-error";
 import perfectionist from "eslint-plugin-perfectionist";
 import react from "eslint-plugin-react";
 import reactHooks from "eslint-plugin-react-hooks";
-import sonarjs from "eslint-plugin-sonarjs";
 import unicorn from "eslint-plugin-unicorn";
 import globals from "globals";
 import * as ts from "typescript-eslint";
@@ -42,7 +41,6 @@ export default ts.config(
   perfectionist.configs["recommended-alphabetical"],
   react.configs.flat.recommended,
   react.configs.flat["jsx-runtime"],
-  sonarjs.configs.recommended,
   unicorn.configs["flat/recommended"],
   {
     languageOptions: {
@@ -95,12 +93,6 @@ export default ts.config(
       "perfectionist/sort-modules": "off",
 
       ...reactHooks.configs.recommended.rules,
-
-      "sonarjs/function-return-type": "off",
-      "sonarjs/no-empty-function": "off",
-      "sonarjs/no-misused-promises": "off",
-      "sonarjs/no-redeclare": "off",
-      "sonarjs/no-unused-expressions": "off",
 
       "unicorn/filename-case": "off",
 
