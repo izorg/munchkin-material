@@ -36,6 +36,7 @@ const HomeAppBar: FC<HomeAppBarProps> = (props) => {
   const { editMode } = useEditMode();
   const { multiMode } = useMultiMode();
 
+  const playerCount = usePresentSelector((state) => state.playerList.length);
   const selectedPlayerIds = usePresentSelector(
     (state) => state.ui.selectedPlayerIds,
   );
@@ -65,9 +66,9 @@ const HomeAppBar: FC<HomeAppBarProps> = (props) => {
 
   if (editMode) {
     buttons = [
-      <ShuffleButton key="shuffle" />,
+      playerCount > 1 && <ShuffleButton key="shuffle" />,
       <EditButton edge="end" key="save" />,
-    ];
+    ].filter((item) => item !== false);
   }
 
   if (multiMode) {

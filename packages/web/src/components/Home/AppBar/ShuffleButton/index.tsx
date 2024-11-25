@@ -1,4 +1,4 @@
-import { mdiShuffle } from "@mdi/js";
+import { mdiShuffleVariant } from "@mdi/js";
 import { type IconButtonProps, SvgIcon, Tooltip } from "@mui/material";
 import { useIntl } from "react-intl";
 
@@ -22,7 +22,7 @@ const ShuffleButton = (props: IconButtonProps) => {
     >
       <TopIconButton onClick={() => dispatch(shufflePlayers())} {...props}>
         <SvgIcon>
-          <path d={mdiShuffle} />
+          <path d={mdiShuffleVariant} />
         </SvgIcon>
       </TopIconButton>
     </Tooltip>
