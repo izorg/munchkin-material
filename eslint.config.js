@@ -67,7 +67,14 @@ export default ts.config(
       "formatjs/no-literal-string-in-jsx": "off",
 
       "import/consistent-type-specifier-style": ["error", "prefer-inline"],
-      "import/no-cycle": "error",
+
+      /**
+       * https://typescript-eslint.io/troubleshooting/typed-linting/performance#eslint-plugin-import
+       */
+      "import/default": "off",
+      "import/namespace": "off",
+      "import/no-named-as-default-member": "off",
+      "import/no-unresolved": "off",
 
       "jsx-a11y/no-autofocus": [
         "error",
