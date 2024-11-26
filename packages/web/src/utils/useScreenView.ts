@@ -30,6 +30,8 @@ const useScreenView = (): string | undefined => {
   if (pathname === "/") {
     return "Home";
   }
+
+  return undefined;
 };
 
 export default useScreenView;

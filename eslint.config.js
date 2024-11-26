@@ -56,6 +56,8 @@ export default ts.config(
       "react-hooks": reactHooks,
     },
     rules: {
+      "@typescript-eslint/consistent-return": "off",
+
       "formatjs/enforce-description": "off",
       "formatjs/enforce-id": [
         "error",
@@ -109,6 +111,7 @@ export default ts.config(
       "unicorn/no-instanceof-array": "off",
 
       "unicorn/no-null": "off",
+      "unicorn/no-useless-undefined": "off",
       "unicorn/prefer-global-this": "off",
       "unicorn/prevent-abbreviations": "off",
     },
