@@ -110,6 +110,12 @@ const polyfillIntl = async (locale: AvailableLocale) => {
   if (shouldPolyfillIntlLocale()) {
     captureMessage("Intl: Locale");
     await import("@formatjs/intl-locale/polyfill");
+  } else if (
+    !("textInfo" in Intl.Locale.prototype) ||
+    !("getTextInfo" in Intl.Locale.prototype)
+  ) {
+    captureMessage("Intl: Locale getTextInfo");
+    await import("@formatjs/intl-locale/polyfill-force");
   }
 
   if (shouldPolyfillGetCanonicalLocales()) {
