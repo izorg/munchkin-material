@@ -111,7 +111,7 @@ const polyfillIntl = async (locale: AvailableLocale) => {
     captureMessage("Intl: Locale");
     await import("@formatjs/intl-locale/polyfill");
   } else if (
-    !("textInfo" in Intl.Locale.prototype) ||
+    !("textInfo" in Intl.Locale.prototype) &&
     !("getTextInfo" in Intl.Locale.prototype)
   ) {
     captureMessage("Intl: Locale getTextInfo");
