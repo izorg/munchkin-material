@@ -45,7 +45,7 @@
     "eslint-plugin-unicorn": "56.0.1",
     "globals": "15.12.0",
     "husky": "9.1.7",
-    "knip": "5.38.1",
+    "knip": "5.38.2",
     "lint-staged": "15.2.10",
     "madge": "8.0.0",
     "prettier": "3.4.1",
