@@ -56,5 +56,8 @@
     "stylelint-order": "6.0.4",
     "typescript": "5.7.2",
     "typescript-eslint": "8.16.0"
+  },
+  "alias": {
+    "@formatjs/icu-messageformat-parser": "@formatjs/icu-messageformat-parser/no-parser"
   }
 }

@@ -78,8 +78,5 @@
       "cordova-plugin-statusbar": {},
       "cordova-plugin-vibration": {}
     }
-  },
-  "alias": {
-    "@formatjs/icu-messageformat-parser": "@formatjs/icu-messageformat-parser/no-parser"
   }
 }

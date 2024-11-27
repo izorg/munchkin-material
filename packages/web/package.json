@@ -81,8 +81,5 @@
     "uuid": "11.0.3",
     "workbox-cli": "7.3.0",
     "workbox-window": "7.3.0"
-  },
-  "alias": {
-    "@formatjs/icu-messageformat-parser": "@formatjs/icu-messageformat-parser/no-parser"
   }
 }
