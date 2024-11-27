@@ -3579,6 +3579,7 @@ __metadata:
     "@parcel/core": "npm:2.13.2"
     "@parcel/packager-raw-url": "npm:2.13.2"
     "@parcel/reporter-bundle-analyzer": "npm:2.13.2"
+    "@parcel/reporter-bundle-buddy": "npm:2.13.2"
     "@parcel/transformer-webmanifest": "npm:2.13.2"
     "@playwright/test": "npm:1.49.0"
     "@reduxjs/toolkit": "npm:2.3.0"
@@ -5193,6 +5194,15 @@ __metadata:
     "@parcel/utils": "npm:2.13.2"
     nullthrows: "npm:^1.1.1"
   checksum: 10/fb8cc71c87465591823b9ac44b1af2fd67fc0269a2fa8042b5ce4de746b6bf3b7610549752f16c6932eca47ee6fda0aad4fc176e1bab80619e73707b121b9893
+  languageName: node
+  linkType: hard
+
+"@parcel/reporter-bundle-buddy@npm:2.13.2":
+  version: 2.13.2
+  resolution: "@parcel/reporter-bundle-buddy@npm:2.13.2"
+  dependencies:
+    "@parcel/plugin": "npm:2.13.2"
+  checksum: 10/b9b3639d77e7f932fe1cf8240759ff97be43b01f2728ac9fefa7f3646ad30859d2786e7071772c8afb22a53d1002d22e00dbe81dd4b8d6136d36466072db8899
   languageName: node
   linkType: hard
 

@@ -10,7 +10,7 @@
     "src/sentry.ts"
   ],
   "scripts": {
-    "analyze": "yarn run build:parcel --reporter @parcel/reporter-bundle-analyzer",
+    "analyze": "yarn run build:parcel --reporter @parcel/reporter-bundle-analyzer --reporter @parcel/reporter-bundle-buddy",
     "build": "yarn run generate-assets && yarn run build:parcel && yarn run build:workbox",
     "build:parcel": "yarn parcel build --no-cache src/index.html \"src/localized-files/*/index.html\"",
     "build:workbox": "workbox generateSW workbox.config.json",
@@ -46,6 +46,7 @@
     "@parcel/core": "2.13.2",
     "@parcel/packager-raw-url": "2.13.2",
     "@parcel/reporter-bundle-analyzer": "2.13.2",
+    "@parcel/reporter-bundle-buddy": "2.13.2",
     "@parcel/transformer-webmanifest": "2.13.2",
     "@playwright/test": "1.49.0",
     "@reduxjs/toolkit": "2.3.0",
