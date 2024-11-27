@@ -1,4 +1,8 @@
-import { type createTheme, type Direction } from "@mui/material";
+import {
+  type createTheme,
+  type Direction,
+  type PaletteMode,
+} from "@mui/material";
 import { common, orange } from "@mui/material/colors";
 import { deepmerge } from "@mui/utils";
 
@@ -8,10 +12,12 @@ type AugmentedThemeOptions = Parameters<typeof createTheme>[0];
 
 const getThemeOptions = ({
   direction,
+  mode,
   pureBlack,
   reducedMotion,
 }: {
   direction: Direction;
+  mode?: PaletteMode;
   pureBlack: boolean;
   reducedMotion: boolean;
 }): AugmentedThemeOptions => {
@@ -93,7 +99,7 @@ const getThemeOptions = ({
     },
 
     cssVariables: {
-      colorSchemeSelector: "data",
+      colorSchemeSelector: mode ? "data" : "media",
     },
 
     direction,
