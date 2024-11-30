@@ -80,6 +80,10 @@ const numberFormatLoaders: Record<AvailableLocale, () => unknown> = {
 };
 
 const polyfillIntl = async (locale: AvailableLocale) => {
+  if (shouldPolyfillGetCanonicalLocales()) {
+    await import("@formatjs/intl-getcanonicallocales/polyfill");
+  }
+
   if (shouldPolyfillIntlLocale()) {
     await import("@formatjs/intl-locale/polyfill");
   } else if (
@@ -87,10 +91,6 @@ const polyfillIntl = async (locale: AvailableLocale) => {
     !("getTextInfo" in Intl.Locale.prototype)
   ) {
     await import("@formatjs/intl-locale/polyfill-force");
-  }
-
-  if (shouldPolyfillGetCanonicalLocales()) {
-    await import("@formatjs/intl-getcanonicallocales/polyfill");
   }
 
   if (shouldPolyfillPluralRules(locale)) {
