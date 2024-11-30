@@ -2,7 +2,6 @@ import { shouldPolyfill as shouldPolyfillGetCanonicalLocales } from "@formatjs/i
 import { shouldPolyfill as shouldPolyfillIntlLocale } from "@formatjs/intl-locale/should-polyfill";
 import { shouldPolyfill as shouldPolyfillNumberFormat } from "@formatjs/intl-numberformat/should-polyfill";
 import { shouldPolyfill as shouldPolyfillPluralRules } from "@formatjs/intl-pluralrules/should-polyfill";
-import { captureMessage } from "@sentry/react";
 
 import {
   type AvailableLocale,
@@ -82,29 +81,24 @@ const numberFormatLoaders: Record<AvailableLocale, () => unknown> = {
 
 const polyfillIntl = async (locale: AvailableLocale) => {
   if (shouldPolyfillIntlLocale()) {
-    captureMessage("Intl: Locale");
     await import("@formatjs/intl-locale/polyfill");
   } else if (
     !("textInfo" in Intl.Locale.prototype) &&
     !("getTextInfo" in Intl.Locale.prototype)
   ) {
-    captureMessage("Intl: Locale getTextInfo");
     await import("@formatjs/intl-locale/polyfill-force");
   }
 
   if (shouldPolyfillGetCanonicalLocales()) {
-    captureMessage("Intl: getCanonicalLocales");
     await import("@formatjs/intl-getcanonicallocales/polyfill");
   }
 
   if (shouldPolyfillPluralRules(locale)) {
-    captureMessage("Intl: PluralRules");
     await import("@formatjs/intl-pluralrules/polyfill-force");
     await pluralRulesLoaders[locale]();
   }
 
   if (shouldPolyfillNumberFormat(locale)) {
-    captureMessage("Intl: NumberFormat");
     await import("@formatjs/intl-numberformat/polyfill-force");
     await numberFormatLoaders[locale]();
   }
