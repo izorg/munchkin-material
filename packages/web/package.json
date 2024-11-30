@@ -32,7 +32,6 @@
     "@emotion/react": "11.13.5",
     "@emotion/styled": "11.13.5",
     "@formatjs/cli": "6.3.11",
-    "@formatjs/intl-datetimeformat": "6.16.5",
     "@formatjs/intl-getcanonicallocales": "2.5.3",
     "@formatjs/intl-locale": "4.2.5",
     "@formatjs/intl-numberformat": "8.14.5",

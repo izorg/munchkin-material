@@ -2492,17 +2492,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@formatjs/intl-datetimeformat@npm:6.16.5":
-  version: 6.16.5
-  resolution: "@formatjs/intl-datetimeformat@npm:6.16.5"
-  dependencies:
-    "@formatjs/ecma402-abstract": "npm:2.2.4"
-    "@formatjs/intl-localematcher": "npm:0.5.8"
-    tslib: "npm:2"
-  checksum: 10/c370af6c17d19a0f99162ab9d4365526ae45840aebb54b69081b851f1e2476e97611d31b09a1cf86e56eb41fcbe564c95dab3f922be3a48e4e54c6133568f7c7
-  languageName: node
-  linkType: hard
-
 "@formatjs/intl-enumerator@npm:1.8.4":
   version: 1.8.4
   resolution: "@formatjs/intl-enumerator@npm:1.8.4"
@@ -3565,7 +3554,6 @@ __metadata:
     "@emotion/react": "npm:11.13.5"
     "@emotion/styled": "npm:11.13.5"
     "@formatjs/cli": "npm:6.3.11"
-    "@formatjs/intl-datetimeformat": "npm:6.16.5"
     "@formatjs/intl-getcanonicallocales": "npm:2.5.3"
     "@formatjs/intl-locale": "npm:4.2.5"
     "@formatjs/intl-numberformat": "npm:8.14.5"
