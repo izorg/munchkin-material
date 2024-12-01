@@ -1,8 +1,7 @@
-import { getAnalytics } from "firebase/analytics";
 import { initializeApp } from "firebase/app";
 
 if (process.env.NODE_ENV === "production") {
-  const app = initializeApp({
+  initializeApp({
     apiKey: "AIzaSyAwIA0iUuTMsyEOumkpDODkhXtpaMwDq_U",
     appId: "1:996090838746:web:502ca5d05189215f",
     authDomain: "izorg-munchkin.firebaseapp.com",
@@ -12,6 +11,4 @@ if (process.env.NODE_ENV === "production") {
     projectId: "izorg-munchkin",
     storageBucket: "izorg-munchkin.appspot.com",
   });
-
-  getAnalytics(app);
 }
