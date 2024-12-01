@@ -1,7 +1,3 @@
-/**
- * @jest-environment jsdom
- */
-
 import { afterEach, describe, expect, jest, test } from "@jest/globals";
 
 import { getLocale } from "./i18n";
