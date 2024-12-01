@@ -128,7 +128,24 @@ export default ts.config(
       "unicorn/no-useless-undefined": "off",
 
       "unicorn/prefer-global-this": "off",
-      "unicorn/prevent-abbreviations": "off",
+
+      "unicorn/prevent-abbreviations": [
+        "error",
+        {
+          replacements: {
+            ctx: false,
+            dir: false,
+            el: false,
+            env: false,
+            obj: false,
+            params: false,
+            prev: false,
+            prop: false,
+            props: false,
+            ref: false,
+          },
+        },
+      ],
     },
 
     settings: {
