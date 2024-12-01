@@ -2,10 +2,6 @@
 /// <reference types="cordova-plugin-purchase" />
 /// <reference types="cordova-plugin-statusbar" />
 
-interface Keyboard {
-  setKeyboardStyle: (color: "dark" | "light") => void;
-}
-
 declare global {
   interface Navigator {
     app: {
@@ -19,7 +15,9 @@ declare global {
       version: string;
     };
 
-    Keyboard?: Keyboard;
+    Keyboard?: {
+      setKeyboardStyle: (color: "dark" | "light") => void;
+    };
 
     plugins?: {
       headerColor?: {
@@ -30,8 +28,6 @@ declare global {
         keepAwake: () => void;
       };
     };
-
-    StatusBar?: StatusBar;
   }
 }
 
