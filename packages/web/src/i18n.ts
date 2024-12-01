@@ -1,3 +1,4 @@
+import { match } from "@formatjs/intl-localematcher";
 import { type MessageFormatElement } from "react-intl";
 
 export const BE = "be";
@@ -64,25 +65,14 @@ export const isSupportedLocale = (
   return false;
 };
 
-export const getLocale = () => {
-  for (const language of navigator.languages) {
-    const locale = availableLocales.find((item) => item === language);
-
-    if (locale) {
-      return locale;
-    }
-
-    const currentLocale = availableLocales.find(
-      (locale) => locale === language.slice(0, 2),
-    );
-
-    if (currentLocale) {
-      return currentLocale;
-    }
-  }
-
-  return EN;
-};
+export const getLocale = () =>
+  match(navigator.languages, availableLocales, EN, {
+    /**
+     * Used for better matching locales without country like `en`, `ru`, etc.
+     * See https://datatracker.ietf.org/doc/html/rfc4647#section-3.4
+     */
+    algorithm: "lookup",
+  }) as AvailableLocale;
 
 /* istanbul ignore next */
 const loaders = {

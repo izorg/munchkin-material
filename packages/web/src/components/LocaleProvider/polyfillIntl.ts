@@ -79,11 +79,13 @@ const numberFormatLoaders: Record<AvailableLocale, () => unknown> = {
   [UK]: () => import("@formatjs/intl-numberformat/locale-data/uk"),
 };
 
-const polyfillIntl = async (locale: AvailableLocale) => {
+export const polyfillIntlGetCanonicalLocales = async () => {
   if (shouldPolyfillGetCanonicalLocales()) {
     await import("@formatjs/intl-getcanonicallocales/polyfill");
   }
+};
 
+export const polyfillIntlLocale = async () => {
   if (shouldPolyfillIntlLocale()) {
     await import("@formatjs/intl-locale/polyfill");
   } else if (
@@ -92,6 +94,11 @@ const polyfillIntl = async (locale: AvailableLocale) => {
   ) {
     await import("@formatjs/intl-locale/polyfill-force");
   }
+};
+
+const polyfillIntl = async (locale: AvailableLocale) => {
+  await polyfillIntlGetCanonicalLocales();
+  await polyfillIntlLocale();
 
   if (shouldPolyfillPluralRules(locale)) {
     await import("@formatjs/intl-pluralrules/polyfill-force");
