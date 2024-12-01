@@ -1,5 +1,6 @@
 import "./polyfills";
 import "./sentry";
+import "./firebase";
 
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
@@ -10,7 +11,6 @@ import AugmentedStylesProvider from "./components/AugmentedStylesProvider";
 import AugmentedThemeProvider from "./components/AugmentedThemeProvider";
 import LocaleProvider from "./components/LocaleProvider";
 import ReduxProvider from "./components/ReduxProvider";
-import ScreenViewProvider from "./components/ScreenViewProvider";
 import ThemeColorProvider from "./components/ThemeColorProvider";
 import VersionProvider from "./components/VersionProvider";
 import WakeLockProvider from "./components/WakeLockProvider";
@@ -18,10 +18,6 @@ import WorkboxProvider from "./components/WorkboxProvider";
 
 if (process.env.NODE_ENV === "development") {
   void import("./dev");
-}
-
-if (process.env.NODE_ENV === "production") {
-  void import("./firebase");
 }
 
 const node = document.querySelector("#root");
@@ -37,7 +33,6 @@ const router = createHashRouter([
     element: (
       <AugmentedStylesProvider>
         <AugmentedThemeProvider>
-          <ScreenViewProvider />
           <ThemeColorProvider />
           <App />
         </AugmentedThemeProvider>
