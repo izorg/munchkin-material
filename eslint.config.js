@@ -160,6 +160,12 @@ export default ts.config(
     },
   },
   {
+    files: ["**/*.d.ts"],
+    rules: {
+      "no-var": "off",
+    },
+  },
+  {
     ...ts.configs.disableTypeChecked,
     files: ["**/*.js"],
   },
