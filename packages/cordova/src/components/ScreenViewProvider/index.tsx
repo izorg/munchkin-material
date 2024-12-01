@@ -1,9 +1,11 @@
+/// <reference types="cordova-plugin-firebase-analytics" />
+
 import useSWRImmutable from "swr/immutable";
 
 import useScreenView from "../../../../web/src/utils/useScreenView";
 
 const screenViewFetcher = async (screenName: string) => {
-  await window.cordova.plugins.firebase.analytics.setCurrentScreen(screenName);
+  await cordova.plugins.firebase.analytics.setCurrentScreen(screenName);
 };
 
 const ScreenViewProvider = () => {

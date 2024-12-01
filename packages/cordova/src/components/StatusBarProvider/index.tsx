@@ -1,3 +1,5 @@
+/// <reference types="cordova-plugin-statusbar" />
+
 import { darken, rgbToHex, useTheme } from "@mui/material";
 import { useEffect } from "react";
 

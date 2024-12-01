@@ -1,3 +1,5 @@
+/// <reference types="cordova-plugin-purchase" />
+
 import { setContext } from "@sentry/react";
 import {
   type FC,
