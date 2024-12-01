@@ -72,7 +72,7 @@
     "react-router": "7.0.1",
     "react-transition-group": "4.4.5",
     "redux": "5.0.1",
-    "redux-undo": "1.1.1",
+    "redux-undo": "1.1.0",
     "stylis": "4.3.4",
     "stylis-plugin-rtl": "2.1.1",
     "swr": "2.2.5",

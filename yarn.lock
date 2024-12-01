@@ -3594,7 +3594,7 @@ __metadata:
     react-router: "npm:7.0.1"
     react-transition-group: "npm:4.4.5"
     redux: "npm:5.0.1"
-    redux-undo: "npm:1.1.1"
+    redux-undo: "npm:1.1.0"
     stylis: "npm:4.3.4"
     stylis-plugin-rtl: "npm:2.1.1"
     swr: "npm:2.2.5"
@@ -15344,7 +15344,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lodash-es@npm:^4.17.21, lodash-es@npm:^4.2.1":
+"lodash-es@npm:^4.17.21":
   version: 4.17.21
   resolution: "lodash-es@npm:4.17.21"
   checksum: 10/03f39878ea1e42b3199bd3f478150ab723f93cc8730ad86fec1f2804f4a07c6e30deaac73cad53a88e9c3db33348bb8ceeb274552390e7a75d7849021c02df43
@@ -15498,7 +15498,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lodash@npm:^4.17.12, lodash@npm:^4.17.14, lodash@npm:^4.17.15, lodash@npm:^4.17.19, lodash@npm:^4.17.20, lodash@npm:^4.2.1":
+"lodash@npm:^4.17.12, lodash@npm:^4.17.14, lodash@npm:^4.17.15, lodash@npm:^4.17.19, lodash@npm:^4.17.20":
   version: 4.17.21
   resolution: "lodash@npm:4.17.21"
   checksum: 10/c08619c038846ea6ac754abd6dd29d2568aa705feb69339e836dfa8d8b09abbb2f859371e86863eda41848221f9af43714491467b5b0299122431e202bb0c532
@@ -18927,15 +18927,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"redux-ignore@npm:^1.2.5":
-  version: 1.2.5
-  resolution: "redux-ignore@npm:1.2.5"
-  dependencies:
-    redux: "npm:^3.3.1"
-  checksum: 10/19806f1ad3dfac16face172851aef879ee28415992ca887b5dcd12e102e58a4bc9cedbd23667b407f4290b6ebd657ede057171ee3a7304f124e2536a3ead0f37
-  languageName: node
-  linkType: hard
-
 "redux-thunk@npm:^3.1.0":
   version: 3.1.0
   resolution: "redux-thunk@npm:3.1.0"
@@ -18945,13 +18936,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"redux-undo@npm:1.1.1":
-  version: 1.1.1
-  resolution: "redux-undo@npm:1.1.1"
-  dependencies:
-    node-emoji: "npm:^2.1.3"
-    redux-ignore: "npm:^1.2.5"
-  checksum: 10/dc1b202885c6faf6315d5fa70ad48cb3b3a1553694d60a205aa53894fbf67ed8fc5a21ba89f78cca4ce15ba22680e827e8533a5e7b0b840c9d9ea382944d465c
+"redux-undo@npm:1.1.0":
+  version: 1.1.0
+  resolution: "redux-undo@npm:1.1.0"
+  checksum: 10/87b097167b5c90512b3294ae9d3f53b3c9b8d2bb61b9c1541fd2896fd5f9c6a5af2a8ea866a4cc4409e138e35046ae2531baad02c5e2c225b08e9d5c10ea19dd
   languageName: node
   linkType: hard
 
@@ -18959,18 +18947,6 @@ __metadata:
   version: 5.0.1
   resolution: "redux@npm:5.0.1"
   checksum: 10/a373f9ed65693ead58bea5ef61c1d6bef39da9f2706db3be6f84815f3a1283230ecd1184efb1b3daa7f807d8211b0181564ca8f336fc6ee0b1e2fa0ba06737c2
-  languageName: node
-  linkType: hard
-
-"redux@npm:^3.3.1":
-  version: 3.7.2
-  resolution: "redux@npm:3.7.2"
-  dependencies:
-    lodash: "npm:^4.2.1"
-    lodash-es: "npm:^4.2.1"
-    loose-envify: "npm:^1.1.0"
-    symbol-observable: "npm:^1.0.3"
-  checksum: 10/7ea6b8e60b230297fa650f9244c81ba82d3bcfc543800f2798a1e675d007aa6deece9baa26112736b21c9184d661c0a79bf102dc575eb7ea7410d9c356dc7eac
   languageName: node
   linkType: hard
 
@@ -20787,13 +20763,6 @@ __metadata:
   peerDependencies:
     react: ^16.11.0 || ^17.0.0 || ^18.0.0
   checksum: 10/f02b3bd5a198a0f62f9a53d7c0528c4a58aa61a43310bea169614b6e873dadb52599e856ef0775405b6aa7409835343da0cf328948aa892aa309bf4b7e7d6902
-  languageName: node
-  linkType: hard
-
-"symbol-observable@npm:^1.0.3":
-  version: 1.2.0
-  resolution: "symbol-observable@npm:1.2.0"
-  checksum: 10/4684327a2fef2453dcd4238b5bd8f69c460a4708fb8c024a824c6a707ca644b2b2a586e36e5197d0d1162ff48e288299a48844a8c46274ffcfd9260e03df7692
   languageName: node
   linkType: hard
 
