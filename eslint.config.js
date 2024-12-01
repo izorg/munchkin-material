@@ -120,7 +120,13 @@ export default ts.config(
       "unicorn/no-instanceof-array": "off",
 
       "unicorn/no-null": "off",
+
+      /**
+       * Conflicts with SonarCloud https://rules.sonarsource.com/typescript/tag/clumsy/RSPEC-3626/ and
+       * TypeScript noImplicitReturns https://www.typescriptlang.org/tsconfig/#noImplicitReturns.
+       */
       "unicorn/no-useless-undefined": "off",
+
       "unicorn/prefer-global-this": "off",
       "unicorn/prevent-abbreviations": "off",
     },
