@@ -103,7 +103,16 @@ export default ts.config(
 
       ...reactHooks.configs.recommended.rules,
 
-      "unicorn/filename-case": "off",
+      "unicorn/filename-case": [
+        "error",
+        {
+          cases: {
+            camelCase: true,
+            kebabCase: true,
+            pascalCase: true,
+          },
+        },
+      ],
 
       /**
        * Conflicts with TypeScript checks for `sx` prop
