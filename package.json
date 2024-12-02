@@ -32,20 +32,20 @@
     "conventional-changelog-conventionalcommits": "8.0.0",
     "eslint": "9.16.0",
     "eslint-config-prettier": "9.1.0",
-    "eslint-import-resolver-typescript": "3.6.3",
+    "eslint-import-resolver-typescript": "3.7.0",
     "eslint-plugin-compat": "6.0.1",
     "eslint-plugin-formatjs": "5.2.5",
     "eslint-plugin-import": "2.31.0",
     "eslint-plugin-jest": "28.9.0",
     "eslint-plugin-jsx-a11y": "6.10.2",
     "eslint-plugin-only-error": "1.0.2",
-    "eslint-plugin-perfectionist": "4.1.2",
+    "eslint-plugin-perfectionist": "4.2.0",
     "eslint-plugin-react": "7.37.2",
     "eslint-plugin-react-hooks": "5.0.0",
     "eslint-plugin-unicorn": "56.0.1",
-    "globals": "15.12.0",
+    "globals": "15.13.0",
     "husky": "9.1.7",
-    "knip": "5.38.3",
+    "knip": "5.39.1",
     "lint-staged": "15.2.10",
     "madge": "8.0.0",
     "prettier": "3.4.1",
@@ -55,7 +55,7 @@
     "stylelint-config-standard": "36.0.1",
     "stylelint-order": "6.0.4",
     "typescript": "5.7.2",
-    "typescript-eslint": "8.16.0"
+    "typescript-eslint": "8.17.0"
   },
   "alias": {
     "@formatjs/icu-messageformat-parser": "@formatjs/icu-messageformat-parser/no-parser"
