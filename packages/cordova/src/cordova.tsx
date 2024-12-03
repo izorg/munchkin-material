@@ -10,15 +10,10 @@ import LocaleProvider from "../../web/src/components/LocaleProvider";
 import ReduxProvider from "../../web/src/components/ReduxProvider";
 
 import AppStoreLinkProvider from "./components/AppStoreLinkProvider";
-import CordovaProvider from "./components/CordovaProvider";
 import FullVersionProvider from "./components/FullVersionProvider";
-import HeaderColorProvider from "./components/HeaderColorProvider";
-import KeyboardProvider from "./components/KeyboardProvider";
-import ScreenViewProvider from "./components/ScreenViewProvider";
-import SplashScreenProvider from "./components/SplashScreenProvider";
-import StatusBarProvider from "./components/StatusBarProvider";
 import VersionProvider from "./components/VersionProvider";
 import WakeLockProvider from "./components/WakeLockProvider";
+import { CordovaApp } from "./domains/cordova-app";
 
 const node = document.querySelector("#root");
 
@@ -32,12 +27,7 @@ const router = createMemoryRouter([
   {
     element: (
       <AugmentedThemeProvider>
-        <CordovaProvider />
-        <SplashScreenProvider />
-        <StatusBarProvider />
-        <HeaderColorProvider />
-        <KeyboardProvider />
-        <ScreenViewProvider />
+        <CordovaApp />
         <App />
       </AugmentedThemeProvider>
     ),

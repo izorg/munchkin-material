@@ -1,11 +1,7 @@
 import { useEffect } from "react";
 
-const SplashScreenProvider = () => {
+export const useHideSplashScreen = () => {
   useEffect(() => {
     navigator.splashscreen?.hide();
   }, []);
-
-  return null;
 };
-
-export default SplashScreenProvider;

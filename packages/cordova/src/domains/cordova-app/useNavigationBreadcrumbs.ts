@@ -2,7 +2,7 @@ import { addBreadcrumb } from "@sentry/react";
 import { useEffect, useRef } from "react";
 import { useLocation } from "react-router";
 
-const useNavigationBreadcrumbs = (): void => {
+export const useNavigationBreadcrumbs = (): void => {
   const location = useLocation();
 
   const to = `${location.pathname}${location.search}`;
@@ -26,5 +26,3 @@ const useNavigationBreadcrumbs = (): void => {
     fromRef.current = to;
   }, [to]);
 };
-
-export default useNavigationBreadcrumbs;

@@ -8,12 +8,8 @@ const screenViewFetcher = async (screenName: string) => {
   await cordova.plugins.firebase.analytics.setCurrentScreen(screenName);
 };
 
-const ScreenViewProvider = () => {
+export const useAnalyticsScreenView = () => {
   const screen = useScreenView();
 
   useSWRImmutable(screen, screenViewFetcher);
-
-  return null;
 };
-
-export default ScreenViewProvider;

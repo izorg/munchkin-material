@@ -1,7 +1,7 @@
 import { darken, rgbToHex, useTheme } from "@mui/material";
 import { useEffect } from "react";
 
-const HeaderColorProvider = () => {
+export const useHeaderColor = () => {
   const theme = useTheme();
 
   useEffect(() => {
@@ -11,8 +11,4 @@ const HeaderColorProvider = () => {
       );
     }
   }, [theme.palette.primary.main]);
-
-  return null;
 };
-
-export default HeaderColorProvider;

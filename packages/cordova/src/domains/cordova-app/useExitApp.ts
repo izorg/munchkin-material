@@ -3,9 +3,7 @@ import { useLocation } from "react-router";
 
 import { useGoBack } from "../../../../web/src/utils/location";
 
-import useNavigationBreadcrumbs from "./useNavigationBreadcrumbs";
-
-const CordovaProvider = () => {
+export const useExitApp = () => {
   const location = useLocation();
 
   const initialKeyRef = useRef(location.key);
@@ -32,10 +30,4 @@ const CordovaProvider = () => {
       document.removeEventListener("backbutton", onBackButton);
     };
   }, [goBack]);
-
-  useNavigationBreadcrumbs();
-
-  return null;
 };
-
-export default CordovaProvider;

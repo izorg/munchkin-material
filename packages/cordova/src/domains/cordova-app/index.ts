@@ -1,0 +1,1 @@
+export { CordovaApp } from "./CordovaApp";

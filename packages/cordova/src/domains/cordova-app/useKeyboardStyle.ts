@@ -3,7 +3,7 @@ import { useEffect } from "react";
 
 import { ios } from "../../../../web/src/utils/platforms";
 
-const KeyboardProvider = () => {
+export const useKeyboardStyle = () => {
   const theme = useTheme();
 
   useEffect(() => {
@@ -11,8 +11,4 @@ const KeyboardProvider = () => {
       window.Keyboard.setKeyboardStyle(theme.palette.mode);
     }
   }, [theme.palette.mode]);
-
-  return null;
 };
-
-export default KeyboardProvider;

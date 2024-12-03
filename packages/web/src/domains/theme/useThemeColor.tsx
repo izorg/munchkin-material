@@ -17,7 +17,7 @@ const getThemeColorNode = () => {
   return node;
 };
 
-const ThemeColorProvider = () => {
+export const useThemeColor = () => {
   const { palette } = useTheme();
 
   const pureBlack = usePresentSelector((state) => state.theme.pureBlack);
@@ -37,8 +37,4 @@ const ThemeColorProvider = () => {
     palette.primary.main,
     pureBlack,
   ]);
-
-  return null;
 };
-
-export default ThemeColorProvider;

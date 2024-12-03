@@ -5,7 +5,7 @@ import { useEffect } from "react";
 
 import usePresentSelector from "../../../../web/src/hooks/usePresentSelector";
 
-const StatusBarProvider = () => {
+export const useStatusBar = () => {
   const { palette } = useTheme();
 
   const pureBlack = usePresentSelector((state) => state.theme.pureBlack);
@@ -36,8 +36,4 @@ const StatusBarProvider = () => {
       }
     }
   }, [palette.mode]);
-
-  return null;
 };
-
-export default StatusBarProvider;
