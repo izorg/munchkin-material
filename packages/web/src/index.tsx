@@ -31,12 +31,10 @@ const root = createRoot(node);
 const router = createHashRouter([
   {
     element: (
-      <AugmentedStylesProvider>
-        <AugmentedThemeProvider>
-          <ThemeColorProvider />
-          <App />
-        </AugmentedThemeProvider>
-      </AugmentedStylesProvider>
+      <AugmentedThemeProvider>
+        <ThemeColorProvider />
+        <App />
+      </AugmentedThemeProvider>
     ),
     path: "*",
   },
@@ -49,7 +47,9 @@ root.render(
         <WorkboxProvider>
           <WakeLockProvider>
             <LocaleProvider>
-              <RouterProvider router={router} />
+              <AugmentedStylesProvider>
+                <RouterProvider router={router} />
+              </AugmentedStylesProvider>
             </LocaleProvider>
           </WakeLockProvider>
         </WorkboxProvider>

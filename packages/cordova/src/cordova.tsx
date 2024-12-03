@@ -31,28 +31,15 @@ const root = createRoot(node);
 const router = createMemoryRouter([
   {
     element: (
-      <CordovaProvider>
-        <VersionProvider>
-          <FullVersionProvider>
-            <WakeLockProvider>
-              <AppStoreLinkProvider>
-                <LocaleProvider>
-                  <AugmentedStylesProvider>
-                    <AugmentedThemeProvider>
-                      <SplashScreenProvider />
-                      <StatusBarProvider />
-                      <HeaderColorProvider />
-                      <KeyboardProvider />
-                      <ScreenViewProvider />
-                      <App />
-                    </AugmentedThemeProvider>
-                  </AugmentedStylesProvider>
-                </LocaleProvider>
-              </AppStoreLinkProvider>
-            </WakeLockProvider>
-          </FullVersionProvider>
-        </VersionProvider>
-      </CordovaProvider>
+      <AugmentedThemeProvider>
+        <CordovaProvider />
+        <SplashScreenProvider />
+        <StatusBarProvider />
+        <HeaderColorProvider />
+        <KeyboardProvider />
+        <ScreenViewProvider />
+        <App />
+      </AugmentedThemeProvider>
     ),
     path: "*",
   },
@@ -60,6 +47,18 @@ const router = createMemoryRouter([
 
 root.render(
   <ReduxProvider>
-    <RouterProvider router={router} />
+    <VersionProvider>
+      <FullVersionProvider>
+        <WakeLockProvider>
+          <AppStoreLinkProvider>
+            <LocaleProvider>
+              <AugmentedStylesProvider>
+                <RouterProvider router={router} />
+              </AugmentedStylesProvider>
+            </LocaleProvider>
+          </AppStoreLinkProvider>
+        </WakeLockProvider>
+      </FullVersionProvider>
+    </VersionProvider>
   </ReduxProvider>,
 );
