@@ -17,6 +17,35 @@
     "run:android": "cordova run android",
     "run:ios": "cordova run ios"
   },
+  "cordova": {
+    "platforms": [
+      "android",
+      "ios"
+    ],
+    "plugins": {
+      "cordova-plugin-buildinfo": {},
+      "cordova-plugin-firebase-analytics": {
+        "ANALYTICS_COLLECTION_ENABLED": "true",
+        "ANDROID_FIREBASE_BOM_VERSION": "33.6.0",
+        "AUTOMATIC_SCREEN_REPORTING_ENABLED": "false",
+        "IOS_FIREBASE_POD_VERSION": "10.29.0"
+      },
+      "cordova-plugin-firebase-crash": {
+        "ANDROID_FIREBASE_BOM_VERSION": "33.6.0",
+        "CRASHLYTICS_COLLECTION_ENABLED": "true",
+        "IOS_FIREBASE_POD_VERSION": "10.29.0"
+      },
+      "cordova-plugin-headercolor": {},
+      "cordova-plugin-insomnia": {},
+      "cordova-plugin-ionic-keyboard": {},
+      "cordova-plugin-localization-strings": {},
+      "cordova-plugin-purchase": {
+        "BILLING_KEY": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArcvLt8/a5hLIoVYkE33XUl+rAjc6QMMoaic69FPmxGe0eVRFfrnyzk3pdPSRD1Hiy/orAgVGnV3tPF1iJj0TXcUMCzSD8Ahvs3fEvN7jCwp4/v7dlWTxZ5Km7cVUEIL8SkOKt+uof8qkKal9t4N56DRF+jNmlUXf/2fNXASFRiQDfMloOORVGMnAIy6KVo7JugTO7glGqv1Ybal5OOLMWruKEBDxJqEeGTx+ELrXaAfzSEB3Ax3caht5AkaVaAxeP6nctSt0pysIPe5FdFWVofbzn5HssC89qWgVGWHXYXaIKALo61h/p6Ylwa1pFe8JBIigoVkamlVtjeGP16OvjQIDAQAB"
+      },
+      "cordova-plugin-statusbar": {},
+      "cordova-plugin-vibration": {}
+    }
+  },
   "devDependencies": {
     "@babel/core": "7.26.0",
     "@mui/material": "6.1.9",
@@ -47,34 +76,5 @@
     "react-router": "7.0.2",
     "smoothscroll-polyfill": "0.4.4",
     "swr": "2.2.5"
-  },
-  "cordova": {
-    "platforms": [
-      "android",
-      "ios"
-    ],
-    "plugins": {
-      "cordova-plugin-buildinfo": {},
-      "cordova-plugin-firebase-analytics": {
-        "ANALYTICS_COLLECTION_ENABLED": "true",
-        "ANDROID_FIREBASE_BOM_VERSION": "33.6.0",
-        "AUTOMATIC_SCREEN_REPORTING_ENABLED": "false",
-        "IOS_FIREBASE_POD_VERSION": "10.29.0"
-      },
-      "cordova-plugin-firebase-crash": {
-        "ANDROID_FIREBASE_BOM_VERSION": "33.6.0",
-        "CRASHLYTICS_COLLECTION_ENABLED": "true",
-        "IOS_FIREBASE_POD_VERSION": "10.29.0"
-      },
-      "cordova-plugin-headercolor": {},
-      "cordova-plugin-insomnia": {},
-      "cordova-plugin-ionic-keyboard": {},
-      "cordova-plugin-localization-strings": {},
-      "cordova-plugin-purchase": {
-        "BILLING_KEY": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArcvLt8/a5hLIoVYkE33XUl+rAjc6QMMoaic69FPmxGe0eVRFfrnyzk3pdPSRD1Hiy/orAgVGnV3tPF1iJj0TXcUMCzSD8Ahvs3fEvN7jCwp4/v7dlWTxZ5Km7cVUEIL8SkOKt+uof8qkKal9t4N56DRF+jNmlUXf/2fNXASFRiQDfMloOORVGMnAIy6KVo7JugTO7glGqv1Ybal5OOLMWruKEBDxJqEeGTx+ELrXaAfzSEB3Ax3caht5AkaVaAxeP6nctSt0pysIPe5FdFWVofbzn5HssC89qWgVGWHXYXaIKALo61h/p6Ylwa1pFe8JBIigoVkamlVtjeGP16OvjQIDAQAB"
-      },
-      "cordova-plugin-statusbar": {},
-      "cordova-plugin-vibration": {}
-    }
   }
 }
