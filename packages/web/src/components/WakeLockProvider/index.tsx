@@ -16,7 +16,7 @@ const WakeLockProvider: FC<PropsWithChildren> = ({ children }) => {
 
   const wakeLockSupport = "wakeLock" in navigator;
   const wakeLock = usePresentSelector((state) => state.settings.keepAwake);
-  const wakeLockSentinelRef = useRef<WakeLockSentinel>();
+  const wakeLockSentinelRef = useRef<WakeLockSentinel>(undefined);
 
   const setWakeLock = useCallback(
     async (value: boolean) => {

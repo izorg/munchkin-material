@@ -51,7 +51,7 @@ const FullVersionProvider: FC<PropsWithChildren> = ({ children }) => {
   const buyExecutorRef = useRef<{
     reject: (error: StoreError) => void;
     resolve: () => void;
-  }>();
+  }>(undefined);
 
   const buyFullVersion = useCallback(async () => {
     const offer = store.get(FULL_VERSION_ID)?.getOffer();

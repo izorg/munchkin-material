@@ -17,7 +17,7 @@ const WakeLockProvider: FC<PropsWithChildren> = ({ children }) => {
   const insomnia = window.plugins?.insomnia;
   const wakeLockSupport = Boolean(insomnia) || "wakeLock" in navigator;
   const wakeLock = usePresentSelector((state) => state.settings.keepAwake);
-  const wakeLockRef = useRef<WakeLockSentinel>();
+  const wakeLockRef = useRef<WakeLockSentinel>(undefined);
 
   const setWakeLock = useCallback(
     async (value: boolean) => {

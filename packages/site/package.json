@@ -21,20 +21,20 @@
     "@mdi/js": "7.4.47",
     "@mui/material": "6.1.10",
     "@mui/material-nextjs": "6.1.9",
-    "@next/bundle-analyzer": "15.0.3",
-    "@next/third-parties": "15.0.3",
+    "@next/bundle-analyzer": "15.0.4",
+    "@next/third-parties": "15.0.4",
     "@sentry/nextjs": "8.42.0",
-    "@types/react": "18.3.13",
-    "@types/react-dom": "18.3.1",
+    "@types/react": "19.0.1",
+    "@types/react-dom": "19.0.1",
     "@types/stylis": "4.2.7",
-    "next": "15.0.3",
-    "react": "18.3.1",
-    "react-dom": "18.3.1",
+    "next": "15.0.4",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
     "react-intl": "7.0.1",
     "sharp": "0.33.5",
     "stylis": "4.3.4",
     "stylis-plugin-rtl": "2.1.1",
     "typescript": "5.7.2",
-    "webpack": "5.97.0"
+    "webpack": "5.97.1"
   }
 }
