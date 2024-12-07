@@ -114,11 +114,6 @@ const getThemeOptions = ({
     mixins: {
       toolbar: {
         minHeight: 56,
-
-        // eslint-disable-next-line perfectionist/sort-objects
-        "@media (min-width:960px)": {
-          minHeight: 64,
-        },
       },
     },
 
