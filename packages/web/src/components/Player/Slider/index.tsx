@@ -239,22 +239,14 @@ const PlayerSlider = ({ playerId, sx = [] }: PlayerSliderProps) => {
                   "@supports (padding: max(0px))": {
                     '[dir="ltr"] &': {
                       left: {
-                        sm: `max(${theme.spacing(
-                          2,
-                        )}, env(safe-area-inset-left)) /*! @noflip */`,
-                        xs: `max(${theme.spacing(
-                          1,
-                        )}, env(safe-area-inset-left)) /*! @noflip */`,
+                        sm: `max(${theme.spacing(2)}, env(safe-area-inset-left)) /*! @noflip */`,
+                        xs: `max(${theme.spacing(1)}, env(safe-area-inset-left)) /*! @noflip */`,
                       },
                     },
                     '[dir="rtl"] &': {
                       right: {
-                        sm: `max(${theme.spacing(
-                          2,
-                        )}, env(safe-area-inset-right)) /*! @noflip */`,
-                        xs: `max(${theme.spacing(
-                          1,
-                        )}, env(safe-area-inset-right)) /*! @noflip */`,
+                        sm: `max(${theme.spacing(2)}, env(safe-area-inset-right)) /*! @noflip */`,
+                        xs: `max(${theme.spacing(1)}, env(safe-area-inset-right)) /*! @noflip */`,
                       },
                     },
                   },
@@ -297,22 +289,14 @@ const PlayerSlider = ({ playerId, sx = [] }: PlayerSliderProps) => {
                   "@supports (padding: max(0px))": {
                     '[dir="ltr"] &': {
                       right: {
-                        sm: `max(${theme.spacing(
-                          2,
-                        )}, env(safe-area-inset-right)) /*! @noflip */`,
-                        xs: `max(${theme.spacing(
-                          1,
-                        )}, env(safe-area-inset-right)) /*! @noflip */`,
+                        sm: `max(${theme.spacing(2)}, env(safe-area-inset-right)) /*! @noflip */`,
+                        xs: `max(${theme.spacing(1)}, env(safe-area-inset-right)) /*! @noflip */`,
                       },
                     },
                     '[dir="rtl"] &': {
                       left: {
-                        sm: `max(${theme.spacing(
-                          2,
-                        )}, env(safe-area-inset-left)) /*! @noflip */`,
-                        xs: `max(${theme.spacing(
-                          1,
-                        )}, env(safe-area-inset-left)) /*! @noflip */`,
+                        sm: `max(${theme.spacing(2)}, env(safe-area-inset-left)) /*! @noflip */`,
+                        xs: `max(${theme.spacing(1)}, env(safe-area-inset-left)) /*! @noflip */`,
                       },
                     },
                   },

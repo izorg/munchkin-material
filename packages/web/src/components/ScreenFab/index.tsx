@@ -28,22 +28,14 @@ const ScreenFab = forwardRef<HTMLButtonElement, FabProps>(
               '[dir="ltr"] &': {
                 left: "auto /*! @noflip */",
                 right: {
-                  sm: `max(${theme.spacing(
-                    3,
-                  )}, env(safe-area-inset-right)) /*! @noflip */`,
-                  xs: `max(${theme.spacing(
-                    2,
-                  )}, env(safe-area-inset-right)) /*! @noflip */`,
+                  sm: `max(${theme.spacing(3)}, env(safe-area-inset-right)) /*! @noflip */`,
+                  xs: `max(${theme.spacing(2)}, env(safe-area-inset-right)) /*! @noflip */`,
                 },
               },
               '[dir="rtl"] &': {
                 left: {
-                  sm: `max(${theme.spacing(
-                    3,
-                  )}, env(safe-area-inset-left)) /*! @noflip */`,
-                  xs: `max(${theme.spacing(
-                    2,
-                  )}, env(safe-area-inset-left)) /*! @noflip */`,
+                  sm: `max(${theme.spacing(3)}, env(safe-area-inset-left)) /*! @noflip */`,
+                  xs: `max(${theme.spacing(2)}, env(safe-area-inset-left)) /*! @noflip */`,
                 },
                 right: "auto /*! @noflip */",
               },
