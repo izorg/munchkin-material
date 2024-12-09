@@ -19,7 +19,7 @@ const FULL_VERSION_ID = "full_version";
 
 const { LogLevel, ProductType, store } = CdvPurchase;
 
-store.verbosity = LogLevel.DEBUG;
+store.verbosity = LogLevel.ERROR;
 
 store.register({
   id: FULL_VERSION_ID,

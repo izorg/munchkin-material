@@ -12,33 +12,27 @@ const ScreenFab = forwardRef<HTMLButtonElement, FabProps>(
         sx={[
           (theme) => ({
             bottom: {
-              sm: theme.spacing(3),
-              xs: theme.spacing(2),
+              sm: `calc(${theme.spacing(3)} + var(--inset-bottom))`,
+              xs: `calc(${theme.spacing(2)} + var(--inset-bottom))`,
             },
             left: "auto",
             position: "fixed",
-            right: {
-              sm: theme.spacing(3),
-              xs: theme.spacing(2),
-            },
             zIndex: 2,
           }),
           (theme) => ({
-            "@supports (padding: max(0px))": {
-              '[dir="ltr"] &': {
-                left: "auto /*! @noflip */",
-                right: {
-                  sm: `max(${theme.spacing(3)}, env(safe-area-inset-right)) /*! @noflip */`,
-                  xs: `max(${theme.spacing(2)}, env(safe-area-inset-right)) /*! @noflip */`,
-                },
+            '[dir="ltr"] &': {
+              left: "auto /*! @noflip */",
+              right: {
+                sm: `calc(${theme.spacing(3)} + var(--inset-right)) /*! @noflip */`,
+                xs: `calc(${theme.spacing(2)} + var(--inset-right)) /*! @noflip */`,
               },
-              '[dir="rtl"] &': {
-                left: {
-                  sm: `max(${theme.spacing(3)}, env(safe-area-inset-left)) /*! @noflip */`,
-                  xs: `max(${theme.spacing(2)}, env(safe-area-inset-left)) /*! @noflip */`,
-                },
-                right: "auto /*! @noflip */",
+            },
+            '[dir="rtl"] &': {
+              left: {
+                sm: `calc(${theme.spacing(3)} + var(--inset-left)) /*! @noflip */`,
+                xs: `calc(${theme.spacing(2)} + var(--inset-left)) /*! @noflip */`,
               },
+              right: "auto /*! @noflip */",
             },
           }),
           ...(sx instanceof Array ? sx : [sx]),

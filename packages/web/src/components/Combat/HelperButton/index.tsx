@@ -111,22 +111,20 @@ const CombatHelperButton = () => {
             },
             zIndex: 2,
           }),
-          (theme) => ({
-            "@supports (padding: max(0px))":
-              theme.direction === "rtl"
-                ? {
-                    left: {
-                      sm: `max(${theme.spacing(3)}, env(safe-area-inset-left))`,
-                      xs: `max(${theme.spacing(2)}, env(safe-area-inset-left))`,
-                    },
-                  }
-                : {
-                    right: {
-                      sm: `max(${theme.spacing(3)}, env(safe-area-inset-right))`,
-                      xs: `max(${theme.spacing(2)}, env(safe-area-inset-right))`,
-                    },
+          (theme) =>
+            theme.direction === "rtl"
+              ? {
+                  left: {
+                    sm: `calc(${theme.spacing(3)} + var(--inset-left))`,
+                    xs: `calc(${theme.spacing(2)} + var(--inset-left))`,
                   },
-          }),
+                }
+              : {
+                  right: {
+                    sm: `calc(${theme.spacing(3)} + var(--inset-right))`,
+                    xs: `calc(${theme.spacing(2)} + var(--inset-right))`,
+                  },
+                },
         ]}
       >
         <SpeedDialAction

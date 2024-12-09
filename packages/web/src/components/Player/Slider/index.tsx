@@ -235,22 +235,20 @@ const PlayerSlider = ({ playerId, sx = [] }: PlayerSliderProps) => {
                     },
                   },
                 },
-                (theme) => ({
-                  "@supports (padding: max(0px))": {
-                    '[dir="ltr"] &': {
-                      left: {
-                        sm: `max(${theme.spacing(2)}, env(safe-area-inset-left)) /*! @noflip */`,
-                        xs: `max(${theme.spacing(1)}, env(safe-area-inset-left)) /*! @noflip */`,
+                (theme) =>
+                  theme.direction === "rtl"
+                    ? {
+                        right: {
+                          sm: `calc(${theme.spacing(2)} + var(--inset-right)) /*! @noflip */`,
+                          xs: `calc(${theme.spacing(1)} + var(--inset-right)) /*! @noflip */`,
+                        },
+                      }
+                    : {
+                        left: {
+                          sm: `calc(${theme.spacing(2)} + var(--inset-left)) /*! @noflip */`,
+                          xs: `calc(${theme.spacing(1)} + var(--inset-left)) /*! @noflip */`,
+                        },
                       },
-                    },
-                    '[dir="rtl"] &': {
-                      right: {
-                        sm: `max(${theme.spacing(2)}, env(safe-area-inset-right)) /*! @noflip */`,
-                        xs: `max(${theme.spacing(1)}, env(safe-area-inset-right)) /*! @noflip */`,
-                      },
-                    },
-                  },
-                }),
               ]}
             >
               <SvgIcon>
@@ -285,22 +283,20 @@ const PlayerSlider = ({ playerId, sx = [] }: PlayerSliderProps) => {
                     },
                   },
                 },
-                (theme) => ({
-                  "@supports (padding: max(0px))": {
-                    '[dir="ltr"] &': {
-                      right: {
-                        sm: `max(${theme.spacing(2)}, env(safe-area-inset-right)) /*! @noflip */`,
-                        xs: `max(${theme.spacing(1)}, env(safe-area-inset-right)) /*! @noflip */`,
+                (theme) =>
+                  theme.direction === "rtl"
+                    ? {
+                        left: {
+                          sm: `calc(${theme.spacing(2)} + var(--inset-left)) /*! @noflip */`,
+                          xs: `calc(${theme.spacing(1)} + var(--inset-left)) /*! @noflip */`,
+                        },
+                      }
+                    : {
+                        right: {
+                          sm: `calc(${theme.spacing(2)} + var(--inset-right)) /*! @noflip */`,
+                          xs: `calc(${theme.spacing(1)} + var(--inset-right)) /*! @noflip */`,
+                        },
                       },
-                    },
-                    '[dir="rtl"] &': {
-                      left: {
-                        sm: `max(${theme.spacing(2)}, env(safe-area-inset-left)) /*! @noflip */`,
-                        xs: `max(${theme.spacing(1)}, env(safe-area-inset-left)) /*! @noflip */`,
-                      },
-                    },
-                  },
-                }),
               ]}
             >
               <SvgIcon>

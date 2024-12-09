@@ -68,25 +68,21 @@ const getThemeOptions = ({
       MuiSnackbar: {
         styleOverrides: {
           anchorOriginBottomLeft: {
-            "@supports (padding: max(0px))": {
-              "@media (min-width:600px)": {
-                'html[dir="ltr"] &': {
-                  left: "max(24px, env(safe-area-inset-left))",
-                  right: "auto",
-                },
-                'html[dir="rtl"] &': {
-                  left: "auto",
-                  right: "max(24px, env(safe-area-inset-right))",
-                },
+            "@media (min-width: 600px)": {
+              'html[dir="ltr"] &': {
+                left: "calc(24px + var(--inset-left)) /*! @noflip */",
+                right: "auto /*! @noflip */",
+              },
+              'html[dir="rtl"] &': {
+                left: "auto /*! @noflip */",
+                right: "calc(24px + var(--inset-right)) /*! @noflip */",
               },
             },
           },
 
           root: {
-            "@supports (padding: max(0px))": {
-              left: "max(8px, env(safe-area-inset-left))",
-              right: "max(8px, env(safe-area-inset-right))",
-            },
+            left: "calc(8px + var(--inset-left)) /*! @noflip */",
+            right: "calc(8px + var(--inset-right)) /*! @noflip */",
           },
         },
       },

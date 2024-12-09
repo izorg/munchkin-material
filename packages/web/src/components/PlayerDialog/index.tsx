@@ -189,10 +189,8 @@ const PlayerDialog = () => {
       </DialogTitle>
       <DialogContent
         sx={(theme) => ({
-          "@supports (padding: max(0px))": {
-            paddingLeft: "max(24px, env(safe-area-inset-left))",
-            paddingRight: "max(24px, env(safe-area-inset-right))",
-          },
+          paddingLeft: "calc(24px + var(--inset-left)) /*! @noflip */",
+          paddingRight: "calc(24px + var(--inset-right)) /*! @noflip */",
 
           [theme.breakpoints.up("md")]: {
             alignSelf: "center",

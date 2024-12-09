@@ -36,8 +36,8 @@ const Home = () => {
         <PlayerList
           sx={{
             paddingBottom: {
-              sm: "64px",
-              xs: "56px",
+              sm: "calc(64px + var(--inset-bottom))",
+              xs: "calc(56px + var(--inset-bottom))",
             },
           }}
         />

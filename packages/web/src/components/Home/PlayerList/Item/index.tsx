@@ -178,18 +178,28 @@ const HomePlayerListItem = (props: HomePlayerListItemProps) => {
         {
           outline: "none",
         },
-        editMode && {
-          "@supports (padding: max(0px))": {
-            "& > .MuiListItemButton-root": {
-              paddingRight:
-                "calc(32px + max(16px, env(safe-area-inset-right)))",
-            },
+        editMode &&
+          ((theme) => ({
+            "& > .MuiListItemButton-root":
+              theme.direction === "rtl"
+                ? {
+                    paddingLeft:
+                      "calc(48px + var(--inset-left)) /*! @noflip */",
+                  }
+                : {
+                    paddingRight:
+                      "calc(48px + var(--inset-right)) /*! @noflip */",
+                  },
 
-            "& > .MuiListItemSecondaryAction-root": {
-              right: "max(16px, env(safe-area-inset-right))",
-            },
-          },
-        },
+            "& > .MuiListItemSecondaryAction-root":
+              theme.direction === "rtl"
+                ? {
+                    left: "calc(16px + var(--inset-left)) /*! @noflip */",
+                  }
+                : {
+                    right: "calc(16px + var(--inset-right)) /*! @noflip */",
+                  },
+          })),
         ...(sx instanceof Array ? sx : [sx]),
       ]}
     >
@@ -201,17 +211,10 @@ const HomePlayerListItem = (props: HomePlayerListItemProps) => {
         onTapCancel={clearPress}
         onTapStart={onTapStart}
         role={undefined}
-        sx={[
-          {
-            width: "100%",
-          },
-          {
-            "@supports (padding: max(0px))": {
-              paddingLeft: "max(16px, env(safe-area-inset-left))",
-              paddingRight: "max(16px, env(safe-area-inset-right))",
-            },
-          },
-        ]}
+        sx={(theme) => ({
+          paddingLeft: `calc(${theme.spacing(2)} + var(--inset-left)) /*! @noflip */`,
+          paddingRight: `calc(${theme.spacing(2)} + var(--inset-right)) /*! @noflip */`,
+        })}
       >
         <ListItemAvatar>
           <PlayerAvatar

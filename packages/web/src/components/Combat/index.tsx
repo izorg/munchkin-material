@@ -91,9 +91,9 @@ const Combat = () => {
                 paddingBottom: 7,
               },
 
-              "@supports (padding: env(safe-area-inset-left))": {
-                paddingLeft: "env(safe-area-inset-left)",
-                paddingRight: "env(safe-area-inset-right)",
+              "@supports (padding-left: var(--inset-left))": {
+                paddingLeft: "var(--inset-left) /*! @noflip */",
+                paddingRight: "var(--inset-right) /*! @noflip */",
               },
             },
           ]}

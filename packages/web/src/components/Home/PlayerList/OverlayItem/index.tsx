@@ -45,24 +45,36 @@ const HomePlayerListOverlayItem: FC<HomePlayerListOverlayItemProps> = (
         {
           width: "100%",
         },
-        {
-          "@supports (padding: max(0px))": {
-            paddingLeft: "max(16px, env(safe-area-inset-left))",
-            paddingRight: "max(48px, calc(32px + env(safe-area-inset-right)))",
-          },
-        },
-        {
-          "@supports (padding: max(0px))": {
-            "& > .MuiListItemButton-root": {
-              paddingRight:
-                "calc(32px + max(16px, env(safe-area-inset-right)))",
-            },
+        (theme) =>
+          theme.direction === "rtl"
+            ? {
+                paddingLeft: "calc(48px + var(--inset-right)) /*! @noflip */",
+                paddingRight: "calc(16px + var(--inset-left)) /*! @noflip */",
+              }
+            : {
+                paddingLeft: "calc(16px + var(--inset-left)) /*! @noflip */",
+                paddingRight: "calc(48px + var(--inset-right)) /*! @noflip */",
+              },
+        (theme) => ({
+          "& > .MuiListItemButton-root":
+            theme.direction === "rtl"
+              ? {
+                  paddingLeft: "calc(48px + var(--inset-left)) /*! @noflip */",
+                }
+              : {
+                  paddingRight:
+                    "calc(48px + var(--inset-right)) /*! @noflip */",
+                },
 
-            "& > .MuiListItemSecondaryAction-root": {
-              right: "max(16px, env(safe-area-inset-right))",
-            },
-          },
-        },
+          "& > .MuiListItemSecondaryAction-root":
+            theme.direction === "rtl"
+              ? {
+                  left: "calc(16px + var(--inset-left)) /*! @noflip */",
+                }
+              : {
+                  right: "calc(16px + var(--inset-right)) /*! @noflip */",
+                },
+        }),
       ]}
     >
       <ListItemAvatar>

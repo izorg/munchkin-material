@@ -1,3 +1,19 @@
+:root {
+  --inset-bottom: 0rem;
+  --inset-left: 0rem;
+  --inset-right: 0rem;
+  --inset-top: 0rem;
+}
+
+@supports (--inset-top: env(safe-area-inset-top)) {
+  :root {
+    --inset-bottom: env(safe-area-inset-bottom);
+    --inset-left: env(safe-area-inset-left);
+    --inset-right: env(safe-area-inset-right);
+    --inset-top: env(safe-area-inset-top);
+  }
+}
+
 @font-face {
   font-family: Munchkin;
   font-style: normal;
