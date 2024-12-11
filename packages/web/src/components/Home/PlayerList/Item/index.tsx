@@ -203,7 +203,6 @@ const HomePlayerListItem = (props: HomePlayerListItemProps) => {
         ...(sx instanceof Array ? sx : [sx]),
       ]}
     >
-      {/* @ts-expect-error -- temporary after React 19 upgrade */}
       <ListItemButton
         component={m.div}
         onPanStart={clearPress}
