@@ -58,6 +58,10 @@ const HomePlayerList = (props: ListProps) => {
     [dispatch, playerList],
   );
 
+  const onDragCancel = useCallback(() => {
+    setActiveId(null);
+  }, []);
+
   const sensors = useSensors(
     useSensor(PointerSensor),
     useSensor(KeyboardSensor, {
@@ -69,6 +73,7 @@ const HomePlayerList = (props: ListProps) => {
     <DndContext
       collisionDetection={closestCenter}
       modifiers={dndContextModifiers}
+      onDragCancel={onDragCancel}
       onDragEnd={onDragEnd}
       onDragStart={onDragStart}
       sensors={sensors}
