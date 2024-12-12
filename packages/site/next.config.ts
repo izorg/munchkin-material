@@ -19,6 +19,7 @@ const nextConfig: NextConfig = {
   },
   productionBrowserSourceMaps: true,
   trailingSlash: true,
+  transpilePackages: ["@mui/material", "@mui/system", "@mui/utils"],
   typescript: {
     ignoreBuildErrors: true, // Using project root TypeScript check
   },
@@ -60,8 +61,6 @@ export default withSentryConfig(withBundleAnalyzer(nextConfig), {
 
   // Automatically tree-shake Sentry logger statements to reduce bundle size
   disableLogger: true,
-  // Hides source maps from generated client bundles
-  hideSourceMaps: true,
   org: "viacheslav",
   project: "munchkin-site",
   // Suppresses source map uploading logs during build
