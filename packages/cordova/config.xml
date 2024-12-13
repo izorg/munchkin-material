@@ -27,7 +27,6 @@
         <preference name="AndroidWindowSplashScreenBackground" value="#fafafa" />
         <preference name="GradlePluginGoogleServicesEnabled" value="true" />
         <preference name="HeaderColor" value="#3c2a24" />
-        <preference name="StatusBarOverlaysWebView" value="false" />
         <preference name="StatusBarStyle" value="lightcontent" />
         <icon density="mdpi" src="res/android/mipmap-mdpi/ic_launcher.png" />
         <icon density="hdpi" src="res/android/mipmap-hdpi/ic_launcher.png" />
@@ -61,7 +60,6 @@
         <preference name="DisallowOverscroll" value="true" />
         <preference name="KeyboardDisplayRequiresUserAction" value="false" />
         <preference name="KeyboardResizeMode" value="body" />
-        <preference name="StatusBarOverlaysWebView" value="true" />
         <preference name="SuppressesLongPressGesture" value="true" />
         <icon height="20" src="res/ios/icon-20.png" width="20" />
         <icon height="29" src="res/ios/icon-29.png" width="29" />
