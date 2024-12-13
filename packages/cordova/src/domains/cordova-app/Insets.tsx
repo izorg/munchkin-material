@@ -19,7 +19,7 @@ const fullScreenPromise = new Promise((resolve) => {
 
 export const Insets = () => {
   const inset = use(insetPromise);
-  console.log("=== inset ===", inset);
+
   const fullScreen = use(fullScreenPromise);
 
   const [values, setValues] = useState(() => inset.getInset());
