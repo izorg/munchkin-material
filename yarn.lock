@@ -3486,7 +3486,6 @@ __metadata:
     cordova: "npm:12.0.0"
     cordova-android: "npm:13.0.0"
     cordova-ios: "npm:7.1.1"
-    cordova-plugin-android-bars: "npm:1.0.69"
     cordova-plugin-buildinfo: "npm:4.0.0"
     cordova-plugin-firebase-analytics: "npm:8.0.0"
     cordova-plugin-firebase-crash: "npm:8.0.2"
@@ -9590,13 +9589,6 @@ __metadata:
     stringify-package: "npm:^1.0.1"
     write-file-atomic: "npm:^5.0.0"
   checksum: 10/cf35846da210ffa38bb286204bd47c149df0711fbc2b50b22b88b8d2d53a8bba825b7054d325e437ea1b521960340519a46ff2fadd04674e36c9fd0e8b93631f
-  languageName: node
-  linkType: hard
-
-"cordova-plugin-android-bars@npm:1.0.69":
-  version: 1.0.69
-  resolution: "cordova-plugin-android-bars@npm:1.0.69"
-  checksum: 10/91dcc433829e629cc1aac10ad57e481ca850f4530ddf33788502af4523f3f3a86e3e2e7394f49a9bc6630b2bf9a9c363a399c22fcb4c06f2882043910656c0b9
   languageName: node
   linkType: hard
 

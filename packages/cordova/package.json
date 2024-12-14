@@ -24,7 +24,6 @@
     ],
     "plugins": {
       "@totalpave/cordova-plugin-insets": {},
-      "cordova-plugin-android-bars": {},
       "cordova-plugin-buildinfo": {},
       "cordova-plugin-firebase-analytics": {
         "ANALYTICS_COLLECTION_ENABLED": "true",
@@ -62,7 +61,6 @@
     "cordova": "12.0.0",
     "cordova-android": "13.0.0",
     "cordova-ios": "7.1.1",
-    "cordova-plugin-android-bars": "1.0.69",
     "cordova-plugin-buildinfo": "4.0.0",
     "cordova-plugin-firebase-analytics": "8.0.0",
     "cordova-plugin-firebase-crash": "8.0.2",

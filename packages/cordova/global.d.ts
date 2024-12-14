@@ -11,10 +11,6 @@ declare global {
       version: string;
     };
 
-    Keyboard?: {
-      setKeyboardStyle: (color: "dark" | "light") => void;
-    };
-
     plugins?: {
       headerColor?: {
         tint: (color: string) => void;

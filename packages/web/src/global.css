@@ -1,8 +1,12 @@
 :root {
+  /* Insets */
   --inset-bottom: 0rem;
   --inset-left: 0rem;
   --inset-right: 0rem;
   --inset-top: 0rem;
+
+  /* Keyboard */
+  --keyboard-height: 0px;
 }
 
 @supports (--inset-top: env(safe-area-inset-top)) {
