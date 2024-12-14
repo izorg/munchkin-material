@@ -22,7 +22,7 @@
   "devDependencies": {
     "@commitlint/cli": "19.6.0",
     "@commitlint/config-conventional": "19.6.0",
-    "@eslint/js": "9.16.0",
+    "@eslint/js": "9.17.0",
     "@eslint/json": "0.9.0",
     "@next/eslint-plugin-next": "15.1.0",
     "@semantic-release/commit-analyzer": "13.0.0",
@@ -30,7 +30,7 @@
     "@semantic-release/release-notes-generator": "14.0.1",
     "@types/node": "22.10.2",
     "conventional-changelog-conventionalcommits": "8.0.0",
-    "eslint": "9.16.0",
+    "eslint": "9.17.0",
     "eslint-config-prettier": "9.1.0",
     "eslint-import-resolver-typescript": "3.7.0",
     "eslint-plugin-compat": "6.0.2",
