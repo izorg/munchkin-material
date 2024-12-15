@@ -1,10 +1,18 @@
 import { captureException } from "@sentry/react";
-import { type FC, type PropsWithChildren, useLayoutEffect } from "react";
+import {
+  type FC,
+  type PropsWithChildren,
+  startTransition,
+  use,
+  useEffect,
+  useLayoutEffect,
+  useState,
+} from "react";
 import { IntlProvider } from "react-intl";
-import useSWRImmutable from "swr/immutable";
 
 import usePresentSelector from "../../hooks/usePresentSelector";
 import { type AvailableLocale, getLocale, loadMessages } from "../../i18n";
+import store from "../../store";
 import { getLocaleDirection } from "../../utils/getLocaleDirection";
 
 import polyfillIntl, {
@@ -12,7 +20,7 @@ import polyfillIntl, {
   polyfillIntlLocale,
 } from "./polyfillIntl";
 
-const fetchLocale = async (
+const fetchLocalisation = async (
   locale?: AvailableLocale,
 ): Promise<{
   locale: AvailableLocale;
@@ -38,29 +46,35 @@ const fetchLocale = async (
   };
 };
 
-const LocaleProvider: FC<PropsWithChildren> = ({ children }) => {
-  const selectedLocale = usePresentSelector((state) => state.settings.locale);
+const initialLocalisationPromise = fetchLocalisation(
+  store.getState().present.settings.locale,
+);
 
-  const { data } = useSWRImmutable(
-    ["locale", selectedLocale],
-    ([, locale]) => fetchLocale(locale),
-    {
-      keepPreviousData: true,
-    },
+const LocaleProvider: FC<PropsWithChildren> = ({ children }) => {
+  const [{ locale, messages }, setLocalisation] = useState(
+    use(initialLocalisationPromise),
   );
 
-  useLayoutEffect(() => {
-    if (data?.locale) {
-      document.documentElement.lang = data.locale;
-      document.documentElement.dir = getLocaleDirection(data.locale);
+  const selectedLocale = usePresentSelector((state) => state.settings.locale);
+
+  useEffect(() => {
+    if (selectedLocale === locale) {
+      return;
     }
-  }, [data?.locale]);
 
-  if (!data) {
-    return null;
-  }
+    startTransition(async () => {
+      const localisation = await fetchLocalisation(selectedLocale);
 
-  const { locale, messages } = data;
+      startTransition(() => {
+        setLocalisation(localisation);
+      });
+    });
+  }, [locale, selectedLocale]);
+
+  useLayoutEffect(() => {
+    document.documentElement.lang = locale;
+    document.documentElement.dir = getLocaleDirection(locale);
+  }, [locale]);
 
   return (
     <IntlProvider

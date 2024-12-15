@@ -77,7 +77,6 @@
     "redux-undo": "1.1.0",
     "stylis": "4.3.4",
     "stylis-plugin-rtl": "2.1.1",
-    "swr": "2.2.5",
     "typescript": "5.7.2",
     "uuid": "11.0.3",
     "workbox-cli": "7.3.0",
