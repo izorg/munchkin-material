@@ -7,7 +7,6 @@ import {
   SpeedDialIcon,
   SvgIcon,
 } from "@mui/material";
-import { memo } from "react";
 import { FormattedMessage } from "react-intl";
 import { useSearchParams } from "react-router";
 
@@ -159,4 +158,4 @@ const CombatHelperButton = () => {
   );
 };
 
-export default memo(CombatHelperButton);
+export default CombatHelperButton;

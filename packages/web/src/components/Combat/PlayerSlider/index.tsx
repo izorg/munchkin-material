@@ -11,7 +11,7 @@ import {
   useMediaQuery,
   useTheme,
 } from "@mui/material";
-import { type FC, memo, useEffect, useRef } from "react";
+import { type FC, useEffect, useRef } from "react";
 
 import {
   setCombatHelper,
@@ -176,4 +176,4 @@ const CombatPlayerSlider: FC<CombatPlayerSliderProps> = (props) => {
   );
 };
 
-export default memo(CombatPlayerSlider);
+export default CombatPlayerSlider;

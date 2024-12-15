@@ -9,7 +9,7 @@ import {
   useMediaQuery,
   useTheme,
 } from "@mui/material";
-import { type FC, memo, useEffect, useRef } from "react";
+import { type FC, useEffect, useRef } from "react";
 import { FormattedMessage } from "react-intl";
 
 import { removeMonster } from "../../../ducks/monsters";
@@ -175,4 +175,4 @@ const CombatMonsterSlider: FC<BoxProps> = ({ sx = [], ...props }) => {
   );
 };
 
-export default memo(CombatMonsterSlider);
+export default CombatMonsterSlider;
