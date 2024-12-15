@@ -41,7 +41,6 @@
     "@jest/globals": "29.7.0",
     "@mdi/js": "7.4.47",
     "@mui/material": "6.2.0",
-    "@mui/types": "7.2.19",
     "@mui/utils": "6.2.0",
     "@parcel/config-default": "2.13.2",
     "@parcel/core": "2.13.2",

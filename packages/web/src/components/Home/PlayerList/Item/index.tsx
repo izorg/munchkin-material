@@ -20,7 +20,7 @@ import { ios } from "../../../../utils/platforms";
 import PlayerAvatar from "../../../PlayerAvatar";
 import PlayerListItemText from "../../../PlayerListItemText";
 
-import DragIconButton from "./DragIconButton";
+import { DragIconButton } from "./DragIconButton";
 
 type HomePlayerListItemProps = {
   playerId: string;

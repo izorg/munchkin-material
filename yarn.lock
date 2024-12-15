@@ -3437,7 +3437,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mui/types@npm:7.2.19, @mui/types@npm:^7.2.19":
+"@mui/types@npm:^7.2.19":
   version: 7.2.19
   resolution: "@mui/types@npm:7.2.19"
   peerDependencies:
@@ -3558,7 +3558,6 @@ __metadata:
     "@jest/globals": "npm:29.7.0"
     "@mdi/js": "npm:7.4.47"
     "@mui/material": "npm:6.2.0"
-    "@mui/types": "npm:7.2.19"
     "@mui/utils": "npm:6.2.0"
     "@parcel/config-default": "npm:2.13.2"
     "@parcel/core": "npm:2.13.2"
