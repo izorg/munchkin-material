@@ -1,6 +1,5 @@
 import { Insets } from "./Insets";
 import { Keyboard } from "./Keyboard";
-import { useAnalyticsScreenView } from "./useAnalyticsScreenView";
 import { useExitApp } from "./useExitApp";
 import { useHeaderColor } from "./useHeaderColor";
 import { useHideSplashScreen } from "./useHideSplashScreen";
@@ -15,7 +14,6 @@ export const CordovaApp = () => {
   useStatusBar();
   useHeaderColor();
   useKeyboardStyle();
-  useAnalyticsScreenView();
 
   if (cordova.platformId === "android") {
     return (

@@ -3502,7 +3502,6 @@ __metadata:
     react-dom: "npm:19.0.0"
     react-router: "npm:7.0.2"
     smoothscroll-polyfill: "npm:0.4.4"
-    swr: "npm:2.2.5"
   languageName: unknown
   linkType: soft
 
