@@ -12,7 +12,6 @@ import {
   Dialog,
   type DialogProps,
   SvgIcon,
-  useTheme,
   Zoom,
 } from "@mui/material";
 import { useCallback, useState } from "react";
@@ -38,7 +37,6 @@ const diceIcons = {
 const DiceDialog = (props: Partial<DialogProps>) => {
   const dispatch = useAppDispatch();
   const [searchParams] = useSearchParams();
-  const theme = useTheme();
 
   const [attempt, setAttempt] = useState(0);
 
@@ -65,9 +63,8 @@ const DiceDialog = (props: Partial<DialogProps>) => {
         disableRipple
         onClick={onDiceClick}
         sx={{
-          color: theme.palette.text.primary,
+          color: "text.primary",
           display: "block",
-          fontSize: diceSize,
           height: diceSize,
           padding: 0,
           position: "relative",
@@ -79,17 +76,18 @@ const DiceDialog = (props: Partial<DialogProps>) => {
             <Box
               component="span"
               sx={{
-                height: "100%",
+                bottom: 0,
                 left: 0,
                 position: "absolute",
+                right: 0,
                 top: 0,
-                width: "100%",
               }}
             >
               <SvgIcon
                 sx={{
                   display: "block",
-                  fontSize: "inherit",
+                  height: "100%",
+                  width: "100%",
                 }}
               >
                 <path d={diceIcon} />
