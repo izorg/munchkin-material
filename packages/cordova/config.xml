@@ -26,25 +26,12 @@
         <preference name="GradlePluginGoogleServicesEnabled" value="true" />
         <preference name="HeaderColor" value="#3c2a24" />
         <preference name="StatusBarStyle" value="lightcontent" />
-        <icon density="mdpi" src="res/android/mipmap-mdpi/ic_launcher.png" />
-        <icon density="hdpi" src="res/android/mipmap-hdpi/ic_launcher.png" />
-        <icon density="xhdpi" src="res/android/mipmap-xhdpi/ic_launcher.png" />
-        <icon density="xxhdpi" src="res/android/mipmap-xxhdpi/ic_launcher.png" />
-        <icon density="xxxhdpi" src="res/android/mipmap-xxxhdpi/ic_launcher.png" />
-        <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application">
-            <application android:roundIcon="@mipmap/ic_launcher_round" />
-        </edit-config>
+        <icon density="mdpi" src="res/android/icons/mdpi.png" background="res/android/icons/background.xml" foreground="res/android/icons/foreground.xml" monochrome="res/android/icons/monochrome.xml" />
+        <icon density="hdpi" src="res/android/icons/hdpi.png" background="res/android/icons/background.xml" foreground="res/android/icons/foreground.xml" monochrome="res/android/icons/monochrome.xml" />
+        <icon density="xhdpi" src="res/android/icons/xhdpi.png" background="res/android/icons/background.xml" foreground="res/android/icons/foreground.xml" monochrome="res/android/icons/monochrome.xml" />
+        <icon density="xxhdpi" src="res/android/icons/xxhdpi.png" background="res/android/icons/background.xml" foreground="res/android/icons/foreground.xml" monochrome="res/android/icons/monochrome.xml" />
+        <icon density="xxxhdpi" src="res/android/icons/xxxhdpi.png" background="res/android/icons/background.xml" foreground="res/android/icons/foreground.xml" monochrome="res/android/icons/monochrome.xml" />
         <resource-file src="google-services.json" target="app/google-services.json" />
-        <resource-file src="res/android/drawable/ic_launcher_background.xml" target="app/src/main/res/drawable/ic_launcher_background.xml" />
-        <resource-file src="res/android/drawable-v24/ic_launcher_foreground.xml" target="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" />
-        <resource-file src="res/android/drawable-v33/ic_launcher_monochrome.xml" target="app/src/main/res/drawable-v33/ic_launcher_monochrome.xml" />
-        <resource-file src="res/android/mipmap-anydpi-v26/ic_launcher.xml" target="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" />
-        <resource-file src="res/android/mipmap-anydpi-v26/ic_launcher_round.xml" target="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" />
-        <resource-file src="res/android/mipmap-mdpi/ic_launcher_round.png" target="app/src/main/res/mipmap-mdpi/ic_launcher_round.png" />
-        <resource-file src="res/android/mipmap-hdpi/ic_launcher_round.png" target="app/src/main/res/mipmap-hdpi/ic_launcher_round.png" />
-        <resource-file src="res/android/mipmap-xhdpi/ic_launcher_round.png" target="app/src/main/res/mipmap-xhdpi/ic_launcher_round.png" />
-        <resource-file src="res/android/mipmap-xxhdpi/ic_launcher_round.png" target="app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png" />
-        <resource-file src="res/android/mipmap-xxxhdpi/ic_launcher_round.png" target="app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" />
         <resource-file src="res/android/values-night/colors.xml" target="app/src/main/res/values-night/colors.xml" />
         <resource-file src="res/android/resources.properties" target="app/src/main/res/resources.properties" />
         <hook type="before_build" src="scripts/copy-gradle-extras.js" />
