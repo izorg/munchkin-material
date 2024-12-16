@@ -18,7 +18,6 @@
     <allow-intent href="sms:*" />
     <allow-intent href="tel:*" />
     <preference name="AutoHideSplashScreen" value="false" />
-    <preference name="SplashMaintainAspectRatio" value="true" />
     <platform name="android">
         <allow-intent href="market:*" />
         <preference name="AndroidPostSplashScreenTheme" value="@style/Theme.AppCompat.DayNight.NoActionBar"/>
