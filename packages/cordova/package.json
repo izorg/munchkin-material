@@ -50,9 +50,9 @@
   },
   "devDependencies": {
     "@babel/core": "7.26.0",
-    "@mui/material": "6.2.0",
+    "@mui/material": "6.2.1",
     "@sentry/babel-plugin-component-annotate": "2.22.7",
-    "@sentry/react": "8.45.1",
+    "@sentry/react": "8.46.0",
     "@totalpave/cordova-plugin-insets": "0.3.2",
     "@types/cordova": "11.0.3",
     "@types/react": "19.0.1",
