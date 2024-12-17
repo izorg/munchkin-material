@@ -127,6 +127,9 @@ export default ts.config(
        */
       "unicorn/no-useless-undefined": "off",
 
+      /**
+       * Browser & Node.js API types could be different (example `setTimeout`)
+       */
       "unicorn/prefer-global-this": "off",
 
       "unicorn/prevent-abbreviations": [
