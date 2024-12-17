@@ -13,7 +13,6 @@
     "conventional-changelog-conventionalcommits",
     "cordova-*",
     "eslint-import-resolver-typescript",
-    "jest-environment-jsdom",
     "sharp"
   ],
   "include": ["classMembers", "nsExports", "nsTypes"]

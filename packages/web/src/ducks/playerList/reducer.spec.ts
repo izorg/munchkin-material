@@ -1,7 +1,3 @@
-/**
- * @jest-environment jsdom
- */
-
 import { describe, expect, test } from "@jest/globals";
 
 import { removePlayers } from "../players";
