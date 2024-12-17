@@ -3496,6 +3496,7 @@ __metadata:
     cordova-plugin-purchase: "npm:13.12.0"
     cordova-plugin-statusbar: "npm:4.0.0"
     cordova-plugin-vibration: "npm:3.1.1"
+    cordova-plugin-web-share: "npm:1.4.2"
     core-js: "npm:3.39.0"
     parcel: "npm:2.13.3"
     react: "npm:19.0.0"
@@ -9621,6 +9622,13 @@ __metadata:
   version: 3.1.1
   resolution: "cordova-plugin-vibration@npm:3.1.1"
   checksum: 10/a1cf5a94ae4c5b67180e8571bfc620c331a56cc37fc6cf0359f991e2bcb3760c82eecbeb34c89fea16411bd5a43400fda20efe3de92dda914a578465c7c5e1ed
+  languageName: node
+  linkType: hard
+
+"cordova-plugin-web-share@npm:1.4.2":
+  version: 1.4.2
+  resolution: "cordova-plugin-web-share@npm:1.4.2"
+  checksum: 10/5df86d01340fe700daf62452eafdd8d4bbd7e9fef12a7d73a7ffa561d258b1bb5f9dc7b07981ca45fe40b97c53314813e249d71f8ae448f0bbf53cc6dd19aa68
   languageName: node
   linkType: hard
 
