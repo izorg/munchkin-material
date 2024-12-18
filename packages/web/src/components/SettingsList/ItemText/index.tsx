@@ -2,8 +2,10 @@ import { ListItemText, type ListItemTextProps } from "@mui/material";
 
 const MenuListItemText = ({ sx = [], ...props }: ListItemTextProps) => (
   <ListItemText
-    primaryTypographyProps={{ noWrap: true }}
-    secondaryTypographyProps={{ noWrap: true }}
+    slotProps={{
+      primary: { noWrap: true },
+      secondary: { noWrap: true },
+    }}
     {...props}
     sx={[
       {

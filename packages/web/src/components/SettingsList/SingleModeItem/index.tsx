@@ -78,7 +78,9 @@ const SingleModeItem = () => {
               id="menu.singleMode"
             />
           }
-          primaryTypographyProps={{ noWrap: true }}
+          slotProps={{
+            primary: { noWrap: true },
+          }}
         />
         <Switch
           checked={singleMode}

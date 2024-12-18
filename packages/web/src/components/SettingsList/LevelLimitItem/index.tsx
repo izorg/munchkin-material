@@ -58,9 +58,11 @@ const LevelLimitItem = () => {
         </ListItemIcon>
         <ListItemText
           primary={intl.formatMessage(levelLimitMessages.label)}
-          primaryTypographyProps={{ noWrap: true }}
           secondary={secondary}
-          secondaryTypographyProps={{ noWrap: true }}
+          slotProps={{
+            primary: { noWrap: true },
+            secondary: { noWrap: true },
+          }}
         />
       </SettingsListItemButton>
     </ListItem>

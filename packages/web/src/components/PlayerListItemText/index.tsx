@@ -14,14 +14,6 @@ const PlayerListItemText: FC<PlayerListItemTextProps> = ({ player }) => (
   <>
     <ListItemText
       primary={player.name}
-      primaryTypographyProps={{
-        sx: {
-          flex: 1,
-          overflow: "hidden",
-          textOverflow: "ellipsis",
-          whiteSpace: "nowrap",
-        },
-      }}
       secondary={
         <SexIcon
           sex={player.sex}
@@ -30,17 +22,29 @@ const PlayerListItemText: FC<PlayerListItemTextProps> = ({ player }) => (
           }}
         />
       }
+      slotProps={{
+        primary: {
+          sx: {
+            flex: 1,
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+            whiteSpace: "nowrap",
+          },
+        },
+      }}
       sx={{
         display: "flex",
         flexDirection: "column",
       }}
     />
     <ListItemText
-      primaryTypographyProps={{
-        sx: {
-          fontWeight: "regular",
+      slotProps={{
+        primary: {
+          sx: {
+            fontWeight: "regular",
+          },
+          variant: "h6",
         },
-        variant: "h6",
       }}
       sx={{
         flexGrow: 0,
