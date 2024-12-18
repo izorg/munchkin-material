@@ -8,6 +8,7 @@ import {
   useEffect,
   useMemo,
   useRef,
+  useState,
 } from "react";
 
 import { setFullVersion } from "../../../../web/src/ducks/settings";
@@ -19,7 +20,9 @@ const FULL_VERSION_ID = "full_version";
 
 const { LogLevel, ProductType, store } = CdvPurchase;
 
-store.verbosity = LogLevel.ERROR;
+if (window.BuildInfo.debug) {
+  store.verbosity = LogLevel.DEBUG;
+}
 
 store.register({
   id: FULL_VERSION_ID,
@@ -35,6 +38,7 @@ class StoreError extends Error {
     super(error.message);
 
     this.name = "StoreError";
+    this.cause = error;
 
     setContext("Store", {
       code: error.code,
@@ -43,8 +47,10 @@ class StoreError extends Error {
   }
 }
 
-const FullVersionProvider: FC<PropsWithChildren> = ({ children }) => {
+export const FullVersionProvider: FC<PropsWithChildren> = ({ children }) => {
   const dispatch = useAppDispatch();
+
+  const [offer, setOffer] = useState<CdvPurchase.Offer>();
 
   const fullVersion = usePresentSelector((state) => state.settings.fullVersion);
 
@@ -52,27 +58,6 @@ const FullVersionProvider: FC<PropsWithChildren> = ({ children }) => {
     reject: (error: StoreError) => void;
     resolve: () => void;
   }>(undefined);
-
-  const buyFullVersion = useCallback(async () => {
-    const offer = store.get(FULL_VERSION_ID)?.getOffer();
-
-    if (!offer) {
-      throw new Error("No offer");
-    }
-
-    const error = await offer.order();
-
-    if (error) {
-      throw new StoreError(error);
-    }
-
-    return new Promise<void>((resolve, reject) => {
-      buyExecutorRef.current = {
-        reject,
-        resolve,
-      };
-    });
-  }, []);
 
   useEffect(() => {
     store.error((error) => {
@@ -106,18 +91,41 @@ const FullVersionProvider: FC<PropsWithChildren> = ({ children }) => {
         buyExecutorRef.current?.resolve();
       });
 
+    store.ready(() => {
+      const fullVersionOffer = store.get(FULL_VERSION_ID)?.getOffer();
+
+      if (fullVersionOffer?.canPurchase) {
+        setOffer(fullVersionOffer);
+      }
+    });
+
     void (async () => {
       await store.initialize();
     })();
   }, [dispatch]);
 
+  const buyFullVersion = useCallback(async (offer: CdvPurchase.Offer) => {
+    const error = await offer.order();
+
+    if (error) {
+      throw new StoreError(error);
+    }
+
+    return new Promise<void>((resolve, reject) => {
+      buyExecutorRef.current = {
+        reject,
+        resolve,
+      };
+    });
+  }, []);
+
   const value = useMemo(
     () => ({
-      buyFullVersion,
+      buyFullVersion: offer ? () => buyFullVersion(offer) : undefined,
       fullVersion,
       restorePurchases,
     }),
-    [buyFullVersion, fullVersion],
+    [buyFullVersion, fullVersion, offer],
   );
 
   return (
@@ -126,5 +134,3 @@ const FullVersionProvider: FC<PropsWithChildren> = ({ children }) => {
     </FullVersionContext.Provider>
   );
 };
-
-export default FullVersionProvider;

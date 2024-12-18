@@ -1,15 +1,17 @@
 import { createContext, useContext } from "react";
 
 type FullVersionContextValue = {
-  buyFullVersion: () => Promise<void>;
+  /**
+   * If the store is not ready the function is not provided
+   */
+  buyFullVersion?: () => Promise<void>;
+
   fullVersion: boolean;
+
   restorePurchases?: () => void;
 };
 
 export const FullVersionContext = createContext<FullVersionContextValue>({
-  buyFullVersion: () => {
-    throw new Error("No <FullVersionProvider />");
-  },
   fullVersion: true,
 });
 

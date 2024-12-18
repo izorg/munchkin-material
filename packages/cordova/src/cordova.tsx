@@ -10,7 +10,7 @@ import LocaleProvider from "../../web/src/components/LocaleProvider";
 import ReduxProvider from "../../web/src/components/ReduxProvider";
 
 import AppStoreLinkProvider from "./components/AppStoreLinkProvider";
-import FullVersionProvider from "./components/FullVersionProvider";
+import { FullVersionProvider } from "./components/FullVersionProvider";
 import VersionProvider from "./components/VersionProvider";
 import WakeLockProvider from "./components/WakeLockProvider";
 import { CordovaApp } from "./domains/cordova-app";

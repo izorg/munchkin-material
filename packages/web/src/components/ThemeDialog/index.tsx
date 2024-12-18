@@ -71,6 +71,12 @@ const ThemeDialog = () => {
     event.preventDefault();
 
     if (previewTheme.id !== currentThemeId && !fullVersion) {
+      if (!buyFullVersion) {
+        await goBack();
+
+        return;
+      }
+
       try {
         await buyFullVersion();
       } catch (error) {
