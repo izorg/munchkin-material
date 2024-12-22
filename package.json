@@ -8,6 +8,7 @@
     "packages/*"
   ],
   "scripts": {
+    "clean-cache": "rm -rf .parcel-cache",
     "format": "prettier --cache --ignore-unknown --write .",
     "get-version": "node --no-warnings scripts/version.js",
     "lint": "yarn lint-unused && yarn lint-types && yarn lint-js && yarn lint-circular && yarn lint-css",
