@@ -1,0 +1,18 @@
+{
+  "private": true,
+  "name": "@munchkin/windows",
+  "sideEffects": false,
+  "targets": {
+    "default": {
+      "distDir": "www",
+      "source": "src/index.html"
+    }
+  },
+  "scripts": {
+    "build": "parcel build",
+    "build:www": "rm -rf www && yarn build --no-cache && rm -r www/*.map"
+  },
+  "devDependencies": {
+    "parcel": "2.13.3"
+  }
+}
