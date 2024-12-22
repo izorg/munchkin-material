@@ -1,7 +1,12 @@
 **/generated/
+*.pfx
+*.pubxml
+*.tmp
+*.user
 .idea/*
 !.idea/icon.svg
 .parcel-cache/
+.vs/
 .vscode/
 .yarn/*
 !.yarn/patches
@@ -10,10 +15,12 @@
 !.yarn/sdks
 !.yarn/versions
 .next/
+bin/
 coverage/
 dist/
 localized-files/
 node_modules/
+obj/
 out/
 parcel-bundle-reports/
 platforms/
@@ -30,4 +37,5 @@ firebase-debug.log
 google-services.json
 GoogleService-Info.plist
 keystore.jks
+Package.StoreAssociation.xml
 tsconfig.tsbuildinfo

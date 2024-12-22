@@ -29,6 +29,7 @@ export default ts.config(
       "packages/cordova/www/",
       "packages/site/out/",
       "packages/web/dist/",
+      "packages/windows/Munchkin/",
     ],
   },
   js.configs.recommended,

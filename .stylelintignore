@@ -7,3 +7,5 @@ coverage
 /packages/site/out
 
 /packages/web/dist
+
+/packages/windows/Munchkin/

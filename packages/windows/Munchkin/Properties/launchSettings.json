@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Munchkin (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "Munchkin (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "private": true,
+  "name": "@munchkin/windows",
+  "sideEffects": [
+    "src/index.tsx"
+  ],
+  "targets": {
+    "default": {
+      "distDir": "Munchkin/Assets/www",
+      "source": "src/index.html"
+    }
+  },
+  "scripts": {
+    "build": "parcel build",
+    "build:www": "rm -rf Munchkin/Assets/www && yarn build --no-cache && rm -r Munchkin/Assets/www/*.map"
+  },
+  "devDependencies": {
+    "parcel": "2.13.3",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "react-router": "7.1.0"
+  }
+}
