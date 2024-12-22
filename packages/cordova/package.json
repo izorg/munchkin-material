@@ -8,10 +8,16 @@
     "src/polyfills.ts",
     "src/sentry.ts"
   ],
+  "targets": {
+    "default": {
+      "distDir": "www",
+      "source": "src/index.html"
+    }
+  },
   "scripts": {
     "build:android": "cordova build android --release",
     "build:ios": "cordova build ios",
-    "build": "yarn parcel build --dist-dir www --no-cache src/index.html",
+    "build": "yarn parcel build --no-cache",
     "build:www": "rm -rf www && yarn run build && rm -r www/*.map",
     "cordova:prepare": "cordova prepare",
     "run:android": "cordova run android",
