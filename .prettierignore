@@ -1,10 +1,4 @@
 .yarn
-coverage
 package.json
 
-/packages/cordova/platforms
-/packages/cordova/plugins
-/packages/cordova/www
-
-/packages/web/dist
 /packages/web/src/templates/markup/manifest.webmanifest.hbs
