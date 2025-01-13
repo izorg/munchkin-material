@@ -10,9 +10,11 @@
   "ignoreDependencies": [
     "@babel/core",
     "@parcel/*",
+    "@semantic-release/*",
     "conventional-changelog-conventionalcommits",
     "cordova-*",
     "eslint-import-resolver-typescript",
+    "semantic-release",
     "sharp"
   ],
   "include": ["classMembers", "nsExports", "nsTypes"]
