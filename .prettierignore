@@ -1,4 +1,16 @@
 .yarn
+.vs
 package.json
 
+/packages/cordova/platforms
+/packages/cordova/plugins
+/packages/cordova/www
+
+/packages/site/.next
+/packages/site/out
+
+/packages/web/dist
 /packages/web/src/templates/markup/manifest.webmanifest.hbs
+
+/packages/windows/Munchkin/bin
+/packages/windows/Munchkin/obj
