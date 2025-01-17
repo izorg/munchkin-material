@@ -12,7 +12,7 @@
   },
   "scripts": {
     "build": "parcel build",
-    "build:www": "rm -rf Munchkin/Assets/www && yarn build --no-cache && rm -r Munchkin/Assets/www/*.map"
+    "build:www": "yarn g:rimraf Munchkin/Assets/www && yarn build --no-cache && yarn g:rimraf Munchkin/Assets/www/*.map"
   },
   "devDependencies": {
     "parcel": "2.13.3",

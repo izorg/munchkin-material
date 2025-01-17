@@ -6,7 +6,7 @@
     "packages/web/src/components/SettingsList/TranslateItem/index.tsx",
     "packages/web/src/theme/colors/*.ts"
   ],
-  "ignoreBinaries": ["firebase-tools"],
+  "ignoreBinaries": ["firebase-tools", "g:*"],
   "ignoreDependencies": [
     "@babel/core",
     "@parcel/*",
