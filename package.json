@@ -14,7 +14,7 @@
     "lint": "yarn lint-unused && yarn lint-types && yarn lint-js && yarn lint-circular && yarn lint-css",
     "lint-circular": "madge --circular packages/cordova/src/index.ts packages/site/app packages/web/src/index.tsx",
     "lint-css": "stylelint --cache \"**/*.css\"",
-    "lint-js": "NODE_OPTIONS=\"--max-old-space-size=4096\" eslint --cache \"**/*.{js,ts,tsx}\"",
+    "lint-js": "eslint --cache \"**/*.{js,ts,tsx}\"",
     "lint-types": "tsc",
     "lint-unused": "knip --cache",
     "postinstall": "husky || true",
