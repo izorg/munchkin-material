@@ -129,11 +129,11 @@ const HomePlayerListItem = (props: HomePlayerListItemProps) => {
   );
 
   const onTap: Required<TapHandlers>["onTap"] = useCallback(
-    async (event) => {
+    (event) => {
       clearPress();
 
       if (Date.now() - startTapTimeRef.current < 500) {
-        await onClick(event);
+        void onClick(event);
       }
     },
     [clearPress, onClick],
