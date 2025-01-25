@@ -17,5 +17,9 @@
     "target": "ESNext",
     "verbatimModuleSyntax": true
   },
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules",
+    "packages/cordova/platforms",
+    "packages/cordova/plugins"
+  ]
 }

@@ -79,8 +79,8 @@ store.subscribe(() => {
 });
 
 // eslint-disable-next-line unicorn/prefer-module
-module.hot?.accept("./reducers", () =>
-  store.replaceReducer(createRootReducer()),
-);
+module.hot?.accept(() => {
+  store.replaceReducer(createRootReducer());
+});
 
 export default store;

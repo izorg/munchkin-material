@@ -11,6 +11,7 @@
     "@babel/core",
     "@parcel/*",
     "@semantic-release/*",
+    "@types/parcel-env",
     "conventional-changelog-conventionalcommits",
     "cordova-*",
     "eslint-import-resolver-typescript",
