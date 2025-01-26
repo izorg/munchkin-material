@@ -6,7 +6,8 @@ import {
   ListItemButton,
   type ListItemProps,
 } from "@mui/material";
-import { m, type TapHandlers } from "motion/react";
+import { useLongPress, usePress } from "@react-aria/interactions";
+import { mergeProps } from "@react-aria/utils";
 import { useCallback, useRef } from "react";
 import { useNavigate, useSearchParams } from "react-router";
 
@@ -35,8 +36,6 @@ const HomePlayerListItem = (props: HomePlayerListItemProps) => {
 
   const avatarRef = useRef<HTMLDivElement>(null);
 
-  const pressTimeoutRef = useRef(0);
-
   const goBack = useGoBack();
   const { editMode } = useEditMode();
   const { multiMode, setMultiMode } = useMultiMode();
@@ -56,8 +55,8 @@ const HomePlayerListItem = (props: HomePlayerListItemProps) => {
     setMultiMode(true);
   }, [dispatch, playerId, setMultiMode]);
 
-  const onClick = useCallback(
-    async (event: Parameters<Required<TapHandlers>["onTap"]>[0]) => {
+  const { pressProps } = usePress({
+    onPress: () => {
       if (editMode) {
         setSearchParams((searchParams) => {
           searchParams.set("player", playerId);
@@ -71,73 +70,40 @@ const HomePlayerListItem = (props: HomePlayerListItemProps) => {
           selectedPlayerIds.length === 1 &&
           selectedPlayerIds[0] === playerId
         ) {
-          await goBack();
+          void goBack();
         }
-      } else if (avatarRef.current?.contains(event.target as HTMLElement)) {
-        onMultiSelectActivate();
       } else {
-        await navigate(`/player/${playerId}`);
+        void navigate(`/player/${playerId}`);
       }
     },
-    [
-      dispatch,
-      editMode,
-      goBack,
-      multiMode,
-      navigate,
-      onMultiSelectActivate,
-      playerId,
-      selectedPlayerIds,
-      setSearchParams,
-    ],
-  );
+  });
 
-  const clearPress = useCallback(() => {
-    if (pressTimeoutRef.current) {
-      clearTimeout(pressTimeoutRef.current);
+  const { longPressProps } = useLongPress({
+    onLongPress: () => {
+      if (editMode || multiMode) {
+        return;
+      }
 
-      pressTimeoutRef.current = 0;
-    }
-  }, []);
+      if (navigator.vibrate && !ios) {
+        navigator.vibrate(20);
+      }
 
-  const startPointRef = useRef({ x: 0, y: 0 });
-  const startTapTimeRef = useRef(Date.now());
-
-  const onTapStart: Required<TapHandlers>["onTapStart"] = useCallback(
-    (event, info) => {
-      startPointRef.current = info.point;
-      startTapTimeRef.current = Date.now();
-
-      pressTimeoutRef.current = window.setTimeout(() => {
-        pressTimeoutRef.current = 0;
-
-        const avatarNode = avatarRef.current;
-
-        if (
-          !(editMode || multiMode) &&
-          !avatarNode?.contains(event.target as HTMLElement)
-        ) {
-          if (navigator.vibrate && !ios) {
-            navigator.vibrate(20);
-          }
-
-          onMultiSelectActivate();
-        }
-      }, 500);
+      onMultiSelectActivate();
     },
-    [editMode, multiMode, onMultiSelectActivate],
-  );
+  });
 
-  const onTap: Required<TapHandlers>["onTap"] = useCallback(
-    (event) => {
-      clearPress();
-
-      if (Date.now() - startTapTimeRef.current < 500) {
-        void onClick(event);
+  const { pressProps: avatarPressProps } = usePress({
+    onPress: () => {
+      if (!editMode && !multiMode) {
+        onMultiSelectActivate();
       }
     },
-    [clearPress, onClick],
-  );
+    onPressStart: (event) => {
+      if (editMode || multiMode) {
+        event.continuePropagation();
+      }
+    },
+  });
 
   const {
     attributes,
@@ -204,12 +170,7 @@ const HomePlayerListItem = (props: HomePlayerListItemProps) => {
       ]}
     >
       <ListItemButton
-        component={m.div}
-        onPanStart={clearPress}
-        onTap={onTap}
-        onTapCancel={clearPress}
-        onTapStart={onTapStart}
-        role={undefined}
+        {...mergeProps(pressProps, longPressProps)}
         sx={(theme) => ({
           paddingLeft: `calc(${theme.spacing(2)} + var(--inset-left)) /*! @noflip */`,
           paddingRight: `calc(${theme.spacing(2)} + var(--inset-right)) /*! @noflip */`,
@@ -217,6 +178,7 @@ const HomePlayerListItem = (props: HomePlayerListItemProps) => {
       >
         <ListItemAvatar>
           <PlayerAvatar
+            {...avatarPressProps}
             color={player.color}
             name={player.name}
             ref={avatarRef}

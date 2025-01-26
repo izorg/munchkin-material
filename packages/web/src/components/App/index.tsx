@@ -1,5 +1,3 @@
-import { domMax, LazyMotion } from "motion/react";
-
 import CombatView from "../CombatView";
 import DiceDialog from "../DiceDialog";
 import HomeView from "../HomeView";
@@ -10,19 +8,17 @@ import UndoProvider from "../UndoProvider";
 import UndoSnackbar from "../UndoSnackbar";
 
 const App = () => (
-  <LazyMotion features={domMax} strict>
-    <UndoProvider>
-      <HomeView />
-      <PlayerView />
-      <CombatView />
+  <UndoProvider>
+    <HomeView />
+    <PlayerView />
+    <CombatView />
 
-      <SettingsDialog />
-      <DiceDialog />
-      <PlayerDialog />
+    <SettingsDialog />
+    <DiceDialog />
+    <PlayerDialog />
 
-      <UndoSnackbar />
-    </UndoProvider>
-  </LazyMotion>
+    <UndoSnackbar />
+  </UndoProvider>
 );
 
 export default App;
