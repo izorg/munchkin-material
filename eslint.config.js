@@ -42,7 +42,7 @@ export default ts.config(
   perfectionist.configs["recommended-alphabetical"],
   react.configs.flat.recommended,
   react.configs.flat["jsx-runtime"],
-  unicorn.configs["flat/recommended"],
+  unicorn.configs.recommended,
   {
     languageOptions: {
       parserOptions: {
@@ -118,7 +118,7 @@ export default ts.config(
       /**
        * Conflicts with TypeScript checks for `sx` prop
        */
-      "unicorn/no-instanceof-array": "off",
+      "unicorn/no-instanceof-builtins": "off",
 
       "unicorn/no-null": "off",
 
