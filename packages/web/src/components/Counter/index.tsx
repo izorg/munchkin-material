@@ -2,16 +2,11 @@ import {
   mdiMenuDown as decrementIcon,
   mdiMenuUp as incrementIcon,
 } from "@mdi/js";
-import {
-  Box,
-  type BoxProps,
-  IconButton,
-  SvgIcon,
-  type Theme,
-} from "@mui/material";
+import { Box, type BoxProps, SvgIcon, type Theme } from "@mui/material";
 import { type FC, type ReactNode } from "react";
 import { defineMessages, FormattedNumber } from "react-intl";
 
+import CounterButton from "./Button";
 import CounterLabel from "./Label";
 
 // eslint-disable-next-line formatjs/enforce-id
@@ -93,7 +88,7 @@ const Counter: FC<CounterProps> = ({
           width: "120px",
         }}
       >
-        <IconButton
+        <CounterButton
           data-screenshots="decrement-button"
           disabled={decrementDisabled}
           onClick={onDecrement}
@@ -109,9 +104,9 @@ const Counter: FC<CounterProps> = ({
           >
             <path d={decrementIcon} />
           </SvgIcon>
-        </IconButton>
+        </CounterButton>
 
-        <IconButton
+        <CounterButton
           data-screenshots="increment-button"
           disabled={incrementDisabled}
           onClick={onIncrement}
@@ -127,7 +122,7 @@ const Counter: FC<CounterProps> = ({
           >
             <path d={incrementIcon} />
           </SvgIcon>
-        </IconButton>
+        </CounterButton>
       </Box>
     </Box>
   );
