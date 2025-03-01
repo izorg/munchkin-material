@@ -7,3 +7,5 @@ export const register = async () => {
     await import("./sentry.edge.config");
   }
 };
+
+export { captureRequestError as onRequestError } from "@sentry/nextjs";

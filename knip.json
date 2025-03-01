@@ -2,9 +2,7 @@
   "$schema": "node_modules/knip/schema.json",
   "entry": ["packages/cordova/scripts/copy-gradle-extras.js"],
   "ignore": [
-    "packages/web/src/components/Loading/index.tsx",
-    "packages/web/src/components/SettingsList/TranslateItem/index.tsx",
-    "packages/web/src/theme/colors/*.ts"
+    "packages/web/src/components/SettingsList/TranslateItem/index.tsx"
   ],
   "ignoreBinaries": ["firebase-tools", "g:*"],
   "ignoreDependencies": [
@@ -15,8 +13,6 @@
     "conventional-changelog-conventionalcommits",
     "cordova-*",
     "eslint-import-resolver-typescript",
-    "semantic-release",
-    "sharp"
-  ],
-  "include": ["classMembers", "nsExports", "nsTypes"]
+    "semantic-release"
+  ]
 }
