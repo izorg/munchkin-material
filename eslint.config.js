@@ -1,6 +1,7 @@
 import js from "@eslint/js";
 import json from "@eslint/json";
 import next from "@next/eslint-plugin-next";
+import gitignore from "eslint-config-flat-gitignore";
 import prettier from "eslint-config-prettier";
 import compat from "eslint-plugin-compat";
 import formatjs from "eslint-plugin-formatjs";
@@ -13,49 +14,44 @@ import react from "eslint-plugin-react";
 import reactHooks from "eslint-plugin-react-hooks";
 import unicorn from "eslint-plugin-unicorn";
 import globals from "globals";
-import * as ts from "typescript-eslint";
+import ts from "typescript-eslint";
 
+/**
+ * Run `npx @eslint/config-inspector` to visualise the config
+ */
 export default ts.config(
+  gitignore(),
   {
-    ignores: [
-      "**/.next/",
-      "**/coverage/",
-      ".idea/",
-      ".parcel-cache/",
-      ".vscode/",
-      ".yarn/",
-      "packages/cordova/platforms/",
-      "packages/cordova/plugins/",
-      "packages/cordova/www/",
-      "packages/site/out/",
-      "packages/web/dist/",
-      "packages/windows/Munchkin/",
-    ],
+    ignores: [".yarn/", "packages/windows/Munchkin/"],
+    name: "Global",
+    plugins: {
+      "only-error": onlyError,
+    },
   },
-  js.configs.recommended,
-  ...ts.configs.recommendedTypeChecked,
-  compat.configs["flat/recommended"],
-  formatjs.configs.recommended,
-  importPlugin.flatConfigs.recommended,
-  importPlugin.flatConfigs.typescript,
-  jsxA11y.flatConfigs.recommended,
-  perfectionist.configs["recommended-alphabetical"],
-  react.configs.flat.recommended,
-  react.configs.flat["jsx-runtime"],
-  unicorn.configs.recommended,
   {
+    extends: [
+      js.configs.recommended,
+      ts.configs.recommendedTypeChecked,
+      compat.configs["flat/recommended"],
+      formatjs.configs.recommended,
+      importPlugin.flatConfigs.recommended,
+      importPlugin.flatConfigs.typescript,
+      jsxA11y.flatConfigs.recommended,
+      react.configs.flat.recommended,
+      react.configs.flat["jsx-runtime"],
+      reactHooks.configs["recommended-latest"],
+      unicorn.configs.recommended,
+      perfectionist.configs["recommended-alphabetical"],
+    ],
+    files: ["**/*.js", "**/*.ts?(x)"],
     languageOptions: {
       parserOptions: {
         project: true,
         tsconfigRootDir: import.meta.dirname,
         warnOnUnsupportedTypeScriptVersion: false,
       },
-      sourceType: "script",
     },
-    plugins: {
-      "only-error": onlyError,
-      "react-hooks": reactHooks,
-    },
+    name: "JavaScript & TypeScript",
     rules: {
       "@typescript-eslint/consistent-return": "off",
 
@@ -101,8 +97,6 @@ export default ts.config(
         },
       ],
       "perfectionist/sort-modules": "off",
-
-      ...reactHooks.configs.recommended.rules,
 
       "unicorn/filename-case": [
         "error",
@@ -151,7 +145,6 @@ export default ts.config(
         },
       ],
     },
-
     settings: {
       "import/resolver": {
         node: true,
@@ -164,17 +157,13 @@ export default ts.config(
     },
   },
   {
-    files: ["**/*.d.ts"],
-    rules: {
-      "no-var": "off",
-    },
-  },
-  {
-    ...ts.configs.disableTypeChecked,
+    extends: [ts.configs.disableTypeChecked],
     files: ["**/*.js"],
+    name: "JavaScript",
   },
   {
     files: ["**/*.ts?(x)"],
+    name: "TypeScript",
     rules: {
       "@typescript-eslint/consistent-type-exports": [
         "error",
@@ -200,30 +189,33 @@ export default ts.config(
     },
   },
   {
-    ...jest.configs["flat/recommended"],
+    extends: [jest.configs["flat/recommended"]],
     files: ["**/*.spec.ts?(x)"],
+    name: "Jest",
   },
   {
     files: ["**/scripts/**", "**/next.config.ts"],
     languageOptions: {
-      globals: {
-        ...globals.node,
-      },
+      globals: globals.node,
     },
+    name: "Scripts",
   },
   {
-    ...json.configs.recommended,
+    extends: [json.configs.recommended],
     files: ["**/*.json"],
     language: "json/json",
+    name: "JSON",
   },
   {
     files: ["packages/cordova/**", "packages/web/**"],
+    name: "Cordova & Web",
     settings: {
       polyfills: ["Object.fromEntries"],
     },
   },
   {
     files: ["packages/site/**"],
+    name: "Site",
     plugins: {
       "@next/next": next,
     },
@@ -237,5 +229,8 @@ export default ts.config(
       },
     },
   },
-  prettier,
+  {
+    extends: [prettier],
+    name: "Prettier",
+  },
 );
