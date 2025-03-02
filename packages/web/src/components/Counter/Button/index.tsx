@@ -21,6 +21,20 @@ const CounterButton: FC<CounterButtonProps> = ({
   const skipRef = useRef(false);
 
   useEffect(() => {
+    if (disabled) {
+      if (timeoutRef.current) {
+        window.clearTimeout(timeoutRef.current);
+        timeoutRef.current = 0;
+      }
+
+      if (intervalRef.current) {
+        window.clearInterval(intervalRef.current);
+        intervalRef.current = 0;
+      }
+    }
+  }, [disabled]);
+
+  useEffect(() => {
     return () => {
       if (intervalRef.current) {
         window.clearInterval(intervalRef.current);
