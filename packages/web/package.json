@@ -65,7 +65,7 @@
     "@sentry/react": "9.3.0",
     "@swc/core": "1.11.5",
     "@swc/jest": "0.2.37",
-    "@types/node": "22.13.8",
+    "@types/node": "22.13.9",
     "@types/parcel-env": "0.0.8",
     "@types/react": "19.0.10",
     "@types/react-dom": "19.0.4",
