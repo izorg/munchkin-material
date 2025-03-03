@@ -81,7 +81,6 @@ const CombatCounter: FC<CombatCounterProps> = (props) => {
 
       <Box
         sx={(theme) => ({
-          color: theme.palette.text.primary,
           fontFamily: `Munchkin, ${theme.typography.fontFamily ?? ""}`,
           fontSize: theme.typography.h4.fontSize,
           lineHeight: theme.typography.h4.lineHeight,

@@ -136,7 +136,6 @@ const PlayerStats: FC<PlayerStatsProps> = ({ playerId, sx = [] }) => {
         <Box
           sx={[
             (theme) => ({
-              color: theme.palette.text.primary,
               fontFamily: `Munchkin, ${theme.typography.fontFamily ?? ""}`,
               fontSize: "2.25rem",
             }),
