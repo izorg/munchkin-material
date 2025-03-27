@@ -4,7 +4,7 @@ import ScreenDialog from "../ScreenDialog";
 const transitionProps = { appear: false };
 
 const HomeView = () => (
-  <ScreenDialog open TransitionProps={transitionProps}>
+  <ScreenDialog open slotProps={{ transition: transitionProps }}>
     <Home />
   </ScreenDialog>
 );

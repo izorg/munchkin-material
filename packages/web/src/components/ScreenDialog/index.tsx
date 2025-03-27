@@ -5,21 +5,30 @@ import { useInitialRender } from "../../hooks/useInitialRender";
 import TransitionComponent from "./TransitionComponent";
 
 const ScreenDialog = (props: DialogProps) => {
+  const { slotProps, slots, ...rest } = props;
+
   const initialRender = useInitialRender();
 
   return (
     <Dialog
       fullScreen
       hideBackdrop
-      PaperProps={{
-        elevation: 0,
-        ...props.PaperProps,
+      slotProps={{
+        ...slotProps,
+        paper: {
+          elevation: 0,
+          ...slotProps?.paper,
+        },
+        transition: {
+          appear: !initialRender,
+          ...slotProps?.transition,
+        },
       }}
-      TransitionComponent={TransitionComponent}
-      TransitionProps={{
-        appear: !initialRender,
+      slots={{
+        transition: TransitionComponent,
+        ...slots,
       }}
-      {...props}
+      {...rest}
     />
   );
 };

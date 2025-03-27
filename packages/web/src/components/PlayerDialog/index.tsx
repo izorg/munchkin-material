@@ -8,7 +8,7 @@ import {
   FormControl,
   FormControlLabel,
   FormLabel,
-  Grid2,
+  Grid,
   InputLabel,
   OutlinedInput,
   Radio,
@@ -154,18 +154,20 @@ const PlayerDialog = () => {
       hideBackdrop={fullScreen}
       onClose={goBack}
       open={open}
-      PaperProps={{
-        elevation: fullScreen ? 0 : 1,
-        sx: {
-          minWidth: {
-            lg: "320px",
+      slotProps={{
+        paper: {
+          elevation: fullScreen ? 0 : 1,
+          sx: {
+            minWidth: {
+              lg: "320px",
+            },
           },
         },
       }}
+      slots={{ transition: PlayerDialogTransition }}
       sx={{
         height: "inherit", // scrolling body in cordova for small screen height
       }}
-      TransitionComponent={PlayerDialogTransition}
     >
       <DialogTitle
         sx={(theme) => ({
@@ -215,8 +217,8 @@ const PlayerDialog = () => {
             />
           </FormControl>
 
-          <Grid2 container>
-            <Grid2 size={6}>
+          <Grid container>
+            <Grid size={6}>
               <FormControl component="fieldset" margin="normal">
                 <FormLabel component="legend">
                   {
@@ -251,9 +253,9 @@ const PlayerDialog = () => {
                   />
                 </RadioGroup>
               </FormControl>
-            </Grid2>
+            </Grid>
 
-            <Grid2 size={6}>
+            <Grid size={6}>
               <FormControl margin="normal">
                 <FormLabel>
                   {
@@ -269,8 +271,8 @@ const PlayerDialog = () => {
                   name="color"
                 />
               </FormControl>
-            </Grid2>
-          </Grid2>
+            </Grid>
+          </Grid>
         </form>
       </DialogContent>
       {!fullScreen && (

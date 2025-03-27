@@ -4,6 +4,7 @@ import {
   type PaletteMode,
 } from "@mui/material";
 import { common, orange } from "@mui/material/colors";
+// @ts-expect-error -- MUI v7 migration issue
 import { dark, light } from "@mui/material/styles/createPalette";
 import { deepmerge } from "@mui/utils";
 
@@ -27,6 +28,7 @@ const getThemeOptions = ({
       dark: {
         palette: {
           Dialog: {
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment,@typescript-eslint/no-unsafe-member-access -- MUI v7 migration issue
             fullScreenBg: dark.background.paper,
           },
           secondary: {
@@ -37,6 +39,7 @@ const getThemeOptions = ({
       light: {
         palette: {
           Dialog: {
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment,@typescript-eslint/no-unsafe-member-access -- MUI v7 migration issue
             fullScreenBg: light.background.paper,
           },
           secondary: {

@@ -1,7 +1,7 @@
 "use client";
 
 import { createTheme, responsiveFontSizes } from "@mui/material";
-import brown from "@mui/material/colors/brown";
+import { brown } from "@mui/material/colors";
 
 export const theme = responsiveFontSizes(
   createTheme({

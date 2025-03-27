@@ -65,12 +65,14 @@ export const LanguageSwitcher = () => {
           vertical: "bottom",
         }}
         id={LANGUAGE_SWITCHER_MENU}
-        MenuListProps={{
-          "aria-labelledby": LANGUAGE_SWITCHER,
-          component: "div",
-        }}
         onClose={onClose}
         open={open}
+        slotProps={{
+          list: {
+            "aria-labelledby": LANGUAGE_SWITCHER,
+            component: "div",
+          },
+        }}
         transformOrigin={{
           horizontal: "center",
           vertical: "top",

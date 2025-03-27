@@ -133,13 +133,17 @@ const CombatHelperButton = () => {
             </SvgIcon>
           }
           onClick={onMonsterClick}
-          tooltipTitle={
-            // eslint-disable-next-line formatjs/enforce-id
-            <FormattedMessage
-              defaultMessage="Monster"
-              id="combat.add.monster"
-            />
-          }
+          slotProps={{
+            tooltip: {
+              title: (
+                // eslint-disable-next-line formatjs/enforce-id
+                <FormattedMessage
+                  defaultMessage="Monster"
+                  id="combat.add.monster"
+                />
+              ),
+            },
+          }}
         />
         <SpeedDialAction
           icon={
@@ -148,10 +152,17 @@ const CombatHelperButton = () => {
             </SvgIcon>
           }
           onClick={onHelperClick}
-          tooltipTitle={
-            // eslint-disable-next-line formatjs/enforce-id
-            <FormattedMessage defaultMessage="Helper" id="combat.add.helper" />
-          }
+          slotProps={{
+            tooltip: {
+              title: (
+                // eslint-disable-next-line formatjs/enforce-id
+                <FormattedMessage
+                  defaultMessage="Helper"
+                  id="combat.add.helper"
+                />
+              ),
+            },
+          }}
         />
       </SpeedDial>
     </>

@@ -42,15 +42,19 @@ const UndoSnackbar = () => {
       message={message}
       onClose={onClose}
       open={open}
+      slotProps={{
+        transition: {
+          onExited: () => setMessage(null),
+        },
+      }}
+      slots={{
+        transition: mdDown ? Fade : undefined,
+      }}
       sx={{
         bottom: {
           sm: 28,
           xs: 88,
         },
-      }}
-      TransitionComponent={mdDown ? Fade : undefined}
-      TransitionProps={{
-        onExited: () => setMessage(null),
       }}
     />
   );
