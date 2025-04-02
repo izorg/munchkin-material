@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-require-imports,unicorn/prefer-module */
+/* eslint-disable @typescript-eslint/no-require-imports,unicorn/prefer-module -- CJS module */
 const fs = require("node:fs");
 const path = require("node:path");
 
@@ -12,3 +12,4 @@ const copyGradleExtras = async (ctx) => {
 };
 
 module.exports = copyGradleExtras;
+/* eslint-enable @typescript-eslint/no-require-imports,unicorn/prefer-module */

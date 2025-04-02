@@ -6,7 +6,7 @@ import {
 import { use, useEffect, useState } from "react";
 
 // @ts-expect-error -- something wrong with library types
-// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment,@typescript-eslint/no-unsafe-call
+// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment,@typescript-eslint/no-unsafe-call -- something wrong with library types
 const insetPromise: Promise<Inset> = window.totalpave.Inset.create();
 
 export const Insets = () => {

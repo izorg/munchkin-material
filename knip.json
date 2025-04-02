@@ -1,6 +1,9 @@
 {
   "$schema": "node_modules/knip/schema.json",
-  "entry": ["packages/cordova/scripts/copy-gradle-extras.js"],
+  "entry": [
+    "packages/cordova/scripts/copy-gradle-extras.js",
+    "packages/site/instrumentation-client.ts"
+  ],
   "ignore": [
     "packages/web/src/components/SettingsList/TranslateItem/index.tsx"
   ],

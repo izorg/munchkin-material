@@ -1,3 +1,4 @@
+import comments from "@eslint-community/eslint-plugin-eslint-comments/configs";
 import js from "@eslint/js";
 import json from "@eslint/json";
 import next from "@next/eslint-plugin-next";
@@ -32,6 +33,7 @@ export default ts.config(
     extends: [
       js.configs.recommended,
       ts.configs.recommendedTypeChecked,
+      comments.recommended,
       compat.configs["flat/recommended"],
       formatjs.configs.recommended,
       importPlugin.flatConfigs.recommended,
@@ -53,6 +55,13 @@ export default ts.config(
     },
     name: "JavaScript & TypeScript",
     rules: {
+      "@eslint-community/eslint-comments/require-description": [
+        "error",
+        {
+          ignore: ["eslint-enable"],
+        },
+      ],
+
       "@typescript-eslint/consistent-return": "off",
 
       "formatjs/enforce-description": "off",
