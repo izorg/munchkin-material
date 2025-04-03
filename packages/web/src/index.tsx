@@ -4,7 +4,7 @@ import "./firebase";
 
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { createHashRouter, RouterProvider } from "react-router";
+import { HashRouter } from "react-router";
 
 import App from "./components/App";
 import AugmentedStylesProvider from "./components/AugmentedStylesProvider";
@@ -28,18 +28,6 @@ if (!node) {
 
 const root = createRoot(node);
 
-const router = createHashRouter([
-  {
-    element: (
-      <AugmentedThemeProvider>
-        <WebApp />
-        <App />
-      </AugmentedThemeProvider>
-    ),
-    path: "*",
-  },
-]);
-
 root.render(
   <StrictMode>
     <ReduxProvider>
@@ -48,7 +36,12 @@ root.render(
           <WakeLockProvider>
             <LocaleProvider>
               <AugmentedStylesProvider>
-                <RouterProvider router={router} />
+                <HashRouter>
+                  <AugmentedThemeProvider>
+                    <WebApp />
+                    <App />
+                  </AugmentedThemeProvider>
+                </HashRouter>
               </AugmentedStylesProvider>
             </LocaleProvider>
           </WakeLockProvider>

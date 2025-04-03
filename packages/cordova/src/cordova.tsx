@@ -1,7 +1,7 @@
 import "./sentry";
 
 import { createRoot } from "react-dom/client";
-import { createMemoryRouter, RouterProvider } from "react-router";
+import { MemoryRouter } from "react-router";
 
 import App from "../../web/src/components/App";
 import AugmentedStylesProvider from "../../web/src/components/AugmentedStylesProvider";
@@ -23,18 +23,6 @@ if (!node) {
 
 const root = createRoot(node);
 
-const router = createMemoryRouter([
-  {
-    element: (
-      <AugmentedThemeProvider>
-        <CordovaApp />
-        <App />
-      </AugmentedThemeProvider>
-    ),
-    path: "*",
-  },
-]);
-
 root.render(
   <ReduxProvider>
     <VersionProvider>
@@ -43,7 +31,12 @@ root.render(
           <AppStoreLinkProvider>
             <LocaleProvider>
               <AugmentedStylesProvider>
-                <RouterProvider router={router} />
+                <MemoryRouter>
+                  <AugmentedThemeProvider>
+                    <CordovaApp />
+                    <App />
+                  </AugmentedThemeProvider>
+                </MemoryRouter>
               </AugmentedStylesProvider>
             </LocaleProvider>
           </AppStoreLinkProvider>
