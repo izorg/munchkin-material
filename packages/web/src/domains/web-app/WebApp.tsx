@@ -1,7 +1,5 @@
 import { useThemeColor } from "../theme";
 
-export const WebApp = () => {
-  useThemeColor();
-
-  return null;
-};
+export const WebApp = () => (
+  <meta content={useThemeColor()} name="theme-color" />
+);
