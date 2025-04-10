@@ -4,6 +4,8 @@
 
 import { init, replayIntegration } from "@sentry/nextjs";
 
+export { captureRouterTransitionStart as onRouterTransitionStart } from "@sentry/nextjs";
+
 init({
   // Setting this option to true will print useful information to the console while you're setting up Sentry.
   debug: false,
