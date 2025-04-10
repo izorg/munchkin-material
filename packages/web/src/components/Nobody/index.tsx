@@ -10,13 +10,13 @@ type NobodyProps = {
 const Nobody: FC<NobodyProps> = ({ sx = [] }) => (
   <Box
     sx={[
-      (theme) => ({
+      {
         alignItems: "center",
-        color: theme.palette.text.secondary,
+        color: "text.secondary",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
-      }),
+      },
       ...(sx instanceof Array ? sx : [sx]),
     ]}
   >

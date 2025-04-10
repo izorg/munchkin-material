@@ -27,9 +27,7 @@ const PlayerAvatar = forwardRef<HTMLDivElement, PlayerAvatarProps>(
                 }),
               })
             : false,
-          selected
-            ? (theme) => ({ backgroundColor: theme.palette.primary.main })
-            : false,
+          selected ? { backgroundColor: "primary.main" } : false,
           ...(sx instanceof Array ? sx : [sx]),
         ]}
         {...rest}
