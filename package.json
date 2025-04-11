@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "munchkin",
-  "version": "15.7.9",
+  "version": "16.0.0",
   "type": "module",
   "packageManager": "yarn@4.9.0",
   "workspaces": [
