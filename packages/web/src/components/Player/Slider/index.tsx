@@ -94,7 +94,11 @@ const PlayerSlider = ({ playerId, sx = [] }: PlayerSliderProps) => {
       // Safari in some cases returns -1 (+1 for rtl) instead of 0
       if (Math.abs(element.scrollLeft) <= 1) {
         direction = -1;
-      } else if (Math.abs(element.scrollLeft) >= element.offsetWidth * 2) {
+      } else if (
+        // Use `ceil` to round Chrome float value
+        Math.ceil(Math.abs(element.scrollLeft)) >=
+        element.offsetWidth * 2
+      ) {
         direction = 1;
       }
 
