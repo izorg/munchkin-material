@@ -63,6 +63,13 @@
   },
   "alias": {
     "@formatjs/icu-messageformat-parser": "@formatjs/icu-messageformat-parser/no-parser",
+    "@mui/material": "@mui/material/esm",
+    "@mui/material-nextjs": "@mui/material-nextjs/esm",
+    "@mui/private-theming": "@mui/private-theming/esm",
+    "@mui/styled-engine": "@mui/styled-engine/esm",
+    "@mui/system": "@mui/system/esm",
+    "@mui/types": "@mui/types/esm",
+    "@mui/utils": "@mui/utils/esm",
     "process": false
   }
 }

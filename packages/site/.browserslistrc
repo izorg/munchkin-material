@@ -1,2 +1,4 @@
-chrome >= 66
-ios >= 13
+chrome 85
+edge 85
+firefox 79
+ios 14
