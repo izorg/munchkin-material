@@ -93,9 +93,11 @@ const HomePlayerListItem = (props: HomePlayerListItemProps) => {
   });
 
   const { pressProps: avatarPressProps } = usePress({
-    onPress: () => {
+    onPress: (event) => {
       if (!editMode && !multiMode) {
         onMultiSelectActivate();
+      } else {
+        event.continuePropagation();
       }
     },
     onPressStart: (event) => {
