@@ -3,7 +3,7 @@ import js from "@eslint/js";
 import json from "@eslint/json";
 import next from "@next/eslint-plugin-next";
 import gitignore from "eslint-config-flat-gitignore";
-import prettier from "eslint-config-prettier";
+import prettier from "eslint-config-prettier/flat";
 import compat from "eslint-plugin-compat";
 import formatjs from "eslint-plugin-formatjs";
 import importPlugin from "eslint-plugin-import";
@@ -238,8 +238,5 @@ export default ts.config(
       },
     },
   },
-  {
-    extends: [prettier],
-    name: "Prettier",
-  },
+  prettier,
 );
