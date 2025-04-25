@@ -10,7 +10,7 @@
   <Identity
     Name="8543ViacheslavZavoruev.LevelCounterforMunchkin"
     Publisher="CN=9DD402BD-B295-4129-A98D-466A2FC5AA7A"
-    Version="15.7.4.0" />
+    Version="16.0.2.0" />
 
   <mp:PhoneIdentity PhoneProductId="c744088b-7fc6-45d6-9014-85cff77c6d63" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
