@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "allowJs": true,
+    "erasableSyntaxOnly": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "incremental": true,

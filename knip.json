@@ -7,7 +7,7 @@
   "ignore": [
     "packages/web/src/components/SettingsList/TranslateItem/index.tsx"
   ],
-  "ignoreBinaries": ["firebase-tools", "g:*"],
+  "ignoreBinaries": ["g:*"],
   "ignoreDependencies": [
     "@babel/core",
     "@parcel/*",
@@ -15,6 +15,7 @@
     "@types/parcel-env",
     "conventional-changelog-conventionalcommits",
     "cordova-*",
+    "firebase-tools",
     "eslint-import-resolver-typescript",
     "semantic-release"
   ]
