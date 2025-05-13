@@ -1,12 +1,5 @@
 {
   "$schema": "node_modules/knip/schema.json",
-  "entry": [
-    "packages/cordova/scripts/copy-gradle-extras.js",
-    "packages/site/instrumentation-client.ts"
-  ],
-  "ignore": [
-    "packages/web/src/components/SettingsList/TranslateItem/index.tsx"
-  ],
   "ignoreBinaries": ["g:*"],
   "ignoreDependencies": [
     "@babel/core",
@@ -18,5 +11,13 @@
     "firebase-tools",
     "eslint-import-resolver-typescript",
     "semantic-release"
-  ]
+  ],
+  "workspaces": {
+    "packages/cordova": {
+      "entry": ["src/index.ts", "scripts/copy-gradle-extras.js"]
+    },
+    "packages/web": {
+      "ignore": ["src/components/SettingsList/TranslateItem/index.tsx"]
+    }
+  }
 }
