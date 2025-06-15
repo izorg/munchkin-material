@@ -9,7 +9,6 @@
     "conventional-changelog-conventionalcommits",
     "cordova-*",
     "firebase-tools",
-    "eslint-import-resolver-typescript",
     "semantic-release"
   ],
   "workspaces": {
