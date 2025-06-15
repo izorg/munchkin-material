@@ -1,4 +1,5 @@
 **/generated/
+*.cache
 *.pfx
 *.pubxml
 *.tmp
@@ -15,7 +16,9 @@
 !.yarn/sdks
 !.yarn/versions
 .next/
+AppPackages/
 bin/
+BundleArtifacts/
 coverage/
 dist/
 localized-files/

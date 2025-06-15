@@ -6,13 +6,13 @@
   ],
   "targets": {
     "default": {
-      "distDir": "Munchkin/Assets/www",
+      "distDir": "Munchkin/Munchkin/Assets/www",
       "source": "src/index.html"
     }
   },
   "scripts": {
     "build": "parcel build",
-    "build:www": "yarn g:rimraf Munchkin/Assets/www && yarn build --no-cache && yarn g:rimraf Munchkin/Assets/www/*.map"
+    "build:www": "yarn g:rimraf Munchkin/Munchkin/Assets/www && yarn build --no-cache && yarn g:rimraf Munchkin/Munchkin/Assets/www/*.map"
   },
   "devDependencies": {
     "parcel": "2.15.2",

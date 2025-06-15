@@ -4,7 +4,6 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
-using Microsoft.UI;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
@@ -28,15 +27,15 @@ namespace Munchkin
   {
     public MainWindow()
     {
-      this.InitializeComponent();
+      InitializeComponent();
 
-      this.AppWindow.SetIcon("Assets/Icon.ico");
+      // this.AppWindow.SetIcon("Assets/Icon.ico");
 
-      var isDarkTheme = Application.Current.RequestedTheme == ApplicationTheme.Dark;
-      this.AppWindow.TitleBar.BackgroundColor = isDarkTheme ? Colors.Black : Colors.White;
+      // var isDarkTheme = Application.Current.RequestedTheme == ApplicationTheme.Dark;
+      // this.AppWindow.TitleBar.BackgroundColor = isDarkTheme ? Colors.Black : Colors.White;
 
-      var resourceLoader = new Microsoft.Windows.ApplicationModel.Resources.ResourceLoader();
-      this.Title = resourceLoader.GetString("Title");
+      // var resourceLoader = new Microsoft.Windows.ApplicationModel.Resources.ResourceLoader();
+      // this.Title = resourceLoader.GetString("Title");
 
       //this.ExtendsContentIntoTitleBar = true;
 
@@ -47,7 +46,7 @@ namespace Munchkin
     {
       await webView2.EnsureCoreWebView2Async(null);
 
-      Trace.WriteLine("Test me " + Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets", "www"));
+      //Trace.WriteLine("Test me " + Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets", "www"));
 
       webView2.CoreWebView2.SetVirtualHostNameToFolderMapping(
           "www",
