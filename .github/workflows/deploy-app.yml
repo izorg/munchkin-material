@@ -28,6 +28,9 @@ jobs:
       - name: Compile locales 🔨
         run: yarn workspace @munchkin/web run i18n:compile
 
+      - name: Get app version
+        run: echo "VERSION=$(yarn run get-version)" >> $GITHUB_ENV
+
       - name: Lint
         run: yarn run lint
 
@@ -45,8 +48,7 @@ jobs:
           SENTRY_PROJECT: ${{ secrets.SENTRY_PROJECT }}
         with:
           environment: production
-          release: ${{ github.ref }}
-          release_prefix: munchkin@
+          release: ${{ format('munchkin@{0}', env.VERSION) }}
           sourcemaps: "./packages/cordova/www ./packages/web/dist"
           url_prefix: "~"
 
