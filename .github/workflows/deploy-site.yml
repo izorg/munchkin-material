@@ -7,7 +7,7 @@ on:
     paths:
       - "packages/site/**"
       - "!packages/site/package.json"
-  workflow_dispatch:
+  workflow_dispatch: null
 
 jobs:
   deploy:

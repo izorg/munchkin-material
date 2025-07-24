@@ -198,6 +198,13 @@ export default ts.config(
     },
   },
   {
+    files: ["**/*.d.ts"],
+    name: "Typescript Declaration",
+    rules: {
+      "unicorn/require-module-specifiers": "off",
+    },
+  },
+  {
     extends: [jest.configs["flat/recommended"]],
     files: ["**/*.spec.ts?(x)"],
     name: "Jest",

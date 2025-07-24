@@ -78,7 +78,6 @@ store.subscribe(() => {
   }
 });
 
-// eslint-disable-next-line unicorn/prefer-module -- Hot Module Replacement logic
 module.hot?.accept(() => {
   store.replaceReducer(createRootReducer());
 });

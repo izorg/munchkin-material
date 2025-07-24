@@ -57,8 +57,8 @@
   "devDependencies": {
     "@babel/core": "7.28.0",
     "@mui/material": "7.2.0",
-    "@sentry/babel-plugin-component-annotate": "3.5.0",
-    "@sentry/react": "9.35.0",
+    "@sentry/babel-plugin-component-annotate": "4.0.0",
+    "@sentry/react": "9.41.0",
     "@totalpave/cordova-plugin-insets": "0.3.2",
     "@types/cordova": "11.0.3",
     "@types/react": "19.1.8",
@@ -79,11 +79,11 @@
     "cordova-plugin-statusbar": "4.0.0",
     "cordova-plugin-vibration": "3.1.1",
     "cordova-plugin-web-share": "1.4.2",
-    "core-js": "3.43.0",
+    "core-js": "3.44.0",
     "parcel": "2.15.4",
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "react-router": "7.6.3",
+    "react-router": "7.7.1",
     "smoothscroll-polyfill": "0.4.4"
   }
 }
