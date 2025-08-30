@@ -12,7 +12,7 @@ const nextConfig: NextConfig = {
     ignoreDuringBuilds: true, // Using project root ESLint check
   },
   experimental: {
-    typedRoutes: true,
+    typedEnv: true,
   },
   images: {
     unoptimized: true,
@@ -20,18 +20,14 @@ const nextConfig: NextConfig = {
   productionBrowserSourceMaps: true,
   trailingSlash: true,
   transpilePackages: ["@mui/material", "@mui/system", "@mui/utils"],
+  typedRoutes: true,
   typescript: {
     ignoreBuildErrors: true, // Using project root TypeScript check
   },
   webpack: (config: Configuration, { dev }) => {
     if (!dev) {
-      if (!config.resolve) {
-        config.resolve = {};
-      }
-
-      if (!config.resolve.alias) {
-        config.resolve.alias = {};
-      }
+      config.resolve ??= {};
+      config.resolve.alias ??= {};
 
       Object.assign(config.resolve.alias, {
         "@formatjs/icu-messageformat-parser":

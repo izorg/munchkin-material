@@ -23,7 +23,14 @@ import ts from "typescript-eslint";
 export default ts.config(
   gitignore(),
   {
-    ignores: [".yarn/", "packages/windows/Munchkin/"],
+    ignores: [
+      ".yarn/",
+      "packages/site/next-env.d.ts",
+      "packages/windows/Munchkin/",
+    ],
+    name: "Ignore",
+  },
+  {
     name: "Global",
     plugins: {
       "only-error": onlyError,
