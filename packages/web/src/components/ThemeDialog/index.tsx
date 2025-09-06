@@ -105,7 +105,7 @@ const ThemeDialog = () => {
               value={previewTheme.id}
             >
               {Object.values(themes)
-                .sort((t1, t2) => {
+                .toSorted((t1, t2) => {
                   const a = t1.name(intl);
                   const b = t2.name(intl);
 

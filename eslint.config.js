@@ -14,24 +14,21 @@ import perfectionist from "eslint-plugin-perfectionist";
 import react from "eslint-plugin-react";
 import reactHooks from "eslint-plugin-react-hooks";
 import unicorn from "eslint-plugin-unicorn";
+import { defineConfig, globalIgnores } from "eslint/config";
 import globals from "globals";
 import ts from "typescript-eslint";
 
 /**
  * Run `npx @eslint/config-inspector` to visualise the config
  */
-export default ts.config(
+export default defineConfig(
   gitignore(),
+  globalIgnores(
+    [".yarn/", "packages/site/next-env.d.ts", "packages/windows/Munchkin/"],
+    "global-ignores",
+  ),
   {
-    ignores: [
-      ".yarn/",
-      "packages/site/next-env.d.ts",
-      "packages/windows/Munchkin/",
-    ],
-    name: "Ignore",
-  },
-  {
-    name: "Global",
+    name: "global-setup",
     plugins: {
       "only-error": onlyError,
     },
@@ -60,7 +57,7 @@ export default ts.config(
         warnOnUnsupportedTypeScriptVersion: false,
       },
     },
-    name: "JavaScript & TypeScript",
+    name: "javascript-and-typescript",
     rules: {
       "@eslint-community/eslint-comments/require-description": [
         "error",
@@ -175,11 +172,11 @@ export default ts.config(
   {
     extends: [ts.configs.disableTypeChecked],
     files: ["**/*.js"],
-    name: "JavaScript",
+    name: "javascript",
   },
   {
     files: ["**/*.ts?(x)"],
-    name: "TypeScript",
+    name: "typescript",
     rules: {
       "@typescript-eslint/consistent-type-exports": [
         "error",
@@ -206,7 +203,7 @@ export default ts.config(
   },
   {
     files: ["**/*.d.ts"],
-    name: "Typescript Declaration",
+    name: "typescript-declarations",
     rules: {
       "unicorn/require-module-specifiers": "off",
     },
@@ -214,31 +211,31 @@ export default ts.config(
   {
     extends: [jest.configs["flat/recommended"]],
     files: ["**/*.spec.ts?(x)"],
-    name: "Jest",
+    name: "jest",
   },
   {
     files: ["**/scripts/**", "**/next.config.ts"],
     languageOptions: {
       globals: globals.node,
     },
-    name: "Scripts",
+    name: "scripts",
   },
   {
     extends: [json.configs.recommended],
     files: ["**/*.json"],
     language: "json/json",
-    name: "JSON",
+    name: "json",
   },
   {
     files: ["packages/cordova/**", "packages/web/**"],
-    name: "Cordova & Web",
+    name: "cordova-and-web",
     settings: {
       polyfills: ["Object.fromEntries"],
     },
   },
   {
     files: ["packages/site/**"],
-    name: "Site",
+    name: "site",
     plugins: {
       "@next/next": next,
     },
