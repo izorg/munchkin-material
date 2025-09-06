@@ -4061,6 +4061,14 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@munchkin/pwa@workspace:packages/pwa":
+  version: 0.0.0-use.local
+  resolution: "@munchkin/pwa@workspace:packages/pwa"
+  dependencies:
+    parcel: "npm:2.15.4"
+  languageName: unknown
+  linkType: soft
+
 "@munchkin/site@workspace:packages/site":
   version: 0.0.0-use.local
   resolution: "@munchkin/site@workspace:packages/site"

@@ -1,0 +1,21 @@
+{
+  "private": true,
+  "name": "@munchkin/pwa",
+  "type": "module",
+  "targets": {
+    "default": {
+      "distDir": "dist",
+      "source": [
+        "../web/src/index.html",
+        "../web/src/localized-files/*/index.html"
+      ]
+    }
+  },
+  "scripts": {
+    "build:parcel": "parcel build",
+    "dev": "parcel --port=3000"
+  },
+  "devDependencies": {
+    "parcel": "2.15.4"
+  }
+}
