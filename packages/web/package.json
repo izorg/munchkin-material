@@ -29,7 +29,7 @@
     "i18n:extract": "formatjs extract --format=simple --out-file=l10n/en.json \"src/**/*.{js,ts,tsx}\"",
     "screenshots": "playwright test",
     "start": "firebase emulators:start",
-    "test": "jest"
+    "test": "NODE_OPTIONS='--disable-warning=ExperimentalWarning --experimental-vm-modules' jest"
   },
   "devDependencies": {
     "@babel/core": "7.28.4",

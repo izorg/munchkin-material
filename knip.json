@@ -1,7 +1,6 @@
 {
   "$schema": "node_modules/knip/schema.json",
   "ignoreDependencies": [
-    "@babel/core",
     "@parcel/*",
     "@semantic-release/*",
     "@types/parcel-env",
