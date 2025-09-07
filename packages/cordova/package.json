@@ -57,6 +57,7 @@
   "devDependencies": {
     "@babel/core": "7.28.4",
     "@mui/material": "7.3.2",
+    "@parcel/babel-preset-env": "2.15.4",
     "@sentry/babel-plugin-component-annotate": "4.3.0",
     "@sentry/react": "10.10.0",
     "@totalpave/cordova-plugin-insets": "0.3.2",

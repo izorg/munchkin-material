@@ -1229,7 +1229,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/preset-env@npm:^7.11.0":
+"@babel/preset-env@npm:^7.11.0, @babel/preset-env@npm:^7.22.14":
   version: 7.28.3
   resolution: "@babel/preset-env@npm:7.28.3"
   dependencies:
@@ -4127,6 +4127,7 @@ __metadata:
   dependencies:
     "@babel/core": "npm:7.28.4"
     "@mui/material": "npm:7.3.2"
+    "@parcel/babel-preset-env": "npm:2.15.4"
     "@sentry/babel-plugin-component-annotate": "npm:4.3.0"
     "@sentry/react": "npm:10.10.0"
     "@totalpave/cordova-plugin-insets": "npm:0.3.2"
@@ -4220,6 +4221,7 @@ __metadata:
     "@mdi/js": "npm:7.4.47"
     "@mui/material": "npm:7.3.2"
     "@mui/utils": "npm:7.3.2"
+    "@parcel/babel-preset-env": "npm:2.15.4"
     "@parcel/config-default": "npm:2.15.4"
     "@parcel/core": "npm:2.15.4"
     "@parcel/packager-raw-url": "npm:2.15.4"
@@ -5514,6 +5516,18 @@ __metadata:
   version: 11.7.1
   resolution: "@oxc-resolver/binding-win32-x64-msvc@npm:11.7.1"
   conditions: os=win32 & cpu=x64
+  languageName: node
+  linkType: hard
+
+"@parcel/babel-preset-env@npm:2.15.4":
+  version: 2.15.4
+  resolution: "@parcel/babel-preset-env@npm:2.15.4"
+  dependencies:
+    "@babel/preset-env": "npm:^7.22.14"
+    semver: "npm:^7.7.1"
+  peerDependencies:
+    "@babel/core": ^7.22.11
+  checksum: 10/57c9ecbd1cdd213b6ff1000d9c08195e0c2b1ffb6d13f365cba7e5406226abe1431d610c6f2ebef302c2f8acc4f768eaf08bd4d829e1170c81a69799d01af45e
   languageName: node
   linkType: hard
 
