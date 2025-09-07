@@ -4269,6 +4269,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@munchkin/windows@workspace:packages/windows"
   dependencies:
+    "@parcel/babel-preset-env": "npm:2.15.4"
     parcel: "npm:2.15.4"
     react: "npm:19.1.1"
     react-dom: "npm:19.1.1"
