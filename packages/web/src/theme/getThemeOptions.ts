@@ -4,8 +4,6 @@ import {
   type PaletteMode,
 } from "@mui/material";
 import { common, orange } from "@mui/material/colors";
-// @ts-expect-error -- MUI v7 migration issue
-import { dark, light } from "@mui/material/styles/createPalette";
 import { deepmerge } from "@mui/utils";
 
 import { ios } from "../utils/platforms";
@@ -27,10 +25,6 @@ const getThemeOptions = ({
     colorSchemes: {
       dark: {
         palette: {
-          Dialog: {
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment,@typescript-eslint/no-unsafe-member-access -- MUI v7 migration issue
-            fullScreenBg: dark.background.paper,
-          },
           secondary: {
             main: orange.A400,
           },
@@ -38,10 +32,6 @@ const getThemeOptions = ({
       },
       light: {
         palette: {
-          Dialog: {
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment,@typescript-eslint/no-unsafe-member-access -- MUI v7 migration issue
-            fullScreenBg: light.background.paper,
-          },
           secondary: {
             main: orange.A400,
           },
@@ -130,18 +120,21 @@ const getThemeOptions = ({
             background: {
               default: common.black,
             },
-            Dialog: {
-              fullScreenBg: common.black,
-            },
           },
         },
       },
       components: {
         MuiDialog: {
           styleOverrides: {
-            paperFullScreen: ({ theme }) => ({
-              backgroundColor: theme.vars.palette.Dialog?.fullScreenBg,
-            }),
+            paperFullScreen: ({ ownerState, theme }) => {
+              if (ownerState.fullScreen) {
+                return {
+                  backgroundColor: theme.vars.palette.background.default,
+                };
+              }
+
+              return;
+            },
           },
         },
       },
