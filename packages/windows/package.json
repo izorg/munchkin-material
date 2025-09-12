@@ -15,7 +15,7 @@
     "build:www": "yarn g:rimraf Munchkin/Munchkin/Assets/www && yarn build --no-cache && yarn g:rimraf Munchkin/Munchkin/Assets/www/*.map"
   },
   "devDependencies": {
-    "@parcel/babel-preset-env": "2.15.4",
+    "babel-preset-web": "workspace:*",
     "parcel": "2.15.4",
     "react": "19.1.1",
     "react-dom": "19.1.1",

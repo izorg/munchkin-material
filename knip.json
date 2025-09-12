@@ -4,6 +4,7 @@
     "@parcel/*",
     "@semantic-release/*",
     "@types/parcel-env",
+    "babel-preset-web",
     "conventional-changelog-conventionalcommits",
     "cordova-*",
     "firebase-tools",
