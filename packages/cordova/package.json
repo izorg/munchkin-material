@@ -59,10 +59,10 @@
     "@mui/material": "7.3.2",
     "@parcel/babel-preset-env": "2.15.4",
     "@sentry/babel-plugin-component-annotate": "4.3.0",
-    "@sentry/react": "10.10.0",
+    "@sentry/react": "10.11.0",
     "@totalpave/cordova-plugin-insets": "0.3.2",
     "@types/cordova": "11.0.3",
-    "@types/react": "19.1.12",
+    "@types/react": "19.1.13",
     "@types/react-dom": "19.1.9",
     "@types/smoothscroll-polyfill": "0.3.4",
     "abortcontroller-polyfill": "1.7.8",
@@ -84,7 +84,7 @@
     "parcel": "2.15.4",
     "react": "19.1.1",
     "react-dom": "19.1.1",
-    "react-router": "7.8.2",
+    "react-router": "7.9.0",
     "smoothscroll-polyfill": "0.4.4"
   }
 }
