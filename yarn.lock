@@ -4164,6 +4164,7 @@ __metadata:
   resolution: "@munchkin/pwa@workspace:packages/pwa"
   dependencies:
     parcel: "npm:2.15.4"
+    workbox-cli: "npm:7.3.0"
   languageName: unknown
   linkType: soft
 

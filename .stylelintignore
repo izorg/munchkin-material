@@ -1,11 +1,10 @@
-coverage
+coverage/
+dist/
 
-/packages/cordova/platforms
-/packages/cordova/plugins
-/packages/cordova/www
+/packages/cordova/platforms/
+/packages/cordova/plugins/
+/packages/cordova/www/
 
-/packages/site/out
-
-/packages/web/dist
+/packages/site/out/
 
 /packages/windows/Munchkin/
