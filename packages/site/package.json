@@ -9,7 +9,7 @@
     "dev": "next dev",
     "i18n:compile": "formatjs compile-folder --ast --format=simple domains/l10n/messages domains/l10n/messages/generated",
     "i18n:extract": "formatjs extract --format=simple --out-file=domains/l10n/messages/en.json \"{app,domains}/**/*.{ts,tsx}\"",
-    "start": "firebase-tools emulators:start"
+    "start": "firebase emulators:start"
   },
   "devDependencies": {
     "@emotion/cache": "11.14.0",

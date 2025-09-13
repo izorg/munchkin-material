@@ -20,6 +20,12 @@ const nextConfig: NextConfig = {
   productionBrowserSourceMaps: true,
   trailingSlash: true,
   transpilePackages: ["@mui/material", "@mui/system", "@mui/utils"],
+  turbopack: {
+    resolveAlias: {
+      "@formatjs/icu-messageformat-parser":
+        "@formatjs/icu-messageformat-parser/no-parser",
+    },
+  },
   typedRoutes: true,
   typescript: {
     ignoreBuildErrors: true, // Using project root TypeScript check
