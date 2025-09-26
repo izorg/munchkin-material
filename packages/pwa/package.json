@@ -18,7 +18,7 @@
     "dev": "parcel --port=3000"
   },
   "devDependencies": {
-    "parcel": "2.15.4",
+    "parcel": "2.16.0",
     "workbox-cli": "7.3.0"
   }
 }

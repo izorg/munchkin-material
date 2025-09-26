@@ -7,7 +7,6 @@
     "babel-preset-web",
     "conventional-changelog-conventionalcommits",
     "cordova-*",
-    "firebase-tools",
     "semantic-release"
   ],
   "workspaces": {
