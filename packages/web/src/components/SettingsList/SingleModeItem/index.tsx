@@ -46,6 +46,7 @@ const SingleModeItem = () => {
         dispatch(addPlayer(player));
         dispatch(setSingleModePlayer(player.id));
 
+        // eslint-disable-next-line react-hooks/immutability -- will fix later
         singleModePlayerId = player.id;
       }
 

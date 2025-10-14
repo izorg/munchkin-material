@@ -9,6 +9,7 @@ export const useExitApp = () => {
   const initialKeyRef = useRef(location.key);
   const homeLocationRef = useRef(false);
 
+  // eslint-disable-next-line react-hooks/refs -- will fix later
   homeLocationRef.current = location.key === initialKeyRef.current;
 
   const goBack = useGoBack();

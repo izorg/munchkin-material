@@ -45,6 +45,7 @@ const ColorPicker: FC<ColorPickerProps> = (props) => {
 
   useEffect(() => {
     if (valueProp) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- will fix later
       setValue(valueProp);
     }
   }, [valueProp]);

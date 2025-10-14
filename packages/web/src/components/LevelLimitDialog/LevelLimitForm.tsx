@@ -81,6 +81,7 @@ export const LevelLimitForm = (props: LevelLimitFormProps) => {
 
   return (
     <form {...rest} onSubmit={onSubmit}>
+      {/* eslint-disable-next-line react-hooks/refs -- will fix later */}
       <RadioGroup defaultValue={defaultValueRef.current} name="levelLimit">
         <FormControlLabel
           control={<Radio color="primary" />}

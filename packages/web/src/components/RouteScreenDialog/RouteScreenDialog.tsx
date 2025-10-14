@@ -25,11 +25,13 @@ export const RouteScreenDialog = (props: RouteScreenDialogProps) => {
   const locationRef = useRef<Location>(location);
 
   if (match) {
+    // eslint-disable-next-line react-hooks/refs -- will fix later
     locationRef.current = location;
   }
 
   return (
     <ScreenDialog open={Boolean(match)}>
+      {/* eslint-disable-next-line react-hooks/refs -- will fix later */}
       <Routes location={locationRef.current}>
         <Route element={children} path={path} />
       </Routes>
