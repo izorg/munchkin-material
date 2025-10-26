@@ -61,6 +61,7 @@ const PlayerDialog = () => {
       return queryPlayer ? players[queryPlayer] : undefined;
     }
 
+    // eslint-disable-next-line react-hooks/refs -- fix later
     return previousPlayerRef.current;
   }, [open, players, queryPlayer]);
 
@@ -209,6 +210,7 @@ const PlayerDialog = () => {
           <FormControl fullWidth margin="normal">
             <InputLabel htmlFor={nameId}>{nameLabel}</InputLabel>
             <OutlinedInput
+              // eslint-disable-next-line react-hooks/refs -- fix later
               autoFocus={!editPlayer}
               defaultValue={editPlayer?.name}
               id={nameId}

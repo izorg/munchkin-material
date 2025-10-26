@@ -55,12 +55,12 @@
     }
   },
   "devDependencies": {
-    "@mui/material": "7.3.4",
-    "@sentry/react": "10.17.0",
+    "@mui/material": "7.3.5",
+    "@sentry/react": "10.23.0",
     "@totalpave/cordova-plugin-insets": "0.3.2",
     "@types/cordova": "11.0.3",
-    "@types/react": "19.2.0",
-    "@types/react-dom": "19.2.0",
+    "@types/react": "19.2.2",
+    "@types/react-dom": "19.2.2",
     "@types/smoothscroll-polyfill": "0.3.4",
     "abortcontroller-polyfill": "1.7.8",
     "babel-preset-web": "workspace:*",
@@ -78,11 +78,11 @@
     "cordova-plugin-statusbar": "4.0.0",
     "cordova-plugin-vibration": "3.1.1",
     "cordova-plugin-web-share": "1.4.2",
-    "core-js": "3.45.1",
-    "parcel": "2.16.0",
+    "core-js": "3.46.0",
+    "parcel": "2.16.1",
     "react": "19.2.0",
     "react-dom": "19.2.0",
-    "react-router": "7.9.3",
+    "react-router": "7.9.5",
     "smoothscroll-polyfill": "0.4.4"
   }
 }

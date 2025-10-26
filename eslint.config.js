@@ -45,7 +45,7 @@ export default defineConfig(
       jsxA11y.flatConfigs.recommended,
       react.configs.flat.recommended,
       react.configs.flat["jsx-runtime"],
-      reactHooks.configs["recommended-latest"],
+      reactHooks.configs.flat["recommended-latest"],
       unicorn.configs.recommended,
       perfectionist.configs["recommended-alphabetical"],
     ],
