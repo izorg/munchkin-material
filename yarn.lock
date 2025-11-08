@@ -4230,7 +4230,7 @@ __metadata:
   dependencies:
     "@mui/material": "npm:7.3.5"
     "@sentry/react": "npm:10.23.0"
-    "@totalpave/cordova-plugin-insets": "npm:0.3.2"
+    "@totalpave/cordova-plugin-insets": "npm:0.4.0"
     "@types/cordova": "npm:11.0.3"
     "@types/react": "npm:19.2.2"
     "@types/react-dom": "npm:19.2.2"
@@ -4251,6 +4251,7 @@ __metadata:
     cordova-plugin-statusbar: "npm:4.0.0"
     cordova-plugin-vibration: "npm:3.1.1"
     cordova-plugin-web-share: "npm:1.4.2"
+    cordova-support-android-plugin: "npm:2.0.4"
     core-js: "npm:3.46.0"
     parcel: "npm:2.16.1"
     react: "npm:19.2.0"
@@ -8137,12 +8138,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@totalpave/cordova-plugin-insets@npm:0.3.2":
-  version: 0.3.2
-  resolution: "@totalpave/cordova-plugin-insets@npm:0.3.2"
+"@totalpave/cordova-plugin-insets@npm:0.4.0":
+  version: 0.4.0
+  resolution: "@totalpave/cordova-plugin-insets@npm:0.4.0"
   dependencies:
-    tslib: "npm:2.7.0"
-  checksum: 10/146d7f1c4c39def6dc0ba473c57ab801e05c57160b50be5d9e250f97b632f3f78fb0034f02bafb8fe27cc59798a4745b4d5b866a2307401625940a5d850b320b
+    tslib: "npm:2.8.1"
+  checksum: 10/e34cbbb93f48318a78e584a6cfb79dce7a45e6480c8d5f9ef157a005cb01d5b65dc1123fa8a8e8799e19acc23b19e07eace798b5cf380648b48286cc8996b336
   languageName: node
   linkType: hard
 
@@ -11655,6 +11656,13 @@ __metadata:
     open: "npm:^7.0.3"
     which: "npm:^2.0.2"
   checksum: 10/d655a195da2f04fbf92f0a290ae036883dc1e5b50b4a2f8b4eee5c9c263c51c49c3fa3609aca7c5af17a0d9abfe2c305277deb110e2067aea49e48a628a58499
+  languageName: node
+  linkType: hard
+
+"cordova-support-android-plugin@npm:2.0.4":
+  version: 2.0.4
+  resolution: "cordova-support-android-plugin@npm:2.0.4"
+  checksum: 10/0d33dc9e9de4319dd38e014f16efc01e3127fa9c05e3450f72b25b5e0cd740db3065331bf53eb9ca97e77163ab5a41e42b38e5fcb98b4be34afc6f1dbbb71589
   languageName: node
   linkType: hard
 
@@ -24674,10 +24682,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tslib@npm:2.7.0":
-  version: 2.7.0
-  resolution: "tslib@npm:2.7.0"
-  checksum: 10/9a5b47ddac65874fa011c20ff76db69f97cf90c78cff5934799ab8894a5342db2d17b4e7613a087046bc1d133d21547ddff87ac558abeec31ffa929c88b7fce6
+"tslib@npm:2.8.1, tslib@npm:^2.0.0, tslib@npm:^2.0.1, tslib@npm:^2.1.0, tslib@npm:^2.4.0, tslib@npm:^2.8.0":
+  version: 2.8.1
+  resolution: "tslib@npm:2.8.1"
+  checksum: 10/3e2e043d5c2316461cb54e5c7fe02c30ef6dccb3384717ca22ae5c6b5bc95232a6241df19c622d9c73b809bea33b187f6dbc73030963e29950c2141bc32a79f7
   languageName: node
   linkType: hard
 
@@ -24685,13 +24693,6 @@ __metadata:
   version: 1.14.1
   resolution: "tslib@npm:1.14.1"
   checksum: 10/7dbf34e6f55c6492637adb81b555af5e3b4f9cc6b998fb440dac82d3b42bdc91560a35a5fb75e20e24a076c651438234da6743d139e4feabf0783f3cdfe1dddb
-  languageName: node
-  linkType: hard
-
-"tslib@npm:^2.0.0, tslib@npm:^2.0.1, tslib@npm:^2.1.0, tslib@npm:^2.4.0, tslib@npm:^2.8.0":
-  version: 2.8.1
-  resolution: "tslib@npm:2.8.1"
-  checksum: 10/3e2e043d5c2316461cb54e5c7fe02c30ef6dccb3384717ca22ae5c6b5bc95232a6241df19c622d9c73b809bea33b187f6dbc73030963e29950c2141bc32a79f7
   languageName: node
   linkType: hard
 

@@ -51,13 +51,14 @@
       },
       "cordova-plugin-statusbar": {},
       "cordova-plugin-vibration": {},
-      "cordova-plugin-web-share": {}
+      "cordova-plugin-web-share": {},
+      "cordova-support-android-plugin": {}
     }
   },
   "devDependencies": {
     "@mui/material": "7.3.5",
     "@sentry/react": "10.23.0",
-    "@totalpave/cordova-plugin-insets": "0.3.2",
+    "@totalpave/cordova-plugin-insets": "0.4.0",
     "@types/cordova": "11.0.3",
     "@types/react": "19.2.2",
     "@types/react-dom": "19.2.2",
@@ -78,6 +79,7 @@
     "cordova-plugin-statusbar": "4.0.0",
     "cordova-plugin-vibration": "3.1.1",
     "cordova-plugin-web-share": "1.4.2",
+    "cordova-support-android-plugin": "2.0.4",
     "core-js": "3.46.0",
     "parcel": "2.16.1",
     "react": "19.2.0",
