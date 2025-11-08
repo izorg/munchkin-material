@@ -3,10 +3,11 @@
 import { mdiWeb } from "@mdi/js";
 import { IconButton, Menu, MenuItem, SvgIcon, Tooltip } from "@mui/material";
 import { type Route } from "next";
-import NextLink from "next/link";
 import { useParams } from "next/navigation";
 import { type MouseEvent, useState } from "react";
 import { useIntl } from "react-intl";
+
+import { NextLink } from "../next-link";
 
 import { LANGUAGE } from "./constants";
 

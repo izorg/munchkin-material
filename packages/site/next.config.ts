@@ -8,10 +8,8 @@ const withBundleAnalyzer = bundleAnalyzer({
 });
 
 const nextConfig: NextConfig = {
-  eslint: {
-    ignoreDuringBuilds: true, // Using project root ESLint check
-  },
   experimental: {
+    turbopackFileSystemCacheForDev: true,
     typedEnv: true,
   },
   images: {
@@ -20,12 +18,15 @@ const nextConfig: NextConfig = {
   productionBrowserSourceMaps: true,
   trailingSlash: true,
   transpilePackages: ["@mui/material", "@mui/system", "@mui/utils"],
-  turbopack: {
-    resolveAlias: {
-      "@formatjs/icu-messageformat-parser":
-        "@formatjs/icu-messageformat-parser/no-parser",
-    },
-  },
+  turbopack:
+    process.env.NODE_ENV === "development"
+      ? undefined
+      : {
+          resolveAlias: {
+            "@formatjs/icu-messageformat-parser":
+              "@formatjs/icu-messageformat-parser/no-parser",
+          },
+        },
   typedRoutes: true,
   typescript: {
     ignoreBuildErrors: true, // Using project root TypeScript check

@@ -10,10 +10,10 @@ import {
   Toolbar,
   Typography,
 } from "@mui/material";
-import NextLink from "next/link";
 
 import { getServerIntl, type LANGUAGE, LanguageSwitcher } from "../i18n";
 import { LOCALE } from "../l10n";
+import { NextLink } from "../next-link";
 
 import { StoreButton } from "./StoreButton";
 
