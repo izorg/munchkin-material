@@ -1,4 +1,4 @@
-import { type PropsWithChildren, useRef } from "react";
+import { type PropsWithChildren, useEffect, useReducer } from "react";
 import {
   type Location,
   Route,
@@ -8,6 +8,8 @@ import {
 } from "react-router";
 
 import ScreenDialog from "../ScreenDialog";
+
+const reducer = (state: Location, action: Location) => action;
 
 type RouteScreenDialogProps = PropsWithChildren<{
   path: string;
@@ -22,17 +24,18 @@ export const RouteScreenDialog = (props: RouteScreenDialogProps) => {
   });
 
   const location = useLocation();
-  const locationRef = useRef<Location>(location);
 
-  if (match) {
-    // eslint-disable-next-line react-hooks/refs -- will fix later
-    locationRef.current = location;
-  }
+  const [routeLocation, dispatchRouteLocation] = useReducer(reducer, location);
+
+  useEffect(() => {
+    if (match) {
+      dispatchRouteLocation(location);
+    }
+  }, [location, match]);
 
   return (
     <ScreenDialog open={Boolean(match)}>
-      {/* eslint-disable-next-line react-hooks/refs -- will fix later */}
-      <Routes location={locationRef.current}>
+      <Routes location={routeLocation}>
         <Route element={children} path={path} />
       </Routes>
     </ScreenDialog>

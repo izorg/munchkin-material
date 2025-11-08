@@ -1,12 +1,6 @@
 import { type Theme, useFormControl, useMediaQuery } from "@mui/material";
-import {
-  type FC,
-  type FocusEvent,
-  type KeyboardEvent,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import { unstable_useControlled as useControlled } from "@mui/utils";
+import { type FC, type FocusEvent, type KeyboardEvent, useRef } from "react";
 import { useSearchParams } from "react-router";
 
 import { type AvailableColor } from "../../../utils/availableColors";
@@ -41,14 +35,12 @@ const ColorPicker: FC<ColorPickerProps> = (props) => {
   const anchorEl = useRef<HTMLButtonElement>(null);
   const ignoreNextBlur = useRef(false);
 
-  const [value, setValue] = useState(defaultValue ?? valueProp);
-
-  useEffect(() => {
-    if (valueProp) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect -- will fix later
-      setValue(valueProp);
-    }
-  }, [valueProp]);
+  const [value, setValue] = useControlled({
+    controlled: valueProp,
+    default: defaultValue,
+    name: "ColorPicker",
+    state: "value",
+  });
 
   const goBack = useGoBack();
 

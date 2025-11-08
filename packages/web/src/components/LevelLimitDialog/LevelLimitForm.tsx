@@ -3,7 +3,7 @@ import {
   type ComponentPropsWithoutRef,
   type FormEvent,
   useCallback,
-  useRef,
+  useState,
 } from "react";
 import { useIntl } from "react-intl";
 
@@ -31,7 +31,7 @@ export const LevelLimitForm = (props: LevelLimitFormProps) => {
 
   const dispatch = useAppDispatch();
 
-  const defaultValueRef = useRef(
+  const [defaultValue] = useState(
     usePresentSelector((state) => {
       if (!state.settings.levelLimit) {
         return NO_LIMIT;
@@ -81,8 +81,7 @@ export const LevelLimitForm = (props: LevelLimitFormProps) => {
 
   return (
     <form {...rest} onSubmit={onSubmit}>
-      {/* eslint-disable-next-line react-hooks/refs -- will fix later */}
-      <RadioGroup defaultValue={defaultValueRef.current} name="levelLimit">
+      <RadioGroup defaultValue={defaultValue} name="levelLimit">
         <FormControlLabel
           control={<Radio color="primary" />}
           label={intl.formatMessage(levelLimitMessages.none)}

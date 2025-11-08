@@ -18,7 +18,7 @@ const SingleModeItem = () => {
 
   const singleMode = usePresentSelector((state) => state.settings.singleMode);
 
-  let singleModePlayerId = usePresentSelector(
+  const singleModePlayerId = usePresentSelector(
     (state) => state.settings.singleModePlayerId,
   );
 
@@ -40,17 +40,18 @@ const SingleModeItem = () => {
     }
 
     if (isSingleMode) {
-      if (!singleModePlayerId) {
+      let playerId = singleModePlayerId;
+
+      if (!playerId) {
         const player = createPlayer();
 
         dispatch(addPlayer(player));
         dispatch(setSingleModePlayer(player.id));
 
-        // eslint-disable-next-line react-hooks/immutability -- will fix later
-        singleModePlayerId = player.id;
+        playerId = player.id;
       }
 
-      dispatch(startCombat(singleModePlayerId));
+      dispatch(startCombat(playerId));
     }
 
     dispatch(setSingleMode(isSingleMode));
