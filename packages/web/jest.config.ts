@@ -1,7 +1,6 @@
-/**
- * @type {import('jest').Config}
- */
-const config = {
+import { type Config } from "jest";
+
+const config: Config = {
   extensionsToTreatAsEsm: [".ts", ".tsx"],
   roots: ["<rootDir>/src/"],
   transform: {

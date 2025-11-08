@@ -1,7 +1,7 @@
 "use client";
 
 import { CssBaseline, ThemeProvider } from "@mui/material";
-import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
+import { AppRouterCacheProvider } from "@mui/material-nextjs/v16-appRouter";
 import { type PropsWithChildren, useMemo } from "react";
 import { prefixer } from "stylis";
 import rtlPlugin from "stylis-plugin-rtl";

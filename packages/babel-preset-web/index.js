@@ -7,7 +7,7 @@ const babelPresetWeb = () => ({
     [
       parcelBabelPresetEnv,
       {
-        corejs: "3.45",
+        corejs: "3.46",
       },
     ],
   ],
