@@ -1,5 +1,6 @@
 import { Container, Link } from "@mui/material";
 
+/* eslint-disable formatjs/no-literal-string-in-jsx -- no translations yet */
 export const PrivacyPolicy = () => (
   <Container>
     <h2>Privacy Policy</h2>
@@ -157,3 +158,4 @@ export const PrivacyPolicy = () => (
     </p>
   </Container>
 );
+/* eslint-enable formatjs/no-literal-string-in-jsx */

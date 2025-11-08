@@ -19,7 +19,7 @@ import globals from "globals";
 import ts from "typescript-eslint";
 
 /**
- * Run `npx @eslint/config-inspector` to visualise the config
+ * Run `yarn dlx @eslint/config-inspector` to visualise the config
  */
 export default defineConfig(
   gitignore(),
@@ -43,18 +43,17 @@ export default defineConfig(
       importPlugin.flatConfigs.recommended,
       importPlugin.flatConfigs.typescript,
       jsxA11y.flatConfigs.recommended,
+      perfectionist.configs["recommended-alphabetical"],
       react.configs.flat.recommended,
       react.configs.flat["jsx-runtime"],
       reactHooks.configs.flat["recommended-latest"],
       unicorn.configs.recommended,
-      perfectionist.configs["recommended-alphabetical"],
     ],
     files: ["**/*.js", "**/*.ts?(x)"],
     languageOptions: {
       parserOptions: {
         project: true,
         tsconfigRootDir: import.meta.dirname,
-        warnOnUnsupportedTypeScriptVersion: false,
       },
     },
     name: "javascript-and-typescript",
@@ -66,8 +65,6 @@ export default defineConfig(
         },
       ],
 
-      "@typescript-eslint/consistent-return": "off",
-
       "formatjs/enforce-description": "off",
       "formatjs/enforce-id": [
         "error",
@@ -76,7 +73,6 @@ export default defineConfig(
         },
       ],
       "formatjs/no-invalid-icu": "error",
-      "formatjs/no-literal-string-in-jsx": "off",
 
       "import/consistent-type-specifier-style": ["error", "prefer-inline"],
 
@@ -109,7 +105,6 @@ export default defineConfig(
           ],
         },
       ],
-      "perfectionist/sort-modules": "off",
 
       "unicorn/filename-case": [
         "error",
@@ -234,15 +229,9 @@ export default defineConfig(
     },
   },
   {
+    extends: [next.configs.recommended, next.configs["core-web-vitals"]],
     files: ["packages/site/**"],
     name: "site",
-    plugins: {
-      "@next/next": next,
-    },
-    rules: {
-      ...next.configs.recommended.rules,
-      ...next.configs["core-web-vitals"].rules,
-    },
     settings: {
       next: {
         rootDir: "packages/site",

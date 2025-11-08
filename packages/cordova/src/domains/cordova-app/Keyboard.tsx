@@ -1,13 +1,13 @@
 import { GlobalStyles } from "@mui/material";
 import { useEffect, useState } from "react";
 
-type KeyboardEventType = "keyboardWillHide" | "keyboardWillShow";
-
 type KeyboardEvent = {
   keyboardHeight?: number;
 } & Event;
 
 type KeyboardEventHandler = (event: KeyboardEvent) => void;
+
+type KeyboardEventType = "keyboardWillHide" | "keyboardWillShow";
 
 declare global {
   interface Window {

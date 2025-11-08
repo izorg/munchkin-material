@@ -126,6 +126,7 @@ const Combat = () => {
                 margin: `${theme.spacing(0, 0.5)}`,
               })}
             >
+              {/* eslint-disable-next-line formatjs/no-literal-string-in-jsx -- decoration, not a text */}
               {direction === "rtl" ? "\\" : "/"}
             </Box>
             <Box

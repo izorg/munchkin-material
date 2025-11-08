@@ -111,6 +111,7 @@ export const HomePage = async (props: HomePageProps) => {
                   <path d={mdiGooglePlay} />
                 </SvgIcon>
               }
+              // eslint-disable-next-line formatjs/no-literal-string-in-jsx -- shop name
             >
               Google Play
             </StoreButton>
@@ -121,6 +122,7 @@ export const HomePage = async (props: HomePageProps) => {
                   <path d={mdiApple} />
                 </SvgIcon>
               }
+              // eslint-disable-next-line formatjs/no-literal-string-in-jsx -- shop name
             >
               App Store
             </StoreButton>
@@ -131,6 +133,7 @@ export const HomePage = async (props: HomePageProps) => {
                   <path d={mdiMicrosoftWindows} />
                 </SvgIcon>
               }
+              // eslint-disable-next-line formatjs/no-literal-string-in-jsx -- shop name
             >
               Windows
             </StoreButton>
