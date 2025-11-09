@@ -1,11 +1,11 @@
-import parcelBabelPresetEnv from "@parcel/babel-preset-env";
-import sentryBabelPluginComponentAnnotate from "@sentry/babel-plugin-component-annotate";
-
 const babelPresetWeb = () => ({
-  plugins: [sentryBabelPluginComponentAnnotate],
+  plugins: [
+    "babel-plugin-react-compiler",
+    "@sentry/babel-plugin-component-annotate",
+  ],
   presets: [
     [
-      parcelBabelPresetEnv,
+      "@parcel/babel-preset-env",
       {
         corejs: "3.46",
       },

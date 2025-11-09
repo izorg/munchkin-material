@@ -10,6 +10,11 @@
     "semantic-release"
   ],
   "workspaces": {
+    "packages/babel-preset-web": {
+      "babel": {
+        "config": ["index.js"]
+      }
+    },
     "packages/cordova": {
       "entry": ["src/index.ts", "scripts/copy-gradle-extras.js"]
     },
