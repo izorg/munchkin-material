@@ -1,4 +1,5 @@
 import { match } from "@formatjs/intl-localematcher";
+import { captureException, captureMessage } from "@sentry/react";
 import { type MessageFormatElement } from "react-intl";
 
 export const BE = "be";
@@ -65,14 +66,36 @@ export const isSupportedLocale = (
   return false;
 };
 
-export const getLocale = () =>
-  match(navigator.languages, availableLocales, EN, {
-    /**
-     * Used for better matching locales without country like `en`, `ru`, etc.
-     * See https://datatracker.ietf.org/doc/html/rfc4647#section-3.4
-     */
-    algorithm: "lookup",
-  }) as AvailableLocale;
+export const getLocale = () => {
+  let locale;
+
+  try {
+    locale = match(navigator.languages, availableLocales, EN, {
+      /**
+       * Used for better matching locales without country like `en`, `ru`, etc.
+       * See https://datatracker.ietf.org/doc/html/rfc4647#section-3.4
+       */
+      algorithm: "lookup",
+    });
+  } catch (error) {
+    captureException(error, {
+      extra: {
+        language: navigator.language,
+        languages: navigator.languages,
+      },
+    });
+
+    return EN;
+  }
+
+  if (isSupportedLocale(locale)) {
+    return locale;
+  } else {
+    captureMessage(`Unsupported locale: ${locale}`);
+  }
+
+  return EN;
+};
 
 /* istanbul ignore next */
 const loaders = {
