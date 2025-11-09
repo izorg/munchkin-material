@@ -16,6 +16,7 @@ const nextConfig: NextConfig = {
     unoptimized: true,
   },
   productionBrowserSourceMaps: true,
+  reactCompiler: true,
   trailingSlash: true,
   transpilePackages: ["@mui/material", "@mui/system", "@mui/utils"],
   turbopack:
