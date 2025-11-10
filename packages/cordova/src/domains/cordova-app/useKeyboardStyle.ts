@@ -2,11 +2,11 @@ import { useTheme } from "@mui/material";
 import { useEffect } from "react";
 
 declare global {
-  interface Window {
-    Keyboard?: {
-      setKeyboardStyle: (color: "dark" | "light") => void;
-    };
-  }
+  var Keyboard:
+    | {
+        setKeyboardStyle: (color: "dark" | "light") => void;
+      }
+    | undefined;
 }
 
 export const useKeyboardStyle = () => {
@@ -17,8 +17,8 @@ export const useKeyboardStyle = () => {
       return;
     }
 
-    if (window.Keyboard?.setKeyboardStyle) {
-      window.Keyboard.setKeyboardStyle(theme.palette.mode);
+    if (globalThis.Keyboard?.setKeyboardStyle) {
+      globalThis.Keyboard.setKeyboardStyle(theme.palette.mode);
     }
   }, [theme.palette.mode]);
 };

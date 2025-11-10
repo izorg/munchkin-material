@@ -1,6 +1,15 @@
 import { type EnhancedStore } from "@reduxjs/toolkit";
 
 declare global {
+  var munchkinDev:
+    | {
+        setLocale: (locale: string) => void;
+        setTestData: () => void;
+      }
+    | undefined;
+
+  var reduxStore: EnhancedStore | undefined;
+
   namespace Intl {
     interface Locale {
       getTextInfo?: () => {
@@ -20,13 +29,5 @@ declare global {
     hot?: {
       accept(path?: string, callback?: () => void): void;
     };
-  }
-  interface Window {
-    munchkinDev?: {
-      setLocale: (locale: string) => void;
-      setTestData: () => void;
-    };
-
-    reduxStore?: EnhancedStore;
   }
 }

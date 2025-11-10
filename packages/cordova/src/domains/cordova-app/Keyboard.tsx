@@ -31,12 +31,12 @@ export const Keyboard = () => {
       setKeyboardHeight(event.keyboardHeight ?? 0);
     };
 
-    window.addEventListener("keyboardWillHide", onKeyboardToggle);
-    window.addEventListener("keyboardWillShow", onKeyboardToggle);
+    globalThis.addEventListener("keyboardWillHide", onKeyboardToggle);
+    globalThis.addEventListener("keyboardWillShow", onKeyboardToggle);
 
     return () => {
-      window.removeEventListener("keyboardWillHide", onKeyboardToggle);
-      window.removeEventListener("keyboardWillShow", onKeyboardToggle);
+      globalThis.removeEventListener("keyboardWillHide", onKeyboardToggle);
+      globalThis.removeEventListener("keyboardWillShow", onKeyboardToggle);
     };
   }, []);
 

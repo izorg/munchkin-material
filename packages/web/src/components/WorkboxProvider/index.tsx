@@ -50,10 +50,10 @@ const WorkboxProvider: FC<PropsWithChildren> = ({ children }) => {
     const applyUpdate = () => {
       if (workbox) {
         workbox.addEventListener("controlling", () => {
-          if (window.location.pathname === "/") {
-            window.location.reload();
+          if (globalThis.location.pathname === "/") {
+            globalThis.location.reload();
           } else {
-            window.location.href = "/";
+            globalThis.location.href = "/";
           }
         });
 

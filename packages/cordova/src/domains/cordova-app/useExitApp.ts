@@ -14,7 +14,7 @@ export const useExitApp = () => {
     event.preventDefault();
 
     if (location.key === initialKeyRef.current) {
-      window.navigator.app.exitApp();
+      globalThis.navigator.app.exitApp();
     } else {
       await goBack();
     }

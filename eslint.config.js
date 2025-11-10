@@ -140,6 +140,7 @@ export default defineConfig(
         {
           replacements: {
             ctx: false,
+            dev: false,
             dir: false,
             el: false,
             env: false,

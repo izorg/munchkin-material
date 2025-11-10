@@ -6,7 +6,7 @@ export const useHeaderColor = () => {
 
   useEffect(() => {
     if (cordova.platformId === "android") {
-      window.plugins?.headerColor?.tint(
+      globalThis.plugins?.headerColor?.tint(
         rgbToHex(darken(theme.palette.primary.main, 0.5)),
       );
     }

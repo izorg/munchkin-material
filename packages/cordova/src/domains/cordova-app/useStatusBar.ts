@@ -13,7 +13,7 @@ export const useStatusBar = () => {
   useEffect(() => {
     if (cordova.platformId === "android") {
       setTimeout(() => {
-        window.StatusBar.backgroundColorByHexString(
+        globalThis.StatusBar.backgroundColorByHexString(
           palette.mode === "dark" && pureBlack
             ? palette.background.default
             : rgbToHex(darken(palette.primary.main, 0.5)),
@@ -30,9 +30,9 @@ export const useStatusBar = () => {
   useEffect(() => {
     if (cordova.platformId === "ios") {
       if (palette.mode === "dark") {
-        window.StatusBar.styleLightContent();
+        globalThis.StatusBar.styleLightContent();
       } else {
-        window.StatusBar.styleDefault();
+        globalThis.StatusBar.styleDefault();
       }
     }
   }, [palette.mode]);

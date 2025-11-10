@@ -14,7 +14,7 @@ import { WakeLockContext } from "../../../../web/src/utils/wakeLockContext";
 const WakeLockProvider: FC<PropsWithChildren> = ({ children }) => {
   const dispatch = useAppDispatch();
 
-  const insomnia = window.plugins?.insomnia;
+  const insomnia = globalThis.plugins?.insomnia;
   const wakeLockSupport = Boolean(insomnia) || "wakeLock" in navigator;
   const wakeLock = usePresentSelector((state) => state.settings.keepAwake);
   const wakeLockRef = useRef<WakeLockSentinel>(undefined);

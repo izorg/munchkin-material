@@ -32,7 +32,7 @@ const setTestData = () => {
   }
 };
 
-window.munchkinDev = {
+globalThis.munchkinDev = {
   setLocale,
   setTestData,
 };

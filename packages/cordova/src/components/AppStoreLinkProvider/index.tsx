@@ -8,7 +8,9 @@ const appStoreLink: Partial<Record<string, string>> = {
 };
 
 const AppStoreLinkProvider: FC<PropsWithChildren> = ({ children }) => (
-  <AppStoreLinkContext.Provider value={appStoreLink[window.cordova.platformId]}>
+  <AppStoreLinkContext.Provider
+    value={appStoreLink[globalThis.cordova.platformId]}
+  >
     {children}
   </AppStoreLinkContext.Provider>
 );

@@ -51,11 +51,11 @@ export const useAppDispatch = useDispatch.withTypes<AppDispatch>();
 export const useAppSelector = useSelector.withTypes<RootState>();
 
 if (process.env.NODE_ENV === "development") {
-  window.reduxStore = store;
+  globalThis.reduxStore = store;
 }
 
 let saveDate = Date.now();
-let saveTimeout = 0;
+let saveTimeout: ReturnType<typeof globalThis.setTimeout> | undefined;
 const timeout = 100;
 
 const saveStoreState = () => {
@@ -70,10 +70,10 @@ store.subscribe(() => {
   if (Date.now() - saveDate > timeout) {
     saveStoreState();
   } else if (!saveTimeout) {
-    saveTimeout = window.setTimeout(() => {
+    saveTimeout = globalThis.setTimeout(() => {
       saveStoreState();
 
-      saveTimeout = 0;
+      saveTimeout = undefined;
     }, timeout);
   }
 });

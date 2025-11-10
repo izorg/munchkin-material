@@ -20,7 +20,7 @@ const FULL_VERSION_ID = "full_version";
 
 const { LogLevel, ProductType, store } = CdvPurchase;
 
-if (window.BuildInfo.debug) {
+if (globalThis.BuildInfo.debug) {
   store.verbosity = LogLevel.DEBUG;
 }
 

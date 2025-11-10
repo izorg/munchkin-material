@@ -16,20 +16,22 @@ const CounterButton: FC<CounterButtonProps> = ({
   onClick,
   ...rest
 }) => {
-  const timeoutRef = useRef(0);
-  const intervalRef = useRef(0);
+  const timeoutRef =
+    useRef<ReturnType<typeof globalThis.setTimeout>>(undefined);
+  const intervalRef =
+    useRef<ReturnType<typeof globalThis.setInterval>>(undefined);
   const skipRef = useRef(false);
 
   useEffect(() => {
     if (disabled) {
       if (timeoutRef.current) {
-        window.clearTimeout(timeoutRef.current);
-        timeoutRef.current = 0;
+        globalThis.clearTimeout(timeoutRef.current);
+        timeoutRef.current = undefined;
       }
 
       if (intervalRef.current) {
-        window.clearInterval(intervalRef.current);
-        intervalRef.current = 0;
+        globalThis.clearInterval(intervalRef.current);
+        intervalRef.current = undefined;
       }
     }
   }, [disabled]);
@@ -37,7 +39,7 @@ const CounterButton: FC<CounterButtonProps> = ({
   useEffect(() => {
     return () => {
       if (intervalRef.current) {
-        window.clearInterval(intervalRef.current);
+        globalThis.clearInterval(intervalRef.current);
         captureMessage("Long press clean up on unmount");
       }
     };
@@ -52,24 +54,24 @@ const CounterButton: FC<CounterButtonProps> = ({
     },
     onPressEnd: () => {
       if (timeoutRef.current) {
-        window.clearTimeout(timeoutRef.current);
-        timeoutRef.current = 0;
+        globalThis.clearTimeout(timeoutRef.current);
+        timeoutRef.current = undefined;
       }
 
       if (intervalRef.current) {
-        window.clearInterval(intervalRef.current);
-        intervalRef.current = 0;
+        globalThis.clearInterval(intervalRef.current);
+        intervalRef.current = undefined;
       }
     },
     onPressStart: () => {
       skipRef.current = false;
 
-      timeoutRef.current = window.setTimeout(() => {
-        timeoutRef.current = 0;
+      timeoutRef.current = globalThis.setTimeout(() => {
+        timeoutRef.current = undefined;
 
         onClick();
 
-        intervalRef.current = window.setInterval(() => {
+        intervalRef.current = globalThis.setInterval(() => {
           skipRef.current = true;
 
           onClick();

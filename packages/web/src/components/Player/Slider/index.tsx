@@ -74,10 +74,10 @@ const PlayerSlider = ({ playerId, sx = [] }: PlayerSliderProps) => {
       element.scrollLeft = element.offsetWidth * directionMultiplier;
     }
 
-    window.addEventListener("resize", onWindowResize, false);
+    globalThis.addEventListener("resize", onWindowResize, false);
 
     return () => {
-      window.removeEventListener("resize", onWindowResize);
+      globalThis.removeEventListener("resize", onWindowResize);
     };
   }, [directionMultiplier, onWindowResize, playerCount, playerId]);
 
@@ -113,11 +113,11 @@ const PlayerSlider = ({ playerId, sx = [] }: PlayerSliderProps) => {
       });
     };
 
-    let timeout: number | undefined;
+    let timeout: ReturnType<typeof globalThis.setTimeout> | undefined;
 
     const clearScrollTimeout = () => {
       if (timeout) {
-        window.clearTimeout(timeout);
+        globalThis.clearTimeout(timeout);
 
         timeout = undefined;
       }
@@ -125,7 +125,7 @@ const PlayerSlider = ({ playerId, sx = [] }: PlayerSliderProps) => {
 
     const onDebouncedScroll = () => {
       clearScrollTimeout();
-      timeout = window.setTimeout(onScroll, 100);
+      timeout = globalThis.setTimeout(onScroll, 100);
     };
 
     element.addEventListener("scroll", onDebouncedScroll, false);
