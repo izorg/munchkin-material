@@ -34,15 +34,13 @@ const restorePurchases =
   cordova.platformId === "ios" ? () => store.restorePurchases() : undefined;
 
 class StoreError extends Error {
-  public constructor(error: CdvPurchase.IError) {
-    super(error.message);
+  public constructor(message: string, options: { cause: CdvPurchase.IError }) {
+    super(message, options);
 
     this.name = "StoreError";
-    this.cause = error;
 
     setContext("Store", {
-      code: error.code,
-      platform: error.platform,
+      ...options.cause,
     });
   }
 }
@@ -62,7 +60,9 @@ export const FullVersionProvider: FC<PropsWithChildren> = ({ children }) => {
   useEffect(() => {
     store.error((error) => {
       if (buyExecutorRef.current) {
-        buyExecutorRef.current.reject(new StoreError(error));
+        buyExecutorRef.current.reject(
+          new StoreError("Buy process failed", { cause: error }),
+        );
 
         buyExecutorRef.current = undefined;
       }
@@ -108,7 +108,7 @@ export const FullVersionProvider: FC<PropsWithChildren> = ({ children }) => {
     const error = await offer.order();
 
     if (error) {
-      throw new StoreError(error);
+      throw new StoreError("Can't order the offer", { cause: error });
     }
 
     return new Promise<void>((resolve, reject) => {

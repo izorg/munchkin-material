@@ -22,7 +22,7 @@ const ThemeItem = () => {
   const [, setSearchParams] = useSearchParams();
   const theme = useTheme();
 
-  const { fullVersion } = useFullVersion();
+  const { buyFullVersion, fullVersion } = useFullVersion();
 
   const themeKey = usePresentSelector((state) => state.theme.id);
 
@@ -33,6 +33,10 @@ const ThemeItem = () => {
       return searchParams;
     });
   }, [setSearchParams]);
+
+  if (!fullVersion && !buyFullVersion) {
+    return null;
+  }
 
   return (
     <ListItem disablePadding>

@@ -24,6 +24,10 @@ const SingleModeItem = () => {
 
   const { buyFullVersion, fullVersion } = useFullVersion();
 
+  if (!fullVersion && !buyFullVersion) {
+    return null;
+  }
+
   const onChange = async (isSingleMode: boolean) => {
     if (isSingleMode && !fullVersion) {
       if (!buyFullVersion) {
