@@ -1,7 +1,7 @@
 import { test } from "@playwright/test";
 
-import { getPlayers } from "../src/dev/players";
-import { availableLocales } from "../src/i18n";
+import { getPlayers } from "../../web/src/dev/players";
+import { availableLocales } from "../../web/src/i18n";
 
 const delay = (timeout: number) =>
   new Promise((resolve) => setTimeout(resolve, timeout));

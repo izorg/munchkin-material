@@ -4265,9 +4265,17 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@munchkin/pwa@workspace:packages/pwa"
   dependencies:
+    "@parcel/packager-raw-url": "npm:2.16.1"
+    "@parcel/reporter-bundle-analyzer": "npm:2.16.1"
+    "@parcel/reporter-bundle-buddy": "npm:2.16.1"
+    "@parcel/transformer-webmanifest": "npm:2.16.1"
+    "@playwright/test": "npm:1.56.1"
+    "@types/node": "npm:24.10.0"
     babel-preset-web: "workspace:*"
     firebase-tools: "npm:14.24.2"
+    handlebars: "npm:4.7.8"
     parcel: "npm:2.16.1"
+    playwright: "npm:1.56.1"
     workbox-cli: "npm:7.3.0"
   languageName: unknown
   linkType: soft
@@ -4326,13 +4334,6 @@ __metadata:
     "@mdi/js": "npm:7.4.47"
     "@mui/material": "npm:7.3.5"
     "@mui/utils": "npm:7.3.5"
-    "@parcel/config-default": "npm:2.16.1"
-    "@parcel/core": "npm:2.16.1"
-    "@parcel/packager-raw-url": "npm:2.16.1"
-    "@parcel/reporter-bundle-analyzer": "npm:2.16.1"
-    "@parcel/reporter-bundle-buddy": "npm:2.16.1"
-    "@parcel/transformer-webmanifest": "npm:2.16.1"
-    "@playwright/test": "npm:1.56.1"
     "@react-aria/interactions": "npm:3.25.6"
     "@react-aria/utils": "npm:3.31.0"
     "@reduxjs/toolkit": "npm:2.10.1"
@@ -4347,11 +4348,7 @@ __metadata:
     babel-preset-web: "workspace:*"
     core-js: "npm:3.46.0"
     firebase: "npm:12.5.0"
-    firebase-tools: "npm:14.24.2"
-    handlebars: "npm:4.7.8"
     jest: "npm:30.2.0"
-    parcel: "npm:2.16.1"
-    playwright: "npm:1.56.1"
     react: "npm:19.2.0"
     react-dom: "npm:19.2.0"
     react-intl: "npm:7.1.14"
@@ -4364,7 +4361,6 @@ __metadata:
     stylis-plugin-rtl: "npm:2.1.1"
     typescript: "npm:5.9.3"
     uuid: "npm:13.0.0"
-    workbox-cli: "npm:7.3.0"
     workbox-window: "npm:7.3.0"
   languageName: unknown
   linkType: soft

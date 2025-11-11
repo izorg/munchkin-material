@@ -38,9 +38,7 @@ jobs:
         run: yarn workspaces foreach --all run test
 
       - name: Build 🔨
-        run: |
-          yarn workspace @munchkin/web run generate-assets
-          yarn workspaces foreach --from '@munchkin/{cordova,pwa}' --parallel --recursive run build
+        run: yarn workspaces foreach --from '@munchkin/{cordova,pwa}' --parallel --recursive run build
 
       - name: Create Sentry release
         uses: getsentry/action-release@v3

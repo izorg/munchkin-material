@@ -62,6 +62,7 @@ await Promise.all(
           dir: getDirection(locale),
           lang: locale,
           root: "../../",
+          webRoot: "../../../../web/src/",
         }),
       ),
       fs.promises.writeFile(
@@ -69,6 +70,7 @@ await Promise.all(
         manifestTemplate({
           ...data,
           root: "../../",
+          webRoot: "../../../../web/src/",
         }),
       ),
     ];
@@ -76,19 +78,20 @@ await Promise.all(
     if (locale === "en") {
       assetPromises.push(
         fs.promises.writeFile(
-          path.resolve("src", "index.html"),
+          path.resolve("src/index.html"),
           htmlTemplate({
             ...data,
             dir: getDirection(locale),
             lang: locale,
             root: "./",
+            webRoot: "../../web/src/",
           }),
         ),
         fs.promises.writeFile(
-          path.resolve("src", "manifest.webmanifest"),
+          path.resolve("src/manifest.webmanifest"),
           manifestTemplate({
             ...data,
-            root: "./",
+            webRoot: "../../web/src/",
           }),
         ),
       );

@@ -1,6 +1,0 @@
-{
-  "globDirectory": "dist/",
-  "globIgnores": ["**/*.map", "localized-files/**"],
-  "globPatterns": ["**/*"],
-  "swDest": "dist/service-worker.js"
-}

@@ -9,26 +9,9 @@
     "src/polyfills.ts",
     "src/sentry.ts"
   ],
-  "targets": {
-    "default": {
-      "distDir": "dist",
-      "source": [
-        "src/index.html",
-        "src/localized-files/*/index.html"
-      ]
-    }
-  },
   "scripts": {
-    "analyze": "yarn build:parcel --no-cache --reporter=@parcel/reporter-bundle-analyzer --reporter=@parcel/reporter-bundle-buddy",
-    "build": "yarn generate-assets && rm -rf dist && yarn build:parcel --no-cache && yarn build:workbox",
-    "build:parcel": "parcel build",
-    "build:workbox": "workbox generateSW workbox.config.json",
-    "dev": "parcel --port=3000",
-    "generate-assets": "node scripts/generate-assets.js",
     "i18n:compile": "formatjs compile-folder --ast --format=simple l10n l10n/generated",
     "i18n:extract": "formatjs extract --format=simple --out-file=l10n/en.json \"src/**/*.{js,ts,tsx}\"",
-    "screenshots": "playwright test",
-    "start": "firebase emulators:start",
     "test": "NODE_OPTIONS='--disable-warning=ExperimentalWarning --experimental-vm-modules' jest"
   },
   "devDependencies": {
@@ -50,13 +33,6 @@
     "@mdi/js": "7.4.47",
     "@mui/material": "7.3.5",
     "@mui/utils": "7.3.5",
-    "@parcel/config-default": "2.16.1",
-    "@parcel/core": "2.16.1",
-    "@parcel/packager-raw-url": "2.16.1",
-    "@parcel/reporter-bundle-analyzer": "2.16.1",
-    "@parcel/reporter-bundle-buddy": "2.16.1",
-    "@parcel/transformer-webmanifest": "2.16.1",
-    "@playwright/test": "1.56.1",
     "@react-aria/interactions": "3.25.6",
     "@react-aria/utils": "3.31.0",
     "@reduxjs/toolkit": "2.10.1",
@@ -71,11 +47,7 @@
     "babel-preset-web": "workspace:*",
     "core-js": "3.46.0",
     "firebase": "12.5.0",
-    "firebase-tools": "14.24.2",
-    "handlebars": "4.7.8",
     "jest": "30.2.0",
-    "parcel": "2.16.1",
-    "playwright": "1.56.1",
     "react": "19.2.0",
     "react-dom": "19.2.0",
     "react-intl": "7.1.14",
@@ -88,7 +60,6 @@
     "stylis-plugin-rtl": "2.1.1",
     "typescript": "5.9.3",
     "uuid": "13.0.0",
-    "workbox-cli": "7.3.0",
     "workbox-window": "7.3.0"
   }
 }

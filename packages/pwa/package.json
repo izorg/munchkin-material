@@ -6,22 +6,33 @@
     "default": {
       "distDir": "dist",
       "source": [
-        "../web/src/index.html",
-        "../web/src/localized-files/*/index.html"
+        "src/index.html",
+        "src/localized-files/*/index.html"
       ]
     }
   },
   "scripts": {
-    "build": "yarn build:parcel && yarn build:workbox",
+    "analyze": "yarn build:parcel --no-cache --reporter=@parcel/reporter-bundle-analyzer --reporter=@parcel/reporter-bundle-buddy",
+    "build": "yarn build:assets && yarn build:parcel && yarn build:workbox",
+    "build:assets": "node scripts/build-assets.js",
     "build:parcel": "parcel build",
     "build:workbox": "workbox generateSW workbox.config.json",
     "dev": "parcel --port=3000",
+    "screenshots": "playwright test",
     "start": "firebase emulators:start"
   },
   "devDependencies": {
+    "@parcel/packager-raw-url": "2.16.1",
+    "@parcel/reporter-bundle-analyzer": "2.16.1",
+    "@parcel/reporter-bundle-buddy": "2.16.1",
+    "@parcel/transformer-webmanifest": "2.16.1",
+    "@playwright/test": "1.56.1",
+    "@types/node": "24.10.0",
     "babel-preset-web": "workspace:*",
     "firebase-tools": "14.24.2",
+    "handlebars": "4.7.8",
     "parcel": "2.16.1",
+    "playwright": "1.56.1",
     "workbox-cli": "7.3.0"
   }
 }
