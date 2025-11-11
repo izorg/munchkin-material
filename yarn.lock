@@ -4265,6 +4265,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@munchkin/pwa@workspace:packages/pwa"
   dependencies:
+    babel-preset-web: "workspace:*"
+    firebase-tools: "npm:14.24.2"
     parcel: "npm:2.16.1"
     workbox-cli: "npm:7.3.0"
   languageName: unknown
