@@ -17398,9 +17398,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"knip@npm:5.68.0":
-  version: 5.68.0
-  resolution: "knip@npm:5.68.0"
+"knip@npm:5.69.0":
+  version: 5.69.0
+  resolution: "knip@npm:5.69.0"
   dependencies:
     "@nodelib/fs.walk": "npm:^1.2.3"
     fast-glob: "npm:^3.3.3"
@@ -17420,7 +17420,7 @@ __metadata:
   bin:
     knip: bin/knip.js
     knip-bun: bin/knip-bun.js
-  checksum: 10/c76b8f7af1182ede84956909c1b8666b1d0bfdf59c11b91462991e49d385da9c88a2cd862d9d4d0280c515e61b7c98ca5ca7a5999c95a0852f52fe9cf39fd361
+  checksum: 10/0f55c350f65d7cdd0b432682497e93b0935ece54cb44188f1874fe54c4e925347d9767fdaa603eb77736fcb3275fc28e111a941847168b378ba706f69f7aa907
   languageName: node
   linkType: hard
 
@@ -19070,7 +19070,7 @@ __metadata:
     eslint-plugin-unicorn: "npm:62.0.0"
     globals: "npm:16.5.0"
     husky: "npm:9.1.7"
-    knip: "npm:5.68.0"
+    knip: "npm:5.69.0"
     lint-staged: "npm:16.2.6"
     madge: "npm:8.0.0"
     prettier: "npm:3.6.2"
