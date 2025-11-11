@@ -57,10 +57,10 @@
   },
   "devDependencies": {
     "@mui/material": "7.3.5",
-    "@sentry/react": "10.24.0",
+    "@sentry/react": "10.25.0",
     "@totalpave/cordova-plugin-insets": "0.4.0",
     "@types/cordova": "11.0.3",
-    "@types/react": "19.2.2",
+    "@types/react": "19.2.3",
     "@types/react-dom": "19.2.2",
     "@types/smoothscroll-polyfill": "0.3.4",
     "abortcontroller-polyfill": "1.7.8",
