@@ -1,65 +1,192 @@
 {
-  "EYIw2M": "Wyczyść wybór",
-  "I3b4hn": "Wersja",
-  "U8jwxJ": "Następny gracz",
-  "VWJ5/Y": "Poprzedni gracz",
-  "button.cancel": "Anuluj",
-  "button.submit": "OK",
-  "colorPicker.dialog.title": "Wybierz kolor",
-  "combat": "Walka",
-  "combat.add.helper": "Pomocnik",
-  "combat.add.monster": "Potwór",
-  "combat.helperSelector.title": "Wybierz pomocnika",
-  "combat.monster": "Potwór {number}",
-  "counter.gear": "Przedmiotów",
-  "counter.level": "Poziom",
-  "counter.modifier": "Modyfikator",
-  "counter.strength": "Siła",
-  "cyR7Kh": "Z powrotem",
-  "dice": "Rzut kością",
-  "home.single.title": "Munchkin",
-  "kill": "Zabić",
-  "levelLimit.epic": "Epicki Munchkin ({minLevel} - {maxLevel})",
-  "levelLimit.label": "Limit poziomu",
-  "levelLimit.munchkin": "Munchkin ({minLevel} - {maxLevel})",
-  "levelLimit.none": "Bez limitu",
-  "mainButton.label": "Dodaj",
-  "menu.keepAwake": "Tryb czuwania",
-  "menu.privacyPolicy": "Polityka prywatności",
-  "menu.rateApp": "Oceń aplikację",
-  "menu.restorePurchases": "Przywróć zakupy",
-  "menu.share": "Udostępnij",
-  "menu.singleMode": "Tryb solo",
-  "menu.translate": "Tłumaczenie",
-  "player.form.color": "Kolor",
-  "player.form.delete": "Usunąć",
-  "player.form.namePlaceholder": "Imię",
-  "player.form.save": "Zapisać",
-  "player.form.sex": "Płeć",
-  "player.form.title": "Nowy munchkin",
-  "player.form.titleEdit": "Edytuj munchkin",
-  "player.list.edit": "Edytuj",
-  "player.list.empty": "Brak graczy na liście",
-  "player.list.reset": "Zresetuj",
-  "player.list.shuffle": "Przetasuj graczy",
-  "player.list.title": "Munchkins",
-  "settings": "Ustawienia",
-  "share.text": "Prosty, ale potężny licznik poziomów Munchkina",
-  "theme": "Motyw",
-  "theme.color": "Kolor",
-  "theme.name.apocalypse": "Apokalipsa",
-  "theme.name.booty": "Z Karaibów",
-  "theme.name.cthulhu": "Cthulhu",
-  "theme.name.legends": "Legendy",
-  "theme.name.munchkin": "Munchkin",
-  "theme.name.star": "Gwiezdny",
-  "theme.name.super": "Super",
-  "themeDialog.auto": "Domyślny systemowy",
-  "themeDialog.dark": "Ciemny",
-  "themeDialog.light": "Jasny",
-  "themeDialog.pureBlack": "Czysta czerń",
-  "undo": "Cofnij",
-  "undo.deletePlayers": "{count, plural, one {Gracz został usunięty} other {Gracze zostali usunięci}}",
-  "undo.killPlayer": "{name} {sex, select, female {umarła} male {umarł} other {}}",
-  "undo.resetPlayers": "Gracze zostali zresetowani"
+  "C1Szny": {
+    "defaultMessage": "",
+    "description": ""
+  },
+  "EYIw2M": {
+    "defaultMessage": ""
+  },
+  "I3b4hn": {
+    "defaultMessage": ""
+  },
+  "U8jwxJ": {
+    "defaultMessage": ""
+  },
+  "VWJ5/Y": {
+    "defaultMessage": ""
+  },
+  "button.cancel": {
+    "defaultMessage": ""
+  },
+  "button.submit": {
+    "defaultMessage": ""
+  },
+  "colorPicker.dialog.title": {
+    "defaultMessage": ""
+  },
+  "combat": {
+    "defaultMessage": ""
+  },
+  "combat.add.helper": {
+    "defaultMessage": ""
+  },
+  "combat.add.monster": {
+    "defaultMessage": ""
+  },
+  "combat.helperSelector.title": {
+    "defaultMessage": ""
+  },
+  "combat.monster": {
+    "defaultMessage": ""
+  },
+  "counter.gear": {
+    "defaultMessage": ""
+  },
+  "counter.level": {
+    "defaultMessage": ""
+  },
+  "counter.modifier": {
+    "defaultMessage": ""
+  },
+  "counter.strength": {
+    "defaultMessage": ""
+  },
+  "cyR7Kh": {
+    "defaultMessage": ""
+  },
+  "home.single.title": {
+    "defaultMessage": ""
+  },
+  "kill": {
+    "defaultMessage": ""
+  },
+  "levelLimit.epic": {
+    "defaultMessage": ""
+  },
+  "levelLimit.label": {
+    "defaultMessage": ""
+  },
+  "levelLimit.munchkin": {
+    "defaultMessage": ""
+  },
+  "levelLimit.none": {
+    "defaultMessage": ""
+  },
+  "mainButton.label": {
+    "defaultMessage": ""
+  },
+  "menu.keepAwake": {
+    "defaultMessage": ""
+  },
+  "menu.privacyPolicy": {
+    "defaultMessage": ""
+  },
+  "menu.rateApp": {
+    "defaultMessage": ""
+  },
+  "menu.restorePurchases": {
+    "defaultMessage": ""
+  },
+  "menu.share": {
+    "defaultMessage": ""
+  },
+  "menu.singleMode": {
+    "defaultMessage": ""
+  },
+  "menu.translate": {
+    "defaultMessage": ""
+  },
+  "player.form.color": {
+    "defaultMessage": ""
+  },
+  "player.form.delete": {
+    "defaultMessage": ""
+  },
+  "player.form.namePlaceholder": {
+    "defaultMessage": ""
+  },
+  "player.form.save": {
+    "defaultMessage": ""
+  },
+  "player.form.sex": {
+    "defaultMessage": ""
+  },
+  "player.form.title": {
+    "defaultMessage": ""
+  },
+  "player.form.titleEdit": {
+    "defaultMessage": ""
+  },
+  "player.list.edit": {
+    "defaultMessage": ""
+  },
+  "player.list.empty": {
+    "defaultMessage": ""
+  },
+  "player.list.reset": {
+    "defaultMessage": ""
+  },
+  "player.list.shuffle": {
+    "defaultMessage": ""
+  },
+  "player.list.title": {
+    "defaultMessage": ""
+  },
+  "settings": {
+    "defaultMessage": ""
+  },
+  "share.text": {
+    "defaultMessage": ""
+  },
+  "theme": {
+    "defaultMessage": ""
+  },
+  "theme.color": {
+    "defaultMessage": ""
+  },
+  "theme.name.apocalypse": {
+    "defaultMessage": ""
+  },
+  "theme.name.booty": {
+    "defaultMessage": ""
+  },
+  "theme.name.cthulhu": {
+    "defaultMessage": ""
+  },
+  "theme.name.legends": {
+    "defaultMessage": ""
+  },
+  "theme.name.munchkin": {
+    "defaultMessage": ""
+  },
+  "theme.name.star": {
+    "defaultMessage": ""
+  },
+  "theme.name.super": {
+    "defaultMessage": ""
+  },
+  "themeDialog.auto": {
+    "defaultMessage": ""
+  },
+  "themeDialog.dark": {
+    "defaultMessage": ""
+  },
+  "themeDialog.light": {
+    "defaultMessage": ""
+  },
+  "themeDialog.pureBlack": {
+    "defaultMessage": ""
+  },
+  "undo": {
+    "defaultMessage": ""
+  },
+  "undo.deletePlayers": {
+    "defaultMessage": ""
+  },
+  "undo.killPlayer": {
+    "defaultMessage": ""
+  },
+  "undo.resetPlayers": {
+    "defaultMessage": ""
+  }
 }
