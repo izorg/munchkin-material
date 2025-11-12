@@ -1,2 +1,193 @@
-{}
+{
+  "C1Szny": {
+    "defaultMessage": "Dado",
+    "description": "Dice button tooltip"
+  },
+  "EYIw2M": {
+    "defaultMessage": "Limpar seleção"
+  },
+  "I3b4hn": {
+    "defaultMessage": "Versão"
+  },
+  "U8jwxJ": {
+    "defaultMessage": "Próximo jogador"
+  },
+  "VWJ5/Y": {
+    "defaultMessage": "Página anterior"
+  },
+  "button.cancel": {
+    "defaultMessage": "Cancelar"
+  },
+  "button.submit": {
+    "defaultMessage": "OK"
+  },
+  "colorPicker.dialog.title": {
+    "defaultMessage": "Escolher cor"
+  },
+  "combat": {
+    "defaultMessage": "Combate"
+  },
+  "combat.add.helper": {
+    "defaultMessage": "Ajudante"
+  },
+  "combat.add.monster": {
+    "defaultMessage": "Monstro"
+  },
+  "combat.helperSelector.title": {
+    "defaultMessage": "Escolher ajudante"
+  },
+  "combat.monster": {
+    "defaultMessage": "Monstro {number}"
+  },
+  "counter.gear": {
+    "defaultMessage": "Itens"
+  },
+  "counter.level": {
+    "defaultMessage": "Nível"
+  },
+  "counter.modifier": {
+    "defaultMessage": "Modificador"
+  },
+  "counter.strength": {
+    "defaultMessage": "Força"
+  },
+  "cyR7Kh": {
+    "defaultMessage": "Voltar"
+  },
+  "home.single.title": {
+    "defaultMessage": "Munchkin"
+  },
+  "kill": {
+    "defaultMessage": "Matar"
+  },
+  "levelLimit.epic": {
+    "defaultMessage": "Munchkin épico ({minLevel} - {maxLevel})"
+  },
+  "levelLimit.label": {
+    "defaultMessage": "Nível limite"
+  },
+  "levelLimit.munchkin": {
+    "defaultMessage": "Munchkin ({minLevel} - {maxLevel})"
+  },
+  "levelLimit.none": {
+    "defaultMessage": "Sem limite"
+  },
+  "mainButton.label": {
+    "defaultMessage": "Adicionar"
+  },
+  "menu.keepAwake": {
+    "defaultMessage": "Manter ativo"
+  },
+  "menu.privacyPolicy": {
+    "defaultMessage": "Política de privacidade"
+  },
+  "menu.rateApp": {
+    "defaultMessage": "Avaliar o aplicativo"
+  },
+  "menu.restorePurchases": {
+    "defaultMessage": "Restaura compras"
+  },
+  "menu.share": {
+    "defaultMessage": "Compartilhar"
+  },
+  "menu.singleMode": {
+    "defaultMessage": "Modo só"
+  },
+  "menu.translate": {
+    "defaultMessage": "Traduzir"
+  },
+  "player.form.color": {
+    "defaultMessage": "Cor"
+  },
+  "player.form.delete": {
+    "defaultMessage": "Excluir"
+  },
+  "player.form.namePlaceholder": {
+    "defaultMessage": "Nome"
+  },
+  "player.form.save": {
+    "defaultMessage": "Salvar"
+  },
+  "player.form.sex": {
+    "defaultMessage": "Sexo"
+  },
+  "player.form.title": {
+    "defaultMessage": "Novo Munchkin"
+  },
+  "player.form.titleEdit": {
+    "defaultMessage": "Editar Munchkin"
+  },
+  "player.list.edit": {
+    "defaultMessage": "Editar"
+  },
+  "player.list.empty": {
+    "defaultMessage": "Nenhum jogador na lista"
+  },
+  "player.list.reset": {
+    "defaultMessage": "Resetar"
+  },
+  "player.list.shuffle": {
+    "defaultMessage": "Embaralhar jogadores"
+  },
+  "player.list.title": {
+    "defaultMessage": "Munchkins"
+  },
+  "settings": {
+    "defaultMessage": "Configurações"
+  },
+  "share.text": {
+    "defaultMessage": "Um simples, porém poderoso contador de nível para Munchkin"
+  },
+  "theme": {
+    "defaultMessage": "Tema"
+  },
+  "theme.color": {
+    "defaultMessage": "Cor"
+  },
+  "theme.name.apocalypse": {
+    "defaultMessage": "Apocalipse"
+  },
+  "theme.name.booty": {
+    "defaultMessage": "Booty"
+  },
+  "theme.name.cthulhu": {
+    "defaultMessage": "Cthulhu"
+  },
+  "theme.name.legends": {
+    "defaultMessage": "Lendas"
+  },
+  "theme.name.munchkin": {
+    "defaultMessage": "Munchkin"
+  },
+  "theme.name.star": {
+    "defaultMessage": "Estrela"
+  },
+  "theme.name.super": {
+    "defaultMessage": "Super"
+  },
+  "themeDialog.auto": {
+    "defaultMessage": "Padrão do sistema"
+  },
+  "themeDialog.dark": {
+    "defaultMessage": "Escuro"
+  },
+  "themeDialog.light": {
+    "defaultMessage": "Claro"
+  },
+  "themeDialog.pureBlack": {
+    "defaultMessage": "Totalmente escuro"
+  },
+  "undo": {
+    "defaultMessage": "Desfazer"
+  },
+  "undo.deletePlayers": {
+    "defaultMessage": "{count, plural, one {O jogador foi removido} other {Jogadores foram removidos}}"
+  },
+  "undo.killPlayer": {
+    "defaultMessage": "{name} {sex, select, female {morreu} male {morreu} other {}}"
+  },
+  "undo.resetPlayers": {
+    "defaultMessage": "Jogadores resetados"
+  }
+}
 
