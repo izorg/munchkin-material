@@ -1,65 +1,192 @@
 {
-  "EYIw2M": "Tyhjennä valinta",
-  "I3b4hn": "Versio",
-  "U8jwxJ": "Seuraava pelaaja",
-  "VWJ5/Y": "Edellinen pelaaja",
-  "button.cancel": "Peruuta",
-  "button.submit": "OK",
-  "colorPicker.dialog.title": "Valitse väri",
-  "combat": "Taistelu",
-  "combat.add.helper": "Avustaja",
-  "combat.add.monster": "Hirviö",
-  "combat.helperSelector.title": "Valitse avustaja",
-  "combat.monster": "Hirviö {number}",
-  "counter.gear": "Tavara",
-  "counter.level": "Taso",
-  "counter.modifier": "Muuntaja",
-  "counter.strength": "Voima",
-  "cyR7Kh": "Takaisin",
-  "dice": "Noppa",
-  "home.single.title": "Munchkin",
-  "kill": "Tapa",
-  "levelLimit.epic": "Epic Munchkin ({minLevel} - {maxLevel})",
-  "levelLimit.label": "Taso raja",
-  "levelLimit.munchkin": "Munchkin ({minLevel} - {maxLevel}",
-  "levelLimit.none": "Ei rajaa",
-  "mainButton.label": "Lisää",
-  "menu.keepAwake": "Pidä hereillä",
-  "menu.privacyPolicy": "Tietosuojakäytäntö",
-  "menu.rateApp": "Arvioi tämä sovellus",
-  "menu.restorePurchases": "Palauta ostot",
-  "menu.share": "Jaa",
-  "menu.singleMode": "Yksinpeli",
-  "menu.translate": "Käännä",
-  "player.form.color": "Väri",
-  "player.form.delete": "Poistaa",
-  "player.form.namePlaceholder": "Nimi",
-  "player.form.save": "Tallenna",
-  "player.form.sex": "Sukupuoli",
-  "player.form.title": "Uusi munchkin",
-  "player.form.titleEdit": "Muunna Munchkin:ä",
-  "player.list.edit": "Muunna",
-  "player.list.empty": "Ei pelaajia listalla",
-  "player.list.reset": "Tyhjää",
-  "player.list.shuffle": "Sekoita pelaajat",
-  "player.list.title": "Munchkins",
-  "settings": "Asetukset",
-  "share.text": "Yksinkertainen mutta tehokas Munchkin tason laskia",
-  "theme": "Teema",
-  "theme.color": "Väri",
-  "theme.name.apocalypse": "Maailmanloppu",
-  "theme.name.booty": "Saalis",
-  "theme.name.cthulhu": "Cthulhu",
-  "theme.name.legends": "Legendat",
-  "theme.name.munchkin": "Munchkin",
-  "theme.name.star": "Tähti",
-  "theme.name.super": "Super",
-  "themeDialog.auto": "Järjestelmän oletus",
-  "themeDialog.dark": "Tumma",
-  "themeDialog.light": "Kirkas",
-  "themeDialog.pureBlack": "Puhdas musta",
-  "undo": "Peruuta",
-  "undo.deletePlayers": "{count, plural, one {Pelaaja poistettu} other {Pelaajat poistettu}}",
-  "undo.killPlayer": "{name} {sex, select, female{on kuollut} male{on kuollut} other {}}",
-  "undo.resetPlayers": "Pelaajat on tyhjätty"
+  "C1Szny": {
+    "defaultMessage": "",
+    "description": ""
+  },
+  "EYIw2M": {
+    "defaultMessage": ""
+  },
+  "I3b4hn": {
+    "defaultMessage": ""
+  },
+  "U8jwxJ": {
+    "defaultMessage": ""
+  },
+  "VWJ5/Y": {
+    "defaultMessage": ""
+  },
+  "button.cancel": {
+    "defaultMessage": ""
+  },
+  "button.submit": {
+    "defaultMessage": ""
+  },
+  "colorPicker.dialog.title": {
+    "defaultMessage": ""
+  },
+  "combat": {
+    "defaultMessage": ""
+  },
+  "combat.add.helper": {
+    "defaultMessage": ""
+  },
+  "combat.add.monster": {
+    "defaultMessage": ""
+  },
+  "combat.helperSelector.title": {
+    "defaultMessage": ""
+  },
+  "combat.monster": {
+    "defaultMessage": ""
+  },
+  "counter.gear": {
+    "defaultMessage": ""
+  },
+  "counter.level": {
+    "defaultMessage": ""
+  },
+  "counter.modifier": {
+    "defaultMessage": ""
+  },
+  "counter.strength": {
+    "defaultMessage": ""
+  },
+  "cyR7Kh": {
+    "defaultMessage": ""
+  },
+  "home.single.title": {
+    "defaultMessage": ""
+  },
+  "kill": {
+    "defaultMessage": ""
+  },
+  "levelLimit.epic": {
+    "defaultMessage": ""
+  },
+  "levelLimit.label": {
+    "defaultMessage": ""
+  },
+  "levelLimit.munchkin": {
+    "defaultMessage": ""
+  },
+  "levelLimit.none": {
+    "defaultMessage": ""
+  },
+  "mainButton.label": {
+    "defaultMessage": ""
+  },
+  "menu.keepAwake": {
+    "defaultMessage": ""
+  },
+  "menu.privacyPolicy": {
+    "defaultMessage": ""
+  },
+  "menu.rateApp": {
+    "defaultMessage": ""
+  },
+  "menu.restorePurchases": {
+    "defaultMessage": ""
+  },
+  "menu.share": {
+    "defaultMessage": ""
+  },
+  "menu.singleMode": {
+    "defaultMessage": ""
+  },
+  "menu.translate": {
+    "defaultMessage": ""
+  },
+  "player.form.color": {
+    "defaultMessage": ""
+  },
+  "player.form.delete": {
+    "defaultMessage": ""
+  },
+  "player.form.namePlaceholder": {
+    "defaultMessage": ""
+  },
+  "player.form.save": {
+    "defaultMessage": ""
+  },
+  "player.form.sex": {
+    "defaultMessage": ""
+  },
+  "player.form.title": {
+    "defaultMessage": ""
+  },
+  "player.form.titleEdit": {
+    "defaultMessage": ""
+  },
+  "player.list.edit": {
+    "defaultMessage": ""
+  },
+  "player.list.empty": {
+    "defaultMessage": ""
+  },
+  "player.list.reset": {
+    "defaultMessage": ""
+  },
+  "player.list.shuffle": {
+    "defaultMessage": ""
+  },
+  "player.list.title": {
+    "defaultMessage": ""
+  },
+  "settings": {
+    "defaultMessage": ""
+  },
+  "share.text": {
+    "defaultMessage": ""
+  },
+  "theme": {
+    "defaultMessage": ""
+  },
+  "theme.color": {
+    "defaultMessage": ""
+  },
+  "theme.name.apocalypse": {
+    "defaultMessage": ""
+  },
+  "theme.name.booty": {
+    "defaultMessage": ""
+  },
+  "theme.name.cthulhu": {
+    "defaultMessage": ""
+  },
+  "theme.name.legends": {
+    "defaultMessage": ""
+  },
+  "theme.name.munchkin": {
+    "defaultMessage": ""
+  },
+  "theme.name.star": {
+    "defaultMessage": ""
+  },
+  "theme.name.super": {
+    "defaultMessage": ""
+  },
+  "themeDialog.auto": {
+    "defaultMessage": ""
+  },
+  "themeDialog.dark": {
+    "defaultMessage": ""
+  },
+  "themeDialog.light": {
+    "defaultMessage": ""
+  },
+  "themeDialog.pureBlack": {
+    "defaultMessage": ""
+  },
+  "undo": {
+    "defaultMessage": ""
+  },
+  "undo.deletePlayers": {
+    "defaultMessage": ""
+  },
+  "undo.killPlayer": {
+    "defaultMessage": ""
+  },
+  "undo.resetPlayers": {
+    "defaultMessage": ""
+  }
 }
