@@ -1,2 +1,193 @@
-{}
+{
+  "C1Szny": {
+    "defaultMessage": "Noppa",
+    "description": "Dice button tooltip"
+  },
+  "EYIw2M": {
+    "defaultMessage": "Tyhjennä valinta"
+  },
+  "I3b4hn": {
+    "defaultMessage": "Versio"
+  },
+  "U8jwxJ": {
+    "defaultMessage": "Seuraava pelaaja"
+  },
+  "VWJ5/Y": {
+    "defaultMessage": "Edellinen pelaaja"
+  },
+  "button.cancel": {
+    "defaultMessage": "Peruuta"
+  },
+  "button.submit": {
+    "defaultMessage": "OK"
+  },
+  "colorPicker.dialog.title": {
+    "defaultMessage": "Valitse väri"
+  },
+  "combat": {
+    "defaultMessage": "Taistelu"
+  },
+  "combat.add.helper": {
+    "defaultMessage": "Avustaja"
+  },
+  "combat.add.monster": {
+    "defaultMessage": "Hirviö"
+  },
+  "combat.helperSelector.title": {
+    "defaultMessage": "Valitse avustaja"
+  },
+  "combat.monster": {
+    "defaultMessage": "Hirviö {number}"
+  },
+  "counter.gear": {
+    "defaultMessage": "Tavara"
+  },
+  "counter.level": {
+    "defaultMessage": "Taso"
+  },
+  "counter.modifier": {
+    "defaultMessage": "Muuntaja"
+  },
+  "counter.strength": {
+    "defaultMessage": "Voima"
+  },
+  "cyR7Kh": {
+    "defaultMessage": "Takaisin"
+  },
+  "home.single.title": {
+    "defaultMessage": "Munchkin"
+  },
+  "kill": {
+    "defaultMessage": "Tapa"
+  },
+  "levelLimit.epic": {
+    "defaultMessage": "Epic Munchkin ({minLevel} - {maxLevel})"
+  },
+  "levelLimit.label": {
+    "defaultMessage": "Taso raja"
+  },
+  "levelLimit.munchkin": {
+    "defaultMessage": "Munchkin ({minLevel} - {maxLevel}"
+  },
+  "levelLimit.none": {
+    "defaultMessage": "Ei rajaa"
+  },
+  "mainButton.label": {
+    "defaultMessage": "Lisää"
+  },
+  "menu.keepAwake": {
+    "defaultMessage": "Pidä hereillä"
+  },
+  "menu.privacyPolicy": {
+    "defaultMessage": "Tietosuojakäytäntö"
+  },
+  "menu.rateApp": {
+    "defaultMessage": "Arvioi tämä sovellus"
+  },
+  "menu.restorePurchases": {
+    "defaultMessage": "Palauta ostot"
+  },
+  "menu.share": {
+    "defaultMessage": "Jaa"
+  },
+  "menu.singleMode": {
+    "defaultMessage": "Yksinpeli"
+  },
+  "menu.translate": {
+    "defaultMessage": "Käännä"
+  },
+  "player.form.color": {
+    "defaultMessage": "Väri"
+  },
+  "player.form.delete": {
+    "defaultMessage": "Poistaa"
+  },
+  "player.form.namePlaceholder": {
+    "defaultMessage": "Nimi"
+  },
+  "player.form.save": {
+    "defaultMessage": "Tallenna"
+  },
+  "player.form.sex": {
+    "defaultMessage": "Sukupuoli"
+  },
+  "player.form.title": {
+    "defaultMessage": "Uusi munchkin"
+  },
+  "player.form.titleEdit": {
+    "defaultMessage": "Muunna Munchkin:ä"
+  },
+  "player.list.edit": {
+    "defaultMessage": "Muunna"
+  },
+  "player.list.empty": {
+    "defaultMessage": "Ei pelaajia listalla"
+  },
+  "player.list.reset": {
+    "defaultMessage": "Tyhjää"
+  },
+  "player.list.shuffle": {
+    "defaultMessage": "Sekoita pelaajat"
+  },
+  "player.list.title": {
+    "defaultMessage": "Munchkins"
+  },
+  "settings": {
+    "defaultMessage": "Asetukset"
+  },
+  "share.text": {
+    "defaultMessage": "Yksinkertainen mutta tehokas Munchkin tason laskia"
+  },
+  "theme": {
+    "defaultMessage": "Teema"
+  },
+  "theme.color": {
+    "defaultMessage": "Väri"
+  },
+  "theme.name.apocalypse": {
+    "defaultMessage": "Maailmanloppu"
+  },
+  "theme.name.booty": {
+    "defaultMessage": "Saalis"
+  },
+  "theme.name.cthulhu": {
+    "defaultMessage": "Cthulhu"
+  },
+  "theme.name.legends": {
+    "defaultMessage": "Legendat"
+  },
+  "theme.name.munchkin": {
+    "defaultMessage": "Munchkin"
+  },
+  "theme.name.star": {
+    "defaultMessage": "Tähti"
+  },
+  "theme.name.super": {
+    "defaultMessage": "Super"
+  },
+  "themeDialog.auto": {
+    "defaultMessage": "Järjestelmän oletus"
+  },
+  "themeDialog.dark": {
+    "defaultMessage": "Tumma"
+  },
+  "themeDialog.light": {
+    "defaultMessage": "Kirkas"
+  },
+  "themeDialog.pureBlack": {
+    "defaultMessage": "Puhdas musta"
+  },
+  "undo": {
+    "defaultMessage": "Peruuta"
+  },
+  "undo.deletePlayers": {
+    "defaultMessage": "{count, plural, one {Pelaaja poistettu} other {Pelaajat poistettu}}"
+  },
+  "undo.killPlayer": {
+    "defaultMessage": "{name} {sex, select, female{on kuollut} male{on kuollut} other {}}"
+  },
+  "undo.resetPlayers": {
+    "defaultMessage": "Pelaajat on tyhjätty"
+  }
+}
 
