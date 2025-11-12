@@ -1,2 +1,193 @@
-{}
+{
+  "C1Szny": {
+    "defaultMessage": "Кубик",
+    "description": "Dice button tooltip"
+  },
+  "EYIw2M": {
+    "defaultMessage": "Скасувати вибір"
+  },
+  "I3b4hn": {
+    "defaultMessage": "Версія"
+  },
+  "U8jwxJ": {
+    "defaultMessage": "Наступний гравець"
+  },
+  "VWJ5/Y": {
+    "defaultMessage": "Попередній гравець"
+  },
+  "button.cancel": {
+    "defaultMessage": "Скасувати"
+  },
+  "button.submit": {
+    "defaultMessage": "OK"
+  },
+  "colorPicker.dialog.title": {
+    "defaultMessage": "Оберіть колір"
+  },
+  "combat": {
+    "defaultMessage": "Бій"
+  },
+  "combat.add.helper": {
+    "defaultMessage": "Помічник"
+  },
+  "combat.add.monster": {
+    "defaultMessage": "Монстр"
+  },
+  "combat.helperSelector.title": {
+    "defaultMessage": "Оберіть помічника"
+  },
+  "combat.monster": {
+    "defaultMessage": "Монстр {number}"
+  },
+  "counter.gear": {
+    "defaultMessage": "Манатки"
+  },
+  "counter.level": {
+    "defaultMessage": "Рівень"
+  },
+  "counter.modifier": {
+    "defaultMessage": "Модифікатор"
+  },
+  "counter.strength": {
+    "defaultMessage": "Сила"
+  },
+  "cyR7Kh": {
+    "defaultMessage": "Назад"
+  },
+  "home.single.title": {
+    "defaultMessage": "Манчкін"
+  },
+  "kill": {
+    "defaultMessage": "Вбити"
+  },
+  "levelLimit.epic": {
+    "defaultMessage": "Епічний Манчкін ({minLevel} - {maxLevel})"
+  },
+  "levelLimit.label": {
+    "defaultMessage": "Ліміт рівня"
+  },
+  "levelLimit.munchkin": {
+    "defaultMessage": "Манчкін ({minLevel} - {maxLevel})"
+  },
+  "levelLimit.none": {
+    "defaultMessage": "Без обмежень"
+  },
+  "mainButton.label": {
+    "defaultMessage": "Додати"
+  },
+  "menu.keepAwake": {
+    "defaultMessage": "Не вимикати екран"
+  },
+  "menu.privacyPolicy": {
+    "defaultMessage": "Політика конфіденційності"
+  },
+  "menu.rateApp": {
+    "defaultMessage": "Оцініть додаток"
+  },
+  "menu.restorePurchases": {
+    "defaultMessage": "Відновити покупки"
+  },
+  "menu.share": {
+    "defaultMessage": "Поділитися"
+  },
+  "menu.singleMode": {
+    "defaultMessage": "Одиночний режим"
+  },
+  "menu.translate": {
+    "defaultMessage": "Перекласти"
+  },
+  "player.form.color": {
+    "defaultMessage": "Колір"
+  },
+  "player.form.delete": {
+    "defaultMessage": "Видалити"
+  },
+  "player.form.namePlaceholder": {
+    "defaultMessage": "Ім'я"
+  },
+  "player.form.save": {
+    "defaultMessage": "Зберегти"
+  },
+  "player.form.sex": {
+    "defaultMessage": "Стать"
+  },
+  "player.form.title": {
+    "defaultMessage": "Новий манчкін"
+  },
+  "player.form.titleEdit": {
+    "defaultMessage": "Відредагувати манчкіна"
+  },
+  "player.list.edit": {
+    "defaultMessage": "Відредагувати"
+  },
+  "player.list.empty": {
+    "defaultMessage": "Немає тут нікого"
+  },
+  "player.list.reset": {
+    "defaultMessage": "Скинути"
+  },
+  "player.list.shuffle": {
+    "defaultMessage": "Перетасувати гравців"
+  },
+  "player.list.title": {
+    "defaultMessage": "Манчкіни"
+  },
+  "settings": {
+    "defaultMessage": "Налаштування"
+  },
+  "share.text": {
+    "defaultMessage": "Простий, та потужний лічильник рівня Манчкіна"
+  },
+  "theme": {
+    "defaultMessage": "Тема"
+  },
+  "theme.color": {
+    "defaultMessage": "Колір"
+  },
+  "theme.name.apocalypse": {
+    "defaultMessage": "Апокаліпсис"
+  },
+  "theme.name.booty": {
+    "defaultMessage": "Піратський"
+  },
+  "theme.name.cthulhu": {
+    "defaultMessage": "Ктулху"
+  },
+  "theme.name.legends": {
+    "defaultMessage": "Легенди"
+  },
+  "theme.name.munchkin": {
+    "defaultMessage": "Манчкін"
+  },
+  "theme.name.star": {
+    "defaultMessage": "Зірка"
+  },
+  "theme.name.super": {
+    "defaultMessage": "Супер"
+  },
+  "themeDialog.auto": {
+    "defaultMessage": "За умовчанням системи"
+  },
+  "themeDialog.dark": {
+    "defaultMessage": "Темний"
+  },
+  "themeDialog.light": {
+    "defaultMessage": "Світлий"
+  },
+  "themeDialog.pureBlack": {
+    "defaultMessage": "Чисто чорна"
+  },
+  "undo": {
+    "defaultMessage": "Відмінити"
+  },
+  "undo.deletePlayers": {
+    "defaultMessage": "{count, plural, one {Гравець видалений} other {Гравці видалені}}"
+  },
+  "undo.killPlayer": {
+    "defaultMessage": "{name} {sex, select, female {померла} male {помер} other {}}"
+  },
+  "undo.resetPlayers": {
+    "defaultMessage": "Гравці були скинуті"
+  }
+}
 
