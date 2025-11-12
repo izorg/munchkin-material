@@ -17,7 +17,7 @@ const Nobody: FC<NobodyProps> = ({ sx = [] }) => (
         flexDirection: "column",
         justifyContent: "center",
       },
-      ...(sx instanceof Array ? sx : [sx]),
+      ...[sx].flat(),
     ]}
   >
     <SvgIcon

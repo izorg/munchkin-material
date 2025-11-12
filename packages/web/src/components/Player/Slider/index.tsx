@@ -176,7 +176,7 @@ const PlayerSlider = ({ playerId, sx = [] }: PlayerSliderProps) => {
         {
           position: "relative",
         },
-        ...(sx instanceof Array ? sx : [sx]),
+        ...[sx].flat(),
       ]}
     >
       <Box

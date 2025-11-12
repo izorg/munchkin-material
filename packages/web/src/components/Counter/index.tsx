@@ -56,7 +56,7 @@ const Counter: FC<CounterProps> = ({
           display: "flex",
           flexDirection: "column",
         },
-        ...(sx instanceof Array ? sx : [sx]),
+        ...[sx].flat(),
       ]}
       {...props}
     >

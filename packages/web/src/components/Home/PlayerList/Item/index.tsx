@@ -168,7 +168,7 @@ const HomePlayerListItem = (props: HomePlayerListItemProps) => {
                     right: "calc(16px + var(--inset-right)) /*! @noflip */",
                   },
           })),
-        ...(sx instanceof Array ? sx : [sx]),
+        ...[sx].flat(),
       ]}
     >
       <ListItemButton

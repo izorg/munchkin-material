@@ -81,7 +81,7 @@ const CombatMonsterSlider: FC<BoxProps> = ({ sx = [], ...props }) => {
             width: "100%",
           },
         },
-        ...(sx instanceof Array ? sx : [sx]),
+        ...[sx].flat(),
       ]}
       {...props}
     >

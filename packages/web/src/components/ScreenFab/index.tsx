@@ -32,7 +32,7 @@ const ScreenFab = (props: FabProps) => {
             right: "auto /*! @noflip */",
           },
         }),
-        ...(sx instanceof Array ? sx : [sx]),
+        ...[sx].flat(),
       ]}
       {...rest}
     />

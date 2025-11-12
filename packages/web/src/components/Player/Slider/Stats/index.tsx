@@ -84,7 +84,7 @@ const PlayerStats: FC<PlayerStatsProps> = ({ playerId, sx = [] }) => {
             `,
           },
         },
-        ...(sx instanceof Array ? sx : [sx]),
+        ...[sx].flat(),
       ]}
     >
       <Box

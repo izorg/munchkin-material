@@ -9,7 +9,7 @@ const Title: FC<TypographyProps> = ({ sx = [], ...props }) => (
         flex: 1,
         paddingX: "4px",
       },
-      ...(sx instanceof Array ? sx : [sx]),
+      ...[sx].flat(),
     ]}
     variant="h6"
     {...props}

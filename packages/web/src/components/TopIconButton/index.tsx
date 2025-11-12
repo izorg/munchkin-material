@@ -16,7 +16,7 @@ const TopIconButton = (props: IconButtonProps) => {
         edge === "end" && {
           marginRight: "-12px",
         },
-        ...(sx instanceof Array ? sx : [sx]),
+        ...[sx].flat(),
       ]}
       {...rest}
     />

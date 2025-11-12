@@ -62,7 +62,7 @@ const CombatCounter: FC<CombatCounterProps> = (props) => {
           display: "flex",
           flexDirection: "column",
         },
-        ...(sx instanceof Array ? sx : [sx]),
+        ...[sx].flat(),
       ]}
     >
       <CounterLabel

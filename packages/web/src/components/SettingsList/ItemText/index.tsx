@@ -12,7 +12,7 @@ const MenuListItemText = ({ sx = [], ...props }: ListItemTextProps) => (
         overflow: "hidden",
         textOverflow: "ellipsis",
       },
-      ...(sx instanceof Array ? sx : [sx]),
+      ...[sx].flat(),
     ]}
   />
 );

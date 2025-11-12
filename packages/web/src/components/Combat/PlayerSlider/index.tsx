@@ -118,7 +118,7 @@ const CombatPlayerSlider: FC<CombatPlayerSliderProps> = (props) => {
             width: "100%",
           },
         },
-        ...(sx instanceof Array ? sx : [sx]),
+        ...[sx].flat(),
       ]}
     >
       <Filler />

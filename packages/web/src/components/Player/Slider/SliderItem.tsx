@@ -25,7 +25,7 @@ export const SliderItem: FC<SliderItemProps> = (props) => {
           justifyContent: "center",
           padding: theme.spacing(2, 2, 10),
         }),
-        ...(sx instanceof Array ? sx : [sx]),
+        ...[sx].flat(),
       ]}
       {...rest}
     >

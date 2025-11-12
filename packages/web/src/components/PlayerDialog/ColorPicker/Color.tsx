@@ -28,7 +28,7 @@ const Color = (props: ColorProps) => {
           padding: 0,
           width: "48px",
         },
-        ...(sx instanceof Array ? sx : [sx]),
+        ...[sx].flat(),
       ]}
       value={value}
       {...rest}

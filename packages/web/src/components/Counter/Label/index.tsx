@@ -22,7 +22,7 @@ const CounterLabel = ({ sx = [], ...props }: BoxProps) => {
           textOverflow: "ellipsis",
           whiteSpace: "nowrap",
         },
-        ...(sx instanceof Array ? sx : [sx]),
+        ...[sx].flat(),
       ]}
       {...props}
     />
