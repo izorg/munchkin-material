@@ -10,8 +10,8 @@
     "src/sentry.ts"
   ],
   "scripts": {
-    "i18n:compile": "formatjs compile-folder --ast --format=simple l10n l10n/generated",
-    "i18n:extract": "formatjs extract --format=simple --out-file=l10n/en.json \"src/**/*.{js,ts,tsx}\"",
+    "i18n:compile": "formatjs compile-folder --ast l10n l10n/generated",
+    "i18n:extract": "formatjs extract --out-file=l10n/en.json \"src/**/*.{js,ts,tsx}\"",
     "test": "NODE_OPTIONS='--disable-warning=ExperimentalWarning --experimental-vm-modules' jest"
   },
   "devDependencies": {
