@@ -3,7 +3,6 @@ commit_message: "chore(l10n): new translations %original_file_name% (%language%)
 files:
   - source: /packages/pwa/src/templates/data/en.json
     translation: /%original_path%/%locale%.json
-    type: json
     excluded_target_languages:
       - be
       - cs
@@ -48,5 +47,6 @@ files:
       - tr
       - uk
   - source: /packages/web/l10n/en.json
+    type: react_intl
     translation: /%original_path%/%locale%.json
 pull_request_title: "chore(l10n): new Crowdin updates"
