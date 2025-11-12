@@ -1,65 +1,192 @@
 {
-  "EYIw2M": "Скасувати вибір",
-  "I3b4hn": "Версія",
-  "U8jwxJ": "Наступний гравець",
-  "VWJ5/Y": "Попередній гравець",
-  "button.cancel": "Скасувати",
-  "button.submit": "OK",
-  "colorPicker.dialog.title": "Оберіть колір",
-  "combat": "Бій",
-  "combat.add.helper": "Помічник",
-  "combat.add.monster": "Монстр",
-  "combat.helperSelector.title": "Оберіть помічника",
-  "combat.monster": "Монстр {number}",
-  "counter.gear": "Манатки",
-  "counter.level": "Рівень",
-  "counter.modifier": "Модифікатор",
-  "counter.strength": "Сила",
-  "cyR7Kh": "Назад",
-  "dice": "Кубик",
-  "home.single.title": "Манчкін",
-  "kill": "Вбити",
-  "levelLimit.epic": "Епічний Манчкін ({minLevel} - {maxLevel})",
-  "levelLimit.label": "Ліміт рівня",
-  "levelLimit.munchkin": "Манчкін ({minLevel} - {maxLevel})",
-  "levelLimit.none": "Без обмежень",
-  "mainButton.label": "Додати",
-  "menu.keepAwake": "Не вимикати екран",
-  "menu.privacyPolicy": "Політика конфіденційності",
-  "menu.rateApp": "Оцініть додаток",
-  "menu.restorePurchases": "Відновити покупки",
-  "menu.share": "Поділитися",
-  "menu.singleMode": "Одиночний режим",
-  "menu.translate": "Перекласти",
-  "player.form.color": "Колір",
-  "player.form.delete": "Видалити",
-  "player.form.namePlaceholder": "Ім'я",
-  "player.form.save": "Зберегти",
-  "player.form.sex": "Стать",
-  "player.form.title": "Новий манчкін",
-  "player.form.titleEdit": "Відредагувати манчкіна",
-  "player.list.edit": "Відредагувати",
-  "player.list.empty": "Немає тут нікого",
-  "player.list.reset": "Скинути",
-  "player.list.shuffle": "Перетасувати гравців",
-  "player.list.title": "Манчкіни",
-  "settings": "Налаштування",
-  "share.text": "Простий, та потужний лічильник рівня Манчкіна",
-  "theme": "Тема",
-  "theme.color": "Колір",
-  "theme.name.apocalypse": "Апокаліпсис",
-  "theme.name.booty": "Піратський",
-  "theme.name.cthulhu": "Ктулху",
-  "theme.name.legends": "Легенди",
-  "theme.name.munchkin": "Манчкін",
-  "theme.name.star": "Зірка",
-  "theme.name.super": "Супер",
-  "themeDialog.auto": "За умовчанням системи",
-  "themeDialog.dark": "Темний",
-  "themeDialog.light": "Світлий",
-  "themeDialog.pureBlack": "Чисто чорна",
-  "undo": "Відмінити",
-  "undo.deletePlayers": "{count, plural, one {Гравець видалений} other {Гравці видалені}}",
-  "undo.killPlayer": "{name} {sex, select, female {померла} male {помер} other {}}",
-  "undo.resetPlayers": "Гравці були скинуті"
+  "C1Szny": {
+    "defaultMessage": "",
+    "description": ""
+  },
+  "EYIw2M": {
+    "defaultMessage": ""
+  },
+  "I3b4hn": {
+    "defaultMessage": ""
+  },
+  "U8jwxJ": {
+    "defaultMessage": ""
+  },
+  "VWJ5/Y": {
+    "defaultMessage": ""
+  },
+  "button.cancel": {
+    "defaultMessage": ""
+  },
+  "button.submit": {
+    "defaultMessage": ""
+  },
+  "colorPicker.dialog.title": {
+    "defaultMessage": ""
+  },
+  "combat": {
+    "defaultMessage": ""
+  },
+  "combat.add.helper": {
+    "defaultMessage": ""
+  },
+  "combat.add.monster": {
+    "defaultMessage": ""
+  },
+  "combat.helperSelector.title": {
+    "defaultMessage": ""
+  },
+  "combat.monster": {
+    "defaultMessage": ""
+  },
+  "counter.gear": {
+    "defaultMessage": ""
+  },
+  "counter.level": {
+    "defaultMessage": ""
+  },
+  "counter.modifier": {
+    "defaultMessage": ""
+  },
+  "counter.strength": {
+    "defaultMessage": ""
+  },
+  "cyR7Kh": {
+    "defaultMessage": ""
+  },
+  "home.single.title": {
+    "defaultMessage": ""
+  },
+  "kill": {
+    "defaultMessage": ""
+  },
+  "levelLimit.epic": {
+    "defaultMessage": ""
+  },
+  "levelLimit.label": {
+    "defaultMessage": ""
+  },
+  "levelLimit.munchkin": {
+    "defaultMessage": ""
+  },
+  "levelLimit.none": {
+    "defaultMessage": ""
+  },
+  "mainButton.label": {
+    "defaultMessage": ""
+  },
+  "menu.keepAwake": {
+    "defaultMessage": ""
+  },
+  "menu.privacyPolicy": {
+    "defaultMessage": ""
+  },
+  "menu.rateApp": {
+    "defaultMessage": ""
+  },
+  "menu.restorePurchases": {
+    "defaultMessage": ""
+  },
+  "menu.share": {
+    "defaultMessage": ""
+  },
+  "menu.singleMode": {
+    "defaultMessage": ""
+  },
+  "menu.translate": {
+    "defaultMessage": ""
+  },
+  "player.form.color": {
+    "defaultMessage": ""
+  },
+  "player.form.delete": {
+    "defaultMessage": ""
+  },
+  "player.form.namePlaceholder": {
+    "defaultMessage": ""
+  },
+  "player.form.save": {
+    "defaultMessage": ""
+  },
+  "player.form.sex": {
+    "defaultMessage": ""
+  },
+  "player.form.title": {
+    "defaultMessage": ""
+  },
+  "player.form.titleEdit": {
+    "defaultMessage": ""
+  },
+  "player.list.edit": {
+    "defaultMessage": ""
+  },
+  "player.list.empty": {
+    "defaultMessage": ""
+  },
+  "player.list.reset": {
+    "defaultMessage": ""
+  },
+  "player.list.shuffle": {
+    "defaultMessage": ""
+  },
+  "player.list.title": {
+    "defaultMessage": ""
+  },
+  "settings": {
+    "defaultMessage": ""
+  },
+  "share.text": {
+    "defaultMessage": ""
+  },
+  "theme": {
+    "defaultMessage": ""
+  },
+  "theme.color": {
+    "defaultMessage": ""
+  },
+  "theme.name.apocalypse": {
+    "defaultMessage": ""
+  },
+  "theme.name.booty": {
+    "defaultMessage": ""
+  },
+  "theme.name.cthulhu": {
+    "defaultMessage": ""
+  },
+  "theme.name.legends": {
+    "defaultMessage": ""
+  },
+  "theme.name.munchkin": {
+    "defaultMessage": ""
+  },
+  "theme.name.star": {
+    "defaultMessage": ""
+  },
+  "theme.name.super": {
+    "defaultMessage": ""
+  },
+  "themeDialog.auto": {
+    "defaultMessage": ""
+  },
+  "themeDialog.dark": {
+    "defaultMessage": ""
+  },
+  "themeDialog.light": {
+    "defaultMessage": ""
+  },
+  "themeDialog.pureBlack": {
+    "defaultMessage": ""
+  },
+  "undo": {
+    "defaultMessage": ""
+  },
+  "undo.deletePlayers": {
+    "defaultMessage": ""
+  },
+  "undo.killPlayer": {
+    "defaultMessage": ""
+  },
+  "undo.resetPlayers": {
+    "defaultMessage": ""
+  }
 }
