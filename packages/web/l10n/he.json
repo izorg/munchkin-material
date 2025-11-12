@@ -1,65 +1,192 @@
 {
-  "EYIw2M": "ניקוי בחירה",
-  "I3b4hn": "גִרְסָה",
-  "U8jwxJ": "השחקן הבא",
-  "VWJ5/Y": "שחקן קודם",
-  "button.cancel": "בטל",
-  "button.submit": "אישור",
-  "colorPicker.dialog.title": "בחר צבע",
-  "combat": "קרב",
-  "combat.add.helper": "עוזר",
-  "combat.add.monster": "מפלצת",
-  "combat.helperSelector.title": "בחר עוזר",
-  "combat.monster": "מפלצת {number}",
-  "counter.gear": "ציוד",
-  "counter.level": "דרגה",
-  "counter.modifier": "תוספים",
-  "counter.strength": "עוצמה",
-  "cyR7Kh": "בְּחֲזָרָה",
-  "dice": "קוביה",
-  "home.single.title": "מאנצ'קין",
-  "kill": "הרוג",
-  "levelLimit.epic": "מאנצ׳קין אגדי ({minLevel} - {maxLevel})",
-  "levelLimit.label": "רמה מקסימאלית",
-  "levelLimit.munchkin": "מאנצ׳קין ({minLevel} - {maxLevel})",
-  "levelLimit.none": "בלי הגבלה",
-  "mainButton.label": "הוסף",
-  "menu.keepAwake": "השאר ער",
-  "menu.privacyPolicy": "מדיניות פרטיות",
-  "menu.rateApp": "דרג את האפליקציה",
-  "menu.restorePurchases": "שחזר רכישות",
-  "menu.share": "שתף",
-  "menu.singleMode": "מצב יחיד",
-  "menu.translate": "תרגם",
-  "player.form.color": "צבע",
-  "player.form.delete": "לִמְחוֹק",
-  "player.form.namePlaceholder": "שם",
-  "player.form.save": "שמור",
-  "player.form.sex": "מין",
-  "player.form.title": "מאנצ'קין חדש",
-  "player.form.titleEdit": "ערוך את המאנצ'קין",
-  "player.list.edit": "ערוך",
-  "player.list.empty": "אין שחקנים ברשימה",
-  "player.list.reset": "אתחל",
-  "player.list.shuffle": "ערבב שחקנים",
-  "player.list.title": "מאנצ'קינים",
-  "settings": "הגדרות",
-  "share.text": "מד דרגת הדמות שלך: פשוט אך שימושי",
-  "theme": "ערכת נושא",
-  "theme.color": "צֶבַע",
-  "theme.name.apocalypse": "אפוקליפסה",
-  "theme.name.booty": "פיראטים",
-  "theme.name.cthulhu": "קת׳ולו",
-  "theme.name.legends": "אגדות",
-  "theme.name.munchkin": "מאנצ'קין",
-  "theme.name.star": "בין כוכבים",
-  "theme.name.super": "סופר",
-  "themeDialog.auto": "ברירת מחדל של המערכת",
-  "themeDialog.dark": "כהה",
-  "themeDialog.light": "בהיר",
-  "themeDialog.pureBlack": "שחור טהור",
-  "undo": "בטל",
-  "undo.deletePlayers": "{count, plural, one {Player has been removed} other {שחקנים הוסרו}}",
-  "undo.killPlayer": "{name} {sex, select, female{נפטרה} male{מת} other {}}",
-  "undo.resetPlayers": "השחקנים אופסו"
+  "C1Szny": {
+    "defaultMessage": "",
+    "description": ""
+  },
+  "EYIw2M": {
+    "defaultMessage": ""
+  },
+  "I3b4hn": {
+    "defaultMessage": ""
+  },
+  "U8jwxJ": {
+    "defaultMessage": ""
+  },
+  "VWJ5/Y": {
+    "defaultMessage": ""
+  },
+  "button.cancel": {
+    "defaultMessage": ""
+  },
+  "button.submit": {
+    "defaultMessage": ""
+  },
+  "colorPicker.dialog.title": {
+    "defaultMessage": ""
+  },
+  "combat": {
+    "defaultMessage": ""
+  },
+  "combat.add.helper": {
+    "defaultMessage": ""
+  },
+  "combat.add.monster": {
+    "defaultMessage": ""
+  },
+  "combat.helperSelector.title": {
+    "defaultMessage": ""
+  },
+  "combat.monster": {
+    "defaultMessage": ""
+  },
+  "counter.gear": {
+    "defaultMessage": ""
+  },
+  "counter.level": {
+    "defaultMessage": ""
+  },
+  "counter.modifier": {
+    "defaultMessage": ""
+  },
+  "counter.strength": {
+    "defaultMessage": ""
+  },
+  "cyR7Kh": {
+    "defaultMessage": ""
+  },
+  "home.single.title": {
+    "defaultMessage": ""
+  },
+  "kill": {
+    "defaultMessage": ""
+  },
+  "levelLimit.epic": {
+    "defaultMessage": ""
+  },
+  "levelLimit.label": {
+    "defaultMessage": ""
+  },
+  "levelLimit.munchkin": {
+    "defaultMessage": ""
+  },
+  "levelLimit.none": {
+    "defaultMessage": ""
+  },
+  "mainButton.label": {
+    "defaultMessage": ""
+  },
+  "menu.keepAwake": {
+    "defaultMessage": ""
+  },
+  "menu.privacyPolicy": {
+    "defaultMessage": ""
+  },
+  "menu.rateApp": {
+    "defaultMessage": ""
+  },
+  "menu.restorePurchases": {
+    "defaultMessage": ""
+  },
+  "menu.share": {
+    "defaultMessage": ""
+  },
+  "menu.singleMode": {
+    "defaultMessage": ""
+  },
+  "menu.translate": {
+    "defaultMessage": ""
+  },
+  "player.form.color": {
+    "defaultMessage": ""
+  },
+  "player.form.delete": {
+    "defaultMessage": ""
+  },
+  "player.form.namePlaceholder": {
+    "defaultMessage": ""
+  },
+  "player.form.save": {
+    "defaultMessage": ""
+  },
+  "player.form.sex": {
+    "defaultMessage": ""
+  },
+  "player.form.title": {
+    "defaultMessage": ""
+  },
+  "player.form.titleEdit": {
+    "defaultMessage": ""
+  },
+  "player.list.edit": {
+    "defaultMessage": ""
+  },
+  "player.list.empty": {
+    "defaultMessage": ""
+  },
+  "player.list.reset": {
+    "defaultMessage": ""
+  },
+  "player.list.shuffle": {
+    "defaultMessage": ""
+  },
+  "player.list.title": {
+    "defaultMessage": ""
+  },
+  "settings": {
+    "defaultMessage": ""
+  },
+  "share.text": {
+    "defaultMessage": ""
+  },
+  "theme": {
+    "defaultMessage": ""
+  },
+  "theme.color": {
+    "defaultMessage": ""
+  },
+  "theme.name.apocalypse": {
+    "defaultMessage": ""
+  },
+  "theme.name.booty": {
+    "defaultMessage": ""
+  },
+  "theme.name.cthulhu": {
+    "defaultMessage": ""
+  },
+  "theme.name.legends": {
+    "defaultMessage": ""
+  },
+  "theme.name.munchkin": {
+    "defaultMessage": ""
+  },
+  "theme.name.star": {
+    "defaultMessage": ""
+  },
+  "theme.name.super": {
+    "defaultMessage": ""
+  },
+  "themeDialog.auto": {
+    "defaultMessage": ""
+  },
+  "themeDialog.dark": {
+    "defaultMessage": ""
+  },
+  "themeDialog.light": {
+    "defaultMessage": ""
+  },
+  "themeDialog.pureBlack": {
+    "defaultMessage": ""
+  },
+  "undo": {
+    "defaultMessage": ""
+  },
+  "undo.deletePlayers": {
+    "defaultMessage": ""
+  },
+  "undo.killPlayer": {
+    "defaultMessage": ""
+  },
+  "undo.resetPlayers": {
+    "defaultMessage": ""
+  }
 }
