@@ -1,65 +1,193 @@
 {
-  "EYIw2M": "Seçimi temizle",
-  "I3b4hn": "Sürüm",
-  "U8jwxJ": "Sonraki oyuncu",
-  "VWJ5/Y": "Önceki oyuncu",
-  "button.cancel": "İptal",
-  "button.submit": "Tamam",
-  "colorPicker.dialog.title": "Renk seç",
-  "combat": "Savaş",
-  "combat.add.helper": "Yardımcı",
-  "combat.add.monster": "Canavar",
-  "combat.helperSelector.title": "Yardımcı seç",
-  "combat.monster": "Canavar {number}",
-  "counter.gear": "Eşya",
-  "counter.level": "Seviye",
-  "counter.modifier": "Değiştirici",
-  "counter.strength": "Güç",
-  "cyR7Kh": "Geri",
-  "dice": "Zar",
-  "home.single.title": "Munchkin",
-  "kill": "Öldür",
-  "levelLimit.epic": "Süper Munchkin. ({minLevel} - {maxLevel})",
-  "levelLimit.label": "Seviye limiti",
-  "levelLimit.munchkin": "Munchkin ({minLevel} - {maxLevel})",
-  "levelLimit.none": "Limit yok",
-  "mainButton.label": "Ekle",
-  "menu.keepAwake": "Uyanık tut",
-  "menu.privacyPolicy": "Gizlilik Politikası",
-  "menu.rateApp": "Uygulamayı değerlendir",
-  "menu.restorePurchases": "Satın alımı iade et",
-  "menu.share": "Paylaş",
-  "menu.singleMode": "Tekli mod",
-  "menu.translate": "Çevir",
-  "player.form.color": "Renk",
-  "player.form.delete": "Silmek",
-  "player.form.namePlaceholder": "İsim",
-  "player.form.save": "Kaydet",
-  "player.form.sex": "Cinsiyet",
-  "player.form.title": "Yeni munchkin",
-  "player.form.titleEdit": "Munckini düzenle",
-  "player.list.edit": "Düzenle",
-  "player.list.empty": "Listede oyuncu yok",
-  "player.list.reset": "Reset",
-  "player.list.shuffle": "Oyuncuları karıştır",
-  "player.list.title": "Munckinler",
-  "settings": "Ayarlar",
-  "share.text": "Basit ama güçlü Munchkin seviye sayacı",
-  "theme": "Tema",
-  "theme.color": "Renk",
-  "theme.name.apocalypse": "Kıyamet",
-  "theme.name.booty": "Ganimet",
-  "theme.name.cthulhu": "Cthulhu",
-  "theme.name.legends": "Efsaneler",
-  "theme.name.munchkin": "Munckin",
-  "theme.name.star": "Yıldız",
-  "theme.name.super": "Süper",
-  "themeDialog.auto": "Varsayılan sistem",
-  "themeDialog.dark": "Koyu",
-  "themeDialog.light": "Açık",
-  "themeDialog.pureBlack": "Doğal siyah",
-  "undo": "Geri al",
-  "undo.deletePlayers": "{count, plural, one {Oyuncu kaldırıldı} other {Kaldırılan oyuncular}}",
-  "undo.killPlayer": "{name} {sex, select, female{ölen} male{ölen} other {}}",
-  "undo.resetPlayers": "Oyuncular resetlendi"
+  "C1Szny": {
+    "defaultMessage": "Zar",
+    "description": "Dice button tooltip"
+  },
+  "EYIw2M": {
+    "defaultMessage": "Seçimi temizle"
+  },
+  "I3b4hn": {
+    "defaultMessage": "Sürüm"
+  },
+  "U8jwxJ": {
+    "defaultMessage": "Sonraki oyuncu"
+  },
+  "VWJ5/Y": {
+    "defaultMessage": "Önceki oyuncu"
+  },
+  "button.cancel": {
+    "defaultMessage": "İptal"
+  },
+  "button.submit": {
+    "defaultMessage": "Tamam"
+  },
+  "colorPicker.dialog.title": {
+    "defaultMessage": "Renk seç"
+  },
+  "combat": {
+    "defaultMessage": "Savaş"
+  },
+  "combat.add.helper": {
+    "defaultMessage": "Yardımcı"
+  },
+  "combat.add.monster": {
+    "defaultMessage": "Canavar"
+  },
+  "combat.helperSelector.title": {
+    "defaultMessage": "Yardımcı seç"
+  },
+  "combat.monster": {
+    "defaultMessage": "Canavar {number}"
+  },
+  "counter.gear": {
+    "defaultMessage": "Eşya"
+  },
+  "counter.level": {
+    "defaultMessage": "Seviye"
+  },
+  "counter.modifier": {
+    "defaultMessage": "Değiştirici"
+  },
+  "counter.strength": {
+    "defaultMessage": "Güç"
+  },
+  "cyR7Kh": {
+    "defaultMessage": "Geri"
+  },
+  "home.single.title": {
+    "defaultMessage": "Munchkin"
+  },
+  "kill": {
+    "defaultMessage": "Öldür"
+  },
+  "levelLimit.epic": {
+    "defaultMessage": "Süper Munchkin. ({minLevel} - {maxLevel})"
+  },
+  "levelLimit.label": {
+    "defaultMessage": "Seviye limiti"
+  },
+  "levelLimit.munchkin": {
+    "defaultMessage": "Munchkin ({minLevel} - {maxLevel})"
+  },
+  "levelLimit.none": {
+    "defaultMessage": "Limit yok"
+  },
+  "mainButton.label": {
+    "defaultMessage": "Ekle"
+  },
+  "menu.keepAwake": {
+    "defaultMessage": "Uyanık tut"
+  },
+  "menu.privacyPolicy": {
+    "defaultMessage": "Gizlilik Politikası"
+  },
+  "menu.rateApp": {
+    "defaultMessage": "Uygulamayı değerlendir"
+  },
+  "menu.restorePurchases": {
+    "defaultMessage": "Satın alımı iade et"
+  },
+  "menu.share": {
+    "defaultMessage": "Paylaş"
+  },
+  "menu.singleMode": {
+    "defaultMessage": "Tekli mod"
+  },
+  "menu.translate": {
+    "defaultMessage": "Çevir"
+  },
+  "player.form.color": {
+    "defaultMessage": "Renk"
+  },
+  "player.form.delete": {
+    "defaultMessage": "Silmek"
+  },
+  "player.form.namePlaceholder": {
+    "defaultMessage": "İsim"
+  },
+  "player.form.save": {
+    "defaultMessage": "Kaydet"
+  },
+  "player.form.sex": {
+    "defaultMessage": "Cinsiyet"
+  },
+  "player.form.title": {
+    "defaultMessage": "Yeni munchkin"
+  },
+  "player.form.titleEdit": {
+    "defaultMessage": "Munckini düzenle"
+  },
+  "player.list.edit": {
+    "defaultMessage": "Düzenle"
+  },
+  "player.list.empty": {
+    "defaultMessage": "Listede oyuncu yok"
+  },
+  "player.list.reset": {
+    "defaultMessage": "Reset"
+  },
+  "player.list.shuffle": {
+    "defaultMessage": "Oyuncuları karıştır"
+  },
+  "player.list.title": {
+    "defaultMessage": "Munckinler"
+  },
+  "settings": {
+    "defaultMessage": "Ayarlar"
+  },
+  "share.text": {
+    "defaultMessage": "Basit ama güçlü Munchkin seviye sayacı"
+  },
+  "theme": {
+    "defaultMessage": "Tema"
+  },
+  "theme.color": {
+    "defaultMessage": "Renk"
+  },
+  "theme.name.apocalypse": {
+    "defaultMessage": "Kıyamet"
+  },
+  "theme.name.booty": {
+    "defaultMessage": "Ganimet"
+  },
+  "theme.name.cthulhu": {
+    "defaultMessage": "Cthulhu"
+  },
+  "theme.name.legends": {
+    "defaultMessage": "Efsaneler"
+  },
+  "theme.name.munchkin": {
+    "defaultMessage": "Munchkin"
+  },
+  "theme.name.star": {
+    "defaultMessage": "Yıldız"
+  },
+  "theme.name.super": {
+    "defaultMessage": "Süper"
+  },
+  "themeDialog.auto": {
+    "defaultMessage": "Varsayılan sistem"
+  },
+  "themeDialog.dark": {
+    "defaultMessage": "Koyu"
+  },
+  "themeDialog.light": {
+    "defaultMessage": "Açık"
+  },
+  "themeDialog.pureBlack": {
+    "defaultMessage": "Doğal siyah"
+  },
+  "undo": {
+    "defaultMessage": "Geri al"
+  },
+  "undo.deletePlayers": {
+    "defaultMessage": "{count, plural, one {Oyuncu kaldırıldı} other {Kaldırılan oyuncular}}"
+  },
+  "undo.killPlayer": {
+    "defaultMessage": "{name} {sex, select, female{ölen} male{ölen} other {}}"
+  },
+  "undo.resetPlayers": {
+    "defaultMessage": "Oyuncular resetlendi"
+  }
 }
+

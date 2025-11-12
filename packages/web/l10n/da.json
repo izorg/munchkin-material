@@ -1,65 +1,193 @@
 {
-  "EYIw2M": "Ryd valgte",
-  "I3b4hn": "Udgave",
-  "U8jwxJ": "Næste spiller",
-  "VWJ5/Y": "Tidligere spiller",
-  "button.cancel": "Afbryd",
-  "button.submit": "OK",
-  "colorPicker.dialog.title": "Vælg farve",
-  "combat": "Kamp",
-  "combat.add.helper": "Hjælper",
-  "combat.add.monster": "Monster",
-  "combat.helperSelector.title": "Vælg hjælper",
-  "combat.monster": "Monster {number}",
-  "counter.gear": "Udstyr",
-  "counter.level": "Niveau",
-  "counter.modifier": "Modifikator",
-  "counter.strength": "Styrke",
-  "cyR7Kh": "Tilbage",
-  "dice": "Terning",
-  "home.single.title": "Munchkin",
-  "kill": "Dræb",
-  "levelLimit.epic": "Epic Munchkin ({minLevel} - {maxLevel})",
-  "levelLimit.label": "Niveau begrænset",
-  "levelLimit.munchkin": "Munchkin ({minLevel} - {maxLevel})",
-  "levelLimit.none": "Ingen begrænsning",
-  "mainButton.label": "Tilføj",
-  "menu.keepAwake": "Hold vågen",
-  "menu.privacyPolicy": "Privatlivspolitik",
-  "menu.rateApp": "Vurdér denne app",
-  "menu.restorePurchases": "Gendan køb",
-  "menu.share": "Del",
-  "menu.singleMode": "Solo tilstand",
-  "menu.translate": "Oversæt",
-  "player.form.color": "Farve",
-  "player.form.delete": "Slet",
-  "player.form.namePlaceholder": "Navn",
-  "player.form.save": "Gem",
-  "player.form.sex": "Køn",
-  "player.form.title": "Ny munchkin",
-  "player.form.titleEdit": "Redigér munchkin",
-  "player.list.edit": "Redigér",
-  "player.list.empty": "Ingen spillere på listen",
-  "player.list.reset": "Genstart",
-  "player.list.shuffle": "Bland spillere",
-  "player.list.title": "Munchkins",
-  "settings": "Indstillinger",
-  "share.text": "Nem men stærk Munchkin niveautæller",
-  "theme": "Tema",
-  "theme.color": "Farve",
-  "theme.name.apocalypse": "Undergang",
-  "theme.name.booty": "Udbytte",
-  "theme.name.cthulhu": "Cthulhu",
-  "theme.name.legends": "Legende",
-  "theme.name.munchkin": "Munchkin",
-  "theme.name.star": "Stjerne",
-  "theme.name.super": "Super",
-  "themeDialog.auto": "Systemstandard",
-  "themeDialog.dark": "Mørk",
-  "themeDialog.light": "Lyst",
-  "themeDialog.pureBlack": "Ren Sort",
-  "undo": "Fortryd",
-  "undo.deletePlayers": "{count, plural, one {Spilleren er fjernet} other {Spillere er blevet fjernet}}",
-  "undo.killPlayer": "{name} {sex, select, female {er død} male {er død} other {}}",
-  "undo.resetPlayers": "Spillere er blevet nulstillet"
+  "C1Szny": {
+    "defaultMessage": "Terning",
+    "description": "Dice button tooltip"
+  },
+  "EYIw2M": {
+    "defaultMessage": "Ryd valgte"
+  },
+  "I3b4hn": {
+    "defaultMessage": "Udgave"
+  },
+  "U8jwxJ": {
+    "defaultMessage": "Næste spiller"
+  },
+  "VWJ5/Y": {
+    "defaultMessage": "Tidligere spiller"
+  },
+  "button.cancel": {
+    "defaultMessage": "Afbryd"
+  },
+  "button.submit": {
+    "defaultMessage": "OK"
+  },
+  "colorPicker.dialog.title": {
+    "defaultMessage": "Vælg farve"
+  },
+  "combat": {
+    "defaultMessage": "Kamp"
+  },
+  "combat.add.helper": {
+    "defaultMessage": "Hjælper"
+  },
+  "combat.add.monster": {
+    "defaultMessage": "Monster"
+  },
+  "combat.helperSelector.title": {
+    "defaultMessage": "Vælg hjælper"
+  },
+  "combat.monster": {
+    "defaultMessage": "Monster {number}"
+  },
+  "counter.gear": {
+    "defaultMessage": "Udstyr"
+  },
+  "counter.level": {
+    "defaultMessage": "Niveau"
+  },
+  "counter.modifier": {
+    "defaultMessage": "Modifikator"
+  },
+  "counter.strength": {
+    "defaultMessage": "Styrke"
+  },
+  "cyR7Kh": {
+    "defaultMessage": "Tilbage"
+  },
+  "home.single.title": {
+    "defaultMessage": "Munchkin"
+  },
+  "kill": {
+    "defaultMessage": "Dræb"
+  },
+  "levelLimit.epic": {
+    "defaultMessage": "Epic Munchkin ({minLevel} - {maxLevel})"
+  },
+  "levelLimit.label": {
+    "defaultMessage": "Niveau begrænset"
+  },
+  "levelLimit.munchkin": {
+    "defaultMessage": "Munchkin ({minLevel} - {maxLevel})"
+  },
+  "levelLimit.none": {
+    "defaultMessage": "Ingen begrænsning"
+  },
+  "mainButton.label": {
+    "defaultMessage": "Tilføj"
+  },
+  "menu.keepAwake": {
+    "defaultMessage": "Hold vågen"
+  },
+  "menu.privacyPolicy": {
+    "defaultMessage": "Privatlivspolitik"
+  },
+  "menu.rateApp": {
+    "defaultMessage": "Vurdér denne app"
+  },
+  "menu.restorePurchases": {
+    "defaultMessage": "Gendan køb"
+  },
+  "menu.share": {
+    "defaultMessage": "Del"
+  },
+  "menu.singleMode": {
+    "defaultMessage": "Solo tilstand"
+  },
+  "menu.translate": {
+    "defaultMessage": "Oversæt"
+  },
+  "player.form.color": {
+    "defaultMessage": "Farve"
+  },
+  "player.form.delete": {
+    "defaultMessage": "Slet"
+  },
+  "player.form.namePlaceholder": {
+    "defaultMessage": "Navn"
+  },
+  "player.form.save": {
+    "defaultMessage": "Gem"
+  },
+  "player.form.sex": {
+    "defaultMessage": "Køn"
+  },
+  "player.form.title": {
+    "defaultMessage": "Ny munchkin"
+  },
+  "player.form.titleEdit": {
+    "defaultMessage": "Redigér munchkin"
+  },
+  "player.list.edit": {
+    "defaultMessage": "Redigér"
+  },
+  "player.list.empty": {
+    "defaultMessage": "Ingen spillere på listen"
+  },
+  "player.list.reset": {
+    "defaultMessage": "Genstart"
+  },
+  "player.list.shuffle": {
+    "defaultMessage": "Bland spillere"
+  },
+  "player.list.title": {
+    "defaultMessage": "Munchkins"
+  },
+  "settings": {
+    "defaultMessage": "Indstillinger"
+  },
+  "share.text": {
+    "defaultMessage": "Nem men stærk Munchkin niveautæller"
+  },
+  "theme": {
+    "defaultMessage": "Tema"
+  },
+  "theme.color": {
+    "defaultMessage": "Farve"
+  },
+  "theme.name.apocalypse": {
+    "defaultMessage": "Undergang"
+  },
+  "theme.name.booty": {
+    "defaultMessage": "Udbytte"
+  },
+  "theme.name.cthulhu": {
+    "defaultMessage": "Cthulhu"
+  },
+  "theme.name.legends": {
+    "defaultMessage": "Legende"
+  },
+  "theme.name.munchkin": {
+    "defaultMessage": "Munchkin"
+  },
+  "theme.name.star": {
+    "defaultMessage": "Stjerne"
+  },
+  "theme.name.super": {
+    "defaultMessage": "Super"
+  },
+  "themeDialog.auto": {
+    "defaultMessage": "Systemstandard"
+  },
+  "themeDialog.dark": {
+    "defaultMessage": "Mørk"
+  },
+  "themeDialog.light": {
+    "defaultMessage": "Lyst"
+  },
+  "themeDialog.pureBlack": {
+    "defaultMessage": "Ren Sort"
+  },
+  "undo": {
+    "defaultMessage": "Fortryd"
+  },
+  "undo.deletePlayers": {
+    "defaultMessage": "{count, plural, one {Spilleren er fjernet} other {Spillere er blevet fjernet}}"
+  },
+  "undo.killPlayer": {
+    "defaultMessage": "{name} {sex, select, female {er død} male {er død} other {}}"
+  },
+  "undo.resetPlayers": {
+    "defaultMessage": "Spillere er blevet nulstillet"
+  }
 }
+

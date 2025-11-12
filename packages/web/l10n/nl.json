@@ -1,65 +1,193 @@
 {
-  "EYIw2M": "Selectie wissen",
-  "I3b4hn": "Versie",
-  "U8jwxJ": "Volgende speler",
-  "VWJ5/Y": "Vorige speler",
-  "button.cancel": "Annuleer",
-  "button.submit": "Ok",
-  "colorPicker.dialog.title": "Kies een kleur",
-  "combat": "Strijden",
-  "combat.add.helper": "Helper",
-  "combat.add.monster": "Monster",
-  "combat.helperSelector.title": "Kies helper",
-  "combat.monster": "Monster {number}",
-  "counter.gear": "Uitrusting",
-  "counter.level": "Niveau",
-  "counter.modifier": "Wijziger",
-  "counter.strength": "Sterkte",
-  "cyR7Kh": "Terug",
-  "dice": "Dobbelsteen",
-  "home.single.title": "Munchkin",
-  "kill": "Dood",
-  "levelLimit.epic": "Uitzonderlijk Munchkin ({minLevel} - {maxLevel})",
-  "levelLimit.label": "Niveau limiet",
-  "levelLimit.munchkin": "Munchkin ({minLevel} - {maxLevel})",
-  "levelLimit.none": "Geen limiet",
-  "mainButton.label": "Toevoegen",
-  "menu.keepAwake": "Actief houden",
-  "menu.privacyPolicy": "Privacybeleid",
-  "menu.rateApp": "Waardeer deze app",
-  "menu.restorePurchases": "Herstel aankopen",
-  "menu.share": "Deel",
-  "menu.singleMode": "Enkeling mode",
-  "menu.translate": "Vertaal",
-  "player.form.color": "Kleur",
-  "player.form.delete": "Verwijderen",
-  "player.form.namePlaceholder": "Naam",
-  "player.form.save": "Bewaar",
-  "player.form.sex": "Geslacht",
-  "player.form.title": "Nieuwe munchkin",
-  "player.form.titleEdit": "Wijzig munchkin",
-  "player.list.edit": "Wijzig",
-  "player.list.empty": "Geen spelers in de lijst",
-  "player.list.reset": "Reset",
-  "player.list.shuffle": "Schudden spelers",
-  "player.list.title": "Munchkins",
-  "settings": "Instellingen",
-  "share.text": "Eenvoudige maar krachtige Munchkin-niveau-teller",
-  "theme": "Thema",
-  "theme.color": "Kleur",
-  "theme.name.apocalypse": "Apocalyps",
-  "theme.name.booty": "Buit",
-  "theme.name.cthulhu": "Cthulhu",
-  "theme.name.legends": "Legends",
-  "theme.name.munchkin": "Munchkin",
-  "theme.name.star": "Ster",
-  "theme.name.super": "Super",
-  "themeDialog.auto": "Systeemstandaard",
-  "themeDialog.dark": "Donker",
-  "themeDialog.light": "Licht",
-  "themeDialog.pureBlack": "Puur zwart",
-  "undo": "Ongedaan maken",
-  "undo.deletePlayers": "{count, plural, one {Speler verwijderd} other {Spelers verwijderd}}",
-  "undo.killPlayer": "{name} {sex, select, female{is gestorven} male{is gestorven} other {}}",
-  "undo.resetPlayers": "Spelerslijst is opgekuist"
+  "C1Szny": {
+    "defaultMessage": "Dobbelsteen",
+    "description": "Dice button tooltip"
+  },
+  "EYIw2M": {
+    "defaultMessage": "Selectie wissen"
+  },
+  "I3b4hn": {
+    "defaultMessage": "Versie"
+  },
+  "U8jwxJ": {
+    "defaultMessage": "Volgende speler"
+  },
+  "VWJ5/Y": {
+    "defaultMessage": "Vorige speler"
+  },
+  "button.cancel": {
+    "defaultMessage": "Annuleer"
+  },
+  "button.submit": {
+    "defaultMessage": "Ok"
+  },
+  "colorPicker.dialog.title": {
+    "defaultMessage": "Kies een kleur"
+  },
+  "combat": {
+    "defaultMessage": "Strijden"
+  },
+  "combat.add.helper": {
+    "defaultMessage": "Helper"
+  },
+  "combat.add.monster": {
+    "defaultMessage": "Monster"
+  },
+  "combat.helperSelector.title": {
+    "defaultMessage": "Kies helper"
+  },
+  "combat.monster": {
+    "defaultMessage": "Monster {number}"
+  },
+  "counter.gear": {
+    "defaultMessage": "Uitrusting"
+  },
+  "counter.level": {
+    "defaultMessage": "Niveau"
+  },
+  "counter.modifier": {
+    "defaultMessage": "Wijziger"
+  },
+  "counter.strength": {
+    "defaultMessage": "Sterkte"
+  },
+  "cyR7Kh": {
+    "defaultMessage": "Terug"
+  },
+  "home.single.title": {
+    "defaultMessage": "Munchkin"
+  },
+  "kill": {
+    "defaultMessage": "Dood"
+  },
+  "levelLimit.epic": {
+    "defaultMessage": "Uitzonderlijk Munchkin ({minLevel} - {maxLevel})"
+  },
+  "levelLimit.label": {
+    "defaultMessage": "Niveau limiet"
+  },
+  "levelLimit.munchkin": {
+    "defaultMessage": "Munchkin ({minLevel} - {maxLevel})"
+  },
+  "levelLimit.none": {
+    "defaultMessage": "Geen limiet"
+  },
+  "mainButton.label": {
+    "defaultMessage": "Toevoegen"
+  },
+  "menu.keepAwake": {
+    "defaultMessage": "Actief houden"
+  },
+  "menu.privacyPolicy": {
+    "defaultMessage": "Privacybeleid"
+  },
+  "menu.rateApp": {
+    "defaultMessage": "Waardeer deze app"
+  },
+  "menu.restorePurchases": {
+    "defaultMessage": "Herstel aankopen"
+  },
+  "menu.share": {
+    "defaultMessage": "Deel"
+  },
+  "menu.singleMode": {
+    "defaultMessage": "Enkeling mode"
+  },
+  "menu.translate": {
+    "defaultMessage": "Vertaal"
+  },
+  "player.form.color": {
+    "defaultMessage": "Kleur"
+  },
+  "player.form.delete": {
+    "defaultMessage": "Verwijderen"
+  },
+  "player.form.namePlaceholder": {
+    "defaultMessage": "Naam"
+  },
+  "player.form.save": {
+    "defaultMessage": "Bewaar"
+  },
+  "player.form.sex": {
+    "defaultMessage": "Geslacht"
+  },
+  "player.form.title": {
+    "defaultMessage": "Nieuwe munchkin"
+  },
+  "player.form.titleEdit": {
+    "defaultMessage": "Wijzig munchkin"
+  },
+  "player.list.edit": {
+    "defaultMessage": "Wijzig"
+  },
+  "player.list.empty": {
+    "defaultMessage": "Geen spelers in de lijst"
+  },
+  "player.list.reset": {
+    "defaultMessage": "Reset"
+  },
+  "player.list.shuffle": {
+    "defaultMessage": "Schudden spelers"
+  },
+  "player.list.title": {
+    "defaultMessage": "Munchkins"
+  },
+  "settings": {
+    "defaultMessage": "Instellingen"
+  },
+  "share.text": {
+    "defaultMessage": "Eenvoudige maar krachtige Munchkin-niveau-teller"
+  },
+  "theme": {
+    "defaultMessage": "Thema"
+  },
+  "theme.color": {
+    "defaultMessage": "Kleur"
+  },
+  "theme.name.apocalypse": {
+    "defaultMessage": "Apocalyps"
+  },
+  "theme.name.booty": {
+    "defaultMessage": "Buit"
+  },
+  "theme.name.cthulhu": {
+    "defaultMessage": "Cthulhu"
+  },
+  "theme.name.legends": {
+    "defaultMessage": "Legends"
+  },
+  "theme.name.munchkin": {
+    "defaultMessage": "Munchkin"
+  },
+  "theme.name.star": {
+    "defaultMessage": "Ster"
+  },
+  "theme.name.super": {
+    "defaultMessage": "Super"
+  },
+  "themeDialog.auto": {
+    "defaultMessage": "Systeemstandaard"
+  },
+  "themeDialog.dark": {
+    "defaultMessage": "Donker"
+  },
+  "themeDialog.light": {
+    "defaultMessage": "Licht"
+  },
+  "themeDialog.pureBlack": {
+    "defaultMessage": "Puur zwart"
+  },
+  "undo": {
+    "defaultMessage": "Ongedaan maken"
+  },
+  "undo.deletePlayers": {
+    "defaultMessage": "{count, plural, one {Speler verwijderd} other {Spelers verwijderd}}"
+  },
+  "undo.killPlayer": {
+    "defaultMessage": "{name} {sex, select, female{is gestorven} male{is gestorven} other {}}"
+  },
+  "undo.resetPlayers": {
+    "defaultMessage": "Spelerslijst is opgekuist"
+  }
 }
+

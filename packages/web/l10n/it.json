@@ -1,65 +1,193 @@
 {
-  "EYIw2M": "Cancella selezione",
-  "I3b4hn": "Versione",
-  "U8jwxJ": "Giocatore successivo",
-  "VWJ5/Y": "Giocatore precedente",
-  "button.cancel": "Cancella",
-  "button.submit": "OK",
-  "colorPicker.dialog.title": "Scegli un colore",
-  "combat": "Combattimento",
-  "combat.add.helper": "Aiutante",
-  "combat.add.monster": "Mostro",
-  "combat.helperSelector.title": "Scegli aiutante",
-  "combat.monster": "Mostro {number}",
-  "counter.gear": "Oggetti",
-  "counter.level": "Livello",
-  "counter.modifier": "Modificatore",
-  "counter.strength": "Forza",
-  "cyR7Kh": "Indietro",
-  "dice": "Dado",
-  "home.single.title": "Munchkin",
-  "kill": "Uccidi",
-  "levelLimit.epic": "Munchkin Epico ({minLevel} - {maxLevel})",
-  "levelLimit.label": "Livello limite",
-  "levelLimit.munchkin": "Munchkin ({minLevel} - {maxLevel})",
-  "levelLimit.none": "Nessun limite",
-  "mainButton.label": "Aggiungi",
-  "menu.keepAwake": "Tieni sveglio",
-  "menu.privacyPolicy": "Trattamento dati",
-  "menu.rateApp": "Vota l'app",
-  "menu.restorePurchases": "Ripristina acquisto",
-  "menu.share": "Condividi",
-  "menu.singleMode": "Giocatore singolo",
-  "menu.translate": "Traduci",
-  "player.form.color": "Colore",
-  "player.form.delete": "Eliminare",
-  "player.form.namePlaceholder": "Nome",
-  "player.form.save": "Salva",
-  "player.form.sex": "Sesso",
-  "player.form.title": "Nuovo munchkin",
-  "player.form.titleEdit": "Modifica munchkin",
-  "player.list.edit": "Modifica",
-  "player.list.empty": "La lista dei giocatori è vuota",
-  "player.list.reset": "Resetta",
-  "player.list.shuffle": "Mischia i giocatori",
-  "player.list.title": "Munchkins",
-  "settings": "Impostazioni",
-  "share.text": "Un contatore Munchkin semplice ma efficace",
-  "theme": "Tema",
-  "theme.color": "Colore",
-  "theme.name.apocalypse": "Apocalisse",
-  "theme.name.booty": "Caraibi",
-  "theme.name.cthulhu": "Cthulhu",
-  "theme.name.legends": "Leggende",
-  "theme.name.munchkin": "Munchkin",
-  "theme.name.star": "Stella",
-  "theme.name.super": "Super",
-  "themeDialog.auto": "Default del sistema",
-  "themeDialog.dark": "Scuro",
-  "themeDialog.light": "Chiaro",
-  "themeDialog.pureBlack": "Nero assoluto",
-  "undo": "Annulla",
-  "undo.deletePlayers": "{count, plural, one {Giocatore è stato rimosso} other {Giocatori sono stati rimossi}}",
-  "undo.killPlayer": "{name} {sex, select, female {è morta} male {è morto} other {}}",
-  "undo.resetPlayers": "I giocatori sono stati resettati"
+  "C1Szny": {
+    "defaultMessage": "Dado",
+    "description": "Dice button tooltip"
+  },
+  "EYIw2M": {
+    "defaultMessage": "Cancella selezione"
+  },
+  "I3b4hn": {
+    "defaultMessage": "Versione"
+  },
+  "U8jwxJ": {
+    "defaultMessage": "Giocatore successivo"
+  },
+  "VWJ5/Y": {
+    "defaultMessage": "Giocatore precedente"
+  },
+  "button.cancel": {
+    "defaultMessage": "Cancella"
+  },
+  "button.submit": {
+    "defaultMessage": "OK"
+  },
+  "colorPicker.dialog.title": {
+    "defaultMessage": "Scegli un colore"
+  },
+  "combat": {
+    "defaultMessage": "Combattimento"
+  },
+  "combat.add.helper": {
+    "defaultMessage": "Aiutante"
+  },
+  "combat.add.monster": {
+    "defaultMessage": "Mostro"
+  },
+  "combat.helperSelector.title": {
+    "defaultMessage": "Scegli aiutante"
+  },
+  "combat.monster": {
+    "defaultMessage": "Mostro {number}"
+  },
+  "counter.gear": {
+    "defaultMessage": "Oggetti"
+  },
+  "counter.level": {
+    "defaultMessage": "Livello"
+  },
+  "counter.modifier": {
+    "defaultMessage": "Modificatore"
+  },
+  "counter.strength": {
+    "defaultMessage": "Forza"
+  },
+  "cyR7Kh": {
+    "defaultMessage": "Indietro"
+  },
+  "home.single.title": {
+    "defaultMessage": "Munchkin"
+  },
+  "kill": {
+    "defaultMessage": "Uccidi"
+  },
+  "levelLimit.epic": {
+    "defaultMessage": "Munchkin Epico ({minLevel} - {maxLevel})"
+  },
+  "levelLimit.label": {
+    "defaultMessage": "Livello limite"
+  },
+  "levelLimit.munchkin": {
+    "defaultMessage": "Munchkin ({minLevel} - {maxLevel})"
+  },
+  "levelLimit.none": {
+    "defaultMessage": "Nessun limite"
+  },
+  "mainButton.label": {
+    "defaultMessage": "Aggiungi"
+  },
+  "menu.keepAwake": {
+    "defaultMessage": "Tieni sveglio"
+  },
+  "menu.privacyPolicy": {
+    "defaultMessage": "Trattamento dati"
+  },
+  "menu.rateApp": {
+    "defaultMessage": "Vota l'app"
+  },
+  "menu.restorePurchases": {
+    "defaultMessage": "Ripristina acquisto"
+  },
+  "menu.share": {
+    "defaultMessage": "Condividi"
+  },
+  "menu.singleMode": {
+    "defaultMessage": "Giocatore singolo"
+  },
+  "menu.translate": {
+    "defaultMessage": "Traduci"
+  },
+  "player.form.color": {
+    "defaultMessage": "Colore"
+  },
+  "player.form.delete": {
+    "defaultMessage": "Eliminare"
+  },
+  "player.form.namePlaceholder": {
+    "defaultMessage": "Nome"
+  },
+  "player.form.save": {
+    "defaultMessage": "Salva"
+  },
+  "player.form.sex": {
+    "defaultMessage": "Sesso"
+  },
+  "player.form.title": {
+    "defaultMessage": "Nuovo munchkin"
+  },
+  "player.form.titleEdit": {
+    "defaultMessage": "Modifica munchkin"
+  },
+  "player.list.edit": {
+    "defaultMessage": "Modifica"
+  },
+  "player.list.empty": {
+    "defaultMessage": "La lista dei giocatori è vuota"
+  },
+  "player.list.reset": {
+    "defaultMessage": "Resetta"
+  },
+  "player.list.shuffle": {
+    "defaultMessage": "Mischia i giocatori"
+  },
+  "player.list.title": {
+    "defaultMessage": "Munchkins"
+  },
+  "settings": {
+    "defaultMessage": "Impostazioni"
+  },
+  "share.text": {
+    "defaultMessage": "Un contatore Munchkin semplice ma efficace"
+  },
+  "theme": {
+    "defaultMessage": "Tema"
+  },
+  "theme.color": {
+    "defaultMessage": "Colore"
+  },
+  "theme.name.apocalypse": {
+    "defaultMessage": "Apocalisse"
+  },
+  "theme.name.booty": {
+    "defaultMessage": "Caraibi"
+  },
+  "theme.name.cthulhu": {
+    "defaultMessage": "Cthulhu"
+  },
+  "theme.name.legends": {
+    "defaultMessage": "Leggende"
+  },
+  "theme.name.munchkin": {
+    "defaultMessage": "Munchkin"
+  },
+  "theme.name.star": {
+    "defaultMessage": "Stella"
+  },
+  "theme.name.super": {
+    "defaultMessage": "Super"
+  },
+  "themeDialog.auto": {
+    "defaultMessage": "Default del sistema"
+  },
+  "themeDialog.dark": {
+    "defaultMessage": "Scuro"
+  },
+  "themeDialog.light": {
+    "defaultMessage": "Chiaro"
+  },
+  "themeDialog.pureBlack": {
+    "defaultMessage": "Nero assoluto"
+  },
+  "undo": {
+    "defaultMessage": "Annulla"
+  },
+  "undo.deletePlayers": {
+    "defaultMessage": "{count, plural, one {Giocatore è stato rimosso} other {Giocatori sono stati rimossi}}"
+  },
+  "undo.killPlayer": {
+    "defaultMessage": "{name} {sex, select, female {è morta} male {è morto} other {}}"
+  },
+  "undo.resetPlayers": {
+    "defaultMessage": "I giocatori sono stati resettati"
+  }
 }
+

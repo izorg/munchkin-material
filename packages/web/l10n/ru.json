@@ -1,65 +1,193 @@
 {
-  "EYIw2M": "Отменить выбор",
-  "I3b4hn": "Версия",
-  "U8jwxJ": "Следующий игрок",
-  "VWJ5/Y": "Предыдущий игрок",
-  "button.cancel": "Отменить",
-  "button.submit": "OK",
-  "colorPicker.dialog.title": "Выберите цвет",
-  "combat": "Бой",
-  "combat.add.helper": "Помощник",
-  "combat.add.monster": "Монстр",
-  "combat.helperSelector.title": "Выберите помощника",
-  "combat.monster": "Монстр {number}",
-  "counter.gear": "Шмотки",
-  "counter.level": "Уровень",
-  "counter.modifier": "Модификатор",
-  "counter.strength": "Сила",
-  "cyR7Kh": "Назад",
-  "dice": "Кубик",
-  "home.single.title": "Манчкин",
-  "kill": "Убить",
-  "levelLimit.epic": "Эпический Манчкин ({minLevel} - {maxLevel})",
-  "levelLimit.label": "Ограничение уровня",
-  "levelLimit.munchkin": "Манчкин ({minLevel} - {maxLevel})",
-  "levelLimit.none": "Без ограничения",
-  "mainButton.label": "Добавить",
-  "menu.keepAwake": "Не выключать",
-  "menu.privacyPolicy": "Политика конфиденциальности",
-  "menu.rateApp": "Оценить приложение",
-  "menu.restorePurchases": "Восстановить покупки",
-  "menu.share": "Поделиться",
-  "menu.singleMode": "Один игрок",
-  "menu.translate": "Перевести",
-  "player.form.color": "Цвет",
-  "player.form.delete": "Удалить",
-  "player.form.namePlaceholder": "Имя",
-  "player.form.save": "Сохранить",
-  "player.form.sex": "Пол",
-  "player.form.title": "Новый манчкин",
-  "player.form.titleEdit": "Редактировать манчкина",
-  "player.list.edit": "Изменить",
-  "player.list.empty": "Список игроков пуст",
-  "player.list.reset": "Сброс",
-  "player.list.shuffle": "Перемешать игроков",
-  "player.list.title": "Манчкины",
-  "settings": "Настройки",
-  "share.text": "Простой и удобный счётчик уровней для игры в Манчкин",
-  "theme": "Тема",
-  "theme.color": "Цвет",
-  "theme.name.apocalypse": "Апокалипсис",
-  "theme.name.booty": "Пиратский",
-  "theme.name.cthulhu": "Ктулху",
-  "theme.name.legends": "Легендарный",
-  "theme.name.munchkin": "Манчкин",
-  "theme.name.star": "Звёздный",
-  "theme.name.super": "Супер",
-  "themeDialog.auto": "Как в системе",
-  "themeDialog.dark": "Тёмная",
-  "themeDialog.light": "Светлая",
-  "themeDialog.pureBlack": "Натуральный чёрный",
-  "undo": "Отменить",
-  "undo.deletePlayers": "{count, plural, one {Игрок удалён} other {Игроки удалены}}",
-  "undo.killPlayer": "{name} {sex, select, female {умерла} male {умер} other {}}",
-  "undo.resetPlayers": "Игроки были сброшены"
+  "C1Szny": {
+    "defaultMessage": "Кубик",
+    "description": "Dice button tooltip"
+  },
+  "EYIw2M": {
+    "defaultMessage": "Отменить выбор"
+  },
+  "I3b4hn": {
+    "defaultMessage": "Версия"
+  },
+  "U8jwxJ": {
+    "defaultMessage": "Следующий игрок"
+  },
+  "VWJ5/Y": {
+    "defaultMessage": "Предыдущий игрок"
+  },
+  "button.cancel": {
+    "defaultMessage": "Отменить"
+  },
+  "button.submit": {
+    "defaultMessage": "OK"
+  },
+  "colorPicker.dialog.title": {
+    "defaultMessage": "Выберите цвет"
+  },
+  "combat": {
+    "defaultMessage": "Бой"
+  },
+  "combat.add.helper": {
+    "defaultMessage": "Помощник"
+  },
+  "combat.add.monster": {
+    "defaultMessage": "Монстр"
+  },
+  "combat.helperSelector.title": {
+    "defaultMessage": "Выберите помощника"
+  },
+  "combat.monster": {
+    "defaultMessage": "Монстр {number}"
+  },
+  "counter.gear": {
+    "defaultMessage": "Шмотки"
+  },
+  "counter.level": {
+    "defaultMessage": "Уровень"
+  },
+  "counter.modifier": {
+    "defaultMessage": "Модификатор"
+  },
+  "counter.strength": {
+    "defaultMessage": "Сила"
+  },
+  "cyR7Kh": {
+    "defaultMessage": "Назад"
+  },
+  "home.single.title": {
+    "defaultMessage": "Манчкин"
+  },
+  "kill": {
+    "defaultMessage": "Убить"
+  },
+  "levelLimit.epic": {
+    "defaultMessage": "Эпический Манчкин ({minLevel} - {maxLevel})"
+  },
+  "levelLimit.label": {
+    "defaultMessage": "Ограничение уровня"
+  },
+  "levelLimit.munchkin": {
+    "defaultMessage": "Манчкин ({minLevel} - {maxLevel})"
+  },
+  "levelLimit.none": {
+    "defaultMessage": "Без ограничения"
+  },
+  "mainButton.label": {
+    "defaultMessage": "Добавить"
+  },
+  "menu.keepAwake": {
+    "defaultMessage": "Не выключать"
+  },
+  "menu.privacyPolicy": {
+    "defaultMessage": "Политика конфиденциальности"
+  },
+  "menu.rateApp": {
+    "defaultMessage": "Оценить приложение"
+  },
+  "menu.restorePurchases": {
+    "defaultMessage": "Восстановить покупки"
+  },
+  "menu.share": {
+    "defaultMessage": "Поделиться"
+  },
+  "menu.singleMode": {
+    "defaultMessage": "Один игрок"
+  },
+  "menu.translate": {
+    "defaultMessage": "Перевести"
+  },
+  "player.form.color": {
+    "defaultMessage": "Цвет"
+  },
+  "player.form.delete": {
+    "defaultMessage": "Удалить"
+  },
+  "player.form.namePlaceholder": {
+    "defaultMessage": "Имя"
+  },
+  "player.form.save": {
+    "defaultMessage": "Сохранить"
+  },
+  "player.form.sex": {
+    "defaultMessage": "Пол"
+  },
+  "player.form.title": {
+    "defaultMessage": "Новый манчкин"
+  },
+  "player.form.titleEdit": {
+    "defaultMessage": "Редактировать манчкина"
+  },
+  "player.list.edit": {
+    "defaultMessage": "Изменить"
+  },
+  "player.list.empty": {
+    "defaultMessage": "Список игроков пуст"
+  },
+  "player.list.reset": {
+    "defaultMessage": "Сброс"
+  },
+  "player.list.shuffle": {
+    "defaultMessage": "Перемешать игроков"
+  },
+  "player.list.title": {
+    "defaultMessage": "Манчкины"
+  },
+  "settings": {
+    "defaultMessage": "Настройки"
+  },
+  "share.text": {
+    "defaultMessage": "Простой и удобный счётчик уровней для игры в Манчкин"
+  },
+  "theme": {
+    "defaultMessage": "Тема"
+  },
+  "theme.color": {
+    "defaultMessage": "Цвет"
+  },
+  "theme.name.apocalypse": {
+    "defaultMessage": "Апокалипсис"
+  },
+  "theme.name.booty": {
+    "defaultMessage": "Пиратский"
+  },
+  "theme.name.cthulhu": {
+    "defaultMessage": "Ктулху"
+  },
+  "theme.name.legends": {
+    "defaultMessage": "Легендарный"
+  },
+  "theme.name.munchkin": {
+    "defaultMessage": "Манчкин"
+  },
+  "theme.name.star": {
+    "defaultMessage": "Звёздный"
+  },
+  "theme.name.super": {
+    "defaultMessage": "Супер"
+  },
+  "themeDialog.auto": {
+    "defaultMessage": "Как в системе"
+  },
+  "themeDialog.dark": {
+    "defaultMessage": "Тёмная"
+  },
+  "themeDialog.light": {
+    "defaultMessage": "Светлая"
+  },
+  "themeDialog.pureBlack": {
+    "defaultMessage": "Натуральный чёрный"
+  },
+  "undo": {
+    "defaultMessage": "Отменить"
+  },
+  "undo.deletePlayers": {
+    "defaultMessage": "{count, plural, one {Игрок удалён} other {Игроки удалены}}"
+  },
+  "undo.killPlayer": {
+    "defaultMessage": "{name} {sex, select, female {умерла} male {умер} other {}}"
+  },
+  "undo.resetPlayers": {
+    "defaultMessage": "Игроки были сброшены"
+  }
 }
+

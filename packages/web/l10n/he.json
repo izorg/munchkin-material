@@ -1,65 +1,193 @@
 {
-  "EYIw2M": "ניקוי בחירה",
-  "I3b4hn": "גִרְסָה",
-  "U8jwxJ": "השחקן הבא",
-  "VWJ5/Y": "שחקן קודם",
-  "button.cancel": "בטל",
-  "button.submit": "אישור",
-  "colorPicker.dialog.title": "בחר צבע",
-  "combat": "קרב",
-  "combat.add.helper": "עוזר",
-  "combat.add.monster": "מפלצת",
-  "combat.helperSelector.title": "בחר עוזר",
-  "combat.monster": "מפלצת {number}",
-  "counter.gear": "ציוד",
-  "counter.level": "דרגה",
-  "counter.modifier": "תוספים",
-  "counter.strength": "עוצמה",
-  "cyR7Kh": "בְּחֲזָרָה",
-  "dice": "קוביה",
-  "home.single.title": "מאנצ'קין",
-  "kill": "הרוג",
-  "levelLimit.epic": "מאנצ׳קין אגדי ({minLevel} - {maxLevel})",
-  "levelLimit.label": "רמה מקסימאלית",
-  "levelLimit.munchkin": "מאנצ׳קין ({minLevel} - {maxLevel})",
-  "levelLimit.none": "בלי הגבלה",
-  "mainButton.label": "הוסף",
-  "menu.keepAwake": "השאר ער",
-  "menu.privacyPolicy": "מדיניות פרטיות",
-  "menu.rateApp": "דרג את האפליקציה",
-  "menu.restorePurchases": "שחזר רכישות",
-  "menu.share": "שתף",
-  "menu.singleMode": "מצב יחיד",
-  "menu.translate": "תרגם",
-  "player.form.color": "צבע",
-  "player.form.delete": "לִמְחוֹק",
-  "player.form.namePlaceholder": "שם",
-  "player.form.save": "שמור",
-  "player.form.sex": "מין",
-  "player.form.title": "מאנצ'קין חדש",
-  "player.form.titleEdit": "ערוך את המאנצ'קין",
-  "player.list.edit": "ערוך",
-  "player.list.empty": "אין שחקנים ברשימה",
-  "player.list.reset": "אתחל",
-  "player.list.shuffle": "ערבב שחקנים",
-  "player.list.title": "מאנצ'קינים",
-  "settings": "הגדרות",
-  "share.text": "מד דרגת הדמות שלך: פשוט אך שימושי",
-  "theme": "ערכת נושא",
-  "theme.color": "צֶבַע",
-  "theme.name.apocalypse": "אפוקליפסה",
-  "theme.name.booty": "פיראטים",
-  "theme.name.cthulhu": "קת׳ולו",
-  "theme.name.legends": "אגדות",
-  "theme.name.munchkin": "מאנצ'קין",
-  "theme.name.star": "בין כוכבים",
-  "theme.name.super": "סופר",
-  "themeDialog.auto": "ברירת מחדל של המערכת",
-  "themeDialog.dark": "כהה",
-  "themeDialog.light": "בהיר",
-  "themeDialog.pureBlack": "שחור טהור",
-  "undo": "בטל",
-  "undo.deletePlayers": "{count, plural, one {Player has been removed} other {שחקנים הוסרו}}",
-  "undo.killPlayer": "{name} {sex, select, female{נפטרה} male{מת} other {}}",
-  "undo.resetPlayers": "השחקנים אופסו"
+  "C1Szny": {
+    "defaultMessage": "קוביה",
+    "description": "Dice button tooltip"
+  },
+  "EYIw2M": {
+    "defaultMessage": "ניקוי בחירה"
+  },
+  "I3b4hn": {
+    "defaultMessage": "גִרְסָה"
+  },
+  "U8jwxJ": {
+    "defaultMessage": "השחקן הבא"
+  },
+  "VWJ5/Y": {
+    "defaultMessage": "שחקן קודם"
+  },
+  "button.cancel": {
+    "defaultMessage": "בטל"
+  },
+  "button.submit": {
+    "defaultMessage": "אישור"
+  },
+  "colorPicker.dialog.title": {
+    "defaultMessage": "בחר צבע"
+  },
+  "combat": {
+    "defaultMessage": "קרב"
+  },
+  "combat.add.helper": {
+    "defaultMessage": "עוזר"
+  },
+  "combat.add.monster": {
+    "defaultMessage": "מפלצת"
+  },
+  "combat.helperSelector.title": {
+    "defaultMessage": "בחר עוזר"
+  },
+  "combat.monster": {
+    "defaultMessage": "מפלצת {number}"
+  },
+  "counter.gear": {
+    "defaultMessage": "ציוד"
+  },
+  "counter.level": {
+    "defaultMessage": "דרגה"
+  },
+  "counter.modifier": {
+    "defaultMessage": "תוספים"
+  },
+  "counter.strength": {
+    "defaultMessage": "עוצמה"
+  },
+  "cyR7Kh": {
+    "defaultMessage": "בְּחֲזָרָה"
+  },
+  "home.single.title": {
+    "defaultMessage": "מאנצ'קין"
+  },
+  "kill": {
+    "defaultMessage": "הרוג"
+  },
+  "levelLimit.epic": {
+    "defaultMessage": "מאנצ׳קין אגדי ({minLevel} - {maxLevel})"
+  },
+  "levelLimit.label": {
+    "defaultMessage": "רמה מקסימאלית"
+  },
+  "levelLimit.munchkin": {
+    "defaultMessage": "מאנצ׳קין ({minLevel} - {maxLevel})"
+  },
+  "levelLimit.none": {
+    "defaultMessage": "בלי הגבלה"
+  },
+  "mainButton.label": {
+    "defaultMessage": "הוסף"
+  },
+  "menu.keepAwake": {
+    "defaultMessage": "השאר ער"
+  },
+  "menu.privacyPolicy": {
+    "defaultMessage": "מדיניות פרטיות"
+  },
+  "menu.rateApp": {
+    "defaultMessage": "דרג את האפליקציה"
+  },
+  "menu.restorePurchases": {
+    "defaultMessage": "שחזר רכישות"
+  },
+  "menu.share": {
+    "defaultMessage": "שתף"
+  },
+  "menu.singleMode": {
+    "defaultMessage": "מצב יחיד"
+  },
+  "menu.translate": {
+    "defaultMessage": "תרגם"
+  },
+  "player.form.color": {
+    "defaultMessage": "צֶבַע"
+  },
+  "player.form.delete": {
+    "defaultMessage": "לִמְחוֹק"
+  },
+  "player.form.namePlaceholder": {
+    "defaultMessage": "שם"
+  },
+  "player.form.save": {
+    "defaultMessage": "שמור"
+  },
+  "player.form.sex": {
+    "defaultMessage": "מין"
+  },
+  "player.form.title": {
+    "defaultMessage": "מאנצ'קין חדש"
+  },
+  "player.form.titleEdit": {
+    "defaultMessage": "ערוך את המאנצ'קין"
+  },
+  "player.list.edit": {
+    "defaultMessage": "ערוך"
+  },
+  "player.list.empty": {
+    "defaultMessage": "אין שחקנים ברשימה"
+  },
+  "player.list.reset": {
+    "defaultMessage": "אתחל"
+  },
+  "player.list.shuffle": {
+    "defaultMessage": "ערבב שחקנים"
+  },
+  "player.list.title": {
+    "defaultMessage": "מאנצ'קינים"
+  },
+  "settings": {
+    "defaultMessage": "הגדרות"
+  },
+  "share.text": {
+    "defaultMessage": "מד דרגת הדמות שלך: פשוט אך שימושי"
+  },
+  "theme": {
+    "defaultMessage": "ערכת נושא"
+  },
+  "theme.color": {
+    "defaultMessage": "צֶבַע"
+  },
+  "theme.name.apocalypse": {
+    "defaultMessage": "אפוקליפסה"
+  },
+  "theme.name.booty": {
+    "defaultMessage": "פיראטים"
+  },
+  "theme.name.cthulhu": {
+    "defaultMessage": "קת׳ולו"
+  },
+  "theme.name.legends": {
+    "defaultMessage": "אגדות"
+  },
+  "theme.name.munchkin": {
+    "defaultMessage": "מאנצ'קין"
+  },
+  "theme.name.star": {
+    "defaultMessage": "בין כוכבים"
+  },
+  "theme.name.super": {
+    "defaultMessage": "סופר"
+  },
+  "themeDialog.auto": {
+    "defaultMessage": "ברירת מחדל של המערכת"
+  },
+  "themeDialog.dark": {
+    "defaultMessage": "כהה"
+  },
+  "themeDialog.light": {
+    "defaultMessage": "בהיר"
+  },
+  "themeDialog.pureBlack": {
+    "defaultMessage": "שחור טהור"
+  },
+  "undo": {
+    "defaultMessage": "בטל"
+  },
+  "undo.deletePlayers": {
+    "defaultMessage": "{count, plural, one {Player has been removed} other {שחקנים הוסרו}}"
+  },
+  "undo.killPlayer": {
+    "defaultMessage": "{name} {sex, select, female{נפטרה} male{מת} other {}}"
+  },
+  "undo.resetPlayers": {
+    "defaultMessage": "השחקנים אופסו"
+  }
 }
+

@@ -1,65 +1,193 @@
 {
-  "EYIw2M": "Αναίρεση επιλογής",
-  "I3b4hn": "Εκδοχή",
-  "U8jwxJ": "Επόμενος παίκτης",
-  "VWJ5/Y": "Προηγούμενος παίκτης",
-  "button.cancel": "Ακύρωση",
-  "button.submit": "ΟΚ",
-  "colorPicker.dialog.title": "Διάλεξε χρώμα",
-  "combat": "Μάχη",
-  "combat.add.helper": "Βοηθός",
-  "combat.add.monster": "Τέρας",
-  "combat.helperSelector.title": "Διάλεξε βοηθό",
-  "combat.monster": "Τέρας {number}",
-  "counter.gear": "Εξοπλισμός",
-  "counter.level": "Επίπεδο",
-  "counter.modifier": "Μετατροπέας",
-  "counter.strength": "Δύναμη",
-  "cyR7Kh": "Πίσω",
-  "dice": "Ζάρι",
-  "home.single.title": "Munchkin",
-  "kill": "Σκότωσε",
-  "levelLimit.epic": "Epic Munchkin ({minLevel} - {maxLevel})",
-  "levelLimit.label": "Όριο Επιπέδου",
-  "levelLimit.munchkin": "Munchkin ({minLevel} - {maxLevel})",
-  "levelLimit.none": "Χωρίς Όριο",
-  "mainButton.label": "Πρόσθεσε",
-  "menu.keepAwake": "Κράτησε ανοιχτό",
-  "menu.privacyPolicy": "Πολιτική απορρήτου",
-  "menu.rateApp": "Αξιολόγησε την εφαρμογή",
-  "menu.restorePurchases": "Επανέφερε τις αγορές",
-  "menu.share": "Κοινοποίησε",
-  "menu.singleMode": "Μονό",
-  "menu.translate": "Μετάφραση",
-  "player.form.color": "Χρώμα",
-  "player.form.delete": "Διαγράφω",
-  "player.form.namePlaceholder": "Όνομα",
-  "player.form.save": "Αποθήκευση",
-  "player.form.sex": "Φύλο",
-  "player.form.title": "Νέο munchkin",
-  "player.form.titleEdit": "Επεξεργασία munchkin",
-  "player.list.edit": "Επεξεργασία",
-  "player.list.empty": "Δεν υπάρχουν παίκτες",
-  "player.list.reset": "Επαναφορά",
-  "player.list.shuffle": "Ανακάτεψε τους παίκτες",
-  "player.list.title": "Munchkins",
-  "settings": "Ρυθμίσεις",
-  "share.text": "Απλός αλλά δυνατός μετρητής επιπέδων Munchkin",
-  "theme": "Θέμα",
-  "theme.color": "Χρώμα",
-  "theme.name.apocalypse": "Αποκάλυψη",
-  "theme.name.booty": "Booty",
-  "theme.name.cthulhu": "Cthulu",
-  "theme.name.legends": "Legends",
-  "theme.name.munchkin": "Munchkin",
-  "theme.name.star": "Star",
-  "theme.name.super": "Super",
-  "themeDialog.auto": "Προεπιλογή συστήματος",
-  "themeDialog.dark": "Σκούρο",
-  "themeDialog.light": "Φως",
-  "themeDialog.pureBlack": "Καθαρό μαύρο",
-  "undo": "Αναίρεση",
-  "undo.deletePlayers": "{count, plural, one {Ο παίκτης έχει αφαιρεθεί} other {Οι παίκτες έχουν αφαιρεθεί}}",
-  "undo.killPlayer": "{name} {sex, select, female {έχει πεθάνει} male {έχει πεθάνει} other {}}",
-  "undo.resetPlayers": "Οι παίκτες έχουν επαναφερθεί"
+  "C1Szny": {
+    "defaultMessage": "Ζάρι",
+    "description": "Dice button tooltip"
+  },
+  "EYIw2M": {
+    "defaultMessage": "Αναίρεση επιλογής"
+  },
+  "I3b4hn": {
+    "defaultMessage": "Εκδοχή"
+  },
+  "U8jwxJ": {
+    "defaultMessage": "Επόμενος παίκτης"
+  },
+  "VWJ5/Y": {
+    "defaultMessage": "Προηγούμενος παίκτης"
+  },
+  "button.cancel": {
+    "defaultMessage": "Ακύρωση"
+  },
+  "button.submit": {
+    "defaultMessage": "ΟΚ"
+  },
+  "colorPicker.dialog.title": {
+    "defaultMessage": "Διάλεξε χρώμα"
+  },
+  "combat": {
+    "defaultMessage": "Μάχη"
+  },
+  "combat.add.helper": {
+    "defaultMessage": "Βοηθός"
+  },
+  "combat.add.monster": {
+    "defaultMessage": "Τέρας"
+  },
+  "combat.helperSelector.title": {
+    "defaultMessage": "Διάλεξε βοηθό"
+  },
+  "combat.monster": {
+    "defaultMessage": "Τέρας {number}"
+  },
+  "counter.gear": {
+    "defaultMessage": "Εξοπλισμός"
+  },
+  "counter.level": {
+    "defaultMessage": "Επίπεδο"
+  },
+  "counter.modifier": {
+    "defaultMessage": "Μετατροπέας"
+  },
+  "counter.strength": {
+    "defaultMessage": "Δύναμη"
+  },
+  "cyR7Kh": {
+    "defaultMessage": "Πίσω"
+  },
+  "home.single.title": {
+    "defaultMessage": "Munchkin"
+  },
+  "kill": {
+    "defaultMessage": "Σκότωσε"
+  },
+  "levelLimit.epic": {
+    "defaultMessage": "Epic Munchkin ({minLevel} - {maxLevel})"
+  },
+  "levelLimit.label": {
+    "defaultMessage": "Όριο Επιπέδου"
+  },
+  "levelLimit.munchkin": {
+    "defaultMessage": "Munchkin ({minLevel} - {maxLevel})"
+  },
+  "levelLimit.none": {
+    "defaultMessage": "Χωρίς Όριο"
+  },
+  "mainButton.label": {
+    "defaultMessage": "Πρόσθεσε"
+  },
+  "menu.keepAwake": {
+    "defaultMessage": "Κράτησε ανοιχτό"
+  },
+  "menu.privacyPolicy": {
+    "defaultMessage": "Πολιτική απορρήτου"
+  },
+  "menu.rateApp": {
+    "defaultMessage": "Αξιολόγησε την εφαρμογή"
+  },
+  "menu.restorePurchases": {
+    "defaultMessage": "Επανέφερε τις αγορές"
+  },
+  "menu.share": {
+    "defaultMessage": "Κοινοποίησε"
+  },
+  "menu.singleMode": {
+    "defaultMessage": "Μονό"
+  },
+  "menu.translate": {
+    "defaultMessage": "Μετάφραση"
+  },
+  "player.form.color": {
+    "defaultMessage": "Χρώμα"
+  },
+  "player.form.delete": {
+    "defaultMessage": "Διαγράφω"
+  },
+  "player.form.namePlaceholder": {
+    "defaultMessage": "Όνομα"
+  },
+  "player.form.save": {
+    "defaultMessage": "Αποθήκευση"
+  },
+  "player.form.sex": {
+    "defaultMessage": "Φύλο"
+  },
+  "player.form.title": {
+    "defaultMessage": "Νέο munchkin"
+  },
+  "player.form.titleEdit": {
+    "defaultMessage": "Επεξεργασία munchkin"
+  },
+  "player.list.edit": {
+    "defaultMessage": "Επεξεργασία"
+  },
+  "player.list.empty": {
+    "defaultMessage": "Δεν υπάρχουν παίκτες"
+  },
+  "player.list.reset": {
+    "defaultMessage": "Επαναφορά"
+  },
+  "player.list.shuffle": {
+    "defaultMessage": "Ανακάτεψε τους παίκτες"
+  },
+  "player.list.title": {
+    "defaultMessage": "Munchkins"
+  },
+  "settings": {
+    "defaultMessage": "Ρυθμίσεις"
+  },
+  "share.text": {
+    "defaultMessage": "Απλός αλλά δυνατός μετρητής επιπέδων Munchkin"
+  },
+  "theme": {
+    "defaultMessage": "Θέμα"
+  },
+  "theme.color": {
+    "defaultMessage": "Χρώμα"
+  },
+  "theme.name.apocalypse": {
+    "defaultMessage": "Αποκάλυψη"
+  },
+  "theme.name.booty": {
+    "defaultMessage": "Booty"
+  },
+  "theme.name.cthulhu": {
+    "defaultMessage": "Cthulu"
+  },
+  "theme.name.legends": {
+    "defaultMessage": "Legends"
+  },
+  "theme.name.munchkin": {
+    "defaultMessage": "Munchkin"
+  },
+  "theme.name.star": {
+    "defaultMessage": "Star"
+  },
+  "theme.name.super": {
+    "defaultMessage": "Super"
+  },
+  "themeDialog.auto": {
+    "defaultMessage": "Προεπιλογή συστήματος"
+  },
+  "themeDialog.dark": {
+    "defaultMessage": "Σκούρο"
+  },
+  "themeDialog.light": {
+    "defaultMessage": "Φως"
+  },
+  "themeDialog.pureBlack": {
+    "defaultMessage": "Καθαρό μαύρο"
+  },
+  "undo": {
+    "defaultMessage": "Αναίρεση"
+  },
+  "undo.deletePlayers": {
+    "defaultMessage": "{count, plural, one {Ο παίκτης έχει αφαιρεθεί} other {Οι παίκτες έχουν αφαιρεθεί}}"
+  },
+  "undo.killPlayer": {
+    "defaultMessage": "{name} {sex, select, female {έχει πεθάνει} male {έχει πεθάνει} other {}}"
+  },
+  "undo.resetPlayers": {
+    "defaultMessage": "Οι παίκτες έχουν επαναφερθεί"
+  }
 }
+

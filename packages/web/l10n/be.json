@@ -1,65 +1,193 @@
 {
-  "EYIw2M": "Адмяніць выбар",
-  "I3b4hn": "Версія",
-  "U8jwxJ": "Наступны гулец",
-  "VWJ5/Y": "Папярэдні гулец",
-  "button.cancel": "Адмяніць",
-  "button.submit": "OK",
-  "colorPicker.dialog.title": "Выберыце колер",
-  "combat": "Бой",
-  "combat.add.helper": "Памочнік",
-  "combat.add.monster": "Монстр",
-  "combat.helperSelector.title": "Выберыце памочніка",
-  "combat.monster": "Монстр {number}",
-  "counter.gear": "Шмоткі",
-  "counter.level": "Узровень",
-  "counter.modifier": "Мадыфікатар",
-  "counter.strength": "Сіла",
-  "cyR7Kh": "Назад",
-  "dice": "Кубік",
-  "home.single.title": "Манчкін",
-  "kill": "Забіць",
-  "levelLimit.epic": "Эпічны Манчкін ({minLevel} - {maxLevel})",
-  "levelLimit.label": "Абмежаванне ўзроўню",
-  "levelLimit.munchkin": "Манчкін ({minLevel} - {maxLevel})",
-  "levelLimit.none": "Без абмежавання",
-  "mainButton.label": "Дадаць",
-  "menu.keepAwake": "Ня выключаць",
-  "menu.privacyPolicy": "Палітыка прыватнасці",
-  "menu.rateApp": "Ацаніце праграму",
-  "menu.restorePurchases": "Аднавіць пакупкі",
-  "menu.share": "Абагуліць",
-  "menu.singleMode": "Адзіночны рэжым",
-  "menu.translate": "Перакласці",
-  "player.form.color": "Колер",
-  "player.form.delete": "Выдаліць",
-  "player.form.namePlaceholder": "Імя",
-  "player.form.save": "Захаваць",
-  "player.form.sex": "Пол",
-  "player.form.title": "Новы манчкін",
-  "player.form.titleEdit": "Рэдагаваць манчкіна",
-  "player.list.edit": "Рэдагаваць",
-  "player.list.empty": "Спіс гульцоў пусты",
-  "player.list.reset": "Скінуць",
-  "player.list.shuffle": "Змяшаць гульцоў",
-  "player.list.title": "Манчкіны",
-  "settings": "Налады",
-  "share.text": "Просты і зручны лічыльнік узроўняў для гульні ў Манчкін",
-  "theme": "Тэма",
-  "theme.color": "Колер",
-  "theme.name.apocalypse": "Апакаліпсіс",
-  "theme.name.booty": "Пірацкі",
-  "theme.name.cthulhu": "Ктулху",
-  "theme.name.legends": "Легендарны",
-  "theme.name.munchkin": "Манчкін",
-  "theme.name.star": "Зорны",
-  "theme.name.super": "Супер",
-  "themeDialog.auto": "Як у сістэме",
-  "themeDialog.dark": "Цёмная",
-  "themeDialog.light": "Светлая",
-  "themeDialog.pureBlack": "Цалкам чорны",
-  "undo": "Адмяніць",
-  "undo.deletePlayers": "{count, plural, one {Гулец выдалены} other {Гульцы выдаленыя}}",
-  "undo.killPlayer": "{name} {sex, select, female {памерла} male {памёр} other {}}",
-  "undo.resetPlayers": "Гульцы былі скінуты"
+  "C1Szny": {
+    "defaultMessage": "Кубік",
+    "description": "Dice button tooltip"
+  },
+  "EYIw2M": {
+    "defaultMessage": "Адмяніць выбар"
+  },
+  "I3b4hn": {
+    "defaultMessage": "Версія"
+  },
+  "U8jwxJ": {
+    "defaultMessage": "Наступны гулец"
+  },
+  "VWJ5/Y": {
+    "defaultMessage": "Папярэдні гулец"
+  },
+  "button.cancel": {
+    "defaultMessage": "Адмяніць"
+  },
+  "button.submit": {
+    "defaultMessage": "OK"
+  },
+  "colorPicker.dialog.title": {
+    "defaultMessage": "Выберыце колер"
+  },
+  "combat": {
+    "defaultMessage": "Бой"
+  },
+  "combat.add.helper": {
+    "defaultMessage": "Памочнік"
+  },
+  "combat.add.monster": {
+    "defaultMessage": "Монстр"
+  },
+  "combat.helperSelector.title": {
+    "defaultMessage": "Выберыце памочніка"
+  },
+  "combat.monster": {
+    "defaultMessage": "Монстр {number}"
+  },
+  "counter.gear": {
+    "defaultMessage": "Шмоткі"
+  },
+  "counter.level": {
+    "defaultMessage": "Узровень"
+  },
+  "counter.modifier": {
+    "defaultMessage": "Мадыфікатар"
+  },
+  "counter.strength": {
+    "defaultMessage": "Сіла"
+  },
+  "cyR7Kh": {
+    "defaultMessage": "Назад"
+  },
+  "home.single.title": {
+    "defaultMessage": "Манчкін"
+  },
+  "kill": {
+    "defaultMessage": "Забіць"
+  },
+  "levelLimit.epic": {
+    "defaultMessage": "Эпічны Манчкін ({minLevel} - {maxLevel})"
+  },
+  "levelLimit.label": {
+    "defaultMessage": "Абмежаванне ўзроўню"
+  },
+  "levelLimit.munchkin": {
+    "defaultMessage": "Манчкін ({minLevel} - {maxLevel})"
+  },
+  "levelLimit.none": {
+    "defaultMessage": "Без абмежавання"
+  },
+  "mainButton.label": {
+    "defaultMessage": "Дадаць"
+  },
+  "menu.keepAwake": {
+    "defaultMessage": "Ня выключаць"
+  },
+  "menu.privacyPolicy": {
+    "defaultMessage": "Палітыка прыватнасці"
+  },
+  "menu.rateApp": {
+    "defaultMessage": "Ацаніце праграму"
+  },
+  "menu.restorePurchases": {
+    "defaultMessage": "Аднавіць пакупкі"
+  },
+  "menu.share": {
+    "defaultMessage": "Абагуліць"
+  },
+  "menu.singleMode": {
+    "defaultMessage": "Адзіночны рэжым"
+  },
+  "menu.translate": {
+    "defaultMessage": "Перакласці"
+  },
+  "player.form.color": {
+    "defaultMessage": "Колер"
+  },
+  "player.form.delete": {
+    "defaultMessage": "Выдаліць"
+  },
+  "player.form.namePlaceholder": {
+    "defaultMessage": "Імя"
+  },
+  "player.form.save": {
+    "defaultMessage": "Захаваць"
+  },
+  "player.form.sex": {
+    "defaultMessage": "Пол"
+  },
+  "player.form.title": {
+    "defaultMessage": "Новы манчкін"
+  },
+  "player.form.titleEdit": {
+    "defaultMessage": "Рэдагаваць манчкіна"
+  },
+  "player.list.edit": {
+    "defaultMessage": "Рэдагаваць"
+  },
+  "player.list.empty": {
+    "defaultMessage": "Спіс гульцоў пусты"
+  },
+  "player.list.reset": {
+    "defaultMessage": "Скінуць"
+  },
+  "player.list.shuffle": {
+    "defaultMessage": "Змяшаць гульцоў"
+  },
+  "player.list.title": {
+    "defaultMessage": "Манчкіны"
+  },
+  "settings": {
+    "defaultMessage": "Налады"
+  },
+  "share.text": {
+    "defaultMessage": "Просты і зручны лічыльнік узроўняў для гульні ў Манчкін"
+  },
+  "theme": {
+    "defaultMessage": "Тэма"
+  },
+  "theme.color": {
+    "defaultMessage": "Колер"
+  },
+  "theme.name.apocalypse": {
+    "defaultMessage": "Апакаліпсіс"
+  },
+  "theme.name.booty": {
+    "defaultMessage": "Пірацкі"
+  },
+  "theme.name.cthulhu": {
+    "defaultMessage": "Ктулху"
+  },
+  "theme.name.legends": {
+    "defaultMessage": "Легендарны"
+  },
+  "theme.name.munchkin": {
+    "defaultMessage": "Манчкін"
+  },
+  "theme.name.star": {
+    "defaultMessage": "Зорны"
+  },
+  "theme.name.super": {
+    "defaultMessage": "Супер"
+  },
+  "themeDialog.auto": {
+    "defaultMessage": "Як у сістэме"
+  },
+  "themeDialog.dark": {
+    "defaultMessage": "Цёмная"
+  },
+  "themeDialog.light": {
+    "defaultMessage": "Светлая"
+  },
+  "themeDialog.pureBlack": {
+    "defaultMessage": "Цалкам чорны"
+  },
+  "undo": {
+    "defaultMessage": "Адмяніць"
+  },
+  "undo.deletePlayers": {
+    "defaultMessage": "{count, plural, one {Гулец выдалены} other {Гульцы выдаленыя}}"
+  },
+  "undo.killPlayer": {
+    "defaultMessage": "{name} {sex, select, female {памерла} male {памёр} other {}}"
+  },
+  "undo.resetPlayers": {
+    "defaultMessage": "Гульцы былі скінуты"
+  }
 }
+
