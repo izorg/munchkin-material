@@ -1,2 +1,193 @@
-{}
+{
+  "C1Szny": {
+    "defaultMessage": "Kostky",
+    "description": "Dice button tooltip"
+  },
+  "EYIw2M": {
+    "defaultMessage": "Zrušit výběr"
+  },
+  "I3b4hn": {
+    "defaultMessage": "Verze"
+  },
+  "U8jwxJ": {
+    "defaultMessage": "Další hráč"
+  },
+  "VWJ5/Y": {
+    "defaultMessage": "Předchozí hráč"
+  },
+  "button.cancel": {
+    "defaultMessage": "Zrušit"
+  },
+  "button.submit": {
+    "defaultMessage": "OK"
+  },
+  "colorPicker.dialog.title": {
+    "defaultMessage": "Vyberte barvu"
+  },
+  "combat": {
+    "defaultMessage": "Boj"
+  },
+  "combat.add.helper": {
+    "defaultMessage": "Pomocník"
+  },
+  "combat.add.monster": {
+    "defaultMessage": "Netvor"
+  },
+  "combat.helperSelector.title": {
+    "defaultMessage": "Vyberte pomocníka"
+  },
+  "combat.monster": {
+    "defaultMessage": "Netvor {number}"
+  },
+  "counter.gear": {
+    "defaultMessage": "Vybavení"
+  },
+  "counter.level": {
+    "defaultMessage": "Úroveň"
+  },
+  "counter.modifier": {
+    "defaultMessage": "Modifikátor"
+  },
+  "counter.strength": {
+    "defaultMessage": "Síla"
+  },
+  "cyR7Kh": {
+    "defaultMessage": "Zpět"
+  },
+  "home.single.title": {
+    "defaultMessage": "Munchkin"
+  },
+  "kill": {
+    "defaultMessage": "Zabít"
+  },
+  "levelLimit.epic": {
+    "defaultMessage": "Epické Munchkin ({minLevel} - {maxLevel})"
+  },
+  "levelLimit.label": {
+    "defaultMessage": "Limit úrovně"
+  },
+  "levelLimit.munchkin": {
+    "defaultMessage": "Munchkin ({minLevel} - {maxLevel})"
+  },
+  "levelLimit.none": {
+    "defaultMessage": "Bez omezení"
+  },
+  "mainButton.label": {
+    "defaultMessage": "Přidat"
+  },
+  "menu.keepAwake": {
+    "defaultMessage": "Zůstaň vzhůru"
+  },
+  "menu.privacyPolicy": {
+    "defaultMessage": "Zásady ochrany soukromi"
+  },
+  "menu.rateApp": {
+    "defaultMessage": "Ohodnoťte aplikaci"
+  },
+  "menu.restorePurchases": {
+    "defaultMessage": "Obnovit nákupy"
+  },
+  "menu.share": {
+    "defaultMessage": "Sdílení"
+  },
+  "menu.singleMode": {
+    "defaultMessage": "Jeden režim"
+  },
+  "menu.translate": {
+    "defaultMessage": "Přeložit"
+  },
+  "player.form.color": {
+    "defaultMessage": "Barva"
+  },
+  "player.form.delete": {
+    "defaultMessage": "Vymazat"
+  },
+  "player.form.namePlaceholder": {
+    "defaultMessage": "Název"
+  },
+  "player.form.save": {
+    "defaultMessage": "Uložit"
+  },
+  "player.form.sex": {
+    "defaultMessage": "Pohlaví"
+  },
+  "player.form.title": {
+    "defaultMessage": "Nový munchkin"
+  },
+  "player.form.titleEdit": {
+    "defaultMessage": "Upravit munchkina"
+  },
+  "player.list.edit": {
+    "defaultMessage": "Upravit"
+  },
+  "player.list.empty": {
+    "defaultMessage": "V seznamu nejsou žádní hráči"
+  },
+  "player.list.reset": {
+    "defaultMessage": "Reset"
+  },
+  "player.list.shuffle": {
+    "defaultMessage": "Zamíchat hráče"
+  },
+  "player.list.title": {
+    "defaultMessage": "Munchkins"
+  },
+  "settings": {
+    "defaultMessage": "Nastavení"
+  },
+  "share.text": {
+    "defaultMessage": "Jednoduchý, ale výkonný čítač úrovně Munchkin"
+  },
+  "theme": {
+    "defaultMessage": "Téma"
+  },
+  "theme.color": {
+    "defaultMessage": "Barva"
+  },
+  "theme.name.apocalypse": {
+    "defaultMessage": "Apokalypsa"
+  },
+  "theme.name.booty": {
+    "defaultMessage": "Booty"
+  },
+  "theme.name.cthulhu": {
+    "defaultMessage": "Cthulhu"
+  },
+  "theme.name.legends": {
+    "defaultMessage": "Legendy"
+  },
+  "theme.name.munchkin": {
+    "defaultMessage": "Munchkin"
+  },
+  "theme.name.star": {
+    "defaultMessage": "Hvězdný"
+  },
+  "theme.name.super": {
+    "defaultMessage": "Super"
+  },
+  "themeDialog.auto": {
+    "defaultMessage": "Výchozí nastavení systému"
+  },
+  "themeDialog.dark": {
+    "defaultMessage": "Tmavý"
+  },
+  "themeDialog.light": {
+    "defaultMessage": "Světlý"
+  },
+  "themeDialog.pureBlack": {
+    "defaultMessage": "Čistě černá"
+  },
+  "undo": {
+    "defaultMessage": "Zpět"
+  },
+  "undo.deletePlayers": {
+    "defaultMessage": "{count, plural, one {Hráč byl odstraněn} other {Hráči byli odebráni}}"
+  },
+  "undo.killPlayer": {
+    "defaultMessage": "{name} {sex, select, female{zemřela} male{zemřel} other {}}"
+  },
+  "undo.resetPlayers": {
+    "defaultMessage": "Hráči byli resetováni"
+  }
+}
 
