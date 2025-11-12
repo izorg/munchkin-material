@@ -60,7 +60,7 @@
     "@sentry/react": "10.25.0",
     "@totalpave/cordova-plugin-insets": "0.4.0",
     "@types/cordova": "11.0.3",
-    "@types/react": "19.2.3",
+    "@types/react": "19.2.4",
     "@types/react-dom": "19.2.3",
     "@types/smoothscroll-polyfill": "0.3.4",
     "abortcontroller-polyfill": "1.7.8",
