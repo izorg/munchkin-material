@@ -50,7 +50,6 @@ jobs:
           environment: production
           release: ${{ format('munchkin@{0}', env.VERSION) }}
           sourcemaps: "./packages/cordova/www ./packages/pwa/dist"
-          url_prefix: "~"
 
       - name: Deploy 🚀
         uses: FirebaseExtended/action-hosting-deploy@v0
