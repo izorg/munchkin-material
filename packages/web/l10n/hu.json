@@ -1,65 +1,192 @@
 {
-  "EYIw2M": "Kijelölés megszüntetése ",
-  "I3b4hn": "Változat",
-  "U8jwxJ": "Következő játékos",
-  "VWJ5/Y": "Előző játékos",
-  "button.cancel": "Mégse",
-  "button.submit": "OK",
-  "colorPicker.dialog.title": "Szín választás",
-  "combat": "Harc",
-  "combat.add.helper": "Segítség",
-  "combat.add.monster": "Szörny",
-  "combat.helperSelector.title": "Segítség választás",
-  "combat.monster": "Szörny {number}",
-  "counter.gear": "Felszerelés",
-  "counter.level": "Szint",
-  "counter.modifier": "Módosító",
-  "counter.strength": "Erő",
-  "cyR7Kh": "Vissza",
-  "dice": "Kocka",
-  "home.single.title": "Munchkin",
-  "kill": "Ölés",
-  "levelLimit.epic": "Epic Munchkin ({minLevel} - {maxLevel})",
-  "levelLimit.label": "Szint korlát",
-  "levelLimit.munchkin": "Munchkin ({minLevel} - {maxLevel})",
-  "levelLimit.none": "Nincs korlát",
-  "mainButton.label": "Hozzáad",
-  "menu.keepAwake": "Ébren tartás",
-  "menu.privacyPolicy": "Adatvédelmi irányelvek",
-  "menu.rateApp": "Applikáció értékelése",
-  "menu.restorePurchases": "Vásárlás visszaállítása",
-  "menu.share": "Megosztás",
-  "menu.singleMode": "Egyszerű mód",
-  "menu.translate": "Fordít",
-  "player.form.color": "Szín",
-  "player.form.delete": "Töröl",
-  "player.form.namePlaceholder": "Név",
-  "player.form.save": "Mentés",
-  "player.form.sex": "Nem",
-  "player.form.title": "Új munchkin",
-  "player.form.titleEdit": "Munchkin szerkesztése",
-  "player.list.edit": "Szerkeszt",
-  "player.list.empty": "Nincsenek játékosok a listában",
-  "player.list.reset": "Visszaállítás",
-  "player.list.shuffle": "Keverjük össze a játékosokat",
-  "player.list.title": "Munchkins",
-  "settings": "Beállítások",
-  "share.text": "Egyszerű, de hatékony Munchkin szint számláló",
-  "theme": "Téma",
-  "theme.color": "Szín",
-  "theme.name.apocalypse": "Apokalipszis",
-  "theme.name.booty": "Booty",
-  "theme.name.cthulhu": "Cthulhu",
-  "theme.name.legends": "Legends",
-  "theme.name.munchkin": "Munchkin",
-  "theme.name.star": "Csillag",
-  "theme.name.super": "Szuper",
-  "themeDialog.auto": "Alapértelmezett",
-  "themeDialog.dark": "Sötét",
-  "themeDialog.light": "Világos",
-  "themeDialog.pureBlack": "Tiszta fekete",
-  "undo": "Visszavonás",
-  "undo.deletePlayers": "{count, plural, one {Játékos eltávolítva} other {A játékosok eltávolítva}}",
-  "undo.killPlayer": "{name} {sex, select, female {meghalt} male {meghalt} other {}}",
-  "undo.resetPlayers": "Játékosok alaphelyzetbe állítva"
+  "C1Szny": {
+    "defaultMessage": "",
+    "description": ""
+  },
+  "EYIw2M": {
+    "defaultMessage": ""
+  },
+  "I3b4hn": {
+    "defaultMessage": ""
+  },
+  "U8jwxJ": {
+    "defaultMessage": ""
+  },
+  "VWJ5/Y": {
+    "defaultMessage": ""
+  },
+  "button.cancel": {
+    "defaultMessage": ""
+  },
+  "button.submit": {
+    "defaultMessage": ""
+  },
+  "colorPicker.dialog.title": {
+    "defaultMessage": ""
+  },
+  "combat": {
+    "defaultMessage": ""
+  },
+  "combat.add.helper": {
+    "defaultMessage": ""
+  },
+  "combat.add.monster": {
+    "defaultMessage": ""
+  },
+  "combat.helperSelector.title": {
+    "defaultMessage": ""
+  },
+  "combat.monster": {
+    "defaultMessage": ""
+  },
+  "counter.gear": {
+    "defaultMessage": ""
+  },
+  "counter.level": {
+    "defaultMessage": ""
+  },
+  "counter.modifier": {
+    "defaultMessage": ""
+  },
+  "counter.strength": {
+    "defaultMessage": ""
+  },
+  "cyR7Kh": {
+    "defaultMessage": ""
+  },
+  "home.single.title": {
+    "defaultMessage": ""
+  },
+  "kill": {
+    "defaultMessage": ""
+  },
+  "levelLimit.epic": {
+    "defaultMessage": ""
+  },
+  "levelLimit.label": {
+    "defaultMessage": ""
+  },
+  "levelLimit.munchkin": {
+    "defaultMessage": ""
+  },
+  "levelLimit.none": {
+    "defaultMessage": ""
+  },
+  "mainButton.label": {
+    "defaultMessage": ""
+  },
+  "menu.keepAwake": {
+    "defaultMessage": ""
+  },
+  "menu.privacyPolicy": {
+    "defaultMessage": ""
+  },
+  "menu.rateApp": {
+    "defaultMessage": ""
+  },
+  "menu.restorePurchases": {
+    "defaultMessage": ""
+  },
+  "menu.share": {
+    "defaultMessage": ""
+  },
+  "menu.singleMode": {
+    "defaultMessage": ""
+  },
+  "menu.translate": {
+    "defaultMessage": ""
+  },
+  "player.form.color": {
+    "defaultMessage": ""
+  },
+  "player.form.delete": {
+    "defaultMessage": ""
+  },
+  "player.form.namePlaceholder": {
+    "defaultMessage": ""
+  },
+  "player.form.save": {
+    "defaultMessage": ""
+  },
+  "player.form.sex": {
+    "defaultMessage": ""
+  },
+  "player.form.title": {
+    "defaultMessage": ""
+  },
+  "player.form.titleEdit": {
+    "defaultMessage": ""
+  },
+  "player.list.edit": {
+    "defaultMessage": ""
+  },
+  "player.list.empty": {
+    "defaultMessage": ""
+  },
+  "player.list.reset": {
+    "defaultMessage": ""
+  },
+  "player.list.shuffle": {
+    "defaultMessage": ""
+  },
+  "player.list.title": {
+    "defaultMessage": ""
+  },
+  "settings": {
+    "defaultMessage": ""
+  },
+  "share.text": {
+    "defaultMessage": ""
+  },
+  "theme": {
+    "defaultMessage": ""
+  },
+  "theme.color": {
+    "defaultMessage": ""
+  },
+  "theme.name.apocalypse": {
+    "defaultMessage": ""
+  },
+  "theme.name.booty": {
+    "defaultMessage": ""
+  },
+  "theme.name.cthulhu": {
+    "defaultMessage": ""
+  },
+  "theme.name.legends": {
+    "defaultMessage": ""
+  },
+  "theme.name.munchkin": {
+    "defaultMessage": ""
+  },
+  "theme.name.star": {
+    "defaultMessage": ""
+  },
+  "theme.name.super": {
+    "defaultMessage": ""
+  },
+  "themeDialog.auto": {
+    "defaultMessage": ""
+  },
+  "themeDialog.dark": {
+    "defaultMessage": ""
+  },
+  "themeDialog.light": {
+    "defaultMessage": ""
+  },
+  "themeDialog.pureBlack": {
+    "defaultMessage": ""
+  },
+  "undo": {
+    "defaultMessage": ""
+  },
+  "undo.deletePlayers": {
+    "defaultMessage": ""
+  },
+  "undo.killPlayer": {
+    "defaultMessage": ""
+  },
+  "undo.resetPlayers": {
+    "defaultMessage": ""
+  }
 }
