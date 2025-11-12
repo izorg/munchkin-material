@@ -1,65 +1,192 @@
 {
-  "EYIw2M": "Fjern utvalg",
-  "I3b4hn": "Versjon",
-  "U8jwxJ": "Neste spiller",
-  "VWJ5/Y": "Forrige spiller",
-  "button.cancel": "Avbryt",
-  "button.submit": "OK",
-  "colorPicker.dialog.title": "Velg farge",
-  "combat": "Kamp",
-  "combat.add.helper": "Hjelper",
-  "combat.add.monster": "Monster",
-  "combat.helperSelector.title": "Velg hjelper",
-  "combat.monster": "Monster {number}",
-  "counter.gear": "Utstyr",
-  "counter.level": "Nivå",
-  "counter.modifier": "Endre",
-  "counter.strength": "Kampstyrke",
-  "cyR7Kh": "Tilbake",
-  "dice": "Terning",
-  "home.single.title": "Munchkin",
-  "kill": "Drep",
-  "levelLimit.epic": "Episk Munchkin ({minLevel} - {maxLevel})",
-  "levelLimit.label": "Nivågrense",
-  "levelLimit.munchkin": "Munchkin ({minLevel} - {maxLevel})",
-  "levelLimit.none": "Ingen grense",
-  "mainButton.label": "Legg til",
-  "menu.keepAwake": "Hold skjermen aktiv",
-  "menu.privacyPolicy": "Personvern",
-  "menu.rateApp": "Vurder appen",
-  "menu.restorePurchases": "Tilbakestill kjøp",
-  "menu.share": "Del",
-  "menu.singleMode": "Alenemodus",
-  "menu.translate": "Oversett",
-  "player.form.color": "Farge",
-  "player.form.delete": "Slett",
-  "player.form.namePlaceholder": "Navn",
-  "player.form.save": "Lagre",
-  "player.form.sex": "Kjønn",
-  "player.form.title": "Ny spiller",
-  "player.form.titleEdit": "Endre spiller",
-  "player.list.edit": "Endre",
-  "player.list.empty": "Ingen spillere på listen",
-  "player.list.reset": "Tilbakestill",
-  "player.list.shuffle": "Stokk om spillerene",
-  "player.list.title": "Munchkins",
-  "settings": "Innstillinger",
-  "share.text": "Enkel men genial Munchkin nivåteller",
-  "theme": "Tema",
-  "theme.color": "Farge",
-  "theme.name.apocalypse": "Apokalypse",
-  "theme.name.booty": "Skatt",
-  "theme.name.cthulhu": "Cthulhu",
-  "theme.name.legends": "Legender",
-  "theme.name.munchkin": "Munchkin",
-  "theme.name.star": "Stjerne",
-  "theme.name.super": "Super",
-  "themeDialog.auto": "Systemstandard",
-  "themeDialog.dark": "Mørkt",
-  "themeDialog.light": "Lyst",
-  "themeDialog.pureBlack": "Ren svart",
-  "undo": "Angre",
-  "undo.deletePlayers": "{count, plural, one {Spilleren er fjernet} other {Spillere fjernet}}",
-  "undo.killPlayer": "{name} {sex, select, female{har dødd} male{har dødd} other {}}",
-  "undo.resetPlayers": "Spillere er tilbakestilt"
+  "C1Szny": {
+    "defaultMessage": "",
+    "description": ""
+  },
+  "EYIw2M": {
+    "defaultMessage": ""
+  },
+  "I3b4hn": {
+    "defaultMessage": ""
+  },
+  "U8jwxJ": {
+    "defaultMessage": ""
+  },
+  "VWJ5/Y": {
+    "defaultMessage": ""
+  },
+  "button.cancel": {
+    "defaultMessage": ""
+  },
+  "button.submit": {
+    "defaultMessage": ""
+  },
+  "colorPicker.dialog.title": {
+    "defaultMessage": ""
+  },
+  "combat": {
+    "defaultMessage": ""
+  },
+  "combat.add.helper": {
+    "defaultMessage": ""
+  },
+  "combat.add.monster": {
+    "defaultMessage": ""
+  },
+  "combat.helperSelector.title": {
+    "defaultMessage": ""
+  },
+  "combat.monster": {
+    "defaultMessage": ""
+  },
+  "counter.gear": {
+    "defaultMessage": ""
+  },
+  "counter.level": {
+    "defaultMessage": ""
+  },
+  "counter.modifier": {
+    "defaultMessage": ""
+  },
+  "counter.strength": {
+    "defaultMessage": ""
+  },
+  "cyR7Kh": {
+    "defaultMessage": ""
+  },
+  "home.single.title": {
+    "defaultMessage": ""
+  },
+  "kill": {
+    "defaultMessage": ""
+  },
+  "levelLimit.epic": {
+    "defaultMessage": ""
+  },
+  "levelLimit.label": {
+    "defaultMessage": ""
+  },
+  "levelLimit.munchkin": {
+    "defaultMessage": ""
+  },
+  "levelLimit.none": {
+    "defaultMessage": ""
+  },
+  "mainButton.label": {
+    "defaultMessage": ""
+  },
+  "menu.keepAwake": {
+    "defaultMessage": ""
+  },
+  "menu.privacyPolicy": {
+    "defaultMessage": ""
+  },
+  "menu.rateApp": {
+    "defaultMessage": ""
+  },
+  "menu.restorePurchases": {
+    "defaultMessage": ""
+  },
+  "menu.share": {
+    "defaultMessage": ""
+  },
+  "menu.singleMode": {
+    "defaultMessage": ""
+  },
+  "menu.translate": {
+    "defaultMessage": ""
+  },
+  "player.form.color": {
+    "defaultMessage": ""
+  },
+  "player.form.delete": {
+    "defaultMessage": ""
+  },
+  "player.form.namePlaceholder": {
+    "defaultMessage": ""
+  },
+  "player.form.save": {
+    "defaultMessage": ""
+  },
+  "player.form.sex": {
+    "defaultMessage": ""
+  },
+  "player.form.title": {
+    "defaultMessage": ""
+  },
+  "player.form.titleEdit": {
+    "defaultMessage": ""
+  },
+  "player.list.edit": {
+    "defaultMessage": ""
+  },
+  "player.list.empty": {
+    "defaultMessage": ""
+  },
+  "player.list.reset": {
+    "defaultMessage": ""
+  },
+  "player.list.shuffle": {
+    "defaultMessage": ""
+  },
+  "player.list.title": {
+    "defaultMessage": ""
+  },
+  "settings": {
+    "defaultMessage": ""
+  },
+  "share.text": {
+    "defaultMessage": ""
+  },
+  "theme": {
+    "defaultMessage": ""
+  },
+  "theme.color": {
+    "defaultMessage": ""
+  },
+  "theme.name.apocalypse": {
+    "defaultMessage": ""
+  },
+  "theme.name.booty": {
+    "defaultMessage": ""
+  },
+  "theme.name.cthulhu": {
+    "defaultMessage": ""
+  },
+  "theme.name.legends": {
+    "defaultMessage": ""
+  },
+  "theme.name.munchkin": {
+    "defaultMessage": ""
+  },
+  "theme.name.star": {
+    "defaultMessage": ""
+  },
+  "theme.name.super": {
+    "defaultMessage": ""
+  },
+  "themeDialog.auto": {
+    "defaultMessage": ""
+  },
+  "themeDialog.dark": {
+    "defaultMessage": ""
+  },
+  "themeDialog.light": {
+    "defaultMessage": ""
+  },
+  "themeDialog.pureBlack": {
+    "defaultMessage": ""
+  },
+  "undo": {
+    "defaultMessage": ""
+  },
+  "undo.deletePlayers": {
+    "defaultMessage": ""
+  },
+  "undo.killPlayer": {
+    "defaultMessage": ""
+  },
+  "undo.resetPlayers": {
+    "defaultMessage": ""
+  }
 }
