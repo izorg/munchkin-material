@@ -1,2 +1,193 @@
-{}
+{
+  "C1Szny": {
+    "defaultMessage": "Kocka",
+    "description": "Dice button tooltip"
+  },
+  "EYIw2M": {
+    "defaultMessage": "Kijelölés megszüntetése "
+  },
+  "I3b4hn": {
+    "defaultMessage": "Változat"
+  },
+  "U8jwxJ": {
+    "defaultMessage": "Következő játékos"
+  },
+  "VWJ5/Y": {
+    "defaultMessage": "Előző játékos"
+  },
+  "button.cancel": {
+    "defaultMessage": "Mégse"
+  },
+  "button.submit": {
+    "defaultMessage": "OK"
+  },
+  "colorPicker.dialog.title": {
+    "defaultMessage": "Szín választás"
+  },
+  "combat": {
+    "defaultMessage": "Harc"
+  },
+  "combat.add.helper": {
+    "defaultMessage": "Segítség"
+  },
+  "combat.add.monster": {
+    "defaultMessage": "Szörny"
+  },
+  "combat.helperSelector.title": {
+    "defaultMessage": "Segítség választás"
+  },
+  "combat.monster": {
+    "defaultMessage": "Szörny {number}"
+  },
+  "counter.gear": {
+    "defaultMessage": "Felszerelés"
+  },
+  "counter.level": {
+    "defaultMessage": "Szint"
+  },
+  "counter.modifier": {
+    "defaultMessage": "Módosító"
+  },
+  "counter.strength": {
+    "defaultMessage": "Erő"
+  },
+  "cyR7Kh": {
+    "defaultMessage": "Vissza"
+  },
+  "home.single.title": {
+    "defaultMessage": "Munchkin"
+  },
+  "kill": {
+    "defaultMessage": "Ölés"
+  },
+  "levelLimit.epic": {
+    "defaultMessage": "Epic Munchkin ({minLevel} - {maxLevel})"
+  },
+  "levelLimit.label": {
+    "defaultMessage": "Szint korlát"
+  },
+  "levelLimit.munchkin": {
+    "defaultMessage": "Munchkin ({minLevel} - {maxLevel})"
+  },
+  "levelLimit.none": {
+    "defaultMessage": "Nincs korlát"
+  },
+  "mainButton.label": {
+    "defaultMessage": "Hozzáad"
+  },
+  "menu.keepAwake": {
+    "defaultMessage": "Ébren tartás"
+  },
+  "menu.privacyPolicy": {
+    "defaultMessage": "Adatvédelmi irányelvek"
+  },
+  "menu.rateApp": {
+    "defaultMessage": "Applikáció értékelése"
+  },
+  "menu.restorePurchases": {
+    "defaultMessage": "Vásárlás visszaállítása"
+  },
+  "menu.share": {
+    "defaultMessage": "Megosztás"
+  },
+  "menu.singleMode": {
+    "defaultMessage": "Egyszerű mód"
+  },
+  "menu.translate": {
+    "defaultMessage": "Fordít"
+  },
+  "player.form.color": {
+    "defaultMessage": "Szín"
+  },
+  "player.form.delete": {
+    "defaultMessage": "Töröl"
+  },
+  "player.form.namePlaceholder": {
+    "defaultMessage": "Név"
+  },
+  "player.form.save": {
+    "defaultMessage": "Mentés"
+  },
+  "player.form.sex": {
+    "defaultMessage": "Nem"
+  },
+  "player.form.title": {
+    "defaultMessage": "Új munchkin"
+  },
+  "player.form.titleEdit": {
+    "defaultMessage": "Munchkin szerkesztése"
+  },
+  "player.list.edit": {
+    "defaultMessage": "Szerkeszt"
+  },
+  "player.list.empty": {
+    "defaultMessage": "Nincsenek játékosok a listában"
+  },
+  "player.list.reset": {
+    "defaultMessage": "Visszaállítás"
+  },
+  "player.list.shuffle": {
+    "defaultMessage": "Keverjük össze a játékosokat"
+  },
+  "player.list.title": {
+    "defaultMessage": "Munchkins"
+  },
+  "settings": {
+    "defaultMessage": "Beállítások"
+  },
+  "share.text": {
+    "defaultMessage": "Egyszerű, de hatékony Munchkin szint számláló"
+  },
+  "theme": {
+    "defaultMessage": "Téma"
+  },
+  "theme.color": {
+    "defaultMessage": "Szín"
+  },
+  "theme.name.apocalypse": {
+    "defaultMessage": "Apokalipszis"
+  },
+  "theme.name.booty": {
+    "defaultMessage": "Booty"
+  },
+  "theme.name.cthulhu": {
+    "defaultMessage": "Cthulhu"
+  },
+  "theme.name.legends": {
+    "defaultMessage": "Legends"
+  },
+  "theme.name.munchkin": {
+    "defaultMessage": "Munchkin"
+  },
+  "theme.name.star": {
+    "defaultMessage": "Csillag"
+  },
+  "theme.name.super": {
+    "defaultMessage": "Szuper"
+  },
+  "themeDialog.auto": {
+    "defaultMessage": "Alapértelmezett"
+  },
+  "themeDialog.dark": {
+    "defaultMessage": "Sötét"
+  },
+  "themeDialog.light": {
+    "defaultMessage": "Világos"
+  },
+  "themeDialog.pureBlack": {
+    "defaultMessage": "Tiszta fekete"
+  },
+  "undo": {
+    "defaultMessage": "Visszavonás"
+  },
+  "undo.deletePlayers": {
+    "defaultMessage": "{count, plural, one {Játékos eltávolítva} other {A játékosok eltávolítva}}"
+  },
+  "undo.killPlayer": {
+    "defaultMessage": "{name} {sex, select, female {meghalt} male {meghalt} other {}}"
+  },
+  "undo.resetPlayers": {
+    "defaultMessage": "Játékosok alaphelyzetbe állítva"
+  }
+}
 
