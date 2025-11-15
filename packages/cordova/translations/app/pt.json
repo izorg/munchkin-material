@@ -1,8 +1,0 @@
-{
-  "config_android": {
-    "app_name": "Contador"
-  },
-  "config_ios": {
-    "CFBundleDisplayName": "Contador"
-  }
-}

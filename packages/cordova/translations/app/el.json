@@ -1,8 +1,0 @@
-{
-  "config_android": {
-    "app_name": "Μετρητής"
-  },
-  "config_ios": {
-    "CFBundleDisplayName": "Μετρητής"
-  }
-}

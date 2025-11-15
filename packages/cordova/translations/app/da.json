@@ -1,8 +1,0 @@
-{
-  "config_android": {
-    "app_name": "Tæller"
-  },
-  "config_ios": {
-    "CFBundleDisplayName": "Tæller"
-  }
-}

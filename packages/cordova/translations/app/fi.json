@@ -1,8 +1,0 @@
-{
-  "config_android": {
-    "app_name": "Laskuri"
-  },
-  "config_ios": {
-    "CFBundleDisplayName": "Laskuri"
-  }
-}

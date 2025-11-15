@@ -1,8 +1,0 @@
-{
-  "config_android": {
-    "app_name": "Счётчик"
-  },
-  "config_ios": {
-    "CFBundleDisplayName": "Счётчик"
-  }
-}

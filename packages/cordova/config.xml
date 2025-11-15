@@ -19,6 +19,7 @@
     <allow-intent href="tel:*" />
     <preference name="AutoHideSplashScreen" value="false" />
     <platform name="android">
+        <name>Counter</name>
         <allow-intent href="market:*" />
         <preference name="AndroidPostSplashScreenTheme" value="@style/Theme.AppCompat.DayNight.NoActionBar"/>
         <preference name="AndroidWindowSplashScreenAnimatedIcon" value="res/android/splash-screen-icon.png" />
@@ -31,6 +32,28 @@
         <icon density="xhdpi" src="res/android/icons/xhdpi.png" background="res/android/icons/background.xml" foreground="res/android/icons/foreground.xml" monochrome="res/android/icons/monochrome.xml" />
         <icon density="xxhdpi" src="res/android/icons/xxhdpi.png" background="res/android/icons/background.xml" foreground="res/android/icons/foreground.xml" monochrome="res/android/icons/monochrome.xml" />
         <icon density="xxxhdpi" src="res/android/icons/xxxhdpi.png" background="res/android/icons/background.xml" foreground="res/android/icons/foreground.xml" monochrome="res/android/icons/monochrome.xml" />
+        <resource-file src="res/android/values-be/strings.xml" target="app/src/main/res/values-be/strings.xml" />
+        <resource-file src="res/android/values-cs/strings.xml" target="app/src/main/res/values-cs/strings.xml" />
+        <resource-file src="res/android/values-da/strings.xml" target="app/src/main/res/values-da/strings.xml" />
+        <resource-file src="res/android/values-de/strings.xml" target="app/src/main/res/values-de/strings.xml" />
+        <resource-file src="res/android/values-el/strings.xml" target="app/src/main/res/values-el/strings.xml" />
+        <resource-file src="res/android/values-es/strings.xml" target="app/src/main/res/values-es/strings.xml" />
+        <resource-file src="res/android/values-fi/strings.xml" target="app/src/main/res/values-fi/strings.xml" />
+        <resource-file src="res/android/values-fr/strings.xml" target="app/src/main/res/values-fr/strings.xml" />
+        <resource-file src="res/android/values-he/strings.xml" target="app/src/main/res/values-he/strings.xml" />
+        <resource-file src="res/android/values-hu/strings.xml" target="app/src/main/res/values-hu/strings.xml" />
+        <resource-file src="res/android/values-hy/strings.xml" target="app/src/main/res/values-hy/strings.xml" />
+        <resource-file src="res/android/values-it/strings.xml" target="app/src/main/res/values-it/strings.xml" />
+        <resource-file src="res/android/values-iw/strings.xml" target="app/src/main/res/values-iw/strings.xml" />
+        <resource-file src="res/android/values-nb/strings.xml" target="app/src/main/res/values-nb/strings.xml" />
+        <resource-file src="res/android/values-nl/strings.xml" target="app/src/main/res/values-nl/strings.xml" />
+        <resource-file src="res/android/values-pl/strings.xml" target="app/src/main/res/values-pl/strings.xml" />
+        <resource-file src="res/android/values-pt/strings.xml" target="app/src/main/res/values-pt/strings.xml" />
+        <resource-file src="res/android/values-pt-rBR/strings.xml" target="app/src/main/res/values-pt-rBR/strings.xml" />
+        <resource-file src="res/android/values-ru/strings.xml" target="app/src/main/res/values-ru/strings.xml" />
+        <resource-file src="res/android/values-sk/strings.xml" target="app/src/main/res/values-sk/strings.xml" />
+        <resource-file src="res/android/values-tr/strings.xml" target="app/src/main/res/values-tr/strings.xml" />
+        <resource-file src="res/android/values-uk/strings.xml" target="app/src/main/res/values-uk/strings.xml" />
         <resource-file src="google-services.json" target="app/google-services.json" />
         <resource-file src="res/android/values-night/colors.xml" target="app/src/main/res/values-night/colors.xml" />
         <resource-file src="res/android/resources.properties" target="app/src/main/res/resources.properties" />
@@ -72,12 +95,34 @@
         <icon height="1024" src="res/ios/icon-1024.png" width="1024" />
         <splash src="res/ios/Default@2x~universal~anyany.png" />
         <splash src="res/ios/Default@3x~universal~anyany.png" />
-        <edit-config file="Munchkin/Munchkin-Info.plist" mode="merge" target="CFBundleDisplayName">
+        <edit-config file="*-Info.plist" mode="merge" target="CFBundleDisplayName">
             <string>Level Counter</string>
         </edit-config>
-        <edit-config file="Munchkin/Munchkin-Info.plist" mode="merge" target="UIRequiresFullScreen">
+        <edit-config file="*-Info.plist" mode="merge" target="UIRequiresFullScreen">
             <false />
         </edit-config>
+        <resource-file src="res/ios/be.lproj/InfoPlist.strings" target="be.lproj/InfoPlist.strings" />
+        <resource-file src="res/ios/cs.lproj/InfoPlist.strings" target="cs.lproj/InfoPlist.strings" />
+        <resource-file src="res/ios/da.lproj/InfoPlist.strings" target="da.lproj/InfoPlist.strings" />
+        <resource-file src="res/ios/de.lproj/InfoPlist.strings" target="de.lproj/InfoPlist.strings" />
+        <resource-file src="res/ios/el.lproj/InfoPlist.strings" target="el.lproj/InfoPlist.strings" />
+        <resource-file src="res/ios/en.lproj/InfoPlist.strings" target="en.lproj/InfoPlist.strings" />
+        <resource-file src="res/ios/es.lproj/InfoPlist.strings" target="es.lproj/InfoPlist.strings" />
+        <resource-file src="res/ios/fi.lproj/InfoPlist.strings" target="fi.lproj/InfoPlist.strings" />
+        <resource-file src="res/ios/fr.lproj/InfoPlist.strings" target="fr.lproj/InfoPlist.strings" />
+        <resource-file src="res/ios/he.lproj/InfoPlist.strings" target="he.lproj/InfoPlist.strings" />
+        <resource-file src="res/ios/hu.lproj/InfoPlist.strings" target="hu.lproj/InfoPlist.strings" />
+        <resource-file src="res/ios/hy.lproj/InfoPlist.strings" target="hy.lproj/InfoPlist.strings" />
+        <resource-file src="res/ios/it.lproj/InfoPlist.strings" target="it.lproj/InfoPlist.strings" />
+        <resource-file src="res/ios/nb.lproj/InfoPlist.strings" target="nb.lproj/InfoPlist.strings" />
+        <resource-file src="res/ios/nl.lproj/InfoPlist.strings" target="nl.lproj/InfoPlist.strings" />
+        <resource-file src="res/ios/pl.lproj/InfoPlist.strings" target="pl.lproj/InfoPlist.strings" />
+        <resource-file src="res/ios/pt.lproj/InfoPlist.strings" target="pt.lproj/InfoPlist.strings" />
+        <resource-file src="res/ios/pt-BR.lproj/InfoPlist.strings" target="pt-BR.lproj/InfoPlist.strings" />
+        <resource-file src="res/ios/ru.lproj/InfoPlist.strings" target="ru.lproj/InfoPlist.strings" />
+        <resource-file src="res/ios/sk.lproj/InfoPlist.strings" target="sk.lproj/InfoPlist.strings" />
+        <resource-file src="res/ios/tr.lproj/InfoPlist.strings" target="tr.lproj/InfoPlist.strings" />
+        <resource-file src="res/ios/uk.lproj/InfoPlist.strings" target="uk.lproj/InfoPlist.strings" />
         <resource-file src="GoogleService-Info.plist" />
         <privacy-manifest>
           <key>NSPrivacyTracking</key>

@@ -1,8 +1,0 @@
-{
-  "config_android": {
-    "app_name": "Лічыльнік"
-  },
-  "config_ios": {
-    "CFBundleDisplayName": "Лічыльнік"
-  }
-}

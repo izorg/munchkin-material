@@ -1,8 +1,0 @@
-{
-  "config_android": {
-    "app_name": "Nivåteller"
-  },
-  "config_ios": {
-    "CFBundleDisplayName": "Nivåteller"
-  }
-}

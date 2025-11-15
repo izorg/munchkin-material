@@ -1,8 +1,0 @@
-{
-  "config_android": {
-    "app_name": "Հաշվիչ"
-  },
-  "config_ios": {
-    "CFBundleDisplayName": "Հաշվիչ"
-  }
-}

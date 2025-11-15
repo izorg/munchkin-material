@@ -1,8 +1,0 @@
-{
-  "config_android": {
-    "app_name": "Comptoir"
-  },
-  "config_ios": {
-    "CFBundleDisplayName": "Comptoir"
-  }
-}
