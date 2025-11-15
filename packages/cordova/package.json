@@ -61,7 +61,6 @@
     "@types/cordova": "11.0.3",
     "@types/react": "19.2.5",
     "@types/react-dom": "19.2.3",
-    "abortcontroller-polyfill": "1.7.8",
     "babel-preset-web": "workspace:*",
     "cordova": "12.0.0",
     "cordova-android": "14.0.1",
