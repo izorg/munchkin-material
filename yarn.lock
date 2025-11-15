@@ -4235,7 +4235,6 @@ __metadata:
     "@types/cordova": "npm:11.0.3"
     "@types/react": "npm:19.2.5"
     "@types/react-dom": "npm:19.2.3"
-    "@types/smoothscroll-polyfill": "npm:0.3.4"
     abortcontroller-polyfill: "npm:1.7.8"
     babel-preset-web: "workspace:*"
     cordova: "npm:12.0.0"
@@ -4257,7 +4256,6 @@ __metadata:
     react: "npm:19.2.0"
     react-dom: "npm:19.2.0"
     react-router: "npm:7.9.6"
-    smoothscroll-polyfill: "npm:0.4.4"
   languageName: unknown
   linkType: soft
 
@@ -8435,13 +8433,6 @@ __metadata:
   version: 1.2.0
   resolution: "@types/shimmer@npm:1.2.0"
   checksum: 10/f081a31d826ce7bfe8cc7ba8129d2b1dffae44fd580eba4fcf741237646c4c2494ae6de2cada4b7713d138f35f4bc512dbf01311d813dee82020f97d7d8c491c
-  languageName: node
-  linkType: hard
-
-"@types/smoothscroll-polyfill@npm:0.3.4":
-  version: 0.3.4
-  resolution: "@types/smoothscroll-polyfill@npm:0.3.4"
-  checksum: 10/08d2d0c2ca918648d298229213a88459889744d66dce75645845d58b714eaab5d89571289911055f5c1821d4041343c4db0ab024d291a1c982c60a6cd8ffb0c9
   languageName: node
   linkType: hard
 
@@ -23183,13 +23174,6 @@ __metadata:
   version: 1.5.2
   resolution: "smol-toml@npm:1.5.2"
   checksum: 10/0a7e9192d1cbd04c3122224306de33962f4f5ac7e78a48b7c3795a675683b6efeb8f73ad3fabda7635926a510948cb4654a729d17b35ec43d56d35a71cf906f4
-  languageName: node
-  linkType: hard
-
-"smoothscroll-polyfill@npm:0.4.4":
-  version: 0.4.4
-  resolution: "smoothscroll-polyfill@npm:0.4.4"
-  checksum: 10/f7e0506163f095dd391b7ce7e0a38fc0219d4be29f73f2f09defba73d268c76fefe9e8b2fea22ac816b708fd1f9ec3f6860aaf064cf8fc8904028d4a360272b3
   languageName: node
   linkType: hard
 

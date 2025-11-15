@@ -35,12 +35,12 @@
         "ANALYTICS_COLLECTION_ENABLED": "true",
         "ANDROID_FIREBASE_BOM_VERSION": "34.6.0",
         "AUTOMATIC_SCREEN_REPORTING_ENABLED": "false",
-        "IOS_FIREBASE_POD_VERSION": "11.15.0"
+        "IOS_FIREBASE_POD_VERSION": "12.6.0"
       },
       "cordova-plugin-firebase-crash": {
         "ANDROID_FIREBASE_BOM_VERSION": "34.6.0",
         "CRASHLYTICS_COLLECTION_ENABLED": "true",
-        "IOS_FIREBASE_POD_VERSION": "11.15.0"
+        "IOS_FIREBASE_POD_VERSION": "12.6.0"
       },
       "cordova-plugin-headercolor": {},
       "cordova-plugin-insomnia": {},
@@ -61,7 +61,6 @@
     "@types/cordova": "11.0.3",
     "@types/react": "19.2.5",
     "@types/react-dom": "19.2.3",
-    "@types/smoothscroll-polyfill": "0.3.4",
     "abortcontroller-polyfill": "1.7.8",
     "babel-preset-web": "workspace:*",
     "cordova": "12.0.0",
@@ -82,7 +81,6 @@
     "parcel": "2.16.1",
     "react": "19.2.0",
     "react-dom": "19.2.0",
-    "react-router": "7.9.6",
-    "smoothscroll-polyfill": "0.4.4"
+    "react-router": "7.9.6"
   }
 }

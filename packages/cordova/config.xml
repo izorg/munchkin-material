@@ -62,7 +62,7 @@
     <platform name="ios">
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
-        <preference name="deployment-target" value="14.0" />
+        <preference name="deployment-target" value="15.4" />
         <preference name="hostname" value="localhost" />
         <preference name="scheme" value="safari-web-extension" />
         <preference name="DisallowOverscroll" value="true" />
