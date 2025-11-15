@@ -29,7 +29,7 @@
     "@playwright/test": "1.56.1",
     "@types/node": "24.10.1",
     "babel-preset-web": "workspace:*",
-    "firebase-tools": "14.24.2",
+    "firebase-tools": "14.25.0",
     "handlebars": "4.7.8",
     "parcel": "2.16.1",
     "playwright": "1.56.1",

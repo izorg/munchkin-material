@@ -59,7 +59,7 @@
     "@sentry/react": "10.25.0",
     "@totalpave/cordova-plugin-insets": "0.4.0",
     "@types/cordova": "11.0.3",
-    "@types/react": "19.2.4",
+    "@types/react": "19.2.5",
     "@types/react-dom": "19.2.3",
     "@types/smoothscroll-polyfill": "0.3.4",
     "abortcontroller-polyfill": "1.7.8",
@@ -82,7 +82,7 @@
     "parcel": "2.16.1",
     "react": "19.2.0",
     "react-dom": "19.2.0",
-    "react-router": "7.9.5",
+    "react-router": "7.9.6",
     "smoothscroll-polyfill": "0.4.4"
   }
 }
