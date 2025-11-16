@@ -1,6 +1,4 @@
-import { type Player, Sex } from "../domains/player";
 import {
-  type AvailableLocale,
   BE,
   CS,
   DA,
@@ -21,9 +19,11 @@ import {
   PT_BR,
   RU,
   SK,
+  type SupportedLocale,
   TR,
   UK,
-} from "../i18n";
+} from "../domains/i18n";
+import { type Player, Sex } from "../domains/player";
 import createPlayer from "../utils/createPlayer";
 
 const templatePlayers = [
@@ -59,7 +59,7 @@ const getLocalizedPlayers = (names: string[]): Player[] =>
     name: names[index],
   }));
 
-const nameEntries: Record<AvailableLocale, string[]> = {
+const nameEntries: Record<SupportedLocale, string[]> = {
   [BE]: ["Аляксандр", "Сяргей", "Ганна", "Кацярына"],
   [CS]: ["Jan", "Jakub", "Tereza", "Anna"],
   [DA]: ["William", "Noah", "Emma", "Freja"],
@@ -84,5 +84,5 @@ const nameEntries: Record<AvailableLocale, string[]> = {
   [UK]: ["Олесь", "Макс", "Софія", "Марія"],
 };
 
-export const getPlayers = (locale: AvailableLocale): Player[] =>
+export const getPlayers = (locale: SupportedLocale): Player[] =>
   getLocalizedPlayers(nameEntries[locale]);

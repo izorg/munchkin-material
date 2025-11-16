@@ -1,9 +1,9 @@
 import { ActionCreators } from "redux-undo";
 
+import { getBrowserLocale, isSupportedLocale } from "../domains/i18n";
 import { addPlayerToList } from "../ducks/playerList";
 import { addPlayer, removePlayers } from "../ducks/players";
 import { setLocale as setAppLocale } from "../ducks/settings";
-import { getLocale, isSupportedLocale } from "../i18n";
 import store from "../store";
 
 import { getPlayers } from "./players";
@@ -22,7 +22,7 @@ const setTestData = () => {
   store.dispatch(removePlayers(playerList));
   store.dispatch(ActionCreators.clearHistory());
 
-  const locale = settings.locale ?? getLocale();
+  const locale = settings.locale ?? getBrowserLocale();
 
   const localePlayers = getPlayers(locale);
 

@@ -10,20 +10,24 @@ import {
 } from "react";
 import { IntlProvider } from "react-intl";
 
+import {
+  getBrowserLocale,
+  loadMessages,
+  type SupportedLocale,
+} from "../../domains/i18n";
+import {
+  polyfillIntl,
+  polyfillIntlGetCanonicalLocales,
+  polyfillIntlLocale,
+} from "../../domains/i18n";
 import usePresentSelector from "../../hooks/usePresentSelector";
-import { type AvailableLocale, getLocale, loadMessages } from "../../i18n";
 import store from "../../store";
 import { getLocaleDirection } from "../../utils/getLocaleDirection";
 
-import polyfillIntl, {
-  polyfillIntlGetCanonicalLocales,
-  polyfillIntlLocale,
-} from "./polyfillIntl";
-
 const fetchLocalisation = async (
-  locale?: AvailableLocale,
+  locale?: SupportedLocale,
 ): Promise<{
-  locale: AvailableLocale;
+  locale: SupportedLocale;
   messages: Awaited<ReturnType<typeof loadMessages>>;
 }> => {
   let availableLocale = locale;
@@ -32,7 +36,7 @@ const fetchLocalisation = async (
     await polyfillIntlGetCanonicalLocales();
     await polyfillIntlLocale();
 
-    availableLocale = getLocale();
+    availableLocale = getBrowserLocale();
   }
 
   const [messages] = await Promise.all([

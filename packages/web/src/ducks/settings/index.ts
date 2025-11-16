@@ -1,13 +1,13 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 
-import { type AvailableLocale } from "../../i18n";
+import { type SupportedLocale } from "../../domains/i18n";
 
 type SettingsState = {
   epic: boolean;
   fullVersion: boolean;
   keepAwake: boolean;
   levelLimit: boolean;
-  locale?: AvailableLocale;
+  locale?: SupportedLocale;
   singleMode: boolean;
   singleModePlayerId?: string;
 };
@@ -46,7 +46,7 @@ const settingsSlice = createSlice({
       levelLimit: action.payload,
     }),
 
-    setLocale: (state, action: PayloadAction<AvailableLocale | undefined>) => ({
+    setLocale: (state, action: PayloadAction<SupportedLocale | undefined>) => ({
       ...state,
       locale: action.payload,
     }),

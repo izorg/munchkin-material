@@ -1,12 +1,12 @@
 import { test } from "@playwright/test";
 
 import { getPlayers } from "../../web/src/dev/players";
-import { availableLocales } from "../../web/src/i18n";
+import { supportedLocales } from "../../web/src/domains/i18n";
 
 const delay = (timeout: number) =>
   new Promise((resolve) => setTimeout(resolve, timeout));
 
-for (const locale of availableLocales) {
+for (const locale of supportedLocales) {
   test.describe(locale, () => {
     test.use({
       locale,

@@ -1,7 +1,7 @@
 import { Box, type BoxProps, useTheme } from "@mui/material";
 import { useIntl } from "react-intl";
 
-import { EN, RU } from "../../../i18n";
+import { EN, RU } from "../../../domains/i18n";
 
 const munchkinFontSupportedLocales = new Set([EN, RU]);
 

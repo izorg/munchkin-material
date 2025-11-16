@@ -1,8 +1,8 @@
 import { afterEach, describe, expect, jest, test } from "@jest/globals";
 
-import { getLocale } from "./i18n";
+import { getBrowserLocale } from "./getBrowserLocale";
 
-describe("getLocale()", () => {
+describe("getBrowserLocale()", () => {
   afterEach(() => {
     jest.resetAllMocks();
   });
@@ -10,7 +10,7 @@ describe("getLocale()", () => {
   test("should get ru locale", () => {
     jest.spyOn(navigator, "languages", "get").mockImplementation(() => ["ru"]);
 
-    expect(getLocale()).toBe("ru");
+    expect(getBrowserLocale()).toBe("ru");
   });
 
   test("should get ru locale from ru-RU language", () => {
@@ -18,7 +18,7 @@ describe("getLocale()", () => {
       .spyOn(navigator, "languages", "get")
       .mockImplementation(() => ["ru-RU"]);
 
-    expect(getLocale()).toBe("ru");
+    expect(getBrowserLocale()).toBe("ru");
   });
 
   test("should get pt locale from pt-PT language", () => {
@@ -26,7 +26,7 @@ describe("getLocale()", () => {
       .spyOn(navigator, "languages", "get")
       .mockImplementation(() => ["pt-PT", "pt-BR"]);
 
-    expect(getLocale()).toBe("pt");
+    expect(getBrowserLocale()).toBe("pt");
   });
 
   test("should get pt-BR locale", () => {
@@ -34,7 +34,7 @@ describe("getLocale()", () => {
       .spyOn(navigator, "languages", "get")
       .mockImplementation(() => ["pt-BR", "pt"]);
 
-    expect(getLocale()).toBe("pt-BR");
+    expect(getBrowserLocale()).toBe("pt-BR");
   });
 
   test("should get en locale from en-US languages", () => {
@@ -42,7 +42,7 @@ describe("getLocale()", () => {
       .spyOn(navigator, "languages", "get")
       .mockImplementation(() => ["en-US"]);
 
-    expect(getLocale()).toBe("en");
+    expect(getBrowserLocale()).toBe("en");
   });
 
   test("should get fallback en locale if languages is not supported", () => {
@@ -50,6 +50,6 @@ describe("getLocale()", () => {
       .spyOn(navigator, "languages", "get")
       .mockImplementation(() => ["ja-JP"]);
 
-    expect(getLocale()).toBe("en");
+    expect(getBrowserLocale()).toBe("en");
   });
 });

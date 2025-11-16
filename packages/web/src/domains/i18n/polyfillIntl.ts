@@ -5,7 +5,6 @@ import { shouldPolyfill as shouldPolyfillNumberFormat } from "@formatjs/intl-num
 import { shouldPolyfill as shouldPolyfillPluralRules } from "@formatjs/intl-pluralrules/should-polyfill";
 
 import {
-  type AvailableLocale,
   BE,
   CS,
   DA,
@@ -26,11 +25,12 @@ import {
   PT_BR,
   RU,
   SK,
+  type SupportedLocale,
   TR,
   UK,
-} from "../../i18n";
+} from "./supportedLocales";
 
-const pluralRulesLoaders: Record<AvailableLocale, () => unknown> = {
+const pluralRulesLoaders: Record<SupportedLocale, () => unknown> = {
   [BE]: () => import("@formatjs/intl-pluralrules/locale-data/be"),
   [CS]: () => import("@formatjs/intl-pluralrules/locale-data/cs"),
   [DA]: () => import("@formatjs/intl-pluralrules/locale-data/da"),
@@ -55,7 +55,7 @@ const pluralRulesLoaders: Record<AvailableLocale, () => unknown> = {
   [UK]: () => import("@formatjs/intl-pluralrules/locale-data/uk"),
 };
 
-const numberFormatLoaders: Record<AvailableLocale, () => unknown> = {
+const numberFormatLoaders: Record<SupportedLocale, () => unknown> = {
   [BE]: () => import("@formatjs/intl-numberformat/locale-data/be"),
   [CS]: () => import("@formatjs/intl-numberformat/locale-data/cs"),
   [DA]: () => import("@formatjs/intl-numberformat/locale-data/da"),
@@ -80,7 +80,7 @@ const numberFormatLoaders: Record<AvailableLocale, () => unknown> = {
   [UK]: () => import("@formatjs/intl-numberformat/locale-data/uk"),
 };
 
-const dateTimeFormatLoaders: Record<AvailableLocale, () => unknown> = {
+const dateTimeFormatLoaders: Record<SupportedLocale, () => unknown> = {
   [BE]: () => import("@formatjs/intl-datetimeformat/locale-data/be"),
   [CS]: () => import("@formatjs/intl-datetimeformat/locale-data/cs"),
   [DA]: () => import("@formatjs/intl-datetimeformat/locale-data/da"),
@@ -122,7 +122,7 @@ export const polyfillIntlLocale = async () => {
   }
 };
 
-const polyfillIntl = async (locale: AvailableLocale) => {
+export const polyfillIntl = async (locale: SupportedLocale) => {
   await polyfillIntlGetCanonicalLocales();
   await polyfillIntlLocale();
 
@@ -141,5 +141,3 @@ const polyfillIntl = async (locale: AvailableLocale) => {
     await dateTimeFormatLoaders[locale]();
   }
 };
-
-export default polyfillIntl;
