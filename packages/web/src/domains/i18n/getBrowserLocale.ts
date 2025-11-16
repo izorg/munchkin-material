@@ -1,9 +1,16 @@
 import { match } from "@formatjs/intl-localematcher";
 import { captureException, captureMessage } from "@sentry/react";
 
+import {
+  polyfillIntlGetCanonicalLocales,
+  polyfillIntlLocale,
+} from "./polyfillIntl";
 import { EN, isSupportedLocale, supportedLocales } from "./supportedLocales";
 
-export const getBrowserLocale = () => {
+export const getBrowserLocale = async () => {
+  await polyfillIntlGetCanonicalLocales();
+  await polyfillIntlLocale();
+
   let locale;
 
   try {

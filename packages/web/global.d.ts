@@ -4,7 +4,7 @@ declare global {
   var munchkinDev:
     | {
         setLocale: (locale: string) => void;
-        setTestData: () => void;
+        setTestData: () => Promise<void>;
       }
     | undefined;
 

@@ -7,49 +7,49 @@ describe("getBrowserLocale()", () => {
     jest.resetAllMocks();
   });
 
-  test("should get ru locale", () => {
+  test("should get ru locale", async () => {
     jest.spyOn(navigator, "languages", "get").mockImplementation(() => ["ru"]);
 
-    expect(getBrowserLocale()).toBe("ru");
+    await expect(getBrowserLocale()).resolves.toBe("ru");
   });
 
-  test("should get ru locale from ru-RU language", () => {
+  test("should get ru locale from ru-RU language", async () => {
     jest
       .spyOn(navigator, "languages", "get")
       .mockImplementation(() => ["ru-RU"]);
 
-    expect(getBrowserLocale()).toBe("ru");
+    await expect(getBrowserLocale()).resolves.toBe("ru");
   });
 
-  test("should get pt locale from pt-PT language", () => {
+  test("should get pt locale from pt-PT language", async () => {
     jest
       .spyOn(navigator, "languages", "get")
       .mockImplementation(() => ["pt-PT", "pt-BR"]);
 
-    expect(getBrowserLocale()).toBe("pt");
+    await expect(getBrowserLocale()).resolves.toBe("pt");
   });
 
-  test("should get pt-BR locale", () => {
+  test("should get pt-BR locale", async () => {
     jest
       .spyOn(navigator, "languages", "get")
       .mockImplementation(() => ["pt-BR", "pt"]);
 
-    expect(getBrowserLocale()).toBe("pt-BR");
+    await expect(getBrowserLocale()).resolves.toBe("pt-BR");
   });
 
-  test("should get en locale from en-US languages", () => {
+  test("should get en locale from en-US languages", async () => {
     jest
       .spyOn(navigator, "languages", "get")
       .mockImplementation(() => ["en-US"]);
 
-    expect(getBrowserLocale()).toBe("en");
+    await expect(getBrowserLocale()).resolves.toBe("en");
   });
 
-  test("should get fallback en locale if languages is not supported", () => {
+  test("should get fallback en locale if languages is not supported", async () => {
     jest
       .spyOn(navigator, "languages", "get")
       .mockImplementation(() => ["ja-JP"]);
 
-    expect(getBrowserLocale()).toBe("en");
+    await expect(getBrowserLocale()).resolves.toBe("en");
   });
 });

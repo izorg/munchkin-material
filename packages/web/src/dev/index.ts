@@ -16,13 +16,14 @@ const setLocale = (locale: string) => {
   }
 };
 
-const setTestData = () => {
+const setTestData = async () => {
   const { playerList, settings } = store.getState().present;
 
   store.dispatch(removePlayers(playerList));
   store.dispatch(ActionCreators.clearHistory());
 
-  const locale = settings.locale ?? getBrowserLocale();
+  const browserLocale = await getBrowserLocale();
+  const locale = settings.locale ?? browserLocale;
 
   const localePlayers = getPlayers(locale);
 

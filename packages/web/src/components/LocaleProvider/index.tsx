@@ -15,51 +15,48 @@ import {
   loadMessages,
   type SupportedLocale,
 } from "../../domains/i18n";
-import {
-  polyfillIntl,
-  polyfillIntlGetCanonicalLocales,
-  polyfillIntlLocale,
-} from "../../domains/i18n";
+import { polyfillIntl } from "../../domains/i18n";
 import usePresentSelector from "../../hooks/usePresentSelector";
 import store from "../../store";
 import { getLocaleDirection } from "../../utils/getLocaleDirection";
 
 const fetchLocalisation = async (
-  locale?: SupportedLocale,
+  locale: SupportedLocale,
 ): Promise<{
   locale: SupportedLocale;
   messages: Awaited<ReturnType<typeof loadMessages>>;
 }> => {
-  let availableLocale = locale;
-
-  if (!availableLocale) {
-    await polyfillIntlGetCanonicalLocales();
-    await polyfillIntlLocale();
-
-    availableLocale = getBrowserLocale();
-  }
-
   const [messages] = await Promise.all([
-    loadMessages(availableLocale),
-    polyfillIntl(availableLocale),
+    loadMessages(locale),
+    polyfillIntl(locale),
   ]);
 
   return {
-    locale: availableLocale,
+    locale,
     messages,
   };
 };
 
-const initialLocalisationPromise = fetchLocalisation(
-  store.getState().present.settings.locale,
-);
+const browserLocalePromise = getBrowserLocale();
+
+const getInitialLocalisation = async () => {
+  const browserLocale = await browserLocalePromise;
+
+  return await fetchLocalisation(
+    store.getState().present.settings.locale ?? browserLocale,
+  );
+};
+
+const initialLocalisationPromise = getInitialLocalisation();
 
 const LocaleProvider: FC<PropsWithChildren> = ({ children }) => {
   const [{ locale, messages }, setLocalisation] = useState(
     use(initialLocalisationPromise),
   );
 
-  const selectedLocale = usePresentSelector((state) => state.settings.locale);
+  const selectedLocale =
+    usePresentSelector((state) => state.settings.locale) ??
+    use(browserLocalePromise);
 
   useEffect(() => {
     if (selectedLocale === locale) {
