@@ -38,7 +38,6 @@ export default defineConfig(
       js.configs.recommended,
       ts.configs.recommendedTypeChecked,
       comments.recommended,
-      compat.configs["flat/recommended"],
       formatjs.configs.recommended,
       importPlugin.flatConfigs.recommended,
       importPlugin.flatConfigs.typescript,
@@ -223,14 +222,11 @@ export default defineConfig(
     name: "json",
   },
   {
-    files: ["packages/cordova/**", "packages/web/**"],
-    name: "cordova-and-web",
-    settings: {
-      polyfills: ["Object.fromEntries"],
-    },
-  },
-  {
-    extends: [next.configs.recommended, next.configs["core-web-vitals"]],
+    extends: [
+      compat.configs["flat/recommended"],
+      next.configs.recommended,
+      next.configs["core-web-vitals"],
+    ],
     files: ["packages/site/**"],
     name: "site",
     settings: {
