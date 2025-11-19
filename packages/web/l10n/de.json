@@ -1,4 +1,8 @@
 {
+  "3djEDD": {
+    "defaultMessage": "Wähle eine Farbe",
+    "description": "Color picker dialog title"
+  },
   "C1Szny": {
     "defaultMessage": "Würfel",
     "description": "Dice button tooltip"
@@ -14,6 +18,10 @@
   },
   "VWJ5/Y": {
     "defaultMessage": "Letzer Spieler"
+  },
+  "W64JtP": {
+    "defaultMessage": "Name",
+    "description": "Player form name field label"
   },
   "button.cancel": {
     "defaultMessage": "Abbrechen"
@@ -92,6 +100,10 @@
   },
   "menu.translate": {
     "defaultMessage": "Übersetzen"
+  },
+  "o2wJ9Y": {
+    "defaultMessage": "Farbe",
+    "description": "Player form color field label"
   },
   "player.form.delete": {
     "defaultMessage": "Löschen"
@@ -176,6 +188,10 @@
   },
   "undo.resetPlayers": {
     "defaultMessage": "Die Spieler wurden zurückgesetzt"
+  },
+  "wlAsxi": {
+    "defaultMessage": "Sex",
+    "description": "Player form sex radio group label"
   }
 }
 
