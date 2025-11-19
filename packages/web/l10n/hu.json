@@ -21,9 +21,6 @@
   "button.submit": {
     "defaultMessage": "OK"
   },
-  "colorPicker.dialog.title": {
-    "defaultMessage": "Szín választás"
-  },
   "combat": {
     "defaultMessage": "Harc"
   },
@@ -96,20 +93,11 @@
   "menu.translate": {
     "defaultMessage": "Fordít"
   },
-  "player.form.color": {
-    "defaultMessage": "Szín"
-  },
   "player.form.delete": {
     "defaultMessage": "Töröl"
   },
-  "player.form.namePlaceholder": {
-    "defaultMessage": "Név"
-  },
   "player.form.save": {
     "defaultMessage": "Mentés"
-  },
-  "player.form.sex": {
-    "defaultMessage": "Nem"
   },
   "player.form.title": {
     "defaultMessage": "Új munchkin"
