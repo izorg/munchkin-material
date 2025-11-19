@@ -21,9 +21,6 @@
   "button.submit": {
     "defaultMessage": "OK"
   },
-  "colorPicker.dialog.title": {
-    "defaultMessage": "Vælg farve"
-  },
   "combat": {
     "defaultMessage": "Kamp"
   },
@@ -96,20 +93,11 @@
   "menu.translate": {
     "defaultMessage": "Oversæt"
   },
-  "player.form.color": {
-    "defaultMessage": "Farve"
-  },
   "player.form.delete": {
     "defaultMessage": "Slet"
   },
-  "player.form.namePlaceholder": {
-    "defaultMessage": "Navn"
-  },
   "player.form.save": {
     "defaultMessage": "Gem"
-  },
-  "player.form.sex": {
-    "defaultMessage": "Køn"
   },
   "player.form.title": {
     "defaultMessage": "Ny munchkin"
