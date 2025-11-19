@@ -1,4 +1,8 @@
 {
+  "3djEDD": {
+    "defaultMessage": "Escolher cor",
+    "description": "Color picker dialog title"
+  },
   "C1Szny": {
     "defaultMessage": "Dado",
     "description": "Dice button tooltip"
@@ -14,6 +18,10 @@
   },
   "VWJ5/Y": {
     "defaultMessage": "Página anterior"
+  },
+  "W64JtP": {
+    "defaultMessage": "Nome",
+    "description": "Player form name field label"
   },
   "button.cancel": {
     "defaultMessage": "Cancelar"
@@ -92,6 +100,10 @@
   },
   "menu.translate": {
     "defaultMessage": "Traduzir"
+  },
+  "o2wJ9Y": {
+    "defaultMessage": "Cor",
+    "description": "Player form color field label"
   },
   "player.form.delete": {
     "defaultMessage": "Excluir"
@@ -176,6 +188,10 @@
   },
   "undo.resetPlayers": {
     "defaultMessage": "Jogadores resetados"
+  },
+  "wlAsxi": {
+    "defaultMessage": "Sexo",
+    "description": "Player form sex radio group label"
   }
 }
 
