@@ -1,4 +1,8 @@
 {
+  "3djEDD": {
+    "defaultMessage": "Choose color",
+    "description": "Color picker dialog title"
+  },
   "C1Szny": {
     "defaultMessage": "Dice",
     "description": "Dice button tooltip"
@@ -15,14 +19,15 @@
   "VWJ5/Y": {
     "defaultMessage": "Previous player"
   },
+  "W64JtP": {
+    "defaultMessage": "Name",
+    "description": "Player form name field label"
+  },
   "button.cancel": {
     "defaultMessage": "Cancel"
   },
   "button.submit": {
     "defaultMessage": "OK"
-  },
-  "colorPicker.dialog.title": {
-    "defaultMessage": "Choose color"
   },
   "combat": {
     "defaultMessage": "Combat"
@@ -96,20 +101,15 @@
   "menu.translate": {
     "defaultMessage": "Translate"
   },
-  "player.form.color": {
-    "defaultMessage": "Color"
+  "o2wJ9Y": {
+    "defaultMessage": "Color",
+    "description": "Player form color field label"
   },
   "player.form.delete": {
     "defaultMessage": "Delete"
   },
-  "player.form.namePlaceholder": {
-    "defaultMessage": "Name"
-  },
   "player.form.save": {
     "defaultMessage": "Save"
-  },
-  "player.form.sex": {
-    "defaultMessage": "Sex"
   },
   "player.form.title": {
     "defaultMessage": "New munchkin"
@@ -188,5 +188,9 @@
   },
   "undo.resetPlayers": {
     "defaultMessage": "Players have been reset"
+  },
+  "wlAsxi": {
+    "defaultMessage": "Sex",
+    "description": "Player form sex radio group label"
   }
 }
