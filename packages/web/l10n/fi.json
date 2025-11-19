@@ -21,9 +21,6 @@
   "button.submit": {
     "defaultMessage": "OK"
   },
-  "colorPicker.dialog.title": {
-    "defaultMessage": "Valitse väri"
-  },
   "combat": {
     "defaultMessage": "Taistelu"
   },
@@ -96,20 +93,11 @@
   "menu.translate": {
     "defaultMessage": "Käännä"
   },
-  "player.form.color": {
-    "defaultMessage": "Väri"
-  },
   "player.form.delete": {
     "defaultMessage": "Poistaa"
   },
-  "player.form.namePlaceholder": {
-    "defaultMessage": "Nimi"
-  },
   "player.form.save": {
     "defaultMessage": "Tallenna"
-  },
-  "player.form.sex": {
-    "defaultMessage": "Sukupuoli"
   },
   "player.form.title": {
     "defaultMessage": "Uusi munchkin"
