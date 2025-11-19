@@ -21,9 +21,6 @@
   "button.submit": {
     "defaultMessage": "OK"
   },
-  "colorPicker.dialog.title": {
-    "defaultMessage": "Velg farge"
-  },
   "combat": {
     "defaultMessage": "Kamp"
   },
@@ -96,20 +93,11 @@
   "menu.translate": {
     "defaultMessage": "Oversett"
   },
-  "player.form.color": {
-    "defaultMessage": "Farge"
-  },
   "player.form.delete": {
     "defaultMessage": "Slett"
   },
-  "player.form.namePlaceholder": {
-    "defaultMessage": "Navn"
-  },
   "player.form.save": {
     "defaultMessage": "Lagre"
-  },
-  "player.form.sex": {
-    "defaultMessage": "Kjønn"
   },
   "player.form.title": {
     "defaultMessage": "Ny spiller"
