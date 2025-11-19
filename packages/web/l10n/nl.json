@@ -1,4 +1,8 @@
 {
+  "3djEDD": {
+    "defaultMessage": "Kies een kleur",
+    "description": "Color picker dialog title"
+  },
   "C1Szny": {
     "defaultMessage": "Dobbelsteen",
     "description": "Dice button tooltip"
@@ -14,6 +18,10 @@
   },
   "VWJ5/Y": {
     "defaultMessage": "Vorige speler"
+  },
+  "W64JtP": {
+    "defaultMessage": "Naam",
+    "description": "Player form name field label"
   },
   "button.cancel": {
     "defaultMessage": "Annuleer"
@@ -92,6 +100,10 @@
   },
   "menu.translate": {
     "defaultMessage": "Vertaal"
+  },
+  "o2wJ9Y": {
+    "defaultMessage": "Kleur",
+    "description": "Player form color field label"
   },
   "player.form.delete": {
     "defaultMessage": "Verwijderen"
@@ -176,6 +188,10 @@
   },
   "undo.resetPlayers": {
     "defaultMessage": "Spelerslijst is opgekuist"
+  },
+  "wlAsxi": {
+    "defaultMessage": "Geslacht",
+    "description": "Player form sex radio group label"
   }
 }
 
