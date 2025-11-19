@@ -21,9 +21,6 @@
   "button.submit": {
     "defaultMessage": "Tamam"
   },
-  "colorPicker.dialog.title": {
-    "defaultMessage": "Renk seç"
-  },
   "combat": {
     "defaultMessage": "Savaş"
   },
@@ -96,20 +93,11 @@
   "menu.translate": {
     "defaultMessage": "Çevir"
   },
-  "player.form.color": {
-    "defaultMessage": "Renk"
-  },
   "player.form.delete": {
     "defaultMessage": "Silmek"
   },
-  "player.form.namePlaceholder": {
-    "defaultMessage": "İsim"
-  },
   "player.form.save": {
     "defaultMessage": "Kaydet"
-  },
-  "player.form.sex": {
-    "defaultMessage": "Cinsiyet"
   },
   "player.form.title": {
     "defaultMessage": "Yeni munchkin"
