@@ -21,9 +21,6 @@
   "button.submit": {
     "defaultMessage": "OK"
   },
-  "colorPicker.dialog.title": {
-    "defaultMessage": "Vyberte barvu"
-  },
   "combat": {
     "defaultMessage": "Boj"
   },
@@ -96,20 +93,11 @@
   "menu.translate": {
     "defaultMessage": "Přeložit"
   },
-  "player.form.color": {
-    "defaultMessage": "Barva"
-  },
   "player.form.delete": {
     "defaultMessage": "Vymazat"
   },
-  "player.form.namePlaceholder": {
-    "defaultMessage": "Název"
-  },
   "player.form.save": {
     "defaultMessage": "Uložit"
-  },
-  "player.form.sex": {
-    "defaultMessage": "Pohlaví"
   },
   "player.form.title": {
     "defaultMessage": "Nový munchkin"
