@@ -21,9 +21,6 @@
   "button.submit": {
     "defaultMessage": "OK"
   },
-  "colorPicker.dialog.title": {
-    "defaultMessage": "Escolher cor"
-  },
   "combat": {
     "defaultMessage": "Combate"
   },
@@ -96,20 +93,11 @@
   "menu.translate": {
     "defaultMessage": "Traduzir"
   },
-  "player.form.color": {
-    "defaultMessage": "Cor"
-  },
   "player.form.delete": {
     "defaultMessage": "Excluir"
   },
-  "player.form.namePlaceholder": {
-    "defaultMessage": "Nome"
-  },
   "player.form.save": {
     "defaultMessage": "Guardar"
-  },
-  "player.form.sex": {
-    "defaultMessage": "Sexo"
   },
   "player.form.title": {
     "defaultMessage": "Novo munchkin"
