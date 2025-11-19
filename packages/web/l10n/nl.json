@@ -21,9 +21,6 @@
   "button.submit": {
     "defaultMessage": "Ok"
   },
-  "colorPicker.dialog.title": {
-    "defaultMessage": "Kies een kleur"
-  },
   "combat": {
     "defaultMessage": "Strijden"
   },
@@ -96,20 +93,11 @@
   "menu.translate": {
     "defaultMessage": "Vertaal"
   },
-  "player.form.color": {
-    "defaultMessage": "Kleur"
-  },
   "player.form.delete": {
     "defaultMessage": "Verwijderen"
   },
-  "player.form.namePlaceholder": {
-    "defaultMessage": "Naam"
-  },
   "player.form.save": {
     "defaultMessage": "Bewaar"
-  },
-  "player.form.sex": {
-    "defaultMessage": "Geslacht"
   },
   "player.form.title": {
     "defaultMessage": "Nieuwe munchkin"
