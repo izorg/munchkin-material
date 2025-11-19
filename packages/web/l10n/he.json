@@ -21,9 +21,6 @@
   "button.submit": {
     "defaultMessage": "אישור"
   },
-  "colorPicker.dialog.title": {
-    "defaultMessage": "בחר צבע"
-  },
   "combat": {
     "defaultMessage": "קרב"
   },
@@ -96,20 +93,11 @@
   "menu.translate": {
     "defaultMessage": "תרגם"
   },
-  "player.form.color": {
-    "defaultMessage": "צֶבַע"
-  },
   "player.form.delete": {
     "defaultMessage": "לִמְחוֹק"
   },
-  "player.form.namePlaceholder": {
-    "defaultMessage": "שם"
-  },
   "player.form.save": {
     "defaultMessage": "שמור"
-  },
-  "player.form.sex": {
-    "defaultMessage": "מין"
   },
   "player.form.title": {
     "defaultMessage": "מאנצ'קין חדש"
