@@ -21,9 +21,6 @@
   "button.submit": {
     "defaultMessage": "Լավ"
   },
-  "colorPicker.dialog.title": {
-    "defaultMessage": "Ընտրեք գույնը"
-  },
   "combat": {
     "defaultMessage": "Կռիվ"
   },
@@ -96,20 +93,11 @@
   "menu.translate": {
     "defaultMessage": "Թարգմանել"
   },
-  "player.form.color": {
-    "defaultMessage": "Գույն"
-  },
   "player.form.delete": {
     "defaultMessage": "Ջնջել"
   },
-  "player.form.namePlaceholder": {
-    "defaultMessage": "Անուն"
-  },
   "player.form.save": {
     "defaultMessage": "Պահել"
-  },
-  "player.form.sex": {
-    "defaultMessage": "Սեռ"
   },
   "player.form.title": {
     "defaultMessage": "Նոր մանչկին"
