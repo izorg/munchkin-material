@@ -1,4 +1,8 @@
 {
+  "3djEDD": {
+    "defaultMessage": "Szín választás",
+    "description": "Color picker dialog title"
+  },
   "C1Szny": {
     "defaultMessage": "Kocka",
     "description": "Dice button tooltip"
@@ -15,14 +19,15 @@
   "VWJ5/Y": {
     "defaultMessage": "Előző játékos"
   },
+  "W64JtP": {
+    "defaultMessage": "Név",
+    "description": "Player form name field label"
+  },
   "button.cancel": {
     "defaultMessage": "Mégse"
   },
   "button.submit": {
     "defaultMessage": "OK"
-  },
-  "colorPicker.dialog.title": {
-    "defaultMessage": "Szín választás"
   },
   "combat": {
     "defaultMessage": "Harc"
@@ -96,20 +101,15 @@
   "menu.translate": {
     "defaultMessage": "Fordít"
   },
-  "player.form.color": {
-    "defaultMessage": "Szín"
+  "o2wJ9Y": {
+    "defaultMessage": "Szín",
+    "description": "Player form color field label"
   },
   "player.form.delete": {
     "defaultMessage": "Töröl"
   },
-  "player.form.namePlaceholder": {
-    "defaultMessage": "Név"
-  },
   "player.form.save": {
     "defaultMessage": "Mentés"
-  },
-  "player.form.sex": {
-    "defaultMessage": "Nem"
   },
   "player.form.title": {
     "defaultMessage": "Új munchkin"
@@ -188,6 +188,10 @@
   },
   "undo.resetPlayers": {
     "defaultMessage": "Játékosok alaphelyzetbe állítva"
+  },
+  "wlAsxi": {
+    "defaultMessage": "Nem",
+    "description": "Player form sex radio group label"
   }
 }
 

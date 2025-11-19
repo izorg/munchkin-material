@@ -1,4 +1,8 @@
 {
+  "3djEDD": {
+    "defaultMessage": "Διάλεξε χρώμα",
+    "description": "Color picker dialog title"
+  },
   "C1Szny": {
     "defaultMessage": "Ζάρι",
     "description": "Dice button tooltip"
@@ -15,14 +19,15 @@
   "VWJ5/Y": {
     "defaultMessage": "Προηγούμενος παίκτης"
   },
+  "W64JtP": {
+    "defaultMessage": "Όνομα",
+    "description": "Player form name field label"
+  },
   "button.cancel": {
     "defaultMessage": "Ακύρωση"
   },
   "button.submit": {
     "defaultMessage": "ΟΚ"
-  },
-  "colorPicker.dialog.title": {
-    "defaultMessage": "Διάλεξε χρώμα"
   },
   "combat": {
     "defaultMessage": "Μάχη"
@@ -96,20 +101,15 @@
   "menu.translate": {
     "defaultMessage": "Μετάφραση"
   },
-  "player.form.color": {
-    "defaultMessage": "Χρώμα"
+  "o2wJ9Y": {
+    "defaultMessage": "Χρώμα",
+    "description": "Player form color field label"
   },
   "player.form.delete": {
     "defaultMessage": "Διαγράφω"
   },
-  "player.form.namePlaceholder": {
-    "defaultMessage": "Όνομα"
-  },
   "player.form.save": {
     "defaultMessage": "Αποθήκευση"
-  },
-  "player.form.sex": {
-    "defaultMessage": "Φύλο"
   },
   "player.form.title": {
     "defaultMessage": "Νέο munchkin"
@@ -188,6 +188,10 @@
   },
   "undo.resetPlayers": {
     "defaultMessage": "Οι παίκτες έχουν επαναφερθεί"
+  },
+  "wlAsxi": {
+    "defaultMessage": "Φύλο",
+    "description": "Player form sex radio group label"
   }
 }
 

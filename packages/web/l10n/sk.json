@@ -1,4 +1,8 @@
 {
+  "3djEDD": {
+    "defaultMessage": "Vyberte farbu",
+    "description": "Color picker dialog title"
+  },
   "C1Szny": {
     "defaultMessage": "Kocka",
     "description": "Dice button tooltip"
@@ -15,14 +19,15 @@
   "VWJ5/Y": {
     "defaultMessage": "Predchádzajúci hráč"
   },
+  "W64JtP": {
+    "defaultMessage": "Názov",
+    "description": "Player form name field label"
+  },
   "button.cancel": {
     "defaultMessage": "Zrušiť"
   },
   "button.submit": {
     "defaultMessage": "OK"
-  },
-  "colorPicker.dialog.title": {
-    "defaultMessage": "Vyberte farbu"
   },
   "combat": {
     "defaultMessage": "Boj"
@@ -96,20 +101,15 @@
   "menu.translate": {
     "defaultMessage": "Preložiť"
   },
-  "player.form.color": {
-    "defaultMessage": "Farba"
+  "o2wJ9Y": {
+    "defaultMessage": "Farba",
+    "description": "Player form color field label"
   },
   "player.form.delete": {
     "defaultMessage": "Odstrániť"
   },
-  "player.form.namePlaceholder": {
-    "defaultMessage": "Názov"
-  },
   "player.form.save": {
     "defaultMessage": "Uložiť"
-  },
-  "player.form.sex": {
-    "defaultMessage": "Pohlavie"
   },
   "player.form.title": {
     "defaultMessage": "Nový munchkin"
@@ -188,6 +188,10 @@
   },
   "undo.resetPlayers": {
     "defaultMessage": "Hráči boli resetovaní"
+  },
+  "wlAsxi": {
+    "defaultMessage": "Pohlavie",
+    "description": "Player form sex radio group label"
   }
 }
 

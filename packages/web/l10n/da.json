@@ -1,4 +1,8 @@
 {
+  "3djEDD": {
+    "defaultMessage": "Vælg farve",
+    "description": "Color picker dialog title"
+  },
   "C1Szny": {
     "defaultMessage": "Terning",
     "description": "Dice button tooltip"
@@ -15,14 +19,15 @@
   "VWJ5/Y": {
     "defaultMessage": "Tidligere spiller"
   },
+  "W64JtP": {
+    "defaultMessage": "Navn",
+    "description": "Player form name field label"
+  },
   "button.cancel": {
     "defaultMessage": "Afbryd"
   },
   "button.submit": {
     "defaultMessage": "OK"
-  },
-  "colorPicker.dialog.title": {
-    "defaultMessage": "Vælg farve"
   },
   "combat": {
     "defaultMessage": "Kamp"
@@ -96,20 +101,15 @@
   "menu.translate": {
     "defaultMessage": "Oversæt"
   },
-  "player.form.color": {
-    "defaultMessage": "Farve"
+  "o2wJ9Y": {
+    "defaultMessage": "Farve",
+    "description": "Player form color field label"
   },
   "player.form.delete": {
     "defaultMessage": "Slet"
   },
-  "player.form.namePlaceholder": {
-    "defaultMessage": "Navn"
-  },
   "player.form.save": {
     "defaultMessage": "Gem"
-  },
-  "player.form.sex": {
-    "defaultMessage": "Køn"
   },
   "player.form.title": {
     "defaultMessage": "Ny munchkin"
@@ -188,6 +188,10 @@
   },
   "undo.resetPlayers": {
     "defaultMessage": "Spillere er blevet nulstillet"
+  },
+  "wlAsxi": {
+    "defaultMessage": "Køn",
+    "description": "Player form sex radio group label"
   }
 }
 

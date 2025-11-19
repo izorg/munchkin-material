@@ -1,4 +1,8 @@
 {
+  "3djEDD": {
+    "defaultMessage": "Оберіть колір",
+    "description": "Color picker dialog title"
+  },
   "C1Szny": {
     "defaultMessage": "Кубик",
     "description": "Dice button tooltip"
@@ -15,14 +19,15 @@
   "VWJ5/Y": {
     "defaultMessage": "Попередній гравець"
   },
+  "W64JtP": {
+    "defaultMessage": "Ім'я",
+    "description": "Player form name field label"
+  },
   "button.cancel": {
     "defaultMessage": "Скасувати"
   },
   "button.submit": {
     "defaultMessage": "OK"
-  },
-  "colorPicker.dialog.title": {
-    "defaultMessage": "Оберіть колір"
   },
   "combat": {
     "defaultMessage": "Бій"
@@ -96,20 +101,15 @@
   "menu.translate": {
     "defaultMessage": "Перекласти"
   },
-  "player.form.color": {
-    "defaultMessage": "Колір"
+  "o2wJ9Y": {
+    "defaultMessage": "Колір",
+    "description": "Player form color field label"
   },
   "player.form.delete": {
     "defaultMessage": "Видалити"
   },
-  "player.form.namePlaceholder": {
-    "defaultMessage": "Ім'я"
-  },
   "player.form.save": {
     "defaultMessage": "Зберегти"
-  },
-  "player.form.sex": {
-    "defaultMessage": "Стать"
   },
   "player.form.title": {
     "defaultMessage": "Новий манчкін"
@@ -188,6 +188,10 @@
   },
   "undo.resetPlayers": {
     "defaultMessage": "Гравці були скинуті"
+  },
+  "wlAsxi": {
+    "defaultMessage": "Стать",
+    "description": "Player form sex radio group label"
   }
 }
 
