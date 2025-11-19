@@ -1,4 +1,8 @@
 {
+  "3djEDD": {
+    "defaultMessage": "Выберыце колер",
+    "description": "Color picker dialog title"
+  },
   "C1Szny": {
     "defaultMessage": "Кубік",
     "description": "Dice button tooltip"
@@ -14,6 +18,10 @@
   },
   "VWJ5/Y": {
     "defaultMessage": "Папярэдні гулец"
+  },
+  "W64JtP": {
+    "defaultMessage": "Імя",
+    "description": "Player form name field label"
   },
   "button.cancel": {
     "defaultMessage": "Адмяніць"
@@ -92,6 +100,10 @@
   },
   "menu.translate": {
     "defaultMessage": "Перакласці"
+  },
+  "o2wJ9Y": {
+    "defaultMessage": "Колер",
+    "description": "Player form color field label"
   },
   "player.form.delete": {
     "defaultMessage": "Выдаліць"
@@ -176,6 +188,10 @@
   },
   "undo.resetPlayers": {
     "defaultMessage": "Гульцы былі скінуты"
+  },
+  "wlAsxi": {
+    "defaultMessage": "Пол",
+    "description": "Player form sex radio group label"
   }
 }
 
