@@ -1,4 +1,8 @@
 {
+  "3djEDD": {
+    "defaultMessage": "Choisir la couleur",
+    "description": "Color picker dialog title"
+  },
   "C1Szny": {
     "defaultMessage": "Dé",
     "description": "Dice button tooltip"
@@ -14,6 +18,10 @@
   },
   "VWJ5/Y": {
     "defaultMessage": "Joueur précédent"
+  },
+  "W64JtP": {
+    "defaultMessage": "Nom",
+    "description": "Player form name field label"
   },
   "button.cancel": {
     "defaultMessage": "Annuler"
@@ -92,6 +100,10 @@
   },
   "menu.translate": {
     "defaultMessage": "Traduire"
+  },
+  "o2wJ9Y": {
+    "defaultMessage": "Couleur",
+    "description": "Player form color field label"
   },
   "player.form.delete": {
     "defaultMessage": "Supprimer"
@@ -176,6 +188,10 @@
   },
   "undo.resetPlayers": {
     "defaultMessage": "Les joueurs ont été réinitialisés"
+  },
+  "wlAsxi": {
+    "defaultMessage": "Sexe",
+    "description": "Player form sex radio group label"
   }
 }
 
