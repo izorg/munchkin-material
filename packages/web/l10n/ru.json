@@ -21,9 +21,6 @@
   "button.submit": {
     "defaultMessage": "OK"
   },
-  "colorPicker.dialog.title": {
-    "defaultMessage": "Выберите цвет"
-  },
   "combat": {
     "defaultMessage": "Бой"
   },
@@ -96,20 +93,11 @@
   "menu.translate": {
     "defaultMessage": "Перевести"
   },
-  "player.form.color": {
-    "defaultMessage": "Цвет"
-  },
   "player.form.delete": {
     "defaultMessage": "Удалить"
   },
-  "player.form.namePlaceholder": {
-    "defaultMessage": "Имя"
-  },
   "player.form.save": {
     "defaultMessage": "Сохранить"
-  },
-  "player.form.sex": {
-    "defaultMessage": "Пол"
   },
   "player.form.title": {
     "defaultMessage": "Новый манчкин"
