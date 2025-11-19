@@ -21,9 +21,6 @@
   "button.submit": {
     "defaultMessage": "ΟΚ"
   },
-  "colorPicker.dialog.title": {
-    "defaultMessage": "Διάλεξε χρώμα"
-  },
   "combat": {
     "defaultMessage": "Μάχη"
   },
@@ -96,20 +93,11 @@
   "menu.translate": {
     "defaultMessage": "Μετάφραση"
   },
-  "player.form.color": {
-    "defaultMessage": "Χρώμα"
-  },
   "player.form.delete": {
     "defaultMessage": "Διαγράφω"
   },
-  "player.form.namePlaceholder": {
-    "defaultMessage": "Όνομα"
-  },
   "player.form.save": {
     "defaultMessage": "Αποθήκευση"
-  },
-  "player.form.sex": {
-    "defaultMessage": "Φύλο"
   },
   "player.form.title": {
     "defaultMessage": "Νέο munchkin"
