@@ -1,6 +1,6 @@
-import { type Theme, useFormControl, useMediaQuery } from "@mui/material";
+import { type Theme, useMediaQuery } from "@mui/material";
 import { unstable_useControlled as useControlled } from "@mui/utils";
-import { type FC, type FocusEvent, type KeyboardEvent, useRef } from "react";
+import { type FC, useRef } from "react";
 import { useSearchParams } from "react-router";
 
 import { type AvailableColor } from "../../../utils/availableColors";
@@ -13,27 +13,15 @@ import Popover from "./Popover";
 type ColorPickerProps = {
   defaultValue?: AvailableColor;
   name: string;
-  onBlur?: (event: FocusEvent) => void;
-  onChange?: (color: string) => void;
-  onFocus?: (event: FocusEvent) => void;
   value?: AvailableColor;
 };
 
 const ColorPicker: FC<ColorPickerProps> = (props) => {
-  const {
-    defaultValue,
-    name,
-    onBlur,
-    onChange,
-    onFocus,
-    value: valueProp,
-  } = props;
+  const { defaultValue, name, value: valueProp } = props;
 
-  const muiFormControl = useFormControl();
   const [searchParams, setSearchParams] = useSearchParams();
 
   const anchorEl = useRef<HTMLButtonElement>(null);
-  const ignoreNextBlur = useRef(false);
 
   const [value, setValue] = useControlled({
     controlled: valueProp,
@@ -62,43 +50,7 @@ const ColorPicker: FC<ColorPickerProps> = (props) => {
     <>
       <input name={name} type="hidden" value={value} />
       <Color
-        onBlur={(event) => {
-          if (ignoreNextBlur.current) {
-            // The parent components are relying on the bubbling of the event.
-            event.stopPropagation();
-
-            ignoreNextBlur.current = false;
-          } else {
-            if (onBlur) {
-              onBlur(event);
-            }
-
-            if (muiFormControl?.onBlur) {
-              // @ts-expect-error -- need to fix type
-              muiFormControl.onBlur(event);
-            }
-          }
-        }}
-        onClick={() => {
-          ignoreNextBlur.current = true;
-
-          onOpen();
-        }}
-        onFocus={(event: FocusEvent) => {
-          if (onFocus) {
-            onFocus(event);
-          }
-
-          if (muiFormControl?.onFocus) {
-            // @ts-expect-error -- need to fix type
-            muiFormControl.onFocus(event);
-          }
-        }}
-        onKeyDown={(event: KeyboardEvent) => {
-          if ([" ", "Enter"].includes(event.key)) {
-            ignoreNextBlur.current = true;
-          }
-        }}
+        onClick={onOpen}
         ref={anchorEl}
         sx={{
           marginLeft: "-6px",
@@ -107,14 +59,10 @@ const ColorPicker: FC<ColorPickerProps> = (props) => {
       />
       {smUp ? (
         <Popover
-          anchorEl={() => anchorEl.current as HTMLButtonElement}
+          anchorEl={() => anchorEl.current}
           onClose={onClose}
           onSelect={async (color) => {
             setValue(color);
-
-            if (onChange) {
-              onChange(color);
-            }
 
             await onClose();
           }}
@@ -126,10 +74,6 @@ const ColorPicker: FC<ColorPickerProps> = (props) => {
           onClose={onClose}
           onSelect={async (color) => {
             setValue(color);
-
-            if (onChange) {
-              onChange(color);
-            }
 
             await onClose();
           }}
