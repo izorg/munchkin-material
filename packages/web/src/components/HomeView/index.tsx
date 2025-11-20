@@ -1,10 +1,15 @@
 import Home from "../Home";
 import ScreenDialog from "../ScreenDialog";
 
-const transitionProps = { appear: false };
-
 const HomeView = () => (
-  <ScreenDialog open slotProps={{ transition: transitionProps }}>
+  <ScreenDialog
+    open
+    slotProps={{
+      transition: {
+        appear: false,
+      },
+    }}
+  >
     <Home />
   </ScreenDialog>
 );

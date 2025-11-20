@@ -1,13 +1,16 @@
 import { Dialog, type DialogProps } from "@mui/material";
+import { useEffect } from "react";
 
-import { useInitialRender } from "../../hooks/useInitialRender";
+import { ScreenDialogTransition } from "./ScreenDialogTransition";
 
-import TransitionComponent from "./TransitionComponent";
+let initialRender = true;
 
 const ScreenDialog = (props: DialogProps) => {
   const { slotProps, slots, ...rest } = props;
 
-  const initialRender = useInitialRender();
+  useEffect(() => {
+    initialRender = false;
+  }, []);
 
   return (
     <Dialog
@@ -25,7 +28,7 @@ const ScreenDialog = (props: DialogProps) => {
         },
       }}
       slots={{
-        transition: TransitionComponent,
+        transition: ScreenDialogTransition,
         ...slots,
       }}
       {...rest}

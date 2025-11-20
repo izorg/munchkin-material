@@ -4,7 +4,7 @@ import { type ReactElement } from "react";
 
 import { ios } from "../../utils/platforms";
 
-const TransitionComponent = (
+export const ScreenDialogTransition = (
   props: { children: ReactElement } & Omit<TransitionProps, "children">,
 ) => {
   const slide = useMediaQuery((theme) => theme.breakpoints.down("lg")) && ios;
@@ -15,5 +15,3 @@ const TransitionComponent = (
 
   return <Fade {...props} />;
 };
-
-export default TransitionComponent;
