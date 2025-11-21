@@ -9,7 +9,10 @@ import { setSingleMode, setSingleModePlayer } from "../../../ducks/settings";
 import usePresentSelector from "../../../hooks/usePresentSelector";
 import { useAppDispatch } from "../../../store";
 import createPlayer from "../../../utils/createPlayer";
-import { useFullVersion } from "../../../utils/fullVersionContext";
+import {
+  FullVersionError,
+  useFullVersion,
+} from "../../../utils/fullVersionContext";
 import ListItemText from "../ItemText";
 import { SettingsListItemButton } from "../SettingsListItemButton";
 
@@ -37,7 +40,9 @@ const SingleModeItem = () => {
       try {
         await buyFullVersion();
       } catch (error) {
-        captureException(error);
+        if (!(error instanceof FullVersionError)) {
+          captureException(error);
+        }
 
         return;
       }

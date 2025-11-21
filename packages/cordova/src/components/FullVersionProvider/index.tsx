@@ -14,7 +14,10 @@ import {
 import { setFullVersion } from "../../../../web/src/ducks/settings";
 import usePresentSelector from "../../../../web/src/hooks/usePresentSelector";
 import { useAppDispatch } from "../../../../web/src/store";
-import { FullVersionContext } from "../../../../web/src/utils/fullVersionContext";
+import {
+  FullVersionContext,
+  FullVersionError,
+} from "../../../../web/src/utils/fullVersionContext";
 
 const FULL_VERSION_ID = "full_version";
 
@@ -108,7 +111,9 @@ export const FullVersionProvider: FC<PropsWithChildren> = ({ children }) => {
     const error = await offer.order();
 
     if (error) {
-      throw new StoreError("Can't order the offer", { cause: error });
+      throw ["USER_CANCELED"].includes(error.message)
+        ? new FullVersionError("Can't order the offer", { cause: error })
+        : new StoreError("Can't order the offer", { cause: error });
     }
 
     return new Promise<void>((resolve, reject) => {

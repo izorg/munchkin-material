@@ -20,7 +20,10 @@ import usePreviewTheme from "../../hooks/usePreviewTheme";
 import themeMessages from "../../messages/theme";
 import { useAppDispatch } from "../../store";
 import themes from "../../theme/colors";
-import { useFullVersion } from "../../utils/fullVersionContext";
+import {
+  FullVersionError,
+  useFullVersion,
+} from "../../utils/fullVersionContext";
 import { useGoBack } from "../../utils/location";
 import CancelButton from "../CancelButton";
 import SubmitButton from "../SubmitButton";
@@ -80,7 +83,9 @@ const ThemeDialog = () => {
       try {
         await buyFullVersion();
       } catch (error) {
-        captureException(error);
+        if (!(error instanceof FullVersionError)) {
+          captureException(error);
+        }
 
         return;
       }
