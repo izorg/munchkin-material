@@ -28,7 +28,7 @@
     "@types/react-dom": "19.2.3",
     "@types/stylis": "4.2.7",
     "babel-plugin-react-compiler": "1.0.0",
-    "firebase-tools": "14.25.1",
+    "firebase-tools": "14.26.0",
     "next": "16.0.3",
     "react": "19.2.0",
     "react-dom": "19.2.0",

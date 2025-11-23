@@ -4261,7 +4261,7 @@ __metadata:
     "@playwright/test": "npm:1.56.1"
     "@types/node": "npm:24.10.1"
     babel-preset-web: "workspace:*"
-    firebase-tools: "npm:14.25.1"
+    firebase-tools: "npm:14.26.0"
     handlebars: "npm:4.7.8"
     parcel: "npm:2.16.1"
     playwright: "npm:1.56.1"
@@ -4289,7 +4289,7 @@ __metadata:
     "@types/react-dom": "npm:19.2.3"
     "@types/stylis": "npm:4.2.7"
     babel-plugin-react-compiler: "npm:1.0.0"
-    firebase-tools: "npm:14.25.1"
+    firebase-tools: "npm:14.26.0"
     next: "npm:16.0.3"
     react: "npm:19.2.0"
     react-dom: "npm:19.2.0"
@@ -12845,9 +12845,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-jest@npm:29.2.0":
-  version: 29.2.0
-  resolution: "eslint-plugin-jest@npm:29.2.0"
+"eslint-plugin-jest@npm:29.2.1":
+  version: 29.2.1
+  resolution: "eslint-plugin-jest@npm:29.2.1"
   dependencies:
     "@typescript-eslint/utils": "npm:^8.0.0"
   peerDependencies:
@@ -12859,7 +12859,7 @@ __metadata:
       optional: true
     jest:
       optional: true
-  checksum: 10/69756c9a01b3598f34ed404a5a9fed6d70ba6f180d4e75a7bc8bbaf42e287bd3ca0c90b99c010b5041a26ae055102c63f3ae438849b9f241f17beb87d2869049
+  checksum: 10/1ebb7b349c27e6636c0aa5e3acc6dc6a798a8aa3600b1ae996fe89c2b4531961e26966c75182949a12cb3d58a31df0e7975052d3eb48cba143de4cb783c7cfa1
   languageName: node
   linkType: hard
 
@@ -13617,12 +13617,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"file-entry-cache@npm:^10.1.4":
-  version: 10.1.4
-  resolution: "file-entry-cache@npm:10.1.4"
+"file-entry-cache@npm:^11.1.0":
+  version: 11.1.1
+  resolution: "file-entry-cache@npm:11.1.1"
   dependencies:
-    flat-cache: "npm:^6.1.13"
-  checksum: 10/286fc7d632a7c62665baf8c794ab7aaa6ea30111da2f22bdb68b1b467e7393630737f637fe93298ef3d9d1ce149233fd739508a12c16c1555fbd85fe9d225ff0
+    flat-cache: "npm:^6.1.19"
+  checksum: 10/c71b7ef9ec2105a9c4206b3afb84ac32c46fe58803381a28c709a7911904d8aebfc8fb1520ba4967ce4187eabe88bd4d572d22c64a9d6b22be7de1baf7c08d06
   languageName: node
   linkType: hard
 
@@ -13798,9 +13798,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"firebase-tools@npm:14.25.1":
-  version: 14.25.1
-  resolution: "firebase-tools@npm:14.25.1"
+"firebase-tools@npm:14.26.0":
+  version: 14.26.0
+  resolution: "firebase-tools@npm:14.26.0"
   dependencies:
     "@apphosting/build": "npm:^0.1.6"
     "@apphosting/common": "npm:^0.0.8"
@@ -13880,7 +13880,7 @@ __metadata:
     zod-to-json-schema: "npm:^3.24.5"
   bin:
     firebase: lib/bin/firebase.js
-  checksum: 10/016106b4934ff3b15423b16d9b8711938bc9d507578392f3748b1fd10390004371baaffe2f8894424167b53210bb248226d5aa1adfde019929698d470998e9e2
+  checksum: 10/4ae3d52334c34edeafa57cdc26588b08ae0a04af8c24177f3a30d565d323ea95db01b5432ea1e1fa2552f185511ead17a55f3468b19367e209936e406bdc40b3
   languageName: node
   linkType: hard
 
@@ -13930,7 +13930,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"flat-cache@npm:^6.1.13":
+"flat-cache@npm:^6.1.19":
   version: 6.1.19
   resolution: "flat-cache@npm:6.1.19"
   dependencies:
@@ -18863,7 +18863,7 @@ __metadata:
     eslint-plugin-compat: "npm:6.0.2"
     eslint-plugin-formatjs: "npm:5.4.2"
     eslint-plugin-import: "npm:2.32.0"
-    eslint-plugin-jest: "npm:29.2.0"
+    eslint-plugin-jest: "npm:29.2.1"
     eslint-plugin-jsx-a11y: "npm:6.10.2"
     eslint-plugin-only-error: "npm:1.0.2"
     eslint-plugin-perfectionist: "npm:4.15.1"
@@ -18878,7 +18878,7 @@ __metadata:
     prettier: "npm:3.6.2"
     rimraf: "npm:6.1.2"
     semantic-release: "npm:25.0.2"
-    stylelint: "npm:16.25.0"
+    stylelint: "npm:16.26.0"
     stylelint-config-standard: "npm:39.0.1"
     stylelint-order: "npm:7.0.0"
     typescript: "npm:5.9.3"
@@ -23755,9 +23755,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"stylelint@npm:16.25.0":
-  version: 16.25.0
-  resolution: "stylelint@npm:16.25.0"
+"stylelint@npm:16.26.0":
+  version: 16.26.0
+  resolution: "stylelint@npm:16.26.0"
   dependencies:
     "@csstools/css-parser-algorithms": "npm:^3.0.5"
     "@csstools/css-tokenizer": "npm:^3.0.4"
@@ -23772,7 +23772,7 @@ __metadata:
     debug: "npm:^4.4.3"
     fast-glob: "npm:^3.3.3"
     fastest-levenshtein: "npm:^1.0.16"
-    file-entry-cache: "npm:^10.1.4"
+    file-entry-cache: "npm:^11.1.0"
     global-modules: "npm:^2.0.0"
     globby: "npm:^11.1.0"
     globjoin: "npm:^0.1.4"
@@ -23799,7 +23799,7 @@ __metadata:
     write-file-atomic: "npm:^5.0.1"
   bin:
     stylelint: bin/stylelint.mjs
-  checksum: 10/8c3b08ace7b9580d44b3f32c26cffe894b9ba77494e63704b6a91f9150f04d3583c198cb33df384a8e6a5ef37d0cfdf29e6ef29b41a2ea7c188ea98fe44efe9d
+  checksum: 10/6299a18634ad17f297159e8c2c57ddd6f868e16ee08e13462c1d1cf016fb4d1559bd5fd2269f9d1f15860c235e7ec7f00df7e76de434c7331707a2791d50a20b
   languageName: node
   linkType: hard
 
