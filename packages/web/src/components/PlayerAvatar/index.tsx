@@ -3,7 +3,7 @@ import { Avatar, type AvatarProps, colors, SvgIcon } from "@mui/material";
 
 import { type AvailableColor } from "../../utils/availableColors";
 
-type PlayerAvatarProps = {
+export type PlayerAvatarProps = {
   color?: AvailableColor | null;
   name: string;
   selected?: boolean;

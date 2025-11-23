@@ -8,18 +8,18 @@ import {
 } from "@mui/material";
 import { useLongPress, usePress } from "@react-aria/interactions";
 import { mergeProps } from "@react-aria/utils";
-import { useCallback, useRef } from "react";
 import { useNavigate, useSearchParams } from "react-router";
 
-import { togglePlayer, unselectAllPlayers } from "../../../../ducks/ui";
+import { togglePlayer } from "../../../../ducks/ui";
 import useEditMode from "../../../../hooks/useEditMode";
 import useMultiMode from "../../../../hooks/useMultiMode";
 import usePresentSelector from "../../../../hooks/usePresentSelector";
 import { useAppDispatch } from "../../../../store";
 import { useGoBack } from "../../../../utils/location";
 import { ios } from "../../../../utils/platforms";
-import PlayerAvatar from "../../../PlayerAvatar";
 import PlayerListItemText from "../../../PlayerListItemText";
+import { PlayerListAvatar } from "../PlayerListAvatar";
+import { useActivateMultiSelect } from "../useActivateMultiSelect";
 
 import { DragIconButton } from "./DragIconButton";
 
@@ -34,11 +34,9 @@ const HomePlayerListItem = (props: HomePlayerListItemProps) => {
   const navigate = useNavigate();
   const [, setSearchParams] = useSearchParams();
 
-  const avatarRef = useRef<HTMLDivElement>(null);
-
   const goBack = useGoBack();
   const { editMode } = useEditMode();
-  const { multiMode, setMultiMode } = useMultiMode();
+  const { multiMode } = useMultiMode();
 
   const selectedPlayerIds = usePresentSelector(
     (state) => state.ui.selectedPlayerIds,
@@ -48,12 +46,7 @@ const HomePlayerListItem = (props: HomePlayerListItemProps) => {
   const players = usePresentSelector((state) => state.players);
   const player = players[playerId];
 
-  const onMultiSelectActivate = useCallback(() => {
-    dispatch(unselectAllPlayers());
-    dispatch(togglePlayer(playerId));
-
-    setMultiMode(true);
-  }, [dispatch, playerId, setMultiMode]);
+  const activateMultiSelect = useActivateMultiSelect();
 
   const { pressProps } = usePress({
     onPress: () => {
@@ -79,35 +72,18 @@ const HomePlayerListItem = (props: HomePlayerListItemProps) => {
   });
 
   const { longPressProps } = useLongPress({
+    isDisabled: editMode || multiMode,
     onLongPress: () => {
-      if (editMode || multiMode) {
-        return;
-      }
-
       if (navigator.vibrate && !ios) {
         navigator.vibrate(20);
       }
 
-      onMultiSelectActivate();
-    },
-  });
-
-  const { pressProps: avatarPressProps } = usePress({
-    onPress: (event) => {
-      if (!editMode && !multiMode) {
-        onMultiSelectActivate();
-      } else {
-        event.continuePropagation();
-      }
-    },
-    onPressStart: (event) => {
-      if (editMode || multiMode) {
-        event.continuePropagation();
-      }
+      activateMultiSelect(playerId);
     },
   });
 
   const {
+    active,
     attributes,
     listeners,
     setActivatorNodeRef,
@@ -118,26 +94,25 @@ const HomePlayerListItem = (props: HomePlayerListItemProps) => {
     id: playerId,
   });
 
-  const secondaryAction = editMode && (
-    <DragIconButton
-      component="span"
-      edge="end"
-      ref={setActivatorNodeRef}
-      sx={{
-        touchAction: "none",
-      }}
-      {...attributes}
-      {...listeners}
-    />
-  );
-
   return (
     <ListItem
       {...rest}
       data-screenshots="player-list-item"
       disablePadding
       ref={setNodeRef}
-      secondaryAction={secondaryAction}
+      secondaryAction={
+        editMode && (
+          <DragIconButton
+            edge="end"
+            ref={setActivatorNodeRef}
+            sx={{
+              touchAction: "none",
+            }}
+            {...attributes}
+            {...listeners}
+          />
+        )
+      }
       style={{
         transform: CSS.Transform.toString(transform),
         transition,
@@ -168,24 +143,21 @@ const HomePlayerListItem = (props: HomePlayerListItemProps) => {
                     right: "calc(16px + var(--inset-right)) /*! @noflip */",
                   },
           })),
+        active?.id === player.id && {
+          visibility: "hidden",
+        },
         ...[sx].flat(),
       ]}
     >
       <ListItemButton
         {...mergeProps(pressProps, longPressProps)}
-        sx={(theme) => ({
-          paddingLeft: `calc(${theme.spacing(2)} + var(--inset-left)) /*! @noflip */`,
-          paddingRight: `calc(${theme.spacing(2)} + var(--inset-right)) /*! @noflip */`,
-        })}
+        sx={{
+          paddingLeft: `calc(16px + var(--inset-left)) /*! @noflip */`,
+          paddingRight: `calc(16px + var(--inset-right)) /*! @noflip */`,
+        }}
       >
         <ListItemAvatar>
-          <PlayerAvatar
-            {...avatarPressProps}
-            color={player.color}
-            name={player.name}
-            ref={avatarRef}
-            selected={multiMode && selected}
-          />
+          <PlayerListAvatar player={player} selected={multiMode && selected} />
         </ListItemAvatar>
 
         <PlayerListItemText player={player} />
