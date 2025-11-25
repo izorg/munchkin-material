@@ -26,13 +26,13 @@
     "@parcel/reporter-bundle-analyzer": "2.16.1",
     "@parcel/reporter-bundle-buddy": "2.16.1",
     "@parcel/transformer-webmanifest": "2.16.1",
-    "@playwright/test": "1.56.1",
+    "@playwright/test": "1.57.0",
     "@types/node": "24.10.1",
     "babel-preset-web": "workspace:*",
     "firebase-tools": "14.26.0",
     "handlebars": "4.7.8",
     "parcel": "2.16.1",
-    "playwright": "1.56.1",
+    "playwright": "1.57.0",
     "workbox-cli": "7.4.0"
   }
 }
