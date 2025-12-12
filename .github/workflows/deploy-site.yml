@@ -33,7 +33,7 @@ jobs:
         run: yarn workspace @munchkin/site run i18n:compile
 
       - name: Restore cache
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: packages/site/.next/cache
           key: ${{ runner.os }}-nextjs-${{ hashFiles('yarn.lock') }}-${{ hashFiles('packages/site/**.[jt]s', 'packages/site/**.[jt]sx') }}
