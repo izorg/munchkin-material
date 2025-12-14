@@ -1,9 +1,5 @@
 {
-  "*": "prettier --cache --ignore-unknown --write",
-  "*.css": ["stylelint --cache --fix", "prettier --cache --write"],
-  "*.{js,ts,tsx}": [
-    "node --max-old-space-size=4096 ./node_modules/eslint/bin/eslint.js --cache --fix",
-    "madge --circular",
-    "prettier --cache --write"
-  ]
+  "*.css": "stylelint --cache --fix",
+  "*.{js,json,ts,tsx}": "eslint --cache --fix",
+  "*": "prettier --cache --ignore-unknown --write"
 }
