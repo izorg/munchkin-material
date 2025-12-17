@@ -15,15 +15,15 @@
     "@emotion/cache": "11.14.0",
     "@emotion/react": "11.14.0",
     "@emotion/styled": "11.14.1",
-    "@formatjs/cli": "6.7.4",
-    "@formatjs/icu-messageformat-parser": "2.11.4",
-    "@formatjs/intl": "3.1.8",
+    "@formatjs/cli": "6.8.2",
+    "@formatjs/icu-messageformat-parser": "3.0.2",
+    "@formatjs/intl": "4.0.2",
     "@mdi/js": "7.4.47",
     "@mui/material": "7.3.6",
     "@mui/material-nextjs": "7.3.6",
     "@next/bundle-analyzer": "16.0.10",
     "@next/third-parties": "16.0.10",
-    "@sentry/nextjs": "10.30.0",
+    "@sentry/nextjs": "10.31.0",
     "@types/react": "19.2.7",
     "@types/react-dom": "19.2.3",
     "@types/stylis": "4.2.7",
@@ -32,10 +32,10 @@
     "next": "16.0.10",
     "react": "19.2.3",
     "react-dom": "19.2.3",
-    "react-intl": "7.1.14",
+    "react-intl": "8.0.4",
     "stylis": "4.3.6",
     "stylis-plugin-rtl": "2.1.1",
     "typescript": "5.9.3",
-    "webpack": "5.103.0"
+    "webpack": "5.104.0"
   }
 }
