@@ -12,7 +12,7 @@ export const FullVersionProvider: FC<PropsWithChildren> = ({ children }) => {
         console.log("=== buyFullVersion ===");
         return Promise.resolve();
       },
-      fullVersion: true,
+      fullVersion: false,
       restorePurchases: () => {},
     }),
     [],
