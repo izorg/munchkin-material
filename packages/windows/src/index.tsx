@@ -13,7 +13,8 @@ import ReduxProvider from "../../web/src/components/ReduxProvider";
 import VersionProvider from "../../web/src/components/VersionProvider";
 import WakeLockProvider from "../../web/src/components/WakeLockProvider";
 
-import { WindowsApp } from "./domains/WindowsApp";
+import { FullVersionProvider } from "./domains/full-version";
+import { WindowsApp } from "./domains/windows-app";
 
 const node = document.querySelector("#root");
 
@@ -38,13 +39,15 @@ const router = createHashRouter([
 root.render(
   <ReduxProvider>
     <VersionProvider>
-      <WakeLockProvider>
-        <LocaleProvider>
-          <AugmentedStylesProvider>
-            <RouterProvider router={router} />
-          </AugmentedStylesProvider>
-        </LocaleProvider>
-      </WakeLockProvider>
+      <FullVersionProvider>
+        <WakeLockProvider>
+          <LocaleProvider>
+            <AugmentedStylesProvider>
+              <RouterProvider router={router} />
+            </AugmentedStylesProvider>
+          </LocaleProvider>
+        </WakeLockProvider>
+      </FullVersionProvider>
     </VersionProvider>
   </ReduxProvider>,
 );
