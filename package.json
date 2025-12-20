@@ -14,7 +14,7 @@
     "lint": "yarn lint-unused && yarn lint-types && yarn lint-js && yarn lint-cycle && yarn lint-css",
     "lint-cycle": "oxlint --import-plugin -A all -D import/no-cycle",
     "lint-css": "stylelint --cache \"**/*.css\"",
-    "lint-js": "eslint --cache \"**/*.{js,ts,tsx}\"",
+    "lint-js": "NODE_OPTIONS=\"--max-old-space-size=6144\" eslint --cache \"**/*.{js,ts,tsx}\"",
     "lint-types": "tsc",
     "lint-unused": "knip --cache",
     "postinstall": "husky || true",

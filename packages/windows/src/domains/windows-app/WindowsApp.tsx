@@ -1,7 +1,7 @@
 // import { GlobalStyles } from "@mui/material";
 
 export const WindowsApp = () => {
-  console.log("=== WindowsApp ===");
+  // console.log("=== WindowsApp ===");
 
   return null;
 

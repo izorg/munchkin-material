@@ -1,4 +1,4 @@
 {
   "extends": "../../tsconfig.json",
-  "exclude": ["Munchkin/Assets/www"]
+  "exclude": ["Munchkin"]
 }

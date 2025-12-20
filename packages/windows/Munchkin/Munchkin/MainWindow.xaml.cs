@@ -14,6 +14,7 @@ using Microsoft.UI.Xaml.Navigation;
 using Microsoft.Web.WebView2.Core;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Microsoft.UI.Windowing; // Added for AppWindow
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -28,6 +29,9 @@ namespace Munchkin
     public MainWindow()
     {
       InitializeComponent();
+
+      // Set proper app title for WinUI 3
+      this.AppWindow.Title = "Munchkin";
 
       // this.AppWindow.SetIcon("Assets/Icon.ico");
 
@@ -53,6 +57,10 @@ namespace Munchkin
           Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets", "www"),
           CoreWebView2HostResourceAccessKind.Allow
       );
+
+      // Delegate web messaging logic to bridge (universal)
+      var bridge = new WebViewBridge(webView2, this);
+      bridge.Initialize();
 
       webView2.CoreWebView2.Navigate("https://www/index.html");
     }
