@@ -80,8 +80,6 @@ namespace Munchkin
         InitializeWithWindow.Initialize(context, _hwnd);
         StorePurchaseResult result = await context.RequestPurchaseAsync(FullVersionStoreId);
         await SendIapPurchaseResultToWebAsync(result);
-        // After purchase attempt, also refresh status
-        await SendIapStatusToWebAsync();
       }
       catch (Exception ex)
       {
@@ -95,6 +93,8 @@ namespace Munchkin
         });
         _webView?.CoreWebView2?.PostWebMessageAsJson(payload);
       }
+      // After purchase attempt, also refresh status
+      await SendIapStatusToWebAsync();
     }
 
     private async Task SendIapPurchaseResultToWebAsync(StorePurchaseResult result)
@@ -147,10 +147,18 @@ namespace Munchkin
         if (appLicense == null)
           return false;
 
-        if (appLicense.AddOnLicenses != null &&
-            appLicense.AddOnLicenses.TryGetValue(FullVersionStoreId, out var addOnLicense))
+        if (appLicense.AddOnLicenses != null)
         {
-          return addOnLicense.IsActive;
+          foreach (var kvp in appLicense.AddOnLicenses)
+          {
+            if (kvp.Key.StartsWith(FullVersionStoreId, StringComparison.OrdinalIgnoreCase))
+            {
+              var license = kvp.Value;
+              var expiration = license.ExpirationDate;
+              // Treat missing/unspecified expiration (default) as non-expiring, otherwise require future date
+              return expiration == default || expiration > DateTimeOffset.UtcNow;
+            }
+          }
         }
 
         return false;

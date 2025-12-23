@@ -51,11 +51,6 @@ export const FullVersionProvider: FC<PropsWithChildren> = ({ children }) => {
             "message",
             ({ data }) => {
               // @ts-expect-error -- will type later
-              if (data.type === "iapPurchaseResult" && data.error) {
-                return reject(new Error("Purchase failed"));
-              }
-
-              // @ts-expect-error -- will type later
               if (data.type === "iapStatus") {
                 // @ts-expect-error -- will type later
                 const { purchased } = data;
@@ -64,10 +59,10 @@ export const FullVersionProvider: FC<PropsWithChildren> = ({ children }) => {
                   dispatch(setFullVersion(Boolean(purchased)));
 
                   return resolve();
+                } else {
+                  return reject(new Error("Not purchased"));
                 }
               }
-
-              reject(new Error("Purchase failed"));
             },
             // @ts-expect-error -- will type later
             {
