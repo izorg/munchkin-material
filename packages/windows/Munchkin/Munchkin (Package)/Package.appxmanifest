@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 
 <Package
   xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
@@ -26,7 +26,8 @@
   </Dependencies>
 
   <Resources>
-    <Resource Language="x-generate"/>
+    <Resource Language="en"/>
+    <Resource Language="ru"/>
   </Resources>
 
   <Applications>
@@ -34,7 +35,7 @@
       Executable="$targetnametoken$.exe"
       EntryPoint="$targetentrypoint$">
       <uap:VisualElements
-        DisplayName="Level Counter for Munchkin"
+        DisplayName="ms-resource:AppDisplayName"
         Description="Simple but powerful Level Counter for Munchkin"
         BackgroundColor="transparent"
         Square150x150Logo="Images\Square150x150Logo.png"
