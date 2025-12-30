@@ -30,10 +30,8 @@ namespace Munchkin
     {
       InitializeComponent();
 
-      // Set proper app title for WinUI 3
+      this.AppWindow.SetIcon(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets", "Icon.ico"));
       this.AppWindow.Title = "Munchkin";
-
-      // this.AppWindow.SetIcon("Assets/Icon.ico");
 
       // var isDarkTheme = Application.Current.RequestedTheme == ApplicationTheme.Dark;
       // this.AppWindow.TitleBar.BackgroundColor = isDarkTheme ? Colors.Black : Colors.White;

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 
 <Package
   xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
@@ -10,7 +10,7 @@
   <Identity
     Name="8543ViacheslavZavoruev.LevelCounterforMunchkin"
     Publisher="CN=9DD402BD-B295-4129-A98D-466A2FC5AA7A"
-    Version="16.1.4.0" />
+    Version="16.1.5.0" />
 
   <mp:PhoneIdentity PhoneProductId="97b8b4bd-c1e4-48ec-a966-1b0a27c1f1c2" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
