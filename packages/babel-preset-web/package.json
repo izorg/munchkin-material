@@ -4,9 +4,9 @@
   "type": "module",
   "exports": "./index.js",
   "devDependencies": {
-    "@babel/core": "7.28.5",
+    "@babel/core": "7.28.6",
     "@parcel/babel-preset-env": "2.16.3",
-    "@sentry/babel-plugin-component-annotate": "4.6.1",
+    "@sentry/babel-plugin-component-annotate": "4.6.2",
     "babel-plugin-react-compiler": "1.0.0"
   }
 }
