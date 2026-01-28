@@ -1,7 +1,7 @@
 import { FormControlLabel, Radio, RadioGroup } from "@mui/material";
 import {
   type ComponentPropsWithoutRef,
-  type FormEvent,
+  type SubmitEvent,
   useCallback,
   useState,
 } from "react";
@@ -46,7 +46,7 @@ export const LevelLimitForm = (props: LevelLimitFormProps) => {
   );
 
   const onSubmit = useCallback(
-    (event: FormEvent<HTMLFormElement>) => {
+    (event: SubmitEvent<HTMLFormElement>) => {
       event.preventDefault();
 
       const formData = new FormData(event.target as HTMLFormElement);

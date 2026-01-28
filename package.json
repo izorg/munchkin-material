@@ -27,7 +27,7 @@
     "@eslint-community/eslint-plugin-eslint-comments": "4.6.0",
     "@eslint/js": "9.39.2",
     "@eslint/json": "0.14.0",
-    "@next/eslint-plugin-next": "16.1.4",
+    "@next/eslint-plugin-next": "16.1.6",
     "@semantic-release/commit-analyzer": "13.0.1",
     "@semantic-release/github": "12.0.2",
     "@semantic-release/release-notes-generator": "14.1.0",
@@ -47,11 +47,11 @@
     "eslint-plugin-react": "7.37.5",
     "eslint-plugin-react-hooks": "7.0.1",
     "eslint-plugin-unicorn": "62.0.0",
-    "globals": "17.1.0",
+    "globals": "17.2.0",
     "husky": "9.1.7",
     "knip": "5.82.1",
     "lint-staged": "16.2.7",
-    "oxlint": "1.41.0",
+    "oxlint": "1.42.0",
     "prettier": "3.8.1",
     "rimraf": "6.1.2",
     "semantic-release": "25.0.2",
@@ -59,7 +59,7 @@
     "stylelint-config-standard": "40.0.0",
     "stylelint-order": "7.0.1",
     "typescript": "5.9.3",
-    "typescript-eslint": "8.53.1"
+    "typescript-eslint": "8.54.0"
   },
   "alias": {
     "@formatjs/icu-messageformat-parser": "@formatjs/icu-messageformat-parser/no-parser.js",

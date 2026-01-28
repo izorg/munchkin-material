@@ -10,7 +10,12 @@ import {
   RadioGroup,
   SvgIcon,
 } from "@mui/material";
-import { type ComponentProps, type FormEvent, useMemo, useState } from "react";
+import {
+  type ComponentProps,
+  type SubmitEvent,
+  useMemo,
+  useState,
+} from "react";
 import { useIntl } from "react-intl";
 import { useSearchParams } from "react-router";
 
@@ -61,10 +66,10 @@ export const PlayerForm = (props: ComponentProps<"form">) => {
 
   const [playerColor] = useState(editPlayer?.color ?? randomColor);
 
-  const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (event: SubmitEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const formData = new FormData(event.target as HTMLFormElement);
+    const formData = new FormData(event.target);
 
     const formValues: Partial<Player> = Object.fromEntries(formData);
 
