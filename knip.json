@@ -1,5 +1,6 @@
 {
   "$schema": "node_modules/knip/schema.json",
+  "ignoreFiles": [".yarn/**"],
   "ignoreDependencies": [
     "@parcel/*",
     "@semantic-release/*",

@@ -56,10 +56,10 @@
   },
   "devDependencies": {
     "@mui/material": "7.3.7",
-    "@sentry/react": "10.37.0",
+    "@sentry/react": "10.38.0",
     "@totalpave/cordova-plugin-insets": "0.4.0",
     "@types/cordova": "11.0.3",
-    "@types/react": "19.2.10",
+    "@types/react": "19.2.13",
     "@types/react-dom": "19.2.3",
     "babel-preset-web": "workspace:*",
     "cordova": "13.0.0",
@@ -77,7 +77,7 @@
     "cordova-plugin-web-share": "1.4.2",
     "cordova-support-android-plugin": "2.0.4",
     "core-js": "3.48.0",
-    "parcel": "2.16.3",
+    "parcel": "2.16.4",
     "react": "19.2.4",
     "react-dom": "19.2.4",
     "react-router": "7.13.0"
