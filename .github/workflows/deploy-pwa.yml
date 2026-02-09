@@ -11,10 +11,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout 🛎️
-        uses: actions/checkout@v6
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
 
       - name: Setup Node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@6044e13b5dc448c55e2357c09f80417699197238 # v6
         with:
           cache: "yarn"
           cache-dependency-path: "yarn.lock"
@@ -41,7 +41,7 @@ jobs:
         run: yarn workspaces foreach --from '@munchkin/{cordova,pwa}' --parallel --recursive run build
 
       - name: Create Sentry release
-        uses: getsentry/action-release@v3
+        uses: getsentry/action-release@dab6548b3c03c4717878099e43782cf5be654289 # v3
         env:
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
           SENTRY_ORG: ${{ secrets.SENTRY_ORG }}
@@ -52,7 +52,7 @@ jobs:
           sourcemaps: "./packages/cordova/www ./packages/pwa/dist"
 
       - name: Deploy 🚀
-        uses: FirebaseExtended/action-hosting-deploy@v0
+        uses: FirebaseExtended/action-hosting-deploy@e2eda2e106cfa35cdbcf4ac9ddaf6c4756df2c8c # v0
         with:
           channelId: live
           entryPoint: packages/pwa
