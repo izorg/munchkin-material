@@ -57,7 +57,7 @@
   "devDependencies": {
     "@mui/material": "7.3.7",
     "@sentry/react": "10.38.0",
-    "@totalpave/cordova-plugin-insets": "0.4.0",
+    "@totalpave/cordova-plugin-insets": "0.4.2",
     "@types/cordova": "11.0.3",
     "@types/react": "19.2.13",
     "@types/react-dom": "19.2.3",
