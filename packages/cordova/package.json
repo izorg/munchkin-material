@@ -57,7 +57,7 @@
   "devDependencies": {
     "@mui/material": "7.3.7",
     "@sentry/react": "10.38.0",
-    "@totalpave/cordova-plugin-insets": "0.4.0",
+    "@totalpave/cordova-plugin-insets": "0.4.2",
     "@types/cordova": "11.0.3",
     "@types/react": "19.2.13",
     "@types/react-dom": "19.2.3",
@@ -71,7 +71,7 @@
     "cordova-plugin-headercolor": "1.0.0",
     "cordova-plugin-insomnia": "4.3.0",
     "cordova-plugin-ionic-keyboard": "2.2.0",
-    "cordova-plugin-purchase": "13.12.1",
+    "cordova-plugin-purchase": "13.13.0",
     "cordova-plugin-statusbar": "4.0.0",
     "cordova-plugin-vibration": "3.1.1",
     "cordova-plugin-web-share": "1.4.2",
