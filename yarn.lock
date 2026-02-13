@@ -4249,7 +4249,7 @@ __metadata:
     babel-preset-web: "workspace:*"
     cordova: "npm:13.0.0"
     cordova-android: "npm:14.0.1"
-    cordova-ios: "npm:7.1.1"
+    cordova-ios: "npm:8.0.0"
     cordova-plugin-buildinfo: "npm:4.0.0"
     cordova-plugin-firebase-analytics: "npm:8.0.0"
     cordova-plugin-firebase-crash: "npm:8.0.2"
@@ -8506,13 +8506,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"abbrev@npm:1":
-  version: 1.1.1
-  resolution: "abbrev@npm:1.1.1"
-  checksum: 10/2d882941183c66aa665118bafdab82b7a177e9add5eb2776c33e960a4f3c89cff88a1b38aba13a456de01d0dd9d66a8bea7c903268b21ea91dd1097e1e2e8243
-  languageName: node
-  linkType: hard
-
 "abbrev@npm:^3.0.0":
   version: 3.0.1
   resolution: "abbrev@npm:3.0.1"
@@ -9513,13 +9506,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"bplist-parser@npm:^0.0.6":
-  version: 0.0.6
-  resolution: "bplist-parser@npm:0.0.6"
-  checksum: 10/aed709fcb0529061f14f1b5c8f261d6cd5be965bd1284d09a02ab599fd6af29387acd518dcbf952070b7ef364e26b1651a3eb14f6a1e21e83e2f83862019aab2
-  languageName: node
-  linkType: hard
-
 "brace-expansion@npm:^1.1.7":
   version: 1.1.12
   resolution: "brace-expansion@npm:1.1.12"
@@ -10485,7 +10471,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cordova-common@npm:^5.0.0, cordova-common@npm:^5.0.1":
+"cordova-common@npm:^5.0.1":
   version: 5.0.1
   resolution: "cordova-common@npm:5.0.1"
   dependencies:
@@ -10554,20 +10540,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cordova-ios@npm:7.1.1":
-  version: 7.1.1
-  resolution: "cordova-ios@npm:7.1.1"
+"cordova-ios@npm:8.0.0":
+  version: 8.0.0
+  resolution: "cordova-ios@npm:8.0.0"
   dependencies:
-    cordova-common: "npm:^5.0.0"
+    bplist-parser: "npm:^0.3.2"
+    cordova-common: "npm:^6.0.0"
     elementtree: "npm:^0.1.7"
     execa: "npm:^5.1.1"
-    ios-sim: "npm:^8.0.2"
-    plist: "npm:^3.0.6"
-    semver: "npm:^7.4.0"
-    which: "npm:^4.0.0"
+    nopt: "npm:^9.0.0"
+    plist: "npm:^3.1.0"
+    semver: "npm:^7.7.3"
+    simctl: "npm:^3.0.0"
+    which: "npm:^6.0.0"
     xcode: "npm:^3.0.1"
-    xml-escape: "npm:^1.1.0"
-  checksum: 10/dfd1d1b5b8e676086f2d4cb299faaaf83ea508b5a091ea7fd6eaf52ce92fb32cab6dd5b383d26c2009731275253c43ce8fdc585c1794157c9e70c0f4cd82e7d2
+  checksum: 10/7549bd127f5d71d9947acd01d6a68d2a1948f6e56fe1c3e006427af3501f02af820b19f4b3c86e6b314e1ff5436fcc6be3e07b190983d3f7475c60668362938a
   languageName: node
   linkType: hard
 
@@ -13357,7 +13344,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"glob@npm:^7.0.0, glob@npm:^7.1.4":
+"glob@npm:^7.1.4":
   version: 7.2.3
   resolution: "glob@npm:7.2.3"
   dependencies:
@@ -14182,13 +14169,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"interpret@npm:^1.0.0":
-  version: 1.4.0
-  resolution: "interpret@npm:1.4.0"
-  checksum: 10/5beec568d3f60543d0f61f2c5969d44dffcb1a372fe5abcdb8013968114d4e4aaac06bc971a4c9f5bd52d150881d8ebad72a8c60686b1361f5f0522f39c0e1a3
-  languageName: node
-  linkType: hard
-
 "intl-messageformat@npm:11.1.2":
   version: 11.1.2
   resolution: "intl-messageformat@npm:11.1.2"
@@ -14208,20 +14188,6 @@ __metadata:
     from2: "npm:^2.3.0"
     p-is-promise: "npm:^3.0.0"
   checksum: 10/10c259101237622b2f90a3a30388f2e997f7c4cb16d7236da0380f2e5691b8f9ce32ea2614ae5d1d3b5ad4eba89e2adac0e3d3d24f8494bff69de145432c2d94
-  languageName: node
-  linkType: hard
-
-"ios-sim@npm:^8.0.2":
-  version: 8.0.2
-  resolution: "ios-sim@npm:8.0.2"
-  dependencies:
-    bplist-parser: "npm:^0.0.6"
-    nopt: "npm:1.0.9"
-    plist: "npm:^3.0.1"
-    simctl: "npm:^2"
-  bin:
-    ios-sim: ./bin/ios-sim
-  checksum: 10/a22b5e630ca97e476c2180e362ccf9ad09399d852c966fd4dc2a26aae8e5474c318bfbec834234f80a3c12bd2d93751c9397820ac3ae59cd23d58e5b761fa528
   languageName: node
   linkType: hard
 
@@ -17449,17 +17415,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nopt@npm:1.0.9":
-  version: 1.0.9
-  resolution: "nopt@npm:1.0.9"
-  dependencies:
-    abbrev: "npm:1"
-  bin:
-    nopt: ./bin/nopt.js
-  checksum: 10/67b82b3e11714e0c55d25b21610d499cf45045aa27554c9472de11daa21f7d28827b062ebe7becb209d678d8e385a080f6634508eacaf4169666927665ba96ee
-  languageName: node
-  linkType: hard
-
 "nopt@npm:^8.1.0":
   version: 8.1.0
   resolution: "nopt@npm:8.1.0"
@@ -18787,7 +18742,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"plist@npm:^3.0.1, plist@npm:^3.0.5, plist@npm:^3.0.6, plist@npm:^3.1.0":
+"plist@npm:^3.0.5, plist@npm:^3.1.0":
   version: 3.1.0
   resolution: "plist@npm:3.1.0"
   dependencies:
@@ -19555,15 +19510,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rechoir@npm:^0.6.2":
-  version: 0.6.2
-  resolution: "rechoir@npm:0.6.2"
-  dependencies:
-    resolve: "npm:^1.1.6"
-  checksum: 10/fe76bf9c21875ac16e235defedd7cbd34f333c02a92546142b7911a0f7c7059d2e16f441fe6fb9ae203f459c05a31b2bcf26202896d89e390eda7514d5d2702b
-  languageName: node
-  linkType: hard
-
 "redent@npm:^3.0.0":
   version: 3.0.0
   resolution: "redent@npm:3.0.0"
@@ -19779,7 +19725,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"resolve@npm:^1.1.6, resolve@npm:^1.10.0, resolve@npm:^1.19.0, resolve@npm:^1.22.1, resolve@npm:^1.22.10, resolve@npm:^1.22.11, resolve@npm:^1.22.4":
+"resolve@npm:^1.10.0, resolve@npm:^1.19.0, resolve@npm:^1.22.1, resolve@npm:^1.22.10, resolve@npm:^1.22.11, resolve@npm:^1.22.4":
   version: 1.22.11
   resolution: "resolve@npm:1.22.11"
   dependencies:
@@ -19805,7 +19751,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"resolve@patch:resolve@npm%3A^1.1.6#optional!builtin<compat/resolve>, resolve@patch:resolve@npm%3A^1.10.0#optional!builtin<compat/resolve>, resolve@patch:resolve@npm%3A^1.19.0#optional!builtin<compat/resolve>, resolve@patch:resolve@npm%3A^1.22.1#optional!builtin<compat/resolve>, resolve@patch:resolve@npm%3A^1.22.10#optional!builtin<compat/resolve>, resolve@patch:resolve@npm%3A^1.22.11#optional!builtin<compat/resolve>, resolve@patch:resolve@npm%3A^1.22.4#optional!builtin<compat/resolve>":
+"resolve@patch:resolve@npm%3A^1.10.0#optional!builtin<compat/resolve>, resolve@patch:resolve@npm%3A^1.19.0#optional!builtin<compat/resolve>, resolve@patch:resolve@npm%3A^1.22.1#optional!builtin<compat/resolve>, resolve@patch:resolve@npm%3A^1.22.10#optional!builtin<compat/resolve>, resolve@patch:resolve@npm%3A^1.22.11#optional!builtin<compat/resolve>, resolve@patch:resolve@npm%3A^1.22.4#optional!builtin<compat/resolve>":
   version: 1.22.11
   resolution: "resolve@patch:resolve@npm%3A1.22.11#optional!builtin<compat/resolve>::version=1.22.11&hash=c3c19d"
   dependencies:
@@ -20209,7 +20155,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"semver@npm:^7.0.0, semver@npm:^7.1.1, semver@npm:^7.1.2, semver@npm:^7.3.2, semver@npm:^7.3.5, semver@npm:^7.3.7, semver@npm:^7.4.0, semver@npm:^7.5.2, semver@npm:^7.5.3, semver@npm:^7.5.4, semver@npm:^7.6.0, semver@npm:^7.6.2, semver@npm:^7.6.3, semver@npm:^7.7.1, semver@npm:^7.7.2, semver@npm:^7.7.3, semver@npm:^7.7.4":
+"semver@npm:^7.0.0, semver@npm:^7.1.1, semver@npm:^7.1.2, semver@npm:^7.3.2, semver@npm:^7.3.5, semver@npm:^7.3.7, semver@npm:^7.5.2, semver@npm:^7.5.3, semver@npm:^7.5.4, semver@npm:^7.6.0, semver@npm:^7.6.2, semver@npm:^7.6.3, semver@npm:^7.7.1, semver@npm:^7.7.2, semver@npm:^7.7.3, semver@npm:^7.7.4":
   version: 7.7.4
   resolution: "semver@npm:7.7.4"
   bin:
@@ -20442,19 +20388,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"shelljs@npm:^0.8.5":
-  version: 0.8.5
-  resolution: "shelljs@npm:0.8.5"
-  dependencies:
-    glob: "npm:^7.0.0"
-    interpret: "npm:^1.0.0"
-    rechoir: "npm:^0.6.2"
-  bin:
-    shjs: bin/shjs
-  checksum: 10/f2178274b97b44332bbe9ddb78161137054f55ecf701c7a99db9552cb5478fe279ad5f5131d8a7c2f0730e01ccf0c629d01094143f0541962ce1a3d0243d23f7
-  languageName: node
-  linkType: hard
-
 "side-channel-list@npm:^1.0.0":
   version: 1.0.0
   resolution: "side-channel-list@npm:1.0.0"
@@ -20542,13 +20475,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"simctl@npm:^2":
-  version: 2.0.3
-  resolution: "simctl@npm:2.0.3"
-  dependencies:
-    shelljs: "npm:^0.8.5"
-    tail: "npm:^0.4.0"
-  checksum: 10/10924e6a81028b93382ce27419bfd1d3ec0e6761205ad9633be52300857364ad6ae16542f3b9c417bb8e69fba3b4ccf85dda2f5d9bf77fc7a6c0eb25a6fd2cd6
+"simctl@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "simctl@npm:3.0.0"
+  checksum: 10/f94f8cceccaf384ff018bb01f22d6893162b309fe7b9ba84aad73717f1082d21de4c8159aa7bb3f31fa3660a24e35632066b333d45425dc6b84a8793961ec527
   languageName: node
   linkType: hard
 
@@ -21490,13 +21420,6 @@ __metadata:
   version: 1.0.0
   resolution: "tagged-tag@npm:1.0.0"
   checksum: 10/e37653df3e495daa7ea7790cb161b810b00075bba2e4d6c93fb06a709e747e3ae9da11a120d0489833203926511b39e038a2affbd9d279cfb7a2f3fcccd30b5d
-  languageName: node
-  linkType: hard
-
-"tail@npm:^0.4.0":
-  version: 0.4.0
-  resolution: "tail@npm:0.4.0"
-  checksum: 10/425e633e63e0b3f24722f9c644f3d5b20497dff42c7c0d048f8e654d51d34a691b6eaaed2dd76fd3880cbcba373d336e7d9bba4feaa38a9774cd1ebd89b22739
   languageName: node
   linkType: hard
 
@@ -22826,17 +22749,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"which@npm:^4.0.0":
-  version: 4.0.0
-  resolution: "which@npm:4.0.0"
-  dependencies:
-    isexe: "npm:^3.1.1"
-  bin:
-    node-which: bin/which.js
-  checksum: 10/f17e84c042592c21e23c8195108cff18c64050b9efb8459589116999ea9da6dd1509e6a1bac3aeebefd137be00fabbb61b5c2bc0aa0f8526f32b58ee2f545651
-  languageName: node
-  linkType: hard
-
 "which@npm:^5.0.0":
   version: 5.0.0
   resolution: "which@npm:5.0.0"
@@ -23274,13 +23186,6 @@ __metadata:
   version: 5.1.0
   resolution: "xdg-basedir@npm:5.1.0"
   checksum: 10/b60e8a2c663ccb1dac77c2d913f3b96de48dafbfa083657171d3d50e10820b8a04bb4edfe9f00808c8c20e5f5355e1927bea9029f03136e29265cb98291e1fea
-  languageName: node
-  linkType: hard
-
-"xml-escape@npm:^1.1.0":
-  version: 1.1.0
-  resolution: "xml-escape@npm:1.1.0"
-  checksum: 10/52086186c4bc47ffd4496341df6c8f37e69941b713af0d15d45cbf9266f8853a158904a5b866f9f57e32b6c562dff57e330f7b1c8469eee8e6d7ef2e047993c3
   languageName: node
   linkType: hard
 
