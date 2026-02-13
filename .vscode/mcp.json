@@ -1,0 +1,14 @@
+{
+  "inputs": [],
+  "servers": {
+    "mui-mcp": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@mui/mcp@latest"]
+    },
+    "next-devtools": {
+      "args": ["-y", "next-devtools-mcp@latest"],
+      "command": "npx"
+    }
+  }
+}

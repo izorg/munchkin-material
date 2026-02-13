@@ -4,11 +4,11 @@
 *.pubxml
 *.tmp
 *.user
+.agents/
 .idea/*
 !.idea/icon.svg
 .parcel-cache/
 .vs/
-.vscode/
 .yarn/*
 !.yarn/patches
 !.yarn/plugins
