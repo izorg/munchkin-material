@@ -27,12 +27,18 @@
     "@parcel/reporter-bundle-buddy": "2.16.4",
     "@parcel/transformer-webmanifest": "2.16.4",
     "@playwright/test": "1.58.2",
+    "@sentry/react": "10.38.0",
     "@types/node": "24.10.13",
+    "@types/react": "19.2.14",
+    "@types/react-dom": "19.2.3",
     "babel-preset-web": "workspace:*",
     "firebase-tools": "15.6.0",
     "handlebars": "4.7.8",
     "parcel": "2.16.4",
     "playwright": "1.58.2",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "react-router": "7.13.0",
     "workbox-cli": "7.4.0"
   }
 }

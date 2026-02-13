@@ -4278,12 +4278,18 @@ __metadata:
     "@parcel/reporter-bundle-buddy": "npm:2.16.4"
     "@parcel/transformer-webmanifest": "npm:2.16.4"
     "@playwright/test": "npm:1.58.2"
+    "@sentry/react": "npm:10.38.0"
     "@types/node": "npm:24.10.13"
+    "@types/react": "npm:19.2.14"
+    "@types/react-dom": "npm:19.2.3"
     babel-preset-web: "workspace:*"
     firebase-tools: "npm:15.6.0"
     handlebars: "npm:4.7.8"
     parcel: "npm:2.16.4"
     playwright: "npm:1.58.2"
+    react: "npm:19.2.4"
+    react-dom: "npm:19.2.4"
+    react-router: "npm:7.13.0"
     workbox-cli: "npm:7.4.0"
   languageName: unknown
   linkType: soft
