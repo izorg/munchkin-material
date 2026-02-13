@@ -27,7 +27,7 @@
     "@parcel/reporter-bundle-buddy": "2.16.4",
     "@parcel/transformer-webmanifest": "2.16.4",
     "@playwright/test": "1.58.2",
-    "@types/node": "24.10.12",
+    "@types/node": "24.10.13",
     "babel-preset-web": "workspace:*",
     "firebase-tools": "15.5.1",
     "handlebars": "4.7.8",
