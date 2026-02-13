@@ -7167,6 +7167,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@sentry/babel-plugin-component-annotate@npm:4.9.1":
+  version: 4.9.1
+  resolution: "@sentry/babel-plugin-component-annotate@npm:4.9.1"
+  checksum: 10/f3ba500464c75cef32c3fac11cb49a688fd1d649751dc5522561521890dfc13bca0a5119a301cb725b56f1c3f4e97e9d8c7394b0d47a9a74ab10171ddb1eade4
+  languageName: node
+  linkType: hard
+
 "@sentry/browser@npm:10.38.0":
   version: 10.38.0
   resolution: "@sentry/browser@npm:10.38.0"
@@ -9271,7 +9278,7 @@ __metadata:
   dependencies:
     "@babel/core": "npm:7.29.0"
     "@parcel/babel-preset-env": "npm:2.16.4"
-    "@sentry/babel-plugin-component-annotate": "npm:4.9.0"
+    "@sentry/babel-plugin-component-annotate": "npm:4.9.1"
     babel-plugin-react-compiler: "npm:1.0.0"
   languageName: unknown
   linkType: soft
