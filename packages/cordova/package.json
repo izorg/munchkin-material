@@ -59,7 +59,7 @@
     "@sentry/react": "10.38.0",
     "@totalpave/cordova-plugin-insets": "0.4.2",
     "@types/cordova": "11.0.3",
-    "@types/react": "19.2.13",
+    "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
     "babel-preset-web": "workspace:*",
     "cordova": "13.0.0",

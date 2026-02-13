@@ -23,7 +23,7 @@
     "@mui/material-nextjs": "7.3.7",
     "@next/third-parties": "16.1.6",
     "@sentry/nextjs": "10.38.0",
-    "@types/react": "19.2.13",
+    "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
     "@types/stylis": "4.2.7",
     "babel-plugin-react-compiler": "1.0.0",

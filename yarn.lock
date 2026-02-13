@@ -4250,7 +4250,7 @@ __metadata:
     "@sentry/react": "npm:10.38.0"
     "@totalpave/cordova-plugin-insets": "npm:0.4.2"
     "@types/cordova": "npm:11.0.3"
-    "@types/react": "npm:19.2.13"
+    "@types/react": "npm:19.2.14"
     "@types/react-dom": "npm:19.2.3"
     babel-preset-web: "workspace:*"
     cordova: "npm:13.0.0"
@@ -4309,7 +4309,7 @@ __metadata:
     "@mui/material-nextjs": "npm:7.3.7"
     "@next/third-parties": "npm:16.1.6"
     "@sentry/nextjs": "npm:10.38.0"
-    "@types/react": "npm:19.2.13"
+    "@types/react": "npm:19.2.14"
     "@types/react-dom": "npm:19.2.3"
     "@types/stylis": "npm:4.2.7"
     babel-plugin-react-compiler: "npm:1.0.0"
@@ -4354,7 +4354,7 @@ __metadata:
     "@swc/jest": "npm:0.2.39"
     "@types/node": "npm:24.10.13"
     "@types/parcel-env": "npm:0.0.9"
-    "@types/react": "npm:19.2.13"
+    "@types/react": "npm:19.2.14"
     "@types/react-dom": "npm:19.2.3"
     "@types/stylis": "npm:4.2.7"
     babel-preset-web: "workspace:*"
@@ -8057,12 +8057,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:19.2.13":
-  version: 19.2.13
-  resolution: "@types/react@npm:19.2.13"
+"@types/react@npm:19.2.14":
+  version: 19.2.14
+  resolution: "@types/react@npm:19.2.14"
   dependencies:
     csstype: "npm:^3.2.2"
-  checksum: 10/a3bb8d09c79f5f29dfbc7e47c5b39c687f4329b76041713993c025781f32c26e4881fbeead65ff44d728945f222b781c6053263bc1819ef90596b4fbfd83f718
+  checksum: 10/fbff239089ee64b6bd9b00543594db498278b06de527ef1b0f71bb0eb09cc4445a71b5dd3c0d3d0257255c4eed94406be40a74ad4a987ade8a8d5dd65c82bc5f
   languageName: node
   linkType: hard
 
