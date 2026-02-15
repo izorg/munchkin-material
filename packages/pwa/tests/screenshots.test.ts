@@ -1,7 +1,7 @@
 import { test } from "@playwright/test";
 
-import { getPlayers } from "../../web/src/dev/players";
-import { supportedLocales } from "../../web/src/domains/i18n";
+import { getPlayers } from "@munchkin/web/src/dev/players";
+import { supportedLocales } from "@munchkin/web/src/domains/i18n";
 
 const delay = (timeout: number) =>
   new Promise((resolve) => setTimeout(resolve, timeout));

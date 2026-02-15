@@ -1,9 +1,9 @@
 import { type FC, type PropsWithChildren, useEffect, useMemo } from "react";
 
-import { setFullVersion } from "../../../../web/src/ducks/settings";
-import usePresentSelector from "../../../../web/src/hooks/usePresentSelector";
-import { useAppDispatch } from "../../../../web/src/store";
-import { FullVersionContext } from "../../../../web/src/utils/fullVersionContext";
+import { setFullVersion } from "@munchkin/web/src/ducks/settings";
+import usePresentSelector from "@munchkin/web/src/hooks/usePresentSelector";
+import { useAppDispatch } from "@munchkin/web/src/store";
+import { FullVersionContext } from "@munchkin/web/src/utils/fullVersionContext";
 
 declare global {
   var chrome: {

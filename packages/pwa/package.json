@@ -27,6 +27,7 @@
   },
   "devDependencies": {
     "@munchkin/babel-preset-web": "workspace:*",
+    "@munchkin/web": "workspace:*",
     "@parcel/packager-raw-url": "2.16.4",
     "@parcel/reporter-bundle-analyzer": "2.16.4",
     "@parcel/reporter-bundle-buddy": "2.16.4",

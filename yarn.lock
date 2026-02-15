@@ -4286,6 +4286,7 @@ __metadata:
   resolution: "@munchkin/pwa@workspace:packages/pwa"
   dependencies:
     "@munchkin/babel-preset-web": "workspace:*"
+    "@munchkin/web": "workspace:*"
     "@parcel/packager-raw-url": "npm:2.16.4"
     "@parcel/reporter-bundle-analyzer": "npm:2.16.4"
     "@parcel/reporter-bundle-buddy": "npm:2.16.4"
@@ -4394,6 +4395,7 @@ __metadata:
   resolution: "@munchkin/windows@workspace:packages/windows"
   dependencies:
     "@munchkin/babel-preset-web": "workspace:*"
+    "@munchkin/web": "workspace:*"
     core-js: "npm:3.48.0"
     parcel: "npm:2.16.4"
     react: "npm:19.2.4"

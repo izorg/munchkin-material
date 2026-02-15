@@ -11,13 +11,13 @@ import {
   useState,
 } from "react";
 
-import { setFullVersion } from "../../../../web/src/ducks/settings";
-import usePresentSelector from "../../../../web/src/hooks/usePresentSelector";
-import { useAppDispatch } from "../../../../web/src/store";
+import { setFullVersion } from "@munchkin/web/src/ducks/settings";
+import usePresentSelector from "@munchkin/web/src/hooks/usePresentSelector";
+import { useAppDispatch } from "@munchkin/web/src/store";
 import {
   FullVersionContext,
   FullVersionError,
-} from "../../../../web/src/utils/fullVersionContext";
+} from "@munchkin/web/src/utils/fullVersionContext";
 
 const FULL_VERSION_ID = "full_version";
 

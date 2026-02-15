@@ -1,24 +1,24 @@
 import "./polyfills";
-import "../../web/src/sentry";
-import "../../web/src/firebase";
 
 import { reactErrorHandler } from "@sentry/react";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { HashRouter } from "react-router";
 
-import App from "../../web/src/components/App";
-import AugmentedStylesProvider from "../../web/src/components/AugmentedStylesProvider";
-import AugmentedThemeProvider from "../../web/src/components/AugmentedThemeProvider";
-import LocaleProvider from "../../web/src/components/LocaleProvider";
-import ReduxProvider from "../../web/src/components/ReduxProvider";
-import VersionProvider from "../../web/src/components/VersionProvider";
-import WakeLockProvider from "../../web/src/components/WakeLockProvider";
-import WorkboxProvider from "../../web/src/components/WorkboxProvider";
-import { WebApp } from "../../web/src/domains/web-app";
+import App from "@munchkin/web/src/components/App";
+import AugmentedStylesProvider from "@munchkin/web/src/components/AugmentedStylesProvider";
+import AugmentedThemeProvider from "@munchkin/web/src/components/AugmentedThemeProvider";
+import LocaleProvider from "@munchkin/web/src/components/LocaleProvider";
+import ReduxProvider from "@munchkin/web/src/components/ReduxProvider";
+import VersionProvider from "@munchkin/web/src/components/VersionProvider";
+import WakeLockProvider from "@munchkin/web/src/components/WakeLockProvider";
+import WorkboxProvider from "@munchkin/web/src/components/WorkboxProvider";
+import { WebApp } from "@munchkin/web/src/domains/web-app";
+import "@munchkin/web/src/firebase";
+import "@munchkin/web/src/sentry";
 
 if (process.env.NODE_ENV === "development") {
-  void import("../../web/src/dev");
+  void import("@munchkin/web/src/dev");
 }
 
 const node = document.querySelector("#root");
