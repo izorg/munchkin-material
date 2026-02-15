@@ -3,7 +3,7 @@
 import { darken, rgbToHex, useTheme } from "@mui/material";
 import { useEffect } from "react";
 
-import usePresentSelector from "@munchkin/web/src/hooks/usePresentSelector";
+import { usePresentSelector } from "@munchkin/web";
 
 export const useStatusBar = () => {
   const { palette } = useTheme();

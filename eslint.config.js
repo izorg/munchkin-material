@@ -97,11 +97,7 @@ export default defineConfig(
             {
               elementNamePattern: ["^@munchkin/"],
               groupName: "workspace",
-              selector: "type",
-            },
-            {
-              elementNamePattern: ["^@munchkin/"],
-              groupName: "workspace",
+              modifiers: ["named"],
             },
           ],
           groups: [

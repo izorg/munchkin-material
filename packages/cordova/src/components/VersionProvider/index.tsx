@@ -1,6 +1,6 @@
 import { type FC, type PropsWithChildren } from "react";
 
-import { VersionContext } from "@munchkin/web/src/utils/versionContext";
+import { VersionContext } from "@munchkin/web";
 
 const VersionProvider: FC<PropsWithChildren> = ({ children }) => (
   <VersionContext.Provider value={globalThis.BuildInfo.version}>

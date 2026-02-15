@@ -6,10 +6,12 @@ import {
   useRef,
 } from "react";
 
-import { setKeepAwake } from "@munchkin/web/src/ducks/settings";
-import usePresentSelector from "@munchkin/web/src/hooks/usePresentSelector";
-import { useAppDispatch } from "@munchkin/web/src/store";
-import { WakeLockContext } from "@munchkin/web/src/utils/wakeLockContext";
+import {
+  setKeepAwake,
+  useAppDispatch,
+  usePresentSelector,
+  WakeLockContext,
+} from "@munchkin/web";
 
 const WakeLockProvider: FC<PropsWithChildren> = ({ children }) => {
   const dispatch = useAppDispatch();

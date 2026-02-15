@@ -1,6 +1,6 @@
 import { type FC, type PropsWithChildren } from "react";
 
-import { AppStoreLinkContext } from "@munchkin/web/src/utils/appStoreLinkContext";
+import { AppStoreLinkContext } from "@munchkin/web";
 
 const appStoreLink: Partial<Record<string, string>> = {
   android: "market://details?id=com.izorg.munchkin",

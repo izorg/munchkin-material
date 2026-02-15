@@ -1,7 +1,7 @@
 import { useEffect, useEffectEvent, useRef } from "react";
 import { useLocation } from "react-router";
 
-import { useGoBack } from "@munchkin/web/src/utils/location";
+import { useGoBack } from "@munchkin/web";
 
 export const useExitApp = () => {
   const location = useLocation();
