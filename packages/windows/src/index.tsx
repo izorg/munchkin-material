@@ -1,4 +1,4 @@
-import "../../web/src/polyfills";
+import "./polyfills";
 import "../../web/src/sentry";
 import "../../web/src/firebase";
 

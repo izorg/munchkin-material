@@ -2,7 +2,8 @@
   "private": true,
   "name": "@munchkin/windows",
   "sideEffects": [
-    "src/index.tsx"
+    "src/index.ts",
+    "src/polyfills.ts"
   ],
   "targets": {
     "default": {
@@ -16,6 +17,7 @@
   },
   "devDependencies": {
     "babel-preset-web": "workspace:*",
+    "core-js": "3.48.0",
     "parcel": "2.16.4",
     "react": "19.2.4",
     "react-dom": "19.2.4",

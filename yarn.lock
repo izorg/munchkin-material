@@ -4283,6 +4283,7 @@ __metadata:
     "@types/react": "npm:19.2.14"
     "@types/react-dom": "npm:19.2.3"
     babel-preset-web: "workspace:*"
+    core-js: "npm:3.48.0"
     firebase-tools: "npm:15.6.0"
     handlebars: "npm:4.7.8"
     parcel: "npm:2.16.4"
@@ -4358,7 +4359,6 @@ __metadata:
     "@types/react-dom": "npm:19.2.3"
     "@types/stylis": "npm:4.2.7"
     babel-preset-web: "workspace:*"
-    core-js: "npm:3.48.0"
     firebase: "npm:12.9.0"
     jest: "npm:30.2.0"
     react: "npm:19.2.4"
@@ -4382,6 +4382,7 @@ __metadata:
   resolution: "@munchkin/windows@workspace:packages/windows"
   dependencies:
     babel-preset-web: "workspace:*"
+    core-js: "npm:3.48.0"
     parcel: "npm:2.16.4"
     react: "npm:19.2.4"
     react-dom: "npm:19.2.4"

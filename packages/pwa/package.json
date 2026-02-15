@@ -2,6 +2,10 @@
   "private": true,
   "name": "@munchkin/pwa",
   "type": "module",
+  "sideEffects": [
+    "src/index.ts",
+    "src/polyfills.ts"
+  ],
   "targets": {
     "default": {
       "distDir": "dist",
@@ -32,6 +36,7 @@
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
     "babel-preset-web": "workspace:*",
+    "core-js": "3.48.0",
     "firebase-tools": "15.6.0",
     "handlebars": "4.7.8",
     "parcel": "2.16.4",

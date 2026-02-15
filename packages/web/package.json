@@ -5,8 +5,6 @@
   "sideEffects": [
     "src/dev/index.ts",
     "src/firebase.ts",
-    "src/index.tsx",
-    "src/polyfills.ts",
     "src/sentry.ts"
   ],
   "scripts": {
@@ -45,7 +43,6 @@
     "@types/react-dom": "19.2.3",
     "@types/stylis": "4.2.7",
     "babel-preset-web": "workspace:*",
-    "core-js": "3.48.0",
     "firebase": "12.9.0",
     "jest": "30.2.0",
     "react": "19.2.4",
