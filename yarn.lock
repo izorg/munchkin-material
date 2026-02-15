@@ -4236,17 +4236,29 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@munchkin/babel-preset-web@workspace:*, @munchkin/babel-preset-web@workspace:packages/babel-preset-web":
+  version: 0.0.0-use.local
+  resolution: "@munchkin/babel-preset-web@workspace:packages/babel-preset-web"
+  dependencies:
+    "@babel/core": "npm:7.29.0"
+    "@parcel/babel-preset-env": "npm:2.16.4"
+    "@sentry/babel-plugin-component-annotate": "npm:4.9.1"
+    babel-plugin-react-compiler: "npm:1.0.0"
+  languageName: unknown
+  linkType: soft
+
 "@munchkin/cordova@workspace:packages/cordova":
   version: 0.0.0-use.local
   resolution: "@munchkin/cordova@workspace:packages/cordova"
   dependencies:
     "@mui/material": "npm:7.3.8"
+    "@munchkin/babel-preset-web": "workspace:*"
+    "@munchkin/web": "workspace:*"
     "@sentry/react": "npm:10.38.0"
     "@totalpave/cordova-plugin-insets": "npm:0.4.2"
     "@types/cordova": "npm:11.0.3"
     "@types/react": "npm:19.2.14"
     "@types/react-dom": "npm:19.2.3"
-    babel-preset-web: "workspace:*"
     cordova: "npm:13.0.0"
     cordova-android: "npm:14.0.1"
     cordova-ios: "npm:7.1.1"
@@ -4273,6 +4285,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@munchkin/pwa@workspace:packages/pwa"
   dependencies:
+    "@munchkin/babel-preset-web": "workspace:*"
     "@parcel/packager-raw-url": "npm:2.16.4"
     "@parcel/reporter-bundle-analyzer": "npm:2.16.4"
     "@parcel/reporter-bundle-buddy": "npm:2.16.4"
@@ -4282,7 +4295,6 @@ __metadata:
     "@types/node": "npm:24.10.13"
     "@types/react": "npm:19.2.14"
     "@types/react-dom": "npm:19.2.3"
-    babel-preset-web: "workspace:*"
     core-js: "npm:3.48.0"
     firebase-tools: "npm:15.6.0"
     handlebars: "npm:4.7.8"
@@ -4325,7 +4337,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@munchkin/web@workspace:packages/web":
+"@munchkin/web@workspace:*, @munchkin/web@workspace:packages/web":
   version: 0.0.0-use.local
   resolution: "@munchkin/web@workspace:packages/web"
   dependencies:
@@ -4347,6 +4359,7 @@ __metadata:
     "@mdi/js": "npm:7.4.47"
     "@mui/material": "npm:7.3.8"
     "@mui/utils": "npm:7.3.8"
+    "@munchkin/babel-preset-web": "workspace:*"
     "@react-aria/interactions": "npm:3.27.0"
     "@react-aria/utils": "npm:3.33.0"
     "@reduxjs/toolkit": "npm:2.11.2"
@@ -4358,7 +4371,6 @@ __metadata:
     "@types/react": "npm:19.2.14"
     "@types/react-dom": "npm:19.2.3"
     "@types/stylis": "npm:4.2.7"
-    babel-preset-web: "workspace:*"
     firebase: "npm:12.9.0"
     jest: "npm:30.2.0"
     react: "npm:19.2.4"
@@ -4381,7 +4393,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@munchkin/windows@workspace:packages/windows"
   dependencies:
-    babel-preset-web: "workspace:*"
+    "@munchkin/babel-preset-web": "workspace:*"
     core-js: "npm:3.48.0"
     parcel: "npm:2.16.4"
     react: "npm:19.2.4"
@@ -9270,17 +9282,6 @@ __metadata:
   checksum: 10/f75e155a8cf63ea1c5ca942bf757b934427630a1eeafdf861e9117879b3367931fc521da3c41fd52f8d59d705d1093ffb46c9474b3fd4d765d194bea5659d7d9
   languageName: node
   linkType: hard
-
-"babel-preset-web@workspace:*, babel-preset-web@workspace:packages/babel-preset-web":
-  version: 0.0.0-use.local
-  resolution: "babel-preset-web@workspace:packages/babel-preset-web"
-  dependencies:
-    "@babel/core": "npm:7.29.0"
-    "@parcel/babel-preset-env": "npm:2.16.4"
-    "@sentry/babel-plugin-component-annotate": "npm:4.9.1"
-    babel-plugin-react-compiler: "npm:1.0.0"
-  languageName: unknown
-  linkType: soft
 
 "balanced-match@npm:^1.0.0":
   version: 1.0.2

@@ -1,6 +1,6 @@
 {
-  "private": true,
   "name": "@munchkin/web",
+  "private": true,
   "type": "module",
   "sideEffects": [
     "src/dev/index.ts",
@@ -31,6 +31,7 @@
     "@mdi/js": "7.4.47",
     "@mui/material": "7.3.8",
     "@mui/utils": "7.3.8",
+    "@munchkin/babel-preset-web": "workspace:*",
     "@react-aria/interactions": "3.27.0",
     "@react-aria/utils": "3.33.0",
     "@reduxjs/toolkit": "2.11.2",
@@ -42,7 +43,6 @@
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
     "@types/stylis": "4.2.7",
-    "babel-preset-web": "workspace:*",
     "firebase": "12.9.0",
     "jest": "30.2.0",
     "react": "19.2.4",

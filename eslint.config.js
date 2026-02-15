@@ -93,11 +93,23 @@ export default defineConfig(
       "perfectionist/sort-imports": [
         "error",
         {
+          customGroups: [
+            {
+              elementNamePattern: ["^@munchkin/"],
+              groupName: "workspace",
+              selector: "type",
+            },
+            {
+              elementNamePattern: ["^@munchkin/"],
+              groupName: "workspace",
+            },
+          ],
           groups: [
             "builtin",
             "side-effect",
             "external",
             "internal",
+            "workspace",
             "parent",
             "sibling",
             "index",

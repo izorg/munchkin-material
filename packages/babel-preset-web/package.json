@@ -1,6 +1,6 @@
 {
+  "name": "@munchkin/babel-preset-web",
   "private": true,
-  "name": "babel-preset-web",
   "type": "module",
   "exports": "./index.js",
   "devDependencies": {

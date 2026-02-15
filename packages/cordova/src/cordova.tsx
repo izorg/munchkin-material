@@ -4,11 +4,12 @@ import { reactErrorHandler } from "@sentry/react";
 import { createRoot } from "react-dom/client";
 import { MemoryRouter } from "react-router";
 
+import ReduxProvider from "@munchkin/web/src/components/ReduxProvider";
+
 import App from "../../web/src/components/App";
 import AugmentedStylesProvider from "../../web/src/components/AugmentedStylesProvider";
 import AugmentedThemeProvider from "../../web/src/components/AugmentedThemeProvider";
 import LocaleProvider from "../../web/src/components/LocaleProvider";
-import ReduxProvider from "../../web/src/components/ReduxProvider";
 
 import AppStoreLinkProvider from "./components/AppStoreLinkProvider";
 import { FullVersionProvider } from "./components/FullVersionProvider";

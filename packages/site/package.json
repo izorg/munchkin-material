@@ -1,6 +1,6 @@
 {
-  "private": true,
   "name": "@munchkin/site",
+  "private": true,
   "type": "module",
   "sideEffects": false,
   "scripts": {

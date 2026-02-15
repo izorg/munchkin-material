@@ -1,6 +1,6 @@
 {
-  "private": true,
   "name": "@munchkin/windows",
+  "private": true,
   "sideEffects": [
     "src/index.ts",
     "src/polyfills.ts"
@@ -16,7 +16,7 @@
     "build:www": "yarn g:rimraf Munchkin/Munchkin/Assets/www && yarn build --no-cache && yarn g:rimraf Munchkin/Munchkin/Assets/www/*.map"
   },
   "devDependencies": {
-    "babel-preset-web": "workspace:*",
+    "@munchkin/babel-preset-web": "workspace:*",
     "core-js": "3.48.0",
     "parcel": "2.16.4",
     "react": "19.2.4",

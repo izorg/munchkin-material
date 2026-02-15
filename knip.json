@@ -2,10 +2,10 @@
   "$schema": "node_modules/knip/schema.json",
   "ignoreFiles": [".yarn/**"],
   "ignoreDependencies": [
+    "@munchkin/babel-preset-web",
     "@parcel/*",
     "@semantic-release/*",
     "@types/parcel-env",
-    "babel-preset-web",
     "conventional-changelog-conventionalcommits",
     "cordova-*",
     "semantic-release"
