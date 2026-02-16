@@ -33,7 +33,7 @@
     "@parcel/reporter-bundle-buddy": "2.16.4",
     "@parcel/transformer-webmanifest": "2.16.4",
     "@playwright/test": "1.58.2",
-    "@sentry/react": "10.38.0",
+    "@sentry/react": "10.39.0",
     "@types/node": "24.10.13",
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",

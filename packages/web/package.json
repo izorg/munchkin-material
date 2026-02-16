@@ -35,7 +35,7 @@
     "@react-aria/interactions": "3.27.0",
     "@react-aria/utils": "3.33.0",
     "@reduxjs/toolkit": "2.11.2",
-    "@sentry/react": "10.38.0",
+    "@sentry/react": "10.39.0",
     "@swc/core": "1.15.11",
     "@swc/jest": "0.2.39",
     "@types/node": "24.10.13",

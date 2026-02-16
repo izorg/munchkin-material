@@ -58,7 +58,7 @@
     "@mui/material": "7.3.8",
     "@munchkin/babel-preset-web": "workspace:*",
     "@munchkin/web": "workspace:*",
-    "@sentry/react": "10.38.0",
+    "@sentry/react": "10.39.0",
     "@totalpave/cordova-plugin-insets": "0.4.2",
     "@types/cordova": "11.0.3",
     "@types/react": "19.2.14",
