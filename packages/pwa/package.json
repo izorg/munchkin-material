@@ -33,7 +33,7 @@
     "@parcel/reporter-bundle-buddy": "2.16.4",
     "@parcel/transformer-webmanifest": "2.16.4",
     "@playwright/test": "1.58.2",
-    "@sentry/react": "10.39.0",
+    "@sentry/react": "10.40.0",
     "@types/node": "24.10.13",
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
@@ -44,7 +44,7 @@
     "playwright": "1.58.2",
     "react": "19.2.4",
     "react-dom": "19.2.4",
-    "react-router": "7.13.0",
+    "react-router": "7.13.1",
     "workbox-cli": "7.4.0"
   }
 }
