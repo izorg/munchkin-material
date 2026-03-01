@@ -4246,7 +4246,7 @@ __metadata:
   dependencies:
     "@babel/core": "npm:7.29.0"
     "@parcel/babel-preset-env": "npm:2.16.4"
-    "@sentry/babel-plugin-component-annotate": "npm:5.1.0"
+    "@sentry/babel-plugin-component-annotate": "npm:5.1.1"
     babel-plugin-react-compiler: "npm:1.0.0"
   languageName: unknown
   linkType: soft
@@ -7287,6 +7287,13 @@ __metadata:
   version: 5.1.0
   resolution: "@sentry/babel-plugin-component-annotate@npm:5.1.0"
   checksum: 10/2698d932dcb49519629d6e9385589bce3c48a4cd6491694cd30c0bcf40a3a1849d462347edb23948604266bb9ce3862c9bb1a48bd50fb1c547d95f603b6145aa
+  languageName: node
+  linkType: hard
+
+"@sentry/babel-plugin-component-annotate@npm:5.1.1":
+  version: 5.1.1
+  resolution: "@sentry/babel-plugin-component-annotate@npm:5.1.1"
+  checksum: 10/8c7da826dc2dd4a3335628fb9094d3976354a0a72ca46e8bebe4945402225fdca868f9717843c640ca381278f62d7798b697843a3add3422f409702ebca094cc
   languageName: node
   linkType: hard
 
