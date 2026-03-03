@@ -38,7 +38,7 @@
     "@sentry/react": "10.40.0",
     "@swc/core": "1.15.13",
     "@swc/jest": "0.2.39",
-    "@types/node": "24.10.13",
+    "@types/node": "24.11.0",
     "@types/parcel-env": "0.0.9",
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
