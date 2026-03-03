@@ -1,4 +1,5 @@
 import comments from "@eslint-community/eslint-plugin-eslint-comments/configs";
+import { fixupConfigRules } from "@eslint/compat";
 import js from "@eslint/js";
 import json from "@eslint/json";
 import next from "@next/eslint-plugin-next";
@@ -43,8 +44,8 @@ export default defineConfig(
       importPlugin.flatConfigs.typescript,
       jsxA11y.flatConfigs.recommended,
       perfectionist.configs["recommended-alphabetical"],
-      react.configs.flat.recommended,
-      react.configs.flat["jsx-runtime"],
+      fixupConfigRules(react.configs.flat.recommended),
+      fixupConfigRules(react.configs.flat["jsx-runtime"]),
       reactHooks.configs.flat["recommended-latest"],
       unicorn.configs.recommended,
     ],
