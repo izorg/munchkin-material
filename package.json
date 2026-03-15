@@ -8,15 +8,16 @@
     "packages/*"
   ],
   "scripts": {
+    "check": "yarn check-knip && yarn check-prettier && yarn check-types && yarn check-eslint && yarn check-oxlint && yarn check-stylelint",
+    "check-eslint": "eslint --cache",
+    "check-knip": "knip --cache",
+    "check-oxlint": "oxlint",
+    "check-prettier": "prettier --cache --check --ignore-unknown .",
+    "check-stylelint": "stylelint --cache \"**/*.css\"",
+    "check-types": "tsc",
     "clean-cache": "rm -rf .parcel-cache",
     "format": "prettier --cache --ignore-unknown --write .",
     "get-version": "node --no-warnings scripts/version.js",
-    "lint": "yarn lint-unused && yarn lint-types && yarn lint-js && yarn lint-oxlint && yarn lint-css",
-    "lint-css": "stylelint --cache \"**/*.css\"",
-    "lint-js": "eslint --cache",
-    "lint-oxlint": "oxlint",
-    "lint-types": "tsc",
-    "lint-unused": "knip --cache",
     "postinstall": "husky || true",
     "reinstall": "rm -r node_modules yarn.lock && yarn install",
     "g:rimraf": "cd $INIT_CWD && rimraf"

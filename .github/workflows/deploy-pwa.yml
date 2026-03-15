@@ -31,8 +31,8 @@ jobs:
       - name: Get app version
         run: echo "VERSION=$(yarn run get-version)" >> $GITHUB_ENV
 
-      - name: Lint
-        run: yarn run lint
+      - name: Check
+        run: yarn check
 
       - name: Test
         run: yarn workspaces foreach --all run test

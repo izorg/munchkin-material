@@ -1,2 +1,2 @@
-yarn lint
+yarn check
 yarn workspaces foreach --since run test
