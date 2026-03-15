@@ -22,8 +22,8 @@
     "g:rimraf": "cd $INIT_CWD && rimraf"
   },
   "devDependencies": {
-    "@commitlint/cli": "20.4.3",
-    "@commitlint/config-conventional": "20.4.3",
+    "@commitlint/cli": "20.4.4",
+    "@commitlint/config-conventional": "20.4.4",
     "@eslint-community/eslint-plugin-eslint-comments": "4.7.1",
     "@eslint/compat": "2.0.3",
     "@eslint/js": "10.0.1",
