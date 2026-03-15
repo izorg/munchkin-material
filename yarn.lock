@@ -4232,7 +4232,7 @@ __metadata:
     "@types/react-dom": "npm:19.2.3"
     cordova: "npm:13.0.0"
     cordova-android: "npm:14.0.1"
-    cordova-ios: "npm:8.0.0"
+    cordova-ios: "npm:8.0.1"
     cordova-plugin-buildinfo: "npm:4.0.0"
     cordova-plugin-firebase-analytics: "npm:8.0.0"
     cordova-plugin-firebase-crash: "npm:8.0.2"
@@ -10614,9 +10614,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cordova-ios@npm:8.0.0":
-  version: 8.0.0
-  resolution: "cordova-ios@npm:8.0.0"
+"cordova-ios@npm:8.0.1":
+  version: 8.0.1
+  resolution: "cordova-ios@npm:8.0.1"
   dependencies:
     bplist-parser: "npm:^0.3.2"
     cordova-common: "npm:^6.0.0"
@@ -10628,7 +10628,7 @@ __metadata:
     simctl: "npm:^3.0.0"
     which: "npm:^6.0.0"
     xcode: "npm:^3.0.1"
-  checksum: 10/7549bd127f5d71d9947acd01d6a68d2a1948f6e56fe1c3e006427af3501f02af820b19f4b3c86e6b314e1ff5436fcc6be3e07b190983d3f7475c60668362938a
+  checksum: 10/a32eb278cef788ef5b2c9ac1b7f53b276ea5aa18bcca5a212c72be005ec53582e51e6ec52de8760cd76c4793b8f89c9291caf940d705b8a81e33313ded69165f
   languageName: node
   linkType: hard
 
