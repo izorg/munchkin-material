@@ -1,0 +1,16 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "categories": {
+    "correctness": "allow",
+    "nursery": "allow",
+    "pedantic": "allow",
+    "perf": "allow",
+    "restriction": "allow",
+    "style": "allow",
+    "suspicious": "allow"
+  },
+  "plugins": ["import"],
+  "rules": {
+    "import/no-cycle": "deny"
+  }
+}
