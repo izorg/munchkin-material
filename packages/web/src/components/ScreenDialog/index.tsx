@@ -1,6 +1,7 @@
 import { Dialog, type DialogProps } from "@mui/material";
 import { useEffect } from "react";
 
+import { ScreenDialogPaper } from "./ScreenDialogPaper";
 import { ScreenDialogTransition } from "./ScreenDialogTransition";
 
 let initialRender = true;
@@ -16,12 +17,9 @@ const ScreenDialog = (props: DialogProps) => {
     <Dialog
       fullScreen
       hideBackdrop
+      PaperComponent={ScreenDialogPaper}
       slotProps={{
         ...slotProps,
-        paper: {
-          elevation: 0,
-          ...slotProps?.paper,
-        },
         transition: {
           appear: !initialRender,
           ...slotProps?.transition,
