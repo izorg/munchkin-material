@@ -34,6 +34,7 @@ export const SliderItem: FC<SliderItemProps> = (props) => {
         noWrap
         sx={{
           textAlign: "center",
+          width: "100%",
         }}
         variant="h5"
       >
