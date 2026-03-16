@@ -3,6 +3,7 @@ import { type NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   experimental: {
+    turbopackFileSystemCacheForDev: true,
     typedEnv: true,
   },
   images: {
@@ -11,7 +12,6 @@ const nextConfig: NextConfig = {
   productionBrowserSourceMaps: true,
   reactCompiler: true,
   trailingSlash: true,
-  transpilePackages: ["@mui/material", "@mui/system", "@mui/utils"],
   turbopack:
     process.env.NODE_ENV === "development"
       ? undefined
@@ -47,6 +47,9 @@ export default withSentryConfig(nextConfig, {
   project: "munchkin-site",
   // Suppresses source map uploading logs during build
   silent: true,
+  sourcemaps: {
+    deleteSourcemapsAfterUpload: true,
+  },
   telemetry: false,
   // Upload a larger set of source maps for prettier stack traces (increases build time)
   widenClientFileUpload: true,
