@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "sideEffects": [
-    "src/index.ts",
+    "src/index.tsx",
     "src/polyfills.ts"
   ],
   "targets": {
