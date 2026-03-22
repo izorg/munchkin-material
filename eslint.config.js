@@ -1,5 +1,6 @@
 import comments from "@eslint-community/eslint-plugin-eslint-comments/configs";
 import { fixupConfigRules } from "@eslint/compat";
+import css from "@eslint/css";
 import js from "@eslint/js";
 import json from "@eslint/json";
 import next from "@next/eslint-plugin-next";
@@ -203,6 +204,16 @@ export default defineConfig(
           checksVoidReturn: false,
         },
       ],
+    },
+  },
+  {
+    extends: [css.configs.recommended],
+    files: ["**/*.css"],
+    language: "css/css",
+    name: "css",
+    rules: {
+      "css/no-invalid-at-rules": "off",
+      "css/use-baseline": "off",
     },
   },
   {
