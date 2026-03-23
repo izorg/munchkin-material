@@ -13,6 +13,9 @@
   "I3b4hn": {
     "defaultMessage": "Verzia"
   },
+  "K3r6DQ": {
+    "defaultMessage": "Odstrániť"
+  },
   "U8jwxJ": {
     "defaultMessage": "Ďalší hráč"
   },
@@ -105,9 +108,6 @@
     "defaultMessage": "Farba",
     "description": "Player form color field label"
   },
-  "player.form.delete": {
-    "defaultMessage": "Odstrániť"
-  },
   "player.form.save": {
     "defaultMessage": "Uložiť"
   },
@@ -194,3 +194,4 @@
     "description": "Player form sex radio group label"
   }
 }
+
