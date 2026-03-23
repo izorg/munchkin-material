@@ -13,6 +13,9 @@
   "I3b4hn": {
     "defaultMessage": "Εκδοχή"
   },
+  "K3r6DQ": {
+    "defaultMessage": "Διαγράφω"
+  },
   "U8jwxJ": {
     "defaultMessage": "Επόμενος παίκτης"
   },
@@ -105,9 +108,6 @@
     "defaultMessage": "Χρώμα",
     "description": "Player form color field label"
   },
-  "player.form.delete": {
-    "defaultMessage": "Διαγράφω"
-  },
   "player.form.save": {
     "defaultMessage": "Αποθήκευση"
   },
@@ -194,3 +194,4 @@
     "description": "Player form sex radio group label"
   }
 }
+
