@@ -13,6 +13,9 @@
   "I3b4hn": {
     "defaultMessage": "Version"
   },
+  "K3r6DQ": {
+    "defaultMessage": "Löschen"
+  },
   "U8jwxJ": {
     "defaultMessage": "Nächster Spieler"
   },
@@ -105,9 +108,6 @@
     "defaultMessage": "Farbe",
     "description": "Player form color field label"
   },
-  "player.form.delete": {
-    "defaultMessage": "Löschen"
-  },
   "player.form.save": {
     "defaultMessage": "Speichern"
   },
@@ -194,3 +194,4 @@
     "description": "Player form sex radio group label"
   }
 }
+
