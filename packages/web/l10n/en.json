@@ -13,6 +13,9 @@
   "I3b4hn": {
     "defaultMessage": "Version"
   },
+  "K3r6DQ": {
+    "defaultMessage": "Delete"
+  },
   "U8jwxJ": {
     "defaultMessage": "Next player"
   },
@@ -104,9 +107,6 @@
   "o2wJ9Y": {
     "defaultMessage": "Color",
     "description": "Player form color field label"
-  },
-  "player.form.delete": {
-    "defaultMessage": "Delete"
   },
   "player.form.save": {
     "defaultMessage": "Save"

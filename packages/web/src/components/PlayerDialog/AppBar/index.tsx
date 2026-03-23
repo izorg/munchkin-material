@@ -1,6 +1,7 @@
 import { mdiCheck, mdiTrashCanOutline } from "@mdi/js";
-import { SvgIcon } from "@mui/material";
+import { SvgIcon, Tooltip } from "@mui/material";
 import { type FC, type ReactNode } from "react";
+import { useIntl } from "react-intl";
 
 import BackButton from "../../BackButton";
 import Title from "../../Title";
@@ -18,26 +19,38 @@ const PlayerDialogAppBar: FC<PlayerDialogAppBarProps> = ({
   onCancel,
   onDelete,
   title,
-}) => (
-  <TopAppBar>
-    <BackButton onClick={onCancel} />
+}) => {
+  const intl = useIntl();
 
-    <Title>{title}</Title>
+  return (
+    <TopAppBar>
+      <BackButton onClick={onCancel} />
 
-    {onDelete && (
-      <TopIconButton onClick={onDelete}>
+      <Title>{title}</Title>
+
+      {onDelete && (
+        <Tooltip
+          key="delete"
+          title={intl.formatMessage({
+            defaultMessage: "Delete",
+            id: "K3r6DQ",
+          })}
+        >
+          <TopIconButton onClick={onDelete}>
+            <SvgIcon>
+              <path d={mdiTrashCanOutline} />
+            </SvgIcon>
+          </TopIconButton>
+        </Tooltip>
+      )}
+
+      <TopIconButton edge="end" form={formId} type="submit">
         <SvgIcon>
-          <path d={mdiTrashCanOutline} />
+          <path d={mdiCheck} />
         </SvgIcon>
       </TopIconButton>
-    )}
-
-    <TopIconButton edge="end" form={formId} type="submit">
-      <SvgIcon>
-        <path d={mdiCheck} />
-      </SvgIcon>
-    </TopIconButton>
-  </TopAppBar>
-);
+    </TopAppBar>
+  );
+};
 
 export default PlayerDialogAppBar;

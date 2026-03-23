@@ -1,7 +1,7 @@
 import { mdiFlagCheckered, mdiTrashCanOutline } from "@mdi/js";
-import { SvgIcon } from "@mui/material";
+import { SvgIcon, Tooltip } from "@mui/material";
 import { type FC, type ReactNode } from "react";
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 
 import { setCombatPlayerBonus } from "../../../ducks/combat/actions";
 import useDeletePlayers from "../../../hooks/useDeletePlayers";
@@ -28,6 +28,9 @@ type HomeAppBarProps = {
 
 const HomeAppBar: FC<HomeAppBarProps> = (props) => {
   const { empty, singleMode } = props;
+
+  const intl = useIntl();
+
   const dispatch = useAppDispatch();
 
   const deletePlayers = useDeletePlayers();
@@ -73,18 +76,25 @@ const HomeAppBar: FC<HomeAppBarProps> = (props) => {
 
   if (multiMode) {
     buttons = [
-      <TopIconButton
-        edge="end"
+      <Tooltip
         key="delete"
-        onClick={async () => {
-          deletePlayers(selectedPlayerIds);
-          await goBack();
-        }}
+        title={intl.formatMessage({
+          defaultMessage: "Delete",
+          id: "K3r6DQ",
+        })}
       >
-        <SvgIcon>
-          <path d={mdiTrashCanOutline} />
-        </SvgIcon>
-      </TopIconButton>,
+        <TopIconButton
+          edge="end"
+          onClick={async () => {
+            deletePlayers(selectedPlayerIds);
+            await goBack();
+          }}
+        >
+          <SvgIcon>
+            <path d={mdiTrashCanOutline} />
+          </SvgIcon>
+        </TopIconButton>
+      </Tooltip>,
     ];
   }
 
