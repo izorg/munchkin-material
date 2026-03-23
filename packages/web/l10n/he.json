@@ -13,6 +13,9 @@
   "I3b4hn": {
     "defaultMessage": "גִרְסָה"
   },
+  "K3r6DQ": {
+    "defaultMessage": "לִמְחוֹק"
+  },
   "U8jwxJ": {
     "defaultMessage": "השחקן הבא"
   },
@@ -105,9 +108,6 @@
     "defaultMessage": "צֶבַע",
     "description": "Player form color field label"
   },
-  "player.form.delete": {
-    "defaultMessage": "לִמְחוֹק"
-  },
   "player.form.save": {
     "defaultMessage": "שמור"
   },
@@ -194,3 +194,4 @@
     "description": "Player form sex radio group label"
   }
 }
+
