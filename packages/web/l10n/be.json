@@ -13,6 +13,9 @@
   "I3b4hn": {
     "defaultMessage": "Версія"
   },
+  "K3r6DQ": {
+    "defaultMessage": "Выдаліць"
+  },
   "U8jwxJ": {
     "defaultMessage": "Наступны гулец"
   },
@@ -105,9 +108,6 @@
     "defaultMessage": "Колер",
     "description": "Player form color field label"
   },
-  "player.form.delete": {
-    "defaultMessage": "Выдаліць"
-  },
   "player.form.save": {
     "defaultMessage": "Захаваць"
   },
@@ -194,3 +194,4 @@
     "description": "Player form sex radio group label"
   }
 }
+

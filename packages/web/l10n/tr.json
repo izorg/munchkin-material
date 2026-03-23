@@ -13,6 +13,9 @@
   "I3b4hn": {
     "defaultMessage": "Sürüm"
   },
+  "K3r6DQ": {
+    "defaultMessage": "Silmek"
+  },
   "U8jwxJ": {
     "defaultMessage": "Sonraki oyuncu"
   },
@@ -105,9 +108,6 @@
     "defaultMessage": "Renk",
     "description": "Player form color field label"
   },
-  "player.form.delete": {
-    "defaultMessage": "Silmek"
-  },
   "player.form.save": {
     "defaultMessage": "Kaydet"
   },
@@ -194,3 +194,4 @@
     "description": "Player form sex radio group label"
   }
 }
+

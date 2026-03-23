@@ -13,6 +13,9 @@
   "I3b4hn": {
     "defaultMessage": "Versio"
   },
+  "K3r6DQ": {
+    "defaultMessage": "Poistaa"
+  },
   "U8jwxJ": {
     "defaultMessage": "Seuraava pelaaja"
   },
@@ -105,9 +108,6 @@
     "defaultMessage": "Väri",
     "description": "Player form color field label"
   },
-  "player.form.delete": {
-    "defaultMessage": "Poistaa"
-  },
   "player.form.save": {
     "defaultMessage": "Tallenna"
   },
@@ -194,3 +194,4 @@
     "description": "Player form sex radio group label"
   }
 }
+

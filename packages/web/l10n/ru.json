@@ -13,6 +13,9 @@
   "I3b4hn": {
     "defaultMessage": "Версия"
   },
+  "K3r6DQ": {
+    "defaultMessage": "Удалить"
+  },
   "U8jwxJ": {
     "defaultMessage": "Следующий игрок"
   },
@@ -105,9 +108,6 @@
     "defaultMessage": "Цвет",
     "description": "Player form color field label"
   },
-  "player.form.delete": {
-    "defaultMessage": "Удалить"
-  },
   "player.form.save": {
     "defaultMessage": "Сохранить"
   },
@@ -194,3 +194,4 @@
     "description": "Player form sex radio group label"
   }
 }
+
