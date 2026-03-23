@@ -82,6 +82,7 @@ const PlayerStats: FC<PlayerStatsProps> = ({ playerId, sx = [] }) => {
             gridTemplateAreas: `
               "level gear strength"
             `,
+            gridTemplateColumns: "1fr 1fr 1fr",
           },
         },
         ...[sx].flat(),
