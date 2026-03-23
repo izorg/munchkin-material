@@ -13,6 +13,9 @@
   "I3b4hn": {
     "defaultMessage": "Udgave"
   },
+  "K3r6DQ": {
+    "defaultMessage": "Slet"
+  },
   "U8jwxJ": {
     "defaultMessage": "Næste spiller"
   },
@@ -105,9 +108,6 @@
     "defaultMessage": "Farve",
     "description": "Player form color field label"
   },
-  "player.form.delete": {
-    "defaultMessage": "Slet"
-  },
   "player.form.save": {
     "defaultMessage": "Gem"
   },
@@ -194,3 +194,4 @@
     "description": "Player form sex radio group label"
   }
 }
+
