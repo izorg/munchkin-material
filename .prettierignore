@@ -10,6 +10,8 @@ package.json
 /packages/site/out
 
 /packages/web/dist
+/packages/web/l10n/*.json
+!/packages/web/l10n/en.json
 /packages/web/src/templates/markup/manifest.webmanifest.hbs
 
 /packages/windows/Munchkin/bin

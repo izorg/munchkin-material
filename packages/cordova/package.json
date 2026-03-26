@@ -58,7 +58,7 @@
     "@mui/material": "7.3.9",
     "@munchkin/babel-preset-web": "workspace:*",
     "@munchkin/web": "workspace:*",
-    "@sentry/react": "10.45.0",
+    "@sentry/react": "10.46.0",
     "@totalpave/cordova-plugin-insets": "0.4.4",
     "@types/cordova": "11.0.3",
     "@types/react": "19.2.14",
@@ -81,6 +81,6 @@
     "parcel": "2.16.4",
     "react": "19.2.4",
     "react-dom": "19.2.4",
-    "react-router": "7.13.1"
+    "react-router": "7.13.2"
   }
 }
