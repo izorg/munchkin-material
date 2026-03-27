@@ -1,14 +1,12 @@
 import {
-  type createTheme,
   type Direction,
   type PaletteMode,
+  type ThemeOptions,
 } from "@mui/material";
 import { common, orange } from "@mui/material/colors";
 import { deepmerge } from "@mui/utils";
 
 import { ios } from "../utils/platforms";
-
-type AugmentedThemeOptions = Parameters<typeof createTheme>[0];
 
 const getThemeOptions = ({
   direction,
@@ -20,8 +18,8 @@ const getThemeOptions = ({
   mode?: PaletteMode;
   pureBlack: boolean;
   reducedMotion: boolean;
-}): AugmentedThemeOptions => {
-  let theme: AugmentedThemeOptions = {
+}): ThemeOptions => {
+  let theme: ThemeOptions = {
     colorSchemes: {
       dark: {
         palette: {
@@ -132,7 +130,7 @@ const getThemeOptions = ({
           },
         },
       },
-    } satisfies AugmentedThemeOptions);
+    } satisfies ThemeOptions);
   }
 
   return theme;
