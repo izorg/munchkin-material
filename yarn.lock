@@ -66,7 +66,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@apphosting/build@npm:^0.1.6":
+"@apphosting/build@npm:^0.1.7":
   version: 0.1.7
   resolution: "@apphosting/build@npm:0.1.7"
   dependencies:
@@ -1979,7 +1979,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@eslint-community/eslint-utils@npm:^4.8.0, @eslint-community/eslint-utils@npm:^4.9.0, @eslint-community/eslint-utils@npm:^4.9.1":
+"@eslint-community/eslint-utils@npm:^4.8.0, @eslint-community/eslint-utils@npm:^4.9.1":
   version: 4.9.1
   resolution: "@eslint-community/eslint-utils@npm:4.9.1"
   dependencies:
@@ -2662,9 +2662,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@formatjs/cli@npm:6.14.0":
-  version: 6.14.0
-  resolution: "@formatjs/cli@npm:6.14.0"
+"@formatjs/cli@npm:6.14.1":
+  version: 6.14.1
+  resolution: "@formatjs/cli@npm:6.14.1"
   peerDependencies:
     "@glimmer/syntax": ^0.84.3 || ^0.95.0
     "@vue/compiler-core": ^3.5.0
@@ -2687,7 +2687,7 @@ __metadata:
       optional: true
   bin:
     formatjs: bin/formatjs
-  checksum: 10/1612abc95a9acde6086786e6ca1934f628c370eb4d88488225c41475cc268be333f999b287dd2602f33547904d03eb31b5c1d5c4c79b71c824997a175dce6caa
+  checksum: 10/974606f6dc9abc81ca47e15cf2db52de062e478016a3a71a4827dac3e6f5dc4013085560ef070e65b4214eebf7d6c958d7998dde915472d58986dfd22308efd5
   languageName: node
   linkType: hard
 
@@ -2798,37 +2798,32 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@formatjs/intl@npm:4.1.4":
-  version: 4.1.4
-  resolution: "@formatjs/intl@npm:4.1.4"
+"@formatjs/intl@npm:4.1.5":
+  version: 4.1.5
+  resolution: "@formatjs/intl@npm:4.1.5"
   dependencies:
     "@formatjs/ecma402-abstract": "npm:3.2.0"
     "@formatjs/fast-memoize": "npm:3.1.1"
     "@formatjs/icu-messageformat-parser": "npm:3.5.3"
     intl-messageformat: "npm:11.2.0"
-  peerDependencies:
-    typescript: ^5.6.0
-  peerDependenciesMeta:
-    typescript:
-      optional: true
-  checksum: 10/a706a4d222ef3042c78214ae45b3b8b04b1c4ec057f77e44443d36a89dabd099899e7cca6bbc5797890e4346d0ad4849cfb46eabea2ad10b874452c5de67cd23
+  checksum: 10/92b2c014c2cf22025ba5c5628516d72dc83d837a0ee31b5b32142e7f72b410b88126eae7fe50621f1ba8d78288ffcd54556dab64932fd252c45004269e517510
   languageName: node
   linkType: hard
 
-"@formatjs/ts-transformer@npm:4.4.2":
-  version: 4.4.2
-  resolution: "@formatjs/ts-transformer@npm:4.4.2"
+"@formatjs/ts-transformer@npm:4.4.3":
+  version: 4.4.3
+  resolution: "@formatjs/ts-transformer@npm:4.4.3"
   dependencies:
     "@formatjs/icu-messageformat-parser": "npm:3.5.3"
     "@types/node": "npm:22 || 24"
     json-stable-stringify: "npm:^1.3.0"
-    typescript: "npm:^5.6.0"
+    typescript: "npm:^5.6 || 6"
   peerDependencies:
     ts-jest: ^29
   peerDependenciesMeta:
     ts-jest:
       optional: true
-  checksum: 10/818fef1eea499ba36ef02b06e977653ddbd22d7ca8bb969462ff2e3c390dfb805033bf3782e8529198f8bb01ccef08bb7ee4d742c861353ad02bdba47a03b317
+  checksum: 10/67cf79aa25cea11a6a1f0b7c41dd5a2e142e41e829fefea3525fab5c6666d017b7a1bf1827164ecb64e9bd4bcc275a9119193f9cd13547d062da3dd6201e3f6e
   languageName: node
   linkType: hard
 
@@ -4303,7 +4298,7 @@ __metadata:
     "@types/react": "npm:19.2.14"
     "@types/react-dom": "npm:19.2.3"
     core-js: "npm:3.49.0"
-    firebase-tools: "npm:15.11.0"
+    firebase-tools: "npm:15.12.0"
     handlebars: "npm:4.7.9"
     parcel: "npm:2.16.4"
     playwright: "npm:1.58.2"
@@ -4321,9 +4316,9 @@ __metadata:
     "@emotion/cache": "npm:11.14.0"
     "@emotion/react": "npm:11.14.0"
     "@emotion/styled": "npm:11.14.1"
-    "@formatjs/cli": "npm:6.14.0"
+    "@formatjs/cli": "npm:6.14.1"
     "@formatjs/icu-messageformat-parser": "npm:3.5.3"
-    "@formatjs/intl": "npm:4.1.4"
+    "@formatjs/intl": "npm:4.1.5"
     "@mdi/js": "npm:7.4.47"
     "@mui/material": "npm:7.3.9"
     "@mui/material-nextjs": "npm:7.3.9"
@@ -4333,14 +4328,14 @@ __metadata:
     "@types/react-dom": "npm:19.2.3"
     "@types/stylis": "npm:4.2.7"
     babel-plugin-react-compiler: "npm:1.0.0"
-    firebase-tools: "npm:15.11.0"
+    firebase-tools: "npm:15.12.0"
     next: "npm:16.2.1"
     react: "npm:19.2.4"
     react-dom: "npm:19.2.4"
-    react-intl: "npm:10.1.0"
+    react-intl: "npm:10.1.1"
     stylis: "npm:4.3.6"
     stylis-plugin-rtl: "npm:2.1.1"
-    typescript: "npm:6.0.2"
+    typescript: "npm:5.9.3"
   languageName: unknown
   linkType: soft
 
@@ -4355,7 +4350,7 @@ __metadata:
     "@emotion/cache": "npm:11.14.0"
     "@emotion/react": "npm:11.14.0"
     "@emotion/styled": "npm:11.14.1"
-    "@formatjs/cli": "npm:6.14.0"
+    "@formatjs/cli": "npm:6.14.1"
     "@formatjs/intl-datetimeformat": "npm:7.3.1"
     "@formatjs/intl-getcanonicallocales": "npm:3.2.2"
     "@formatjs/intl-locale": "npm:5.3.1"
@@ -4382,7 +4377,7 @@ __metadata:
     jest: "npm:30.3.0"
     react: "npm:19.2.4"
     react-dom: "npm:19.2.4"
-    react-intl: "npm:10.1.0"
+    react-intl: "npm:10.1.1"
     react-redux: "npm:9.2.0"
     react-router: "npm:7.13.2"
     react-transition-group: "npm:4.4.5"
@@ -4390,7 +4385,7 @@ __metadata:
     redux-undo: "npm:1.1.1"
     stylis: "npm:4.3.6"
     stylis-plugin-rtl: "npm:2.1.1"
-    typescript: "npm:6.0.2"
+    typescript: "npm:5.9.3"
     uuid: "npm:13.0.0"
     workbox-window: "npm:7.4.0"
   languageName: unknown
@@ -10105,7 +10100,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ci-info@npm:^4.0.0, ci-info@npm:^4.2.0, ci-info@npm:^4.3.1, ci-info@npm:^4.4.0":
+"ci-info@npm:^4.0.0, ci-info@npm:^4.2.0, ci-info@npm:^4.4.0":
   version: 4.4.0
   resolution: "ci-info@npm:4.4.0"
   checksum: 10/dfded0c630267d89660c8abb988ac8395a382bdfefedcc03e3e2858523312c5207db777c239c34774e3fcff11f015477c19d2ac8a58ea58aa476614a2e64f434
@@ -10935,7 +10930,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"core-js-compat@npm:^3.46.0, core-js-compat@npm:^3.48.0":
+"core-js-compat@npm:^3.48.0, core-js-compat@npm:^3.49.0":
   version: 3.49.0
   resolution: "core-js-compat@npm:3.49.0"
   dependencies:
@@ -11983,19 +11978,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-formatjs@npm:6.4.3":
-  version: 6.4.3
-  resolution: "eslint-plugin-formatjs@npm:6.4.3"
+"eslint-plugin-formatjs@npm:6.4.4":
+  version: 6.4.4
+  resolution: "eslint-plugin-formatjs@npm:6.4.4"
   dependencies:
     "@formatjs/icu-messageformat-parser": "npm:3.5.3"
-    "@formatjs/ts-transformer": "npm:4.4.2"
+    "@formatjs/ts-transformer": "npm:4.4.3"
     "@types/picomatch": "npm:^4.0.0"
     "@unicode/unicode-17.0.0": "npm:^1.6.16"
     magic-string: "npm:^0.30.0"
     picomatch: "npm:2 || 3 || 4"
   peerDependencies:
     eslint: 9 || 10
-  checksum: 10/674959e9aa1bb84ee945fb0393a43f93a4b8831d4b12cad54d75a4393a98f1459500b629f13ff9b2ab88457e616f1579c726bbcb4fe566e37311f314a6bfb8de
+  checksum: 10/1d2554890ad71aa0753c174f6468285a3aa95a2150ccc79c3267b8b4c50321da4c0764b7aa4b7926f45c18c6872b551590b0fb9530f78a6dedf8b02af4e20c49
   languageName: node
   linkType: hard
 
@@ -12136,29 +12131,29 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-unicorn@npm:63.0.0":
-  version: 63.0.0
-  resolution: "eslint-plugin-unicorn@npm:63.0.0"
+"eslint-plugin-unicorn@npm:64.0.0":
+  version: 64.0.0
+  resolution: "eslint-plugin-unicorn@npm:64.0.0"
   dependencies:
     "@babel/helper-validator-identifier": "npm:^7.28.5"
-    "@eslint-community/eslint-utils": "npm:^4.9.0"
+    "@eslint-community/eslint-utils": "npm:^4.9.1"
     change-case: "npm:^5.4.4"
-    ci-info: "npm:^4.3.1"
+    ci-info: "npm:^4.4.0"
     clean-regexp: "npm:^1.0.0"
-    core-js-compat: "npm:^3.46.0"
+    core-js-compat: "npm:^3.49.0"
     find-up-simple: "npm:^1.0.1"
-    globals: "npm:^16.4.0"
+    globals: "npm:^17.4.0"
     indent-string: "npm:^5.0.0"
     is-builtin-module: "npm:^5.0.0"
     jsesc: "npm:^3.1.0"
     pluralize: "npm:^8.0.0"
     regexp-tree: "npm:^0.1.27"
     regjsparser: "npm:^0.13.0"
-    semver: "npm:^7.7.3"
+    semver: "npm:^7.7.4"
     strip-indent: "npm:^4.1.1"
   peerDependencies:
     eslint: ">=9.38.0"
-  checksum: 10/bfcaf383e8e244c13311900d4e152b1a4134f844ddc8514d86aca7da932a4663b144fceca7a32a796faaf53a84a203dcd3052ef846c05990dd285c19ed6c9f17
+  checksum: 10/3211dadefe8ec43526372a302e48503da42f5e1d3b45d8e20bc29e30dd142b442d70d22ea8617a4ca5494b184b36656d0e81c1e299d12a8e991ac1a86ed35e42
   languageName: node
   linkType: hard
 
@@ -12900,11 +12895,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"firebase-tools@npm:15.11.0":
-  version: 15.11.0
-  resolution: "firebase-tools@npm:15.11.0"
+"firebase-tools@npm:15.12.0":
+  version: 15.12.0
+  resolution: "firebase-tools@npm:15.12.0"
   dependencies:
-    "@apphosting/build": "npm:^0.1.6"
+    "@apphosting/build": "npm:^0.1.7"
     "@apphosting/common": "npm:^0.0.8"
     "@electric-sql/pglite": "npm:^0.3.3"
     "@electric-sql/pglite-tools": "npm:^0.2.8"
@@ -12967,6 +12962,7 @@ __metadata:
     stream-chain: "npm:^2.2.4"
     stream-json: "npm:^1.7.3"
     superstatic: "npm:^10.0.0"
+    tar: "npm:^7.5.11"
     tcp-port-used: "npm:^1.0.2"
     tmp: "npm:^0.2.3"
     triple-beam: "npm:^1.3.0"
@@ -12981,7 +12977,7 @@ __metadata:
     zod-to-json-schema: "npm:^3.24.5"
   bin:
     firebase: lib/bin/firebase.js
-  checksum: 10/dbc03f50e1b4585380bbb46a2a58a457d235e7b3d0f31d4544d6cbfc96a101615ea9ad506df9bea8ae3af3c893085c86ceefce33107cc10fe1cff986bf3587b7
+  checksum: 10/bcfe1c7871f5fe03b4314b9672ecbc73687f9665d519161fdd2cb1c514295473cce16ef8aab8b413c951d597e6c43bc8f13f92d879a40afb4b0a4840718e20b8
   languageName: node
   linkType: hard
 
@@ -13621,7 +13617,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"globals@npm:17.4.0":
+"globals@npm:17.4.0, globals@npm:^17.4.0":
   version: 17.4.0
   resolution: "globals@npm:17.4.0"
   checksum: 10/ffad244617e94efcb3da72b7beefc941167c21316148ce378f322db7af72db06468f370e23224b3c7b17b5173a7c75b134e5e7b0949f2828519054a76892508d
@@ -13641,13 +13637,6 @@ __metadata:
   version: 15.15.0
   resolution: "globals@npm:15.15.0"
   checksum: 10/7f561c87b2fd381b27fc2db7df8a4ea7a9bb378667b8a7193e61fd2ca3a876479174e2a303a74345fbea6e1242e16db48915c1fd3bf35adcf4060a795b425e18
-  languageName: node
-  linkType: hard
-
-"globals@npm:^16.4.0":
-  version: 16.5.0
-  resolution: "globals@npm:16.5.0"
-  checksum: 10/f9e8a2a13f50222c127030a619e283e7bbfe32966316bdde0715af1d15a7e40cb9c24ff52cad59671f97762ed8b515353c2f8674f560c63d9385f19ee26735a6
   languageName: node
   linkType: hard
 
@@ -17244,7 +17233,7 @@ __metadata:
     eslint-config-prettier: "npm:10.1.8"
     eslint-import-resolver-typescript: "npm:4.4.4"
     eslint-plugin-compat: "npm:7.0.1"
-    eslint-plugin-formatjs: "npm:6.4.3"
+    eslint-plugin-formatjs: "npm:6.4.4"
     eslint-plugin-import: "npm:2.32.0"
     eslint-plugin-jest: "npm:29.15.1"
     eslint-plugin-jsx-a11y: "npm:6.10.2"
@@ -17252,7 +17241,7 @@ __metadata:
     eslint-plugin-perfectionist: "npm:5.7.0"
     eslint-plugin-react: "npm:7.37.5"
     eslint-plugin-react-hooks: "npm:7.0.1"
-    eslint-plugin-unicorn: "npm:63.0.0"
+    eslint-plugin-unicorn: "npm:64.0.0"
     globals: "npm:17.4.0"
     husky: "npm:9.1.7"
     knip: "npm:6.0.6"
@@ -19488,22 +19477,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-intl@npm:10.1.0":
-  version: 10.1.0
-  resolution: "react-intl@npm:10.1.0"
+"react-intl@npm:10.1.1":
+  version: 10.1.1
+  resolution: "react-intl@npm:10.1.1"
   dependencies:
     "@formatjs/ecma402-abstract": "npm:3.2.0"
     "@formatjs/icu-messageformat-parser": "npm:3.5.3"
-    "@formatjs/intl": "npm:4.1.4"
+    "@formatjs/intl": "npm:4.1.5"
     intl-messageformat: "npm:11.2.0"
   peerDependencies:
     "@types/react": 19
     react: 19
-    typescript: ^5.6.0
-  peerDependenciesMeta:
-    typescript:
-      optional: true
-  checksum: 10/079f6b16d9b7195774cd98c460bd480eedab08bf18e09da1cd36e47434171a22131e1acaf6eb97141228bac075c6408f68a97837daa3fe0251c40ff6258aea80
+  checksum: 10/b464d1534079e5b3d2c63f571a5c37ed083b1ab256a073daf3551e3e9acb84ff9284bdc41e78ba420b94891574944e84810967664016c9a201b11a43214abdae
   languageName: node
   linkType: hard
 
@@ -22301,7 +22286,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:5.9.3, typescript@npm:^5.6.0":
+"typescript@npm:5.9.3":
   version: 5.9.3
   resolution: "typescript@npm:5.9.3"
   bin:
@@ -22311,7 +22296,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:6.0.2":
+"typescript@npm:^5.6 || 6":
   version: 6.0.2
   resolution: "typescript@npm:6.0.2"
   bin:
@@ -22321,7 +22306,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>, typescript@patch:typescript@npm%3A^5.6.0#optional!builtin<compat/typescript>":
+"typescript@patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>":
   version: 5.9.3
   resolution: "typescript@patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"
   bin:
@@ -22331,7 +22316,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@npm%3A6.0.2#optional!builtin<compat/typescript>":
+"typescript@patch:typescript@npm%3A^5.6 || 6#optional!builtin<compat/typescript>":
   version: 6.0.2
   resolution: "typescript@patch:typescript@npm%3A6.0.2#optional!builtin<compat/typescript>::version=6.0.2&hash=5786d5"
   bin:
