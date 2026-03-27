@@ -48,7 +48,7 @@ const AugmentedThemeProvider: FC<PropsWithChildren> = ({ children }) => {
   }, [direction, previewTheme, reducedMotion]);
 
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider noSsr theme={theme}>
       {previewTheme.mode && <ModeSwitcher />}
       <CssBaseline enableColorScheme />
       {children}

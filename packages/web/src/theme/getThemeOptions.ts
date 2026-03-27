@@ -86,12 +86,6 @@ const getThemeOptions = ({
           disableTouchListener: ios,
         },
       },
-
-      MuiUseMediaQuery: {
-        defaultProps: {
-          noSsr: true,
-        },
-      },
     },
 
     cssVariables: {
