@@ -50,7 +50,7 @@ const AugmentedThemeProvider: FC<PropsWithChildren> = ({ children }) => {
   return (
     <ThemeProvider noSsr theme={theme}>
       {previewTheme.mode && <ModeSwitcher />}
-      <CssBaseline enableColorScheme />
+      <CssBaseline />
       {children}
     </ThemeProvider>
   );
