@@ -2050,14 +2050,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@eslint/css@npm:1.0.0":
-  version: 1.0.0
-  resolution: "@eslint/css@npm:1.0.0"
+"@eslint/css@npm:1.1.0":
+  version: 1.1.0
+  resolution: "@eslint/css@npm:1.1.0"
   dependencies:
     "@eslint/core": "npm:^1.1.1"
     "@eslint/css-tree": "npm:^3.6.9"
     "@eslint/plugin-kit": "npm:^0.6.1"
-  checksum: 10/5131f63fb4da8bca722be552997f3325e00f366bd6a7007420fea66e571dc45ec79b4cbf1d5caeb140dbdc0cb61b012633f4d817140f8bf30c1d2509d1a61cc4
+  checksum: 10/d556cdee6e31596f3b24b56ff9fd5304bff7399b4a01db92b9e572b2f52df9a0d601515e3d321764a27f7887b4ba5b8b962d9432f67165897301bf4c38860ab6
   languageName: node
   linkType: hard
 
@@ -17219,7 +17219,7 @@ __metadata:
     "@commitlint/config-conventional": "npm:20.5.0"
     "@eslint-community/eslint-plugin-eslint-comments": "npm:4.7.1"
     "@eslint/compat": "npm:2.0.3"
-    "@eslint/css": "npm:1.0.0"
+    "@eslint/css": "npm:1.1.0"
     "@eslint/js": "npm:10.0.1"
     "@eslint/json": "npm:1.2.0"
     "@next/eslint-plugin-next": "npm:16.2.1"
