@@ -1,8 +1,4 @@
-import {
-  type Direction,
-  type PaletteMode,
-  type ThemeOptions,
-} from "@mui/material";
+import { type Direction, type ThemeOptions } from "@mui/material";
 import { common, orange } from "@mui/material/colors";
 import { deepmerge } from "@mui/utils";
 
@@ -10,12 +6,10 @@ import { ios } from "../utils/platforms";
 
 const getThemeOptions = ({
   direction,
-  mode,
   pureBlack,
   reducedMotion,
 }: {
   direction: Direction;
-  mode?: PaletteMode;
   pureBlack: boolean;
   reducedMotion: boolean;
 }): ThemeOptions => {
@@ -87,7 +81,7 @@ const getThemeOptions = ({
     },
 
     cssVariables: {
-      colorSchemeSelector: mode ? "data" : "media",
+      colorSchemeSelector: "data",
     },
 
     direction,

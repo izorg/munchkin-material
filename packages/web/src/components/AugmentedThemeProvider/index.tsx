@@ -32,13 +32,12 @@ const AugmentedThemeProvider: FC<PropsWithChildren> = ({ children }) => {
   const reducedMotion = useMediaQuery("(prefers-reduced-motion)");
 
   const theme = useMemo(() => {
-    const { id, mode, pureBlack } = previewTheme;
+    const { id, pureBlack } = previewTheme;
 
     return createTheme(
       deepmerge(
         getThemeOptions({
           direction,
-          mode,
           pureBlack,
           reducedMotion,
         }),
@@ -48,8 +47,14 @@ const AugmentedThemeProvider: FC<PropsWithChildren> = ({ children }) => {
   }, [direction, previewTheme, reducedMotion]);
 
   return (
-    <ThemeProvider noSsr theme={theme}>
-      {previewTheme.mode && <ModeSwitcher />}
+    <ThemeProvider
+      defaultMode={previewTheme.mode ?? "system"}
+      // @ts-expect-error -- type issue in MUI
+      forceThemeRerender
+      noSsr
+      theme={theme}
+    >
+      <ModeSwitcher />
       <CssBaseline />
       {children}
     </ThemeProvider>

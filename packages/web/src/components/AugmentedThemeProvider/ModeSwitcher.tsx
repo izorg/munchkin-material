@@ -8,11 +8,9 @@ export const ModeSwitcher = () => {
 
   const previewTheme = usePreviewTheme();
 
-  const themeMode = previewTheme.mode ?? "system";
-
   useEffect(() => {
-    setMode(themeMode);
-  }, [setMode, themeMode]);
+    setMode(previewTheme.mode ?? "system");
+  }, [previewTheme.mode, setMode]);
 
   return null;
 };
