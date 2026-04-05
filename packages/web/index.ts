@@ -10,6 +10,7 @@ export { WebApp } from "./src/domains/web-app";
 export { setFullVersion } from "./src/ducks/settings";
 export { setKeepAwake } from "./src/ducks/settings";
 export { default as usePresentSelector } from "./src/hooks/usePresentSelector";
+export { default as usePreviewTheme } from "./src/hooks/usePreviewTheme";
 export { useAppDispatch } from "./src/store";
 export { AppStoreLinkContext } from "./src/utils/appStoreLinkContext";
 export {

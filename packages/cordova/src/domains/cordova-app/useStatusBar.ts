@@ -3,12 +3,12 @@
 import { darken, rgbToHex, useTheme } from "@mui/material";
 import { useEffect } from "react";
 
-import { usePresentSelector } from "@munchkin/web";
+import { usePreviewTheme } from "@munchkin/web";
 
 export const useStatusBar = () => {
   const { palette } = useTheme();
 
-  const pureBlack = usePresentSelector((state) => state.theme.pureBlack);
+  const { pureBlack } = usePreviewTheme();
 
   useEffect(() => {
     if (cordova.platformId === "android") {
