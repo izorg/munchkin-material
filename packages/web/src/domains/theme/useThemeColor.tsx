@@ -1,12 +1,12 @@
 import { darken, rgbToHex, useTheme } from "@mui/material";
 import { useMemo } from "react";
 
-import usePresentSelector from "../../hooks/usePresentSelector";
+import usePreviewTheme from "../../hooks/usePreviewTheme";
 
 export const useThemeColor = () => {
   const { palette } = useTheme();
 
-  const pureBlack = usePresentSelector((state) => state.theme.pureBlack);
+  const { pureBlack } = usePreviewTheme();
 
   return useMemo(
     () =>
