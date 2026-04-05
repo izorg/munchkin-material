@@ -4270,7 +4270,7 @@ __metadata:
     "@types/react": "npm:19.2.14"
     "@types/react-dom": "npm:19.2.3"
     cordova: "npm:13.0.0"
-    cordova-android: "npm:14.0.1"
+    cordova-android: "npm:15.0.0"
     cordova-ios: "npm:8.0.1"
     cordova-plugin-buildinfo: "npm:4.0.0"
     cordova-plugin-firebase-analytics: "npm:8.0.0"
@@ -8813,13 +8813,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"abbrev@npm:^3.0.0":
-  version: 3.0.1
-  resolution: "abbrev@npm:3.0.1"
-  checksum: 10/ebd2c149dda6f543b66ce3779ea612151bb3aa9d0824f169773ee9876f1ca5a4e0adbcccc7eed048c04da7998e1825e2aa76fcca92d9e67dea50ac2b0a58dc2e
-  languageName: node
-  linkType: hard
-
 "abbrev@npm:^4.0.0":
   version: 4.0.0
   resolution: "abbrev@npm:4.0.0"
@@ -8970,7 +8963,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"android-versions@npm:^2.1.0":
+"android-versions@npm:^2.1.1":
   version: 2.1.1
   resolution: "android-versions@npm:2.1.1"
   dependencies:
@@ -10786,23 +10779,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cordova-android@npm:14.0.1":
-  version: 14.0.1
-  resolution: "cordova-android@npm:14.0.1"
+"cordova-android@npm:15.0.0":
+  version: 15.0.0
+  resolution: "cordova-android@npm:15.0.0"
   dependencies:
-    android-versions: "npm:^2.1.0"
-    cordova-common: "npm:^5.0.1"
-    dedent: "npm:^1.5.3"
+    android-versions: "npm:^2.1.1"
+    cordova-common: "npm:^6.0.0"
+    dedent: "npm:^1.7.1"
     execa: "npm:^5.1.1"
     fast-glob: "npm:^3.3.3"
     is-path-inside: "npm:^3.0.3"
-    nopt: "npm:^8.1.0"
+    nopt: "npm:^9.0.0"
     properties-parser: "npm:^0.6.0"
-    semver: "npm:^7.7.1"
-    string-argv: "npm:^0.3.1"
+    semver: "npm:^7.7.4"
+    string-argv: "npm:^0.3.2"
     untildify: "npm:^4.0.0"
-    which: "npm:^5.0.0"
-  checksum: 10/44857e54944b784096921524662eecc1cf48a612397307b2ff5c3dcd53af36cdb5c1b5b72a1fd33cdb8738b99a1925a2c62268805e7afa579b6a4230db1558d4
+    which: "npm:^6.0.1"
+  checksum: 10/6a59be11769c979a8013a801ef1a9dbcdc57b5823a6d606d55a2ef39f62fc5ff7892157327681470cb3fe721e13b3e72a3a108944a064241e96f3a573fb64eda
   languageName: node
   linkType: hard
 
@@ -10810,26 +10803,6 @@ __metadata:
   version: 7.0.0
   resolution: "cordova-app-hello-world@npm:7.0.0"
   checksum: 10/55603c96fb6448744d234dd6132ee5637a1b0d56c42d1e433b56f5fb148f7c13e52e9219430557417a1898a0d85cc905bf76a3990ed0bbf4b2d583d6cd95d369
-  languageName: node
-  linkType: hard
-
-"cordova-common@npm:^5.0.1":
-  version: 5.0.1
-  resolution: "cordova-common@npm:5.0.1"
-  dependencies:
-    "@netflix/nerror": "npm:^1.1.3"
-    ansi: "npm:^0.3.1"
-    bplist-parser: "npm:^0.3.2"
-    cross-spawn: "npm:^7.0.6"
-    elementtree: "npm:^0.1.7"
-    endent: "npm:^2.1.0"
-    fast-glob: "npm:^3.3.3"
-    lodash.zip: "npm:^4.2.0"
-    plist: "npm:^3.1.0"
-    q: "npm:^1.5.1"
-    read-chunk: "npm:^3.2.0"
-    strip-bom: "npm:^4.0.0"
-  checksum: 10/57606fa24c4d34948bf49f904cbf4422f7d22eaabc95d7ec750ee27679539cb81efe76041ddea1ced98d23a4ae89a6ad75db824dd52011c27a67cbc6acb70c7c
   languageName: node
   linkType: hard
 
@@ -11323,7 +11296,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dedent@npm:^1.5.3, dedent@npm:^1.6.0":
+"dedent@npm:^1.6.0, dedent@npm:^1.7.1":
   version: 1.7.2
   resolution: "dedent@npm:1.7.2"
   peerDependencies:
@@ -16611,13 +16584,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lodash.zip@npm:^4.2.0":
-  version: 4.2.0
-  resolution: "lodash.zip@npm:4.2.0"
-  checksum: 10/cb06530d81b520e27f1a5dbd4ec91df22f14977b56c267fa0eea7177eb407a048e5eb9a6baadbb1346ba607503211c36d763a74f933832c224a88b8d984cb4f9
-  languageName: node
-  linkType: hard
-
 "lodash@npm:^4.17.10, lodash@npm:^4.17.11, lodash@npm:^4.17.15, lodash@npm:^4.17.19, lodash@npm:^4.17.20, lodash@npm:^4.18.0, lodash@npm:^4.2.1":
   version: 4.18.1
   resolution: "lodash@npm:4.18.1"
@@ -17662,17 +17628,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nopt@npm:^8.1.0":
-  version: 8.1.0
-  resolution: "nopt@npm:8.1.0"
-  dependencies:
-    abbrev: "npm:^3.0.0"
-  bin:
-    nopt: bin/nopt.js
-  checksum: 10/26ab456c51a96f02a9e5aa8d1b80ef3219f2070f3f3528a040e32fb735b1e651e17bdf0f1476988d3a46d498f35c65ed662d122f340d38ce4a7e71dd7b20c4bc
-  languageName: node
-  linkType: hard
-
 "nopt@npm:^9.0.0":
   version: 9.0.0
   resolution: "nopt@npm:9.0.0"
@@ -18466,13 +18421,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"p-finally@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "p-finally@npm:1.0.0"
-  checksum: 10/93a654c53dc805dd5b5891bab16eb0ea46db8f66c4bfd99336ae929323b1af2b70a8b0654f8f1eae924b2b73d037031366d645f1fd18b3d30cbd15950cc4b1d4
-  languageName: node
-  linkType: hard
-
 "p-is-promise@npm:^3.0.0":
   version: 3.0.0
   resolution: "p-is-promise@npm:3.0.0"
@@ -18569,7 +18517,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"p-try@npm:^2.0.0, p-try@npm:^2.1.0":
+"p-try@npm:^2.0.0":
   version: 2.2.0
   resolution: "p-try@npm:2.2.0"
   checksum: 10/f8a8e9a7693659383f06aec604ad5ead237c7a261c18048a6e1b5b85a5f8a067e469aa24f5bc009b991ea3b058a87f5065ef4176793a200d4917349881216cae
@@ -18982,13 +18930,6 @@ __metadata:
   version: 3.0.0
   resolution: "pify@npm:3.0.0"
   checksum: 10/668c1dc8d9fc1b34b9ce3b16ba59deb39d4dc743527bf2ed908d2b914cb8ba40aa5ba6960b27c417c241531c5aafd0598feeac2d50cb15278cf9863fa6b02a77
-  languageName: node
-  linkType: hard
-
-"pify@npm:^4.0.1":
-  version: 4.0.1
-  resolution: "pify@npm:4.0.1"
-  checksum: 10/8b97cbf9dc6d4c1320cc238a2db0fc67547f9dc77011729ff353faf34f1936ea1a4d7f3c63b2f4980b253be77bcc72ea1e9e76ee3fd53cce2aafb6a8854d07ec
   languageName: node
   linkType: hard
 
@@ -19405,13 +19346,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"q@npm:^1.5.1":
-  version: 1.5.1
-  resolution: "q@npm:1.5.1"
-  checksum: 10/70c4a30b300277165cd855889cd3aa681929840a5940413297645c5691e00a3549a2a4153131efdf43fe8277ee8cf5a34c9636dcb649d83ad47f311a015fd380
-  languageName: node
-  linkType: hard
-
 "qified@npm:^0.9.0":
   version: 0.9.1
   resolution: "qified@npm:0.9.1"
@@ -19652,16 +19586,6 @@ __metadata:
   version: 19.2.4
   resolution: "react@npm:19.2.4"
   checksum: 10/18179fe217f67eb2d0bc61cd04e7ad3c282ea09a1dface7eacd71816f62609f4bbf566c447c704335284deb8397b00bca084e0cd60e6f437279a7498e2d0bfe0
-  languageName: node
-  linkType: hard
-
-"read-chunk@npm:^3.2.0":
-  version: 3.2.0
-  resolution: "read-chunk@npm:3.2.0"
-  dependencies:
-    pify: "npm:^4.0.1"
-    with-open-file: "npm:^0.1.6"
-  checksum: 10/d643eab2c5b5ceb37a8662b8d4fc853aa7dd3f11717ba962249b3062b691ef0b64f500721227724aba8464dd02ad2992d54ecf7d7b0090f83df3d5e7fadf8bb9
   languageName: node
   linkType: hard
 
@@ -21186,7 +21110,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"string-argv@npm:^0.3.1, string-argv@npm:^0.3.2":
+"string-argv@npm:^0.3.2":
   version: 0.3.2
   resolution: "string-argv@npm:0.3.2"
   checksum: 10/f9d3addf887026b4b5f997a271149e93bf71efc8692e7dc0816e8807f960b18bcb9787b45beedf0f97ff459575ee389af3f189d8b649834cac602f2e857e75af
@@ -23143,17 +23067,6 @@ __metadata:
     triple-beam: "npm:^1.3.0"
     winston-transport: "npm:^4.9.0"
   checksum: 10/8279e221d8017da601a725939d31d65de71504d8328051312a85b1b4d7ddc68634329f8d611fb1ff91cb797643409635f3e97ef5b4a650c587639e080af76b7b
-  languageName: node
-  linkType: hard
-
-"with-open-file@npm:^0.1.6":
-  version: 0.1.7
-  resolution: "with-open-file@npm:0.1.7"
-  dependencies:
-    p-finally: "npm:^1.0.0"
-    p-try: "npm:^2.1.0"
-    pify: "npm:^4.0.1"
-  checksum: 10/993b30a2afb232e4e58fe02edb15c60ef8cb7e93bc272a833a50b45f30eaa1303b08f6224a42b5981bf102eedda0a3308e090c46fdb6ae429ffeee9d6189fee8
   languageName: node
   linkType: hard
 
