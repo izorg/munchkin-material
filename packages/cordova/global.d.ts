@@ -1,3 +1,5 @@
+/// <reference types="cordova" />
+
 declare global {
   var BuildInfo: {
     debug: boolean;

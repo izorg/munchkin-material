@@ -34,7 +34,9 @@ store.register({
 });
 
 const restorePurchases =
-  cordova.platformId === "ios" ? () => store.restorePurchases() : undefined;
+  globalThis.cordova.platformId === "ios"
+    ? () => store.restorePurchases()
+    : undefined;
 
 class StoreError extends Error {
   public constructor(message: string, options: { cause: CdvPurchase.IError }) {

@@ -9,7 +9,7 @@ export const useStatusBar = () => {
   const { pureBlack } = usePreviewTheme();
 
   useEffect(() => {
-    if (cordova.platformId === "android") {
+    if (globalThis.cordova.platformId === "android") {
       globalThis.statusbar.setBackgroundColor(
         palette.mode === "dark" && pureBlack
           ? palette.background.default

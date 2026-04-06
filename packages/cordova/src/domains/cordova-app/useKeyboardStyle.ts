@@ -13,7 +13,7 @@ export const useKeyboardStyle = () => {
   const theme = useTheme();
 
   useEffect(() => {
-    if (cordova.platformId !== "ios") {
+    if (globalThis.cordova.platformId !== "ios") {
       return;
     }
 

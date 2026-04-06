@@ -15,14 +15,10 @@ export const CordovaApp = () => {
   useHeaderColor();
   useKeyboardStyle();
 
-  if (cordova.platformId === "android") {
-    return (
-      <>
-        <Insets />
-        <Keyboard />
-      </>
-    );
-  }
-
-  return null;
+  return (
+    <>
+      <Insets />
+      <Keyboard />
+    </>
+  );
 };

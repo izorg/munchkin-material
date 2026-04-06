@@ -27,6 +27,10 @@ export const Keyboard = () => {
   const [keyboardHeight, setKeyboardHeight] = useState(0);
 
   useEffect(() => {
+    if (globalThis.cordova.platformId !== "android") {
+      return;
+    }
+
     const onKeyboardToggle: KeyboardEventHandler = (event) => {
       setKeyboardHeight(event.keyboardHeight ?? 0);
     };
@@ -39,6 +43,10 @@ export const Keyboard = () => {
       globalThis.removeEventListener("keyboardWillShow", onKeyboardToggle);
     };
   }, []);
+
+  if (globalThis.cordova.platformId !== "android") {
+    return;
+  }
 
   return (
     <GlobalStyles

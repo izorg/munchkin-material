@@ -1,7 +1,7 @@
 import { GlobalStyles } from "@mui/material";
 
 export const Insets = () => {
-  if (cordova.platformId === "android") {
+  if (globalThis.cordova.platformId === "android") {
     return (
       <GlobalStyles
         styles={{
