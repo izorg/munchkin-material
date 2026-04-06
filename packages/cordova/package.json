@@ -29,7 +29,6 @@
       "ios"
     ],
     "plugins": {
-      "@totalpave/cordova-plugin-insets": {},
       "cordova-plugin-buildinfo": {},
       "cordova-plugin-firebase-analytics": {
         "ANALYTICS_COLLECTION_ENABLED": "true",
@@ -59,12 +58,11 @@
     "@munchkin/babel-preset-web": "workspace:*",
     "@munchkin/web": "workspace:*",
     "@sentry/react": "10.47.0",
-    "@totalpave/cordova-plugin-insets": "0.4.4",
     "@types/cordova": "11.0.3",
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
     "cordova": "13.0.0",
-    "cordova-android": "14.0.1",
+    "cordova-android": "15.0.0",
     "cordova-ios": "8.0.1",
     "cordova-plugin-buildinfo": "4.0.0",
     "cordova-plugin-firebase-analytics": "8.0.0",

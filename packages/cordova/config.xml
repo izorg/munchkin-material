@@ -21,9 +21,7 @@
     <platform name="android">
         <name>Counter</name>
         <allow-intent href="market:*" />
-        <preference name="AndroidPostSplashScreenTheme" value="@style/Theme.AppCompat.DayNight.NoActionBar"/>
         <preference name="AndroidWindowSplashScreenAnimatedIcon" value="res/android/splash-screen-icon.png" />
-        <preference name="AndroidWindowSplashScreenBackground" value="#fafafa" />
         <preference name="GradlePluginGoogleServicesEnabled" value="true" />
         <preference name="HeaderColor" value="#3c2a24" />
         <preference name="StatusBarStyle" value="lightcontent" />
@@ -55,7 +53,6 @@
         <resource-file src="res/android/values-tr/strings.xml" target="app/src/main/res/values-tr/strings.xml" />
         <resource-file src="res/android/values-uk/strings.xml" target="app/src/main/res/values-uk/strings.xml" />
         <resource-file src="google-services.json" target="app/google-services.json" />
-        <resource-file src="res/android/values-night/colors.xml" target="app/src/main/res/values-night/colors.xml" />
         <resource-file src="res/android/resources.properties" target="app/src/main/res/resources.properties" />
         <hook type="before_build" src="scripts/copy-gradle-extras.js" />
     </platform>
