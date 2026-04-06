@@ -1,5 +1,3 @@
-/// <reference types="cordova-plugin-statusbar" />
-
 import { darken, rgbToHex, useTheme } from "@mui/material";
 import { useEffect } from "react";
 
@@ -12,13 +10,11 @@ export const useStatusBar = () => {
 
   useEffect(() => {
     if (cordova.platformId === "android") {
-      setTimeout(() => {
-        globalThis.StatusBar.backgroundColorByHexString(
-          palette.mode === "dark" && pureBlack
-            ? palette.background.default
-            : rgbToHex(darken(palette.primary.main, 0.5)),
-        );
-      }, 100);
+      globalThis.statusbar.setBackgroundColor(
+        palette.mode === "dark" && pureBlack
+          ? palette.background.default
+          : rgbToHex(darken(palette.primary.main, 0.5)),
+      );
     }
   }, [
     palette.background.default,
@@ -26,14 +22,4 @@ export const useStatusBar = () => {
     palette.primary.main,
     pureBlack,
   ]);
-
-  useEffect(() => {
-    if (cordova.platformId === "ios") {
-      if (palette.mode === "dark") {
-        globalThis.StatusBar.styleLightContent();
-      } else {
-        globalThis.StatusBar.styleDefault();
-      }
-    }
-  }, [palette.mode]);
 };

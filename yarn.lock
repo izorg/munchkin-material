@@ -4278,7 +4278,6 @@ __metadata:
     cordova-plugin-insomnia: "npm:4.3.0"
     cordova-plugin-ionic-keyboard: "npm:2.2.0"
     cordova-plugin-purchase: "npm:13.13.1"
-    cordova-plugin-statusbar: "npm:4.0.0"
     cordova-plugin-vibration: "npm:3.1.1"
     cordova-plugin-web-share: "npm:1.4.2"
     cordova-support-android-plugin: "npm:2.0.4"
@@ -10928,13 +10927,6 @@ __metadata:
   version: 13.13.1
   resolution: "cordova-plugin-purchase@npm:13.13.1"
   checksum: 10/79a64e484ecf180403f7305ff3cc244b3c198ee1298622ba8ebeb54194b4af52d54961a2f9aef7b01bb7b3728903d545de93e40622c958101a4b472b1c2f387b
-  languageName: node
-  linkType: hard
-
-"cordova-plugin-statusbar@npm:4.0.0":
-  version: 4.0.0
-  resolution: "cordova-plugin-statusbar@npm:4.0.0"
-  checksum: 10/5a27e77d8c365d34c3245d8c2b8ae0eee9ce2d773b9d45a8d5fa3398749fe3924e059ff0e95591175b542b49de5ed3ef395c9e6471aaf0b31595d40e366e938b
   languageName: node
   linkType: hard
 

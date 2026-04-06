@@ -16,6 +16,10 @@ declare global {
       }
     | undefined;
 
+  interface BarProp {
+    setBackgroundColor: (color: string) => void;
+  }
+
   interface Navigator {
     app: {
       exitApp: () => void;
