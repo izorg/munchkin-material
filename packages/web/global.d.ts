@@ -1,3 +1,5 @@
+/// <reference types="parcel-env" />
+
 import { type EnhancedStore } from "@reduxjs/toolkit";
 
 declare global {
