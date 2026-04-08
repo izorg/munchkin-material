@@ -1,3 +1,5 @@
+/// <reference types="node" />
+/// <reference types="parcel-env" />
 /// <reference types="cordova" />
 
 declare global {
