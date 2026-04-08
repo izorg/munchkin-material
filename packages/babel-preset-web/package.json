@@ -6,7 +6,7 @@
   "devDependencies": {
     "@babel/core": "7.29.0",
     "@parcel/babel-preset-env": "2.16.4",
-    "@sentry/babel-plugin-component-annotate": "5.1.1",
+    "@sentry/babel-plugin-component-annotate": "5.2.0",
     "babel-plugin-react-compiler": "1.0.0"
   }
 }

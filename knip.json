@@ -4,7 +4,6 @@
     "@munchkin/babel-preset-web",
     "@parcel/*",
     "@semantic-release/*",
-    "@types/parcel-env",
     "conventional-changelog-conventionalcommits",
     "cordova-*",
     "semantic-release"
