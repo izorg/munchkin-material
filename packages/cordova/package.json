@@ -53,7 +53,7 @@
     }
   },
   "devDependencies": {
-    "@mui/material": "7.3.10",
+    "@mui/material": "9.0.0",
     "@munchkin/babel-preset-web": "workspace:*",
     "@munchkin/web": "workspace:*",
     "@sentry/react": "10.47.0",
