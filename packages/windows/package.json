@@ -2,7 +2,7 @@
   "name": "@munchkin/windows",
   "private": true,
   "sideEffects": [
-    "src/index.ts",
+    "src/index.tsx",
     "src/polyfills.ts"
   ],
   "targets": {
