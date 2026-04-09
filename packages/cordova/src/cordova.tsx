@@ -10,7 +10,6 @@ import {
   AugmentedThemeProvider,
   LocaleProvider,
   ReduxProvider,
-  WebApp,
 } from "@munchkin/web";
 
 import AppStoreLinkProvider from "./components/AppStoreLinkProvider";
@@ -47,7 +46,6 @@ root.render(
                 <MemoryRouter>
                   <AugmentedThemeProvider>
                     <CordovaApp />
-                    <WebApp />
                     <App />
                   </AugmentedThemeProvider>
                 </MemoryRouter>

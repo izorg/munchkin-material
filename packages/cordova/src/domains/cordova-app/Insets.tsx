@@ -6,10 +6,10 @@ export const Insets = () => {
       <GlobalStyles
         styles={{
           ":root": {
-            "--inset-bottom": "0px",
-            "--inset-left": "0px",
-            "--inset-right": "0px",
-            "--inset-top": "0px",
+            "--inset-bottom": "var(--safe-area-inset-bottom, 0px)",
+            "--inset-left": "var(--safe-area-inset-left, 0px)",
+            "--inset-right": "var(--safe-area-inset-right, 0px)",
+            "--inset-top": "var(--safe-area-inset-top, 0px)",
           },
         }}
       />

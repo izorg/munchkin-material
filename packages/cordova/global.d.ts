@@ -1,12 +1,14 @@
 /// <reference types="node" />
 /// <reference types="parcel-env" />
 /// <reference types="cordova" />
+/// <reference types="cordova-plugin-device" />
+/// <reference types="cordova-plugin-statusbar" />
 
 declare global {
-  var BuildInfo: {
+  var BuildInfo: Readonly<{
     debug: boolean;
     version: string;
-  };
+  }>;
 
   var plugins:
     | {

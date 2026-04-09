@@ -4292,12 +4292,15 @@ __metadata:
     cordova-android: "npm:15.0.0"
     cordova-ios: "npm:8.0.1"
     cordova-plugin-buildinfo: "npm:4.0.0"
+    cordova-plugin-device: "npm:3.0.0"
     cordova-plugin-firebase-analytics: "npm:8.0.0"
     cordova-plugin-firebase-crash: "npm:8.0.2"
     cordova-plugin-headercolor: "npm:1.0.0"
+    cordova-plugin-inset-injector: "https://github.com/ionic-team/cordova-plugin-inset-injector.git"
     cordova-plugin-insomnia: "npm:4.3.0"
     cordova-plugin-ionic-keyboard: "npm:2.2.0"
     cordova-plugin-purchase: "npm:13.13.1"
+    cordova-plugin-statusbar: "npm:4.0.0"
     cordova-plugin-vibration: "npm:3.1.1"
     cordova-plugin-web-share: "npm:1.4.2"
     cordova-support-android-plugin: "npm:2.0.4"
@@ -10811,6 +10814,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"cordova-plugin-device@npm:3.0.0":
+  version: 3.0.0
+  resolution: "cordova-plugin-device@npm:3.0.0"
+  checksum: 10/0e6ebaf92c5e449ed029b6383a35bef6741e6cdb802133cc9a3fd9e2bb3801da5199360adfcb74b76d9b9945ab2f2d3a0c8eaf355ce342982752318468ca6a2c
+  languageName: node
+  linkType: hard
+
 "cordova-plugin-firebase-analytics@npm:8.0.0":
   version: 8.0.0
   resolution: "cordova-plugin-firebase-analytics@npm:8.0.0"
@@ -10834,6 +10844,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"cordova-plugin-inset-injector@https://github.com/ionic-team/cordova-plugin-inset-injector.git":
+  version: 3.0.0
+  resolution: "cordova-plugin-inset-injector@https://github.com/ionic-team/cordova-plugin-inset-injector.git#commit=2550f536fb08146b4e25db6632fa2921177a221d"
+  checksum: 10/6d6c3037f815b98dd7808ae141ed59ac35b1f7909ddf1a25b44db8efd849def859d9c86ef97502caa4f7c56a4233e40bea0f0de48c040bc308e85ad140058e7d
+  languageName: node
+  linkType: hard
+
 "cordova-plugin-insomnia@npm:4.3.0":
   version: 4.3.0
   resolution: "cordova-plugin-insomnia@npm:4.3.0"
@@ -10852,6 +10869,13 @@ __metadata:
   version: 13.13.1
   resolution: "cordova-plugin-purchase@npm:13.13.1"
   checksum: 10/79a64e484ecf180403f7305ff3cc244b3c198ee1298622ba8ebeb54194b4af52d54961a2f9aef7b01bb7b3728903d545de93e40622c958101a4b472b1c2f387b
+  languageName: node
+  linkType: hard
+
+"cordova-plugin-statusbar@npm:4.0.0":
+  version: 4.0.0
+  resolution: "cordova-plugin-statusbar@npm:4.0.0"
+  checksum: 10/5a27e77d8c365d34c3245d8c2b8ae0eee9ce2d773b9d45a8d5fa3398749fe3924e059ff0e95591175b542b49de5ed3ef395c9e6471aaf0b31595d40e366e938b
   languageName: node
   linkType: hard
 

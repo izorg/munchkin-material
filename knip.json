@@ -1,7 +1,7 @@
 {
   "$schema": "node_modules/knip/schema.json",
   "ignoreDependencies": [
-    "@munchkin/babel-preset-web",
+    "@munchkin/*",
     "@parcel/*",
     "@semantic-release/*",
     "conventional-changelog-conventionalcommits",
