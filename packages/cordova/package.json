@@ -54,8 +54,6 @@
   },
   "devDependencies": {
     "@mui/material": "9.0.0",
-    "@munchkin/babel-preset-web": "workspace:*",
-    "@munchkin/web": "workspace:*",
     "@sentry/react": "10.47.0",
     "@types/cordova": "11.0.3",
     "@types/parcel-env": "0.0.9",

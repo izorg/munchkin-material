@@ -31,7 +31,6 @@
     "@mdi/js": "7.4.47",
     "@mui/material": "9.0.0",
     "@mui/utils": "9.0.0",
-    "@munchkin/babel-preset-web": "workspace:*",
     "@react-aria/interactions": "3.27.1",
     "@react-aria/utils": "3.33.1",
     "@reduxjs/toolkit": "2.11.2",
