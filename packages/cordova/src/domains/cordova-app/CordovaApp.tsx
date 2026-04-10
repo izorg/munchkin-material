@@ -1,5 +1,4 @@
 import { Insets } from "./Insets";
-import { Keyboard } from "./Keyboard";
 import { useExitApp } from "./useExitApp";
 import { useHeaderColor } from "./useHeaderColor";
 import { useHideSplashScreen } from "./useHideSplashScreen";
@@ -9,16 +8,11 @@ import { useStatusBar } from "./useStatusBar";
 
 export const CordovaApp = () => {
   useExitApp();
-  useNavigationBreadcrumbs();
-  useHideSplashScreen();
-  useStatusBar();
   useHeaderColor();
+  useHideSplashScreen();
   useKeyboardStyle();
+  useNavigationBreadcrumbs();
+  useStatusBar();
 
-  return (
-    <>
-      <Insets />
-      <Keyboard />
-    </>
-  );
+  return <Insets />;
 };

@@ -10,6 +10,12 @@ declare global {
     version: string;
   }>;
 
+  var Keyboard:
+    | {
+        setKeyboardStyle: (color: "dark" | "light") => void;
+      }
+    | undefined;
+
   var plugins:
     | {
         headerColor?: {

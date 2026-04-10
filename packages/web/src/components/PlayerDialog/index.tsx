@@ -57,20 +57,15 @@ const PlayerDialog = () => {
     >
       <PlayerDialogTitle />
       <DialogContent
-        sx={[
-          (theme) => ({
-            paddingLeft: "calc(24px + var(--inset-left)) /*! @noflip */",
-            paddingRight: "calc(24px + var(--inset-right)) /*! @noflip */",
+        sx={(theme) => ({
+          paddingLeft: "calc(24px + var(--inset-left)) /*! @noflip */",
+          paddingRight: "calc(24px + var(--inset-right)) /*! @noflip */",
 
-            [theme.breakpoints.up("md")]: {
-              alignSelf: "center",
-              width: "600px",
-            },
-          }),
-          fullScreen && {
-            paddingBottom: "calc(20px + var(--keyboard-height))",
+          [theme.breakpoints.up("md")]: {
+            alignSelf: "center",
+            width: "600px",
           },
-        ]}
+        })}
       >
         <PlayerForm />
       </DialogContent>
