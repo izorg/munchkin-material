@@ -3,6 +3,7 @@ import { fixupConfigRules } from "@eslint/compat";
 import css from "@eslint/css";
 import js from "@eslint/js";
 import json from "@eslint/json";
+import html from "@html-eslint/eslint-plugin";
 import next from "@next/eslint-plugin-next";
 import gitignore from "eslint-config-flat-gitignore";
 import prettier from "eslint-config-prettier/flat";
@@ -214,6 +215,27 @@ export default defineConfig(
     rules: {
       "css/no-invalid-at-rules": "off",
       "css/use-baseline": "off",
+    },
+  },
+  {
+    extends: [html.configs.recommended],
+    files: ["**/*.html"],
+    language: "html/html",
+    rules: {
+      "html/indent": ["error", 2],
+      "html/no-extra-spacing-attrs": [
+        "error",
+        {
+          enforceBeforeSelfClose: true,
+        },
+      ],
+      "html/require-closing-tags": [
+        "error",
+        {
+          selfClosing: "always",
+        },
+      ],
+      "html/use-baseline": "off",
     },
   },
   {
