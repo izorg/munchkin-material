@@ -53,8 +53,8 @@ export default defineConfig({
       use: {
         ...devices["Desktop Edge HiDPI"],
         viewport: {
-          height: 1080,
-          width: 1920,
+          height: 768,
+          width: 1366,
         },
       },
     },
