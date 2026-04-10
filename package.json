@@ -15,7 +15,7 @@
     "check-prettier": "prettier --cache --check --ignore-unknown .",
     "check-stylelint": "stylelint --cache \"**/*.css\"",
     "check-types": "tsc",
-    "clean-cache": "rm -rf .parcel-cache",
+    "clean": "yarn g:rimraf .parcel-cache/ node_modules/.cache/ .eslintcache .stylelintcache && yarn workspaces foreach --all run clean",
     "format": "prettier --cache --ignore-unknown --write .",
     "get-version": "node --no-warnings scripts/version.js",
     "postinstall": "husky || true",
