@@ -12110,9 +12110,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-jest@npm:29.15.1":
-  version: 29.15.1
-  resolution: "eslint-plugin-jest@npm:29.15.1"
+"eslint-plugin-jest@npm:29.15.2":
+  version: 29.15.2
+  resolution: "eslint-plugin-jest@npm:29.15.2"
   dependencies:
     "@typescript-eslint/utils": "npm:^8.0.0"
   peerDependencies:
@@ -12127,7 +12127,7 @@ __metadata:
       optional: true
     typescript:
       optional: true
-  checksum: 10/436ae3c695f0dfe443e19d0ad94ede6e78adfaf47ba89db7046ac77b0e82127ad12ac2ed50846ef9f360d6c1bd5f0d2841b7fe5ff6e246eb069b0e85197a42fd
+  checksum: 10/c7bc4dc705e5613e51a1d19bb924a439db9897c67e694f091e29dbacaa218b758040aacbb8d3f9136f2af0171ad69c1c49736b5e3f30098bdf44d4c1e93c6381
   languageName: node
   linkType: hard
 
@@ -16012,9 +16012,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"knip@npm:6.3.1":
-  version: 6.3.1
-  resolution: "knip@npm:6.3.1"
+"knip@npm:6.4.0":
+  version: 6.4.0
+  resolution: "knip@npm:6.4.0"
   dependencies:
     "@nodelib/fs.walk": "npm:^1.2.3"
     fast-glob: "npm:^3.3.3"
@@ -16034,7 +16034,7 @@ __metadata:
   bin:
     knip: bin/knip.js
     knip-bun: bin/knip-bun.js
-  checksum: 10/575949d918259b05f464b2fe89076fa0c6c31905dda5f857b6843c65412f35d0ec55dd19abf151f190bc32fe3dd8cb74cccb91b3d6257e1dc43f204d1731e8f6
+  checksum: 10/52048cc280f8086c8f0a361012e3bc65e54f934c14933fb13a914799a4a9416c756fdee85eda8567fe2ee33eaed3d2a49adc3ebec0c2e5227e8d3999c54fa833
   languageName: node
   linkType: hard
 
@@ -17343,7 +17343,7 @@ __metadata:
     eslint-plugin-compat: "npm:7.0.1"
     eslint-plugin-formatjs: "npm:6.4.4"
     eslint-plugin-import: "npm:2.32.0"
-    eslint-plugin-jest: "npm:29.15.1"
+    eslint-plugin-jest: "npm:29.15.2"
     eslint-plugin-jsx-a11y: "npm:6.10.2"
     eslint-plugin-only-error: "npm:1.0.2"
     eslint-plugin-perfectionist: "npm:5.8.0"
@@ -17352,10 +17352,10 @@ __metadata:
     eslint-plugin-unicorn: "npm:64.0.0"
     globals: "npm:17.4.0"
     husky: "npm:9.1.7"
-    knip: "npm:6.3.1"
+    knip: "npm:6.4.0"
     lint-staged: "npm:16.4.0"
     oxlint: "npm:1.59.0"
-    prettier: "npm:3.8.1"
+    prettier: "npm:3.8.2"
     rimraf: "npm:6.1.3"
     semantic-release: "npm:25.0.3"
     stylelint: "npm:17.6.0"
@@ -19183,12 +19183,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:3.8.1":
-  version: 3.8.1
-  resolution: "prettier@npm:3.8.1"
+"prettier@npm:3.8.2":
+  version: 3.8.2
+  resolution: "prettier@npm:3.8.2"
   bin:
     prettier: bin/prettier.cjs
-  checksum: 10/3da1cf8c1ef9bea828aa618553696c312e951f810bee368f6887109b203f18ee869fe88f66e65f9cf60b7cb1f2eae859892c860a300c062ff8ec69c381fc8dbd
+  checksum: 10/fd784175bc600c07eb2c44d7ec4ee7133f95f26492adad61b6a15c06f438b858181faf096ab74163d7f49500ad80cff4479c6abb084e161a2e85a9df5974ecd1
   languageName: node
   linkType: hard
 
