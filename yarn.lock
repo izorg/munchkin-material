@@ -3025,7 +3025,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@html-eslint/parser@npm:0.59.0, @html-eslint/parser@npm:^0.59.0":
+"@html-eslint/parser@npm:^0.59.0":
   version: 0.59.0
   resolution: "@html-eslint/parser@npm:0.59.0"
   dependencies:
@@ -17329,7 +17329,6 @@ __metadata:
     "@eslint/js": "npm:9.39.4"
     "@eslint/json": "npm:1.2.0"
     "@html-eslint/eslint-plugin": "npm:0.59.0"
-    "@html-eslint/parser": "npm:0.59.0"
     "@next/eslint-plugin-next": "npm:16.2.3"
     "@semantic-release/commit-analyzer": "npm:13.0.1"
     "@semantic-release/github": "npm:12.0.6"
