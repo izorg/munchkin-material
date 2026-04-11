@@ -4277,6 +4277,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@mui/stylis-plugin-rtl@npm:9.0.0":
+  version: 9.0.0
+  resolution: "@mui/stylis-plugin-rtl@npm:9.0.0"
+  dependencies:
+    "@babel/runtime": "npm:^7.29.2"
+    cssjanus: "npm:^2.3.0"
+  peerDependencies:
+    stylis: 4.x
+  checksum: 10/64253257cb2b5bd4228fa0b1d137204146660232e73e69f3dba649e2d2f55a9d97bc68f004594b77d3d6560d54623391bab5997a1545f3224691070b3d6f08fd
+  languageName: node
+  linkType: hard
+
 "@mui/system@npm:^9.0.0":
   version: 9.0.0
   resolution: "@mui/system@npm:9.0.0"
@@ -4423,6 +4435,7 @@ __metadata:
     "@mdi/js": "npm:7.4.47"
     "@mui/material": "npm:9.0.0"
     "@mui/material-nextjs": "npm:9.0.0"
+    "@mui/stylis-plugin-rtl": "npm:9.0.0"
     "@next/third-parties": "npm:16.2.3"
     "@sentry/nextjs": "npm:10.48.0"
     "@types/react": "npm:19.2.14"
@@ -4435,7 +4448,6 @@ __metadata:
     react-dom: "npm:19.2.5"
     react-intl: "npm:10.1.1"
     stylis: "npm:4.3.6"
-    stylis-plugin-rtl: "npm:2.1.1"
     typescript: "npm:6.0.2"
   languageName: unknown
   linkType: soft
@@ -4461,6 +4473,7 @@ __metadata:
     "@jest/globals": "npm:30.3.0"
     "@mdi/js": "npm:7.4.47"
     "@mui/material": "npm:9.0.0"
+    "@mui/stylis-plugin-rtl": "npm:9.0.0"
     "@mui/utils": "npm:9.0.0"
     "@react-aria/interactions": "npm:3.27.1"
     "@react-aria/utils": "npm:3.33.1"
@@ -4484,7 +4497,6 @@ __metadata:
     redux: "npm:5.0.1"
     redux-undo: "npm:1.1.1"
     stylis: "npm:4.3.6"
-    stylis-plugin-rtl: "npm:2.1.1"
     typescript: "npm:6.0.2"
     uuid: "npm:13.0.0"
     workbox-window: "npm:7.4.0"
@@ -11165,7 +11177,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cssjanus@npm:^2.0.1":
+"cssjanus@npm:^2.3.0":
   version: 2.3.0
   resolution: "cssjanus@npm:2.3.0"
   checksum: 10/eaa78f8b6047f52ea504964fd15b3f92b4d3603dd50350ad3c8c53dc51db8d4f75bac54570cd281df8ac368ed8759ccc677ae3cb53583af051688d63dc329232
@@ -21549,17 +21561,6 @@ __metadata:
   bin:
     stylelint: bin/stylelint.mjs
   checksum: 10/ff9a22baa9d5008b16555b1a075ed8db4e08207fa8f160ba1912b8a66be875f4abd92492a212c91860df6615164f9a211e156cd5f44b8012ec365d1e23984a41
-  languageName: node
-  linkType: hard
-
-"stylis-plugin-rtl@npm:2.1.1":
-  version: 2.1.1
-  resolution: "stylis-plugin-rtl@npm:2.1.1"
-  dependencies:
-    cssjanus: "npm:^2.0.1"
-  peerDependencies:
-    stylis: 4.x
-  checksum: 10/262d2c762216556ed3dc8218ea5929ae24b4b0fae020eb41c217911e6628374009d1e1b24256ed6a2f39cbbf302a877f2efe912b628c71dd15fde90866ca54ca
   languageName: node
   linkType: hard
 

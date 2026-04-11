@@ -2,9 +2,9 @@
 
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v16-appRouter";
+import rtlPlugin from "@mui/stylis-plugin-rtl";
 import { type PropsWithChildren, useMemo } from "react";
 import { prefixer } from "stylis";
-import rtlPlugin from "stylis-plugin-rtl";
 
 import { theme } from "./theme";
 

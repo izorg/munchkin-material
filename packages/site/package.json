@@ -21,6 +21,7 @@
     "@mdi/js": "7.4.47",
     "@mui/material": "9.0.0",
     "@mui/material-nextjs": "9.0.0",
+    "@mui/stylis-plugin-rtl": "9.0.0",
     "@next/third-parties": "16.2.3",
     "@sentry/nextjs": "10.48.0",
     "@types/react": "19.2.14",
@@ -33,7 +34,6 @@
     "react-dom": "19.2.5",
     "react-intl": "10.1.1",
     "stylis": "4.3.6",
-    "stylis-plugin-rtl": "2.1.1",
     "typescript": "6.0.2"
   }
 }
