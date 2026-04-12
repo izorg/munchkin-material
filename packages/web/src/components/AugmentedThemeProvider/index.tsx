@@ -49,7 +49,6 @@ const AugmentedThemeProvider: FC<PropsWithChildren> = ({ children }) => {
   return (
     <ThemeProvider
       defaultMode={previewTheme.mode ?? "system"}
-      // @ts-expect-error -- type issue in MUI
       forceThemeRerender
       noSsr
       theme={theme}
