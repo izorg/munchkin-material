@@ -1,4 +1,5 @@
 /// <reference types="parcel-env" />
+/// <reference types="@mui/material/themeCssVarsAugmentation" />
 
 import { type EnhancedStore } from "@reduxjs/toolkit";
 
