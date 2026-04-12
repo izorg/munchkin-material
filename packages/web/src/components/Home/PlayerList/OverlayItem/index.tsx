@@ -1,16 +1,10 @@
-import { mdiDragHorizontalVariant as dragIcon } from "@mdi/js";
-import {
-  IconButton,
-  ListItem,
-  ListItemAvatar,
-  Paper,
-  SvgIcon,
-} from "@mui/material";
+import { ListItem, ListItemAvatar } from "@mui/material";
 import { type FC } from "react";
 
 import usePresentSelector from "../../../../hooks/usePresentSelector";
 import PlayerAvatar from "../../../PlayerAvatar";
 import PlayerListItemText from "../../../PlayerListItemText";
+import { DragIconButton } from "../Item/DragIconButton";
 
 type HomePlayerListOverlayItemProps = { playerId: string };
 
@@ -24,27 +18,22 @@ const HomePlayerListOverlayItem: FC<HomePlayerListOverlayItemProps> = (
 
   return (
     <ListItem
-      component={Paper}
-      elevation={1}
       secondaryAction={
-        <IconButton
+        <DragIconButton
           component="span"
           disableRipple
           edge="end"
           sx={{
             touchAction: "none",
           }}
-        >
-          <SvgIcon>
-            <path d={dragIcon} />
-          </SvgIcon>
-        </IconButton>
+        />
       }
-      square
       sx={[
-        {
+        (theme) => ({
+          backgroundColor: theme.vars.palette.background.paper,
+          boxShadow: theme.vars.shadows[1],
           width: "100%",
-        },
+        }),
         (theme) =>
           theme.direction === "rtl"
             ? {

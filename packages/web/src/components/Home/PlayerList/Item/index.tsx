@@ -118,9 +118,6 @@ const HomePlayerListItem = (props: HomePlayerListItemProps) => {
         transition,
       }}
       sx={[
-        {
-          outline: "none",
-        },
         editMode &&
           ((theme) => ({
             "& > .MuiListItemButton-root":
