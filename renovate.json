@@ -1,4 +1,10 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:best-practices"]
+  "extends": ["config:best-practices"],
+  "packageRules": [
+    {
+      "allowedVersions": "<10",
+      "matchPackageNames": ["@eslint/js", "eslint"]
+    }
+  ]
 }
