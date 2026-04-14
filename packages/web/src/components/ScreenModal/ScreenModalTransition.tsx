@@ -1,10 +1,9 @@
 import { Fade, Slide, useMediaQuery } from "@mui/material";
 import { type TransitionProps } from "@mui/material/transitions";
-import { type ReactElement, useEffect } from "react";
+import { type ReactElement } from "react";
 
+import { useInitialAppear } from "../../domains/ui";
 import { ios } from "../../utils/platforms";
-
-let initialRender = true;
 
 type ScreenModalTransitionProps = { children: ReactElement } & Omit<
   TransitionProps,
@@ -15,11 +14,7 @@ export const ScreenModalTransition = ({
   appear: appearProps,
   ...rest
 }: ScreenModalTransitionProps) => {
-  useEffect(() => {
-    initialRender = false;
-  }, []);
-
-  const appear = initialRender ? false : appearProps;
+  const appear = useInitialAppear(appearProps);
 
   const slide = useMediaQuery((theme) => theme.breakpoints.down("lg")) && ios;
 

@@ -1,18 +1,10 @@
 import { Modal, type ModalProps, Paper } from "@mui/material";
-import { type TransitionProps } from "@mui/material/transitions";
 
 import { ScreenModalTransition } from "./ScreenModalTransition";
 
-type ScreenModalProps = ModalProps & Pick<TransitionProps, "appear">;
-
-export const ScreenModal = ({
-  appear = true,
-  children,
-  open,
-  ...rest
-}: ScreenModalProps) => (
+export const ScreenModal = ({ children, open, ...rest }: ModalProps) => (
   <Modal hideBackdrop open={open} {...rest}>
-    <ScreenModalTransition appear={appear} in={open}>
+    <ScreenModalTransition in={open}>
       <Paper
         elevation={0}
         sx={[
@@ -29,5 +21,3 @@ export const ScreenModal = ({
     </ScreenModalTransition>
   </Modal>
 );
-
-export default ScreenModal;

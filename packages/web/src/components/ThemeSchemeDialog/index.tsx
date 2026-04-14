@@ -1,7 +1,6 @@
 import {
   Box,
   Checkbox,
-  Dialog,
   DialogActions,
   DialogContent,
   DialogTitle,
@@ -15,6 +14,7 @@ import { type ChangeEvent, type SyntheticEvent } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { useSearchParams } from "react-router";
 
+import { RouteDialog } from "../../domains/ui";
 import { setTheme } from "../../ducks/theme";
 import usePreviewTheme from "../../hooks/usePreviewTheme";
 import themeMessages from "../../messages/theme";
@@ -78,7 +78,7 @@ const ThemeSchemeDialog = () => {
   const onClose = () => goBack();
 
   return (
-    <Dialog onClose={onClose} open={open}>
+    <RouteDialog onClose={onClose} open={open}>
       <DialogTitle>{intl.formatMessage(themeMessages.label)}</DialogTitle>
       <DialogContent>
         <Box component="form" id="theme-setup" onSubmit={onSubmit}>
@@ -128,7 +128,7 @@ const ThemeSchemeDialog = () => {
         <CancelButton onClick={onClose} />
         <SubmitButton form="theme-setup" />
       </DialogActions>
-    </Dialog>
+    </RouteDialog>
   );
 };
 

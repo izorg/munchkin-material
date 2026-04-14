@@ -1,12 +1,8 @@
-import {
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogTitle,
-} from "@mui/material";
+import { DialogActions, DialogContent, DialogTitle } from "@mui/material";
 import { useIntl } from "react-intl";
 import { useSearchParams } from "react-router";
 
+import { RouteDialog } from "../../domains/ui";
 import levelLimitMessages from "../../messages/levelLimit";
 import { useGoBack } from "../../utils/location";
 import CancelButton from "../CancelButton";
@@ -25,7 +21,7 @@ const LevelLimitDialog = () => {
   const goBack = useGoBack();
 
   return (
-    <Dialog onClose={goBack} open={open}>
+    <RouteDialog onClose={goBack} open={open}>
       <DialogTitle>{intl.formatMessage(levelLimitMessages.label)}</DialogTitle>
       <DialogContent>
         <LevelLimitForm id={formId} onSubmit={goBack} />
@@ -34,7 +30,7 @@ const LevelLimitDialog = () => {
         <CancelButton onClick={goBack} />
         <SubmitButton form={formId} />
       </DialogActions>
-    </Dialog>
+    </RouteDialog>
   );
 };
 

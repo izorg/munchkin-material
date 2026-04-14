@@ -1,6 +1,7 @@
 import { Popover, type PopoverProps } from "@mui/material";
 import { type FC } from "react";
 
+import { useInitialAppear } from "../../../domains/ui";
 import availableColors, {
   type AvailableColor,
 } from "../../../utils/availableColors";
@@ -23,6 +24,9 @@ const ColorPickerPopover: FC<ColorPickerPopoverProps> = ({
         sx: {
           maxWidth: 288,
         },
+      },
+      transition: {
+        appear: useInitialAppear(),
       },
     }}
     {...props}

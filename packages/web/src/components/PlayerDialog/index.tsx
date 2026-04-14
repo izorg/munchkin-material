@@ -1,7 +1,8 @@
-import { Dialog, DialogContent } from "@mui/material";
+import { DialogContent } from "@mui/material";
 import { useEffect, useRef } from "react";
 import { useSearchParams } from "react-router";
 
+import { RouteDialog } from "../../domains/ui";
 import usePresentSelector from "../../hooks/usePresentSelector";
 import { useGoBack } from "../../utils/location";
 
@@ -34,7 +35,7 @@ const PlayerDialog = () => {
   const fullScreen = useFullScreen();
 
   return (
-    <Dialog
+    <RouteDialog
       disableRestoreFocus
       fullScreen={fullScreen}
       hideBackdrop={fullScreen}
@@ -70,7 +71,7 @@ const PlayerDialog = () => {
         <PlayerForm />
       </DialogContent>
       {!fullScreen && <PlayerDialogActions />}
-    </Dialog>
+    </RouteDialog>
   );
 };
 

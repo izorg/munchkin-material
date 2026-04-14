@@ -9,7 +9,6 @@ import {
 import {
   Box,
   ButtonBase,
-  Dialog,
   type DialogProps,
   SvgIcon,
   Zoom,
@@ -18,6 +17,7 @@ import { useCallback, useState } from "react";
 import { useSearchParams } from "react-router";
 import { SwitchTransition } from "react-transition-group";
 
+import { RouteDialog } from "../../domains/ui";
 import { throwDice } from "../../ducks/dice";
 import usePresentSelector from "../../hooks/usePresentSelector";
 import { useAppDispatch } from "../../store";
@@ -57,7 +57,7 @@ const DiceDialog = (props: Partial<DialogProps>) => {
   const diceIcon = diceIcons[dice];
 
   return (
-    <Dialog {...props} onClose={goBack} open={open}>
+    <RouteDialog {...props} onClose={goBack} open={open}>
       <ButtonBase
         autoFocus
         disableRipple
@@ -96,7 +96,7 @@ const DiceDialog = (props: Partial<DialogProps>) => {
           </Zoom>
         </SwitchTransition>
       </ButtonBase>
-    </Dialog>
+    </RouteDialog>
   );
 };
 

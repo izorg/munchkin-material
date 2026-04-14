@@ -1,5 +1,4 @@
 import {
-  Dialog,
   DialogActions,
   DialogContent,
   DialogTitle,
@@ -11,6 +10,7 @@ import { useMemo } from "react";
 import { FormattedMessage } from "react-intl";
 import { useSearchParams } from "react-router";
 
+import { RouteDialog } from "../../../domains/ui";
 import { setCombatHelper } from "../../../ducks/combat/actions";
 import usePresentSelector from "../../../hooks/usePresentSelector";
 import { useAppDispatch } from "../../../store";
@@ -43,7 +43,7 @@ const HelperSelector = () => {
   };
 
   return (
-    <Dialog onClose={goBack} open={open}>
+    <RouteDialog onClose={goBack} open={open}>
       <DialogTitle>
         <FormattedMessage
           defaultMessage="Choose helper"
@@ -66,7 +66,7 @@ const HelperSelector = () => {
       <DialogActions>
         <CancelButton onClick={goBack} />
       </DialogActions>
-    </Dialog>
+    </RouteDialog>
   );
 };
 

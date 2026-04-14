@@ -1,5 +1,4 @@
 import {
-  Dialog,
   DialogActions,
   DialogContent,
   type DialogProps,
@@ -8,6 +7,7 @@ import {
 import { type FC } from "react";
 import { FormattedMessage } from "react-intl";
 
+import { RouteDialog } from "../../../domains/ui";
 import availableColors, {
   type AvailableColor,
 } from "../../../utils/availableColors";
@@ -26,7 +26,7 @@ const ColorPickerDialog: FC<ColorPickerDialogProps> = ({
   value,
   ...props
 }) => (
-  <Dialog onClose={onClose} {...props}>
+  <RouteDialog onClose={onClose} {...props}>
     <DialogTitle>
       <FormattedMessage
         defaultMessage="Choose color"
@@ -51,7 +51,7 @@ const ColorPickerDialog: FC<ColorPickerDialogProps> = ({
     <DialogActions>
       <CancelButton onClick={(event) => onClose?.(event, "escapeKeyDown")} />
     </DialogActions>
-  </Dialog>
+  </RouteDialog>
 );
 
 export default ColorPickerDialog;
