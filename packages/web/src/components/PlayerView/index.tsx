@@ -1,12 +1,12 @@
 import Player from "../Player";
-import { RouteScreenDialog } from "../RouteScreenDialog";
+import { RouteScreenModal } from "../RouteScreenModal";
 
 const path = "/player/:playerId/*";
 
 const PlayerView = () => (
-  <RouteScreenDialog path={path}>
+  <RouteScreenModal path={path}>
     <Player />
-  </RouteScreenDialog>
+  </RouteScreenModal>
 );
 
 export default PlayerView;

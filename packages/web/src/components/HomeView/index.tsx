@@ -1,17 +1,10 @@
 import Home from "../Home";
-import ScreenDialog from "../ScreenDialog";
+import { ScreenModal } from "../ScreenModal";
 
 const HomeView = () => (
-  <ScreenDialog
-    open
-    slotProps={{
-      transition: {
-        appear: false,
-      },
-    }}
-  >
+  <ScreenModal appear={false} open>
     <Home />
-  </ScreenDialog>
+  </ScreenModal>
 );
 
 export default HomeView;

@@ -1,12 +1,12 @@
 import Combat from "../Combat";
-import { RouteScreenDialog } from "../RouteScreenDialog";
+import { RouteScreenModal } from "../RouteScreenModal";
 
 const path = "/player/:playerId/combat/*";
 
 const CombatView = () => (
-  <RouteScreenDialog path={path}>
+  <RouteScreenModal path={path}>
     <Combat />
-  </RouteScreenDialog>
+  </RouteScreenModal>
 );
 
 export default CombatView;

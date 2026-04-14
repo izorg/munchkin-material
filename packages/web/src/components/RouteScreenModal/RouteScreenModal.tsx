@@ -7,15 +7,15 @@ import {
   useMatch,
 } from "react-router";
 
-import ScreenDialog from "../ScreenDialog";
+import { ScreenModal } from "../ScreenModal";
 
 const reducer = (state: Location, action: Location) => action;
 
-type RouteScreenDialogProps = PropsWithChildren<{
+type RouteScreenModalProps = PropsWithChildren<{
   path: string;
 }>;
 
-export const RouteScreenDialog = (props: RouteScreenDialogProps) => {
+export const RouteScreenModal = (props: RouteScreenModalProps) => {
   const { children, path } = props;
 
   const match = useMatch({
@@ -34,10 +34,10 @@ export const RouteScreenDialog = (props: RouteScreenDialogProps) => {
   }, [location, match]);
 
   return (
-    <ScreenDialog open={Boolean(match)}>
+    <ScreenModal open={Boolean(match)}>
       <Routes location={routeLocation}>
         <Route element={children} path={path} />
       </Routes>
-    </ScreenDialog>
+    </ScreenModal>
   );
 };

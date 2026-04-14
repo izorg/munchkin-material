@@ -6,15 +6,15 @@ import { ios } from "../../utils/platforms";
 
 let initialRender = true;
 
-type ScreenDialogTransitionProps = { children: ReactElement } & Omit<
+type ScreenModalTransitionProps = { children: ReactElement } & Omit<
   TransitionProps,
   "children"
 >;
 
-export const ScreenDialogTransition = ({
+export const ScreenModalTransition = ({
   appear: appearProps,
   ...rest
-}: ScreenDialogTransitionProps) => {
+}: ScreenModalTransitionProps) => {
   useEffect(() => {
     initialRender = false;
   }, []);
