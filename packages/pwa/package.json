@@ -32,19 +32,19 @@
     "@parcel/reporter-bundle-buddy": "2.16.4",
     "@parcel/transformer-webmanifest": "2.16.4",
     "@playwright/test": "1.59.1",
-    "@sentry/react": "10.48.0",
+    "@sentry/react": "10.49.0",
     "@types/node": "24.12.2",
     "@types/parcel-env": "0.0.9",
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
     "core-js": "3.49.0",
-    "firebase-tools": "15.14.0",
+    "firebase-tools": "15.15.0",
     "handlebars": "4.7.9",
     "parcel": "2.16.4",
     "playwright": "1.59.1",
     "react": "19.2.5",
     "react-dom": "19.2.5",
-    "react-router": "7.14.0",
+    "react-router": "7.14.1",
     "workbox-cli": "7.4.0"
   }
 }
