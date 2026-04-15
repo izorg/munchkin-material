@@ -7,7 +7,7 @@ import {
   useMatch,
 } from "react-router";
 
-import { ScreenModal } from "../ScreenModal";
+import { RouteModal } from "../../domains/ui";
 
 const reducer = (state: Location, action: Location) => action;
 
@@ -34,10 +34,10 @@ export const RouteScreenModal = (props: RouteScreenModalProps) => {
   }, [location, match]);
 
   return (
-    <ScreenModal open={Boolean(match)}>
+    <RouteModal open={Boolean(match)}>
       <Routes location={routeLocation}>
         <Route element={children} path={path} />
       </Routes>
-    </ScreenModal>
+    </RouteModal>
   );
 };

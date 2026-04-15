@@ -1,10 +1,10 @@
+import { RouteModal } from "../../domains/ui";
 import Home from "../Home";
-import { ScreenModal } from "../ScreenModal";
 
 const HomeView = () => (
-  <ScreenModal open>
+  <RouteModal open>
     <Home />
-  </ScreenModal>
+  </RouteModal>
 );
 
 export default HomeView;
