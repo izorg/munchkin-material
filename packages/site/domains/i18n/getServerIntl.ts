@@ -25,13 +25,13 @@ const getCache = (): IntlCache => {
   return cache;
 };
 
-const intlCache = new Map<string, Promise<IntlShape>>();
+const intlCache = new Map<LOCALE, Promise<IntlShape>>();
 
 export const getServerIntl = async (language: LANGUAGE): Promise<IntlShape> => {
   const locale = localeByLanguage[language];
   const cachedIntl = intlCache.get(locale);
 
-  if (cachedIntl) {
+  if (cachedIntl !== undefined) {
     return cachedIntl;
   }
 

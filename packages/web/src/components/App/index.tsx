@@ -8,19 +8,17 @@ import UndoProvider from "../UndoProvider";
 import UndoSnackbar from "../UndoSnackbar";
 
 const App = () => (
-  <>
-    <UndoProvider>
-      <HomeView />
-      <PlayerView />
-      <CombatView />
+  <UndoProvider>
+    <HomeView />
+    <PlayerView />
+    <CombatView />
 
-      <SettingsDialog />
-      <DiceDialog />
-      <PlayerDialog />
+    <SettingsDialog />
+    <DiceDialog />
+    <PlayerDialog />
 
-      <UndoSnackbar />
-    </UndoProvider>
-  </>
+    <UndoSnackbar />
+  </UndoProvider>
 );
 
 export default App;
