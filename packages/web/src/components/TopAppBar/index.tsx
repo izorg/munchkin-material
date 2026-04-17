@@ -6,11 +6,11 @@ const TopAppBar: FC<PropsWithChildren> = ({ children }) => (
     color="inherit"
     elevation={0}
     position="static"
-    sx={{
-      backgroundColor: "background.default",
+    sx={(theme) => ({
+      backgroundColor: theme.vars.palette.background.default,
       paddingTop: "var(--inset-top)",
       zIndex: "appBar",
-    }}
+    })}
   >
     <Toolbar
       disableGutters

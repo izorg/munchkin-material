@@ -43,6 +43,7 @@ export const RouteModal = ({ children, open, ...rest }: ModalProps) => (
             display: "flex",
             flexDirection: "column",
             inset: 0,
+            outline: 0,
             position: "fixed",
           },
         ]}

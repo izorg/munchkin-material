@@ -3,7 +3,7 @@ import { SvgIcon, Tooltip } from "@mui/material";
 import { type FC, type ReactNode } from "react";
 import { useIntl } from "react-intl";
 
-import BackButton from "../../BackButton";
+import { CloseIconButton } from "../../../domains/ui";
 import Title from "../../Title";
 import TopAppBar from "../../TopAppBar";
 import TopIconButton from "../../TopIconButton";
@@ -24,7 +24,11 @@ const PlayerDialogAppBar: FC<PlayerDialogAppBarProps> = ({
 
   return (
     <TopAppBar>
-      <BackButton onClick={onCancel} />
+      <CloseIconButton
+        data-screenshots="back"
+        edge="start"
+        onClick={onCancel}
+      />
 
       <Title>{title}</Title>
 
