@@ -33,7 +33,7 @@
     "react": "19.2.5",
     "react-dom": "19.2.5",
     "react-intl": "10.1.2",
-    "stylis": "4.3.6",
-    "typescript": "6.0.2"
+    "stylis": "4.4.0",
+    "typescript": "6.0.3"
   }
 }

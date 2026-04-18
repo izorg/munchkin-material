@@ -49,7 +49,7 @@ export const LevelLimitForm = (props: LevelLimitFormProps) => {
     (event: SubmitEvent<HTMLFormElement>) => {
       event.preventDefault();
 
-      const formData = new FormData(event.target as HTMLFormElement);
+      const formData = new FormData(event.target);
 
       const formValues = Object.fromEntries(formData) as {
         levelLimit: LevelLimit;
