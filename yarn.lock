@@ -17289,6 +17289,7 @@ __metadata:
     prettier: "npm:3.8.3"
     rimraf: "npm:6.1.3"
     semantic-release: "npm:25.0.3"
+    skills: "npm:1.5.1"
     stylelint: "npm:17.8.0"
     stylelint-config-standard: "npm:40.0.0"
     stylelint-order: "npm:8.1.1"
@@ -20768,6 +20769,18 @@ __metadata:
     bplist-parser: "npm:0.3.2"
     plist: "npm:^3.0.5"
   checksum: 10/e03f1619370d8d502543f2f9c6448722456dd2594e34d689eb8706c7c9e328c1ed5bef89280cb9e13426942ec1ab0f5655406ab70550be28b84fcccc304d447b
+  languageName: node
+  linkType: hard
+
+"skills@npm:1.5.1":
+  version: 1.5.1
+  resolution: "skills@npm:1.5.1"
+  dependencies:
+    yaml: "npm:^2.8.3"
+  bin:
+    add-skill: bin/cli.mjs
+    skills: bin/cli.mjs
+  checksum: 10/4da8da903c702861910c6e89753d7abcad4708f38801a055893c3e9e488e8758f113c0e49d567854e7404495e5c13ddbdec5f9d90133779717fa26883e8b0b52
   languageName: node
   linkType: hard
 
