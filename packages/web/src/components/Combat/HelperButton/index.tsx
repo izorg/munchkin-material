@@ -53,10 +53,10 @@ const CombatHelperButton = () => {
 
   const onMonsterAdd = () => dispatch(addMonster(createMonster()));
 
-  const onMonsterClick: SpeedDialActionProps["onClick"] = async (event) => {
+  const onMonsterClick: SpeedDialActionProps["onClick"] = (event) => {
     event.stopPropagation();
     onMonsterAdd();
-    await goBack();
+    void goBack();
   };
 
   const onSpeedDialClick = async () => {
@@ -100,30 +100,28 @@ const CombatHelperButton = () => {
         sx={[
           (theme) => ({
             bottom: {
-              sm: theme.spacing(3),
-              xs: theme.spacing(2),
+              sm: `calc(${theme.spacing(3)} + var(--inset-bottom))`,
+              xs: `calc(${theme.spacing(2)} + var(--inset-bottom))`,
             },
             position: "fixed",
-            right: {
-              sm: theme.spacing(3),
-              xs: theme.spacing(2),
-            },
             zIndex: 2,
           }),
-          (theme) =>
-            theme.direction === "rtl"
-              ? {
-                  left: {
-                    sm: `calc(${theme.spacing(3)} + var(--inset-left))`,
-                    xs: `calc(${theme.spacing(2)} + var(--inset-left))`,
-                  },
-                }
-              : {
-                  right: {
-                    sm: `calc(${theme.spacing(3)} + var(--inset-right))`,
-                    xs: `calc(${theme.spacing(2)} + var(--inset-right))`,
-                  },
-                },
+          (theme) => ({
+            '[dir="ltr"] &': {
+              left: "auto /*! @noflip */",
+              right: {
+                sm: `calc(${theme.spacing(3)} + var(--inset-right)) /*! @noflip */`,
+                xs: `calc(${theme.spacing(2)} + var(--inset-right)) /*! @noflip */`,
+              },
+            },
+            '[dir="rtl"] &': {
+              left: {
+                sm: `calc(${theme.spacing(3)} + var(--inset-left)) /*! @noflip */`,
+                xs: `calc(${theme.spacing(2)} + var(--inset-left)) /*! @noflip */`,
+              },
+              right: "auto /*! @noflip */",
+            },
+          }),
         ]}
       >
         <SpeedDialAction
