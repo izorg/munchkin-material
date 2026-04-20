@@ -8,7 +8,7 @@
     "packages/*"
   ],
   "scripts": {
-    "check": "yarn check-knip && yarn check-prettier && yarn check-tsc && yarn check-eslint && yarn check-oxlint && yarn check-stylelint",
+    "check": "yarn workspace @munchkin/site run next typegen && yarn check-knip && yarn check-prettier && yarn check-tsc && yarn check-eslint && yarn check-oxlint && yarn check-stylelint",
     "check-eslint": "eslint --cache",
     "check-knip": "knip --cache",
     "check-oxlint": "oxlint",
