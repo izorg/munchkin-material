@@ -4390,7 +4390,7 @@ __metadata:
     cordova-plugin-inset-injector: "https://github.com/ionic-team/cordova-plugin-inset-injector.git"
     cordova-plugin-insomnia: "npm:4.3.0"
     cordova-plugin-ionic-keyboard: "npm:2.2.0"
-    cordova-plugin-purchase: "npm:13.13.1"
+    cordova-plugin-purchase: "npm:13.15.2"
     cordova-plugin-statusbar: "npm:4.0.0"
     cordova-plugin-vibration: "npm:3.1.1"
     cordova-plugin-web-share: "npm:1.4.2"
@@ -10920,10 +10920,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cordova-plugin-purchase@npm:13.13.1":
-  version: 13.13.1
-  resolution: "cordova-plugin-purchase@npm:13.13.1"
-  checksum: 10/79a64e484ecf180403f7305ff3cc244b3c198ee1298622ba8ebeb54194b4af52d54961a2f9aef7b01bb7b3728903d545de93e40622c958101a4b472b1c2f387b
+"cordova-plugin-purchase@npm:13.15.2":
+  version: 13.15.2
+  resolution: "cordova-plugin-purchase@npm:13.15.2"
+  checksum: 10/4e2abc562545bd671eaab440a0b29572427dff0712eab1f1fd6c300e57cd83124e50c444965d5e892b951ce4f8e31fe766e3c5be4aa4e5a84fd92a9cbd37cfc2
   languageName: node
   linkType: hard
 
