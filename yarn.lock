@@ -2146,9 +2146,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@firebase/ai@npm:2.11.0":
-  version: 2.11.0
-  resolution: "@firebase/ai@npm:2.11.0"
+"@firebase/ai@npm:2.11.1":
+  version: 2.11.1
+  resolution: "@firebase/ai@npm:2.11.1"
   dependencies:
     "@firebase/app-check-interop-types": "npm:0.3.3"
     "@firebase/component": "npm:0.7.2"
@@ -2158,7 +2158,7 @@ __metadata:
   peerDependencies:
     "@firebase/app": 0.x
     "@firebase/app-types": 0.x
-  checksum: 10/d0d84a2b0d2bfbe18feaa284c22cd0f2bd4c47deddbfacbacb4662489d7c33b69db2889b4310ca2fe4496df7ca8f3e5f9a8afffceb037959cd5617010cc12fd4
+  checksum: 10/710f2b2e95f27aa588846f354a6a77db3db235010da57bf91ed23dfa3d230a0fa04c10ff0f27fd02cebcdf505b53c14950143c3eebe344129738fd6f695852b7
   languageName: node
   linkType: hard
 
@@ -4493,7 +4493,7 @@ __metadata:
     "@types/react": "npm:19.2.14"
     "@types/react-dom": "npm:19.2.3"
     "@types/stylis": "npm:4.2.7"
-    firebase: "npm:12.12.0"
+    firebase: "npm:12.12.1"
     jest: "npm:30.3.0"
     react: "npm:19.2.5"
     react-dom: "npm:19.2.5"
@@ -13040,11 +13040,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"firebase@npm:12.12.0":
-  version: 12.12.0
-  resolution: "firebase@npm:12.12.0"
+"firebase@npm:12.12.1":
+  version: 12.12.1
+  resolution: "firebase@npm:12.12.1"
   dependencies:
-    "@firebase/ai": "npm:2.11.0"
+    "@firebase/ai": "npm:2.11.1"
     "@firebase/analytics": "npm:0.10.21"
     "@firebase/analytics-compat": "npm:0.2.27"
     "@firebase/app": "npm:0.14.11"
@@ -13072,7 +13072,7 @@ __metadata:
     "@firebase/storage": "npm:0.14.2"
     "@firebase/storage-compat": "npm:0.4.2"
     "@firebase/util": "npm:1.15.0"
-  checksum: 10/d1110563c1bd55749cc2bc4dae77d8e54912982f8e49e0fb1c55b39332c4cac53f4769d5fa94b39ff08151ad9d7f2dadea32d12d8dc3ef9c50bb15351421e577
+  checksum: 10/4c22dde6df184dd2c708edc957709005ecd0db3c5348ece5034d6e60cc7218c7f3400862582f185364a6af05709e2200de2b15456e8ce5372177ca73d8ac198c
   languageName: node
   linkType: hard
 
