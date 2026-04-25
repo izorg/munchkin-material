@@ -1,4 +1,6 @@
-import { type PropsWithChildren, useEffect, useReducer } from "react";
+import { configureStore } from "@reduxjs/toolkit";
+import { type PropsWithChildren, useEffect, useMemo, useReducer } from "react";
+import { Provider } from "react-redux";
 import {
   type Location,
   Route,
@@ -8,6 +10,7 @@ import {
 } from "react-router";
 
 import { RouteModal } from "../../domains/ui";
+import store, { createRootReducer } from "../../store";
 
 const reducer = (state: Location, action: Location) => action;
 
@@ -23,6 +26,19 @@ export const RouteScreenModal = (props: RouteScreenModalProps) => {
     path,
   });
 
+  const open = Boolean(match);
+
+  const routeStore = useMemo(
+    () =>
+      open
+        ? store
+        : configureStore({
+            preloadedState: store.getState(),
+            reducer: createRootReducer(),
+          }),
+    [open],
+  );
+
   const location = useLocation();
 
   const [routeLocation, dispatchRouteLocation] = useReducer(reducer, location);
@@ -34,10 +50,12 @@ export const RouteScreenModal = (props: RouteScreenModalProps) => {
   }, [location, match]);
 
   return (
-    <RouteModal open={Boolean(match)}>
-      <Routes location={routeLocation}>
-        <Route element={children} path={path} />
-      </Routes>
+    <RouteModal open={open}>
+      <Provider store={routeStore}>
+        <Routes location={routeLocation}>
+          <Route element={children} path={path} />
+        </Routes>
+      </Provider>
     </RouteModal>
   );
 };

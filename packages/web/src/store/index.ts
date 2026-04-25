@@ -12,7 +12,7 @@ import { killPlayer, removePlayers, resetPlayers } from "../ducks/players";
 import { loadState, saveState } from "./localStorage";
 import reducers from "./reducers";
 
-const createRootReducer = () =>
+export const createRootReducer = () =>
   undoable(combineReducers(reducers), {
     filter: includeAction([
       killPlayer.type,
