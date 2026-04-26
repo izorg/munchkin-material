@@ -2,11 +2,18 @@ import {
   mdiMenuDown as decrementIcon,
   mdiMenuUp as incrementIcon,
 } from "@mdi/js";
-import { Box, type BoxProps, SvgIcon, type Theme } from "@mui/material";
+import {
+  Box,
+  type BoxProps,
+  IconButton,
+  SvgIcon,
+  type Theme,
+} from "@mui/material";
+import { usePress } from "@react-aria/interactions";
+import { type SpinButtonProps, useSpinButton } from "@react-aria/spinbutton";
 import { type FC, type ReactNode } from "react";
 import { defineMessages, FormattedNumber } from "react-intl";
 
-import CounterButton from "./Button";
 import CounterLabel from "./Label";
 
 export const counterMessages = defineMessages({
@@ -33,17 +40,16 @@ export const counterMessages = defineMessages({
 });
 
 type CounterProps = {
-  decrementDisabled?: boolean;
-  incrementDisabled?: boolean;
   onDecrement: () => void;
   onIncrement: () => void;
   title: ReactNode;
   value: number;
-} & Omit<BoxProps, "title">;
+} & Omit<BoxProps, "title"> &
+  Pick<SpinButtonProps, "maxValue" | "minValue">;
 
 const Counter: FC<CounterProps> = ({
-  decrementDisabled = false,
-  incrementDisabled = false,
+  maxValue,
+  minValue,
   onDecrement,
   onIncrement,
   sx = [],
@@ -51,6 +57,29 @@ const Counter: FC<CounterProps> = ({
   value,
   ...props
 }) => {
+  const { decrementButtonProps, incrementButtonProps, spinButtonProps } =
+    useSpinButton({
+      maxValue,
+      minValue,
+      onDecrement,
+      onIncrement,
+      value,
+    });
+
+  const decrementDisabled = minValue !== undefined && value <= minValue;
+
+  const { pressProps: decrementButtonPressProps } = usePress({
+    ...decrementButtonProps,
+    isDisabled: decrementDisabled,
+  });
+
+  const incrementDisabled = maxValue !== undefined && value >= maxValue;
+
+  const { pressProps: incrementButtonPressProps } = usePress({
+    ...incrementButtonProps,
+    isDisabled: incrementDisabled,
+  });
+
   return (
     <Box
       sx={[
@@ -74,6 +103,7 @@ const Counter: FC<CounterProps> = ({
       </CounterLabel>
 
       <Box
+        {...spinButtonProps}
         sx={{
           color: "text.primary",
           fontFamily: (theme: Theme) =>
@@ -91,10 +121,10 @@ const Counter: FC<CounterProps> = ({
           width: "120px",
         }}
       >
-        <CounterButton
+        <IconButton
+          {...decrementButtonPressProps}
           data-screenshots="decrement-button"
           disabled={decrementDisabled}
-          onClick={onDecrement}
           sx={{
             fontSize: "3rem",
             padding: 0,
@@ -107,12 +137,12 @@ const Counter: FC<CounterProps> = ({
           >
             <path d={decrementIcon} />
           </SvgIcon>
-        </CounterButton>
+        </IconButton>
 
-        <CounterButton
+        <IconButton
+          {...incrementButtonPressProps}
           data-screenshots="increment-button"
           disabled={incrementDisabled}
-          onClick={onIncrement}
           sx={{
             fontSize: "3rem",
             padding: 0,
@@ -125,7 +155,7 @@ const Counter: FC<CounterProps> = ({
           >
             <path d={incrementIcon} />
           </SvgIcon>
-        </CounterButton>
+        </IconButton>
       </Box>
     </Box>
   );

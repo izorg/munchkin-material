@@ -4483,6 +4483,7 @@ __metadata:
     "@mui/stylis-plugin-rtl": "npm:9.0.0"
     "@mui/utils": "npm:9.0.0"
     "@react-aria/interactions": "npm:3.28.0"
+    "@react-aria/spinbutton": "npm:3.8.0"
     "@react-aria/utils": "npm:3.34.0"
     "@reduxjs/toolkit": "npm:2.11.2"
     "@sentry/react": "npm:10.49.0"
@@ -7003,6 +7004,19 @@ __metadata:
     react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1
     react-dom: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1
   checksum: 10/f845180e29ac0607ec16cb85ff4605076c3d8f6de06f6530b3fdec8009272b711c7057af5a7c793851d568ef41626b8fc965cac7a8cee5a043dcf5f27fec2239
+  languageName: node
+  linkType: hard
+
+"@react-aria/spinbutton@npm:3.8.0":
+  version: 3.8.0
+  resolution: "@react-aria/spinbutton@npm:3.8.0"
+  dependencies:
+    "@swc/helpers": "npm:^0.5.0"
+    react-aria: "npm:3.48.0"
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1
+    react-dom: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1
+  checksum: 10/558fc3c08101cef6dd89a98b9d9c59e41a87c9e2d4a8b809c1b2149b95d9d903b05b3876a2e74138788c2e1c4a5e9de749935261d30599dfaa47792a8635c756
   languageName: node
   linkType: hard
 

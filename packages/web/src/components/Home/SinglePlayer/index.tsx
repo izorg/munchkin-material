@@ -12,10 +12,7 @@ import {
 } from "../../../ducks/players";
 import usePresentSelector from "../../../hooks/usePresentSelector";
 import { useAppDispatch } from "../../../store";
-import {
-  isLevelDecrementDisabled,
-  isLevelIncrementDisabled,
-} from "../../../utils/levelLimit";
+import { useLevelRange } from "../../../utils/levelLimit";
 import Counter, { counterMessages } from "../../Counter";
 import CounterLabel from "../../Counter/Label";
 import SexIcon from "../../SexIcon";
@@ -28,19 +25,6 @@ const SinglePlayer = () => {
     (state) => state.players[state.settings.singleModePlayerId as string],
   );
   const bonus = usePresentSelector((state) => state.combat.playerBonus);
-
-  const levelLimit = usePresentSelector((state) => state.settings.levelLimit);
-  const epic = usePresentSelector((state) => state.settings.epic);
-
-  const levelDecrementDisabled = isLevelDecrementDisabled(
-    player.level,
-    levelLimit,
-  );
-  const levelIncrementDisabled = isLevelIncrementDisabled(
-    player.level,
-    levelLimit,
-    epic,
-  );
 
   const onBonusDecrement = useCallback(
     () =>
@@ -87,6 +71,8 @@ const SinglePlayer = () => {
     [dispatch, player.id],
   );
 
+  const levelRange = useLevelRange();
+
   const counterSx = {
     flex: 1,
     overflow: "hidden",
@@ -124,9 +110,8 @@ const SinglePlayer = () => {
         ]}
       >
         <Counter
+          {...levelRange}
           data-screenshots="level-counter"
-          decrementDisabled={levelDecrementDisabled}
-          incrementDisabled={levelIncrementDisabled}
           onDecrement={onLevelDecrement}
           onIncrement={onLevelIncrement}
           sx={[

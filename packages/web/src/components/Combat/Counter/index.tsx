@@ -2,15 +2,17 @@ import { mdiMenuDown, mdiMenuUp } from "@mdi/js";
 import {
   Box,
   type BoxProps,
+  IconButton,
   SvgIcon,
   type SxProps,
   type Theme,
   useMediaQuery,
 } from "@mui/material";
+import { usePress } from "@react-aria/interactions";
+import { type SpinButtonProps, useSpinButton } from "@react-aria/spinbutton";
 import { type FC } from "react";
 import { FormattedNumber } from "react-intl";
 
-import CounterButton from "../../Counter/Button";
 import CounterLabel from "../../Counter/Label";
 
 const buttonSx: SxProps<Theme> = [
@@ -29,18 +31,17 @@ const buttonSx: SxProps<Theme> = [
 ];
 
 type CombatCounterProps = {
-  decrementDisabled?: boolean;
-  incrementDisabled?: boolean;
   onDecrement: () => void;
   onIncrement: () => void;
   title: string;
   value: number;
-} & BoxProps;
+} & BoxProps &
+  Pick<SpinButtonProps, "maxValue" | "minValue">;
 
 const CombatCounter: FC<CombatCounterProps> = (props) => {
   const {
-    decrementDisabled = false,
-    incrementDisabled = false,
+    maxValue,
+    minValue,
     onDecrement,
     onIncrement,
     sx = [],
@@ -48,6 +49,29 @@ const CombatCounter: FC<CombatCounterProps> = (props) => {
     value,
     ...rest
   } = props;
+
+  const { decrementButtonProps, incrementButtonProps, spinButtonProps } =
+    useSpinButton({
+      maxValue,
+      minValue,
+      onDecrement,
+      onIncrement,
+      value,
+    });
+
+  const decrementDisabled = minValue !== undefined && value <= minValue;
+
+  const { pressProps: decrementButtonPressProps } = usePress({
+    ...decrementButtonProps,
+    isDisabled: decrementDisabled,
+  });
+
+  const incrementDisabled = maxValue !== undefined && value >= maxValue;
+
+  const { pressProps: incrementButtonPressProps } = usePress({
+    ...incrementButtonProps,
+    isDisabled: incrementDisabled,
+  });
 
   const iconSx: SxProps = {
     fontSize: "inherit",
@@ -80,6 +104,7 @@ const CombatCounter: FC<CombatCounterProps> = (props) => {
       </CounterLabel>
 
       <Box
+        {...spinButtonProps}
         sx={(theme) => ({
           fontFamily: `Munchkin, ${theme.typography.fontFamily ?? ""}`,
           fontSize: theme.typography.h4.fontSize,
@@ -97,25 +122,25 @@ const CombatCounter: FC<CombatCounterProps> = (props) => {
           width: "100%",
         }}
       >
-        <CounterButton
+        <IconButton
+          {...decrementButtonPressProps}
           disabled={decrementDisabled}
-          onClick={onDecrement}
           sx={buttonSx}
         >
           <SvgIcon sx={iconSx}>
             <path d={mdiMenuDown} />
           </SvgIcon>
-        </CounterButton>
+        </IconButton>
 
-        <CounterButton
+        <IconButton
+          {...incrementButtonPressProps}
           disabled={incrementDisabled}
-          onClick={onIncrement}
           sx={buttonSx}
         >
           <SvgIcon sx={iconSx}>
             <path d={mdiMenuUp} />
           </SvgIcon>
-        </CounterButton>
+        </IconButton>
       </Box>
     </Box>
   );

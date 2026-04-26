@@ -11,10 +11,7 @@ import {
 } from "../../../../ducks/players";
 import usePresentSelector from "../../../../hooks/usePresentSelector";
 import { useAppDispatch } from "../../../../store";
-import {
-  isLevelDecrementDisabled,
-  isLevelIncrementDisabled,
-} from "../../../../utils/levelLimit";
+import { useLevelRange } from "../../../../utils/levelLimit";
 import Counter, { counterMessages } from "../../../Counter";
 import CounterLabel from "../../../Counter/Label";
 import SexIcon from "../../../SexIcon";
@@ -29,19 +26,8 @@ const PlayerStats: FC<PlayerStatsProps> = ({ playerId, sx = [] }) => {
   const intl = useIntl();
 
   const player = usePresentSelector((state) => state.players[playerId]);
-  const levelLimit = usePresentSelector((state) => state.settings.levelLimit);
-  const epic = usePresentSelector((state) => state.settings.epic);
 
-  const levelDecrementDisabled = isLevelDecrementDisabled(
-    player.level,
-    levelLimit,
-  );
-
-  const levelIncrementDisabled = isLevelIncrementDisabled(
-    player.level,
-    levelLimit,
-    epic,
-  );
+  const levelRange = useLevelRange();
 
   const onGearDecrement = useCallback(
     () => dispatch(decrementPlayerGear(playerId)),
@@ -96,8 +82,7 @@ const PlayerStats: FC<PlayerStatsProps> = ({ playerId, sx = [] }) => {
         }}
       >
         <Counter
-          decrementDisabled={levelDecrementDisabled}
-          incrementDisabled={levelIncrementDisabled}
+          {...levelRange}
           onDecrement={onLevelDecrement}
           onIncrement={onLevelIncrement}
           title={intl.formatMessage(counterMessages.level)}
