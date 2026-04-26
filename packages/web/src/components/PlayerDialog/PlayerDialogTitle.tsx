@@ -3,7 +3,6 @@ import { useState } from "react";
 import { useIntl } from "react-intl";
 import { useSearchParams } from "react-router";
 
-import useDeletePlayers from "../../hooks/useDeletePlayers";
 import { useGoBack } from "../../utils/location";
 
 import AppBar from "./AppBar";
@@ -15,7 +14,6 @@ export const PlayerDialogTitle = () => {
 
   const fullScreen = useFullScreen();
   const goBack = useGoBack();
-  const deletePlayers = useDeletePlayers();
 
   const [playerId] = useState(searchParams.get("player"));
 
@@ -45,18 +43,7 @@ export const PlayerDialogTitle = () => {
       })}
     >
       {fullScreen ? (
-        <AppBar
-          onCancel={goBack}
-          onDelete={
-            playerId
-              ? async () => {
-                  deletePlayers([playerId]);
-                  await goBack();
-                }
-              : undefined
-          }
-          title={title}
-        />
+        <AppBar onCancel={goBack} title={title} />
       ) : (
         <Typography component="span" noWrap variant="h6">
           {title}

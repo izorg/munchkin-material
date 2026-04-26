@@ -1,9 +1,6 @@
-import { Button, DialogActions } from "@mui/material";
-import { useState } from "react";
+import { DialogActions } from "@mui/material";
 import { useIntl } from "react-intl";
-import { useSearchParams } from "react-router";
 
-import useDeletePlayers from "../../hooks/useDeletePlayers";
 import { useGoBack } from "../../utils/location";
 import CancelButton from "../CancelButton";
 import SubmitButton from "../SubmitButton";
@@ -12,29 +9,11 @@ import formId from "./formId";
 
 export const PlayerDialogActions = () => {
   const intl = useIntl();
-  const [searchParams] = useSearchParams();
 
-  const deletePlayers = useDeletePlayers();
   const goBack = useGoBack();
-
-  const [playerId] = useState(searchParams.get("player"));
 
   return (
     <DialogActions>
-      {playerId && (
-        <Button
-          onClick={async () => {
-            deletePlayers([playerId]);
-            await goBack();
-          }}
-          sx={{ marginRight: "auto" }}
-        >
-          {intl.formatMessage({
-            defaultMessage: "Delete",
-            id: "K3r6DQ",
-          })}
-        </Button>
-      )}
       <CancelButton onClick={goBack} />
       <SubmitButton form={formId}>
         {intl.formatMessage({
