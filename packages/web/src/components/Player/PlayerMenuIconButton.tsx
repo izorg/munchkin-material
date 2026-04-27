@@ -5,6 +5,7 @@ import { type FC, type MouseEventHandler, useState } from "react";
 import TopIconButton from "../TopIconButton";
 
 import { PlayerDeleteMenuItem } from "./PlayerDeleteMenuItem";
+import { PlayerEditMenuItem } from "./PlayerEditMenuItem";
 
 export const PlayerMenuIconButton: FC<IconButtonProps> = (props) => {
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
@@ -36,6 +37,7 @@ export const PlayerMenuIconButton: FC<IconButtonProps> = (props) => {
           },
         }}
       >
+        <PlayerEditMenuItem onClick={onClose} />
         <PlayerDeleteMenuItem onClick={onClose} />
       </Menu>
     </>
