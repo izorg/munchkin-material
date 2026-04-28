@@ -73,7 +73,7 @@
     "cordova-plugin-inset-injector": "https://github.com/ionic-team/cordova-plugin-inset-injector.git",
     "cordova-plugin-insomnia": "4.3.0",
     "cordova-plugin-ionic-keyboard": "2.2.0",
-    "cordova-plugin-purchase": "13.15.3",
+    "cordova-plugin-purchase": "13.15.4",
     "cordova-plugin-statusbar": "4.0.0",
     "cordova-plugin-vibration": "3.1.1",
     "cordova-plugin-web-share": "1.4.2",
