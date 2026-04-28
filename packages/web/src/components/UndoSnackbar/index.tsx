@@ -50,12 +50,12 @@ const UndoSnackbar = () => {
       slots={{
         transition: mdDown ? Fade : undefined,
       }}
-      sx={{
+      sx={(theme) => ({
         bottom: {
-          sm: 28,
-          xs: 88,
+          sm: `calc(${theme.spacing(3)} + var(--inset-bottom))`,
+          xs: `calc(${theme.spacing(3)} + 56px + var(--inset-bottom))`,
         },
-      }}
+      })}
     />
   );
 };
