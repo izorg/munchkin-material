@@ -57,7 +57,7 @@
   },
   "devDependencies": {
     "@mui/material": "9.0.0",
-    "@sentry/react": "10.50.0",
+    "@sentry/react": "10.51.0",
     "@types/cordova": "11.0.3",
     "@types/parcel-env": "0.0.9",
     "@types/react": "19.2.14",
