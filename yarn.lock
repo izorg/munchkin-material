@@ -4447,7 +4447,7 @@ __metadata:
     "@types/react": "npm:19.2.14"
     "@types/react-dom": "npm:19.2.3"
     core-js: "npm:3.49.0"
-    firebase-tools: "npm:15.15.0"
+    firebase-tools: "npm:15.16.0"
     handlebars: "npm:4.7.9"
     parcel: "npm:2.16.4"
     playwright: "npm:1.59.1"
@@ -4478,7 +4478,7 @@ __metadata:
     "@types/react-dom": "npm:19.2.3"
     "@types/stylis": "npm:4.2.7"
     babel-plugin-react-compiler: "npm:1.0.0"
-    firebase-tools: "npm:15.15.0"
+    firebase-tools: "npm:15.16.0"
     next: "npm:16.2.4"
     react: "npm:19.2.5"
     react-dom: "npm:19.2.5"
@@ -12994,9 +12994,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"firebase-tools@npm:15.15.0":
-  version: 15.15.0
-  resolution: "firebase-tools@npm:15.15.0"
+"firebase-tools@npm:15.16.0":
+  version: 15.16.0
+  resolution: "firebase-tools@npm:15.16.0"
   dependencies:
     "@apphosting/build": "npm:^0.1.7"
     "@apphosting/common": "npm:^0.0.8"
@@ -13076,7 +13076,7 @@ __metadata:
     zod-to-json-schema: "npm:^3.24.5"
   bin:
     firebase: lib/bin/firebase.js
-  checksum: 10/21e14595e6fd312dd2bd11bcf9c1e7fb976d1b2dc80a97a81474778777c4152871a4e285c7be97728522f22e5df17afc9cd5007d48790d77f1867af721dd83ab
+  checksum: 10/beba86e13615609295f36462719092dae5d621aa6211fc4ccf39d73e4f5ee6fead14ab106fafc05ff8183bd402867f5719dc0729d9fbd2348100ebfd546e5b2e
   languageName: node
   linkType: hard
 
