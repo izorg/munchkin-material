@@ -223,7 +223,7 @@ export default defineConfig(
     language: "html/html",
     rules: {
       "html/indent": ["error", 2],
-      "html/no-extra-spacing-attrs": [
+      "html/no-extra-spacing-tags": [
         "error",
         {
           enforceBeforeSelfClose: true,
