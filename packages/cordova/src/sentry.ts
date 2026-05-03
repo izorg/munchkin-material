@@ -1,5 +1,4 @@
 import {
-  browserTracingIntegration,
   init,
   makeBrowserOfflineTransport,
   makeFetchTransport,
@@ -17,7 +16,6 @@ init({
     "validProducts.find is not a function",
   ],
   integrations: [
-    browserTracingIntegration(),
     replayIntegration({
       blockAllMedia: false,
       maskAllText: false,
