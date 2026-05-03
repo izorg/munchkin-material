@@ -1,4 +1,5 @@
 import {
+  browserTracingIntegration,
   init,
   makeBrowserOfflineTransport,
   makeFetchTransport,
@@ -23,6 +24,7 @@ init({
   enabled: process.env.NODE_ENV === "production",
   environment: process.env.NODE_ENV,
   integrations: [
+    browserTracingIntegration(),
     replayIntegration({
       blockAllMedia: false,
       maskAllText: false,
