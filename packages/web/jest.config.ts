@@ -4,7 +4,16 @@ const config: Config = {
   extensionsToTreatAsEsm: [".ts", ".tsx"],
   roots: ["<rootDir>/src/"],
   transform: {
-    "^.+\\.tsx?$": "@swc/jest",
+    "^.+\\.tsx?$": [
+      "@swc/jest",
+      {
+        jsc: {
+          experimental: {
+            keepImportAssertions: true,
+          },
+        },
+      },
+    ],
   },
 };
 

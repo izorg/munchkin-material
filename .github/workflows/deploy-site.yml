@@ -27,7 +27,9 @@ jobs:
       - name: Install ⬇️
         env:
           HUSKY: 0
-        run: yarn install --immutable
+        run: |
+          npm install -g corepack
+          yarn install --immutable
 
       - name: Compile locales 🔨
         run: yarn workspace @munchkin/site run i18n:compile
