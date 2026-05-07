@@ -1,20 +1,38 @@
 import { GlobalStyles } from "@mui/material";
+import { type IInsetCallbackFunc } from "@totalpave/cordova-plugin-insets";
+import { use, useEffect, useState } from "react";
+
+const insetPromise = globalThis.totalpave.Inset.create();
 
 export const Insets = () => {
-  if (globalThis.cordova.platformId === "android") {
-    return (
-      <GlobalStyles
-        styles={{
-          ":root": {
-            "--inset-bottom": "var(--safe-area-inset-bottom, 0px)",
-            "--inset-left": "var(--safe-area-inset-left, 0px)",
-            "--inset-right": "var(--safe-area-inset-right, 0px)",
-            "--inset-top": "var(--safe-area-inset-top, 0px)",
-          },
-        }}
-      />
-    );
-  }
+  const inset = use(insetPromise);
 
-  return null;
+  const [values, setValues] = useState(() => inset.getInset());
+
+  useEffect(() => {
+    const onChange: IInsetCallbackFunc = (inset) => {
+      setValues(inset);
+    };
+
+    inset.addListener(onChange);
+
+    return () => {
+      inset.removeListener(onChange);
+    };
+  }, [inset]);
+
+  console.log("=== values ===", values);
+
+  return (
+    <GlobalStyles
+      styles={{
+        ":root": {
+          "--inset-bottom": `${values.bottom}px`,
+          "--inset-left": `${values.left}px`,
+          "--inset-right": `${values.right}px`,
+          "--inset-top": `${values.top}px`,
+        },
+      }}
+    />
+  );
 };

@@ -14,5 +14,9 @@ export const CordovaApp = () => {
   useNavigationBreadcrumbs();
   useStatusBar();
 
-  return <Insets />;
+  if (globalThis.cordova.platformId === "android") {
+    return <Insets />;
+  }
+
+  return null;
 };

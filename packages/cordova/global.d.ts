@@ -4,6 +4,8 @@
 /// <reference types="cordova-plugin-device" />
 /// <reference types="cordova-plugin-statusbar" />
 
+import { type Inset } from "@totalpave/cordova-plugin-insets";
+
 declare global {
   var BuildInfo: Readonly<{
     debug: boolean;
@@ -28,6 +30,10 @@ declare global {
       }
     | undefined;
 
+  var totalpave: {
+    Inset: typeof Inset;
+  };
+
   interface BarProp {
     setBackgroundColor: (color: string) => void;
   }
@@ -38,5 +44,3 @@ declare global {
     };
   }
 }
-
-export {};
