@@ -57,6 +57,6 @@
     "stylis": "4.4.0",
     "typescript": "6.0.3",
     "uuid": "14.0.0",
-    "workbox-window": "7.4.0"
+    "workbox-window": "7.4.1"
   }
 }
