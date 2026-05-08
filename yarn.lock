@@ -4415,7 +4415,7 @@ __metadata:
     parcel: "npm:2.16.4"
     react: "npm:19.2.5"
     react-dom: "npm:19.2.5"
-    react-router: "npm:7.14.2"
+    react-router: "npm:7.15.0"
   languageName: unknown
   linkType: soft
 
@@ -4440,7 +4440,7 @@ __metadata:
     playwright: "npm:1.59.1"
     react: "npm:19.2.5"
     react-dom: "npm:19.2.5"
-    react-router: "npm:7.14.2"
+    react-router: "npm:7.15.0"
     workbox-cli: "npm:7.4.0"
   languageName: unknown
   linkType: soft
@@ -4516,7 +4516,7 @@ __metadata:
     react-dom: "npm:19.2.5"
     react-intl: "npm:10.1.4"
     react-redux: "npm:9.2.0"
-    react-router: "npm:7.14.2"
+    react-router: "npm:7.15.0"
     react-transition-group: "npm:4.4.5"
     redux: "npm:5.0.1"
     redux-undo: "npm:1.1.1"
@@ -4535,7 +4535,7 @@ __metadata:
     parcel: "npm:2.16.4"
     react: "npm:19.2.5"
     react-dom: "npm:19.2.5"
-    react-router: "npm:7.14.2"
+    react-router: "npm:7.15.0"
   languageName: unknown
   linkType: soft
 
@@ -19744,9 +19744,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-router@npm:7.14.2":
-  version: 7.14.2
-  resolution: "react-router@npm:7.14.2"
+"react-router@npm:7.15.0":
+  version: 7.15.0
+  resolution: "react-router@npm:7.15.0"
   dependencies:
     cookie: "npm:^1.0.1"
     set-cookie-parser: "npm:^2.6.0"
@@ -19756,7 +19756,7 @@ __metadata:
   peerDependenciesMeta:
     react-dom:
       optional: true
-  checksum: 10/6a12db0f6c8fd9b08631da98ba5e8c63675f4830cb7dccf1d70f3da23acbbc39079f48479b7c2c94b4ecd138fb1e0d4d8efd60914c48b224bfd8f1fd87b3b8cd
+  checksum: 10/98681e75fab2eddc2b18bd478840341a85b5eab796ed29c638be986faab0c63ff16ad72c9889192a4f5c6f559f20aad3273fdffbeb1edf104d2cf2381373c9ca
   languageName: node
   linkType: hard
 
