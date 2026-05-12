@@ -29,7 +29,7 @@
     "@types/stylis": "4.2.7",
     "babel-plugin-react-compiler": "1.0.0",
     "firebase-tools": "15.16.0",
-    "next": "16.2.4",
+    "next": "16.2.6",
     "react": "19.2.5",
     "react-dom": "19.2.5",
     "react-intl": "10.1.4",
