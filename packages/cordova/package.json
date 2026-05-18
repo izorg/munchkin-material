@@ -58,7 +58,7 @@
   "devDependencies": {
     "@mui/material": "9.0.1",
     "@sentry/react": "10.53.1",
-    "@totalpave/cordova-plugin-insets": "0.4.6",
+    "@totalpave/cordova-plugin-insets": "0.4.7",
     "@types/cordova": "11.0.3",
     "@types/parcel-env": "0.0.9",
     "@types/react": "19.2.14",

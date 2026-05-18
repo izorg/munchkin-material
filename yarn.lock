@@ -4383,7 +4383,7 @@ __metadata:
   dependencies:
     "@mui/material": "npm:9.0.1"
     "@sentry/react": "npm:10.53.1"
-    "@totalpave/cordova-plugin-insets": "npm:0.4.6"
+    "@totalpave/cordova-plugin-insets": "npm:0.4.7"
     "@types/cordova": "npm:11.0.3"
     "@types/parcel-env": "npm:0.0.9"
     "@types/react": "npm:19.2.14"
@@ -8067,12 +8067,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@totalpave/cordova-plugin-insets@npm:0.4.6":
-  version: 0.4.6
-  resolution: "@totalpave/cordova-plugin-insets@npm:0.4.6"
+"@totalpave/cordova-plugin-insets@npm:0.4.7":
+  version: 0.4.7
+  resolution: "@totalpave/cordova-plugin-insets@npm:0.4.7"
   dependencies:
     tslib: "npm:2.8.1"
-  checksum: 10/7b0a2f2c0de309701f3159843da41d33005f3f252948740af09dd0ba62434c0e96f42370c889ac5c6d43a34c0bf184ea5312955006d6cab956bf5cfd89202600
+  checksum: 10/2a8bd4635249993345ab29a5b1d41325f5dc0dfac892648a492e1626be76cce1f112ab32b0ee16ff5f730e74304137c17fb791c0866307712c750e3fecc88456
   languageName: node
   linkType: hard
 
