@@ -1,7 +1,6 @@
 {
   "$schema": "node_modules/knip/schema.json",
   "ignoreDependencies": [
-    "@munchkin/*",
     "@parcel/*",
     "@semantic-release/*",
     "conventional-changelog-conventionalcommits",

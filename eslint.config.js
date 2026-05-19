@@ -221,6 +221,7 @@ export default defineConfig(
     extends: [html.configs.recommended],
     files: ["**/*.html"],
     language: "html/html",
+    name: "html",
     rules: {
       "html/indent": ["error", 2],
       "html/no-extra-spacing-tags": [
