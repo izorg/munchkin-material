@@ -112,14 +112,17 @@ const getThemeOptions = ({
       components: {
         MuiDialog: {
           styleOverrides: {
-            paperFullScreen: ({ ownerState, theme }) => {
-              if (!ownerState.fullScreen) {
-                return;
-              }
-
-              return {
-                backgroundColor: theme.vars.palette.background.default,
-              };
+            paper: {
+              variants: [
+                {
+                  props: {
+                    fullScreen: true,
+                  },
+                  style: ({ theme }) => ({
+                    backgroundColor: theme.vars.palette.background.default,
+                  }),
+                },
+              ],
             },
           },
         },

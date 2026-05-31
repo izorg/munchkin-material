@@ -9,6 +9,7 @@ import {
 import { type TransitionProps } from "@mui/material/transitions";
 import { type ReactElement } from "react";
 
+import usePreviewTheme from "../../hooks/usePreviewTheme";
 import { ios } from "../../utils/platforms";
 
 import { useInitialAppear } from "./useInitialAppear";
@@ -33,23 +34,28 @@ const RouteModalTransition = ({
   return <Fade appear={appear} {...rest} />;
 };
 
-export const RouteModal = ({ children, open, ...rest }: ModalProps) => (
-  <Modal hideBackdrop open={open} {...rest}>
-    <RouteModalTransition in={open}>
-      <Paper
-        elevation={0}
-        sx={[
-          {
+export const RouteModal = ({ children, open, ...rest }: ModalProps) => {
+  const { pureBlack } = usePreviewTheme();
+
+  return (
+    <Modal hideBackdrop open={open} {...rest}>
+      <RouteModalTransition in={open}>
+        <Paper
+          elevation={0}
+          sx={(theme) => ({
+            backgroundColor: pureBlack
+              ? theme.vars.palette.background.default
+              : undefined,
             display: "flex",
             flexDirection: "column",
             inset: 0,
             outline: 0,
             position: "fixed",
-          },
-        ]}
-      >
-        {children}
-      </Paper>
-    </RouteModalTransition>
-  </Modal>
-);
+          })}
+        >
+          {children}
+        </Paper>
+      </RouteModalTransition>
+    </Modal>
+  );
+};
