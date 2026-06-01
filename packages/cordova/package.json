@@ -68,7 +68,7 @@
     "@types/react-dom": "19.2.3",
     "cordova": "13.0.0",
     "cordova-android": "15.0.0",
-    "cordova-ios": "8.0.1",
+    "cordova-ios": "8.1.0",
     "cordova-plugin-buildinfo": "4.0.0",
     "cordova-plugin-device": "3.0.0",
     "cordova-plugin-firebase-analytics": "8.0.0",
