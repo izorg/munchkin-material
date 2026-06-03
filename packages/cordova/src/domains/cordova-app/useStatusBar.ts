@@ -33,9 +33,13 @@ export const useStatusBar = () => {
 
     setStatusbarColors();
 
+    document.addEventListener("resume", setStatusbarColors, false);
+
     const timeout = globalThis.setTimeout(setStatusbarColors, 1000);
 
     return () => {
+      document.removeEventListener("resume", setStatusbarColors, false);
+
       globalThis.clearTimeout(timeout);
     };
   }, [
