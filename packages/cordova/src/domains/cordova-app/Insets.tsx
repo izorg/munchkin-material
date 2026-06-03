@@ -21,8 +21,6 @@ export const Insets = () => {
     };
   }, [inset]);
 
-  console.log("=== values ===", values);
-
   return (
     <GlobalStyles
       styles={{
