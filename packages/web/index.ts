@@ -6,6 +6,7 @@ export { default as ReduxProvider } from "./src/components/ReduxProvider";
 export { default as VersionProvider } from "./src/components/VersionProvider";
 export { default as WakeLockProvider } from "./src/components/WakeLockProvider";
 export { default as WorkboxProvider } from "./src/components/WorkboxProvider";
+export { type LocaleContextValue } from "./src/domains/i18n/LocaleContext";
 export { WebApp } from "./src/domains/web-app";
 export { setFullVersion } from "./src/ducks/settings";
 export { setKeepAwake } from "./src/ducks/settings";

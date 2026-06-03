@@ -3,6 +3,8 @@ import { useEffect } from "react";
 
 import { usePreviewTheme } from "@munchkin/web";
 
+import { getAndroidVersion } from "./android";
+
 export const useStatusBar = () => {
   const { palette } = useTheme();
 
@@ -13,8 +15,7 @@ export const useStatusBar = () => {
       return;
     }
 
-    const androidVersion = Number.parseInt(device.version.split(".")[0], 10);
-    const canEdgeToEdge = androidVersion >= 15;
+    const canEdgeToEdge = getAndroidVersion() >= 15;
 
     const setStatusbarColors = () => {
       globalThis.statusbar.setBackgroundColor(

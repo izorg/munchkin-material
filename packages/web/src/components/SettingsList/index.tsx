@@ -2,6 +2,7 @@ import { List } from "@mui/material";
 
 import KeepAwakeItem from "./KeepAwakeItem";
 import LevelLimitItem from "./LevelLimitItem";
+import { LocaleItem } from "./LocaleItem";
 import PrivacyItem from "./PrivacyItem";
 import RateItem from "./RateItem";
 import RestorePurchasesItem from "./RestorePurchasesItem";
@@ -20,6 +21,7 @@ const SettingsList = () => (
     <SingleModeItem />
     <LevelLimitItem />
     <KeepAwakeItem />
+    <LocaleItem />
     <RateItem />
     <ShareItem />
     <RestorePurchasesItem />

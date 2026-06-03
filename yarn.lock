@@ -4372,6 +4372,7 @@ __metadata:
     "@types/parcel-env": "npm:0.0.9"
     "@types/react": "npm:19.2.15"
     "@types/react-dom": "npm:19.2.3"
+    com-darryncampbell-cordova-plugin-intent: "npm:2.2.0"
     cordova: "npm:13.0.0"
     cordova-android: "npm:15.0.0"
     cordova-ios: "npm:8.1.0"
@@ -10003,6 +10004,13 @@ __metadata:
   version: 2.0.20
   resolution: "colorette@npm:2.0.20"
   checksum: 10/0b8de48bfa5d10afc160b8eaa2b9938f34a892530b2f7d7897e0458d9535a066e3998b49da9d21161c78225b272df19ae3a64d6df28b4c9734c0e55bbd02406f
+  languageName: node
+  linkType: hard
+
+"com-darryncampbell-cordova-plugin-intent@npm:2.2.0":
+  version: 2.2.0
+  resolution: "com-darryncampbell-cordova-plugin-intent@npm:2.2.0"
+  checksum: 10/3dbd4dca558df49f7470258795eed72fbeefad5a2767f6496b5c5f02344344ffe69fe041b4ad4305e91cdc028324fa3798f1ecf6e30bad2711856d8782a296ad
   languageName: node
   linkType: hard
 

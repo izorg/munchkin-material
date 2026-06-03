@@ -30,6 +30,7 @@
     ],
     "plugins": {
       "@totalpave/cordova-plugin-insets": {},
+      "com-darryncampbell-cordova-plugin-intent": {},
       "cordova-plugin-buildinfo": {},
       "cordova-plugin-device": {},
       "cordova-plugin-firebase-analytics": {
@@ -66,6 +67,7 @@
     "@types/parcel-env": "0.0.9",
     "@types/react": "19.2.15",
     "@types/react-dom": "19.2.3",
+    "com-darryncampbell-cordova-plugin-intent": "2.2.0",
     "cordova": "13.0.0",
     "cordova-android": "15.0.0",
     "cordova-ios": "8.1.0",

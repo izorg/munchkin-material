@@ -9,6 +9,7 @@ import { type Inset } from "@totalpave/cordova-plugin-insets";
 declare global {
   var BuildInfo: Readonly<{
     debug: boolean;
+    packageName: string;
     version: string;
   }>;
 
@@ -26,6 +27,13 @@ declare global {
         insomnia?: {
           allowSleepAgain: () => void;
           keepAwake: () => void;
+        };
+        intentShim?: {
+          startActivity: (
+            params: { action: string; url: string },
+            successCallback: () => void,
+            errorCallback: () => void,
+          ) => void;
         };
       }
     | undefined;

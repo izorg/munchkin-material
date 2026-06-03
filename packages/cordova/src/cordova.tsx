@@ -8,7 +8,6 @@ import {
   App,
   AugmentedStylesProvider,
   AugmentedThemeProvider,
-  LocaleProvider,
   ReduxProvider,
 } from "@munchkin/web";
 
@@ -17,6 +16,7 @@ import { FullVersionProvider } from "./components/FullVersionProvider";
 import VersionProvider from "./components/VersionProvider";
 import WakeLockProvider from "./components/WakeLockProvider";
 import { CordovaApp } from "./domains/cordova-app";
+import { PlatformLocaleProvider } from "./domains/cordova-app/PlatformLocaleProvider";
 
 const node = document.querySelector("#root");
 
@@ -41,7 +41,7 @@ root.render(
       <FullVersionProvider>
         <WakeLockProvider>
           <AppStoreLinkProvider>
-            <LocaleProvider>
+            <PlatformLocaleProvider>
               <AugmentedStylesProvider>
                 <MemoryRouter>
                   <AugmentedThemeProvider>
@@ -50,7 +50,7 @@ root.render(
                   </AugmentedThemeProvider>
                 </MemoryRouter>
               </AugmentedStylesProvider>
-            </LocaleProvider>
+            </PlatformLocaleProvider>
           </AppStoreLinkProvider>
         </WakeLockProvider>
       </FullVersionProvider>

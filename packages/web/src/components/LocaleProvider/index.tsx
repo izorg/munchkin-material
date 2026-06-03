@@ -1,7 +1,7 @@
 import { captureException } from "@sentry/react";
 import {
   type FC,
-  type PropsWithChildren,
+  type ProviderProps,
   startTransition,
   use,
   useEffect,
@@ -13,9 +13,10 @@ import { IntlProvider } from "react-intl";
 import {
   getBrowserLocale,
   loadMessages,
+  type LocaleContextValue,
   type SupportedLocale,
 } from "../../domains/i18n";
-import { polyfillIntl } from "../../domains/i18n";
+import { LocaleContext, polyfillIntl } from "../../domains/i18n";
 import usePresentSelector from "../../hooks/usePresentSelector";
 import store from "../../store";
 import { getLocaleDirection } from "../../utils/getLocaleDirection";
@@ -49,7 +50,9 @@ const getInitialLocalisation = async () => {
 
 const initialLocalisationPromise = getInitialLocalisation();
 
-const LocaleProvider: FC<PropsWithChildren> = ({ children }) => {
+type LocaleProviderProps = Partial<ProviderProps<LocaleContextValue>>;
+
+const LocaleProvider: FC<LocaleProviderProps> = ({ children, value }) => {
   const [{ locale, messages }, setLocalisation] = useState(
     use(initialLocalisationPromise),
   );
@@ -85,7 +88,7 @@ const LocaleProvider: FC<PropsWithChildren> = ({ children }) => {
         process.env.NODE_ENV === "production" ? captureException : undefined
       }
     >
-      {children}
+      <LocaleContext value={value}>{children}</LocaleContext>
     </IntlProvider>
   );
 };
