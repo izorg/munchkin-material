@@ -38,13 +38,13 @@
     "@types/react": "19.2.16",
     "@types/react-dom": "19.2.3",
     "core-js": "3.49.0",
-    "firebase-tools": "15.19.0",
+    "firebase-tools": "15.19.1",
     "handlebars": "4.7.9",
     "parcel": "2.16.4",
     "playwright": "1.60.0",
     "react": "19.2.7",
     "react-dom": "19.2.7",
-    "react-router": "7.16.0",
+    "react-router": "7.17.0",
     "workbox-cli": "7.4.1"
   }
 }

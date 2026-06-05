@@ -3,8 +3,8 @@
   "extends": ["config:best-practices"],
   "packageRules": [
     {
-      "allowedVersions": "<10",
-      "matchPackageNames": ["@eslint/js", "eslint"]
+      "matchManagers": ["npm"],
+      "enabled": false
     }
   ]
 }
