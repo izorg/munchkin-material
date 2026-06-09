@@ -31,7 +31,7 @@ const locales = languagesDir
     /**
      * @param {string} name
      */
-    (name) => name.split(".").at(0),
+    (name) => name.split(".", 1).at(0),
   );
 
 await Promise.all(

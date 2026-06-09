@@ -60,12 +60,12 @@
     }
   },
   "devDependencies": {
-    "@mui/material": "9.0.1",
-    "@sentry/react": "10.56.0",
+    "@mui/material": "9.1.1",
+    "@sentry/react": "10.57.0",
     "@totalpave/cordova-plugin-insets": "0.4.7",
     "@types/cordova": "11.0.3",
     "@types/parcel-env": "0.0.9",
-    "@types/react": "19.2.16",
+    "@types/react": "19.2.17",
     "@types/react-dom": "19.2.3",
     "com-darryncampbell-cordova-plugin-intent": "2.2.0",
     "cordova": "13.0.0",

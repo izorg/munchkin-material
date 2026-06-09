@@ -1,5 +1,5 @@
 export const getAndroidVersion = () =>
-  Number.parseInt(device.version.split(".")[0], 10);
+  Number.parseInt(device.version.split(".", 1)[0], 10);
 
 export const getAndroidApiLevel = () => {
   if (!device.sdkVersion) {
