@@ -61,7 +61,7 @@
   },
   "devDependencies": {
     "@mui/material": "9.1.1",
-    "@sentry/react": "10.57.0",
+    "@sentry/react": "10.59.0",
     "@totalpave/cordova-plugin-insets": "0.4.7",
     "@types/cordova": "11.0.3",
     "@types/parcel-env": "0.0.9",
@@ -78,7 +78,7 @@
     "cordova-plugin-headercolor": "1.0.0",
     "cordova-plugin-insomnia": "4.3.0",
     "cordova-plugin-ionic-keyboard": "2.2.0",
-    "cordova-plugin-purchase": "13.16.1",
+    "cordova-plugin-purchase": "13.17.2",
     "cordova-plugin-purchase-storekit2": "1.0.5",
     "cordova-plugin-statusbar": "4.0.0",
     "cordova-plugin-vibration": "3.1.1",
@@ -88,6 +88,6 @@
     "parcel": "2.16.4",
     "react": "19.2.7",
     "react-dom": "19.2.7",
-    "react-router": "7.17.0"
+    "react-router": "7.18.0"
   }
 }
