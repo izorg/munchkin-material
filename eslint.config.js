@@ -116,6 +116,12 @@ export default defineConfig(
         },
       ],
 
+      "unicorn/consistent-boolean-name": "off",
+
+      "unicorn/default-export-style": "off",
+
+      "unicorn/explicit-timer-delay": "off",
+
       "unicorn/filename-case": [
         "error",
         {
@@ -127,25 +133,9 @@ export default defineConfig(
         },
       ],
 
-      /**
-       * Conflicts with TypeScript checks for `sx` prop
-       */
-      "unicorn/no-instanceof-builtins": "off",
+      "unicorn/max-nested-calls": "off",
 
-      "unicorn/no-null": "off",
-
-      /**
-       * Conflicts with SonarCloud https://rules.sonarsource.com/typescript/tag/clumsy/RSPEC-3626/ and
-       * TypeScript noImplicitReturns https://www.typescriptlang.org/tsconfig/#noImplicitReturns.
-       */
-      "unicorn/no-useless-undefined": "off",
-
-      /**
-       * Browser & Node.js API types could be different (example `setTimeout`)
-       */
-      "unicorn/prefer-global-this": "off",
-
-      "unicorn/prevent-abbreviations": [
+      "unicorn/name-replacements": [
         "error",
         {
           replacements: {
@@ -163,6 +153,60 @@ export default defineConfig(
           },
         },
       ],
+
+      "unicorn/no-computed-property-existence-check": "off",
+
+      "unicorn/no-declarations-before-early-exit": "off",
+
+      "unicorn/no-global-object-property-assignment": "off",
+
+      /**
+       * Conflicts with TypeScript checks for `sx` prop
+       */
+      "unicorn/no-instanceof-builtins": "off",
+
+      "unicorn/no-null": "off",
+
+      "unicorn/no-optional-chaining-on-undeclared-variable": "off",
+
+      "unicorn/no-top-level-assignment-in-function": "off",
+
+      "unicorn/no-top-level-side-effects": "off",
+
+      "unicorn/no-useless-else": "off",
+
+      "unicorn/no-useless-template-literals": "off",
+
+      /**
+       * Conflicts with SonarCloud https://rules.sonarsource.com/typescript/tag/clumsy/RSPEC-3626/ and
+       * TypeScript noImplicitReturns https://www.typescriptlang.org/tsconfig/#noImplicitReturns.
+       */
+      "unicorn/no-useless-undefined": "off",
+
+      "unicorn/prefer-add-event-listener-options": "off",
+
+      "unicorn/prefer-await": "off",
+
+      "unicorn/prefer-continue": "off",
+
+      "unicorn/prefer-early-return": "off",
+
+      "unicorn/prefer-else-if": "off",
+
+      /**
+       * Browser & Node.js API types could be different (example `setTimeout`)
+       */
+      "unicorn/prefer-global-this": "off",
+
+      "unicorn/prefer-has-check": "off",
+
+      "unicorn/prefer-location-assign": "off",
+
+      "unicorn/prefer-minimal-ternary": "off",
+
+      "unicorn/prefer-number-coercion": "off",
+
+      "unicorn/prefer-ternary": "off",
     },
     settings: {
       "import/resolver": {
