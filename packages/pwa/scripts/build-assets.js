@@ -54,12 +54,14 @@ await Promise.all(
       recursive: true,
     });
 
+    const dir = getDirection(locale);
+
     const assetPromises = [
       fs.promises.writeFile(
         path.join(folder, "index.html"),
         htmlTemplate({
           ...data,
-          dir: getDirection(locale),
+          dir,
           lang: locale,
           root: "../../",
           webRoot: "../../../../web/src/",
@@ -81,7 +83,7 @@ await Promise.all(
           path.resolve("src/index.html"),
           htmlTemplate({
             ...data,
-            dir: getDirection(locale),
+            dir,
             lang: locale,
             root: "./",
             webRoot: "../../web/src/",

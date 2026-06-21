@@ -5,7 +5,7 @@ document.addEventListener(
   () => {
     void import("./cordova");
   },
-  false,
+  { capture: false },
 );
 
 const cordovaScript = document.createElement("script");

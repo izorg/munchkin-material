@@ -41,7 +41,7 @@ const DiceDialog = (props: Partial<DialogProps>) => {
   const [attempt, setAttempt] = useState(0);
 
   const dice = usePresentSelector((state) => state.dice);
-  const open = searchParams.get("dice") !== null;
+  const open = searchParams.has("dice");
   const goBack = useGoBack();
 
   const onDiceClick = useCallback(() => {

@@ -32,7 +32,7 @@ const ColorPicker: FC<ColorPickerProps> = (props) => {
 
   const goBack = useGoBack();
 
-  const open = searchParams.get("color") !== null;
+  const open = searchParams.has("color");
 
   const onOpen = () => {
     setSearchParams((prev) => {

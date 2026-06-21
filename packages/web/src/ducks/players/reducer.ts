@@ -89,15 +89,17 @@ const playersReducer = createReducer(initialState, (builder) =>
       const players = { ...state };
 
       for (const id of action.payload) {
-        if (id in players) {
-          const player = players[id];
-
-          players[id] = {
-            ...player,
-            gear: 0,
-            level: 1,
-          };
+        if (!Object.hasOwn(players, id)) {
+          continue;
         }
+
+        const player = players[id];
+
+        players[id] = {
+          ...player,
+          gear: 0,
+          level: 1,
+        };
       }
 
       return players;

@@ -46,11 +46,11 @@ const CombatPlayer: FC<CombatPlayerProps> = ({ playerId }) => {
 
         const currentBonus = playerId === helperId ? helperBonus : playerBonus;
 
-        dispatch(
-          playerId === helperId
-            ? setCombatHelperBonus(currentBonus + value)
-            : setCombatPlayerBonus(currentBonus + value),
-        );
+        if (playerId === helperId) {
+          dispatch(setCombatHelperBonus(currentBonus + value));
+        } else {
+          dispatch(setCombatPlayerBonus(currentBonus + value));
+        }
       });
     },
     [dispatch, playerId],

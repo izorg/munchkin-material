@@ -68,12 +68,14 @@ export default defineConfig(
       ],
 
       "formatjs/enforce-description": "off",
+
       "formatjs/enforce-id": [
         "error",
         {
           idInterpolationPattern: "[sha512:contenthash:base64:6]",
         },
       ],
+
       "formatjs/no-invalid-icu": "error",
 
       "import/consistent-type-specifier-style": ["error", "prefer-inline"],
@@ -120,8 +122,6 @@ export default defineConfig(
 
       "unicorn/default-export-style": "off",
 
-      "unicorn/explicit-timer-delay": "off",
-
       "unicorn/filename-case": [
         "error",
         {
@@ -132,8 +132,6 @@ export default defineConfig(
           },
         },
       ],
-
-      "unicorn/max-nested-calls": "off",
 
       "unicorn/name-replacements": [
         "error",
@@ -154,28 +152,11 @@ export default defineConfig(
         },
       ],
 
-      "unicorn/no-computed-property-existence-check": "off",
-
-      "unicorn/no-declarations-before-early-exit": "off",
-
-      "unicorn/no-global-object-property-assignment": "off",
-
-      /**
-       * Conflicts with TypeScript checks for `sx` prop
-       */
-      "unicorn/no-instanceof-builtins": "off",
-
       "unicorn/no-null": "off",
-
-      "unicorn/no-optional-chaining-on-undeclared-variable": "off",
 
       "unicorn/no-top-level-assignment-in-function": "off",
 
       "unicorn/no-top-level-side-effects": "off",
-
-      "unicorn/no-useless-else": "off",
-
-      "unicorn/no-useless-template-literals": "off",
 
       /**
        * Conflicts with SonarCloud https://rules.sonarsource.com/typescript/tag/clumsy/RSPEC-3626/ and
@@ -183,28 +164,7 @@ export default defineConfig(
        */
       "unicorn/no-useless-undefined": "off",
 
-      "unicorn/prefer-add-event-listener-options": "off",
-
       "unicorn/prefer-await": "off",
-
-      "unicorn/prefer-continue": "off",
-
-      "unicorn/prefer-early-return": "off",
-
-      "unicorn/prefer-else-if": "off",
-
-      /**
-       * Browser & Node.js API types could be different (example `setTimeout`)
-       */
-      "unicorn/prefer-global-this": "off",
-
-      "unicorn/prefer-has-check": "off",
-
-      "unicorn/prefer-location-assign": "off",
-
-      "unicorn/prefer-minimal-ternary": "off",
-
-      "unicorn/prefer-number-coercion": "off",
 
       "unicorn/prefer-ternary": "off",
     },
@@ -294,6 +254,16 @@ export default defineConfig(
     extends: [jest.configs["flat/recommended"]],
     files: ["**/*.spec.ts?(x)"],
     name: "jest",
+    rules: {
+      "unicorn/max-nested-calls": "off",
+    },
+  },
+  {
+    files: ["**/tests/*.test.ts"],
+    name: "playwright",
+    rules: {
+      "unicorn/max-nested-calls": "off",
+    },
   },
   {
     files: ["**/scripts/**", "**/next.config.ts"],

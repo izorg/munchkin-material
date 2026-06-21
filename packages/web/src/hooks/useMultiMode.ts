@@ -9,7 +9,7 @@ const useMultiMode = (): {
 } => {
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const multiMode = searchParams.get(key) !== null;
+  const multiMode = searchParams.has(key);
 
   const setMultiMode = useCallback(
     (active: boolean) => {

@@ -33,6 +33,7 @@ const setTestData = async () => {
   }
 };
 
+// eslint-disable-next-line unicorn/no-global-object-property-assignment -- for development and testing
 globalThis.munchkinDev = {
   setLocale,
   setTestData,

@@ -21,10 +21,14 @@ export const useExitApp = () => {
   });
 
   useEffect(() => {
-    document.addEventListener("backbutton", onBackButton, false);
+    document.addEventListener("backbutton", onBackButton, {
+      capture: false,
+    });
 
     return () => {
-      document.removeEventListener("backbutton", onBackButton);
+      document.removeEventListener("backbutton", onBackButton, {
+        capture: false,
+      });
     };
   }, [goBack]);
 };

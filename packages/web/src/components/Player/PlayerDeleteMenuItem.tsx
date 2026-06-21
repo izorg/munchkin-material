@@ -31,7 +31,7 @@ export const PlayerDeleteMenuItem = (props: MenuItemProps) => {
     // Instead of subscribing to `Modal` transition events use `setTimeout` to execute player deletion when `RouteModal` started closing.
     globalThis.setTimeout(() => {
       deletePlayers([playerId]);
-    });
+    }, 0);
   };
 
   return (

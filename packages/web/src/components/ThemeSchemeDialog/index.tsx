@@ -35,7 +35,7 @@ const ThemeSchemeDialog = () => {
 
   const goBack = useGoBack();
 
-  const open = searchParams.get("scheme") !== null;
+  const open = searchParams.has("scheme");
 
   const previewTheme = usePreviewTheme();
 

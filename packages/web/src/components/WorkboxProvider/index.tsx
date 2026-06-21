@@ -35,30 +35,34 @@ const WorkboxProvider: FC<PropsWithChildren> = ({ children }) => {
   }, []);
 
   useEffect(() => {
-    if (workbox) {
-      workbox.addEventListener("waiting", () => {
-        setUpdate(true);
-      });
-
-      workbox.register().catch(() => {
-        // ignore YandexBot service worker register fail
-      });
+    if (!workbox) {
+      return;
     }
+
+    workbox.addEventListener("waiting", () => {
+      setUpdate(true);
+    });
+
+    workbox.register().catch(() => {
+      // ignore YandexBot service worker register fail
+    });
   }, [workbox]);
 
   const value = useMemo(() => {
     const applyUpdate = () => {
-      if (workbox) {
-        workbox.addEventListener("controlling", () => {
-          if (globalThis.location.pathname === "/") {
-            globalThis.location.reload();
-          } else {
-            globalThis.location.href = "/";
-          }
-        });
-
-        workbox.messageSkipWaiting();
+      if (!workbox) {
+        return;
       }
+
+      workbox.addEventListener("controlling", () => {
+        if (globalThis.location.pathname === "/") {
+          globalThis.location.reload();
+        } else {
+          globalThis.location.assign("/");
+        }
+      });
+
+      workbox.messageSkipWaiting();
     };
 
     return {

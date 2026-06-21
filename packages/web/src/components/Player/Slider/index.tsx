@@ -74,10 +74,14 @@ const PlayerSlider = ({ playerId, sx = [] }: PlayerSliderProps) => {
       element.scrollLeft = element.offsetWidth * directionMultiplier;
     }
 
-    globalThis.addEventListener("resize", onWindowResize, false);
+    globalThis.addEventListener("resize", onWindowResize, {
+      capture: false,
+    });
 
     return () => {
-      globalThis.removeEventListener("resize", onWindowResize);
+      globalThis.removeEventListener("resize", onWindowResize, {
+        capture: false,
+      });
     };
   }, [directionMultiplier, onWindowResize, playerCount, playerId]);
 
@@ -116,11 +120,13 @@ const PlayerSlider = ({ playerId, sx = [] }: PlayerSliderProps) => {
     let timeout: ReturnType<typeof globalThis.setTimeout> | undefined;
 
     const clearScrollTimeout = () => {
-      if (timeout) {
-        globalThis.clearTimeout(timeout);
-
-        timeout = undefined;
+      if (!timeout) {
+        return;
       }
+
+      globalThis.clearTimeout(timeout);
+
+      timeout = undefined;
     };
 
     const onDebouncedScroll = () => {
@@ -128,10 +134,14 @@ const PlayerSlider = ({ playerId, sx = [] }: PlayerSliderProps) => {
       timeout = globalThis.setTimeout(onScroll, 100);
     };
 
-    element.addEventListener("scroll", onDebouncedScroll, false);
+    element.addEventListener("scroll", onDebouncedScroll, {
+      capture: false,
+    });
 
     return () => {
-      element.removeEventListener("scroll", onDebouncedScroll);
+      element.removeEventListener("scroll", onDebouncedScroll, {
+        capture: false,
+      });
       clearScrollTimeout();
     };
   }, [currentIndex, getPlayerIndex, navigate, playerList]);

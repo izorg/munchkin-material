@@ -9,7 +9,7 @@ const useEditMode = (): {
 } => {
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const editMode = searchParams.get(name) !== null;
+  const editMode = searchParams.has(name);
 
   const setEditMode = useCallback(
     (active: boolean) => {

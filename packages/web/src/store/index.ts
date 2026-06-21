@@ -50,6 +50,7 @@ export const useAppDispatch = useDispatch.withTypes<AppDispatch>();
 export const useAppSelector = useSelector.withTypes<RootState>();
 
 if (process.env.NODE_ENV === "development") {
+  // eslint-disable-next-line unicorn/no-global-object-property-assignment -- for development and testing
   globalThis.reduxStore = store;
 }
 
@@ -77,7 +78,7 @@ store.subscribe(() => {
   }
 });
 
-module.hot?.accept(() => {
+globalThis.module.hot?.accept(() => {
   store.replaceReducer(createRootReducer());
 });
 

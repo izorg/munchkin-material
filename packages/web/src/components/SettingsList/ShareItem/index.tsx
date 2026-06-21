@@ -8,14 +8,14 @@ import { SettingsListItemButton } from "../SettingsListItemButton";
 const ShareItem = () => {
   const intl = useIntl();
 
+  if (!navigator.share) {
+    return null;
+  }
+
   const shareLink =
     location.protocol === "https:" && location.hostname !== "localhost"
       ? location.origin
       : "https://allmunchkins.com";
-
-  if (!navigator.share) {
-    return null;
-  }
 
   const shareText = intl.formatMessage({
     defaultMessage: "Share",

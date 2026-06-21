@@ -42,7 +42,7 @@ const ThemeDialog = () => {
 
   const currentThemeId = usePresentSelector((state) => state.theme.id);
 
-  const open = searchParams.get("theme") !== null;
+  const open = searchParams.has("theme");
 
   const previewTheme = usePreviewTheme();
 

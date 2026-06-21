@@ -34,9 +34,9 @@ export const getBrowserLocale = async () => {
 
   if (isSupportedLocale(locale)) {
     return locale;
-  } else {
-    captureMessage(`Unsupported locale: ${locale}`);
   }
+
+  captureMessage(`Unsupported locale: ${locale}`);
 
   return EN;
 };

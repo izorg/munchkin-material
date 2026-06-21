@@ -15,7 +15,7 @@ import { useFullScreen } from "./useFullScreen";
 const PlayerDialog = () => {
   const goBack = useGoBack();
   const [searchParams] = useSearchParams();
-  const open = searchParams.get("player") !== null;
+  const open = searchParams.has("player");
   const players = usePresentSelector((state) => state.players);
 
   const queryPlayer = searchParams.get("player");

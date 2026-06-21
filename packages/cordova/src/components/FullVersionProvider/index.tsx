@@ -64,13 +64,15 @@ export const FullVersionProvider: FC<PropsWithChildren> = ({ children }) => {
 
   useEffect(() => {
     store.error((error) => {
-      if (buyExecutorRef.current) {
-        buyExecutorRef.current.reject(
-          new StoreError("Buy process failed", { cause: error }),
-        );
-
-        buyExecutorRef.current = undefined;
+      if (!buyExecutorRef.current) {
+        return;
       }
+
+      buyExecutorRef.current.reject(
+        new StoreError("Buy process failed", { cause: error }),
+      );
+
+      buyExecutorRef.current = undefined;
     });
 
     store

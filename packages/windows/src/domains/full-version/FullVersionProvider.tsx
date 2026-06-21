@@ -53,18 +53,20 @@ export const FullVersionProvider: FC<PropsWithChildren> = ({ children }) => {
             "message",
             ({ data }) => {
               // @ts-expect-error -- will type later
-              if (data.type === "iapStatus") {
-                // @ts-expect-error -- will type later
-                const { purchased } = data;
-
-                if (purchased) {
-                  dispatch(setFullVersion(Boolean(purchased)));
-
-                  return resolve();
-                } else {
-                  return reject(new Error("Not purchased"));
-                }
+              if (data.type !== "iapStatus") {
+                return;
               }
+
+              // @ts-expect-error -- will type later
+              const { purchased } = data;
+
+              if (purchased) {
+                dispatch(setFullVersion(Boolean(purchased)));
+
+                return resolve();
+              }
+
+              return reject(new Error("Not purchased"));
             },
             // @ts-expect-error -- will type later
             {

@@ -123,7 +123,7 @@ const Combat = () => {
             <Box
               component="span"
               sx={(theme) => ({
-                margin: `${theme.spacing(0, 0.5)}`,
+                margin: theme.spacing(0, 0.5),
               })}
             >
               {/* eslint-disable-next-line formatjs/no-literal-string-in-jsx -- decoration, not a text */}

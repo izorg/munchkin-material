@@ -16,7 +16,7 @@ const LevelLimitDialog = () => {
   const intl = useIntl();
   const [searchParams] = useSearchParams();
 
-  const open = searchParams.get("levelLimit") !== null;
+  const open = searchParams.has("levelLimit");
 
   const goBack = useGoBack();
 
