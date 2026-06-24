@@ -52,11 +52,11 @@ jobs:
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
 
       - name: Deploy 🚀
-        uses: FirebaseExtended/action-hosting-deploy@e2eda2e106cfa35cdbcf4ac9ddaf6c4756df2c8c # v0.10.0
-        with:
-          channelId: live
-          entryPoint: packages/site
-          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_IZORG_MUNCHKIN }}
-          projectId: izorg-munchkin
-          repoToken: ${{ secrets.GITHUB_TOKEN }}
-          target: site
+        working-directory: packages/site
+        env:
+          FIREBASE_SERVICE_ACCOUNT_IZORG_MUNCHKIN: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_IZORG_MUNCHKIN }}
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ runner.temp }}/firebase-service-account.json
+          NO_UPDATE_NOTIFIER: true
+        run: |
+          printf '%s' "$FIREBASE_SERVICE_ACCOUNT_IZORG_MUNCHKIN" > "$GOOGLE_APPLICATION_CREDENTIALS"
+          yarn exec firebase deploy --only hosting:site --project izorg-munchkin --non-interactive
