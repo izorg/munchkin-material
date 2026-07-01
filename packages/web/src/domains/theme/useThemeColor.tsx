@@ -10,7 +10,7 @@ export const useThemeColor = () => {
 
   return useMemo(
     () =>
-      palette.mode === "dark" && pureBlack
+      pureBlack && palette.mode === "dark"
         ? palette.background.default
         : rgbToHex(darken(palette.primary.main, 0.5)),
     [palette.background.default, palette.mode, palette.primary.main, pureBlack],

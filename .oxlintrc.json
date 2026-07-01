@@ -11,6 +11,6 @@
   },
   "plugins": ["import"],
   "rules": {
-    "import/no-cycle": "deny"
+    "import/no-cycle": ["deny", { "ignoreTypes": false }]
   }
 }

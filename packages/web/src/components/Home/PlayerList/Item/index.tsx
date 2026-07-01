@@ -74,7 +74,7 @@ const HomePlayerListItem = (props: HomePlayerListItemProps) => {
   const { longPressProps } = useLongPress({
     isDisabled: editMode || multiMode,
     onLongPress: () => {
-      if (navigator.vibrate && !ios) {
+      if (!ios && navigator.vibrate) {
         navigator.vibrate(20);
       }
 

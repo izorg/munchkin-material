@@ -18,9 +18,7 @@ const EPIC_MUNCHKIN_LIMIT = "epic";
 const NO_LIMIT = "no-limit";
 
 type LevelLimit =
-  | typeof DEFAULT_MUNCHKIN_LIMIT
-  | typeof EPIC_MUNCHKIN_LIMIT
-  | typeof NO_LIMIT;
+  typeof DEFAULT_MUNCHKIN_LIMIT | typeof EPIC_MUNCHKIN_LIMIT | typeof NO_LIMIT;
 
 type LevelLimitFormProps = ComponentPropsWithoutRef<"form">;
 

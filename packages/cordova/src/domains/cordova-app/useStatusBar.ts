@@ -19,7 +19,7 @@ export const useStatusBar = () => {
 
     const setStatusbarColors = () => {
       globalThis.statusbar.setBackgroundColor(
-        palette.mode === "dark" && pureBlack
+        pureBlack && palette.mode === "dark"
           ? palette.background.default
           : rgbToHex(darken(palette.primary.main, 0.5)),
       );

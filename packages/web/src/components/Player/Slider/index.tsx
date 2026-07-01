@@ -67,9 +67,9 @@ const PlayerSlider = ({ playerId, sx = [] }: PlayerSliderProps) => {
     const element = ref.current;
 
     if (
-      playerCount > 1 &&
+      playerId && // needed update scroll position after navigation
       element &&
-      playerId // needed update scroll position after navigation
+      playerCount > 1
     ) {
       element.scrollLeft = element.offsetWidth * directionMultiplier;
     }

@@ -8,8 +8,7 @@ const key = "redux";
 type State = StateFromReducersMapObject<typeof reducers>;
 
 export const loadState = ():
-  | StateFromReducersMapObject<typeof reducers>
-  | undefined => {
+  StateFromReducersMapObject<typeof reducers> | undefined => {
   let serializedState;
 
   try {

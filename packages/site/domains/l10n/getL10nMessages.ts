@@ -3,8 +3,7 @@ import { type MessageFormatElement } from "@formatjs/icu-messageformat-parser";
 import { type LOCALE } from "./constants";
 
 export type LocaleMessages =
-  | Record<string, MessageFormatElement[]>
-  | Record<string, string>;
+  Record<string, MessageFormatElement[]> | Record<string, string>;
 
 export const getL10nMessages = async (locale: LOCALE) => {
   const { default: messages } = (await import(

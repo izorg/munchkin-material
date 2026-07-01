@@ -73,7 +73,7 @@ const ThemeDialog = () => {
   const onSubmit = async (event: SyntheticEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    if (previewTheme.id !== currentThemeId && !fullVersion) {
+    if (!fullVersion && previewTheme.id !== currentThemeId) {
       if (!buyFullVersion) {
         await goBack();
 
