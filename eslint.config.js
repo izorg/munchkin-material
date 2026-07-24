@@ -164,8 +164,6 @@ export default defineConfig(
        */
       "unicorn/no-useless-undefined": "off",
 
-      "unicorn/prefer-await": "off",
-
       "unicorn/prefer-ternary": "off",
     },
     settings: {

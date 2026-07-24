@@ -35,6 +35,7 @@ export const getServerIntl = async (language: LANGUAGE): Promise<IntlShape> => {
     return cachedIntl;
   }
 
+  // eslint-disable-next-line unicorn/prefer-await -- unresolved promise needed
   const promise = getL10nMessages(locale).then((messages) =>
     createIntl({ locale, messages }, getCache()),
   );

@@ -43,6 +43,7 @@ const WorkboxProvider: FC<PropsWithChildren> = ({ children }) => {
       setUpdate(true);
     });
 
+    // eslint-disable-next-line unicorn/prefer-await -- ignore
     workbox.register().catch(() => {
       // ignore YandexBot service worker register fail
     });
