@@ -32,7 +32,7 @@
     "@parcel/reporter-bundle-buddy": "2.16.4",
     "@parcel/transformer-webmanifest": "2.16.4",
     "@playwright/test": "1.61.1",
-    "@sentry/react": "10.66.0",
+    "@sentry/react": "10.67.0",
     "@types/node": "26.1.1",
     "@types/parcel-env": "0.0.9",
     "@types/react": "19.2.17",
@@ -42,9 +42,9 @@
     "handlebars": "4.7.9",
     "parcel": "2.16.4",
     "playwright": "1.61.1",
-    "react": "19.2.7",
-    "react-dom": "19.2.7",
-    "react-router": "8.2.0",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "react-router": "8.3.0",
     "workbox-cli": "7.4.1"
   }
 }
