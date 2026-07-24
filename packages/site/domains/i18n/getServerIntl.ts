@@ -1,9 +1,4 @@
-import {
-  createIntl,
-  createIntlCache,
-  type IntlCache,
-  type IntlShape,
-} from "@formatjs/intl";
+import { createIntl, createIntlCache, type IntlShape } from "@formatjs/intl";
 
 import { getL10nMessages, LOCALE } from "../l10n";
 
@@ -15,15 +10,7 @@ const localeByLanguage: Record<LANGUAGE, LOCALE> = {
   [LANGUAGE.RU]: LOCALE.RU,
 };
 
-let cache: IntlCache | undefined;
-
-const getCache = (): IntlCache => {
-  if (!cache) {
-    cache = createIntlCache();
-  }
-
-  return cache;
-};
+const cache = createIntlCache();
 
 const intlCache = new Map<LOCALE, Promise<IntlShape>>();
 
@@ -37,7 +24,7 @@ export const getServerIntl = async (language: LANGUAGE): Promise<IntlShape> => {
 
   // eslint-disable-next-line unicorn/prefer-await -- unresolved promise needed
   const promise = getL10nMessages(locale).then((messages) =>
-    createIntl({ locale, messages }, getCache()),
+    createIntl({ locale, messages }, cache),
   );
 
   intlCache.set(locale, promise);
