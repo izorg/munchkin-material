@@ -67,7 +67,7 @@ describe("Players reducer", () => {
 
     const players = reducer({ [id]: player }, removePlayers([id]));
 
-    expect(Object.keys(players).length).toBe(0);
+    expect(Object.keys(players)).toHaveLength(0);
   });
 
   test("resets players", () => {
