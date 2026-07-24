@@ -69,8 +69,8 @@ const saveStoreState = () => {
 store.subscribe(() => {
   if (Date.now() - saveDate > timeout) {
     saveStoreState();
-  } else if (!saveTimeout) {
-    saveTimeout = globalThis.setTimeout(() => {
+  } else {
+    saveTimeout ??= globalThis.setTimeout(() => {
       saveStoreState();
 
       saveTimeout = undefined;
@@ -78,7 +78,8 @@ store.subscribe(() => {
   }
 });
 
-globalThis.module.hot?.accept(() => {
+// eslint-disable-next-line unicorn/no-optional-chaining-on-undeclared-variable -- specific to Parcel
+module.hot?.accept(() => {
   store.replaceReducer(createRootReducer());
 });
 
