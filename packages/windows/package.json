@@ -13,13 +13,14 @@
   },
   "scripts": {
     "build": "parcel build",
-    "build:www": "yarn g:rimraf Munchkin/Munchkin/Assets/www && yarn build --no-cache && yarn g:rimraf Munchkin/Munchkin/Assets/www/*.map"
+    "build:www": "rimraf Munchkin/Munchkin/Assets/www && yarn build --no-cache && rimraf Munchkin/Munchkin/Assets/www/*.map"
   },
   "devDependencies": {
     "core-js": "3.49.0",
     "parcel": "2.16.4",
     "react": "19.2.8",
     "react-dom": "19.2.8",
-    "react-router": "8.3.0"
+    "react-router": "8.3.0",
+    "rimraf": "6.1.3"
   }
 }

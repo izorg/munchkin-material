@@ -6,7 +6,7 @@
   "scripts": {
     "analyze": "next experimental-analyze",
     "build": "next build",
-    "clean": "yarn g:rimraf .next/",
+    "clean": "rimraf .next/",
     "dev": "next dev",
     "i18n:compile": "formatjs compile-folder --ast --format=simple domains/l10n/messages domains/l10n/messages/generated",
     "i18n:extract": "formatjs extract --format=simple --out-file=domains/l10n/messages/en.json \"{app,domains}/**/*.{ts,tsx}\"",
@@ -34,6 +34,7 @@
     "react": "19.2.8",
     "react-dom": "19.2.8",
     "react-intl": "10.1.19",
+    "rimraf": "6.1.3",
     "stylis": "4.4.0",
     "typescript": "6.0.3"
   }

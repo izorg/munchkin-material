@@ -15,14 +15,13 @@
     "check-prettier": "prettier --cache --check --ignore-unknown .",
     "check-stylelint": "stylelint --cache \"**/*.css\"",
     "check-tsc": "tsc",
-    "clean": "yarn g:rimraf .parcel-cache/ node_modules/.cache/ .eslintcache .stylelintcache",
+    "clean": "rimraf .parcel-cache/ node_modules/.cache/ .eslintcache .stylelintcache",
     "clean-all": "yarn workspaces foreach --all run clean",
     "format": "prettier --cache --ignore-unknown --write .",
     "get-version": "node scripts/version.js",
     "postinstall": "husky || true",
     "reinstall": "rm -r node_modules yarn.lock && yarn install",
-    "skills-install": "skills experimental_install",
-    "g:rimraf": "cd $INIT_CWD && rimraf"
+    "skills-install": "skills experimental_install"
   },
   "devDependencies": {
     "@commitlint/cli": "21.2.1",
