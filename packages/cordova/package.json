@@ -19,6 +19,7 @@
     "build:ios": "cordova build ios",
     "build": "parcel build",
     "build:www": "rm -rf www && yarn build --no-cache && rm -r www/*.map",
+    "clean": "yarn g:rimraf platforms/ plugins/ www/",
     "cordova:prepare": "cordova prepare",
     "run:android": "cordova run android",
     "run:ios": "cordova run ios"
@@ -61,12 +62,12 @@
   },
   "devDependencies": {
     "@mui/material": "9.2.0",
-    "@sentry/react": "10.67.0",
+    "@sentry/react": "10.69.0",
     "@totalpave/cordova-plugin-insets": "0.4.7",
     "@types/cordova": "11.0.3",
     "@types/parcel-env": "0.0.9",
-    "@types/react": "19.2.17",
-    "@types/react-dom": "19.2.3",
+    "@types/react": "19.2.18",
+    "@types/react-dom": "19.2.4",
     "com-darryncampbell-cordova-plugin-intent": "2.2.0",
     "cordova": "13.0.0",
     "cordova-android": "15.1.0",
