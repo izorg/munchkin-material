@@ -1,18 +1,18 @@
-.yarn
-.vs
+.yarn/
+.vs/
 package.json
 
-/packages/cordova/platforms
-/packages/cordova/plugins
-/packages/cordova/www
+/packages/cordova/platforms/
+/packages/cordova/plugins/
+/packages/cordova/www/
 
-/packages/site/.next
-/packages/site/out
+/packages/site/.next/
+/packages/site/out/
 
-/packages/web/dist
+/packages/web/dist/
 /packages/web/l10n/*.json
 !/packages/web/l10n/en.json
 /packages/web/src/templates/markup/manifest.webmanifest.hbs
 
-/packages/windows/Munchkin/bin
-/packages/windows/Munchkin/obj
+/packages/windows/Munchkin/bin/
+/packages/windows/Munchkin/obj/
