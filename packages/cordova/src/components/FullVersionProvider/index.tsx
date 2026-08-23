@@ -115,7 +115,11 @@ export const FullVersionProvider: FC<PropsWithChildren> = ({ children }) => {
     const error = await offer.order();
 
     if (error) {
-      throw ["BILLING_UNAVAILABLE", "USER_CANCELED"].includes(error.message)
+      throw [
+        "BILLING_UNAVAILABLE",
+        "DEVELOPER_ERROR",
+        "USER_CANCELED",
+      ].includes(error.message)
         ? new FullVersionError("Can't order the offer", { cause: error })
         : new StoreError("Can't order the offer", { cause: error });
     }
