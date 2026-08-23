@@ -16,7 +16,7 @@
     "build:www": "rimraf Munchkin/Munchkin/Assets/www && yarn build --no-cache && rimraf Munchkin/Munchkin/Assets/www/*.map"
   },
   "devDependencies": {
-    "core-js": "3.49.0",
+    "core-js": "3.50.0",
     "parcel": "2.16.4",
     "react": "19.2.8",
     "react-dom": "19.2.8",

@@ -5,7 +5,7 @@
       "source": "GoogleChrome/modern-web-guidance",
       "sourceType": "github",
       "skillPath": "skills/modern-web-guidance/SKILL.md",
-      "computedHash": "d91c3174e15335fc8db6ccfb33c36ff850121f97aa57ba4600f15712a4c5a776"
+      "computedHash": "cf4101aff5b4f8959d9b89497b3a28e8941031591f7ff0a5783297d6b37ba8c3"
     },
     "vercel-react-best-practices": {
       "source": "vercel-labs/agent-skills",

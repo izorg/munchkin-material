@@ -61,8 +61,8 @@
     }
   },
   "devDependencies": {
-    "@mui/material": "9.2.0",
-    "@sentry/react": "10.69.0",
+    "@mui/material": "9.3.1",
+    "@sentry/react": "10.70.0",
     "@totalpave/cordova-plugin-insets": "0.4.7",
     "@types/cordova": "11.0.3",
     "@types/parcel-env": "0.0.9",
@@ -85,7 +85,7 @@
     "cordova-plugin-vibration": "3.1.1",
     "cordova-plugin-web-share": "1.4.2",
     "cordova-support-android-plugin": "2.0.4",
-    "core-js": "3.49.0",
+    "core-js": "3.50.0",
     "parcel": "2.16.4",
     "react": "19.2.8",
     "react-dom": "19.2.8",
