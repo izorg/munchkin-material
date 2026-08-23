@@ -23,9 +23,7 @@ const FULL_VERSION_ID = "full_version";
 
 const { LogLevel, ProductType, store } = CdvPurchase;
 
-if (globalThis.BuildInfo.debug) {
-  store.verbosity = LogLevel.DEBUG;
-}
+store.verbosity = globalThis.BuildInfo.debug ? LogLevel.DEBUG : LogLevel.QUIET;
 
 store.register({
   id: FULL_VERSION_ID,
