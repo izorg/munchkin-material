@@ -5,6 +5,7 @@
 *.tmp
 *.user
 .agents/
+.claude/
 .idea/*
 !.idea/icon.svg
 .parcel-cache/
