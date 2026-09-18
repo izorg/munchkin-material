@@ -136,6 +136,7 @@ export const polyfillIntl = async (locale: SupportedLocale) => {
     await numberFormatLoaders[locale]();
   }
 
+  // eslint-disable-next-line unicorn/prefer-early-return -- will fix later
   if (shouldPolyfillDateTimeFormat(locale)) {
     await import("@formatjs/intl-datetimeformat/polyfill-force.js");
     await dateTimeFormatLoaders[locale]();

@@ -1,4 +1,4 @@
-import { withSentryConfig } from "@sentry/nextjs";
+import { withSentryConfig } from "@sentry/nextjs/config";
 import { type NextConfig } from "next";
 
 const nextConfig: NextConfig = {
@@ -27,6 +27,7 @@ const nextConfig: NextConfig = {
   },
 };
 
+// eslint-disable-next-line unicorn/no-immediate-mutation -- will fix later
 if (process.env.NODE_ENV === "development") {
   nextConfig.rewrites = () =>
     Promise.resolve([
