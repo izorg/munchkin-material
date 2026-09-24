@@ -23,7 +23,7 @@ const PlayerAvatar = (props: PlayerAvatarProps) => {
               }),
             })
           : false,
-        selected ? { backgroundColor: "primary.main" } : false,
+        selected && { backgroundColor: "primary.main" },
         ...[sx].flat(),
       ]}
       {...rest}

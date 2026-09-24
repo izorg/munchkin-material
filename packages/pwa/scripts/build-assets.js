@@ -77,7 +77,6 @@ await Promise.all(
       ),
     ];
 
-    // eslint-disable-next-line unicorn/no-immediate-mutation -- will fix later
     if (locale === "en") {
       assetPromises.push(
         fs.promises.writeFile(

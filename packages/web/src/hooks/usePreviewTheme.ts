@@ -17,7 +17,6 @@ const usePreviewTheme = (): ThemeState => {
   return useMemo(() => {
     const previewTheme: Partial<ThemeState> = {};
 
-    // eslint-disable-next-line unicorn/no-immediate-mutation -- will fix later
     if (id) {
       previewTheme.id = id;
     }

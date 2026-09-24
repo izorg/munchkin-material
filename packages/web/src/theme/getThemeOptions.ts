@@ -34,7 +34,7 @@ const getThemeOptions = ({
     components: {
       MuiButtonBase: {
         defaultProps: {
-          disableRipple: reducedMotion ? true : undefined,
+          disableRipple: reducedMotion || undefined,
         },
       },
 

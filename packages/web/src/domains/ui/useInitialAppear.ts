@@ -17,5 +17,5 @@ export const useInitialAppear = (appearProp?: boolean) => {
     };
   }, []);
 
-  return initialAppear ? false : appearProp;
+  return !initialAppear && appearProp;
 };
