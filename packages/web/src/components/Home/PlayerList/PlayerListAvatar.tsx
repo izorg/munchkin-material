@@ -24,10 +24,10 @@ export const PlayerListAvatar = ({
 
   const { pressProps } = usePress({
     onPress: (event) => {
-      if (!editMode && !multiMode) {
-        activateMultiSelect(id);
-      } else {
+      if (editMode || multiMode) {
         event.continuePropagation();
+      } else {
+        activateMultiSelect(id);
       }
     },
     onPressStart: (event) => {

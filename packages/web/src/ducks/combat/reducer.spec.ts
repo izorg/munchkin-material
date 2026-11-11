@@ -28,8 +28,7 @@ describe("Combat reducer", () => {
   });
 
   test("removes monster", () => {
-    const monster = createMonster();
-    const { id } = monster;
+    const { id } = createMonster();
 
     const combat = reducer(
       { ...initialState, monsters: [id] },

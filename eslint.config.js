@@ -154,6 +154,8 @@ export default defineConfig(
         },
       ],
 
+      "unicorn/no-asterisk-prefix-in-documentation-comments": "off",
+
       "unicorn/no-null": "off",
 
       "unicorn/no-top-level-assignment-in-function": "off",
@@ -165,6 +167,8 @@ export default defineConfig(
        * TypeScript noImplicitReturns https://www.typescriptlang.org/tsconfig/#noImplicitReturns.
        */
       "unicorn/no-useless-undefined": "off",
+
+      "unicorn/prefer-smaller-scope": "off",
 
       "unicorn/prefer-ternary": "off",
     },

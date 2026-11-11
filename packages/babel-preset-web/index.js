@@ -7,7 +7,7 @@ const babelPresetWeb = () => ({
     [
       "@parcel/babel-preset-env",
       {
-        corejs: "3.50",
+        corejs: "3.51",
       },
     ],
   ],

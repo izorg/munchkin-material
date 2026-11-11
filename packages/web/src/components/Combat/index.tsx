@@ -23,9 +23,7 @@ const valueSx: SxProps<Theme> = (theme) => ({
 });
 
 const Combat = () => {
-  const theme = useTheme();
-
-  const { direction } = theme;
+  const { direction } = useTheme();
 
   const playerId = usePresentSelector((state) => state.combat.playerId);
   const helperId = usePresentSelector((state) => state.combat.helperId);

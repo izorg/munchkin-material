@@ -17,7 +17,6 @@
       "entry": ["src/index.ts", "scripts/copy-gradle-extras.js"]
     },
     "packages/web": {
-      "ignore": ["src/theme/colors/*"],
       "ignoreFiles": ["src/components/SettingsList/TranslateItem/index.tsx"]
     }
   }
