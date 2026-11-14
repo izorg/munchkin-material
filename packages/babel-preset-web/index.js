@@ -1,7 +1,7 @@
 const babelPresetWeb = () => ({
   plugins: [
     "babel-plugin-react-compiler",
-    "@sentry/babel-plugin-component-annotate",
+    "@sentry/bundler-plugins/babel-plugin",
   ],
   presets: [
     [

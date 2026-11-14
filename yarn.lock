@@ -4700,7 +4700,7 @@ __metadata:
   dependencies:
     "@babel/core": "npm:7.29.13"
     "@parcel/babel-preset-env": "npm:2.16.4"
-    "@sentry/babel-plugin-component-annotate": "npm:5.3.0"
+    "@sentry/bundler-plugins": "npm:11.12.0"
     babel-plugin-react-compiler: "npm:1.0.0"
   languageName: unknown
   linkType: soft
@@ -7939,13 +7939,6 @@ __metadata:
   peerDependencies:
     semantic-release: ">=20.1.0"
   checksum: 10/95b58b59ecb7815a2796b923603227637f0e2c32c0fc4ccbb467ec36e8f0c68bc2adc7a7093de9332a018ecf079a4d3a0442a98dc91bfaa8efd0338995b51d38
-  languageName: node
-  linkType: hard
-
-"@sentry/babel-plugin-component-annotate@npm:5.3.0":
-  version: 5.3.0
-  resolution: "@sentry/babel-plugin-component-annotate@npm:5.3.0"
-  checksum: 10/1d6cc683f9db3dc992cf36c8965044f380c3ab9a72c71b2b88043a98a82d8f11d66822801b9bb125513028fc5147dd8465c5630b7cd329d140987981a8943f26
   languageName: node
   linkType: hard
 
